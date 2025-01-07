@@ -2,11 +2,8 @@ roms := \
 	pokered.gbc \
 	pokeblue.gbc \
 	pokegreen.gbc \
-	pokered_origback.gbc \
-	pokeblue_origback.gbc \
 	pokebluejp.gbc \
 	pokeredjp.gbc \
-	pokebluejp_origback.gbc
 
 rom_obj := \
 	audio.o \
@@ -17,11 +14,8 @@ rom_obj := \
 pokered_obj := $(rom_obj:.o=_red.o)
 pokeblue_obj := $(rom_obj:.o=_blue.o)
 pokegreen_obj := $(rom_obj:.o=_green.o)
-pokered_origback_obj := $(rom_obj:.o=_red_origback.o)
-pokeblue_origback_obj := $(rom_obj:.o=_blue_origback.o)
 pokebluejp_obj := $(rom_obj:.o=_bluejp.o)
 pokeredjp_obj := $(rom_obj:.o=_redjp.o)
-pokebluejp_origback_obj := $(rom_obj:.o=_bluejp_origback.o)
 
 ### Build tools
 
@@ -40,17 +34,14 @@ RGBLINK ?= $(RGBDS)rgblink
 .SECONDEXPANSION:
 .PRECIOUS:
 .SECONDARY:
-.PHONY: all red blue green red_origback blue_origback bluejp redjp bluejp_origback clean tidy compare tools
+.PHONY: all red blue green bluejp redjp clean tidy compare tools
 
 all: $(roms)
 red: pokered.gbc
 blue: pokeblue.gbc
 green: pokegreen.gbc
-red_origback: pokered_origback.gbc
-blue_origback: pokeblue_origback.gbc
 bluejp: pokebluejp.gbc
 redjp: pokeredjp.gbc
-bluejp_origback: pokebluejp_origback.gbc
 
 # For contributors to make sure a change didn't affect the contents of the rom.
 compare: $(roms)
@@ -60,7 +51,7 @@ clean: tidy
 	find . \( -iname '*.1bpp' -o -iname '*.2bpp' -o -iname '*.pic' \) -exec rm {} +
 
 tidy:
-	rm -f $(roms) $(pokered_obj) $(pokeblue_obj) $(pokegreen_obj) $(pokered_origback_obj) $(pokeblue_origback_obj) $(pokebluejp_obj) $(pokeredjp_obj) $(pokebluejp_origback_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym) rgbdscheck.o 
+	rm -f $(roms) $(pokered_obj) $(pokeblue_obj) $(pokegreen_obj) $(pokebluejp_obj) $(pokeredjp_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym) rgbdscheck.o 
 	$(MAKE) clean -C tools/
 
 tools:
@@ -141,11 +132,8 @@ $(info $(shell $(MAKE) -C tools))
 $(foreach obj, $(pokered_obj), $(eval $(call DEP,$(obj),$(obj:_red.o=.asm))))
 $(foreach obj, $(pokeblue_obj), $(eval $(call DEP,$(obj),$(obj:_blue.o=.asm))))
 $(foreach obj, $(pokegreen_obj), $(eval $(call DEP,$(obj),$(obj:_green.o=.asm))))
-$(foreach obj, $(pokered_origback_obj), $(eval $(call DEP,$(obj),$(obj:_red_origback.o=.asm))))
-$(foreach obj, $(pokeblue_origback_obj), $(eval $(call DEP,$(obj),$(obj:_blue_origback.o=.asm))))
 $(foreach obj, $(pokebluejp_obj), $(eval $(call DEP,$(obj),$(obj:_bluejp.o=.asm))))
 $(foreach obj, $(pokeredjp_obj), $(eval $(call DEP,$(obj),$(obj:_redjp.o=.asm))))
-$(foreach obj, $(pokebluejp_origback_obj), $(eval $(call DEP,$(obj),$(obj:_bluejp_origback.o=.asm))))
 
 endif
 
@@ -156,11 +144,8 @@ endif
 pokered_opt  			= -cjsv -k 01 -l 0x33 -m 0x13 -p 0 -r 03 -t "POKEMON RED"
 pokeblue_opt 			= -cjsv -k 01 -l 0x33 -m 0x13 -p 0 -r 03 -t "POKEMON BLUE"
 pokegreen_opt 			= -cjsv -k 01 -l 0x33 -m 0x13 -p 0 -r 03 -t "POKEMON GREEN"
-pokered_origback_opt 	= -cjsv -k 01 -l 0x33 -m 0x13 -p 0 -r 03 -t "POKEMON RED"
-pokeblue_origback_opt 	= -cjsv -k 01 -l 0x33 -m 0x13 -p 0 -r 03 -t "POKEMON BLUE"
 pokebluejp_opt 			= -cjsv -k 01 -l 0x33 -m 0x13 -p 0 -r 03 -t "POKEMON BLUE"
 pokeredjp_opt 			= -cjsv -k 01 -l 0x33 -m 0x13 -p 0 -r 03 -t "POKEMON RED"
-pokebluejp_origback_opt = -cjsv -k 01 -l 0x33 -m 0x13 -p 0 -r 03 -t "POKEMON BLUE"
 
 %.gbc: $$(%_obj) layout.link
 	$(RGBLINK) -d -m $*.map -n $*.sym -l layout.link -o $@ $(filter %.o,$^)
