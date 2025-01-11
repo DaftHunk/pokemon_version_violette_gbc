@@ -605,6 +605,7 @@ OaksLabScript16:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_GOT_POKEDEX
+	SetEvent EVENT_90E ;DaftHunk gender/caught enabled by default
 	SetEvent EVENT_OAK_GOT_PARCEL
 	ld a, HS_LYING_OLD_MAN
 	ld [wMissableObjectIndex], a
