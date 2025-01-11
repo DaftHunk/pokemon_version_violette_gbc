@@ -50,7 +50,7 @@ _SpearowDexEntry::
 _VoltorbDexEntry::
 	text "Vivant dans les"
 	next "centrales, ce"
-	next "#MON survolté"
+	next "#mon survolté"
 
 	page "est souvent"
 	next "confondu avec une"
@@ -68,9 +68,9 @@ _NidokingDexEntry::
 	dex
 
 _SlowbroDexEntry::
-	text "Le KOKIYAS"
+	text "Le Kokiyas"
 	next "accroché à la"
-	next "queue du RAMOLOSS"
+	next "queue du Ramoloss"
 
 	page "se nourrit des"
 	next "restes de son"
@@ -93,7 +93,7 @@ _ExeggutorDexEntry::
 	next "se détache, elle"
 
 	page "se transforme en"
-	next "un NOEUNOEUF"
+	next "un Noeunoeuf"
 	dex
 
 _LickitungDexEntry::
@@ -127,7 +127,7 @@ _GrimerDexEntry::
 
 _GengarDexEntry::
 	text "Les nuits de"
-	next "pleine lune, il"
+	next "pleine Lune, il"
 	next "imite l'ombre des"
 
 	page "passants et se"
@@ -136,7 +136,7 @@ _GengarDexEntry::
 	dex
 
 _NidoranFDexEntry::
-	text "Ce #MON est"
+	text "Ce #mon est"
 	next "hérissé de dards"
 	next "empoisonnés."
 
@@ -161,7 +161,7 @@ _CuboneDexEntry::
 
 	page "n'a jamais vu le"
 	next "visage de ce"
-	next "#MON"
+	next "#mon"
 	dex
 
 _RhyhornDexEntry::
@@ -175,7 +175,7 @@ _RhyhornDexEntry::
 	dex
 
 _LaprasDexEntry::
-	text "Ce #MON en"
+	text "Ce #mon en"
 	next "voie d'extinction"
 	next "peut transporter"
 
@@ -185,7 +185,7 @@ _LaprasDexEntry::
 	dex
 
 _ArcanineDexEntry::
-	text "Un #MON très"
+	text "Un #mon très"
 	next "recherché pour sa"
 	next "grâce légendaire."
 
@@ -235,7 +235,7 @@ _TentacoolDexEntry::
 	dex
 
 _GastlyDexEntry::
-	text "Ce #MON gazeux"
+	text "Ce #mon gazeux"
 	next "plonge ses"
 	next "victimes dans un"
 
@@ -255,7 +255,7 @@ _ScytherDexEntry::
 	dex
 
 _StaryuDexEntry::
-	text "Un #MON bien"
+	text "Un #mon bien"
 	next "curieux qui peut"
 	next "régénérer ses"
 
@@ -265,7 +265,7 @@ _StaryuDexEntry::
 	dex
 
 _BlastoiseDexEntry::
-	text "Un #MON brutal"
+	text "Un #mon brutal"
 	next "armé de canons"
 	next "hydrauliques."
 
@@ -365,7 +365,7 @@ _GravelerDexEntry::
 	dex
 
 _ChanseyDexEntry::
-	text "Un #MON rare"
+	text "Un #mon rare"
 	next "et difficile à"
 	next "capturer qui"
 
@@ -485,7 +485,7 @@ _ElectabuzzDexEntry::
 
 _MagnetonDexEntry::
 	text "Constitué de"
-	next "MAGNETI reliés"
+	next "Magnéti reliés"
 	next "les uns aux"
 
 	page "autres, il"
@@ -563,7 +563,7 @@ _VenonatDexEntry::
 	dex
 
 _DragoniteDexEntry::
-	text "Un #MON"
+	text "Un #mon"
 	next "marin extrêmement"
 	next "rare. On dit"
 
@@ -684,7 +684,7 @@ _NinetalesDexEntry::
 
 _PikachuDexEntry::
 	text "Quand plusieurs"
-	next "de ces #MON"
+	next "de ces #mon"
 	next "se réunissent,"
 
 	page "ils provoquent"
@@ -712,7 +712,7 @@ _DratiniDexEntry::
 	dex
 
 _DragonairDexEntry::
-	text "Un #MON"
+	text "Un #mon"
 	next "légendaire plein"
 	next "de charme."
 
@@ -722,7 +722,7 @@ _DragonairDexEntry::
 	dex
 
 _KabutoDexEntry::
-	text "Un #MON"
+	text "Un #mon"
 	next "reconstitué à"
 	next "partir d'un"
 
@@ -791,7 +791,7 @@ _OmanyteDexEntry::
 	dex
 
 _OmastarDexEntry::
-	text "Un #MON"
+	text "Un #mon"
 	next "préhistorique qui"
 	next "disparut quand sa"
 
@@ -883,8 +883,8 @@ _EkansDexEntry::
 	next "silence pour"
 	next "dévorer des oeufs"
 
-	page "de ROUCOOL ou de"
-	next "PIAFABEC"
+	page "de Roucool ou de"
+	next "Piafabec"
 	dex
 
 _ParasDexEntry::
@@ -969,7 +969,7 @@ _PrimeapeDexEntry::
 
 _DugtrioDexEntry::
 	text "Un groupe de"
-	next "TAUPIQUEUR. Il"
+	next "Taupiqueur. Il"
 	next "crée des séismes"
 
 	page "en creusant à"
@@ -1152,11 +1152,11 @@ _ClefableDexEntry::
 	dex
 
 _WeezingDexEntry::
-	text "Deux SMOGO"
+	text "Deux Smogo"
 	next "peuvent se"
 	next "combiner en un"
 
-	page "SMOGOGO en"
+	page "Smogogo en"
 	next "mélangeant leurs"
 	next "gaz"
 	dex
@@ -1360,7 +1360,7 @@ _GeodudeDexEntry::
 	dex
 
 _PorygonDexEntry::
-	text "Un #MON fait"
+	text "Un #mon fait"
 	next "de programmes et"
 	next "d'algorithmes. Il"
 
@@ -1369,7 +1369,7 @@ _PorygonDexEntry::
 	dex
 
 _AerodactylDexEntry::
-	text "Un #MON"
+	text "Un #mon"
 	next "préhistorique qui"
 	next "attaque son"
 
@@ -1467,7 +1467,7 @@ _VileplumeDexEntry::
 	dex
 
 _BellsproutDexEntry::
-	text "Un #MON"
+	text "Un #mon"
 	next "carnivore qui se"
 	next "nourrit de petits"
 
