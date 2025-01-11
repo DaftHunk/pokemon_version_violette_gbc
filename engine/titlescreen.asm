@@ -48,7 +48,7 @@ ENDC
 	call FarCopyData2
 	ld hl, GamefreakLogoGraphics
 	ld de, vTitleLogo2 + $100 + $50
-	ld bc, $90
+	ld bc, $100
 	ld a, BANK(GamefreakLogoGraphics)
 	call FarCopyData2
 	ld hl, PokemonLogoGraphics
@@ -132,7 +132,7 @@ IF DEF(_REDGREENJP)
 ELIF DEF(_BLUEJP)
 	db $41,$42,$43,$44,$42,$43,$45,$46,$47,$48,$49,$4A,$4B,$4C,$4D,$4E ; ©'95.'96.'98 GAME FREAK inc.
 ELSE
-	db $41,$42,$43,$42,$44,$42,$45,$46,$47,$48,$49,$4A,$4B,$4C,$4D,$4E ; ©'95.'96.'98 GAME FREAK inc.
+	db $41,$42,$43,$44,$42,$43,$4f,$46,$47,$48,$49,$4A,$4B,$4C,$4D,$4E ; ©1995-1999 GAME FREAK inc.
 ENDC
 
 .next
@@ -480,7 +480,7 @@ LoadCopyrightAndTextBoxTiles:
 LoadCopyrightTiles:
 	ld de, NintendoCopyrightLogoGraphics
 	ld hl, vChars2 + $600
-	lb bc, BANK(NintendoCopyrightLogoGraphics), (GamefreakLogoGraphicsEnd - NintendoCopyrightLogoGraphics) / $10
+	lb bc, BANK(NintendoCopyrightLogoGraphics), (GamefreakLogoGraphicsEnd - NintendoCopyrightLogoGraphics) / $0f
 	call CopyVideoData
 IF DEF(_REDGREENJP)
 	coord hl, 4, 7
@@ -500,9 +500,9 @@ ELIF DEF(_BLUEJP)
 	next $60,$61,$62,$63,$61,$62,$64,$6B,$6C,$6D,$6E,$6F,$70,$71,$72     ; ©1995.1996 Creatures inc.
 	next $60,$61,$62,$63,$61,$62,$64,$73,$74,$75,$76,$77,$78,$79,$7A,$7B ; ©1995.1996 GAME FREAK inc.
 ELSE
-	db   $60,$61,$62,$61,$63,$61,$64,$7F,$65,$66,$67,$68,$69,$6A             ; ©'95.'96.'98 Nintendo
-	next $60,$61,$62,$61,$63,$61,$64,$7F,$6B,$6C,$6D,$6E,$6F,$70,$71,$72     ; ©'95.'96.'98 Creatures inc.
-	next $60,$61,$62,$61,$63,$61,$64,$7F,$73,$74,$75,$76,$77,$78,$79,$7A,$7B ; ©'95.'96.'98 GAME FREAK inc.
+	db   $60,$61,$62,$63,$61,$62,$7C,$7F,$65,$66,$67,$68,$69,$6A             ; ©1995-1999 Nintendo
+	next $60,$61,$62,$63,$61,$62,$7C,$7F,$6B,$6C,$6D,$6E,$6F,$70,$71,$72     ; ©1995-1999 Creatures inc.
+	next $60,$61,$62,$63,$61,$62,$7C,$7F,$73,$74,$75,$76,$77,$78,$79,$7A,$7B ; ©1995-1999 GAME FREAK inc.
 ENDC
 	db   "@"
 
@@ -513,7 +513,7 @@ PrintGameVersionOnTitleScreen:
 IF DEF(_GREEN)
 	coord hl, 6, 8
 ELSE
-	coord hl, 7, 8
+	coord hl, 6, 8
 ENDC
 	ld de, VersionOnTitleScreenText
 	jp PlaceString
@@ -521,10 +521,10 @@ ENDC
 ; these point to special tiles specifically loaded for that purpose and are not usual text
 VersionOnTitleScreenText:
 IF DEF(_RED)
-	db $60,$61,$7F,$65,$66,$67,$68,$69,"@" ; "Red Version"
+	db $60,$61,$62,$63,$64,$65,$66,$67,$68,$69,"@" ; "Red Version"
 ENDC
 IF DEF(_BLUE)
-	db $61,$62,$63,$64,$65,$66,$67,$68,"@" ; "Blue Version"
+	db $60,$61,$62,$63,$64,$65,$66,$67,$68,$69,"@" ; "Blue Version"
 ENDC
 IF DEF(_GREEN)
 	db $62,$63,$64,$7F,$65,$66,$67,$68,$69,"@" ; "Green Version"

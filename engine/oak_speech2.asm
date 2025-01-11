@@ -212,85 +212,97 @@ DisplayIntroNameTextBox:
 	jp HandleMenuInput
 
 .namestring
-	db "NAME@"
+	db "─NOM@"
 
 ;joenote - set female trainer names
-IF DEF(_FPLAYER)
+IF DEF(_FPLAYER) && (DEF(_GREEN) || DEF(_REDJP) || DEF(_BLUEJP))
 DefaultNamesPlayerF:
-	db   "NEW NAME"
-	next "VIOLET"
+	db   "NOM:"
+; tournenote - name of third trainer in the Japanese version of the manga
+; adaptation Pocket Monsters Special and made canon in Let's Go, Pikachu/Evee!
+	next "BLUE"
 	next "CLAIRE"
 	next "JILL"
+	db   "@"
+ELIF DEF(_FPLAYER)
+DefaultNamesPlayerF:
+	db   "NOM:"
+; tournenote - name of third trainer in the English version of the manga
+; adaptation Pocket Monsters Special and made canon in Let's Go, Pikachu/Evee!
+	next "GREEN"
+; tournenote - name of the character in the first French edition of the manga
+	next "OLGA"
+	next "CLAIRE"
 	db   "@"
 ENDC
 
 IF DEF(_REDJP)
 DefaultNamesPlayer:
-	db   "NEW NAME"
+	db   "NOM:"
 	next "RED"
 	next "SATOSHI"
 	next "JACK"
 	db   "@"
 DefaultNamesRival:
-	db   "NEW NAME"
+	db   "NOM:"
 	next "GREEN"
 	next "SHIGERU"
 	next "JOHN"
 	db   "@"
 ELIF DEF(_RED)
 DefaultNamesPlayer:
-	db   "NEW NAME"
+	db   "NOM:"
 	next "RED"
-	next "ASH"
-	next "JACK"
+	next "SACHA"
+	next "PAUL"
 	db   "@"
 DefaultNamesRival:
-	db   "NEW NAME"
+	db   "NOM:"
 	next "BLUE"
-	next "GARY"
-	next "JOHN"
+	next "REGIS"
+	next "JEAN"
 	db   "@"
 ENDC
 
 
 IF DEF(_BLUEJP)
 DefaultNamesPlayer:
-	db   "NEW NAME"
+	db   "NOM:"
 	next "BLUE"
 	next "TSUNEKA"
 	next "JEAN"
 	db   "@"
 DefaultNamesRival:
-	db   "NEW NAME"
+	db   "NOM:"
 	next "RED"
 	next "GREEN"
 	next "HIROSHI"
 	db   "@"
 ELIF DEF(_BLUE)
 DefaultNamesPlayer:
-	db   "NEW NAME"
+	db   "NOM:"
 	next "BLUE"
-	next "GARY"
-	next "JOHN"
+	next "REGIS"
+	next "JEAN"
 	db   "@"
 DefaultNamesRival:
-	db   "NEW NAME"
+	db   "NOM:"
 	next "RED"
-	next "ASH"
-	next "JACK"
+	next "SACHA"
+	next "PAUL"
 	db   "@"
 ENDC
 
 
 IF DEF(_GREEN)
 DefaultNamesPlayer:
-	db   "NEW NAME"
+	db   "NOM:"
 	next "GREEN"
 	next "SHIGERU"
 	next "JOHN"
 	db   "@"
 DefaultNamesRival:
-	db   "NEW NAME"
+	db   "NOM:"
 	next "RED"
 	next "SATOSHI"
 	next "JACK"
@@ -323,72 +335,78 @@ GetDefaultName:
 	jp CopyData
 
 ;joenote - set female trainer names
-IF DEF(_FPLAYER)
+IF DEF(_FPLAYER) && (DEF(_GREEN) || DEF(_REDJP) || DEF(_BLUEJP))
 DefaultNamesPlayerListF:
-	db "NEW NAME@"
-	db "VIOLET@"
+	db "NOM:@"
+	db "BLUE@"
 	db "CLAIRE@"
 	db "JILL@"
+ELIF DEF(_FPLAYER)
+DefaultNamesPlayerListF:
+	db "NOM:@"
+	db "GREEN@"
+	db "OLGA@"
+	db "CLAIRE@"
 ENDC
 
 IF DEF(_REDJP)
 DefaultNamesPlayerList:
-	db "NEW NAME@"
+	db "NOM:@"
 	db "RED@"
 	db "SATOSHI@"
 	db "JACK@"
 DefaultNamesRivalList:
-	db "NEW NAME@"
+	db "NOM:@"
 	db "GREEN@"
 	db "SHIGERU@"
 	db "JOHN@"
 ELIF DEF(_RED)
 DefaultNamesPlayerList:
-	db "NEW NAME@"
+	db "NOM:@"
 	db "RED@"
-	db "ASH@"
-	db "JACK@"
+	db "SACHA@"
+	db "PAUL@"
 DefaultNamesRivalList:
-	db "NEW NAME@"
+	db "NOM:@"
 	db "BLUE@"
-	db "GARY@"
-	db "JOHN@"
+	db "REGIS@"
+	db "JEAN@"
 ENDC
 
 
 IF DEF(_BLUEJP)
 DefaultNamesPlayerList:
-	db "NEW NAME@"
+	db "NOM:@"
 	db "BLUE@"
 	db "TSUNEKA@"
 	db "JEAN@"
 DefaultNamesRivalList:
-	db "NEW NAME@"
+	db "NOM:@"
 	db "RED@"
 	db "GREEN@"
 	db "HIROSHI@"
 ELIF DEF(_BLUE)
 DefaultNamesPlayerList:
-	db "NEW NAME@"
+	db "NOM:@"
 	db "BLUE@"
-	db "GARY@"
-	db "JOHN@"
+	db "REGIS@"
+	db "JEAN@"
 DefaultNamesRivalList:
-	db "NEW NAME@"
+	db "NOM:@"
 	db "RED@"
-	db "ASH@"
-	db "JACK@"
+	db "SACHA@"
+	db "PAUL@"
 ENDC
 
 
 IF DEF(_GREEN)
 DefaultNamesPlayerList:
-	db "NEW NAME@"
+	db "NOM:@"
 	db "GREEN@"
 	db "SHIGERU@"
 	db "JOHN@"
 DefaultNamesRivalList:
-	db "NEW NAME@"
+	db "NOM:@"
 	db "RED@"
 	db "SATOSHI@"
 	db "JACK@"

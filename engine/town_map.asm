@@ -134,17 +134,13 @@ LoadTownMap_Nest:
 	call DisplayWildLocations
 	call GetMonName
 IF (DEF(_REDGREENJP) || DEF(_BLUEJP))
-	coord hl, 0, 0
+	coord hl, 9, 0
 ELSE
-	coord hl, 1, 0
+	coord hl, 8, 0
 ENDC
 	call PlaceString
-	ld h, b
-	ld l, c
+	coord hl, 1, 0
 	ld de, MonsNestText
-IF (DEF(_REDGREENJP) || DEF(_BLUEJP))
-	coord hl, 5, 1
-ENDC
 	call PlaceString
 	call WaitForTextScrollButtonPress
 	call ExitTownMap
@@ -155,9 +151,9 @@ ENDC
 
 MonsNestText:
 IF (DEF(_REDGREENJP) || DEF(_BLUEJP))
-	db "NESTS@"
+	db "NIDS DE @"
 ELSE
-	db "'s NEST@"
+	db "NID DE @"
 ENDC
 
 LoadTownMap_Fly:
@@ -297,7 +293,7 @@ IF (DEF(_REDGREENJP) || DEF(_BLUEJP))
 ;nothing
 ELSE
 ToText:
-	db "To@"
+	db " →@"
 ENDC
 
 BuildFlyLocationsList:
@@ -523,7 +519,7 @@ DisplayWildLocations:
 	jp CopyData
 
 AreaUnknownText:
-	db " AREA UNKNOWN@"
+	db " ZONE INCONNUE@"
 
 TownMapCoordsToOAMCoords:
 ; in: lower nybble of a = x, upper nybble of a = y

@@ -44,5 +44,5 @@ Trade_PrintEnemyMonInfoText:
 
 Trade_MonInfoText:
 	db "──№⠄",$4E
-	next "OT/"
-	next $73,"№⠄","@"
+	next "DO/"
+	next "№",$73,"⠄@"

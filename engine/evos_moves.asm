@@ -802,9 +802,9 @@ ENDC
 	
 ;joenote - make it so a message is printed if the level requirement for an item evolution is not met
 _NeededLevelText:
-	text "Level @"
+	text "Niveau @"
 	TX_NUM wCurEnemyLVL, 1, 3
-	text " needed!"
+	text " requis!"
 	prompt
 
 INCLUDE "data/evos_moves.asm"

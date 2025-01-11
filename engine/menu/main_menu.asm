@@ -506,16 +506,16 @@ SpecialEnterMap:
 	jp EnterMap
 
 ContinueText:
-	db "CONTINUE", $4e
+	db "CONTINUER", $4e
 
 NewGameText:
-	db   "NEW GAME"
-	next "OPTION@"
+	db   "NOUVEAU JEU"
+	next "OPTIONS@"
 
 CableClubOptionsText:
-	db   "TRADE CENTER"
-	next "COLOSSEUM"
-	next "CANCEL@"
+	db   "CENTRE TROC"
+	next "COLISEE"
+	next "RETOUR@"
 
 DisplayContinueGameInfo:
 	xor a
@@ -602,10 +602,10 @@ PrintPlayTime_local:
 ;	jp PrintNumber
 
 SaveScreenInfoText:
-	db   "PLAYER"
+	db   "JOUEUR"
 	next "BADGES    "
 	next "#DEX    "
-	next "TIME@"
+	next "TEMPS@"
 
 DisplayOptionMenu:
 	call GBPalNormal	;joenote - fixes rock tunnel darkness affecting option menu
@@ -775,19 +775,19 @@ DisplayOptionMenu:
 	jp DisplayOptionMenu
 
 TextSpeedOptionText:
-	db   "TEXT SPEED"
-	next " FAST  MEDIUM SLOW@"
+	db   "VIT. TEXTE"
+	next " 3     2      1   @"
 
 BattleAnimationOptionText:
-	db   "BATTLE ANIMATION"
-	next " ON       OFF@"
+	db   "ANIMATION COMBAT"
+	next " OUI      NON@"
 
 BattleStyleOptionText:
-	db   "BATTLE STYLE"
-	next " SHIFT    SET@"
+	db   "STYLE COMBAT"
+	next " CHOIX    DEFINI@"
 
 OptionMenuCancelText:
-	db "CANCEL@"
+	db "RETOUR@"
 
 OptionMenuSelectText:	;joenote - text for getting to extra options screen
 	db "SELECT",$E3,$ED,"@"

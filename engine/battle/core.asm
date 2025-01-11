@@ -2395,12 +2395,12 @@ DisplayBattleMenu:
 	ld bc, NAME_LENGTH
 	call CopyData
 ; the following simulates the keystrokes by drawing menus on screen
-	coord hl, 9, 14
+	coord hl, 7, 14
 	ld [hl], "▶"
 	ld c, 80
 	call DelayFrames
 	ld [hl], " "
-	coord hl, 9, 16
+	coord hl, 7, 16
 	ld [hl], "▶"
 	ld c, 50
 	call DelayFrames
@@ -2408,7 +2408,7 @@ DisplayBattleMenu:
 	ld a, $2 ; select the "ITEM" menu
 	jp .upperLeftMenuItemWasNotSelected
 .oldManName
-	db "OLD MAN@"
+	db "VIEILLARD@"
 .handleBattleMenuInput
 	ld a, [wBattleAndStartSavedMenuItem]
 	ld [wCurrentMenuItem], a
@@ -2425,13 +2425,13 @@ DisplayBattleMenu:
 	ld a, " "
 	jr z, .safariLeftColumn
 ; put cursor in left column for normal battle menu (i.e. when it's not a Safari battle)
-	Coorda 15, 14 ; clear upper cursor position in right column
-	Coorda 15, 16 ; clear lower cursor position in right column
-	ld b, $9 ; top menu item X
+	Coorda 13, 14 ; clear upper cursor position in right column
+	Coorda 13, 16 ; clear lower cursor position in right column
+	ld b, $7 ; top menu item X
 	jr .leftColumn_WaitForInput
 .safariLeftColumn
-	Coorda 13, 14
-	Coorda 13, 16
+	Coorda 12, 14
+	Coorda 12, 16
 	coord hl, 7, 14
 	ld de, wNumSafariBalls
 	lb bc, 1, 2
@@ -2470,9 +2470,9 @@ DisplayBattleMenu:
 	ld a, " "
 	jr z, .safariRightColumn
 ; put cursor in right column for normal battle menu (i.e. when it's not a Safari battle)
-	Coorda 9, 14 ; clear upper cursor position in left column
-	Coorda 9, 16 ; clear lower cursor position in left column
-	ld b, $f ; top menu item X
+	Coorda 7, 14 ; clear upper cursor position in left column
+	Coorda 7, 16 ; clear lower cursor position in left column
+	ld b, $d ; top menu item X
 	jr .rightColumn_WaitForInput
 .safariRightColumn
 	Coorda 1, 14 ; clear upper cursor position in left column
@@ -2481,7 +2481,7 @@ DisplayBattleMenu:
 	ld de, wNumSafariBalls
 	lb bc, 1, 2
 	call PrintNumber
-	ld b, $d ; top menu item X
+	ld b, $c ; top menu item X
 .rightColumn_WaitForInput
 	ld hl, wTopMenuItemY
 	ld a, $e
@@ -3106,7 +3106,8 @@ MoveDisabledText:
 	db "@"
 
 WhichTechniqueString:
-	db "WHICH TECHNIQUE?@"
+	db "Quelle technique?"
+	next "                 @"
 
 SelectMenuItem_CursorUp:
 	ld a, [wCurrentMenuItem]
@@ -3333,7 +3334,7 @@ PrintMenuItem:
 	jp Delay3
 
 DisabledText:
-	db "disabled!@"
+	db "NON DISP.@"
 
 TypeText:
 	db "TYPE@"
@@ -7891,15 +7892,19 @@ LoadGhostPic:
 	ld [hli], a   ; write front sprite pointer
 	ld [hl], b
 	ld hl, wEnemyMonNick  ; set name to "GHOST"
-	ld a, "G"
-	ld [hli], a
-	ld a, "H"
-	ld [hli], a
-	ld a, "O"
-	ld [hli], a
 	ld a, "S"
 	ld [hli], a
+	ld a, "P"
+	ld [hli], a
+	ld a, "E"
+	ld [hli], a
+	ld a, "C"
+	ld [hli], a
 	ld a, "T"
+	ld [hli], a
+	ld a, "R"
+	ld [hli], a
+	ld a, "E"
 	ld [hli], a
 	ld [hl], "@"
 	ld a, [wcf91]
@@ -9065,12 +9070,12 @@ PrintStatText:
 	jp CopyData
 
 StatsTextStrings:
-	db "ATTACK@"
-	db "DEFENSE@"
-	db "SPEED@"
-	db "SPECIAL@"
-	db "ACCURACY@"
-	db "EVADE@"
+	db "FOR@"
+	db "DEF@"
+	db "VIT@"
+	db "SPE@"
+	db "PRE@"
+	db "ESQ@"
 
 BideEffect:
 	ld hl, wPlayerBattleStatus1
