@@ -282,13 +282,13 @@ ELIF DEF(_BLUE)
 DefaultNamesPlayer:
 	db   "NOM:"
 	next "BLUE"
-	next "REGIS"
+	next "SACHA"
 	next "JEAN"
 	db   "@"
 DefaultNamesRival:
 	db   "NOM:"
 	next "RED"
-	next "SACHA"
+	next "REGIS"
 	next "PAUL"
 	db   "@"
 ENDC
@@ -389,12 +389,12 @@ ELIF DEF(_BLUE)
 DefaultNamesPlayerList:
 	db "NOM:@"
 	db "BLUE@"
-	db "REGIS@"
+	db "SACHA@"
 	db "JEAN@"
 DefaultNamesRivalList:
 	db "NOM:@"
 	db "RED@"
-	db "SACHA@"
+	db "REGIS@"
 	db "PAUL@"
 ENDC
 
