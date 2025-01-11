@@ -8,8 +8,8 @@ _PewterGymText_5c4a3::
 	line "un dresseur"
 	cont "d'exception!"
 
-	para "Va à l'ARENE"
-	line "d'AZURIA pour"
+	para "Va à l'Arène"
+	line "d'Azuria pour"
 	cont "tester tes"
 	cont "capacités."
 	done
@@ -31,18 +31,18 @@ _TM34ExplanationText::
 	line "Tech.) contient"
 	cont "une attaque à"
 	cont "enseigner à un"
-	cont "#MON!"
+	cont "#mon!"
 
 	para "Une CT ne marche"
 	line "qu'une fois!"
 	cont "Alors choisis"
-	cont "bien le #MON"
+	cont "bien le #mon"
 	cont "à qui la donner!"
 
 	para "CT34 contient"
 	line "PATIENCE!"
 
-	para "Ton #MON"
+	para "Ton #mon"
 	line "absorbera les"
 	cont "dégâts pour"
 	cont "ensuite infliger"
@@ -72,9 +72,9 @@ _PewterGymText_5c4c1::
 
 	para "C'est un BADGE"
 	line "officiel de la"
-	cont "LIGUE #MON!"
+	cont "Ligue #mon!"
 
-	para "Les #MON de"
+	para "Les #mon de"
 	line "son détenteur"
 	cont "deviennent plus"
 	cont "puissants!"
@@ -89,7 +89,7 @@ _PewterGymBattleText1::
 	line "gamin!"
 
 	para "Tu es encore loin"
-	line "de PIERRE, tu"
+	line "de Pierre, tu"
 	cont "vas devoir"
 	cont "m'affronter!"
 	done
@@ -104,7 +104,7 @@ _PewterGymEndBattleText1::
 _PewterGymAfterBattleText1::
 	text "Tu es fort..."
 	line "Mais pas autant"
-	cont "que PIERRE!"
+	cont "que Pierre!"
 	done
 
 _PewterGymText_5c515::
@@ -127,15 +127,15 @@ _PewterGymText_5c51a::
 	prompt
 
 _PewterGymText_5c51f::
-	text "Le 1er #MON"
+	text "Le 1er #mon"
 	line "apparaissant dans"
 	cont "un combat est"
 	cont "celui en tête de"
-	cont "la LISTE #MON!"
+	cont "la LISTE #mon!"
 
 	para "En changeant"
 	line "l'ordre des"
-	cont "#MON, tu"
+	cont "#mon, tu"
 	cont "peux changer de"
 	cont "stratégie!"
 	done

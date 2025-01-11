@@ -17,6 +17,6 @@ _CopycatsHouse1FText2::
 	done
 
 _CopycatsHouse1FText3::
-	text "LEVEINARD :"
+	text "Leveinard :"
 	line "Vénar! Vénar!@"
 	text_end

@@ -13,7 +13,7 @@ ENDC
 	
 	para "I'm CHAMP of the"
 	line "Orange Islands"
-	cont "#MON LEAGUE."
+	cont "#mon LEAGUE."
 
 	para "I'm currently on a"
 	line "victory vacation"
@@ -56,11 +56,11 @@ _VermilionDockSeigaDefeat::
 
 _VermilionDockSeigaVictory::
 	text "A"
-	line "#MON was well-"
+	line "#mon was well-"
 	cont "hidden under the"
 	cont "truck."
 	
-	para "It cried MEW!"
+	para "It cried Mew!"
 	line "and flew towards"
 	cont "Cerulean City."
 	
@@ -75,7 +75,7 @@ _VermilionDockSeigaVictory::
 	line "more advanced"
 	cont "than my locator."
 	
-	para "Maybe the #MON"
+	para "Maybe the #mon"
 	line "will appear when"
 	cont "it's upgraded"
 	cont "with a diploma."

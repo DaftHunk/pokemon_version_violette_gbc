@@ -1,7 +1,7 @@
 _FuchsiaCityText1::
 	text "Connais-tu le jeu"
-	line "du SAFARI?"
-	cont "Certains #MON"
+	line "du Safari?"
+	cont "Certains #mon"
 	cont "n'apparaissent"
 	cont "qu'à cet endroit."
 	done
@@ -9,11 +9,11 @@ _FuchsiaCityText1::
 _FuchsiaCityText2::
 	text "Il y a un zoo"
 	line "devant l'entrée"
-	cont "du PARC SAFARI."
+	cont "du Parc Safari."
 
-	para "Le jeu du SAFARI"
+	para "Le jeu du Safari"
 	line "permet d'attraper"
-	cont "des #MON."
+	cont "des #mon."
 	done
 
 _FuchsiaCityText3::
@@ -26,7 +26,7 @@ _FuchsiaCityText3::
 _FuchsiaCityText4::
 	text "Cette BALL est"
 	line "vraiment un"
-	cont "#MON."
+	cont "#mon."
 	done
 
 _FuchsiaCityText5::
@@ -34,38 +34,38 @@ _FuchsiaCityText5::
 	done
 
 _FuchsiaCityText11::
-	text "PARMANIE"
+	text "Parmanie"
 	line "Rose comme la"
 	cont "passion"
 	done
 
 _FuchsiaCityText13::
-	text "JEU DU SAFARI"
+	text "Jeu du Safari"
 	line "Chope-les tous!"
 	done
 
 _FuchsiaCityText16::
-	text "PARC SAFARI"
-	line "MAISON DU GARDIEN"
+	text "Parc Safari"
+	line "Maison du Gardien"
 	done
 
 _FuchsiaCityText17::
 	text "LE PARADIS DES"
-	line "#MON"
-	cont "PARC SAFARI"
+	line "#mon"
+	cont "Parc Safari"
 	done
 
 _FuchsiaCityText18::
-	text "PARMANIE"
-	line "ARENE #MON"
-	cont "CHAMPION: KOGA"
+	text "Parmanie"
+	line "Arène #mon"
+	cont "Champion: Koga"
 
 	para "Le Ninja aux"
 	line "poisons infinis"
 	done
 
 _FuchsiaCityChanseyText::
-	text "Nom: LEVEINARD"
+	text "Nom: Leveinard"
 
 	para "Il faut un bol"
 	line "d'enfer pour en"
@@ -73,45 +73,45 @@ _FuchsiaCityChanseyText::
 	prompt
 
 _FuchsiaCityVoltorbText::
-	text "Nom: VOLTORBE"
+	text "Nom: Voltorbe"
 
 	para "Portrait craché"
 	line "d'une # BALL."
 	prompt
 
 _FuchsiaCityKangaskhanText::
-	text "Nom: KANGOUREX"
+	text "Nom: Kangourex"
 
-	para "Ce #MON élève"
+	para "Ce #mon élève"
 	line "son petit dans sa"
 	cont "poche ventrale."
 	prompt
 
 _FuchsiaCitySlowpokeText::
-	text "Nom: RAMOLOSS"
+	text "Nom: Ramoloss"
 
 	para "Sympa mais..."
 	line "Méga-lent!"
 	prompt
 
 _FuchsiaCityLaprasText::
-	text "Nom: LOKHLASS"
+	text "Nom: Lokhlass"
 
 	para "Le roi des mers."
 	prompt
 
 _FuchsiaCityOmanyteText::
-	text "Nom: AMONITA"
+	text "Nom: Amonita"
 
-	para "Un #MON créé"
+	para "Un #mon créé"
 	line "à partir d'un"
 	cont "fossile."
 	prompt
 
 _FuchsiaCityKabutoText::
-	text "Nom: KABUTO"
+	text "Nom: Kabuto"
 
-	para "Un #MON créé"
+	para "Un #mon créé"
 	line "à partir d'un"
 	cont "fossile."
 	prompt

@@ -1,18 +1,18 @@
 _VermilionPokecenterText2::
-	text "Deux #MON d'un"
+	text "Deux #mon d'un"
 	line "même niveau sont"
 	cont "différents."
 
-	para "Un #MON élevé"
+	para "Un #mon élevé"
 	line "par un dresseur"
 	cont "est toujours plus"
 	cont "fort qu'un"
-	cont "#MON sauvage."
+	cont "#mon sauvage."
 	cont "Ouais mon gars!"
 	done
 
 _VermilionPokecenterText3::
-	text "Mon #MON est"
+	text "Mon #mon est"
 	line "empoisonné! Il"
 	cont "est tombé dans"
 	cont "les pommes"

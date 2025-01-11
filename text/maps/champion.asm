@@ -9,24 +9,24 @@ _GaryChampionIntroText::
 	para "Ton devoir en"
 	line "tant que rival"
 	cont "est d'entraîner"
-	cont "mes #MON."
+	cont "mes #mon."
 
 	para "En améliorant mon"
 	line "#DEX, j'ai"
 	cont "recherché les"
-	cont "#MON sur-"
+	cont "#mon sur-"
 	cont "puissants!"
 
 	para "J'ai ainsi créé"
 	line "l'équipe ultime,"
 	cont "efficace contre"
 	cont "tous les types de"
-	cont "#MON!"
+	cont "#mon!"
 
 	para "Ca t'épate, hein?"
 
 	para "Je suis le"
-	line "champion #MON!"
+	line "champion #mon!"
 
 	para "Tu sais c'que ça"
 	line "veut dire?"
@@ -79,27 +79,27 @@ _GaryText_76103::
 	cont "WHAAAAAAAAAAA!"
 
 	para "J'ai entraîné mes"
-	line "#MON à la"
+	line "#mon à la"
 	cont "perfection..."
 
 	para "Et zut alors!"
 	line "Tu es le nouveau"
-	cont "champion #MON!"
+	cont "champion #mon!"
 
 	para "Alors ça..."
 	line "Ca me la coupe."
 	done
 
 _GaryText2::
-	text "CHEN: <PLAYER>!"
+	text "Chen: <PLAYER>!"
 	done
 
 _GaryText_76120::
-	text "CHEN: Tu as gagné!"
+	text "Chen: Tu as gagné!"
 	line "Félicitations!"
 	cont "Tu es le nouveau"
 	cont "champion de la"
-	cont "LIGUE #MON!"
+	cont "Ligue #mon!"
 
 	para "Tu as tant changé"
 	line "depuis ton départ"
@@ -112,12 +112,12 @@ _GaryText_76120::
 	done
 
 _GaryText_76125::
-	text "CHEN: <RIVAL>!"
+	text "Chen: <RIVAL>!"
 	line "Je suis... déçu!"
 
 	para "Apprenant que tu"
 	line "avais vaincu le"
-	cont "CONSEIL des 4, je"
+	cont "Conseil des 4, je"
 	cont "suis venu en"
 	cont "vitesse!"
 
@@ -134,7 +134,7 @@ _GaryText_76125::
 
 	para "Tu as oublié de"
 	line "traiter tes"
-	cont "#MON avec"
+	cont "#mon avec"
 	cont "amour!"
 
 	para "Et oui mon p'tit"
@@ -144,7 +144,7 @@ _GaryText_76125::
 	done
 
 _GaryText_7612a::
-	text "CHEN: <PLAYER>!"
+	text "Chen: <PLAYER>!"
 
 	para "Cette victoire..."
 	line "Tu ne la dois pas"
@@ -153,7 +153,7 @@ _GaryText_7612a::
 
 	para "Tu as tant baigné"
 	line "d'amour tes chers"
-	cont "petits #MON!"
+	cont "petits #mon!"
 
 	para "Et ça... "
 	line "C'est bien. "

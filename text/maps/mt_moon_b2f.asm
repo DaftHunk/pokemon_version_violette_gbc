@@ -42,14 +42,14 @@ _MtMoon3Text_49f8f::
 
 _MtMoon3Text_49f94::
 	text "Loin d'ici, sur"
-	line "la CRAMOIS'ILE,"
+	line "la Cramois'Ile,"
 	cont "se trouve un"
-	cont "LABO #MON."
+	cont "Labo #mon."
 
 	para "On essaye d'y"
 	line "régénérer des"
 	cont "fossiles de"
-	cont "#MON."
+	cont "#mon."
 	done
 
 _MtMoon3Text_49f99::
@@ -58,7 +58,7 @@ _MtMoon3Text_49f99::
 	text_end
 
 _MtMoon3BattleText2::
-	text "La TEAM ROCKET"
+	text "La Team Rocket"
 	line "trouvera les "
 	cont "fossiles et fera"
 	cont "fortune en les "
@@ -73,15 +73,15 @@ _MtMoon3EndBattleText2::
 _MtMoon3AfterBattleText2::
 	text "A cause de toi"
 	line "j'suis vert!"
-	cont "La TEAM ROCKET me"
+	cont "La Team Rocket me"
 	cont "vengera!"
 	done
 
 _MtMoon3BattleText3::
-	text "La TEAM ROCKET?"
+	text "La Team Rocket?"
 	line "C'est nous!"
 	cont "Les voleurs de"
-	cont "#MON!"
+	cont "#mon!"
 	done
 
 _MtMoon3EndBattleText3::
@@ -127,7 +127,7 @@ _MtMoon3EndBattleText5::
 	prompt
 
 _MtMoon3AfterBattleText5::
-	text "Les #MON"
+	text "Les #mon"
 	line "existaient bien"
 	cont "avant l'homme..."
 	done

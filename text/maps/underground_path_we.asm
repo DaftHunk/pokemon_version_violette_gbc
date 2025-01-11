@@ -5,7 +5,7 @@ _RandTrainerNotReady::
 	line "into the CERULEAN"
 	cont "CAVE while every-"
 	cont "one is occupied"
-	cont "with the #MON"
+	cont "with the #mon"
 	cont "League finals."
 	
 	para "There has to be"

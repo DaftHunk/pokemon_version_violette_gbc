@@ -1,32 +1,32 @@
 _SafariZoneWestText5::
-	text "ABRI"
+	text "Abris"
 	done
 
 _SafariZoneWestText6::
-	text "AVIS"
+	text "Avis"
 
 	para "Veuillez trouver"
-	line "la DENT D'OR du"
-	cont "GARDIEN. Explorez"
+	line "la Dent d'or du"
+	cont "Gardien. Explorez"
 	cont "les environs."
 
 	para "Récompense"
 	line "assurée! "
 	cont "Contactez le"
-	cont "GARDIEN."
+	cont "Gardien."
 	done
 
 _SafariZoneWestText7::
-	text "ASTUCE"
+	text "Astuce"
 
 	para "Grand concours"
 	line "organisé:"
 
 	para "Cherchez la"
-	line "CABANE SECRETE!"
+	line "Cabane Secrète!"
 	done
 
 _SafariZoneWestText8::
-	text "PARC 3"
-	line "EST: PARC CENTRAL"
+	text "Parc 3"
+	line "Est: Parc central"
 	done

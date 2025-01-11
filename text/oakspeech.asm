@@ -2,23 +2,23 @@ _OakSpeechText1::
 	text "Bien le bonjour!"
 	line "Bienvenue dans le"
 	cont "monde magique des"
-	cont "#MON!"
+	cont "#mon!"
 
-	para "Mon nom est CHEN!"
+	para "Mon nom est Chen!"
 	line "Les gens souvent"
 	cont "m'appellent le"
-	cont "PROF #MON!"
+	cont "Prof #mon!"
 	prompt
 
 _OakSpeechText2A::
 	text "Ce monde est"
 	line "peuplé de"
 	cont "créatures du nom"
-	cont "de #MON!@@"
+	cont "de #mon!@@"
 
 _OakSpeechText2B::
 	text $51,"Pour certains,"
-	line "les #MON sont"
+	line "les #mon sont"
 	cont "des animaux"
 	cont "domestiques, pour"
 	cont "d'autres, ils"
@@ -28,7 +28,7 @@ _OakSpeechText2B::
 	para "Pour ma part..."
 
 	para "L'étude des"
-	line "#MON est"
+	line "#mon est"
 	cont "ma profession."
 	prompt
 
@@ -52,14 +52,14 @@ _OakSpeechText3::
 	text "<PLAYER>!"
 
 	para "Ta quête des"
-	line "#MON est sur"
+	line "#mon est sur"
 	cont "le point de"
 	cont "commencer!"
 
 	para "Un tout nouveau"
 	line "monde de rêves,"
 	cont "d'aventures et"
-	cont "de #MON"
+	cont "de #mon"
 	cont "t'attend! Dingue!"
 	done
 

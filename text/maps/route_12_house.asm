@@ -53,7 +53,7 @@ _Route12HouseText_564d4::
 	line "CANNE, tu vas"
 	cont "vider les océans"
 	cont "de tous les"
-	cont "#MON."
+	cont "#mon."
 
 	para "Pêche, pêche,"
 	line "et pêche encore! "

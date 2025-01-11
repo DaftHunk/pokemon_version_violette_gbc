@@ -9,7 +9,7 @@ _RockTunnel1EndBattleText1::
 	prompt
 
 _RockTunnel1AfterBattleText1::
-	text "Attention à ONIX!"
+	text "Attention à Onix!"
 	line "Il pourrait"
 	cont "t'écrabouiller!"
 	done
@@ -26,7 +26,7 @@ _RockTunnel1EndBattleText2::
 	prompt
 
 _RockTunnel1AfterBattleText2::
-	text "Ce #MON"
+	text "Ce #mon"
 	line "endormi sur la"
 	cont "route 12 m'a"
 	cont "obligé à faire"
@@ -50,7 +50,7 @@ _RockTunnel1AfterBattleText3::
 	done
 
 _RockTunnel1BattleText4::
-	text "Baston #MON!"
+	text "Baston #mon!"
 	line "Prêt, GO!"
 	done
 
@@ -61,7 +61,7 @@ _RockTunnel1EndBattleText4::
 
 _RockTunnel1AfterBattleText4::
 	text "Bon, il me faut"
-	line "un NOSFERAPTI!"
+	line "un Nosferapti!"
 	done
 
 _RockTunnel1BattleText5::
@@ -77,18 +77,18 @@ _RockTunnel1EndBattleText5::
 
 _RockTunnel1AfterBattleText5::
 	text "J'ai vu un"
-	line "MACHOC dans"
+	line "Machoc dans"
 	cont "ce tunnel!"
 	done
 
 _RockTunnel1BattleText6::
 	text "Je viens de loin"
-	line "pour ces #MON!"
+	line "pour ces #mon!"
 	done
 
 _RockTunnel1EndBattleText6::
 	text "Ho!"
-	line "Plus de #MON!"
+	line "Plus de #mon!"
 	prompt
 
 _RockTunnel1AfterBattleText6::
@@ -97,7 +97,7 @@ _RockTunnel1AfterBattleText6::
 	done
 
 _RockTunnel1BattleText7::
-	text "T'as des #MON!"
+	text "T'as des #mon!"
 	line "OK, bastooonn!"
 	done
 
@@ -113,6 +113,6 @@ _RockTunnel1AfterBattleText7::
 
 _RockTunnel1Text8::
 	text "GROTTE"
-	line "AZURIA -"
-	cont "LAVANVILLE"
+	line "Azuria -"
+	cont "Lavanville"
 	done

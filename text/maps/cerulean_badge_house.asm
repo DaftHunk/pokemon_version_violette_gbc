@@ -27,7 +27,7 @@ _CeruleanHouse2Text_74e81::
 
 _CeruleanHouse2Text_74e96::
 	text "L'ATTAQUE de tous"
-	line "tes #MON est"
+	line "tes #mon est"
 	cont "augmentée."
 
 	para "Il permet aussi"
@@ -36,7 +36,7 @@ _CeruleanHouse2Text_74e96::
 	prompt
 
 _CeruleanHouse2Text_74e9b::
-	text "Les #MON d'un"
+	text "Les #mon d'un"
 	line "niveau inférieur"
 	cont "à 30 t'obéiront."
 
@@ -53,7 +53,7 @@ _CeruleanHouse2Text_74e9b::
 
 _CeruleanHouse2Text_74ea0:: ;joenote - updated with correct information
 	text "La DEFENSE de"
-	line "tous tes #MON"
+	line "tous tes #mon"
 	cont "sera un peu"
 	cont "augmentée."
 
@@ -64,7 +64,7 @@ _CeruleanHouse2Text_74ea0:: ;joenote - updated with correct information
 	prompt
 
 _CeruleanHouse2Text_74ea5::
-	text "Les #MON"
+	text "Les #mon"
 	line "jusqu'au niveau"
 	cont "50 t'obéiront."
 
@@ -79,7 +79,7 @@ _CeruleanHouse2Text_74ea5::
 
 _CeruleanHouse2Text_74eaa:: ;joenote - updated with correct information
 	text "La VITESSE de"
-	line "tous tes #MON"
+	line "tous tes #mon"
 	cont "sera augmentée."
 
 	para "Tu pourras aussi"
@@ -89,7 +89,7 @@ _CeruleanHouse2Text_74eaa:: ;joenote - updated with correct information
 	prompt
 
 _CeruleanHouse2Text_74eaf::
-	text "Les #MON de"
+	text "Les #mon de"
 	line "niveau 70 ou"
 	cont "moins t'obéiront."
 
@@ -101,12 +101,12 @@ _CeruleanHouse2Text_74eaf::
 
 _CeruleanHouse2Text_74eb4::
 	text "Le SPECIAL de tes"
-	line "#MON sera un"
+	line "#mon sera un"
 	cont "peu augmenté."
 	prompt
 
 _CeruleanHouse2Text_74eb9::
-	text "Tous les #MON"
+	text "Tous les #mon"
 	line "obéiront à tes"
 	cont "ordres!"
 	prompt

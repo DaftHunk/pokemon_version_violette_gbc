@@ -10,5 +10,5 @@ _SaffronMartText3::
 	line "coûteux mais il"
 	cont "permet de"
 	cont "réanimer un"
-	cont "#MON K.O.!"
+	cont "#mon K.O.!"
 	done

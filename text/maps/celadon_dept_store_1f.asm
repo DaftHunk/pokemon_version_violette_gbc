@@ -1,8 +1,8 @@
 _CeladonMart1Text1::
 	text "Bonjour et bien-"
-	line "venue au CENTRE"
-	cont "COMMERCIAL de"
-	cont "CELADOPOLE."
+	line "venue au Centre"
+	cont "commercial de"
+	cont "Céladopole."
 
 	para "Le tableau sur la"
 	line "droite décrit les"
@@ -11,23 +11,23 @@ _CeladonMart1Text1::
 	done
 
 _CeladonMart1Text2::
-	text "RDC:"
-	line "RENSEIGNEMENTS"
+	text "Rdc:"
+	line "Renseignements"
 
-	para "1er: MARCHE DES"
-	line "DRESSEURS"
+	para "1er: Marche des"
+	line "dresseurs"
 
-	para "2ème: JEUX VIDEO"
+	para "2ème: Jeux-vidéo"
 
-	para "3ème: CADEAUX"
+	para "3ème: Cadeaux"
 
-	para "4ème: MEDICAMENTS"
+	para "4ème: Médicaments"
 
-	para "DERNIER ETAGE:"
-	line "DISTRIBUTEURS"
+	para "Dernier étage:"
+	line "Distributeurs"
 	done
 
 _CeladonMart1Text3::
-	text "RDC: "
-	line "RENSEIGNEMENTS"
+	text "Rdc: "
+	line "Renseignements"
 	done

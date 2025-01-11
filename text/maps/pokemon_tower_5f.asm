@@ -75,7 +75,7 @@ _PokemonTower5Text7::
 	line "dans une zone"
 	cont "sanctuaire!"
 
-	para "Les #MON de"
+	para "Les #mon de"
 	line "<PLAYER> sont"
 	cont "soignés!"
 	done

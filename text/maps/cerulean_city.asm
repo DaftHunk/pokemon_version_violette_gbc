@@ -7,7 +7,7 @@ _CeruleanCityText_19668::
 
 	para "Moi c'est l'pied!"
 	line "J'ai chopé un tas"
-	cont "de #MON méga"
+	cont "de #mon méga"
 	cont "puissants et"
 	cont "tétra balèzes!"
 
@@ -33,21 +33,21 @@ _CeruleanCityText_19677::
 	line "Tu sais quoi?"
 
 	para "Chuis allé chez"
-	line "LEO et y m'a tout"
+	line "Léo et y m'a tout"
 	cont "montré ses"
-	cont "#MON rares!"
+	cont "#mon rares!"
 
 	para "Ca m'a rajouté"
 	line "plein d'pages sur"
 	cont "mon bô #DEX!"
 
 	para "Tout l'monde sait"
-	line "que LEO est un"
-	cont "#MANIAC!"
+	line "que Léo est un"
+	cont "#Maniac!"
 
 	para "Il a même inventé"
 	line "le stockage des"
-	cont "#MON par PC!"
+	cont "#mon par PC!"
 
 	para "T'as qu'à aller"
 	line "l'voir!"
@@ -122,7 +122,7 @@ _CeruleanCityText4::
 _CeruleanCityText5::
 	text "Tu fais une"
 	line "encyclopédie sur"
-	cont "les #MON?"
+	cont "les #mon?"
 	cont "Pas mal..."
 	done
 
@@ -130,8 +130,8 @@ _CeruleanCityText6::
 	text "Ces pauvres gens"
 	line "ont été volés."
 
-	para "L'odieuse TEAM"
-	line "ROCKET est"
+	para "L'odieuse Team"
+	line "Rocket est"
 	cont "derrière tout ça."
 	cont "C'est sûr!"
 
@@ -141,81 +141,81 @@ _CeruleanCityText6::
 	done
 
 _CeruleanCityText_19730::
-	text "Allez! FLAGADOSS!"
+	text "Allez! Flagadoss!"
 	line "Attaque! Attaque!"
 	cont "Mais non!!! Tu"
 	cont "m'écoutes, oui?"
 	done
 
 _CeruleanCityText_19735::
-	text "FLAGADOSS, cogne!"
+	text "Flagadoss, cogne!"
 	line "Mais non! Tu fais"
 	cont "n'importe quoi!"
 	done
 
 _CeruleanCityText_1973a::
-	text "FLAGADOSS, REPLI!"
+	text "Flagadoss, REPLI!"
 	line "Non! Pas ça!"
 
 	para "Pfff... C'est dur"
 	line "de contrôler un"
-	cont "#MON!"
+	cont "#mon!"
 
 	para "Seuls les bons"
 	line "dresseurs se font"
 	cont "obéir par leurs"
-	cont "#MON!"
+	cont "#mon!"
 	done
 
 _CeruleanCityText_1976f::
-	text "FLAGADOSS pionce"
+	text "Flagadoss pionce"
 	line "comme une masse."
 	done
 
 _CeruleanCityText_19774::
-	text "FLAGADOSS"
+	text "Flagadoss"
 	line "flâne..."
 	done
 
 _CeruleanCityText_19779::
-	text "FLAGADOSS se"
+	text "Flagadoss se"
 	line "balade..."
 	done
 
 _CeruleanCityText_1977e::
-	text "FLAGADOSS ignore"
+	text "Flagadoss ignore"
 	line "les ordres..."
 	done
 
 _CeruleanCityText9::
 	text "Ze veux une zolie"
-	line "BICYCLETTE!"
+	line "Bicyckette!"
 
 	para "Ze la veux toute"
 	line "rouze!"
 	done
 
 _CeruleanCityText10::
-	text "Des #MON trop"
+	text "Des #mon trop"
 	line "puissants vivent"
 	cont "dans la CAVE"
 	cont "AZUREE!"
 
 	para "Seul le CHAMPION"
-	line "de la LIGUE"
-	cont "#MON a le"
+	line "de la Ligue"
+	cont "#mon a le"
 	cont "droit d'y entrer!"
 	done
 
 _CeruleanCityText12::
-	text "AZURIA"
+	text "Azuria"
 	line "Baignée par une"
 	cont "aura d'un bleu"
 	cont "mystérieux"
 	done
 
 _CeruleanCityText13::
-	text "ASTUCE"
+	text "Astuce"
 
 	para "Appuyer sur B"
 	line "pendant une évo-"
@@ -239,9 +239,9 @@ _CeruleanCityText16::
 ENDC
 
 _CeruleanCityText17::
-	text "AZURIA"
-	line "ARENE #MON"
-	cont "CHAMPION: ONDINE"
+	text "Azuria"
+	line "Arène #mon"
+	cont "Champion: Ondine"
 
 	para "La petite pest..."
 	line "Heu...sirène!"

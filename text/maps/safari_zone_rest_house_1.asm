@@ -6,6 +6,6 @@ _SafariZoneRestHouse1Text1::
 
 _SafariZoneRestHouse1Text2::
 	text "Je capture des"
-	line "#MON pour"
+	line "#mon pour"
 	cont "les offrir!"
 	done

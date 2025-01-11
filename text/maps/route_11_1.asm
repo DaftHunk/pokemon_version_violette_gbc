@@ -9,7 +9,7 @@ _Route11EndBattleText1::
 	prompt
 
 _Route11AfterBattleText1::
-	text "Les #MON c'est"
+	text "Les #mon c'est"
 	line "la vie! Et la vie"
 	cont "c'est le jeu!"
 	done
@@ -27,7 +27,7 @@ _Route11EndBattleText2::
 _Route11AfterBattleText2::
 	text "Dans le monde"
 	line "merveilleux des"
-	cont "#MON, y'a"
+	cont "#mon, y'a"
 	cont "pas de lâches!"
 	done
 
@@ -73,7 +73,7 @@ _Route11BattleText5::
 
 _Route11EndBattleText5::
 	text "Mes"
-	line "#MON sont"
+	line "#mon sont"
 	cont "nuls! Beuh..."
 	prompt
 
@@ -125,7 +125,7 @@ _Route11EndBattleText8::
 
 _Route11AfterBattleText8::
 	text "Il y a un gros"
-	line "#MON qui"
+	line "#mon qui"
 	cont "vient de la"
 	cont "montagne."
 

@@ -40,6 +40,6 @@ _PokemonTower4EndBattleText3::
 
 _PokemonTower4AfterBattleText3::
 	text "Que les âmes des"
-	line "défunts #MON"
+	line "défunts #mon"
 	cont "reposent en paix!"
 	done

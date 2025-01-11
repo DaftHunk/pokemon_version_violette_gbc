@@ -23,15 +23,15 @@ _Mansion2Text3::
 	cont "Jungle X."
 
 	para "Un nouveau type "
-	line "de #MON fut"
+	line "de #mon fut"
 	cont "découvert."
 	done
 
 _Mansion2Text4::
 	text "Rapport:"
 	line "10 Juillet."
-	cont "Le #MON fut"
-	cont "baptisé MEW."
+	cont "Le #mon fut"
+	cont "baptisé Mew."
 	done
 
 _Mansion2Text_520c2::

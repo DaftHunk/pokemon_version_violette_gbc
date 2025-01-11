@@ -33,7 +33,7 @@ _Route17AfterBattleText2::
 
 _Route17BattleText3::
 	text "Tu vas à"
-	line "PARMANIE?"
+	line "Parmanie?"
 	done
 
 _Route17EndBattleText3::
@@ -48,7 +48,7 @@ _Route17AfterBattleText3::
 	done
 
 _Route17BattleText4::
-	text "On est MOTARDS!"
+	text "On est Motards!"
 	line "Des vrais,"
 	cont "des purs,"
 	cont "des durs, "
@@ -68,7 +68,7 @@ _Route17AfterBattleText4::
 	done
 
 _Route17BattleText5::
-	text "Mes VOLTORBE vont"
+	text "Mes Voltorbe vont"
 	line "t'électrocuter!"
 	done
 
@@ -80,14 +80,14 @@ _Route17EndBattleText5::
 
 _Route17AfterBattleText5::
 	text "J'ai attrapé"
-	line "un VOLTORBE dans"
+	line "un Voltorbe dans"
 	cont "la CENTRALE."
 	done
 
 _Route17BattleText6::
 	text "Hein? Faire"
 	line "évoluer mes"
-	cont "#MON?"
+	cont "#mon?"
 	cont "Ben pourquoi?"
 	done
 
@@ -97,9 +97,9 @@ _Route17EndBattleText6::
 	prompt
 
 _Route17AfterBattleText6::
-	text "Certains #MON"
+	text "Certains #mon"
 	line "ont besoin d'une"
-	cont "PIERRE pour"
+	cont "Pierre pour"
 	cont "évoluer."
 	done
 
@@ -172,12 +172,12 @@ _Route17Text11::
 	done
 
 _Route17Text12::
-	text "ASTUCE"
+	text "Astuce"
 
-	para "Chaque #MON"
+	para "Chaque #mon"
 	line "est unique."
 
-	para "Des #MON de"
+	para "Des #mon de"
 	line "même type et de"
 	cont "même niveau sont"
 	cont "plus ou moins"
@@ -185,7 +185,7 @@ _Route17Text12::
 	done
 
 _Route17Text13::
-	text "ASTUCE"
+	text "Astuce"
 
 	para "Appuyez sur A ou"
 	line "B pour vous"
@@ -194,9 +194,9 @@ _Route17Text13::
 	done
 
 _Route17Text14::
-	text "ROUTE 17"
-	line "CELADOPOLE -"
-	cont "PARMANIE"
+	text "Route 17"
+	line "Céladopole -"
+	cont "Parmanie"
 	done
 
 _Route17Text15::
@@ -207,7 +207,7 @@ _Route17Text15::
 	cont "avec violence et"
 	cont "dégoût! Continuez"
 	cont "à attraper des"
-	cont "p'tits #MON"
+	cont "p'tits #mon"
 	cont "tout mimi!"
 	done
 

@@ -27,7 +27,7 @@ _Route19EndBattleText2::
 
 _Route19AfterBattleText2::
 	text "Fais gaffe aux"
-	line "TENTACOOL!"
+	line "Tentacool!"
 	done
 
 _Route19BattleText3::
@@ -43,7 +43,7 @@ _Route19EndBattleText3::
 
 _Route19AfterBattleText3::
 	text "Je nage plus vite"
-	line "que les #MON!"
+	line "que les #mon!"
 	done
 
 _Route19BattleText4::
@@ -65,7 +65,7 @@ _Route19AfterBattleText4::
 
 _Route19BattleText5::
 	text "Je cherche des"
-	line "#MON dans les"
+	line "#mon dans les"
 	cont "grands fonds!"
 	done
 
@@ -77,7 +77,7 @@ _Route19EndBattleText5::
 _Route19AfterBattleText5::
 	text "C'est en pêchant"
 	line "que tu attraperas"
-	cont "des #MON"
+	cont "des #mon"
 	cont "aquatiques!"
 	done
 
@@ -155,7 +155,7 @@ _Route19EndBattleText10::
 	prompt
 
 _Route19AfterBattleText10::
-	text "Un LOKHLASS, c'est"
+	text "Un Lokhlass, c'est"
 	line "grand et gros! Si"
 	cont "tu montes sur son"
 	cont "dos, tu ne seras"
@@ -163,7 +163,7 @@ _Route19AfterBattleText10::
 	done
 
 _Route19Text11::
-	text "ROUTE 19"
-	line "PARMANIE -"
+	text "Route 19"
+	line "Parmanie -"
 	cont "ILES ECUME"
 	done

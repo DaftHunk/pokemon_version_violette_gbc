@@ -31,7 +31,7 @@ _FightingDojoText_5ce98::
 
 	para "Tiens, prends"
 	line "ça! Tu as gagné"
-	cont "un #MON!"
+	cont "un #mon!"
 
 	para "Choisis celui que"
 	line "tu veux!"
@@ -128,13 +128,13 @@ _FightingDojoAfterBattleText4::
 
 _WantHitmonleeText::
 	text "Tu veux"
-	line "KICKLEE, le"
+	line "Kicklee, le"
 	cont "coud'latteur?"
 	done
 
 _WantHitmonchanText::
 	text "Tu veux"
-	line "TYGNON, le"
+	line "Tygnon, le"
 	cont "castagneur?"
 	done
 

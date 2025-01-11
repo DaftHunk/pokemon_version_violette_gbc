@@ -1,5 +1,5 @@
 _PewterHouse2Text1::
-	text "Un #MON"
+	text "Un #mon"
 	line "apprend des"
 	cont "attaques en"
 	cont "gagnant des"
@@ -13,14 +13,14 @@ _PewterHouse2Text1::
 	done
 
 _PewterHouse2Text2::
-	text "Les #MON sont"
+	text "Les #mon sont"
 	line "plus faciles à"
 	cont "capturer une fois"
 	cont "endormis ou"
 	cont "blessés!"
 
 	para "Mais attraper un"
-	line "#MON, c'est"
+	line "#mon, c'est"
 	cont "jamais du tout"
 	cont "cuit!"
 	done

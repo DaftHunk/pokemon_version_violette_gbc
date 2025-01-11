@@ -1,9 +1,9 @@
 _SafariZoneEastText5::
-	text "ABRI"
+	text "Abri"
 	done
 
 _SafariZoneEastText6::
-	text "ASTUCE"
+	text "Astuce"
 
 	para "Le temps s'écoule"
 	line "en fonction des"
@@ -11,6 +11,6 @@ _SafariZoneEastText6::
 	done
 
 _SafariZoneEastText7::
-	text "PARC 1"
-	line "OUEST: PARC CENTRAL"
+	text "Parc 1"
+	line "Ouest: Parc central"
 	done

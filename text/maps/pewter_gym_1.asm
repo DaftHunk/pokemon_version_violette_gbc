@@ -1,15 +1,15 @@
 _PewterGymText_5c49e::
-	text "Je suis PIERRE!"
+	text "Je suis Pierre!"
 	line "Je suis le"
 	cont "CHAMPION"
-	cont "d'ARGENTA!"
+	cont "d'Argenta!"
 
 	para "Je crois en la"
 	line "grande résistance"
 	cont "de la pierre!"
 
 	para "C'est pourquoi"
-	line "mes #MON sont"
+	line "mes #mon sont"
 	cont "des élémentaires"
 	cont "de pierre!"
 

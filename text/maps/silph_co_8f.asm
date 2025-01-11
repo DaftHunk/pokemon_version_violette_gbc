@@ -1,5 +1,5 @@
 _SilphCo8Text_565be::
-	text "Mmm... La SYLPHE"
+	text "Mmm... La Sylphe"
 	line "va-t-elle faire"
 	cont "faillite?"
 	done
@@ -36,14 +36,14 @@ _SilphCo8EndBattleText2::
 	prompt
 
 _SilphCo8AfterBattleText2::
-	text "La SYLPHE est un"
+	text "La Sylphe est un"
 	line "vrai labyrinthe,"
 	cont "hein?"
 	done
 
 _SilphCo8BattleText3::
 	text "Je suis l'un des"
-	line "4 frères ROCKET!"
+	line "4 frères Rocket!"
 	done
 
 _SilphCo8EndBattleText3::

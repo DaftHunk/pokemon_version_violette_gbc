@@ -1,19 +1,19 @@
 _PewterHouse1Text1::
-	text "NIDORAN: Nidoni!@"
+	text "Nidoran: Nidoni!@"
 	text_end
 
 _PewterHouse1Text2::
-	text "NIDORAN, assis!"
+	text "Nidoran, assis!"
 	done
 
 _PewterHouse1Text3::
-	text "Notre #MON est"
+	text "Notre #mon est"
 	line "un échangé, il"
 	cont "est difficile à"
 	cont "maîtriser."
 
 	para "Un échangé est"
-	line "un #MON"
+	line "un #mon"
 	cont "échangé avec un"
 	cont "autre joueur."
 

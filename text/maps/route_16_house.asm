@@ -28,6 +28,6 @@ _HM02NoRoomText::
 	done
 
 _Route16HouseText_1e652::
-	text "RAPASDEPIC:"
+	text "Rapasdepic:"
 	line "Piiiiiik!"
 	done

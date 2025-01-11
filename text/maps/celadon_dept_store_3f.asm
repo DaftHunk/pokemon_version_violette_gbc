@@ -1,7 +1,7 @@
 _TM18PreReceiveText::
 	text "J'ai fini!!!!"
 	line "J'ai fini"
-	cont "#MON!!!!"
+	cont "#mon!!!!"
 
 	para "Pas toi? Yahaha!"
 	line "Prends donc ceci,"
@@ -30,7 +30,7 @@ _TM18NoRoomText::
 	done
 
 _CeladonMart3Text2::
-	text "Tous les #MON"
+	text "Tous les #mon"
 	line "capturés ont un"
 	cont "numéro d'immatri-"
 	cont "culation et un"
@@ -45,22 +45,22 @@ _CeladonMart3Text3::
 
 	para "Mon pote va"
 	line "m'échanger son"
-	cont "KANGOUREX contre"
-	cont "mon SPECTRUM!"
+	cont "Kangourex contre"
+	cont "mon Spectrum!"
 	done
 
 _CeladonMart3Text4::
 	text "Viens, mon doux"
-	line "SPECTRUM!"
+	line "Spectrum!"
 
 	para "Je suis fou de"
-	line "SPECTRUM!"
+	line "Spectrum!"
 
 	para "... ...Hein?"
 
-	para "SPECTRUM s'est"
+	para "Spectrum s'est"
 	line "transformé en un"
-	cont "autre #MON!"
+	cont "autre #mon!"
 	done
 ELSE
 _CeladonMart3Text3::
@@ -68,29 +68,29 @@ _CeladonMart3Text3::
 
 	para "Mon pote va"
 	line "m'échanger son"
-	cont "KANGOUREX contre"
-	cont "mon GRAVALANCH!"
+	cont "Kangourex contre"
+	cont "mon Gravalanch!"
 	done
 
 _CeladonMart3Text4::
 	text "Cool! Un"
-	line "GRAVALANCH!"
+	line "Gravalanch!"
 
 	para "J'adore les"
-	line "GRAVALANCH!"
+	line "Gravalanch!"
 
 	para "Qu...Hein??"
 
-	para "GRAVALANCH se"
+	para "Gravalanch se"
 	line "transforme en un"
-	cont "autre #MON!"
+	cont "autre #mon!"
 	done
 ENDC
 
 _CeladonMart3Text5::
 	text "Le numéro d'imma-"
 	line "triculation d'un"
-	cont "#MON sert à"
+	cont "#mon sert à"
 	cont "l'identifier lors"
 	cont "d'un échange!"
 	done
@@ -130,13 +130,13 @@ IF DEF(_JPTXT)
 ELSE
 	text "Rouge et Bleu!"
 ENDC
-	line "Deux #MON!"
+	line "Deux #mon!"
 	done
 
 _CeladonMart3Blocker::
 	text "This vendor will"
 	line "be open after the"
-	cont "#MON League"
+	cont "#mon League"
 	cont "Championship."
 	
 	para "Come back to buy"

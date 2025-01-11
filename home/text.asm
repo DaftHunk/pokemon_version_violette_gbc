@@ -221,13 +221,13 @@ FinishDTE::
 Char5CText::
 	db "CT@"
 Char5DText::
-	db "DRES.@"
+	db "Dres.@"
 Char5BText::
 	db "PC@"
 Char5EText::
-	db "ROCKET@"
+	db "Rocket@"
 Char54Text::
-	db "POKé@"
+	db "Poké@"
 Char56Text::
 	db "……@"
 Char5AText::

@@ -13,7 +13,7 @@ _VictoryRoadGuardText1::
 
 	para "Il te le faut"
 	line "pour accéder à la"
-	cont "LIGUE #MON!@"
+	cont "Ligue #mon!@"
 	text_end
 
 _VictoryRoadGuardText2::
@@ -38,6 +38,6 @@ _VictoryRoadGuardText_513a3::
 	done
 
 _Route23Text8::
-	text "ROUTE VICTOIRE"
-	line "- LIGUE #MON"
+	text "Route Victoire"
+	line "- Ligue #mon"
 	done

@@ -10,7 +10,7 @@ _Route11AfterBattleText9::
 	done
 
 _Route11BattleText10::
-	text "Mes #MON sont"
+	text "Mes #mon sont"
 	line "prêts!"
 	done
 
@@ -25,5 +25,5 @@ _Route11AfterBattleText10::
 	done
 
 _Route11Text11::
-	text "CAVE TAUPIQUEUR"
+	text "Cave Taupiqueur"
 	done

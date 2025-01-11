@@ -3,6 +3,6 @@ _Route15GateText1::
 	line "un #DEX?"
 
 	para "L'assistant du"
-	line "PROF. CHEN est"
+	line "PROF. Chen est"
 	cont "passé par là."
 	done

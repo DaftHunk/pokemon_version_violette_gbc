@@ -445,11 +445,11 @@ BillsHousePokemonListText1:
 	db "@"
 
 BillsMonListText:
-	db   "EVOLI"
-	next "PYROLI"
-	next "VOLTALI"
-	next "AQUALI"
-	next "RETOUR@"
+	db   "Evoli"
+	next "Pyroli"
+	next "Voltali"
+	next "Aquali"
+	next "Retour@"
 
 BillsHousePokemonListText2:
 	TX_FAR _BillsHousePokemonListText2

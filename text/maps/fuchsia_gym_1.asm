@@ -1,10 +1,10 @@
 _KogaBeforeBattleText::
-	text "KOGA: Gwahahaha!"
+	text "Koga: Gwahahaha!"
 
 	para "Un nain ose me"
 	line "défier? Moi, le"
 	cont "grand le beau le"
-	cont "terrible KOGA?"
+	cont "terrible Koga?"
 
 	para "Par l'enfer,"
 	line "par le sang,"
@@ -15,7 +15,7 @@ _KogaBeforeBattleText::
 	line "de mes poisons"
 	cont "pétrifier de peur"
 	cont "la paix et tes"
-	cont "petits #MON!"
+	cont "petits #mon!"
 	done
 
 _KogaAfterBattleText::

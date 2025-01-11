@@ -13,7 +13,7 @@ _SilphCo5AfterBattleText4::
 _SilphCo5BattleText5::
 	text "Cause mieux"
 	line "à la grande"
-	cont "TEAM ROCKET!"
+	cont "Team Rocket!"
 	done
 
 _SilphCo5EndBattleText5::
@@ -25,34 +25,34 @@ _SilphCo5AfterBattleText5::
 	text "Ce qui me"
 	line "rappelle..."
 
-	para "SMOGO évolue en"
-	line "SMOGOGO!"
+	para "Smogo évolue en"
+	line "Smogogo!"
 	done
 
 _SilphCo5Text9::
 	text "C'est un RAPPORT"
-	line "sur les #MON!"
+	line "sur les #mon!"
 
-	para "PORYGON:"
-	line "#MON virtuel,"
+	para "Porygon:"
+	line "#mon virtuel,"
 	cont "créé par le"
-	cont "LABO #MON!"
+	cont "Labo #mon!"
 	done
 
 _SilphCo5Text10::
 	text "C'est un RAPPORT"
-	line "sur les #MON!"
+	line "sur les #mon!"
 
 	para "Il existe 160"
 	line "attaques pour"
-	cont "les #MON!"
+	cont "les #mon!"
 	done
 
 _SilphCo5Text11::
 	text "C'est un RAPPORT"
-	line "sur les #MON!"
+	line "sur les #mon!"
 
-	para "4 #MON"
+	para "4 #mon"
 	line "n'évoluent que"
 	cont "s'ils sont"
 	cont "échangés!"

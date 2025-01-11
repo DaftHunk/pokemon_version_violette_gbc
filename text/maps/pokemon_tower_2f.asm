@@ -2,7 +2,7 @@ _PokemonTower2Text_6062d::
 	text "<RIVAL>: Hé,"
 	line "<PLAYER>!"
 	cont "Kesstu fais là?"
-	cont "Tes #MON sont"
+	cont "Tes #mon sont"
 	cont "pas morts!"
 
 	para "Je peux quand"
@@ -21,7 +21,7 @@ _PokemonTower2Text_60632::
 
 _PokemonTower2Text_60637::
 	text "Haha,"
-	line "Tes #MON sont"
+	line "Tes #mon sont"
 	cont "minables..."
 	cont "Comme toi!"
 
@@ -33,11 +33,11 @@ _PokemonTower2Text_6063c::
 	text "Où en est ton"
 	line "#DEX? Je"
 	cont "viens de capturer"
-	cont "un OSSELAIT!"
+	cont "un Osselait!"
 
 	para "Je n'ai pas"
 	line "encore trouvé de"
-	cont "OSSATUEUR!"
+	cont "Ossatueur!"
 
 	para "Je crois qu'il"
 	line "n'en existe plus!"
@@ -55,7 +55,7 @@ _PokemonTower2Text2::
 	line "identifier les"
 	cont "SPECTRES!"
 
-	para "Un SCOPE SYLPHE"
+	para "Un Scope Sylphe"
 	line "pourrait les"
 	cont "démasquer."
 	done

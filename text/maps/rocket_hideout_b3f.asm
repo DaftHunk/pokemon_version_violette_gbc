@@ -1,7 +1,7 @@
 _RocketHideout3BattleText2::
 	text "Ne te mêle plus"
 	line "des affaires de"
-	cont "la TEAM ROCKET!"
+	cont "la Team Rocket!"
 	done
 
 _RocketHideout3EndBattleText2::
@@ -10,7 +10,7 @@ _RocketHideout3EndBattleText2::
 	prompt
 
 _RocketHideout3AfterBattleTxt2::
-	text "Le SCOPE SYLPHE?"
+	text "Le Scope Sylphe?"
 	line "Le bidule que le"
 	cont "chef a volé?"
 	cont "Il est là,"

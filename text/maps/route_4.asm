@@ -1,18 +1,18 @@
 _Route4Text1::
 	text "Ha! J'ai trébuché"
-	line "sur un #MON de"
-	cont "pierre: RACAILLOU!"
+	line "sur un #mon de"
+	cont "pierre: Racaillou!"
 	done
 
 _Route4BattleText1::
 	text "Je viens chercher"
-	line "mon #MON"
+	line "mon #mon"
 	cont "champignon!"
 	done
 
 _Route4EndBattleText1::
 	text "Oh!"
-	line "Mon #MON!"
+	line "Mon #mon!"
 	prompt
 
 _Route4AfterBattleText1::
@@ -31,7 +31,7 @@ _Route4Text5::
 	done
 
 _Route4Text6::
-	text "ROUTE 4"
+	text "Route 4"
 	line "MONT SELENITE -"
-	cont "AZURIA"
+	cont "Azuria"
 	done

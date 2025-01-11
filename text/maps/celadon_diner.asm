@@ -6,7 +6,7 @@ _CeladonDinerText1::
 	done
 
 _CeladonDinerText2::
-	text "Mes #MON sont"
+	text "Mes #mon sont"
 	line "faibles alors je"
 	cont "vais souvent"
 	cont "acheter des"
@@ -16,7 +16,7 @@ _CeladonDinerText2::
 _CeladonDinerText3::
 	text "Pssst! Il y a un"
 	line "truc sous le"
-	cont "CASINO."
+	cont "Casino."
 	done
 
 _CeladonDinerText4::
@@ -65,7 +65,7 @@ _CeladonDiner_EXPCatchUpON::
 	cont "with my studies."
 	
 	para "It can also make"
-	line "weaker #MON"
+	line "weaker #mon"
 	cont "gain more EXP."
 	cont "Want to try it?"
 	done

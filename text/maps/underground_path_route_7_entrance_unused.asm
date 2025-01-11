@@ -1,7 +1,7 @@
 _UGPathRoute7EntranceUnusedText_5d773::
 	text "Je veux aller au"
 	line "centre commercial"
-	cont "de CELADOPOLE..."
+	cont "de Céladopole..."
 
 	para "Mais, c'est plein"
 	line "de vilains voyous"
@@ -9,10 +9,10 @@ _UGPathRoute7EntranceUnusedText_5d773::
 	done
 
 _UGPathRoute7EntranceUnusedText_5d778::
-	text "La TEAM ROCKET"
+	text "La Team Rocket"
 	line "possède un abri"
 	cont "secret dans"
-	cont "CELADOPOLE!"
+	cont "Céladopole!"
 	done
 
 _UGPathRoute7EntranceUnusedText_5d77d::
@@ -28,10 +28,10 @@ _UGPathRoute7EntranceUnusedText_5d782::
 	line "passe sous"
 	cont "SAFRANIA et"
 	cont "débouche sur"
-	cont "LAVANVILLE."
+	cont "Lavanville."
 
 	para "Pour aller à"
-	line "AZURIA, va dans"
+	line "Azuria, va dans"
 	cont "la maison de"
 	cont "l'autre côté"
 	cont "de la rue."

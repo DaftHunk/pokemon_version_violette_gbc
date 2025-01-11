@@ -1,9 +1,9 @@
 _BrunoBeforeBattleText::
-	text "Mon nom est ALDO"
-	line "du CONSEIL des 4!"
+	text "Mon nom est Aldo"
+	line "du Conseil des 4!"
 
 	para "Ma passion à moi"
-	line "et à mes #MON,"
+	line "et à mes #mon,"
 	cont "c'est la muscu!"
 
 	para "Pour frimer sur"

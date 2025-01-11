@@ -56,13 +56,13 @@ _MtMoon1BattleText5::
 
 _MtMoon1EndBattleText5::
 	text "Mes"
-	line "#MON"
+	line "#mon"
 	cont "sont nuls!"
 	prompt
 
 _MtMoon1AfterBattleText5::
 	text "J'dois m'trouver"
-	line "des #MON plus"
+	line "des #mon plus"
 	cont "costauds!"
 	done
 
@@ -98,13 +98,13 @@ _MtMoon1EndBattleText7::
 _MtMoon1AfterBattleText7::
 	text "Je les ai vus!"
 	line "C'était la"
-	cont "TEAM ROCKET!"
+	cont "Team Rocket!"
 	done
 
 _MtMoon1BattleText8::
 	text "Je traverse ces"
 	line "grottes pour"
-	cont "aller à AZURIA!"
+	cont "aller à Azuria!"
 	done
 
 _MtMoon1EndBattleText8::
@@ -113,7 +113,7 @@ _MtMoon1EndBattleText8::
 	prompt
 
 _MtMoon1AfterBattleText8::
-	text "Les NOSFERAPTI"
+	text "Les Nosferapti"
 	line "sont puissants!"
 	cont "En attraper un"
 	cont "peut être utile!"
@@ -121,6 +121,6 @@ _MtMoon1AfterBattleText8::
 
 _MtMoon1Text14::
 	text "Fais gaffe! Les"
-	line "NOSFERAPTI sont"
+	line "Nosferapti sont"
 	cont "des vampires!"
 	done

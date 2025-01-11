@@ -1,7 +1,7 @@
 _CeruleanHouse1Text1::
 	text "Mon mari aime"
 	line "les échanges de"
-	cont "#MON."
+	cont "#mon."
 
 	para "Si tu aimes"
 	line "collectionner,"

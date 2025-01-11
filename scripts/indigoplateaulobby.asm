@@ -50,7 +50,7 @@ IndigoPlateauLobbyText2_ALT:
 	text "Yo! Once and"
 	line "future CHAMP!"
 
-	para "At #MON LEAGUE,"
+	para "At #mon LEAGUE,"
 	line "you have to face"
 	cont "the ELITE FOUR in"
 	cont "succession."

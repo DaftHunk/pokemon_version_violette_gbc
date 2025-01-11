@@ -27,9 +27,9 @@ _LavenderTownText_44146::
 _LavenderTownText2::
 	text "Cette ville est"
 	line "le cimetière des"
-	cont "#MON."
+	cont "#mon."
 
-	para "La TOUR #MON"
+	para "La TOUR #mon"
 	line "est le lieu de"
 	cont "recueillement."
 	done
@@ -37,37 +37,37 @@ _LavenderTownText2::
 _LavenderTownText3::
 	text "Des SPECTRES sont"
 	line "apparus dans la"
-	cont "TOUR #MON."
+	cont "TOUR #mon."
 
 	para "Ils doivent être"
 	line "les esprits des"
-	cont "#MON tués par"
-	cont "la ROCKET."
+	cont "#mon tués par"
+	cont "la Rocket."
 	done
 
 _LavenderTownText4::
-	text "LAVANVILLE"
+	text "Lavanville"
 	line "Le pourpre de"
 	cont "la noblesse"
 	done
 
 _LavenderTownText5::
 	text "Tout nouveau"
-	line "SCOPE SYLPHE!"
+	line "Scope Sylphe!"
 
 	para "Voir l'invisible!"
 
-	para "SYLPHE SARL"
+	para "Sylphe SARL"
 	done
 
 _LavenderTownText8::
 	text "BENEVOLAT DE"
-	line "LAVANVILLE"
-	cont "MAISON #MON"
+	line "Lavanville"
+	cont "MAISON #mon"
 	done
 
 _LavenderTownText9::
 	text "Paix à l'âme des"
-	line "#MON"
-	cont "TOUR #MON"
+	line "#mon"
+	cont "TOUR #mon"
 	done

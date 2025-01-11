@@ -4,16 +4,16 @@ _MtMoonPokecenterText1::
 
 	para "On ne peut"
 	line "transporter que 6"
-	cont "#MON."
+	cont "#mon."
 	done
 
 _MtMoonPokecenterText3::
-	text "La TEAM ROCKET"
+	text "La Team Rocket"
 	line "a encore attaqué"
 	cont "les habitants"
-	cont "d'AZURIA..."
+	cont "d'Azuria..."
 
-	para "La TEAM ROCKET"
+	para "La Team Rocket"
 	line "est toujours aux"
 	cont "infos!"
 	done
@@ -25,7 +25,7 @@ _MagikarpSalesmanText1::
 	cont "proposer!"
 
 	para "Je t'offre une"
-	line "MAGICARPE pour"
+	line "Magicarpe pour"
 ;	cont "juste ¥500!"	tournenote - fix ¥ position
 	cont "juste 500¥!"
 	cont "Qu'en dis-tu?"

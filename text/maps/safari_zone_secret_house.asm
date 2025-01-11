@@ -3,7 +3,7 @@ _SecretHouseText_4a350::
 
 	para "Tu es le premier"
 	line "à découvrir la"
-	cont "CABANE SECRETE!"
+	cont "Cabane Secrète!"
 
 	para "J'avais peur que"
 	line "personne ne gagne"
@@ -28,7 +28,7 @@ _ReceivedHM03Text::
 _HM03ExplanationText::
 	text "CS03 est SURF!"
 
-	para "Un #MON pourra"
+	para "Un #mon pourra"
 	line "te faire naviguer"
 	cont "sur les flots!"
 

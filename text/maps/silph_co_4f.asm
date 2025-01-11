@@ -5,14 +5,14 @@ _SilphCo4Text_19de0::
 	done
 
 _SilphCo4Text_19de5::
-	text "La TEAM ROCKET"
+	text "La Team Rocket"
 	line "est partie? COOL!"
 	done
 
 _SilphCo4BattleText2::
-	text "La TEAM ROCKET"
+	text "La Team Rocket"
 	line "contrôle"
-	cont "la SYLPHE SARL!!!"
+	cont "la Sylphe SARL!!!"
 	done
 
 _SilphCo4EndBattleText2::
@@ -26,13 +26,13 @@ _SilphCo4AfterBattleText2::
 	done
 
 _SilphCo4BattleText3::
-	text "Mes #MON sont"
+	text "Mes #mon sont"
 	line "mes soldats!!!"
 	done
 
 _SilphCo4EndBattleText3::
 	text "NAN!"
-	line "Mes #MON!"
+	line "Mes #mon!"
 	prompt
 
 _SilphCo4AfterBattleText3::

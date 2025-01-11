@@ -2,12 +2,12 @@ _BlaineBattleText::
 	text "Salutations."
 
 	para "Mon nom est..."
-	line "AUGUSTE! Je suis"
+	line "Auguste! Je suis"
 	cont "le CHAMPION de"
-	cont "l'ARENE de"
-	cont "CRAMOIS'ILE!"
+	cont "l'Arène de"
+	cont "Cramois'Ile!"
 
-	para "Mes #MON"
+	para "Mes #mon"
 	line "flamboyants vont"
 	cont "te réduire en"
 	cont "cendres!"
@@ -34,7 +34,7 @@ _BlaineFireBlastText::
 	cont "feu ultime!"
 
 	para "Ne la donne pas"
-	line "à un #MON de"
+	line "à un #mon de"
 	cont "l'eau, ça ferait"
 	cont "pas bon ménage!"
 	done
@@ -45,7 +45,7 @@ _BlaineBadgeText::
 	para "Le BADGE VOLCAN"
 	line "augmente le"
 	cont "SPECIAL de tes"
-	cont "#MON!"
+	cont "#mon!"
 
 	para "Prends ça aussi!"
 	done
@@ -64,11 +64,11 @@ _TM38ExplanationText::
 	line "DEFLAGRATION!"
 
 	para "Elle convient à"
-	line "un #MON du"
+	line "un #mon du"
 	cont "feu!"
 
-	para "REPTINCEL ou"
-	line "PONYTA feront"
+	para "Reptincel ou"
+	line "Ponyta feront"
 	cont "l'affaire!"
 	done
 
@@ -78,7 +78,7 @@ _TM38NoRoomText::
 	done
 
 _CinnabarGymText_7595f::
-	text "Un #MON du"
+	text "Un #mon du"
 	line "feu, c'est chaud!"
 	done
 
@@ -115,12 +115,12 @@ _CinnabarGymText_75999::
 _CinnabarGymText_7599e::
 	text "Je vole, j'y peux"
 	line "rien. Je vole des"
-	cont "#MON, et"
+	cont "#mon, et"
 	cont "j'me marre bien!"
 	done
 
 _CinnabarGymText_759c9::
-	text "Les #MON, je"
+	text "Les #mon, je"
 	line "maîtrise, alors"
 	cont "toi, tu peux pas"
 	cont "gagner!"
@@ -138,7 +138,7 @@ _CinnabarGymText_759d3::
 	done
 
 _CinnabarGymText_759fe::
-	text "Les #MON du"
+	text "Les #mon du"
 	line "feu, j'adore!"
 	done
 
@@ -149,7 +149,7 @@ _CinnabarGymText_75a03::
 
 _CinnabarGymText_75a08::
 	text "Si y'avait des"
-	line "#MON voleurs,"
+	line "#mon voleurs,"
 	cont "j'en aurais des"
 	cont "tas! Moi, c'que"
 	cont "j'aime, c'est les"
@@ -158,7 +158,7 @@ _CinnabarGymText_75a08::
 
 _CinnabarGymText_75a33::
 	text "Héhé! Je sais"
-	line "pourquoi AUGUSTE"
+	line "pourquoi Auguste"
 	cont "est devenu un"
 	cont "dresseur!"
 	done
@@ -169,28 +169,28 @@ _CinnabarGymText_75a38::
 
 _CinnabarGymText_75a3d::
 	text "Tout petit,"
-	line "AUGUSTE aimait se"
+	line "Auguste aimait se"
 	cont "promener dans les"
 	cont "montagnes."
 	cont "Un jour, il s'est"
 	cont "perdu et il eut"
 	cont "très froid! Mais"
-	cont "un #MON de feu"
+	cont "un #mon de feu"
 	cont "apparut..."
 
 	para "La lumière de ses"
 	line "ailes enflammées"
-	cont "permit à AUGUSTE"
+	cont "permit à Auguste"
 	cont "de retrouver son"
 	cont "chemin! Depuis"
 	cont "il adore les"
-	cont "#MON de feu!"
+	cont "#mon de feu!"
 	done
 
 _CinnabarGymText_75a68::
 	text "J'ai bourlingué"
 	line "dans pas mal"
-	cont "d'ARENES, p'tit"
+	cont "d'Arènes, p'tit"
 	cont "gars! Mais ma"
 	cont "préférée c'est"
 	cont "celle-ci!"
@@ -202,8 +202,8 @@ _CinnabarGymText_75a6d::
 	prompt
 
 _CinnabarGymText_75a72::
-	text "PONYTA..."
-	line "FEUNARD..."
+	text "Ponyta..."
+	line "Feunard..."
 	cont "C'est chaud!"
 	done
 
@@ -230,10 +230,10 @@ _CinnabarGymText_75ac2::
 	text "Salut! Graine de"
 	line "champion!"
 
-	para "AUGUSTE, le"
+	para "Auguste, le"
 	line "flamboyant, est"
 	cont "un pro des"
-	cont "#MON de feu!"
+	cont "#mon de feu!"
 
 	para "C'est le moment"
 	line "de jeter de"
@@ -247,5 +247,5 @@ _CinnabarGymText_75ac2::
 
 _CinnabarGymText_75ac7::
 	text "<PLAYER>! Tu as"
-	line "battu AUGUSTE!"
+	line "battu Auguste!"
 	done

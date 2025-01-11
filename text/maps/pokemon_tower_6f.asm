@@ -2,7 +2,7 @@ _PokemonTower2Text_60c1f::
 	text "Le SPECTRE était"
 	line "l'esprit damné de"
 	cont "la mère de"
-	cont "OSSELAIT!"
+	cont "Osselait!"
 	done
 
 _PokemonTower2Text_60c24::

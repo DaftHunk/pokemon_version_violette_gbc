@@ -384,7 +384,7 @@ PrintAlphabet:
 	jp Delay3
 
 LowerCaseAlphabet:
-	db "abcdefghijklmnopqrstuvwxyz ×():;[]",$e1,$e2,"-?!♂♀/⠄,¥MAJUSCULES@"
+	db "abcdefghijklmnopqrstuvwxyz àéèù            ,¥MAJUSCULES@"
 
 UpperCaseAlphabet:
 	db "ABCDEFGHIJKLMNOPQRSTUVWXYZ ×():;[]",$e1,$e2,"-?!♂♀/⠄,¥minuscules@"
@@ -510,13 +510,13 @@ PrintNamingText:
 	jp PlaceString
 
 YourTextString:
-	db "VOTRE NOM?@"
+	db "Votre nom ?@"
 
 RivalsTextString:
-	db "NOM DU RIVAL?@"
+	db "Nom du rival ?@"
 
 NameTextString:
-	db "NOM?@"
+	db "Nom ?@"
 
 NicknameTextString:
-	db "SURNOM?@"
+	db "Surnom ?@"

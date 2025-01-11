@@ -16,7 +16,7 @@ _Route16GateUpstairsText_4983b::
 
 	para "Vous voyez le"
 	line "centre commercial"
-	cont "de CELADOPOLE!"
+	cont "de Céladopole!"
 	done
 
 _Route16GateUpstairsText_49847::

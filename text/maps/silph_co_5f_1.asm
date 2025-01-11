@@ -1,12 +1,12 @@
 _SilphCo5Text_1a010::
-	text "La TEAM ROCKET"
+	text "La Team Rocket"
 	line "cherche un"
 	cont "intrus. C'est"
 	cont "toi, non?"
 	done
 
 _SilphCo5Text_1a015::
-	text "La TEAM ROCKET"
+	text "La Team Rocket"
 	line "est battue! Tu es"
 	cont "notre héros!"
 	done
@@ -24,7 +24,7 @@ _SilphCo5EndBattleText2::
 _SilphCo5AfterBattleText2::
 	text "C'est pas très"
 	line "malin d'provoquer"
-	cont "la TEAM ROCKET!"
+	cont "la Team Rocket!"
 	done
 
 _SilphCo5BattleText3::

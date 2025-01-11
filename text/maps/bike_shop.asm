@@ -32,16 +32,16 @@ _BikeShopText_1d81f::
 	text "Oh! Mais c'est..."
 
 	para "Un BON pour"
-	line "une BICYCLETTE!"
+	line "une Bicyckette!"
 
 	para "OK! Voilà ta"
-	line "BICYCLETTE!"
+	line "Bicyckette!"
 	prompt
 
 _BikeShopText_1d824::
 	text "<PLAYER> échange"
 	line "le BON contre"
-	cont "une BICYCLETTE.@"
+	cont "une Bicyckette.@"
 ;joenote - add hotkey info
 	para "Hold A and press"
 	line "SELECT to get on"
@@ -55,7 +55,7 @@ _BikeShopComeAgainText::
 
 _BikeShopText_1d82f::
 	text "Comment se porte"
-	line "ta BICYCLETTE?"
+	line "ta Bicyckette?"
 
 	para "Tu peux aller sur"
 	line "la PISTE CYCLABLE"
@@ -86,6 +86,6 @@ _BikeShopText_1d85c::
 
 _BikeShopText_1d861::
 	text "Waou! "
-	line "Ta BICYCLETTE est"
+	line "Ta Bicyckette est"
 	cont "super cool!"
 	done

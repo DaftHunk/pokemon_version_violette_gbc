@@ -15,7 +15,7 @@ _RocketHideout1EndBattleText2::
 _RocketHideout1AfterBattleTxt2::
 	text "Tu es pour ou"
 	line "contre la"
-	cont "TEAM ROCKET?"
+	cont "Team Rocket?"
 	done
 
 _RocketHideout1BattleText3::
@@ -44,7 +44,7 @@ _RocketHideout1EndBattleText4::
 	prompt
 
 _RocketHideout1AfterBattleTxt4::
-	text "SCOPE SYLPHE?"
+	text "Scope Sylphe?"
 	line "C'est quoi donc?"
 	done
 

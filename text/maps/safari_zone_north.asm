@@ -3,20 +3,20 @@ _SafariZoneNorthText3::
 	done
 
 _SafariZoneNorthText4::
-	text "ASTUCE"
+	text "Astuce"
 
 	para "La Cabane Secrète"
 	line "est tout droit!"
 	done
 
 _SafariZoneNorthText5::
-	text "PARC 2"
+	text "Parc 2"
 	done
 
 _SafariZoneNorthText6::
-	text "ASTUCE"
+	text "Astuce"
 
-	para "Les #MON se"
+	para "Les #mon se"
 	line "cachent dans les"
 	cont "hautes herbes!"
 
@@ -26,9 +26,9 @@ _SafariZoneNorthText6::
 	done
 
 _SafariZoneNorthText7::
-	text "ASTUCE"
+	text "Astuce"
 
 	para "Découvrez la"
-	line "CABANE SECRETE et"
+	line "Cabane Secrète et"
 	cont "gagnez une CS!"
 	done

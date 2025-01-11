@@ -1,8 +1,8 @@
 _TM39PreReceiveText::
 	text "Les cendres de"
-	line "mes #MON"
+	line "mes #mon"
 	cont "sont dans la"
-	cont "TOUR #MON."
+	cont "TOUR #mon."
 
 	para "Tiens! Prends"
 	line "cette CT. Je n'en"
@@ -45,5 +45,5 @@ _Route12GateUpstairsText_495c4::
 	cont "jumelles."
 
 	para "Vous voyez la"
-	line "TOUR #MON!"
+	line "TOUR #mon!"
 	done

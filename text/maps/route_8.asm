@@ -1,6 +1,6 @@
 _Route8BattleText1::
 	text "T'es un bon avec"
-	line "tes #MON."
+	line "tes #mon."
 	cont "Mais les maths,"
 	cont "tu connais?"
 	done
@@ -41,14 +41,14 @@ _Route8EndBattleText3::
 	prompt
 
 _Route8AfterBattleText3::
-	text "D'abord TADMORV"
+	text "D'abord Tadmorv"
 	line "et après..."
 	cont "Et puis..."
 	done
 
 _Route8BattleText4::
 	text "Moi, j'aime les"
-	line "NIDORAN! Yaha!"
+	line "Nidoran! Yaha!"
 	done
 
 _Route8EndBattleText4::
@@ -56,7 +56,7 @@ _Route8EndBattleText4::
 	prompt
 
 _Route8AfterBattleText4::
-	text "Quand un #MON"
+	text "Quand un #mon"
 	line "grandit, il est"
 	cont "gros et moche."
 	cont "Je les préfère"
@@ -65,7 +65,7 @@ _Route8AfterBattleText4::
 
 _Route8BattleText5::
 	text "L'école c'est"
-	line "cool, les #MON"
+	line "cool, les #mon"
 	cont "c'est mieux!"
 	done
 
@@ -82,7 +82,7 @@ _Route8AfterBattleText5::
 	done
 
 _Route8BattleText6::
-	text "MIAOUSS est si"
+	text "Miaouss est si"
 	line "mignon. Miaou!"
 	done
 
@@ -92,8 +92,8 @@ _Route8EndBattleText6::
 
 _Route8AfterBattleText6::
 	text "Je trouve que"
-	line "ROUCOOL et"
-	cont "RATTATA sont trop"
+	line "Roucool et"
+	cont "Rattata sont trop"
 	cont "cool!"
 	done
 
@@ -127,7 +127,7 @@ _Route8EndBattleText8::
 
 _Route8AfterBattleText8::
 	text "Le jeu et les"
-	line "#MON, c'est"
+	line "#mon, c'est"
 	cont "comme les"
 	cont "cacahuètes."
 	cont "Tu commences et"
@@ -138,7 +138,7 @@ _Route8AfterBattleText8::
 _Route8BattleText9::
 	text "Qu'il est mimi,"
 	line "gentil et trognon"
-	cont "ce #MON!"
+	cont "ce #mon!"
 	cont "Il est à qui?"
 	cont "Hein? A qui?"
 	done
@@ -147,18 +147,18 @@ _Route8EndBattleText9::
 	text "Arrête!"
 
 	para "T'es pas gentil"
-	line "avec MELOFEE!"
+	line "avec Mélofée!"
 	prompt
 
 _Route8AfterBattleText9::
 	text "Il paraît que"
-	line "MELOFEE peut"
+	line "Mélofée peut"
 	cont "évoluer grâce à "
-	cont "une PIERRE LUNE."
+	cont "une Pierre Lune."
 	done
 
 _Route8Text10::
 	text "SOUTERRAIN"
-	line "LAVANVILLE -"
-	cont "CELADOPOLE"
+	line "Lavanville -"
+	cont "Céladopole"
 	done

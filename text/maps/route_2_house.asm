@@ -1,5 +1,5 @@
 _Route2HouseText1::
-	text "Un #MON K.O."
+	text "Un #mon K.O."
 	line "ne peut se battre"
 	cont "mais il peut"
 	cont "encore utiliser"
@@ -8,15 +8,15 @@ _Route2HouseText1::
 	done
 
 _Route2HouseText3::
-	text "A fainted #MON"
+	text "A fainted #mon"
 	line "can't fight. But, "
 	cont "it can still use "
 	cont "moves like CUT!"
 	
-	para "Need a #MON"
+	para "Need a #mon"
 	line "that can use CUT?"
 	
 	para "You can take this"
-	line "PARAS with you."
+	line "Paras with you."
 	done
 	

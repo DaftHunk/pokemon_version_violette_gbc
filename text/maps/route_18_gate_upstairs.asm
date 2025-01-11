@@ -3,7 +3,7 @@ _Route18GateUpstairsText_49993::
 	line "dans les"
 	cont "jumelles."
 
-	para "BOURG PALETTE"
+	para "Bourg Palette"
 	line "est à l'Ouest!"
 	done
 

@@ -6,7 +6,7 @@ _SafariZoneRestHouse3Text1::
 
 _SafariZoneRestHouse3Text2::
 	text "J'ai trouvé un"
-	line "LEVEINARD!"
+	line "Leveinard!"
 
 	para "J'ai bien fait"
 	line "de chercher"

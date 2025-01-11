@@ -1,7 +1,7 @@
 _CopycatsHouse2FText_5ccd4::
 	text "<PLAYER>: Salut!"
 	line "tu aimes les"
-	cont "#MON?"
+	cont "#mon?"
 
 	para "<PLAYER>: Bwoarf!"
 	line "J'disais ça comme"
@@ -41,7 +41,7 @@ _TM31ExplanationText1::
 	para "CT31: COPIE!"
 
 	para "Enseigne-la au"
-	line "bon #MON!@"
+	line "bon #mon!@"
 	text_end
 _TM31ExplanationText2::
 	text "<PLAYER>: Salut!"
@@ -66,7 +66,7 @@ _TM31NoRoomText::
 	text_end
 
 _CopycatsHouse2FText2::
-	text "DODUO: Doduuu!"
+	text "Doduo: Doduuu!"
 
 	para "AH, JE RIS DE"
 	line "ME VOIR SI BELLE"
@@ -74,7 +74,7 @@ _CopycatsHouse2FText2::
 	done
 
 _CopycatsHouse2FText3::
-	text "Ca, un #MON"
+	text "Ca, un #mon"
 	line "rare? Tu t'moques"
 	cont "de moi!"
 	cont "C'est rien qu'une"
@@ -98,8 +98,8 @@ _CopycatsHouse2FText_5cd17::
 	line "je mime!"
 	cont "Ma passion:"
 	cont "les poupées!"
-	cont "Mon #MON"
-	cont "préféré: MELOFEE!"
+	cont "Mon #mon"
+	cont "préféré: Mélofée!"
 	done
 
 _CopycatsHouse2FText_5cd1c::

@@ -10,11 +10,11 @@ _Route25EndBattleText1::
 	prompt
 
 _Route25AfterBattleText1::
-	text "Chaque #MON a"
+	text "Chaque #mon a"
 	line "ses faiblesses."
 	cont "Il vaut mieux te"
 	cont "faire une équipe"
-	cont "avec des #MON"
+	cont "avec des #mon"
 	cont "variés."
 	done
 
@@ -23,7 +23,7 @@ _Route25BattleText2::
 	line "une super fête."
 	cont "C'était sur"
 	cont "L'OCEANE, à"
-	cont "CARMIN SUR MER!"
+	cont "Carmin sur mer!"
 	done
 
 _Route25EndBattleText2::
@@ -85,7 +85,7 @@ _Route25EndBattleText5::
 	prompt
 
 _Route25AfterBattleText5::
-	text "Si ton #MON"
+	text "Si ton #mon"
 	line "est devenu fou ou"
 	cont "s'est endormi,"
 	cont "rappelle-le!"
@@ -93,7 +93,7 @@ _Route25AfterBattleText5::
 
 _Route25BattleText6::
 	text "Mon copain a des"
-	line "#MON trognons!"
+	line "#mon trognons!"
 	cont "Je suis jalouse!"
 	done
 
@@ -106,7 +106,7 @@ _Route25EndBattleText6::
 _Route25AfterBattleText6::
 	text "Tu viens du MONT"
 	line "SELENITE? Tu as"
-	cont "un MELOFEE?"
+	cont "un Mélofée?"
 	done
 
 _Route25BattleText7::
@@ -124,13 +124,13 @@ _Route25AfterBattleText7::
 	text "Aaaaaaargh!"
 	line "Je me suis fait"
 	cont "mordre par un"
-	cont "NOSFERAPTI."
+	cont "Nosferapti."
 	done
 
 _Route25BattleText8::
 	text "Je cherche le"
 	line "collectionneur de"
-	cont "#MON!"
+	cont "#mon!"
 	done
 
 _Route25EndBattleText8::
@@ -141,11 +141,11 @@ _Route25EndBattleText8::
 _Route25AfterBattleText8::
 	text "Le collectionneur"
 	line "a plein de"
-	cont "#MON rares."
+	cont "#mon rares."
 	done
 
 _Route25BattleText9::
-	text "Tu vas voir LEO?"
+	text "Tu vas voir Léo?"
 	line "Ok, mais d'abord,"
 	cont "BASTOONNN!"
 	done
@@ -158,12 +158,12 @@ _Route25EndBattleText9::
 _Route25AfterBattleText9::
 	text "La route, en bas,"
 	line "est un raccourci"
-	cont "vers AZURIA."
+	cont "vers Azuria."
 	done
 
 _Route25Text11::
-	text "VILLA"
-	line "LEO habite ici!"
+	text "Villa"
+	line "Léo habite ici!"
 
 ;Joenote - setting up the Red battle
 _Route25PrintText12::

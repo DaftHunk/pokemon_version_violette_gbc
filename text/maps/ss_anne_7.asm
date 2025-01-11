@@ -1,18 +1,18 @@
 _SSAnne7RubText::
-	text "CAPITAINE: Blorf."
+	text "Capitaine: Blorf."
 	line "J'suis pas bien."
 	cont "Beurp..."
 
 	para "<PLAYER> masse"
 	line "le dos du"
-	cont "CAPITAINE!"
+	cont "Capitaine!"
 
 	para "Scratch..."
 	line "Scratch...@"
 	text_end
 
 _ReceivingHM01Text::
-	text "CAPITAINE: Merci"
+	text "Capitaine: Merci"
 	line "moussaillon!"
 	cont "Ca va beaucoup"
 	cont "mieux..."
@@ -32,7 +32,7 @@ _ReceivingHM01Text::
 	para "C'est la technique"
 	line "COUPE."
 	cont "Enseigne-la à"
-	cont "tes #MON!"
+	cont "tes #mon!"
 	
 ;joenote - add hotkey info
 	para "Press SELECT when"
@@ -48,7 +48,7 @@ _ReceivedHM01Text::
 	text_end
 
 _SSAnne7Text_61932::
-	text "CAPITAINE: Haaaa!"
+	text "Capitaine: Haaaa!"
 
 	para "Maintenant que"
 	line "je suis guéri, on"
@@ -69,6 +69,6 @@ _SSAnne7Text2::
 _SSAnne7Text3::
 	text "Comment guérir"
 	line "le mal de mer..."
-	cont "Le CAPITAINE lit"
+	cont "Le Capitaine lit"
 	cont "ce manuel!"
 	done

@@ -3,7 +3,7 @@ _SafariZoneCenterText2::
 	done
 
 _SafariZoneCenterText3::
-	text "ASTUCE"
+	text "Astuce"
 
 	para "Appuyez sur START"
 	line "pour consulter la"

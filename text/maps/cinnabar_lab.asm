@@ -1,32 +1,32 @@
 _Lab1Text1::
 	text "Ici on étudie"
-	line "les #MON."
+	line "les #mon."
 
 	para "On nous amène"
 	line "souvent des"
-	cont "#MON rares"
+	cont "#mon rares"
 	cont "pour les étudier."
 	done
 
 _Lab1Text2::
 	text "Voici une photo"
 	line "du créateur de ce"
-	cont "LABO: Le DR.FUJI!"
+	cont "Labo: Le DR.FUJI!"
 	done
 
 _Lab1Text3::
 	text "Salle de réunion"
-	line "du LABO #MON"
+	line "du Labo #mon"
 	done
 
 _Lab1Text4::
 	text "Département"
 	line "Recherche et"
 	cont "Développement du"
-	cont "LABO #MON"
+	cont "Labo #mon"
 	done
 
 _Lab1Text5::
 	text "Salle de test du"
-	line "LABO #MON"
+	line "Labo #mon"
 	done

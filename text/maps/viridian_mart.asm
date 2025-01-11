@@ -1,17 +1,17 @@
 _ViridianMartText1::
 	text "Cool! Tu diras"
 	line "bonjour au PROF."
-	cont "CHEN de ma part!"
+	cont "Chen de ma part!"
 	done
 
 _ViridianMartText4::
 	text "Hé! Tu viens de"
-	line "BOURG PALETTE?"
+	line "Bourg Palette?"
 	done
 
 ViridianMartParcelQuestText::
 	text "Tu connais le"
-	line "PROF. CHEN?"
+	line "PROF. Chen?"
 
 	para "Sa commande vient"
 	line "d'arriver."
@@ -19,7 +19,7 @@ ViridianMartParcelQuestText::
 	cont "apporter?"
 
 	para "<PLAYER> obtient"
-	line "le COLIS DE CHEN!@"
+	line "le Colis de Chen!@"
 	text_end
 
 _ViridianMartText2::

@@ -1,12 +1,12 @@
 _PewterCityText1::
 	text "On raconte que"
-	line "les MELOFEE sont"
+	line "les Mélofée sont"
 	cont "les habitants de"
-	cont "la lune!"
+	cont "la Lune!"
 
 	para "Ils sont apparus"
 	line "après la chute de"
-	cont "la PIERRE LUNE"
+	cont "la Pierre Lune"
 	cont "sur le MONT"
 	cont "SELENITE."
 	done
@@ -16,10 +16,10 @@ _PewterCityText2::
 	line "bons dresseurs"
 	cont "par ici!"
 
-	para "Ils sont SCOUTS"
+	para "Ils sont ScoutS"
 	line "pour la plupart"
-	cont "mais PIERRE de"
-	cont "l'ARENE d'ARGENTA"
+	cont "mais Pierre de"
+	cont "l'Arène d'Argenta"
 	cont "est terrible!"
 	done
 
@@ -62,13 +62,13 @@ _PewterCityText_19431::
 	text "Je vaporise du"
 	line "REPOUSSE pour"
 	cont "éloigner les"
-	cont "#MON de mon"
+	cont "#mon de mon"
 	cont "bô jardin!"
 	done
 
 _PewterCityText_1945d::
 	text "T'es un dresseur?"
-	line "PIERRE cherche un"
+	line "Pierre cherche un"
 	cont "adversaire!"
 	cont "Suis-moi!"
 	done
@@ -77,14 +77,14 @@ _PewterCityText14::
 	text "Si t'es fort..."
 	line "T'as pas tort..."
 	cont "Alors..."
-	cont "Bats PIERRE..."
+	cont "Bats Pierre..."
 	cont "Ou t'es mort!"
 	done
 
 _PewterCityText6::
-	text "ASTUCE"
+	text "Astuce"
 
-	para "Chaque #MON"
+	para "Chaque #mon"
 	line "prenant part au"
 	cont "combat, même pen-"
 	cont "dant une seconde,"
@@ -97,23 +97,23 @@ _PewterCityText7::
 	para "On nous signale"
 	line "des voleurs de"
 	cont "fossiles de"
-	cont "#MON sur le"
+	cont "#mon sur le"
 	cont "MONT SELENITE."
 	cont "N'hésitez pas à"
 	cont "contacter la"
-	cont "POLICE d'ARGENTA!"
+	cont "POLICE d'Argenta!"
 	done
 
 _PewterCityText10::
 	text "MUSEE DES"
 	line "SCIENCES"
-	cont "d'ARGENTA"
+	cont "d'Argenta"
 	done
 
 _PewterCityText11::
-	text "ARENE #MON"
-	line "d'ARGENTA"
-	cont "CHAMPION: PIERRE"
+	text "Arène #mon"
+	line "d'Argenta"
+	cont "Champion: Pierre"
 
 	para "L'dresseur dur"
 	line "comme la pierre!"
@@ -121,7 +121,7 @@ _PewterCityText11::
 	done
 
 _PewterCityText12::
-	text "ARGENTA"
+	text "Argenta"
 	line "Le mat et le gris"
 	cont "de la roche."
 	done

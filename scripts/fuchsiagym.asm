@@ -19,7 +19,7 @@ FuchsiaGymScript_75453:
 	ret
 
 Gym5CityName:
-	db "PARMANIE@"
+	db "Parmanie@"
 Gym5LeaderName:
 	db "KOGA@"
 

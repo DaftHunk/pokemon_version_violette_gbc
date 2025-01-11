@@ -2,11 +2,11 @@ _DayCareIntroText::
 	text "Je m'occupe de la"
 	line "PENSION. Veux-tu"
 	cont "que j'élève un de"
-	cont "tes #MON?"
+	cont "tes #mon?"
 	done
 
 _DayCareWhichMonText::
-	text "Quel #MON"
+	text "Quel #mon"
 	line "veux-tu me"
 	cont "confier?"
 	prompt
@@ -45,7 +45,7 @@ _DayCareOweMoneyText::
 ;	text_start
 	text "¥"
 	line "et je te rends"
-	cont "ton #MON."
+	cont "ton #mon."
 	done
 
 _DayCareGotMonBackText::

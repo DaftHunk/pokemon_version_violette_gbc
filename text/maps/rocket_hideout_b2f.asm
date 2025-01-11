@@ -2,7 +2,7 @@ _RocketHideout2BattleText2::
 	text "Le chef dit qu'on"
 	line "peut voir les"
 	cont "fantômes avec un"
-	cont "SCOPE SYLPHE!"
+	cont "Scope Sylphe!"
 	done
 
 _RocketHideout2EndBattleText2::
@@ -12,7 +12,7 @@ _RocketHideout2EndBattleText2::
 
 _RocketHideout2AfterBattleTxt2::
 	text "Le repaire de la"
-	line "TEAM ROCKET a 4"
+	line "Team Rocket a 4"
 	cont "étages. Pourras-"
 	cont "tu arriver"
 	cont "jusqu'au chef?"

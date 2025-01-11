@@ -8,7 +8,7 @@ _CeladonMart4Text3::
 	text "Ecoute donc..."
 
 	para "Tu peux fuir face"
-	line "aux #MON"
+	line "aux #mon"
 	cont "sauvages en les"
 	cont "occupant avec une"
 	cont "#POUPEE!"
@@ -23,6 +23,6 @@ _CeladonMart4Text4::
 
 	para "Vive les"
 	line "évolutions!"
-	cont "Les PIERRES sont"
+	cont "Les Pierres sont"
 	cont "en vente!"
 	done

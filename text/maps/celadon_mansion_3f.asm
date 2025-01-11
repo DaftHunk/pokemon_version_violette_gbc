@@ -12,12 +12,12 @@ _GraphicArtistText::
 _WriterText::
 	text "J'ai écrit"
 	line "l'histoire!"
-	cont "ERIKA est belle!"
+	cont "Erika est belle!"
 
-	para "ONDINE aussi,"
+	para "Ondine aussi,"
 	line "non?"
 
-	para "Et puis MORGANE!"
+	para "Et puis Morgane!"
 	line "Elle est mimi!"
 	done
 

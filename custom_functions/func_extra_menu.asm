@@ -462,29 +462,29 @@ NuzlockeSettings:
 
 
 TextAudio:
-	db " AUDIO@"
+	db " Audio@"
 TextFPS:
 	db " FPS@"
 TextInstant:
-	db " TEXTE INST.@"
+	db " Texte inst.@"
 TextHardMode:
-	db " MODE DIFFI.@"
+	db " Mode diffi.@"
 TextAISwitch:
-	db " CHANG. IA@"
+	db " Chang. IA@"
 TextGamma:
-	db " SHADER Y@"
+	db " Shader Y@"
 TextBack:
-	db " RETOUR@"
+	db " Retour@"
 
 TextAILevelCap:
-	db " LVL CAP@"
+	db " LVL cap@"
 TextNuzlocke:
-	db " NUZLOCKE@"
+	db " Nuzlocke@"
 	
 OptionMenuOnOffText:
 	dw OptionMenuTextON
 	dw OptionMenuTextOFF
 OptionMenuTextON:
-	db "OUI@"
+	db "Oui@"
 OptionMenuTextOFF:
-	db "NON@"
+	db "Non@"

@@ -95,7 +95,7 @@ _TXTBookP2:
 	
 	para "Maybe if I show"
 	line "him a NEW SPECIES"
-	cont "of #MON..."
+	cont "of #mon..."
 	
 	para "Keep reading?"
 	done
@@ -106,7 +106,7 @@ _TXTBookP3:
 	line "MIST STONE can"
 	cont "unlock the hidden"
 	cont "potential within"
-	cont "a #MON."
+	cont "a #mon."
 	
 	para "Where to find it?"
 	line "Perhaps here, in"

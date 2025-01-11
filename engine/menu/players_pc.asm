@@ -267,10 +267,10 @@ RectifyKeyItems:
 
 
 PlayersPCMenuEntries:
-	db   "RETIRER OBJET"
-	next "STOCKER OBJET"
-	next "JETER OBJET"
-	next "DECONNEXION@"
+	db   "Retirer objet"
+	next "Stocker objet"
+	next "Jeter objet"
+	next "Déconnexion@"
 
 TurnedOnPC2Text:
 	TX_FAR _TurnedOnPC2Text

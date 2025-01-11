@@ -1,9 +1,9 @@
 _Route2Text3::
-	text "ROUTE 2"
-	line "JADIELLE -"
-	cont "ARGENTA"
+	text "Route 2"
+	line "Jadielle -"
+	cont "Argenta"
 	done
 
 _Route2Text4::
-	text "CAVE TAUPIQUEUR"
+	text "Cave Taupiqueur"
 	done

@@ -32,7 +32,7 @@ _Mansion4AfterBattleText2::
 _Mansion4Text7::
 	text "Rapport:"
 	line "1er Septembre."
-	cont "MEWTWO est trop"
+	cont "Mewtwo est trop"
 	cont "puissant."
 
 	para "Nous sommes"

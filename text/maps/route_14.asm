@@ -3,7 +3,7 @@ _Route14BattleText1::
 	line "pour apprendre"
 	cont "de bonnes"
 	cont "attaques à tes"
-	cont "#MON!"
+	cont "#mon!"
 	done
 
 
@@ -14,13 +14,13 @@ _Route14EndBattleText1::
 
 _Route14AfterBattleText1::
 	text "Tu as des CS?"
-	line "Les #MON ne"
+	line "Les #mon ne"
 	cont "peuvent pas les"
 	cont "oublier."
 	done
 
 _Route14BattleText2::
-	text "Mes #MON"
+	text "Mes #mon"
 	line "oiseaux veulent"
 	cont "se battre."
 	done
@@ -37,7 +37,7 @@ _Route14AfterBattleText2::
 
 _Route14BattleText3::
 	text "On vend des CT à"
-	line "CELADOPOLE!"
+	line "Céladopole!"
 	cont "Mais, seuls"
 	cont "quelques élus ont"
 	cont "des CS!"
@@ -50,7 +50,7 @@ _Route14EndBattleText3::
 
 _Route14AfterBattleText3::
 	text "Apprends à tes"
-	line "#MON des"
+	line "#mon des"
 	cont "attaques de leur"
 	cont "élément pour les"
 	cont "rendre plus"
@@ -59,7 +59,7 @@ _Route14AfterBattleText3::
 
 _Route14BattleText4::
 	text "As-tu appris à"
-	line "tes #MON"
+	line "tes #mon"
 	cont "oiseaux à voler?"
 	done
 
@@ -70,13 +70,13 @@ _Route14EndBattleText4::
 
 _Route14AfterBattleText4::
 	text "J'adore les"
-	line "#MON oiseaux!"
+	line "#mon oiseaux!"
 	done
 
 _Route14BattleText5::
 	text "As-tu entendu"
 	line "parler des"
-	cont "#MON"
+	cont "#mon"
 	cont "légendaires?"
 	done
 
@@ -86,12 +86,12 @@ _Route14EndBattleText5::
 	prompt
 
 _Route14AfterBattleText5::
-;	text "Les 3 #MON"			;joenote - slight correction to this translation
+;	text "Les 3 #mon"			;joenote - slight correction to this translation
 ;	line "légendaires sont"
 ;	cont "des oiseaux"
 ;	cont "de proie."
 	text "On dit que les 3"
-	line "#MON"
+	line "#mon"
 	cont "légendaires sont"
 	cont "tous des oiseaux."
 	done
@@ -116,14 +116,14 @@ _Route14BattleText7::
 	text "Allez, viens!"
 	line "Tu vas voir la"
 	cont "tête de tes"
-	cont "#MON!"
+	cont "#mon!"
 	done
 
 _Route14EndBattleText7::
 	text "Arrg!"
 	line "T'as fait une"
 	cont "tête au carré à"
-	cont "mes #MON!"
+	cont "mes #mon!"
 	prompt
 
 _Route14AfterBattleText7::
@@ -143,7 +143,7 @@ _Route14EndBattleText8::
 
 _Route14AfterBattleText8::
 	text "Elever des"
-	line "#MON, c'est"
+	line "#mon, c'est"
 	cont "crevant!"
 	done
 
@@ -159,7 +159,7 @@ _Route14EndBattleText9::
 
 _Route14AfterBattleText9::
 	text "Cool, tes"
-	line "#MON sont"
+	line "#mon sont"
 	cont "super balèzes!"
 
 	para "La force, c'est"
@@ -167,7 +167,7 @@ _Route14AfterBattleText9::
 	done
 
 _Route14BattleText10::
-	text "Combat #MON?"
+	text "Combat #mon?"
 	line "Tremble, minus!"
 	done
 
@@ -178,12 +178,12 @@ _Route14EndBattleText10::
 
 _Route14AfterBattleText10::
 	text "Tu sais que sans"
-	line "tes #MON, je"
+	line "tes #mon, je"
 	cont "te pulvérise!"
 	done
 
 _Route14Text11::
-	text "ROUTE 14"
-	line "PARMANIE"
+	text "Route 14"
+	line "Parmanie"
 	cont "à l'Ouest"
 	done

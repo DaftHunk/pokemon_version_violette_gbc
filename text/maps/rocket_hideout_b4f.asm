@@ -12,7 +12,7 @@ _RocketHideout4Text_4557f::
 
 _RocketHideout4Text_45584::
 	text "Tu élèves tes"
-	line "#MON trop"
+	line "#mon trop"
 	cont "soigneusement."
 
 	para "Un gosse comme"
@@ -43,7 +43,7 @@ _RocketHideout4EndBattleText2::
 _RocketHide4AfterBattleText2::
 	text "Je comprends pas,"
 	line "t'aimes pas la"
-	cont "TEAM ROCKET?"
+	cont "Team Rocket?"
 	done
 
 _RocketHideout4BattleText3::

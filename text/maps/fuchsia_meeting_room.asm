@@ -1,26 +1,26 @@
 _FuchsiaMeetingRoomText1::
 	text "Nous avons"
 	line "surnommé le"
-	cont "GARDIEN, RAMOLOSS."
+	cont "Gardien, Ramoloss."
 
 	para "Ben, oui! Il"
 	line "ressemble à un"
-	cont "RAMOLOSS!"
+	cont "Ramoloss!"
 	done
 
 _FuchsiaMeetingRoomText2::
-	text "RAMOLOSS s'y"
+	text "Ramoloss s'y"
 	line "connaît beaucoup"
-	cont "en #MON!"
+	cont "en #mon!"
 
 	para "Il a même des"
 	line "fossiles de"
-	cont "#MON rares et"
+	cont "#mon rares et"
 	cont "anciens!"
 	done
 
 _FuchsiaMeetingRoomText3::
-	text "RAMOLOSS m'a"
+	text "Ramoloss m'a"
 	line "parlé, mais je ne"
 	cont "comprends rien à"
 	cont "c'qu'il m'dit."

@@ -1,6 +1,6 @@
 _FuchsiaHouse1Text1::
-	text "Le GARDIEN du"
-	line "PARC SAFARI est"
+	text "Le Gardien du"
+	line "Parc Safari est"
 	cont "vieux mais trop"
 	cont "cool!"
 
@@ -11,7 +11,7 @@ _FuchsiaHouse1Text1::
 
 _FuchsiaHouse1Text2::
 	text "Hmm? Tu connais"
-	line "LEO?"
+	line "Léo?"
 
 	para "Mais... C'est mon"
 	line "petit-fils!"
@@ -21,7 +21,7 @@ _FuchsiaHouse1Text2::
 	done
 
 _FuchsiaHouse1Text3::
-	text "LEO enregistre"
+	text "Léo enregistre"
 	line "ses données sur"
 	cont "les #MON sur"
 	cont "son PC!"

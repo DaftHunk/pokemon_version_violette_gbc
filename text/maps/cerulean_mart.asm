@@ -1,10 +1,10 @@
 _CeruleanMartText2::
 	text "Le REPOUSSE tient"
-	line "les #MON"
+	line "les #mon"
 	cont "sauvages à"
 	cont "l'écart."
 
-	para "Mets tes #MON"
+	para "Mets tes #mon"
 	line "les plus costauds"
 	cont "en premier pour"
 	cont "une plus grande"
@@ -15,7 +15,7 @@ _CeruleanMartText3::
 	text "As-tu déjà vu des"
 	line "SUPER BONBONS??"
 
-	para "Quand un #MON"
+	para "Quand un #mon"
 	line "en mange un, il"
 	cont "gagne un niveau!"
 	done

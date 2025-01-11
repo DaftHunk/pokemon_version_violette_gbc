@@ -1,5 +1,5 @@
 _UndergroundPathEntRoute7Text1::
-	text "Il y a un #MON"
+	text "Il y a un #mon"
 	line "endormi près de"
-	cont "CELADOPOLE."
+	cont "Céladopole."
 	done

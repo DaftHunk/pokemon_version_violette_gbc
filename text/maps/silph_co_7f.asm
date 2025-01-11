@@ -1,16 +1,16 @@
 _MeetLaprasGuyText::
 	text "Oh! Tu n'es pas"
-	line "un ROCKET! Es-tu"
+	line "un Rocket! Es-tu"
 	cont "là pour nous"
 	cont "sauver? Merci!"
 
 	para "Prends donc ce"
-	line "joli #MON en"
+	line "joli #mon en"
 	cont "cadeau."
 	prompt
 
 _HeresYourLaprasText::
-	text "C'est un LOKHLASS."
+	text "C'est un Lokhlass."
 	line "Il est très"
 	cont "intelligent."
 
@@ -21,7 +21,7 @@ _HeresYourLaprasText::
 
 	para "Tu seras un bon"
 	line "dresseur pour"
-	cont "LOKHLASS!"
+	cont "Lokhlass!"
 
 	para "Etant bon nageur,"
 	line "il pourra même te"
@@ -30,7 +30,7 @@ _HeresYourLaprasText::
 
 _LaprasGuyText::
 	text "Le chef de la"
-	line "TEAM ROCKET est"
+	line "Team Rocket est"
 	cont "dans la salle du"
 	cont "conseil. Le PDG"
 	cont "va-t-il bien?"
@@ -42,32 +42,32 @@ _LaprasGuySavedText::
 	done
 
 _SilphCo7Text_51e00::
-	text "La TEAM ROCKET"
+	text "La Team Rocket"
 	line "voulait s'emparer"
 	cont "de la MASTER BALL"
 	cont "pouvant attraper"
 	cont "n'importe quel"
-	cont "#MON!"
+	cont "#mon!"
 	done
 
 _CanceledMasterBallText::
 	text "Le projet MASTER"
 	line "BALL fut annulé"
 	cont "à cause de la"
-	cont "TEAM ROCKET."
+	cont "Team Rocket."
 	done
 
 _SilphCo7Text_51e23::
 	text "Grâce au ciel la"
-	line "TEAM ROCKET ne"
+	line "Team Rocket ne"
 	cont "put investir la"
-	cont "SYLPHE ou voler"
-	cont "nos #MON!"
+	cont "Sylphe ou voler"
+	cont "nos #mon!"
 	done
 
 _SilphCo7Text_51e28::
 	text "Woah! Tu as battu"
-	line "la TEAM ROCKET"
+	line "la Team Rocket"
 	cont "tout seul?"
 	done
 
@@ -105,7 +105,7 @@ _SilphCo7BattleText2::
 
 	para "Tu me prends pour"
 	line "un employé de la"
-	cont "SYLPHE?"
+	cont "Sylphe?"
 	done
 
 _SilphCo7EndBattleText2::
@@ -121,7 +121,7 @@ _SilphCo7AfterBattleText2::
 
 _SilphCo7BattleText3::
 	text "Je suis l'un des"
-	line "4 frères ROCKET!"
+	line "4 frères Rocket!"
 	done
 
 _SilphCo7EndBattleText3::
@@ -163,7 +163,7 @@ _SilphCo7Text_51ec3::
 	cont "tu passerais par"
 	cont "là!"
 
-	para "La TEAM ROCKET"
+	para "La Team Rocket"
 	line "t'a posé des"
 	cont "problèmes?"
 	cont "Quel dommage!"
@@ -178,7 +178,7 @@ _SilphCo7Text_51ec8::
 	text "Oh non!"
 	line "Tu es donc prêt"
 	cont "pour le chef de"
-	cont "la TEAM ROCKET!"
+	cont "la Team Rocket!"
 	prompt
 
 _SilphCo7Text_51ecd::
@@ -202,9 +202,9 @@ _SilphCo7Text_51ed2::
 	cont "évolutions!"
 
 	para "Je vais à la"
-	line "LIGUE #MON"
+	line "Ligue #mon"
 	cont "pour détrôner le"
-	cont "CONSEIL des 4!"
+	cont "Conseil des 4!"
 
 	para "Je serai bientôt"
 	line "le dresseur le"

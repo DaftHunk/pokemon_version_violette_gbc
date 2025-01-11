@@ -1,12 +1,12 @@
 _SafariZoneEntranceText1::
 	text "Bienvenue au"
-	line "PARC SAFARI!"
+	line "Parc Safari!"
 	done
 
 SafariZoneEntranceText_9e6e4::
 	text "Pour juste 500¥,"
 	line "tu peux attraper"
-	cont "autant de #MON"
+	cont "autant de #mon"
 	cont "qu'il te plaira"
 	cont "dans le parc!"
 
@@ -22,7 +22,7 @@ SafariZoneEntranceText_9e747::
 	cont "est utilisé ici."
 
 	para "<PLAYER> reçoit"
-	line "30 SAFARI BALL!@"
+	line "30 Safari BALL!@"
 	text_end
 
 _SafariZoneEntranceText_75360::
@@ -31,7 +31,7 @@ _SafariZoneEntranceText_75360::
 	para "J'utiliserai le"
 	line "HAUT-PARLEUR"
 	cont "lorsque ton temps"
-	cont "ou tes SAFARI"
+	cont "ou tes Safari"
 	cont "BALL seront"
 	cont "épuisés!"
 	done
@@ -52,7 +52,7 @@ SafariZoneEntranceText_9e814::
 
 _SafariZoneEntranceText_753bb::
 	text "Donne-moi donc"
-	line "tes SAFARI BALL"
+	line "tes Safari BALL"
 	cont "neuves."
 	done
 
@@ -72,25 +72,25 @@ _SafariZoneEntranceText_753e6::
 	done
 
 _SafariZoneEntranceText_753eb::
-	text "Le PARC SAFARI a"
+	text "Le Parc Safari a"
 	line "4 zones."
 
 	para "Tu y trouveras"
-	line "des #MON"
+	line "des #mon"
 	cont "différents."
 	cont "Utilise tes"
-	cont "SAFARI BALL pour"
+	cont "Safari BALL pour"
 	cont "les capturer!"
 
 	para "Le Safari sera"
 	line "terminé lorsque"
 	cont "tu auras épuisé"
-	cont "tes SAFARI BALL!"
+	cont "tes Safari BALL!"
 
 	para "Avant de partir,"
 	line "ouvre donc une"
 	cont "nouvelle boîte de"
-	cont "#MON pour"
+	cont "#mon pour"
 	cont "avoir plus de"
 	cont "place!"
 	done
@@ -106,7 +106,7 @@ _SafariZoneEntranceTextSpecial_NotReady::
 	line "a special event,"
 	cont "but it won't be"
 	cont "ready until after"
-	cont "the #MON"
+	cont "the #mon"
 	cont "League finals."
 	done
 _SafariZoneEntranceTextSpecial_Ready::
@@ -114,7 +114,7 @@ _SafariZoneEntranceTextSpecial_Ready::
 	line "Would you like to"
 	cont "participate in a"
 	cont "special event?"
-	para "SAFARI #MON"
+	para "Safari #mon"
 	line "will be of better"
 	cont "breed, and there"
 	cont "is a rare chance"
@@ -123,6 +123,6 @@ _SafariZoneEntranceTextSpecial_Ready::
 	done
 _SafariZoneEntranceTextSpecial_Active::
 	text "Shall I return"
-	line "the SAFARI ZONE"
+	line "the Safari ZONE"
 	cont "back to normal?"
 	done

@@ -22,10 +22,10 @@ VermilionGymScript_5ca4c:
 	jp LoadGymLeaderAndCityName
 
 Gym3CityName:
-	db "CARMIN SUR MER@"
+	db "Carmin sur mer@"
 
 Gym3LeaderName:
-	db "MAJOR BOB@"
+	db "Major Bob@"
 
 VermilionGymScript_5ca6d:
 	CheckEvent EVENT_2ND_LOCK_OPENED

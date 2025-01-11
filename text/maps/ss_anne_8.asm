@@ -1,5 +1,5 @@
 _SSAnne8Text8::
-	text "GRODOUDOU: Gro!"
+	text "Grodoudou: Gro!"
 	line "Douuuuuuu!@"
 	text_end
 
@@ -8,7 +8,7 @@ _SSAnne8BattleText1::
 	line "toujours en"
 	cont "solitaire!"
 
-	para "Mes #MON"
+	para "Mes #mon"
 	line "sont mes amis!"
 	done
 
@@ -20,7 +20,7 @@ _SSAnne8EndBattleText1::
 _SSAnne8AfterBattleText1::
 	text "Il faut être"
 	line "gentil avec ses"
-	cont "#MON!"
+	cont "#mon!"
 	done
 
 _SSAnne8BattleText2::
@@ -40,7 +40,7 @@ _SSAnne8AfterBattleText2::
 
 _SSAnne8BattleText3::
 	text "J'aime les"
-	line "#MON! Et toi?"
+	line "#mon! Et toi?"
 	done
 
 _SSAnne8EndBattleText3::
@@ -54,12 +54,12 @@ _SSAnne8AfterBattleText3::
 
 	para "On pourra alors"
 	line "échanger nos"
-	cont "#MON!"
+	cont "#mon!"
 	done
 
 _SSAnne8BattleText4::
 	text "J'ai déniché"
-	line "ces #MON"
+	line "ces #mon"
 	cont "un peu partout"
 	cont "dans le monde!"
 	done
@@ -73,12 +73,12 @@ _SSAnne8EndBattleText4::
 
 _SSAnne8AfterBattleText4::
 	text "Tu as fait mal"
-	line "à mes #MON!"
+	line "à mes #mon!"
 
 	para "Il faut que"
 	line "tu les soignes"
 	cont "dans un"
-	cont "CENTRE #MON!!!"
+	cont "Centre #mon!!!"
 	done
 
 _SSAnne8Text5::
@@ -96,7 +96,7 @@ _SSAnne8Text6::
 _SSAnne8Text7::
 	text "Je voyage"
 	line "toujours avec"
-	cont "GRODOUDOU!"
+	cont "Grodoudou!"
 	done
 
 _SSAnne8Text9::
@@ -111,6 +111,6 @@ _SSAnne8Text11::
 
 	para "Je suis sur la"
 	line "trace de la"
-	cont "TEAM ROCKET!"
+	cont "Team Rocket!"
 	cont "Chut!"
 	done

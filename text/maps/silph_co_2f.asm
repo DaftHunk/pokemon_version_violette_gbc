@@ -3,7 +3,7 @@ _SilphCo2Text_59ded::
 	line "A l'aide!"
 
 	para "Quoi? Tu n'es pas"
-	line "de la TEAM?"
+	line "de la Team?"
 	cont "Tant mieux!"
 	cont "Tiens prends ça!"
 	prompt
@@ -22,7 +22,7 @@ _TM36ExplanationText::
 	para "C'est une attaque"
 	line "très puissante!"
 	cont "Mais elle mettra"
-	cont "K.O. le #MON"
+	cont "K.O. le #mon"
 	cont "qui l'utilise!!!"
 	done
 
@@ -34,20 +34,20 @@ _TM36NoRoomText::
 _SilphCo2BattleText1::
 	text "A l'aide! Je suis"
 	line "un employé de la"
-	cont "SYLPHE SARL!"
+	cont "Sylphe SARL!"
 	done
 
 _SilphCo2EndBattleText1::
 	text "???"
 	line "Comment t'as su"
 	cont "que j'étais de"
-	cont "La TEAM ROCKET?"
+	cont "La Team Rocket?"
 	prompt
 
 _SilphCo2AfterBattleText1::
 	text "Je travaille pour"
-	line "la SYLPHE SARL et"
-	cont "la TEAM ROCKET!"
+	line "la Sylphe SARL et"
+	cont "la Team Rocket!"
 	done
 
 _SilphCo2BattleText2::
@@ -98,7 +98,7 @@ _SilphCo2EndBattleText4::
 	prompt
 
 _SilphCo2AfterBattleText4::
-	text "La SYLPHE SARL et"
-	line "la TEAM ROCKET"
+	text "La Sylphe SARL et"
+	line "la Team Rocket"
 	cont "vont fusionner!"
 	done

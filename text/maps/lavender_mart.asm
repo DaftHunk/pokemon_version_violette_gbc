@@ -3,7 +3,7 @@ _LavenderMartText2::
 	line "objets permettant"
 	cont "d'augmenter la"
 	cont "puissance d'un"
-	cont "#MON en"
+	cont "#mon en"
 	cont "combat."
 
 	para "ATTAQUE +,"
@@ -21,7 +21,7 @@ _LavenderMartReviveText::
 	line "le RAPPEL? Il"
 	cont "permet de"
 	cont "réanimer un"
-	cont "#MON K.O.!"
+	cont "#mon K.O.!"
 	done
 
 _LavenderMartNuggetText::

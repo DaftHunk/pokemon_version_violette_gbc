@@ -56,7 +56,7 @@ _Route16EndBattleText4::
 _Route16AfterBattleText4::
 	text "Tu peux aussi"
 	line "aller de CARMIN"
-	cont "à PARMANIE par la"
+	cont "à Parmanie par la"
 	cont "côte."
 	done
 
@@ -73,7 +73,7 @@ _Route16EndBattleText5::
 	prompt
 
 _Route16AfterBattleText5::
-	text "Mes #MON sont"
+	text "Mes #mon sont"
 	line "féroces! Ils"
 	cont "déchirent mes"
 	cont "ennemis!"
@@ -91,18 +91,18 @@ _Route16EndBattleText6::
 _Route16AfterBattleText6::
 	text "Je terrorise mes"
 	line "adversaires avec"
-	cont "mes #MON"
+	cont "mes #mon"
 	cont "super vicieux!"
 	done
 
 _Route16Text7::
-	text "Un gros #MON"
+	text "Un gros #mon"
 	line "endormi bloque"
 	cont "le chemin!"
 	done
 
 _Route16Text10::
-	text "RONFLEX"
+	text "Ronflex"
 	line "se réveille!"
 
 	para "Il est tout"
@@ -113,7 +113,7 @@ _Route16Text10::
 _Route16Text11::
 	text "Après avoir"
 	line "bâillé, le gros"
-	cont "RONFLEX retourne"
+	cont "Ronflex retourne"
 	cont "dans la montagne!"
 	done
 
@@ -123,9 +123,9 @@ _Route16Text8::
 	done
 
 _Route16Text9::
-	text "ROUTE 16"
-	line "CELADOPOLE -"
-	cont "PARMANIE"
+	text "Route 16"
+	line "Céladopole -"
+	cont "Parmanie"
 
 _Route16TextUsePokeflute::
 	text "Play the #"

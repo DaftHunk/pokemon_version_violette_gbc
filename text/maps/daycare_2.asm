@@ -10,24 +10,24 @@ _DayCareComeAgainText::
 _DayCareNoRoomForMonText::
 	text "Tu n'as plus de"
 	line "place pour ce"
-	cont "#MON!"
+	cont "#mon!"
 	done
 
 _DayCareOnlyHaveOneMonText::
 	text "Tu n'as qu'un"
-	line "#MON sur toi."
+	line "#mon sur toi."
 	done
 
 _DayCareCantAcceptMonWithHMText::
 	text "Je ne peux pas"
 	line "m'occuper d'un"
-	cont "#MON qui a"
+	cont "#mon qui a"
 	cont "appris une CS."
 	done
 
 _DayCareHeresYourMonText::
 	text "Merci! Voilà ton"
-	line "p'tit #MON!"
+	line "p'tit #mon!"
 	prompt
 
 _DayCareNotEnoughMoneyText::

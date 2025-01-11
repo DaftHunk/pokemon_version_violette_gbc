@@ -1,5 +1,5 @@
 _LavenderPokecenterText2::
-	text "La TEAM ROCKET"
+	text "La Team Rocket"
 	line "ferait n'importe"
 	cont "quoi pour de"
 	cont "l'argent!"
@@ -7,7 +7,7 @@ _LavenderPokecenterText2::
 
 _LavenderPokecenterText3::
 	text "J'ai vu la mère"
-	line "de OSSELAIT se"
+	line "de Osselait se"
 	cont "faire tuer par la"
-	cont "TEAM ROCKET!"
+	cont "Team Rocket!"
 	done

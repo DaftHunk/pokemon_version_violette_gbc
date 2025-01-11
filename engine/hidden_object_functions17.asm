@@ -159,10 +159,10 @@ LinkCableHelpText2:
 	db "@"
 
 HowToLinkText:
-	db   "CABLE LINK"
-	next "COLISEE"
-	next "CENTRE TROC"
-	next "NE PLUS LIRE@"
+	db   "Câble Link"
+	next "Colisée"
+	next "Centre Troc"
+	next "Ne plus lire@"
 
 LinkCableInfoTexts:
 	dw LinkCableInfoText1

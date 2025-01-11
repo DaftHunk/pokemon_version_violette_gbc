@@ -1,5 +1,5 @@
 _CeladonHotelText1::
-	text "Des #MON quoi?"
+	text "Des #mon quoi?"
 	line "C'est un hôtel"
 	cont "ici..."
 
@@ -12,7 +12,7 @@ _CeladonHotelText2::
 	cont "frère et mon"
 	cont "petit ami."
 
-	para "CELADOPOLE est"
+	para "Céladopole est"
 	line "si belle!"
 	done
 
@@ -25,7 +25,7 @@ _CeladonHotelText3::
 _CeladonHotelCoinGuyText_intro::
 	text "I'm flushed with"
 	line "COINS, yet seeing"
-	cont "#MON is what I"
+	cont "#mon is what I"
 	cont "covet."
 	
 	para "Show me a fine"

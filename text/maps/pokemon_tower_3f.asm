@@ -11,7 +11,7 @@ _PokemonTower3EndBattleText1::
 _PokemonTower3AfterBattleText1::
 	text "Un SPECTRE est"
 	line "identifiable avec"
-	cont "un SCOPE SYLPHE."
+	cont "un Scope Sylphe."
 	done
 
 _PokemonTower3BattleText2::

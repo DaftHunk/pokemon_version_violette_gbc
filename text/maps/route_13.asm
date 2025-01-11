@@ -1,5 +1,5 @@
 _Route13BattleText2::
-	text "Mes #MON"
+	text "Mes #mon"
 	line "oiseaux cherchent"
 	cont "la baston!"
 	done
@@ -11,7 +11,7 @@ _Route13EndBattleText2::
 	prompt
 
 _Route13AfterBattleText2::
-	text "Mes #MON ont"
+	text "Mes #mon ont"
 	line "l'air content,"
 	cont "même s'ils ont"
 	cont "perdu."
@@ -50,7 +50,7 @@ _Route13AfterBattleText4::
 	done
 
 _Route13BattleText5::
-	text "Mes #MON tout"
+	text "Mes #mon tout"
 	line "mignons veulent"
 	cont "te connaître."
 	done
@@ -63,7 +63,7 @@ _Route13EndBattleText5::
 _Route13AfterBattleText5::
 	text "Tu dois faire"
 	line "combattre tes"
-	cont "#MON pour les"
+	cont "#mon pour les"
 	cont "entraîner!"
 	done
 
@@ -82,7 +82,7 @@ _Route13AfterBattleText6::
 	text "Le CARBONE a"
 	line "augmenté la"
 	cont "vitesse de mon"
-	cont "#MON."
+	cont "#mon."
 	done
 
 _Route13BattleText7::
@@ -113,7 +113,7 @@ _Route13EndBattleText8::
 _Route13AfterBattleText8::
 	text "C'est quoi le"
 	line "plus fort,"
-	cont "un #MON"
+	cont "un #mon"
 	cont "fille ou garçon?"
 	done
 
@@ -130,7 +130,7 @@ _Route13EndBattleText9::
 
 _Route13AfterBattleText9::
 	text "J'y connais rien"
-	line "aux #MON!"
+	line "aux #mon!"
 	cont "Je les trouve"
 	cont "juste cool!"
 	done
@@ -151,7 +151,7 @@ _Route13AfterBattleText10::
 
 _Route13BattleText11::
 	text "J'aime bien mes"
-	line "#MON oiseaux!"
+	line "#mon oiseaux!"
 	cont "...Ouais... "
 	cont "C'est vrai."
 	done
@@ -163,19 +163,19 @@ _Route13EndBattleText11::
 
 _Route13AfterBattleText11::
 	text "J'aimerais voler"
-	line "comme ROUCOOL"
-	cont "ou ROUCOUPS..."
+	line "comme Roucool"
+	cont "ou Roucoups..."
 	done
 
 _Route13Text11::
-	text "ASTUCE"
+	text "Astuce"
 
 	para "Regardez à"
 	line "gauche!"
 	done
 
 _Route13Text12::
-	text "ASTUCE"
+	text "Astuce"
 
 	para "Utilisez SELECT"
 	line "pour organiser"
@@ -183,7 +183,7 @@ _Route13Text12::
 	done
 
 _Route13Text13::
-	text "ROUTE 13"
+	text "Route 13"
 	line "PONT DU SILENCE"
 	cont "au Nord"
 	done

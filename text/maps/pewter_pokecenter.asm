@@ -1,7 +1,7 @@
 _PewterPokecenterText2::
 	text "Quoi!?"
 
-	para "La TEAM ROCKET"
+	para "La Team Rocket"
 	line "a investi le"
 	cont "MONT SELENITE!"
 
@@ -9,6 +9,6 @@ _PewterPokecenterText2::
 	done
 
 _PewterJigglypuffText::
-	text "RONDOUDOU: Dou!"
+	text "Rondoudou: Dou!"
 	line "Doudouuuu!"
 	done

@@ -10,7 +10,7 @@ _ViridianHouseText1::
 
 _ViridianHouseText2::
 	text "Mon pôpa aime les"
-	line "#MON aussi."
+	line "#mon aussi."
 	done
 
 _ViridianHouseText_1d5b1::
@@ -18,7 +18,7 @@ _ViridianHouseText_1d5b1::
 	done
 
 _ViridianHouseText4::
-	text "PIAFABEC"
+	text "Piafabec"
 	line "Nom: PIAFFY"
 	done
 
@@ -40,7 +40,7 @@ _ClauseBrother_SleepIntro::
 	prompt
 _ClauseBrother_SleepDesc::
 	text "With my stamp,"
-	line "only one #MON"
+	line "only one #mon"
 	cont "SLP per team is"
 	cont "allowed during"
 	cont "trainer matches."
@@ -52,7 +52,7 @@ _ClauseBrother_FreezeIntro::
 	prompt
 _ClauseBrother_FreezeDesc::
 	text "With my stamp,"
-	line "only one #MON"
+	line "only one #mon"
 	cont "FRZ per team is"
 	cont "allowed during"
 	cont "trainer matches."
@@ -82,7 +82,7 @@ _ClauseBrother_HyperbeamDesc::
 	cont "HYPER BEAM need"
 	cont "not recharge if"
 	cont "it knocks-out the"
-	cont "opposing #MON!"
+	cont "opposing #mon!"
 	done
 
 _ClauseBrother_OFF::

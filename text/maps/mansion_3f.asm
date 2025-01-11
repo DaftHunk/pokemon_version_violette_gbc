@@ -31,9 +31,9 @@ _Mansion3AfterBattleText2::
 _Mansion3Text5::
 	text "Rapport:"
 	line "6 Février."
-	cont "MEW est papa "
+	cont "Mew est papa "
 	cont "(ou maman?)"
 
 	para "Le petit fut"
-	line "baptisé MEWTWO."
+	line "baptisé Mewtwo."
 	done

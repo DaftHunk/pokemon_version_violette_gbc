@@ -1,5 +1,5 @@
 _CeruleanTrashedText_1d6ab::
-	text "Ces ROCKET, ils"
+	text "Ces Rocket, ils"
 	line "sont si méchants!"
 
 	para "Regarde ce qu'ils"
@@ -8,7 +8,7 @@ _CeruleanTrashedText_1d6ab::
 	para "Ils m'ont volé"
 	line "une CT pour"
 	cont "apprendre à leurs"
-	cont "#MON à"
+	cont "#mon à"
 	cont "creuser des"
 	cont "TUNNELS!"
 
@@ -22,13 +22,13 @@ _CeruleanTrashedText_1d6b0::
 	cont "coeur!"
 
 	para "Je vais apprendre"
-	line "à mon TAUPIQUEUR"
+	line "à mon Taupiqueur"
 	cont "à creuser des"
 	cont "TUNNELS sans CT!"
 	done
 
 _CeruleanHouseTrashedText2::
-	text "La TEAM ROCKET"
+	text "La Team Rocket"
 	line "doit maintenant"
 	cont "creuser des"
 	cont "TUNNELS dans tout"
@@ -43,7 +43,7 @@ _CeruleanHouseTrashedText3::
 	done
 ELSE
 _CeruleanHouseTrashedText3::
-	text "La TEAM ROCKET a"
+	text "La Team Rocket a"
 	line "creusé une"
 	cont "nouvelle sortie!"
 	done

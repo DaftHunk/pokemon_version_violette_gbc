@@ -9,13 +9,13 @@ _ViridianForestText1::
 
 _ViridianForestBattleText1::
 	text "Hé! Mais tu as"
-	line "des #MON!"
+	line "des #mon!"
 	cont "Yah! A l'attaque!"
 	done
 
 _ViridianForestEndBattleText1::
 	text "NON!"
-	line "CHENIPAN n'y"
+	line "Chenipan n'y"
 	cont "arrivera pas!"
 	prompt
 
@@ -27,7 +27,7 @@ _ViridianFrstAfterBattleText1::
 
 _ViridianForestBattleText2::
 	text "Haha! Un dresseur"
-	line "de #MON, un"
+	line "de #mon, un"
 	cont "vrai, ne se"
 	cont "débine jamais!!!"
 	done
@@ -35,7 +35,7 @@ _ViridianForestBattleText2::
 _ViridianForestEndBattleText2::
 	text "Oups!"
 	line "N'en n'a plus des"
-	cont "#MON, moi!"
+	cont "#mon, moi!"
 	prompt
 
 _ViridianFrstAfterBattleText2::
@@ -71,14 +71,14 @@ _ViridianForestText8::
 	line "# BALL!"
 	cont "Je ne peux plus"
 	cont "attraper de"
-	cont "#MON!"
+	cont "#mon!"
 
 	para "Il t'en faut"
 	line "toujours un max!"
 	done
 
 _ViridianForestText9::
-	text "ASTUCE"
+	text "Astuce"
 
 	para "Pour éviter les"
 	line "combats, ne "
@@ -94,7 +94,7 @@ _ViridianForestText10::
 	done
 
 _ViridianForestText11::
-	text "ASTUCE"
+	text "Astuce"
 
 	para "Pour évaluer"
 	line "votre #DEX,"
@@ -103,11 +103,11 @@ _ViridianForestText11::
 	done
 
 _ViridianForestText12::
-	text "ASTUCE"
+	text "Astuce"
 
 	para "Interdiction de"
 	line "capturer les"
-	cont "#MON d'un"
+	cont "#mon d'un"
 	cont "autre dresseur!"
 	cont "La capture se"
 	cont "fait à l'état"
@@ -115,9 +115,9 @@ _ViridianForestText12::
 	done
 
 _ViridianForestText13::
-	text "ASTUCE"
+	text "Astuce"
 
-	para "Un #MON"
+	para "Un #mon"
 	line "blessé se capture"
 	cont "plus facilement!"
 
@@ -129,5 +129,5 @@ _ViridianForestText14::
 	text "VOUS QUITTEZ LA"
 	line "FORET DE JADE."
 	cont "VOUS ALLEZ VERS"
-	cont "ARGENTA."
+	cont "Argenta."
 	done

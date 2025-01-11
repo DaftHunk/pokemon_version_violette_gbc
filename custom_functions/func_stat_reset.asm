@@ -67,6 +67,6 @@ _TXTStatReset:
 	line "0 and reset DVs"
 	cont "to QTYs of 1st 4"
 	cont "item slots on"
-	cont "this #MON?"
+	cont "this #mon?"
 	done
 	db "@"

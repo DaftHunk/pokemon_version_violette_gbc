@@ -30,7 +30,7 @@ _DaisyUseMapText::
 	done
 
 _BluesHouseText2::
-	text "Les #MON sont"
+	text "Les #mon sont"
 	line "vivants! Une fois"
 	cont "fatigués, ils"
 	cont "doivent se"

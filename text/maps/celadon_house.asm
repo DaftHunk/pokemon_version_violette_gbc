@@ -7,7 +7,7 @@ _CeladonHouseText1::
 _CeladonHouseText2::
 	text "CHEF!"
 
-	para "2000 #MON ont"
+	para "2000 #mon ont"
 	line "été envoyés comme"
 	cont "prix de casino!"
 	done
@@ -15,7 +15,7 @@ _CeladonHouseText2::
 _CeladonHouseText3::
 	text "Ne touche pas au"
 	line "bouton sur le"
-	cont "poster du CASINO!"
+	cont "poster du Casino!"
 
 	para "Hein? Mais non"
 	line "j'l'ai pas dit!"
@@ -27,7 +27,7 @@ _CeladonHouseTextChiefIntro::	;joenote - adding text for selling pokemon
 	cont "dough, big time!"
 	
 	para "But I'll run out"
-	line "of prize #MON"
+	line "of prize #mon"
 	cont "without the BOSS."
 	
 	para "Hey kid! Nice"

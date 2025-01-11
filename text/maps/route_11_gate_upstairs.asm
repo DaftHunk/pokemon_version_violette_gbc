@@ -3,7 +3,7 @@ _Route11GateUpstairsText_494a3::
 	line "invisibles sur"
 	cont "le sol."
 
-	para "Un CHERCH'OBJET "
+	para "Un Cherch'objet "
 	line "pourra les"
 	cont "détecter."
 
@@ -18,7 +18,7 @@ _BinocularsSnorlaxText::
 	cont "jumelles."
 
 	para "Un énorme"
-	line "#MON dort"
+	line "#mon dort"
 	cont "sur la route!"
 	done
 
@@ -39,7 +39,7 @@ _Route11GateUpstairsText_494d5::
 
 	para "Il n'y a qu'un"
 	line "seul chemin pour"
-	cont "aller de AZURIA"
-	cont "à LAVANVILLE:"
+	cont "aller de Azuria"
+	cont "à Lavanville:"
 	cont "la GROTTE!"
 	done

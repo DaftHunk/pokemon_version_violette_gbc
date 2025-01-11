@@ -1,12 +1,12 @@
 _SilphCo3Text_59ff9::
 	text "Je travaille pour"
-	line "la SYLPHE SARL."
+	line "la Sylphe SARL."
 	cont "Que faire d'autre?"
 	done
 
 _SilphCo3Text_59ffe::
 	text "<PLAYER>! Toi et"
-	line "tes #MON,"
+	line "tes #mon,"
 	cont "vous nous avez"
 	cont "sauvés!"
 	done
@@ -29,8 +29,8 @@ _SilphCo3AfterBattleText1::
 
 _SilphCo3BattleText2::
 	text "Je préfère"
-	line "la TEAM ROCKET à"
-	cont "la SYLPHE SARL!!!"
+	line "la Team Rocket à"
+	cont "la Sylphe SARL!!!"
 	done
 
 _SilphCo3EndBattleText2::
@@ -41,9 +41,9 @@ _SilphCo3EndBattleText2::
 _SilphCo3AfterBattleText2::
 	text "Hmmm..."
 
-	para "J'aide la TEAM"
-	line "ROCKET et ils"
+	para "J'aide la Team"
+	line "Rocket et ils"
 	cont "me laissent"
 	cont "étudier les"
-	cont "#MON!"
+	cont "#mon!"
 	done

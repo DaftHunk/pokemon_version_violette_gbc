@@ -1,6 +1,6 @@
 _SilphCoPresidentText::
 	text "PDG: Merci d'avoir"
-	line "sauvé la SYLPHE!"
+	line "sauvé la Sylphe!"
 
 	para "Je n'oublierai"
 	line "jamais ton"
@@ -36,7 +36,7 @@ _SilphCo10Text_6231c::
 
 	para "Elle pourra"
 	line "attraper n'importe"
-	cont "quel #MON!"
+	cont "quel #mon!"
 
 	para "Alors utilise-la"
 	line "avec sagesse."
@@ -83,18 +83,18 @@ _SilphCo10Text_62330::
 _SilphCo10Text_62335::
 	text "NOoOoOoOon!"
 	line "Notre invasion de"
-	cont "la SYLPHE est"
+	cont "la Sylphe est"
 	cont "fichue!"
 
-	para "Mais la TEAM"
-	line "ROCKET est"
+	para "Mais la Team"
+	line "Rocket est"
 	cont "invincible!"
 
 	para "<PLAYER>! N'oublie"
 	line "jamais que tous"
-	cont "les #MON sont"
-	cont "pour la TEAM"
-	cont "ROCKET!"
+	cont "les #mon sont"
+	cont "pour la Team"
+	cont "Rocket!"
 
 	para "Je pars, mais..."
 	line "Ma vengeance te"
@@ -130,30 +130,30 @@ _SilphCo11EndBattleText2::
 
 _SilphCo11AfterBattleText2::
 	text "Prends garde..."
-	line "Les #MON de"
+	line "Les #mon de"
 	cont "mon chef sont"
 	cont "terribles!"
 	done
 
 _SilphCo10Text_6237b::
-	text "Des #MON sur"
+	text "Des #mon sur"
 	line "le moniteur!"
 	done
 
 ;;;;;;;;;;;;;;;;;;;;;;joenote - adding text for Chief battle
 _ChiefText_challenge::
 	text "Do you challenge"
-	line "him to a #MON"
+	line "him to a #mon"
 	cont "battle?"
 	done
 
 _ChiefText_prebattle::
 	text "Oh my! Who told"
 	line "you that I train"
-	cont "#MON?"
+	cont "#mon?"
 	
 	para "It's true. I'm a"
-	line "big SAFARI ZONE"
+	line "big Safari ZONE"
 	cont "addict."
 	
 	para "Been so since I"
@@ -174,7 +174,7 @@ _ChiefTextVictorySpeech::
 	line "Good times!"
 	
 	para "Nothing like a"
-	line "#MON battle"
+	line "#mon battle"
 	cont "to unwind, eh?"
 	
 	para "I heard another"

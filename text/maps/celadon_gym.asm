@@ -9,15 +9,15 @@ _CeladonGymText_48a5e::
 	cont "et les chansons."
 	cont "C'est chou, non?"
 
-	para "Moi c'est ERIKA,"
+	para "Moi c'est Erika,"
 	line "la championne de"
-	cont "l'ARENE de"
-	cont "CELADOPOLE."
+	cont "l'Arène de"
+	cont "Céladopole."
 
 	para "L'arrangement"
 	line "floral est ma"
 	cont "spécialité. Mes"
-	cont "#MON sont du"
+	cont "#mon sont du"
 	cont "type plante."
 
 	para "Il fit grand"
@@ -44,23 +44,23 @@ _CeladonGymText_48a63::
 
 _CeladonGymText_48a68::
 	text "Tu recherches les"
-	line "#MON? Ta quête"
+	line "#mon? Ta quête"
 	cont "est noble."
 
 	para "Pour ma part, je"
 	line "collectionne les"
 	cont "plus beaux"
-	cont "#MON."
+	cont "#mon."
 	done
 
 _CeladonGymText9::
 	text "Le BADGE PRISME"
 	line "fera obéir les"
-	cont "#MON jusqu'au"
+	cont "#mon jusqu'au"
 	cont "Niveau 50."
 
 	para "Il permet aussi"
-	line "aux #MON"
+	line "aux #mon"
 	cont "d'utiliser FORCE."
 
 	para "Prends également"
@@ -83,7 +83,7 @@ _TM21ExplanationText::
 	para "La moitié des"
 	line "dégâts infligés"
 	cont "soigneront ton"
-	cont "#MON!"
+	cont "#mon!"
 	done
 
 _TM21NoRoomText::
@@ -105,7 +105,7 @@ _CeladonGymEndBattleText2::
 
 _CeladonGymAfterBattleText2::
 	text "Pfff!"
-	line "ERIKA va gagner"
+	line "Erika va gagner"
 	cont "c'est sûr!"
 	done
 
@@ -120,9 +120,9 @@ _CeladonGymEndBattleText3::
 	prompt
 
 _CeladonGymAfterBattleText3::
-	text "Un #MON des"
+	text "Un #mon des"
 	line "plantes est fort"
-	cont "face aux #MON"
+	cont "face aux #mon"
 	cont "aquatiques!"
 
 	para "Il aura aussi"
@@ -148,10 +148,10 @@ _CeladonGymAfterBattleText4::
 	done
 
 _CeladonGymBattleText5::
-	text "#MON!"
+	text "#mon!"
 
 	para "Mes jolis petits"
-	line "#MON!"
+	line "#mon!"
 
 	para "Ceux des plantes"
 	line "sont si faciles"
@@ -164,9 +164,9 @@ _CeladonGymEndBattleText5::
 	prompt
 
 _CeladonGymAfterBattleText5::
-	text "Notre ARENE"
+	text "Notre Arène"
 	line "n'utilise que des"
-	cont "#MON des"
+	cont "#mon des"
 	cont "plantes!"
 
 	para "Ils servent aussi"
@@ -175,7 +175,7 @@ _CeladonGymAfterBattleText5::
 
 _CeladonGymBattleText6::
 	text "C'est interdit"
-	line "aux #MON"
+	line "aux #mon"
 	cont "insectes ou du"
 	cont "feu, ici!"
 	done
@@ -186,7 +186,7 @@ _CeladonGymEndBattleText6::
 	prompt
 
 _CeladonGymAfterBattleText6::
-	text "ERIKA, notre"
+	text "Erika, notre"
 	line "championne, est"
 	cont "silencieuse mais"
 	cont "meurtrière!"
@@ -214,8 +214,8 @@ _CeladonGymAfterBattleText7::
 
 _CeladonGymBattleText8::
 	text "Bienvenue dans"
-	line "l'ARENE de"
-	cont "CELADOPOLE!"
+	line "l'Arène de"
+	cont "Céladopole!"
 
 	para "Les filles sont"
 	line "plus fortes que"

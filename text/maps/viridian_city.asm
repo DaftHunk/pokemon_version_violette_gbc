@@ -1,7 +1,7 @@
 _ViridianCityText1::
 	text "Des # BALL!"
 	line "Mais... T'as des"
-	cont "#MON!"
+	cont "#mon!"
 
 	para "C'est cool de"
 	line "pouvoir s'en"
@@ -10,8 +10,8 @@ _ViridianCityText1::
 	done
 
 _ViridianCityText_19122::
-	text "Cette ARENE"
-	line "#MON est"
+	text "Cette Arène"
+	line "#mon est"
 	cont "toujours fermée."
 
 	para "Mais qui en est"
@@ -20,8 +20,8 @@ _ViridianCityText_19122::
 
 _ViridianCityText_19127::
 	text "Le CHAMPION de"
-	line "l'ARENE de"
-	cont "JADIELLE est de"
+	line "l'Arène de"
+	cont "Jadielle est de"
 	cont "retour! Dingue!"
 	done
 
@@ -29,7 +29,7 @@ _ViridianCityText_1914d::
 	text "Tu veux tout"
 	line "savoir sur les 2"
 	cont "types de chenille"
-	cont "#MON?"
+	cont "#mon?"
 	done
 
 _ViridianCityText_19152::
@@ -38,7 +38,7 @@ _ViridianCityText_19152::
 
 _ViridianCityText_19157::
 	text "Contrairement à"
-	line "CHENIPAN, ASPICOT"
+	line "Chenipan, Aspicot"
 	cont "est venimeux."
 
 	para "Attention à son"
@@ -57,7 +57,7 @@ _ViridianCityText_1917a::
 	line "FORET DE JADE"
 	cont "pour faire mes"
 	cont "courses à"
-	cont "ARGENTA."
+	cont "Argenta."
 	done
 
 _ViridianCityText_19191::
@@ -73,7 +73,7 @@ _ViridianCityText_191ca::
 	cont "dehors."
 
 	para "J'ai rêvé qu'un"
-	line "SOPORIFIK"
+	line "Soporifik"
 	cont "dévorait mes"
 	cont "rêves... Heu?"
 	cont "Qu'est-ce que"
@@ -119,14 +119,14 @@ _ViridianCityText_1920f::
 	line "un #DEX."
 
 	para "Capture un"
-	line "#MON et il"
+	line "#mon et il"
 	cont "sera mis à jour"
 	cont "automatiquement."
 
 	para "Qu...QUOI?"
 	line "Tu ne sais pas"
 	cont "comment attraper"
-	cont "un #MON?"
+	cont "un #mon?"
 
 	para "J'vais t'montrer."
 	done
@@ -139,20 +139,20 @@ _ViridianCityText_19214::
 _ViridianCityText_19219::
 	text "D'abord, il faut"
 	line "affaiblir le"
-	cont "#MON désiré."
+	cont "#mon désiré."
 	done
 
 _ViridianCityText8::
-	text "JADIELLE"
+	text "Jadielle"
 	line "Verte comme"
 	cont "l'espérance"
 	done
 
 _ViridianCityText9::
-	text "ASTUCE"
+	text "Astuce"
 
 	para "Capturez des"
-	line "#MON et"
+	line "#mon et"
 	cont "agrandissez votre"
 	cont "collection!"
 
@@ -163,7 +163,7 @@ _ViridianCityText9::
 	done
 
 _ViridianCityText10::
-	text "ASTUCE"
+	text "Astuce"
 
 	para "Les attaques sont"
 	line "limitées par des"
@@ -173,18 +173,18 @@ _ViridianCityText10::
 	para "Pour disposer de"
 	line "tous vos PP,"
 	cont "faites soigner"
-	cont "vos #MON dans"
-	cont "un CENTRE"
-	cont "#MON!"
+	cont "vos #mon dans"
+	cont "un Centre"
+	cont "#mon!"
 	done
 
 _ViridianCityText13::
-	text "ARENE #MON"
-	line "de JADIELLE"
+	text "Arène #mon"
+	line "de Jadielle"
 	done
 
 _ViridianCityText14::
 	text "Les portes de"
-	line "l'ARENE sont"
+	line "l'Arène sont"
 	cont "fermées..."
 	done

@@ -54,7 +54,7 @@ _Route6EndBattleText4::
 
 _Route6AfterBattleText4::
 	text "Il me faut plus"
-	line "de #MON"
+	line "de #mon"
 	cont "pour me protéger."
 	done
 
@@ -87,13 +87,13 @@ _Route6EndBattleText6::
 	prompt
 
 _Route6AfterBattleText6::
-	text "Mes #MON sont"
+	text "Mes #mon sont"
 	line "nuls ou je suis"
 	cont "très mauvais?"
 	done
 
 _Route6Text7::
 	text "SOUTERRAIN"
-	line "CARMIN SUR MER -"
-	cont "AZURIA"
+	line "Carmin sur mer -"
+	cont "Azuria"
 	done

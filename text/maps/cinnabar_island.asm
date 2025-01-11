@@ -4,9 +4,9 @@ _CinnabarIslandText8::
 	done
 
 _CinnabarIslandText1::
-	text "AUGUSTE,"
-	line "de l'ARENE de"
-	cont "CRAMOIS'ILE, vit"
+	text "Auguste,"
+	line "de l'Arène de"
+	cont "Cramois'Ile, vit"
 	cont "ici depuis des"
 	cont "lustres. Il est"
 	cont "aussi très"
@@ -27,19 +27,19 @@ _CinnabarIslandText2::
 	done
 
 _CinnabarIslandText3::
-	text "CRAMOIS'ILE"
+	text "Cramois'Ile"
 	line "Vive comme les"
 	cont "flammes"
 	done
 
 _CinnabarIslandText6::
-	text "LABO #MON"
+	text "Labo #mon"
 	done
 
 _CinnabarIslandText7::
-	text "CRAMOIS'ILE"
-	line "ARENE #MON"
-	cont "CHAMPION: AUGUSTE"
+	text "Cramois'Ile"
+	line "Arène #mon"
+	cont "Champion: Auguste"
 
 	para "Le cerveau!"
 	line "Chaud! Chaud!"

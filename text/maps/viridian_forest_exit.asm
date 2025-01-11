@@ -1,6 +1,6 @@
 _ViridianForestExitText1::
 	text "De nombreux"
-	line "#MON vivent"
+	line "#mon vivent"
 	cont "uniquement dans"
 	cont "les forêts ou les"
 	cont "cavernes."
@@ -17,6 +17,6 @@ _ViridianForestExitText2::
 
 	para "Une technique"
 	line "secrète de"
-	cont "#MON peut les"
+	cont "#mon peut les"
 	cont "couper."
 	done

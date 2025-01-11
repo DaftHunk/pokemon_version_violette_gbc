@@ -7,7 +7,7 @@ _Lab4Text_75dc6::
 
 	para "J'étudie les"
 	line "fossiles anciens"
-	cont "de #MON!"
+	cont "de #mon!"
 
 	para "Toi! Là!"
 	line "T'aurais pas un"
@@ -51,13 +51,13 @@ _Lab4Text_610ae::
 	line "de @"
 	text_ram wStringBuffer
 	text ","
-	cont "un #MON qui a"
+	cont "un #mon qui a"
 	cont "disparu!"
 
 	para "Ma machine à"
 	line "réanimer va faire"
 	cont "revivre cet"
-	cont "ancien #MON!"
+	cont "ancien #mon!"
 	done
 
 _Lab4Text_610b3::
@@ -95,7 +95,7 @@ _Lab4Text_Clone1::
 	text "Gene sequence:"
 	line "@"
 ;	TX_NUM hDexRatingNumMonsOwned, 1, 3
-;	text " #MON owned"
+;	text " #mon owned"
 	TX_NUM wBuffer, 1, 2
 	text " @"
 	TX_NUM wBuffer+1, 1, 2
@@ -120,7 +120,7 @@ _Lab4Text_Clone3::
 
 _Lab4Text_Clone4::
 	text "Your brand new"
-	line "#MON is all"
+	line "#mon is all"
 	cont "ready to go!"
 	prompt
 
@@ -141,13 +141,13 @@ _Lab4Text_NoMoney::
 _Lab4Text_Party::
 	text "Come back when"
 	line "your team is"
-	cont "2 to 5 #MON."
+	cont "2 to 5 #mon."
 	done	
 
 _Lab4Text_Legend::
 	text "Our computers"
 	line "can't analyze"
-	cont "the #MON in"
+	cont "the #mon in"
 	cont "your top spot."
 	
 	para "It's beyond our"
@@ -165,9 +165,9 @@ _Lab4Text_Book1B::
 	text "This creates a"
 	line "gene-spliced"
 	cont "clone of your 1st"
-	cont "spot #MON with"
+	cont "spot #mon with"
 	cont "DNA from your 2nd"
-	cont "spot #MON."
+	cont "spot #mon."
 
 	para "A Punnet Square"
 	line "analysis is done"
@@ -179,7 +179,7 @@ _Lab4Text_Book1B::
 	done
 
 _Lab4Text_Book2A::
-	text "#MON GENES"
+	text "#mon GENES"
 	prompt
 _Lab4Text_Book2B::
 	text "All Pokemon have"
@@ -212,7 +212,7 @@ _Lab4Text_Book2B::
 	done
 
 _Lab4Text_Book3A::
-	text "MIXING #MON DNA"
+	text "MIXING #mon DNA"
 	prompt
 _Lab4Text_Book3B::
 

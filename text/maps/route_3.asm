@@ -4,7 +4,7 @@ _Route3Text1::
 	cont "Moouarf..."
 
 	para "Ce tunnel"
-	line "d'AZURIA est"
+	line "d'Azuria est"
 	cont "épuisant!"
 	done
 
@@ -22,7 +22,7 @@ _Route3EndBattleText1::
 
 _Route3AfterBattleText1::
 	text "Il y a beaucoup"
-	line "de #MON"
+	line "de #mon"
 	cont "différents dans"
 	cont "la forêt!"
 	done
@@ -41,11 +41,11 @@ _Route3EndBattleText2::
 
 _Route3AfterBattleText2::
 	text "Pour ranger tes"
-	line "#MON,"
+	line "#mon,"
 	cont "utilise un PC."
 	cont "Chaque boîte"
 	cont "contient"
-	cont "20 #MON!"
+	cont "20 #mon!"
 	done
 
 _Route3BattleText3::
@@ -71,7 +71,7 @@ _Route3BattleText4::
 
 _Route3EndBattleText4::
 	text "Avec"
-	line "d'autres #MON"
+	line "d'autres #mon"
 	cont "j'aurais gagné!"
 	prompt
 
@@ -119,7 +119,7 @@ _Route3AfterBattleText6::
 
 _Route3BattleText7::
 	text "Fais gaffe à mes"
-	line "nouveaux #MON!"
+	line "nouveaux #mon!"
 	done
 
 _Route3EndBattleText7::
@@ -129,7 +129,7 @@ _Route3EndBattleText7::
 	prompt
 
 _Route3AfterBattleText7::
-	text "Les #MON"
+	text "Les #mon"
 	line "domptés sont plus"
 	cont "forts que"
 	cont "les sauvages!"
@@ -145,12 +145,12 @@ _Route3EndBattleText8::
 	prompt
 
 _Route3AfterBattleText8::
-	text "La ROUTE 4"
+	text "La Route 4"
 	line "est au pied du"
 	cont "MONT SELENITE."
 	done
 
 _Route3Text10::
-	text "ROUTE 3 vers le"
+	text "Route 3 vers le"
 	line "MONT SELENITE"
 	done

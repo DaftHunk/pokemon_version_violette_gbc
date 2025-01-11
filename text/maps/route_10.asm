@@ -1,6 +1,6 @@
 _Route10BattleText1::
 	text "T'es un dingue"
-	line "des #MON?"
+	line "des #mon?"
 	cont "Tu veux voir ma"
 	cont "collec'?"
 	done
@@ -12,7 +12,7 @@ _Route10EndBattleText1::
 
 _Route10AfterBattleText1::
 	text "A ma maison, j'ai"
-	line "plein de #MON"
+	line "plein de #mon"
 	cont "super rares!"
 	done
 
@@ -52,12 +52,12 @@ ENDC
 _Route10BattleText3::
 	text "Hé, gamin! Tu"
 	line "veux voir mes"
-	cont "#MON?"
+	cont "#mon?"
 	done
 
 _Route10EndBattleText3::
 	text "Yah!"
-	line "Mes #MON!"
+	line "Mes #mon!"
 	prompt
 
 _Route10AfterBattleText3::
@@ -67,7 +67,7 @@ _Route10AfterBattleText3::
 
 _Route10BattleText4::
 	text "Je reviens de"
-	line "l'ARENE #MON!"
+	line "l'Arène #mon!"
 	cont "Mais je perds"
 	cont "tout le temps!"
 	done
@@ -80,7 +80,7 @@ _Route10EndBattleText4::
 
 _Route10AfterBattleText4::
 	text "J'ai rencontré"
-	line "des #MANIACs"
+	line "des #Maniacs"
 	cont "dans le coin."
 	done
 
@@ -112,7 +112,7 @@ _Route10EndBattleText6::
 	prompt
 
 _Route10AfterBattleText6::
-	text "Ces #MON sont"
+	text "Ces #mon sont"
 	line "trop trapus! Il"
 	cont "en faudrait des"
 	cont "roses en forme de"

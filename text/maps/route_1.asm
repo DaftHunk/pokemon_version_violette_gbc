@@ -1,12 +1,12 @@
 _Route1ViridianMartSampleText::
 	text "Salut! Je"
 	line "travaille à la"
-	cont "BOUTIQUE #MON."
+	cont "BOUTIQUE #mon."
 
 	para "Nous avons plein"
 	line "d'articles! Viens"
 	cont "nous voir à"
-	cont "JADIELLE."
+	cont "Jadielle."
 
 	para "Prends donc"
 	line "ceci comme"
@@ -24,7 +24,7 @@ _Route1Text_1caee::
 	text "Nous avons aussi"
 	line "des # BALL"
 	cont "pour capturer les"
-	cont "#MON!"
+	cont "#mon!"
 	done
 
 _Route1Text_1caf3::
@@ -43,12 +43,12 @@ _Route1Text2::
 
 	para "Tu peux revenir"
 	line "plus vite à"
-	cont "BOURG PALETTE de"
+	cont "Bourg Palette de"
 	cont "cette façon!"
 	done
 
 _Route1Text3::
-	text "ROUTE 1"
-	line "BOURG PALETTE -"
-	cont "JADIELLE"
+	text "Route 1"
+	line "Bourg Palette -"
+	cont "Jadielle"
 	done

@@ -8,7 +8,7 @@ _CeladonGameCornerText1::
 
 _CeladonGameCornerText_48d22::
 	text "Bienvenue au"
-	line "CASINO ROCKET!"
+	line "Casino Rocket!"
 
 	para "Désirez-vous des"
 	line "jetons?"
@@ -48,8 +48,8 @@ _CeladonGameCornerText3::
 
 	para "On raconte que"
 	line "ce tripot est"
-	cont "tenu par la TEAM"
-	cont "ROCKET."
+	cont "tenu par la Team"
+	cont "Rocket."
 	done
 
 _CeladonGameCornerText4::
@@ -91,12 +91,12 @@ _CeladonGameCornerText_48dca::
 	line "Une vraie graine"
 	cont "de champion!"
 
-	para "ERIKA est la"
+	para "Erika est la"
 	line "CHAMPIONNE de"
-	cont "l'ARENE de"
-	cont "CELADOPOLE! Elle"
+	cont "l'Arène de"
+	cont "Céladopole! Elle"
 	cont "utilise des"
-	cont "#MON des"
+	cont "#mon des"
 	cont "plantes!"
 
 	para "Elle te semblera"
@@ -107,7 +107,7 @@ _CeladonGameCornerText_48dca::
 
 _CeladonGameCornerText_48dcf::
 	text "De très rares"
-	line "#MON sont à"
+	line "#mon sont à"
 	cont "échanger contre"
 	cont "des jetons."
 
@@ -142,7 +142,7 @@ _CeladonGameCornerText_48e36::
 	line "Y m'faut des"
 	cont "jetons pour"
 	cont "acheter un joli"
-	cont "#MON!"
+	cont "#mon!"
 	done
 
 _CeladonGameCornerText_48e88::

@@ -1,7 +1,7 @@
 _SafariZoneRestHouse2Text1::
-	text "Une PIERRE peut"
+	text "Une Pierre peut"
 	line "faire fuir les"
-	cont "#MON mais ils"
+	cont "#mon mais ils"
 	cont "seront plus fa-"
 	cont "ciles à capturer."
 	done

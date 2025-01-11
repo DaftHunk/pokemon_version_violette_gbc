@@ -15,7 +15,7 @@ _SaffronCityText3::
 
 _SaffronCityText4::
 	text "SAFRANIA est à"
-	line "la TEAM ROCKET!"
+	line "la Team Rocket!"
 	done
 
 _SaffronCityText5::
@@ -31,9 +31,9 @@ _SaffronCityText6::
 	done
 
 _SaffronCityText7::
-	text "Avec la SYLPHE"
+	text "Avec la Sylphe"
 	line "dans not' poche,"
-	cont "les #MON du"
+	cont "les #mon du"
 	cont "monde entier"
 	cont "seront notre"
 	cont "bizness!"
@@ -41,12 +41,12 @@ _SaffronCityText7::
 
 _SaffronCityText8::
 	text "T'as tout cassé"
-	line "la ROCKET tout"
+	line "la Rocket tout"
 	cont "seul? Dingue!"
 	done
 
 _SaffronCityText9::
-	text "Ouais! La TEAM"
+	text "Ouais! La Team"
 	line "est partie!"
 	cont "On peut enfin"
 	cont "respirer!"
@@ -61,10 +61,10 @@ _SaffronCityText10::
 _SaffronCityText11::
 	text "Je suis venu ici"
 	line "en volant sur mon"
-	cont "ROUCARNAGE après"
+	cont "Roucarnage après"
 	cont "avoir lu les"
 	cont "nouvelles de la"
-	cont "SYLPHE."
+	cont "Sylphe."
 
 	para "Tout est déjà"
 	line "fini? J'ai tout"
@@ -72,14 +72,14 @@ _SaffronCityText11::
 	done
 
 _SaffronCityText12::
-	text "ROUCARNAGE: Rou!@"
+	text "Roucarnage: Rou!@"
 	text_end
 
 _SaffronCityText13::
 	text "J'ai vu le CHEF"
-	line "de la TEAM ROCKET"
+	line "de la Team Rocket"
 	cont "s'enfuir de la"
-	cont "SYLPHE."
+	cont "Sylphe."
 	done
 
 _SaffronCityText14::
@@ -112,15 +112,15 @@ _SaffronCityText17::
 
 _SaffronCityText18::
 	text "SAFRANIA"
-	line "ARENE #MON"
-	cont "CHAMPION: MORGANE"
+	line "Arène #mon"
+	cont "Champion: Morgane"
 
 	para "Maîtresse des"
 	line "forces psychiques"
 	done
 
 _SaffronCityText20::
-	text "ASTUCE"
+	text "Astuce"
 
 	para "TOTAL SOIN fait"
 	line "disparaître tous"
@@ -135,7 +135,7 @@ _SaffronCityText20::
 	done
 
 _SaffronCityText21::
-	text "ASTUCE"
+	text "Astuce"
 
 	para "La SUPER BALL"
 	line "augmente les"
@@ -143,12 +143,12 @@ _SaffronCityText21::
 	cont "capture."
 
 	para "Faites un essai"
-	line "sur des #MON"
+	line "sur des #mon"
 	cont "très vivaces."
 	done
 
 _SaffronCityText22::
-	text "SYLPHE SARL"
+	text "Sylphe SARL"
 	line "SIEGE SOCIAL"
 	done
 
@@ -159,7 +159,7 @@ _SaffronCityText24::
 
 _SaffronCityText25::
 	text "Dernier produit"
-	line "de la SYLPHE!"
+	line "de la Sylphe!"
 
 	para "La date de sortie"
 	line "est encore à"

@@ -1,12 +1,12 @@
 _BillsHouseText_1e865::
 	text "Yhah! Je suis un"
-	line "#MON..."
+	line "#mon..."
 	cont "..."
 	cont "heu...NON!"
 
-	para "Appelle-moi LEO!"
+	para "Appelle-moi Léo!"
 	line "Je suis un vrai"
-	cont "#MANIAC!"
+	cont "#Maniac!"
 	cont "Tu ne me crois"
 	cont "pas?"
 
@@ -14,7 +14,7 @@ _BillsHouseText_1e865::
 	line "J'ai raté une"
 	cont "expérience et me"
 	cont "voilà changé en"
-	cont "#MON!"
+	cont "#mon!"
 
 	para "Tu me crois"
 	line "maintenant?"
@@ -40,14 +40,14 @@ _BillsHouseText_1e86f::
 	prompt
 
 _BillThankYouText::
-	text "LEO: Yahoo!"
+	text "Léo: Yahoo!"
 	line "Merci, mec!"
 	cont "Je t'en dois une!"
 
 	para "Bon, tu es venu"
 	line "pour voir ma"
 	cont "collection de"
-	cont "#MON?"
+	cont "#mon?"
 	cont "Non? Tu rigoles!"
 
 	para "Bon, ben,"
@@ -82,9 +82,9 @@ _BillsHouseText_1e8cb::
 	done
 
 _BillsHouseText_1e8da::
-	text "LEO: Hé, regarde"
+	text "Léo: Hé, regarde"
 	line "un peu ma collec'."
-	cont "J'ai des #MON"
+	cont "J'ai des #mon"
 	cont "très rares!"
 	done
 
@@ -92,9 +92,9 @@ _BillsHouseText_1e8da::
 _BillGardenText::
 	text "BILL: Hey, bud!"
 	line "That really the"
-	cont "fabled MEW? Wow!!"
+	cont "fabled Mew? Wow!!"
 	cont "It's truly a new"
-	cont "#MON species."
+	cont "#mon species."
 	
 	para "As thanks for you"
 	line "showing it to me,"

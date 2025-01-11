@@ -23,12 +23,12 @@ _Route21BattleText2::
 _Route21EndBattleText2::
 	text "Zut!"
 	line "Encore un"
-	cont "MAGICARPE!"
+	cont "Magicarpe!"
 	prompt
 
 _Route21AfterBattleText2::
 	text "Je ne pêche que"
-	line "des MAGICARPE!"
+	line "des Magicarpe!"
 	done
 
 _Route21BattleText3::
@@ -69,7 +69,7 @@ _Route21AfterBattleText4::
 
 _Route21BattleText5::
 	text "J'ai attrapé tous"
-	line "mes #MON"
+	line "mes #mon"
 	cont "dans l'eau!"
 	done
 
@@ -81,7 +81,7 @@ _Route21EndBattleText5::
 _Route21AfterBattleText5::
 	text "Mais où as-tu"
 	line "attrapé autant"
-	cont "de #MON?"
+	cont "de #mon?"
 	done
 
 _Route21BattleText6::

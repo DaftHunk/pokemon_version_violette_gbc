@@ -3,7 +3,7 @@ _MoltresBattleText::
 	text_end
 
 _VictoryRoad2BattleText1::
-	text "La ROUTE VICTOIRE"
+	text "La Route Victoire"
 	line "est l'épreuve"
 	cont "finale de tout"
 	cont "dresseur!"
@@ -49,7 +49,7 @@ _VictoryRoad2EndBattleText3::
 _VictoryRoad2AfterBattleText3::
 	text "Tu as le droit de"
 	line "parcourir la"
-	cont "ROUTE VICTOIRE!"
+	cont "Route Victoire!"
 	done
 
 _VictoryRoad2BattleText4::
@@ -57,7 +57,7 @@ _VictoryRoad2BattleText4::
 	line "remporter ces"
 	cont "épreuves,"
 	cont "tu parviendras"
-	cont "jusqu'au CONSEIL"
+	cont "jusqu'au Conseil"
 	cont "des 4!"
 	done
 
@@ -69,15 +69,15 @@ _VictoryRoad2EndBattleText4::
 _VictoryRoad2AfterBattleText4::
 	text "En ce qui"
 	line "concerne les"
-	cont "#MON, j'suis"
+	cont "#mon, j'suis"
 	cont "le plus fort!"
 	cont "... ... ..."
 	cont "Du mooooonde!"
 	done
 
 _VictoryRoad2BattleText5::
-	text "La ROUTE de la"
-	line "VICTOIRE est une"
+	text "La Route de la"
+	line "Victoire est une"
 	cont "étape difficile?"
 	done
 

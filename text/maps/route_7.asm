@@ -1,5 +1,5 @@
 _Route7Text1::
 	text "SOUTERRAIN"
-	line "CELADOPOLE -"
-	cont "LAVANVILLE"
+	line "Céladopole -"
+	cont "Lavanville"
 	done

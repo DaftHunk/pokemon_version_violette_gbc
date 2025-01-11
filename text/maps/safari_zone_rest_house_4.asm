@@ -10,18 +10,18 @@ _SafariZoneRestHouse4Text1::
 	done
 
 _SafariZoneRestHouse4Text2::
-	text "Un recoin du PARC"
-	line "SAFARI renferme"
+	text "Un recoin du Parc"
+	line "Safari renferme"
 	cont "un prix!"
 	done
 
 _SafariZoneRestHouse4Text3::
-	text "Mon EVOLI s'est"
+	text "Mon Evoli s'est"
 	line "transformé en un"
-	cont "PYROLI!"
+	cont "Pyroli!"
 
 	para "Mais celui d'un"
 	line "ami s'est changé"
-	cont "en AQUALI!"
+	cont "en Aquali!"
 	cont "Bah pourquoi?"
 	done

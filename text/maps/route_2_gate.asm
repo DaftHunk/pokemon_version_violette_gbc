@@ -10,7 +10,7 @@ _Route2GateText_5d616::
 	done
 
 _Route2GateText2::
-	text "Si un #MON a"
+	text "Si un #mon a"
 	line "appris le FLASH,"
 	cont "tu pourras tra-"
 	cont "verser la GROTTE."

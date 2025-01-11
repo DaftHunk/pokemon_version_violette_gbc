@@ -15,37 +15,37 @@ _OaksLabText40::
 
 _OaksLabText41::
 	text "<RIVAL>: Mon"
-	line "#MON est"
+	line "#mon est"
 	cont "plus fort."
 	done
 
 _OaksLabText39::
 	text "Ces # BALL"
 	line "contiennent des"
-	cont "#MON!"
+	cont "#mon!"
 	done
 
 _OaksLabCharmanderText::
 	text "Veux-tu le"
-	line "#MON de feu,"
-	cont "SALAMECHE?"
+	line "#mon de feu,"
+	cont "Salamèche?"
 	done
 
 _OaksLabSquirtleText::
 	text "Veux-tu le"
-	line "#MON de l'eau,"
-	cont "CARAPUCE?"
+	line "#mon de l'eau,"
+	cont "Carapuce?"
 	done
 
 _OaksLabBulbasaurText::
 	text "Veux-tu le"
-	line "#MON des"
+	line "#mon des"
 	cont "plantes,"
-	cont "BULBIZARRE?"
+	cont "Bulbizarre?"
 	done
 
 _OaksLabMonEnergeticText::
-	text "Ce #MON est"
+	text "Ce #mon est"
 	line "très énergique!"
 	prompt
 
@@ -58,35 +58,35 @@ _OaksLabReceivedMonText::
 
 _OaksLabLastMonText::
 	text "C'est le dernier"
-	line "#MON du"
-	cont "PROF. CHEN!"
+	line "#mon du"
+	cont "Prof. Chen!"
 	done
 
 _OaksLabText_1d2f0::
-	text "CHEN: <PLAYER>,"
-	line "quel #MON "
+	text "Chen: <PLAYER>,"
+	line "quel #mon "
 	cont "choisis-tu?"
 	done
 
 _OaksLabText_1d2f5::
-	text "CHEN: Ton #MON"
+	text "Chen: Ton #mon"
 	line "te protègera des"
-	cont "#MON sauvages!"
+	cont "#mon sauvages!"
 	done
 
 _OaksLabText_1d2fa::
-	text "CHEN: <PLAYER>,"
+	text "Chen: <PLAYER>,"
 	line "entraîne ton"
-	cont "#MON au combat"
+	cont "#mon au combat"
 	cont "pour qu'il"
 	cont "devienne fort!"
 	done
 
 _OaksLabDeliverParcelText1::
-	text "CHEN: <PLAYER>!"
+	text "Chen: <PLAYER>!"
 
 	para "Comment va ton"
-	line "#MON?"
+	line "#mon?"
 
 	para "Je crois qu'il"
 	line "t'aime bien!"
@@ -94,14 +94,14 @@ _OaksLabDeliverParcelText1::
 	para "Tu m'as l'air"
 	line "doué pour"
 	cont "entraîner les"
-	cont "#MON!"
+	cont "#mon!"
 
 	para "Comment? Tu as"
 	line "quelque chose à"
 	cont "me donner?"
 
 	para "<PLAYER> donne"
-	line "le COLIS DE CHEN.@"
+	line "le Colis de Chen.@"
 	text_end
 
 _OaksLabDeliverParcelText2::
@@ -114,15 +114,15 @@ _OaksLabDeliverParcelText2::
 	done
 
 _OaksLabAroundWorldText::
-	text "Les #MON du"
+	text "Les #mon du"
 	line "monde entier sont"
 	cont "à toi, <PLAYER>!"
 	done
 
 _OaksLabGivePokeballsText1::
-	text "CHEN: Il ne te"
+	text "Chen: Il ne te"
 	line "suffit pas de"
-	cont "voir un #MON"
+	cont "voir un #mon"
 	cont "pour tout savoir"
 	cont "sur lui, mon"
 	cont "p'tit bonhomme!"
@@ -138,7 +138,7 @@ _OaksLabGivePokeballsText1::
 
 _OaksLabGivePokeballsText2::
 	text_start
-	para "Quand un #MON"
+	para "Quand un #mon"
 	line "sauvage apparaît,"
 	cont "il faut jouer"
 	cont "serré."
@@ -151,16 +151,16 @@ _OaksLabGivePokeballsText2::
 	line "marchera pas à"
 	cont "tous les coups!"
 
-	para "Un #MON en"
+	para "Un #mon en"
 	line "pleine forme peut"
 	cont "s'échapper!"
 	cont "C'est ça, la"
 	cont "grande aventure"
-	cont "des #MON!"
+	cont "des #mon!"
 	done
 
 _OaksLabPleaseVisitText::
-	text "CHEN: Reviens me"
+	text "Chen: Reviens me"
 	line "voir de temps en"
 	cont "temps."
 
@@ -170,7 +170,7 @@ _OaksLabPleaseVisitText::
 	done
 
 _OaksLabText_1d31d::
-	text "CHEN: Je suis"
+	text "Chen: Je suis"
 	line "content de te"
 	cont "revoir. Où en"
 	cont "es-tu avec ton"
@@ -190,15 +190,15 @@ _OaksLabText8::
 	done
 
 _OaksLabText_1d340::
-	text "Le PROF. CHEN est"
+	text "Le Prof. Chen est"
 	line "la référence en"
 	cont "matière de"
-	cont "#MON!"
+	cont "#mon!"
 
 	para "Il est très"
 	line "respecté parmi"
 	cont "les dresseurs de"
-	cont "#MON!"
+	cont "#mon!"
 	done
 
 _OaksLabRivalWaitingText::
@@ -208,7 +208,7 @@ _OaksLabRivalWaitingText::
 	done
 
 _OaksLabChooseMonText::
-	text "CHEN: <RIVAL>?"
+	text "Chen: <RIVAL>?"
 	line "Heu..."
 
 	para "Ah, c'est vrai!"
@@ -217,7 +217,7 @@ _OaksLabChooseMonText::
 
 	para "Tiens, <PLAYER>!"
 
-	para "Voici 3 #MON!"
+	para "Voici 3 #mon!"
 
 	para "Mais..."
 
@@ -227,7 +227,7 @@ _OaksLabChooseMonText::
 	para "Plus jeune,"
 	line "j'étais un sacré"
 	cont "dresseur de"
-	cont "#MON! Et oui!"
+	cont "#mon! Et oui!"
 
 	para "Mais avec l'âge,"
 	line "il ne m'en reste"
@@ -242,13 +242,13 @@ _OaksLabRivalInterjectionText::
 	done
 
 _OaksLabBePatientText::
-	text "CHEN: Patience,"
+	text "Chen: Patience,"
 	line "<RIVAL>! Tu en"
 	cont "auras un aussi!"
 	done
 
 _OaksLabLeavingText::
-	text "CHEN: Hé! Ne pars"
+	text "Chen: Hé! Ne pars"
 	line "pas tout d'suite!"
 	done
 
@@ -268,7 +268,7 @@ _OaksLabRivalChallengeText::
 	text "<RIVAL>: Minute,"
 	line "<PLAYER>!"
 	cont "Voyons lequel de"
-	cont "nos #MON est"
+	cont "nos #mon est"
 	cont "le plus fort!"
 
 	para "Allez viens te"
@@ -279,7 +279,7 @@ _OaksLabText_1d3be::
 	text "QUOI???"
 	line "Incroyable!"
 	cont "J'ai pas pris le"
-	cont "bon #MON!"
+	cont "bon #mon!"
 	prompt
 
 _OaksLabText_1d3c3::
@@ -290,7 +290,7 @@ _OaksLabText_1d3c3::
 _OaksLabRivalToughenUpText::
 	text "<RIVAL>: OK!"
 	line "Je vais entraîner"
-	cont "mon #MON!"
+	cont "mon #mon!"
 
 	para "<PLAYER>! Pépé!"
 	line "A plus tard!"
@@ -306,7 +306,7 @@ _OaksLabText22::
 	done
 
 _OaksLabText23::
-	text "CHEN: Bon! J'ai"
+	text "Chen: Bon! J'ai"
 	line "une faveur à vous"
 	cont "demander."
 	done
@@ -319,7 +319,7 @@ _OaksLabText24::
 
 	para "Il enregistre les"
 	line "informations sur"
-	cont "les #MON"
+	cont "les #mon"
 	cont "rencontrés ou"
 	cont "capturés!"
 
@@ -328,7 +328,7 @@ _OaksLabText24::
 	done
 
 _OaksLabText25::
-	text "CHEN: <PLAYER> et"
+	text "Chen: <PLAYER> et"
 	line "<RIVAL>! Prenez"
 	cont "ces #DEX!"
 
@@ -339,7 +339,7 @@ _OaksLabText25::
 _OaksLabText26::
 	text "Faire un guide"
 	line "complet sur les"
-	cont "#MON du monde"
+	cont "#mon du monde"
 	cont "entier..."
 
 	para "C'est mon rêve!"
@@ -388,7 +388,7 @@ _OaksLabText27::
 
 _OaksLabText_1d405::
 	text "J'assiste le"
-	line "PROF. CHEN."
+	line "Prof. Chen."
 	cont "Je suis donc son"
 	cont "...ta daaa!..."
 	cont "ASSISTANT!"
@@ -398,13 +398,13 @@ _OaksLabText_1d405::
 
 	para "@"
 	TX_NUM hDexRatingNumMonsSeen, 1, 3
-	text " #MON vus"
+	text " #mon vus"
 	line "@"
 	TX_NUM hDexRatingNumMonsOwned, 1, 3
-	text " #MON pris"
+	text " #mon pris"
 
 	para "Observation du"
-	line "PROF. CHEN:"
+	line "Prof. Chen:"
 	prompt
 
 _OaksLabText_44201::
@@ -426,7 +426,7 @@ _OaksLabText_44206::
 
 _OaksLabText_4420b::
 	text "Il te faut encore"
-	line "des #MON!"
+	line "des #mon!"
 	cont "Va en capturer"
 	cont "d'autres!"
 	done
@@ -434,7 +434,7 @@ _OaksLabText_4420b::
 _OaksLabText_44210::
 	text "Très bien! Mon"
 	line "ASSISTANT a un"
-	cont "CHERCH'OBJET pour"
+	cont "Cherch'objet pour"
 	cont "toi!"
 	done
 
@@ -461,7 +461,7 @@ _OaksLabText_4421f::
 _OaksLabText_44224::
 	text "Excellent!"
 	line "Va pêcher des"
-	cont "#MON marins!"
+	cont "#mon marins!"
 	done
 
 _OaksLabText_44229::
@@ -485,7 +485,7 @@ _OaksLabText_44233::
 _OaksLabText_44238::
 	text "Tu as même fait"
 	line "évoluer tes"
-	cont "#MON! Génial!"
+	cont "#mon! Génial!"
 	done
 
 _OaksLabText_4423d::
@@ -516,13 +516,13 @@ _OaksLabText_4424c::
 _OaksLabText_challenge::
 	text "Do you challenge"
 	line "PROF.OAK to a"
-	cont "#MON battle?"
+	cont "#mon battle?"
 	done
 
 _OaksLabText_prebattle::
 	text "It's been a long"
 	line "time since I've"
-	cont "trained #MON."
+	cont "trained #mon."
 	
 	para "But I suppose I"
 	line "can battle again"
@@ -539,7 +539,7 @@ _OakVictorySpeech::
 
 	para "You know MR.FUJI?"
 	line "He used to study"
-	cont "powerful #MON."
+	cont "powerful #mon."
 
 	para "You should visit"
 	line "him. He retired"
@@ -564,7 +564,7 @@ _OaksLabText_scalingOFF::
 _OaksLabText_randwildON::
 	text "Under the correct"
 	line "conditions, many"
-	cont "#MON appear in"
+	cont "#mon appear in"
 	cont "totally different"
 	cont "locations!"
 	
@@ -575,7 +575,7 @@ _OaksLabText_randwildON::
 	
 _OaksLabText_randwildOFF::
 	text "Prefer the normal"
-	line "#MON areas?"
+	line "#mon areas?"
 	cont "Want me to change"
 	cont "it back?"
 	done
@@ -587,7 +587,7 @@ _OaksLabText_randwildRegen::
 	done
 
 _OaksLabText_randwildTrue::
-	text "#MON shuffling"
+	text "#mon shuffling"
 	line "is done within"
 	cont "predefined tiers."
 
@@ -597,11 +597,11 @@ _OaksLabText_randwildTrue::
 	done
 	
 _OaksLabText_symbolsON::
-	text "I study #MON as"
+	text "I study #mon as"
 	line "PROF.OAK's AIDE."
 	
 	para "Did you know"
-	line "many #MON can"
+	line "many #mon can"
 	cont "be either male"
 	cont "or female?"
 	

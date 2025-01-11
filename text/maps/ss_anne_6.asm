@@ -29,7 +29,7 @@ _SSAnne6Text4::
 
 _SSAnne6Text5::
 	text "Tu connais"
-	line "RONFLEX?"
+	line "Ronflex?"
 
 	para "Il passe ses"
 	line "journées à manger"
@@ -110,9 +110,9 @@ _SSAnne6Text_GymGuy2::
 	
 	para "But everyone has"
 	line "to use exactly 3"
-	cont "#MON."
+	cont "#mon."
 	
-	para "Your #MON get"
+	para "Your #mon get"
 	line "healed between"
 	cont "each round."
 	
@@ -165,7 +165,7 @@ _SSAnne6Text_GymGuy_win::
 	line "MASTER BALL!@@"
 	
 _SSAnne6Text_GymGuy_pikachu::
-	text "Your PIKACHU is"
+	text "Your Pikachu is"
 	line "really special!"
 	
 	para "In recongnition,"

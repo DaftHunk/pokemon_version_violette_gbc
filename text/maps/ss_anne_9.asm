@@ -2,7 +2,7 @@ _SSAnne9Text_61bf2::
 	text "Dans tous mes"
 	line "voyages, je n'ai"
 	cont "jamais vu un"
-	cont "#MON dormir"
+	cont "#mon dormir"
 	cont "autant!"
 
 	para "Il était un"
@@ -12,12 +12,12 @@ _SSAnne9Text_61bf2::
 _SSAnne9Text_61c01::
 	text "Oui! J'ai vu des"
 	line "gens transporter"
-	cont "des #MON par-"
+	cont "des #mon par-"
 	cont "delà les eaux!"
 	done
 
 _SSAnne9Text_61c10::
-	text "Les #MON"
+	text "Les #mon"
 	line "peuvent couper des"
 	cont "petits buissons"
 	cont "avec la technique"
@@ -26,22 +26,22 @@ _SSAnne9Text_61c10::
 
 _SSAnne9Text_61c1f::
 	text "As-tu déjà vu"
-	line "le PARC SAFARI"
-	cont "à PARMANIE?"
+	line "le Parc Safari"
+	cont "à Parmanie?"
 
 	para "On y trouve plein"
-	line "de #MON rares!"
+	line "de #mon rares!"
 	done
 
 _SSAnne9Text_61c2e::
 	text "Mon Pôpa et moi,"
 	line "on pense que le"
-	cont "PARC SAFARI"
+	cont "Parc Safari"
 	cont "il est génial!"
 	done
 
 _SSAnne9Text_61c3d::
-	text "Le CAPITAINE"
+	text "Le Capitaine"
 	line "avait l'air tout"
 	cont "pâlot!"
 	done
@@ -90,7 +90,7 @@ _SSAnne9AfterBattleText2::
 
 _SSAnne9BattleText3::
 	text "Que veux-tu?"
-	line "Un #MON"
+	line "Un #mon"
 	cont "costaud ou rare?"
 	done
 
@@ -101,7 +101,7 @@ _SSAnne9EndBattleText3::
 
 _SSAnne9AfterBattleText3::
 	text "Je préfère les"
-	line "#MON rares"
+	line "#mon rares"
 	cont "et costauds!"
 	done
 
@@ -116,7 +116,7 @@ _SSAnne9EndBattleText4::
 	prompt
 
 _SSAnne9AfterBattleText4::
-	text "Woah! Tes #MON"
+	text "Woah! Tes #mon"
 	line "sont super forts!"
 	cont "Je les adore!"
 	done

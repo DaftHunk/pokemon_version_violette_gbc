@@ -1,11 +1,11 @@
 PikachuFanText::
-	text "Mon PIKACHU est"
+	text "Mon Pikachu est"
 	line "le plus beau de"
-	cont "tous les PIKACHU!"
+	cont "tous les Pikachu!"
 	done
 
 PikachuFanBetterText::
-	text "Hmm! Mon PIKACHU"
+	text "Hmm! Mon Pikachu"
 	line "est deux fois"
 	cont "plus mignon que"
 	cont "celui-ci!"
@@ -13,7 +13,7 @@ PikachuFanBetterText::
 
 SeelFanText::
 	text "Moi, c'que j'aime"
-	line "c'est OTARIA!"
+	line "c'est Otaria!"
 
 	para "Y fait squitch"
 	line "quand je lui fais"
@@ -23,37 +23,37 @@ SeelFanText::
 SeelFanBetterText::
 	text "Oh!"
 
-	para "Mon OTARIA est"
+	para "Mon Otaria est"
 	line "beaucoup plus"
 	cont "élégant!"
 	done
 
 FanClubPikachuText::
-	text "PIKACHU: Chu!"
+	text "Pikachu: Chu!"
 	line "Pikachu!"
 	done
 
 FanClubSeelText::
-	text "OTARIA: Riaaa!"
+	text "Otaria: Riaaa!"
 	done
 
 FanClubMeetChairText::
 	text "Je suis le maître"
 	line "du Fan Club des"
-	cont "#MON!"
+	cont "#mon!"
 
 	para "J'ai plus de 100"
-	line "#MON!"
+	line "#mon!"
 
 	para "Je suis trop méga"
 	line "tatillon quand on"
-	cont "parle de #MON!"
+	cont "parle de #mon!"
 
 	para "Alors..."
 
 	para "Tu veux encore"
 	line "savoir des trucs"
-	cont "sur mes #MON?"
+	cont "sur mes #mon?"
 	done
 
 FanClubChairStoryText::
@@ -61,7 +61,7 @@ FanClubChairStoryText::
 	line "Alors, écoute!"
 
 	para "Mon préféré..."
-	line "GALOPA..."
+	line "Galopa..."
 
 	para "Il est mignon..."
 	line "beau...rapide..."
@@ -97,16 +97,16 @@ ReceivedBikeVoucherText::
 ExplainBikeVoucherText::
 	text_start
 	para "Echange ça contre"
-	line "une BICYCLETTE!"
+	line "une Bicyckette!"
 
 	para "Moi, c'est mon"
-	line "RAPASDEPIC qui me"
+	line "Rapasdepic qui me"
 	cont "transporte"
 	cont "n'importe où!"
 
 	para "Je n'ai plus"
 	line "besoin de"
-	cont "BICYCLETTE!"
+	cont "Bicyckette!"
 
 	para "J'espère que tu"
 	line "aimes pédaler!"
@@ -125,7 +125,7 @@ FanClubChairFinalText::
 	para "tu es venu pour"
 	line "écouter mes"
 	cont "histoires de"
-	cont "#MON?"
+	cont "#mon?"
 
 	para "Non? Dommage!"
 	done
@@ -139,7 +139,7 @@ _FanClubText6::
 	text "Notre maître est"
 	line "très bavard en ce"
 	cont "qui concerne les"
-	cont "#MON."
+	cont "#mon."
 	done
 
 _FanClubText7::

@@ -129,7 +129,7 @@ CredTaNakamura:
 CredYuda:
 	db -6, "MASAMITSU YUDA@"
 CredMon:
-	db -3, "#MON@"
+	db -3, "#mon@"
 CredDirector:
 	db -3, "DIRECTOR@"
 CredProgrammers:

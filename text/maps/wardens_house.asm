@@ -1,5 +1,5 @@
 _WardenGibberishText1::
-	text "GARDIEN: Hif fuff"
+	text "Gardien: Hif fuff"
 	line "hefifou!"
 
 	para "Ha fof ha fif eu"
@@ -19,20 +19,20 @@ _WardenGibberishText3::
 
 _WardenTeethText1::
 	text "<PLAYER> donne la"
-	line "DENT D'OR au"
-	cont "GARDIEN!@"
+	line "Dent d'or au"
+	cont "Gardien!@"
 	text_end
 
 _WardenTeethText2::
 	text_start
 
-	para "Le GARDIEN peut"
+	para "Le Gardien peut"
 	line "remettre son"
 	cont "dentier!"
 	prompt
 
 _WardenThankYouText::
-	text "GARDIEN: Merci,"
+	text "Gardien: Merci,"
 	line "gamin! C'est un"
 	cont "peu dur de me"
 	cont "faire comprendre."
@@ -57,17 +57,17 @@ _ReceivedHM04Text::
 	text_end
 
 _HM04ExplanationText::
-	text "GARDIEN: CS04..."
+	text "Gardien: CS04..."
 	line "FORCE!"
 
-	para "Tes #MON"
+	para "Tes #mon"
 	line "pourront déplacer"
 	cont "des rochers."
 
 	para "Au fait, as-tu"
-	line "trouvé la CABANE"
-	cont "SECRETE dans le"
-	cont "PARC SAFARI?"
+	line "trouvé la Cabane"
+	cont "Secrète dans le"
+	cont "Parc Safari?"
 
 	para "Trouve-la et"
 	line "gagne une CS!"
@@ -85,10 +85,10 @@ _HM04NoRoomText::
 _FuchsiaHouse2Text_75176::
 	text "Photos et"
 	line "fossiles de"
-	cont "#MON."
+	cont "#mon."
 	done
 
 _FuchsiaHouse2Text_7517b::
 	text "Tout plein de"
-	line "trucs #MON!"
+	line "trucs #mon!"
 	done

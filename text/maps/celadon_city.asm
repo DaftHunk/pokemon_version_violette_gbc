@@ -1,7 +1,7 @@
 _CeladonCityText1::
 	text "J'ai eu mon"
-	line "SMOGO à"
-	cont "CRAMOIS'ILE!"
+	line "Smogo à"
+	cont "Cramois'Ile!"
 
 	para "Il est gentil"
 	line "mais il crache du"
@@ -10,20 +10,20 @@ _CeladonCityText1::
 	done
 
 _CeladonCityText2::
-	text "Héhé! Cette ARENE"
+	text "Héhé! Cette Arène"
 	line "est terrible! Y'a"
 	cont "plein d'meufs!"
 	done
 
 _CeladonCityText3::
-	text "Le CASINO n'est"
+	text "Le Casino n'est"
 	line "pas très bon pour"
 	cont "notre image!"
 	done
 
 _CeladonCityText4::
 	text "Pfff... J'ai tout"
-	line "perdu au CASINO!"
+	line "perdu au Casino!"
 
 	para "J'aurais dû"
 	line "acheter un prix"
@@ -53,10 +53,10 @@ _TM41ExplanationText::
 	text "La CT41 contient"
 	line "E-COQUE!"
 
-	para "Un seul #MON"
+	para "Un seul #mon"
 	line "peut l'utiliser:"
 
-	para "LEVEINARD!"
+	para "Leveinard!"
 	done
 
 _TM41NoRoomText::
@@ -66,16 +66,16 @@ _TM41NoRoomText::
 
 _CeladonCityText6::
 	text "C'est mon copain:"
-	line "TARTARD!"
+	line "Tartard!"
 
 	para "Il n'était qu'un"
-	line "TETARTE avant"
+	line "Têtarte avant"
 	cont "d'utiliser une"
-	cont "PIERRE EAU!"
+	cont "Pierre EAU!"
 	done
 
 _CeladonCityText7::
-	text "TARTARD: Tarta!"
+	text "Tartard: Tarta!"
 	line "Taaaar!@"
 	text_end
 
@@ -84,12 +84,12 @@ _CeladonCityText8::
 	done
 
 _CeladonCityText9::
-	text "Laisse la TEAM"
+	text "Laisse la Team"
 	line "tranquille!"
 	done
 
 _CeladonCityText10::
-	text "ASTUCE"
+	text "Astuce"
 
 	para "PRECISION +"
 	line "augmente la"
@@ -103,70 +103,70 @@ _CeladonCityText10::
 
 	para "Les meilleurs"
 	line "objets sont en"
-	cont "vente au CENTRE"
-	cont "COMMERCIAL de"
-	cont "CELADOPOLE!"
+	cont "vente au Centre"
+	cont "commercial de"
+	cont "Céladopole!"
 	done
 
 _CeladonCityText11::
-	text "CELADOPOLE"
+	text "Céladopole"
 	line "Ville aux rêves"
 	cont "arc-en-ciel"
 	done
 
 _CeladonCityText13::
-	text "CELADOPOLE"
-	line "ARENE #MON"
-	cont "CHAMPION: ERIKA"
+	text "Céladopole"
+	line "Arène #mon"
+	cont "Champion: Erika"
 
 	para "Le combat par"
 	line "les plantes!"
 	done
 
 _CeladonCityText14::
-	text "MANOIR CELADON"
+	text "Manoir Céladon"
 	done
 
 _CeladonCityText15::
 	text "Y'a tout c'qui"
-	line "t'faut au CENTRE"
-	cont "COMMERCIAL de"
-	cont "CELADOPOLE!"
+	line "t'faut au Centre"
+	cont "commercial de"
+	cont "Céladopole!"
 	done
 
 _CeladonCityText16::
-	text "ASTUCE"
+	text "Astuce"
 
 ;joenote - this description is totally wrong about guard spec
 ;	para "DEFENSE SPEC"
 ;	line "protège les"
-;	cont "#MON des atta-"
+;	cont "#mon des atta-"
 ;	cont "ques SPECIALES"
 ;	cont "telles que le feu"
 ;	cont "ou l'eau!"
-	para "DEFENSE SPEC"
+	para "Défense spéc"
 	line "protège les"
-	cont "#MON des atta-"
+	cont "#mon des atta-"
 	cont "ques de réduction"
 	cont "de statistiques"
 	cont "telles que"
-	cont "GROZ'YEUX et"
-	cont "RUGISSEMENT!"
+	cont "Groz'yeux et"
+	cont "Rugissement!"
 
 	para "Y'a tout c'qui"
-	line "t'faut au CENTRE"
-	cont "COMMERCIAL de"
-	cont "CELADOPOLE!"
+	line "t'faut au Centre"
+	cont "commercial de"
+	cont "Céladopole!"
 	done
 
 _CeladonCityText17::
-	text "CHANGE"
+	text "Change"
 	line "Des jetons contre"
 	cont "de bô prix!"
 	done
 
 _CeladonCityText18::
-	text "CASINO ROCKET"
+	text "Casino Rocket"
 	line "Club de jeu"
 	cont "pour adultes!"
 	done

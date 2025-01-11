@@ -1,17 +1,17 @@
 _OakAppearsText::
-	text "CHEN: Hé toi, là!"
+	text "Chen: Hé toi, là!"
 	line "Ne pars pas!@"
 	text_end
 
 _OakWalksUpText::
-	text "CHEN: C'est super"
+	text "Chen: C'est super"
 	line "dangereux! Des"
-	cont "#MON sauvages"
+	cont "#mon sauvages"
 	cont "infestent les"
 	cont "hautes herbes!"
 
 	para "Il te faut un"
-	line "#MON pour te"
+	line "#mon pour te"
 	cont "protéger..."
 	cont "J'ai trouvé!"
 
@@ -20,7 +20,7 @@ _OakWalksUpText::
 
 _PalletTownText2::
 	text "J'élève des"
-	line "#MON, moi"
+	line "#mon, moi"
 	cont "aussi!"
 
 	para "Une fois forts,"
@@ -36,16 +36,16 @@ _PalletTownText3::
 	line "stocker et même"
 	cont "retirer des"
 	cont "objets ou des"
-	cont "#MON via PC!"
+	cont "#mon via PC!"
 	done
 
 _PalletTownText4::
-	text "LABO #MON"
-	line "DU PROF. CHEN"
+	text "Labo #mon"
+	line "du Prof. Chen"
 	done
 
 _PalletTownText5::
-	text "BOURG PALETTE"
+	text "Bourg Palette"
 	line "Un monde de"
 	cont "couleurs s'ouvre"
 	cont "à vous!"

@@ -1,10 +1,10 @@
 _AgathaBeforeBattleText::
 	text "Gnnn... Bonjour"
 	line "mon tout petit."
-	cont "Je suis AGATHA du"
-	cont "CONSEIL des 4!"
+	cont "Je suis Agatha du"
+	cont "Conseil des 4!"
 
-	para "CHEN mise de"
+	para "Chen mise de"
 	line "grands espoirs"
 	cont "sur toi, fiston!"
 
@@ -19,7 +19,7 @@ _AgathaBeforeBattleText::
 	line "frimer avec son"
 	cont "#DEX! Mais"
 	cont "c'est débile! Les"
-	cont "#MON servent"
+	cont "#mon servent"
 	cont "à combattre!"
 
 	para "<PLAYER>! Je vais"
@@ -38,7 +38,7 @@ _AgathaEndBattleText::
 _AgathaAfterBattleText::
 	text "Mmmm... Je vois"
 	line "pourquoi le vieux"
-	cont "CHEN t'apprécie"
+	cont "Chen t'apprécie"
 	cont "autant!"
 
 	para "Mes ombres ont"

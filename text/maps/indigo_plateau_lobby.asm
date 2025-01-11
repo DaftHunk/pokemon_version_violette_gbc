@@ -4,10 +4,10 @@ _IndigoPlateauLobbyText2::
 
 	para "Tu vas devoir"
 	line "affronter le"
-	cont "CONSEIL des 4"
+	cont "Conseil des 4"
 	cont "dans l'ordre pour"
 	cont "triompher de la"
-	cont "LIGUE #MON."
+	cont "Ligue #mon."
 
 	para "Si tu perds,"
 	line "d'abord tu auras"
@@ -24,7 +24,7 @@ _IndigoPlateauLobbyText3::
 	line "tu affronteras"
 	cont "les quatre"
 	cont "membres du...."
-	cont "CONSEIL des 4!"
+	cont "Conseil des 4!"
 
 	para "Remporte la"
 	line "victoire et une"

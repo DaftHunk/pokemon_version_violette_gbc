@@ -3,8 +3,8 @@ _ViridianGymText_74ace::
 	line "dans mon repaire!"
 
 	para "Je voulais"
-	line "reformer la TEAM"
-	cont "ROCKET ici!"
+	line "reformer la Team"
+	cont "Rocket ici!"
 
 	para "Mais tu as encore"
 	line "tout fait rater!"
@@ -15,7 +15,7 @@ _ViridianGymText_74ace::
 	para "Une fois de plus"
 	line "tu oses me"
 	cont "défier, moi, le"
-	cont "grand GIOVANNI!"
+	cont "grand Giovanni!"
 	cont "Mais aujourd'hui,"
 	cont "tu vas déguster!"
 	done
@@ -34,8 +34,8 @@ _ViridianGymText_74ad9::
 	text "OK, j'ai perdu!"
 	line "Je ne suis pas"
 	cont "digne d'être le"
-	cont "chef de la TEAM"
-	cont "ROCKET! Ainsi,"
+	cont "chef de la Team"
+	cont "Rocket! Ainsi,"
 	cont "son existence"
 	cont "s'achève avec ma"
 	cont "défaite!"
@@ -44,7 +44,7 @@ _ViridianGymText_74ad9::
 	line "retirer, loin, en"
 	cont "ermite, pour"
 	cont "étudier les"
-	cont "#MON!"
+	cont "#mon!"
 
 	para "Un jour, nos"
 	line "chemins se"
@@ -55,17 +55,17 @@ _ViridianGymText_74ad9::
 _ViridianGymText12::
 	text "Grâce au BADGE"
 	line "TERRE tous les"
-	cont "#MON obéiront"
+	cont "#mon obéiront"
 	cont "à tes ordres!"
 
 	para "Il est le"
 	line "témoignage de ta"
 	cont "grande maîtrise"
-	cont "des #MON!"
+	cont "des #mon!"
 
 	para "Tu pourras ainsi"
 	line "accéder à la"
-	cont "LIGUE #MON!"
+	cont "Ligue #mon!"
 
 	para "C'est un cadeau"
 	line "que je te fais."
@@ -86,7 +86,7 @@ _TM27ExplanationText::
 	para "CT27: ABIME!"
 	line "Cette attaque"
 	cont "peut mettre hors"
-	cont "combat un #MON"
+	cont "combat un #mon"
 	cont "en un seul coup!"
 
 	para "Je l'ai inventée"
@@ -131,7 +131,7 @@ _ViridianGymAfterBattleText2::
 	done
 
 _ViridianGymBattleText3::
-	text "Avec mes #MON"
+	text "Avec mes #mon"
 	line "je fais de la"
 	cont "jolie musique!"
 	done
@@ -157,7 +157,7 @@ _ViridianGymEndBattleText4::
 	prompt
 
 _ViridianGymAfterBattleText4::
-	text "Mes #MON sont"
+	text "Mes #mon sont"
 	line "des karatékas..."
 	done
 
@@ -189,13 +189,13 @@ _ViridianGymEndBattleText6::
 	prompt
 
 _ViridianGymAfterBattleText6::
-	text "La LIGUE #MON?"
+	text "La Ligue #mon?"
 	line "Toi? Hahahahah!!!"
 	cont "T'es un rigolo!"
 	done
 
 _ViridianGymBattleText7::
-	text "Tes #MON vont"
+	text "Tes #mon vont"
 	line "se courber sous"
 	cont "mes coups de"
 	cont "fouet!"
@@ -212,8 +212,8 @@ _ViridianGymAfterBattleText7::
 	done
 
 _ViridianGymBattleText8::
-	text "L'ARENE de"
-	line "JADIELLE était"
+	text "L'Arène de"
+	line "Jadielle était"
 	cont "fermée depuis"
 	cont "longtemps, mais"
 	cont "le CHAMPION est"
@@ -228,7 +228,7 @@ _ViridianGymEndBattleText8::
 _ViridianGymAfterBattleText8::
 	text "Tu ne pourras"
 	line "accéder à la"
-	cont "LIGUE #MON"
+	cont "Ligue #mon"
 	cont "seulement en"
 	cont "battant notre"
 	cont "CHAMPION!"
@@ -241,21 +241,21 @@ _ViridianGymText_74bd4::
 	para "Même moi, je ne"
 	line "sais pas qui est"
 	cont "le CHAMPION de"
-	cont "JADIELLE!"
+	cont "Jadielle!"
 
 	para "Le combat qui"
 	line "t'attend sera le"
 	cont "plus dur de tous!"
 
 	para "Le dresseur de"
-	line "cette ARENE aime"
-	cont "les #MON du"
+	line "cette Arène aime"
+	cont "les #mon du"
 	cont "type SOL!"
 	done
 
 _ViridianGymText_74bd9::
 	text "Quoi?! C'était"
-	line "GIOVANNI le"
+	line "Giovanni le"
 	cont "CHAMPION?"
 	cont "Ben ça alors!"
 	done

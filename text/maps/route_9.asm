@@ -1,5 +1,5 @@
 _Route9BattleText1::
-	text "T'as des #MON"
+	text "T'as des #mon"
 	line "avec toi!"
 	cont "En garde!"
 	done
@@ -18,7 +18,7 @@ _Route9AfterBattleText1::
 _Route9BattleText2::
 	text "Mais qui voilà,"
 	line "les bras chargés"
-	cont "de #MON?"
+	cont "de #mon?"
 	done
 
 _Route9EndBattleText2::
@@ -33,7 +33,7 @@ _Route9AfterBattleText2::
 _Route9BattleText3::
 	text "Je passe par la"
 	line "GROTTE pour voir"
-	cont "LAVANVILLE!"
+	cont "Lavanville!"
 	done
 
 _Route9EndBattleText3::
@@ -76,7 +76,7 @@ _Route9EndBattleText5::
 	line "Viens, viens!"
 
 	para "Heu, j'ai plus"
-	line "de #MON!"
+	line "de #mon!"
 	prompt
 
 _Route9AfterBattleText5::
@@ -102,7 +102,7 @@ _Route9AfterBattleText6::
 
 _Route9BattleText7::
 	text "Mes cocons de"
-	line "#MON me"
+	line "#mon me"
 	cont "prennent beaucoup"
 	cont "de temps!"
 	done
@@ -150,12 +150,12 @@ _Route9EndBattleText9::
 
 _Route9AfterBattleText9::
 	text "T'aimes pas les"
-	line "insectes #MON?"
+	line "insectes #mon?"
 	cont "T'es infect!"
 	done
 
 _Route9Text11::
-	text "ROUTE 9"
-	line "AZURIA-"
+	text "Route 9"
+	line "Azuria-"
 	cont "GROTTE"
 	done

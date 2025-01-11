@@ -17,7 +17,7 @@ CeladonGymScript_48927:
 	jp LoadGymLeaderAndCityName
 
 Gym4CityName:
-	db "CELADOPOLE@"
+	db "Céladopole@"
 
 Gym4LeaderName:
 	db "ERIKA@"

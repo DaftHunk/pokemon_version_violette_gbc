@@ -8,20 +8,20 @@ _ViridianPokeCenterText2::
 	done
 
 _ViridianPokeCenterText3::
-	text "Il y a un CENTRE"
-	line "#MON dans"
+	text "Il y a un Centre"
+	line "#mon dans"
 	cont "chaque ville."
 
 	para "Tu peux y soigner"
 	line "gratuitement tes"
-	cont "#MON!"
+	cont "#mon!"
 	done
 
 ;joenote - text for randomized regular trainers
 _ViridianPokeCenter_RegRandomON::
 	text "Ce n'est pas"
 	line "ton premier"
-	cont "voyage #MON ?"
+	cont "voyage #mon ?"
 	
 	para "Je peux rendre"
 	line "les dresseurs"

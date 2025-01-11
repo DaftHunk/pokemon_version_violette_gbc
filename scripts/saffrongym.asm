@@ -20,7 +20,7 @@ Gym6CityName:
 	db "SAFRANIA@"
 
 Gym6LeaderName:
-	db "MORGANE@"
+	db "Morgane@"
 
 SaffronGymText_5d048:
 	xor a

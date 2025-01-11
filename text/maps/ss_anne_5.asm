@@ -34,7 +34,7 @@ _SSAnne5EndBattleText1::
 
 _SSAnne5AfterBattleText1::
 	text "Tu sais combien"
-	line "il y a de #MON"
+	line "il y a de #mon"
 	cont "différents? Hein,"
 	cont "tu l'sais, hein?"
 	done
@@ -51,7 +51,7 @@ _SSAnne5EndBattleText2::
 
 _SSAnne5AfterBattleText2::
 	text "Mon Pôpa, y dit"
-	line "qu'y a 100 #MON"
+	line "qu'y a 100 #mon"
 	cont "différents. J'suis"
 	cont "sûr qu'y en a"
 	cont "plus..."

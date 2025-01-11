@@ -10,11 +10,11 @@ _TowerRescueFujiText::
 	para "Je voulais"
 	line "apaiser l'esprit"
 	cont "de la mère de"
-	cont "OSSELAIT."
+	cont "Osselait."
 
 	para "Je pense que"
 	line "l'esprit de"
-	cont "OSSATUEUR s'en"
+	cont "Ossatueur s'en"
 	cont "est allé vers"
 	cont "les cieux."
 
@@ -24,7 +24,7 @@ _TowerRescueFujiText::
 
 	para "Viens avec moi"
 	line "dans ma maison,"
-	cont "la MAISON #MON"
+	cont "la MAISON #mon"
 	cont "au pied de cette"
 	cont "tour."
 	done
@@ -49,7 +49,7 @@ _PokemonTower7BattleText2::
 	line "est venu nous"
 	cont "demander de ne"
 	cont "plus troubler les"
-	cont "gentils #MON!"
+	cont "gentils #mon!"
 
 	para "Mais c'est une"
 	line "conversation"
@@ -63,7 +63,7 @@ _PokemonTower7EndBattleText2::
 	prompt
 
 _PokemonTower7AfterBattleText2::
-	text "Les #MON ne"
+	text "Les #mon ne"
 	line "servent qu'à"
 	cont "gagner de"
 	cont "l'argent!"
@@ -80,7 +80,7 @@ _PokemonTower7BattleText3::
 _PokemonTower7EndBattleText3::
 	text "Hmm!"
 	line "N'affronte pas la"
-	cont "TEAM ROCKET!"
+	cont "Team Rocket!"
 	prompt
 
 _PokemonTower7AfterBattleText3::

@@ -11,8 +11,8 @@ _VictoryRoad3EndBattleText2::
 
 _VictoryRoad3AfterBattleText2::
 	text "Tu as battu"
-	line "GIOVANNI de la"
-	cont "TEAM ROCKET?"
+	line "Giovanni de la"
+	cont "Team Rocket?"
 	done
 
 _VictoryRoad3BattleText3::
@@ -44,7 +44,7 @@ _VictoryRoad3EndBattleText4::
 _VictoryRoad3AfterBattleText4::
 	text "Ces dresseurs"
 	line "sont de la"
-	cont "LIGUE #MON!"
+	cont "Ligue #mon!"
 	cont "Fais attention!"
 	done
 

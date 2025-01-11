@@ -11,7 +11,7 @@ _Route20EndBattleText1::
 _Route20AfterBattleText1::
 	text "Ah, si je pouvais"
 	line "monter sur mes"
-	cont "#MON."
+	cont "#mon."
 	done
 
 _Route20BattleText2::
@@ -75,12 +75,12 @@ _Route20EndBattleText5::
 _Route20AfterBattleText5::
 	text "J'aurais dû"
 	line "entraîner mes"
-	cont "#MON!"
+	cont "#mon!"
 	done
 
 _Route20BattleText6::
 	text "Ben, t'es sur un"
-	line "#MON, tu sais"
+	line "#mon, tu sais"
 	cont "pas nager?"
 	done
 
@@ -91,13 +91,13 @@ _Route20EndBattleText6::
 
 _Route20AfterBattleText6::
 	text "Surfer sur un"
-	line "#MON,"
+	line "#mon,"
 	cont "c'est cool!"
 	done
 
 _Route20BattleText7::
 	text "Mes oiseaux"
-	line "#MON m'ont"
+	line "#mon m'ont"
 	cont "déposé ici!"
 	done
 
@@ -126,12 +126,12 @@ _Route20EndBattleText8::
 _Route20AfterBattleText8::
 	text "Et si je mettais"
 	line "mes perles dans"
-	cont "un CRUSTABRI?"
+	cont "un Crustabri?"
 	done
 
 _Route20BattleText9::
 	text "J'ai nagé depuis"
-	line "la CRAMOIS'ILE!"
+	line "la Cramois'Ile!"
 	done
 
 _Route20EndBattleText9::
@@ -140,16 +140,16 @@ _Route20EndBattleText9::
 	prompt
 
 _Route20AfterBattleText9::
-	text "Des #MON"
+	text "Des #mon"
 	line "infestent un"
 	cont "vieux manoir de"
-	cont "la CRAMOIS'ILE!"
+	cont "la Cramois'Ile!"
 	done
 
 _Route20BattleText10::
-	text "Il y a un LABO"
-	line "#MON sur"
-	cont "la CRAMOIS'ILE."
+	text "Il y a un Labo"
+	line "#mon sur"
+	cont "la Cramois'Ile."
 	done
 
 _Route20EndBattleText10::
@@ -157,7 +157,7 @@ _Route20EndBattleText10::
 	prompt
 
 _Route20AfterBattleText10::
-	text "La CRAMOIS'ILE"
+	text "La Cramois'Ile"
 	line "est une île"
 	cont "volcanique!"
 	done

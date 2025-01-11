@@ -2,7 +2,7 @@ _KogaExplainToxicText::
 	text "TOXIK fera"
 	line "souffrir de plus"
 	cont "en plus un"
-	cont "#MON pendant"
+	cont "#mon pendant"
 	cont "un combat!"
 
 	para "De quoi filer la"
@@ -12,7 +12,7 @@ _KogaExplainToxicText::
 _FuchsiaGymText9::
 	text "Le BADGE AME fera"
 	line "monter la VITESSE"	;joenote - changed DEFENSE to SPEED in order to fix a typo
-	cont "de tes #MON!"
+	cont "de tes #mon!"
 
 	para "Il te permettra"
 	line "aussi d'utiliser"
@@ -146,7 +146,7 @@ _FuchsiaGymAfterBattleText5::
 	done
 
 _FuchsiaGymBattleText6::
-	text "KOGA fait partie"
+	text "Koga fait partie"
 	line "d'une grande"
 	cont "famille de"
 	cont "terribles ninjas!"
@@ -173,11 +173,11 @@ _FuchsiaGymText_7564e::
 	text "Hop là! Graine"
 	line "de champion!"
 
-	para "L'ARENE de"
-	line "PARMANIE est un"
+	para "L'Arène de"
+	line "Parmanie est un"
 	cont "vrai casse-tête!"
 
-	para "KOGA te semblera"
+	para "Koga te semblera"
 	line "proche, mais de"
 	cont "nombreux murs le"
 	cont "protégeront!"

@@ -9,7 +9,7 @@ _SaffronHouse1Text1::
 	done
 
 _SaffronHouse1Text2::
-	text "ROUCOOL: Rourou!@"
+	text "Roucool: Rourou!@"
 	text_end
 
 _SaffronHouse1Text3::
@@ -28,5 +28,5 @@ _SaffronHouse1Text4::
 	line "pour augmenter"
 	cont "les PP des"
 	cont "attaques de mes"
-	cont "#MON!"
+	cont "#mon!"
 	done

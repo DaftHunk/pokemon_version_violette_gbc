@@ -5,7 +5,7 @@ _RockTunnel2AfterBattleText8::
 
 _RockTunnel2BattleText9::
 	text "Je dessine des"
-	line "#MON quand"
+	line "#mon quand"
 	cont "chuis tout seul."
 	cont "..."
 	cont "Cool, non?"

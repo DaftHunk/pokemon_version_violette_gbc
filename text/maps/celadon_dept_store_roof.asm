@@ -105,7 +105,7 @@ _CeladonMartRoofText4::
 
 _CeladonMartRoofText6::
 	text "DERNIER ETAGE:"
-	line "DISTRIBUTEURS"
+	line "Distributeurs"
 	done
 
 _VendingMachineText1::

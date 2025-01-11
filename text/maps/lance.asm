@@ -5,13 +5,13 @@ _LanceBeforeBattleText::
 	cont "<PLAYER>!"
 
 	para "Je règne sur le"
-	line "CONSEIL des 4!"
-	cont "Mon nom est PETER"
+	line "Conseil des 4!"
+	cont "Mon nom est Peter"
 	cont "le dresseur de"
 	cont "dragons!"
 
 	para "Les dragons sont"
-	line "des #MON"
+	line "des #mon"
 	cont "mystiques!"
 
 	para "Les capturer et"
@@ -36,7 +36,7 @@ _LanceEndBattleText::
 
 	para "Tu as bien mérité"
 	line "le titre de..."
-	cont "Maître #MON!"
+	cont "Maître #mon!"
 	prompt
 
 _LanceAfterBattleText::
@@ -48,7 +48,7 @@ _LanceAfterBattleText::
 
 	para "Tu es désormais"
 	line "champion de la"
-	cont "LIGUE #MON!"
+	cont "Ligue #mon!"
 
 	para "Enfin..."
 	line "Pas tout à fait."
@@ -62,9 +62,9 @@ _LanceAfterBattleText::
 
 	para "<RIVAL>!"
 	line "Il a vaincu le"
-	cont "CONSEIL des 4"
+	cont "Conseil des 4"
 	cont "avant toi!"
 
 	para "Il est le vrai"
-	line "champion #MON!@"
+	line "champion #mon!@"
 	text_end

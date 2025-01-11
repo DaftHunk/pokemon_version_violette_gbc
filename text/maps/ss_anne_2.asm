@@ -25,7 +25,7 @@ _SSAnneRivalBeforeBattleText::
 
 	para "Moi, j'ai déjà"
 	line "attrapé 40"
-	cont "#MON! Minable!"
+	cont "#mon! Minable!"
 
 	para "Y'en a partout!"
 
@@ -39,7 +39,7 @@ _SSAnneRivalDefeatedText::
 
 	para "Au moins, tu"
 	line "t'occupes de tes"
-	cont "#MON!"
+	cont "#mon!"
 	prompt
 
 _SSAnneRivalWonText::

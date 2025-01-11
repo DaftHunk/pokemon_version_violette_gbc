@@ -1,5 +1,5 @@
 _SSAnne10Text8::
-	text "MACHOPEUR: Chop!"
+	text "Machopeur: Chop!"
 	line "Chop! Chop!@"
 	text_end
 
@@ -40,7 +40,7 @@ _SSAnne10AfterBattleText2::
 _SSAnne10BattleText3::
 	text "Nous, les marins,"
 	line "on a aussi des"
-	cont "#MON!"
+	cont "#mon!"
 	done
 
 _SSAnne10EndBattleText3::
@@ -49,7 +49,7 @@ _SSAnne10EndBattleText3::
 	prompt
 
 _SSAnne10AfterBattleText3::
-	text "Tous nos #MON"
+	text "Tous nos #mon"
 	line "viennent des"
 	cont "hautes mers!"
 	done
@@ -66,7 +66,7 @@ _SSAnne10EndBattleText4::
 	prompt
 
 _SSAnne10AfterBattleText4::
-	text "Les #MON d'eau"
+	text "Les #mon d'eau"
 	line "vivent dans les"
 	cont "grands fonds!"
 
@@ -97,7 +97,7 @@ _SSAnne10BattleText6::
 	text "Salut étranger!"
 	line "Parlons un peu!"
 
-	para "Tous mes #MON"
+	para "Tous mes #mon"
 	line "sont aquatiques!"
 	done
 
@@ -114,8 +114,8 @@ _SSAnne10AfterBattleText6::
 	done
 
 _SSAnne10Text7::
-	text "Mon #MON,"
-	line "MACHOPEUR, est"
+	text "Mon #mon,"
+	line "Machopeur, est"
 	cont "super fort!!!"
 
 	para "Sa FORCE lui"

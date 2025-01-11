@@ -1,7 +1,7 @@
 _CeladonMart2Text3::
 	text "Le SUPEREPOUSSE"
 	line "tient les faibles"
-	cont "#MON à"
+	cont "#mon à"
 	cont "l'écart..."
 
 	para "C'est un REPOUSSE"

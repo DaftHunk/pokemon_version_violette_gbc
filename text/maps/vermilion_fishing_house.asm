@@ -1,6 +1,6 @@
 _VermilionHouse2Text_560b1::
 	text "Je suis le..."
-	line "MAITRE PECHEUR!"
+	line "MAITRE Pêcheur!"
 
 	para "La pêche...moi..."
 	line "J'adore ça!"

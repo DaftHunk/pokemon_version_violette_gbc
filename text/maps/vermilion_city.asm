@@ -2,7 +2,7 @@ _VermilionCityText1::
 	text "La pollution,"
 	line "c'est mal!"
 
-	para "On dit que TADMORV"
+	para "On dit que Tadmorv"
 	line "se multiplie!"
 	done
 
@@ -25,7 +25,7 @@ _VermilionCityText_annereturns::	;joenote - added text
 
 	para "She came back due"
 	line "to massive blooms"
-	cont "of TENTACOOL!"
+	cont "of Tentacool!"
 	done
 
 _SSAnneWelcomeText4::
@@ -71,18 +71,18 @@ _VermilionCityText4::
 	line "immeuble sur ce"
 	cont "terrain."
 
-	para "Mes #MON"
+	para "Mes #mon"
 	line "dament le sol."
 	done
 
 _VermilionCityText5::
-	text "MACHOC: Maaaaa!"
+	text "Machoc: Maaaaa!"
 	line "Machoooo!@"
 	text_end
 
 _VermilionCityText14::
 	text_start
-	para "Un MACHOC"
+	para "Un Machoc"
 	line "pilonne le sol."
 	done
 
@@ -92,12 +92,12 @@ _VermilionCityText6::
 	cont "luxe."
 
 	para "Nous nous rendons"
-	line "à CARMIN SUR MER"
+	line "à Carmin sur mer"
 	cont "une fois par an."
 	done
 
 _VermilionCityText7::
-	text "CARMIN SUR MER"
+	text "Carmin sur mer"
 	line "Le port aux"
 	cont "crépuscules"
 	cont "flamboyants"
@@ -106,31 +106,31 @@ _VermilionCityText7::
 _VermilionCityText8::
 	text "AVIS!"
 
-	para "La ROUTE 12 peut"
+	para "La Route 12 peut"
 	line "être bloquée par"
-	cont "un #MON"
+	cont "un #mon"
 	cont "endormi."
 
 	para "Prendre la GROTTE"
 	line "pour rejoindre"
-	cont "LAVANVILLE."
+	cont "Lavanville."
 
 	para "POLICE DE CARMIN"
 	line "SUR MER"
 	done
 
 _VermilionCityText11::
-	text "FAN CLUB #MON"
+	text "FAN CLUB #mon"
 	line "Tous les dingues"
-	cont "de #MON sont"
+	cont "de #mon sont"
 	cont "bienvenus!"
 	done
 
 _VermilionCityText12::
-	text "CARMIN SUR MER"
-	line "ARENE #MON"
-	cont "CHAMPION:"
-	cont "MAJOR BOB"
+	text "Carmin sur mer"
+	line "Arène #mon"
+	cont "Champion:"
+	cont "Major Bob"
 
 	para "Le Ricain"
 	line "Survolté!"
@@ -141,7 +141,7 @@ _VermilionCityText13::
 	done
 
 _VermilionPKMNText::
-	text "A lazy #MON"
+	text "A lazy #mon"
 	line "is sunbathing."
 	
 	para "Its gaze falls on"

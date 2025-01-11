@@ -1,18 +1,18 @@
 _LoreleiBeforeBattleText::
 	text "Bienvenue à la"
-	line "LIGUE #MON!"
+	line "Ligue #mon!"
 
-	para "Je zuis OLGA du"
-	line "CONZEIL des 4!"
+	para "Je zuis Olga du"
+	line "Conzeil des 4!"
 
 	para "Je zuis la"
 	line "maîtrezze des"
-	cont "#MON de glaze!"
+	cont "#mon de glaze!"
 
 	para "Et la glaze..."
 	line "Z'est drop fort!"
 
-	para "Tes #MON"
+	para "Tes #mon"
 	line "zeront à ma merzi"
 	cont "une fois gelés!"
 
@@ -29,8 +29,8 @@ _LoreleiAfterBattleText::
 	text "Tu es fort."
 	line "Z'est bien."
 
-	para "Mais la LIGUE"
-	line "#MON te"
+	para "Mais la Ligue"
+	line "#mon te"
 	cont "rézerve d'autres"
 	cont "zurprizes!"
 	done

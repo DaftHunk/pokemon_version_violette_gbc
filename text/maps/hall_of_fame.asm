@@ -1,18 +1,18 @@
 _HallofFameRoomText1::
-	text "CHEN: Hum-hum!"
+	text "Chen: Hum-hum!"
 	line "Félicitations"
 	cont "<PLAYER>!"
 
 	para "Cet étage est"
 	line "réservé aux"
 	cont "célébrités"
-	cont "#MON!"
+	cont "#mon!"
 
 	para "Les champions de"
-	line "la LIGUE sont"
+	line "la Ligue sont"
 	cont "consacrés ici!"
 
-	para "Leurs #MON"
+	para "Leurs #mon"
 	line "sont enregistrés"
 	cont "en tant que"
 	cont "CELEBRITES!"
@@ -24,6 +24,6 @@ _HallofFameRoomText1::
 
 	para "Encore bravo."
 	line "Toi et tes chers"
-	cont "#MON êtes"
+	cont "#mon êtes"
 	cont "tous célèbres!"
 	done

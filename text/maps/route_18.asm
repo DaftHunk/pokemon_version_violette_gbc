@@ -2,7 +2,7 @@ _Route18BattleText1::
 	text "Je fouille les"
 	line "hautes herbes"
 	cont "pour y trouver"
-	cont "des #MON."
+	cont "des #mon."
 	done
 
 _Route18EndBattleText1::
@@ -28,7 +28,7 @@ _Route18EndBattleText2::
 _Route18AfterBattleText2::
 	text "Le week-end, je"
 	line "collectionne"
-	cont "les #MON"
+	cont "les #mon"
 	cont "aquatiques!"
 	done
 
@@ -45,13 +45,13 @@ _Route18AfterBattleText3::
 	text "C'est mon endroit"
 	line "préféré pour"
 	cont "chasser les"
-	cont "#MON!"
+	cont "#mon!"
 	done
 
 _Route18Text4::	;joenote - swapped city order
-	text "ROUTE 18"
-	line "PARMANIE -"
-	cont "CELADOPOLE"
+	text "Route 18"
+	line "Parmanie -"
+	cont "Céladopole"
 	done
 
 _Route18Text5::

@@ -1,5 +1,5 @@
 _SilphCo6Text_1a24a::
-	text "La Team ROCKET"
+	text "La Team Rocket"
 	line "a investi tout"
 	cont "l'immeuble!"
 	done
@@ -31,34 +31,34 @@ _SilphCo6Text_1a27d::
 	done
 
 _SilphCo6Text_1a28f::
-	text "La TEAM ROCKET"
+	text "La Team Rocket"
 	line "veut dominer le"
 	cont "monde avec des"
-	cont "#MON!"
+	cont "#mon!"
 	done
 
 _SilphCo6Text_1a294::
 	text "Tu as fait fuir"
-	line "la TEAM ROCKET!"
+	line "la Team Rocket!"
 	done
 
 _SilphCo6Text_1a2a6::
 	text "Les produits"
-	line "#MON de la"
-	cont "SYLPHE devaient"
+	line "#mon de la"
+	cont "Sylphe devaient"
 	cont "les intéresser."
 	done
 
 _SilphCo6Text_1a2ab::
 	text "Travaille donc"
-	line "pour la SYLPHE"
+	line "pour la Sylphe"
 	cont "une fois plus"
 	cont "grand!"
 	done
 
 _SilphCo6BattleText2::
 	text "Je suis l'un des"
-	line "4 frères ROCKET!"
+	line "4 frères Rocket!"
 	done
 
 _SilphCo6EndBattleText2::
@@ -94,7 +94,7 @@ _SilphCo6AfterBattleText3::
 
 _SilphCo6BattleText4::
 	text "Tu oses défier"
-	line "la TEAM ROCKET?"
+	line "la Team Rocket?"
 	done
 
 _SilphCo6EndBattleText4::

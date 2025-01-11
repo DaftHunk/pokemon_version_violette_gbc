@@ -21,11 +21,11 @@ _SchoolText3::
 	para "Ces attaques"
 	line "peuvent mettre"
 	cont "hors combat un"
-	cont "#MON en un"
+	cont "#mon en un"
 	cont "seul coup!"
 
 	para "Mais c'est rare"
-	line "et ton #MON"
+	line "et ton #mon"
 	cont "dois attaquer en"
 	cont "premier."
 	done

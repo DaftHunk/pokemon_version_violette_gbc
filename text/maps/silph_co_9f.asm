@@ -15,7 +15,7 @@ _SilphCo9Text_5d8ef::
 	done
 
 _SilphCo9BattleText1::
-	text "Tes #MON ont"
+	text "Tes #mon ont"
 	line "l'air de t'aimer!"
 	done
 
@@ -30,7 +30,7 @@ _SilphCo9AfterBattleText1::
 	done
 
 _SilphCo9BattleText2::
-	text "Tes #MON ont"
+	text "Tes #mon ont"
 	line "des points"
 	cont "faibles! Ah-ah!"
 	done
@@ -49,7 +49,7 @@ _SilphCo9AfterBattleText2::
 
 _SilphCo9BattleText3::
 	text "Je suis l'un des"
-	line "4 frères ROCKET!"
+	line "4 frères Rocket!"
 	done
 
 _SilphCo9EndBattleText3::

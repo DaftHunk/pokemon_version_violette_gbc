@@ -34,7 +34,7 @@ _Museum1FText_5c233::
 	text "Dans un certain"
 	line "labo, on essaie"
 	cont "de régénérer les"
-	cont "anciens #MON"
+	cont "anciens #mon"
 	cont "grâce à l'AMBRE."
 	done
 
@@ -71,14 +71,14 @@ ENDC
 _Museum1FText_5c28e::
 	text "Je crois qu'il y"
 	line "a des traces"
-	cont "d'ADN de #MON"
+	cont "d'ADN de #mon"
 	cont "dans ce morceau"
 	cont "d'ambre."
 
 	para "Ca serait super"
 	line "cool génial de"
 	cont "régénérer un"
-	cont "#MON à partir"
+	cont "#mon à partir"
 	cont "de cette pierre!"
 	cont "Non? Hein?"
 
@@ -89,7 +89,7 @@ _Museum1FText_5c28e::
 	line "te demander!"
 
 	para "Apporte ça à mon"
-	line "LABO #MON pour"
+	line "Labo #mon pour"
 	cont "l'examiner!"
 	prompt
 
@@ -114,7 +114,7 @@ _Museum1FText_5c2ad::
 	line "fossiles dont"
 	cont "nous sommes très"
 	cont "fiers! Ce sont"
-	cont "des #MON"
+	cont "des #mon"
 	cont "préhistoriques!"
 	done
 

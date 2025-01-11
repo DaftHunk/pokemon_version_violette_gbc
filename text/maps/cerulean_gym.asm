@@ -6,16 +6,16 @@ _CeruleanGymText_5c7be::
 	line "un vrai dresseur,"
 	cont "il te faut une"
 	cont "stratégie pour"
-	cont "tes #MON!"
+	cont "tes #mon!"
 
 	para "C'est quoi ta"
 	line "tactique pour"
 	cont "capturer les"
-	cont "#MON sauvages?"
+	cont "#mon sauvages?"
 
 	para "Moi je leur fonce"
 	line "dans le tas avec"
-	cont "mes #MON"
+	cont "mes #mon"
 	cont "aquatiques!"
 	done
 
@@ -24,13 +24,13 @@ _CeruleanGymText_5c7c3::
 	line "BULLES D'O!"
 
 	para "Apprends-la à un"
-	line "#MON de l'eau!"
+	line "#mon de l'eau!"
 	done
 
 _CeruleanGymText_5c7c8::
 	text "Le BADGECASCADE"
 	line "oblige tous les"
-	cont "#MON d'un"
+	cont "#mon d'un"
 	cont "niveau inférieur"
 	cont "à 30 à t'obéir!"
 
@@ -76,7 +76,7 @@ _CeruleanGymBattleText1::
 	text "Je suis très"
 	line "balèze!"
 
-	para "ONDINE attendra!"
+	para "Ondine attendra!"
 	done
 
 _CeruleanGymEndBattleText1::
@@ -106,7 +106,7 @@ _CeruleanGymEndBattleText2::
 	prompt
 
 _CeruleanGymAfterBattleText2::
-	text "ONDINE est super"
+	text "Ondine est super"
 	line "forte!"
 
 	para "Elle ne va pas"
@@ -122,12 +122,12 @@ _CeruleanGymText_5c82a::
 	para "Un conseil?"
 
 	para "La CHAMPIONNE,"
-	line "ONDINE, est une"
+	line "Ondine, est une"
 	cont "spécialiste des"
-	cont "#MON de l'eau!"
+	cont "#mon de l'eau!"
 
 	para "Absorbe l'eau"
-	line "avec des #MON"
+	line "avec des #mon"
 	cont "des plantes!"
 
 	para "Ou grille-les"
@@ -137,7 +137,7 @@ _CeruleanGymText_5c82a::
 
 _CeruleanGymText_5c82f::
 	text "Tu as battu"
-	line "ONDINE! Génial!"
+	line "Ondine! Génial!"
 
 	para "Toi et moi, on"
 	line "forme une super"

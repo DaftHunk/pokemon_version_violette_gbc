@@ -1,7 +1,7 @@
 _FuchsiaHouse3Text_561bd::
 	text "Je suis le grand"
 	line "frère du MAITRE"
-	cont "PECHEUR!"
+	cont "Pêcheur!"
 
 	para "Moi, mon truc,"
 	line "c'est la pêche!"
@@ -46,7 +46,7 @@ _FuchsiaHouse3Text_56217::
 	line "in any water!"
 	cont "You can catch"
 	cont "different kinds"
-	cont "of #MON."
+	cont "of #mon."
 
 	para "Try fishing"
 	line "wherever you can!"

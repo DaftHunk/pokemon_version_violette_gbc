@@ -115,8 +115,8 @@ CeladonCityText8_alternate:
 	cont "guy at the DEPT."
 	cont "STORE on the sly."
 	
-	para "Who needs TEAM"
-	line "ROCKET for money?"
+	para "Who needs Team"
+	line "Rocket for money?"
 	done
 	db "@"
 
@@ -239,7 +239,7 @@ _TXTRefuseCoins:
 	
 	para "It's hard enough"
 	line "making money now"
-	cont "that TEAM ROCKET"
+	cont "that Team Rocket"
 	cont "is gone."
 	done
 	db "@"

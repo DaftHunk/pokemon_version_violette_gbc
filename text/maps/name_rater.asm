@@ -9,11 +9,11 @@ _NameRaterText_1dab3::
 	cont "genre à vouloir"
 	cont "donner un p'tit"
 	cont "nom à un de tes"
-	cont "#MON?"
+	cont "#mon?"
 	done
 
 _NameRaterText_1dab8::
-	text "Quel #MON"
+	text "Quel #mon"
 	line "veux-tu renommer?"
 	prompt
 
@@ -41,7 +41,7 @@ _NameRaterText_1dac2::
 	prompt
 
 _NameRaterText_1dac7::
-	text "OK! Ce #MON"
+	text "OK! Ce #mon"
 	line "a été renommé"
 	cont "@"
 	text_ram wBuffer

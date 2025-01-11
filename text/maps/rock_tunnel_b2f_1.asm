@@ -61,12 +61,12 @@ _RockTunnel2AfterBattleText5::
 	text "Les dresseurs"
 	line "costumés se"
 	cont "déguisent en"
-	cont "#MON pour"
+	cont "#mon pour"
 	cont "s'amuser."
 	done
 
 _RockTunnel2BattleText6::
-	text "Mes #MON"
+	text "Mes #mon"
 	line "vont te faire"
 	cont "pleurer!"
 	done
@@ -79,7 +79,7 @@ _RockTunnel2EndBattleText6::
 _RockTunnel2AfterBattleText6::
 	text "Les montagnes"
 	line "regorgent de"
-	cont "#MON rocheux."
+	cont "#mon rocheux."
 	done
 
 _RockTunnel2BattleText7::
@@ -95,7 +95,7 @@ _RockTunnel2EndBattleText7::
 
 _RockTunnel2AfterBattleText7::
 	text "J'aime les petits"
-	line "#MON, les gros"
+	line "#mon, les gros"
 	cont "me font peur!"
 	done
 

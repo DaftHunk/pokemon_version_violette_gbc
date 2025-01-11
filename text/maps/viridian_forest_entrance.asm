@@ -8,7 +8,7 @@ _ViridianForestEntranceText1::
 	done
 
 _ViridianForestEntranceText2::
-	text "RATTATA est"
+	text "Rattata est"
 	line "petit mais il est"
 	cont "vicieux! En as-tu"
 	cont "capturé un?"

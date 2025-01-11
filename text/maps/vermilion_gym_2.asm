@@ -7,7 +7,7 @@ _VermilionGymText_5cb72::
 
 	para "Mais elle est"
 	line "inutile face à"
-	cont "des #MON de"
+	cont "des #mon de"
 	cont "la terre!"
 	done
 
@@ -15,10 +15,10 @@ _VermilionGymText_5cb77::
 	text "Le BADGEFOUDRE"
 	line "augmente la"
 	cont "DEFENSE de tes"	;joenote - changed SPEED to DEFENSE in order to fix a typo
-	cont "#MON!"
+	cont "#mon!"
 
 	para "Il permet aussi"
-	line "à tes #MON"
+	line "à tes #mon"
 	cont "de VOLER!"
 
 	para "Tu es un bon, mon"
@@ -39,7 +39,7 @@ _TM24ExplanationText::
 	para "CT24 : TONNERRE!"
 
 	para "Enseigne-la à un"
-	line "#MON de la"
+	line "#mon de la"
 	cont "foudre!"
 	done
 
@@ -63,7 +63,7 @@ _ReceivedThunderbadgeText::
 
 _VermilionGymBattleText1::
 	text "Dans l'armée, le"
-	line "MAJOR BOB était"
+	line "Major Bob était"
 	cont "mon instructeur"
 	cont "de combat!"
 	done
@@ -77,7 +77,7 @@ _VermilionGymAfterBattleText1::
 	text "Les portes ne"
 	line "s'ouvrent pas?"
 
-	para "Le MAJOR BOB"
+	para "Le Major Bob"
 	line "est prudent!"
 	done
 
@@ -96,7 +96,7 @@ _VermilionGymEndBattleText2::
 _VermilionGymAfterBattleText2::
 	text "OK, je parle!"
 
-	para "Le MAJOR BOB a"
+	para "Le Major Bob a"
 	line "caché des boutons"
 	cont "pour ouvrir les"
 	cont "portes..."
@@ -129,25 +129,25 @@ _VermilionGymText_5cbf4::
 	text "Salut! Champion"
 	line "en herbe!"
 
-	para "Le MAJOR BOB a"
+	para "Le Major Bob a"
 	line "un surnom. On"
 	cont "l'appelle..."
 	cont "Le Ricain"
 	cont "Survolté!"
 
 	para "Il est expert"
-	line "en #MON"
+	line "en #mon"
 	cont "électriques!"
 
 	para "C'est pas bon"
-	line "pour les #MON"
+	line "pour les #mon"
 	cont "volants et"
 	cont "aquatiques! Fais"
 	cont "aussi gaffe aux"
 	cont "éclairs pouvant"
 	cont "paralyser!"
 
-	para "Le MAJOR BOB"
+	para "Le Major Bob"
 	line "est très prudent!"
 
 	para "Il te faudra"

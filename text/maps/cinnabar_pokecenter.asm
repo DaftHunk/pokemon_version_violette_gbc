@@ -2,7 +2,7 @@ _CinnabarPokecenterText2::
 	text "Tu peux empêcher"
 	line "une évolution."
 
-	para "Quand un #MON"
+	para "Quand un #mon"
 	line "évolue, tu"
 	cont "peux le stopper"
 	cont "pour le laisser"
@@ -13,7 +13,7 @@ _CinnabarPokecenterText3::
 	text "Dis-moi, t'as des"
 	line "copains?"
 
-	para "Un #MON"
+	para "Un #mon"
 	line "échangé grandit"
 	cont "très vite."
 

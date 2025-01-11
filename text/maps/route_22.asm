@@ -3,7 +3,7 @@ _Route22RivalBeforeBattleText1::
 	line "<PLAYER>!"
 
 	para "Tu vas à la"
-	line "LIGUE #MON?"
+	line "Ligue #mon?"
 
 	para "Laisse tomber!"
 	line "T'es bien trop"
@@ -19,14 +19,14 @@ _Route22RivalBeforeBattleText1::
 	para "Enfin, si tu veux"
 	line "je suis prêt à"
 	cont "exploser tes"
-	cont "#MON!"
+	cont "#mon!"
 	done
 
 _Route22RivalAfterBattleText1::
 	text "Y paraît qu'il y"
 	line "a des dresseurs"
 	cont "balèzes dans la"
-	cont "LIGUE #MON!"
+	cont "Ligue #mon!"
 
 	para "Je dois trouver"
 	line "un moyen de les"
@@ -47,7 +47,7 @@ _Route22RivalDefeatedText1::
 _Route22Text_511bc::
 	text "Quoi?"
 	line "Pourquoi j'ai 2"
-	cont "#MON?"
+	cont "#mon?"
 
 	para "Tu devrais"
 	line "aussi en choper"
@@ -62,7 +62,7 @@ _Route22RivalBeforeBattleText2::
 	cont "tu es là aussi?!"
 
 	para "Alors comme ça on"
-	line "va à la LIGUE?"
+	line "va à la Ligue?"
 
 	para "Tu as tous les"
 	line "BADGES aussi?"
@@ -85,7 +85,7 @@ _Route22RivalAfterBattleText2::
 	text "Tu m'as amusé"
 	line "un peu! J'suis"
 	cont "chaud pour la"
-	cont "LIGUE #MON!"
+	cont "Ligue #mon!"
 
 	para "<PLAYER>, t'es"
 	line "vraiment un"
@@ -115,6 +115,6 @@ _Route22Text_511d0::
 	prompt
 
 _Route22FrontGateText::
-	text "LIGUE #MON"
+	text "Ligue #mon"
 	line "Porte d'entrée"
 	done

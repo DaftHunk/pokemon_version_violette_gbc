@@ -5,7 +5,7 @@ _MomWakeUpText::
 	cont "quitte la maison."
 	cont "C'est la vie!"
 
-	para "Le PROF. CHEN te"
+	para "Le PROF. Chen te"
 	line "cherche. Il est"
 	cont "dans la maison"
 	cont "voisine."
@@ -20,7 +20,7 @@ _MomHealText1::
 _MomHealText2::
 	text "MERE: Ah, bien!"
 	line "Toi et tes"
-	cont "#MON êtes"
+	cont "#mon êtes"
 	cont "en pleine forme!"
 	done
 

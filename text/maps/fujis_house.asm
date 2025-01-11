@@ -8,7 +8,7 @@ _LavenderHouse1Text_1d8d6::
 	text "MR.FUJI a prié"
 	line "pour le repos de"
 	cont "la mère de"
-	cont "OSSELAIT."
+	cont "Osselait."
 	done
 
 _LavenderHouse1Text_1d8f4::
@@ -20,23 +20,23 @@ _LavenderHouse1Text_1d8f4::
 
 	para "Il est à la"
 	line "recherche des"
-	cont "#MON orphelins"
+	cont "#mon orphelins"
 	cont "et abandonnés!"
 	done
 
 _LavenderHouse1Text_1d8f9::
 	text "C'est si doux!"
 	line "Faire un câlin à"
-	cont "un #MON,"
+	cont "un #mon,"
 	cont "c'est chou!"
 	done
 
 _LavenderHouse1Text3::
-	text "PSYKOKWAK: Kwak!@"
+	text "Psykokwak: Kwak!@"
 	text_end
 
 _LavenderHouse1Text4::
-	text "NIDORINO: Nido!@"
+	text "Nidorino: Nido!@"
 	text_end
 
 _LavenderHouse1Text_1d94c::
@@ -46,7 +46,7 @@ _LavenderHouse1Text_1d94c::
 	line "compléter ton"
 	cont "#DEX échouera"
 	cont "si tu n'aimes pas"
-	cont "tes #MON."
+	cont "tes #mon."
 
 	para "Je crois que ceci"
 	line "te sera utile."
@@ -64,11 +64,11 @@ _FluteExplanationText::
 
 	para "En jouant de la"
 	line "#FLUTE, les"
-	cont "#MON endormis"
+	cont "#mon endormis"
 	cont "se réveilleront."
 
 	para "Elle marche sur"
-	line "tous les #MON."
+	line "tous les #mon."
 	done
 
 _FluteNoRoomText::
@@ -84,7 +84,7 @@ _MrFujiAfterFluteText::
 _LavenderHouse1Text6::
 	text "Grand concours de"
 	line "dessin de"
-	cont "#MON!"
+	cont "#mon!"
 
 	para "Le formulaire"
 	line "d'inscription"
@@ -97,7 +97,7 @@ _LavenderHouse1Text6::
 _FujiText_challenge::
 	text "Do you challenge"
 	line "MR.FUJI to a"
-	cont "#MON battle?"
+	cont "#mon battle?"
 	done
 
 _FujiText_prebattle::
@@ -131,7 +131,7 @@ _FujiTextVictorySpeech::
 	cont "replicating."
 	
 	para "Who knows what"
-	line "kind of #MON"
+	line "kind of #mon"
 	cont "they might have"
 	cont "cloned themselves"
 	cont "into?"
@@ -141,13 +141,13 @@ _FujiTextVictorySpeech::
 	cont "who can help fix"
 	cont "past mistakes."
 
-	para "SILPH's CHIEF is"
+	para "SILPH's Chef is"
 	line "an old friend, so"
 	cont "battle him too."
 	prompt
 	
 _FujiTextMewtwo::
-	text "That MEWTWO you"
+	text "That Mewtwo you"
 	line "have with you..."
 	
 	para "...Such an angry"
@@ -157,7 +157,7 @@ _FujiTextMewtwo::
 	
 	para "You must possess"
 	line "a great love for"
-	cont "your #MON."
+	cont "your #mon."
 	
 	para "Take this. I have"
 	line "no reason to keep"

@@ -1,6 +1,6 @@
 _Route15BattleText1::
 	text "Je vais tester"
-	line "les #MON que"
+	line "les #mon que"
 	cont "j'ai échangé!"
 	done
 
@@ -12,7 +12,7 @@ _Route15EndBattleText1::
 _Route15AfterBattleText1::
 	text "Tu ne peux pas"
 	line "renommer un"
-	cont "#MON échangé."
+	cont "#mon échangé."
 
 	para "Seul son dresseur"
 	line "peut le faire."
@@ -30,14 +30,14 @@ _Route15EndBattleText2::
 	prompt
 
 _Route15AfterBattleText2::
-	text "Les MOTARDS me"
+	text "Les Motards me"
 	line "font peur, ils"
 	cont "sont si méchants!"
 	done
 
 _Route15BattleText3::
 	text "Je peux appeler"
-	line "des #MON"
+	line "des #mon"
 	cont "oiseaux rien"
 	cont "qu'en sifflant!"
 	done
@@ -88,7 +88,7 @@ _Route15AfterBattleText5::
 	done
 
 _Route15BattleText6::
-	text "J'ai des #MON"
+	text "J'ai des #mon"
 	line "parce que je vis"
 	cont "toute seule!"
 	done
@@ -101,7 +101,7 @@ _Route15EndBattleText6::
 _Route15AfterBattleText6::
 	text "Je rentre chez"
 	line "moi pour être"
-	cont "avec mes #MON!"
+	cont "avec mes #mon!"
 	done
 
 _Route15BattleText7::
@@ -138,7 +138,7 @@ _Route15AfterBattleText8::
 
 _Route15BattleText9::
 	text "Quoi? Echanger"
-	line "des #MON"
+	line "des #mon"
 	cont "c'est cool?"
 	done
 
@@ -151,14 +151,14 @@ _Route15EndBattleText9::
 
 _Route15AfterBattleText9::
 	text "J'échange des"
-	line "#MON avec"
+	line "#mon avec"
 	cont "mes amis!"
 	done
 
 _Route15BattleText10::
 	text "Je veux me"
 	line "battre avec mes"
-	cont "#MON!"
+	cont "#mon!"
 	done
 
 _Route15EndBattleText10::
@@ -175,7 +175,7 @@ _Route15AfterBattleText10::
 	text_end
 
 _Route15Text12::
-	text "ROUTE 15"
-	line "PARMANIE"
+	text "Route 15"
+	line "Parmanie"
 	cont "à l'Ouest"
 	done

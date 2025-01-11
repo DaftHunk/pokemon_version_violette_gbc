@@ -5,6 +5,6 @@ _Lab2Text1::
 	cont "SELENITE!"
 
 	para "On dirait un"
-	line "#MON"
+	line "#mon"
 	cont "préhistorique!"
 	done

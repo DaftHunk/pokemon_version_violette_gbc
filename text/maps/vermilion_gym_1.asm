@@ -8,7 +8,7 @@ _VermilionGymText_5cb6d::
 	cont "guerre!"
 
 	para "Je vais te dire,"
-	line "mes #MON"
+	line "mes #mon"
 	cont "électriques m'ont"
 	cont "sauvé la vie!"
 	cont "Et ouais!"

@@ -1,6 +1,6 @@
 _FuchsiaMartText2::
 	text "As-tu une affiche"
-	line "du PARC SAFARI?"
+	line "du Parc Safari?"
 
 	para "Et des cartes?"
 	line "Et des almanachs?"
@@ -11,6 +11,6 @@ _FuchsiaMartText3::
 	line "VITESSE +? Elle"
 	cont "augmente la"
 	cont "vitesse de ton"
-	cont "#MON pendant"
+	cont "#mon pendant"
 	cont "un combat!"
 	done

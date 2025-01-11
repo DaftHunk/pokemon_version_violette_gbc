@@ -47,16 +47,16 @@ _SaffronGymText_5d16e::
 _SaffronGymText_5d173::
 	text "Avec le BADGE"
 	line "MARAIS, les"
-	cont "#MON de niveau"
+	cont "#mon de niveau"
 	cont "70 t'obéiront!"
 
-	para "Les #MON plus"
+	para "Les #mon plus"
 	line "puissants seront"
 	cont "incontrôlables"
 	cont "lors des combats!"
 
 	para "Fais en sorte que"
-	line "tes #MON ne"
+	line "tes #mon ne"
 	cont "dépassent pas"
 	cont "cette limite!"
 
@@ -87,12 +87,12 @@ _SaffronGymText_5d1e6::
 	text "Salut! Graine de"
 	line "champion!"
 
-	para "Les #MON de"
-	line "MORGANE utilisent"
+	para "Les #mon de"
+	line "Morgane utilisent"
 	cont "les pouvoirs de"
 	cont "l'esprit!"
 
-	para "Les #MON du"
+	para "Les #mon du"
 	line "type combat sont"
 	cont "désavantagés!"
 
@@ -111,7 +111,7 @@ _SaffronGymText_5d1eb::
 	done
 
 _SaffronGymBattleText1::
-	text "MORGANE est une"
+	text "Morgane est une"
 	line "petite parvenue!"
 	cont "Mais je l'aime"
 	cont "bien!"
@@ -130,7 +130,7 @@ _SaffronGymAfterBattleText1::
 	cont "gagner!"
 
 	para "Si tu veux gagner"
-	line "face à MORGANE,"
+	line "face à Morgane,"
 	cont "concentre-toi sur"
 	cont "la victoire!"
 	done
@@ -148,7 +148,7 @@ _SaffronGymEndBattleText2::
 	prompt
 
 _SaffronGymAfterBattleText2::
-	text "Les #MON psy"
+	text "Les #mon psy"
 	line "craignent les"
 	cont "insectes et les"
 	cont "fantômes!"
@@ -157,9 +157,9 @@ _SaffronGymAfterBattleText2::
 _SaffronGymBattleText3::
 	text "L'aura du maître"
 	line "déteint sur ses"
-	cont "#MON."
+	cont "#mon."
 
-	para "Tes #MON sont"
+	para "Tes #mon sont"
 	line "forts, non?"
 	done
 
@@ -170,7 +170,7 @@ _SaffronGymEndBattleText3::
 
 _SaffronGymAfterBattleText3::
 	text "Les attaques de"
-	line "mes #MON ne"
+	line "mes #mon ne"
 	cont "sont pas assez"
 	cont "fortes!"
 	done
@@ -188,7 +188,7 @@ _SaffronGymEndBattleText4::
 	prompt
 
 _SaffronGymAfterBattleText4::
-	text "MORGANE a"
+	text "Morgane a"
 	line "pulvérisé le"
 	cont "grand MAITRE de"
 	cont "KARATE!"
@@ -196,7 +196,7 @@ _SaffronGymAfterBattleText4::
 
 _SaffronGymBattleText5::
 	text "Toi...Moi..."
-	line "Nos #MON..."
+	line "Nos #mon..."
 	cont "FIGHT!"
 	done
 
@@ -211,7 +211,7 @@ _SaffronGymAfterBattleText5::
 	done
 
 _SaffronGymBattleText6::
-	text "MORGANE est jeune"
+	text "Morgane est jeune"
 	line "mais elle est"
 	cont "aussi notre"
 	cont "CHAMPION!"
@@ -229,7 +229,7 @@ _SaffronGymEndBattleText6::
 
 _SaffronGymAfterBattleText6::
 	text "Il y avait deux"
-	line "ARENES #MON à"
+	line "ArèneS #mon à"
 	cont "SAFRANIA."
 
 	para "Le DOJO KARATE a"
@@ -241,12 +241,12 @@ _SaffronGymAfterBattleText6::
 
 _SaffronGymBattleText7::
 	text "Le CHAMPION de"
-	line "l'ARENE #MON"
+	line "l'Arène #mon"
 	cont "de SAFRANIA est"
 	cont "une médium psy!"
 
 	para "Tu veux voir"
-	line "MORGANE, hein?"
+	line "Morgane, hein?"
 	cont "Je lis tes"
 	cont "pensées... "
 	cont "Vilain crapaud!"

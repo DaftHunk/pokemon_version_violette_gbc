@@ -1,11 +1,11 @@
 _Route12Text1::
-	text "Un #MON en-"
+	text "Un #mon en-"
 	line "dormi bloque le"
 	cont "chemin!"
 	done
 
 _Route12Text13::
-	text "RONFLEX se"
+	text "Ronflex se"
 	line "réveille!"
 
 	para "Il est de mauvais"
@@ -14,7 +14,7 @@ _Route12Text13::
 	done
 
 _Route12Text14::
-	text "RONFLEX, une"
+	text "Ronflex, une"
 	line "fois calmé, s'en"
 	cont "retourne vers la"
 	cont "montagne!"
@@ -48,14 +48,14 @@ _Route12EndBattleText2::
 
 _Route12AfterBattleText2::
 	text "Pour pêcher des"
-	line "#MON plus"
+	line "#mon plus"
 	cont "gros, il me faut"
 	cont "une super CANNE!"
 	done
 
 _Route12BattleText3::
 	text "As-tu trouvé une"
-	line "PIERRE LUNE?"
+	line "Pierre Lune?"
 	done
 
 _Route12EndBattleText3::
@@ -65,8 +65,8 @@ _Route12EndBattleText3::
 _Route12AfterBattleText3::
 	text "J'aurais pu faire"
 	line "évoluer mes"
-	cont "#MON avec"
-	cont "une PIERRE LUNE!"
+	cont "#mon avec"
+	cont "une Pierre Lune!"
 	done
 
 _Route12BattleText4::
@@ -82,14 +82,14 @@ _Route12AfterBattleText4::
 	text "L'eau conduit"
 	line "l'électricité."
 	cont "Planque tous"
-	cont "tes #MON"
+	cont "tes #mon"
 	cont "aquatiques!"
 	done
 
 _Route12BattleText5::
-	text "Le PECHEUR FOU"
+	text "Le Pêcheur FOU"
 	line "contre le KID des"
-	cont "#MON!"
+	cont "#mon!"
 	done
 
 _Route12EndBattleText5::
@@ -133,13 +133,13 @@ _Route12EndBattleText7::
 
 _Route12AfterBattleText7::
 	text "J'ai attrapé des"
-	line "MAGICARPE, mais"
+	line "Magicarpe, mais"
 	cont "ils sont nuls!"
 	done
 
 _Route12Text11::
-	text "ROUTE 12 "
-	line "LAVANVILLE - Nord"
+	text "Route 12 "
+	line "Lavanville - Nord"
 	done
 
 _Route12Text12::

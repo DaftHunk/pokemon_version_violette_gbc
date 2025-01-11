@@ -255,7 +255,7 @@ SafariZoneBattleMenuText:
 SwitchStatsCancelText:
 	db   "ORDRE"
 	next "STATS"
-	next "RETOUR@"
+	next "Retour@"
 
 JapaneseAhText:
 	db "アッ!@"
@@ -553,26 +553,26 @@ IF DEF(_FPLAYER)	;joenote - text to ask if female trainer
 ENDC
 
 .NoYesMenu
-	db   "NON"
-	next "OUI@"
+	db   "Non"
+	next "Oui@"
 .YesNoMenu
-	db   "OUI"
-	next "NON@"
+	db   "Oui"
+	next "Non@"
 .NorthWestMenu
-	db   "NORTH"
-	next "WEST@"
+	db   "Nord"
+	next "Ouest@"
 .SouthEastMenu
-	db   "SOUTH"
-	next "EAST@"
+	db   "Sud"
+	next "Est@"
 .NorthEastMenu
-	db   "NORTH"
-	next "EAST@"
+	db   "Nord"
+	next "Est@"
 .TradeCancelMenu
-	db   "ECHANGE"
-	next "RETOUR@"
+	db   "Echange"
+	next "Retour@"
 .HealCancelMenu
-	db   "SOIN"
-	next "RETOUR@"
+	db   "Soin"
+	next "Retour@"
 IF DEF(_FPLAYER)	;joenote - text to ask if female trainer
 .BoyGirlMenu
 	db   "G. ♂"
@@ -700,20 +700,20 @@ DisplayFieldMoveMonMenu:
 	jp PlaceString
 
 FieldMoveNames:
-	db "COUPE@"
-	db "VOL@"
+	db "Coupe@"
+	db "Vol@"
 	db "@"
-	db "SURF@"
-	db "FORCE@"
-	db "FLASH@"
-	db "TUNNEL@"
-	db "TELEPORT@"
-	db "E-COQUE@"
+	db "Surf@"
+	db "Force@"
+	db "Flash@"
+	db "Tunnel@"
+	db "Téléport@"
+	db "E-coque@"
 
 PokemonMenuEntries:
-	db   "STATS"
-	next "ORDRE"
-	next "RETOUR@"
+	db   "Stats"
+	next "Ordre"
+	next "Retour@"
 
 GetMonFieldMoves:
 	ld a, [wWhichPokemon]

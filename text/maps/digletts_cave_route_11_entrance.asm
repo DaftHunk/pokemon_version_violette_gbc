@@ -1,8 +1,8 @@
 _DiglettsCaveEntRoute11Text1::
 	text "Whoaaaa! Les"
-	line "TAUPIQUEUR ont"
+	line "Taupiqueur ont"
 	cont "creusé ce tunnel!"
 
 	para "Il va tout droit"
-	line "à JADIELLE!"
+	line "à Jadielle!"
 	done

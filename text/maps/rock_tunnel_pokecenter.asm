@@ -1,5 +1,5 @@
 _RockTunnelPokecenterText2::
-	text "Les #MON d'un"
+	text "Les #mon d'un"
 	line "certain élément"
 	cont "sont plus ou"
 	cont "moins forts que"

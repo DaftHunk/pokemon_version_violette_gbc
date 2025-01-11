@@ -1,25 +1,25 @@
 _CeruleanPokecenterText2::
-	text "Sacré LEO!"
+	text "Sacré Léo!"
 
 	para "Il donnerait"
 	line "n'importe quoi"
 	cont "pour mettre la"
 	cont "main sur un"
-	cont "#MON rare!"
+	cont "#mon rare!"
 	done
 
 _CeruleanPokecenterText3::
-	text "Tu connais LEO?"
+	text "Tu connais Léo?"
 
 	para "On raconte que"
 	line "c'est un vrai"
-	cont "#MANIAC!"
+	cont "#Maniac!"
 
 	para "Les gens sont"
-	line "jaloux de LEO."
+	line "jaloux de Léo."
 
 	para "Nous sommes tous"
-	line "des #MANIACs,"
+	line "des #Maniacs,"
 	cont "non?"
 	done
 

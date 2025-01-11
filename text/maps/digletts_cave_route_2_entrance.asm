@@ -3,6 +3,6 @@ _DiglettsCaveRoute2Text1::
 	line "dans la GROTTE."
 
 	para "Si le FLASH d'un"
-	line "#MON pouvait"
+	line "#mon pouvait"
 	cont "l'éclairer..."
 	done

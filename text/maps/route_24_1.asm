@@ -32,11 +32,11 @@ _Route24Text_51521::
 _Route24Text_51526::
 	text "Veux-tu rejoindre"
 	line "les rangs de la"
-	cont "TEAM ROCKET?"
+	cont "Team Rocket?"
 
 	para "Nous sommes des"
 	line "dresseurs de"
-	cont "#MON très"
+	cont "#mon très"
 	cont "méchants!"
 
 	para "Ca t'intéresse?"
@@ -65,5 +65,5 @@ _Route24Text_51530::
 	text "Tu pourrais vite"
 	line "devenir un chef"
 	cont "au sein de la"
-	cont "TEAM ROCKET!"
+	cont "Team Rocket!"
 	done
