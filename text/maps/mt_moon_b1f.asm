@@ -1,3 +1,3 @@
 _MtMoonText1::
-	db $0
+	text_start
 	done

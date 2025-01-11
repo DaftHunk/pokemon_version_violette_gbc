@@ -1,62 +1,65 @@
 _DayCareIntroText::
-	text "I run a DAYCARE."
-	line "Would you like me"
-	cont "to raise one of"
-	cont "your #MON?"
+	text "Je m'occupe de la"
+	line "PENSION. Veux-tu"
+	cont "que j'élève un de"
+	cont "tes #MON?"
 	done
 
 _DayCareWhichMonText::
-	text "Which #MON"
-	line "should I raise?"
+	text "Quel #MON"
+	line "veux-tu me"
+	cont "confier?"
 	prompt
 
 _DayCareWillLookAfterMonText::
-	text "Fine, I'll look"
-	line "after @"
-	TX_RAM wcd6d
-	db $0
-	cont "for a while."
+	text "Très bien, je"
+	line "vais m'occuper de"
+	cont "@"
+	text_ram wcd6d
+	text "."
 	prompt
 
 _DayCareComeSeeMeInAWhileText::
-	text "Come see me in"
-	line "a while."
+	text "Reviens un peu"
+	line "plus tard."
 	done
 
 _DayCareMonHasGrownText::
-	text "Your @"
-	TX_RAM wcd6d
-	db $0
-	line "has grown a lot!"
+	text "Ton @"
+	text_ram wcd6d
+	text_start
+	line "a bien évolué!"
 
-	para "By level, it's"
-	line "grown by @"
-	TX_NUM wDayCareNumLevelsGrown,$1,$3
+	para "Ses niveaux ont"
+	line "augmenté de @"
+	text_decimal wDayCareNumLevelsGrown, 1, 3
 	text "!"
 
-	para "Aren't I great?"
+	para "Merci qui? Hein?"
 	prompt
 
 _DayCareOweMoneyText::
-	text "You owe me ¥@"
-	TX_BCD wDayCareTotalCost, $c2
-	db $0
-	line "for the return"
-	cont "of this #MON."
+;	text "Donne-moi ¥@"	tournenote - fix ¥ position
+	text "Donne-moi @"
+	text_bcd wDayCareTotalCost, 2 | LEADING_ZEROES | LEFT_ALIGN
+;	text_start
+	text "¥"
+	line "et je te rends"
+	cont "ton #MON."
 	done
 
 _DayCareGotMonBackText::
-	text "<PLAYER> got"
+	text "<PLAYER> récupère"
 	line "@"
-	TX_RAM wDayCareMonName
-	text " back!"
+	text_ram wDayCareMonName
+	text "!"
 	done
 
 _DayCareMonNeedsMoreTimeText::
-	text "Back already?"
-	line "Your @"
-	TX_RAM wcd6d
-	db $0
-	cont "needs some more"
-	cont "time with me."
+	text "Déjà de retour?"
+	line "Ton @"
+	text_ram wcd6d
+	text_start
+	cont "doit rester"
+	cont "encore un peu."
 	prompt

@@ -1,40 +1,42 @@
 _FuchsiaHouse3Text_561bd::
-	text "I'm the FISHING"
-	line "GURU's older"
-	cont "brother!"
+	text "Je suis le grand"
+	line "frère du MAITRE"
+	cont "PECHEUR!"
 
-	para "I simply Looove"
-	line "fishing!"
+	para "Moi, mon truc,"
+	line "c'est la pêche!"
 
-	para "Do you like to"
-	line "fish?"
+	para "T'aimes la"
+	line "pêche, petit?"
 	done
 
 _FuchsiaHouse3Text_561c2::
-	text "Grand! I like"
-	line "your style!"
+	text "Cool! T'as l'air"
+	line "d'un bon gars!"
 
-	para "Take this and"
-	line "fish, young one!"
-
-;joenote - add hotkey info
+	para "Prends ça!"
+	line "Que la Grand'"
+	cont "Pêche soit avec"
+	cont "toi, p'tit!"
+	;joenote - add hotkey info
 	para "Hold A and press"
 	line "SELECT to use the"
 	cont "rod quickly.@@"
 
-	para "<PLAYER> received"
-	line "a @"
-	TX_RAM wcf4b
-	text "!@@"
+	para "<PLAYER> reçoit"
+	line "une @"
+	text_ram wStringBuffer
+	text "!@"
+	text_end
 
 _FuchsiaHouse3Text_56212::
-	text "Oh... That's so"
-	line "disappointing..."
+	text "Oh...Pas cool!"
+	line "Pas cool du tout!"
 	done
 
 ;joenote - swap super and good rod locations
 _FuchsiaHouse3Text_56217::
-	text "Hello there,"
+	text "Salut,"
 	line "<PLAYER>!"
 
 ;	para "How are the fish"
@@ -51,8 +53,8 @@ _FuchsiaHouse3Text_56217::
 	done
 
 _FuchsiaHouse3Text_5621c::
-	text "Oh no!"
+	text "Oh non!"
 
-	para "You have no room"
-	line "for my gift!"
+	para "Ton inventaire"
+	line "est plein!"
 	done
