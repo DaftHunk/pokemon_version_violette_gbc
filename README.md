@@ -1,6 +1,11 @@
 # Shin Pokémon Red, Blue, Green, Red-JP, & Blue-JP
 
-Version 1.24.6
+*********************************************************************************************************************************
+- Fork partant de la version v1.24.6(hotfix 3) complète
+- Traduction réalisée par tournepivoine qui a effectué un magnifique travail ! https://github.com/tournepivoine/shinpokered-fr
+- Compilation des modifications faites par tournepivoine pour les adapter à la dernière version et à la version complète
+- Ajout de petites modifications perso
+*********************************************************************************************************************************
 
 *Shin (真) - The kanji for "true".  
 Used in Japanese media to denote a remastering, updated retelling , or a "true form" of something.*  
