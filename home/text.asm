@@ -219,9 +219,9 @@ FinishDTE::
 	jp PlaceNextChar
 
 Char5CText::
-	db "TM@"
+	db "CT@"
 Char5DText::
-	db "TRAINER@"
+	db "DRES.@"
 Char5BText::
 	db "PC@"
 Char5EText::
@@ -231,7 +231,7 @@ Char54Text::
 Char56Text::
 	db "……@"
 Char5AText::
-	db "Enemy @"
+	db "@ ennemi"
 Char4AText::
 	db $E1,$E2,"@" ; PKMN
 

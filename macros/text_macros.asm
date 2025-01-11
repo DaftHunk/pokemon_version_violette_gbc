@@ -12,11 +12,21 @@ prompt EQUS "db $58"  ; Prompt the player to end a text box (initiating some oth
 page   EQUS "db $49,"     ; Start a new Pokedex page.
 dex    EQUS "db $5f, $50" ; End a Pokedex entry.
 
+wStringBuffer EQUS "wcf4b" ; Alias for french text
+
+MACRO text_start ; Alias for french text
+	db $00
+ENDM
+
 MACRO TX_RAM
 ; prints text to screen
 ; \1: RAM address to read from
 	db $1
 	dw \1
+ENDM
+
+MACRO text_ram ; Alias for french text
+	TX_RAM \1
 ENDM
 
 MACRO TX_BCD
@@ -25,6 +35,10 @@ MACRO TX_BCD
 	db $2
 	dw \1
 	db \2
+ENDM
+
+MACRO text_bcd ; Alias for french text
+	TX_BCD \1, \2
 ENDM
 
 TX_LINE    EQUS "db $05"
@@ -42,6 +56,10 @@ MACRO TX_NUM
 	db \2 << 4 | \3
 ENDM
 
+MACRO text_decimal ; Alias for french text
+	TX_NUM \1, \2, \3
+ENDM
+
 TX_DELAY              EQUS "db $0a"
 TX_SFX_ITEM_1         EQUS "db $0b"
 TX_SFX_LEVEL_UP       EQUS "db $0b"
@@ -52,7 +70,7 @@ TX_SFX_ITEM_2         EQUS "db $10"
 TX_SFX_KEY_ITEM       EQUS "db $11"
 TX_SFX_CAUGHT_MON     EQUS "db $12"
 TX_SFX_DEX_PAGE_ADDED EQUS "db $13"
-TX_CRY_NIDORINO       EQUS "db $14"
+TX_CRY_NIDORINA       EQUS "db $14"
 TX_CRY_PIDGEOT        EQUS "db $15"
 ;TX_CRY_DEWGONG       EQUS "db $16"
 
@@ -79,3 +97,7 @@ MACRO TX_MART
 ENDM
 
 TX_POKECENTER_NURSE        EQUS "db $ff"
+
+MACRO text_end ; Alias for french text
+	db $50
+ENDM

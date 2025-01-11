@@ -215,6 +215,8 @@ TextBoxGraphics:                INCBIN "gfx/text_box_green.2bpp"
 ELSE
 GamefreakLogoGraphics:          INCBIN "gfx/gamefreak.2bpp"
 GamefreakLogoGraphicsEnd:
+Unk9Graphic:                    INCBIN "gfx/unk_9.2bpp"
+Unk9GraphicEnd:
 TextBoxGraphics:                INCBIN "gfx/text_box.2bpp"
 ENDC
 TextBoxGraphicsEnd:
@@ -588,8 +590,8 @@ INCLUDE "engine/battle/moveEffects/one_hit_ko_effect.asm"
 INCLUDE "engine/battle/display_effectiveness.asm"
 TrainerInfoTextBoxTileGraphics:  INCBIN "gfx/trainer_info.2bpp"
 TrainerInfoTextBoxTileGraphicsEnd:
-;BlankLeaderNames:                INCBIN "gfx/blank_leader_names.2bpp"
-BlankLeaderNames:                INCBIN "gfx/leader_names.2bpp"	;joenote - restoring the names
+BlankLeaderNames:                INCBIN "gfx/blank_leader_names.2bpp"
+;BlankLeaderNames:                INCBIN "gfx/leader_names.2bpp"	;joenote - restoring the names
 CircleTile:                      INCBIN "gfx/circle_tile.2bpp"
 BadgeNumbersTileGraphics:        INCBIN "gfx/badge_numbers.2bpp"
 INCLUDE "engine/items/tmhm.asm"
@@ -1636,11 +1638,14 @@ SECTION "bank1A",ROMX,BANK[$1A]
 INCLUDE "engine/battle/decrement_pp.asm"
 
 Version_GFX:
-IF (DEF(_RED) || DEF(_GREEN))
+IF (DEF(_GREEN))
 	INCBIN "gfx/red/redgreenversion.1bpp" ; 10 tiles
 ENDC
+IF (DEF(_RED))
+	INCBIN "gfx/red/redversion.1bpp" ; 10 tiles
+ENDC
 IF DEF(_BLUE)
-	INCBIN "gfx/blue/blueversion.1bpp" ; 8 tiles
+	INCBIN "gfx/blue/blueversion.1bpp" ; 10 tiles
 ENDC
 Version_GFXEnd:
 
