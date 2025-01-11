@@ -21,7 +21,6 @@ TypeNames:
 	dw .Normal
 	dw .Normal
 	dw .Normal
-	dw .Normal
 
 	dw .Fire
 	dw .Water
