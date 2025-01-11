@@ -44,9 +44,9 @@ _WardenThankYouText::
 	cont "te remercier."
 
 ;joenote - add hotkey info
-	para "Press SELECT when"
-	line "facing a boulder"
-	cont "to activate it."	
+	para "Appuie sur SELECT"
+	line "face à un rocher"
+	cont "pour l'activer."	
 	prompt
 
 _ReceivedHM04Text::

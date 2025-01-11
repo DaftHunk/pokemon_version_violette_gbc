@@ -19,31 +19,32 @@ _ViridianPokeCenterText3::
 
 ;joenote - text for randomized regular trainers
 _ViridianPokeCenter_RegRandomON::
-	text "Not your first"
-	line "try at a #MON"
-	cont "journey?"
+	text "Ce n'est pas"
+	line "ton premier"
+	cont "voyage #MON ?"
 	
-	para "I can make it so"
-	line "regular trainers"
-	cont "are randomized."
+	para "Je peux rendre"
+	line "les dresseurs"
+	cont "classiques"
+	cont "aléatoires."
 	done
 	
 _ViridianPokeCenter_RegRandomOFF::
-	text "You desire more"
-	line "structure? Hmm..."
+	text "Tu veux revenir"
+	line "en arrière ? Hmm..."
 	
-	para "I can put regular"
-	line "trainers back to"
-	cont "normal for you."
+	para "Je peux te rendre"
+	line "les dresseurs"
+	cont "comme avant."
 	done
 	
 _ViridianPokeCenter_AideQ_done::
-	text "Okay, it's done."
+	text "Okay, c'est fait."
 	done
 	
 _ViridianPokeCenter_AideQ_reject::
-	text "No? Very well."
-	line "See me again if"
-	cont "you change your"
-	cont "mind later."
+	text "Non ? Très bien."
+	line "Reviens me voir"
+	cont "si tu changes"
+	cont "d'avis."
 	done
