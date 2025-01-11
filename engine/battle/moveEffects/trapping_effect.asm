@@ -18,7 +18,7 @@ TrappingEffect_:
 	push hl
 	push bc
 	push de
-	call AIGetTypeEffectiveness
+	callab AIGetTypeEffectiveness
 	pop de
 	pop bc
 	pop hl
@@ -30,11 +30,11 @@ TrappingEffect_:
                         ; the target won't need to recharge even if the trapping move missed
 						;joenote - will do this later under ApplyAttackToEnemy/Player functions
 	set USING_TRAPPING_MOVE, [hl] ; mon is now using a trapping move
-	call BattleRandom ; 3/8 chance for 2 and 3 attacks, and 1/8 chance for 4 and 5 attacks
+	callab BattleRandom ; 3/8 chance for 2 and 3 attacks, and 1/8 chance for 4 and 5 attacks
 	and $3
 	cp $2
 	jr c, .setTrappingCounter
-	call BattleRandom
+	callab BattleRandom
 	and $3
 .setTrappingCounter
 	inc a
