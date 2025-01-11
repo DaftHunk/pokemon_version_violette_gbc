@@ -1,5 +1,5 @@
 _VermilionDockText1::
-	text ""
+	text_start
 	done
 
 _VermilionDockSeigaIntro::

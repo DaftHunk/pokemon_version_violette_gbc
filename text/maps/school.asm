@@ -1,29 +1,31 @@
 _SchoolText1::
-	text "Whew! I'm trying"
-	line "to memorize all"
-	cont "my notes."
+	text "Pfouh! J'essaie"
+	line "d'apprendre mes"
+	cont "leçons."
 	done
 
 _SchoolText2::
-	text "Okay!"
+	text "OK!"
 
-	para "Be sure to read"
-	line "the blackboard"
-	cont "carefully!"
+	para "Lis attentivement"
+	line "le tableau avant"
+	cont "de partir!"
 	done
 
 ;joenote - added more explanation
 _SchoolText3::
-	text "FISSURE."
-	para "HORN DRILL."
+	text "ABIME."
+	para "EMPAL'KORNE."
 	para "GUILLOTINE."
-	
-	para "They take out"
-	line "#MON with just"
-	cont "one hit!"
 
-	para "But only rarely,"
-	line "and only if your"
-	cont "#MON moves"
-	cont "first."
+	para "Ces attaques"
+	line "peuvent mettre"
+	cont "hors combat un"
+	cont "#MON en un"
+	cont "seul coup!"
+
+	para "Mais c'est rare"
+	line "et ton #MON"
+	cont "dois attaquer en"
+	cont "premier."
 	done

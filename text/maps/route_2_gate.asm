@@ -1,7 +1,7 @@
 _Route2GateText_5d616::
-	text "The HM FLASH"
-	line "lights even the"
-	cont "darkest dungeons."
+	text "La CS du FLASH"
+	line "peut éclairer les"
+	cont "endroits sombres."
 	
 ;joenote - add hotkey info
 	para "Press SELECT when"
@@ -10,8 +10,8 @@ _Route2GateText_5d616::
 	done
 
 _Route2GateText2::
-	text "Once a #MON"
-	line "learns FLASH, you"
-	cont "can get through"
-	cont "ROCK TUNNEL."
+	text "Si un #MON a"
+	line "appris le FLASH,"
+	cont "tu pourras tra-"
+	cont "verser la GROTTE."
 	done

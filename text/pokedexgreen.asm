@@ -106,7 +106,7 @@ _LickitungDexEntry::
 	next "twice the length"
 	next "of its body. Like"
 	
-	page "an arm, it can"
+	page "and arm, it can"
 	next "be moved to grab"
 	next "food or attack"
 	dex
@@ -178,7 +178,7 @@ _RhyhornDexEntry::
 	
 	page "shatter even a"
 	next "tower with its"
-	next "charging TACKLES"
+	next "charging TACKLES."
 	dex
 
 _LaprasDexEntry::
@@ -188,7 +188,7 @@ _LaprasDexEntry::
 	
 	page "speech. It likes"
 	next "to ferry people"
-	next "on its back"
+	next "on its back."
 	dex
 
 _ArcanineDexEntry::
@@ -414,7 +414,7 @@ _HitmonleeDexEntry::
 _HitmonchanDexEntry::
 	text "The spirit of a"
 	next "pro boxer infuses"
-	next "this #MON."
+	next "this #MON"
 	
 	page "It throws punches"
 	next "that outspeed a"
@@ -903,7 +903,7 @@ _EkansDexEntry::
 
 _ParasDexEntry::
 	text "Mushrooms called"
-	next "INSECT PLANTS"
+	next "'Insect Plants'"
 	next "live on its back."
 	
 	page "The mushrooms"
@@ -928,7 +928,7 @@ _PoliwrathDexEntry::
 	
 	page "and more. Faster"
 	next "than even the best"
-	next "human swimmers"
+	next "human swimmers."
 	dex
 
 _WeedleDexEntry::
@@ -966,8 +966,8 @@ _DodrioDexEntry::
 	next "3-headed species."
 	next "Joy, sadness, and"
 	
-	page "anger are embod-"
-	next "ied in each head"
+	page "anger are emodied"
+	next "in each head"
 	next "respectively"
 	dex
 
@@ -1150,7 +1150,7 @@ _ElectrodeDexEntry::
 	
 	page "It is feared with"
 	next "the nickname of"
-	next "THE BOMB BALL"
+	next "'The Bomb Ball'"
 	dex
 
 _ClefableDexEntry::
@@ -1196,11 +1196,11 @@ _MarowakDexEntry::
 _HaunterDexEntry::
 	text "If you get the"
 	next "feeling of being"
-	next "watched in the"
+	next "watched in dark"
 	
-	page "dark when nobody"
-	next "is around, a"
-	next "HAUNTER is there"
+	page "when nobody is"
+	next "around, a HAUNTER"
+	next "is there"
 	dex
 
 _AbraDexEntry::
@@ -1219,7 +1219,7 @@ _AlakazamDexEntry::
 	next "much. Instead, it"
 	
 	page "uses extrasensory"
-	next "power at will to"
+	next "power at-will to"
 	next "defeat foes"
 	dex
 
@@ -1300,7 +1300,7 @@ _SeakingDexEntry::
 	
 	page "It bores a hole"
 	next "in a boulder to"
-	next "make its nest"
+	next "make its nest."
 	dex
 
 _PonytaDexEntry::
@@ -1461,8 +1461,8 @@ _OddishDexEntry::
 	next "like feet,"
 	
 	page "earning it the"
-	next "nickname NOODLES"
-	next "ON THE GO"
+	next "alias 'noodles on"
+	next "the go'"
 	dex
 
 _GloomDexEntry::

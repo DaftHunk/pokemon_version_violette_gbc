@@ -1,69 +1,69 @@
 _Route12HouseText_564c0::
-	text "I'm the FISHING"
-	line "GURU's brother!"
+	text "Mon frère,"
+	line "j'suis le maître"
+	cont "pêcheur!"
 
-	para "I simply Looove"
-	line "fishing!"
+	para "Moi, dans la vie,"
+	line "j'suis pêcheur!"
 
-	para "Do you like to"
-	line "fish?"
+	para "T'aimes la pêche,"
+	line "mon frère?"
 	done
 
 _Route12HouseText_564c5::
-	text "Grand! I like"
-	line "your style!"
+	text "Trop cool!"
+	line "J't'aime bien!"
 
-	para "Take this and"
-	line "fish, young one!"
+	para "Prends cette"
+	line "canne à pêche,"
 
 ;joenote - add hotkey info
 	para "Hold A and press"
 	line "SELECT to use the"
 	cont "rod quickly.@@"
 
-	para "<PLAYER> received"
-	line "a @"
-	TX_RAM wcf4b
-	text "!@@"
+	para "<PLAYER> obtient:"
+	line "@"
+	text_ram wStringBuffer
+	text "!@"
+	text_end
 
 _Route12HouseText_564ca::
-	db $0
-	para "Fishing is a way"
-	line "of life!"
+	text_start
 
-	para "From the seas to"
-	line "rivers, go out"
-	cont "and land the big"
-	cont "one!"
+	para "La pêche c'est"
+	line "comme la vie!"
+
+	para "Quand ça mord,"
+	line "ça va! "
+	cont "Quand ça mord"
+	cont "pas, ça va pas!"
 	done
 
 _Route12HouseText_564cf::
-	text "Oh... That's so"
-	line "disappointing..."
+	text "Oh... Je suis"
+	line "très déçu..."
 	done
 
-;joenote - swap super and good rod locations
 _Route12HouseText_564d4::
-	text "Hello there,"
+	text "Salut,"
 	line "<PLAYER>!"
 
-;	para "Use the SUPER ROD"
-;	line "in any water!"
-;	cont "You can catch"
-;	cont "different kinds"
-;	cont "of #MON."
+	para "Avec cette MEGA"
+	line "CANNE, tu vas"
+	cont "vider les océans"
+	cont "de tous les"
+	cont "#MON."
 
-;	para "Try fishing"
-;	line "wherever you can!"
-;	done
-	para "How are the fish"
-	line "biting?"
+	para "Pêche, pêche,"
+	line "et pêche encore! "
 	done
 
 _Route12HouseText_564d9::
-	text "Oh no!"
+	text "Ha ben non!"
 
-	para "I had a gift for"
-	line "you, but you have"
-	cont "no room for it!"
+	para "J'avais un cadeau"
+	line "pour toi, mais"
+	cont "t'as plus de"
+	cont "place!"
 	done

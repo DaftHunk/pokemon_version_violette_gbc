@@ -1,6 +1,7 @@
 _MewtwoBattleText::
-	text "Mew!@@"
-
+	text "Miou!@"
+	text_end
+	
 ;joenote - adding notifications for Mew status
 _MewAvailableText::
 	text "You sense a" 
