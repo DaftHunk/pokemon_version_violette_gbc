@@ -9314,62 +9314,7 @@ OneHitKOEffect:
 	jpab OneHitKOEffect_
 
 ChargeEffect:
-	ld hl, wPlayerBattleStatus1
-	ld de, wPlayerMoveEffect
-	ld a, [H_WHOSETURN]
-	and a
-	ld b, XSTATITEM_ANIM
-	jr z, .chargeEffect
-	ld hl, wEnemyBattleStatus1
-	ld de, wEnemyMoveEffect
-	ld b, ANIM_AF
-.chargeEffect
-	set CHARGING_UP, [hl]
-	ld a, [de]
-	dec de ; de contains enemy or player MOVENUM
-	cp FLY_EFFECT
-	jr nz, .notFly
-	set INVULNERABLE, [hl] ; mon is now invulnerable to typical attacks (fly/dig)
-	ld b, TELEPORT ; load Teleport's animation
-.notFly
-	ld a, [de]
-	cp DIG
-	jr nz, .notDigOrFly
-	set INVULNERABLE, [hl] ; mon is now invulnerable to typical attacks (fly/dig)
-	ld b, ANIM_C0
-.notDigOrFly
-	xor a
-	ld [wAnimationType], a
-	ld a, b
-	call PlayBattleAnimation
-	ld a, [de]
-	ld [wChargeMoveNum], a
-	ld hl, ChargeMoveEffectText
-	jp PrintText
-
-ChargeMoveEffectText:
-	TX_FAR _ChargeMoveEffectText
-	TX_ASM
-	ld a, [wChargeMoveNum]
-	cp RAZOR_WIND
-	ld hl, MadeWhirlwindText
-	jr z, .gotText
-	cp SOLARBEAM
-	ld hl, TookInSunlightText
-	jr z, .gotText
-	cp SKULL_BASH
-	ld hl, LoweredItsHeadText
-	jr z, .gotText
-	cp SKY_ATTACK
-	ld hl, SkyAttackGlowingText
-	jr z, .gotText
-	cp FLY
-	ld hl, FlewUpHighText
-	jr z, .gotText
-	cp DIG
-	ld hl, DugAHoleText
-.gotText
-	ret
+	jpab ChargeEffect_
 
 MadeWhirlwindText:
 	TX_FAR _MadeWhirlwindText
@@ -9408,57 +9353,10 @@ RecoilEffect:
 	jpab RecoilEffect_
 
 ConfusionSideEffect:
-	call CheckTargetSubstitute	;joenote - return if opponent has substitute up
-	ret nz
-	call BattleRandom
-	cp $19 ; ~10% chance
-	ret nc
-	jr ConfusionSideEffectSuccess
+	jpab ConfusionSideEffect_
 
 ConfusionEffect:
-	call CheckTargetSubstitute
-	jr nz, ConfusionEffectFailed
-	call MoveHitTest
-	ld a, [wMoveMissed]
-	and a
-	jr nz, ConfusionEffectFailed
-
-ConfusionSideEffectSuccess:
-	ld a, [H_WHOSETURN]
-	and a
-	ld hl, wEnemyBattleStatus1
-	ld bc, wEnemyConfusedCounter
-	ld a, [wPlayerMoveEffect]
-	jr z, .confuseTarget
-	ld hl, wPlayerBattleStatus1
-	ld bc, wPlayerConfusedCounter
-	ld a, [wEnemyMoveEffect]
-.confuseTarget
-	bit CONFUSED, [hl] ; is mon confused?
-	jr nz, ConfusionEffectFailed
-	set CONFUSED, [hl] ; mon is now confused
-	push af
-	call BattleRandom
-	and $3
-	inc a
-	inc a
-	ld [bc], a ; confusion status will last 2-5 turns
-	pop af
-	cp CONFUSION_SIDE_EFFECT
-	call nz, PlayCurrentMoveAnimation2
-	ld hl, BecameConfusedText
-	jp PrintText
-
-BecameConfusedText:
-	TX_FAR _BecameConfusedText
-	db "@"
-
-ConfusionEffectFailed:
-	cp CONFUSION_SIDE_EFFECT
-	ret z
-	ld c, 50
-	call DelayFrames
-	jp ConditionalPrintButItFailed
+	jpab ConfusionEffect_
 
 ParalyzeEffect:
 	jpab ParalyzeEffect_
@@ -9467,124 +9365,16 @@ SubstituteEffect:
 	jpab SubstituteEffect_
 
 HyperBeamEffect:
-	callba _HandleHyperbeamClause	;joenote - handle hyper beam clause
-	ret nz
-	ld hl, wPlayerBattleStatus2
-	ld a, [H_WHOSETURN]
-	and a
-	jr z, .hyperBeamEffect
-	ld hl, wEnemyBattleStatus2
-.hyperBeamEffect
-	set NEEDS_TO_RECHARGE, [hl] ; mon now needs to recharge
-	ret
+	jpab HyperBeamEffect_
 
 ClearHyperBeam:	;for whoever's turn it is, clear their opponent's hyperbeam status
-	push hl
-	ld hl, wEnemyBattleStatus2
-	ld a, [H_WHOSETURN]
-	and a
-	jr z, .playerTurn
-	ld hl, wPlayerBattleStatus2
-.playerTurn
-	res NEEDS_TO_RECHARGE, [hl] ; mon no longer needs to recharge
-	pop hl
-	ret
+	jpab ClearHyperBeam_
 
-RageEffect:	;joenote - modified to last 2 to 3 turns
-	ld hl, wPlayerBattleStatus2
-	ld bc, wPlayerNumAttacksLeft
-	ld a, [H_WHOSETURN]
-	and a
-	jr z, .player
-	ld hl, wEnemyBattleStatus2
-	ld bc, wEnemyNumAttacksLeft
-.player
-	set USING_RAGE, [hl] ; mon is now in "rage" mode
-	call BattleRandom
-	and $1
-	inc a
-	inc a
-	ld [bc], a ; set Rage counter to 2 or 3 at random
-	ret
+RageEffect:
+	jpab RageEffect_
 
 MimicEffect:
-	ld c, 50
-	call DelayFrames
-	call MoveHitTest
-	ld a, [wMoveMissed]
-	and a
-	jr nz, .mimicMissed
-	ld a, [H_WHOSETURN]
-	and a
-	ld hl, wBattleMonMoves
-	ld a, [wPlayerBattleStatus1]
-	jr nz, .enemyTurn
-	ld a, [wLinkState]
-	cp LINK_STATE_BATTLING
-	jr nz, .letPlayerChooseMove
-	ld hl, wEnemyMonMoves
-	ld a, [wEnemyBattleStatus1]
-.enemyTurn
-	bit INVULNERABLE, a
-	jr nz, .mimicMissed
-.getRandomMove
-	push hl
-	call BattleRandom
-	and $3
-	ld c, a
-	ld b, $0
-	add hl, bc
-	ld a, [hl]
-	pop hl
-	and a
-	jr z, .getRandomMove
-	ld d, a
-	ld a, [H_WHOSETURN]
-	and a
-	ld hl, wBattleMonMoves
-	ld a, [wPlayerMoveListIndex]
-	jr z, .playerTurn
-	ld hl, wEnemyMonMoves
-	ld a, [wEnemyMoveListIndex]
-	jr .playerTurn
-.letPlayerChooseMove
-	ld a, [wEnemyBattleStatus1]
-	bit INVULNERABLE, a
-	jr nz, .mimicMissed
-	
-	call SaveScreenTilesToBuffer1	;joenote - need to save the tiles in case the opponent switched before mimic
-	
-	ld a, [wCurrentMenuItem]
-	push af
-	ld a, $1
-	ld [wMoveMenuType], a
-	call MoveSelectionMenu
-	call LoadScreenTilesFromBuffer1
-	ld hl, wEnemyMonMoves
-	ld a, [wCurrentMenuItem]
-	ld c, a
-	ld b, $0
-	add hl, bc
-	ld d, [hl]
-	pop af
-	ld hl, wBattleMonMoves
-.playerTurn
-	ld c, a
-	ld b, $0
-	add hl, bc
-	ld a, d
-	ld [hl], a
-	ld [wd11e], a
-	call GetMoveName
-	call PlayCurrentMoveAnimation
-	ld hl, MimicLearnedMoveText
-	jp PrintText
-.mimicMissed
-	jp PrintButItFailedText_
-
-MimicLearnedMoveText:
-	TX_FAR _MimicLearnedMoveText
-	db "@"
+	jpab MimicEffect_
 
 LeechSeedEffect:
 	jpab LeechSeedEffect_
@@ -9594,97 +9384,7 @@ SplashEffect:
 	jp PrintNoEffectText
 
 DisableEffect:
-	call MoveHitTest
-	ld a, [wMoveMissed]
-	and a
-	jr nz, .moveMissed
-	ld de, wEnemyDisabledMove
-	ld hl, wEnemyMonMoves
-	ld a, [H_WHOSETURN]
-	and a
-	jr z, .disableEffect
-	ld de, wPlayerDisabledMove
-	ld hl, wBattleMonMoves
-.disableEffect
-; no effect if target already has a move disabled
-	ld a, [de]
-	and a
-	jr nz, .moveMissed
-.pickMoveToDisable
-	push hl		;preserve wBattleMonMoves/wEnemyMonMoves
-	call BattleRandom
-	and $3
-	ld c, a
-	ld b, $0
-	add hl, bc
-	ld a, [hl]
-	pop hl		;get back wBattleMonMoves/wEnemyMonMoves
-	and a
-	jr z, .pickMoveToDisable ; loop until a non-00 move slot is found
-	ld [wd11e], a ; store move number
-	push hl		;preserve wBattleMonMoves/wEnemyMonMoves
-	ld a, [H_WHOSETURN]
-	and a
-	ld hl, wBattleMonPP
-	jr nz, .enemyTurn
-;	ld a, [wLinkState]	;joenote - non-link enemy mons now have PP, so always run checks during disable effect
-;	cp LINK_STATE_BATTLING
-;	pop hl ; wEnemyMonMoves
-;	jr nz, .playerTurnNotLinkBattle
-; .playerTurnLinkBattle
-;	push hl
-	ld hl, wEnemyMonPP
-.enemyTurn
-	push hl		;preserve wEnemymonPP/wBattleMonPP
-	ld a, [hli]
-	or [hl]
-	inc hl
-	or [hl]
-	inc hl
-	or [hl]
-	and $3f
-	pop hl ;get back wBattleMonPP or wEnemyMonPP
-	jr z, .moveMissedPopHL ; nothing to do if all moves have no PP left
-	add hl, bc
-	ld a, [hl]
-	pop hl		;get back wBattleMonMoves/wEnemyMonMoves
-	and a
-	jr z, .pickMoveToDisable ; pick another move if this one had 0 PP
-;.playerTurnNotLinkBattle
-; non-link battle enemies have unlimited PP so the previous checks aren't needed
-	call BattleRandom
-	and $7
-	inc a ; 1-8 turns disabled
-
-	;joenote - will handle this a different way
-	;change the lower nybble (a = 0000xxxx) from [1,2,3,4,5,6,7,8] to instead be [9,A,B,C,D,E,F,0]
-	add 8
-	res 4, a	;clear bit in case nybble overflows from F to 0
-
-	inc c ; move 1-4 will be disabled
-	swap c
-	add c ; map disabled move to high nybble of wEnemyDisabledMove / wPlayerDisabledMove
-	ld [de], a
-	call PlayCurrentMoveAnimation2
-	ld hl, wPlayerDisabledMoveNumber
-	ld a, [H_WHOSETURN]
-	and a
-	jr nz, .printDisableText
-	inc hl ; else increment to wEnemyDisabledMoveNumber
-.printDisableText
-	ld a, [wd11e] ; move number
-	ld [hl], a
-	call GetMoveName
-	ld hl, MoveWasDisabledText
-	jp PrintText
-.moveMissedPopHL
-	pop hl
-.moveMissed
-	jp PrintButItFailedText_
-
-MoveWasDisabledText:
-	TX_FAR _MoveWasDisabledText
-	db "@"
+	jpab DisableEffect_
 
 PayDayEffect:
 	jpab PayDayEffect_
