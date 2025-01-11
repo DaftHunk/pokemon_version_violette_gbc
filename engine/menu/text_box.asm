@@ -575,8 +575,8 @@ ENDC
 	next "RETOUR@"
 IF DEF(_FPLAYER)	;joenote - text to ask if female trainer
 .BoyGirlMenu
-	db   "GARCON"
-	next "FILLE@"	
+	db   "G. ♂"
+	next "F. ♀@"	
 ENDC
 
 DisplayFieldMoveMonMenu:
