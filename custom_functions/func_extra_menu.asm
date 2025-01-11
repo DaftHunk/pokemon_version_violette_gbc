@@ -247,11 +247,11 @@ OptionMenuSoundText:
 OptionMenuMono:
 	db "     MONO@"
 OptionMenuEar1:
-	db "EARPHONE1@"
+	db "ECOUTEUR1@"
 OptionMenuEar2:
-	db "EARPHONE2@"
+	db "ECOUTEUR2@"
 OptionMenuEar3:
-	db "EARPHONE3@"
+	db "ECOUTEUR3@"
 
 
 ;60fps - show the fps setting on the menu when activated
@@ -345,16 +345,16 @@ ShowNoSwitchSetting:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	coord hl, $E, $5
+	coord hl, $D, $5
 	call PlaceString
 	ret
 OptionMenuNoSwitch:
 	dw OptionMenuNoSwitchON
 	dw OptionMenuNoSwitchOFF
 OptionMenuNoSwitchON:
-	db "ORIG.@"
+	db " ORIG.@"
 OptionMenuNoSwitchOFF:
-	db "SMART@"
+	db "INTEL.@"
 
 	
 ;joenote - for toggling the color correction
@@ -466,15 +466,15 @@ TextAudio:
 TextFPS:
 	db " FPS@"
 TextInstant:
-	db " INST. TXT@"
+	db " TEXTE INST.@"
 TextHardMode:
-	db " HARD MODE@"
+	db " MODE DIFFI.@"
 TextAISwitch:
-	db " AI SWAPS@"
+	db " CHANG. IA@"
 TextGamma:
-	db " Y SHADER@"
+	db " SHADER Y@"
 TextBack:
-	db " BACK@"
+	db " RETOUR@"
 
 TextAILevelCap:
 	db " LVL CAP@"
@@ -485,6 +485,6 @@ OptionMenuOnOffText:
 	dw OptionMenuTextON
 	dw OptionMenuTextOFF
 OptionMenuTextON:
-	db "ON @"
+	db "OUI@"
 OptionMenuTextOFF:
-	db "OFF@"
+	db "NON@"
