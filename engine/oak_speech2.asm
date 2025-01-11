@@ -220,47 +220,47 @@ DefaultNamesPlayerF:
 	db   "NOM:"
 ; tournenote - name of third trainer in the Japanese version of the manga
 ; adaptation Pocket Monsters Special and made canon in Let's Go, Pikachu/Evee!
-	next "BLUE"
-	next "CLAIRE"
-	next "JILL"
+	next "Blue"
+	next "Claire"
+	next "Jill"
 	db   "@"
 ELIF DEF(_FPLAYER)
 DefaultNamesPlayerF:
 	db   "NOM:"
 ; tournenote - name of third trainer in the English version of the manga
 ; adaptation Pocket Monsters Special and made canon in Let's Go, Pikachu/Evee!
-	next "GREEN"
+	next "Green"
 ; tournenote - name of the character in the first French edition of the manga
-	next "OLGA"
-	next "CLAIRE"
+	next "Olga"
+	next "Claire"
 	db   "@"
 ENDC
 
 IF DEF(_REDJP)
 DefaultNamesPlayer:
 	db   "NOM:"
-	next "RED"
-	next "SATOSHI"
-	next "JACK"
+	next "Red"
+	next "Satoshi"
+	next "Jack"
 	db   "@"
 DefaultNamesRival:
 	db   "NOM:"
-	next "GREEN"
-	next "SHIGERU"
-	next "JOHN"
+	next "Green"
+	next "Shigeru"
+	next "John"
 	db   "@"
 ELIF DEF(_RED)
 DefaultNamesPlayer:
 	db   "NOM:"
-	next "RED"
-	next "SACHA"
-	next "PAUL"
+	next "Red"
+	next "Sacha"
+	next "Paul"
 	db   "@"
 DefaultNamesRival:
 	db   "NOM:"
-	next "BLUE"
-	next "REGIS"
-	next "JEAN"
+	next "Blue"
+	next "Régis"
+	next "Jean"
 	db   "@"
 ENDC
 
@@ -268,28 +268,28 @@ ENDC
 IF DEF(_BLUEJP)
 DefaultNamesPlayer:
 	db   "NOM:"
-	next "BLUE"
-	next "TSUNEKA"
-	next "JEAN"
+	next "Blue"
+	next "Tsuneka"
+	next "Jean"
 	db   "@"
 DefaultNamesRival:
 	db   "NOM:"
-	next "RED"
-	next "GREEN"
-	next "HIROSHI"
+	next "Red"
+	next "Green"
+	next "Hiroshi"
 	db   "@"
 ELIF DEF(_BLUE)
 DefaultNamesPlayer:
 	db   "NOM:"
-	next "BLUE"
-	next "SACHA"
-	next "JEAN"
+	next "Blue"
+	next "Sacha"
+	next "Jean"
 	db   "@"
 DefaultNamesRival:
 	db   "NOM:"
-	next "RED"
-	next "REGIS"
-	next "PAUL"
+	next "Red"
+	next "Régis"
+	next "Paul"
 	db   "@"
 ENDC
 
@@ -297,15 +297,15 @@ ENDC
 IF DEF(_GREEN)
 DefaultNamesPlayer:
 	db   "NOM:"
-	next "GREEN"
-	next "SHIGERU"
-	next "JOHN"
+	next "Green"
+	next "Shigeru"
+	next "John"
 	db   "@"
 DefaultNamesRival:
 	db   "NOM:"
-	next "RED"
-	next "SATOSHI"
-	next "JACK"
+	next "Red"
+	next "Satoshi"
+	next "Jack"
 	db   "@"
 ENDC
 
@@ -338,78 +338,78 @@ GetDefaultName:
 IF DEF(_FPLAYER) && (DEF(_GREEN) || DEF(_REDJP) || DEF(_BLUEJP))
 DefaultNamesPlayerListF:
 	db "NOM:@"
-	db "BLUE@"
-	db "CLAIRE@"
-	db "JILL@"
+	db "Blue@"
+	db "Claire@"
+	db "Jill@"
 ELIF DEF(_FPLAYER)
 DefaultNamesPlayerListF:
 	db "NOM:@"
-	db "GREEN@"
-	db "OLGA@"
-	db "CLAIRE@"
+	db "Green@"
+	db "Olga@"
+	db "Claire@"
 ENDC
 
 IF DEF(_REDJP)
 DefaultNamesPlayerList:
 	db "NOM:@"
-	db "RED@"
-	db "SATOSHI@"
-	db "JACK@"
+	db "Red@"
+	db "Satoshi@"
+	db "Jack@"
 DefaultNamesRivalList:
 	db "NOM:@"
-	db "GREEN@"
-	db "SHIGERU@"
-	db "JOHN@"
+	db "Green@"
+	db "Shigeru@"
+	db "John@"
 ELIF DEF(_RED)
 DefaultNamesPlayerList:
 	db "NOM:@"
-	db "RED@"
-	db "SACHA@"
-	db "PAUL@"
+	db "Red@"
+	db "Sacha@"
+	db "Paul@"
 DefaultNamesRivalList:
 	db "NOM:@"
-	db "BLUE@"
-	db "REGIS@"
-	db "JEAN@"
+	db "Blue@"
+	db "Régis@"
+	db "Jean@"
 ENDC
 
 
 IF DEF(_BLUEJP)
 DefaultNamesPlayerList:
 	db "NOM:@"
-	db "BLUE@"
-	db "TSUNEKA@"
-	db "JEAN@"
+	db "Blue@"
+	db "Tsuneka@"
+	db "Jean@"
 DefaultNamesRivalList:
 	db "NOM:@"
-	db "RED@"
-	db "GREEN@"
-	db "HIROSHI@"
+	db "Red@"
+	db "Green@"
+	db "Hiroshi@"
 ELIF DEF(_BLUE)
 DefaultNamesPlayerList:
 	db "NOM:@"
-	db "BLUE@"
-	db "SACHA@"
-	db "JEAN@"
+	db "Blue@"
+	db "Sacha@"
+	db "Jean@"
 DefaultNamesRivalList:
 	db "NOM:@"
-	db "RED@"
-	db "REGIS@"
-	db "PAUL@"
+	db "Red@"
+	db "Régis@"
+	db "Paul@"
 ENDC
 
 
 IF DEF(_GREEN)
 DefaultNamesPlayerList:
 	db "NOM:@"
-	db "GREEN@"
-	db "SHIGERU@"
-	db "JOHN@"
+	db "Green@"
+	db "Shigeru@"
+	db "John@"
 DefaultNamesRivalList:
 	db "NOM:@"
-	db "RED@"
-	db "SATOSHI@"
-	db "JACK@"
+	db "Red@"
+	db "Satoshi@"
+	db "Jack@"
 ENDC
 
 TextTerminator_6b20:
