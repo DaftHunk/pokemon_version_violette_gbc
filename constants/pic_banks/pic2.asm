@@ -44,4 +44,5 @@ PsyduckPicFront::	INCBIN	PSYDUCK_FR
 PsyduckPicBack::	INCBIN	PSYDUCK_BK
 DrowzeePicFront::	INCBIN	DROWZEE_FR
 DrowzeePicBack::	INCBIN	DROWZEE_BK
-
+SteelixPicFront::	INCBIN	STEELIX_FR
+SteelixPicBack::	INCBIN	STEELIX_BK

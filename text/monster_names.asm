@@ -29,7 +29,7 @@ MonsterNames:
 	db "Tortank@@@"
 	db "Scarabrute"
 	db "Saquedeneu"
-	db "Missingno."
+	db "Steelix@@@"
 	db "Missingno."
 	db "Caninos@@@"
 	db "Onix@@@@@@"

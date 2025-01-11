@@ -149,4 +149,5 @@ INCLUDE "data/baseStats/dragonair.asm"
 INCLUDE "data/baseStats/dragonite.asm"
 INCLUDE "data/baseStats/mewtwo.asm"
 INCLUDE "data/baseStats/mew.asm"	;mew should have been put here had it not been added so late in the game's development
+INCLUDE "data/baseStats/steelix.asm"
 INCLUDE "data/baseStats/missingno.asm"	;joenote - added basestats for missingno

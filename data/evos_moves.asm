@@ -32,7 +32,7 @@ EvosMovesPointerTable:
 	dw BlastoiseEvosMoves
 	dw PinsirEvosMoves
 	dw TangelaEvosMoves
-	dw MissingNo1FEvosMoves
+	dw SteelixEvosMoves
 	dw MissingNo20EvosMoves
 	dw GrowlitheEvosMoves
 	dw OnixEvosMoves
@@ -559,10 +559,15 @@ TangelaEvosMoves:
 	db 49, GROWTH
 	db 0
 
-MissingNo1FEvosMoves:
+SteelixEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 15, BIND
+	db 19, ROCK_THROW
+	db 25, RAGE
+	db 33, SLAM
+	db 43, HARDEN
 	db 0
 
 MissingNo20EvosMoves:
@@ -585,7 +590,7 @@ GrowlitheEvosMoves:
 
 OnixEvosMoves:
 ; Evolutions
-	db 0
+	db EV_ITEM, FIRE_STONE, 1, STEELIX
 ; Learnset
 	db 15, BIND
 	db 19, ROCK_THROW

@@ -1515,3 +1515,12 @@ _VictreebelDexEntry::
 	next "dissolving fluid"
 	dex
 
+_SteelixDexEntry::
+	text "Les parties en"
+	next "pierre de son"
+	next "corps durcissent"
+
+	page "pour devenir"
+	next "comme un diamant"
+	next "de couleur noire"
+	dex

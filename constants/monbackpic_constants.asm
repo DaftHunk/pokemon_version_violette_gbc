@@ -302,3 +302,5 @@ BELLSPROUT_BK	EQUS	"\"pic/monback/bellsproutb.pic\""
 WEEPINBELL_BK	EQUS	"\"pic/monback/weepinbellb.pic\""
 	INCBIN	"pic/monback/victreebelb.pic",0,0
 VICTREEBEL_BK	EQUS	"\"pic/monback/victreebelb.pic\""
+	INCBIN	"pic/monback/steelixb.pic",0,0
+STEELIX_BK	EQUS	"\"pic/monback/steelixb.pic\""

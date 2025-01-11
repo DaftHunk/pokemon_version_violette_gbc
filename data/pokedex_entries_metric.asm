@@ -29,7 +29,7 @@ PokedexEntryPointers:
 	dw BlastoiseDexEntry
 	dw PinsirDexEntry
 	dw TangelaDexEntry
-	dw MissingNoDexEntry
+	dw SteelixDexEntry
 	dw MissingNoDexEntry
 	dw GrowlitheDexEntry
 	dw OnixDexEntry
@@ -1257,3 +1257,10 @@ MissingNoDexEntry:
 	db 1,00 ; 1.0 m
 	db 100 ; 10.0 kg
 	db 0,"コメント さくせいちゅう@" ; コメント作成中 (Comment to be written)
+
+SteelixDexEntry:
+	db "Serpenfer@"
+	db 9,20
+	dw 400
+	TX_FAR _SteelixDexEntry
+	db "@"

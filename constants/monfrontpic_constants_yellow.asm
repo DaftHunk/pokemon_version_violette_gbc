@@ -302,3 +302,5 @@ BELLSPROUT_FR	EQUS	"\"pic/ymon/bellsprout.pic\""
 WEEPINBELL_FR	EQUS	"\"pic/ymon/weepinbell.pic\""
 	INCBIN	"pic/ymon/victreebel.pic",0,0
 VICTREEBEL_FR	EQUS	"\"pic/ymon/victreebel.pic\""
+	INCBIN	"pic/ymon/steelix.pic",0,0
+STEELIX_FR	EQUS	"\"pic/ymon/steelix.pic\""

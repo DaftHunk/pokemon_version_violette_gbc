@@ -1496,3 +1496,12 @@ _VictreebelDexEntry::
 	next "vivant"
 	dex
 
+_SteelixDexEntry::
+	text "Il est recouvert"
+	next "d'une infinité"
+	next "de particules"
+
+	page "d'acier qui"
+	next "reflètent"
+	next "la lumière"
+	dex
