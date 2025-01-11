@@ -2094,6 +2094,7 @@ INCLUDE "text/maps/underground_path_route_6_entrance.asm"
 INCLUDE "text/maps/underground_path_route_7_entrance.asm"
 INCLUDE "text/maps/underground_path_route_7_entrance_unused.asm"
 INCLUDE "text/maps/underground_path_route_8_entrance.asm"
+INCLUDE "text/maps/underground_path_we.asm"	;joenote - added this file for custom npc
 INCLUDE "text/maps/rock_tunnel_pokecenter.asm"
 INCLUDE "text/maps/rock_tunnel_b1f.asm"
 INCLUDE "text/maps/power_plant.asm"
@@ -3400,6 +3401,21 @@ _UsedCutText::
 	line "coupé! Trop fort!"
 	prompt
 
+;joenote - for field move slot
+_LearnTempFieldMoveText::
+	text "Learn this as a"
+	line "temporary FIELD"
+	cont "MOVE?"
+	done
+_LearnTempFieldMoveTextDenied::
+	text "A temporary FIELD"
+	line "MOVE is already"
+	cont "known!"
+	
+	para "Put this #MON"
+	line "in a PC BOX to"
+	cont "erase it."
+	prompt
 
 _RomHackVersionText::
 	text "Cette sauvegarde"
