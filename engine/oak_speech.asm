@@ -270,7 +270,7 @@ OakSpeechText1:
 	db "@"
 OakSpeechText2:
 	TX_FAR _OakSpeechText2A
-	TX_CRY_NIDORINO
+	TX_CRY_NIDORINA
 	TX_FAR _OakSpeechText2B
 	db "@"
 IntroducePlayerText:
