@@ -2544,7 +2544,7 @@ CheckFightingMapTrainers::
 	xor a ; EXCLAMATION_BUBBLE
 	ld [wWhichEmotionBubble], a
 	predef EmotionBubble
-	ld a, D_RIGHT | D_LEFT | D_UP | D_DOWN
+	ld a, $ff
 	ld [wJoyIgnore], a
 	xor a
 	ld [hJoyHeld], a
@@ -2558,6 +2558,8 @@ DisplayEnemyTrainerTextAndStartBattle::
 	ld a, [wd730]
 	and $1
 	ret nz ; return if the enemy trainer hasn't finished walking to the player's sprite
+	farcall FaceEnemyTrainer
+	xor a
 	ld [wJoyIgnore], a
 	ld a, [wSpriteIndex]
 	ld [hSpriteIndexOrTextID], a
