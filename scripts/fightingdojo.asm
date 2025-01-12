@@ -371,11 +371,12 @@ KarateMasterTutor:
 .finish
 	ret
 .Text1
-	text "Your FLAREON has"
-	line "the burning heart"
-	cont "of a warrior. I"
-	cont "could teach it a"
-	cont "thing or two."
+	text "Ton Pyroli a"
+	line "le coeur brûlant"
+	cont "d'un guerrier."
+	cont "Je pourrais lui"
+	cont "apprendre une"
+	cont "chose ou deux."
 	done
 	db "@"
 .learnmove

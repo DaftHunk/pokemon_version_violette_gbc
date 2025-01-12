@@ -194,8 +194,8 @@ PikachuTutor:
 	call PrintText
 	ret
 .Text1
-	text "PIKACHU zooms"
-	line "around happily."
+	text "Pikachu se promène"
+	line "joyeusement."
 	done
 	db "@"
 .learnmove

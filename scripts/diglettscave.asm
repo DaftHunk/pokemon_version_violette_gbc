@@ -63,78 +63,87 @@ Mist_Stone_Text:
 	ret
 	
 _TXTBookDesc:
-	text "This journal is"
-	line "badly rotted from"
-	cont "the heavy mist"
-	cont "within this cave."
+	text "Ce journal est"
+	line "pourri par la"
+	cont "brume épaisse"
+	cont "de cette cave."
 
-	para "A few parts are"
-	line "still legible."
-	cont "Try reading it?"
+	para "Certaines parties"
+	line "sont encore"
+	cont "lisibles. Essayer"
+	cont "de les lire?"
 	done
 	db "@"
 
 _TXTBookP1:
-	text "This is my SECRET"
-	line "ROOM. It was dug-"
-	cont "out by a group of"
-	cont "wild DIGLETT."
+	text "C'est ma Salle"
+	line "Secrète. Elle a"
+	cont "été creusée par"
+	cont "un groupe de"
+	cont "Taupiqueur."
 
-	para "Read some more?"
+	para "En lire plus?"
 	done
 	db "@"
 
 _TXTBookP2:
-	text "I heard BILL has"
-	line "a SECRET GARDEN"
-	cont "behind his house."
+	text "J'ai entendu dire"
+	line "que Bill a un"
+	cont "Jardin Secret"
+	cont "derrière"
+	cont "sa maison."
 	
-	para "But he'll neither"
-	line "confirm nor deny"
-	cont "it to anyone."
+	para "Mais il ne l'a"
+	line "jamais confirmé"
+	cont "ou démenti."
 	
-	para "Maybe if I show"
-	line "him a NEW SPECIES"
-	cont "of #mon..."
+	para "Peut-être que si"
+	line "je lui montre"
+	cont "une nouvelle"
+	cont "espèce de"
+	cont "#mon..."
 	
-	para "Keep reading?"
+	para "Continuer à lire?"
 	done
 	db "@"
 	
 _TXTBookP3:
-	text "It's said that a"
-	line "MIST STONE can"
-	cont "unlock the hidden"
-	cont "potential within"
-	cont "a #mon."
+	text "Il parait que la"
+	line "Pierre Brume peux"
+	cont "libérer le"
+	cont "potentiel caché"
+	cont "d'un #mon."
 	
-	para "Where to find it?"
-	line "Perhaps here, in"
-	cont "this very room."
+	para "Où la trouver?"
+	line "Peut-être ici,"
+	cont "dans cet endroit."
 	
-	para "The misty air of"
-	line "this cave might"
-	cont "provide the right"
+	para "L'air brumeux de"
+	line "cette cave devrait"
+	cont "fournir les bonnes"
 	cont "conditions."
 	done
 	db "@"
 	
 _TXTMist_Stone:
-	text "Under the rotted"
-	line "journal is a"
-	cont "small crevice in"
-	cont "the floor."
+	text "Sous le journal"
+	line "pourri se trouve"
+	cont "une petite"
+	cont "crevasse dans"
+	cont "le sol."
 	
-	para "An object shines"
-	line "a little ways in."
+	para "Un objet brille"
+	line "faiblement à"
+	cont "l'intérieur."
 	
-	para "You recieved the"
-	line "MIST STONE!@@"
+	para "Vous recevez la"
+	line "Pierre Brume!@@"
 	db "@"
 	
 _TXTBag:
-	text "There's something"
-	line "here, but your"
-	cont "bag is full."
+	text "Il y a quelque"
+	line "chose ici"
+	cont "mais votre sac"
+	cont "est plein."
 	done
 	db "@"

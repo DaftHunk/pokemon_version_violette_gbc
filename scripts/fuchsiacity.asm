@@ -220,9 +220,10 @@ FossilTutor:
 	call PrintText
 	ret
 .Text1
-	text "Your #mon acts"
-	line "like it recalled"
-	cont "a memory from the"
-	cont "distant past."
+	text "Votre #mon"
+	line "semble avoir"
+	cont "retrouvé un"
+	cont "souvenir d'un"
+	cont "passé lointain."
 	done
 	db "@"
