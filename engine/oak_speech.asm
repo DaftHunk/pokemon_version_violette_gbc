@@ -403,7 +403,7 @@ BoyGirlChoice::	;joenote - added this
 	call SaveScreenTilesToBuffer1
 	ld a, BOY_GIRL_MENU
 	ld [wTwoOptionMenuID], a
-	coord hl, 13, 7
+	coord hl, 11, 7
 	ld bc, $080E
 	jp DisplayYesNoChoice
 ENDC
