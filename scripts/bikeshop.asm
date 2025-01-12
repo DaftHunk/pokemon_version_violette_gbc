@@ -83,7 +83,7 @@ BikeShopText1:
 	jp TextScriptEnd
 
 BikeShopMenuText:
-	db   "Bicyckette"
+	db   "Bicyclette"
 	next "Retour@"
 
 BikeShopMenuPrice:
