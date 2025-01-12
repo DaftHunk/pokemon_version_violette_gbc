@@ -404,7 +404,7 @@ BoyGirlChoice::	;joenote - added this
 	ld a, BOY_GIRL_MENU
 	ld [wTwoOptionMenuID], a
 	coord hl, 11, 7
-	ld bc, $080E
+	ld bc, $80c ;dafthunk : moved cursor to the left 
 	jp DisplayYesNoChoice
 ENDC
 
