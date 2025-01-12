@@ -108,19 +108,21 @@ ShimmerToggleText:
 .done
 	jp TextScriptEnd
 _TXTShimmerON:
-	text "A glass #BALL"
-	line "shimmers faintly."	
-	para "You sense that"
-	line "certain pokemon"
-	cont "may manifest some"
-	cont "hidden potential."
+	text "Une #ball en"
+	line "verre brille."	
+	para "Vous sentez que"
+	line "certains #mons"
+	cont "pourraient"
+	cont "manifester un"
+	cont "potentiel caché."
 	done
 	db "@"
 _TXTShimmerOFF:
-	text "A glass #BALL"
-	line "...just a nice"
-	cont "decoration."
-	para "You must have"
-	line "been mistaken."
+	text "Une #ball en"
+	line "verre est..."
+	cont "juste une simple"
+	cont "décoration."
+	para "Vous avez dû"
+	line "vous fourvoyer."
 	done
 	db "@"

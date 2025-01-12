@@ -71,43 +71,45 @@ ColosseumResetClauses:
 	ret
 
 _TXTAskReset:
-	text "Any battle clauses"
-	line "you have active"
-	cont "will be combined"
-	cont "with those of the"
-	cont "opponent."
+	text "Toutes les clauses"
+	line "de combat que vous"
+	cont "activez seront"
+	cont "combinées avec"
+	cont "celles de votre"
+	cont "adversaire."
 
-	para "Want to erase and"
-	line "re-select your"
-	cont "clauses?"
+	para "Voulez-vous"
+	line "écraser et"
+	cont "re-choisir"
+	cont "vos clauses?"
 	done
 	db "@"
 
 _TXTSleep:
-	text "Activate"
-	line "SLEEP clause?"
+	text "Activer la clause"
+	line "Sommeil?"
 	done
 	db "@"
 
 _TXTFreeze:
-	text "Activate"
-	line "FREEZE clause?"
+	text "Activer la clause"
+	line "Gel?"
 	done
 	db "@"
 
 _TXTTrap:
-	text "Activate"
-	line "TRAPPING clause?"
+	text "Activer la clause"
+	line "Piège?"
 	done
 	db "@"
 
 _TXTHBeam:
-	text "Activate HYPER"
-	line "BEAM clause?"
+	text "Activer la clause"
+	line "Ultralaser?"
 	done
 	db "@"
 
 _TXTDone:
-	text "Confirmed!"
+	text "Confirmé!"
 	done
 	db "@"

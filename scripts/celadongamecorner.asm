@@ -536,10 +536,10 @@ GenericMoneyDisplayScript:
 	ret
 
 GameCornerMoneyText:
-	db "ARG.@"
+	db "Arg.@"
 
 GameCornerCoinText:
-	db "JETONS@"
+	db "Jetons@"
 
 GameCornerBlankText1:
 	db "      ¥@"

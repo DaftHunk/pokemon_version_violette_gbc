@@ -108,15 +108,18 @@ CeladonCityText8_continue:
 	TX_FAR _CeladonCityText8
 	db "@"
 CeladonCityText8_alternate:
-	text "I got an -in- at"
-	line "SILPH CO. for the"
-	cont "MASTER BALL tech,"
-	cont "and I supply to a"
-	cont "guy at the DEPT."
-	cont "STORE on the sly."
+	text "J'ai eu une entrée"
+	line "de la Silph Co."
+	cont "à la présentation"
+	cont "de la Master Ball"
+	cont "et je fournis un"
+	cont "gars au DEPT."
+	cont "STORE en cachette."
 	
-	para "Who needs Team"
-	line "Rocket for money?"
+	para "Pas besoin de la"
+	line "Team Rocket pour"
+	cont "se faire de"
+	cont "l'argent."
 	done
 	db "@"
 
@@ -226,42 +229,48 @@ BuyCoinsFromRocket:
 	jp TextScriptEnd
 
 _TXTSolicitCoins:
-	text "Pssst! Hey kid."
-	line "Wanna buy some"
-	cont "COINS? 1000 for"
-	cont "only ¥15000."
+	text "Pssst! Hey gamin."
+	line "Tu veux acheter"
+	cont "des Jetons ?"
+	cont "J'te fais les 1000"
+	cont "pour seulement"
+	cont "¥15000."
 	done
 	db "@"
 _TXTRefuseCoins:
-	text "Then make like a"
-	line "BELLSPROUT and"
-	cont "leave!"
+	text "Eh ben va faire"
+	line "ton Chétiflor"
+	cont "ailleurs!"
 	
-	para "It's hard enough"
-	line "making money now"
-	cont "that Team Rocket"
-	cont "is gone."
+	para "C'est déjà galère"
+	line "de se faire de la"
+	cont "tune maintenant"
+	cont "que la Team Rocket"
+	cont "est partie."
 	done
 	db "@"
 _TXTNeedCoinCase:
-	text "Then bring your"
-	line "COIN CASE, dork."
+	text "Ben ramène ta"
+	line "Boîte jeton,"
+	cont "gros malin."
 	done
 	db "@"
 _TXTCoinCaseFull:
-	text "Looks like you"
-	line "don't need any."
+	text "Ta Boîte jeton"
+	line "est déjà pleine."
 	done
 	db "@"
 _NotEnoughMoney:	
-	text "Come back with"
-	line "the cash or don't"
-	cont "waste my time!"
+	text "Reviens avec"
+	line "l'argent ou ne"
+	cont "m'fait pas perdre"
+	cont "mon temps!"
 	done
 	db "@"
 _TXTBoughtCoins:
-	text "Thanks. Don't ask"
-	line "where I got 'em."
+	text "Merci. Ne d'mande"
+	line "pas où j'les"
+	cont "ai eu."
 	done
 	db "@"
 

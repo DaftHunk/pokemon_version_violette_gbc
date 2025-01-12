@@ -594,11 +594,12 @@ BlaineTutor:
 .finish
 	ret
 .Text1
-	text "That fiery bird!"
-	line "Is it the same as"
-	cont "the one who saved"
-	cont "me? Allow me to"
-	cont "return the favor."
+	text "Quel panache!"
+	line "Serait-ce le même"
+	cont "qui m'a sauvé?"
+	cont "Permet-moi de te"
+	cont "rendre la "
+	cont "pareille."
 	done
 	db "@"
 .learnmove
