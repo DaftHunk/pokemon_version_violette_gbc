@@ -362,19 +362,19 @@ DrawPokedexVerticalLine:
 	ret
 
 PokedexSeenText:
-	db "VUS@"
+	db "Vus@"
 
 PokedexOwnText:
-	db "PRIS@"
+	db "Pris@"
 
 PokedexContentsText:
-	db "SOMMAIRE@"
+	db "Sommaire@"
 
 PokedexMenuItemsText:
-	db   "INFO"
-	next "CRI"
-	next "ZONE"
-	next "RET@"
+	db   "Info"
+	next "Cri"
+	next "Zone"
+	next "Ret@"
 
 ; tests if a pokemon's bit is set in the seen or owned pokemon bit fields
 ; INPUT:
@@ -603,11 +603,11 @@ ENDC
 
 HeightWeightText:
 IF DEF (_METRIC)
-	db   "TAI ?",".","??","m"
-	next "PDS  ???kg@"
+	db   "Tai ?",".","??","m"
+	next "Pds  ???kg@"
 ELSE
-	db   "TAI ?",$60,"??",$61
-	next "PDS  ???lb@"
+	db   "Tai ?",$60,"??",$61
+	next "Pds  ???lb@"
 ENDC
 ; XXX does anything point to this?
 PokeText:

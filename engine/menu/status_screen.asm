@@ -272,23 +272,23 @@ NamePointers2:
 	dw wDayCareMonName
 
 Type1Text:
-	db "TYPE1/", $4e
+	db "Type1/", $4e
 
 Type2Text:
-	db "TYPE2/", $4e
+	db "Type1/", $4e
 
 IDNoText:
 	db "№", $73, "/", $4e
 
 OTText:
-	db   "DO/"
+	db   "Do/"
 	next "@"
 
 StatusText:
-	db "STATUT/@"
+	db "Statut/@"
 
 OKText:
-	db "OK@"
+	db "Ok@"
 
 ; Draws a line starting from hl high b and wide c
 DrawLineBox:
@@ -390,10 +390,10 @@ PrintStat:
 	ret
 
 StatsText:
-	db   "FOR"
-	next "DEF"
-	next "VIT"
-	next "SPE@"
+	db   "For"
+	next "Déf"
+	next "Vit"
+	next "Spé@"
 
 StatusScreen2:
 	ld a, [hTilesetType]
@@ -572,8 +572,8 @@ CalcExpToLevelUp:
 	ret
 
 StatusScreenExpText:
-	db   "PTS EXP."
-	next "PROCH.NIV.@"
+	db   "Pts exp."
+	next "Proch.niv.@"
 
 StatusScreen_ClearName:
 	ld bc, 10

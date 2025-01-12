@@ -218,13 +218,13 @@ TextBoxTextAndCoordTable:
 ; note that there is no terminator
 
 BuySellQuitText:
-	db   "ACHETER"
-	next "VENDRE"
-	next "SALUT!@@"
+	db   "Acheter"
+	next "Vendre"
+	next "Salut!@@"
 
 UseTossText:
-	db   "UTIL."
-	next "JETER@"
+	db   "Util."
+	next "Jeter@"
 
 JapaneseSaveMessageText:
 	db   "きろく"
@@ -235,7 +235,7 @@ JapaneseSpeedOptionsText:
 	next "おそい@"
 
 MoneyText:
-	db "ARG.@"
+	db "Arg.@"
 
 JapaneseMochimonoText:
 	db "もちもの@"
@@ -245,16 +245,16 @@ JapaneseMainMenuText:
 	next "さいしょから@"
 
 BattleMenuText:
-	db   "ATTAQ ",$E1,$E2
-	next "OBJET FUITE@"
+	db   "Attaq ",$E1,$E2
+	next "Objet fuite@"
 
 SafariZoneBattleMenuText:
-	db   "BALL×      APPAT"
-	next "CAILLOU    FUITE@"
+	db   "Ball×      Appât"
+	next "Caillou    Fuite@"
 
 SwitchStatsCancelText:
-	db   "ORDRE"
-	next "STATS"
+	db   "Ordre"
+	next "Stats"
 	next "Retour@"
 
 JapaneseAhText:

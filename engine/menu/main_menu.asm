@@ -602,10 +602,10 @@ PrintPlayTime_local:
 ;	jp PrintNumber
 
 SaveScreenInfoText:
-	db   "JOUEUR"
-	next "BADGES    "
+	db   "Joueur"
+	next "Badges    "
 	next "#DEX    "
-	next "TEMPS@"
+	next "Temps@"
 
 DisplayOptionMenu:
 	call GBPalNormal	;joenote - fixes rock tunnel darkness affecting option menu

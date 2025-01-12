@@ -105,7 +105,7 @@ ChiefName:
 ScientistName:
 	db "Scientifique@"
 RocketName:
-	db "ROCKET@"
+	db "Rocket@"
 CooltrainerMName:
 	db "TopDresseur♂@"
 CooltrainerFName:
