@@ -490,37 +490,40 @@ KogaTutorMoves:
 	db $00
 	
 _KogaTutorOffer:
-	text "You have a highly"
-	line "talented SCYTHER."
-	cont "I could teach it"
-	cont "the secret way of"
-	cont "becoming a ninja."
+	text "Tu as un"
+	line "Insécateur très"
+	cont "talentueux."
+	cont "Je pourrais lui"
+	cont "apprendre la voie"
+	cont "secrète du Ninja."
 
-	para "Its motions will"
-	line "be so fast that"
-	cont "attacks may pass"
-	cont "through it as if"
-	cont "it were a GHOST."
+	para "Ses mouvements"
+	line "seront si rapide"
+	cont "que ses ennemis"
+	cont "seront traversés"
+	cont "tel des fantômes."
 	done
 	db "@"
 
 _KogaTutorOffer2:
-	text "The training is"
-	line "complete. See me"
-	cont "again if you want"
-	cont "me to tutor it in"
-	cont "the way of moves."
+	text "L'entraînement est"
+	line "terminé. Reviens"
+	cont "me voir si tu as"
+	cont "de nouveau besoin"
+	cont "de ma maitrise."
 	done
 	db "@"
 
 _KogaTutorIntro:
-	text "Your SCYTHER is a"
-	line "fine ninja. Shall"
-	cont "I tutor it more?"
+	text "Ton Insécateur est"
+	line "un grand Ninja."
+	cont "Devrais-je lui"
+	cont "apprendre plus?"
 	done
 	db "@"
 
 _KogaTutorBye:
-	text "I wish you well."
+	text "Je te souhaite"
+	line "bonne chance."
 	done
 	db "@"

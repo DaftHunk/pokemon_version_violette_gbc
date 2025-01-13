@@ -43,42 +43,43 @@ MirrorTrainerText1:
 	call PrintText
 .textend
 	jp TextScriptEnd
-	
+
 MirrorTrainerIntro:
-	text "I am PAGLIACCIO,"
-	line "a performer most"
-	cont "princely and the"
-	cont "master of mimes!"
+	text "Je suis Pagliaccio"
+	line "artiste extra-"
+	cont "ordinaire et"
+	cont "maître du mime!"
 	prompt
 	db "@"
 MirrorTrainerNotReady:
-	text "But I still need"
-	line "to powder my face"
-	cont "and prepare all"
-	cont "of my costumes."
+	text "Mais je dois finir"
+	line "de me poudrer et"
+	cont "préparer tous mes"
+	cont "mes costumes."
 	
-	para "I'll be ready"
-	line "after the #mon"
-	cont "LEAGUE finals are"
-	cont "over."
+	para "Je serai prêt"
+	line "quand la finale de"
+	cont "la Ligue #mon"
+	cont "sera terminée."
 	done
 	db "@"
 MirrorTrainerChallenge:
-	text "Care to test your"
-	line "strategies on me,"
-	cont "young CHAMPION?"
+	text "Tu veux tester tes"
+	line "stratégies sur moi"
+	cont "jeune Champion?"
 	done
 	db "@"
 MirrorTrainerBye:
-	text "Fare thee well!"
+	text "Adieu et"
+	line "bonne chanche!"
 	done
 	db "@"
 MirrorTrainerPre:
-	text "Have at thee!"
+	text "Allons-y!"
 	done
 	db "@"
 MirrorTrainerPost:
-	text "Ah-Ha!"
-	line "Well-played."
+	text "Ah ah!"
+	line "Bien joué."
 	prompt
 	db "@"

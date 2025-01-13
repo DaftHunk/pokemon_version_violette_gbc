@@ -68,13 +68,15 @@ MrPsychicTutor:
 .finish
 	ret
 .Text1
-	text "I sense a great"
-	line "mystical power in"
-	cont "your NINETALES."
-	cont "I could teach it"
-	cont "something nice."
+	text "Je ressens de"
+	line "grandes forces"
+	cont "mystiques avec ton"
+	cont "Feunard. Je peux"
+	cont "lui apprendre un"
+	cont "truc sympa."
 	done
 	db "@"
+	
 .learnmove
 	ld [wMoveNum], a
 	ld [wd11e],a

@@ -95,8 +95,6 @@ MtMoonPokecenterText5:
 MtMoonTradeNurseText:
 	db $f6
 
-	
-	
 ;joenote - turn this shady guy into a move tutor for japan-only event pokemon moves	
 
 MagikarpSalesmanText_CheckEventMons:
@@ -192,15 +190,14 @@ MagikarpSalesmanText_DragonRageKarp:
 	ld hl, MagikarpSalesmanText_Thanks
 	jp MagikarpSalesmanText.printText
 .Text1
-	text "MAN: Unhappy with"
-	line "your MAGIKARP?"
-	para "I'll teach it the"
-	line "move DRAGON RAGE"
-	cont "for a mere ¥5000!"
-	cont "What do you say?"
+	text "Homme: Insatisfait"
+	line "de son Magicarpe?"
+	para "Je peux lui"
+	line "apprendre Draco"
+	cont "Rage pour ¥5000!"
+	cont "Qu'en dis-tu?"
 	done
-	db "@"
-	
+	db "@"	
 	
 MagikarpSalesmanText_PayDayRapidashOrFearow:
 	xor a
@@ -265,19 +262,19 @@ MagikarpSalesmanText_PayDayRapidashOrFearow:
 	ld hl, MagikarpSalesmanText_Thanks
 	jp MagikarpSalesmanText.printText
 .Text1
-	text "MAN: Want to make"
-	line "money with that"
-	cont "@"
+	text "Homme: Tu veux te"
+	line "faire de l'argent"
+	cont "avec ton"
+	cont "@?"
 	TX_RAM wcd6d
 	db $0
-	cont "of yours?"
-	para "I'll teach it the"
-	line "move PAY DAY for"
-	cont "a paltry ¥1000!"
-	cont "What do you say?"
+	para "Je peux lui"
+	line "apprendre la"
+	cont "compétence Jackpot"
+	cont "pour juste ¥1000!"
+	cont "T'en dit quoi?"
 	done
 	db "@"
-
 
 MagikarpSalesmanText_FlyingPikachu:
 	xor a
@@ -345,14 +342,16 @@ MagikarpSalesmanText_FlyingPikachu:
 	ld hl, MagikarpSalesmanText_Thanks
 	jp MagikarpSalesmanText.printText
 .Text1
-	text "MAN: Ever see a"
-	line "flying PIKACHU?"
-	para "I'll teach yours"
-	line "the move FLY for"
-	cont "a measly ¥2000!"
-	cont "What do you say?"
+	text "MAN: Tu as déjà vu"
+	line "un Pikachu volant?"
+	para "Je peux lui"
+	line "apprendre Vol pour"
+	cont "la minuscule somme"
+	cont "de ¥2000!"
+	cont "Ca te tente?"
 	done
 	db "@"
+
 .GetOpenMoveSlot	
 	ld hl, wPartyMon1Moves
 	ld c, NUM_MOVES
@@ -366,18 +365,17 @@ MagikarpSalesmanText_FlyingPikachu:
 .endloop
 	ret
 .Text2
-	text "MAN: Let's see..."
-	line "I'll just go and"
-	cont "tie some balloons"
-	cont "like so. And..."
-	cont "Done!"
-	para "Your PIKACHU has"
-	line "learned FLY!"
+	text "Homme: Voyons"
+	line "voir...Je lui"
+	cont "attache quelques"
+	cont "ballons et..."
+	cont "Voilà!"
+	para "Ton Pikachu a"
+	line "appris Vol!"
 	done
 	db "@"
 
 MagikarpSalesmanText_Thanks:
-	text "MAN: Thanks kid!"
+	text "Homme: Merci!"
 	done
 	db "@"
-

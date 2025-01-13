@@ -246,7 +246,7 @@ CheckAmnesiaPsyduck:
 	call PrintText
 	ret
 .Text1
-	text "PSYDUCK looks at"
-	line "you awkwardly."
+	text "Psykokwak te fixe"
+	line "bizarrement."
 	done
 	db "@"

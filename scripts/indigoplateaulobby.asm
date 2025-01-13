@@ -47,18 +47,20 @@ IndigoTradeNurseText:
 	TX_CABLE_CLUB_RECEPTIONIST
 
 IndigoPlateauLobbyText2_ALT:
-	text "Yo! Once and"
-	line "future CHAMP!"
+	text "Yo! Champion"
+	line "d'hier et"
+	cont "d'aujourd'hui!"
 
-	para "At #mon LEAGUE,"
-	line "you have to face"
-	cont "the ELITE FOUR in"
-	cont "succession."
+	para "A la Ligue #mon"
+	line "tu vas devoir"
+	cont "affronter le"
+	cont "Conseil des 4"
+	cont "à la suite."
 
-	para "If you lose, you"
-	line "have to start all"
-	cont "over again! You"
-	cont "know the drill by"
-	cont "now! Go for it!"
+	para "Si tu perds, tu"
+	line "devras recommencer"
+	cont "à zéro!"
+	cont "Bref tu connais."
+	cont "Alors vas y!"
 	done
 	db "@"

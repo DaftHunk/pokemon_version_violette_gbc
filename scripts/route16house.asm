@@ -100,7 +100,8 @@ CheckFearowTutor:
 	call PrintText
 	ret
 .Text1
-	text "FEAROW darts"
-	line "about excitedly."
+	text "Rapasdepic"
+	line "s'élance dans"
+	cont "tous les sens."
 	done
 	db "@"
