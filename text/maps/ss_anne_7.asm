@@ -20,7 +20,7 @@ _ReceivingHM01Text::
 	para "Mille sabords!"
 	line "Tu veux voir"
 	cont "la technique"
-	cont "COUPE?"
+	cont "Coupe?"
 
 	para "Je pourrais te la"
 	line "montrer, mais"
@@ -30,14 +30,14 @@ _ReceivingHM01Text::
 	line "Prends ça!"
 
 	para "C'est la technique"
-	line "COUPE."
+	line "Coupe."
 	cont "Enseigne-la à"
 	cont "tes #mon!"
 	
 ;joenote - add hotkey info
-	para "Press SELECT when"
-	line "facing grass or a"
-	cont "bush to use it."	
+	para "Appuyer sur SELECT"
+	line "devant un buisson"
+	cont "pour l'utiliser."	
 	prompt
 
 _ReceivedHM01Text::

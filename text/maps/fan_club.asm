@@ -97,7 +97,7 @@ ReceivedBikeVoucherText::
 ExplainBikeVoucherText::
 	text_start
 	para "Echange ça contre"
-	line "une Bicyckette!"
+	line "une Bicyclette!"
 
 	para "Moi, c'est mon"
 	line "Rapasdepic qui me"
@@ -106,7 +106,7 @@ ExplainBikeVoucherText::
 
 	para "Je n'ai plus"
 	line "besoin de"
-	cont "Bicyckette!"
+	cont "Bicyclette!"
 
 	para "J'espère que tu"
 	line "aimes pédaler!"

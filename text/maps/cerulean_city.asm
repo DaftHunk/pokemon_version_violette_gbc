@@ -39,7 +39,7 @@ _CeruleanCityText_19677::
 
 	para "Ca m'a rajouté"
 	line "plein d'pages sur"
-	cont "mon bô #DEX!"
+	cont "mon bô #dex!"
 
 	para "Tout l'monde sait"
 	line "que Léo est un"
@@ -154,7 +154,7 @@ _CeruleanCityText_19735::
 	done
 
 _CeruleanCityText_1973a::
-	text "Flagadoss, REPLI!"
+	text "Flagadoss, Repli!"
 	line "Non! Pas ça!"
 
 	para "Pfff... C'est dur"
@@ -189,7 +189,7 @@ _CeruleanCityText_1977e::
 
 _CeruleanCityText9::
 	text "Ze veux une zolie"
-	line "Bicyckette!"
+	line "Bicyclette!"
 
 	para "Ze la veux toute"
 	line "rouze!"
@@ -198,10 +198,10 @@ _CeruleanCityText9::
 _CeruleanCityText10::
 	text "Des #mon trop"
 	line "puissants vivent"
-	cont "dans la CAVE"
-	cont "AZUREE!"
+	cont "dans la Cave"
+	cont "Azurée!"
 
-	para "Seul le CHAMPION"
+	para "Seul le Champion"
 	line "de la Ligue"
 	cont "#mon a le"
 	cont "droit d'y entrer!"
@@ -227,14 +227,14 @@ _CeruleanCityText16::
 	text "Plus vite que le"
 	line "vent, plus vite"
 	cont "dans les villes!"
-	cont "...MIRACLE CYCLE"
+	cont "...Cycles à Gogo"
 	done
 ELSE
 _CeruleanCityText16::
 	text "Plus vite que le"
 	line "vent, plus vite"
 	cont "dans les villes!"
-	cont "...CYCLES A GOGO"
+	cont "...Cycles à Gogo"
 	done
 ENDC
 

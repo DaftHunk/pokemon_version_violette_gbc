@@ -34,7 +34,7 @@ _SSAnne10EndBattleText2::
 _SSAnne10AfterBattleText2::
 	text "As-tu rencontré le"
 	line "Maître Pêcheur à"
-	cont "CARMIN?"
+	cont "Carmin?"
 	done
 
 _SSAnne10BattleText3::
@@ -71,7 +71,7 @@ _SSAnne10AfterBattleText4::
 	cont "grands fonds!"
 
 	para "J'ai besoin d'une"
-	line "CANNE!"
+	line "Canne!"
 	done
 
 _SSAnne10BattleText5::
@@ -118,7 +118,7 @@ _SSAnne10Text7::
 	line "Machopeur, est"
 	cont "super fort!!!"
 
-	para "Sa FORCE lui"
+	para "Sa Force lui"
 	line "permet de bouger"
 	cont "les rochers!"
 	done

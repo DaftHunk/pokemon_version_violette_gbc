@@ -19,9 +19,10 @@ _TM18ExplanationText::
 	line "Bon allez..."
 	cont "Bonne chance!"
 	
-	para "It meets NORMAL"
-	line "or FIGHTING moves"
-	cont "with 2x damage!"
+	para "Il renvoit aux"
+	line "capacitées Normal"
+	cont "et Combat le"
+	cont "double de dégâts!"
 	done
 
 _TM18NoRoomText::
@@ -121,7 +122,7 @@ _CeladonMart3Text13::
 	done
 
 _CeladonMart3Text14::
-	text "2ème: JEUX VIDEO"
+	text "2ème: Jeux Vidéos"
 	done
 
 _CeladonMart3Text15::

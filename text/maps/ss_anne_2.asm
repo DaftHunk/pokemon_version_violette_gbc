@@ -54,7 +54,7 @@ _SSAnneRivalWonText::
 _SSAnneRivalCaptainText::
 	text "<RIVAL>: Il y"
 	line "a le maître de la"
-	cont "technique COUPE"
+	cont "technique Coupe"
 	cont "à bord."
 
 	para "Mais ce n'est"
@@ -62,7 +62,7 @@ _SSAnneRivalCaptainText::
 	cont "malade et sénile!"
 
 	para "La technique"
-	line "COUPE est très"
+	line "Coupe est très"
 	cont "utile!"
 
 	para "Tu devrais le"

@@ -8,9 +8,9 @@ _CeruleanTrashedText_1d6ab::
 	para "Ils m'ont volé"
 	line "une CT pour"
 	cont "apprendre à leurs"
-	cont "#mon à"
+	cont "#mons à"
 	cont "creuser des"
-	cont "TUNNELS!"
+	cont "Tunnels!"
 
 	para "Ca m'a coûté les"
 	line "yeux de la tête!"
@@ -24,14 +24,14 @@ _CeruleanTrashedText_1d6b0::
 	para "Je vais apprendre"
 	line "à mon Taupiqueur"
 	cont "à creuser des"
-	cont "TUNNELS sans CT!"
+	cont "Tunnels sans CT!"
 	done
 
 _CeruleanHouseTrashedText2::
 	text "La Team Rocket"
 	line "doit maintenant"
 	cont "creuser des"
-	cont "TUNNELS dans tout"
+	cont "Tunnels dans tout"
 	cont "ce qui bouge!"
 	done
 

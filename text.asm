@@ -496,7 +496,7 @@ _VermilionPokecenterGuyText::
 
 _CeladonCityPokecenterGuyText::
 	text "Si j'avais une"
-	line "Bicyckette,"
+	line "Bicyclette,"
 	cont "j'irais sur la"
 	cont "PISTE CYCLABLE!"
 	done
@@ -553,7 +553,7 @@ _BookcaseText::
 	done
 
 _NewBicycleText::
-	text "Une Bicyckette"
+	text "Une Bicyclette"
 	line "toute neuve! Top!"
 	done
 

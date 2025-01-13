@@ -21,7 +21,7 @@ _SSAnne9Text_61c10::
 	line "peuvent couper des"
 	cont "petits buissons"
 	cont "avec la technique"
-	cont "COUPE."
+	cont "Coupe."
 	done
 
 _SSAnne9Text_61c1f::

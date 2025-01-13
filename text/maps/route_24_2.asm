@@ -110,8 +110,8 @@ _Route24AfterBattleText5::
 	done
 
 _Route24BattleText6::
-	text "Voici le PONT"
-	line "PEPITE!"
+	text "Voici le Pont"
+	line "Pépite!"
 	cont "5 dresseurs"
 	cont "défendent ce"
 	cont "pont! Bats-nous"

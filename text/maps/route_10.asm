@@ -121,9 +121,9 @@ _Route10AfterBattleText6::
 
 _Route10Text9::
 _Route10Text7::
-	text "GROTTE"
+	text "Grotte"
 	done
 
 _Route10Text10::
-	text "CENTRALE"
+	text "Centrale"
 	done

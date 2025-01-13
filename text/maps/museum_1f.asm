@@ -27,7 +27,7 @@ _Museum1FText_5c22e::
 	para "Enfin, si ça"
 	line "t'amuse! Au fait,"
 	cont "sais-tu à quoi"
-	cont "sert l'AMBRE?"
+	cont "sert l'Ambre?"
 	done
 
 _Museum1FText_5c233::
@@ -35,11 +35,11 @@ _Museum1FText_5c233::
 	line "labo, on essaie"
 	cont "de régénérer les"
 	cont "anciens #mon"
-	cont "grâce à l'AMBRE."
+	cont "grâce à l'Ambre."
 	done
 
 _Museum1FText_5c238::
-	text "L'AMBRE est de la"
+	text "L'Ambre est de la"
 	line "sève fossilisée."
 	done
 
@@ -95,13 +95,13 @@ _Museum1FText_5c28e::
 
 _ReceivedOldAmberText::
 	text "<PLAYER> obtient"
-	line "VIEIL AMBRE!@"
+	line "Vieil Ambre!@"
 	text_end
 
 _Museum1FText_5c299::
 	text "Chut! Va faire"
 	line "examiner ce"
-	cont "morceau d'AMBRE!"
+	cont "morceau d'Ambre!"
 	done
 
 _Museum1FText_5c29e::
@@ -119,6 +119,6 @@ _Museum1FText_5c2ad::
 	done
 
 _Museum1FText_5c2bc::
-	text "L'AMBRE c'est"
+	text "L'Ambre c'est"
 	line "beau!!!"
 	done

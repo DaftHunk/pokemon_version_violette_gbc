@@ -1,7 +1,7 @@
 IF DEF(_JPTXT)
 _BikeShopText_1d810::
 	text "Bienvenue au"
-	line "MIRACLE CYCLE."
+	line "Cycles à Gogo."
 
 	para "Nous avons"
 	line "justement une"
@@ -10,7 +10,7 @@ _BikeShopText_1d810::
 ELSE
 _BikeShopText_1d810::
 	text "Bienvenue au"
-	line "CYCLES A GOGO."
+	line "Cycles à Gogo."
 
 	para "Nous avons"
 	line "justement une"
@@ -31,22 +31,21 @@ _BikeShopCantAffordText::
 _BikeShopText_1d81f::
 	text "Oh! Mais c'est..."
 
-	para "Un BON pour"
-	line "une Bicyckette!"
+	para "Un Bon pour"
+	line "une Bicyclette!"
 
 	para "OK! Voilà ta"
-	line "Bicyckette!"
+	line "Bicyclette!"
 	prompt
 
 _BikeShopText_1d824::
 	text "<PLAYER> échange"
-	line "le BON contre"
-	cont "une Bicyckette.@"
+	line "le Bon contre"
+	cont "une Bicyclette.@"
 ;joenote - add hotkey info
-	para "Hold A and press"
-	line "SELECT to get on"
-	cont "or off quickly.@@"
-
+	para "Maintiens A et"
+	line "appuie sur SELECT"
+	cont "pour l'utiliser.@@"
 
 _BikeShopComeAgainText::
 	text "Reviens quand tu"
@@ -55,12 +54,12 @@ _BikeShopComeAgainText::
 
 _BikeShopText_1d82f::
 	text "Comment se porte"
-	line "ta Bicyckette?"
+	line "ta Bicyclette?"
 
 	para "Tu peux aller sur"
-	line "la PISTE CYCLABLE"
+	line "la Piste Cyclable"
 	cont "et dans les"
-	cont "GROTTES!"
+	cont "Grottes!"
 	done
 
 _BikeShopText_1d834::
@@ -69,7 +68,7 @@ _BikeShopText_1d834::
 	done
 
 _BikeShopText_1d843::
-	text "Un VELO de ville,"
+	text "Un Vélo de ville,"
 	line "c'est ce qu'il y"
 	cont "a de mieux!"
 
@@ -79,13 +78,13 @@ _BikeShopText_1d843::
 	done
 
 _BikeShopText_1d85c::
-	text "Ces VELOS sont"
+	text "Ces Vélos sont"
 	line "super mais ils"
 	cont "sont très chers!"
 	done
 
 _BikeShopText_1d861::
 	text "Waou! "
-	line "Ta Bicyckette est"
+	line "Ta Bicyclette est"
 	cont "super cool!"
 	done

@@ -6,5 +6,5 @@ _SSAnne3Text1::
 	para "Il enseigne"
 	line "à ses #mon"
 	cont "la technique"
-	cont "COUPE!"
+	cont "Coupe!"
 	done
