@@ -1,5 +1,5 @@
 _ViridianCityText1::
-	text "Des # BALL!"
+	text "Des #ball!"
 	line "Mais... T'as des"
 	cont "#mon!"
 
@@ -116,7 +116,7 @@ _ViridianCityText_1920a::
 
 _ViridianCityText_1920f::
 	text "Je vois que tu as"
-	line "un #DEX."
+	line "un #dex."
 
 	para "Capture un"
 	line "#mon et il"

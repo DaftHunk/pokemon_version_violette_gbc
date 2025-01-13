@@ -13,11 +13,11 @@ _ReceivedTM29Text::
 	text_end
 
 _TM29ExplanationText::
-	text "CT29: PSYKO!"
+	text "CT29: Psyko!"
 
 	para "Cette attaque"
 	line "diminue le"
-	cont "SPECIAL de la"
+	cont "Spécial de la"
 	cont "cible."
 	done
 

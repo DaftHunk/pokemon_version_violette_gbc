@@ -3,14 +3,14 @@ _CeladonMart5Text1::
 	line "de #mon sont"
 	cont "en vente ici."
 
-	para "Le CALCIUM"
+	para "Le Calcium"
 	line "augmente les"
 	cont "capacités"
-	cont "SPECIALES."
+	cont "Spéciales."
 
-	para "Le CARBONE"
+	para "Le Carbonne"
 	line "augmente la"
-	cont "VITESSE."
+	cont "Vitesse."
 	done
 
 _CeladonMart5Text2::
@@ -18,12 +18,12 @@ _CeladonMart5Text2::
 	line "accélérateur de"
 	cont "#mon!"
 
-	para "Une PROTEINE"
+	para "Une Protéine"
 	line "augmentera"
-	cont "l'ATTAQUE."
+	cont "l'Attaque."
 
-	para "Le FER augmente"
-	line "la DEFENSE!"
+	para "Le Fer augmente"
+	line "la Défense!"
 	done
 
 _CeladonMart5Text5::

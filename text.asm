@@ -66,7 +66,7 @@ _GroundRoseText::
 	done
 
 _BoulderText::
-	text "Sans FORCE, ça"
+	text "Sans Force, ça"
 	line "ne bougera pas!"
 	done
 
@@ -368,7 +368,7 @@ _YeahText::
 	text_end
 
 _DexSeenOwnedText::
-	text "#DEX   Vus:@"
+	text "#dex   Vus:@"
 	text_decimal wDexRatingNumMonsSeen, 1, 3
 	text " "
 	line "         Pris:@"
@@ -377,7 +377,7 @@ _DexSeenOwnedText::
 	done
 
 _DexRatingText::
-	text "Eval. #DEX<COLON>"
+	text "Eval. #dex<COLON>"
 	done
 
 _GymStatueText1::
@@ -455,7 +455,7 @@ _MtMoonPokecenterBenchGuyText::
 
 _RockTunnelPokecenterGuyText::
 	text "On m'a dit qu'il"
-	line "y a des SPECTRES"
+	line "y a des Spectres"
 	cont "à Lavanville!"
 	done
 
@@ -3005,7 +3005,7 @@ _ItemUseBallText06::
 	text_ram wEnemyMonNick
 	text " est"
 	cont "transféré sur le"
-	cont "#DEX!@"
+	cont "#dex!@"
 	text_end
 
 _SurfingGotOnText::

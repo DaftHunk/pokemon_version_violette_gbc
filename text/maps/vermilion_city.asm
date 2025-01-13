@@ -8,11 +8,11 @@ _VermilionCityText1::
 
 _VermilionCityText_198a7::
 	text "As-tu vu"
-	line "L'OCEANE au port?"
+	line "L'Océane au port?"
 	done
 
 _VermilionCityText_198ac::	
-	text "L'OCEANE a"
+	text "L'Océane a"
 	line "levé l'ancre!"
 
 	para "Il reviendra l'an"
@@ -30,12 +30,12 @@ _VermilionCityText_annereturns::	;joenote - added text
 
 _SSAnneWelcomeText4::
 	text "Bienvenue à bord"
-	line "de L'OCEANE!"
+	line "de L'Océane!"
 	done
 
 _SSAnneWelcomeText9::
 	text "Bienvenue à bord"
-	line "de L'OCEANE!"
+	line "de L'Océane!"
 
 	para "Puis-je voir"
 	line "votre passe?"
@@ -62,7 +62,7 @@ _SSAnneNoTicketText::
 	done
 
 _SSAnneNotHereText::
-	text "L'OCEANE a"
+	text "L'Océane a"
 	line "levé l'ancre."
 	done
 
@@ -87,7 +87,7 @@ _VermilionCityText14::
 	done
 
 _VermilionCityText6::
-	text "L'OCEANE est"
+	text "L'Océane est"
 	line "un paquebot de"
 	cont "luxe."
 
@@ -115,7 +115,7 @@ _VermilionCityText8::
 	line "pour rejoindre"
 	cont "Lavanville."
 
-	para "POLICE DE CARMIN"
+	para "POLICE DE Carmin"
 	line "SUR MER"
 	done
 
@@ -137,7 +137,7 @@ _VermilionCityText12::
 	done
 
 _VermilionCityText13::
-	text "PORT DE CARMIN"
+	text "PORT DE Carmin"
 	done
 
 _VermilionPKMNText::

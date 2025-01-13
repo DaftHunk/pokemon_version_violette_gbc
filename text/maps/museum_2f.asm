@@ -43,14 +43,14 @@ _Museum2FText5::
 	done
 
 _Museum2FText6::
-	text "NAVETTE SPATIALE"
-	line "COLUMBIA"
+	text "Navette Spaciale"
+	line "Columbia"
 	done
 
 _Museum2FText7::
 	text "Des météores sont"
 	line "tombés sur le"
-	cont "MONT SELENITE."
+	cont "Mont Sélénite."
 	cont "(Pierre Lune ?)"
 	done
 

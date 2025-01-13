@@ -6,10 +6,10 @@ _LavenderMartText2::
 	cont "#mon en"
 	cont "combat."
 
-	para "ATTAQUE +,"
-	line "DEFENSE +,"
-	cont "SPECIAL + et"
-	cont "VITESSE +, c'est"
+	para "Attaque +,"
+	line "Défense +,"
+	cont "Spécial + et"
+	cont "Vitesse +, c'est"
 	cont "ça qu'je cherche."
 
 	para "Sais-tu où je"
@@ -18,7 +18,7 @@ _LavenderMartText2::
 
 _LavenderMartReviveText::
 	text "Connais-tu"
-	line "le RAPPEL? Il"
+	line "le Rappel? Il"
 	cont "permet de"
 	cont "réanimer un"
 	cont "#mon K.O.!"
@@ -26,7 +26,7 @@ _LavenderMartReviveText::
 
 _LavenderMartNuggetText::
 	text "J'ai trouvé une"
-	line "PEPITE dans les"
+	line "Pépite dans les"
 	cont "montagnes."
 
 	para "Je l'ai vendue..."

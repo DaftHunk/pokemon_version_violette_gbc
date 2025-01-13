@@ -20,7 +20,7 @@ _OaksLabText41::
 	done
 
 _OaksLabText39::
-	text "Ces # BALL"
+	text "Ces #ball"
 	line "contiennent des"
 	cont "#mon!"
 	done
@@ -108,7 +108,7 @@ _OaksLabDeliverParcelText2::
 	text_start
 
 	para "Ah! C'est la"
-	line "# BALL que"
+	line "#ball que"
 	cont "j'ai commandée!"
 	cont "Merci!"
 	done
@@ -129,11 +129,11 @@ _OaksLabGivePokeballsText1::
 
 	para "Il te faut aussi"
 	line "l'attraper! Voici"
-	cont "des # BALL"
+	cont "des #ball"
 	cont "pour en capturer."
 
 	para "<PLAYER> obtient"
-	line "5 # BALL!@"
+	line "5 #ball!@"
 	text_end
 
 _OaksLabGivePokeballsText2::
@@ -144,7 +144,7 @@ _OaksLabGivePokeballsText2::
 	cont "serré."
 
 	para "Lance-lui une"
-	line "# BALL pour le"
+	line "#ball pour le"
 	line "capturer!"
 
 	para "Mais ça ne"
@@ -166,7 +166,7 @@ _OaksLabPleaseVisitText::
 
 	para "Tiens-moi informé"
 	line "du niveau de ton"
-	cont "#DEX."
+	cont "#dex."
 	done
 
 _OaksLabText_1d31d::
@@ -174,7 +174,7 @@ _OaksLabText_1d31d::
 	line "content de te"
 	cont "revoir. Où en"
 	cont "es-tu avec ton"
-	cont "#DEX?"
+	cont "#dex?"
 	cont "Voyons, voyons..."
 	prompt
 
@@ -222,7 +222,7 @@ _OaksLabChooseMonText::
 	para "Mais..."
 
 	para "Ils sont dans des"
-	line "# BALL."
+	line "#ball."
 
 	para "Plus jeune,"
 	line "j'étais un sacré"
@@ -315,7 +315,7 @@ _OaksLabText24::
 	text "Il y a sur ce"
 	line "bureau mon"
 	cont "invention..."
-	cont "Le #DEX!"
+	cont "Le #dex!"
 
 	para "Il enregistre les"
 	line "informations sur"
@@ -330,10 +330,10 @@ _OaksLabText24::
 _OaksLabText25::
 	text "Chen: <PLAYER> et"
 	line "<RIVAL>! Prenez"
-	cont "ces #DEX!"
+	cont "ces #dex!"
 
 	para "<PLAYER> obtient"
-	line "le #DEX!@"
+	line "le #dex!@"
 	text_end
 
 _OaksLabText26::
@@ -394,7 +394,7 @@ _OaksLabText_1d405::
 	cont "ASSISTANT!"
 	done
 	_OaksLabText_441cc::
-	text "Niveau #DEX:"
+	text "Niveau #dex:"
 
 	para "@"
 	TX_NUM hDexRatingNumMonsSeen, 1, 3
@@ -507,7 +507,7 @@ _OaksLabText_44247::
 	done
 
 _OaksLabText_4424c::
-	text "Ton #DEX est"
+	text "Ton #dex est"
 	line "complet!"
 	cont "Félicitations!"
 	done
@@ -537,7 +537,7 @@ _OakVictorySpeech::
 	line "fun battling is."
 	cont "A splendid match!"
 
-	para "You know MR.FUJI?"
+	para "You know M.Fuji?"
 	line "He used to study"
 	cont "powerful #mon."
 
@@ -606,7 +606,7 @@ _OaksLabText_symbolsON::
 	cont "or female?"
 	
 	para "I can modify the"
-	line "#DEX to show a"
+	line "#dex to show a"
 	cont "marker for hard-"
 	cont "to-tell species"
 	cont "in wild battles."
@@ -615,7 +615,7 @@ _OaksLabText_symbolsON::
 	line "a mark in wild"
 	cont "battles if you"
 	cont "registered it in"
-	cont "your #DEX."
+	cont "your #dex."
 	done
 	
 _OaksLabText_symbolsOFF::

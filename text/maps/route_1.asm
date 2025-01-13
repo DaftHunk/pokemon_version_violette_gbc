@@ -22,7 +22,7 @@ _Route1Text_1cae8::
 
 _Route1Text_1caee::
 	text "Nous avons aussi"
-	line "des # BALL"
+	line "des #ball"
 	cont "pour capturer les"
 	cont "#mon!"
 	done

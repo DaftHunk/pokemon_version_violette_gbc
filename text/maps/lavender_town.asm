@@ -1,6 +1,6 @@
 _LavenderTownText_4413c::
 	text "Crois-tu aux"
-	line "SPECTRES?"
+	line "SpectreS?"
 	done
 
 _LavenderTownText_44141::
@@ -29,15 +29,15 @@ _LavenderTownText2::
 	line "le cimetière des"
 	cont "#mon."
 
-	para "La TOUR #mon"
+	para "La Tour #mon"
 	line "est le lieu de"
 	cont "recueillement."
 	done
 
 _LavenderTownText3::
-	text "Des SPECTRES sont"
+	text "Des Spectres sont"
 	line "apparus dans la"
-	cont "TOUR #mon."
+	cont "Tour #mon."
 
 	para "Ils doivent être"
 	line "les esprits des"
@@ -61,13 +61,13 @@ _LavenderTownText5::
 	done
 
 _LavenderTownText8::
-	text "BENEVOLAT DE"
+	text "Bénévolat de"
 	line "Lavanville"
-	cont "MAISON #mon"
+	cont "Maison #mon"
 	done
 
 _LavenderTownText9::
 	text "Paix à l'âme des"
 	line "#mon"
-	cont "TOUR #mon"
+	cont "Tour #mon"
 	done

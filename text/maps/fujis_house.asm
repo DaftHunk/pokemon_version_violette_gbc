@@ -1,11 +1,11 @@
 _LavenderHouse1Text_1d8d1::
-	text "Ce sacré MR.FUJI"
+	text "Ce sacré M.Fuji"
 	line "n'est pas là."
 	cont "Où est-il?"
 	done
 
 _LavenderHouse1Text_1d8d6::
-	text "MR.FUJI a prié"
+	text "M.Fuji a prié"
 	line "pour le repos de"
 	cont "la mère de"
 	cont "Osselait."
@@ -13,7 +13,7 @@ _LavenderHouse1Text_1d8d6::
 
 _LavenderHouse1Text_1d8f4::
 	text "Voici la maison"
-	line "de MR.FUJI."
+	line "de M.Fuji."
 
 	para "C'est vraiment un"
 	line "chic type!"
@@ -40,11 +40,11 @@ _LavenderHouse1Text4::
 	text_end
 
 _LavenderHouse1Text_1d94c::
-	text "MR.FUJI: <PLAYER>."
+	text "M.Fuji: <PLAYER>."
 
 	para "Ta quête pour"
 	line "compléter ton"
-	cont "#DEX échouera"
+	cont "#dex échouera"
 	cont "si tu n'aimes pas"
 	cont "tes #mon."
 
@@ -63,7 +63,7 @@ _FluteExplanationText::
 	text_start
 
 	para "En jouant de la"
-	line "#FLUTE, les"
+	line "#Flute, les"
 	cont "#mon endormis"
 	cont "se réveilleront."
 
@@ -77,7 +77,7 @@ _FluteNoRoomText::
 	done
 
 _MrFujiAfterFluteText::
-	text "MR.FUJI: Ma FLUTE"
+	text "M.Fuji: Ma Flute"
 	line "t'a été utile?"
 	done
 
@@ -96,7 +96,7 @@ _LavenderHouse1Text6::
 ;;;;;;;;;;;;;;;;;;;;;;joenote - adding text for fuji battle
 _FujiText_challenge::
 	text "Do you challenge"
-	line "MR.FUJI to a"
+	line "M.Fuji to a"
 	cont "#mon battle?"
 	done
 

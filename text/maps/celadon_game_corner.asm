@@ -34,13 +34,13 @@ _CeladonGameCornerText_48d31::
 	done
 
 _CeladonGameCornerText_48d36::
-	text "Oups! Votre BOITE"
+	text "Oups! Votre Boite"
 	line "est pleine."
 	done
 
 _CeladonGameCornerText_48d3b::
 	text "Il vous faut une"
-	line "BOITE JETON!"
+	line "Boite Jeton!"
 	done
 
 _CeladonGameCornerText3::
@@ -92,7 +92,7 @@ _CeladonGameCornerText_48dca::
 	cont "de champion!"
 
 	para "Erika est la"
-	line "CHAMPIONNE de"
+	line "Championne de"
 	cont "l'Arène de"
 	cont "Céladopole! Elle"
 	cont "utilise des"
@@ -182,7 +182,7 @@ _CeladonGameCornerText_48ed8::
 	text "Not' cachette va"
 	line "être découverte!"
 	cont "J'va prév'nir eul"
-	cont "CHEF!"
+	cont "Chef!"
 	done
 
 _CeladonGameCornerText_48f09::
@@ -195,5 +195,5 @@ _CeladonGameCornerText_48f09::
 
 _CeladonGameCornerText_48f19::
 	text "Oups! Pas de"
-	line "BOITE JETON!"
+	line "Boite Jeton!"
 	done

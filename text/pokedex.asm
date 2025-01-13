@@ -54,7 +54,7 @@ _VoltorbDexEntry::
 
 	page "est souvent"
 	next "confondu avec une"
-	next "# BALL"
+	next "#ball"
 	dex
 
 _NidokingDexEntry::

@@ -25,5 +25,5 @@ _PewterHouse1Text3::
 
 	para "Si seulement nous"
 	line "avions des..."
-	cont "BADGES!"
+	cont "Badges!"
 	done

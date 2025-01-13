@@ -17,7 +17,7 @@ _AgathaBeforeBattleText::
 
 	para "Il veut juste"
 	line "frimer avec son"
-	cont "#DEX! Mais"
+	cont "#dex! Mais"
 	cont "c'est débile! Les"
 	cont "#mon servent"
 	cont "à combattre!"

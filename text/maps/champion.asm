@@ -12,7 +12,7 @@ _GaryChampionIntroText::
 	cont "mes #mon."
 
 	para "En améliorant mon"
-	line "#DEX, j'ai"
+	line "#dex, j'ai"
 	cont "recherché les"
 	cont "#mon sur-"
 	cont "puissants!"

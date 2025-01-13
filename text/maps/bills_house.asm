@@ -23,7 +23,7 @@ _BillsHouseText_1e865::
 
 _BillsHouseText_1e86a::
 	text "Je vais dans le"
-	line "TELEPORTEUR."
+	line "Téléporteur."
 	cont "Lance vite le"
 	cont "programme sur mon"
 	cont "PC!"
@@ -68,9 +68,9 @@ _SSTicketNoRoomText::
 	done
 
 _BillsHouseText_1e8cb::
-	text "L'OCEANE, le"
+	text "L'Océane, le"
 	line "bateau, est à"
-	cont "CARMIN. Les"
+	cont "Carmin. Les"
 	cont "passagers sont"
 	cont "des dresseurs!"
 

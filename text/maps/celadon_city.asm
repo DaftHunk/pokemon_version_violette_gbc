@@ -51,7 +51,7 @@ _ReceivedTM41Text::
 
 _TM41ExplanationText::
 	text "La CT41 contient"
-	line "E-COQUE!"
+	line "E-Coque!"
 
 	para "Un seul #mon"
 	line "peut l'utiliser:"
@@ -71,7 +71,7 @@ _CeladonCityText6::
 	para "Il n'était qu'un"
 	line "Têtarte avant"
 	cont "d'utiliser une"
-	cont "Pierre EAU!"
+	cont "Pierre Eau!"
 	done
 
 _CeladonCityText7::
@@ -91,12 +91,12 @@ _CeladonCityText9::
 _CeladonCityText10::
 	text "Astuce"
 
-	para "PRECISION +"
+	para "Précision +"
 	line "augmente la"
 	cont "précision des"
 	cont "attaques!"
 
-	para "MUSCLE +"
+	para "Muscle +"
 	line "augmente les"
 	cont "chances de coups"
 	cont "critiques!"

@@ -10,8 +10,8 @@ _KogaExplainToxicText::
 	done
 
 _FuchsiaGymText9::
-	text "Le BADGE AME fera"
-	line "monter la VITESSE"	;joenote - changed DEFENSE to SPEED in order to fix a typo
+	text "Le Badge Ame fera"
+	line "monter la Vitesse"	;joenote - changed DEFENSE to SPEED in order to fix a typo
 	cont "de tes #mon!"
 
 	para "Il te permettra"

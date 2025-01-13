@@ -134,7 +134,7 @@ DiplomaCongrats:
 	db   "Fabuleux! Ce"
 	next "diplôme certifie"
 	next "la perfection de"
-	next "votre #DEX.@"
+	next "votre #dex.@"
 
 DiplomaGameFreak:
 	db "GAME FREAK@"

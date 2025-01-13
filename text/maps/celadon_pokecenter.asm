@@ -1,5 +1,5 @@
 _CeladonPokecenterText2::
-	text "La #FLUTE"
+	text "La #Flute"
 	line "réveille les"
 	cont "#mon grâce aux"
 	cont "ultrasons!"
@@ -7,6 +7,6 @@ _CeladonPokecenterText2::
 
 _CeladonPokecenterText3::
 	text "J'ai pris la"
-	line "PISTE CYCLABLE"
+	line "Piste Cyclable"
 	cont "depuis Parmanie!"
 	done

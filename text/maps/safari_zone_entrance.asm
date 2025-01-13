@@ -18,7 +18,7 @@ SafariZoneEntranceText_9e747::
 	line "siouplaît!"
 
 	para "Seul un certain"
-	line "type de # BALL"
+	line "type de #ball"
 	cont "est utilisé ici."
 
 	para "<PLAYER> reçoit"

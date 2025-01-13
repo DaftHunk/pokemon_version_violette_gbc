@@ -55,7 +55,7 @@ _Route16EndBattleText4::
 
 _Route16AfterBattleText4::
 	text "Tu peux aussi"
-	line "aller de CARMIN"
+	line "aller de Carmin"
 	cont "à Parmanie par la"
 	cont "côte."
 	done

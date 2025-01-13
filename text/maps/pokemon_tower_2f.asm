@@ -31,7 +31,7 @@ _PokemonTower2Text_60637::
 
 _PokemonTower2Text_6063c::
 	text "Où en est ton"
-	line "#DEX? Je"
+	line "#dex? Je"
 	cont "viens de capturer"
 	cont "un Osselait!"
 
@@ -53,7 +53,7 @@ _PokemonTower2Text_6063c::
 _PokemonTower2Text2::
 	text "Nous ne pouvons"
 	line "identifier les"
-	cont "SPECTRES!"
+	cont "Spectres!"
 
 	para "Un Scope Sylphe"
 	line "pourrait les"

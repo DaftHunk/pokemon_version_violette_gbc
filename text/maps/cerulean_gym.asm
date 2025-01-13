@@ -28,7 +28,7 @@ _CeruleanGymText_5c7c3::
 	done
 
 _CeruleanGymText_5c7c8::
-	text "Le BADGECASCADE"
+	text "Le BadgeCascade"
 	line "oblige tous les"
 	cont "#mon d'un"
 	cont "niveau inférieur"
@@ -40,9 +40,9 @@ _CeruleanGymText_5c7c8::
 	para "En plus, tu peux"
 	line "maintenant"
 	cont "utiliser la CS"
-	cont "COUPE!"
+	cont "Coupe!"
 
-	para "Tu peux COUPER"
+	para "Tu peux CoupeR"
 	line "les arbustes"
 	cont "et ouvrir de"
 	cont "nouveaux chemins!"
@@ -68,7 +68,7 @@ _CeruleanGymText_5c7d8::
 	para "Très bien!"
 
 	para "Je te donne le"
-	line "BADGECASCADE pour"
+	line "BadgeCascade pour"
 	cont "m'avoir battue!@"
 	text_end
 

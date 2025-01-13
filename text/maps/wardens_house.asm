@@ -58,7 +58,7 @@ _ReceivedHM04Text::
 
 _HM04ExplanationText::
 	text "Gardien: CS04..."
-	line "FORCE!"
+	line "Force!"
 
 	para "Tes #mon"
 	line "pourront déplacer"

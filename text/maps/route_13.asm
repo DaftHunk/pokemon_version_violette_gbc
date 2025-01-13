@@ -34,7 +34,7 @@ _Route13AfterBattleText3::
 	done
 
 _Route13BattleText4::
-	text "Woaa! Tes BADGES"
+	text "Woaa! Tes Badges"
 	line "sont trop cool!"
 	done
 
@@ -45,7 +45,7 @@ _Route13EndBattleText4::
 
 _Route13AfterBattleText4::
 	text "Tu as gagné ces"
-	line "BADGES chez les"
+	line "Badges chez les"
 	cont "CHAMPIONS!"
 	done
 

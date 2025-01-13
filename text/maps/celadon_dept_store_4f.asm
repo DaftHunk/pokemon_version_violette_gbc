@@ -11,7 +11,7 @@ _CeladonMart4Text3::
 	line "aux #mon"
 	cont "sauvages en les"
 	cont "occupant avec une"
-	cont "#POUPEE!"
+	cont "#Poupée!"
 	done
 
 _CeladonMart4Text4::
@@ -19,7 +19,7 @@ _CeladonMart4Text4::
 	line "L'amour..."
 	cont "La vie!"
 
-	para "3ème: CADEAUX"
+	para "3ème: Cadeaux"
 
 	para "Vive les"
 	line "évolutions!"

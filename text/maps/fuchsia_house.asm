@@ -23,7 +23,7 @@ _FuchsiaHouse1Text2::
 _FuchsiaHouse1Text3::
 	text "Léo enregistre"
 	line "ses données sur"
-	cont "les #MON sur"
+	cont "les #mon sur"
 	cont "son PC!"
 
 	para "Il t'a déjà"

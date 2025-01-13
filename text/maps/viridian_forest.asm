@@ -68,7 +68,7 @@ _ViridianFrstAfterBattleText3::
 
 _ViridianForestText8::
 	text "J'suis à court de"
-	line "# BALL!"
+	line "#ball!"
 	cont "Je ne peux plus"
 	cont "attraper de"
 	cont "#mon!"
@@ -97,7 +97,7 @@ _ViridianForestText11::
 	text "Astuce"
 
 	para "Pour évaluer"
-	line "votre #DEX,"
+	line "votre #dex,"
 	cont "appelez le Prof."
 	cont "Chen via un PC!"
 	done

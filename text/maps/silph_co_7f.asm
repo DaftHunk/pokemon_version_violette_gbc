@@ -195,7 +195,7 @@ _SilphCo7Text_51ed2::
 	para "Je décampe!"
 
 	para "Grâce à mon joli"
-	line "#DEX, je"
+	line "#dex, je"
 	cont "découvre qui est"
 	cont "fort et quelles"
 	cont "sont toutes les"

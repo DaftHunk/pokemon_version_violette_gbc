@@ -31,7 +31,7 @@ _RockTunnel2AfterBattleText3::
 
 _RockTunnel2BattleText4::
 	text "Tu as un"
-	line "#DEX?"
+	line "#dex?"
 	cont "Je le veux!"
 	done
 
@@ -42,7 +42,7 @@ _RockTunnel2EndBattleText4::
 
 _RockTunnel2AfterBattleText4::
 	text "Tu me donneras"
-	line "ton #DEX plus"
+	line "ton #dex plus"
 	cont "tard?"
 	done
 

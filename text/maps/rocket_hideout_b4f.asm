@@ -32,7 +32,7 @@ _RocketHideout4BattleText2::
 	text "Je te reconnais!"
 	line "Tu as ruiné nos"
 	cont "plans sur le"
-	cont "MONT SELENITE!"
+	cont "Mont Sélénite!"
 	done
 
 _RocketHideout4EndBattleText2::

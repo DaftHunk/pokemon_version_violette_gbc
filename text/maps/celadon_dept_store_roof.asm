@@ -23,7 +23,7 @@ _CeladonMartRoofText_484fe::
 	para "@"
 	TX_RAM wcf4b
 	text ":"
-	line "LASER GLACE!"
+	line "Laser Glace!"
 
 	para "Cette attaque"
 	line "pourra geler"
@@ -32,7 +32,7 @@ _CeladonMartRoofText_484fe::
 _CeladonMartRoofText_48504::
 	text "Ouaiiis!"
 
-	para "Du SODA COOL!"
+	para "Du Soda Cool!"
 
 	para "Merciiii!"
 
@@ -55,12 +55,12 @@ _CeladonMartRoofText_4850f::
 ;	para "Cette attaque"
 ;	line "peut faire peur"
 ;	cont "à l'ennemi!@@"
-	line "EBOULEMENT!@@"
+	line "Eboulement!@@"
 	
 _CeladonMartRoofText_48515::
 	text "Ouaiiis!"
 
-	para "D'la LIMONADE!"
+	para "D'la Limonade!"
 
 	para "Top top top!"
 
@@ -72,8 +72,8 @@ _ReceivedTM49Text::
 
 _CeladonMartRoofText_48520::
 	db $0
-	para "TM49..."
-	line "TRIPLATTAQUE!@@"
+	para "CT49..."
+	line "Triplattaque!@@"
 
 _CeladonMartRoofText_48526::
 	text "Plus de place!@@"
@@ -104,7 +104,7 @@ _CeladonMartRoofText4::
 	done
 
 _CeladonMartRoofText6::
-	text "DERNIER ETAGE:"
+	text "Dernier Etage:"
 	line "Distributeurs"
 	done
 

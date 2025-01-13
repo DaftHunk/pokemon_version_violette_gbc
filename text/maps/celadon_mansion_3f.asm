@@ -28,7 +28,7 @@ _GameDesignerText::
 	line "designer!"
 
 	para "Remplir ton"
-	line "#DEX est"
+	line "#dex est"
 	cont "difficile, hein?"
 
 	para "Complète-le et"
@@ -38,7 +38,7 @@ _GameDesignerText::
 _CompletedDexText::
 	text "Woah! Génial!"
 	line "Tu as complété"
-	cont "ton #DEX!"
+	cont "ton #dex!"
 	cont "Félicitations!"
 	cont "...@"
 	text_end

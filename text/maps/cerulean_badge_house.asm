@@ -1,5 +1,5 @@
 _CeruleanHouse2Text_74e77::
-	text "Les BADGES sont"
+	text "Les Badges sont"
 	line "portés par des"
 	cont "dresseurs de haut"
 	cont "niveau."
@@ -7,7 +7,7 @@ _CeruleanHouse2Text_74e77::
 	para "Mmm... Tu en as"
 	line "au moins un."
 
-	para "Ces BADGES ont"
+	para "Ces Badges ont"
 	line "d'étranges"
 	cont "pouvoirs!"
 	prompt
@@ -16,7 +16,7 @@ _CeruleanHouse2Text_74e7c::
 	text "Dis-moi..."
 
 	para "Lequel des 8"
-	line "BADGES veux-tu"
+	line "Badges veux-tu"
 	cont "que je décrive?"
 	done
 
@@ -26,13 +26,13 @@ _CeruleanHouse2Text_74e81::
 	done
 
 _CeruleanHouse2Text_74e96::
-	text "L'ATTAQUE de tous"
+	text "L'Attaque de tous"
 	line "tes #mon est"
 	cont "augmentée."
 
 	para "Il permet aussi"
 	line "d'utiliser la CS"
-	cont "FLASH."
+	cont "Flash."
 	prompt
 
 _CeruleanHouse2Text_74e9b::
@@ -47,19 +47,19 @@ _CeruleanHouse2Text_74e9b::
 
 	para "Tu pourras aussi"
 	line "utiliser la CS"
-	cont "COUPE en-dehors"
+	cont "Coupe en-dehors"
 	cont "des combats."
 	prompt
 
 _CeruleanHouse2Text_74ea0:: ;joenote - updated with correct information
-	text "La DEFENSE de"
+	text "La Défense de"
 	line "tous tes #mon"
 	cont "sera un peu"
 	cont "augmentée."
 
 	para "Tu pourras aussi"
 	line "utiliser la CS"
-	cont "VOL en-dehors des"
+	cont "Vol en-dehors des"
 	cont "combats."
 	prompt
 
@@ -74,17 +74,17 @@ _CeruleanHouse2Text_74ea5::
 
 	para "Tu pourras aussi"
 	line "utiliser la CS"
-	cont "FORCE."
+	cont "Force."
 	prompt
 
 _CeruleanHouse2Text_74eaa:: ;joenote - updated with correct information
-	text "La VITESSE de"
+	text "La Vitesse de"
 	line "tous tes #mon"
 	cont "sera augmentée."
 
 	para "Tu pourras aussi"
 	line "utiliser la CS"
-	cont "SURF en-dehors"
+	cont "Surf en-dehors"
 	cont "des combats."
 	prompt
 
@@ -100,7 +100,7 @@ _CeruleanHouse2Text_74eaf::
 	prompt
 
 _CeruleanHouse2Text_74eb4::
-	text "Le SPECIAL de tes"
+	text "Le Spécial de tes"
 	line "#mon sera un"
 	cont "peu augmenté."
 	prompt

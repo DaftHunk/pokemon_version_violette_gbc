@@ -1,12 +1,12 @@
 _PokemonTower4BattleText1::
-	text "Un SPECTRE!"
+	text "Un Spectre!"
 	line "Rhaaaaaa!"
 	done
 
 _PokemonTower4EndBattleText1::
 	text "Ben!"
 	line "Où est le"
-	cont "SPECTRE?"
+	cont "Spectre?"
 	prompt
 
 _PokemonTower4AfterBattleText1::
@@ -25,7 +25,7 @@ _PokemonTower4EndBattleText2::
 _PokemonTower4AfterBattleText2::
 	text "Nous ne pouvons"
 	line "identifier les"
-	cont "SPECTRES."
+	cont "Spectres."
 	done
 
 _PokemonTower4BattleText3::

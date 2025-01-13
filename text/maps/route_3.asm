@@ -147,10 +147,10 @@ _Route3EndBattleText8::
 _Route3AfterBattleText8::
 	text "La Route 4"
 	line "est au pied du"
-	cont "MONT SELENITE."
+	cont "Mont Sélénite."
 	done
 
 _Route3Text10::
 	text "Route 3 vers le"
-	line "MONT SELENITE"
+	line "Mont Sélénite"
 	done

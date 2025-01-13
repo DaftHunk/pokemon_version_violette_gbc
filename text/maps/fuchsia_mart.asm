@@ -8,7 +8,7 @@ _FuchsiaMartText2::
 
 _FuchsiaMartText3::
 	text "Tu connais la"
-	line "VITESSE +? Elle"
+	line "Vitesse +? Elle"
 	cont "augmente la"
 	cont "vitesse de ton"
 	cont "#mon pendant"

@@ -26,12 +26,12 @@ _Route4AfterBattleText1::
 	done
 
 _Route4Text5::
-	text "MONT SELENITE"
+	text "Mont Sélénite"
 	line "Entrée du tunnel"
 	done
 
 _Route4Text6::
 	text "Route 4"
-	line "MONT SELENITE -"
+	line "Mont Sélénite -"
 	cont "Azuria"
 	done

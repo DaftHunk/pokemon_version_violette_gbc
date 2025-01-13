@@ -9,7 +9,7 @@ _PokemonTower3EndBattleText1::
 	prompt
 
 _PokemonTower3AfterBattleText1::
-	text "Un SPECTRE est"
+	text "Un Spectre est"
 	line "identifiable avec"
 	cont "un Scope Sylphe."
 	done

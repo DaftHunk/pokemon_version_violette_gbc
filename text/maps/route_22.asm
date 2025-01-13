@@ -9,7 +9,7 @@ _Route22RivalBeforeBattleText1::
 	line "T'es bien trop"
 	cont "minable. En plus"
 	cont "il te faut des"
-	cont "BADGES!"
+	cont "Badges!"
 
 	para "Les gardes ne"
 	line "laisseront pas"
@@ -65,7 +65,7 @@ _Route22RivalBeforeBattleText2::
 	line "va à la Ligue?"
 
 	para "Tu as tous les"
-	line "BADGES aussi?"
+	line "Badges aussi?"
 	cont "C'est bien!"
 
 	para "Eh ben...j'vais"

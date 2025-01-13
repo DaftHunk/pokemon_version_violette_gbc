@@ -21,7 +21,7 @@ _SSAnneRivalBeforeBattleText::
 	cont "invité?"
 
 	para "Où en es-tu avec"
-	line "ton #DEX?"
+	line "ton #dex?"
 
 	para "Moi, j'ai déjà"
 	line "attrapé 40"

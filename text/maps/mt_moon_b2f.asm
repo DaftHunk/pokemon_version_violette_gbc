@@ -1,11 +1,11 @@
 _MtMoon3Text_49f24::
 	text "Tu veux le"
-	line "fossile DOME?"
+	line "fossile Dôme?"
 	done
 
 _MtMoon3Text_49f64::
 	text "Tu veux le"
-	line "fossile NAUTILE?"
+	line "fossile Nautile?"
 	done
 
 _MtMoon3Text_49f6f::

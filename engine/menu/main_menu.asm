@@ -604,7 +604,7 @@ PrintPlayTime_local:
 SaveScreenInfoText:
 	db   "Joueur"
 	next "Badges    "
-	next "#DEX    "
+	next "#dex    "
 	next "Temps@"
 
 DisplayOptionMenu:

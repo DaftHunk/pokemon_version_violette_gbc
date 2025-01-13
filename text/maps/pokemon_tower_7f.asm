@@ -1,5 +1,5 @@
 _TowerRescueFujiText::
-	text "MR.FUJI: Hé? Tu"
+	text "M.Fuji: Hé? Tu"
 	line "es venu me"
 	cont "sauver?"
 

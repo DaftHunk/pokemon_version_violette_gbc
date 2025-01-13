@@ -16,8 +16,8 @@ _LavenderHouse2Text_1d9dc::
 	done
 
 _LavenderHouse2Text_1d9e1::
-	text "Le SPECTRE de"
-	line "la TOUR #mon"
+	text "Le Spectre de"
+	line "la Tour #mon"
 	cont "est parti!"
 
 	para "Quelqu'un a dû"

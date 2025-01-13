@@ -1,5 +1,5 @@
 _PokemonTower2Text_60c1f::
-	text "Le SPECTRE était"
+	text "Le Spectre était"
 	line "l'esprit damné de"
 	cont "la mère de"
 	cont "Osselait!"

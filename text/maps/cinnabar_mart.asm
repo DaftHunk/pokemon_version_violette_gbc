@@ -1,6 +1,6 @@
 _CinnabarMartText2::
 	text "Ils n'ont pas de"
-	line "ATTAQUE +? C'est"
+	line "Attaque +? C'est"
 	cont "vachement balèze"
 	cont "dans les bastons!"
 	done

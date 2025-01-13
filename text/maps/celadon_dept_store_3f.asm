@@ -15,7 +15,7 @@ _ReceivedTM18Text::
 	text "!@@"
 
 _TM18ExplanationText::
-	text "CT18: RIPOSTE!"
+	text "CT18: Riposte!"
 	line "Bon allez..."
 	cont "Bonne chance!"
 	

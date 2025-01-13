@@ -27,7 +27,7 @@ _ViridianGymText_74ad3::
 	cont "combat! Tu as"
 	cont "gagné! En"
 	cont "récompense voici"
-	cont "le BADGE TERRE!@"
+	cont "le Badge Terre!@"
 	text_end
 
 _ViridianGymText_74ad9::

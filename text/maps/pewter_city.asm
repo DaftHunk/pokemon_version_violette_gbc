@@ -30,7 +30,7 @@ _PewterCityText_193f1::
 
 _PewterCityText_193f6::
 	text "Les fossiles du"
-	line "MONT SELENITE"
+	line "Mont Sélénite"
 	cont "sont beaux, hein?"
 	done
 
@@ -98,7 +98,7 @@ _PewterCityText7::
 	line "des voleurs de"
 	cont "fossiles de"
 	cont "#mon sur le"
-	cont "MONT SELENITE."
+	cont "Mont Sélénite."
 	cont "N'hésitez pas à"
 	cont "contacter la"
 	cont "POLICE d'Argenta!"

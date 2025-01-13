@@ -15,7 +15,7 @@ _HallofFameRoomText1::
 	para "Leurs #mon"
 	line "sont enregistrés"
 	cont "en tant que"
-	cont "CELEBRITES!"
+	cont "Célébrité!"
 
 	para "<PLAYER>! Long"
 	line "fut ton périple"

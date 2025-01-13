@@ -3,7 +3,7 @@ _PewterPokecenterText2::
 
 	para "La Team Rocket"
 	line "a investi le"
-	cont "MONT SELENITE!"
+	cont "Mont Sélénite!"
 
 	para "Damnation!"
 	done
