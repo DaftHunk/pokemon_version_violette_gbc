@@ -281,13 +281,13 @@ DefaultNamesRival:
 ELIF DEF(_BLUE)
 DefaultNamesPlayer:
 	db   "Nom :"
-	next "Blue"
+	next "Red"
 	next "Sacha"
 	next "Jean"
 	db   "@"
 DefaultNamesRival:
 	db   "Nom :"
-	next "Red"
+	next "Blue"
 	next "Régis"
 	next "Paul"
 	db   "@"
