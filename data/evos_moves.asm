@@ -33,7 +33,7 @@ EvosMovesPointerTable:
 	dw PinsirEvosMoves
 	dw TangelaEvosMoves
 	dw SteelixEvosMoves
-	dw MissingNo20EvosMoves
+	dw ScizorEvosMoves
 	dw GrowlitheEvosMoves
 	dw OnixEvosMoves
 	dw FearowEvosMoves
@@ -51,7 +51,7 @@ EvosMovesPointerTable:
 	dw PsyduckEvosMoves
 	dw DrowzeeEvosMoves
 	dw GolemEvosMoves
-	dw MissingNo32EvosMoves
+	dw UmbreonEvosMoves
 	dw MagmarEvosMoves
 	dw MissingNo34EvosMoves
 	dw ElectabuzzEvosMoves
@@ -496,7 +496,7 @@ GastlyEvosMoves:
 
 ScytherEvosMoves:
 ; Evolutions
-	db 0
+	db EV_ITEM, MOON_STONE, 1, SCIZOR
 ; Learnsetjoenote-modified for yellow
 	db 17, LEER
 	db 20, FOCUS_ENERGY
@@ -570,10 +570,17 @@ SteelixEvosMoves:
 	db 43, HARDEN
 	db 0
 
-MissingNo20EvosMoves:
+ScizorEvosMoves:
 ; Evolutions
 	db 0
-; Learnset
+; Learnsetjoenote-modified for yellow
+	db 17, LEER
+	db 20, FOCUS_ENERGY
+	db 24, DOUBLE_TEAM
+	db 29, SLASH
+	db 35, SWORDS_DANCE
+	db 42, AGILITY
+	db 50, WING_ATTACK
 	db 0
 
 GrowlitheEvosMoves:
@@ -590,7 +597,7 @@ GrowlitheEvosMoves:
 
 OnixEvosMoves:
 ; Evolutions
-	db EV_ITEM, FIRE_STONE, 1, STEELIX
+	db EV_ITEM, MOON_STONE, 1, STEELIX
 ; Learnset
 	db 15, BIND
 	db 19, ROCK_THROW
@@ -785,10 +792,23 @@ GolemEvosMoves:
 	db 43, EXPLOSION
 	db 0
 
-MissingNo32EvosMoves:
+UmbreonEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 8, SAND_ATTACK
+	db 16, GROWL
+	db 23, QUICK_ATTACK
+	db 30, BITE
+	db 31, EMBER
+	db 36, FIRE_SPIN
+	db 37, TAIL_WHIP
+	db 40, BITE
+	db 42, LEER
+	db 44, FIRE_SPIN
+	db 47, SMOG
+	db 48, RAGE
+	db 52, FLAMETHROWER
 	db 0
 
 MagmarEvosMoves:
@@ -1306,6 +1326,7 @@ WigglytuffEvosMoves:	;joenote - modified for level-up moves
 EeveeEvosMoves:
 ;joenote - the eevee line has been modified to be closer to yellow version
 ; Evolutions
+	db EV_ITEM, MOON_STONE, 1, UMBREON
 	db EV_ITEM, FIRE_STONE, 1, FLAREON
 	db EV_ITEM, THUNDER_STONE, 1, JOLTEON
 	db EV_ITEM, WATER_STONE, 1, VAPOREON

@@ -304,3 +304,7 @@ WEEPINBELL_FR	EQUS	"\"pic/ymon/weepinbell.pic\""
 VICTREEBEL_FR	EQUS	"\"pic/ymon/victreebel.pic\""
 	INCBIN	"pic/ymon/steelix.pic",0,0
 STEELIX_FR	EQUS	"\"pic/ymon/steelix.pic\""
+	INCBIN	"pic/ymon/scizor.pic",0,0
+SCIZOR_FR	EQUS	"\"pic/ymon/scizor.pic\""
+	INCBIN	"pic/ymon/umbreon.pic",0,0
+UMBREON_FR	EQUS	"\"pic/ymon/umbreon.pic\""

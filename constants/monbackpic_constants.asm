@@ -304,3 +304,7 @@ WEEPINBELL_BK	EQUS	"\"pic/monback/weepinbellb.pic\""
 VICTREEBEL_BK	EQUS	"\"pic/monback/victreebelb.pic\""
 	INCBIN	"pic/monback/steelixb.pic",0,0
 STEELIX_BK	EQUS	"\"pic/monback/steelixb.pic\""
+	INCBIN	"pic/monback/scizorb.pic",0,0
+SCIZOR_BK	EQUS	"\"pic/monback/scizorb.pic\""
+	INCBIN	"pic/monback/umbreonb.pic",0,0
+UMBREON_BK	EQUS	"\"pic/monback/umbreonb.pic\""

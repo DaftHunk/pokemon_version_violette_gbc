@@ -1505,3 +1505,23 @@ _SteelixDexEntry::
 	next "reflètent"
 	next "la lumière"
 	dex
+
+_ScizorDexEntry::
+	text "Il effraie l'enn-"
+	next "emi en agitant"
+	next "ses pinces en"
+
+	page "forme d'oeil et"
+	next "donne ainsi"
+	next "l'impression"
+	next "d'avoir 3 têtes."
+	dex
+
+_UmbreonDexEntry::
+	text "Pour se défendre"
+	next "ce #mon émet un"
+	next "gaz empoisonné"
+
+	page "par les pores"
+	next "de sa peau."
+	dex

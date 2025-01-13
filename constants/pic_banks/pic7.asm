@@ -34,3 +34,7 @@ VictreebelPicFront::	INCBIN	VICTREEBEL_FR
 VictreebelPicBack::	INCBIN	VICTREEBEL_BK
 MewPicFront::	INCBIN	MEW_FR
 MewPicBack::	INCBIN	MEW_BK
+ScizorPicFront::	INCBIN	SCIZOR_FR
+ScizorPicBack::	    INCBIN	SCIZOR_BK
+UmbreonPicFront::   INCBIN  UMBREON_FR
+UmbreonPicBack::	INCBIN	UMBREON_BK

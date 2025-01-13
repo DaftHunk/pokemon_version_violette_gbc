@@ -30,7 +30,7 @@ PokedexEntryPointers:
 	dw PinsirDexEntry
 	dw TangelaDexEntry
 	dw SteelixDexEntry
-	dw MissingNoDexEntry
+	dw ScizorDexEntry
 	dw GrowlitheDexEntry
 	dw OnixDexEntry
 	dw FearowDexEntry
@@ -48,7 +48,7 @@ PokedexEntryPointers:
 	dw PsyduckDexEntry
 	dw DrowzeeDexEntry
 	dw GolemDexEntry
-	dw MissingNoDexEntry
+	dw UmbreonDexEntry
 	dw MagmarDexEntry
 	dw MissingNoDexEntry
 	dw ElectabuzzDexEntry
@@ -1263,4 +1263,19 @@ SteelixDexEntry:
 	db 1,70
 	dw 155
 	TX_FAR _SteelixDexEntry
+	db "@"
+
+	
+ScizorDexEntry:
+	db "Pince@"
+	db 1,80
+	dw 118
+	TX_FAR _ScizorDexEntry
+	db "@"
+
+UmbreonDexEntry:
+	db "Lune@"
+	db 1,00
+	dw 27
+	TX_FAR _UmbreonDexEntry
 	db "@"
