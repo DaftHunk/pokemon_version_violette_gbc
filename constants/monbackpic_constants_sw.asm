@@ -302,9 +302,9 @@ BELLSPROUT_BK	EQUS	"\"pic/swmonback/bellsproutb.pic\""
 WEEPINBELL_BK	EQUS	"\"pic/swmonback/weepinbellb.pic\""
 	INCBIN	"pic/swmonback/victreebelb.pic",0,0
 VICTREEBEL_BK	EQUS	"\"pic/swmonback/victreebelb.pic\""
-	INCBIN	"pic/monback/steelixb.pic",0,0
-STEELIX_BK	EQUS	"\"pic/monback/steelixb.pic\""
-	INCBIN	"pic/monback/scizorb.pic",0,0
-SCIZOR_BK	EQUS	"\"pic/monback/scizorb.pic\""
-	INCBIN	"pic/monback/umbreonb.pic",0,0
-UMBREON_BK	EQUS	"\"pic/monback/umbreonb.pic\""
+	INCBIN	"pic/swmonback/steelixb.pic",0,0
+STEELIX_BK	EQUS	"\"pic/swmonback/steelixb.pic\""
+	INCBIN	"pic/swmonback/scizorb.pic",0,0
+SCIZOR_BK	EQUS	"\"pic/swmonback/scizorb.pic\""
+	INCBIN	"pic/swmonback/umbreonb.pic",0,0
+UMBREON_BK	EQUS	"\"pic/swmonback/umbreonb.pic\""
