@@ -602,7 +602,7 @@ _CinnabarGymQuizIntroText::
 	para "Pour préserver"
 	line "une équipe avant"
 	cont "d'affronter le"
-	cont "CHAMPION..."
+	cont "Champion..."
 
 	para "Mieux vaut éviter"
 	line "les erreurs!"
@@ -616,7 +616,7 @@ _CinnabarQuizQuestionsText1::
 
 _CinnabarQuizQuestionsText2::
 	text "Il existe 9"
-	line "BADGES #mon?"
+	line "Badges #mon?"
 	done
 
 _CinnabarQuizQuestionsText3::
@@ -630,11 +630,11 @@ _CinnabarQuizQuestionsText4::	;joenote - re-worded to be less contrived
 ;	cont "les #mon du"
 ;	cont "sol?"
 	text "Les techniques de"
-	line "type ELECTRIK"
+	line "type Electrik"
 	cont "sont efficaces"
 	cont "contre les"
 	cont "#mon de type"
-	cont "SOL?"
+	cont "Sol?"
 	done
 
 _CinnabarQuizQuestionsText5::
@@ -648,7 +648,7 @@ _CinnabarQuizQuestionsText5::
  
 _CinnabarQuizQuestionsText6::
 	text "CT28 contient"
-	line "FOSSE?"
+	line "Fosse?"
 	done
 
 _CinnabarGymQuizCorrectText::
@@ -673,13 +673,13 @@ _MagazinesText::
 	done
 
 _BillsHouseMonitorText::
-	text "Un TELEPORTEUR"
+	text "Un Téléporteur"
 	line "sur le moniteur!"
 	done
 
 _BillsHouseInitiatedText::
 	text "<PLAYER> enclenche"
-	line "le TELEPORTEUR!@"
+	line "le Téléporteur!@"
 	text_end
 
 _BillsHousePokemonListText1::
@@ -714,7 +714,7 @@ _OakLabEmailText::
 	cont "dresseur!"
 
 	para "Ligue #mon,"
-	line "PLATEAU INDIGO"
+	line "Plateau Indigo"
 
 	para "PS: Prof. Chen,"
 	line "votre visite est"
@@ -723,7 +723,7 @@ _OakLabEmailText::
 
 _GameCornerCoinCaseText::
 	text "Vous n'avez pas"
-	line "de BOITE JETON!"
+	line "de Boite Jeton!"
 	done
 
 _GameCornerNoCoinsText::
@@ -773,7 +773,7 @@ _TurnPageText::
 	done
 
 _ViridianSchoolNotebookText5::
-	text "FILLE: Hé! Ne lis"
+	text "Fille: Hé! Ne lis"
 	line "pas mon journal!@"
 	text_end
 
@@ -783,17 +783,17 @@ _ViridianSchoolNotebookText1::
 
 	para "Première page..."
 
-	para "Les # BALL"
+	para "Les #balls"
 	line "peuvent capturer"
-	cont "les #mon."
+	cont "les #mons."
 
 	para "Jusqu'à 6"
-	line "#mon sont"
+	line "#mons sont"
 	cont "transportables."
 
 	para "Les personnes"
 	line "s'occupant des"
-	cont "#mon sont"
+	cont "#mons sont"
 	cont "des dresseurs de"
 	cont "#mon."
 	prompt
@@ -828,7 +828,7 @@ _ViridianSchoolNotebookText3::
 	para "Les combats se"
 	line "tiennent en"
 	cont "permanence dans"
-	cont "les ArèneS"
+	cont "les Arènes"
 	cont "#mon."
 	prompt
 
@@ -838,9 +838,9 @@ _ViridianSchoolNotebookText4::
 	para "Le rêve de chaque"
 	line "dresseur est de"
 	cont "vaincre les 8"
-	cont "CHAMPIONS des"
+	cont "Champions des"
 	cont "différentes"
-	cont "ArèneS #mon."
+	cont "Arènes #mon."
 
 	para "Ces victoires"
 	line "donnent le droit"
@@ -862,11 +862,11 @@ _WhatGoesAroundComesAroundText::
 	done
 
 _FightingDojoText::
-	text "DOJO"
+	text "Dojo"
 	done
 
 _IndigoPlateauHQText::
-	text "PLATEAU INDIGO"
+	text "Plateau Indigo"
 	line "Quartier général"
 	cont "de la Ligue"
 	cont "#mon"
@@ -902,7 +902,7 @@ _AerodactylFossilText::
 
 _KabutopsFossilText::
 	text "Le fossile du"
-	line "KABUTOPS est un"
+	line "Kabutops est un"
 	cont "#mon rare"
 	cont "et ancien."
 	done
@@ -921,7 +921,7 @@ _LinkCableHelpText2::
 _LinkCableInfoText1::
 	text "Après avoir"
 	line "connecté deux"
-	cont "GAME BOY, parlez"
+	cont "Gameboy, parlez"
 	cont "à l'hôtesse à"
 	cont "droite dans tout"
 	cont "Centre #mon."
@@ -942,7 +942,7 @@ _LinkCableInfoText3::
 _ViridianSchoolBlackboardText1::
 	text "Le tableau décrit"
 	line "les changements"
-	cont "de STATUT des"
+	cont "de Statut des"
 	cont "#mon pendant"
 	cont "un combat."
 	prompt
@@ -961,7 +961,7 @@ _ViridianBlackboardSleepText::
 	line "endormi même"
 	cont "après un combat."
 
-	para "Un REVEIL peut"
+	para "Un Réveil peut"
 	line "le réveiller!"
 	prompt
 
@@ -975,7 +975,7 @@ _ViridianBlackboardPoisonText::
 	line "disparaît pas"
 	cont "après un combat."
 
-	para "L'ANTIDOTE soigne"
+	para "L'Antidote soigne"
 	line "le poison!"
 	prompt
 
@@ -988,13 +988,13 @@ _ViridianBlackboardPrlzText::
 	line "disparaît pas"
 	cont "après un combat."
 
-	para "L'ANTI-PARA"
+	para "L'Anti-para"
 	line "soigne toute"
 	cont "paralysie!"
 	prompt
 
 _ViridianBlackboardBurnText::
-	text "La BRULURE réduit"
+	text "La brûlure réduit"
 	line "la puissance et"
 	cont "la vitesse. Elle"
 	cont "inflige aussi des"
@@ -1004,7 +1004,7 @@ _ViridianBlackboardBurnText::
 	line "disparaît pas"
 	cont "après un combat."
 
-	para "L'ANTI-BRULE"
+	para "L'Anti-brûle"
 	line "soigne les grands"
 	cont "brûlés!"
 	prompt
@@ -1019,7 +1019,7 @@ _ViridianBlackboardFrozenText::
 	line "même après la"
 	cont "fin du combat."
 
-	para "Un ANTIGEL peut"
+	para "Un Antigel peut"
 	line "réchauffer un"
 	cont "#mon!"
 	prompt
@@ -1097,7 +1097,7 @@ _DroppedHiddenCoinsText::
 	done
 
 _IndigoPlateauStatuesText1::
-	text "PLATEAU INDIGO"
+	text "Plateau Indigo"
 	prompt
 
 _IndigoPlateauStatuesText2::
@@ -1138,7 +1138,7 @@ _ElevatorText::
 	done
 
 _TownMapText::
-	text "Une CARTE.@"
+	text "Une Carte.@"
 	text_end
 
 _PokemonStuffText::
@@ -1318,7 +1318,7 @@ _ScaredText::
 	prompt
 
 _GetOutText::
-	text "SPECTRE: Va-t'en..."
+	text "Spectre: Va-t'en..."
 	line "Dehors..."
 	prompt
 
@@ -1508,25 +1508,25 @@ _IgnoredOrdersText::
 	prompt
 
 _SubstituteTookDamageText::
-	text "Le CLONE a pris"
+	text "Le Clone a pris"
 	line "les dégâts pour"
 	cont "<TARGET>!"
 	prompt
 
 _SubstituteBrokeText::
-	text "Le CLONE de"
+	text "Le Clone de"
 	line "<TARGET>"
 	cont "est détruit!"
 	prompt
 
 _BuildingRageText::
-	text "La FRENESIE de"
+	text "La Frénésie de"
 	line "<USER>"
 	cont "s'intensifie!"
 	prompt
 
 _MirrorMoveFailedText::
-	text "La MIMIQUE a"
+	text "La Mimique a"
 	next "échoué!"
 	prompt
 
@@ -1543,7 +1543,7 @@ _GainedText::
 	text_end
 
 _WithExpAllText::
-	text "avec MULTI EXP,"
+	text "avec Multi exp,"
 	cont "@"
 	text_end
 
@@ -1554,7 +1554,7 @@ _BoostedText::
 
 _ExpPointsText::
 	text_decimal wExpAmountGained, 2, 5	;joenote - increased to 5 digits
-	text " points d'EXP!"
+	text " points d'exp!"
 	prompt
 
 _GrewLevelText::
@@ -1595,12 +1595,12 @@ _TrainerWantsToFightText::
 _UnveiledGhostText::
 	text "Le Scope Sylphe"
 	line "révèle l'identité"
-	cont "du SPECTRE!"
+	cont "du Spectre!"
 	prompt
 
 _GhostCantBeIDdText::
 	text "Fichtre! Le"
-	line "SPECTRE ne peut"
+	line "Spectre ne peut"
 	cont "être identifié!"
 	prompt
 
@@ -1884,7 +1884,7 @@ _AccessedHoFPCText::
 	cont "#mon."
 
 	para "Accès à la liste"
-	line "des CELEBRITES."
+	line "des célébrités."
 	prompt
 
 _SwitchOnText::
@@ -1967,7 +1967,7 @@ _CF4BExclamationText::
 
 _RequireCoinCaseText::
 	text "Vous n'avez pas"
-	line "de BOITE JETON!@"
+	line "de Boite Jeton!@"
 	text_end
 
 _ExchangeCoinsForPrizesText::
@@ -2007,7 +2007,7 @@ _OhFineThenText::
 _GetDexRatedText::
 	text "Voulez-vous faire"
 	line "évaluer votre"
-	cont "#DEX?"
+	cont "#dex?"
 	done
 
 _ClosedOaksPCText::
@@ -2021,7 +2021,7 @@ _AccessedOaksPCText::
 
 	para "Accès au système"
 	line "d'évaluation du"
-	cont "#DEX."
+	cont "#dex."
 	prompt
 
 _WhereWouldYouLikeText::
@@ -2185,7 +2185,7 @@ _WhenYouChangeBoxText::
 
 _ChooseABoxText::
 	text "Choisissez une"
-	line "BOITE <PKMN>.@"
+	line "Boite <PKMN>.@"
 	text_end
 
 _EvolvedText::
@@ -2380,17 +2380,17 @@ _ParalyzedMayNotAttackText::
 
 _SubstituteText::
 	text "Il crée un"
-	line "CLONE!"
+	line "Clone!"
 	prompt
 
 _HasSubstituteText::
 	text "<USER>"
-	line "a un CLONE!"
+	line "a un Clone!"
 	prompt
 
 _TooWeakSubstituteText::
 	text "Trop faible pour"
-	line "créer un CLONE!"
+	line "créer un Clone!"
 	prompt
 
 _CoinsScatteredText::
@@ -2613,7 +2613,7 @@ _PlayerBlackedOutText::
 	prompt
 
 _RepelWoreOffText::
-	text "L'effet REPOUSSE"
+	text "L'effet Repousse"
 	line "est terminé."
 	done
 
@@ -2831,7 +2831,7 @@ _CableClubNPCMakingPreparationsText::
 _UsedStrengthText::
 	text_ram wcd6d
 	text_start
-	line "utilise FORCE.@"
+	line "utilise Force.@"
 	text_end
 
 _CanMoveBouldersText::
@@ -2849,11 +2849,11 @@ _CurrentTooFastText::
 _CyclingIsFunText::
 	text "Le vélo,"
 	line "c'est cool!"
-	cont "Oublie le SURF!"
+	cont "Oublie le Surf!"
 	prompt
 
 _FlashLightsAreaText::
-	text "Un FLASH éclaire"
+	text "Un Flash éclaire"
 	line "les environs!"
 	prompt
 
@@ -2867,13 +2867,13 @@ _CannotUseTeleportNowText::
 	text_ram wcd6d
 	text " ne"
 	line "peut utiliser la"
-	cont "TELEPORTATION."
+	cont "Téléportation."
 	prompt
 
 _CannotFlyHereText::
 	text_ram wcd6d
 	text " ne"
-	line "peut VOLER ici."
+	line "peut Voler ici."
 	prompt
 
 _NotHealthyEnoughText::
@@ -2883,7 +2883,7 @@ _NotHealthyEnoughText::
 
 _NewBadgeRequiredText::
 	text "Non! Un nouveau"
-	line "BADGE est requis."
+	line "Badge est requis."
 	prompt
 
 _CannotUseItemsHereText::
@@ -2909,7 +2909,7 @@ _SetToBoxText::
 	text_ram wBoxMonNicks
 	text " est"
 	cont "transféré à la"
-	cont "BOITE @"
+	cont "Boite @"
 	text_ram wStringBuffer
 	text " du PC!"
 	done
@@ -2918,16 +2918,16 @@ _BoxIsFullText::
 	text "Plus de place"
 	line "pour un #mon!"
 
-	para "La BOITE #mon"
+	para "La Boite #mon"
 	line "est pleine!"
 
-	para "Changez de BOITE"
+	para "Changez de Boite"
 	line "dans un Centre"
 	cont "#mon!"
 	done
 
 _BoxIsFullReminderText::
-	text "La BOITE #mon"
+	text "La Boite #mon"
 	line "est maintenant"
 	cont "pleine."
 	cont "Elle ne pourra"
@@ -2935,7 +2935,7 @@ _BoxIsFullReminderText::
 	cont "#mon"
 	cont "supplémentaire."
 	
-	para "Changez de BOITE"
+	para "Changez de Boite"
 	line "dans un Centre"
 	cont "#mon!"
 	prompt
@@ -2952,7 +2952,7 @@ INCLUDE "text/maps/cinnabar_island.asm"
 INCLUDE "text/maps/saffron_city.asm"
 
 _ItemUseBallText00::
-	text "Il évite la BALL!"
+	text "Il évite la Ball!"
 
 	para "Capture"
 	line "impossible!"
@@ -3035,17 +3035,17 @@ _VitaminNoEffectText::
 
 _ThrewBaitText::
 	text "<PLAYER> lance"
-	line "un APPAT."
+	line "un Appât."
 	done
 
 _ThrewRockText::
 	text "<PLAYER> lance"
-	line "un CAILLOU."
+	line "un Caillou."
 	done
 
 _PlayedFluteNoEffectText::
 	text "Vous jouez de la"
-	line "#FLUTE."
+	line "#Flute."
 
 	para "Super!!! Ca c'est"
 	line "d'la zique!"
@@ -3059,7 +3059,7 @@ _FluteWokeUpText::
 
 _PlayedFluteHadEffectText::
 	text "<PLAYER> joue de"
-	line "la #FLUTE.@"
+	line "la #Flute.@"
 	text_end
 
 _CoinCaseNumCoinsText::
@@ -3166,7 +3166,7 @@ _ItemUseNoEffectText::
 
 _ThrowBallAtTrainerMonText1::
 	text "Le dresseur dévie"
-	line "la BALL!"
+	line "la Ball!"
 	prompt
 
 _ThrowBallAtTrainerMonText2::
@@ -3179,14 +3179,14 @@ _NoCyclingAllowedHereText::
 	prompt
 
 _NoSurfingHereText::
-	text "Pas de SURF sur"
+	text "Pas de Surf sur"
 	line "@"
 	text_ram wcd6d
 	text " ici!"
 	prompt
 
 _BoxFullCannotThrowBallText::
-	text "La BOITE #mon"
+	text "La Boite #mon"
 	line "est pleine! Objet"
 	cont "inutilisable!"
 	prompt
@@ -3392,7 +3392,7 @@ _AfterTrade3Text::
 
 _NothingToCutText::
 	text "Il n'y a rien à"
-	line "COUPER!"
+	line "Couper!"
 	prompt
 
 _UsedCutText::
@@ -3403,18 +3403,18 @@ _UsedCutText::
 
 ;joenote - for field move slot
 _LearnTempFieldMoveText::
-	text "Learn this as a"
-	line "temporary FIELD"
-	cont "MOVE?"
+	text "Apprendre ceci en"
+	line "tant que capacité"
+	cont "temporaire?"
 	done
 _LearnTempFieldMoveTextDenied::
-	text "A temporary FIELD"
-	line "MOVE is already"
-	cont "known!"
+	text "Une capacité"
+	line "temporaire est"
+	cont "déjà connue!"
 	
-	para "Put this #mon"
-	line "in a PC BOX to"
-	cont "erase it."
+	para "Placer ce #mon"
+	line "dans une boite PC"
+	cont "la supprimera."
 	prompt
 
 _RomHackVersionText::
