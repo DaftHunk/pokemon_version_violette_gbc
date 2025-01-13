@@ -24,7 +24,7 @@ _DaisyBagFullText::
 	done
 
 _DaisyUseMapText::
-	text "Utilise la CARTE"
+	text "Utilise la Carte"
 	line "pour connaître ta"
 	cont "position."
 	done
@@ -39,10 +39,10 @@ _BluesHouseText2::
 
 IF DEF(_JPTXT)
 _BluesHouseText3::
-	text "A map of Kanto!"
-	line "...... Wouldn't"
-	cont "it be nice if you"
-	cont "could have it?"
+	text "Une carte de "
+	line "Kanto! Ca serait"
+	cont "cool de l'avoir,"
+	cont "non?"
 	done
 ELSE
 _BluesHouseText3::
