@@ -184,9 +184,9 @@ RedrawPartyMenu_:
 	pop hl
 	jr .printLevel
 .ableToEvolveText
-	db "APTE@"
+	db "Apte@"
 .notAbleToEvolveText
-	db "PAS APTE@"
+	db "Pas Apte@"
 .afterDrawingMonEntries
 	ld b, SET_PAL_PARTY_MENU
 	call RunPaletteCommand
