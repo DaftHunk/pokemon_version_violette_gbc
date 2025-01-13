@@ -135,16 +135,18 @@ ENDC
 	done
 
 _CeladonMart3Blocker::
-	text "This vendor will"
-	line "be open after the"
-	cont "#mon League"
-	cont "Championship."
+	text "Ce vendeur ouvrira"
+	line "après le"
+	cont "championat de la"
+	cont "Ligue #mon."
 	
-	para "Come back to buy"
-	line "rare new items"
-	cont "from SILPH CO."
+	para "Reviens pour"
+	line "acheter de nouveau"
+	cont "objets rare de la"
+	cont "Silph CO."
 	
-	para "Phew!"
-	line "It is really hot"
-	cont "in this costume."
+	para "Pfiu! Il fait"
+	line "vraiment chaud"
+	cont "dans ce costume."
 	done
+	

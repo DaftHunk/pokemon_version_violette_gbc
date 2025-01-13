@@ -90,15 +90,15 @@ _BillsHouseText_1e8da::
 
 ;joenote - textfor bill letting you into his garden	
 _BillGardenText::
-	text "BILL: Hey, bud!"
-	line "That really the"
-	cont "fabled Mew? Wow!!"
-	cont "It's truly a new"
-	cont "#mon species."
+	text "Bill: Hey, mec!"
+	line "C'est vraiment le"
+	cont "fabuleux Mew? Wow!"
+	cont "C'est une nouvelle"
+	cont "espèce de #mon."
 	
-	para "As thanks for you"
-	line "showing it to me,"
-	cont "I'll let you into"
-	cont "a secret spot."
+	para "En remerciement de"
+	line "me l'avoir montré,"
+	cont "Je vais te montrer"
+	cont "un endroit secret."
 	done
 	

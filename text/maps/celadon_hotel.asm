@@ -20,39 +20,39 @@ _CeladonHotelText3::
 	text "Mais pourquoi y'a"
 	line "son frère?"
 	done
-;joenote - adding text for the coin guy
 
+;joenote - adding text for the coin guy
 _CeladonHotelCoinGuyText_intro::
-	text "I'm flushed with"
-	line "COINS, yet seeing"
-	cont "#mon is what I"
-	cont "covet."
+	text "Je suis plein de"
+	line "Jetons mais voir"
+	cont "les #mon est ma"
+	cont "seule convoitise."
 	
-	para "Show me a fine"
+	para "Montre moi un beau"
 	line "@"
 	TX_RAM wcd6d
 	db $0
-	cont "and I will give a" 
-	cont "nice reward."
+	cont "et je te donnerai" 
+	cont "une récompense."
 	prompt
 
 _CeladonHotelCoinGuyText_needcase::
-	text "Oh, remember to"
-	line "bring a COIN CASE."
+	text "Oh, n'oublie pas"
+	line "ta Boite Jeton."
 	done
 
 _CeladonHotelCoinGuyText_recieved::
-	text "Oh, I see that you"
-	line "have one!"
+	text "Ah, je vois que tu"
+	line "en as une!"
 	
-	para "I'll give you"
+	para "Voilà "
 	line "@"
 	TX_BCD hCoins, 2 | LEADING_ZEROES | LEFT_ALIGN
-	text " coins!"
+	text " Jetons!"
 	done
 	
 _CeladonHotelCoinGuyText_PC::
-	text "Use the PC over in"
-	line "the corner if you"
-	cont "need it."
+	text "Utilise le PC dans"
+	line "ce coin si tu en"
+	cont "as besoin."
 	done

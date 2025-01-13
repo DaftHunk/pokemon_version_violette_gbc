@@ -60,32 +60,33 @@ _CeladonDinerText_491b7::
 	done
 ;joenote - add text for catch-up exp boost
 _CeladonDiner_EXPCatchUpON::
-	text "This spicy KETCHUP"
-	line "helps me CATCH-UP"
-	cont "with my studies."
+	text "Cette sauce Maggi"
+	line "est Maggistrale"
+	cont "pour mes études."
 	
-	para "It can also make"
-	line "weaker #mon"
-	cont "gain more EXP."
-	cont "Want to try it?"
+	para "Elle peux permet"
+	line "aux #mon plus"
+	cont "faibles de donner"
+	cont "plus d'exp."
+	cont "Tu veux essayer?"
 	done
 	
 _CeladonDiner_EXPCatchUpOFF::
-	text "Too spicy for you?"
-	line "Or all caught-up?"
+	text "C'est trop salé à"
+	line "ton goût?"
 	
-	para "I can undo the"
-	line "effect with some"
-	cont "MILK. Sound good?"
+	para "Je peux en annuler"
+	line "les effets avec du"
+	cont "Sucre, ça te va?"
 	done
 	
 _CeladonDiner_AideQ_done::
-	text "Okay, it's done."
+	text "Okay, c'est fait."
 	done
 	
 _CeladonDiner_AideQ_reject::
-	text "No? Very well."
-	line "See me again if"
-	cont "you change your"
-	cont "mind later."
+	text "Non? Très bien."
+	line "Reviens me voir"
+	cont "si tu changes"
+	cont "d'avis."
 	done

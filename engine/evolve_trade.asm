@@ -24,7 +24,7 @@ EvolveTradeMon:
 	; cp "G"
 	; jr z, .ok
 
-	; ; "SPECTRE" (HAUNTER)
+	; ; "Spectre" (HAUNTER)
 	; cp "S"
 	; ret nz
 	; ld a, [wInGameTradeReceiveMonName + 1]

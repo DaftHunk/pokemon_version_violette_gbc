@@ -39,7 +39,7 @@ _CeladonGymText_48a63::
 	line "C'est mérité."
 
 	para "Je te confie le"
-	line "BADGE PRISME."
+	line "Badge Prisme."
 	prompt
 
 _CeladonGymText_48a68::
@@ -54,14 +54,14 @@ _CeladonGymText_48a68::
 	done
 
 _CeladonGymText9::
-	text "Le BADGE PRISME"
+	text "Le Badge Prisme"
 	line "fera obéir les"
 	cont "#mon jusqu'au"
 	cont "Niveau 50."
 
 	para "Il permet aussi"
 	line "aux #mon"
-	cont "d'utiliser FORCE."
+	cont "d'utiliser Force."
 
 	para "Prends également"
 	line "ceci."
@@ -78,7 +78,7 @@ _TM21ExplanationText::
 	text_start
 
 	para "CT21: "
-	line "MEGA-SANGSUE."
+	line "Mega-Sangsue."
 
 	para "La moitié des"
 	line "dégâts infligés"

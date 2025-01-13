@@ -22,27 +22,28 @@ _CeladonHouseText3::
 	done
 
 _CeladonHouseTextChiefIntro::	;joenote - adding text for selling pokemon
-	text "Hehehe! The slots"
-	line "just reel in the"
-	cont "dough, big time!"
+	text "Héhé! Les machines"
+	line "à sous sont de"
+	cont "vrais aspirateurs"
+	cont "à pognons."
 	
-	para "But I'll run out"
-	line "of prize #mon"
-	cont "without the BOSS."
+	para "Mais j'vais vite"
+	line "manquer d'lots"
+	cont "#mon sans l'Boss."
 	
-	para "Hey kid! Nice"
+	para "Hey gamin! Joli"
 	line "@"
 	TX_RAM wcd6d
 	db $0
-	cont "ya got there."
+	cont "qu't'as là."
 
-	para "I'll give you"
+	para "J't'en donne"
 	line "¥@"
 	TX_BCD hItemPrice, 3 | LEADING_ZEROES | LEFT_ALIGN
-	text " for it!"
+	text " !"
 	done
 	
 _CeladonHouseTextChiefDone::
-	text "Later kid."
+	text "A plus, gamin."
 	done
 	
