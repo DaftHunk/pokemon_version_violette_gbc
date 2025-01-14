@@ -1864,6 +1864,10 @@ INCLUDE "data/animations.asm"
 
 INCLUDE "engine/evolution.asm"
 
+SECTION "Engine Spillover", ROMX
+
+INCLUDE "engine/menu/item_descriptions.asm"
+
 ;INCLUDE "engine/overworld/elevator.asm"	;joenote - moving this to make space
 
 

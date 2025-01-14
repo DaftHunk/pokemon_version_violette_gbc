@@ -165,9 +165,14 @@ TextBoxTextAndCoordTable:
 	dw JapaneseMochimonoText
 	db 3,0   ; text coordinates
 
-	db USE_TOSS_MENU_TEMPLATE
-	db 12,10,19,14 ; text box coordinates
-	dw UseTossText
+;	db USE_TOSS_MENU_TEMPLATE
+;	db 12,10,19,14 ; text box coordinates
+;	dw UseTossText
+;	db 14,11 ; text coordinates
+	;dafthunk : #4 
+	db USE_INFO_TOSS_MENU_TEMPLATE
+	db 12,10,19,16 ; text box coordinates
+	dw UseInfoTossText
 	db 14,11 ; text coordinates
 
 	db JP_SAVE_MESSAGE_MENU_TEMPLATE
@@ -222,8 +227,13 @@ BuySellQuitText:
 	next "Vendre"
 	next "Salut!@@"
 
-UseTossText:
+;UseTossText:
+;	db   "Util."
+;	next "Jeter@"
+;dafthunk : #4 
+UseInfoTossText:
 	db   "Util."
+	next "Info"
 	next "Jeter@"
 
 JapaneseSaveMessageText:
@@ -548,7 +558,7 @@ TwoOptionMenuStrings:
 	db 4,3,0
 	dw .NoYesMenu
 IF DEF(_FPLAYER)	;joenote - text to ask if female trainer
-	db 5,3,0
+	db 7,3,0
 	dw .BoyGirlMenu	
 ENDC
 
@@ -575,8 +585,8 @@ ENDC
 	next "Retour@"
 IF DEF(_FPLAYER)	;joenote - text to ask if female trainer
 .BoyGirlMenu
-	db   "G. ♂"
-	next "F. ♀@"	
+	db   "Garçon"
+	next "Fille@"	
 ENDC
 
 DisplayFieldMoveMonMenu:
