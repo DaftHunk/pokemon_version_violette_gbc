@@ -2704,6 +2704,10 @@ MoveSoundTable:
 	db SFX_BATTLE_26,         $f0,$ff ; SUPER_FANG
 	db SFX_NOT_VERY_EFFECTIVE,$01,$ff ; SLASH
 	db SFX_BATTLE_2C,         $d8,$04 ; SUBSTITUTE
+	db SFX_BATTLE_0B,         $00,$80 ; PURSUIT
+	db SFX_BATTLE_0B,         $00,$80 ; CRUNSH
+	db SFX_BATTLE_0B,         $00,$80 ; METAL_CLAW
+	db SFX_BATTLE_0B,         $00,$80 ; IRON_TAIL
 	db SFX_BATTLE_0B,         $00,$80 ; STRUGGLE
 	db SFX_BATTLE_0B,         $00,$80
 

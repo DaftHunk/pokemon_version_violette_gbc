@@ -163,6 +163,10 @@ AttackAnimationPointers:
 	dw SuperFangAnim
 	dw SlashAnim
 	dw SubstituteAnim
+	dw PursuitAnim      ; dafthunk #20
+	dw CrunchAnim       ; dafthunk #20
+	dw MetalClawAnim    ; dafthunk #20
+	dw IronTailAnim     ; dafthunk #20
 	dw StruggleAnim
 	dw ShowPicAnim
 	dw EnemyFlashAnim
@@ -215,6 +219,10 @@ ZigZagScreenAnim:
 
 PoundAnim:
 StruggleAnim:
+PursuitAnim:
+CrunchAnim:
+MetalClawAnim:
+IronTailAnim:
 	db $08,$00,$01
 	db $FF
 
