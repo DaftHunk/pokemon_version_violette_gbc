@@ -143,7 +143,7 @@ _CeladonMart3Blocker::
 	para "Reviens pour"
 	line "acheter de nouveau"
 	cont "objets rare de la"
-	cont "Silph CO."
+	cont "Sylphe SARL."
 	
 	para "Pfiu! Il fait"
 	line "vraiment chaud"
