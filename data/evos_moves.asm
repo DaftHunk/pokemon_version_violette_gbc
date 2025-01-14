@@ -496,7 +496,7 @@ GastlyEvosMoves:
 
 ScytherEvosMoves:
 ; Evolutions
-	db EV_ITEM, MOON_STONE, 1, SCIZOR
+	db EV_ITEM, METAL_COAT, 1, SCIZOR
 ; Learnsetjoenote-modified for yellow
 	db 17, LEER
 	db 20, FOCUS_ENERGY
@@ -563,24 +563,26 @@ SteelixEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 15, BIND
-	db 19, ROCK_THROW
-	db 25, RAGE
-	db 33, SLAM
-	db 43, HARDEN
+	db 10, BIND
+	db 14, ROCK_THROW
+	db 23, HARDEN
+	db 27, RAGE
+	db 40, SLAM
+	db 45, IRON_TAIL
+	db 49, CRUNCH
 	db 0
 
 ScizorEvosMoves:
 ; Evolutions
 	db 0
-; Learnsetjoenote-modified for yellow
-	db 17, LEER
-	db 20, FOCUS_ENERGY
-	db 24, DOUBLE_TEAM
-	db 29, SLASH
-	db 35, SWORDS_DANCE
-	db 42, AGILITY
-	db 50, WING_ATTACK
+; Learnset
+	db 6, FOCUS_ENERGY
+	db 12, PURSUIT
+	db 24, AGILITY
+	db 30, METAL_CLAW
+	db 36, SLASH
+	db 42, SWORDS_DANCE
+	db 48, DOUBLE_TEAM
 	db 0
 
 GrowlitheEvosMoves:
@@ -597,7 +599,7 @@ GrowlitheEvosMoves:
 
 OnixEvosMoves:
 ; Evolutions
-	db EV_ITEM, MOON_STONE, 1, STEELIX
+	db EV_ITEM, METAL_COAT, 1, STEELIX
 ; Learnset
 	db 15, BIND
 	db 19, ROCK_THROW
@@ -797,18 +799,11 @@ UmbreonEvosMoves:
 	db 0
 ; Learnset
 	db 8, SAND_ATTACK
-	db 16, GROWL
+	db 16, PURSUIT
 	db 23, QUICK_ATTACK
-	db 30, BITE
-	db 31, EMBER
-	db 36, FIRE_SPIN
-	db 37, TAIL_WHIP
-	db 40, BITE
-	db 42, LEER
-	db 44, FIRE_SPIN
-	db 47, SMOG
-	db 48, RAGE
-	db 52, FLAMETHROWER
+	db 30, CONFUSE_RAY
+	db 36, CRUNCH ; dafthunk : gived Crunch instead of Faint Attack
+	db 47, SCREECH
 	db 0
 
 MagmarEvosMoves:
