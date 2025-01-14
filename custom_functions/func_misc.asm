@@ -663,6 +663,7 @@ ItemSortList::
 	db WATER_STONE
 	db MOON_STONE
 	db MIST_STONE
+	db METAL_COAT
 	; Money
 	db COIN_CASE
 	db COIN

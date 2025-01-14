@@ -516,6 +516,7 @@ UsableItems_PartyMenu:
 	db MAX_ELIXER
 	db M_GENE	;joenote - custom items
 	db MIST_STONE
+	db METAL_COAT  ;dafthunk #19 
 	db $ff
 
 ; items which close the item menu when used
