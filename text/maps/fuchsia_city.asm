@@ -76,7 +76,7 @@ _FuchsiaCityVoltorbText::
 	text "Nom: Voltorbe"
 
 	para "Portrait craché"
-	line "d'une #ball."
+	line "d'une # ball."
 	prompt
 
 _FuchsiaCityKangaskhanText::

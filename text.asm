@@ -783,7 +783,7 @@ _ViridianSchoolNotebookText1::
 
 	para "Première page..."
 
-	para "Les #balls"
+	para "Les # balls"
 	line "peuvent capturer"
 	cont "les #mons."
 

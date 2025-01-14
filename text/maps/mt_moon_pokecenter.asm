@@ -1,5 +1,5 @@
 _MtMoonPokecenterText1::
-	text "J'ai 6 #ball"
+	text "J'ai 6 # ball"
 	line "à ma ceinture."
 
 	para "On ne peut"

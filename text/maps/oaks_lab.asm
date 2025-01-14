@@ -20,7 +20,7 @@ _OaksLabText41::
 	done
 
 _OaksLabText39::
-	text "Ces #ball"
+	text "Ces # ball"
 	line "contiennent des"
 	cont "#mon!"
 	done
@@ -108,7 +108,7 @@ _OaksLabDeliverParcelText2::
 	text_start
 
 	para "Ah! C'est la"
-	line "#ball que"
+	line "# ball que"
 	cont "j'ai commandée!"
 	cont "Merci!"
 	done
@@ -129,11 +129,11 @@ _OaksLabGivePokeballsText1::
 
 	para "Il te faut aussi"
 	line "l'attraper! Voici"
-	cont "des #ball"
+	cont "des # ball"
 	cont "pour en capturer."
 
 	para "<PLAYER> obtient"
-	line "5 #ball!@"
+	line "5 # ball!@"
 	text_end
 
 _OaksLabGivePokeballsText2::
@@ -144,7 +144,7 @@ _OaksLabGivePokeballsText2::
 	cont "serré."
 
 	para "Lance-lui une"
-	line "#ball pour le"
+	line "# ball pour le"
 	line "capturer!"
 
 	para "Mais ça ne"
@@ -222,7 +222,7 @@ _OaksLabChooseMonText::
 	para "Mais..."
 
 	para "Ils sont dans des"
-	line "#ball."
+	line "# ball."
 
 	para "Plus jeune,"
 	line "j'étais un sacré"

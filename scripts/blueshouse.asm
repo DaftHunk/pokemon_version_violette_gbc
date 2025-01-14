@@ -108,7 +108,7 @@ ShimmerToggleText:
 .done
 	jp TextScriptEnd
 _TXTShimmerON:
-	text "Une #ball en"
+	text "Une # ball en"
 	line "verre brille."	
 	para "Vous sentez que"
 	line "certains #mons"
@@ -118,7 +118,7 @@ _TXTShimmerON:
 	done
 	db "@"
 _TXTShimmerOFF:
-	text "Une #ball en"
+	text "Une # ball en"
 	line "verre est..."
 	cont "juste une simple"
 	cont "décoration."

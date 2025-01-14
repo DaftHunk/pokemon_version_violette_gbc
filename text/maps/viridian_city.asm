@@ -1,5 +1,5 @@
 _ViridianCityText1::
-	text "Des #ball!"
+	text "Des # ball!"
 	line "Mais... T'as des"
 	cont "#mon!"
 
