@@ -109,7 +109,7 @@ CeladonCityText8_continue:
 	db "@"
 CeladonCityText8_alternate:
 	text "J'ai eu une entrée"
-	line "de la Silph Co."
+	line "de la Sylphe SARL."
 	cont "à la présentation"
 	cont "de la Master Ball"
 	cont "et je fournis un"
