@@ -5,7 +5,7 @@ ItemNames:
 	db "Poké ball@"
 	db "Carte@"
 	db "Bicyclette@"
-	db "Planche de surf@"	;joenote - give the surfboard it's fan name instead of ?????
+	db "Planche surf@"	;joenote - give the surfboard it's fan name instead of ?????
 	db "Safari ball@"
 	db "Pokédex@"
 	db "Pierre Lune@"
