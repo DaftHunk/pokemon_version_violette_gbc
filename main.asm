@@ -250,8 +250,6 @@ INCLUDE "engine/battle/wild_encounters.asm"
 INCLUDE "engine/battle/moveEffects/recoil_effect.asm"
 INCLUDE "engine/battle/moveEffects/conversion_effect.asm"
 INCLUDE "engine/battle/moveEffects/haze_effect.asm"
-INCLUDE "engine/battle/moveEffects/trapping_effect.asm"
-INCLUDE "engine/battle/moveEffects/charge_effect.asm"
 
 INCLUDE "engine/battle/get_trainer_name.asm"
 INCLUDE "engine/random.asm"
@@ -646,16 +644,12 @@ INCLUDE "engine/evos_moves.asm"
 INCLUDE "engine/battle/moveEffects/heal_effect.asm"
 INCLUDE "engine/battle/moveEffects/transform_effect.asm"
 INCLUDE "engine/battle/moveEffects/reflect_light_screen_effect.asm"
-INCLUDE "engine/battle/moveEffects/hyper_beam_effect.asm"
-INCLUDE "engine/battle/moveEffects/confusion_effect.asm"
+INCLUDE "engine/battle/moveEffects/switch_and_teleport_effect.asm"
 
 SECTION "bankF",ROMX,BANK[$F]
 
 INCLUDE "engine/battle/core.asm"
-
-INCLUDE "engine/battle/moveEffects/disable_effect.asm"
-INCLUDE "engine/battle/moveEffects/mimic_effect.asm"
-INCLUDE "engine/battle/moveEffects/rage_effect.asm"
+INCLUDE "engine/battle/effects.asm"
 
 SECTION "bank10",ROMX,BANK[$10]
 
