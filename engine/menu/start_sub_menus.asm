@@ -786,7 +786,7 @@ SwitchPartyMon:
 	call SwitchPartyMon_ClearGfx
 	ld a, [wCurrentMenuItem]
 	call SwitchPartyMon_ClearGfx
-	jp RedrawPartyMenu_
+	jp RedrawPartyMenu__
 
 SwitchPartyMon_ClearGfx:
 	push af
