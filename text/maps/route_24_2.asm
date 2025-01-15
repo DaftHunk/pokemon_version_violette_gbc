@@ -85,8 +85,8 @@ _Route24AfterBattleText4::
 
 _Route24BattleText5::
 IF DEF(_JPTXT)	;joenote - dirty joke lost in translation
-	line "Je suis prête à"
-	cont "y aller à fond!"
+	text "Je suis prête à"
+	line "y aller à fond!"
 ELSE
 	text "Je suis la 2ème!"
 	line "Ca rigole plus!"

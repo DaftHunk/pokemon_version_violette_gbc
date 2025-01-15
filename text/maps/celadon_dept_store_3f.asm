@@ -40,30 +40,30 @@ _CeladonMart3Text2::
 	cont "d'Origine)!"
 	done
 
-IF DEF(_JPTXT)	;joenote - this was changed in the localization for some reason
-_CeladonMart3Text3::
-	text "Ouaiiis!"
-
-	para "Mon pote va"
-	line "m'échanger son"
-	cont "Kangourex contre"
-	cont "mon Spectrum!"
-	done
-
-_CeladonMart3Text4::
-	text "Viens, mon doux"
-	line "Spectrum!"
-
-	para "Je suis fou de"
-	line "Spectrum!"
-
-	para "... ...Hein?"
-
-	para "Spectrum s'est"
-	line "transformé en un"
-	cont "autre #mon!"
-	done
-ELSE
+;IF DEF(_JPTXT)	;joenote - this was changed in the localization for some reason
+;_CeladonMart3Text3::
+;	text "Ouaiiis!"
+;
+;	para "Mon pote va"
+;	line "m'échanger son"
+;	cont "Kangourex contre"
+;	cont "mon Spectrum!"
+;	done
+;
+;_CeladonMart3Text4::
+;	text "Viens, mon doux"
+;	line "Spectrum!"
+;
+;	para "Je suis fou de"
+;	line "Spectrum!"
+;
+;	para "... ...Hein?"
+;
+;	para "Spectrum s'est"
+;	line "transformé en un"
+;	cont "autre #mon!"
+;	done
+;ELSE
 _CeladonMart3Text3::
 	text "Ouaiiis!"
 
@@ -86,7 +86,7 @@ _CeladonMart3Text4::
 	line "transforme en un"
 	cont "autre #mon!"
 	done
-ENDC
+;ENDC
 
 _CeladonMart3Text5::
 	text "Le numéro d'imma-"
@@ -126,11 +126,11 @@ _CeladonMart3Text14::
 	done
 
 _CeladonMart3Text15::
-IF DEF(_JPTXT)
+;IF DEF(_JPTXT)
+;	text "Rouge et Vert!"
+;ELSE
 	text "Rouge et Bleu!"
-ELSE
-	text "Rouge et Bleu!"
-ENDC
+;ENDC
 	line "Deux #mon!"
 	done
 
