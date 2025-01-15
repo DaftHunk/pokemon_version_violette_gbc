@@ -1321,10 +1321,10 @@ WigglytuffEvosMoves:	;joenote - modified for level-up moves
 EeveeEvosMoves:
 ;joenote - the eevee line has been modified to be closer to yellow version
 ; Evolutions
-	db EV_ITEM, MOON_STONE, 1, UMBREON
 	db EV_ITEM, FIRE_STONE, 1, FLAREON
 	db EV_ITEM, THUNDER_STONE, 1, JOLTEON
 	db EV_ITEM, WATER_STONE, 1, VAPOREON
+	db EV_ITEM, MOON_STONE, 1, UMBREON
 	db 0
 ; Learnset
 	db 8, SAND_ATTACK
