@@ -2317,7 +2317,7 @@ DisplayBattleMenu:
 	ld a, $2 ; select the "ITEM" menu
 	jp .upperLeftMenuItemWasNotSelected
 .oldManName
-	db "VIEILLARD@"
+	db "Vieillard@"
 .handleBattleMenuInput
 	ld a, [wBattleAndStartSavedMenuItem]
 	ld [wCurrentMenuItem], a
@@ -3243,10 +3243,10 @@ PrintMenuItem:
 	jp Delay3
 
 DisabledText:
-	db "NON DISP.@"
+	db "Non disp.@"
 
 TypeText:
-	db "TYPE@"
+	db "Type@"
 
 SelectEnemyMove:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -7803,17 +7803,17 @@ LoadGhostPic:
 	ld hl, wEnemyMonNick  ; set name to "GHOST"
 	ld a, "S"
 	ld [hli], a
-	ld a, "P"
+	ld a, "p"
 	ld [hli], a
-	ld a, "E"
+	ld a, "e"
 	ld [hli], a
-	ld a, "C"
+	ld a, "c"
 	ld [hli], a
-	ld a, "T"
+	ld a, "t"
 	ld [hli], a
-	ld a, "R"
+	ld a, "r"
 	ld [hli], a
-	ld a, "E"
+	ld a, "e"
 	ld [hli], a
 	ld [hl], "@"
 	ld a, [wcf91]
