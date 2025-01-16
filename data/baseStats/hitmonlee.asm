@@ -1,9 +1,9 @@
 db DEX_HITMONLEE ; pokedex id
-db 50 ; base hp
+db 65 ; base hp
 db 120 ; base attack
-db 53 ; base defense
-db 87 ; base speed
-db 35 ; base special
+db 70 ; base defense
+db 93 ; base speed
+db 60 ; base special
 db FIGHTING ; species type 1
 db FIGHTING ; species type 2
 db 45 ; catch rate

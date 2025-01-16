@@ -1,9 +1,9 @@
 db DEX_VULPIX ; pokedex id
-db 38 ; base hp
+db 45 ; base hp
 db 41 ; base attack
-db 40 ; base defense
-db 65 ; base speed
-db 65 ; base special
+db 45 ; base defense
+db 75 ; base speed
+db 70 ; base special
 db FIRE ; species type 1
 db FIRE ; species type 2
 db 190 ; catch rate

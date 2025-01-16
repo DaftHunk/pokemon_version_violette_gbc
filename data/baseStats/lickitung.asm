@@ -1,9 +1,9 @@
 db DEX_LICKITUNG ; pokedex id
-db 90 ; base hp
-db 55 ; base attack
-db 75 ; base defense
+db 95 ; base hp
+db 70 ; base attack
+db 85 ; base defense
 db 30 ; base speed
-db 60 ; base special
+db 75 ; base special
 db NORMAL ; species type 1
 db NORMAL ; species type 2
 db 45 ; catch rate

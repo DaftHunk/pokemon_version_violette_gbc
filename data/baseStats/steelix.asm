@@ -1,6 +1,6 @@
 db DEX_STEELIX ; pokedex id
 db 75 ; base hp
-db 85 ; base attack
+db 90 ; base attack
 db 200 ; base defense
 db 30 ; base speed
 db 60 ; base special
