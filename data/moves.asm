@@ -25,11 +25,11 @@ MoveEnd:
 	move GUILLOTINE,   OHKO_EFFECT,                  1, NORMAL,    30,  5
 	move RAZOR_WIND,   CHARGE_EFFECT,               80, NORMAL,    75, 10
 	move SWORDS_DANCE, ATTACK_UP2_EFFECT,            0, NORMAL,   100, 30
-	move CUT,          NO_ADDITIONAL_EFFECT,        50, NORMAL,    95, 30
+	move CUT,          NO_ADDITIONAL_EFFECT,        55, BUG,      100, 30
 	move GUST,         NO_ADDITIONAL_EFFECT,        40, FLYING,   100, 35
 	move WING_ATTACK,  NO_ADDITIONAL_EFFECT,        60, FLYING,   100, 35
 	move WHIRLWIND,    SWITCH_AND_TELEPORT_EFFECT,   0, NORMAL,   100, 20
-	move FLY,          FLY_EFFECT,                  70, FLYING,    95, 15
+	move FLY,          FLY_EFFECT,                  70, FLYING,   100, 15
 	move BIND,         TRAPPING_EFFECT,             15, NORMAL,    75, 20	;15, NORMAL,    75, 20
 	move SLAM,         NO_ADDITIONAL_EFFECT,        80, NORMAL,    75, 20
 	move VINE_WHIP,    NO_ADDITIONAL_EFFECT,        35, GRASS,    100, 10
@@ -175,9 +175,9 @@ MoveEnd:
 	move SUPER_FANG,   SUPER_FANG_EFFECT,            1, NORMAL,    90, 10
 	move SLASH,        NO_ADDITIONAL_EFFECT,        70, NORMAL,   100, 20
 	move SUBSTITUTE,   SUBSTITUTE_EFFECT,            0, NORMAL,   100, 10
-	move PURSUIT,      NO_ADDITIONAL_EFFECT,        40, DARK,     100, 20 ; dafthunk #20
-	move CRUNCH,       NO_ADDITIONAL_EFFECT,        80, DARK,     100, 15 ; dafthunk #20
-	move METAL_CLAW,   NO_ADDITIONAL_EFFECT,        50, STEEL,     95, 35 ; dafthunk #20
-	move IRON_TAIL,    NO_ADDITIONAL_EFFECT,       100, STEEL,     75, 15 ; dafthunk #20
+	move PURSUIT,      DEFENSE_DOWN_SIDE_EFFECT,    40, DARK,     100, 20 ; dafthunk #20
+	move CRUNCH,       DEFENSE_DOWN_SIDE_EFFECT,    80, DARK,     100, 15 ; dafthunk #20
+	move METAL_CLAW,   NO_ADDITIONAL_EFFECT,        50, STEEL,    100, 35 ; dafthunk #20
+	move IRON_TAIL,    DEFENSE_DOWN_SIDE_EFFECT,    95, STEEL,    100, 15 ; dafthunk #20
 	move STRUGGLE,     RECOIL_EFFECT,               50, BIRD,     100, 1	;joenote - changed from normal to BIRD type (acts as typless)
 MovesEndOfList:

@@ -330,13 +330,13 @@ _MaxElixerDescription::
 	prompt
 
 _HM01Description::
-	text "Coupe:Normal"
-	next "Dég: 50;Pré: 95"
+	text "Coupe:Insecte"
+	next "Dég: 55;Pré: 100"
 	prompt
 
 _HM02Description::
 	text "Vol:Vol"
-	next "Dég: 70; Pré: 95"
+	next "Dég: 70; Pré: 100"
 	prompt
 
 _HM03Description::
