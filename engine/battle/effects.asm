@@ -901,7 +901,107 @@ ThrashPetalDanceEffect:
 	jp PlayBattleAnimation2
 
 SwitchAndTeleportEffect:
-	jpab SwitchAndTeleportEffect_
+	ld a, [H_WHOSETURN]
+	and a
+	jr nz, .handleEnemy
+	ld a, [wIsInBattle]
+	dec a
+	jr nz, .notWildBattle1
+	ld a, [wCurEnemyLVL]
+	ld b, a
+	ld a, [wBattleMonLevel]
+	cp b ; is the player's level greater than the enemy's level?
+	jr nc, .playerMoveWasSuccessful ; if so, teleport will always succeed
+	add b
+	ld c, a
+	inc c ; c = sum of player level and enemy level
+.rejectionSampleLoop1
+	call BattleRandom
+	cp c ; get a random number between 0 and c
+	jr nc, .rejectionSampleLoop1
+	srl b
+	srl b  ; b = enemyLevel / 4
+	cp b ; is rand[0, playerLevel + enemyLevel) >= (enemyLevel / 4)?
+	jr nc, .playerMoveWasSuccessful ; if so, allow teleporting
+	ld c, 50
+	call DelayFrames
+	ld a, [wPlayerMoveNum]
+	cp TELEPORT
+	jp nz, PrintDidntAffectText
+	jp PrintButItFailedText_
+.playerMoveWasSuccessful
+	call ReadPlayerMonCurHPAndStatus
+	xor a
+	ld [wAnimationType], a
+	inc a
+	ld [wEscapedFromBattle], a
+	ld a, [wPlayerMoveNum]
+	jr .playAnimAndPrintText
+.notWildBattle1
+	ld c, 50
+	call DelayFrames
+	ld hl, IsUnaffectedText
+	ld a, [wPlayerMoveNum]
+	cp TELEPORT
+	jp nz, PrintText
+	jp PrintButItFailedText_
+.handleEnemy
+	ld a, [wIsInBattle]
+	dec a
+	jr nz, .notWildBattle2
+	ld a, [wBattleMonLevel]
+	ld b, a
+	ld a, [wCurEnemyLVL]
+	cp b
+	jr nc, .enemyMoveWasSuccessful
+	add b
+	ld c, a
+	inc c
+.rejectionSampleLoop2
+	call BattleRandom
+	cp c
+	jr nc, .rejectionSampleLoop2
+	srl b
+	srl b
+	cp b
+	jr nc, .enemyMoveWasSuccessful
+	ld c, 50
+	call DelayFrames
+	ld a, [wEnemyMoveNum]
+	cp TELEPORT
+	jp nz, PrintDidntAffectText
+	jp PrintButItFailedText_
+.enemyMoveWasSuccessful
+	call ReadPlayerMonCurHPAndStatus
+	xor a
+	ld [wAnimationType], a
+	inc a
+	ld [wEscapedFromBattle], a
+	ld a, [wEnemyMoveNum]
+	jr .playAnimAndPrintText
+.notWildBattle2
+	ld c, 50
+	call DelayFrames
+	ld hl, IsUnaffectedText
+	ld a, [wEnemyMoveNum]
+	cp TELEPORT
+	jp nz, PrintText
+	jp ConditionalPrintButItFailed
+.playAnimAndPrintText
+	push af
+	call PlayBattleAnimation
+	ld c, 20
+	call DelayFrames
+	pop af
+	ld hl, RanFromBattleText
+	cp TELEPORT
+	jr z, .printText
+	ld hl, RanAwayScaredText
+	cp ROAR
+	jr z, .printText
+	ld hl, WasBlownAwayText
+.printText
+	jp PrintText
 
 RanFromBattleText:
 	TX_FAR _RanFromBattleText
@@ -1073,55 +1173,7 @@ DugAHoleText:
 	db "@"
 
 TrappingEffect:
-;joenote - make it so the effect won't take hold if target has type immunity
-	ld hl, wUnusedC000
-	set 3, [hl]
-	ld hl, wPlayerBattleStatus1
-	ld de, wPlayerNumAttacksLeft
-	ld a, [H_WHOSETURN]
-	and a
-	jr z, .trappingEffect
-	ld hl, wUnusedC000
-	res 3, [hl]
-	ld hl, wEnemyBattleStatus1
-	ld de, wEnemyNumAttacksLeft
-.trappingEffect
-	bit USING_TRAPPING_MOVE, [hl]
-	ret nz
-	
-	push hl
-	push bc
-	push de
-	call AIGetTypeEffectiveness
-	pop de
-	pop bc
-	pop hl
-	ld a, [wTypeEffectiveness]
-	and a
-	ret z
-	
-	;call ClearHyperBeam ; since this effect is called before testing whether the move will hit,
-                        ; the target won't need to recharge even if the trapping move missed
-						;joenote - will do this later under ApplyAttackToEnemy/Player functions
-	set USING_TRAPPING_MOVE, [hl] ; mon is now using a trapping move
-	call BattleRandom ; 3/8 chance for 2 and 3 attacks, and 1/8 chance for 4 and 5 attacks
-	and $3
-	cp $2
-	jr c, .setTrappingCounter
-	call BattleRandom
-	and $3
-.setTrappingCounter
-	inc a
-	ld [de], a
-;joenote - have the trapping effect user get its speed temporarily reduced until stats get recalculated
-;	callba ReduceSpeed
-;joenote - increment a trapping spam counter that checks for consecutive usage of trapping moves
-	inc hl
-	inc hl	;now points to xBattleStatus3
-	ld a, [hl]
-	add TRAPPING_COUNT_BIT
-	ld [hl], a	;else increment the consecutive use counter
-	ret
+	jpab TrappingEffect_
 
 MistEffect:
 	jpab MistEffect_
