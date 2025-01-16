@@ -8,7 +8,7 @@ tmhmNames:
 	db "CT01 UltiPng@"
 	db "CT02 CoupeVt@"	
 	db "CT03 DanseLm@"
-	db "CT04 Cyclone@"
+	db "CT04 LancFla@"
 	db "CT05 Ultimaw@"
 	db "CT06 Toxik@"
 	db "CT07 EmpalKo@"

@@ -370,8 +370,8 @@ _TM03Description::
 	prompt
 
 _TM04Description::
-	text "Cyclone:Normal"
-	next "Dég: -;Pré: 100"
+	text "Lance-Flamme:Feu"
+	next "Dég: 95;Pré: 100"
 	prompt
 
 _TM05Description::

@@ -12,7 +12,7 @@ PewterCashierText::
 
 ; Cerulean
 CeruleanCashierText::
-	TX_MART POKE_BALL, POTION, ESCAPE_ROPE, REPEL, ANTIDOTE, BURN_HEAL, AWAKENING, PARLYZ_HEAL, TM_04, TM_34
+	TX_MART POKE_BALL, POTION, ESCAPE_ROPE, REPEL, ANTIDOTE, BURN_HEAL, AWAKENING, PARLYZ_HEAL, TM_02, TM_34
 
 ; Bike shop
 	TX_MART BICYCLE
@@ -31,7 +31,7 @@ CeladonMart2Clerk1Text::
 
 ; Celadon Dept. Store 2F (2)
 CeladonMart2Clerk2Text::
-	TX_MART TM_32, TM_33, TM_02, TM_07, TM_23, TM_01, TM_05, TM_09, TM_17
+	TX_MART TM_32, TM_33, TM_04, TM_07, TM_23, TM_01, TM_05, TM_09, TM_17
 
 ; Celadon Dept. Store 4F
 CeladonMart4ClerkText::
