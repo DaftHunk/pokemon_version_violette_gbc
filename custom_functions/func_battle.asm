@@ -235,9 +235,9 @@ ForfeitTrainerMatch:
 	ret z	;return if not in battle
 	cp 1	
 	ret z	;return if in wild battle
-	ld a, [hJoyHeld]
-	and SELECT
-	ret z	;return if select is not being held
+;	ld a, [hJoyHeld]
+;	and SELECT
+;	ret z	;return if select is not being held
 	ld hl, ForfeitTrainerMatchText
 	call PrintText 
 	call NoYesChoice
@@ -251,7 +251,7 @@ ForfeitTrainerMatchText:
 	TX_FAR _ForfeitTrainerMatchText
 	db "@"
 _ForfeitTrainerMatchText::
-	text "Forfeit?"
+	text "Déclarer forfait?"
 	done
 
 ForfeitConfirmed:

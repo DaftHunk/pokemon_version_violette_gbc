@@ -1267,9 +1267,7 @@ _CantEscapeText::
 	prompt
 
 _NoRunningText::
-	text "On ne peut s'en-"
-	line "fuir d'un combat"
-	cont "de dresseurs!"
+	text "Retour au combat!"
 	prompt
 
 _GotAwayText::

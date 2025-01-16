@@ -256,7 +256,7 @@ JapaneseMainMenuText:
 
 BattleMenuText:
 	db   "Attaq ",$E1,$E2
-	next "Objet fuite@"
+	next "Objet Fuite@"
 
 SafariZoneBattleMenuText:
 	db   "Ball×      Appât"
