@@ -139,12 +139,12 @@ PoisonEffect:
 	dec de
 	ld a, [H_WHOSETURN]
 	and a
-	ld b, ANIM_C7
+	ld b, SHAKE_SCREEN_ANIM
 	ld hl, wPlayerBattleStatus3
 	ld a, [de]
 	ld de, wPlayerToxicCounter
 	jr nz, .ok
-	ld b, ANIM_A9
+	ld b, ENEMY_HUD_SHAKE_ANIM
 	ld hl, wEnemyBattleStatus3
 	ld de, wEnemyToxicCounter
 .ok
@@ -247,14 +247,14 @@ FreezeBurnParalyzeEffect:
 	ld a, 1 << PAR
 	ld [wEnemyMonStatus], a
 	call QuarterSpeedDueToParalysis ; quarter speed of affected mon
-	ld a, ANIM_A9
+	ld a, ENEMY_HUD_SHAKE_ANIM
 	call PlayBattleAnimation
 	jp PrintMayNotAttackText ; print paralysis text
 .burn
 	ld a, 1 << BRN
 	ld [wEnemyMonStatus], a
 	call HalveAttackDueToBurn ; halve attack of affected mon
-	ld a, ANIM_A9
+	ld a, ENEMY_HUD_SHAKE_ANIM
 	call PlayBattleAnimation
 	ld hl, BurnedText
 	jp PrintText
@@ -265,7 +265,7 @@ FreezeBurnParalyzeEffect:
 	call ClearHyperBeam ; resets hyper beam (recharge) condition from target
 	ld a, 1 << FRZ
 	ld [wEnemyMonStatus], a
-	ld a, ANIM_A9
+	ld a, ENEMY_HUD_SHAKE_ANIM
 	call PlayBattleAnimation
 	ld hl, FrozenText
 	jp PrintText
@@ -1413,6 +1413,11 @@ MoveWasDisabledText:
 
 PayDayEffect:
 	jpab PayDayEffect_
+
+TriAttackEffect:
+	call BattleRandom
+	ld d, a
+	jpab TriAttackEffect_
 
 ConversionEffect:
 	jpab ConversionEffect_

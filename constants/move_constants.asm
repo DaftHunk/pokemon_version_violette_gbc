@@ -178,7 +178,7 @@ NUM_ATTACKS EQU const_value + -1
 	const SHOWPIC_ANIM
 	const STATUS_AFFECTED_ANIM
 	const ANIM_A8
-	const ANIM_A9
+	const ENEMY_HUD_SHAKE_ANIM
 	const TRADE_BALL_DROP_ANIM
 	const TRADE_BALL_SHAKE_ANIM
 	const TRADE_BALL_TILT_ANIM
@@ -208,7 +208,7 @@ NUM_ATTACKS EQU const_value + -1
 	const BLOCKBALL_ANIM ; trainer knocks away Poké Ball
 	const GREATTOSS_ANIM ; toss Great Ball
 	const ULTRATOSS_ANIM ; toss Ultra Ball or Master Ball
-	const ANIM_C7
+	const SHAKE_SCREEN_ANIM
 	const HIDEPIC_ANIM ; monster disappears
 	const ROCK_ANIM ; throw rock
 	const BAIT_ANIM ; throw bait

@@ -250,6 +250,7 @@ INCLUDE "engine/battle/wild_encounters.asm"
 INCLUDE "engine/battle/moveEffects/recoil_effect.asm"
 INCLUDE "engine/battle/moveEffects/conversion_effect.asm"
 INCLUDE "engine/battle/moveEffects/haze_effect.asm"
+INCLUDE "engine/battle/moveEffects/tri_attack_effect.asm"
 
 INCLUDE "engine/battle/get_trainer_name.asm"
 INCLUDE "engine/random.asm"

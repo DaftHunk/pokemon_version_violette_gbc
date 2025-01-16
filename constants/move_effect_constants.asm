@@ -91,6 +91,7 @@ const_value = 0
 	const LEECH_SEED_EFFECT          ; $54
 	const SPLASH_EFFECT              ; $55
 	const DISABLE_EFFECT             ; $56
+	const TRI_ATTACK_EFFECT          ; $57
 
 ; fixed damage constants
 SONICBOOM_DAMAGE   EQU 20
