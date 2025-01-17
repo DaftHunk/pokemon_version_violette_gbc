@@ -3351,7 +3351,7 @@ LoadHpBarAndStatusTilePatterns::
 IF DEF(_EXPBAR)
 	call FarCopyData2
 	ld hl, EXPBarGraphics
-	ld de, vChars1 + $400
+	ld de, vChars1 + $500
 	ld bc, EXPBarGraphicsEnd - EXPBarGraphics
 	ld a, BANK(EXPBarGraphics)
 ENDC
@@ -3365,7 +3365,7 @@ ENDC
 IF DEF(_EXPBAR)
 	call CopyVideoData
 	ld de,EXPBarGraphics
-	ld hl, vChars1 + $400
+	ld hl, vChars1 + $500
 	lb bc, BANK(EXPBarGraphics), (EXPBarGraphicsEnd - EXPBarGraphics) / $10
 ENDC
 	jp CopyVideoData

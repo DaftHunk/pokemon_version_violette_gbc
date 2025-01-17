@@ -260,12 +260,12 @@ charmap "j'", $CC
 charmap "l'", $CD
 charmap "m'", $CE
 charmap "n'", $CF
-
-charmap "p'", $D0
-charmap "s'", $D1
-charmap "t'", $D2
-charmap "u'", $D3
-charmap "y'", $D4
+;$D0 from here to $D8 = EXPBarGraphics
+;charmap "p'", $D0
+;charmap "s'", $D1
+;charmap "t'", $D2
+;charmap "u'", $D3
+;charmap "y'", $D4
 charmap "→", $DA
 charmap "+", $DB
 
