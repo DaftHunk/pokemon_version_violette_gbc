@@ -1,7 +1,7 @@
 TechnicalMachinePrices:
 ; In thousands (nybbles).
 	dn 3, 2  ; TM_01, TM_02
-	dn 2, 1  ; TM_03, TM_04
+	dn 2, 4  ; TM_03, TM_04
 	dn 3, 4  ; TM_05, TM_06
 	dn 2, 4  ; TM_07, TM_08
 	dn 3, 4  ; TM_09, TM_10
@@ -11,7 +11,7 @@ TechnicalMachinePrices:
 	dn 3, 2  ; TM_17, TM_18
 	dn 3, 2  ; TM_19, TM_20
 	dn 5, 5  ; TM_21, TM_22
-	dn 5, 2  ; TM_23, TM_24
+	dn 5, 4  ; TM_23, TM_24
 	dn 5, 4  ; TM_25, TM_26
 	dn 5, 2  ; TM_27, TM_28
 	dn 4, 1  ; TM_29, TM_30
