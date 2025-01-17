@@ -38,6 +38,7 @@ TypeEffects:
 	db ICE,         GRASS,        20
 	db ICE,         GROUND,       20
 	db ICE,         FLYING,       20
+	db ICE,         FIRE,         05
 	db FIGHTING,    NORMAL,       20
 	db FIGHTING,    POISON,       05
 	db FIGHTING,    FLYING,       05
@@ -49,7 +50,6 @@ TypeEffects:
 	db POISON,      GRASS,        20
 	db POISON,      POISON,       05
 	db POISON,      GROUND,       05
-	db POISON,      BUG,          20
 	db POISON,      ROCK,         05
 	db POISON,      GHOST,        05
 	db GROUND,      FIRE,         20
@@ -71,7 +71,7 @@ TypeEffects:
 	db BUG,         FLYING,       05
 	db BUG,         PSYCHIC,      20
 	db BUG,         GHOST,        05
-	db BUG,         POISON,       20
+	db BUG,         POISON,       05
 	db ROCK,        FIRE,         20
 	db ROCK,        FIGHTING,     05
 	db ROCK,        GROUND,       05
