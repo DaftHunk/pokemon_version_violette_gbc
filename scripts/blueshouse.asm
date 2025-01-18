@@ -23,7 +23,7 @@ BluesHouseTextPointers:
 	dw BluesHouseText1
 	dw BluesHouseText2
 	dw BluesHouseText3
-	dw ShimmerToggleText
+;	dw ShimmerToggleText
 
 BluesHouseText1:
 	TX_ASM
@@ -92,37 +92,37 @@ BluesHouseText3: ; map on table
 
 	
 ;joenote - toggle for shimmer function and associated text
-ShimmerToggleText:
-	TX_ASM
-	CheckEvent EVENT_8C7
-	jr nz, .off
-.on
-	SetEvent EVENT_8C7
-	ld hl, _TXTShimmerON
-	jr .print
-.off
-	ResetEvent EVENT_8C7
-	ld hl, _TXTShimmerOFF
-.print
-	call PrintText
-.done
-	jp TextScriptEnd
-_TXTShimmerON:
-	text "Une # ball en"
-	line "verre brille."	
-	para "Vous sentez que"
-	line "certains #mons"
-	cont "pourraient"
-	cont "manifester un"
-	cont "potentiel caché."
-	done
-	db "@"
-_TXTShimmerOFF:
-	text "Une # ball en"
-	line "verre est..."
-	cont "juste une simple"
-	cont "décoration."
-	para "Vous avez dû"
-	line "vous fourvoyer."
-	done
-	db "@"
+;ShimmerToggleText:
+;	TX_ASM
+;	CheckEvent EVENT_8C7
+;	jr nz, .off
+;.on
+;	SetEvent EVENT_8C7
+;	ld hl, _TXTShimmerON
+;	jr .print
+;.off
+;	ResetEvent EVENT_8C7
+;	ld hl, _TXTShimmerOFF
+;.print
+;	call PrintText
+;.done
+;	jp TextScriptEnd
+;_TXTShimmerON:
+;	text "Une # ball en"
+;	line "verre brille."	
+;	para "Vous sentez que"
+;	line "certains #mons"
+;	cont "pourraient"
+;	cont "manifester un"
+;	cont "potentiel caché."
+;	done
+;	db "@"
+;_TXTShimmerOFF:
+;	text "Une # ball en"
+;	line "verre est..."
+;	cont "juste une simple"
+;	cont "décoration."
+;	para "Vous avez dû"
+;	line "vous fourvoyer."
+;	done
+;	db "@"
