@@ -31,8 +31,7 @@ TriAttackEffect_:
 	call GetStatusAnimation
 	ld [wAnimationID], a
 	callab PlayBattleAnimationGotID
-	TX_FAR BurnedText
-	db "@"
+	jpab BurnedText
 .freeze
 	ld a, b
 	cp 52 ; 26/256 chance of result being 26-51 (10.1%)
@@ -47,8 +46,7 @@ TriAttackEffect_:
 	call GetStatusAnimation
 	ld [wAnimationID], a
 	callab PlayBattleAnimationGotID
-	TX_FAR FrozenText
-	db "@"
+;	jpab _FrozenText ; dafthunk : #45 it make the game crash for some reason
 .paralyze
 	ld a, b
 	cp 78 ; 26/256 chance of result being 52-77 (10.1%)
@@ -63,8 +61,7 @@ TriAttackEffect_:
 	call GetStatusAnimation
 	ld [wAnimationID], a
 	callab PlayBattleAnimationGotID
-	TX_FAR PrintMayNotAttackText
-	db "@"
+	jpab PrintMayNotAttackText
 
 GetStatusAnimation:
 	ldh a, [H_WHOSETURN]
