@@ -12,9 +12,9 @@ INCBIN MUK_FR,0,1 ; 77, sprite dimensions
 dw MukPicFront
 dw MukPicBack
 ; attacks known at lvl 0
-db POUND
-db DISABLE
 db POISON_GAS
+db POUND
+db HARDEN
 db 0
 db 0 ; growth rate
 ; learnset

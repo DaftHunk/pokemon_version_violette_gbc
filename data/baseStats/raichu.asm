@@ -16,10 +16,10 @@ dw RaichuPicBack
 ;db GROWL
 ;db THUNDERSHOCK
 ;db 0
-db GROWL
-db THUNDERSHOCK
-db 0
-db 0
+db THUNDER_WAVE
+db THUNDERBOLT
+db TAIL_WHIP
+db QUICK_ATTACK
 db 0 ; growth rate
 ; learnset
 	tmlearn 1,5,6,8

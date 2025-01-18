@@ -13,9 +13,8 @@ dw GloomPicFront
 dw GloomPicBack
 ; attacks known at lvl 0
 db ABSORB
-;db POISONPOWDER
+db POISONPOWDER
 ;db STUN_SPORE
-db 0
 db 0
 db 0
 db 3 ; growth rate

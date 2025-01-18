@@ -14,7 +14,7 @@ dw BulbasaurPicFront
 dw BulbasaurPicBack
 ; attacks known at lvl 0
 db TACKLE
-db GROWL
+db 0
 db 0
 db 0
 db 3 ; growth rate

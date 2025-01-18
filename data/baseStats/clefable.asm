@@ -12,11 +12,9 @@ INCBIN CLEFABLE_FR,0,1 ; 66, sprite dimensions
 dw ClefablePicFront
 dw ClefablePicBack
 ; attacks known at lvl 0
-db POUND
-db GROWL
-;db SING
-;db DOUBLESLAP
-db 0
+db SING
+db DOUBLESLAP
+db METRONOME
 db 0
 db 4 ; growth rate
 ; learnset

@@ -13,7 +13,7 @@ dw StaryuPicFront
 dw StaryuPicBack
 ; attacks known at lvl 0
 db TACKLE
-db 0
+db HARDEN
 db 0
 db 0
 db 5 ; growth rate

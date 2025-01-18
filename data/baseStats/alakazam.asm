@@ -15,7 +15,7 @@ dw AlakazamPicBack
 db TELEPORT
 db KINESIS
 db CONFUSION
-db DISABLE
+db 0
 db 3 ; growth rate
 ; learnset
 	tmlearn 1,5,6,8

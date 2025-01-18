@@ -13,9 +13,9 @@ dw MarowakPicFront
 dw MarowakPicBack
 ; attacks known at lvl 0
 db GROWL
+db TAIL_WHIP
 db BONE_CLUB
-db LEER
-db FOCUS_ENERGY
+db HEADBUTT
 db 0 ; growth rate
 ; learnset
 	tmlearn 1,5,6,8

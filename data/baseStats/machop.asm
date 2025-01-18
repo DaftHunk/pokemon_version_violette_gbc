@@ -12,8 +12,8 @@ INCBIN MACHOP_FR,0,1 ; 55, sprite dimensions
 dw MachopPicFront
 dw MachopPicBack
 ; attacks known at lvl 0
-db KARATE_CHOP
-db 0
+db LOW_KICK
+db LEER
 db 0
 db 0
 db 3 ; growth rate

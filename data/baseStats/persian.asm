@@ -15,7 +15,7 @@ dw PersianPicBack
 db SCRATCH
 db GROWL
 db BITE
-db SCREECH
+db 0
 db 0 ; growth rate
 ; learnset
 	tmlearn 6,8

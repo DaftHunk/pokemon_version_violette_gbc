@@ -13,9 +13,9 @@ dw FlareonPicFront
 dw FlareonPicBack
 ; attacks known at lvl 0
 db TACKLE
-db SAND_ATTACK
-db QUICK_ATTACK
-db EMBER
+db TAIL_WHIP
+db 0
+db 0
 db 0 ; growth rate
 ; learnset
 	tmlearn 6,8

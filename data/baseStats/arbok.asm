@@ -15,7 +15,7 @@ dw ArbokPicBack
 db WRAP
 db LEER
 db POISON_STING
-db 0
+db BITE
 db 0 ; growth rate
 ; learnset
 	tmlearn 6,8

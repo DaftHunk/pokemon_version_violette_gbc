@@ -14,8 +14,8 @@ dw VictreebelPicBack
 ; attacks known at lvl 0
 db VINE_WHIP
 db GROWTH
-db 0
-db 0
+db SLEEP_POWDER
+db RAZOR_LEAF
 ;db WRAP
 ;db POISONPOWDER
 db 3 ; growth rate

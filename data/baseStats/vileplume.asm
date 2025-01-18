@@ -13,12 +13,9 @@ dw VileplumePicFront
 dw VileplumePicBack
 ; attacks known at lvl 0
 db ABSORB
-;db POISONPOWDER
-;db STUN_SPORE
-;db SLEEP_POWDER
-db 0
-db 0
-db 0
+db POISONPOWDER
+db STUN_SPORE
+db SLEEP_POWDER
 db 3 ; growth rate
 ; learnset
 	tmlearn 3,6,8

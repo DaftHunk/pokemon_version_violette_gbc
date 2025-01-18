@@ -13,10 +13,8 @@ dw StarmiePicFront
 dw StarmiePicBack
 ; attacks known at lvl 0
 db TACKLE
-;db WATER_GUN
-;db HARDEN
-db 0
-db 0
+db RECOVER
+db BUBBLEBEAM
 db 0
 db 5 ; growth rate
 ; learnset

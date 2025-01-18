@@ -15,7 +15,7 @@ dw ElectrodePicBack
 db TACKLE
 db SCREECH
 db SONICBOOM
-db 0
+db SELFDESTRUCT
 db 0 ; growth rate
 ; learnset
 	tmlearn 6

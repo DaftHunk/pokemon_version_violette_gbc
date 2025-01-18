@@ -12,7 +12,7 @@ INCBIN OMANYTE_FR,0,1 ; 55, sprite dimensions
 dw OmanytePicFront
 dw OmanytePicBack
 ; attacks known at lvl 0
-db WATER_GUN
+db CONSTRICT
 db WITHDRAW
 db 0
 db 0

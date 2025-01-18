@@ -15,7 +15,7 @@ dw FearowPicBack
 db PECK
 db GROWL
 db LEER
-db 0
+db FURY_ATTACK
 db 0 ; growth rate
 ; learnset
 	tmlearn 2,4,6

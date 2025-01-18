@@ -13,10 +13,8 @@ dw PoliwhirlPicFront
 dw PoliwhirlPicBack
 ; attacks known at lvl 0
 db BUBBLE
-;db HYPNOSIS
-;db WATER_GUN
-db 0
-db 0
+db HYPNOSIS
+db WATER_GUN
 db 0
 db 3 ; growth rate
 ; learnset

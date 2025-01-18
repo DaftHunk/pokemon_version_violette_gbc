@@ -12,7 +12,7 @@ INCBIN PIDGEY_FR,0,1 ; 55, sprite dimensions
 dw PidgeyPicFront
 dw PidgeyPicBack
 ; attacks known at lvl 0
-db GUST
+db TACKLE
 db 0
 db 0
 db 0

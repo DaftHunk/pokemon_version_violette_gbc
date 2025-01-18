@@ -14,8 +14,8 @@ dw VenomothPicBack
 ; attacks known at lvl 0
 db TACKLE
 db DISABLE
-db POISONPOWDER
-db LEECH_LIFE
+db SUPERSONIC
+db 0
 db 0 ; growth rate
 ; learnset	;joenote-added flash from yellow
 	tmlearn 2,4,6

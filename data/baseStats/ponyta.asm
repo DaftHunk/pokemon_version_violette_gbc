@@ -12,7 +12,7 @@ INCBIN PONYTA_FR,0,1 ; 66, sprite dimensions
 dw PonytaPicFront
 dw PonytaPicBack
 ; attacks known at lvl 0
-db EMBER
+db TACKLE
 db 0
 db 0
 db 0

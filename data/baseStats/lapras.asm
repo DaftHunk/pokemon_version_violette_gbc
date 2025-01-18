@@ -14,7 +14,7 @@ dw LaprasPicBack
 ; attacks known at lvl 0
 db WATER_GUN
 db GROWL
-db 0
+db SING
 db 0
 db 5 ; growth rate
 ; learnset

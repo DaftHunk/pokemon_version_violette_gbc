@@ -12,7 +12,7 @@ INCBIN SLOWPOKE_FR,0,1 ; 55, sprite dimensions
 dw SlowpokePicFront
 dw SlowpokePicBack
 ; attacks known at lvl 0
-db CONFUSION
+db TACKLE
 db 0
 db 0
 db 0

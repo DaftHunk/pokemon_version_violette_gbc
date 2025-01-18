@@ -14,8 +14,7 @@ dw WeepinbellPicBack
 ; attacks known at lvl 0
 db VINE_WHIP
 db GROWTH
-;db WRAP
-db 0
+db WRAP
 db 0
 db 3 ; growth rate
 ; learnset

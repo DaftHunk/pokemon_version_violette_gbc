@@ -15,7 +15,7 @@ dw MagnetonPicBack
 db TACKLE
 db SONICBOOM
 db THUNDERSHOCK
-db 0
+db SUPERSONIC
 db 0 ; growth rate
 ; learnset
 	tmlearn 6
