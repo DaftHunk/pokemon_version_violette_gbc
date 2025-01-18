@@ -715,7 +715,7 @@ MachokeEvosMoves:
 	db 8, FOCUS_ENERGY
 	db 15, KARATE_CHOP
 	db 19, SEISMIC_TOSS
-	db 34, VITAL_THROW
+	db 34, ROLLING_KICK
 	db 52, SUBMISSION
 	db 0
 
@@ -1430,7 +1430,7 @@ MachopEvosMoves:
 	db 7, FOCUS_ENERGY
 	db 13, KARATE_CHOP
 	db 19, SEISMIC_TOSS
-	db 31, VITAL_THROW
+	db 31, ROLLING_KICK
 	db 46, SUBMISSION
 	db 0
 
@@ -1642,7 +1642,7 @@ MachampEvosMoves:
 	db 8, FOCUS_ENERGY
 	db 15, KARATE_CHOP
 	db 19, SEISMIC_TOSS
-	db 34, VITAL_THROW
+	db 34, ROLLING_KICK
 	db 61, SUBMISSION
 	db 0
 
