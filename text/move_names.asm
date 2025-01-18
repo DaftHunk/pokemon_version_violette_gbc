@@ -163,8 +163,9 @@ MoveNames::
 	db "Croc fatal@"
 	db "Tranche@"
 	db "Clonage@"
-	db "Poursuite@" ; dafthunk #20
-	db "Mâchouille@" ; dafthunk #20
+	db "Bomb-beurk@"   ; dafthunk #46
+	db "Poursuite@"    ; dafthunk #20
+	db "Mâchouille@"   ; dafthunk #20
 	db "Griffe acier@" ; dafthunk #20
 	db "Queue de fer@" ; dafthunk #20
 	db "Lutte@"

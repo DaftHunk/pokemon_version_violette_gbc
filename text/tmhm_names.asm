@@ -41,7 +41,7 @@ tmhmNames:
 	db "CT34 Patienc@"
 	db "CT35 Métrono@"
 	db "CT36 Destruc@"
-	db "CT37 BombOeu@"
+	db "CT37 BombBeu@"
 	db "CT38 Déflagr@"
 	db "CT39 Météore@"
 	db "CT40 CoudKrâ@"

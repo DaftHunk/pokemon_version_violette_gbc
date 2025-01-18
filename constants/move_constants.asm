@@ -164,11 +164,11 @@ const_value = 1
 	const SUPER_FANG   ; a2
 	const SLASH        ; a3
 	const SUBSTITUTE   ; a4
-	const PURSUIT      ; a5 ; dafthunk #20
-	const CRUNCH       ; a6 ; dafthunk #20
-	const METAL_CLAW   ; a7 ; dafthunk #20
-	const IRON_TAIL    ; a8 ; dafthunk #20
-	const SLUDGE_BOMB  ; a9 ; dafthunk #20
+	const SLUDGE_BOMB  ; a5 ; dafthunk #46
+	const PURSUIT      ; a6 ; dafthunk #20
+	const CRUNCH       ; a7 ; dafthunk #20
+	const METAL_CLAW   ; a8 ; dafthunk #20
+	const IRON_TAIL    ; a9 ; dafthunk #20
 
 NUM_ATTACKS EQU const_value + -1
 

@@ -163,6 +163,7 @@ AttackAnimationPointers:
 	dw SuperFangAnim
 	dw SlashAnim
 	dw SubstituteAnim
+	dw SludgeBombAnim   ; dafthunk #46
 	dw PursuitAnim      ; dafthunk #20
 	dw CrunchAnim       ; dafthunk #20
 	dw MetalClawAnim    ; dafthunk #20
@@ -479,6 +480,7 @@ DisableAnim:
 	db SE_RESET_SCREEN_PALETTE, $FF
 	db $FF
 
+SludgeBombAnim:
 AcidAnim:
 	db $46,$32,$13
 	db $46,$32,$14

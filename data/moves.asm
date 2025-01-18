@@ -175,10 +175,10 @@ MoveEnd:
 	move SUPER_FANG,   SUPER_FANG_EFFECT,            1, NORMAL,    90, 10
 	move SLASH,        NO_ADDITIONAL_EFFECT,        70, NORMAL,   100, 20
 	move SUBSTITUTE,   SUBSTITUTE_EFFECT,            0, NORMAL,   100, 10
+	move SLUDGE_BOMB,  POISON_SIDE_EFFECT2,         90, POISON,   100, 10 ; dafthunk #46 
 	move PURSUIT,      DEFENSE_DOWN_SIDE_EFFECT,    40, DARK,     100, 20 ; dafthunk #20
 	move CRUNCH,       DEFENSE_DOWN_SIDE_EFFECT,    80, DARK,     100, 15 ; dafthunk #20
 	move METAL_CLAW,   NO_ADDITIONAL_EFFECT,        50, STEEL,    100, 35 ; dafthunk #20
 	move IRON_TAIL,    DEFENSE_DOWN_SIDE_EFFECT,    95, STEEL,    100, 15 ; dafthunk #20
-	move SLUDGE_BOMB,  POISON_SIDE_EFFECT2,         90, POISON,   100, 10 ; dafthunk #20 
 	move STRUGGLE,     RECOIL_EFFECT,               50, BIRD,     100, 1	;joenote - changed from normal to BIRD type (acts as typless)
 MovesEndOfList:

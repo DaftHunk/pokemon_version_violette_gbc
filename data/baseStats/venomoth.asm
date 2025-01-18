@@ -18,11 +18,11 @@ db SUPERSONIC
 db 0
 db 0 ; growth rate
 ; learnset	;joenote-added flash from yellow
-	tmlearn 2,4,6
+	tmlearn 2,6
 	tmlearn 9,10,15
 	tmlearn 20,21,22
 	tmlearn 29,30,31,32
-	tmlearn 33,34,39
+	tmlearn 33,34,37,39
 	tmlearn 44,46
 	tmlearn 50,55
 ;	db 0 ; padding
