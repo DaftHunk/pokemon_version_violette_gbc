@@ -1980,7 +1980,7 @@ tmhmNamesEnd:
 
 INCLUDE "data/super_rod.asm"	;joenote - moving all the super rod data here
 
-SECTION "NAMEHERE1", ROMX
+SECTION "PARTY ICONS 1", ROMX
 MonIcons::
 INCBIN "gfx/icons/null.2bpp"
 INCBIN "gfx/icons/bulbasaur.2bpp"
@@ -2110,7 +2110,9 @@ INCBIN "gfx/icons/jynx.2bpp"
 INCBIN "gfx/icons/electabuzz.2bpp"
 INCBIN "gfx/icons/magmar.2bpp"
 INCBIN "gfx/icons/pinsir.2bpp"
-SECTION "NAMEHERE2", ROMX
+
+
+SECTION "PARTY ICONS 2", ROMX
 MonIcons2::
 INCBIN "gfx/icons/tauros.2bpp"
 INCBIN "gfx/icons/magikarp.2bpp"
