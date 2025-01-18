@@ -2,7 +2,7 @@ TechnicalMachines:
 	db MEGA_PUNCH
 	db RAZOR_WIND
 	db SWORDS_DANCE
-	db WHIRLWIND
+	db FLAMETHROWER
 	db MEGA_KICK
 	db TOXIC
 	db HORN_DRILL
