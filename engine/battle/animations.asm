@@ -2708,6 +2708,7 @@ MoveSoundTable:
 	db SFX_BATTLE_0B,         $00,$80 ; CRUNSH
 	db SFX_BATTLE_0B,         $00,$80 ; METAL_CLAW
 	db SFX_BATTLE_0B,         $00,$80 ; IRON_TAIL
+	db SFX_BATTLE_2A,         $20,$20 ; SLUDGE_BOMB
 	db SFX_BATTLE_0B,         $00,$80 ; STRUGGLE
 	db SFX_BATTLE_0B,         $00,$80
 

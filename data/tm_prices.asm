@@ -18,7 +18,7 @@ TechnicalMachinePrices:
 	dn 2, 1  ; TM_31, TM_32
 	dn 1, 2  ; TM_33, TM_34
 	dn 4, 2  ; TM_35, TM_36
-	dn 2, 5  ; TM_37, TM_38
+	dn 4, 5  ; TM_37, TM_38
 	dn 2, 4  ; TM_39, TM_40
 	dn 2, 2  ; TM_41, TM_42
 	dn 5, 2  ; TM_43, TM_44

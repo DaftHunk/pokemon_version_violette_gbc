@@ -4,7 +4,7 @@
 
 ; Viridian
 ViridianCashierText::
-	TX_MART POKE_BALL, ANTIDOTE, PARLYZ_HEAL, BURN_HEAL, TM_37, TM_41
+	TX_MART POKE_BALL, ANTIDOTE, PARLYZ_HEAL, BURN_HEAL, TM_03, TM_41
 
 ; Pewter
 PewterCashierText::
@@ -31,7 +31,7 @@ CeladonMart2Clerk1Text::
 
 ; Celadon Dept. Store 2F (2)
 CeladonMart2Clerk2Text::
-	TX_MART TM_32, TM_33, TM_04, TM_07, TM_23, TM_01, TM_05, TM_09, TM_17
+	TX_MART TM_32, TM_33, TM_37, TM_04, TM_07, TM_23, TM_01, TM_05, TM_09, TM_17
 
 ; Celadon Dept. Store 4F
 CeladonMart4ClerkText::
@@ -56,7 +56,7 @@ CeladonMart3ClerkText::
 
 ; Cinnabar
 CinnabarCashierText::
-	TX_MART ULTRA_BALL, GREAT_BALL, HYPER_POTION, MAX_REPEL, ESCAPE_ROPE, FULL_HEAL, REVIVE, MAX_ELIXER, TM_03, TM_06, TM_13, TM_21, TM_40, TM_46
+	TX_MART ULTRA_BALL, GREAT_BALL, HYPER_POTION, MAX_REPEL, ESCAPE_ROPE, FULL_HEAL, REVIVE, MAX_ELIXER, TM_06, TM_13, TM_21, TM_40, TM_46
 
 ; Saffron
 SaffronCashierText::

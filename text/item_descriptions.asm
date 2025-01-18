@@ -535,8 +535,8 @@ _TM36Description::
 	prompt
 
 _TM37Description::
-	text "Bomb'Oeuf:Normal"
-	next "Dég: 100;Pré: 75"
+	text "Bomb-Beurk:Poison"
+	next "Dég: 90;Pré: 100"
 	prompt
 
 _TM38Description::
