@@ -16,8 +16,6 @@ db VINE_WHIP
 db GROWTH
 db SLEEP_POWDER
 db RAZOR_LEAF
-;db WRAP
-;db POISONPOWDER
 db 3 ; growth rate
 ; learnset
 	tmlearn 3,6,8

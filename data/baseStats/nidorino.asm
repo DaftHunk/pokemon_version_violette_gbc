@@ -14,7 +14,6 @@ dw NidorinoPicBack
 ; attacks known at lvl 0
 db LEER
 db TACKLE
-;db HORN_ATTACK
 db 0
 db 0
 db 3 ; growth rate

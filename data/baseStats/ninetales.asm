@@ -14,8 +14,6 @@ dw NinetalesPicBack
 ; attacks known at lvl 0
 db EMBER
 db QUICK_ATTACK
-;db QUICK_ATTACK
-;db ROAR
 db CONFUSE_RAY
 db 0
 db 0 ; growth rate

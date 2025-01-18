@@ -12,10 +12,6 @@ INCBIN RAICHU_FR,0,1 ; 77, sprite dimensions
 dw RaichuPicFront
 dw RaichuPicBack
 ; attacks known at lvl 0
-;db THUNDER_WAVE
-;db GROWL
-;db THUNDERSHOCK
-;db 0
 db THUNDER_WAVE
 db THUNDERBOLT
 db TAIL_WHIP

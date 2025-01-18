@@ -12,10 +12,6 @@ INCBIN POLIWRATH_FR,0,1 ; 77, sprite dimensions
 dw PoliwrathPicFront
 dw PoliwrathPicBack
 ; attacks known at lvl 0
-;db HYPNOSIS
-;db WATER_GUN
-;db DOUBLESLAP
-;db BODY_SLAM
 db WATER_GUN
 db HYPNOSIS
 db DOUBLESLAP

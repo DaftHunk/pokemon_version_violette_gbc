@@ -14,8 +14,6 @@ dw NidoqueenPicBack
 ; attacks known at lvl 0
 db GROWL
 db TACKLE
-;db SCRATCH
-;db TAIL_WHIP
 db 0
 db 0
 db 3 ; growth rate

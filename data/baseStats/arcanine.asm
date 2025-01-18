@@ -12,10 +12,6 @@ INCBIN ARCANINE_FR,0,1 ; 77, sprite dimensions
 dw ArcaninePicFront
 dw ArcaninePicBack
 ; attacks known at lvl 0
-;db BITE
-;db EMBER
-;db LEER
-;db TAKE_DOWN
 db ROAR
 db BITE
 db 0

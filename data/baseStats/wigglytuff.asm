@@ -16,7 +16,6 @@ db SING
 db DISABLE
 db DEFENSE_CURL
 db DOUBLESLAP
-db 0
 db 4 ; growth rate
 ; learnset
 	tmlearn 1,5,6,8
