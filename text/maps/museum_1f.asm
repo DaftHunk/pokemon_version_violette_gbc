@@ -60,7 +60,7 @@ IF DEF(_JPTXT)	;joenote - this guy thinks the aerodactyl fossil is Ryujin-sama o
 	line "Aide nos récoltes."
 
 	para "Je prie les os du"
-	cont "Seigneur Ryujin."
+	line "Seigneur Ryujin."
 	done
 ELSE
 	text "Voici un"
