@@ -12,5 +12,5 @@ Route16HouseObject:
 	object SPRITE_BIRD, 6, 4, WALK, 0, 2 ; person
 
 	; warp-to
-	warp_to 2, 7, ROUTE_16_HOUSE_WIDTH
-	warp_to 3, 7, ROUTE_16_HOUSE_WIDTH
+	warp_to 2, 7, ROUTE_16_FLY_HOUSE_WIDTH
+	warp_to 3, 7, ROUTE_16_FLY_HOUSE_WIDTH

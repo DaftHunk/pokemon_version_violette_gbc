@@ -145,10 +145,10 @@ MtMoon3Script5:
 	call DisplayTextID
 	CheckEvent EVENT_GOT_DOME_FOSSIL
 	jr z, .asm_49e1d
-	ld a, HS_MT_MOON_3_FOSSIL_2
+	ld a, HS_MT_MOON_B2F_FOSSIL_2
 	jr .asm_49e1f
 .asm_49e1d
-	ld a, HS_MT_MOON_3_FOSSIL_1
+	ld a, HS_MT_MOON_B2F_FOSSIL_1
 .asm_49e1f
 	ld [wMissableObjectIndex], a
 	predef HideObject
@@ -172,36 +172,36 @@ MtMoon3TextPointers:
 	dw MtMoon3Text_49f99
 
 MtMoon3TrainerHeader0:
-	dbEventFlagBit EVENT_BEAT_MT_MOON_3_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_MT_MOON_B2F_TRAINER_0
 	db ($4 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_MT_MOON_3_TRAINER_0
+	dwEventFlagAddress EVENT_BEAT_MT_MOON_B2F_TRAINER_0
 	dw MtMoon3BattleText2 ; TextBeforeBattle
 	dw MtMoon3AfterBattleText2 ; TextAfterBattle
 	dw MtMoon3EndBattleText2 ; TextEndBattle
 	dw MtMoon3EndBattleText2 ; TextEndBattle
 
 MtMoon3TrainerHeader1:
-	dbEventFlagBit EVENT_BEAT_MT_MOON_3_TRAINER_1
+	dbEventFlagBit EVENT_BEAT_MT_MOON_B2F_TRAINER_1
 	db ($4 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_MT_MOON_3_TRAINER_1
+	dwEventFlagAddress EVENT_BEAT_MT_MOON_B2F_TRAINER_1
 	dw MtMoon3BattleText3 ; TextBeforeBattle
 	dw MtMoon3AfterBattleText3 ; TextAfterBattle
 	dw MtMoon3EndBattleText3 ; TextEndBattle
 	dw MtMoon3EndBattleText3 ; TextEndBattle
 
 MtMoon3TrainerHeader2:
-	dbEventFlagBit EVENT_BEAT_MT_MOON_3_TRAINER_2
+	dbEventFlagBit EVENT_BEAT_MT_MOON_B2F_TRAINER_2
 	db ($4 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_MT_MOON_3_TRAINER_2
+	dwEventFlagAddress EVENT_BEAT_MT_MOON_B2F_TRAINER_2
 	dw MtMoon3BattleText4 ; TextBeforeBattle
 	dw MtMoon3AfterBattleText4 ; TextAfterBattle
 	dw MtMoon3EndBattleText4 ; TextEndBattle
 	dw MtMoon3EndBattleText4 ; TextEndBattle
 
 MtMoon3TrainerHeader3:
-	dbEventFlagBit EVENT_BEAT_MT_MOON_3_TRAINER_3
+	dbEventFlagBit EVENT_BEAT_MT_MOON_B2F_TRAINER_3
 	db ($4 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_MT_MOON_3_TRAINER_3
+	dwEventFlagAddress EVENT_BEAT_MT_MOON_B2F_TRAINER_3
 	dw MtMoon3BattleText5 ; TextBeforeBattle
 	dw MtMoon3AfterBattleText5 ; TextAfterBattle
 	dw MtMoon3EndBattleText5 ; TextEndBattle
@@ -291,7 +291,7 @@ MtMoon3Text6:
 	call GiveItem
 	jp nc, MtMoon3Script_49f76
 	call MtMoon3Script_49f69
-	ld a, HS_MT_MOON_3_FOSSIL_1
+	ld a, HS_MT_MOON_B2F_FOSSIL_1
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	SetEvent EVENT_GOT_DOME_FOSSIL
@@ -319,7 +319,7 @@ MtMoon3Text7:
 	call GiveItem
 	jp nc, MtMoon3Script_49f76
 	call MtMoon3Script_49f69
-	ld a, HS_MT_MOON_3_FOSSIL_2
+	ld a, HS_MT_MOON_B2F_FOSSIL_2
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	SetEvent EVENT_GOT_HELIX_FOSSIL

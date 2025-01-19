@@ -2,8 +2,8 @@ Route20Object:
 	db $43 ; border block
 
 	db 2 ; warps
-	warp 48, 5, 0, SEAFOAM_ISLANDS_1
-	warp 58, 9, 2, SEAFOAM_ISLANDS_1
+	warp 48, 5, 0, SEAFOAM_ISLANDS_1F
+	warp 58, 9, 2, SEAFOAM_ISLANDS_1F
 
 	db 2 ; signs
 	sign 51, 7, 11 ; Route20Text11
@@ -22,5 +22,5 @@ Route20Object:
 	object SPRITE_SWIMMER, 15, 8, STAY, UP, 10, OPP_BEAUTY, 8
 
 	; warp-to
-	warp_to 48, 5, ROUTE_20_WIDTH ; SEAFOAM_ISLANDS_1
-	warp_to 58, 9, ROUTE_20_WIDTH ; SEAFOAM_ISLANDS_1
+	warp_to 48, 5, ROUTE_20_WIDTH ; SEAFOAM_ISLANDS_1F
+	warp_to 58, 9, ROUTE_20_WIDTH ; SEAFOAM_ISLANDS_1F

@@ -2,9 +2,9 @@ Mansion3Object:
 	db $1 ; border block
 
 	db 3 ; warps
-	warp 7, 10, 1, MANSION_2
-	warp 6, 1, 3, MANSION_2
-	warp 25, 14, 2, MANSION_2
+	warp 7, 10, 1, POKEMON_MANSION_2F
+	warp 6, 1, 3, POKEMON_MANSION_2F
+	warp 25, 14, 2, POKEMON_MANSION_2F
 
 	db 0 ; signs
 
@@ -16,6 +16,6 @@ Mansion3Object:
 	object SPRITE_BOOK_MAP_DEX, 6, 12, STAY, NONE, 5 ; person
 
 	; warp-to
-	warp_to 7, 10, MANSION_3_WIDTH ; MANSION_2
-	warp_to 6, 1, MANSION_3_WIDTH ; MANSION_2
-	warp_to 25, 14, MANSION_3_WIDTH ; MANSION_2
+	warp_to 7, 10, POKEMON_MANSION_3F_WIDTH ; POKEMON_MANSION_2F
+	warp_to 6, 1, POKEMON_MANSION_3F_WIDTH ; POKEMON_MANSION_2F
+	warp_to 25, 14, POKEMON_MANSION_3F_WIDTH ; POKEMON_MANSION_2F

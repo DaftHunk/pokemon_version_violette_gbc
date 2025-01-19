@@ -3,7 +3,7 @@ CeladonMart5Object:
 
 	db 3 ; warps
 	warp 12, 1, 0, CELADON_MART_ROOF
-	warp 16, 1, 1, CELADON_MART_4
+	warp 16, 1, 1, CELADON_MART_4F
 	warp 1, 1, 0, CELADON_MART_ELEVATOR
 
 	db 1 ; signs
@@ -16,6 +16,6 @@ CeladonMart5Object:
 	object SPRITE_MART_GUY, 6, 3, STAY, DOWN, 4 ; person
 
 	; warp-to
-	warp_to 12, 1, CELADON_MART_5_WIDTH ; CELADON_MART_ROOF
-	warp_to 16, 1, CELADON_MART_5_WIDTH ; CELADON_MART_4
-	warp_to 1, 1, CELADON_MART_5_WIDTH ; CELADON_MART_ELEVATOR
+	warp_to 12, 1, CELADON_MART_5F_WIDTH ; CELADON_MART_ROOF
+	warp_to 16, 1, CELADON_MART_5F_WIDTH ; CELADON_MART_4F
+	warp_to 1, 1, CELADON_MART_5F_WIDTH ; CELADON_MART_ELEVATOR

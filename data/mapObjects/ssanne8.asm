@@ -2,12 +2,12 @@ SSAnne8Object:
 	db $c ; border block
 
 	db 6 ; warps
-	warp 0, 0, 2, SS_ANNE_1
-	warp 10, 0, 3, SS_ANNE_1
-	warp 20, 0, 4, SS_ANNE_1
-	warp 0, 10, 5, SS_ANNE_1
-	warp 10, 10, 6, SS_ANNE_1
-	warp 20, 10, 7, SS_ANNE_1
+	warp 0, 0, 2, SS_ANNE_1F
+	warp 10, 0, 3, SS_ANNE_1F
+	warp 20, 0, 4, SS_ANNE_1F
+	warp 0, 10, 5, SS_ANNE_1F
+	warp 10, 10, 6, SS_ANNE_1F
+	warp 20, 10, 7, SS_ANNE_1F
 
 	db 0 ; signs
 
@@ -25,9 +25,9 @@ SSAnne8Object:
 	object SPRITE_GENTLEMAN, 21, 13, WALK, 2, 11 ; person
 
 	; warp-to
-	warp_to 0, 0, SS_ANNE_8_WIDTH ; SS_ANNE_1
-	warp_to 10, 0, SS_ANNE_8_WIDTH ; SS_ANNE_1
-	warp_to 20, 0, SS_ANNE_8_WIDTH ; SS_ANNE_1
-	warp_to 0, 10, SS_ANNE_8_WIDTH ; SS_ANNE_1
-	warp_to 10, 10, SS_ANNE_8_WIDTH ; SS_ANNE_1
-	warp_to 20, 10, SS_ANNE_8_WIDTH ; SS_ANNE_1
+	warp_to 0, 0, SS_ANNE_1F_ROOMS_WIDTH ; SS_ANNE_1F
+	warp_to 10, 0, SS_ANNE_1F_ROOMS_WIDTH ; SS_ANNE_1F
+	warp_to 20, 0, SS_ANNE_1F_ROOMS_WIDTH ; SS_ANNE_1F
+	warp_to 0, 10, SS_ANNE_1F_ROOMS_WIDTH ; SS_ANNE_1F
+	warp_to 10, 10, SS_ANNE_1F_ROOMS_WIDTH ; SS_ANNE_1F
+	warp_to 20, 10, SS_ANNE_1F_ROOMS_WIDTH ; SS_ANNE_1F

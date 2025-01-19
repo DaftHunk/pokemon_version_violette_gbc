@@ -2,8 +2,8 @@ CeladonMart4Object:
 	db $f ; border block
 
 	db 3 ; warps
-	warp 12, 1, 0, CELADON_MART_3
-	warp 16, 1, 1, CELADON_MART_5
+	warp 12, 1, 0, CELADON_MART_3F
+	warp 16, 1, 1, CELADON_MART_5F
 	warp 1, 1, 0, CELADON_MART_ELEVATOR
 
 	db 1 ; signs
@@ -15,6 +15,6 @@ CeladonMart4Object:
 	object SPRITE_BUG_CATCHER, 5, 2, WALK, 2, 3 ; person
 
 	; warp-to
-	warp_to 12, 1, CELADON_MART_4_WIDTH ; CELADON_MART_3
-	warp_to 16, 1, CELADON_MART_4_WIDTH ; CELADON_MART_5
-	warp_to 1, 1, CELADON_MART_4_WIDTH ; CELADON_MART_ELEVATOR
+	warp_to 12, 1, CELADON_MART_4F_WIDTH ; CELADON_MART_3F
+	warp_to 16, 1, CELADON_MART_4F_WIDTH ; CELADON_MART_5F
+	warp_to 1, 1, CELADON_MART_4F_WIDTH ; CELADON_MART_ELEVATOR

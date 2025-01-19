@@ -32,7 +32,7 @@ SSAnne2Script0:
 	call PlayMusic
 	ld a, [wCoordIndex]
 	ld [$ffdb], a
-	ld a, HS_SS_ANNE_2_RIVAL
+	ld a, HS_SS_ANNE_2F_RIVAL
 	ld [wMissableObjectIndex], a
 	predef ShowObject2
 	call Delay3
@@ -174,7 +174,7 @@ SSAnne2Script3:
 	ret nz
 	xor a
 	ld [wJoyIgnore], a
-	ld a, HS_SS_ANNE_2_RIVAL
+	ld a, HS_SS_ANNE_2F_RIVAL
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	call PlayDefaultMusic

@@ -13,5 +13,5 @@ PewterHouse1Object:
 	object SPRITE_FAT_BALD_GUY, 1, 2, STAY, NONE, 3 ; person
 
 	; warp-to
-	warp_to 2, 7, PEWTER_HOUSE_1_WIDTH
-	warp_to 3, 7, PEWTER_HOUSE_1_WIDTH
+	warp_to 2, 7, PEWTER_NIDORAN_HOUSE_WIDTH
+	warp_to 3, 7, PEWTER_NIDORAN_HOUSE_WIDTH

@@ -4,7 +4,7 @@ CeladonGameCornerObject:
 	db 3 ; warps
 	warp 15, 17, 7, -1
 	warp 16, 17, 7, -1
-	warp 17, 4, 1, ROCKET_HIDEOUT_1
+	warp 17, 4, 1, ROCKET_HIDEOUT_B1F
 
 	db 1 ; signs
 	sign 9, 4, 12 ; CeladonGameCornerText12
@@ -25,4 +25,4 @@ CeladonGameCornerObject:
 	; warp-to
 	warp_to 15, 17, GAME_CORNER_WIDTH
 	warp_to 16, 17, GAME_CORNER_WIDTH
-	warp_to 17, 4, GAME_CORNER_WIDTH ; ROCKET_HIDEOUT_1
+	warp_to 17, 4, GAME_CORNER_WIDTH ; ROCKET_HIDEOUT_B1F

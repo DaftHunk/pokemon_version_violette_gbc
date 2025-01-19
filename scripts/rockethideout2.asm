@@ -526,9 +526,9 @@ RocketHideout2TextPointers:
 	dw PickUpItemText
 
 RocketHideout2TrainerHeader0:
-	dbEventFlagBit EVENT_BEAT_ROCKET_HIDEOUT_2_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_ROCKET_HIDEOUT_B2F_TRAINER_0
 	db ($4 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_ROCKET_HIDEOUT_2_TRAINER_0
+	dwEventFlagAddress EVENT_BEAT_ROCKET_HIDEOUT_B2F_TRAINER_0
 	dw RocketHideout2BattleText2 ; TextBeforeBattle
 	dw RocketHideout2AfterBattleTxt2 ; TextAfterBattle
 	dw RocketHideout2EndBattleText2 ; TextEndBattle

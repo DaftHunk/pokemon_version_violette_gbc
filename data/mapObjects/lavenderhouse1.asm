@@ -16,5 +16,5 @@ LavenderHouse1Object:
 	object SPRITE_BOOK_MAP_DEX, 3, 3, STAY, NONE, 6 ; person
 
 	; warp-to
-	warp_to 2, 7, LAVENDER_HOUSE_1_WIDTH
-	warp_to 3, 7, LAVENDER_HOUSE_1_WIDTH
+	warp_to 2, 7, MR_FUJIS_HOUSE_WIDTH
+	warp_to 3, 7, MR_FUJIS_HOUSE_WIDTH

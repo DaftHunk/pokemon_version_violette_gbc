@@ -12,5 +12,5 @@ Route2HouseObject:
 	object SPRITE_GAMEBOY_KID_COPY, 4, 1, STAY, DOWN, 2 ; person
 
 	; warp-to
-	warp_to 2, 7, ROUTE_2_HOUSE_WIDTH
-	warp_to 3, 7, ROUTE_2_HOUSE_WIDTH
+	warp_to 2, 7, ROUTE_2_TRADE_HOUSE_WIDTH
+	warp_to 3, 7, ROUTE_2_TRADE_HOUSE_WIDTH

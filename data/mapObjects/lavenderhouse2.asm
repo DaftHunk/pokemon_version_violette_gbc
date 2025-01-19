@@ -12,5 +12,5 @@ LavenderHouse2Object:
 	object SPRITE_BRUNETTE_GIRL, 2, 4, STAY, RIGHT, 2 ; person
 
 	; warp-to
-	warp_to 2, 7, LAVENDER_HOUSE_2_WIDTH
-	warp_to 3, 7, LAVENDER_HOUSE_2_WIDTH
+	warp_to 2, 7, LAVENDER_CUBONE_HOUSE_WIDTH
+	warp_to 3, 7, LAVENDER_CUBONE_HOUSE_WIDTH

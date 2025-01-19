@@ -52,11 +52,11 @@ CeladonMartElevatorWarpMaps:
 ; first byte is warp number
 ; second byte is map number
 ; These specify where the player goes after getting out of the elevator.
-	db $05, CELADON_MART_1
-	db $02, CELADON_MART_2
-	db $02, CELADON_MART_3
-	db $02, CELADON_MART_4
-	db $02, CELADON_MART_5
+	db $05, CELADON_MART_1F
+	db $02, CELADON_MART_2F
+	db $02, CELADON_MART_3F
+	db $02, CELADON_MART_4F
+	db $02, CELADON_MART_5F
 CeladonMartElevatorWarpMapsEnd:
 
 CeladonMartElevatorScript_48654:

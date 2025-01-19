@@ -498,7 +498,7 @@ WarpFound2::
 ;joenote - this order is kinda wonky and makes the map sound play after the fade-out when entering rock tunnel
 	; ld a, [hWarpDestinationMap]
 	; ld [wCurMap], a
-	; cp ROCK_TUNNEL_1
+	; cp ROCK_TUNNEL_1F
 	; jr nz, .notRockTunnel
 	; ld a, $06
 	; ld [wMapPalOffset], a
@@ -510,7 +510,7 @@ WarpFound2::
 	call PlayMapChangeSound		;wCurMap is not needed right now, so play the map sound first (along with fade-out)
 	ld a, [hWarpDestinationMap]	;now update wCurMap
 	ld [wCurMap], a
-	cp ROCK_TUNNEL_1	;if rock tunnel, set wMapPalOffset to 6
+	cp ROCK_TUNNEL_1F	;if rock tunnel, set wMapPalOffset to 6
 	jr nz, .done		;done here if not rock tunnel since the map sound already played and the view faded out
 	ld a, $06
 	ld [wMapPalOffset], a
@@ -626,15 +626,15 @@ CheckIfInOutsideMap::
 ; sets carry if the check passes, otherwise clears carry
 ExtraWarpCheck::
 	ld a, [wCurMap]
-	cp SS_ANNE_3
+	cp SS_ANNE_3F
 	jr z, .useFunction1
-	cp ROCKET_HIDEOUT_1
+	cp ROCKET_HIDEOUT_B1F
 	jr z, .useFunction2
-	cp ROCKET_HIDEOUT_2
+	cp ROCKET_HIDEOUT_B2F
 	jr z, .useFunction2
-	cp ROCKET_HIDEOUT_4
+	cp ROCKET_HIDEOUT_B4F
 	jr z, .useFunction2
-	cp ROCK_TUNNEL_1
+	cp ROCK_TUNNEL_1F
 	jr z, .useFunction2
 	ld a, [wCurMapTileset]
 	and a ; outside tileset (OVERWORLD)

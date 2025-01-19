@@ -11,7 +11,7 @@ Route16Object:
 	warp 17, 5, 5, ROUTE_16_GATE_1F
 	warp 24, 4, 6, ROUTE_16_GATE_1F
 	warp 24, 5, 7, ROUTE_16_GATE_1F
-	warp 7, 5, 0, ROUTE_16_HOUSE
+	warp 7, 5, 0, ROUTE_16_FLY_HOUSE
 
 	db 2 ; signs
 	sign 27, 11, 8 ; Route16Text8
@@ -35,4 +35,4 @@ Route16Object:
 	warp_to 17, 5, ROUTE_16_WIDTH ; ROUTE_16_GATE_1F
 	warp_to 24, 4, ROUTE_16_WIDTH ; ROUTE_16_GATE_1F
 	warp_to 24, 5, ROUTE_16_WIDTH ; ROUTE_16_GATE_1F
-	warp_to 7, 5, ROUTE_16_WIDTH ; ROUTE_16_HOUSE
+	warp_to 7, 5, ROUTE_16_WIDTH ; ROUTE_16_FLY_HOUSE

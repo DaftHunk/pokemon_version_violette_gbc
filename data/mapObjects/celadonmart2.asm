@@ -2,8 +2,8 @@ CeladonMart2Object:
 	db $f ; border block
 
 	db 3 ; warps
-	warp 12, 1, 4, CELADON_MART_1
-	warp 16, 1, 1, CELADON_MART_3
+	warp 12, 1, 4, CELADON_MART_1F
+	warp 16, 1, 1, CELADON_MART_3F
 	warp 1, 1, 0, CELADON_MART_ELEVATOR
 
 	db 1 ; signs
@@ -16,6 +16,6 @@ CeladonMart2Object:
 	object SPRITE_GIRL, 14, 4, WALK, 1, 4 ; person
 
 	; warp-to
-	warp_to 12, 1, CELADON_MART_2_WIDTH ; CELADON_MART_1
-	warp_to 16, 1, CELADON_MART_2_WIDTH ; CELADON_MART_3
-	warp_to 1, 1, CELADON_MART_2_WIDTH ; CELADON_MART_ELEVATOR
+	warp_to 12, 1, CELADON_MART_2F_WIDTH ; CELADON_MART_1F
+	warp_to 16, 1, CELADON_MART_2F_WIDTH ; CELADON_MART_3F
+	warp_to 1, 1, CELADON_MART_2F_WIDTH ; CELADON_MART_ELEVATOR

@@ -12,6 +12,6 @@ CeruleanHouse2Object:
 	object SPRITE_FAT_BALD_GUY, 5, 3, STAY, RIGHT, 1 ; person
 
 	; warp-to
-	warp_to 2, 0, CERULEAN_HOUSE_2_WIDTH
-	warp_to 2, 7, CERULEAN_HOUSE_2_WIDTH
-	warp_to 3, 7, CERULEAN_HOUSE_2_WIDTH
+	warp_to 2, 0, CERULEAN_BADGE_HOUSE_WIDTH
+	warp_to 2, 7, CERULEAN_BADGE_HOUSE_WIDTH
+	warp_to 3, 7, CERULEAN_BADGE_HOUSE_WIDTH

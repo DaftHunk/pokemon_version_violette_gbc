@@ -3757,9 +3757,9 @@ IsGhostBattle:	;sets z flag if this is a ghost battle
 	dec a
 	ret nz
 	ld a, [wCurMap]
-	cp POKEMONTOWER_1
+	cp POKEMONTOWER_1F
 	jr c, .next
-	cp LAVENDER_HOUSE_1
+	cp MR_FUJIS_HOUSE
 	jr nc, .next
 	ld b, SILPH_SCOPE
 	call IsItemInBag

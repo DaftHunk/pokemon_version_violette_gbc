@@ -2,7 +2,7 @@ CeladonMartRoofObject:
 	db $42 ; border block
 
 	db 1 ; warps
-	warp 15, 2, 0, CELADON_MART_5
+	warp 15, 2, 0, CELADON_MART_5F
 
 	db 4 ; signs
 	sign 10, 1, 3 ; CeladonMartRoofText3
@@ -15,4 +15,4 @@ CeladonMartRoofObject:
 	object SPRITE_LITTLE_GIRL, 5, 5, WALK, 0, 2 ; person
 
 	; warp-to
-	warp_to 15, 2, CELADON_MART_ROOF_WIDTH ; CELADON_MART_5
+	warp_to 15, 2, CELADON_MART_ROOF_WIDTH ; CELADON_MART_5F

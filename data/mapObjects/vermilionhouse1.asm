@@ -13,5 +13,5 @@ VermilionHouse1Object:
 	object SPRITE_PAPER_SHEET, 4, 3, STAY, NONE, 3 ; person
 
 	; warp-to
-	warp_to 2, 7, VERMILION_HOUSE_1_WIDTH
-	warp_to 3, 7, VERMILION_HOUSE_1_WIDTH
+	warp_to 2, 7, VERMILION_PIDGEY_HOUSE_WIDTH
+	warp_to 3, 7, VERMILION_PIDGEY_HOUSE_WIDTH

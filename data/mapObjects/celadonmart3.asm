@@ -2,8 +2,8 @@ CeladonMart3Object:
 	db $f ; border block
 
 	db 3 ; warps
-	warp 12, 1, 0, CELADON_MART_4
-	warp 16, 1, 1, CELADON_MART_2
+	warp 12, 1, 0, CELADON_MART_4F
+	warp 16, 1, 1, CELADON_MART_2F
 	warp 1, 1, 0, CELADON_MART_ELEVATOR
 
 	db 12 ; signs
@@ -30,6 +30,6 @@ CeladonMart3Object:
 	object SPRITE_CLEFAIRY, 11, 7, STAY, NONE, 7; joenote - blocks new mart guy
 
 	; warp-to
-	warp_to 12, 1, CELADON_MART_3_WIDTH ; CELADON_MART_4
-	warp_to 16, 1, CELADON_MART_3_WIDTH ; CELADON_MART_2
-	warp_to 1, 1, CELADON_MART_3_WIDTH ; CELADON_MART_ELEVATOR
+	warp_to 12, 1, CELADON_MART_3F_WIDTH ; CELADON_MART_4F
+	warp_to 16, 1, CELADON_MART_3F_WIDTH ; CELADON_MART_2F
+	warp_to 1, 1, CELADON_MART_3F_WIDTH ; CELADON_MART_ELEVATOR

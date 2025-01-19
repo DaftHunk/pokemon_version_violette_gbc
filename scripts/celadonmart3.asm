@@ -4,7 +4,7 @@ CeladonMart3Script:
 	CheckEvent EVENT_908	;has e4 been beaten?
 	jr z, .end 	;skip out if not
 	;else remove the blocking sprite
-	ld a, HS_CELADON_MART_3_BLOCKER
+	ld a, HS_CELADON_MART_3F_BLOCKER
 	ld [wMissableObjectIndex], a
 	callba IsObjectHidden2
 	ld a, [$ffe5]

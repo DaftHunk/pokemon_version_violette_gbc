@@ -4,9 +4,9 @@ MtMoon1Object:
 	db 5 ; warps
 	warp 14, 35, 1, -1
 	warp 15, 35, 1, -1
-	warp 5, 5, 0, MT_MOON_2
-	warp 17, 11, 2, MT_MOON_2
-	warp 25, 15, 3, MT_MOON_2
+	warp 5, 5, 0, MT_MOON_B1F
+	warp 17, 11, 2, MT_MOON_B1F
+	warp 25, 15, 3, MT_MOON_B1F
 
 	db 1 ; signs
 	sign 15, 23, 14 ; MtMoon1Text14
@@ -27,8 +27,8 @@ MtMoon1Object:
 	object SPRITE_BALL, 5, 32, STAY, NONE, 13, SUPER_REPEL	;joenote - TM12 moved to pewter museum 2f
 
 	; warp-to
-	warp_to 14, 35, MT_MOON_1_WIDTH
-	warp_to 15, 35, MT_MOON_1_WIDTH
-	warp_to 5, 5, MT_MOON_1_WIDTH ; MT_MOON_2
-	warp_to 17, 11, MT_MOON_1_WIDTH ; MT_MOON_2
-	warp_to 25, 15, MT_MOON_1_WIDTH ; MT_MOON_2
+	warp_to 14, 35, MT_MOON_1F_WIDTH
+	warp_to 15, 35, MT_MOON_1F_WIDTH
+	warp_to 5, 5, MT_MOON_1F_WIDTH ; MT_MOON_B1F
+	warp_to 17, 11, MT_MOON_1F_WIDTH ; MT_MOON_B1F
+	warp_to 25, 15, MT_MOON_1F_WIDTH ; MT_MOON_B1F

@@ -3,8 +3,8 @@ Route4Object:
 
 	db 3 ; warps
 	warp 11, 5, 0, MT_MOON_POKECENTER
-	warp 18, 5, 0, MT_MOON_1
-	warp 24, 5, 7, MT_MOON_2
+	warp 18, 5, 0, MT_MOON_1F
+	warp 24, 5, 7, MT_MOON_B1F
 
 	db 3 ; signs
 	sign 12, 5, 4 ; PokeCenterSignText
@@ -18,5 +18,5 @@ Route4Object:
 
 	; warp-to
 	warp_to 11, 5, ROUTE_4_WIDTH ; MT_MOON_POKECENTER
-	warp_to 18, 5, ROUTE_4_WIDTH ; MT_MOON_1
-	warp_to 24, 5, ROUTE_4_WIDTH ; MT_MOON_2
+	warp_to 18, 5, ROUTE_4_WIDTH ; MT_MOON_1F
+	warp_to 24, 5, ROUTE_4_WIDTH ; MT_MOON_B1F

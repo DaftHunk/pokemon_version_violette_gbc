@@ -3,7 +3,7 @@ VermilionDockObject:
 
 	db 2 ; warps
 	warp 14, 0, 5, -1
-	warp 14, 2, 1, SS_ANNE_1
+	warp 14, 2, 1, SS_ANNE_1F
 
 	db 0 ; signs
 
@@ -12,4 +12,4 @@ VermilionDockObject:
 	
 	; warp-to
 	warp_to 14, 0, VERMILION_DOCK_WIDTH
-	warp_to 14, 2, VERMILION_DOCK_WIDTH ; SS_ANNE_1
+	warp_to 14, 2, VERMILION_DOCK_WIDTH ; SS_ANNE_1F

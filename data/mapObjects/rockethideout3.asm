@@ -2,8 +2,8 @@ RocketHideout3Object:
 	db $2e ; border block
 
 	db 2 ; warps
-	warp 25, 6, 1, ROCKET_HIDEOUT_2
-	warp 19, 18, 0, ROCKET_HIDEOUT_4
+	warp 25, 6, 1, ROCKET_HIDEOUT_B2F
+	warp 19, 18, 0, ROCKET_HIDEOUT_B4F
 
 	db 0 ; signs
 
@@ -14,5 +14,5 @@ RocketHideout3Object:
 	object SPRITE_BALL, 20, 14, STAY, NONE, 4, RARE_CANDY
 
 	; warp-to
-	warp_to 25, 6, ROCKET_HIDEOUT_3_WIDTH ; ROCKET_HIDEOUT_2
-	warp_to 19, 18, ROCKET_HIDEOUT_3_WIDTH ; ROCKET_HIDEOUT_4
+	warp_to 25, 6, ROCKET_HIDEOUT_B3F_WIDTH ; ROCKET_HIDEOUT_B2F
+	warp_to 19, 18, ROCKET_HIDEOUT_B3F_WIDTH ; ROCKET_HIDEOUT_B4F

@@ -14,7 +14,7 @@ CeladonMansion5Text2:
 	lb bc, EEVEE, 25
 	call GivePokemon
 	jr nc, .asm_24365
-	ld a, HS_CELADON_MANSION_5_GIFT
+	ld a, HS_CELADON_MANSION_ROOF_HOUSE_GIFT
 	ld [wMissableObjectIndex], a
 	predef HideObject
 .asm_24365

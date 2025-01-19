@@ -12,5 +12,5 @@ PewterHouse2Object:
 	object SPRITE_BUG_CATCHER, 4, 5, STAY, NONE, 2 ; person
 
 	; warp-to
-	warp_to 2, 7, PEWTER_HOUSE_2_WIDTH
-	warp_to 3, 7, PEWTER_HOUSE_2_WIDTH
+	warp_to 2, 7, PEWTER_SPEECH_HOUSE_WIDTH
+	warp_to 3, 7, PEWTER_SPEECH_HOUSE_WIDTH

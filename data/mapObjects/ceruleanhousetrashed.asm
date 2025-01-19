@@ -14,6 +14,6 @@ CeruleanHouseTrashedObject:
 	object SPRITE_GIRL, 5, 6, WALK, 2, 2 ; person
 
 	; warp-to
-	warp_to 2, 7, TRASHED_HOUSE_WIDTH
-	warp_to 3, 7, TRASHED_HOUSE_WIDTH
-	warp_to 3, 0, TRASHED_HOUSE_WIDTH
+	warp_to 2, 7, CERULEAN_TRASHED_HOUSE_WIDTH
+	warp_to 3, 7, CERULEAN_TRASHED_HOUSE_WIDTH
+	warp_to 3, 0, CERULEAN_TRASHED_HOUSE_WIDTH

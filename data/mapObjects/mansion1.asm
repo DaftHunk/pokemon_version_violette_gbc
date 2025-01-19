@@ -6,8 +6,8 @@ Mansion1Object:
 	warp 5, 27, 0, -1
 	warp 6, 27, 0, -1
 	warp 7, 27, 0, -1
-	warp 5, 10, 0, MANSION_2
-	warp 21, 23, 0, MANSION_4
+	warp 5, 10, 0, POKEMON_MANSION_2F
+	warp 21, 23, 0, POKEMON_MANSION_B1F
 	warp 26, 27, 0, -1
 	warp 27, 27, 0, -1
 
@@ -19,11 +19,11 @@ Mansion1Object:
 	object SPRITE_BALL, 18, 21, STAY, NONE, 3, CARBOS
 
 	; warp-to
-	warp_to 4, 27, MANSION_1_WIDTH
-	warp_to 5, 27, MANSION_1_WIDTH
-	warp_to 6, 27, MANSION_1_WIDTH
-	warp_to 7, 27, MANSION_1_WIDTH
-	warp_to 5, 10, MANSION_1_WIDTH ; MANSION_2
-	warp_to 21, 23, MANSION_1_WIDTH ; MANSION_4
-	warp_to 26, 27, MANSION_1_WIDTH
-	warp_to 27, 27, MANSION_1_WIDTH
+	warp_to 4, 27, POKEMON_MANSION_1F_WIDTH
+	warp_to 5, 27, POKEMON_MANSION_1F_WIDTH
+	warp_to 6, 27, POKEMON_MANSION_1F_WIDTH
+	warp_to 7, 27, POKEMON_MANSION_1F_WIDTH
+	warp_to 5, 10, POKEMON_MANSION_1F_WIDTH ; POKEMON_MANSION_2F
+	warp_to 21, 23, POKEMON_MANSION_1F_WIDTH ; POKEMON_MANSION_B1F
+	warp_to 26, 27, POKEMON_MANSION_1F_WIDTH
+	warp_to 27, 27, POKEMON_MANSION_1F_WIDTH

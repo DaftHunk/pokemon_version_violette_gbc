@@ -4,7 +4,7 @@ PokemonTower1Object:
 	db 3 ; warps
 	warp 10, 17, 1, -1
 	warp 11, 17, 1, -1
-	warp 18, 9, 1, POKEMONTOWER_2
+	warp 18, 9, 1, POKEMONTOWER_2F
 
 	db 0 ; signs
 
@@ -16,6 +16,6 @@ PokemonTower1Object:
 	object SPRITE_MEDIUM, 17, 7, STAY, LEFT, 5 ; person
 
 	; warp-to
-	warp_to 10, 17, POKEMONTOWER_1_WIDTH
-	warp_to 11, 17, POKEMONTOWER_1_WIDTH
-	warp_to 18, 9, POKEMONTOWER_1_WIDTH ; POKEMONTOWER_2
+	warp_to 10, 17, POKEMONTOWER_1F_WIDTH
+	warp_to 11, 17, POKEMONTOWER_1F_WIDTH
+	warp_to 18, 9, POKEMONTOWER_1F_WIDTH ; POKEMONTOWER_2F

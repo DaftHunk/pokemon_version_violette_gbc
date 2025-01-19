@@ -2,7 +2,7 @@ UnknownDungeon3Object:;joenote - mewtwo bumped to lvl 74
 	db $7d ; border block
 
 	db 1 ; warps
-	warp 3, 6, 8, UNKNOWN_DUNGEON_1
+	warp 3, 6, 8, CERULEAN_CAVE_1F
 
 	db 0 ; signs
 
@@ -18,4 +18,4 @@ ELSE
 ENDC
 
 	; warp-to
-	warp_to 3, 6, UNKNOWN_DUNGEON_3_WIDTH ; UNKNOWN_DUNGEON_1
+	warp_to 3, 6, CERULEAN_CAVE_B1F_WIDTH ; CERULEAN_CAVE_1F

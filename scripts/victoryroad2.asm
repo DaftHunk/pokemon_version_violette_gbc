@@ -20,7 +20,7 @@ VictoryRoad2Script:
 	ret
 
 VictoryRoad2Script_517c4:
-	ResetEvent EVENT_VICTORY_ROAD_1_BOULDER_ON_SWITCH
+	ResetEvent EVENT_VICTORY_ROAD_1F_BOULDER_ON_SWITCH
 
 VictoryRoad2Script_517c9:
 	CheckEvent EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH1

@@ -20,5 +20,5 @@ ViridianHouseObject:
 	object SPRITE_BLACK_HAIR_BOY_1, 14,  6, STAY, LEFT, 9	;clause brother hyperbeam
 	
 	; warp-to
-	warp_to 2, 7, VIRIDIAN_HOUSE_WIDTH
-	warp_to 3, 7, VIRIDIAN_HOUSE_WIDTH
+	warp_to 2, 7, VIRIDIAN_NICKNAME_HOUSE_WIDTH
+	warp_to 3, 7, VIRIDIAN_NICKNAME_HOUSE_WIDTH

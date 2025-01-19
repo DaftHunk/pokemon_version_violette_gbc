@@ -5,7 +5,7 @@ Route12Object:
 	warp 10, 15, 0, ROUTE_12_GATE_1F
 	warp 11, 15, 1, ROUTE_12_GATE_1F
 	warp 10, 21, 2, ROUTE_12_GATE_1F
-	warp 11, 77, 0, ROUTE_12_HOUSE
+	warp 11, 77, 0, ROUTE_12_SUPER_ROD_HOUSE
 
 	db 2 ; signs
 	sign 13, 13, 11 ; Route12Text11
@@ -27,4 +27,4 @@ Route12Object:
 	warp_to 10, 15, ROUTE_12_WIDTH ; ROUTE_12_GATE_1F
 	warp_to 11, 15, ROUTE_12_WIDTH ; ROUTE_12_GATE_1F
 	warp_to 10, 21, ROUTE_12_WIDTH ; ROUTE_12_GATE_1F
-	warp_to 11, 77, ROUTE_12_WIDTH ; ROUTE_12_HOUSE
+	warp_to 11, 77, ROUTE_12_WIDTH ; ROUTE_12_SUPER_ROD_HOUSE

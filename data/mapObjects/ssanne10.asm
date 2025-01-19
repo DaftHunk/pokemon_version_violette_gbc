@@ -2,16 +2,16 @@ SSAnne10Object:
 	db $c ; border block
 
 	db 10 ; warps
-	warp 2, 5, 4, SS_ANNE_4
-	warp 3, 5, 4, SS_ANNE_4
-	warp 12, 5, 3, SS_ANNE_4
-	warp 13, 5, 3, SS_ANNE_4
-	warp 22, 5, 2, SS_ANNE_4
-	warp 23, 5, 2, SS_ANNE_4
-	warp 2, 15, 1, SS_ANNE_4
-	warp 3, 15, 1, SS_ANNE_4
-	warp 12, 15, 0, SS_ANNE_4
-	warp 13, 15, 0, SS_ANNE_4
+	warp 2, 5, 4, SS_ANNE_B1F
+	warp 3, 5, 4, SS_ANNE_B1F
+	warp 12, 5, 3, SS_ANNE_B1F
+	warp 13, 5, 3, SS_ANNE_B1F
+	warp 22, 5, 2, SS_ANNE_B1F
+	warp 23, 5, 2, SS_ANNE_B1F
+	warp 2, 15, 1, SS_ANNE_B1F
+	warp 3, 15, 1, SS_ANNE_B1F
+	warp 12, 15, 0, SS_ANNE_B1F
+	warp 13, 15, 0, SS_ANNE_B1F
 
 	db 0 ; signs
 
@@ -29,13 +29,13 @@ SSAnne10Object:
 	object SPRITE_BALL, 12, 11, STAY, NONE, 11, MAX_POTION
 
 	; warp-to
-	warp_to 2, 5, SS_ANNE_10_WIDTH ; SS_ANNE_4
-	warp_to 3, 5, SS_ANNE_10_WIDTH ; SS_ANNE_4
-	warp_to 12, 5, SS_ANNE_10_WIDTH ; SS_ANNE_4
-	warp_to 13, 5, SS_ANNE_10_WIDTH ; SS_ANNE_4
-	warp_to 22, 5, SS_ANNE_10_WIDTH ; SS_ANNE_4
-	warp_to 23, 5, SS_ANNE_10_WIDTH ; SS_ANNE_4
-	warp_to 2, 15, SS_ANNE_10_WIDTH ; SS_ANNE_4
-	warp_to 3, 15, SS_ANNE_10_WIDTH ; SS_ANNE_4
-	warp_to 12, 15, SS_ANNE_10_WIDTH ; SS_ANNE_4
-	warp_to 13, 15, SS_ANNE_10_WIDTH ; SS_ANNE_4
+	warp_to 2, 5, SS_ANNE_B1F_ROOMS_WIDTH ; SS_ANNE_B1F
+	warp_to 3, 5, SS_ANNE_B1F_ROOMS_WIDTH ; SS_ANNE_B1F
+	warp_to 12, 5, SS_ANNE_B1F_ROOMS_WIDTH ; SS_ANNE_B1F
+	warp_to 13, 5, SS_ANNE_B1F_ROOMS_WIDTH ; SS_ANNE_B1F
+	warp_to 22, 5, SS_ANNE_B1F_ROOMS_WIDTH ; SS_ANNE_B1F
+	warp_to 23, 5, SS_ANNE_B1F_ROOMS_WIDTH ; SS_ANNE_B1F
+	warp_to 2, 15, SS_ANNE_B1F_ROOMS_WIDTH ; SS_ANNE_B1F
+	warp_to 3, 15, SS_ANNE_B1F_ROOMS_WIDTH ; SS_ANNE_B1F
+	warp_to 12, 15, SS_ANNE_B1F_ROOMS_WIDTH ; SS_ANNE_B1F
+	warp_to 13, 15, SS_ANNE_B1F_ROOMS_WIDTH ; SS_ANNE_B1F

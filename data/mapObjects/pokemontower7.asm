@@ -2,7 +2,7 @@ PokemonTower7Object:
 	db $1 ; border block
 
 	db 1 ; warps
-	warp 9, 16, 1, POKEMONTOWER_6
+	warp 9, 16, 1, POKEMONTOWER_6F
 
 	db 0 ; signs
 
@@ -13,4 +13,4 @@ PokemonTower7Object:
 	object SPRITE_MR_FUJI, 10, 3, STAY, DOWN, 4 ; person
 
 	; warp-to
-	warp_to 9, 16, POKEMONTOWER_7_WIDTH ; POKEMONTOWER_6
+	warp_to 9, 16, POKEMONTOWER_7F_WIDTH ; POKEMONTOWER_6F

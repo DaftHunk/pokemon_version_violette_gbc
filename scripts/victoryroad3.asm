@@ -13,7 +13,7 @@ VictoryRoad3Script_44996:
 	bit 5, [hl]
 	res 5, [hl]
 	ret z
-	CheckEventHL EVENT_VICTORY_ROAD_3_BOULDER_ON_SWITCH1
+	CheckEventHL EVENT_VICTORY_ROAD_3F_BOULDER_ON_SWITCH1
 	ret z
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; wispnote - If the switch is activated place the boulder in switch's coordinates.
@@ -50,14 +50,14 @@ VictoryRoad3Script0:
 	jr nz, .asm_449dc
 	ld hl, wCurrentMapScriptFlags
 	set 5, [hl]
-	SetEvent EVENT_VICTORY_ROAD_3_BOULDER_ON_SWITCH1
+	SetEvent EVENT_VICTORY_ROAD_3F_BOULDER_ON_SWITCH1
 	ret
 .asm_449dc
 	; wispnote - This event signifies that a boulder was thrown through a hole;
 	; it is not realted to any switch.
-	CheckAndSetEvent EVENT_VICTORY_ROAD_3_BOULDER_ON_SWITCH2
+	CheckAndSetEvent EVENT_VICTORY_ROAD_3F_BOULDER_ON_SWITCH2
 	jr nz, .asm_449fe
-	ld a, HS_VICTORY_ROAD_3_BOULDER
+	ld a, HS_VICTORY_ROAD_3F_BOULDER
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	ld a, HS_VICTORY_ROAD_2_BOULDER
@@ -101,36 +101,36 @@ VictoryRoad3TextPointers:
 	dw BoulderText
 
 VictoryRoad3TrainerHeader0:
-	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_3_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_3F_TRAINER_0
 	db ($1 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_3_TRAINER_0
+	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_3F_TRAINER_0
 	dw VictoryRoad3BattleText2 ; TextBeforeBattle
 	dw VictoryRoad3AfterBattleText2 ; TextAfterBattle
 	dw VictoryRoad3EndBattleText2 ; TextEndBattle
 	dw VictoryRoad3EndBattleText2 ; TextEndBattle
 
 VictoryRoad3TrainerHeader1:
-	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_3_TRAINER_1
+	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_3F_TRAINER_1
 	db ($4 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_3_TRAINER_1
+	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_3F_TRAINER_1
 	dw VictoryRoad3BattleText3 ; TextBeforeBattle
 	dw VictoryRoad3AfterBattleText3 ; TextAfterBattle
 	dw VictoryRoad3EndBattleText3 ; TextEndBattle
 	dw VictoryRoad3EndBattleText3 ; TextEndBattle
 
 VictoryRoad3TrainerHeader2:
-	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_3_TRAINER_2
+	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_3F_TRAINER_2
 	db ($4 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_3_TRAINER_2
+	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_3F_TRAINER_2
 	dw VictoryRoad3BattleText4 ; TextBeforeBattle
 	dw VictoryRoad3AfterBattleText4 ; TextAfterBattle
 	dw VictoryRoad3EndBattleText4 ; TextEndBattle
 	dw VictoryRoad3EndBattleText4 ; TextEndBattle
 
 VictoryRoad3TrainerHeader3:
-	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_3_TRAINER_3
+	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_3F_TRAINER_3
 	db ($4 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_3_TRAINER_3
+	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_3F_TRAINER_3
 	dw VictoryRoad3BattleText5 ; TextBeforeBattle
 	dw VictoryRoad3AfterBattleText5 ; TextAfterBattle
 	dw VictoryRoad3EndBattleText5 ; TextEndBattle

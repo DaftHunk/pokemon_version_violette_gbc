@@ -2,8 +2,8 @@ PokemonTower2Object:
 	db $1 ; border block
 
 	db 2 ; warps
-	warp 3, 9, 0, POKEMONTOWER_3
-	warp 18, 9, 2, POKEMONTOWER_1
+	warp 3, 9, 0, POKEMONTOWER_3F
+	warp 18, 9, 2, POKEMONTOWER_1F
 
 	db 0 ; signs
 
@@ -12,5 +12,5 @@ PokemonTower2Object:
 	object SPRITE_MEDIUM, 3, 7, STAY, RIGHT, 2 ; person
 
 	; warp-to
-	warp_to 3, 9, POKEMONTOWER_2_WIDTH ; POKEMONTOWER_3
-	warp_to 18, 9, POKEMONTOWER_2_WIDTH ; POKEMONTOWER_1
+	warp_to 3, 9, POKEMONTOWER_2F_WIDTH ; POKEMONTOWER_3F
+	warp_to 18, 9, POKEMONTOWER_2F_WIDTH ; POKEMONTOWER_1F

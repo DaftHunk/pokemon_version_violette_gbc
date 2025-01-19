@@ -26,54 +26,54 @@ SSAnne10TextPointers:
 	dw PickUpItemText
 
 SSAnne10TrainerHeader0:
-	dbEventFlagBit EVENT_BEAT_SS_ANNE_10_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_SS_ANNE_B1F_ROOMS_TRAINER_0
 	db ($2 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SS_ANNE_10_TRAINER_0
+	dwEventFlagAddress EVENT_BEAT_SS_ANNE_B1F_ROOMS_TRAINER_0
 	dw SSAnne10BattleText1 ; TextBeforeBattle
 	dw SSAnne10AfterBattleText1 ; TextAfterBattle
 	dw SSAnne10EndBattleText1 ; TextEndBattle
 	dw SSAnne10EndBattleText1 ; TextEndBattle
 
 SSAnne10TrainerHeader1:
-	dbEventFlagBit EVENT_BEAT_SS_ANNE_10_TRAINER_1
+	dbEventFlagBit EVENT_BEAT_SS_ANNE_B1F_ROOMS_TRAINER_1
 	db ($3 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SS_ANNE_10_TRAINER_1
+	dwEventFlagAddress EVENT_BEAT_SS_ANNE_B1F_ROOMS_TRAINER_1
 	dw SSAnne10BattleText2 ; TextBeforeBattle
 	dw SSAnne10AfterBattleText2 ; TextAfterBattle
 	dw SSAnne10EndBattleText2 ; TextEndBattle
 	dw SSAnne10EndBattleText2 ; TextEndBattle
 
 SSAnne10TrainerHeader2:
-	dbEventFlagBit EVENT_BEAT_SS_ANNE_10_TRAINER_2
+	dbEventFlagBit EVENT_BEAT_SS_ANNE_B1F_ROOMS_TRAINER_2
 	db ($2 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SS_ANNE_10_TRAINER_2
+	dwEventFlagAddress EVENT_BEAT_SS_ANNE_B1F_ROOMS_TRAINER_2
 	dw SSAnne10BattleText3 ; TextBeforeBattle
 	dw SSAnne10AfterBattleText3 ; TextAfterBattle
 	dw SSAnne10EndBattleText3 ; TextEndBattle
 	dw SSAnne10EndBattleText3 ; TextEndBattle
 
 SSAnne10TrainerHeader3:
-	dbEventFlagBit EVENT_BEAT_SS_ANNE_10_TRAINER_3
+	dbEventFlagBit EVENT_BEAT_SS_ANNE_B1F_ROOMS_TRAINER_3
 	db ($2 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SS_ANNE_10_TRAINER_3
+	dwEventFlagAddress EVENT_BEAT_SS_ANNE_B1F_ROOMS_TRAINER_3
 	dw SSAnne10BattleText4 ; TextBeforeBattle
 	dw SSAnne10AfterBattleText4 ; TextAfterBattle
 	dw SSAnne10EndBattleText4 ; TextEndBattle
 	dw SSAnne10EndBattleText4 ; TextEndBattle
 
 SSAnne10TrainerHeader4:
-	dbEventFlagBit EVENT_BEAT_SS_ANNE_10_TRAINER_4
+	dbEventFlagBit EVENT_BEAT_SS_ANNE_B1F_ROOMS_TRAINER_4
 	db ($2 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SS_ANNE_10_TRAINER_4
+	dwEventFlagAddress EVENT_BEAT_SS_ANNE_B1F_ROOMS_TRAINER_4
 	dw SSAnne10BattleText5 ; TextBeforeBattle
 	dw SSAnne10AfterBattleText5 ; TextAfterBattle
 	dw SSAnne10EndBattleText5 ; TextEndBattle
 	dw SSAnne10EndBattleText5 ; TextEndBattle
 
 SSAnne10TrainerHeader5:
-	dbEventFlagBit EVENT_BEAT_SS_ANNE_10_TRAINER_5
+	dbEventFlagBit EVENT_BEAT_SS_ANNE_B1F_ROOMS_TRAINER_5
 	db ($3 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SS_ANNE_10_TRAINER_5
+	dwEventFlagAddress EVENT_BEAT_SS_ANNE_B1F_ROOMS_TRAINER_5
 	dw SSAnne10BattleText6 ; TextBeforeBattle
 	dw SSAnne10AfterBattleText6 ; TextAfterBattle
 	dw SSAnne10EndBattleText6 ; TextEndBattle

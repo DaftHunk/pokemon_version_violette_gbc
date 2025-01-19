@@ -39,11 +39,11 @@ Now go to the /text/maps and open the asm file for the basement of cerulean cave
 Find the function _MewtwoBattleText. 
 You can see that here is the text string that gets displayed on screen when the cry is played.
 
-Now go to data/hide_show_data.asm and scroll down to MapHSE3: which corresponds to the basement of cerulean cave. 
+Now go to data/hide_show_data.asm and scroll down to CeruleanCaveB1FHS: which corresponds to the basement of cerulean cave. 
 There are three lines here for the map's three objects that can be shown/hidden. 
 The first one is for mewtwo since mewtwo is the first object way back in your mapObjects file definition.
 
->>db UNKNOWN_DUNGEON_3,$01,Show
+>>db CERULEAN_CAVE_B1F,$01,Show
 
 This is defining the map's 
 -constant name (your constant might be CERULEAN_CAVE_3), 
@@ -58,7 +58,7 @@ You can just do the same thing, but use mew and the files corresponding to vermi
 
 Note that in hide_show_data.asm there is no entry for the vermilion dock. You will have to make one. 
 Vermilion dock has the map constant of $5E. 
-Under MapHSPointers:, scroll down to MapHS60 and go highlight the second MapHSXX above it. 
+Under MapHSPointers:, scroll down to SSAnne2FHS and go highlight the second NoHS above it. 
 Rename it to MapHS5E (notice that they all adhere to hexadecimal order in the list if you count them all). 
 Now you can create your own MapHS5E: function below to have hide/show data for VERMILION_DOCK. 
 Place it at the end of the file but above the line "db $FF,$01,Show".

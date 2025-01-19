@@ -58,36 +58,36 @@ PokemonTower5TextPointers:
 	dw PokemonTower5Text7
 
 PokemonTower5TrainerHeader0:
-	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_5_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_5F_TRAINER_0
 	db ($2 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_5_TRAINER_0
+	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_5F_TRAINER_0
 	dw PokemonTower5BattleText1 ; TextBeforeBattle
 	dw PokemonTower5AfterBattleText1 ; TextAfterBattle
 	dw PokemonTower5EndBattleText1 ; TextEndBattle
 	dw PokemonTower5EndBattleText1 ; TextEndBattle
 
 PokemonTower5TrainerHeader1:
-	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_5_TRAINER_1
+	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_5F_TRAINER_1
 	db ($3 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_5_TRAINER_1
+	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_5F_TRAINER_1
 	dw PokemonTower5BattleText2 ; TextBeforeBattle
 	dw PokemonTower5AfterBattleText2 ; TextAfterBattle
 	dw PokemonTower5EndBattleText2 ; TextEndBattle
 	dw PokemonTower5EndBattleText2 ; TextEndBattle
 
 PokemonTower5TrainerHeader2:
-	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_5_TRAINER_2
+	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_5F_TRAINER_2
 	db ($2 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_5_TRAINER_2
+	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_5F_TRAINER_2
 	dw PokemonTower5BattleText3 ; TextBeforeBattle
 	dw PokemonTower5AfterBattleText3 ; TextAfterBattle
 	dw PokemonTower5EndBattleText3 ; TextEndBattle
 	dw PokemonTower5EndBattleText3 ; TextEndBattle
 
 PokemonTower5TrainerHeader3:
-	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_5_TRAINER_3
+	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_5F_TRAINER_3
 	db ($2 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_5_TRAINER_3
+	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_5F_TRAINER_3
 	dw PokemonTower5BattleText4 ; TextBeforeBattle
 	dw PokemonTower5AfterBattleText4 ; TextAfterBattle
 	dw PokemonTower5EndBattleText4 ; TextEndBattle

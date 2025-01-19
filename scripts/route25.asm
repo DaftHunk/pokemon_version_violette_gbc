@@ -158,13 +158,13 @@ Route25Script3:	;joenote - adding this function to respawn the legendaries if fu
 	ResetEvent EVENT_8C0
 	ResetEvent EVENT_8C2
 ;reset articuno's seafoam islands puzzles
-	ld a, HS_SEAFOAM_ISLANDS_4_BOULDER_1
+	ld a, HS_SEAFOAM_ISLANDS_B3F_BOULDER_1
 	call .showstuff
-	ld a, HS_SEAFOAM_ISLANDS_4_BOULDER_2
+	ld a, HS_SEAFOAM_ISLANDS_B3F_BOULDER_2
 	call .showstuff
-	ld a, HS_SEAFOAM_ISLANDS_5_BOULDER_1
+	ld a, HS_SEAFOAM_ISLANDS_B4F_BOULDER_1
 	call .hidestuff
-	ld a, HS_SEAFOAM_ISLANDS_5_BOULDER_2
+	ld a, HS_SEAFOAM_ISLANDS_B4F_BOULDER_2
 	call .hidestuff
 	ResetEvents EVENT_SEAFOAM4_BOULDER1_DOWN_HOLE, EVENT_SEAFOAM4_BOULDER2_DOWN_HOLE
 ;reset mewtwo

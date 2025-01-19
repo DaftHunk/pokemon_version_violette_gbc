@@ -3,8 +3,8 @@ Route10Object:
 
 	db 4 ; warps
 	warp 11, 19, 0, ROCK_TUNNEL_POKECENTER
-	warp 8, 17, 0, ROCK_TUNNEL_1
-	warp 8, 53, 2, ROCK_TUNNEL_1
+	warp 8, 17, 0, ROCK_TUNNEL_1F
+	warp 8, 53, 2, ROCK_TUNNEL_1F
 	warp 6, 39, 0, POWER_PLANT
 
 	db 4 ; signs
@@ -23,6 +23,6 @@ Route10Object:
 
 	; warp-to
 	warp_to 11, 19, ROUTE_10_WIDTH ; ROCK_TUNNEL_POKECENTER
-	warp_to 8, 17, ROUTE_10_WIDTH ; ROCK_TUNNEL_1
-	warp_to 8, 53, ROUTE_10_WIDTH ; ROCK_TUNNEL_1
+	warp_to 8, 17, ROUTE_10_WIDTH ; ROCK_TUNNEL_1F
+	warp_to 8, 53, ROUTE_10_WIDTH ; ROCK_TUNNEL_1F
 	warp_to 6, 39, ROUTE_10_WIDTH ; POWER_PLANT

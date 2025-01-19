@@ -12,5 +12,5 @@ CeruleanHouse1Object:
 	object SPRITE_GAMBLER, 1, 2, STAY, NONE, 2 ; person
 
 	; warp-to
-	warp_to 2, 7, CERULEAN_HOUSE_1_WIDTH
-	warp_to 3, 7, CERULEAN_HOUSE_1_WIDTH
+	warp_to 2, 7, CERULEAN_MELANIES_HOUSE_WIDTH
+	warp_to 3, 7, CERULEAN_MELANIES_HOUSE_WIDTH

@@ -2,7 +2,7 @@ CinnabarIslandObject:
 	db $43 ; border block
 
 	db 5 ; warps
-	warp 6, 3, 1, MANSION_1
+	warp 6, 3, 1, POKEMON_MANSION_1F
 	warp 18, 3, 0, CINNABAR_GYM
 	warp 6, 9, 0, CINNABAR_LAB_1
 	warp 11, 11, 0, CINNABAR_POKECENTER
@@ -20,7 +20,7 @@ CinnabarIslandObject:
 	object SPRITE_GAMBLER, 14, 6, STAY, NONE, 2 ; person
 
 	; warp-to
-	warp_to 6, 3, CINNABAR_ISLAND_WIDTH ; MANSION_1
+	warp_to 6, 3, CINNABAR_ISLAND_WIDTH ; POKEMON_MANSION_1F
 	warp_to 18, 3, CINNABAR_ISLAND_WIDTH ; CINNABAR_GYM
 	warp_to 6, 9, CINNABAR_ISLAND_WIDTH ; CINNABAR_LAB_1
 	warp_to 11, 11, CINNABAR_ISLAND_WIDTH ; CINNABAR_POKECENTER

@@ -20,7 +20,7 @@ MarkTownVisitedAndLoadMissableObjects:
 LoadMissableObjects:
 	ld l, a
 	push hl
-	ld de, MapHS00             ; calculate difference between out pointer and the base pointer
+	ld de, PalletTownHS             ; calculate difference between out pointer and the base pointer
 	ld a, l
 	sub e
 	jr nc, .asm_f13c
@@ -72,7 +72,7 @@ InitializeMissableObjectsFlags:
 	ld bc, wMissableObjectFlagsEnd - wMissableObjectFlags
 	xor a
 	call FillMemory ; clear missable objects flags
-	ld hl, MapHS00
+	ld hl, PalletTownHS
 	xor a
 	ld [wMissableObjectCounter], a
 .missableObjectsLoop

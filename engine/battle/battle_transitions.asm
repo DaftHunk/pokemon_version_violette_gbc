@@ -118,8 +118,8 @@ GetBattleTransitionID_CompareLevels:
 	ld [wBattleTransitionSpiralDirection], a
 	ret
 
-; fails to recognize VICTORY_ROAD_2, VICTORY_ROAD_3, all ROCKET_HIDEOUT maps,
-; MANSION_1, SEAFOAM_ISLANDS_[2-5], POWER_PLANT, DIGLETTS_CAVE
+; fails to recognize VICTORY_ROAD_2, VICTORY_ROAD_3F, all ROCKET_HIDEOUT maps,
+; POKEMON_MANSION_1F, SEAFOAM_ISLANDS_[2-5], POWER_PLANT, DIGLETTS_CAVE
 ; and SILPH_CO_[9-11]F as dungeon maps
 ;joenote - added missing maps and did a bit of reorganizing
 GetBattleTransitionID_IsDungeonMap:
@@ -156,11 +156,11 @@ GetBattleTransitionID_IsDungeonMap:
 ; is equal to one of these maps
 DungeonMaps1:
 	db VIRIDIAN_FOREST
-	db ROCK_TUNNEL_1
+	db ROCK_TUNNEL_1F
 	db POWER_PLANT	;added
-	db VICTORY_ROAD_1
-	db MANSION_1	;added
-	db SEAFOAM_ISLANDS_1
+	db VICTORY_ROAD_1F
+	db POKEMON_MANSION_1F	;added
+	db SEAFOAM_ISLANDS_1F
 	db VICTORY_ROAD_2	;added
 	db $FF
 
@@ -168,37 +168,37 @@ DungeonMaps1:
 ; is in between or equal to each pair of maps
 DungeonMaps2:
 	; all MT_MOON maps
-	db MT_MOON_1
-	db MT_MOON_3
+	db MT_MOON_1F
+	db MT_MOON_B2F
 
-	; all SS_ANNE maps, VICTORY_ROAD_1, LANCES_ROOM, and HALL_OF_FAME
+	; all SS_ANNE maps, VICTORY_ROAD_1F, LANCES_ROOM, and HALL_OF_FAME
 	;revised to only cover the ss anne
-	db SS_ANNE_1
+	db SS_ANNE_1F
 	;db HALL_OF_FAME
-	db SS_ANNE_10
+	db SS_ANNE_B1F_ROOMS
 
 	; all POKEMONTOWER maps and Lavender Town buildings
 	;revised to only count lavender tower
 ;	db LAVENDER_POKECENTER
-;	db LAVENDER_HOUSE_2
-	db POKEMONTOWER_1
-	db POKEMONTOWER_7
+;	db LAVENDER_CUBONE_HOUSE
+	db POKEMONTOWER_1F
+	db POKEMONTOWER_7F
 	
 	;added seafoam islands 2 to 5
-	db SEAFOAM_ISLANDS_2
-	db SEAFOAM_ISLANDS_5
+	db SEAFOAM_ISLANDS_B1F
+	db SEAFOAM_ISLANDS_B4F
 
 	;added digletts cave, victory road 3, and all rocket hideout floors
 	db DIGLETTS_CAVE
-	db ROCKET_HIDEOUT_4
+	db ROCKET_HIDEOUT_B4F
 
 	; SILPH_CO_[2-8]F, MANSION[2-4], SAFARI_ZONE, and UNKNOWN_DUNGEON maps,
 	; except for SILPH_CO_1F --> 1st floor is a public lobby and not really a "dungeon"
 	db SILPH_CO_2F
-	db UNKNOWN_DUNGEON_1
+	db CERULEAN_CAVE_1F
 
 	;moved rock tunnel 2 and added the remaining silph floors
-	db ROCK_TUNNEL_2
+	db ROCK_TUNNEL_B1F
 	db SILPH_CO_11F
 
 	db $FF

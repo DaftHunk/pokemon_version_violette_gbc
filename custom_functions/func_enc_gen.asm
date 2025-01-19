@@ -411,7 +411,7 @@ IsInSafariZone:
 	ld a, [wCurMap]
 	cp SAFARI_ZONE_EAST
 	jr c, .notSafari
-	cp SAFARI_ZONE_REST_HOUSE_1
+	cp SAFARI_ZONE_CENTER_REST_HOUSE
 	jr nc, .notSafari
 	ld a, $01
 	jr .return

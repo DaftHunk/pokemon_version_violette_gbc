@@ -67,9 +67,9 @@ Mansion1TextPointers:
 	dw Mansion1Text4
 
 Mansion1TrainerHeader0:
-	dbEventFlagBit EVENT_BEAT_MANSION_1_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_POKEMON_MANSION_1F_TRAINER_0
 	db ($3 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_MANSION_1_TRAINER_0
+	dwEventFlagAddress EVENT_BEAT_POKEMON_MANSION_1F_TRAINER_0
 	dw Mansion1BattleText2 ; TextBeforeBattle
 	dw Mansion1AfterBattleText2 ; TextAfterBattle
 	dw Mansion1EndBattleText2 ; TextEndBattle

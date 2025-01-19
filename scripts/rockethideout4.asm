@@ -13,16 +13,16 @@ RocketHideout4Script_45473:
 	bit 5, [hl]
 	res 5, [hl]
 	ret z
-	CheckEvent EVENT_ROCKET_HIDEOUT_4_DOOR_UNLOCKED
+	CheckEvent EVENT_ROCKET_HIDEOUT_B4F_DOOR_UNLOCKED
 	jr nz, .asm_45496
-	CheckBothEventsSet EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_0, EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_1, 1
+	CheckBothEventsSet EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_0, EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_1, 1
 	jr z, .asm_4548c
 	ld a, $2d
 	jr .asm_45498
 .asm_4548c
 	ld a, SFX_GO_INSIDE
 	call PlaySound
-	SetEvent EVENT_ROCKET_HIDEOUT_4_DOOR_UNLOCKED
+	SetEvent EVENT_ROCKET_HIDEOUT_B4F_DOOR_UNLOCKED
 .asm_45496
 	ld a, $e
 .asm_45498
@@ -55,10 +55,10 @@ RocketHideout4Script3:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	call GBFadeOutToBlack
-	ld a, HS_ROCKET_HIDEOUT_4_GIOVANNI
+	ld a, HS_ROCKET_HIDEOUT_B4F_GIOVANNI
 	ld [wMissableObjectIndex], a
 	predef HideObject
-	ld a, HS_ROCKET_HIDEOUT_4_ITEM_4
+	ld a, HS_ROCKET_HIDEOUT_B4F_ITEM_4
 	ld [wMissableObjectIndex], a
 	predef ShowObject
 	call UpdateSprites
@@ -86,27 +86,27 @@ RocketHideout4TextPointers:
 	dw RocketHideout4Text10
 
 RocketHideout4TrainerHeader0:
-	dbEventFlagBit EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_0
 	db ($0 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_0
+	dwEventFlagAddress EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_0
 	dw RocketHideout4BattleText2 ; TextBeforeBattle
 	dw RocketHideout4AfterBattleText2 ; TextAfterBattle
 	dw RocketHideout4EndBattleText2 ; TextEndBattle
 	dw RocketHideout4EndBattleText2 ; TextEndBattle
 
 RocketHideout4TrainerHeader1:
-	dbEventFlagBit EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_1
+	dbEventFlagBit EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_1
 	db ($0 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_1
+	dwEventFlagAddress EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_1
 	dw RocketHideout4BattleText3 ; TextBeforeBattle
 	dw RocketHideout4AfterBattleText3 ; TextAfterBattle
 	dw RocketHideout4EndBattleText3 ; TextEndBattle
 	dw RocketHideout4EndBattleText3 ; TextEndBattle
 
 RocketHideout4TrainerHeader2:
-	dbEventFlagBit EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_2
+	dbEventFlagBit EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_2
 	db ($1 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_ROCKET_HIDEOUT_4_TRAINER_2
+	dwEventFlagAddress EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_2
 	dw RocketHideout4BattleText4 ; TextBeforeBattle
 	dw RocketHideout4AfterBattleText4 ; TextAfterBattle
 	dw RocketHideout4EndBattleText4 ; TextEndBattle
@@ -207,7 +207,7 @@ RocketHideout4EndBattleText4:
 	TX_ASM
 	CheckAndSetEvent EVENT_ROCKET_DROPPED_LIFT_KEY
 	jr nz, .gotliftkey
-	ld a, HS_ROCKET_HIDEOUT_4_ITEM_5
+	ld a, HS_ROCKET_HIDEOUT_B4F_ITEM_5
 	ld [wMissableObjectIndex], a
 	predef ShowObject
 .gotliftkey
@@ -219,7 +219,7 @@ RocketHideout4AfterBattleText4:
 	call PrintText
 ;	CheckAndSetEvent EVENT_ROCKET_DROPPED_LIFT_KEY
 ;	jr nz, .asm_455e9
-;	ld a, HS_ROCKET_HIDEOUT_4_ITEM_5
+;	ld a, HS_ROCKET_HIDEOUT_B4F_ITEM_5
 ;	ld [wMissableObjectIndex], a
 ;	predef ShowObject
 ;.asm_455e9

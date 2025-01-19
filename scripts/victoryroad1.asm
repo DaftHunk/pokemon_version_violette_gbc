@@ -11,7 +11,7 @@ VictoryRoad1Script:
 	ld [wVictoryRoad1CurScript], a
 	ret
 .next
-	CheckEvent EVENT_VICTORY_ROAD_1_BOULDER_ON_SWITCH
+	CheckEvent EVENT_VICTORY_ROAD_1F_BOULDER_ON_SWITCH
 	ret z
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; wispnote - If the switch is activated place the boulder in switch's coordinates.
@@ -36,14 +36,14 @@ VictoryRoad1ScriptPointers:
 	dw EndTrainerBattle
 
 VictoryRoad1Script0:
-	CheckEvent EVENT_VICTORY_ROAD_1_BOULDER_ON_SWITCH
+	CheckEvent EVENT_VICTORY_ROAD_1F_BOULDER_ON_SWITCH
 	jp nz, CheckFightingMapTrainers
 	ld hl, CoordsData_5da5c
 	call CheckBoulderCoords
 	jp nc, CheckFightingMapTrainers
 	ld hl, wCurrentMapScriptFlags
 	set 5, [hl]
-	SetEvent EVENT_VICTORY_ROAD_1_BOULDER_ON_SWITCH
+	SetEvent EVENT_VICTORY_ROAD_1F_BOULDER_ON_SWITCH
 	ret
 
 CoordsData_5da5c:
@@ -59,18 +59,18 @@ VictoryRoad1TextPointers:
 	dw BoulderText
 
 VictoryRoad1TrainerHeader0:
-	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_1_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_0
 	db ($2 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_1_TRAINER_0
+	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_0
 	dw VictoryRoad1BattleText1 ; TextBeforeBattle
 	dw VictoryRoad1AfterBattleText1 ; TextAfterBattle
 	dw VictoryRoad1EndBattleText1 ; TextEndBattle
 	dw VictoryRoad1EndBattleText1 ; TextEndBattle
 
 VictoryRoad1TrainerHeader1:
-	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_1_TRAINER_1
+	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_1
 	db ($2 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_1_TRAINER_1
+	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_1
 	dw VictoryRoad1BattleText2 ; TextBeforeBattle
 	dw VictoryRoad1AfterBattleText2 ; TextAfterBattle
 	dw VictoryRoad1EndBattleText2 ; TextEndBattle

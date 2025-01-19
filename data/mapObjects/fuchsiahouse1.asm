@@ -13,5 +13,5 @@ FuchsiaHouse1Object:
 	object SPRITE_BUG_CATCHER, 5, 5, STAY, NONE, 3 ; person
 
 	; warp-to
-	warp_to 2, 7, FUCHSIA_HOUSE_1_WIDTH
-	warp_to 3, 7, FUCHSIA_HOUSE_1_WIDTH
+	warp_to 2, 7, FUCHSIA_BILLS_GRANDPAS_HOUSE_WIDTH
+	warp_to 3, 7, FUCHSIA_BILLS_GRANDPAS_HOUSE_WIDTH

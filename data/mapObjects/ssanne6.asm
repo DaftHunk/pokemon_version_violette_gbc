@@ -2,7 +2,7 @@ SSAnne6Object:
 	db $c ; border block
 
 	db 1 ; warps
-	warp 6, 0, 10, SS_ANNE_1
+	warp 6, 0, 10, SS_ANNE_1F
 
 	db 0 ; signs
 
@@ -17,4 +17,4 @@ SSAnne6Object:
 	object SPRITE_GYM_HELPER, 11, 2, STAY, DOWN, 8; joenote - gym guy for post-game tournament
 
 	; warp-to
-	warp_to 6, 0, SS_ANNE_6_WIDTH ; SS_ANNE_1
+	warp_to 6, 0, SS_ANNE_KITCHEN_WIDTH ; SS_ANNE_1F

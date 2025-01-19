@@ -11,5 +11,5 @@ SaffronHouse2Object:
 	object SPRITE_FISHER, 5, 3, STAY, LEFT, 1 ; person
 
 	; warp-to
-	warp_to 2, 7, SAFFRON_HOUSE_2_WIDTH
-	warp_to 3, 7, SAFFRON_HOUSE_2_WIDTH
+	warp_to 2, 7, MR_PSYCHICS_HOUSE_WIDTH
+	warp_to 3, 7, MR_PSYCHICS_HOUSE_WIDTH

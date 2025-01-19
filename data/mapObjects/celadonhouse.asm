@@ -13,5 +13,5 @@ CeladonHouseObject:
 	object SPRITE_SAILOR, 5, 6, STAY, LEFT, 3 ; person
 
 	; warp-to
-	warp_to 2, 7, CELADON_HOUSE_WIDTH
-	warp_to 3, 7, CELADON_HOUSE_WIDTH
+	warp_to 2, 7, CELADON_CHIEF_HOUSE_WIDTH
+	warp_to 3, 7, CELADON_CHIEF_HOUSE_WIDTH
