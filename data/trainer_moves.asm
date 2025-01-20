@@ -5,7 +5,7 @@
 ;LoneMoves:
 ;; these are used for gym leaders.
 ;; this is not automatic! you have to write the number you want to wLoneAttackNo
-;; first. e.g., erika's script writes 4 to wLoneAttackNo to get mega drain,
+;; first. e.g.,erika's script writes 4 to wLoneAttackNo to get mega drain,
 ;; the fourth entry in the list.
 ;
 ;; first byte:  pokemon in the trainer's party that gets the move
@@ -22,8 +22,8 @@
 ;
 ;TeamMoves:
 ;; these are used for elite four.
-;; this is automatic, based on trainer class.
-;; don't be confused by LoneMoves above, the two data structures are
+;; this is automatic,based on trainer class.
+;; don't be confused by LoneMoves above,the two data structures are
 ;	; _completely_ unrelated.
 ;
 ;; first byte: trainer (all trainers in this class have this move)
@@ -38,15 +38,31 @@
 
 ; yellow has its own format.
 
-; entry = trainerclass, trainerid, moveset+, 0
-; moveset = partymon location, partymon's move, moveid
+; entry = trainerclass,trainerid,moveset+,0
+; moveset = partymon location,partymon's move,moveid
 SpecialTrainerMoves:
-	db BROCK,$1
-	;geodude - tackle, defense curl
-	;onix - tackle, screech, bind, bide
-	db 2,4,BIDE
+	db YOUNGSTER,14
+	db 1,4,FISSURE
 	db 0
-	
+
+	db BROCK,1
+	db 1,3,ROCK_THROW
+	db 2,1,CONSTRICT
+	db 2,3,BIDE
+	db 2,4,BIND
+	db 0
+
+	db BROCK,2
+	db 1,1,BLIZZARD
+	db 2,1,FISSURE
+	db 4,1,BODY_SLAM
+	db 5,2,SOLARBEAM
+	db 5,3,CONFUSE_RAY
+	db 6,1,FLY
+	db 6,3,EARTHQUAKE
+	db 6,4,DOUBLE_EDGE
+	db 0
+
 	;joenote - give the abra of the cerulean rival something to do
 	;		-assume the rival got some TMs from Celadon City
 	db SONY1, $7
@@ -75,162 +91,399 @@ SpecialTrainerMoves:
 	;rattata - tackle, tail whip, quick attack, hyper fang
 	;charmander - scratch, growl, ember, leer
 	db 0
-	
-	db MISTY,$1
-	;staryu - tackle, water gun
-	;starmie - tackle, water gun, harden, bubblebeam
-	db 2,3,HARDEN
-	db 2,4,BUBBLEBEAM
+
+	db MISTY,1
+	db 2,1,TAIL_WHIP
 	db 0
-	
-	db LT_SURGE,$1
-	;pikachu - thunder wave, quick attack, thundershock, double team
-	;voltorb - tackle, screech, sonic boom
-	;raichu - thunderbolt, tail whip, thunder wave, slam
-	db 3,1,THUNDERBOLT
-	db 0
-	
-	db ERIKA,$1
-	;tangela - constrict, bind, absorb, vine whip
-	;victreebel
-	db 2,1,GROWTH
-	db 2,2,SLEEP_POWDER
-	db 2,3,WRAP
-	db 2,4,RAZOR_LEAF
-	;vileplume
-	db 3,1,POISONPOWDER
-	db 3,2,MEGA_DRAIN
-	db 3,3,SLEEP_POWDER
-	db 3,4,PETAL_DANCE
-	db 0
-	
-	db KOGA,$1
-	;koffing - explosion, double-team, sludge, smokescreen
-	db 1,1,EXPLOSION
+
+	db MISTY,2
+	db 1,1,ICE_BEAM
 	db 1,2,DOUBLE_TEAM
-	;muk - disable, substitute, minimize, sludge
-	db 2,2,SUBSTITUTE
-	;venonat - takedown, supersonic, mega drain, sleep powder
-	db 3,1,TAKE_DOWN
-	db 3,2,SUPERSONIC
-	db 3,3,MEGA_DRAIN
-	;weezing - toxic, sludge, mimic, explosion
-	db 4,1,TOXIC
-	db 4,3,MIMIC
-	db 4,4,EXPLOSION
+	db 2,1,BLIZZARD
+	db 3,1,PSYCHIC_M
+	db 3,2,THUNDER
+	db 4,1,SURF
+	db 4,2,EARTHQUAKE
+	db 4,4,REFLECT
+	db 5,1,SUBSTITUTE
+	db 5,3,BLIZZARD
+	db 6,1,SURF
+	db 6,3,RECOVER
+	db 6,4,THUNDERBOLT
 	db 0
-	
-	db SABRINA,$1
-	;kadabra - reflect, disable, psybeam, recover
-	db 1,1,REFLECT
-	;mr mime - confusion, barrier, light screen, seismic toss
-	db 2,4,SEISMIC_TOSS
-	;venomoth - supersonic, leech life, stun spore, psybeam
-	db 3,1,SUPERSONIC
-	;alakazam - psywave, recover, psychic, reflect
-	db 4,1,PSYWAVE
+
+	db LT_SURGE,1 ; db $FF,29,RAICHU,0
+	db 1,1,THUNDERBOLT
+	db 1,2,THUNDER_WAVE
+	db 1,3,BODY_SLAM
+	db 1,4,SURF
 	db 0
-	
-	db BLAINE,$1
-	;ninetales - quick attack, swift, confuse ray, flamethrower
-	db 1,2,SWIFT
-	;magmar - strength, counter, confuse ray, fire punch
-	db 2,1,STRENGTH
-	db 2,2,COUNTER
-	;rapidash - tail whip, stomp, double-edge, fire spin
-	db 3,3,DOUBLE_EDGE
-	;arcanine - fire blast, bite, leer, takedown
-	db 4,1,FIRE_BLAST
+
+	db LT_SURGE,2 ; db $FF,64,ELECTRODE,65,MAGNETON,64,JOLTEON,64,PORYGON,64,ELECTABUZZ,65,RAICHU,0
+	db 1,2,THUNDER_WAVE
+	db 2,1,THUNDER_WAVE
+	db 2,3,REFLECT
+	db 3,1,HEADBUTT
+	db 3,2,DIG
+	db 4,1,THUNDER
+	db 4,2,BLIZZARD
+	db 4,3,RECOVER
+	db 5,1,ICE_PUNCH
+	db 5,3,PSYCHIC_M
+	db 6,1,SURF
+	db 6,2,CUT
+	db 6,3,THUNDER
+	db 6,4,THUNDER_WAVE
 	db 0
-	
-	db GIOVANNI,$3
-	;kangaskhan - earthquake, hyper beam, fissure, dizzy punch
-	db 1,1,EARTHQUAKE
-	db 1,2,HYPER_BEAM
-	db 1,3,FISSURE
-	;dugtrio - fissure, dig, sand attack, slash
-	db 2,1,FISSURE
-	;nidoqueen - earthquake, double kick, thunder, body slam
-	db 3,1,EARTHQUAKE
-	db 3,3,THUNDER
-	;nidoking - earthquake, double kick, ice beam, thrash
-	db 4,1,EARTHQUAKE
-	db 4,3,ICE_BEAM
-	;rhydon
-	db 5,1,ROCK_SLIDE
-	db 5,2,BODY_SLAM
-	db 5,3,DOUBLE_TEAM
-	db 5,4,EARTHQUAKE
+
+	db ERIKA,1 ; db $FF,33,TANGELA,34,VICTREEBEL,31,IVYSAUR,35,VILEPLUME,0
+	db 1,1,BIND
+	db 3,1,RAZOR_LEAF
+	db 3,2,ACID
+	db 3,3,LEECH_SEED
+	db 4,1,ACID
+	db 4,2,SOLARBEAM
+	db 4,3,STUN_SPORE
+	db 4,4,SLEEP_POWDER
 	db 0
-	
-	db LORELEI,$1
-	;dewgong - bubblebeam, aurora beam, rest, takedown
-	db 1,1,BUBBLEBEAM
-	;cloyster - clamp, supersonic, aurora beam, spike cannon
-	db 2,2,SUPERSONIC
-	;slowbro - surf, ice beam, amnesia, psychic
+
+	db ERIKA,2 ; db $FF,41,TANGELA,42,VICTREEBEL,42,VENUSAUR,43,VILEPLUME,0
+	db 1,1,BIND
+	db 1,2,BODY_SLAM
+    db 2,1,SWORDS_DANCE
+	db 2,2,WRAP
+    db 3,1,RAZOR_LEAF
+    db 3,2,LEECH_SEED
+    db 3,3,SLUDGE
+    db 4,2,SLEEP_POWDER
+    db 0 
+
+	db ERIKA,3 ; db $FF,48,TANGELA,49,VICTREEBEL,48,VENUSAUR,49,EXEGGUTOR,50,VILEPLUME,0
+	db 1,2,STUN_SPORE
+    db 1,3,SOLARBEAM
+    db 2,4,SWORDS_DANCE
+    db 3,2,SOLARBEAM
+    db 3,3,LEECH_SEED
+    db 4,1,REFLECT
+    db 5,1,LEECH_SEED
+    db 0
+
+	db ERIKA,4
+	db 1,3,STUN_SPORE
+	db 2,2,LEECH_SEED
+	db 2,3,SLEEP_POWDER
+	db 2,4,RAZOR_LEAF
+	db 3,1,LEECH_LIFE
+	db 3,3,SOLARBEAM
+	db 4,1,MEGA_DRAIN
+	db 4,2,SUBSTITUTE
+	db 5,1,MEGA_DRAIN
+	db 5,3,GROWTH
+	db 6,2,LEECH_SEED
+	db 6,3,SUBSTITUTE
+	db 6,4,MEGA_DRAIN
+    db 0
+
+	db KOGA,1 ; 42,GOLBAT,42,MUK,41,TENTACRUEL,43,VENOMOTH,0
+	db 1,2,TOXIC
+	db 1,3,BITE
+	db 2,1,ACID_ARMOR
+	db 2,3,MEGA_DRAIN
 	db 3,1,SURF
 	db 3,2,ICE_BEAM
-	;jynx - psychic, ice punch, lovely kiss, thrash
-	db 4,1,PSYCHIC_M
-	db 4,3,LOVELY_KISS
-	;lapras - body slam, confuse ray, blizzard, hydro pump
-	db 5,3,BLIZZARD
+	db 3,4,SLUDGE
+	db 4,1,SOLARBEAM
+	db 4,2,DOUBLE_TEAM
+	db 4,3,TOXIC
 	db 0
 
-	db BRUNO,$1
-	;onix - rock slide, screech, slam, dig
-	db 1,1,ROCK_SLIDE
-	db 1,2,SCREECH
-	db 1,4,DIG
-	;hitmonchan - ice punch, thunder punch, mega punch, submission
-	db 2,4,SUBMISSION
-	;hitmonlee - rolling kick, focus energy, hi jump kick, mega kick
-	db 3,1,ROLLING_KICK
-	;onix
-	db 4,1,BIND
-	db 4,2,BODY_SLAM
-	db 4,3,EXPLOSION
-	db 4,4,EARTHQUAKE
-	;machamp - earthquake, focus energy, siesmic toss, submission
-	db 5,1,EARTHQUAKE
-	db 0
-
-	db AGATHA,$1
-	;haunter - confuse ray, mimic, hypnosis, dream eater
-	db 1,2,MIMIC
-	;gengar - confuse ray, substitute, thunderbolt, mega drain
-	db 2,2,SUBSTITUTE
-	db 2,3,THUNDERBOLT
-	db 2,4,MEGA_DRAIN
-	;golbat - screech, confuse ray, double edge, mega drain
-	db 3,1,SCREECH
-	db 3,3,DOUBLE_EDGE
-	db 3,4,MEGA_DRAIN
-	;arbok - earthquake, glare, screech, acid
-	db 4,1,EARTHQUAKE
-	;gengar - confuse ray, psychic, hypnosis, dream eater
-	db 5,2,PSYCHIC_M
-	db 0
-
-	db LANCE,$1
-	;gyarados - dragon rage, bite, hydro pump, hyperbeam
-	db 1,2,BITE
-	;dragonair - thunder wave, reflect, thunderbolt, hyperbeam
-	db 2,1,THUNDER_WAVE
-	db 2,2,REFLECT
-	db 2,3,THUNDERBOLT
-	;dragonair - surf, body slam, ice beam, hyperbeam
-	db 3,1,SURF
-	db 3,2,BODY_SLAM
+	db KOGA,2 ; 49,GOLBAT,48,MUK,49,TENTACRUEL,48,WEEZING,50,VENOMOTH,0
+	db 1,1,TOXIC
+	db 1,2,CONFUSE_RAY
+	db 1,4,BITE
+	db 2,2,MEGA_DRAIN
+	db 2,4,ACID_ARMOR
+	db 3,2,SURF
 	db 3,3,ICE_BEAM
-	;aerodactyl - supersonic, fire blast, fly, hyperbeam
+	db 4,2,SLUDGE
+	db 4,3,THUNDERBOLT
+	db 5,1,SOLARBEAM
+	db 5,2,DOUBLE_TEAM
+	db 5,3,TOXIC
+	db 0
+
+	db KOGA,3
+	db 1,1,FLY
+	db 1,2,TOXIC
+	db 1,3,DOUBLE_TEAM
+	db 1,4,CONFUSE_RAY
+	db 2,3,MEGA_DRAIN
+	db 2,4,MINIMIZE
+	db 3,1,SURF
+	db 3,3,BLIZZARD
+	db 3,4,REFLECT
 	db 4,2,FIRE_BLAST
-	db 4,3,FLY
-	;dragonite - blizzard, fire blast, thunder, hyperbeam
+	db 4,3,THUNDERBOLT
+	db 4,4,SLUDGE
+	db 5,2,EARTHQUAKE
+	db 5,3,ROCK_SLIDE
+	db 6,1,DOUBLE_TEAM
+	db 6,4,LEECH_LIFE
+	db 0
+
+	db SABRINA,1 ; db $FF,50,ABRA, 48,HYPNO,49,MR_MIME,50,KADABRA, 50,ALAKAZAM,0
+	db 1,1,PSYCHIC_M
+	db 2,2,PSYWAVE
+	db 3,1,LIGHT_SCREEN
+	db 3,2,MIMIC
+	db 4,1,REFLECT
+	db 4,2,PSYWAVE
+	db 4,3,PSYCHIC_M
+	db 4,4,RECOVER 
+	db 5,1,THUNDER_WAVE
+	db 0
+
+	db SABRINA,2 ; db $FF,43,ABRA, 42,MR_MIME,43,KADABRA, 43,ALAKAZAM,0
+	db 1,1,PSYCHIC_M
+	db 2,1,SUBSTITUTE
+	db 2,1,LIGHT_SCREEN
+	db 2,2,MIMIC
+	db 2,3,SUBSTITUTE
+	db 2,4,PSYCHIC_M
+	db 3,1,PSYWAVE
+	db 4,1,THUNDER_WAVE
+	db 0
+
+	db SABRINA,3 ; db $FF,65,MR_MIME,64,HYPNO,64,SLOWBRO,64,JYNX,64,GENGAR,65,ALAKAZAM,0
+	db 1,1,THUNDERBOLT
+	db 1,4,THUNDER_WAVE
+	db 2,1,SUBSTITUTE
+	db 2,2,PSYWAVE
+	db 3,1,SURF
+	db 3,2,REFLECT
+	db 4,1,LOVELY_KISS
+	db 4,2,DREAM_EATER
+	db 4,3,BUBBLEBEAM
+	db 5,1,PSYCHIC_M
+	db 5,3,DOUBLE_TEAM
+	db 5,4,MEGA_DRAIN
+	db 6,1,THUNDER_WAVE
+	db 0
+
+	db BLAINE,1
+	db 2,1,FIRE_BLAST
+	db 2,2,WING_ATTACK
+	db 2,3,SLASH
+	db 2,4,SEISMIC_TOSS
+	db 3,1,FIRE_BLAST
+	db 3,2,CONFUSE_RAY
+	db 3,3,SOLARBEAM
+	db 4,1,FIRE_BLAST 
+	db 4,2,DOUBLE_EDGE
+	db 4,3,DIG
+	db 5,1,FIRE_BLAST
+	db 5,2,PSYCHIC_M
+	db 5,3,CONFUSE_RAY
+	db 5,4,THUNDERPUNCH
+	db 0
+
+	db BLAINE,2
+	db 1,2,AGILITY
+	db 1,3,SOLARBEAM
+	db 1,4,HORN_DRILL
+	db 2,4,DIG
+	db 3,2,FIRE_BLAST
+	db 3,3,EARTHQUAKE
+	db 3,4,SWORDS_DANCE
+	db 4,2,CONFUSE_RAY
+	db 4,3,SOLARBEAM
+	db 5,1,FIRE_BLAST
+	db 5,2,DIG
+	db 5,3,DOUBLE_EDGE
+	db 6,1,THUNDERPUNCH
+	db 6,2,PSYCHIC_M
+	db 6,3,CONFUSE_RAY
+	db 0
+
+	db GIOVANNI,1
+	db 1,1,ROCK_THROW
+	db 1,2,DIG
+	db 1,3,SCREECH
+	db 1,4,TAKE_DOWN
+	db 2,1,MEGA_PUNCH
+	db 2,2,SUBMISSION
+	db 3,1,BONE_CLUB
+	db 3,2,HEADBUTT
+	db 3,3,CUT
+	db 4,1,TAKE_DOWN
+	db 4,2,BUBBLEBEAM
+	db 4,3,THUNDERBOLT
+	db 0
+
+	db GIOVANNI,2
+	db 1,1,CRABHAMMER
+	db 1,2,CUT 
+	db 1,3,BODY_SLAM
+	db 2,1,ICE_PUNCH
+	db 2,2,ROCK_SLIDE
+	db 2,3,SUBMISSION
+	db 3,1,DIG
+	db 3,3,ROCK_SLIDE
+	db 4,1,EARTHQUAKE
+	db 4,2,ROCK_SLIDE
+	db 4,3,EXPLOSION
+	db 5,1,SLASH
+	db 5,2,BUBBLEBEAM
+	db 5,3,THUNDERBOLT
+	db 0
+
+	db GIOVANNI,3 ; 53,DUGTRIO,54,NIDOQUEEN,55,PERSIAN, 54,NIDOKING,55,RHYDON
+	db 1,1,EARTHQUAKE
+	db 1,2,SLASH
+	db 1,3,FISSURE
+	db 1,4,ROCK_SLIDE
+	db 2,1,EARTHQUAKE
+	db 2,2,ICE_BEAM
+	db 2,3,THUNDERBOLT
+	db 2,4,BODY_SLAM
+	db 3,1,SLASH
+	db 3,2,HYPER_BEAM
+	db 3,3,BUBBLEBEAM
+	db 3,4,THUNDERBOLT
+	db 4,1,EARTHQUAKE
+	db 4,2,BLIZZARD
+	db 4,3,THUNDER
+	db 4,4,SLUDGE
+	db 5,1,ROCK_SLIDE
+	db 5,2,EARTHQUAKE
+	db 5,3,SUBMISSION
+	db 5,4,THUNDERBOLT
+	db 0
+
+	db LORELEI,1 ; 56,SLOWBRO,55,CLOYSTER,55,DEWGONG, 56,JYNX,57,LAPRAS
+	db 1,1,EARTHQUAKE
+	db 1,2,BLIZZARD
+	db 2,1,SURF
+	db 2,3,EXPLOSION
+	db 3,1,SURF
+	db 3,2,REST
+	db 4,2,BUBBLEBEAM
+	db 4,3,LOVELY_KISS
+	db 5,1,THUNDERBOLT
+	db 5,3,SURF
+	db 0
+
+	db LORELEI,2 ; db $FF,70,WIGGLYTUFF,71,STARMIE,71,CLOYSTER,70,OMASTAR,70,EXEGGUTOR,72,LAPRAS,0
+    db 1,4,BLIZZARD
+    db 2,1,THUNDER_WAVE
+    db 2,3,THUNDER
+    db 2,4,SURF
+    db 3,3,TOXIC
+    db 3,4,EXPLOSION
+    db 4,1,BLIZZARD
+    db 4,3,HORN_DRILL
+    db 5,1,LEECH_SEED
+    db 6,1,CONFUSE_RAY
+    db 6,2,PSYCHIC_M
+    db 6,3,SURF
+	db 0
+
+	db BRUNO,1 ; 57,HITMONCHAN,56,POLIWRATH,57,HITMONLEE,56,ONIX,58,MACHAMP
+	db 1,3,ICE_PUNCH
+	db 1,4,THUNDERPUNCH
+	db 2,1,ICE_BEAM
+	db 3,1,BODY_SLAM
+	db 4,1,EXPLOSION
+	db 5,1,BODY_SLAM
+	db 5,2,ROCK_SLIDE
+	db 5,3,EARTHQUAKE
+	db 0
+
+	db BRUNO,2 ; db $FF,71,CLEFABLE,71,MUK,70,SLOWBRO,72,HITMONLEE,72,RHYDON,73,MACHAMP,0
+	db 1,1,SOFTBOILED
+    db 1,2,PSYCHIC_M
+    db 1,3,ICE_BEAM
+    db 1,4,THUNDERBOLT
+    db 2,3,MINIMIZE
+    db 2,4,FIRE_BLAST
+    db 3,1,DOUBLE_TEAM
+    db 3,2,SURF
+    db 4,1,BODY_SLAM
+    db 4,2,DOUBLE_TEAM
+    db 4,4,METRONOME
+    db 5,3,BODY_SLAM
+    db 5,4,SURF
+    db 6,1,EARTHQUAKE
+    db 6,2,HYPER_BEAM
+    db 6,3,ROCK_SLIDE
+	db 0
+
+	db AGATHA,1 ; 57,GENGAR,58,GOLBAT,57,MAROWAK,58,ARBOK,59,GENGAR
+	db 1,1,MEGA_DRAIN
+	db 2,1,FLY
+	db 2,2,TOXIC
+	db 2,4,DOUBLE_TEAM
+	db 3,1,SWORDS_DANCE
+	db 3,2,BODY_SLAM
+	db 3,3,ROCK_SLIDE 
+	db 4,2,SUBSTITUTE
+	db 5,1,PSYCHIC_M
+	db 5,3,MEGA_DRAIN
+	db 5,4,THUNDER
+	db 0
+
+	db AGATHA,2 ; db $FF,71,JYNX,71,GYARADOS,72,ALAKAZAM,71,VENUSAUR,72,ARBOK,73,GENGAR,0
+    db 1,2,LOVELY_KISS
+    db 1,3,REFLECT
+    db 2,1,FIRE_BLAST
+    db 2,2,THUNDERBOLT
+    db 2,3,SURF
+    db 3,1,THUNDER_WAVE
+    db 3,4,SUBSTITUTE
+    db 4,1,SLEEP_POWDER
+    db 4,2,DOUBLE_EDGE
+    db 4,3,LEECH_SEED
+    db 5,2,EARTHQUAKE
+    db 6,1,CONFUSE_RAY
+    db 6,3,EXPLOSION
+    db 6,4,THUNDERBOLT
+	db 0
+
+	db LANCE,1 ; 61,DRAGONITE,60,GYARADOS,60,CHARIZARD,61,AERODACTYL,62,DRAGONITE
+	db 1,1,WRAP
+	db 1,3,THUNDER_WAVE
+	db 2,1,FLY
+	db 2,2,SURF
+	db 2,3,SLAM
+	db 3,3,HYPER_BEAM
+	db 3,4,EARTHQUAKE
+	db 4,3,EARTHQUAKE
 	db 5,1,BLIZZARD
 	db 5,2,FIRE_BLAST
 	db 5,3,THUNDER
+	db 0
+
+	db LANCE,2 ; db $FF,73,ARCANINE,73,ELECTABUZZ,74,SNORLAX,74,CHARIZARD,72,KANHASKHAN,75,DRAGONITE,0
+	db 1,1,DRAGON_RAGE
+    db 1,2,FIRE_BLAST
+    db 1,3,HYPER_BEAM
+    db 1,4,DIG
+    db 2,1,THUNDER_WAVE
+    db 2,4,PSYCHIC_M
+    db 3,1,SELFDESTRUCT
+    db 3,2,EARTHQUAKE
+    db 3,3,REFLECT
+    db 4,1,SLASH
+    db 4,2,FIRE_BLAST
+    db 4,3,EARTHQUAKE
+    db 4,4,DOUBLE_TEAM
+    db 5,1,HYPER_BEAM
+    db 5,2,SUBMISSION
+    db 5,3,EARTHQUAKE
+    db 5,4,ROCK_SLIDE
+    db 6,1,THUNDER
+    db 6,2,THUNDER_WAVE
+    db 6,3,BLIZZARD
 	db 0
 
 	db SONY3,$1
@@ -378,7 +631,7 @@ SpecialTrainerMoves:
 	db 5,3,MIMIC
 	db 5,4,HYPER_BEAM
 	db 0
-	
+		
 	;Chief battle
 	db CHIEF,$1
 	;kangaskhan
@@ -412,41 +665,7 @@ SpecialTrainerMoves:
 	db 6,3,STOMP
 	db 6,4,REST
 	db 0
-	
-	;Seiga battle
-	db JR_TRAINER_F,$18
-	;clefable
-	db 1,1,PSYCHIC_M
-	db 1,2,SING
-	db 1,3,METRONOME
-	db 1,4,DOUBLE_EDGE
-	;gengar
-	db 2,1,THUNDERBOLT
-	db 2,2,HYPNOSIS
-	db 2,3,MEGA_DRAIN
-	db 2,4,CONFUSE_RAY
-	;victreebel
-	db 3,1,SWORDS_DANCE
-	db 3,2,RAZOR_LEAF
-	db 3,3,SLEEP_POWDER
-	db 3,4,BODY_SLAM
-	;ninetales
-	db 4,1,FIRE_BLAST
-	db 4,2,REFLECT
-	db 4,3,HYPER_BEAM
-	db 4,4,CONFUSE_RAY
-	;kangaskhan
-	db 5,1,EARTHQUAKE
-	db 5,2,ROCK_SLIDE
-	db 5,3,SUBMISSION
-	db 5,4,HYPER_BEAM
-	;blastoise
-	db 6,1,SURF
-	db 6,2,BLIZZARD
-	db 6,3,SEISMIC_TOSS
-	db 6,4,MIMIC
-	db 0
-	
+
 	;Red battle
 	db JR_TRAINER_M,$9
 	;lapras
@@ -496,5 +715,46 @@ SpecialTrainerMoves:
 	db 3,3,THUNDER_WAVE
 	db 3,4,REST
 	db 0
-	
+
+	db JOY,1 ; db 62,KANGASKHAN,SNORLAX,STARMIE,PORYGON,EXEGGUTOR,CHANSEY,0
+	db 1,1,REST
+    db 1,2,DOUBLE_TEAM
+    db 1,3,FISSURE
+    db 2,2,ICE_BEAM
+    db 2,3,AMNESIA
+    db 2,4,DOUBLE_TEAM
+    db 3,1,RECOVER
+    db 3,3,THUNDER_WAVE
+    db 3,4,SUBSTITUTE
+    db 4,1,REFLECT
+    db 4,2,BLIZZARD
+    db 4,3,RECOVER
+    db 4,4,THUNDER_WAVE
+    db 5,1,SOFTBOILED
+    db 5,2,REFLECT
+    db 5,3,DREAM_EATER
+    db 6,1,SOFTBOILED
+    db 6,2,REFLECT
+    db 6,3,EGG_BOMB
+    db 6,4,THUNDER_WAVE
+	db 0
+
+	db JENNY,1 ; db 62,PIDGEOT,BLASTOISE,TANGELA,GENGAR,PARASECT,ARCANINE,0
+	db 1,1,TAKE_DOWN
+    db 1,4,TOXIC
+    db 2,1,SURF
+    db 2,2,EARTHQUAKE
+    db 2,4,BODY_SLAM
+    db 3,2,SLEEP_POWDER
+    db 3,3,MIMIC
+    db 4,1,PSYCHIC_M
+    db 4,4,THUNDERBOLT
+    db 5,4,LEECH_LIFE
+    db 6,1,REFLECT
+    db 6,2,FIRE_BLAST
+    db 6,3,BODY_SLAM
+    db 6,4,DIG
+	db 0
+
 	db $ff
+	
