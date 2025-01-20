@@ -46,3 +46,4 @@ TrainerNames:
 	db "Exorciste@"
 	db "Agatha@"
 	db "Peter@"
+	db "Janine@"

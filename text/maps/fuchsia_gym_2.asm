@@ -145,7 +145,7 @@ _FuchsiaGymAfterBattleText5::
 	text "J'suis nul!"
 	done
 
-_FuchsiaGymBattleText6::
+_FuchsiaGymJanineBattleText::
 	text "Koga fait partie"
 	line "d'une grande"
 	cont "famille de"
@@ -156,12 +156,12 @@ _FuchsiaGymBattleText6::
 	cont "es-tu? Pourquoi?"
 	done
 
-_FuchsiaGymEndBattleText6::
+_FuchsiaGymJanineEndBattleText::
 	text "..."
 	line "Défaite."
 	prompt
 
-_FuchsiaGymAfterBattleText6::
+_FuchsiaGymJanineAfterBattleText::
 	text "La lumière"
 	line "engendre l'ombre. "
 

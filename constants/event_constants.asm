@@ -607,7 +607,7 @@ const_value = 0
 	const EVENT_BEAT_FUCHSIA_GYM_TRAINER_2           ; 25C, (D792, bit 4)
 	const EVENT_BEAT_FUCHSIA_GYM_TRAINER_3           ; 25D, (D792, bit 5)
 	const EVENT_BEAT_FUCHSIA_GYM_TRAINER_4           ; 25E, (D792, bit 6)
-	const EVENT_BEAT_FUCHSIA_GYM_TRAINER_5           ; 25F, (D792, bit 7)
+	const EVENT_BEAT_FUCHSIA_GYM_JANINE           ; 25F, (D792, bit 7)
 	const EVENT_260                                  ; 260, (D793, bit 0)
 	const EVENT_261                                  ; 261, (D793, bit 1)
 	const EVENT_262                                  ; 262, (D793, bit 2)

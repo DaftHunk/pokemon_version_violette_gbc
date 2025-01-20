@@ -141,3 +141,6 @@ TrainerPicAndMoneyPointers:
 
 	dw LancePic
 	money 9900
+
+	dw JaninePic
+	money 3500

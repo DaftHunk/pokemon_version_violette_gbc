@@ -85,7 +85,7 @@ FuchsiaGymScript3_75497:
 	;set 4, [hl]
 
 	; deactivate gym trainers
-	SetEventRange EVENT_BEAT_FUCHSIA_GYM_TRAINER_0, EVENT_BEAT_FUCHSIA_GYM_TRAINER_5
+	SetEventRange EVENT_BEAT_FUCHSIA_GYM_TRAINER_0, EVENT_BEAT_FUCHSIA_GYM_JANINE
 
 	jp FuchsiaGymScript_75477
 
@@ -96,7 +96,7 @@ FuchsiaGymTextPointers:
 	dw FuchsiaGymText4
 	dw FuchsiaGymText5
 	dw FuchsiaGymText6
-	dw FuchsiaGymText7
+	dw FuchsiaGymJanineText
 	dw FuchsiaGymText8
 	dw FuchsiaGymText9
 	dw FuchsiaGymText10
@@ -148,14 +148,14 @@ FuchsiaGymTrainerHeader4:
 	dw FuchsiaGymEndBattleText5 ; TextEndBattle
 	dw FuchsiaGymEndBattleText5 ; TextEndBattle
 
-FuchsiaGymTrainerHeader5:
-	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_TRAINER_5
+FuchsiaGymJanineHeader:
+	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_JANINE
 	db ($2 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_FUCHSIA_GYM_TRAINER_5
-	dw FuchsiaGymBattleText6 ; TextBeforeBattle
-	dw FuchsiaGymAfterBattleText6 ; TextAfterBattle
-	dw FuchsiaGymEndBattleText6 ; TextEndBattle
-	dw FuchsiaGymEndBattleText6 ; TextEndBattle
+	dwEventFlagAddress EVENT_BEAT_FUCHSIA_GYM_JANINE
+	dw FuchsiaGymJanineBattleText ; TextBeforeBattle
+	dw FuchsiaGymJanineAfterBattleText ; TextAfterBattle
+	dw FuchsiaGymJanineEndBattleText ; TextEndBattle
+	dw FuchsiaGymJanineEndBattleText ; TextEndBattle
 
 	db $ff
 
@@ -324,22 +324,22 @@ FuchsiaGymAfterBattleText5:
 	TX_FAR _FuchsiaGymAfterBattleText5
 	db "@"
 
-FuchsiaGymText7:
+FuchsiaGymJanineText:
 	TX_ASM
-	ld hl, FuchsiaGymTrainerHeader5
+	ld hl, FuchsiaGymJanineHeader
 	call TalkToTrainer
 	jp TextScriptEnd
 
-FuchsiaGymBattleText6:
-	TX_FAR _FuchsiaGymBattleText6
+FuchsiaGymJanineBattleText:
+	TX_FAR _FuchsiaGymJanineBattleText
 	db "@"
 
-FuchsiaGymEndBattleText6:
-	TX_FAR _FuchsiaGymEndBattleText6
+FuchsiaGymJanineEndBattleText:
+	TX_FAR _FuchsiaGymJanineEndBattleText
 	db "@"
 
-FuchsiaGymAfterBattleText6:
-	TX_FAR _FuchsiaGymAfterBattleText6
+FuchsiaGymJanineAfterBattleText:
+	TX_FAR _FuchsiaGymJanineAfterBattleText
 	db "@"
 
 FuchsiaGymText8:

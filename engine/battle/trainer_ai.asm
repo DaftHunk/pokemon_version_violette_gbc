@@ -1383,6 +1383,7 @@ TrainerClassMoveChoiceModifications:
 	db 1,4,0    ; CHANNELER
 	db 1,3,4,0    ; AGATHA
 	db 1,3,4,0  ; LANCE
+	db 1,3,4,0    ; JANINE
 
 INCLUDE "engine/battle/trainer_pic_money_pointers.asm"
 
@@ -1523,6 +1524,7 @@ TrainerAIPointers:
 	dbw 3,GenericAI
 	dbw 2,AgathaAI ; agatha
 	dbw 2,LanceAI ; lance	;increased items from 1 to 2
+	dbw 3,GenericAI ; Janine
 
 ;joenote - reorganizing these AI routines to jump on carry instead of returning on not-carry
 ;also adding recognition of a switch-pkmn bit

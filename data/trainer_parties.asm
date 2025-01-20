@@ -46,6 +46,7 @@ TrainerDataPointers:
 	dw ChannelerData
 	dw AgathaData
 	dw LanceData
+	dw JanineData
 
 RosterLabelStart::
 ; if first byte != FF, then
@@ -793,4 +794,8 @@ LanceData:
 	db $FF,61,DRAGONITE,60,GYARADOS,60,CHARIZARD,61,AERODACTYL,62,DRAGONITE,0
 ; Rematch
 	db $FF,73,ARCANINE,73,ELECTABUZZ,74,SNORLAX,74,CHARIZARD,72,KANGASKHAN,75,DRAGONITE,0
+
+JanineData:
+; Fuchsia Gym
+	db 40,GOLBAT,VENOMOTH,NIDOQUEEN,0
 
