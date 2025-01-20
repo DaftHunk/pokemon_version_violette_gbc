@@ -99,7 +99,7 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw NoHS
+	dw VermilionDockHS
 	dw NoHS
 	dw SSAnne2FHS
 	dw NoHS
@@ -583,5 +583,7 @@ UndergroundPathWEHS:
 	db UNDERGROUND_PATH_WE,$02,Hide	;joenote - m_gene pokeball
 Museum2FHS:
 	db MUSEUM_2F,$06,Show	;joenote - added water gun tm to museum 2f
+VermilionDockHS:
+	db VERMILION_DOCK, $01, Hide
 	
 	db $FF,$01,Show

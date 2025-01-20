@@ -1,5 +1,9 @@
 VermilionDockScript:
 	call EnableAutoTextBoxDrawing
+	ld hl, MewTrainerHeader
+	ld de, VermilionDockScriptPointers
+	call ExecuteCurMapScriptInTable
+	call TruckCheck
 	CheckEventHL EVENT_STARTED_WALKING_OUT_OF_DOCK
 	jr nz, .asm_1db8d
 	CheckEventReuseHL EVENT_GOT_HM01
@@ -35,6 +39,11 @@ VermilionDockScript:
 	ld [wJoyIgnore], a
 	SetEventReuseHL EVENT_WALKED_OUT_OF_DOCK
 	ret
+
+VermilionDockScriptPointers:
+	dw CheckFightingMapTrainers
+	dw DisplayEnemyTrainerTextAndStartBattle
+	dw EndTrainerBattle
 
 VermilionDockPostActions:	;joenote - for handling things that happen after the SS Anne leaves and you come back later
 	ld a, [wCurMapScript]
@@ -225,74 +234,185 @@ VermilionDock_EraseSSAnne:
 	call DelayFrames
 	ret
 
-;joenote - adding dialogue
 VermilionDockTextPointers:
-	dw VermilionDockText1
-	dw VermilionDockText2
-	
-VermilionDockText1:
-	TX_FAR _VermilionDockText1
-	db "@"
+	dw MewText
 
-VermilionDockText2:
+MewTrainerHeader:
+	dbEventFlagBit EVENT_ENCOUNTERED_MEW
+	db ($0 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_ENCOUNTERED_MEW
+	dw MewBattleText ; TextBeforeBattle
+	dw MewBattleText ; TextAfterBattle
+	dw MewBattleText ; TextEndBattle
+	dw MewBattleText ; TextEndBattle
+	db $ff ; end
+
+MewText:
 	TX_ASM
-	ld hl, VermilionDockSeigaIntro
-	call PrintText
-	CheckEvent EVENT_908	;has elite 4 been beaten?
-	jr z, .text2end	;jump if not beaten
-	call ManualTextScroll
-	ld hl, VermilionDockSeigaChallenge
-	call PrintText
-	call YesNoChoice	;prompt a yes/no choice
-	ld a, [wCurrentMenuItem]	;load the player choice
-	and a	;check the player choice
-	jr nz, .seigagoodbye	;if no, jump
-	;otherwise begin loading battle
-	ld hl, VermilionDockSeigaPre
-	call PrintText
-	ld hl, wd72d;set the bits for triggering battle
-	set 6, [hl]	;
-	set 7, [hl]	;
-	ld hl, VermilionDockSeigaVictory	;load text for when you win
-	ld de, VermilionDockSeigaDefeat	;load text for when you lose
-	call SaveEndBattleTextPointers	;save the win/lose text
-	ld a, [H_SPRITEINDEX]
-	ld [wSpriteIndex], a
-	call EngageMapTrainer
-	call InitBattleEnemyParameters
-	ld a, $09	;load 9 into the gym leader value to play final battle music 
-	ld [wGymLeaderNo], a
-	xor a
-	ld [hJoyHeld], a
-	ld a, $AA
-	ld [wCurMapScript], a
-	jr .text2end
-.seigagoodbye
-	ld hl, VermilionDockSeigaBye
-	call PrintText
-.text2end
+	ld hl, MewTrainerHeader
+	call TalkToTrainer
 	jp TextScriptEnd
 
-VermilionDockSeigaChallenge:
-	TX_FAR _VermilionDockSeigaChallenge
-	db "@"
+MewBattleText:
+	TX_FAR _MewtwoBattleText ; Mew!
+	TX_ASM
+	ld a, MEW
+	call PlayCry
+	call WaitForSoundToFinish
+	jp TextScriptEnd
 
-VermilionDockSeigaIntro:
-	TX_FAR _VermilionDockSeigaIntro
-	db "@"
+TruckOAMTable:
+	db $50, $28, $C0, $10
+	db $50, $30, $C1, $10
+	db $50, $38, $C2, $10
+	db $50, $40, $C3, $10
+	db $58, $28, $C4, $10
+	db $58, $30, $C5, $10
+	db $58, $38, $C6, $10
+	db $58, $40, $C7, $10
 
-VermilionDockSeigaDefeat:
-	TX_FAR _VermilionDockSeigaDefeat
-	db "@"
-	
-VermilionDockSeigaVictory:
-	TX_FAR _VermilionDockSeigaVictory
-	db "@"
+RedLeftOAMTable:
+	db $8,$0,$9,$0
+	db $a,$2,$b,$3
 
-VermilionDockSeigaBye:
-	TX_FAR _VermilionDockSeigaBye
-	db "@"
+TruckSpriteGFX: INCBIN  "gfx/sprites/truck_sprite.2bpp"
 
-VermilionDockSeigaPre:
-	TX_FAR _VermilionDockSeigaPre
-	db "@"
+NoTruckAction:
+	ld hl, wCurrentMapScriptFlags
+	set 7, [hl]
+	ret
+
+TruckCheck:
+	CheckEventHL EVENT_FOUND_MEW
+	jp nz, ChangeTruckTile
+;	ld hl, wCurrentMapScriptFlags
+;	res 5, [hl]
+;	lb bc, FLAG_TEST, HS_MEW_VERMILION_DOCK
+	ld hl, wMissableObjectFlags
+	predef FlagActionPredef
+	ld a, c
+	and a
+	jr nz, .skiphidingmew
+	ld a, HS_MEW_VERMILION_DOCK
+	ld [wMissableObjectIndex], a
+	predef HideObject
+.skiphidingmew
+	ld a, [wd728]
+	bit 0, a ; using Strength?
+	ret z
+	jr z, NoTruckAction
+	; the position for moving the truck is 22,0
+	ld hl, wYCoord
+	ld a, [hli]
+	and a
+	jr nz, NoTruckAction
+	ld a, [hl]
+	cp 22
+	jr nz, NoTruckAction
+	; if the player is trying to walk left
+	ld a, [wPlayerMovingDirection]
+	bit PLAYER_DIR_BIT_LEFT, a
+	jr z, NoTruckAction
+	ld hl, wCurrentMapScriptFlags
+	bit 5, [hl]
+	set 5, [hl] ; wait until the next time the player presses left
+	ret z
+	ldh a, [hJoyHeld]
+	bit BIT_D_LEFT, a ; is player pressing left
+	ret z
+	res 7, [hl]
+	ld a, $ff
+	ld [wJoyIgnore], a
+	ld [wUpdateSpritesEnabled], a
+	ld a, PLAYER_DIR_LEFT
+	ld [wPlayerMovingDirection], a
+;	xor a
+	ld bc, (Bank(TruckSpriteGFX) << 8) | 8
+	ld hl, vChars1 + $400
+	ld de, TruckSpriteGFX
+	call CopyVideoData
+	ld hl, TruckOAMTable
+	ld bc, $20
+	ld de, wOAMBuffer + $20
+	call _CopyData
+	ld a, $c
+	ld [wNewTileBlockID], a ; used to be wd09f
+	ld bc, $a
+	predef ReplaceTileBlock
+	; moving the truck
+	ld a, SFX_PUSH_BOULDER
+	call PlaySound
+	ld b, 32
+	ld de, 4
+.movingtruck
+	ld hl, wOAMBuffer + $21
+	ld a, 8
+.movingtruck2
+	dec [hl]
+	add hl, de
+	dec a
+	jr nz, .movingtruck2
+	ld c, 2
+	call DelayFrame
+	dec b
+	jr nz, .movingtruck
+	ld a, $3
+	ld [wNewTileBlockID], a ; used to be wd09f
+	ld bc, $9
+	predef ReplaceTileBlock
+	callab AnimateBoulderDust
+	ld a, $FF
+	call PlaySound
+	call ShowMew
+	ld c, 20
+	call DelayFrame
+	xor a
+	ld [wJoyIgnore], a
+	SetEvent EVENT_FOUND_MEW
+	ld de, VermilionDockScriptPointers
+	ret
+
+ShowMew:	
+	ld a, 1
+	ld [wUpdateSpritesEnabled], a
+	ld a, HS_MEW_VERMILION_DOCK
+	ld [wMissableObjectIndex], a
+	predef_jump ShowObject
+
+ChangeTruckTile:
+	ld hl, wCurrentMapScriptFlags
+	bit 5, [hl]
+	res 5, [hl]
+	res 7, [hl]
+	ret z
+	ld bc, $9
+	call GetOWCoord
+	ld a, [hl]
+	cp $3
+	ret z
+	ld a, $3
+	ld [hli], a
+	ld [hl], $c
+	CheckEvent EVENT_ENCOUNTERED_MEW
+	call z, ShowMew
+	jpab RedrawMapView
+
+GetOWCoord:
+	ld hl, wOverworldMap + 2
+	ld a, [wCurMapWidth]
+	add $6
+	ld e, a
+	ld d, $0
+	add hl, de
+	add hl, de
+	inc b
+	inc c
+.bloop
+	add hl, de
+	dec b
+	jr nz, .bloop
+.cloop
+	inc hl
+	dec c
+	jr nz, .cloop
+	ret

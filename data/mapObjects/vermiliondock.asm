@@ -8,7 +8,7 @@ VermilionDockObject:
 	db 0 ; signs
 
 	db 1 ; objects
-	object SPRITE_GIRL, 22, 0, WALK, 2, 2, OPP_JR_TRAINER_F, 24	;joenote - adding Seiga, the orange leage champ, special battle 
+	object SPRITE_SLOWBRO, 22, 0, STAY, DOWN, 1, MEW, 50
 	
 	; warp-to
 	warp_to 14, 0, VERMILION_DOCK_WIDTH

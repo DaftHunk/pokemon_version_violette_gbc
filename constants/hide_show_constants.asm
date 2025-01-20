@@ -238,6 +238,7 @@ const_value = 0
 	const HS_VERMILION_PKMN	      		  ; E5 ;joenote - a lazy pokemon replaces the bush blocking the gym
 	const HS_UNDPATHWE_MGENE			  ; E6 ;joenote - mgene pickup item
 	const HS_MUSEUM_TM12				  ; E7 ;joenote - moving water gun here
+	const HS_MEW_VERMILION_DOCK
 	const HS_POKEMON_TOWER_7F_JESSIE
 	const HS_POKEMON_TOWER_7F_JAMES
 	const HS_MT_MOON_B2F_JESSIE
