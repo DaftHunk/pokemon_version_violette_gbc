@@ -994,7 +994,7 @@ SafariZoneSecretHouseBlocks: INCBIN "maps/safarizonesecrethouse.blk"
 
 SECTION "bank13",ROMX,BANK[$13]
 
-TrainerPics::
+SECTION "Trainer Pics 1", ROMX
 YoungsterPic::     INCBIN "pic/trainer/youngster.pic"
 BugCatcherPic::    INCBIN "pic/trainer/bugcatcher.pic"
 LassPic::          INCBIN "pic/trainer/lass.pic"
@@ -1019,28 +1019,6 @@ TamerPic::         INCBIN "pic/trainer/tamer.pic"
 BirdKeeperPic::    INCBIN "pic/trainer/birdkeeper.pic"
 BlackbeltPic::     INCBIN "pic/trainer/blackbelt.pic"
 Rival1Pic::        INCBIN "pic/trainer/rival1.pic"
-ProfOakPic::       INCBIN "pic/trainer/prof.oak.pic"
-ChiefPic::		   ;INCBIN "pic/trainer/chief.pic"	;joenote - not enough rom space
-ScientistPic::     INCBIN "pic/trainer/scientist.pic"
-GiovanniPic::      INCBIN "pic/trainer/giovanni.pic"
-RocketPic::        INCBIN "pic/trainer/rocket.pic"
-CooltrainerMPic::  INCBIN "pic/trainer/cooltrainerm.pic"
-CooltrainerFPic::  INCBIN "pic/trainer/cooltrainerf.pic"
-BrunoPic::         INCBIN "pic/trainer/bruno.pic"
-BrockPic::         INCBIN "pic/trainer/brock.pic"
-MistyPic::         INCBIN "pic/trainer/misty.pic"
-LtSurgePic::       INCBIN "pic/trainer/lt.surge.pic"
-ErikaPic::         INCBIN "pic/ytrainer/erika.pic"	;joenote - use her yellow sprite to ditch the funerary clothes
-KogaPic::          INCBIN "pic/trainer/koga.pic"
-BlainePic::        INCBIN "pic/trainer/blaine.pic"
-SabrinaPic::       INCBIN "pic/trainer/sabrina.pic"
-GentlemanPic::     INCBIN "pic/trainer/gentleman.pic"
-Rival2Pic::        INCBIN "pic/trainer/rival2.pic"
-Rival3Pic::        INCBIN "pic/trainer/rival3.pic"
-LoreleiPic::       INCBIN "pic/trainer/lorelei.pic"
-ChannelerPic::     INCBIN "pic/trainer/channeler.pic"
-AgathaPic::        INCBIN "pic/trainer/agatha.pic"
-LancePic::         INCBIN "pic/trainer/lance.pic"
 
 ;joenote - moved to a different bank
 ;INCLUDE "data/mapHeaders/tradecenter.asm"
@@ -1135,6 +1113,33 @@ INCLUDE "engine/menu/prize_menu.asm"
 
 INCLUDE "engine/hidden_object_functions14.asm"
 
+SECTION "Trainer Pics 2", ROMX
+ProfOakPic::       INCBIN "pic/trainer/prof.oak.pic"
+ChiefPic::		   ;INCBIN "pic/trainer/chief.pic"	;joenote - not enough rom space
+ScientistPic::     INCBIN "pic/trainer/scientist.pic"
+GiovanniPic::      INCBIN "pic/trainer/giovanni.pic"
+RocketPic::        INCBIN "pic/trainer/rocket.pic"
+CooltrainerMPic::  INCBIN "pic/trainer/cooltrainerm.pic"
+CooltrainerFPic::  INCBIN "pic/trainer/cooltrainerf.pic"
+BrunoPic::         INCBIN "pic/trainer/bruno.pic"
+BrockPic::         INCBIN "pic/ytrainer/brock.pic"
+MistyPic::         INCBIN "pic/ytrainer/misty.pic"
+LtSurgePic::       INCBIN "pic/trainer/lt.surge.pic"
+ErikaPic::         INCBIN "pic/ytrainer/erika.pic"	;joenote - use her yellow sprite to ditch the funerary clothes
+KogaPic::          INCBIN "pic/trainer/koga.pic"
+BlainePic::        INCBIN "pic/trainer/blaine.pic"
+SabrinaPic::       INCBIN "pic/trainer/sabrina.pic"
+GentlemanPic::     INCBIN "pic/trainer/gentleman.pic"
+Rival2Pic::        INCBIN "pic/trainer/rival2.pic"
+Rival3Pic::        INCBIN "pic/trainer/rival3.pic"
+LoreleiPic::       INCBIN "pic/trainer/lorelei.pic"
+ChannelerPic::     INCBIN "pic/trainer/channeler.pic"
+AgathaPic::        INCBIN "pic/trainer/agatha.pic"
+LancePic::         INCBIN "pic/trainer/lance.pic"
+JaninePic::        INCBIN "pic/ytrainer/janine.pic"
+JennyPic::         INCBIN "pic/ytrainer/jenny.pic"
+JoyPic::           INCBIN "pic/ytrainer/joy.pic"
+JessieJamesPic::   INCBIN "pic/ytrainer/jessiejames.pic"
 
 SECTION "bank15",ROMX,BANK[$15]
 
@@ -1902,6 +1907,25 @@ INCLUDE "engine/battle/read_trainer_party.asm"
 INCLUDE "data/trainer_moves.asm"
 INCLUDE "data/trainer_parties.asm"
 
+INCLUDE "engine/items/tm_prices.asm"
+
+SECTION "bank2E",ROMX,BANK[$2E]	
+;gbcnote - This bank will hold the bg map attributes for the gameboy color among other stuff
+
+;include the bgmap files from pokemon yellow
+INCLUDE "data/bg_map_attributes.asm"
+INCLUDE "engine/bg_map_attributes.asm"
+
+INCLUDE "engine/gamefreak.asm"	;gbcnote - moved here to make space
+INCLUDE "engine/in_game_trades.asm"	;joenote - moved here to make space
+INCLUDE "engine/learn_move.asm"	;joenote - moved in order to have more space
+INCLUDE "engine/overworld/elevator.asm"	;joenote - moving this to make space
+
+INCLUDE "custom_functions/func_gamma.asm"
+INCLUDE "custom_functions/func_extra_menu.asm"
+INCLUDE "custom_functions/func_move_secrets.asm"
+INCLUDE "custom_functions/func_linkbattlecomms.asm"
+
 IF DEF(_FPLAYER)
 ;joenote - adding female trainer sprites
 	FPlayerCharacterTitleGraphics:   INCBIN "gfx/player_title_f.2bpp"
@@ -1926,25 +1950,6 @@ IF DEF(_FPLAYER)
 	RedFFishingTilesBack:  INCBIN "gfx/redF_fishing_tile_back.2bpp"
 	RedFFishingTilesSide:  INCBIN "gfx/redF_fishing_tile_side.2bpp"
 ENDC
-
-INCLUDE "engine/items/tm_prices.asm"
-
-SECTION "bank2E",ROMX,BANK[$2E]	
-;gbcnote - This bank will hold the bg map attributes for the gameboy color among other stuff
-
-;include the bgmap files from pokemon yellow
-INCLUDE "data/bg_map_attributes.asm"
-INCLUDE "engine/bg_map_attributes.asm"
-
-INCLUDE "engine/gamefreak.asm"	;gbcnote - moved here to make space
-INCLUDE "engine/in_game_trades.asm"	;joenote - moved here to make space
-INCLUDE "engine/learn_move.asm"	;joenote - moved in order to have more space
-INCLUDE "engine/overworld/elevator.asm"	;joenote - moving this to make space
-
-INCLUDE "custom_functions/func_gamma.asm"
-INCLUDE "custom_functions/func_extra_menu.asm"
-INCLUDE "custom_functions/func_move_secrets.asm"
-INCLUDE "custom_functions/func_linkbattlecomms.asm"
 
 SECTION "Pics 1", ROMX, BANK[PICS_1]
 INCLUDE "constants/pic_banks/pic1.asm"
