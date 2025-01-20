@@ -17,6 +17,7 @@ _VermilionCityText_198ac::
 
 	para "Il reviendra l'an"
 	line "prochain."
+	done
 
 _VermilionCityText_annereturns::	;joenote - added text
 	text "Did you see S.S."
