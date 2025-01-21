@@ -22,7 +22,7 @@ VermilionCityObject:
 	sign 27, 3, 14 ; VermilionCityText7	;joenote - reassigning to text pointer position 14
 
 	db 7 ; objects
-	object SPRITE_FOULARD_WOMAN, 19, 7, WALK, 2, 1 ; person
+	object SPRITE_GUARD, 19, 15, STAY, DOWN, 1 ; Jenny
 	object SPRITE_GAMBLER, 14, 6, STAY, NONE, 2 ; person
 	object SPRITE_SAILOR, 19, 30, STAY, UP, 3 ; person
 	object SPRITE_GAMBLER, 30, 7, STAY, NONE, 4 ; person

@@ -47,3 +47,5 @@ TrainerNames:
 	db "Agatha@"
 	db "Peter@"
 	db "Janine@"
+	db "Agent Jenny@"
+	db "Inf. Joelle@"

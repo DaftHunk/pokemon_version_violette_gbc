@@ -1384,6 +1384,8 @@ TrainerClassMoveChoiceModifications:
 	db 1,3,4,0    ; AGATHA
 	db 1,3,4,0  ; LANCE
 	db 1,3,4,0    ; JANINE
+	db 1,3,4,0  ; JENNY
+	db 1,3,4,0  ; JOY
 
 INCLUDE "engine/battle/trainer_pic_money_pointers.asm"
 
@@ -1525,6 +1527,8 @@ TrainerAIPointers:
 	dbw 2,AgathaAI ; agatha
 	dbw 2,LanceAI ; lance	;increased items from 1 to 2
 	dbw 3,GenericAI ; Janine
+	dbw 3,GenericAI ; Jenny
+	dbw 3,GenericAI ; Joy
 
 ;joenote - reorganizing these AI routines to jump on carry instead of returning on not-carry
 ;also adding recognition of a switch-pkmn bit

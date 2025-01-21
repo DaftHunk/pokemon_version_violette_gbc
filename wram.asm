@@ -2977,6 +2977,7 @@ wSilphCo10CurScript:: ; d658
 	ds 1
 wSilphCo11CurScript:: ; d659
 	ds 1
+wFuchsiaPokecenterCurScript::
 	ds 1
 wFuchsiaGymCurScript:: ; d65b
 	ds 1

@@ -1,9 +1,19 @@
-_VermilionCityText1::
-	text "La pollution,"
-	line "c'est mal!"
+_VermilionJennyBattleText1::
+	text "Hey toi! C'est toi"
+	line "qui revends de la"
+	cont "poudre soin non?"
+	done
 
-	para "On dit que Tadmorv"
-	line "se multiplie!"
+_VermilionJennyEndBattleText1::
+	text "J'ai dû"
+	line "me tromper,"
+	cont "circulez!"
+	prompt
+
+_VermilionJennyAfterBattleText1::
+	text "J'ai dû confondre"
+	line "avec quelqu'un"
+	cont "d'autre."
 	done
 
 _VermilionCityText_198a7::
@@ -149,3 +159,4 @@ _VermilionPKMNText::
 	line "a ship moored in"
 	cont "the harbor."
 	done
+	

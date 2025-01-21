@@ -3,6 +3,8 @@ FemaleTrainerList::
 	db OPP_JR_TRAINER_F
 	db OPP_BEAUTY
 	db OPP_COOLTRAINER_F
+	db OPP_JENNY
+	db OPP_JOY
 	db $FF
 
 EvilTrainerList::

@@ -68,6 +68,8 @@ TrainerNamePointers:
 	dw wTrainerName
 	dw wTrainerName
 	dw JanineName
+	dw JennyName
+	dw JoyName
 
 YoungsterName:
 	db "Gamin@"
@@ -113,3 +115,7 @@ CooltrainerFName:
 	db "TopDresseur♀@"
 JanineName:
 	db "Janine@"
+JennyName:
+	db "Agent Jenny@"
+JoyName:
+	db "Inf. Joelle@"

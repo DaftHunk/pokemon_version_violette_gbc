@@ -47,6 +47,8 @@ TrainerDataPointers:
 	dw AgathaData
 	dw LanceData
 	dw JanineData
+	dw JennyData
+	dw JoyData
 
 RosterLabelStart::
 ; if first byte != FF, then
@@ -799,3 +801,10 @@ JanineData:
 ; Fuchsia Gym
 	db 40,GOLBAT,VENOMOTH,NIDOQUEEN,0
 
+JennyData:
+; Vermilion City
+	db 65,PIDGEOT,BLASTOISE,TANGELA,GENGAR,PARASECT,ARCANINE,0
+
+JoyData:
+; Fuchsia Pokecenter
+	db 65,KANGASKHAN,SNORLAX,STARMIE,PORYGON,EXEGGUTOR,CHANSEY,0
