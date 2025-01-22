@@ -56,3 +56,4 @@ const_value = 1
 	trainer_const JANINE        ; $30
 	trainer_const JENNY         ; $30
 	trainer_const JOY           ; $30
+	trainer_const JESSIE_JAMES

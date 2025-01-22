@@ -49,6 +49,7 @@ TrainerDataPointers:
 	dw JanineData
 	dw JennyData
 	dw JoyData
+	dw JessieJamesData
 
 RosterLabelStart::
 ; if first byte != FF, then
@@ -808,3 +809,13 @@ JennyData:
 JoyData:
 ; Fuchsia Pokecenter
 	db 65,KANGASKHAN,SNORLAX,STARMIE,PORYGON,EXEGGUTOR,CHANSEY,0
+
+JessieJamesData:
+; Mt. Moon [B2F]
+	db 15,EKANS,MEOWTH,KOFFING,0
+; Rocket Hideout [B4F]
+	db 28,KOFFING,MEOWTH,ARBOK,0
+; PokemonTower [7F]
+	db $FF,33,MEOWTH,31,ARBOK,30,LICKITUNG,31,WEEZING,0
+; Silph Co. [11F]
+	db $FF,42,WEEZING,41,LICKITUNG,42,ARBOK,44,MEOWTH,43,VICTREEBEL,0

@@ -49,3 +49,4 @@ TrainerNames:
 	db "Janine@"
 	db "Agent Jenny@"
 	db "Inf. Joelle@"
+	db "Jessie James@"

@@ -756,5 +756,76 @@ SpecialTrainerMoves:
     db 6,4,DIG
 	db 0
 
+	db JESSIE_JAMES,1 ; db 15,EKANS,MEOWTH,KOFFING,0
+	db 1,1,LEER
+    db 1,2,POISON_STING
+    db 1,3,BITE
+    db 1,4,ACID
+    db 2,1,SCRATCH
+    db 2,2,GROWL
+    db 2,3,FURY_SWIPES
+    db 2,4,BITE
+    db 3,1,TACKLE
+    db 3,2,SMOG
+	db 0
+
+	db JESSIE_JAMES,2 ; db 28,KOFFING,MEOWTH,ARBOK,0
+	db 1,1,TACKLE
+    db 1,2,SMOG
+	db 1,3,ACID
+	db 1,4,SMOKESCREEN
+    db 2,1,BITE
+    db 2,2,PAY_DAY
+    db 2,3,SCREECH
+    db 2,4,TAKE_DOWN
+	db 3,1,BITE
+    db 3,2,ACID
+    db 3,3,SUBSTITUTE
+    db 3,4,GLARE
+	db 0
+
+	db JESSIE_JAMES,3 ; db $FF,33,MEOWTH,31,ARBOK,30,LICKITUNG,31,WEEZING,0
+	db 1,1,BITE
+    db 1,2,PAY_DAY
+    db 1,3,SCREECH
+    db 1,4,TAKE_DOWN
+    db 2,1,ACID
+    db 2,2,SUBSTITUTE
+    db 2,3,GLARE
+    db 2,4,SCREECH
+    db 3,1,STOMP
+    db 3,2,DISABLE
+	db 3,3,HEADBUTT
+	db 3,4,DEFENSE_CURL
+	db 4,1,TACKLE
+	db 4,2,SMOG
+	db 4,3,ACID
+	db 4,4,SMOKESCREEN
+	db 0
+
+
+	db JESSIE_JAMES,4 ; db $FF,42,WEEZING,41,LICKITUNG,42,ARBOK,44,MEOWTH,43,VICTREEBEL,0
+	db 1,1,SMOKESCREEN
+    db 1,2,SLUDGE_BOMB
+    db 1,3,AMNESIA
+    db 1,4,SELFDESTRUCT
+    db 2,1,HEADBUTT
+    db 2,2,DEFENSE_CURL
+    db 2,3,BODY_SLAM
+    db 2,4,SCREECH
+    db 3,1,GLARE
+    db 3,2,SCREECH
+	db 3,3,SLUDGE
+	db 3,4,WRAP
+	db 4,1,PAY_DAY
+	db 4,2,SCREECH
+	db 4,3,TAKE_DOWN
+	db 4,4,SLASH
+	db 5,1,ACID
+	db 5,2,RAZOR_LEAF
+	db 5,3,SLUDGE
+	db 5,4,WRAP
+	db 0
+
 	db $ff
 	
