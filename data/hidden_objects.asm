@@ -127,7 +127,7 @@ HiddenObjectPointers:
 	dw TradeCenterHiddenObjects
 	dw ColosseumHiddenObjects
 	dw ViridianForestHiddenObjects
-	dw MtMoon3HiddenObjects
+	dw MtMoonB2FHiddenObjects
 	dw IndigoPlateauHiddenObjects
 	dw Route22HiddenObjects		;joenote - added hidden item
 	dw Route25HiddenObjects	
@@ -547,7 +547,7 @@ ViridianForestHiddenObjects:
 	db $2a,$10,ANTIDOTE
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
-MtMoon3HiddenObjects:
+MtMoonB2FHiddenObjects:
 	db $0c,$12,MOON_STONE
 	dbw BANK(HiddenItems),HiddenItems
 	db $09,$21,ETHER

@@ -1,4 +1,4 @@
-MtMoon2Object:
+MtMoonB1FObject:
 	db $3 ; border block
 
 	db 8 ; warps
@@ -13,7 +13,9 @@ MtMoon2Object:
 
 	db 0 ; signs
 
-	db 0 ; objects
+	db 2 ; objects
+	object SPRITE_ROCKET, 23, 2, STAY, DOWN, 1, OPP_JESSIE_JAMES, 1
+	object SPRITE_ROCKET, 24, 3, STAY, RIGHT, 2 ; James
 
 	; warp-to
 	warp_to 5, 5, MT_MOON_B1F_WIDTH ; MT_MOON_1F

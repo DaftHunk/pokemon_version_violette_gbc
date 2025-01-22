@@ -59,9 +59,9 @@ MapHeaderPointers::
 	dw PewterMart_h
 	dw PewterHouse2_h
 	dw PewterPokecenter_h
-	dw MtMoon1_h
-	dw MtMoon2_h ;id=60
-	dw MtMoon3_h
+	dw MtMoon1F_h
+	dw MtMoonB1F_h ;id=60
+	dw MtMoonB2F_h
 	dw CeruleanHouseTrashed_h
 	dw CeruleanHouse1_h
 	dw CeruleanPokecenter_h

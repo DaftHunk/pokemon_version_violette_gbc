@@ -1,4 +1,4 @@
-MtMoon3Object:
+MtMoonB2FObject:
 	db $3 ; border block
 
 	db 4 ; warps

@@ -2840,9 +2840,11 @@ wRoute9CurScript:: ; d604
 	ds 1
 wRoute10CurScript:: ; d605
 	ds 1
-wMtMoon1CurScript:: ; d606
+wMtMoon1FCurScript:: ; d606
 	ds 1
-wMtMoon3CurScript:: ; d607
+wMtMoonB1FCurScript::
+	ds 1
+wMtMoonB2FCurScript:: ; d607
 	ds 1
 wSSAnne8CurScript:: ; d608
 	ds 1

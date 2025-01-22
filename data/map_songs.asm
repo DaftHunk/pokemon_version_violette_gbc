@@ -58,9 +58,9 @@ MapSongBanks:
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; PewterMart
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; PewterHouse2
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; PewterPokecenter
-	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; MtMoon1
-	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; MtMoon2
-	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; MtMoon3
+	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; MtMoon1F
+	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; MtMoonB1F
+	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; MtMoonB2F
 	db MUSIC_CITIES2, BANK(Music_Cities2) ; CeruleanHouseTrashed
 	db MUSIC_CITIES2, BANK(Music_Cities2) ; CeruleanHouse1
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; CeruleanPokecenter

@@ -1,27 +1,27 @@
-_MtMoon3Text_49f24::
+_MtMoonB2FText_49f24::
 	text "Tu veux le"
 	line "fossile Dôme?"
 	done
 
-_MtMoon3Text_49f64::
+_MtMoonB2FText_49f64::
 	text "Tu veux le"
 	line "fossile Nautile?"
 	done
 
-_MtMoon3Text_49f6f::
+_MtMoonB2FText_49f6f::
 	text "<PLAYER> obtient"
 	line "@"
 	text_ram wStringBuffer
 	text "!@"
 	text_end
 
-_MtMoon3Text_49f7f::
+_MtMoonB2FText_49f7f::
 	text "Attends, ton"
 	line "inventaire est"
 	cont "plein!@"
 	text_end
 
-_MtMoon3Text_49f85::
+_MtMoonB2FText_49f85::
 	text "Hep! Toi là!"
 
 	para "Ces fossiles sont"
@@ -29,18 +29,18 @@ _MtMoon3Text_49f85::
 	cont "Pas touche!"
 	done
 
-_MtMoon3Text_49f8a::
+_MtMoonB2FText_49f8a::
 	text "Bon, OK!"
 	line "On partage!"
 	prompt
 
-_MtMoon3Text_49f8f::
+_MtMoonB2FText_49f8f::
 	text "Chacun le sien!"
 	line "Comme ça,"
 	cont "pas de jaloux!"
 	done
 
-_MtMoon3Text_49f94::
+_MtMoonB2FText_49f94::
 	text "Loin d'ici, sur"
 	line "la Cramois'Ile,"
 	cont "se trouve un"
@@ -52,12 +52,12 @@ _MtMoon3Text_49f94::
 	cont "#mon."
 	done
 
-_MtMoon3Text_49f99::
+_MtMoonB2FText_49f99::
 	text "OK, je prends"
 	line "celui-ci!@"
 	text_end
 
-_MtMoon3BattleText2::
+_MtMoonB2FBattleText2::
 	text "La Team Rocket"
 	line "trouvera les "
 	cont "fossiles et fera"
@@ -65,68 +65,68 @@ _MtMoon3BattleText2::
 	cont "vendant!"
 	done
 
-_MtMoon3EndBattleText2::
+_MtMoonB2FEndBattleText2::
 	text "Grrr!"
 	line "J'suis vert!"
 	prompt
 
-_MtMoon3AfterBattleText2::
+_MtMoonB2FAfterBattleText2::
 	text "A cause de toi"
 	line "j'suis vert!"
 	cont "La Team Rocket me"
 	cont "vengera!"
 	done
 
-_MtMoon3BattleText3::
+_MtMoonB2FBattleText3::
 	text "La Team Rocket?"
 	line "C'est nous!"
 	cont "Les voleurs de"
 	cont "#mon!"
 	done
 
-_MtMoon3EndBattleText3::
+_MtMoonB2FEndBattleText3::
 	text "NOOOONNN!"
 	line "J'ai perdu!"
 	prompt
 
-_MtMoon3AfterBattleText3::
+_MtMoonB2FAfterBattleText3::
 	text "Hein? Mes"
 	line "compagnons vont"
 	cont "me venger!"
 	done
 
-_MtMoon3BattleText4::
+_MtMoonB2FBattleText4::
 	text "Ca bosse dur"
 	line "ici!"
 	cont "Alors du balai,"
 	cont "le mouflet!"
 	done
 
-_MtMoon3EndBattleText4::
+_MtMoonB2FEndBattleText4::
 	text "OK,"
 	line "t'es pas mauvais!"
 	prompt
 
-_MtMoon3AfterBattleText4::
+_MtMoonB2FAfterBattleText4::
 	text "Si tu trouves un"
 	line "fossile, tu me le"
 	cont "donnes et tu"
 	cont "décampes, pigé?"
 	done
 
-_MtMoon3BattleText5::
+_MtMoonB2FBattleText5::
 	text "Les p'tits gamins"
 	line "ne s'occupent pas"
 	cont "des affaires"
 	cont "des grands!"
 	done
 
-_MtMoon3EndBattleText5::
+_MtMoonB2FEndBattleText5::
 	text "..."
 	line "J'suis épuisé!"
 	prompt
 
-_MtMoon3AfterBattleText5::
+_MtMoonB2FAfterBattleText5::
 	text "Les #mon"
 	line "existaient bien"
 	cont "avant l'homme..."
