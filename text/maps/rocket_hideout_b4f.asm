@@ -1,3 +1,4 @@
+
 _RocketHideout4Text_4557a::
 	text "Hmm! Tu me"
 	line "surprends. T'es"
@@ -29,37 +30,49 @@ _RocketHideout4Text_45584::
 	done
 
 _RocketHideout4BattleText2::
-	text "Je te reconnais!"
-	line "Tu as ruiné nos"
-	cont "plans sur le"
-	cont "Mont Sélénite!"
+	text "James: Pas bouger,"
+	line "morveux!"
+
+	para "Jessie: Comment"
+	line "as-tu osé nous"
+	cont "humilier au Mont"
+	cont "Sélénite? Cette"
+	cont "fois tu vas"
+	cont "prendre cher!"
 	done
 
 _RocketHideout4EndBattleText2::
-	text "Enfer!"
-	line "Et encore enfer!"
+	text "..."
+	line "T'es terrible!"
 	prompt
 
 _RocketHide4AfterBattleText2::
-	text "Je comprends pas,"
-	line "t'aimes pas la"
-	cont "Team Rocket?"
+	text "La Team Rocket..."
+	line "A la vitesse"
+	cont "du son..."
 	done
 
 _RocketHideout4BattleText3::
-	text "Tu ne trouves pas"
-	line "que nos plans"
-	cont "maléfiques sont"
-	cont "super cool?"
+	text "James: Pas bouger,"
+	line "morveux!"
+
+	para "Jessie: Comment"
+	line "as-tu osé nous"
+	cont "humilier au Mont"
+	cont "Sélénite? Cette"
+	cont "fois tu vas"
+	cont "prendre cher!"
 	done
 
 _RocketHideout4EndBattleText3::
-	text "Ayayargh!"
+	text "..."
+	line "T'es terrible!"
 	prompt
 
 _RocketHide4AfterBattleText3::
-	text "CHEF! Pardon!"
-	line "J'ai échoué..."
+	text "La Team Rocket..."
+	line "A la vitesse"
+	cont "du son..."
 	done
 
 _RocketHideout4BattleText4::

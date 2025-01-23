@@ -15,14 +15,33 @@ RocketHideout4Script_45473:
 	ret z
 	CheckEvent EVENT_ROCKET_HIDEOUT_B4F_DOOR_UNLOCKED
 	jr nz, .asm_45496
-	CheckBothEventsSet EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_0, EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_1, 1
-	jr z, .asm_4548c
+;	CheckBothEventsSet EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_0, EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_1, 1
+	CheckEvent EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_0
+	jr nz, .asm_4548c
 	ld a, $2d
 	jr .asm_45498
 .asm_4548c
+	; Display RocketHideout4AfterBattleText2
+	ld a, $b
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	; Open the door
 	ld a, SFX_GO_INSIDE
 	call PlaySound
 	SetEvent EVENT_ROCKET_HIDEOUT_B4F_DOOR_UNLOCKED
+	; Jessie James hide
+	call GBFadeOutToBlack
+	ld a, HS_ROCKET_HIDEOUT_B4F_JESSIE
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_ROCKET_HIDEOUT_B4F_JAMES
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	call UpdateSprites
+	call Delay3
+	call GBFadeInFromBlack
+	ld [hJoyHeld], a
+	ld [wJoyIgnore], a
 .asm_45496
 	ld a, $e
 .asm_45498
@@ -84,10 +103,11 @@ RocketHideout4TextPointers:
 	dw PickUpItemText
 	dw PickUpItemText
 	dw RocketHideout4Text10
+	dw RocketHideout4AfterBattleText2
 
 RocketHideout4TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_0
-	db ($0 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_0
 	dw RocketHideout4BattleText2 ; TextBeforeBattle
 	dw RocketHideout4AfterBattleText2 ; TextAfterBattle

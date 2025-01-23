@@ -15,7 +15,7 @@ MtMoonB1FObject:
 
 	db 2 ; objects
 	object SPRITE_ROCKET, 23, 2, STAY, DOWN, 1, OPP_JESSIE_JAMES, 1
-	object SPRITE_ROCKET, 24, 3, STAY, RIGHT, 2, OPP_JESSIE_JAMES, 1 ; James
+	object SPRITE_ROCKET, 24, 3, STAY, LEFT, 2, OPP_JESSIE_JAMES, 1 ; James
 
 	; warp-to
 	warp_to 5, 5, MT_MOON_B1F_WIDTH ; MT_MOON_1F
