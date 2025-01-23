@@ -72,19 +72,25 @@ _PokemonTower7AfterBattleText2::
 	line "de nos affaires!"
 	done
 
-_PokemonTower7BattleText3::
-	text "Y'a personne à"
-	line "sauver ici!"
+_PokemonTower7BattleTextJessieJames::
+	text "James: Pas"
+	line "bouger !"
+	para "Jessie: Le vieux"
+	line "s'est plaint alors"
+	cont "on l'a enfermé !"
+
+	para "Alors toi, fais"
+	line "cou-couche panier"
+	cont "ou bobo la tête !"
 	done
 
-_PokemonTower7EndBattleText3::
-	text "Hmm!"
-	line "N'affronte pas la"
-	cont "Team Rocket!"
+_PokemonTower7EndBattleTextJessieJames::
+	text "..."
+	line "... Tu vas voir!"
 	prompt
 
-_PokemonTower7AfterBattleText3::
-	text "Tu ne t'en"
-	line "sortiras pas"
-	cont "comme ça!"
+_PokemonTower7AfterBattleTextJessieJames::
+	text "Team Rocket..."
+	line "A la vitesse"
+	cont "d'un gros vélo..."
 	done

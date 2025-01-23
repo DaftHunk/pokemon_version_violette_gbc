@@ -65,7 +65,7 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw MtMoon1FHS
-	dw NoHS
+	dw MtMoonB1FHS
 	dw MtMoonB2FHS
 	dw NoHS
 	dw NoHS
@@ -366,6 +366,7 @@ PokemonTower7FHS:
 	db POKEMONTOWER_7F,$02,Show
 	db POKEMONTOWER_7F,$03,Show
 	db POKEMONTOWER_7F,$04,Show
+	db POKEMONTOWER_7F,$05,Show ; James
 MrFujisHouseHS:
 	db MR_FUJIS_HOUSE,$05,Hide
 CeladonMansionRoofHouseHS:
@@ -419,6 +420,9 @@ MtMoon1FHS:
 	db MT_MOON_1F,$0B,Show
 	db MT_MOON_1F,$0C,Show
 	db MT_MOON_1F,$0D,Show
+MtMoonB1FHS:
+	db MT_MOON_B1F,$01,Show ; Jessie
+	db MT_MOON_B1F,$02,Show ; James
 MtMoonB2FHS:
 	db MT_MOON_B2F,$06,Show
 	db MT_MOON_B2F,$07,Show
@@ -585,5 +589,5 @@ Museum2FHS:
 	db MUSEUM_2F,$06,Show	;joenote - added water gun tm to museum 2f
 VermilionDockHS:
 	db VERMILION_DOCK, $01, Hide
-	
+
 	db $FF,$01,Show

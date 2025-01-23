@@ -22,6 +22,12 @@ PokemonTower7ScriptPointers:
 	dw PokemonTower7Script4
 
 PokemonTower7Script2:
+;	ld a, HS_POKEMONTOWER_7F_JAMES
+;	ld [wMissableObjectIndex], a
+;	predef ShowObject
+;	call UpdateSprites
+;	call Delay3
+
 	ld hl, wFlags_0xcd60
 	res 0, [hl]
 	ld a, [wIsInBattle]
@@ -34,10 +40,28 @@ PokemonTower7Script2:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	call PokemonTower7Script_60db6
+	CheckEvent EVENT_BEAT_POKEMONTOWER_7F_JESSIE_JAMES
+	jr nz, .hideJessieJames
+	jr .done
+.hideJessieJames
+	call GBFadeOutToBlack
+	ld a, HS_POKEMONTOWER_7F_ROCKET_3
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_POKEMONTOWER_7F_JAMES
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	call UpdateSprites
+	call Delay3
+	call GBFadeInFromBlack
+	ld [hJoyHeld], a
+	ld [wJoyIgnore], a
+	jr .done
+.done
 	ld a, $3
 	ld [wPokemonTower7CurScript], a
 	ld [wCurMapScript], a
-	ret
+	ret	
 
 PokemonTower7Script3:
 	ld a, [wd730]
@@ -203,7 +227,7 @@ MovementData_60e37:
 PokemonTower7TextPointers:
 	dw PokemonTower7Text1
 	dw PokemonTower7Text2
-	dw PokemonTower7Text3
+	dw PokemonTower7TextJessieJames
 	dw PokemonTower7FujiText
 
 PokemonTower7TrainerHeader0:
@@ -224,14 +248,14 @@ PokemonTower7TrainerHeader1:
 	dw PokemonTower7EndBattleText2 ; TextEndBattle
 	dw PokemonTower7EndBattleText2 ; TextEndBattle
 
-PokemonTower7TrainerHeader2:
-	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_7F_TRAINER_2
+PokemonTower7TrainerHeaderJessieJames:
+	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_7F_JESSIE_JAMES
 	db ($3 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_7F_TRAINER_2
-	dw PokemonTower7BattleText3 ; TextBeforeBattle
-	dw PokemonTower7AfterBattleText3 ; TextAfterBattle
-	dw PokemonTower7EndBattleText3 ; TextEndBattle
-	dw PokemonTower7EndBattleText3 ; TextEndBattle
+	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_7F_JESSIE_JAMES
+	dw PokemonTower7BattleTextJessieJames ; TextBeforeBattle
+	dw PokemonTower7AfterBattleTextJessieJames ; TextAfterBattle
+	dw PokemonTower7EndBattleTextJessieJames ; TextEndBattle
+	dw PokemonTower7EndBattleTextJessieJames ; TextEndBattle
 
 	db $ff
 
@@ -247,9 +271,9 @@ PokemonTower7Text2:
 	call TalkToTrainer
 	jp TextScriptEnd
 
-PokemonTower7Text3:
+PokemonTower7TextJessieJames:
 	TX_ASM
-	ld hl, PokemonTower7TrainerHeader2
+	ld hl, PokemonTower7TrainerHeaderJessieJames
 	call TalkToTrainer
 	jp TextScriptEnd
 
@@ -301,14 +325,14 @@ PokemonTower7AfterBattleText2:
 	TX_FAR _PokemonTower7AfterBattleText2
 	db "@"
 
-PokemonTower7BattleText3:
-	TX_FAR _PokemonTower7BattleText3
+PokemonTower7BattleTextJessieJames:
+	TX_FAR _PokemonTower7BattleTextJessieJames
 	db "@"
 
-PokemonTower7EndBattleText3:
-	TX_FAR _PokemonTower7EndBattleText3
+PokemonTower7EndBattleTextJessieJames:
+	TX_FAR _PokemonTower7EndBattleTextJessieJames
 	db "@"
 
-PokemonTower7AfterBattleText3:
-	TX_FAR _PokemonTower7AfterBattleText3
+PokemonTower7AfterBattleTextJessieJames:
+	TX_FAR _PokemonTower7AfterBattleTextJessieJames
 	db "@"

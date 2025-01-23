@@ -74,6 +74,7 @@ const_value = 0
 	const HS_POKEMONTOWER_7F_ROCKET_2      ; 41 X
 	const HS_POKEMONTOWER_7F_ROCKET_3      ; 42 X
 	const HS_POKEMONTOWER_7F_MR_FUJI       ; 43
+	const HS_POKEMONTOWER_7F_JAMES
 	const HS_MR_FUJIS_HOUSE_MR_FUJI     ; 44
 	const HS_CELADON_MANSION_ROOF_HOUSE_GIFT       ; 45
 	const HS_GAME_CORNER_ROCKET           ; 46
@@ -115,10 +116,12 @@ const_value = 0
 	const HS_MT_MOON_1F_ITEM_4             ; 6A X
 	const HS_MT_MOON_1F_ITEM_5             ; 6B X
 	const HS_MT_MOON_1F_ITEM_6             ; 6C X
+	const HS_MT_MOON_B1F_JESSIE
+	const HS_MT_MOON_B1F_JAMES
 	const HS_MT_MOON_B2F_FOSSIL_1           ; 6D
 	const HS_MT_MOON_B2F_FOSSIL_2           ; 6E
 	const HS_MT_MOON_B2F_ITEM_1             ; 6F X
-	const HS_MT_MOON_B2F_ITEM_2             ; 70 X
+	const HS_MT_MOON_B2F_ITEM_2             ; 70 X	
 	const HS_SS_ANNE_2F_RIVAL              ; 71
 	const HS_SS_ANNE_1F_ROOMS_ITEM               ; 72 X
 	const HS_SS_ANNE_2F_ROOMS_ITEM_1             ; 73 X
@@ -239,11 +242,3 @@ const_value = 0
 	const HS_UNDPATHWE_MGENE			  ; E6 ;joenote - mgene pickup item
 	const HS_MUSEUM_TM12				  ; E7 ;joenote - moving water gun here
 	const HS_MEW_VERMILION_DOCK
-	const HS_POKEMON_TOWER_7F_JESSIE
-	const HS_POKEMON_TOWER_7F_JAMES
-	const HS_MT_MOON_B2F_JESSIE
-	const HS_MT_MOON_B2F_JAMES
-	const HS_ROCKET_HIDEOUT_B4F_JAMES
-	const HS_ROCKET_HIDEOUT_B4F_JESSIE
-	const HS_SILPH_CO_11F_JAMES
-	const HS_SILPH_CO_11F_JESSIE
