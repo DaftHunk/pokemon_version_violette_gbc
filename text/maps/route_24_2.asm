@@ -27,7 +27,7 @@ ENDC
 
 _Route24EndBattleText2::
 IF DEF(_JPTXT)	;joenote - dirty joke lost in translation
-	text "Ouah!"
+	text "Ah!"
 	line "Tu es trop"
 	cont "sauvage pour moi!"
 ELSE
@@ -117,8 +117,8 @@ _Route24BattleText6::
 	cont "pont! Bats-nous"
 IF DEF(_JPTXT)	;joenote - dirty joke lost in translation
 	cont "et gagne une"
-	cont "surprise du sac"
-	cont "de pépites!"
+	cont "surprise venant"
+	cont "de nos bourses!"
 ELSE
 	cont "et tu seras"
 	cont "super content!"

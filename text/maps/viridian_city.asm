@@ -61,10 +61,13 @@ _ViridianCityText_1917a::
 	done
 
 _ViridianCityText_19191::
-	text "Passage..."
-	line "INTERDIT!"
-
-	para "Propriété privée!"
+	text "Pachage..."
+	line "INTERDIT! Hips"
+	cont "...heho!"
+	cont "Ecoute moi bien..."
+	para "Ch'est une pripro"
+	line "... Une propro..."
+	cont "Priproété privée!"
 	done
 
 _ViridianCityText_191ca::
