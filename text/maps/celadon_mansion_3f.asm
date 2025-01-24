@@ -40,14 +40,15 @@ _CompletedDexText::
 	line "Tu as complété"
 	cont "ton #dex!"
 	cont "Félicitations!"
-	cont "...@"
-	text_end
+	cont "..."
+	done
 
 _CeladonMansion3Text5::
 	text "Le programme"
 	line "du jeu! Si tu y"
 	cont "touches, tout va"
 	cont "planter!"
+	cont "Daft: trop tard!"
 	done
 
 _CeladonMansion3Text6::
@@ -64,4 +65,25 @@ _CeladonMansion3Text7::
 _CeladonMansion3Text8::
 	text "GAME FREAK"
 	line "Développement"
+	done
+
+_ReceivedSurfboard::
+	text "<PLAYER> reçoit"
+	line "@"
+	text_ram wStringBuffer
+	text "!@"
+	text_end
+
+_SurfboardText::
+	text_start
+
+	para "La Planche de surf"
+	line "te permet de"
+	cont "surfer sans"
+	cont "#mon!"
+	done
+
+_SurfboardNoRoomText::
+	text "Ton inventaire"
+	line "est plein."
 	done

@@ -10,6 +10,8 @@ CeladonMansion3TextPointers:
 	dw GameFreakPCText2
 	dw GameFreakPCText3
 	dw GameFreakSignText
+	dw SurfboardText
+	dw SurfboardNoRoomText
 
 ProgrammerText:
 	TX_FAR _ProgrammerText
@@ -43,17 +45,45 @@ DirectorText:
 
 .GameDesigner
 	TX_FAR _GameDesignerText
-	db "@"
+	db "@"	
 
 .CompletedDexText
 	TX_FAR _CompletedDexText
-	TX_BLINK
+	TX_BLINK	
 	TX_ASM
 	callab DisplayDiploma
+	
 	SetEvent EVENT_90B	;joenote - set event that diploma has been attained
+
+	;dafthunk : Added award #53
+	lb bc, SURFBOARD, 1
+	call GiveItem
+	jr nc, .BagFull
+	ld a, $9
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
+
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	jp TextScriptEnd
+
+.BagFull
+	ld a, $a
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	ld a, $1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	jp TextScriptEnd
+
+SurfboardText:
+	TX_FAR _ReceivedSurfboard
+	TX_SFX_ITEM_1
+	TX_FAR _SurfboardText
+	db "@"
+
+SurfboardNoRoomText:
+	TX_FAR _SurfboardNoRoomText
+	db "@"
 
 GameFreakPCText1:
 	TX_FAR _CeladonMansion3Text5
