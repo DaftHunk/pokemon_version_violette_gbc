@@ -31,7 +31,7 @@ TriAttackEffect_:
 	call GetStatusAnimation
 	ld [wAnimationID], a
 	callab PlayBattleAnimationGotID
-	jpab BurnedText
+;	jpab BurnedText
 .freeze
 	ld a, b
 	cp 52 ; 26/256 chance of result being 26-51 (10.1%)
@@ -61,7 +61,7 @@ TriAttackEffect_:
 	call GetStatusAnimation
 	ld [wAnimationID], a
 	callab PlayBattleAnimationGotID
-	jpab PrintMayNotAttackText
+;   jpab PrintMayNotAttackText
 
 GetStatusAnimation:
 	ldh a, [H_WHOSETURN]
