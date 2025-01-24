@@ -4,7 +4,7 @@ _Route22GateText_1e704::
 	cont "passer."
 
 	para "Tu n'as pas le"
-	line "BADGE ROCHE!@"
+	line "Badge Roche!@"
 	text_end
 
 _Route22GateText_1e715::
@@ -18,6 +18,6 @@ _Route22GateText_1e715::
 
 _Route22GateText_1e71a::
 	text "Oh! Tu as le"
-	line "BADGE ROCHE!"
+	line "Badge Roche!"
 	cont "Tu peux passer!@"
 	text_end

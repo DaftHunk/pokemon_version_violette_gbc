@@ -48,7 +48,7 @@ _SilphCoMasterBallNoRoomText::
 	done
 
 _SilphCo11Text2::
-	text "SECRETAIRE: Merci"
+	text "Secrétaire: Merci"
 	line "de nous avoir"
 	cont "tous sauvés!"
 

@@ -39,7 +39,7 @@ _Route6AfterBattleText3::
 	text "Les insectes"
 	line "j'aime ça, je"
 	cont "retourne dans la"
-	cont "FORET DE JADE."
+	cont "Forêt de Jade."
 	done
 
 _Route6BattleText4::
@@ -93,7 +93,7 @@ _Route6AfterBattleText6::
 	done
 
 _Route6Text7::
-	text "SOUTERRAIN"
+	text "Souterrain"
 	line "Carmin sur mer -"
 	cont "Azuria"
 	done

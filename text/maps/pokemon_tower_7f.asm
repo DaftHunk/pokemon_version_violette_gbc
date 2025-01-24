@@ -24,7 +24,7 @@ _TowerRescueFujiText::
 
 	para "Viens avec moi"
 	line "dans ma maison,"
-	cont "la MAISON #mon"
+	cont "la Maison #mon"
 	cont "au pied de cette"
 	cont "tour."
 	done

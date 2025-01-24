@@ -110,7 +110,7 @@ _Route19EndBattleText7::
 
 _Route19AfterBattleText7::
 	text "C'est loin les"
-	line "ILES ECUME!"
+	line "Iles Ecume!"
 	done
 
 _Route19BattleText8::
@@ -125,8 +125,8 @@ _Route19EndBattleText8::
 _Route19AfterBattleText8::
 	text "Mon p'tit copain"
 	line "veut nager"
-	cont "jusqu'aux ILES"
-	cont "ECUME."
+	cont "jusqu'aux Iles"
+	cont "Ecume."
 	done
 
 _Route19BattleText9::
@@ -165,5 +165,5 @@ _Route19AfterBattleText10::
 _Route19Text11::
 	text "Route 19"
 	line "Parmanie -"
-	cont "ILES ECUME"
+	cont "Iles Ecume"
 	done

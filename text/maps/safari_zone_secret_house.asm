@@ -26,7 +26,7 @@ _ReceivedHM03Text::
 	text_end
 
 _HM03ExplanationText::
-	text "CS03 est SURF!"
+	text "CS03 est Surf!"
 
 	para "Un #mon pourra"
 	line "te faire naviguer"

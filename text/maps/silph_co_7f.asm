@@ -44,15 +44,15 @@ _LaprasGuySavedText::
 _SilphCo7Text_51e00::
 	text "La Team Rocket"
 	line "voulait s'emparer"
-	cont "de la MASTER BALL"
+	cont "de la Master Ball"
 	cont "pouvant attraper"
 	cont "n'importe quel"
 	cont "#mon!"
 	done
 
 _CanceledMasterBallText::
-	text "Le projet MASTER"
-	line "BALL fut annulé"
+	text "Le projet Master"
+	line "Ball fut annulé"
 	cont "à cause de la"
 	cont "Team Rocket."
 	done
@@ -169,7 +169,7 @@ _SilphCo7Text_51ec3::
 	cont "Quel dommage!"
 
 	para "Je t'ai vu à"
-	line "SAFRANIA. Es-tu"
+	line "Safrania. Es-tu"
 	cont "toujours aussi"
 	cont "nul?"
 	done

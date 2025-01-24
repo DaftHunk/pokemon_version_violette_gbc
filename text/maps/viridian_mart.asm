@@ -1,6 +1,6 @@
 _ViridianMartText1::
 	text "Cool! Tu diras"
-	line "bonjour au PROF."
+	line "bonjour au Prof."
 	cont "Chen de ma part!"
 	done
 
@@ -11,7 +11,7 @@ _ViridianMartText4::
 
 ViridianMartParcelQuestText::
 	text "Tu connais le"
-	line "PROF. Chen?"
+	line "Prof. Chen?"
 
 	para "Sa commande vient"
 	line "d'arriver."
@@ -24,12 +24,12 @@ ViridianMartParcelQuestText::
 
 _ViridianMartText2::
 	text "On vend des"
-	line "ANTIDOTES dans"
+	line "Antidotes dans"
 	cont "cette boutique."
 	done
 
 _ViridianMartText3::
-	text "Plus de POTIONS!"
+	text "Plus de Potions!"
 	line "Nous sommes en"
 	cont "rupture de stock."
 	done

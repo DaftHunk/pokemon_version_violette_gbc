@@ -3,7 +3,7 @@ _BlaineBattleText::
 
 	para "Mon nom est..."
 	line "Auguste! Je suis"
-	cont "le CHAMPION de"
+	cont "le Champion de"
 	cont "l'Arène de"
 	cont "Cramois'Ile!"
 
@@ -14,7 +14,7 @@ _BlaineBattleText::
 
 	para "Haha! J'espère"
 	line "que tu as de"
-	cont "l'ANTI-BRULE!"
+	cont "l'Anti-Brûle!"
 	cont "Y va bientôt"
 	cont "faire très chaud!"
 	done
@@ -25,11 +25,11 @@ _BlaineEndBattleText::
 	cont "vaporiser!"
 
 	para "Tu as gagné le"
-	line "BADGE VOLCAN!@"
+	line "Badge Volcan!@"
 	text_end
 
 _BlaineFireBlastText::
-	text "DEFLAGRATION est"
+	text "Déflagration est"
 	line "la technique de"
 	cont "feu ultime!"
 
@@ -42,9 +42,9 @@ _BlaineFireBlastText::
 _BlaineBadgeText::
 	text "Haha!"
 
-	para "Le BADGE VOLCAN"
+	para "Le Badge Volcan"
 	line "augmente le"
-	cont "SPECIAL de tes"
+	cont "Spécial de tes"
 	cont "#mon!"
 
 	para "Prends ça aussi!"
@@ -240,7 +240,7 @@ _CinnabarGymText_75ac2::
 	cont "l'eau sur le feu!"
 
 	para "Prends donc des"
-	line "ANTI-BRULE avec"
+	line "Anti-Brûle avec"
 	cont "toi! Ca peut"
 	cont "toujours servir!"
 	done

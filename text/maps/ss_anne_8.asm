@@ -107,7 +107,7 @@ _SSAnne8Text9::
 
 _SSAnne8Text11::
 	text "Pst! Je suis de"
-	line "l'INTERPOLICE!"
+	line "l'Interpolice!"
 
 	para "Je suis sur la"
 	line "trace de la"

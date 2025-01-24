@@ -14,9 +14,9 @@ _SchoolText2::
 
 ;joenote - added more explanation
 _SchoolText3::
-	text "ABIME."
-	para "EMPAL'KORNE."
-	para "GUILLOTINE."
+	text "Abîme."
+	para "Empal'Korne."
+	para "Guillotine."
 
 	para "Ces attaques"
 	line "peuvent mettre"

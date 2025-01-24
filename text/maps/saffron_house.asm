@@ -13,16 +13,16 @@ _SaffronHouse1Text2::
 	text_end
 
 _SaffronHouse1Text3::
-	text "La COPIEUSE est"
+	text "La Copieuse est"
 	line "mignonne! Je vais"
 	cont "lui offrir une"
-	cont "#POUPEE!"
+	cont "#Poupée!"
 	done
 
 _SaffronHouse1Text4::
 	text "J'ai reçu comme"
 	line "récompense un"
-	cont "PP PLUS."
+	cont "PP Plus."
 
 	para "Je l'ai utilisé"
 	line "pour augmenter"

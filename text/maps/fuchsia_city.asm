@@ -17,14 +17,14 @@ _FuchsiaCityText2::
 	done
 
 _FuchsiaCityText3::
-	text "NICO: Mais où est"
-	line "JULIA? Elle est"
+	text "Nico: Mais où est"
+	line "Julia? Elle est"
 	cont "tout l'temps à la"
 	cont "bourre."
 	done
 
 _FuchsiaCityText4::
-	text "Cette BALL est"
+	text "Cette Ball est"
 	line "vraiment un"
 	cont "#mon."
 	done
@@ -50,7 +50,7 @@ _FuchsiaCityText16::
 	done
 
 _FuchsiaCityText17::
-	text "LE PARADIS DES"
+	text "Le Paradis des"
 	line "#mon"
 	cont "Parc Safari"
 	done

@@ -87,9 +87,9 @@ _ViridianForestText9::
 	done
 
 _ViridianForestText10::
-	text "L'ANTIDOTE vendu"
+	text "L'Antidote vendu"
 	line "dans les"
-	cont "BOUTIQUES PKMN"
+	cont "Boutiques #mon"
 	cont "guérit du poison."
 	done
 
@@ -126,8 +126,8 @@ _ViridianForestText13::
 	done
 
 _ViridianForestText14::
-	text "VOUS QUITTEZ LA"
-	line "FORET DE JADE."
-	cont "VOUS ALLEZ VERS"
+	text "Vous quittez la"
+	line "Forêt de Jade."
+	cont "Vous allez vers"
 	cont "Argenta."
 	done

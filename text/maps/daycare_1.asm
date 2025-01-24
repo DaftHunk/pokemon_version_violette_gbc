@@ -1,6 +1,6 @@
 _DayCareIntroText::
 	text "Je m'occupe de la"
-	line "PENSION. Veux-tu"
+	line "Pension. Veux-tu"
 	cont "que j'élève un de"
 	cont "tes #mon?"
 	done

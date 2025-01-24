@@ -19,7 +19,7 @@ _ViridianCityText_19122::
 	done
 
 _ViridianCityText_19127::
-	text "Le CHAMPION de"
+	text "Le Champion de"
 	line "l'Arène de"
 	cont "Jadielle est de"
 	cont "retour! Dingue!"
@@ -42,7 +42,7 @@ _ViridianCityText_19157::
 	cont "est venimeux."
 
 	para "Attention à son"
-	line "DARD-VENIN!"
+	line "Dard-Venin!"
 	done
 
 _ViridianCityText_19175::
@@ -54,7 +54,7 @@ _ViridianCityText_19175::
 
 _ViridianCityText_1917a::
 	text "Je passe par la"
-	line "FORET DE JADE"
+	line "Forêt de Jade"
 	cont "pour faire mes"
 	cont "courses à"
 	cont "Argenta."

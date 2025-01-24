@@ -60,17 +60,17 @@ _PewterGymText_5c4bc::
 
 	para "En reconnaissance"
 	line "de ta victoire,"
-	cont "voici le BADGE"
-	cont "ROCHE!"
+	cont "voici le Badge"
+	cont "Roche!"
 
 	para "<PLAYER> reçoit"
-	line "le BADGE ROCHE!@"
+	line "le Badge Roche!@"
 	text_end
 
 _PewterGymText_5c4c1::
 	text_start
 
-	para "C'est un BADGE"
+	para "C'est un Badge"
 	line "officiel de la"
 	cont "Ligue #mon!"
 
@@ -80,7 +80,7 @@ _PewterGymText_5c4c1::
 	cont "puissants!"
 
 	para "La technique"
-	line "FLASH peut être"
+	line "Flash peut être"
 	cont "utilisée!"
 	prompt
 
@@ -109,7 +109,7 @@ _PewterGymAfterBattleText1::
 
 _PewterGymText_5c515::
 	text "Salut graine de"
-	line "CHAMPION!"
+	line "Champion!"
 
 	para "Je ne suis pas"
 	line "dresseur mais mes"
@@ -131,7 +131,7 @@ _PewterGymText_5c51f::
 	line "apparaissant dans"
 	cont "un combat est"
 	cont "celui en tête de"
-	cont "la LISTE #mon!"
+	cont "la Liste #mon!"
 
 	para "En changeant"
 	line "l'ordre des"

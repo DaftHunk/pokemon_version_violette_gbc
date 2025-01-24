@@ -10,7 +10,7 @@ _CopycatsHouse2FText_5ccd4::
 	para "<PLAYER>: Hein?"
 	line "T'es bizarre toi!"
 
-	para "COPIEUSE: Hmm?"
+	para "Copieuse: Hmm?"
 	line "Arrêter de mimer?"
 
 	para "Mais je ne sais"
@@ -19,7 +19,7 @@ _CopycatsHouse2FText_5ccd4::
 
 _TM31PreReceiveText::
 	text "Whaaaaaa!"
-	line "Une #POUPEE!"
+	line "Une #Poupée!"
 
 	para "C'est pour moi?"
 	line "Merci!"
@@ -38,7 +38,7 @@ _ReceivedTM31Text::
 _TM31ExplanationText1::
 	text_start
 
-	para "CT31: COPIE!"
+	para "CT31: Copie!"
 
 	para "Enseigne-la au"
 	line "bon #mon!@"
@@ -55,7 +55,7 @@ _TM31ExplanationText2::
 	cont "que ça de"
 	cont "m'imiter?"
 
-	para "COPIEUSE: Ah non!"
+	para "Copieuse: Ah non!"
 	line "C'est vraiment la"
 	cont "galère, t'arrêtes"
 	cont "pas d'bouger!"

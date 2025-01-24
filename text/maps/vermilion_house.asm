@@ -2,7 +2,7 @@ _VermilionHouse1Text1::
 	text "Mon Roucool va"
 	line "apporter une"
 	cont "lettre jusqu'à"
-	cont "SAFRANIA au Nord!"
+	cont "Safrania au Nord!"
 	done
 
 _VermilionHouse1Text2::
@@ -10,12 +10,12 @@ _VermilionHouse1Text2::
 	text_end
 
 _VermilionHouse1Text3::
-	text "Cher JULIO,"
+	text "Cher Julio,"
 	line "j'espère te voir"
 	cont "très bientôt."
 
 	para "On raconte que"
-	line "SAFRANIA a des"
+	line "Safrania a des"
 	cont "problèmes avec la"
 	cont "Team Rocket."
 

@@ -46,7 +46,7 @@ _Route13EndBattleText4::
 _Route13AfterBattleText4::
 	text "Tu as gagné ces"
 	line "Badges chez les"
-	cont "CHAMPIONS!"
+	cont "Champions!"
 	done
 
 _Route13BattleText5::
@@ -69,7 +69,7 @@ _Route13AfterBattleText5::
 
 _Route13BattleText6::
 	text "J'ai trouvé du"
-	line "CARBONE dans une"
+	line "Carbone dans une"
 	cont "grotte, une fois!"
 	done
 
@@ -79,7 +79,7 @@ _Route13EndBattleText6::
 	prompt
 
 _Route13AfterBattleText6::
-	text "Le CARBONE a"
+	text "Le Carbone a"
 	line "augmenté la"
 	cont "vitesse de mon"
 	cont "#mon."
@@ -184,6 +184,6 @@ _Route13Text12::
 
 _Route13Text13::
 	text "Route 13"
-	line "PONT DU SILENCE"
+	line "Pont du Silence"
 	cont "au Nord"
 	done

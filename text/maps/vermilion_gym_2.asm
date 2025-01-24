@@ -12,14 +12,14 @@ _VermilionGymText_5cb72::
 	done
 
 _VermilionGymText_5cb77::
-	text "Le BADGEFOUDRE"
+	text "Le BadgeFoudre"
 	line "augmente la"
-	cont "DEFENSE de tes"	;joenote - changed SPEED to DEFENSE in order to fix a typo
+	cont "Défense de tes"	;joenote - changed SPEED to DEFENSE in order to fix a typo
 	cont "#mon!"
 
 	para "Il permet aussi"
 	line "à tes #mon"
-	cont "de VOLER!"
+	cont "de Voler!"
 
 	para "Tu es un bon, mon"
 	line "p'tit gars!"
@@ -36,7 +36,7 @@ _ReceivedTM24Text::
 _TM24ExplanationText::
 	text_start
 
-	para "CT24 : TONNERRE!"
+	para "CT24 : Tonnerre!"
 
 	para "Enseigne-la à un"
 	line "#mon de la"
@@ -58,7 +58,7 @@ _ReceivedThunderbadgeText::
 	cont "gars!"
 
 	para "Très bien, prends"
-	line "le BADGEFOUDRE!"
+	line "le BadgeFoudre!"
 	prompt
 
 _VermilionGymBattleText1::

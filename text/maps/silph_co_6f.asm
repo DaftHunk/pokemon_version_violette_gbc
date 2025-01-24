@@ -78,7 +78,7 @@ _SilphCo6BattleText3::
 
 	para "Il a décidé de me"
 	line "muter au siège de"
-	cont "TRIFOUILLI!"
+	cont "Trifouilli!"
 	done
 
 _SilphCo6EndBattleText3::
@@ -86,7 +86,7 @@ _SilphCo6EndBattleText3::
 	prompt
 
 _SilphCo6AfterBattleText3::
-	text "TRIFOUILLI?"
+	text "Trifouilli?"
 	line "C'est au beau"
 	cont "milieu de nulle"
 	cont "part!"

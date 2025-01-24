@@ -7,7 +7,7 @@ _SafariZoneRestHouse2Text1::
 	done
 
 _SafariZoneRestHouse2Text2::
-	text "Un APPAT peut"
+	text "Un Appât peut"
 	line "faciliter vos"
 	cont "captures."
 	done

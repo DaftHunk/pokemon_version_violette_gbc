@@ -78,7 +78,7 @@ _Route8EndBattleText5::
 _Route8AfterBattleText5::
 	text "On est bloqué"
 	line "ici, aux portes"
-	cont "de SAFRANIA."
+	cont "de Safrania."
 	done
 
 _Route8BattleText6::
@@ -110,7 +110,7 @@ _Route8EndBattleText7::
 
 _Route8AfterBattleText7::
 	text "Le gardien de la"
-	line "porte de SAFRANIA"
+	line "porte de Safrania"
 	cont "ne nous laissera"
 	cont "pas passer!"
 	done
@@ -158,7 +158,7 @@ _Route8AfterBattleText9::
 	done
 
 _Route8Text10::
-	text "SOUTERRAIN"
+	text "Souterrain"
 	line "Lavanville -"
 	cont "Céladopole"
 	done

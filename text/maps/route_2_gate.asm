@@ -1,5 +1,5 @@
 _Route2GateText_5d616::
-	text "La CS du FLASH"
+	text "La CS du Flash"
 	line "peut éclairer les"
 	cont "endroits sombres."
 	
@@ -11,7 +11,7 @@ _Route2GateText_5d616::
 
 _Route2GateText2::
 	text "Si un #mon a"
-	line "appris le FLASH,"
+	line "appris le Flash,"
 	cont "tu pourras tra-"
-	cont "verser la GROTTE."
+	cont "verser la Grotte."
 	done

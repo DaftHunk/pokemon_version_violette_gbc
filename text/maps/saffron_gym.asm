@@ -33,7 +33,7 @@ _SaffronGymText_5d167::
 	cont "victoire!"
 
 	para "Tu gagnes le"
-	line "BADGE MARAIS!@"
+	line "Badge Marais!@"
 	text_end
 
 _SaffronGymText_5d16e::
@@ -45,8 +45,8 @@ _SaffronGymText_5d16e::
 	done
 
 _SaffronGymText_5d173::
-	text "Avec le BADGE"
-	line "MARAIS, les"
+	text "Avec le Badge"
+	line "Marais, les"
 	cont "#mon de niveau"
 	cont "70 t'obéiront!"
 
@@ -72,7 +72,7 @@ ReceivedTM46Text::
 _TM46ExplanationText::
 	text_start
 
-	para "CT46 : VAGUE PSY!"
+	para "CT46 : Vague Psy!"
 	line "Une onde"
 	cont "d'énergie psy"
 	cont "dévastatrice!"
@@ -190,8 +190,8 @@ _SaffronGymEndBattleText4::
 _SaffronGymAfterBattleText4::
 	text "Morgane a"
 	line "pulvérisé le"
-	cont "grand MAITRE de"
-	cont "KARATE!"
+	cont "grand Maître de"
+	cont "Karaté!"
 	done
 
 _SaffronGymBattleText5::
@@ -214,7 +214,7 @@ _SaffronGymBattleText6::
 	text "Morgane est jeune"
 	line "mais elle est"
 	cont "aussi notre"
-	cont "CHAMPION!"
+	cont "Champion!"
 
 	para "Tu vas en baver"
 	line "comme un russe"
@@ -229,10 +229,10 @@ _SaffronGymEndBattleText6::
 
 _SaffronGymAfterBattleText6::
 	text "Il y avait deux"
-	line "ArèneS #mon à"
-	cont "SAFRANIA."
+	line "Arènes #mon à"
+	cont "Safrania."
 
-	para "Le DOJO KARATE a"
+	para "Le Dojo Karaté a"
 	line "perdu son titre"
 	cont "le jour où nous"
 	cont "l'avons"
@@ -242,7 +242,7 @@ _SaffronGymAfterBattleText6::
 _SaffronGymBattleText7::
 	text "Le CHAMPION de"
 	line "l'Arène #mon"
-	cont "de SAFRANIA est"
+	cont "de Safrania est"
 	cont "une médium psy!"
 
 	para "Tu veux voir"

@@ -10,8 +10,8 @@ _Route3Text1::
 
 _Route3BattleText1::
 	text "Hé! On s'est déjà"
-	line "vu dans la FORET"
-	cont "DE JADE!"
+	line "vu dans la Forêt"
+	cont "de Jade!"
 	done
 
 _Route3EndBattleText1::

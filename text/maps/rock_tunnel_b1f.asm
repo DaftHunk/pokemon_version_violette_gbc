@@ -112,7 +112,7 @@ _RockTunnel1AfterBattleText7::
 	done
 
 _RockTunnel1Text8::
-	text "GROTTE"
+	text "Grotte"
 	line "Azuria -"
 	cont "Lavanville"
 	done

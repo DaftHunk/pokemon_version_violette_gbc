@@ -11,7 +11,7 @@ _Lab1Text1::
 _Lab1Text2::
 	text "Voici une photo"
 	line "du créateur de ce"
-	cont "Labo: Le DR.FUJI!"
+	cont "Labo: Le Dr.Fuji!"
 	done
 
 _Lab1Text3::

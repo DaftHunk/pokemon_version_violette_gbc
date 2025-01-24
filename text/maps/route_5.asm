@@ -1,5 +1,5 @@
 _Route5Text1::
-	text "SOUTERRAIN"
+	text "Souterrain"
 	line "Azuria -"
 	cont "Carmin sur mer"
 	done

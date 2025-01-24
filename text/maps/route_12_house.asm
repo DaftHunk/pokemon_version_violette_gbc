@@ -49,8 +49,8 @@ _Route12HouseText_564d4::
 	text "Salut,"
 	line "<PLAYER>!"
 
-	para "Avec cette MEGA"
-	line "CANNE, tu vas"
+	para "Avec cette Mega"
+	line "Canne, tu vas"
 	cont "vider les océans"
 	cont "de tous les"
 	cont "#mon."

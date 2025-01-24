@@ -40,7 +40,7 @@ _SilphCo5Text9::
 	done
 
 _SilphCo5Text10::
-	text "C'est un RAPPORT"
+	text "C'est un Rapport"
 	line "sur les #mon!"
 
 	para "Il existe 160"
@@ -49,7 +49,7 @@ _SilphCo5Text10::
 	done
 
 _SilphCo5Text11::
-	text "C'est un RAPPORT"
+	text "C'est un Rapport"
 	line "sur les #mon!"
 
 	para "4 #mon"

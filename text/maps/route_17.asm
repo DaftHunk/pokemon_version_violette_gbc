@@ -13,7 +13,7 @@ _Route17AfterBattleText1::
 	text "Y a plein de"
 	line "trucs qui"
 	cont "traînent sur la"
-	cont "PISTE CYCLABLE!"
+	cont "Piste Cyclable!"
 	done
 
 _Route17BattleText2::
@@ -81,7 +81,7 @@ _Route17EndBattleText5::
 _Route17AfterBattleText5::
 	text "J'ai attrapé"
 	line "un Voltorbe dans"
-	cont "la CENTRALE."
+	cont "la Centrale."
 	done
 
 _Route17BattleText6::
@@ -132,7 +132,7 @@ _Route17AfterBattleText8::
 	done
 
 _Route17BattleText9::
-	text "Mignon le VELO!"
+	text "Mignon le Vélo!"
 	line "Comment ça se"
 	cont "conduit?"
 	done
@@ -212,7 +212,7 @@ _Route17Text15::
 	done
 
 _Route17Text16::
-	text "PISTE CYCLABLE"
+	text "Piste Cyclable"
 	line "Fin de la"
 	cont "descente!"
 	done

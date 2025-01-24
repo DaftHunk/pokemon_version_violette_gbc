@@ -1,5 +1,5 @@
 _SafariZoneCenterText2::
-	text "ABRI"
+	text "Abri"
 	done
 
 _SafariZoneCenterText3::

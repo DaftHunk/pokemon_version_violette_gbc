@@ -20,7 +20,7 @@ _SilphCo4EndBattleText2::
 	prompt
 
 _SilphCo4AfterBattleText2::
-	text "Le BOSS attend"
+	text "Le Boss attend"
 	line "ce moment depuis"
 	cont "longtemps!"
 	done
@@ -39,7 +39,7 @@ _SilphCo4AfterBattleText3::
 	text "Les portes sont"
 	line "sécurisées! Il"
 	cont "te faut une"
-	cont "CARTE MAGN. pour"
+	cont "Carte Magn. pour"
 	cont "les ouvrir!"
 	done
 

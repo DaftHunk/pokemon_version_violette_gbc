@@ -8,6 +8,6 @@ _RockTunnelPokecenterText2::
 
 _RockTunnelPokecenterText3::
 	text "J'ai vendu une"
-	line "PEPITE pour"
+	line "Pépite pour"
 	cont "5000¥!"
 	done

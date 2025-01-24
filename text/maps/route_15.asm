@@ -66,7 +66,7 @@ _Route15EndBattleText4::
 
 _Route15AfterBattleText4::
 	text "Les attaques"
-	line "comme SEISME"
+	line "comme Séisme"
 	cont "ne font rien aux"
 	cont "oiseaux. "
 	cont "Tu l'savais?"

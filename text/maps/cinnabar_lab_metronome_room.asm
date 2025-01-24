@@ -17,7 +17,7 @@ _ReceivedTM35Text::
 _TM35ExplanationText::
 	text "Tik-Tak-Tik-Tak!"
 	line "C'est le bruit du"
-	cont "METRONOME!"
+	cont "Métronome!"
 
 	para "Cette technique"
 	line "fait de la purée"
@@ -58,8 +58,8 @@ _Lab3Text3::
 	cont "grottes près de"
 	cont "Azuria."
 
-	para "De : L'EQUIPE DE"
-	line "RECHERCHE #mon"
+	para "De : L'équipe de"
+	line "Recherche #mon"
 
 	para "..."
 	done

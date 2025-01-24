@@ -31,6 +31,6 @@ _RocketHideout3EndBattleText3::
 _RocketHide3AfterBattleText3::
 	text "Allez, continue!"
 	line "Mais il te faut"
-	cont "la CLE ASC. pour"
+	cont "la Clé Asc. pour"
 	cont "l'ascenseur!"
 	done

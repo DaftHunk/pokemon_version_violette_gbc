@@ -1,7 +1,7 @@
 _Route1ViridianMartSampleText::
 	text "Salut! Je"
 	line "travaille à la"
-	cont "BOUTIQUE #mon."
+	cont "Boutique #mon."
 
 	para "Nous avons plein"
 	line "d'articles! Viens"

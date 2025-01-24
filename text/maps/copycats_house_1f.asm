@@ -12,7 +12,7 @@ _CopycatsHouse1FText2::
 	para "Elle imite si"
 	line "bien qu'on"
 	cont "l'appelle..."
-	cont "COPIEUSE!"
+	cont "Copieuse!"
 	cont "C'est dément!"
 	done
 

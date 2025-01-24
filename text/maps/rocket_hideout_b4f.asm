@@ -78,7 +78,7 @@ _RocketHide4AfterBattleText3::
 _RocketHideout4BattleText4::
 	text "L'ascenseur ne"
 	line "marche pas? Il"
-	cont "faut la CLE ASC.!"
+	cont "faut la Clé Asc.!"
 	done
 
 _RocketHideout4EndBattleText4::
@@ -88,5 +88,5 @@ _RocketHideout4EndBattleText4::
 _RocketHideout4Text_455ec::
 	text "Mince! J'ai"
 	line "perdu la "
-	cont "CLE ASC.!"
+	cont "Clé Asc.!"
 	done

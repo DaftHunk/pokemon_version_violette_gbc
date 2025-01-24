@@ -1,12 +1,12 @@
 _SaffronMartText2::
-	text "Le MAX REPOUSSE"
+	text "Le Max Repousse"
 	line "fonctionne plus"
 	cont "longtemps que le"
-	cont "SUPEREPOUSSE!"
+	cont "SuperRepousse!"
 	done
 
 _SaffronMartText3::
-	text "Le RAPPEL est"
+	text "Le Rappel est"
 	line "coûteux mais il"
 	cont "permet de"
 	cont "réanimer un"

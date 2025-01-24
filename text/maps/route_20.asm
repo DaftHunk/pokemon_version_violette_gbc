@@ -15,7 +15,7 @@ _Route20AfterBattleText1::
 	done
 
 _Route20BattleText2::
-	text "Les ILES ECUME"
+	text "Les Iles Ecume"
 	line "sont tranquilles!"
 	done
 
@@ -56,7 +56,7 @@ _Route20EndBattleText4::
 
 _Route20AfterBattleText4::
 	text "Avant, ben, les"
-	line "ILES ECUMES ne"
+	line "Iles Ecume ne"
 	cont "formaient qu'une"
 	cont "seule île!"
 	done
@@ -164,5 +164,5 @@ _Route20AfterBattleText10::
 
 _Route20Text12::
 _Route20Text11::
-	text "ILES ECUME"
+	text "Iles Ecume"
 	done

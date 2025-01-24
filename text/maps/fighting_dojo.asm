@@ -1,10 +1,10 @@
 _FightingDojoText_5ce8e::
 	text "P'tit faiblard!"
 
-	para "Je suis le GRAND"
-	line "MAITRE de KARATE!"
+	para "Je suis le Grand"
+	line "Maître de Karaté!"
 	cont "Je suis le"
-	cont "CHAMPION!"
+	cont "Champion!"
 
 	para "Tu me provoques?"
 	line "Tu veux t'battre?"
@@ -42,7 +42,7 @@ _FightingDojoText_5ce9d::
 
 	para "Reste avec nous"
 	line "pour faire du"
-	cont "KARATE!"
+	cont "Karaté!"
 	done
 
 _FightingDojoBattleText1::

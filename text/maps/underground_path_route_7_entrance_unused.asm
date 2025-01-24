@@ -24,9 +24,9 @@ _UGPathRoute7EntranceUnusedText_5d77d::
 	done
 
 _UGPathRoute7EntranceUnusedText_5d782::
-	text "Le SOUTERRAIN"
+	text "Le Souterrain"
 	line "passe sous"
-	cont "SAFRANIA et"
+	cont "Safrania et"
 	cont "débouche sur"
 	cont "Lavanville."
 

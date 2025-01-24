@@ -29,7 +29,7 @@ _SaffronGateText_1dff1::
 	cont "..."
 	cont "Glourp..."
 	cont "Si tu veux aller"
-	cont "à SAFRANIA..."
+	cont "à Safrania..."
 	cont "...glouarps..."
 	cont "Tu peux passer..."
 	cont "T'inquiète pas"

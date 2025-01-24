@@ -1,8 +1,8 @@
 _NameRaterText_1dab3::
 	text "Salut tout le"
 	line "monde! Je suis le"
-	cont "GRAND DONNEUR DE"
-	cont "NOMS!"
+	cont "Grand Donneur de"
+	cont "Noms!"
 
 	para "Dis-moi, petit,"
 	line "tu serais pas du"

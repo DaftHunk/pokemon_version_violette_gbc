@@ -1,5 +1,5 @@
 _KogaExplainToxicText::
-	text "TOXIK fera"
+	text "Toxik fera"
 	line "souffrir de plus"
 	cont "en plus un"
 	cont "#mon pendant"
@@ -31,7 +31,7 @@ _ReceivedTM06Text::
 
 _TM06ExplanationText::
 	text_start
-	para "CT06: TOXIK!"
+	para "CT06: Toxik!"
 
 	para "Cette technique"
 	line "secrète et sacrée"
@@ -133,7 +133,7 @@ _FuchsiaGymBattleText5::
 	cont "d'arbre en arbre!"
 
 	para "Comme à la télé."
-	line "Comme X-PORC, le"
+	line "Comme X-Porc, le"
 	cont "goret d'l'espace!"
 	done
 

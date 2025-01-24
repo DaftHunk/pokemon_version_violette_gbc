@@ -1,6 +1,6 @@
 _ViridianForestEntranceText1::
 	text "Vas-tu dans la"
-	line "FORET DE JADE,"
+	line "Forêt de Jade,"
 	cont "mon poussin? Fais"
 	cont "bien attention,"
 	cont "c'est un vrai"

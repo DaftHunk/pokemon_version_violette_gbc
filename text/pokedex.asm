@@ -1056,9 +1056,9 @@ _HypnoDexEntry::
 	next "adversaire, il"
 	next "l'assaille avec"
 
-	page "les attaques PSY"
-	next "d'HYPNOSE et de"
-	next "CHOC MENTAL"
+	page "les attaques Psy"
+	next "d'Hypnose et de"
+	next "Choc mental"
 	dex
 
 _GolbatDexEntry::
@@ -1197,7 +1197,7 @@ _AbraDexEntry::
 	next "permet de sentir"
 
 	page "le danger et de"
-	next "se TELEPORTER en"
+	next "se Téléporter en"
 	next "un lieu sûr"
 	dex
 
@@ -1384,7 +1384,7 @@ _MagnemiteDexEntry::
 	next "pouvoir voler. Il"
 
 	page "attaque avec des"
-	next "CAGE-ECLAIR"
+	next "Cage-Eclair"
 	dex
 
 _CharmanderDexEntry::
@@ -1478,12 +1478,12 @@ _BellsproutDexEntry::
 
 _WeepinbellDexEntry::
 	text "Il crache de la"
-	next "POUDRE TOXIK pour"
+	next "Poudre Toxik pour"
 	next "immobiliser sa"
 
 	page "proie et il"
 	next "l'achève avec de"
-	next "l'ACIDE"
+	next "l'Acide"
 	dex
 
 _VictreebelDexEntry::

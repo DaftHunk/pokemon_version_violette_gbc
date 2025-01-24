@@ -378,7 +378,7 @@ _OaksLabText27::
 	cont "minable!"
 
 	para "Je sais! Je vais"
-	line "voler une CARTE à"
+	line "voler une Carte à"
 	cont "ma soeur!"
 
 	para "Et je lui dirai"
@@ -391,7 +391,7 @@ _OaksLabText_1d405::
 	line "Prof. Chen."
 	cont "Je suis donc son"
 	cont "...ta daaa!..."
-	cont "ASSISTANT!"
+	cont "Assistant!"
 	done
 	_OaksLabText_441cc::
 	text "Niveau #dex:"
@@ -419,9 +419,9 @@ _OaksLabText_44201::
 _OaksLabText_44206::
 	text "Tu es sur la"
 	line "bonne voie! Mon"
-	cont "ASSISTANT te"
+	cont "Assistant te"
 	cont "donnera la CS"
-	cont "FLASH!"
+	cont "Flash!"
 	done
 
 _OaksLabText_4420b::
@@ -433,7 +433,7 @@ _OaksLabText_4420b::
 
 _OaksLabText_44210::
 	text "Très bien! Mon"
-	line "ASSISTANT a un"
+	line "Assistant a un"
 	cont "Cherch'objet pour"
 	cont "toi!"
 	done
@@ -441,14 +441,14 @@ _OaksLabText_44210::
 _OaksLabText_44215::
 	text "C'est pas mal!"
 	line "Va voir mon"
-	cont "ASSISTANT quand"
+	cont "Assistant quand"
 	cont "tu en auras 50!"
 	done
 
 _OaksLabText_4421a::
 	text "Ah! Tu en as"
 	line "enfin 50!"
-	cont "Mon ASSISTANT te"
+	cont "Mon Assistant te"
 	cont "donnera un"
 	cont "MULTI EXP!"
 	done

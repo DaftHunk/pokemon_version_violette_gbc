@@ -1,24 +1,24 @@
 _MomWakeUpText::
-	text "MERE: Bon."
+	text "Mère: Bon."
 	line "Il arrive qu'un"
 	cont "jour le fils aimé"
 	cont "quitte la maison."
 	cont "C'est la vie!"
 
-	para "Le PROF. Chen te"
+	para "Le Prof. Chen te"
 	line "cherche. Il est"
 	cont "dans la maison"
 	cont "voisine."
 	done
 
 _MomHealText1::
-	text "MERE: <PLAYER>!"
+	text "Mère: <PLAYER>!"
 	line "Tu devrais faire"
 	cont "une sieste."
 	prompt
 
 _MomHealText2::
-	text "MERE: Ah, bien!"
+	text "Mère: Ah, bien!"
 	line "Toi et tes"
 	cont "#mon êtes"
 	cont "en pleine forme!"

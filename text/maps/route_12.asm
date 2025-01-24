@@ -50,7 +50,7 @@ _Route12AfterBattleText2::
 	text "Pour pêcher des"
 	line "#mon plus"
 	cont "gros, il me faut"
-	cont "une super CANNE!"
+	cont "une Super Canne!"
 	done
 
 _Route12BattleText3::
@@ -87,8 +87,8 @@ _Route12AfterBattleText4::
 	done
 
 _Route12BattleText5::
-	text "Le Pêcheur FOU"
-	line "contre le KID des"
+	text "Le Pêcheur Fou"
+	line "contre le Kid des"
 	cont "#mon!"
 	done
 
@@ -143,7 +143,7 @@ _Route12Text11::
 	done
 
 _Route12Text12::
-	text "ZONE DE PECHE"
+	text "Zone de Pêche"
 _Route12TextUsePokeflute::
 	text "Play the #"
 	line "FLUTE?"

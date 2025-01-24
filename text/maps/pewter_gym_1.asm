@@ -1,7 +1,7 @@
 _PewterGymText_5c49e::
 	text "Je suis Pierre!"
 	line "Je suis le"
-	cont "CHAMPION"
+	cont "Champion"
 	cont "d'Argenta!"
 
 	para "Je crois en la"

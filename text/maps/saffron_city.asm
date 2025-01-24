@@ -4,7 +4,7 @@ _SaffronCityText1::
 	done
 
 _SaffronCityText2::
-	text "Eul' CHEF dit"
+	text "Eul' Chef dit"
 	line "qu'il contrôlera"
 	cont "c'te ville!"
 	done
@@ -14,7 +14,7 @@ _SaffronCityText3::
 	done
 
 _SaffronCityText4::
-	text "SAFRANIA est à"
+	text "Safrania est à"
 	line "la Team Rocket!"
 	done
 
@@ -55,7 +55,7 @@ _SaffronCityText9::
 _SaffronCityText10::
 	text "Tout le monde va"
 	line "vite revenir à"
-	cont "SAFRANIA."
+	cont "Safrania."
 	done
 
 _SaffronCityText11::
@@ -76,7 +76,7 @@ _SaffronCityText12::
 	text_end
 
 _SaffronCityText13::
-	text "J'ai vu le CHEF"
+	text "J'ai vu le Chef"
 	line "de la Team Rocket"
 	cont "s'enfuir de la"
 	cont "Sylphe."
@@ -100,18 +100,18 @@ _SaffronCityText15::
 	done
 
 _SaffronCityText16::
-	text "SAFRANIA"
+	text "Safrania"
 	line "Belle et dorée,"
 	cont "le commerce est"
 	cont "ici prospère"
 	done
 
 _SaffronCityText17::
-	text "DOJO"
+	text "Dojo"
 	done
 
 _SaffronCityText18::
-	text "SAFRANIA"
+	text "Safrania"
 	line "Arène #mon"
 	cont "Champion: Morgane"
 
@@ -122,7 +122,7 @@ _SaffronCityText18::
 _SaffronCityText20::
 	text "Astuce"
 
-	para "TOTAL SOIN fait"
+	para "Total Soin fait"
 	line "disparaître tous"
 	cont "les changements"
 	cont "de statut comme"
@@ -137,7 +137,7 @@ _SaffronCityText20::
 _SaffronCityText21::
 	text "Astuce"
 
-	para "La SUPER BALL"
+	para "La Super Ball"
 	line "augmente les"
 	cont "chances de"
 	cont "capture."
@@ -149,12 +149,12 @@ _SaffronCityText21::
 
 _SaffronCityText22::
 	text "Sylphe SARL"
-	line "SIEGE SOCIAL"
+	line "Siège Social"
 	done
 
 _SaffronCityText24::
-	text "MAISON DE"
-	line "MR. PSY"
+	text "Maison de"
+	line "Mr. Psy"
 	done
 
 _SaffronCityText25::

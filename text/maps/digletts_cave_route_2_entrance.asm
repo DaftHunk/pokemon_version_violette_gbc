@@ -1,8 +1,8 @@
 _DiglettsCaveRoute2Text1::
 	text "J'y vois rien"
-	line "dans la GROTTE."
+	line "dans la Grotte."
 
-	para "Si le FLASH d'un"
+	para "Si le Flash d'un"
 	line "#mon pouvait"
 	cont "l'éclairer..."
 	done

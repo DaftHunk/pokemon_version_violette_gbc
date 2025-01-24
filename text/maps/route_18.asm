@@ -55,7 +55,7 @@ _Route18Text4::	;joenote - swapped city order
 	done
 
 _Route18Text5::
-	text "PISTE CYCLABLE"
+	text "Piste Cyclable"
 	line "Interdite aux"
 	cont "piétons!"
 	done

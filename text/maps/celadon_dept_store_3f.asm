@@ -97,8 +97,8 @@ _CeladonMart3Text5::
 	done
 
 _CeladonMart3Text6::
-	text "Une SUPER"
-	line "NINTENDO!"
+	text "Une Super"
+	line "Nintendo!"
 	done
 
 _CeladonMart3Text7::

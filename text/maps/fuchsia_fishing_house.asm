@@ -1,6 +1,6 @@
 _FuchsiaHouse3Text_561bd::
 	text "Je suis le grand"
-	line "frère du MAITRE"
+	line "frère du Maître"
 	cont "Pêcheur!"
 
 	para "Moi, mon truc,"

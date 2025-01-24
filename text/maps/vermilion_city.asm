@@ -122,16 +122,16 @@ _VermilionCityText8::
 	cont "un #mon"
 	cont "endormi."
 
-	para "Prendre la GROTTE"
+	para "Prendre la Grotte"
 	line "pour rejoindre"
 	cont "Lavanville."
 
-	para "POLICE DE Carmin"
-	line "SUR MER"
+	para "Police de Carmin"
+	line "Sur Mer"
 	done
 
 _VermilionCityText11::
-	text "FAN CLUB #mon"
+	text "Fan Club #mon"
 	line "Tous les dingues"
 	cont "de #mon sont"
 	cont "bienvenus!"
@@ -148,7 +148,7 @@ _VermilionCityText12::
 	done
 
 _VermilionCityText13::
-	text "PORT DE Carmin"
+	text "Port de Carmin"
 	done
 
 _VermilionPKMNText::

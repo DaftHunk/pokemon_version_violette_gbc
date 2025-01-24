@@ -21,7 +21,7 @@ _CeruleanGymText_5c7be::
 
 _CeruleanGymText_5c7c3::
 	text "La CT11 contient"
-	line "BULLES D'O!"
+	line "Bulles d'O!"
 
 	para "Apprends-la à un"
 	line "#mon de l'eau!"
@@ -121,7 +121,7 @@ _CeruleanGymText_5c82a::
 
 	para "Un conseil?"
 
-	para "La CHAMPIONNE,"
+	para "La Championne,"
 	line "Ondine, est une"
 	cont "spécialiste des"
 	cont "#mon de l'eau!"

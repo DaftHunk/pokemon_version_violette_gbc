@@ -1,6 +1,6 @@
 _SafariZoneRestHouse1Text1::
-	text "JULIA: Où est"
-	line "NICO, mon petit"
+	text "Julia: Où est"
+	line "Nico, mon petit"
 	cont "ami?"
 	done
 

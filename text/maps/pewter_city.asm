@@ -7,8 +7,8 @@ _PewterCityText1::
 	para "Ils sont apparus"
 	line "après la chute de"
 	cont "la Pierre Lune"
-	cont "sur le MONT"
-	cont "SELENITE."
+	cont "sur le Mont"
+	cont "Sélénite."
 	done
 
 _PewterCityText2::
@@ -25,7 +25,7 @@ _PewterCityText2::
 
 _PewterCityText_193f1::
 	text "Es-tu allé au"
-	line "MUSEE?"
+	line "Musée"
 	done
 
 _PewterCityText_193f6::
@@ -60,7 +60,7 @@ _PewterCityText_1942c::
 
 _PewterCityText_19431::
 	text "Je vaporise du"
-	line "REPOUSSE pour"
+	line "Repousse pour"
 	cont "éloigner les"
 	cont "#mon de mon"
 	cont "bô jardin!"
@@ -101,12 +101,12 @@ _PewterCityText7::
 	cont "Mont Sélénite."
 	cont "N'hésitez pas à"
 	cont "contacter la"
-	cont "POLICE d'Argenta!"
+	cont "Police d'Argenta!"
 	done
 
 _PewterCityText10::
-	text "MUSEE DES"
-	line "SCIENCES"
+	text "Musée des"
+	line "Sciences"
 	cont "d'Argenta"
 	done
 

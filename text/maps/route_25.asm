@@ -104,14 +104,14 @@ _Route25EndBattleText6::
 	prompt
 
 _Route25AfterBattleText6::
-	text "Tu viens du MONT"
-	line "SELENITE? Tu as"
+	text "Tu viens du Mont"
+	line "Sélénite? Tu as"
 	cont "un Mélofée?"
 	done
 
 _Route25BattleText7::
-	text "J'arrive du MONT"
-	line "SELENITE, et je"
+	text "J'arrive du Mont"
+	line "Sélénite, et je"
 	cont "suis prêt!"
 	done
 

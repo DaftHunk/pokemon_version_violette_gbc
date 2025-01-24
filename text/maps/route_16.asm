@@ -119,7 +119,7 @@ _Route16Text11::
 
 _Route16Text8::
 	text "Bonne descente!"
-	line "PISTE CYCLABLE"
+	line "Piste Cyclable"
 	done
 
 _Route16Text9::

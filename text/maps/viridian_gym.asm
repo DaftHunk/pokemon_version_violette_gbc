@@ -53,8 +53,8 @@ _ViridianGymText_74ad9::
 	text_end
 
 _ViridianGymText12::
-	text "Grâce au BADGE"
-	line "TERRE tous les"
+	text "Grâce au Badge"
+	line "Terre tous les"
 	cont "#mon obéiront"
 	cont "à tes ordres!"
 
@@ -83,7 +83,7 @@ _ReceivedTM27Text::
 _TM27ExplanationText::
 	text_start
 
-	para "CT27: ABIME!"
+	para "CT27: Abîme!"
 	line "Cette attaque"
 	cont "peut mettre hors"
 	cont "combat un #mon"
@@ -113,7 +113,7 @@ _ViridianGymAfterBattleText1::
 	text "Il faut que tu"
 	line "sois fort pour te"
 	cont "mesurer au..."
-	cont "CHAMPION!"
+	cont "Champion!"
 	done
 
 _ViridianGymBattleText2::
@@ -143,7 +143,7 @@ _ViridianGymEndBattleText3::
 
 _ViridianGymAfterBattleText3::
 	text "Sais-tu qui est"
-	line "notre CHAMPION?"
+	line "notre Champion?"
 	done
 
 _ViridianGymBattleText4::
@@ -173,13 +173,13 @@ _ViridianGymEndBattleText5::
 	prompt
 
 _ViridianGymAfterBattleText5::
-	text "Le CHAMPION va"
+	text "Le Champion va"
 	line "me taper dessus!"
 	done
 
 _ViridianGymBattleText6::
-	text "J'suis le ROI du"
-	line "KARATE! Ton"
+	text "J'suis le Roi du"
+	line "Karaté! Ton"
 	cont "destin repose"
 	cont "entre mes mains!"
 	done
@@ -216,7 +216,7 @@ _ViridianGymBattleText8::
 	line "Jadielle était"
 	cont "fermée depuis"
 	cont "longtemps, mais"
-	cont "le CHAMPION est"
+	cont "le Champion est"
 	cont "enfin revenu!"
 	done
 
@@ -231,7 +231,7 @@ _ViridianGymAfterBattleText8::
 	cont "Ligue #mon"
 	cont "seulement en"
 	cont "battant notre"
-	cont "CHAMPION!"
+	cont "Champion!"
 	done
 
 _ViridianGymText_74bd4::
@@ -240,7 +240,7 @@ _ViridianGymText_74bd4::
 
 	para "Même moi, je ne"
 	line "sais pas qui est"
-	cont "le CHAMPION de"
+	cont "le Champion de"
 	cont "Jadielle!"
 
 	para "Le combat qui"
@@ -250,12 +250,12 @@ _ViridianGymText_74bd4::
 	para "Le dresseur de"
 	line "cette Arène aime"
 	cont "les #mon du"
-	cont "type SOL!"
+	cont "type Sol!"
 	done
 
 _ViridianGymText_74bd9::
 	text "Quoi?! C'était"
 	line "Giovanni le"
-	cont "CHAMPION?"
+	cont "Champion?"
 	cont "Ben ça alors!"
 	done

@@ -22,17 +22,17 @@ SafariZoneEntranceText_9e747::
 	cont "est utilisé ici."
 
 	para "<PLAYER> reçoit"
-	line "30 Safari BALL!@"
+	line "30 Safari Ball!@"
 	text_end
 
 _SafariZoneEntranceText_75360::
 	text_start
 
 	para "J'utiliserai le"
-	line "HAUT-PARLEUR"
+	line "Haut-Parleur"
 	cont "lorsque ton temps"
 	cont "ou tes Safari"
-	cont "BALL seront"
+	cont "Ball seront"
 	cont "épuisés!"
 	done
 
@@ -52,7 +52,7 @@ SafariZoneEntranceText_9e814::
 
 _SafariZoneEntranceText_753bb::
 	text "Donne-moi donc"
-	line "tes Safari BALL"
+	line "tes Safari Ball"
 	cont "neuves."
 	done
 
@@ -79,13 +79,13 @@ _SafariZoneEntranceText_753eb::
 	line "des #mon"
 	cont "différents."
 	cont "Utilise tes"
-	cont "Safari BALL pour"
+	cont "Safari Ball pour"
 	cont "les capturer!"
 
 	para "Le Safari sera"
 	line "terminé lorsque"
 	cont "tu auras épuisé"
-	cont "tes Safari BALL!"
+	cont "tes Safari Ball!"
 
 	para "Avant de partir,"
 	line "ouvre donc une"

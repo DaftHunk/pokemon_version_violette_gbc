@@ -24,7 +24,7 @@ _SilphCo3EndBattleText1::
 _SilphCo3AfterBattleText1::
 	text "Tu peux ouvrir"
 	line "les portes avec"
-	cont "la CARTE MAGN.!"
+	cont "la Carte Magn.!"
 	done
 
 _SilphCo3BattleText2::

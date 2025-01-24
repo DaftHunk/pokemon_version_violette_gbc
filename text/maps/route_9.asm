@@ -32,7 +32,7 @@ _Route9AfterBattleText2::
 
 _Route9BattleText3::
 	text "Je passe par la"
-	line "GROTTE pour voir"
+	line "Grotte pour voir"
 	cont "Lavanville!"
 	done
 
@@ -43,7 +43,7 @@ _Route9EndBattleText3::
 
 _Route9AfterBattleText3::
 	text "Tu vas dans la"
-	line "GROTTE, toi"
+	line "Grotte, toi"
 	cont "aussi?"
 	done
 
@@ -157,5 +157,5 @@ _Route9AfterBattleText9::
 _Route9Text11::
 	text "Route 9"
 	line "Azuria-"
-	cont "GROTTE"
+	cont "Grotte"
 	done

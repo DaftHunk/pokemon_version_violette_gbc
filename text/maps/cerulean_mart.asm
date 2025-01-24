@@ -1,5 +1,5 @@
 _CeruleanMartText2::
-	text "Le REPOUSSE tient"
+	text "Le Repousse tient"
 	line "les #mon"
 	cont "sauvages à"
 	cont "l'écart."
@@ -13,7 +13,7 @@ _CeruleanMartText2::
 
 _CeruleanMartText3::
 	text "As-tu déjà vu des"
-	line "SUPER BONBONS??"
+	line "Super Bonbons??"
 
 	para "Quand un #mon"
 	line "en mange un, il"
