@@ -101,6 +101,7 @@ _SafariZoneEntranceText_753f0::
 	done
 
 ;joenote - adding text for safari zone special event
+; mina : traduction svp
 _SafariZoneEntranceTextSpecial_NotReady::
 	text "We're working on"
 	line "a special event,"

@@ -18,6 +18,7 @@ _Route12HouseText_564c5::
 	line "canne à pêche,"
 
 ;joenote - add hotkey info
+; mina : traduction svp
 	para "Hold A and press"
 	line "SELECT to use the"
 	cont "rod quickly.@@"

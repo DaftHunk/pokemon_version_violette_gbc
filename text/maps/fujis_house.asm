@@ -94,6 +94,7 @@ _LavenderHouse1Text6::
 	line "disparu!"
 	done
 ;;;;;;;;;;;;;;;;;;;;;;joenote - adding text for fuji battle
+; mina : traduction svp jusqu'à la fin du fichier
 _FujiText_challenge::
 	text "Do you challenge"
 	line "M.Fuji to a"

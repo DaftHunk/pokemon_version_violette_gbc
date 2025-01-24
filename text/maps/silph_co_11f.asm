@@ -141,6 +141,7 @@ _SilphCo10Text_6237b::
 	done
 
 ;;;;;;;;;;;;;;;;;;;;;;joenote - adding text for Chief battle
+; mina : traduction svp jusqu'à la fin
 _ChiefText_challenge::
 	text "Do you challenge"
 	line "him to a #mon"

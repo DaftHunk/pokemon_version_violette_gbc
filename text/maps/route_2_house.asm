@@ -6,7 +6,7 @@ _Route2HouseText1::
 	cont "des techniques"
 	cont "comme la Coupe!"
 	done
-
+; mina : traduction svp
 _Route2HouseText3::
 	text "A fainted #mon"
 	line "can't fight. But, "

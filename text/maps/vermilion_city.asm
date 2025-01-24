@@ -28,7 +28,7 @@ _VermilionCityText_198ac::
 	para "Il reviendra l'an"
 	line "prochain."
 	done
-
+; mina : traduction svp
 _VermilionCityText_annereturns::	;joenote - added text
 	text "Did you see S.S."
 	line "ANNE moored in"
@@ -150,7 +150,7 @@ _VermilionCityText12::
 _VermilionCityText13::
 	text "Port de Carmin"
 	done
-
+; mina : traduction svp
 _VermilionPKMNText::
 	text "A lazy #mon"
 	line "is sunbathing."

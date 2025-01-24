@@ -8,6 +8,7 @@ _LavenderTownText_44141::
 	line "faut..."
 	
 ;joenote - added text to hint at evolving haunter
+; mina : traduction svp
 	para "So you'll believe"
 	line "that I once saw a"
 	cont "HAUNTER evolve"

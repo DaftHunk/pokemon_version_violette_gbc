@@ -353,6 +353,7 @@ _OaksLabText26::
 	cont "travail!"
 
 ;joenote - add hotkey info
+; mina : traduction svp
 	para "Also, do remember"
 	line "that you can swap"
 	cont "between extra bag"	
@@ -513,6 +514,7 @@ _OaksLabText_4424c::
 	done
 
 ;;;;;;;;;;;;;;;;;;;;;;joenote - adding text for oak battle
+; mina : traduction svp jusqu'à la fin
 _OaksLabText_challenge::
 	text "Do you challenge"
 	line "PROF.OAK to a"

@@ -1,3 +1,4 @@
+; mina : au twavail floflo
 _MoveRelearnerGreetingText::
 	text "I tutor children,"
 	line "but I also tutor"

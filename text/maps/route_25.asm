@@ -166,6 +166,7 @@ _Route25Text11::
 	line "Léo habite ici!"
 
 ;Joenote - setting up the Red battle
+; mina : traduction svp jusqu'à la fin 
 _Route25PrintText12::
 	text "The present and"
 	line "the future meet"

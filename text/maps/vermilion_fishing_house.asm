@@ -15,7 +15,7 @@ _VermilionHouse2Text_560b6::
 
 	para "Prends ça et..."
 	line "Pêche! Pêche!"
-
+; mina : traduction svp
 ;joenote - add hotkey info
 	para "Hold A and press"
 	line "SELECT to use the"

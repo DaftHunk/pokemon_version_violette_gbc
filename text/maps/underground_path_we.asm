@@ -1,4 +1,4 @@
-
+; mina : traduction svp, la totale
 ;joenote - text for random trainer
 _RandTrainerNotReady::
 	text "I'm gonna sneak"

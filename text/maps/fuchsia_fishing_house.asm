@@ -19,6 +19,7 @@ _FuchsiaHouse3Text_561c2::
 	cont "Pêche soit avec"
 	cont "toi, p'tit!"
 	;joenote - add hotkey info
+	; mina : traduction svp
 	para "Hold A and press"
 	line "SELECT to use the"
 	cont "rod quickly.@@"
@@ -42,6 +43,7 @@ _FuchsiaHouse3Text_56217::
 ;	para "How are the fish"
 ;	line "biting?"
 ;	done
+; mina : traduction svp
 	para "Use the SUPER ROD"
 	line "in any water!"
 	cont "You can catch"

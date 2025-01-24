@@ -126,7 +126,7 @@ _Route16Text9::
 	text "Route 16"
 	line "Céladopole -"
 	cont "Parmanie"
-
+; mina : traduction svp
 _Route16TextUsePokeflute::
 	text "Play the #"
 	line "FLUTE?"

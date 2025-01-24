@@ -1,3 +1,4 @@
+; mina : au twavail floflo
 _MoveDeleterGreetingText::
 	text "Mom says I'm so"
 	line "forgetful that it"

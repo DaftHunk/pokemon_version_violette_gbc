@@ -1,3 +1,4 @@
+; mina : traduction svp, la totale
 _MewtwoBattleText::
 	text "Miou!@"
 	text_end

@@ -13,6 +13,7 @@ _SecretHouseText_4a350::
 	line "Tu as gagné!"
 
 ;joenote - add hotkey info
+; mina : traduction svp
 	para "Press SELECT when"
 	line "you are facing a"
 	cont "shore to use it."	

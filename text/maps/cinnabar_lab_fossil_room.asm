@@ -84,6 +84,7 @@ _Lab4Text_610bd::
 	line "Tu reviendras!"
 	done
 
+; mina : traduction svp
 ;joenote - text for cloning guy
 _Lab4Text_Clone0::
 	text "A Punnett Square"
@@ -105,7 +106,7 @@ _Lab4Text_Clone1::
 	TX_NUM wBuffer+3, 1, 2
 	text " Okay?" 
 	done
-	
+; mina : traduction svp	jusqu'à la fin du fichier
 _Lab4Text_Clone2::
 	text "To clone these"
 	line "genes is ¥10000."
