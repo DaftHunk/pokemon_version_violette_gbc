@@ -903,8 +903,8 @@ Route6HiddenObjects: ;joenote - added hidden items
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 VermilionDockHiddenObjects: ;joenote - added some hidden goodies
-	db $00,$15,SURFBOARD
-	dbw BANK(HiddenItems),HiddenItems	;joenote - added hidden surfboard
+;	db $00,$15,SURFBOARD
+;	dbw BANK(HiddenItems),HiddenItems	;joenote - added hidden surfboard
 	db $01,$01,NUGGET
 	dbw BANK(HiddenItems),HiddenItems
 	db $0A,$1B,TM_15
