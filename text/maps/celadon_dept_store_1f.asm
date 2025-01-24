@@ -17,7 +17,7 @@ _CeladonMart1Text2::
 	para "1er: Marche des"
 	line "dresseurs"
 
-	para "2ème: Jeux-vidéo"
+	para "2ème: Jeux vidéo"
 
 	para "3ème: Cadeaux"
 

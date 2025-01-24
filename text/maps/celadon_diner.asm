@@ -64,7 +64,7 @@ _CeladonDiner_EXPCatchUpON::
 	line "est Maggistrale"
 	cont "pour mes études."
 	
-	para "Elle peux permet"
+	para "Elle permet"
 	line "aux #mon plus"
 	cont "faibles de donner"
 	cont "plus d'exp."

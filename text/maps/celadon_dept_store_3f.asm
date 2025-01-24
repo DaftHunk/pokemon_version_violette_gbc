@@ -122,7 +122,7 @@ _CeladonMart3Text13::
 	done
 
 _CeladonMart3Text14::
-	text "2ème: Jeux Vidéos"
+	text "2ème: Jeux vidéo"
 	done
 
 _CeladonMart3Text15::

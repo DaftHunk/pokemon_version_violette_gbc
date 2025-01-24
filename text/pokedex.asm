@@ -1514,7 +1514,7 @@ _ScizorDexEntry::
 	page "forme d'oeil et"
 	next "donne ainsi"
 	next "l'impression"
-	next "d'avoir 3 têtes."
+	next "d'avoir 3 têtes"
 	dex
 
 _UmbreonDexEntry::
@@ -1523,5 +1523,5 @@ _UmbreonDexEntry::
 	next "gaz empoisonné"
 
 	page "par les pores"
-	next "de sa peau."
+	next "de sa peau"
 	dex
