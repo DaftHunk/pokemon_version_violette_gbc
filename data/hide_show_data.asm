@@ -519,9 +519,10 @@ SilphCo10FHS:
 	db SILPH_CO_10F,$05,Show
 	db SILPH_CO_10F,$06,Show
 SilphCo11FHS:
-	db SILPH_CO_11F,$03,Show
-	db SILPH_CO_11F,$04,Show
-	db SILPH_CO_11F,$05,Show
+	db SILPH_CO_11F,$03,Show ; GIOVANNI
+	db SILPH_CO_11F,$04,Show ; jessie
+	db SILPH_CO_11F,$05,Show 
+	db SILPH_CO_11F,$06,Show ; james
 UnusedMapF4HS:
 	db $F4,$02,Show
 PokemonMansion2FHS:

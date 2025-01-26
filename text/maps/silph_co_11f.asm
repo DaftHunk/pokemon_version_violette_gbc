@@ -97,23 +97,30 @@ _SilphCo10Text_62335::
 	cont "Rocket!"
 
 	para "Je pars, mais..."
-	line "Ma vengeance te"
-	cont "fera bobo!"
+	line "Ma vengeance"
+	cont "sera terrible!"
 	done
 
-_SilphCo11BattleText1::
-	text "Holà toi!"
-	line "Pas bouger!"
+_SilphCo11BattleTextJessieJames::
+	text "James: Une minute,"
+	line "avorton!"
+
+	para "Jessie: Notre boss"
+	line "est en réunion!"
+	cont "Tu ne dois pas le"
+	cont "déranger!!!"
 	done
 
-_SilphCo11EndBattleText1::
-	text "Non..."
-	line "Pitié!"
+_SilphCo11EndBattleTextJessieJames::
+	text "..."
+	line "Ca craint..."
 	prompt
 
-_SilphCo11AfterBattleText1::
-	text "Tu cherches"
-	line "l'embrouille?"
+_SilphCo11AfterBattleTextJessieJames::
+	text "Team Rocket..."
+	line "A la vitesse"
+	cont "d'une voiture!"
+	cont "En gros..."
 	done
 
 _SilphCo11BattleText2::

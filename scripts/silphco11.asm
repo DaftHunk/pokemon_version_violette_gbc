@@ -141,8 +141,9 @@ MissableObjectIDs_6219b:
 	db HS_SILPH_CO_10F_1
 	db HS_SILPH_CO_10F_2
 	db HS_SILPH_CO_11F_1
+	db HS_SILPH_CO_11F_JESSIE
 	db HS_SILPH_CO_11F_2
-	db HS_SILPH_CO_11F_3
+	db HS_SILPH_CO_11F_JAMES
 	db $FF
 
 SilphCo11Script_621c4:
@@ -157,6 +158,7 @@ SilphCo11Script_621c8:
 SilphCo11ScriptPointers:
 	dw SilphCo11Script0
 	dw DisplayEnemyTrainerTextAndStartBattle
+	dw SilphCo11ScriptJessieJames
 	dw EndTrainerBattle
 	dw SilphCo11Script3
 	dw SilphCo11Script4
@@ -273,6 +275,37 @@ SilphCo11Script4:
 	ld a, $5
 	jp SilphCo11Script_621c8
 
+SilphCo11ScriptJessieJames:
+	ld hl, wFlags_0xcd60
+	res 0, [hl]
+	ld a, [wIsInBattle]
+	cp $ff
+	CheckEvent EVENT_BEAT_SILPH_CO_11F_TRAINER_0
+	jp nz, SilphCo11Script_621c8
+;	ld a, [wcf0d]
+;	cp $2
+;	jp z, SilphCo11Script_621c8
+	; Display RocketHideout4AfterBattleText2
+	ld a, $7
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	; Jessie James hide
+	call GBFadeOutToBlack
+	ld a, HS_SILPH_CO_11F_JESSIE
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_SILPH_CO_11F_JAMES
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	call UpdateSprites
+	call Delay3
+	call GBFadeInFromBlack
+	ld [hJoyHeld], a
+	xor a
+	ld [wJoyIgnore], a
+	ld a, $0
+	jp SilphCo11Script_621c8
+
 SilphCo11Script6:	;joenote - adding this function to set a flag if you beat the special trainer
 	xor a
 	ld [wJoyIgnore], a
@@ -294,15 +327,16 @@ SilphCo11TextPointers:
 	dw SilphCo11Text4
 	dw SilphCo11Text5
 	dw SilphCo11Text6
+	dw SilphCo11AfterBattleTextJessieJames
 
 SilphCo11TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_11F_TRAINER_0
 	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SILPH_CO_11F_TRAINER_0
-	dw SilphCo11BattleText1 ; TextBeforeBattle
-	dw SilphCo11AfterBattleText1 ; TextAfterBattle
-	dw SilphCo11EndBattleText1 ; TextEndBattle
-	dw SilphCo11EndBattleText1 ; TextEndBattle
+	dw SilphCo11BattleTextJessieJames ; TextBeforeBattle
+	dw SilphCo11AfterBattleTextJessieJames ; TextAfterBattle
+	dw SilphCo11EndBattleTextJessieJames ; TextEndBattle
+	dw SilphCo11EndBattleTextJessieJames ; TextEndBattle
 
 SilphCo11TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_11F_TRAINER_1
@@ -410,16 +444,16 @@ SilphCo11Text4:
 	call TalkToTrainer
 	jp TextScriptEnd
 
-SilphCo11BattleText1:
-	TX_FAR _SilphCo11BattleText1
+SilphCo11BattleTextJessieJames:
+	text_far _SilphCo11BattleTextJessieJames
 	db "@"
 
-SilphCo11EndBattleText1:
-	TX_FAR _SilphCo11EndBattleText1
+SilphCo11EndBattleTextJessieJames:
+	text_far _SilphCo11EndBattleTextJessieJames
 	db "@"
 
-SilphCo11AfterBattleText1:
-	TX_FAR _SilphCo11AfterBattleText1
+SilphCo11AfterBattleTextJessieJames:
+	text_far _SilphCo11AfterBattleTextJessieJames
 	db "@"
 
 SilphCo11Text5:
