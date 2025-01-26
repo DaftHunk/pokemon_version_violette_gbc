@@ -61,8 +61,6 @@ INCLUDE "engine/print_waiting_text.asm"
 
 INCLUDE "engine/overworld/map_sprite_functions1.asm"
 
-;INCLUDE "engine/test_battle.asm"	;joenote - remove to free up space
-
 INCLUDE "engine/overworld/item.asm"
 INCLUDE "engine/overworld/movement.asm"
 
@@ -73,8 +71,6 @@ INCLUDE "engine/menu/main_menu.asm"
 INCLUDE "engine/oak_speech.asm"
 
 INCLUDE "engine/special_warps.asm"
-
-;INCLUDE "engine/debug1.asm"	;joenote - remove to free up space
 
 INCLUDE "engine/menu/naming_screen.asm"
 
@@ -575,6 +571,9 @@ BillsHouseBlocks: INCBIN "maps/billshouse.blk"
 INCLUDE "engine/menu/oaks_pc.asm"
 
 INCLUDE "engine/hidden_object_functions7.asm"
+
+INCLUDE "engine/debug/debug_menu.asm"
+INCLUDE "engine/debug/debug_party.asm"
 
 SECTION "Battle (bank 9)", ROMX, BANK[$9]
 INCLUDE "engine/battle/print_type.asm"

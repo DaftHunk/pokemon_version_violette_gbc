@@ -133,7 +133,11 @@ CheckForUserInterruption::
 	jr z, .input
 
 	ld a, [hJoy5]
+IF DEF(_DEBUG)
+	and START | SELECT | A_BUTTON
+ELSE
 	and START | A_BUTTON
+ENDC
 	jr nz, .input
 
 	dec c
@@ -2407,8 +2411,17 @@ RunNPCMovementScript::
 EndNPCMovementScript::
 	jpba _EndNPCMovementScript
 
-EmptyFunc2::
-	ret
+DebugPressedOrHeldB::
+IF DEF(_DEBUG)
+	ld a, [wd732]
+	bit 1, a
+	ret z
+	ldh a, [hJoyHeld]
+	bit BIT_B_BUTTON, a
+	ret nz
+	ldh a, [hJoyPressed]
+	bit BIT_B_BUTTON, a
+ENDC
 
 ; stores hl in [wTrainerHeaderPtr]
 StoreTrainerHeaderPointer::
@@ -2555,6 +2568,10 @@ CheckFightingMapTrainers::
 	cp $ff		;If the player has lost the last battle (blacking out), then don't even check and just exit.
 	jr z, .skip_and_exit
 	
+IF DEF(_DEBUG)
+	call DebugPressedOrHeldB
+	jr nz, .skip_and_exit
+ENDC
 	call CheckForEngagingTrainers
 	ld a, [wSpriteIndex]
 	cp $ff
