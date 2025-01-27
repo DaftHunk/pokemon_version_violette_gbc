@@ -27,13 +27,13 @@ _CardKeySuccessText1::
 
 _CardKeySuccessText2::
 	text_start
-	line "La CARTE MAGN. a"
+	line "La Carte Magn. a"
 	cont "ouvert la porte!"
 	done
 
 _CardKeyFailText::
 	text "Zut! Il faut une"
-	line "CARTE MAGN.!"
+	line "Carte Magn.!"
 	done
 
 _TrainerNameText::
@@ -73,7 +73,7 @@ _BoulderText::
 _MartSignText::
 	text "Faites le plein"
 	line "d'objets!"
-	para "BOUTIQUE PKMN"
+	para "Boutique PKMN"
 	done
 
 _PokeCenterSignText::
@@ -390,7 +390,7 @@ _GymStatueText1::
 	text_ram wGymLeaderName
 	text_start
 
-	para "VAINQUEURS:"
+	para "Vainqueurs:"
 	line "<RIVAL>"
 	done
 
@@ -404,7 +404,7 @@ _GymStatueText2::
 	text_ram wGymLeaderName
 	text_start
 
-	para "VAINQUEURS:"
+	para "Vainqueurs:"
 	line "<RIVAL>"
 	cont "<PLAYER>"
 	done
@@ -498,11 +498,11 @@ _CeladonCityPokecenterGuyText::
 	text "Si j'avais une"
 	line "Bicyclette,"
 	cont "j'irais sur la"
-	cont "PISTE CYCLABLE!"
+	cont "Piste Cyclable!"
 	done
 
 _FuchsiaCityPokecenterGuyText::
-	text "LE Parc Safari"
+	text "Le Parc Safari"
 	line "regorge de"
 	cont "#mon."
 
@@ -732,12 +732,12 @@ _GameCornerNoCoinsText::
 	done
 
 _GameCornerOutOfOrderText::
-	text "EN PANNE"
+	text "En Panne"
 	line "Machine cassée."
 	done
 
 _GameCornerOutToLunchText::
-	text "PARTI MANGER"
+	text "Parti Manger"
 	line "Machine réservée."
 	done
 
@@ -1151,7 +1151,7 @@ _OutOfSafariBallsText::
 	text "Haut-parleur: Hé!"
 
 	para "Vous n'avez plus"
-	line "de Safari BALL!"
+	line "de Safari Ball!"
 	prompt
 
 _WildRanText::
