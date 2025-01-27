@@ -559,13 +559,13 @@ _NewBicycleText::
 
 _PushStartText::
 	text "START et...paf!"
-	line "V'là le MENU!"
+	line "V'là le Menu!"
 	done
 
 _SaveOptionText::
 	text "L'option Sauver"
 	line "est sur l'écran"
-	cont "du MENU."
+	cont "du Menu."
 	done
 
 _StrengthsAndWeaknessesText::
