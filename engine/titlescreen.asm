@@ -328,7 +328,7 @@ ENDC
 IF DEF(_DEBUG)
 	ld a, b
 	bit BIT_SELECT, a
-	jp nz, DebugMenu
+	jpab DebugMenu
 ENDC
 	jp MainMenu
 

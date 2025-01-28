@@ -3,8 +3,13 @@ SetDefaultNames:
 	push af
 	ld a, [wOptions]
 	push af
-;	ld a, [wd732]	;joenote - leftover from gamefreak's debug tools. need to clear this.
-;	push af
+	; Retrieve BIT_DEBUG_MODE set in DebugMenu for StartNewGameDebug.
+	; BUG: StartNewGame carries over BIT_ALWAYS_ON_BIKE from previous save files,
+	; which causes CheckForceBikeOrSurf to not return.
+	; To fix this in debug builds, reset BIT_ALWAYS_ON_BIKE here or in StartNewGame.
+	; In non-debug builds, the instructions can be removed.
+	ld a, [wd732]
+	push af
 	ld a, [wUnusedD721]	;joenote - preserve extra options
 	push af
 	ld hl, wPlayerName
@@ -17,8 +22,8 @@ SetDefaultNames:
 	call FillMemory
 	pop af
 	ld [wUnusedD721], a	;joenote - restore extra options
-;	pop af
-;	ld [wd732], a
+	pop af
+	ld [wd732], a
 	pop af
 	ld [wOptions], a
 	pop af
@@ -26,11 +31,14 @@ SetDefaultNames:
 	ld a, [wOptionsInitialized]
 	and a
 	call z, InitOptions
-	ld hl, NintenText
+	; These debug names are used for StartNewGameDebug.
+	; TestBattle uses the debug names from DebugMenu.
+	; A variant of this process is performed in PrepareTitleScreen.
+	ld hl, DebugNewGamePlayerName
 	ld de, wPlayerName
 	ld bc, NAME_LENGTH
 	call CopyData
-	ld hl, SonyText
+	ld hl, DebugNewGameRivalName
 	ld de, wRivalName
 	ld bc, NAME_LENGTH
 	jp CopyData
@@ -413,3 +421,9 @@ _PromptNewID:
 	line "TRAINER ID?"
 	done
 	db "@"
+	
+DebugNewGamePlayerName:
+	db "Ninten@"
+
+DebugNewGameRivalName:
+	db "Sony@"

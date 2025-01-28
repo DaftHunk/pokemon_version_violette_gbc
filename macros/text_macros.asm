@@ -43,7 +43,7 @@ ENDM
 
 TX_LINE    EQUS "db $05"
 TX_BLINK   EQUS "db $06"
-;TX_SCROLL EQUS "db $07"
+TX_SCROLL  EQUS "db $07"
 TX_ASM     EQUS "db $08"
 
 MACRO TX_NUM
