@@ -445,15 +445,15 @@ SilphCo11Text4:
 	jp TextScriptEnd
 
 SilphCo11BattleTextJessieJames:
-	text_far _SilphCo11BattleTextJessieJames
+	TX_FAR _SilphCo11BattleTextJessieJames
 	db "@"
 
 SilphCo11EndBattleTextJessieJames:
-	text_far _SilphCo11EndBattleTextJessieJames
+	TX_FAR _SilphCo11EndBattleTextJessieJames
 	db "@"
 
 SilphCo11AfterBattleTextJessieJames:
-	text_far _SilphCo11AfterBattleTextJessieJames
+	TX_FAR _SilphCo11AfterBattleTextJessieJames
 	db "@"
 
 SilphCo11Text5:
