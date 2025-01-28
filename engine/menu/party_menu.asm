@@ -152,7 +152,7 @@ RedrawPartyMenu_:
 	ld l, a
 	ld de, wEvosMoves
 	ld a, BANK(EvosMovesPointerTable)
-	ld bc, wEvosMoves.end - wEvosMoves + 1
+	ld bc, wEvosMoves.end - wEvosMoves
 	call FarCopyData
 	ld hl, wEvosMoves
 	ld de, .notAbleToEvolveText
