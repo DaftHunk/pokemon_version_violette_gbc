@@ -13,7 +13,7 @@ MainMenu:
 .mainMenuLoop
 	ld c, 20
 	call DelayFrames
-	xor a ; LINK_STATE_NONE
+	xor a ; LINK_STATE_NONE 
 	ld [wLinkState], a
 	ld hl, wPartyAndBillsPCSavedMenuItem
 	ld [hli], a
@@ -483,17 +483,22 @@ RomHackVersionText:
 
 StartNewGame:
 	ld hl, wd732
+	; Ensure debug mode is not used when starting a regular new game.
+	; Debug mode persists in saved games for both debug and non-debug builds, and is
+	; only reset here by the main menu.
 	res 1, [hl]
+	; fallthrough
+StartNewGameDebug:
 	call OakSpeech
 	ld c, 20
 	call DelayFrames
 
 ; enter map after using a special warp or loading the game from the main menu
-SpecialEnterMap:
+SpecialEnterMap::
 	xor a
-	ld [hJoyPressed], a
-	ld [hJoyHeld], a
-	ld [hJoy5], a
+	ldh [hJoyPressed], a
+	ldh [hJoyHeld], a
+	ldh [hJoy5], a
 	ld [wd72d], a
 	ld hl, wd732
 	set 0, [hl] ; count play time

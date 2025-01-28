@@ -928,7 +928,7 @@ CableClub_Run:
 	jr z, .doBattleOrTrade
 	cp LINK_STATE_RESET ; this is never used
 	ret nz
-	predef EmptyFunc3
+	predef EmptyFunc
 	jp Init
 .doBattleOrTrade
 	call CableClub_DoBattleOrTrade
@@ -957,7 +957,7 @@ CableClub_Run:
 	ld [wNewSoundID], a
 	jp PlaySound
 
-EmptyFunc3:
+EmptyFunc:
 	ret
 
 Diploma_TextBoxBorder:

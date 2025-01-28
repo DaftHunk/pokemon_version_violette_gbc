@@ -1,9 +1,6 @@
 roms := \
-	pokered.gbc \
 	pokeblue.gbc \
-	pokegreen.gbc \
-	pokebluejp.gbc \
-	pokeredjp.gbc \
+	pokeblue_debug.gbc\
 
 rom_obj := \
 	audio.o \
@@ -11,15 +8,16 @@ rom_obj := \
 	text.o \
 	wram.o \
 
-pokered_obj := $(rom_obj:.o=_red.o)
 pokeblue_obj := $(rom_obj:.o=_blue.o)
-pokegreen_obj := $(rom_obj:.o=_green.o)
-pokebluejp_obj := $(rom_obj:.o=_bluejp.o)
-pokeredjp_obj := $(rom_obj:.o=_redjp.o)
+pokeblue_debug_obj := $(rom_obj:.o=_blue_debug.o)
 
 ### Build tools
 
-MD5 := md5sum -c
+ifeq (,$(shell which sha1sum))
+SHA1 := shasum
+else
+SHA1 := sha1sum
+endif
 
 RGBDS ?=
 RGBASM  ?= $(RGBDS)rgbasm
@@ -34,24 +32,21 @@ RGBLINK ?= $(RGBDS)rgblink
 .SECONDEXPANSION:
 .PRECIOUS:
 .SECONDARY:
-.PHONY: all red blue green bluejp redjp clean tidy compare tools
+.PHONY: all blue blue_debug clean tidy compare tools
 
 all: $(roms)
-#red: pokered.gbc
 blue: pokeblue.gbc
-#green: pokegreen.gbc
-#bluejp: pokebluejp.gbc
-#redjp: pokeredjp.gbc
+blue_debug: pokeblue_debug.gbc
 
 # For contributors to make sure a change didn't affect the contents of the rom.
 compare: $(roms)
-	@$(MD5) roms.md5
+	@$(SHA1) -c roms.sha1
 
 clean: tidy
 	find . \( -iname '*.1bpp' -o -iname '*.2bpp' -o -iname '*.pic' \) -exec rm {} +
 
 tidy:
-	rm -f $(roms) $(pokered_obj) $(pokeblue_obj) $(pokegreen_obj) $(pokebluejp_obj) $(pokeredjp_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym) rgbdscheck.o 
+	rm -f $(roms) $(pokeblue_obj) $(pokeblue_debug_obj) $(roms:.gbc=.map) $(roms:.gbc=.sym) rgbdscheck.o 
 	$(MAKE) clean -C tools/
 
 tools:
@@ -104,12 +99,8 @@ endif
 # Please act responsibly should you choose to compile using this tag.
 # Dev Note: The added flashing can become quite displeasing regardless. Leaving it out makes for a better experience.
 
-#$(pokered_obj): 	RGBASMFLAGS += -D _RED -D _ENCRED -D _METRIC -D _FPLAYER -D _MOVENPCS -D _RUNSHOES -D _EXPBAR -D _SWBACKS -D _YSPRITES
-$(pokeblue_obj): 	RGBASMFLAGS += -D _BLUE -D _ENCBLUEGREEN -D _METRIC -D _FPLAYER -D _MOVENPCS -D _RUNSHOES -D _EXPBAR -D _SWBACKS -D _YSPRITES -D _JPTXT
-#$(pokegreen_obj): 	RGBASMFLAGS += -D _GREEN -D _ENCBLUEGREEN -D _METRIC -D _FPLAYER -D _MOVENPCS -D _RUNSHOES -D _EXPBAR -D _RGSPRITES -D _JPTXT -D _JPLOGO -D _RGTITLE -D _REDGREENJP
-#$(pokebluejp_obj): 	RGBASMFLAGS += -D _BLUE -D _ENCBLUEJP -D _METRIC -D _FPLAYER -D _MOVENPCS -D _RUNSHOES -D _EXPBAR -D _SWBACKS -D _JPTXT -D _JPLOGO -D _BLUEJP
-#$(pokeredjp_obj): 	RGBASMFLAGS += -D _RED -D _ENCRED -D _METRIC -D _FPLAYER -D _MOVENPCS -D _RUNSHOES -D _EXPBAR -D _RGSPRITES -D _JPTXT -D _JPLOGO -D _RGTITLE -D _REDGREENJP -D _REDJP
-
+$(pokeblue_obj): 	   RGBASMFLAGS += -D _BLUE -D _ENCBLUEGREEN -D _METRIC -D _FPLAYER -D _MOVENPCS -D _RUNSHOES -D _EXPBAR -D _SWBACKS -D _YSPRITES -D _JPTXT
+$(pokeblue_debug_obj): RGBASMFLAGS += -D _BLUE -D _ENCBLUEGREEN -D _METRIC -D _FPLAYER -D _MOVENPCS -D _RUNSHOES -D _EXPBAR -D _SWBACKS -D _YSPRITES -D _JPTXT -D _DEBUG
 
 # The dep rules have to be explicit or else missing files won't be reported.
 # As a side effect, they're evaluated immediately instead of when the rule is invoked.
@@ -126,11 +117,8 @@ ifeq (,$(filter clean tidy tools,$(MAKECMDGOALS)))
 $(info $(shell $(MAKE) -C tools))
 
 # Dependencies for objects (drop _red and _blue and etc from asm file basenames)
-#$(foreach obj, $(pokered_obj), $(eval $(call DEP,$(obj),$(obj:_red.o=.asm))))
 $(foreach obj, $(pokeblue_obj), $(eval $(call DEP,$(obj),$(obj:_blue.o=.asm))))
-#$(foreach obj, $(pokegreen_obj), $(eval $(call DEP,$(obj),$(obj:_green.o=.asm))))
-#$(foreach obj, $(pokebluejp_obj), $(eval $(call DEP,$(obj),$(obj:_bluejp.o=.asm))))
-#$(foreach obj, $(pokeredjp_obj), $(eval $(call DEP,$(obj),$(obj:_redjp.o=.asm))))
+$(foreach obj, $(pokeblue_debug_obj), $(eval $(call DEP,$(obj),$(obj:_blue_debug.o=.asm))))
 
 endif
 
@@ -138,16 +126,17 @@ endif
 %.asm: ;
 
 #gbcnote - use cjsv to compile as GBC+DMG rom
-#pokered_opt  			= -cjsv -k 01 -l 0x33 -m 0x13 -p 0 -r 03 -t "POKEMON RED"
-pokeblue_opt 			= -cjsv -k 01 -l 0x33 -m 0x13 -p 0 -r 03 -t "POKEMON BLUE"
-#pokegreen_opt 			= -cjsv -k 01 -l 0x33 -m 0x13 -p 0 -r 03 -t "POKEMON GREEN"
-#pokebluejp_opt 			= -cjsv -k 01 -l 0x33 -m 0x13 -p 0 -r 03 -t "POKEMON BLUE"
-#pokeredjp_opt 			= -cjsv -k 01 -l 0x33 -m 0x13 -p 0 -r 03 -t "POKEMON RED"
+#pokeblue_opt 	= -cjsv -k 01 -l 0x33 -m 0x13 -p 0 -r 03 -t "POKEMON BLUE"
+pokeblue_pad       = 0x00
+pokeblue_debug_pad = 0xff
+pokeblue_opt       = -cjsv -n 0 -k 01 -l 0x33 -m 0x13 -r 03 -t "POKEMON BLUE"
+pokeblue_debug_opt = -cjsv -n 0 -k 01 -l 0x33 -m 0x13 -r 03 -t "POKEMON BLUE"
 
 %.gbc: $$(%_obj) layout.link
-	$(RGBLINK) -d -m $*.map -n $*.sym -l layout.link -o $@ $(filter %.o,$^)
-	$(RGBFIX) $($*_opt) $@
-
+#	$(RGBLINK) -d -m $*.map -n $*.sym -l layout.link -o $@ $(filter %.o,$^)
+#	$(RGBFIX) $($*_opt) $@
+	$(RGBLINK) -p $($*_pad) -d -m $*.map -n $*.sym -l layout.link -o $@ $(filter %.o,$^)
+	$(RGBFIX) -p $($*_pad) $($*_opt) $@
 
 gfx/blue/intro_purin_1.2bpp: rgbgfx += -h
 gfx/blue/intro_purin_2.2bpp: rgbgfx += -h

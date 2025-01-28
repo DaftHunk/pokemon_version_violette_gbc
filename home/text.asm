@@ -393,7 +393,7 @@ NextTextCommand::
 	cp $17
 	jp z, TextCommand17
 	cp $0e
-	jp nc, TextCommand0B ; if a != 0x17 and a >= 0xE, go to command 0xB
+	jp nc, TextCommand_SOUND ; if a != 0x17 and a >= 0xE, go to command 0xB
 ; if a < 0xE, use a jump table
 	ld hl, TextCommandJumpTable
 	push bc
@@ -412,7 +412,7 @@ NextTextCommand::
 ; AAAA = address of upper left corner
 ; BB = height
 ; CC = width
-TextCommand04::
+TextCommand_BOX::
 	pop hl
 	ld a, [hli]
 	ld e, a
@@ -431,7 +431,7 @@ TextCommand04::
 
 ; place string inline
 ; 00{string}
-TextCommand00::
+TextCommand_START::
 	pop hl
 	ld d, h
 	ld e, l
@@ -446,7 +446,7 @@ TextCommand00::
 ; place string from RAM
 ; 01AAAA
 ; AAAA = address of string
-TextCommand01::
+TextCommand_RAM::
 	pop hl
 	ld a, [hli]
 	ld e, a
@@ -465,7 +465,7 @@ TextCommand01::
 ; BB
 ; bits 0-4 = length in bytes
 ; bits 5-7 = unknown flags
-TextCommand02::
+TextCommand_BCD::
 	pop hl
 	ld a, [hli]
 	ld e, a
@@ -485,7 +485,7 @@ TextCommand02::
 ; repoint destination address
 ; 03AAAA
 ; AAAA = new destination address
-TextCommand03::
+TextCommand_MOVE::
 	pop hl
 	ld a, [hli]
 	ld [wTextDest], a
@@ -498,7 +498,7 @@ TextCommand03::
 ; repoint destination to second line of dialogue text box
 ; 05
 ; (no arguments)
-TextCommand05::
+TextCommand_LOW::
 	pop hl
 	coord bc, 1, 16 ; address of second line of dialogue text box
 	jp NextTextCommand
@@ -506,10 +506,10 @@ TextCommand05::
 ; blink arrow and wait for A or B to be pressed
 ; 06
 ; (no arguments)
-TextCommand06::
+TextCommand_PROMPT_BUTTON::
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
-	jp z, TextCommand0D
+	jp z, TextCommand_WAIT_BUTTON 
 	ld a, "▼"
 	Coorda 18, 16 ; place down arrow in lower right corner of dialogue text box
 	push bc
@@ -523,7 +523,7 @@ TextCommand06::
 ; scroll text up one line
 ; 07
 ; (no arguments)
-TextCommand07::
+TextCommand_SCROLL::
 	ld a, " "
 	Coorda 18, 16 ; place blank space in lower right corner of dialogue text box
 	call ScrollTextUpOneLine
@@ -534,7 +534,7 @@ TextCommand07::
 
 ; execute asm inline
 ; 08{code}
-TextCommand08::
+TextCommand_START_ASM::
 	pop hl
 	ld de, NextTextCommand
 	push de ; return address
@@ -546,7 +546,7 @@ TextCommand08::
 ; BB
 ; bits 0-3 = how many digits to display
 ; bits 4-7 = how long the number is in bytes
-TextCommand09::
+TextCommand_NUM::
 	pop hl
 	ld a, [hli]
 	ld e, a
@@ -573,7 +573,7 @@ TextCommand09::
 ; wait half a second if the user doesn't hold A or B
 ; 0A
 ; (no arguments)
-TextCommand0A::
+TextCommand_PAUSE::
 	push bc
 	call Joypad
 	ld a, [hJoyHeld]
@@ -589,7 +589,7 @@ TextCommand0A::
 ; plays sounds
 ; this actually handles various command ID's, not just 0B
 ; (no arguments)
-TextCommand0B::	;joenote - modified to make SFX_GET_KEY_ITEM play a previously unused sound effect in battle (for getting a badge)
+TextCommand_SOUND::	;joenote - modified to make SFX_GET_KEY_ITEM play a previously unused sound effect in battle (for getting a badge)
 	pop hl
 	push bc
 	dec hl
@@ -662,7 +662,7 @@ TextCommandSounds::
 ; draw ellipses
 ; 0CAA
 ; AA = number of ellipses to draw
-TextCommand0C::
+TextCommand_DOTS::
 	pop hl
 	ld a, [hli]
 	ld d, a
@@ -691,7 +691,7 @@ TextCommand0C::
 ; wait for A or B to be pressed
 ; 0D
 ; (no arguments)
-TextCommand0D::
+TextCommand_WAIT_BUTTON ::
 	push bc
 	call ManualTextScroll ; wait for A or B to be pressed
 	pop bc
@@ -724,17 +724,23 @@ TextCommand17::
 	jp NextTextCommand
 
 TextCommandJumpTable::
-	dw TextCommand00
-	dw TextCommand01
-	dw TextCommand02
-	dw TextCommand03
-	dw TextCommand04
-	dw TextCommand05
-	dw TextCommand06
-	dw TextCommand07
-	dw TextCommand08
-	dw TextCommand09
-	dw TextCommand0A
-	dw TextCommand0B
-	dw TextCommand0C
-	dw TextCommand0D
+; entries correspond to TX_* constants (see macros/text_macros.asm)
+	dw TextCommand_START         ; TX_START
+	dw TextCommand_RAM           ; TX_RAM
+	dw TextCommand_BCD           ; TX_BCD
+	dw TextCommand_MOVE          ; TX_MOVE
+	dw TextCommand_BOX           ; TX_BOX
+	dw TextCommand_LOW           ; TX_LINE
+	dw TextCommand_PROMPT_BUTTON ; TX_BLINK
+IF DEF(_DEBUG)
+	dw Char57                    ; TX_SCROLL
+ELSE
+	dw TextCommand_SCROLL        ; TX_SCROLL
+ENDC
+	dw TextCommand_START_ASM     ; TX_START_ASM
+	dw TextCommand_NUM           ; TX_NUM
+	dw TextCommand_PAUSE         ; TX_DELAY
+	dw TextCommand_SOUND         ; TX_SFX_ITEM_1 (also handles other TX_SOUND_* commands)
+	dw TextCommand_DOTS          ; TX_ELLIPSES
+	dw TextCommand_WAIT_BUTTON   ; TX_WAIT
+	; greater TX_* constants are handled directly by NextTextCommand 

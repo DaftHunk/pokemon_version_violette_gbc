@@ -9,12 +9,13 @@ SilphCo11Object:
 
 	db 0 ; signs
 
-	db 5 ; objects
+	db 6 ; objects
 	object SPRITE_MR_MASTERBALL, 7, 5, STAY, DOWN, 1 ; person
 	object SPRITE_FOULARD_WOMAN, 10, 5, STAY, DOWN, 2 ; person
 	object SPRITE_GIOVANNI, 6, 9, STAY, DOWN, 3, OPP_GIOVANNI, 2
-	object SPRITE_ROCKET, 3, 16, STAY, UP, 4, OPP_ROCKET, 40
+	object SPRITE_ROCKET, 4, 14, STAY, DOWN, 4, OPP_JESSIE_JAMES, 1 ; Jessie
 	object SPRITE_ROCKET, 15, 9, STAY, UP, 5, OPP_ROCKET, 39
+	object SPRITE_ROCKET, 5, 15, STAY, LEFT, 6, OPP_JESSIE_JAMES, 1 ; James
 
 	; warp-to
 	warp_to 9, 0, SILPH_CO_11F_WIDTH ; SILPH_CO_10F
