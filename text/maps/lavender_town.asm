@@ -8,12 +8,12 @@ _LavenderTownText_44141::
 	line "faut..."
 	
 ;joenote - added text to hint at evolving haunter
-; mina : traduction svp
-	para "So you'll believe"
-	line "that I once saw a"
-	cont "HAUNTER evolve"
-	cont "during an awful"
-	cont "THUNDER storm."
+	para "Tu es de ceux qui"
+	line "croient au fait"
+	cont "que Spectrum évo-"
+	cont "lue durant les"
+	cont "terribles tempêtes"
+	cont "de Foudre?"
 	done
 
 _LavenderTownText_44146::

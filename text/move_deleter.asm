@@ -1,27 +1,28 @@
-; mina : au twavail floflo
 _MoveDeleterGreetingText::
-	text "Mom says I'm so"
-	line "forgetful that it"
-	cont "is contagious."
+	text "Maman dit que j'"
+	line "oublie tellement"
+	cont "tout que c'en est"
+	cont "contagieux."
 	
-	para "Want me to make a"
-	line "#mon forget a"
-	cont "move?"
+	para "Tu veux qu'un"
+	line "#mon oublie une"
+	cont "technique?"
+
 	done
 
 _MoveDeleterSaidYesText::
-	text "Which #mon"
-	line "should forget a"
-	cont "move?"
+	text "Quel #mon"
+	line "doit oublier"
+	cont "une technique?"
 	prompt
 
 _MoveDeleterWhichMoveText::
-	text "Which move should"
-	line "it forget, then?"
+	text "Quelle technique"
+	line "doit-il oublier?"
 	done
 
 _MoveDeleterConfirmText::
-	text "Make it forget"
+	text "Lui faire oublier"
 	line "@"
 	TX_RAM wcf4b
 	text "?"
@@ -30,17 +31,17 @@ _MoveDeleterConfirmText::
 _MoveDeleterForgotText::
 	text "@"
 	TX_RAM wcf4b
-	text " was"
-	line "forgotten!"
+	text " a été"
+	line "oublié!"
 	prompt
 
 _MoveDeleterByeText::
-	text "Come visit me"
-	line "again!"
+	text "Reviens me rendre"
+	line "visite!"
 	done
 
 _MoveDeleterOneMoveText::
-	text "That #mon"
-	line "has one move."
-	cont "Pick another?"
+	text "Le #mon n'a"
+	line "qu'une technique."
+	cont "Choisir un autre?"
 	done

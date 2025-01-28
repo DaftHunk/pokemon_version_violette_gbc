@@ -3,11 +3,10 @@ _Route2GateText_5d616::
 	line "peut éclairer les"
 	cont "endroits sombres."
 	
-; mina : traduction svp
 ;joenote - add hotkey info
-	para "Press SELECT when"
-	line "you are in a dark"
-	cont "area to use it."	
+	para "Appuie sur SELECT"
+	line "dans le noir pour"
+	cont "l'utiliser."	
 	done
 
 _Route2GateText2::

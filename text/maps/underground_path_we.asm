@@ -1,40 +1,42 @@
-; mina : traduction svp, la totale
 ;joenote - text for random trainer
 _RandTrainerNotReady::
-	text "I'm gonna sneak"
-	line "into the CERULEAN"
-	cont "CAVE while every-"
-	cont "one is occupied"
-	cont "with the #mon"
-	cont "League finals."
+	text "J'vais me faufiler"
+	line "dans la Caverne"
+	cont "Azurée pendant que"
+	cont "tous le monde est"
+	cont "occupé avec la"
+	cont "finale de la Ligue"
+	cont "#mon."
 	
-	para "There has to be"
-	line "some good loot"
-	cont "down in there."
+	para "Doit y'avoir un"
+	line "bon magot là-"
+	cont "dessous."
 	done
 
 _RandTrainerIntro::
-	text "I barely made it"
-	line "out of CERULEAN"
-	cont "CAVE alive, but"
-	cont "I swiped these"
-	cont "weird DITTO that"
-	cont "mimic anything."
+	text "Je suis heureux"
+	line "d'être sorti d'la"
+	cont "Caverne Azurée en"
+	cont "un seul morceau."
+	cont "J'y ai choppé ces"
+	cont "étranges Métamorph"
+	cont "qui copient tout."
 	done
 	
 _RandTrainerChallenge::
-	text "Let's test them."
+	text "Testons-les."
 	done
 	
 _RandTrainerBye::
-	text "Later then."
+	text "A plus tard."
 	done
 	
 _RandTrainerPre::
-	text "Commence battle!"
+	text "Que la bataille"
+	line "commence!"
 	done
 	
 _RandTrainerPost::
 	text "Okay!"
-	line "Battle over."
+	line "Bataille terminée."
 	prompt

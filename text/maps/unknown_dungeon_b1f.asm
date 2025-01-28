@@ -1,6 +1,6 @@
-; mina : traduction svp, la totale
+
 _MewtwoBattleText::
-	text "Miou!@"
+	text "Mew!@"
 	text_end
 	
 ;joenote - adding notifications for Mew status

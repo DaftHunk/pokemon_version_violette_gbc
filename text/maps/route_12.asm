@@ -144,8 +144,8 @@ _Route12Text11::
 
 _Route12Text12::
 	text "Zone de Pêche"
-; mina : traduction svp
+
 _Route12TextUsePokeflute::
-	text "Play the #"
-	line "FLUTE?"
+	text "Jouer de la"
+	line "#Flute?"
 	done

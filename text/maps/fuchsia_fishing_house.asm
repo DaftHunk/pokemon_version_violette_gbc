@@ -19,10 +19,10 @@ _FuchsiaHouse3Text_561c2::
 	cont "Pêche soit avec"
 	cont "toi, p'tit!"
 	;joenote - add hotkey info
-	; mina : traduction svp
-	para "Hold A and press"
-	line "SELECT to use the"
-	cont "rod quickly.@@"
+	para "appuie sur SELECT"
+	line "en maintenant A"
+	cont "pour l'utiliser"
+	cont "rapidement.@@"
 
 	para "<PLAYER> reçoit"
 	line "une @"
@@ -40,18 +40,15 @@ _FuchsiaHouse3Text_56217::
 	text "Salut,"
 	line "<PLAYER>!"
 
-;	para "How are the fish"
-;	line "biting?"
-;	done
-; mina : traduction svp
-	para "Use the SUPER ROD"
-	line "in any water!"
-	cont "You can catch"
-	cont "different kinds"
-	cont "of #mon."
+	para "Utilise la Super"
+	line "Canne dans n'impo-"
+	cont "rte quelle eau!"
+	cont "Tu peux attraper"
+	cont "pleins de #mon"
+	cont "différents."
 
-	para "Try fishing"
-	line "wherever you can!"
+	para "Essaie de pêcher"
+	line "quand tu le peux!"
 	done
 
 _FuchsiaHouse3Text_5621c::

@@ -32,7 +32,7 @@ _SilphCo10Text_6231c::
 
 	para "C'est notre"
 	line "prototype secret:"
-	cont "la MASTER BALL!"
+	cont "la Master Ball!"
 
 	para "Elle pourra"
 	line "attraper n'importe"

@@ -353,19 +353,16 @@ _OaksLabText26::
 	cont "travail!"
 
 ;joenote - add hotkey info
-; mina : traduction svp
-	para "Also, do remember"
-	line "that you can swap"
-	cont "between extra bag"	
-	cont "space by pressing"
-	cont "START in the ITEM"
-	cont "menu."
+	para "Rappelez-vous que"
+	line "vous pouvez passer"
+	cont "d'un sac à l'autre"	
+	cont "avec START dans le"
+	cont "le menu Objets."
 
-	para "And you can auto-"
-	line "sort an ITEM menu"
-	cont "by simply holding"
-	cont "SELECT while you"
-	cont "press START."
+	para "Vous pouvez aussi"
+	line "trier les objets"
+	cont "en maintenant"
+	cont "SELECT et START."
 	done
 
 _OaksLabText27::

@@ -4,10 +4,10 @@ _SaffronGateText_1dfe7::
 	cont "soif!"
 
 ;joenote - add a hint on what to give the guard
-; mina : traduction svp
-	para "I wish that I had"
-	line "a VENDING MACHINE"
-	cont "drink right now."
+	para "Je rêverais qu'on"
+	line "ait notre propre"
+	cont "Distributeur de"
+	cont "Boissons."
 
 	para "La route est"
 	line "fermée. Dégage."

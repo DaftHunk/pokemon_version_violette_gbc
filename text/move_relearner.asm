@@ -1,44 +1,47 @@
-; mina : au twavail floflo
 _MoveRelearnerGreetingText::
-	text "I tutor children,"
-	line "but I also tutor"
-	cont "#mon."
+	text "Je donne des cours"
+	line "aux enfants mais"
+	cont "je peux aussi édu"
+	cont "quer les #mon."
 	
-	para "I teach them to"
-	line "remember moves"
-	cont "they forgot."
+	para "Je peux les aider"
+	line "à se remémorer les"
+	cont "techniques qu'ils"
+	cont "ont oublié."
 
-	para "¥1000 per lesson."
-	line "How about it?"
+	para "C'est ¥1000 le"
+	line "cours,"
+	cont "qu'en dis-tu?"
 	done
 
 _MoveRelearnerSaidYesText::
-	text "Which #mon"
-	line "should I tutor?"
+	text "Quel #mon"
+	line "dois-je aider?"
 	prompt
 
 _MoveRelearnerNotEnoughMoneyText::
 	text "Hmmm..."
 
-	para "You don't have"
-	line "enough money!"
+	para "Tu n'as pas assez"
+	line "d'argent!"
 	done
 
 _MoveRelearnerWhichMoveText::
-	text "Which move should"
-	line "it learn?"
+	text "Quelle technique"
+	line "doit-il apprendre?"
 	done
 
 _MoveRelearnerByeText::
-	text "If any of your"
-	line "#mon need to"
-	cont "remember a move,"
-	cont "come visit me!"
+	text "N'hésite pas à re-"
+	line "venir me voir si"
+	cont "un #mon doit se"
+	cont "se rappeler d'une"
+	cont "technique!"
 	done
 
 _MoveRelearnerNoMovesText::
-	text "This #mon"
-	line "hasn't forgotten"
-	cont "any moves."
+	text "Ce #mon n'a"
+	line "jamais oublié de"
+	cont "technique."
 	done
 

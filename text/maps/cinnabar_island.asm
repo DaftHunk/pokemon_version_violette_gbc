@@ -18,12 +18,13 @@ _CinnabarIslandText2::
 	line "font de drôles"
 	cont "d'expériences"
 	cont "dans l'coin."
-; mina : traduction svp
+
 ;joenote - added text to hint at evolving graveler
-	para "Apparently they"
-	line "made a GRAVELER"
-	cont "evolve by using"
-	cont "volcanic FIRE."
+	para "Apparement ils"
+	line "auraient réussi à"
+	cont "faire évoluer un"
+	cont "Gravalanch avec le"
+	cont "Feu du volcan."
 	done
 
 _CinnabarIslandText3::

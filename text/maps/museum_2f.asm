@@ -3,13 +3,13 @@ _Museum2FText1::
 
 	para "Ouais? Et alors?"
 ;joenote - added text to hint at evolving kadabra
-; mina : traduction svp
-	para "I heard that some"
-	line "GYM LEADER had a"
-	cont "Kadabra evolve by"
-	cont "meditating under"
-	cont "the MOON's light,"
-	cont "so why a STONE?"
+	para "J'ai entendu dire"
+	line "qu'un maître d'ar-"
+	cont "ène a fait évoluer"
+	cont "son Kadabra en"
+	cont "méditant sous la"
+	cont "lumière de"
+	cont "la Lune."
 	done
 
 _Museum2FText2::

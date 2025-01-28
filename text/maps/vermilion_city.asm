@@ -28,15 +28,16 @@ _VermilionCityText_198ac::
 	para "Il reviendra l'an"
 	line "prochain."
 	done
-; mina : traduction svp
-_VermilionCityText_annereturns::	;joenote - added text
-	text "Did you see S.S."
-	line "ANNE moored in"
-	cont "the harbor?"
 
-	para "She came back due"
-	line "to massive blooms"
-	cont "of Tentacool!"
+_VermilionCityText_annereturns::	;joenote - added text
+	text "Tu as vu l'Océ"
+	line "anne amarrée"
+	cont "au port?"
+
+	para "Elle a dû revenir"
+	line "à cause des"
+	cont "bancs massifs"
+	cont "de Tentacool!"
 	done
 
 _SSAnneWelcomeText4::
@@ -150,13 +151,13 @@ _VermilionCityText12::
 _VermilionCityText13::
 	text "Port de Carmin"
 	done
-; mina : traduction svp
+
 _VermilionPKMNText::
-	text "A lazy #mon"
-	line "is sunbathing."
+	text "Un #mon se pré-"
+	line "lasse au soleil."
 	
-	para "Its gaze falls on"
-	line "a ship moored in"
-	cont "the harbor."
+	para "Son regard se perd"
+	line "vers un bateau"
+	cont "mouillant au port."
 	done
 	
