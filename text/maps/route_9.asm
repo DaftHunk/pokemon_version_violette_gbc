@@ -61,7 +61,7 @@ _Route9EndBattleText4::
 _Route9AfterBattleText4::
 	text "T'as l'air doué!"
 	line "Bonne chance,"
-	cont "garçon!"
+	cont "l'ami!"
 	done
 
 _Route9BattleText5::
