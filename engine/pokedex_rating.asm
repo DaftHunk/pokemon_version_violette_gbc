@@ -84,9 +84,10 @@ DexRatingsTable:
 	dw PokedexRatingText_4423d
 	db 140
 	dw PokedexRatingText_44242
-	db 150
+	db 153 ; dafthunk #19 took into account added mons
 	dw PokedexRatingText_44247
-	db 152
+	; dafthunk Handle MissingNo or error
+	db 154,155,156,157,158,159,160
 	dw PokedexRatingText_4424c
 
 PokedexRatingText_44201:
