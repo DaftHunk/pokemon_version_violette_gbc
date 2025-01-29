@@ -23,76 +23,73 @@ _FuchsiaPokecenterText3::
 	done
 
 _NurseJoyBattleText::
-	text "Actually..."
-    line "Before you go,"
+	text "Au fait..."
+    line "Avant de partir,"
 
-    para "I've always"
-    line "dreamed of"
+    para "J'ai toujours"
+    line "rêvé de devenir"
+    cont "un maître #mon."
 
-    para "becoming a"
-    line "#MON MASTER,"
+    para "Mais mes obligat-"
+    line "ions ici rendent"
+	cont "difficile le"
+	cont "voyage et la "
+	cont "collection"
+	cont "des badges."
 
-    para "but my duties"
-    line "here make it"
-    
-	para "hard to travel"
-    line "and collect"
-    cont "badges."
+	para "Ca serait un imm-"
+    line "ense honneur de"
+    cont "me tester contre"
+	cont "le nouveau"
+	cont "Champion."
 
-	para "It would be a"
-    line "great honor to"
-    cont "test my skills"
-
-    para "against the new"
-    line "CHAMPION."
-
-    para "Could I ask for"
-    line "a battle?"
+    para "Pourrais-je te"
+    line "demander un duel?"
 	done
 
 _NurseJoyBattleText2::
-    text "Actually..."
-    line "Before you go,"
+	text "Au fait..."
+    line "Avant de partir,"
 
-    para "Could I ask for"
-    line "another battle?"
+    para "Tu voudrais une"
+    line "revanche?"
 	done
 
 _NurseJoyRefusedText::
-	text "I understand."
-	line "Duty calls, and"
-	cont "so does yours."
+	text "Je comprends."
+	line "Le devoir t'appe-"
+	cont "lle, alors vas-y."
 
-	para "Maybe another"
-	line "time, then."
+	para "Peut-être une"
+	line "autre fois."
 	done
 
 _NurseJoyAcceptedText::
-	text "Thank you!"
-
-	para "This means"
-	line "a lot to me."
+	text "Merci!"
+	line "Ca veux dire beau-"
+	cont "coup pour moi."
 	
-	para "Let's give it"
-    line "our best shot!"
+	para "Je vais me donner"
+    line "à fond!"
 	done
 
 _NurseJoyAfterBattleText::
-    text "That was amazing!"
+    text "C'était"
+	line "génial! Ta force"
+	cont "et ton lien avec"
+	cont "tes #mon sont"
+	cont "très inspirants."
 
-    para "Your strength and"
-    line "bond with your"
-    cont "#MON is"
-	cont "inspiring."
+	para "Cette bataille"
+	line "m'a énormément"
+	cont "appris."
 
-    para "This battle has"
-    line "taught me so"
-	cont "much."
+	para "Merci pour cette"
+	line "opportunitée."
 
-	para "Thank you for"
-    line "this opportunity!"
+	para "J'espère que nous"
+	line "pourrons nous"
+	cont "affronter à"
+	cont "nouveau."
 
-	para "I hope we can"
-    line "battle again"
-    cont "sometime!"
     done

@@ -533,8 +533,8 @@ _OakVictorySpeech::
 	cont "du combat!"
 	
 	para "J'avais oublié le"
-	line "fun du duel."
-	cont "Un match splendide!"
+	line "sel du duel."
+	cont "Quel beau match."
 
 	para "Tu connais M.Fuji?"
 	line "Il étudiait les"
