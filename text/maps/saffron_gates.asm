@@ -7,7 +7,7 @@ _SaffronGateText_1dfe7::
 	para "Je rêverais qu'on"
 	line "ait notre propre"
 	cont "Distributeur de"
-	cont "Boissons."
+	cont "Boissons..."
 
 	para "La route est"
 	line "fermée. Dégage."

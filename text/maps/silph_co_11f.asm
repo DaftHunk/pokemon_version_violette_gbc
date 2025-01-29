@@ -148,49 +148,53 @@ _SilphCo10Text_6237b::
 	done
 
 ;;;;;;;;;;;;;;;;;;;;;;joenote - adding text for Chief battle
-; mina : traduction svp jusqu'à la fin
 _ChiefText_challenge::
-	text "Do you challenge"
-	line "him to a #mon"
-	cont "battle?"
+	text "Tu veux me défier"
+	line "en duel #mon?"
 	done
 
 _ChiefText_prebattle::
-	text "Oh my! Who told"
-	line "you that I train"
-	cont "#mon?"
+	text "Eh bien! Qui t'as"
+	line "dit que j'entraî-"
+	cont "nais des #mon?"
 	
-	para "It's true. I'm a"
-	line "big Safari ZONE"
-	cont "addict."
+	para "C'est vrai. Je"
+	line "suis accro au Parc"
+	cont "Safari."
 	
-	para "Been so since I"
-	line "was around your"
-	cont "age, actually."
+	para "J'y vais depuis"
+	line "que j'ai à peu"
+	cont "prêt ton âge."
 	
-	para "Though, now I'm"
-	line "mostly busy with"
-	cont "the company."
-	
-	para "Doesn't mean I"
-	line "don't find time"
-	cont "for some fun!"
+	para "Cependant je suis"
+	line "de plus en plus"
+	cont "occupé par"
+	cont "l'entreprise."
+
+	para "Mais ça ne m'em-"
+	line "pèche pas de"
+	cont "trouver le temps"
+	cont "pour m'amuser!"
 	done
 
 _ChiefTextVictorySpeech::
 	text "Ah!"
-	line "Good times!"
+	line "Le bon temps!"
+
+	para "Rien ne vaut un"
+	line "bon duel #mon"
+	cont "pour décompresser,"
+	cont "n'est-ce pas?"
 	
-	para "Nothing like a"
-	line "#mon battle"
-	cont "to unwind, eh?"
+	para "Durant mes safaris"
+	line "j'ai rencontré une"
+	cont "autre Championne"
+	cont "en devenir qui"
+	cont "travaille à"
+	cont "Parmanie."
 	
-	para "I heard another"
-	line "CHAMP was at the"
-	cont "VERMILION dock."
-	
-	para "She might want"
-	line "to have a battle"
-	cont "with you."
+	para "Elle serait peut-"
+	line "être aussi intér-"
+	cont "ssée par un duel."
 	prompt
 	

@@ -511,40 +511,41 @@ _OaksLabText_4424c::
 	done
 
 ;;;;;;;;;;;;;;;;;;;;;;joenote - adding text for oak battle
-; mina : traduction svp jusqu'à la fin
 _OaksLabText_challenge::
-	text "Do you challenge"
-	line "PROF.OAK to a"
-	cont "#mon battle?"
+	text "Prof.Chen: Tu veux"
+	line "me défier en duel"
+	cont "#mon?"
 	done
 
 _OaksLabText_prebattle::
-	text "It's been a long"
-	line "time since I've"
-	cont "trained #mon."
+	text "Ca fait longtemps"
+	line "que je ne me suis"
+	cont "pas entrainé."
 	
-	para "But I suppose I"
-	line "can battle again"
-	cont "just for you."
+	para "Je suppose que"
+	line "c'est l'occasion."
 	done
 
 _OakVictorySpeech::
-	text "Ah! Such"
-	line "a rush!"
+	text "Ah!"
+	line "L'adrénaline"
+	cont "du combat!"
 	
-	para "I forgot how much"
-	line "fun battling is."
-	cont "A splendid match!"
+	para "J'avais oublié le"
+	line "fun du duel."
+	cont "Un match splendide!"
 
-	para "You know M.Fuji?"
-	line "He used to study"
-	cont "powerful #mon."
+	para "Tu connais M.Fuji?"
+	line "Il étudiait les"
+	cont "#mon sur-"
+	cont "puissants."
 
-	para "You should visit"
-	line "him. He retired"
-	cont "to LAVENDER TOWN."
+	para "Tu devrais aller"
+	line "le voir. Il a pris"
+	cont "sa retraite"
+	cont "à Lavanville."
 	prompt
-	
+; mina : traduction svp jusqu'à la fin
 ;;;;;;;;;;;;;;;;;;;;;;joenote - adding text for lvl scaling
 _OaksLabText_scalingON::
 	text "Need a challenge?"

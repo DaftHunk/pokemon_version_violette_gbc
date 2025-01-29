@@ -94,73 +94,79 @@ _LavenderHouse1Text6::
 	line "disparu!"
 	done
 ;;;;;;;;;;;;;;;;;;;;;;joenote - adding text for fuji battle
-; mina : traduction svp jusqu'à la fin du fichier
 _FujiText_challenge::
-	text "Do you challenge"
-	line "M.Fuji to a"
-	cont "#mon battle?"
+	text "M.Fuji: Tu veux me"
+	line "défier dans un"
+	cont "duel #mon?"
 	done
 
 _FujiText_prebattle::
-	text "So you know about"
-	line "my former life as"
-	cont "a scientist."
+	text "Alors tu connais"
+	line "mon passé de"
+	cont "scientifique."
 	
-	para "Then you also"
-	line "know why I quit."
+	para "Tu dois savoir"
+	line "pourquoi je"
+	cont "suis parti."
 	
-	para "The gene splicing"
-	line "data, samples,"
-	cont "test subjects..."
+	para "Les données sur le"
+	line "génome, les échan-"
+	cont "tillons, les su-"
+	cont "jets de tests..."
 	
-	para "All was cast into"
-	line "the waters of an"
-	cont "UNKNOWN DUNGEON"
+	para "Tout ce travail"
+	line "jeté dans les eaux"
+	cont "d'un Donjon"
+	cont "Inconnu."
 	
-	para "I'd advise you to"
-	line "stay away from"
-	cont "there and leave"
-	cont "the past buried."
+	para "Je te conseille de"
+	line "rester loin de ce"
+	cont "lieu et de laisser"
+	cont "le passé enfoui."
 	done
 
 _FujiTextVictorySpeech::
 	text "Hmm..."
-	line "I'm a bit worried."
+	line "Je suis un peu"
+	cont "inquiet..."
 	
-	para "The test DITTOS"
-	line "might still be"
-	cont "replicating."
+	para "Les sujets de test"
+	line "Métamorph doivent"
+	cont "toujours se"
+	cont "répliquer."
 	
-	para "Who knows what"
-	line "kind of #mon"
-	cont "they might have"
-	cont "cloned themselves"
-	cont "into?"
+	para "Qui sait en quel"
+	line "type de #mon"
+	cont "ils ont fini par"
+	cont "se cloner?"
 
-	para "Go if you must."
-	line "Maybe it's you"
-	cont "who can help fix"
-	cont "past mistakes."
+	para "Vas-y si tu le"
+	line "dois. Peut-être"
+	cont "que tu pourras"
+	cont "arranger mes err-"
+	cont "eurs du passé."
 
-	para "SILPH's Chef is"
-	line "an old friend, so"
-	cont "battle him too."
+	para "Le PDG de la Syl-"
+	line "phe est un vieil"
+	cont "ami, va aussi lui"
+	cont "rendre visite."
 	prompt
 	
 _FujiTextMewtwo::
-	text "That Mewtwo you"
-	line "have with you..."
+	text "Ce Mewtwo que tu"
+	line "as avec toi..."
 	
-	para "...Such an angry"
-	line "disposition. Yet"
-	cont "you have soothed"
-	cont "its wrath."
+	para "...Possède une"
+	line "telle colère."
+	cont "Pourtant, tu"
+	cont "sembles avoir"
+	cont "apaisé sa colère."
+
+	para "Tu dois avoir un"
+	line "grand amour envers"
+	cont "tes #mon."
 	
-	para "You must possess"
-	line "a great love for"
-	cont "your #mon."
-	
-	para "Take this. I have"
-	line "no reason to keep"
-	cont "holding onto it."
+	para "Prends ça. Je n'ai"
+	line "aucune raison de"
+	cont "le garder."
 	prompt

@@ -101,29 +101,27 @@ _SafariZoneEntranceText_753f0::
 	done
 
 ;joenote - adding text for safari zone special event
-; mina : traduction svp
 _SafariZoneEntranceTextSpecial_NotReady::
-	text "We're working on"
-	line "a special event,"
-	cont "but it won't be"
-	cont "ready until after"
-	cont "the #mon"
-	cont "League finals."
+	text "Nous travaillons"
+	line "sur un évenement"
+	cont "spécial mais il ne"
+	cont "sera pas prêt"
+	cont "avant la finale de"
+	cont "Ligue #mon."
 	done
 _SafariZoneEntranceTextSpecial_Ready::
-	text "Hello CHAMPION!"
-	line "Would you like to"
-	cont "participate in a"
-	cont "special event?"
-	para "Safari #mon"
-	line "will be of better"
-	cont "breed, and there"
-	cont "is a rare chance"
-	cont "to encounter new"
-	cont "species!"
+	text "Salut Champion!"
+	line "Veux-tu participer"
+	cont "à un évenement"
+	cont "spécial?"
+	para "Les #mon seront"
+	line "meilleurs et il"
+	cont "a de rares chances"
+	cont "de rencontrer de"
+	cont "nouvelles espèces!"
 	done
 _SafariZoneEntranceTextSpecial_Active::
-	text "Shall I return"
-	line "the Safari ZONE"
-	cont "back to normal?"
+	text "Veux-tu mettre fin"
+	line "à l'évenement"
+	cont "spécial?"
 	done
