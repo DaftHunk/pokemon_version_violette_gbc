@@ -18,17 +18,11 @@ DebugNewGameParty: ; unreferenced except in _DEBUG
 	; always using this character while I was debugging the program."
 	; From https://web.archive.org/web/20000607152840/http://pocket.ign.com/news/14973.html
 	db MAGNETON, 90
-IF DEF(_DEBUG)
-	db MEW, 5
-ELSE
-	db MEW, 20
-ENDC
+	db EXEGGUTOR, 50
 	db EEVEE, 56
 	db ONIX, 56
 	db ZAPDOS, 57
-IF DEF(_DEBUG)
-	db EXEGGUTOR, 5
-ENDC
+	db MEW, 20
 	db -1 ; end
 
 PrepareNewGameDebug: ; dummy except in _DEBUG

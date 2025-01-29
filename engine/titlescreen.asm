@@ -328,9 +328,11 @@ ENDC
 IF DEF(_DEBUG)
 	ld a, b
 	bit BIT_SELECT, a
-	jpab DebugMenu
+	jp nz, .debugMenu
 ENDC
 	jp MainMenu
+.debugMenu
+	jpab DebugMenu
 
 .doClearSaveDialogue
 	jpba DoClearSaveDialogue

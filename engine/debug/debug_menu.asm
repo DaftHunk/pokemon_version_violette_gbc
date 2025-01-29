@@ -46,7 +46,7 @@ IF DEF(_DEBUG)
 
 	call HandleMenuInput
 	bit BIT_B_BUTTON, a
-	jp nz, DisplayTitleScreen
+	jp nz, .goBackToTitleScreen
 
 	ld a, [wCurrentMenuItem]
 	and a ; FIGHT?
@@ -56,6 +56,9 @@ IF DEF(_DEBUG)
 	ld hl, wd732
 	set 1, [hl]
 	jpab StartNewGameDebug
+
+.goBackToTitleScreen
+	jpab DisplayTitleScreen
 
 DebugBattlePlayerName:
 	db "Tom@"
