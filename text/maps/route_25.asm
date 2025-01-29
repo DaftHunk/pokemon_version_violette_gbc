@@ -166,40 +166,36 @@ _Route25Text11::
 	line "Léo habite ici!"
 
 ;Joenote - setting up the Red battle
-; mina : traduction svp jusqu'à la fin 
+; dafthunk : Replaced with Sacha
 _Route25PrintText12::
-	text "The present and"
-	line "the future meet"
-	cont "through me."
+	text "Bonjour! Je suis"
+	line "Sacha du Bourg"
+	cont "Palette!"
 	
-	para "A future champion"
-	line "calls to one in"
-	cont "the present."
+	para "Je suis là pour"
+	line "affronter à nou-"
+	cont "veau la ligue."
 	prompt
 
 _RedText_challenge::
-	text "Are you ready"
-	line "to battle"
-	cont "across time?"
+	text "Toi aussi? Alors"
+	line "je te défie!"
 	prompt
 	
 _RedText_prebattle::
-	text "My mind to your"
-	line "mind."
-	
-	para "Your thoughts to"
-	line "my thoughts."
+	text "Pikachu, je"
+	line "te choisis!"
 	done
 	
 _RedTextVictorySpeech::
 	text "..."
+	line "Un jour je serai"
+	cont "le meilleur"
+	cont "dresseur!"
 	prompt
 
 _RedText_decline::
-	text "Who then is the"
-	line "worthy chosen?"
-	
-	para "Four challenges"
-	line "await whoever so"
-	cont "conquers INDIGO."
+	text "Ah bon? Eh bien,"
+	line "reviens me voir"
+	cont "quand tu voudras."
 	done
