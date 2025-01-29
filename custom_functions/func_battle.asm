@@ -25,13 +25,7 @@ LowPriorityMoves:
 	ret
 .CheckTrappingClause
 	res TRAPPING_COUNT, [hl]
-
-;link battles now sync clause flag
-;	ld a, [wLinkState]
-;	cp LINK_STATE_BATTLING
-;	jr z, .next3
-
-	CheckEvent EVENT_8C5
+	ret z
 .next3
 	;invert the z flag bit at this point
 	jr nz, .retz
@@ -398,34 +392,6 @@ EnemyDisableHandler:
 	ret
 
 
-;check hyper beam clause
-;when active, hyperbeam does not need to recharge when scoring a KO
-;set z flag if not applicable 
-;clear z flag if confirmed
-_HandleHyperbeamClause:
-
-;link battles now sync clause flag
-;	ld a, [wLinkState]
-;	cp LINK_STATE_BATTLING
-;	ret z	;do not enforce for link battles
-
-	CheckEvent EVENT_8C8	
-	ret z
-	ld hl, wEnemyMonHP	;check enemy hp if it's the player's turn
-	ld a, [H_WHOSETURN]
-	and a
-	jr z, .next
-	ld hl, wBattleMonHP	;check player hp if its the enemy's turn
-.next
-	ld a, [hli]
-	or [hl]
-	jr nz, .noKO
-	inc a
-	ret
-.noKO
-	xor a
-	ret
-
 ;return z and nc if nothing detected
 ;return nz for sleep clause triggered
 ;return c for  freeze clause triggered
@@ -439,9 +405,6 @@ _HandleSlpFrzClause:
 	ld a, [wIsInBattle]
 	cp 2
 	jp nz, .returnclear ;continue for trainer battles only
-
-	CheckEitherEventSet EVENT_8DC, EVENT_8DD
-	jp z, .returnclear	;return if neither sleep nor freeze clause bits are set
 	
 	ld a, [H_WHOSETURN]
 	and a
@@ -492,29 +455,9 @@ _HandleSlpFrzClause:
 	dec a	
 	
 	push af	;save flags and the OR'ed status bits
-	CheckBothEventsSet EVENT_8DC, EVENT_8DD
-	jr z, .returnboth
-	
-	CheckEvent EVENT_8DC
-	jr nz, .returnSLPonly	
-	;otherwise the FRZ clause must be the only one active
+	pop af
+	ret
 
-.returnFRZonly
-	pop af
-	;need to set the z state while leaving carry alone 
-	ld b, 1
-	dec b
-	ret
-.returnSLPonly
-	pop af
-	;need to clear carry while maintaining proper z state
-	ld b, a
-	res 7, b	;make bit 7 into a 0
-	rlc b	;then roll that 0 into the carry flag. sleep counter bits will determine the z/nz flag state.
-	ret
-.returnboth
-	pop af
-	ret
 .returnclear
 	xor a
 	ret

@@ -410,8 +410,8 @@ LavenderHouse1Blocks:
 LavenderHouse2Blocks:
 CeruleanHouse1Blocks:
 PewterHouse1Blocks:
-PewterHouse2Blocks: INCBIN "maps/viridianhouse.blk"
-ViridianHouseBlocks: INCBIN "maps/viridianhouse_new.blk"	;joenote - sectioning this off
+PewterHouse2Blocks:
+ViridianHouseBlocks: INCBIN "maps/viridianhouse.blk"
 
 CeladonMansion5Blocks:
 SchoolBlocks: INCBIN "maps/school.blk"

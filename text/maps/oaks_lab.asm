@@ -384,14 +384,15 @@ _OaksLabText27::
 	cont "donner une! Yark!"
 	done
 
-_OaksLabText_1d405::
+_OaksLabText_AssistantTada::
 	text "J'assiste le"
 	line "Prof. Chen."
 	cont "Je suis donc son"
 	cont "...ta daaa!..."
 	cont "Assistant!"
 	done
-	_OaksLabText_441cc::
+
+_OaksLabText_441cc::
 	text "Niveau #dex:"
 
 	para "@"
@@ -545,93 +546,28 @@ _OakVictorySpeech::
 	cont "sa retraite"
 	cont "à Lavanville."
 	prompt
-; mina : traduction svp jusqu'à la fin
-;;;;;;;;;;;;;;;;;;;;;;joenote - adding text for lvl scaling
-_OaksLabText_scalingON::
-	text "Need a challenge?"
-	line "I can make it so"
-	cont "weaker trainers"
-	cont "scale up to you."
-	done
-	
-_OaksLabText_scalingOFF::
-	text "Too hard? I see..."
-	line "I can set weaker"
-	cont "trainers back to"
-	cont "normal for you."
+; dafthunk : changed dialog for assistants
+_OaksLabText_AssistantM::
+	text "J'étudie les"
+	line "#mon en tant"
+	cont "qu'assistant du"
+	cont "Prof. Chen."
+
+	para "On dirait pas"
+	line "comme ça, mais"
+	cont "c'était un grand"
+	cont "dresseur en son"
+	cont "temps!"
 	done
 
-_OaksLabText_randwildON::
-	text "Under the correct"
-	line "conditions, many"
-	cont "#mon appear in"
-	cont "totally different"
-	cont "locations!"
+_OaksLabText_AssistantF::
+	text "J'aide le Prof."
+	line "Chen dans ses"
+	cont "recherches."
 	
-	para "I can talk to the"
-	line "professor and get"
-	cont "you set up."
-	done
-	
-_OaksLabText_randwildOFF::
-	text "Prefer the normal"
-	line "#mon areas?"
-	cont "Want me to change"
-	cont "it back?"
-	done
-
-_OaksLabText_randwildRegen::
-	text "Want to generate"
-	line "a new pattern for"
-	cont "randomization?"
-	done
-
-_OaksLabText_randwildTrue::
-	text "#mon shuffling"
-	line "is done within"
-	cont "predefined tiers."
-
-	para "Would you rather"
-	line "risk it with full"
-	cont "randomization?"
-	done
-	
-_OaksLabText_symbolsON::
-	text "I study #mon as"
-	line "PROF.OAK's AIDE."
-	
-	para "Did you know"
-	line "many #mon can"
-	cont "be either male"
-	cont "or female?"
-	
-	para "I can modify the"
-	line "#dex to show a"
-	cont "marker for hard-"
-	cont "to-tell species"
-	cont "in wild battles."
-	
-	para "It will also put"
-	line "a mark in wild"
-	cont "battles if you"
-	cont "registered it in"
-	cont "your #dex."
-	done
-	
-_OaksLabText_symbolsOFF::
-	text "Don't like the"
-	line "symbols? I can"
-	cont "set it back" 
-	cont "for you."
-	done
-
-_OaksLabText_AideQ_done::
-	text "Okay, it's done."
-	done
-	
-_OaksLabText_AideQ_reject::
-	text "No? Very well."
-	line "See me again if"
-	cont "you change your"
-	cont "mind later."
+	para "Savais-tu que la"
+	line "la plupart des"
+	cont "#mon peuvent"
+	cont "être mâle ou"
+	cont "femelle?"
 	done
