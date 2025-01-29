@@ -251,10 +251,10 @@ Route25TextRed:
 	TX_ASM
 	ld hl, Route25PrintText12
 	call PrintText
-	ld a,[wBeatGymFlags]	;has the other special battles been beaten?
-	and $0F
-	sub $0F
-	jr nz, .specials_not_beaten
+;	ld a,[wBeatGymFlags]	;has the other special battles been beaten?
+;	and $0F
+;	sub $0F
+;	jr nz, .specials_not_beaten
 	ld hl, RedText_challenge	;else ask if you want to challenge
 	call PrintText	;print the challenge text
 	call YesNoChoice	;prompt a yes/no choice
@@ -274,7 +274,7 @@ Route25TextRed:
 	ld [wGymLeaderNo], a	;set bgm to champion music
 	ld a, OPP_JR_TRAINER_M	;load the trainer type
 	ld [wCurOpponent], a	;set as the current opponent
-	ld a, 9	;get the right roster
+	ld a, 11	;get the right roster
 	ld [wTrainerNo], a
 	xor a
 	ld [hJoyHeld], a

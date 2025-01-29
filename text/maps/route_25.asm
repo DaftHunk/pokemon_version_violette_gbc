@@ -168,11 +168,11 @@ _Route25Text11::
 ;Joenote - setting up the Red battle
 ; dafthunk : Replaced with Sacha
 _Route25PrintText12::
-	text "Bonjour! Je suis"
+	text "Salut! Je suis"
 	line "Sacha du Bourg"
 	cont "Palette!"
 	
-	para "Je suis là pour"
+	para "Je suis revenu"
 	line "affronter à nou-"
 	cont "veau la ligue."
 	prompt
@@ -195,7 +195,7 @@ _RedTextVictorySpeech::
 	prompt
 
 _RedText_decline::
-	text "Ah bon? Eh bien,"
-	line "reviens me voir"
-	cont "quand tu voudras."
+	text "Reviens me voir"
+	line "plus tard si tu"
+	cont "veux te battre."
 	done
