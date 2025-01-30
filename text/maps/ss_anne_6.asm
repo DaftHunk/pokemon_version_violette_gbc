@@ -77,98 +77,101 @@ _SSAnne6Text_61816::
 	done
 ; mina : traduction svp jusqu'à la fin
 _SSAnne6Text_GymGuy::
-	text "Yo! Champ in"
-	line "making!"
+	text "Yo, champion en"
+	line "devenir!"
 
-	para "Do I remind you of"
-	line "someone? You must"
-	cont "mean one of my"
-	cont "relatives."
+	para "Je te rappelle"
+	line "quelqu'un?"
+	cont "C'est bizarre ça!"
 
-	para "No advice from me"
-	line "though. I'm on a"
-	cont "vacation."
+	para "Pas de conseil"
+	line "cette fois-ci. Je"
+	cont "suis en vacance."
 	
-	para "There's a ship"
-	line "Navi-PC in the"
-	cont "corner if you"
-	cont "need it."
+	para "Il y a un PC de"
+	line "bord dans le"
+	cont "coin en cas de"
+	cont "besoin."
 	done
 	
 _SSAnne6Text_GymGuy2::
-	text "Yo! Champ!"
+	text "Salut champion!"
 
-	para "It was getting a"
-	line "bit restless on"
-	cont "board, so I set"
-	cont "up a tournament"
-	cont "between everyone."
+	para "Je m'ennuyais un"
+	line "peu à bord, donc"
+	cont "j'ai organisé un"
+	cont "petit tournois"
+	cont "avec les"
+	cont "passagers."
 
-	para "If you can beat 7"
-	line "trainers you"
-	cont "win a nice prize!"
+	para "Si tu peux battre"
+	line "7 dressseurs tu"
+	cont "gagneras un"
+	cont "super prix!"
+
+	para "Par contre, tous"
+	line "le monde doit ut-"
+	cont "iliser exactement"
+	cont "3 #mon."
+
+	para "Tes #mon seront"
+	line "soignés entre"
+	cont "chaque tour."
 	
-	para "But everyone has"
-	line "to use exactly 3"
-	cont "#mon."
+	para "Attention:"
+	line "Ce sont de grands"
+	cont "dresseurs venant"
+	cont "d'un peu partout."
+
+	para "Il y a un PC de"
+	line "bord dans le"
+	cont "coin en cas de"
+	cont "besoin."
 	
-	para "Your #mon get"
-	line "healed between"
-	cont "each round."
-	
-	para "Be careful!"
-	line "These are strong"
-	cont "folks from all"
-	cont "over the place."
-	
-	para "There's a ship"
-	line "Navi-PC in the"
-	cont "corner if you"
-	cont "need it."
-	
-	para "You up for it?"
+	para "Tu es prêt?"
 	done
 	
 _SSAnne6Text_GymGuy_keepgoing::
-	text "Yo! Champ!"
-	line "Wanna keep going?"
+	text "Salut champion!"
+	line "Tu continues?"
 	done
 
 _SSAnne6Text_GymGuy_noroom::
-	text "Your bag is full."
-	line "Take a load off."
+	text "Ton sac est"
+	line "plein."
 	done
 	
 _SSAnne6Text_GymGuy_party::
-	text "You need exactly 3"
-	line "#mon to enter."
+	text "Tu dois avoir ex-"
+	line "actement 3 #mon"
+	cont "pour entrer."
 	done
 
 _SSAnne6Text_GymGuy_bye::
-	text "Later then CHAMP!"
+	text "A plus tard!"
 	done
 	
 _SSAnne6Text_GymGuy_ready::
-	text "Ready? Fight!"
+	text "Prêt? Combattez!"
 	done
 
 _SSAnne6Text_GymGuy_battleend::
 	text "..."
-	line "That's a match!"
+	line "Quel match!"
 	prompt
 
 _SSAnne6Text_GymGuy_win::
-	text "I knew you could"
-	line "do it!"
+	text "Je savais que tu"
+	line "le ferais!"
 	
-	para "<PLAYER> won a"
-	line "MASTER BALL!@@"
+	para "<PLAYER> gagne"
+	line "une Master Ball!@@"
 	
 _SSAnne6Text_GymGuy_pikachu::
-	text "Your Pikachu is"
-	line "really special!"
+	text "Ton Pikachu est"
+	line "très spécial!"
 	
-	para "In recongnition,"
-	line "I've made it able"
-	cont "to learn SURF!"
+	para "Il fait parti de"
+	line "ceux qui peuvent"
+	cont "apprendre Surf!"
 	prompt

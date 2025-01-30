@@ -40,7 +40,7 @@ _MetalCoatDescription::
 	prompt
 
 _MGeneDescription::
-    text "Améliore les DV"
+    text "Améliore les VD"
     next "d'un #mon."
     prompt
 
