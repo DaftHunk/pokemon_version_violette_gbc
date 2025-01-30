@@ -236,17 +236,13 @@ ItemUseBall:
 ;joenote - Adding an exception for Mewtwo! This is now the ultimate test of the player's catching skills.
 ;		It will play its cry and keep the ball from having any effect.
 ;		The ball is not wasted. Mewtwo's mental might prevents you from throwing it.
-;		This added difficulty is only available in hard mode.
 	cp MASTER_BALL
 	jr nz, .not_mball
-	ld a, [wOptions]
-	bit BIT_BATTLE_HARD, a ;check hard mode
-	jp z, .captured	;works as normal outside of hard mode
 	ld a, [wEnemyMon]
 	cp MEWTWO
 	jp nz, .captured ;works as normal if not mewtwo
-	call PlayCry
-	jp ItemUseNoEffect
+	call PlayCry	
+	jp ThrowBallAtMewtwo
 .not_mball
 
 ; Anything will do for the basic Poké Ball.
@@ -2705,6 +2701,10 @@ ThrowBallAtTrainerMon:
 	call PrintText
 	jr RemoveUsedItem
 
+ThrowBallAtMewtwo:
+	ld hl, ThrowBallAtMewtwoText
+	jr ItemUseFailed
+
 NoCyclingAllowedHere:
 	ld hl, NoCyclingAllowedHereText
 	jr ItemUseFailed
@@ -2739,6 +2739,10 @@ ThrowBallAtTrainerMonText1:
 
 ThrowBallAtTrainerMonText2:
 	TX_FAR _ThrowBallAtTrainerMonText2
+	db "@"
+
+ThrowBallAtMewtwoText:
+	TX_FAR _ThrowBallAtMewtwoText
 	db "@"
 
 NoCyclingAllowedHereText:

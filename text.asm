@@ -3171,6 +3171,18 @@ _ThrowBallAtTrainerMonText2::
 	text "Voler, c'est mal!"
 	prompt
 
+_ThrowBallAtMewtwoText::
+	text "Vous entendez une"
+	line "voix puissante"
+	cont "dans votre tête:"
+
+	para "J'ai accepté ton"
+	line "défi, humain."
+
+	para "Mais bats-toi"
+	line "à la loyale!"
+	prompt
+
 _NoCyclingAllowedHereText::
 	text "Interdit de"
 	next "pédaler ici!!!"
