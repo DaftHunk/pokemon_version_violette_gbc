@@ -16,24 +16,15 @@ _Route24AfterBattleText1::
 
 _Route24BattleText2::
 	text "OK! J'suis le 5!"
-IF DEF(_JPTXT)	;joenote - dirty joke lost in translation
 	line "Cette fois, je"
 	cont "serai ton"
 	cont "partenaire."
-ELSE
-	line "J'vais te broyer!"
-ENDC
 	done
 
 _Route24EndBattleText2::
-IF DEF(_JPTXT)	;joenote - dirty joke lost in translation
 	text "Ah!"
 	line "Tu es trop"
 	cont "sauvage pour moi!"
-ELSE
-	text "Ah!"
-	line "Purée!"
-ENDC
 	prompt
 
 _Route24AfterBattleText2::
@@ -48,7 +39,7 @@ _Route24BattleText3::
 	done
 
 _Route24EndBattleText3::
-	text "Tu..."
+	text "Tu"
 	line "...m'as battue!"
 	prompt
 
@@ -59,23 +50,14 @@ _Route24AfterBattleText3::
 
 _Route24BattleText4::
 	text "Je suis le 3ème!"
-IF DEF(_JPTXT)	;joenote - dirty joke lost in translation
 	line "Je ne finirai pas"
 	cont "si rapidement!"
-ELSE
-	line "C'est pas gagné!"
-ENDC
 	done
 
 _Route24EndBattleText4::
-IF DEF(_JPTXT)	;joenote - dirty joke lost in translation
-	text "Pouah!"
-	line "Je ne peux plus"
-	cont "tenir."
-ELSE
-	text "Oh!"
-	line "Tu m'as écrasé!"
-ENDC
+	text ""
+	line "Pouah! Je peux"
+	cont "plus tenir."
 	prompt
 
 _Route24AfterBattleText4::
@@ -84,23 +66,15 @@ _Route24AfterBattleText4::
 	done
 
 _Route24BattleText5::
-IF DEF(_JPTXT)	;joenote - dirty joke lost in translation
 	text "Je suis prête à"
 	line "y aller à fond!"
-ELSE
-	text "Je suis la 2ème!"
-	line "Ca rigole plus!"
-ENDC
 	done
 
 _Route24EndBattleText5::
-IF DEF(_JPTXT)	;joenote - dirty joke lost in translation
-	text "C'était"
-	line "incroyable."
-ELSE
-	text "Ben..."
-	line "Tu m'as battue?"
-ENDC
+	text "..."
+	line "C'était"
+	cont "incroyable."
+
 	prompt
 
 _Route24AfterBattleText5::
@@ -115,22 +89,17 @@ _Route24BattleText6::
 	cont "5 dresseurs"
 	cont "défendent ce"
 	cont "pont! Bats-nous"
-IF DEF(_JPTXT)	;joenote - dirty joke lost in translation
 	cont "et gagne une"
 	cont "surprise venant"
 	cont "de nos bourses!"
-ELSE
-	cont "et tu seras"
-	cont "super content!"
-ENDC
 
 	para "Tu crois pouvoir"
 	line "y arriver?"
 	done
 
 _Route24EndBattleText6::
-	text "Haha!"
-	line "Bien joué!"
+	text " "
+	line "Haha! Bien joué!"
 	prompt
 
 _Route24AfterBattleText6::
