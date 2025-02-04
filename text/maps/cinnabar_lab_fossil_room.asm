@@ -215,11 +215,11 @@ _Lab4Text_Book2B::
 	done
 
 _Lab4Text_Book3A::
-	text "Méler ADN #mon"
+	text "Mêler ADN #mon"
 	prompt
 _Lab4Text_Book3B::
 	text "Le carré de Pun-"
-	line "net méle 2 gènes"
+	line "net mêle 2 gènes"
 	cont "A et 2 gènes B."
 
 	para "Les allèles Hi"

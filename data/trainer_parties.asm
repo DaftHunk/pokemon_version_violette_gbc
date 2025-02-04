@@ -166,6 +166,7 @@ JrTrainerMData:
 ; Became OPP_COOLTRAINER_M
 ; Route 24
 	db 18,MANKEY,0
+; Became OPP_COOLTRAINER_M
 ; Unused
 	db 20,SQUIRTLE,0
 ; Route 6
@@ -181,7 +182,7 @@ JrTrainerMData:
 	db 16,HORSEA,BELLSPROUT,0
 ;joenote - special fight with Sacha
 	db $FF,88,PIKACHU,85,TAUROS,85,CHARIZARD,85,PIDGEOT,87,SNORLAX,83,POLIWRATH,0
-	;jr trainer male #11
+	;jr trainer male #11 -> Sacha #1
 
 JrTrainerFData:
 ; Cerulean Gym

@@ -1508,11 +1508,10 @@ _SteelixDexEntry::
 
 _ScizorDexEntry::
 	text "Il effraie l'enn-"
-	next "emi en agitant"
-	next "ses pinces en"
+	next "emi en agitant ses"
+	next "pinces en forme"
 
-	page "forme d'oeil et"
-	next "donne ainsi"
+	page "d'oeil et donne"
 	next "l'impression"
 	next "d'avoir 3 têtes"
 	dex
