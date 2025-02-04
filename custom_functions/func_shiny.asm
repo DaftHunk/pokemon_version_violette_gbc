@@ -186,7 +186,7 @@ ShinyDVConvert:	;'a' holds the default value
 	ld a, PAL_PURPLEMON
 	jr .endConvert
 .next2
-	cp PAL_REDMON
+	cp PAL_ORANGEMON
 	jr nz, .next3
 	ld a, PAL_PINKMON
 	jr .endConvert
@@ -203,7 +203,7 @@ ShinyDVConvert:	;'a' holds the default value
 .next5
 	cp PAL_BROWNMON
 	jr nz, .next6
-	ld a, PAL_REDMON
+	ld a, PAL_ORANGEMON
 	jr .endConvert
 .next6
 	cp PAL_GREENMON

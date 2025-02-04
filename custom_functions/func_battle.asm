@@ -688,19 +688,19 @@ TypePalColorList:
 	db PAL_BW;unused
 	db PAL_BW;unused
 	db PAL_BW;unused
-	db PAL_REDMON;fire
+	db PAL_ORANGEMON;fire
 	db PAL_BLUEMON;water
 	db PAL_GREENMON;grass
 	db PAL_YELLOWMON;electric
 	db PAL_PINKMON;psychic
 	db PAL_CYANMON;ice
-	db PAL_REDMON;dragon
+	db PAL_ORANGEMON;dragon
 ItemPalList:
 	db PAL_BW	;null item
 	db PAL_PURPLEMON	;master ball
 	db PAL_UBALL	;ultra ball
 	db PAL_BLUEMON	;great ball
-	db PAL_REDMON	;pokeball
+	db PAL_ORANGEMON	;pokeball
 	db PAL_BW	;town map
 	db PAL_BW	;bike
 	db PAL_BW	;surfboard

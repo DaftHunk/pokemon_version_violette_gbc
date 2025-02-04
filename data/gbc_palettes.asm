@@ -139,7 +139,7 @@ ENDC
 	RGB  0,  1, 25
 	RGB  3,  3,  3
 
-	; PAL_REDMON
+	; PAL_ORANGEMON
 	RGB 31, 31, 31
 	RGB 31, 17,  0
 	RGB 31,  0,  0
@@ -338,3 +338,20 @@ ENDC
 	RGB  8,  8,  8
 	RGB  3,  3,  3
 	
+	; PAL_REDMON
+	SGB_WHITE 
+	RGB 31,  8,  0
+	RGB 31,  0,  0
+	RGB  3,  3,  3
+
+	; PAL_GREYBLUE
+	SGB_WHITE 
+	RGB 15, 18, 20
+	RGB 15, 18, 20
+	RGB  3,  3,  3
+	
+	; PAL_REDBLUE
+	SGB_WHITE 
+	RGB  5, 5, 13
+	RGB 31, 5,  5
+	RGB  3, 3,  3

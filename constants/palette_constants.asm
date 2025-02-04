@@ -42,7 +42,7 @@ const_value = 0
 	const PAL_0F        ; $0F
 	const PAL_MEWMON    ; $10
 	const PAL_BLUEMON   ; $11
-	const PAL_REDMON    ; $12
+	const PAL_ORANGEMON    ; $12
 	const PAL_CYANMON   ; $13
 	const PAL_PURPLEMON ; $14
 	const PAL_BROWNMON  ; $15
@@ -68,3 +68,7 @@ const_value = 0
 ;joenote - custom pals
 	const PAL_BW        ; $28	;gbc only
 	const PAL_UBALL		; $29	;gbc only
+
+	const PAL_REDMON ; $30
+	const PAL_GREYBLUEMON ; $31
+	const PAL_REDBLUE ; $32
