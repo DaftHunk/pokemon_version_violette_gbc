@@ -8,7 +8,7 @@ db BUG ; species type 1
 db BUG ; species type 2
 db 45 ; catch rate
 db 200 ; base exp yield
-INCBIN PINSIR_FR,0,1 ; 77, sprite dimensions
+INCBIN "gfx/pokemon/front/pinsir.pic",0,1 ; 77, sprite dimensions
 dw PinsirPicFront
 dw PinsirPicBack
 ; attacks known at lvl 0

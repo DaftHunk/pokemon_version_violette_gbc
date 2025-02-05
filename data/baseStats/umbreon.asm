@@ -8,7 +8,7 @@ db DARK ; species type 1
 db DARK ; species type 2
 db 45 ; catch rate
 db 197 ; base exp yield
-INCBIN UMBREON_FR,0,1 ; 66, sprite dimensions
+INCBIN "gfx/pokemon/front/umbreon.pic",0,1 ; 66, sprite dimensions
 dw UmbreonPicFront
 dw UmbreonPicBack
 ; attacks known at lvl 0

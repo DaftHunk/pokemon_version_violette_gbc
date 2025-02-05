@@ -1,40 +1,22 @@
-AerodactylPicFront::	INCBIN	AERODACTYL_FR
-AerodactylPicBack::	INCBIN	AERODACTYL_BK
-MagnemitePicFront::	INCBIN	MAGNEMITE_FR
-MagnemitePicBack::	INCBIN	MAGNEMITE_BK
-CharmanderPicFront::	INCBIN	CHARMANDER_FR
-CharmanderPicBack::	INCBIN	CHARMANDER_BK
-SquirtlePicFront::	INCBIN	SQUIRTLE_FR
-SquirtlePicBack::	INCBIN	SQUIRTLE_BK
-CharmeleonPicFront::	INCBIN	CHARMELEON_FR
-CharmeleonPicBack::	INCBIN	CHARMELEON_BK
-WartortlePicFront::	INCBIN	WARTORTLE_FR
-WartortlePicBack::	INCBIN	WARTORTLE_BK
-CharizardPicFront::	INCBIN	CHARIZARD_FR
-CharizardPicBack::	INCBIN	CHARIZARD_BK
-IF DEF(_RGSPRITES)
-	FossilKabutopsPic::    INCBIN "pic/rgmon/fossilkabutops.pic"
-	FossilAerodactylPic::  INCBIN "pic/rgmon/fossilaerodactyl.pic"
-ELSE
-	FossilKabutopsPic::    INCBIN "pic/bmon/fossilkabutops.pic"
-	FossilAerodactylPic::  INCBIN "pic/bmon/fossilaerodactyl.pic"
-ENDC
-GhostPic::             INCBIN "pic/other/ghost.pic"
-OddishPicFront::	INCBIN	ODDISH_FR
-OddishPicBack::	INCBIN	ODDISH_BK
-GloomPicFront::	INCBIN	GLOOM_FR
-GloomPicBack::	INCBIN	GLOOM_BK
-VileplumePicFront::	INCBIN	VILEPLUME_FR
-VileplumePicBack::	INCBIN	VILEPLUME_BK
-BellsproutPicFront::	INCBIN	BELLSPROUT_FR
-BellsproutPicBack::	INCBIN	BELLSPROUT_BK
-WeepinbellPicFront::	INCBIN	WEEPINBELL_FR
-WeepinbellPicBack::	INCBIN	WEEPINBELL_BK
-VictreebelPicFront::	INCBIN	VICTREEBEL_FR
-VictreebelPicBack::	INCBIN	VICTREEBEL_BK
-MewPicFront::	INCBIN	MEW_FR
-MewPicBack::	INCBIN	MEW_BK
-ScizorPicFront::	INCBIN	SCIZOR_FR
-ScizorPicBack::	    INCBIN	SCIZOR_BK
-UmbreonPicFront::   INCBIN  UMBREON_FR
-UmbreonPicBack::	INCBIN	UMBREON_BK
+VileplumePicFront::    INCBIN "gfx/pokemon/front/vileplume.pic"
+VileplumePicBack::     INCBIN "gfx/pokemon/back/vileplumeb.pic"
+BellsproutPicFront::   INCBIN "gfx/pokemon/front/bellsprout.pic"
+BellsproutPicBack::    INCBIN "gfx/pokemon/back/bellsproutb.pic"
+WeepinbellPicFront::   INCBIN "gfx/pokemon/front/weepinbell.pic"
+WeepinbellPicBack::    INCBIN "gfx/pokemon/back/weepinbellb.pic"
+VictreebelPicFront::   INCBIN "gfx/pokemon/front/victreebel.pic"
+VictreebelPicBack::    INCBIN "gfx/pokemon/back/victreebelb.pic"
+MewPicFront::	       INCBIN "gfx/pokemon/front/mew.pic"
+MewPicBack::	       INCBIN "gfx/pokemon/back/mewb.pic"
+
+SteelixPicFront::	   INCBIN "gfx/pokemon/front/steelix.pic"
+SteelixPicBack::	   INCBIN "gfx/pokemon/back/steelixb.pic"
+ScizorPicFront::	   INCBIN "gfx/pokemon/front/scizor.pic"
+ScizorPicBack::	       INCBIN "gfx/pokemon/back/scizorb.pic"
+UmbreonPicFront::      INCBIN "gfx/pokemon/front/umbreon.pic"
+UmbreonPicBack::	   INCBIN "gfx/pokemon/back/umbreonb.pic"
+
+FossilKabutopsPic::    INCBIN "gfx/other/fossilkabutops.pic"
+FossilAerodactylPic::  INCBIN "gfx/other/fossilaerodactyl.pic"
+GhostPic::             INCBIN "gfx/other/ghost.pic"
+MissingnoPic::         INCBIN "gfx/other/missingno.pic"

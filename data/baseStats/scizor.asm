@@ -8,7 +8,7 @@ db BUG ; species type 1
 db STEEL ; species type 2
 db 25 ; catch rate
 db 200 ; base exp yield
-INCBIN SCIZOR_FR,0,1 ; 77, sprite dimensions
+INCBIN "gfx/pokemon/front/scizor.pic",0,1 ; 77, sprite dimensions
 dw ScizorPicFront
 dw ScizorPicBack
 ; attacks known at lvl 0

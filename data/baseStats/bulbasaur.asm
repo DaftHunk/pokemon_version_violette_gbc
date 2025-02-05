@@ -1,4 +1,3 @@
-MonBaseStats:
 db DEX_BULBASAUR ; pokedex id
 db 45 ; base hp
 db 49 ; base attack
@@ -9,7 +8,7 @@ db GRASS ; species type 1
 db POISON ; species type 2
 db 45 ; catch rate
 db 64 ; base exp yield
-INCBIN BULBASAUR_FR,0,1 ; 55, sprite dimensions
+INCBIN "gfx/pokemon/front/bulbasaur.pic",0,1 ; 55, sprite dimensions
 dw BulbasaurPicFront
 dw BulbasaurPicBack
 ; attacks known at lvl 0
@@ -30,4 +29,3 @@ db 3 ; growth rate
 	db BANK(BulbasaurPicFront)
 	assert BANK(BulbasaurPicFront) == BANK(BulbasaurPicBack)
 
-MonBaseStatsEnd:

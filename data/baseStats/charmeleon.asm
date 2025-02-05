@@ -8,7 +8,7 @@ db FIRE ; species type 1
 db FIRE ; species type 2
 db 45 ; catch rate
 db 142 ; base exp yield
-INCBIN CHARMELEON_FR,0,1 ; 66, sprite dimensions
+INCBIN "gfx/pokemon/front/charmeleon.pic",0,1 ; 66, sprite dimensions
 dw CharmeleonPicFront
 dw CharmeleonPicBack
 ; attacks known at lvl 0

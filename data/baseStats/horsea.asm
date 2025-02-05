@@ -8,7 +8,7 @@ db WATER ; species type 1
 db WATER ; species type 2
 db 225 ; catch rate
 db 83 ; base exp yield
-INCBIN HORSEA_FR,0,1 ; 55, sprite dimensions
+INCBIN "gfx/pokemon/front/horsea.pic",0,1 ; 55, sprite dimensions
 dw HorseaPicFront
 dw HorseaPicBack
 ; attacks known at lvl 0

@@ -8,7 +8,7 @@ db GRASS ; species type 1
 db PSYCHIC ; species type 2
 db 90 ; catch rate
 db 98 ; base exp yield
-INCBIN EXEGGCUTE_FR,0,1 ; 77, sprite dimensions
+INCBIN "gfx/pokemon/front/exeggcute.pic",0,1 ; 77, sprite dimensions
 dw ExeggcutePicFront
 dw ExeggcutePicBack
 ; attacks known at lvl 0

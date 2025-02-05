@@ -18,32 +18,9 @@ INCLUDE "home.asm"
 
 SECTION "bank1",ROMX,BANK[$1]
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;do some declarations for battle sprites
-IF DEF(_RGSPRITES)
-	INCLUDE "constants/monfrontpic_constants_green.asm"
-ELIF DEF(_YSPRITES)
-	INCLUDE "constants/monfrontpic_constants_yellow.asm"
-ELIF DEF(_SWSPRITES)
-	INCLUDE "constants/monfrontpic_constants_sw.asm"
-ELSE
-	INCLUDE "constants/monfrontpic_constants.asm"
-ENDC
-
-IF DEF(_SWBACKS)
-	INCLUDE "constants/monbackpic_constants_sw.asm"
-ELSE
-	INCLUDE "constants/monbackpic_constants.asm"
-ENDC
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 INCLUDE "data/facing.asm"
 
 INCLUDE "engine/black_out.asm"
-
-;MewPicFront:: INCBIN "pic/bmon/mew.pic"	;moved to a proper rom bank
-;MewPicBack::  INCBIN "pic/monback/mewb.pic"
-;INCLUDE "data/baseStats/mew.asm"	;this has been moved to be with the other pokemon base stat files
 
 INCLUDE "engine/battle/safari_zone.asm"
 
@@ -1970,7 +1947,7 @@ INCLUDE "constants/pic_banks/pic6.asm"
 
 SECTION "Pics 7", ROMX, BANK[PICS_7]
 INCLUDE "constants/pic_banks/pic7.asm"
-MissingnoPic::         INCBIN "pic/other/missingno.pic"
+
 IF DEF(_SWBACKS)
 	RedPicBack::           INCBIN "pic/swtrainerback/redb.pic"
 	OldManPic::            INCBIN "pic/swtrainerback/oldman.pic"

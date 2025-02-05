@@ -9,7 +9,7 @@ db BIRD ; species type 1
 db NORMAL ; species type 2
 db 1 ; catch rate
 db 255 ; base exp yield
-INCBIN "pic/other/missingno.pic",0,1 ; $77, sprite dimensions
+INCBIN "gfx/other/missingno.pic",0,1 ; $77, sprite dimensions
 dw MissingnoPic
 dw OldManPic	;use old man for back pic as a placeholder
 ; attacks known at lvl 0

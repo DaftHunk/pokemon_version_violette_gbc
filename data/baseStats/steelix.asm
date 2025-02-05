@@ -8,7 +8,7 @@ db STEEL ; species type 1
 db GROUND ; species type 2
 db 25 ; catch rate
 db 196 ; base exp yield
-INCBIN STEELIX_FR,0,1 ; 77, sprite dimensions
+INCBIN "gfx/pokemon/front/steelix.pic",0,1 ; 77, sprite dimensions
 dw SteelixPicFront
 dw SteelixPicBack
 ; attacks known at lvl 0

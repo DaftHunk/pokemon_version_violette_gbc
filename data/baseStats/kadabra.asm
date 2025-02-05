@@ -8,7 +8,7 @@ db PSYCHIC ; species type 1
 db PSYCHIC ; species type 2
 db 96 ; catch rate	;joenote - adjusted from 100 to match yellow version
 db 145 ; base exp yield
-INCBIN KADABRA_FR,0,1 ; 66, sprite dimensions
+INCBIN "gfx/pokemon/front/kadabra.pic",0,1 ; 66, sprite dimensions
 dw KadabraPicFront
 dw KadabraPicBack
 ; attacks known at lvl 0

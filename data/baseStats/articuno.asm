@@ -8,7 +8,7 @@ db ICE ; species type 1
 db FLYING ; species type 2
 db 3 ; catch rate
 db 215 ; base exp yield
-INCBIN ARTICUNO_FR,0,1 ; 77, sprite dimensions
+INCBIN "gfx/pokemon/front/articuno.pic",0,1 ; 77, sprite dimensions
 dw ArticunoPicFront
 dw ArticunoPicBack
 ; attacks known at lvl 0
