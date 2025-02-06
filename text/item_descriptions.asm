@@ -25,7 +25,10 @@ _TownMapDescription::
 
 _BicycleDescription::
 	text "Une bicyclette"
-	next "pliante rapide."
+	line "pliante rapide."
+	para "Appuyez sur SELECT"
+	line "en maintenant A"
+	cont "pour l'utiliser."
 	prompt
 
 _MoonStoneDescription::
@@ -291,17 +294,29 @@ _ExpAllDescription::
 
 _OldRodDescription::
 	text "Utilise sur l'eau"
-	next "pour pêcher."
+	line "pour pêcher."
+	para "Appuyez sur SELECT"
+	line "en maintenant A"
+	cont "pour l'utiliser"
+	cont "rapidement."
 	prompt
 
 _GoodRodDescription::
 	text "Une bonne canne"
-	next "pour la pêche."
+	line "pour la pêche."
+	para "Appuyez sur SELECT"
+	line "en maintenant A"
+	cont "pour l'utiliser"
+	cont "rapidement."
 	prompt
 
 _SuperRodDescription::
 	text "La meilleure canne"
-	next "pour la pêche."
+	line "pour la pêche."
+	para "Appuyez sur SELECT"
+	line "en maintenant A"
+	cont "pour l'utiliser"
+	cont "rapidement."
 	prompt
 
 _PPUpDescription::
@@ -330,8 +345,11 @@ _MaxElixerDescription::
 	prompt
 
 _HM01Description::
-	text "Coupe:Insecte"
-	next "Dég: 55;Pré: 100"
+	text "Appuyer sur SELECT"
+	line "devant un buisson"
+	cont "pour l'utiliser."
+	para "Coupe:Insecte"
+	line "Dég: 55;Pré: 100"
 	prompt
 
 _HM02Description::
@@ -340,18 +358,27 @@ _HM02Description::
 	prompt
 
 _HM03Description::
-	text "Surf:Eau"
-	next "Dég: 95;Pré: 100"
+	text "Appuie sur SELECT"
+	line "devant de l'eau"
+	cont "pour l'utiliser."
+	para "Surf:Eau"
+	line "Dég: 95;Pré: 100"
 	prompt
 
 _HM04Description::
-	text "Force:Normal"
-	next "Dég: 80;Pré: 100"
+	text "Appuyez sur SELECT"
+	line "face à un rocher"
+	cont "pour l'activer."
+	para "Force:Normal"
+	line "Dég: 80;Pré: 100"
 	prompt
 
 _HM05Description::
-	text "Flash:Normal"
-	next "Dég: -;Pré: 70"
+	text "Appuyez sur SELECT"
+	line "dans le noir pour"
+	cont "l'utiliser."
+	para "Flash:Normal"
+	line "Dég: -;Pré: 70"
 	prompt
 
 _TM01Description::
