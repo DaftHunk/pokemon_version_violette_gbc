@@ -19,7 +19,7 @@ Route25Object:
 	object SPRITE_HIKER, 8, 4, STAY, RIGHT, 7, OPP_HIKER, 2
 	object SPRITE_HIKER, 23, 9, STAY, UP, 8, OPP_HIKER, 3
 	object SPRITE_HIKER, 13, 7, STAY, RIGHT, 9, OPP_HIKER, 4
-	object SPRITE_BALL, 22, 2, STAY, NONE, 10, TM_19
+	object SPRITE_BALL, 22, 2, STAY, NONE, 10, TM19_SEISMIC_TOSS
 	object SPRITE_BLACK_HAIR_BOY_1, 55, 12, STAY, RIGHT, 11	;joenote - adding in a trainer
 
 	; warp-to

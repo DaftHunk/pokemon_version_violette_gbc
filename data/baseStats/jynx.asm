@@ -18,13 +18,13 @@ db LOVELY_KISS
 db 0
 db 0 ; growth rate
 ; learnset
-	tmlearn 1,5,6,8
-	tmlearn 9,10,11,12,13,14,15
-	tmlearn 17,18,19,20
-	tmlearn 29,30,31,32
-	tmlearn 33,34,35,40
-	tmlearn 44,46
-	tmlearn 50
+	tmlearn tm01_MEGA_PUNCH, tm05_MEGA_KICK, tm06_TOXIC, tm08_BODY_SLAM
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm11_BUBBLEBEAM, tm12_WATER_GUN, tm13_ICE_BEAM, tm14_BLIZZARD, tm15_HYPER_BEAM
+	tmlearn tm17_SUBMISSION, tm18_COUNTER, tm19_SEISMIC_TOSS, tm20_RAGE
+	tmlearn tm29_PSYCHIC_M, tm30_TELEPORT, tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm33_REFLECT, tm34_BIDE, tm35_METRONOME, tm40_SKULL_BASH
+	tmlearn tm44_REST, tm46_PSYWAVE
+	tmlearn tm50_SUBSTITUTE
 ;	db 0 ; padding
 	db BANK(JynxPicFront)
 	assert BANK(JynxPicFront) == BANK(JynxPicBack)

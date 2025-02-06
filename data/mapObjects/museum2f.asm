@@ -14,7 +14,7 @@ Museum2FObject:
 	object SPRITE_OAK_AIDE, 7, 5, STAY, DOWN, 3 ; person
 	object SPRITE_BRUNETTE_GIRL, 11, 5, STAY, NONE, 4 ; person
 	object SPRITE_HIKER, 12, 5, STAY, DOWN, 5 ; person
-	object SPRITE_BALL, 0, 1, STAY, NONE, 6, TM_12		;joenote - moved tm12 here
+	object SPRITE_BALL, 0, 1, STAY, NONE, 6, TM12_WATER_GUN		;joenote - moved tm12 here
 
 	; warp-to
 	warp_to 7, 7, MUSEUM_2F_WIDTH ; MUSEUM_1F

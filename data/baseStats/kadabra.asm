@@ -18,13 +18,13 @@ db CONFUSION
 db 0
 db 3 ; growth rate
 ; learnset
-	tmlearn 1,5,6,8
-	tmlearn 9,10
-	tmlearn 17,18,19,20
-	tmlearn 28,29,30,31,32
-	tmlearn 33,34,35,40
-	tmlearn 44,45,46
-	tmlearn 49,50,55
+	tmlearn tm01_MEGA_PUNCH, tm05_MEGA_KICK, tm06_TOXIC, tm08_BODY_SLAM
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE
+	tmlearn tm17_SUBMISSION, tm18_COUNTER, tm19_SEISMIC_TOSS, tm20_RAGE
+	tmlearn tm28_DIG, tm29_PSYCHIC_M, tm30_TELEPORT, tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm33_REFLECT, tm34_BIDE, tm35_METRONOME, tm40_SKULL_BASH
+	tmlearn tm44_REST, tm45_THUNDER_WAVE, tm46_PSYWAVE
+	tmlearn tm49_TRI_ATTACK, tm50_SUBSTITUTE, hm05_FLASH
 ;	db 0 ; padding
 	db BANK(KadabraPicFront)
 	assert BANK(KadabraPicFront) == BANK(KadabraPicBack)

@@ -18,13 +18,13 @@ db BITE
 db 0
 db 0 ; growth rate
 ; learnset
-	tmlearn 2,4,6
-	tmlearn 9,10,15
-	tmlearn 20,21
-	tmlearn 31,32
-	tmlearn 34,37,39
-	tmlearn 44
-	tmlearn 50
+	tmlearn tm02_RAZOR_WIND, tm04_FLAMETHROWER, tm06_TOXIC
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm15_HYPER_BEAM
+	tmlearn tm20_RAGE, tm21_MEGA_DRAIN
+	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm34_BIDE, tm37_SLUDGE_BOMB, tm39_SWIFT
+	tmlearn tm44_REST
+	tmlearn tm50_SUBSTITUTE
 ;	db 0 ; padding
 	db BANK(GolbatPicFront)
 	assert BANK(GolbatPicFront) == BANK(GolbatPicBack)

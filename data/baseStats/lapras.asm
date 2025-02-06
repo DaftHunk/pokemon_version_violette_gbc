@@ -18,13 +18,13 @@ db SING
 db 0
 db 5 ; growth rate
 ; learnset
-	tmlearn 6,7,8
-	tmlearn 9,10,11,12,13,14,15
-	tmlearn 20,22,23,24
-	tmlearn 25,29,31,32
-	tmlearn 33,34,40
-	tmlearn 44,46
-	tmlearn 50,53,54
+	tmlearn tm06_TOXIC, tm07_HORN_DRILL, tm08_BODY_SLAM
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm11_BUBBLEBEAM, tm12_WATER_GUN, tm13_ICE_BEAM, tm14_BLIZZARD, tm15_HYPER_BEAM
+	tmlearn tm20_RAGE, tm22_SOLARBEAM, tm23_DRAGON_RAGE, tm24_THUNDERBOLT
+	tmlearn tm25_THUNDER, tm29_PSYCHIC_M, tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm33_REFLECT, tm34_BIDE, tm40_SKULL_BASH
+	tmlearn tm44_REST, tm46_PSYWAVE
+	tmlearn tm50_SUBSTITUTE, hm03_SURF, hm04_STRENGTH
 ;	db 0 ; padding
 	db BANK(LaprasPicFront)
 	assert BANK(LaprasPicFront) == BANK(LaprasPicBack)

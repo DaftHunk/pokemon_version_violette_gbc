@@ -11,7 +11,7 @@ UseItem_:
 .nottrainerbattle
 
 	ld a, [wcf91] ;contains item_ID
-	cp HM_01
+	cp HM01_CUT
 	jp nc, ItemUseTMHM
 	ld hl, ItemUsePtrTable
 	dec a
@@ -2552,7 +2552,7 @@ ItemUseTMHM:
 	and a
 	jp nz, ItemUseNotTime
 	ld a, [wcf91]
-	sub TM_01
+	sub TM01_MEGA_PUNCH
 	push af
 	jr nc, .skipAdding
 	add 55 ; if item is an HM, add 55
@@ -3028,7 +3028,7 @@ IsKeyItem_:
 	ld a, $01
 	ld [wIsKeyItem], a
 	ld a, [wcf91]
-	cp HM_01 ; is the item an HM or TM?
+	cp HM01_CUT ; is the item an HM or TM?
 	jr nc, .checkIfItemIsHM
 ; if the item is not an HM or TM
 	push af

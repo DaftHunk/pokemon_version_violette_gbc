@@ -18,13 +18,13 @@ db 0
 db 0
 db 3 ; growth rate
 ; learnset
-	tmlearn 1,5,6,8
-	tmlearn 9,10,15
-	tmlearn 17,18,19,20,21,24
-	tmlearn 25,29,31,32
-	tmlearn 34,35,36,37,40
-	tmlearn 42,44,46,47
-	tmlearn 50,54
+	tmlearn tm01_MEGA_PUNCH, tm05_MEGA_KICK, tm06_TOXIC, tm08_BODY_SLAM
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm15_HYPER_BEAM
+	tmlearn tm17_SUBMISSION, tm18_COUNTER, tm19_SEISMIC_TOSS, tm20_RAGE, tm21_MEGA_DRAIN, tm24_THUNDERBOLT
+	tmlearn tm25_THUNDER, tm29_PSYCHIC_M, tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm34_BIDE, tm35_METRONOME, tm36_SELFDESTRUCT, tm37_SLUDGE_BOMB, tm40_SKULL_BASH
+	tmlearn tm42_DREAM_EATER, tm44_REST, tm46_PSYWAVE, tm47_EXPLOSION
+	tmlearn tm50_SUBSTITUTE, hm04_STRENGTH
 ;	db 0 ; padding
 	db BANK(GengarPicFront)
 	assert BANK(GengarPicFront) == BANK(GengarPicBack)

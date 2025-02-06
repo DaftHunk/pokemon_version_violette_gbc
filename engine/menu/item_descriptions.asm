@@ -1,9 +1,9 @@
 DisplayItemDescription::
 	ld a, [wcf91]
 	dec a
-	cp a, HM_01 - 1
+	cp a, HM01_CUT - 1
 	jr c, .ok
-	sub HM_01 - METAL_COAT - 1 ;dafthunk Always put last item here
+	sub HM01_CUT - METAL_COAT - 1 ;dafthunk Always put last item here
 .ok
 	ld hl, ItemDescriptionPointers
 	ld bc, 5

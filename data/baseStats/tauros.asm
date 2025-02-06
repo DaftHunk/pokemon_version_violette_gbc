@@ -18,13 +18,13 @@ db 0
 db 0
 db 5 ; growth rate
 ; learnset
-	tmlearn 6,7,8
-	tmlearn 9,10,13,14,15
-	tmlearn 20,24
-	tmlearn 25,26,27,31,32
-	tmlearn 34,38,40
-	tmlearn 44
-	tmlearn 50,54
+	tmlearn tm06_TOXIC, tm07_HORN_DRILL, tm08_BODY_SLAM
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm13_ICE_BEAM, tm14_BLIZZARD, tm15_HYPER_BEAM
+	tmlearn tm20_RAGE, tm24_THUNDERBOLT
+	tmlearn tm25_THUNDER, tm26_EARTHQUAKE, tm27_FISSURE, tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm34_BIDE, tm38_FIRE_BLAST, tm40_SKULL_BASH
+	tmlearn tm44_REST
+	tmlearn tm50_SUBSTITUTE, hm04_STRENGTH
 ;	db 0 ; padding
 	db BANK(TaurosPicFront)
 	assert BANK(TaurosPicFront) == BANK(TaurosPicBack)

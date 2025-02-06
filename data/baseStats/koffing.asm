@@ -18,13 +18,13 @@ db 0
 db 0
 db 0 ; growth rate
 ; learnset
-	tmlearn 6
+	tmlearn tm06_TOXIC
 	tmlearn 0
-	tmlearn 20,24
-	tmlearn 25,31,32
-	tmlearn 34,36,37,38
-	tmlearn 44,47
-	tmlearn 50
+	tmlearn tm20_RAGE, tm24_THUNDERBOLT
+	tmlearn tm25_THUNDER, tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm34_BIDE, tm36_SELFDESTRUCT, tm37_SLUDGE_BOMB, tm38_FIRE_BLAST
+	tmlearn tm44_REST, tm47_EXPLOSION
+	tmlearn tm50_SUBSTITUTE
 ;	db 0 ; padding
 	db BANK(KoffingPicFront)
 	assert BANK(KoffingPicFront) == BANK(KoffingPicBack)

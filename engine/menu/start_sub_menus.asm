@@ -425,7 +425,7 @@ StartMenu_Item:
 	xor a
 	ld [wPseudoItemID], a
 	ld a, [wcf91]
-	cp HM_01
+	cp HM01_CUT
 	jr nc, .useItem_partyMenu
 	ld hl, UsableItems_CloseMenu
 	ld de, 1

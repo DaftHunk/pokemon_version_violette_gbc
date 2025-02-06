@@ -18,13 +18,13 @@ db SMOG
 db FIRE_PUNCH
 db 0 ; growth rate
 ; learnset
-	tmlearn 1,4,5,6,8
-	tmlearn 9,10,15
-	tmlearn 17,18,19,20
-	tmlearn 29,30,31,32
-	tmlearn 34,35,38,40
-	tmlearn 44,46
-	tmlearn 50,54
+	tmlearn tm01_MEGA_PUNCH, tm04_FLAMETHROWER, tm05_MEGA_KICK, tm06_TOXIC, tm08_BODY_SLAM
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm15_HYPER_BEAM
+	tmlearn tm17_SUBMISSION, tm18_COUNTER, tm19_SEISMIC_TOSS, tm20_RAGE
+	tmlearn tm29_PSYCHIC_M, tm30_TELEPORT, tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm34_BIDE, tm35_METRONOME, tm38_FIRE_BLAST, tm40_SKULL_BASH
+	tmlearn tm44_REST, tm46_PSYWAVE
+	tmlearn tm50_SUBSTITUTE, hm04_STRENGTH
 ;	db 0 ; padding
 	db BANK(MagmarPicFront)
 	assert BANK(MagmarPicFront) == BANK(MagmarPicBack)

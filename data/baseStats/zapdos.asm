@@ -18,13 +18,13 @@ db 0
 db 0
 db 5 ; growth rate
 ; learnset
-	tmlearn 2,6
-	tmlearn 9,10,15
-	tmlearn 20,24
-	tmlearn 25,31,32
-	tmlearn 33,34,39
-	tmlearn 43,44,45
-	tmlearn 50,52,55
+	tmlearn tm02_RAZOR_WIND, tm06_TOXIC
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm15_HYPER_BEAM
+	tmlearn tm20_RAGE, tm24_THUNDERBOLT
+	tmlearn tm25_THUNDER, tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm33_REFLECT, tm34_BIDE, tm39_SWIFT
+	tmlearn tm43_SKY_ATTACK, tm44_REST, tm45_THUNDER_WAVE
+	tmlearn tm50_SUBSTITUTE, hm02_FLY, hm05_FLASH
 ;	db 0 ; padding
 	db BANK(ZapdosPicFront)
 	assert BANK(ZapdosPicFront) == BANK(ZapdosPicBack)

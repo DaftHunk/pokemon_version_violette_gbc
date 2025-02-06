@@ -18,13 +18,13 @@ db 0
 db 0
 db 0 ; growth rate
 ; learnset
-	tmlearn 6
-	tmlearn 9,10
-	tmlearn 20,24
-	tmlearn 25,30,31,32
-	tmlearn 33,34,39
-	tmlearn 44,45
-	tmlearn 50,55
+	tmlearn tm06_TOXIC
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE
+	tmlearn tm20_RAGE, tm24_THUNDERBOLT
+	tmlearn tm25_THUNDER, tm30_TELEPORT, tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm33_REFLECT, tm34_BIDE, tm39_SWIFT
+	tmlearn tm44_REST, tm45_THUNDER_WAVE
+	tmlearn tm50_SUBSTITUTE, hm05_FLASH
 ;	db 0 ; padding
 	db BANK(MagnemitePicFront)
 	assert BANK(MagnemitePicFront) == BANK(MagnemitePicBack)

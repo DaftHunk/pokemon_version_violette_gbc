@@ -907,7 +907,7 @@ VermilionDockHiddenObjects: ;joenote - added some hidden goodies
 ;	dbw BANK(HiddenItems),HiddenItems	;joenote - added hidden surfboard
 	db $01,$01,NUGGET
 	dbw BANK(HiddenItems),HiddenItems
-	db $0A,$1B,TM_15
+	db $0A,$1B,TM15_HYPER_BEAM
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 DaycareHiddenObjects:	;joenote - added a PC to the daycare

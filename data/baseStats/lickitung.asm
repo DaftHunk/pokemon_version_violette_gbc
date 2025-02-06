@@ -18,13 +18,13 @@ db SUPERSONIC
 db 0
 db 0 ; growth rate
 ; learnset
-	tmlearn 1,3,5,6,8
-	tmlearn 9,10,11,12,13,14,15
-	tmlearn 17,18,19,20,24
-	tmlearn 25,26,27,31,32
-	tmlearn 34,38,40
-	tmlearn 44
-	tmlearn 50,51,53,54
+	tmlearn tm01_MEGA_PUNCH, tm03_SWORDS_DANCE, tm05_MEGA_KICK, tm06_TOXIC, tm08_BODY_SLAM
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm11_BUBBLEBEAM, tm12_WATER_GUN, tm13_ICE_BEAM, tm14_BLIZZARD, tm15_HYPER_BEAM
+	tmlearn tm17_SUBMISSION, tm18_COUNTER, tm19_SEISMIC_TOSS, tm20_RAGE, tm24_THUNDERBOLT
+	tmlearn tm25_THUNDER, tm26_EARTHQUAKE, tm27_FISSURE, tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm34_BIDE, tm38_FIRE_BLAST, tm40_SKULL_BASH
+	tmlearn tm44_REST
+	tmlearn tm50_SUBSTITUTE, hm01_CUT, hm03_SURF, hm04_STRENGTH
 ;	db 0 ; padding
 	db BANK(LickitungPicFront)
 	assert BANK(LickitungPicFront) == BANK(LickitungPicBack)

@@ -686,62 +686,62 @@ ItemSortList::
 	db LIFT_KEY
 	db SILPH_SCOPE
 	; TMs
-	db TM_01
-	db TM_01 + 1
-	db TM_01 + 2
-	db TM_01 + 3
-	db TM_01 + 4
-	db TM_01 + 5
-	db TM_01 + 6
-	db TM_01 + 7
-	db TM_01 + 8
-	db TM_01 + 9
-	db TM_01 + 10
-	db TM_01 + 11
-	db TM_01 + 12
-	db TM_01 + 13
-	db TM_01 + 14
-	db TM_01 + 15
-	db TM_01 + 16
-	db TM_01 + 17
-	db TM_01 + 18
-	db TM_01 + 19
-	db TM_01 + 20
-	db TM_01 + 21
-	db TM_01 + 22
-	db TM_01 + 23
-	db TM_01 + 24
-	db TM_01 + 25
-	db TM_01 + 26
-	db TM_01 + 27
-	db TM_01 + 28
-	db TM_01 + 29
-	db TM_01 + 30
-	db TM_01 + 31
-	db TM_01 + 32
-	db TM_01 + 33
-	db TM_01 + 34
-	db TM_01 + 35
-	db TM_01 + 36
-	db TM_01 + 37
-	db TM_01 + 38
-	db TM_01 + 39
-	db TM_01 + 40
-	db TM_01 + 41
-	db TM_01 + 42
-	db TM_01 + 43
-	db TM_01 + 44
-	db TM_01 + 45
-	db TM_01 + 46
-	db TM_01 + 47
-	db TM_01 + 48
-	db TM_01 + 49
+	db TM01_MEGA_PUNCH
+	db TM01_MEGA_PUNCH + 1
+	db TM01_MEGA_PUNCH + 2
+	db TM01_MEGA_PUNCH + 3
+	db TM01_MEGA_PUNCH + 4
+	db TM01_MEGA_PUNCH + 5
+	db TM01_MEGA_PUNCH + 6
+	db TM01_MEGA_PUNCH + 7
+	db TM01_MEGA_PUNCH + 8
+	db TM01_MEGA_PUNCH + 9
+	db TM01_MEGA_PUNCH + 10
+	db TM01_MEGA_PUNCH + 11
+	db TM01_MEGA_PUNCH + 12
+	db TM01_MEGA_PUNCH + 13
+	db TM01_MEGA_PUNCH + 14
+	db TM01_MEGA_PUNCH + 15
+	db TM01_MEGA_PUNCH + 16
+	db TM01_MEGA_PUNCH + 17
+	db TM01_MEGA_PUNCH + 18
+	db TM01_MEGA_PUNCH + 19
+	db TM01_MEGA_PUNCH + 20
+	db TM01_MEGA_PUNCH + 21
+	db TM01_MEGA_PUNCH + 22
+	db TM01_MEGA_PUNCH + 23
+	db TM01_MEGA_PUNCH + 24
+	db TM01_MEGA_PUNCH + 25
+	db TM01_MEGA_PUNCH + 26
+	db TM01_MEGA_PUNCH + 27
+	db TM01_MEGA_PUNCH + 28
+	db TM01_MEGA_PUNCH + 29
+	db TM01_MEGA_PUNCH + 30
+	db TM01_MEGA_PUNCH + 31
+	db TM01_MEGA_PUNCH + 32
+	db TM01_MEGA_PUNCH + 33
+	db TM01_MEGA_PUNCH + 34
+	db TM01_MEGA_PUNCH + 35
+	db TM01_MEGA_PUNCH + 36
+	db TM01_MEGA_PUNCH + 37
+	db TM01_MEGA_PUNCH + 38
+	db TM01_MEGA_PUNCH + 39
+	db TM01_MEGA_PUNCH + 40
+	db TM01_MEGA_PUNCH + 41
+	db TM01_MEGA_PUNCH + 42
+	db TM01_MEGA_PUNCH + 43
+	db TM01_MEGA_PUNCH + 44
+	db TM01_MEGA_PUNCH + 45
+	db TM01_MEGA_PUNCH + 46
+	db TM01_MEGA_PUNCH + 47
+	db TM01_MEGA_PUNCH + 48
+	db TM01_MEGA_PUNCH + 49
 	; HMs
-	db HM_01
-	db HM_01 + 1
-	db HM_01 + 2
-	db HM_01 + 3
-	db HM_01 + 4
+	db HM01_CUT
+	db HM01_CUT + 1
+	db HM01_CUT + 2
+	db HM01_CUT + 3
+	db HM01_CUT + 4
 	db $FF ; end
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

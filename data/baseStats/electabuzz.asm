@@ -18,13 +18,13 @@ db THUNDERPUNCH
 db 0
 db 0 ; growth rate
 ; learnset
-	tmlearn 1,5,6,8
-	tmlearn 9,10,15
-	tmlearn 17,18,19,20,24
-	tmlearn 25,29,30,31,32
-	tmlearn 33,34,35,39,40
-	tmlearn 44,45,46
-	tmlearn 50,54,55
+	tmlearn tm01_MEGA_PUNCH, tm05_MEGA_KICK, tm06_TOXIC, tm08_BODY_SLAM
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm15_HYPER_BEAM
+	tmlearn tm17_SUBMISSION, tm18_COUNTER, tm19_SEISMIC_TOSS, tm20_RAGE, tm24_THUNDERBOLT
+	tmlearn tm25_THUNDER, tm29_PSYCHIC_M, tm30_TELEPORT, tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm33_REFLECT, tm34_BIDE, tm35_METRONOME, tm39_SWIFT, tm40_SKULL_BASH
+	tmlearn tm44_REST, tm45_THUNDER_WAVE, tm46_PSYWAVE
+	tmlearn tm50_SUBSTITUTE, hm04_STRENGTH, hm05_FLASH
 ;	db 0 ; padding
 	db BANK(ElectabuzzPicFront)
 	assert BANK(ElectabuzzPicFront) == BANK(ElectabuzzPicBack)

@@ -18,13 +18,13 @@ db CONSTRICT
 db 0
 db 5 ; growth rate
 ; learnset
-	tmlearn 3,6
-	tmlearn 9,10,11,12,13,14,15
-	tmlearn 20,21
-	tmlearn 31,32
-	tmlearn 33,34,37,40
-	tmlearn 44
-	tmlearn 50,51,53
+	tmlearn tm03_SWORDS_DANCE, tm06_TOXIC
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm11_BUBBLEBEAM, tm12_WATER_GUN, tm13_ICE_BEAM, tm14_BLIZZARD, tm15_HYPER_BEAM
+	tmlearn tm20_RAGE, tm21_MEGA_DRAIN
+	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm33_REFLECT, tm34_BIDE, tm37_SLUDGE_BOMB, tm40_SKULL_BASH
+	tmlearn tm44_REST
+	tmlearn tm50_SUBSTITUTE, hm01_CUT, hm03_SURF
 ;	db 0 ; padding
 	db BANK(TentacruelPicFront)
 	assert BANK(TentacruelPicFront) == BANK(TentacruelPicBack)

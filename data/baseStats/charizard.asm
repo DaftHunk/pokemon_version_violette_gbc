@@ -18,13 +18,13 @@ db EMBER
 db SMOKESCREEN
 db 3 ; growth rate
 ; learnset
-	tmlearn 1,3,4,5,6,8
-	tmlearn 9,10,15
-	tmlearn 17,18,19,20,23
-	tmlearn 26,27,28,31,32
-	tmlearn 33,34,38,39,40
-	tmlearn 44
-	tmlearn 50,51,52,54;joenote - learns fly in yellow
+	tmlearn tm01_MEGA_PUNCH, tm03_SWORDS_DANCE, tm04_FLAMETHROWER, tm05_MEGA_KICK, tm06_TOXIC, tm08_BODY_SLAM
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm15_HYPER_BEAM
+	tmlearn tm17_SUBMISSION, tm18_COUNTER, tm19_SEISMIC_TOSS, tm20_RAGE, tm23_DRAGON_RAGE
+	tmlearn tm26_EARTHQUAKE, tm27_FISSURE, tm28_DIG, tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm33_REFLECT, tm34_BIDE, tm38_FIRE_BLAST, tm39_SWIFT, tm40_SKULL_BASH
+	tmlearn tm44_REST
+	tmlearn tm50_SUBSTITUTE, hm01_CUT, hm02_FLY, hm04_STRENGTH;joenote - learns fly in yellow
 ;	db 0 ; padding
 	db BANK(CharizardPicFront)
 	assert BANK(CharizardPicFront) == BANK(CharizardPicBack)

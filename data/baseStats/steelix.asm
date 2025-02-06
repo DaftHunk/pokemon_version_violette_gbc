@@ -18,13 +18,13 @@ db 0
 db 0
 db 0 ; growth rate
 ; learnset
-	tmlearn 6,8
-	tmlearn 9,10
-	tmlearn 20
-	tmlearn 26,27,28,31,32
-	tmlearn 34,36,40
-	tmlearn 44,47,48
-	tmlearn 50,54
+	tmlearn tm06_TOXIC, tm08_BODY_SLAM, tm09_TAKE_DOWN
+	tmlearn tm10_DOUBLE_EDGE
+	tmlearn tm20_RAGE, tm26_EARTHQUAKE, tm27_FISSURE, tm28_DIG
+	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM, tm34_BIDE, tm36_SELFDESTRUCT
+	tmlearn tm40_SKULL_BASH, tm44_REST, tm47_EXPLOSION, tm48_ROCK_SLIDE
+	tmlearn tm50_SUBSTITUTE
+	tmlearn hm04_STRENGTH
 ;	db 0 ; padding
 	db BANK(SteelixPicFront)
 	assert BANK(SteelixPicFront) == BANK(SteelixPicBack)

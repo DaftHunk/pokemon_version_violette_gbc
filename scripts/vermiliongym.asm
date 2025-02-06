@@ -66,7 +66,7 @@ VermilionGymScript_5caaa:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_LT_SURGE
-	lb bc, TM_24, 1
+	lb bc, TM24_THUNDERBOLT, 1
 	call GiveItem
 	jr nc, .BagFull
 	ld a, $7

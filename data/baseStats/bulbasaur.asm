@@ -1,3 +1,4 @@
+MonBaseStats:
 db DEX_BULBASAUR ; pokedex id
 db 45 ; base hp
 db 49 ; base attack
@@ -18,14 +19,15 @@ db 0
 db 0
 db 3 ; growth rate
 ; learnset
-	tmlearn 3,6,8
-	tmlearn 9,10
-	tmlearn 20,21,22
-	tmlearn 31,32
-	tmlearn 33,34,37
-	tmlearn 44
-	tmlearn 50,51
+	tmlearn tm03_SWORDS_DANCE, tm06_TOXIC, tm08_BODY_SLAM, tm09_TAKE_DOWN
+	tmlearn tm10_DOUBLE_EDGE
+	tmlearn tm20_RAGE, tm21_MEGA_DRAIN, tm22_SOLARBEAM
+	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM, tm33_REFLECT, tm34_BIDE
+	tmlearn tm44_REST
+	tmlearn tm50_SUBSTITUTE
+	tmlearn hm01_CUT
 ;	db 0 ; padding
 	db BANK(BulbasaurPicFront)
 	assert BANK(BulbasaurPicFront) == BANK(BulbasaurPicBack)
 
+MonBaseStatsEnd:

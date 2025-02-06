@@ -18,13 +18,13 @@ db 0
 db 0
 db 0 ; growth rate
 ; learnset
-	tmlearn 2,6
-	tmlearn 9,10,15
-	tmlearn 20,21,22
-	tmlearn 29,30,31,32
-	tmlearn 33,34,39
-	tmlearn 44,46
-	tmlearn 50,55;joenote - learns flash in yellow
+	tmlearn tm02_RAZOR_WIND, tm06_TOXIC
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm15_HYPER_BEAM
+	tmlearn tm20_RAGE, tm21_MEGA_DRAIN, tm22_SOLARBEAM
+	tmlearn tm29_PSYCHIC_M, tm30_TELEPORT, tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm33_REFLECT, tm34_BIDE, tm39_SWIFT
+	tmlearn tm44_REST, tm46_PSYWAVE
+	tmlearn tm50_SUBSTITUTE, hm05_FLASH;joenote - learns flash in yellow
 ;	db 0 ; padding
 	db BANK(ButterfreePicFront)
 	assert BANK(ButterfreePicFront) == BANK(ButterfreePicBack)

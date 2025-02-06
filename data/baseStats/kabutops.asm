@@ -18,13 +18,13 @@ db ABSORB
 db 0
 db 0 ; growth rate
 ; learnset	;joenote - gains CUT from Yellow moveset
-	tmlearn 2,3,5,6,8
-	tmlearn 9,10,11,12,13,14,15
-	tmlearn 17,19,20
-	tmlearn 31,32
-	tmlearn 33,34,40
-	tmlearn 44
-	tmlearn 50,51,53
+	tmlearn tm02_RAZOR_WIND, tm03_SWORDS_DANCE, tm05_MEGA_KICK, tm06_TOXIC, tm08_BODY_SLAM
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm11_BUBBLEBEAM, tm12_WATER_GUN, tm13_ICE_BEAM, tm14_BLIZZARD, tm15_HYPER_BEAM
+	tmlearn tm17_SUBMISSION, tm19_SEISMIC_TOSS, tm20_RAGE
+	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm33_REFLECT, tm34_BIDE, tm40_SKULL_BASH
+	tmlearn tm44_REST
+	tmlearn tm50_SUBSTITUTE, hm01_CUT, hm03_SURF
 ;	db 0 ; padding
 	db BANK(KabutopsPicFront)
 	assert BANK(KabutopsPicFront) == BANK(KabutopsPicBack)

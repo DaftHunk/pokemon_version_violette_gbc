@@ -2,7 +2,7 @@ GetMachinePrice:
 ; Input:  [wcf91] = Item Id of a TM
 ; Output: Stores the TM price at hItemPrice
 	ld a, [wcf91] ; a contains TM item id
-	sub TM_01
+	sub TM01_MEGA_PUNCH
 	ret c
 	ld d, a
 	ld hl, TechnicalMachinePrices

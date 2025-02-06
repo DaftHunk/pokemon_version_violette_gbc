@@ -18,13 +18,13 @@ db 0
 db 0
 db 0 ; growth rate
 ; learnset
-	tmlearn 7
-	tmlearn 9,10,11,16,17
-	tmlearn 29
-	tmlearn 30,32
-	tmlearn 34,40
-	tmlearn 43,46
-	tmlearn 52,56
+	tmlearn tm06_TOXIC, tm08_BODY_SLAM, tm09_TAKE_DOWN
+	tmlearn tm10_DOUBLE_EDGE, tm11_BUBBLEBEAM, tm12_WATER_GUN, tm13_ICE_BEAM, tm14_BLIZZARD, tm15_HYPER_BEAM
+	tmlearn tm20_RAGE
+	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM, tm33_REFLECT, tm34_BIDE, tm39_SWIFT
+	tmlearn tm40_SKULL_BASH, tm44_REST
+	tmlearn tm50_SUBSTITUTE
+	tmlearn hm03_SURF
 ;	db 0 ; padding
 	db BANK(UmbreonPicFront)
 	assert BANK(UmbreonPicFront) == BANK(UmbreonPicBack)

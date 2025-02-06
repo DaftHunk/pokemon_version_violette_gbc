@@ -77,9 +77,9 @@ ENDC
 	db "@"
 
 PrizeMenuTMsEntries:
-	db TM_24
-	db TM_14
-	db TM_15
+	db TM24_THUNDERBOLT
+	db TM14_BLIZZARD
+	db TM15_HYPER_BEAM
 	db "@"
 
 PrizeMenuTMsCost:

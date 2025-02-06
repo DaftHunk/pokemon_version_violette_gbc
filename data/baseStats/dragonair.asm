@@ -18,13 +18,13 @@ db THUNDER_WAVE
 db 0
 db 5 ; growth rate
 ; learnset
-	tmlearn 6,7,8
-	tmlearn 9,10,11,12,13,14
-	tmlearn 20,23,24
-	tmlearn 25,31,32
-	tmlearn 33,34,38,39,40
-	tmlearn 44,45
-	tmlearn 50,53
+	tmlearn tm06_TOXIC, tm07_HORN_DRILL, tm08_BODY_SLAM
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm11_BUBBLEBEAM, tm12_WATER_GUN, tm13_ICE_BEAM, tm14_BLIZZARD
+	tmlearn tm20_RAGE, tm23_DRAGON_RAGE, tm24_THUNDERBOLT
+	tmlearn tm25_THUNDER, tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm33_REFLECT, tm34_BIDE, tm38_FIRE_BLAST, tm39_SWIFT, tm40_SKULL_BASH
+	tmlearn tm44_REST, tm45_THUNDER_WAVE
+	tmlearn tm50_SUBSTITUTE, hm03_SURF
 ;	db 0 ; padding
 	db BANK(DragonairPicFront)
 	assert BANK(DragonairPicFront) == BANK(DragonairPicBack)

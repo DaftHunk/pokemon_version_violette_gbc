@@ -18,13 +18,13 @@ db 0
 db 0
 db 0 ; growth rate
 ; learnset
-	tmlearn 2,3,6,8
-	tmlearn 9,10
-	tmlearn 20
-	tmlearn 31,32
-	tmlearn 33,34,39,40
-	tmlearn 44
-	tmlearn 50,51,52
+	tmlearn tm02_RAZOR_WIND, tm03_SWORDS_DANCE, tm06_TOXIC, tm08_BODY_SLAM
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE
+	tmlearn tm20_RAGE
+	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm33_REFLECT, tm34_BIDE, tm39_SWIFT, tm40_SKULL_BASH
+	tmlearn tm44_REST
+	tmlearn tm50_SUBSTITUTE, hm01_CUT, hm02_FLY
 ;	db 0 ; padding
 	db BANK(FarfetchdPicFront)
 	assert BANK(FarfetchdPicFront) == BANK(FarfetchdPicBack)

@@ -43,7 +43,7 @@ CeladonMart3Text1:
 	jr nz, .asm_a5463
 	ld hl, TM18PreReceiveText
 	call PrintText
-	lb bc, TM_18, 1
+	lb bc, TM18_COUNTER, 1
 	call GiveItem
 	jr nc, .BagFull
 	SetEvent EVENT_GOT_TM18

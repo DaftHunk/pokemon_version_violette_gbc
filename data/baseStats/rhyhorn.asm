@@ -18,13 +18,13 @@ db 0
 db 0
 db 5 ; growth rate
 ; learnset
-	tmlearn 6,7,8
-	tmlearn 9,10
-	tmlearn 20,24
-	tmlearn 25,26,27,28,31,32
-	tmlearn 34,38,40
-	tmlearn 44,48
-	tmlearn 50,54
+	tmlearn tm06_TOXIC, tm07_HORN_DRILL, tm08_BODY_SLAM
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE
+	tmlearn tm20_RAGE, tm24_THUNDERBOLT
+	tmlearn tm25_THUNDER, tm26_EARTHQUAKE, tm27_FISSURE, tm28_DIG, tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm34_BIDE, tm38_FIRE_BLAST, tm40_SKULL_BASH
+	tmlearn tm44_REST, tm48_ROCK_SLIDE
+	tmlearn tm50_SUBSTITUTE, hm04_STRENGTH
 ;	db 0 ; padding
 	db BANK(RhyhornPicFront)
 	assert BANK(RhyhornPicFront) == BANK(RhyhornPicBack)

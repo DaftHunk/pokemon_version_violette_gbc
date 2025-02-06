@@ -1586,7 +1586,7 @@ ENDC
 	ld [wd0b5], a
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote need to load the proper bank for TM/HM
-	cp HM_01
+	cp HM01_CUT
 	ld a, BANK(ItemNames)
 	ld [wPredefBank], a
 	jr c, .go_get_name
@@ -2047,7 +2047,7 @@ GetItemName::
 	ld [wNameListType], a
 	ld a, [wd11e]
 	ld [wd0b5], a
-	cp HM_01 ; is this a TM/HM?
+	cp HM01_CUT ; is this a TM/HM?
 	jr nc, .Machine
 	ld a, BANK(ItemNames)
 	jr .Finish
@@ -2064,7 +2064,7 @@ GetItemName::
 ;	push hl
 ;	push bc
 ;	ld a, [wd11e]
-;	cp HM_01 ; is this a TM/HM?
+;	cp HM01_CUT ; is this a TM/HM?
 ;	jr nc, .Machine
 ;	ld [wd0b5], a
 ;	ld a, ITEM_NAME
@@ -2088,7 +2088,7 @@ GetItemName::
 ;	push bc
 ;	ld a, [wd11e]
 ;	push af
-;	cp TM_01 ; is this a TM? [not HM]
+;	cp TM01_MEGA_PUNCH ; is this a TM? [not HM]
 ;	jr nc, .WriteTM
 ;; if HM, then write "HM" and add 5 to the item ID, so we can reuse the
 ;; TM printing code
@@ -2105,7 +2105,7 @@ GetItemName::
 ;	call CopyData
 ;; now get the machine number and convert it to text
 ;	ld a, [wd11e]
-;	sub TM_01 - 1
+;	sub TM01_MEGA_PUNCH - 1
 ;	ld b, "0"
 ;.FirstDigit
 ;	sub 10
@@ -2139,9 +2139,9 @@ GetItemName::
 ; sets carry if item is HM, clears carry if item is not HM
 ; Input: a = item ID
 IsItemHM::
-	cp HM_01
+	cp HM01_CUT
 	jr c, .notHM
-	cp TM_01
+	cp TM01_MEGA_PUNCH
 	ret
 .notHM
 	and a
@@ -3528,12 +3528,12 @@ GetName::
 	pop bc
 	jr nz, .notMachine	;if the list type is not items, then A cannot be referring to a machine
 	;At this line, definitely working with an item list. So see if it's a machine or item
-	cp HM_01
+	cp HM01_CUT
 	;jp nc, GetMachineName	;joenote - function removed. Handle list-based tm & hm names here.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - do some stuff if the item is a machine
 	jr c, .notMachine
-	sub (HM_01 - 1)	;need to shift things because tm and hm constants are offset by +$C3 from the first item constant
+	sub (HM01_CUT - 1)	;need to shift things because tm and hm constants are offset by +$C3 from the first item constant
 	ld [wd0b5], a
 	ld a, TMHM_NAME	
 	ld [wNameListType], a
@@ -3603,7 +3603,7 @@ GetName::
 ;	ld [wUnusedCF8D + 1], a
 
 	ld a, [wd11e]
-	cp HM_01
+	cp HM01_CUT
 	jr c, .notMachine2
 	ld a, ITEM_NAME	;this needs to be reset because machines can be in the same listings as items	
 	ld [wNameListType], a
@@ -3635,7 +3635,7 @@ GetItemPrice::
 	ld h, [hl]
 	ld l, a
 	ld a, [wcf91] ; a contains item id
-	cp HM_01
+	cp HM01_CUT
 	jr nc, .getTMPrice
 	ld bc, $3
 .loop

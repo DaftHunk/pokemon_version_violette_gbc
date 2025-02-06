@@ -18,13 +18,13 @@ db GROWL
 db 0
 db 0 ; growth rate
 ; learnset
-	tmlearn 6,8
-	tmlearn 9,10,15
-	tmlearn 20
-	tmlearn 26,27,28,31,32
-	tmlearn 34,37
-	tmlearn 44,48
-	tmlearn 50,51	;joenote - can learn CUT from Yellow
+	tmlearn tm06_TOXIC, tm08_BODY_SLAM
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm15_HYPER_BEAM
+	tmlearn tm20_RAGE
+	tmlearn tm26_EARTHQUAKE, tm27_FISSURE, tm28_DIG, tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm34_BIDE, tm37_SLUDGE_BOMB
+	tmlearn tm44_REST, tm48_ROCK_SLIDE
+	tmlearn tm50_SUBSTITUTE, hm01_CUT	;joenote - can learn CUT from Yellow
 ;	db 0 ; padding
 	db BANK(DugtrioPicFront)
 	assert BANK(DugtrioPicFront) == BANK(DugtrioPicBack)

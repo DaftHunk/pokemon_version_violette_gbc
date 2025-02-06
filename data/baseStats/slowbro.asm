@@ -18,13 +18,13 @@ db HEADBUTT
 db 0
 db 0 ; growth rate
 ; learnset
-	tmlearn 1,5,6,8
-	tmlearn 9,10,11,12,13,14,15,16
-	tmlearn 17,18,19,20
-	tmlearn 26,27,28,29,30,31,32
-	tmlearn 33,34,38,39,40
-	tmlearn 44,45,46
-	tmlearn 49,50,53,54,55
+	tmlearn tm01_MEGA_PUNCH, tm05_MEGA_KICK, tm06_TOXIC, tm08_BODY_SLAM
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm11_BUBBLEBEAM, tm12_WATER_GUN, tm13_ICE_BEAM, tm14_BLIZZARD, tm15_HYPER_BEAM, tm16_PAY_DAY
+	tmlearn tm17_SUBMISSION, tm18_COUNTER, tm19_SEISMIC_TOSS, tm20_RAGE
+	tmlearn tm26_EARTHQUAKE, tm27_FISSURE, tm28_DIG, tm29_PSYCHIC_M, tm30_TELEPORT, tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm33_REFLECT, tm34_BIDE, tm38_FIRE_BLAST, tm39_SWIFT, tm40_SKULL_BASH
+	tmlearn tm44_REST, tm45_THUNDER_WAVE, tm46_PSYWAVE
+	tmlearn tm49_TRI_ATTACK, tm50_SUBSTITUTE, hm03_SURF, hm04_STRENGTH, hm05_FLASH
 ;	db 0 ; padding
 	db BANK(SlowbroPicFront)
 	assert BANK(SlowbroPicFront) == BANK(SlowbroPicBack)
