@@ -3164,7 +3164,7 @@ wBeatGymFlags:: ; d72a
 	;bit 0 - prof. oak
 	;bit 1 - mr. fuji
 	;bit 2 - silph chief
-	;bit 3 - trainer green
+	;bit 3 - joelle
 	ds 1
 
 	ds 1

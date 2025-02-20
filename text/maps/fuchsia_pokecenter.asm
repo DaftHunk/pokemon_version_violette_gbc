@@ -74,7 +74,7 @@ _NurseJoyAcceptedText::
 	done
 
 _NurseJoyAfterBattleText::
-    text "C'était"
+    text "C'est"
 	line "génial! Ta force"
 	cont "et ton lien avec"
 	cont "tes #mon sont"
