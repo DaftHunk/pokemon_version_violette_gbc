@@ -1542,12 +1542,12 @@ _GainedText::
 
 _WithExpAllText::
 	text "avec Multi exp,"
-	cont "@"
+	line "@"
 	text_end
 
 _BoostedText::
 	text "un bonus de"
-	cont "@"
+	line "@"
 	text_end
 
 _ExpPointsText::
