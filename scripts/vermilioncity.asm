@@ -1,5 +1,5 @@
 VermilionCityScript:
-	call EnableAutoTextBoxDrawing	
+	call EnableAutoTextBoxDrawing
 	ld hl, wCurrentMapScriptFlags
 	bit 6, [hl]
 	res 6, [hl]
@@ -34,7 +34,6 @@ VermilionCityScriptPointers:
 	dw VermilionCityScript2
 	dw VermilionCityScript3
 	dw VermilionCityScript4
-	dw VermilionCityJennyPostBattleScript
 
 VermilionCityScript0:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -143,35 +142,39 @@ VermilionCityTextPointers:
 	dw VermilionCityText11
 	dw VermilionCityText12
 	dw VermilionCityText13
-	dw VermilionCityText7;joenote - moved this to position 14	
+	dw VermilionCityText7;joenote - moved this to position 14
 
 VermilionCityJennyText:
 	TX_ASM
+	; return if already beaten
 	CheckEvent EVENT_BEAT_JENNY
-	jr nz, .alreadyFighted
+	jp nz, .alreadyBeaten
+	; else
 	ld hl, VermilionCityJennyBattleText
 	call PrintText
-	ld hl, wd72d;set the bits for triggering battle
-	set 6, [hl]	;
-	set 7, [hl]	;
-	ld hl, VermilionCityJennyEndBattleText	;load text for when you win
-	ld de, VermilionCityJennyEndBattleText	;load text for when you lose
-	call SaveEndBattleTextPointers	;save the win/lose text
-	ld a, $8
-	ld [wGymLeaderNo], a	;set bgm to gym leader music
-	ld a, OPP_JENNY	;load the trainer type
-	ld [wCurOpponent], a	;set as the current opponent
-	ld a, 1	;get the right roster
+	; set battle flags
+	ld hl, wd72d
+	set 6, [hl]
+	set 7, [hl]
+	; set battle opponent
+	call Delay3
+	ld a, OPP_JENNY
+	ld [wCurOpponent], a
+	; set team
+	ld a, $1
 	ld [wTrainerNo], a
-	xor a
-	ld [hJoyHeld], a
-	ld a, $6
+	; set after battle script
+	ld a, $0
 	ld [wVermilionCityCurScript], a
-	ld [wCurMapScript], a
+	SetEvent EVENT_BEAT_JENNY
+	; after battle
+	ld hl, VermilionCityJennyEndBattleText
+	call SaveEndBattleTextPointers
 	jp TextScriptEnd
-.alreadyFighted
+.alreadyBeaten
 	ld hl, VermilionCityJennyAfterBattleText
 	call PrintText
+	jp TextScriptEnd
 
 VermilionCityJennyBattleText:
 	TX_FAR _VermilionJennyBattleText1
@@ -181,19 +184,6 @@ VermilionCityJennyEndBattleText:
 	TX_FAR _VermilionJennyEndBattleText1
 	db "@"
 
-VermilionCityJennyPostBattleScript:
-	ld a, [wIsInBattle]
-	inc a
-	jr z, .skip	; Kick out if the player lost.
-	SetEvent EVENT_BEAT_JENNY
-	call VermilionCityJennyPostBattleScript
-	ldh [hSpriteIndexOrTextID], a
-	call DisplayTextID
-.skip
-	call VermilionCityScript0
-	ld [wFuchsiaPokecenterCurScript], a
-	ld [wCurMapScript], a
-	ret
 VermilionCityJennyAfterBattleText:
 	TX_FAR _VermilionJennyAfterBattleText1
 	db "@"

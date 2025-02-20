@@ -1,17 +1,17 @@
 _VermilionJennyBattleText1::
-	text "Hey toi! C'est toi"
-	line "qui revends de la"
-	cont "poudre soin non?"
+	text "Hey ! C'est toi"
+	line "le trafiquant de"
+	cont "poudre soin ?"
 	done
 
 _VermilionJennyEndBattleText1::
-	text "J'ai dû"
-	line "me tromper,"
+	text "J'ai"
+	line "dû me tromper,"
 	cont "circulez!"
 	prompt
 
 _VermilionJennyAfterBattleText1::
-	text "J'ai dû confondre"
+	text "Je t'ai confondu"
 	line "avec quelqu'un"
 	cont "d'autre."
 	done
