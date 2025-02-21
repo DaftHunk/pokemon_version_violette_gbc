@@ -9,5 +9,5 @@ TowerMons6:
 	db 26,HAUNTER
 	db 22,CUBONE
 	db 24,CUBONE
-	db 28,HAUNTER
+	db 28,MISDREAVUS
 	db $00

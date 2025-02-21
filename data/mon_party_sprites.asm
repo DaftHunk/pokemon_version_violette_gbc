@@ -153,4 +153,11 @@ MonPartyData:
 	db ICON_STEELIX       ; Steelix
 	db ICON_SCIZOR        ; Scizor
 	db ICON_UMBREON       ; Umbreon
+	db ICON_KINGDRA       ; Kingdra
+	db ICON_SNEASEL       ; Sneasel
+	db ICON_MISDREAVUS    ; Misdreavus
+	db ICON_LARVITAR      ; Larvitar
+	db ICON_PUPITAR       ; Pupitar
+	db ICON_TYRANITAR     ; Tyranitar
+	db ICON_HOOH          ; Hooh
 	

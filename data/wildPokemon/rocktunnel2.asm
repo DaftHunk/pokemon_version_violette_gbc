@@ -9,5 +9,5 @@ TunnelMonsB2:;joenote - added cubone
 	db 13,ONIX
 	db 15,CUBONE
 	db 17,ONIX
-	db 18,CUBONE
+	db 18,SNEASEL
 	db $00

@@ -53,23 +53,23 @@ EvosMovesPointerTable:
 	dw GolemEvosMoves
 	dw UmbreonEvosMoves
 	dw MagmarEvosMoves
-	dw MissingNo34EvosMoves
+	dw KingdraEvosMoves
 	dw ElectabuzzEvosMoves
 	dw MagnetonEvosMoves
 	dw KoffingEvosMoves
-	dw MissingNo38EvosMoves
+	dw SneaselEvosMoves
 	dw MankeyEvosMoves
 	dw SeelEvosMoves
 	dw DiglettEvosMoves
 	dw TaurosEvosMoves
-	dw MissingNo3DEvosMoves
-	dw MissingNo3EEvosMoves
-	dw MissingNo3FEvosMoves
+	dw MisdreavusEvosMoves
+	dw LarvitarEvosMoves
+	dw PupitarEvosMoves
 	dw FarfetchdEvosMoves
 	dw VenonatEvosMoves
 	dw DragoniteEvosMoves
-	dw MissingNo43EvosMoves
-	dw MissingNo44EvosMoves
+	dw TyranitarEvosMoves
+	dw HoohEvosMoves
 	dw MissingNo45EvosMoves
 	dw DoduoEvosMoves
 	dw PoliwagEvosMoves
@@ -846,10 +846,16 @@ MagmarEvosMoves:
 	db 57, FIRE_BLAST
 	db 0
 
-MissingNo34EvosMoves:
+KingdraEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 8, SMOKESCREEN
+	db 15, LEER
+	db 22, WATER_GUN
+	db 30, DRAGON_RAGE
+	db 40, AGILITY
+	db 51, HYDRO_PUMP
 	db 0
 
 ElectabuzzEvosMoves:
@@ -890,10 +896,18 @@ KoffingEvosMoves:
 	db 45, MIMIC	;joenote - added for late-game trainers
 	db 0
 
-MissingNo38EvosMoves:
+SneaselEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 9, QUICK_ATTACK
+	db 17, SCREECH
+	db 25, PURSUIT
+	db 33, FURY_SWIPES
+	db 41, AGILITY
+	db 49, SLASH
+	db 57, CRUNCH
+	db 65, METAL_CLAW
 	db 0
 
 MankeyEvosMoves:
@@ -948,22 +962,42 @@ TaurosEvosMoves:
 	db 53, TAKE_DOWN
 	db 0
 
-MissingNo3DEvosMoves:
+MisdreavusEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 12, CONFUSE_RAY
+	db 21, NIGHT_SHADE
+	db 27, PSYBEAM
+	db 30, HYPNOSIS
+	db 39, DREAM_EATER
 	db 0
 
-MissingNo3EEvosMoves:
+LarvitarEvosMoves:
 ; Evolutions
+	db EV_LEVEL, 30, PUPITAR
 	db 0
 ; Learnset
+	db 8, SAND_ATTACK
+	db 15, ROCK_SLIDE
+	db 29, THRASH
+	db 43, CRUNCH
+	db 50, EARTHQUAKE
+	db 57, HYPER_BEAM
 	db 0
 
-MissingNo3FEvosMoves:
+PupitarEvosMoves:
 ; Evolutions
+	db EV_LEVEL, 55, TYRANITAR
 	db 0
 ; Learnset
+	db 8, SAND_ATTACK
+	db 15, SCREECH
+	db 22, ROCK_SLIDE
+	db 29, THRASH
+	db 47, CRUNCH
+	db 56, EARTHQUAKE
+	db 65, HYPER_BEAM
 	db 0
 
 FarfetchdEvosMoves:
@@ -1005,16 +1039,30 @@ DragoniteEvosMoves:
 	db 75, HYPER_BEAM
 	db 0
 
-MissingNo43EvosMoves:
+TyranitarEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 8, SAND_ATTACK
+	db 15, SCREECH
+	db 22, ROCK_SLIDE
+	db 29, THRASH
+	db 47, CRUNCH
+	db 61, EARTHQUAKE
+	db 75, HYPER_BEAM
 	db 0
 
-MissingNo44EvosMoves:
+HoohEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 22, GUST
+	db 33, RECOVER
+	db 44, FIRE_BLAST
+	db 55, AGILITY
+	db 66, FLAMETHROWER
+	db 77, WHIRLWIND
+	db 88, SWIFT
 	db 0
 
 MissingNo45EvosMoves:
@@ -1267,6 +1315,7 @@ HorseaEvosMoves:
 
 SeadraEvosMoves:
 ; Evolutions
+	db EV_ITEM, MOON_STONE, 1, KINGDRA
 	db 0
 ; Learnset
 	db 8, SMOKESCREEN

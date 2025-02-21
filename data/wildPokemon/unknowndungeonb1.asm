@@ -2,7 +2,7 @@ DungeonMonsB1:;joenote - added mew
 	db $19
 	db 55,RHYDON
 	db 55,MAROWAK
-	db 55,ELECTRODE
+	db 55,LARVITAR
 	db 64,SANDSLASH
 	db 64,PARASECT
 	db 64,RAICHU

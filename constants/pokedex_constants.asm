@@ -154,5 +154,12 @@ const_value = 1
 	const DEX_STEELIX    ; 152
 	const DEX_SCIZOR     ; 153
 	const DEX_UMBREON    ; 154
+	const DEX_KINGDRA    ; 155
+	const DEX_SNEASEL    ; 156
+	const DEX_MISDREAVUS ; 157
+	const DEX_LARVITAR   ; 158
+	const DEX_PUPITAR    ; 159
+	const DEX_TYRANITAR  ; 160
+	const DEX_HOOH       ; 161
 
-NUM_POKEMON    EQU 154
+NUM_POKEMON    EQU 161

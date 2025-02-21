@@ -1519,3 +1519,72 @@ _UmbreonDexEntry::
 	page "par les pores"
 	next "de sa peau"
 	dex
+
+_KingdraDexEntry::
+	text "Il emmagasine de"
+	next "l'énergie en"
+	next "restant dans les"
+
+	page "fonds marins, là"
+	next "où rien d'autre"
+	next "ne peut survivre"
+	dex
+
+_SneaselDexEntry::
+	text "Ce Pokémon rusé se"
+	next "cache dans l'ombre"
+	next "et attend"
+
+	page "patiemment de fon-"
+	next "dre sur sa proie"
+	dex
+
+_MisdreavusDexEntry::
+	text "Il aime faire peur"
+	next "en criant ou en"
+	next "apparaissant soud-"
+
+	page "ainement. Il reg-"
+	next "arde ensuite ses"
+	next "victimes et rit"
+	dex
+
+_LarvitarDexEntry::
+	text "Né sous la terre,"
+	next "il devient une"
+	next "nymphe en avalant"
+
+	page "assez de terre"
+	next "pour recouvrir"
+	next "une montagne"
+	dex
+
+_PupitarDexEntry::
+	text "Il ne reste pas"
+	next "immobile."
+	next "Il possède déjà"
+
+	page "des pattes avant"
+	next "et arrière dans"
+	next "sa carapace"
+	dex
+
+_TyranitarDexEntry::
+	text "D'une main seul-"
+	next "ement il a assez"
+	next "de force pour"
+
+	page "faire trembler la"
+	next "terre et s'écrou-"
+	next "ler une montagne"
+	dex
+
+_HoohDexEntry::
+	text "Il ne se montre"
+	next "qu'à un Dresseur"
+	next "au coeur pur"
+
+	page "en dévoilant ses"
+	next "magnifiques ailes"
+	next "colorées"
+	dex

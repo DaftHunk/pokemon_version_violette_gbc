@@ -156,6 +156,13 @@ const_value = 0
 	const ICON_STEELIX
 	const ICON_SCIZOR
 	const ICON_UMBREON
+	const ICON_KINGDRA
+	const ICON_SNEASEL
+	const ICON_MISDREAVUS
+	const ICON_LARVITAR
+	const ICON_PUPITAR
+	const ICON_TYRANITAR
+	const ICON_HOOH
 
 ; overworld sprites
 const_value = 1

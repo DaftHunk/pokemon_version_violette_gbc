@@ -2,7 +2,7 @@ DungeonMons1:;joenote - swapped sandslash/arbok
 	db $0A
 	db 46,GOLBAT
 	db 46,HYPNO
-	db 46,MAGNETON
+	db 46,LARVITAR
 	db 49,DODRIO
 	db 49,VENOMOTH
 	db 49,KADABRA
