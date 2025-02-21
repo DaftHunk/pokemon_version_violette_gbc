@@ -126,11 +126,7 @@ _CeladonMart3Text14::
 	done
 
 _CeladonMart3Text15::
-;IF DEF(_JPTXT)
-;	text "Rouge et Vert!"
-;ELSE
 	text "Rouge et Bleu!"
-;ENDC
 	line "Deux #mon!"
 	done
 

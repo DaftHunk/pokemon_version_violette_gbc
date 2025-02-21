@@ -222,21 +222,12 @@ _CeruleanCityText13::
 	cont "lution l'annule."
 	done
 
-IF DEF(_JPTXT)
 _CeruleanCityText16::
 	text "Plus vite que le"
 	line "vent, plus vite"
 	cont "dans les villes!"
 	cont "...Cycles à Gogo"
 	done
-ELSE
-_CeruleanCityText16::
-	text "Plus vite que le"
-	line "vent, plus vite"
-	cont "dans les villes!"
-	cont "...Cycles à Gogo"
-	done
-ENDC
 
 _CeruleanCityText17::
 	text "Azuria"

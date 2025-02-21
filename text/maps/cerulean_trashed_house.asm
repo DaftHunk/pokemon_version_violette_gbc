@@ -35,16 +35,8 @@ _CeruleanHouseTrashedText2::
 	cont "ce qui bouge!"
 	done
 
-IF DEF(_JPTXT)
-_CeruleanHouseTrashedText3::
-	text "Vous pouvez sortir"
-	line "par cette brèche"
-	cont "dans le mur!"
-	done
-ELSE
 _CeruleanHouseTrashedText3::
 	text "La Team Rocket a"
 	line "creusé une"
 	cont "nouvelle sortie!"
 	done
-ENDC

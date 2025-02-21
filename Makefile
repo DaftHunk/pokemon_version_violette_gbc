@@ -99,8 +99,8 @@ endif
 # Please act responsibly should you choose to compile using this tag.
 # Dev Note: The added flashing can become quite displeasing regardless. Leaving it out makes for a better experience.
 
-$(pokeblue_obj): 	   RGBASMFLAGS += -D _BLUE -D _ENCBLUEGREEN -D _METRIC -D _FPLAYER -D _MOVENPCS -D _RUNSHOES -D _EXPBAR -D _SWBACKS -D _YSPRITES -D _JPTXT
-$(pokeblue_debug_obj): RGBASMFLAGS += -D _BLUE -D _ENCBLUEGREEN -D _METRIC -D _FPLAYER -D _MOVENPCS -D _RUNSHOES -D _EXPBAR -D _SWBACKS -D _YSPRITES -D _JPTXT -D _DEBUG
+$(pokeblue_obj): 	   RGBASMFLAGS += -D _BLUE -D _ENCBLUEGREEN -D _FPLAYER -D _MOVENPCS -D _RUNSHOES -D _EXPBAR -D _SWBACKS -D _YSPRITES
+$(pokeblue_debug_obj): RGBASMFLAGS += -D _BLUE -D _ENCBLUEGREEN -D _FPLAYER -D _MOVENPCS -D _RUNSHOES -D _EXPBAR -D _SWBACKS -D _YSPRITES -D _DEBUG
 
 # The dep rules have to be explicit or else missing files won't be reported.
 # As a side effect, they're evaluated immediately instead of when the rule is invoked.

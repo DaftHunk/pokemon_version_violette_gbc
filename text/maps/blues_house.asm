@@ -37,17 +37,9 @@ _BluesHouseText2::
 	cont "reposer!"
 	done
 
-IF DEF(_JPTXT)
 _BluesHouseText3::
-	text "Une carte de "
+	text "Une carte de"
 	line "Kanto! Ca serait"
 	cont "cool de l'avoir,"
 	cont "non?"
 	done
-ELSE
-_BluesHouseText3::
-	text "C'est une carte!"
-	line "Ca peut être"
-	cont "utile!"
-	done
-ENDC

@@ -1121,17 +1121,10 @@ _PokemonBooksText::
 	line "les #mon!"
 	done
 
-IF DEF(_JPTXT)
 _DiglettSculptureText::
 	text "Une sculpture d'un"
 	line "gros Bouddha."
 	done
-ELSE
-_DiglettSculptureText::
-	text "Une sculpture de"
-	line "Taupiqueur."
-	done
-ENDC
 
 _ElevatorText::
 	text "Un ascenseur."
@@ -3440,12 +3433,7 @@ _RomHackVersionText::
 
 SECTION "Pokedex Text", ROMX, BANK[POKEDEX_TEXT]
 
-IF DEF(_REDGREENJP)
-INCLUDE "text/pokedexgreen.asm"
-ELSE
 INCLUDE "text/pokedex.asm"
-ENDC
-
 
 SECTION "Move Names", ROMX, BANK[MOVE_NAMES]
 

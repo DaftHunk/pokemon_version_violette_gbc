@@ -5,16 +5,9 @@ _Route24Text_51510::
 	text_end
 
 _Route24Text_51515::
-	text_start
-
-IF DEF(_JPTXT)	;joenote - dirty joke lost in translation
-	para "Ouvre tes mains"
+	text "Ouvre tes mains"
 	line "pendant que je"
 	cont "sors mes pépites."
-ELSE
-	para "Tu as gagné un"
-	line "fabuleux prix!"
-ENDC
 	prompt
 
 _Route24Text_5151a::

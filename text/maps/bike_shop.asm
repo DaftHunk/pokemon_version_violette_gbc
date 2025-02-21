@@ -1,4 +1,3 @@
-IF DEF(_JPTXT)
 _BikeShopText_1d810::
 	text "Bienvenue au"
 	line "Cycles à Gogo."
@@ -7,16 +6,6 @@ _BikeShopText_1d810::
 	line "justement une"
 	cont "belle bicyclette!"
 	prompt
-ELSE
-_BikeShopText_1d810::
-	text "Bienvenue au"
-	line "Cycles à Gogo."
-
-	para "Nous avons"
-	line "justement une"
-	cont "belle bicyclette!"
-	prompt
-ENDC
 
 _BikeShopText_1d815::
 	text "C'est un super"
