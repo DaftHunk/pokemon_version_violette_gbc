@@ -1,13 +1,13 @@
 IslandMonsB3:
 	db $0A
-	db 31,PSYDUCK
-	db 31,SEEL
-	db 33,PSYDUCK
-	db 33,SEEL
-	db 29,KRABBY
-	db 31,STARYU
-	db 31,KRABBY
-	db 29,STARYU
-	db 39,KINGLER
-	db 37,DEWGONG
+	db 36,PSYDUCK
+	db 36,SEEL
+	db 38,PSYDUCK
+	db 38,SEEL
+	db 34,KRABBY
+	db 35,STARYU
+	db 35,KRABBY
+	db 34,STARYU
+	db 41,KINGLER
+	db 42,DEWGONG
 	db $00

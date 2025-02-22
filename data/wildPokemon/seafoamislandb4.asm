@@ -1,13 +1,13 @@
 IslandMonsB4:
 	db $0A
-	db 31,KRABBY
-	db 31,STARYU
-	db 33,KRABBY
-	db 33,STARYU
-	db 29,PSYDUCK
-	db 31,SEEL
-	db 31,PSYDUCK
-	db 29,SEEL
-	db 39,GOLDUCK
-	db 32,GOLBAT
+	db 36,KRABBY
+	db 36,STARYU
+	db 38,KRABBY
+	db 38,STARYU
+	db 35,PSYDUCK
+	db 36,SEEL
+	db 36,PSYDUCK
+	db 35,SEEL
+	db 41,GOLDUCK
+	db 42,GOLBAT
 	db $00

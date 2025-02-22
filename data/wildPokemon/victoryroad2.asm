@@ -1,13 +1,13 @@
 PlateauMons2:
 	db $0A
-	db 22,MACHOP
-	db 24,GEODUDE
-	db 26,ZUBAT
-	db 36,ONIX
-	db 39,ONIX
+	db 45,MACHOP
+	db 46,GEODUDE
+	db 44,ZUBAT
+	db 43,ONIX
 	db 42,ONIX
-	db 41,MACHOKE
-	db 40,GOLBAT
-	db 40,MAROWAK
-	db 43,GRAVELER
+	db 44,ONIX
+	db 43,MACHOKE
+	db 44,GOLBAT
+	db 45,MACHOKE
+	db 49,GRAVELER
 	db $00

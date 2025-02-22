@@ -1,13 +1,13 @@
 PlateauMons3:;joenote - added hitmonchan & hitmonlee
 	db $0F
-	db 24,MACHOP
-	db 26,GEODUDE
-	db 22,ZUBAT
-	db 40,VENOMOTH
-	db 45,ONIX
-	db 41,GOLBAT
-	db 42,HITMONCHAN
-	db 42,HITMONLEE
-	db 43,GRAVELER
-	db 45,MACHOKE
+	db 47,MACHOP
+	db 47,GEODUDE
+	db 45,ZUBAT
+	db 48,VENOMOTH
+	db 49,ONIX
+	db 48,GOLBAT
+	db 48,ONIX
+	db 48,MACHOKE
+	db 49,GRAVELER
+	db 49,MACHOKE
 	db $00

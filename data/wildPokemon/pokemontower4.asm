@@ -8,6 +8,6 @@ TowerMons4:
 	db 18,GASTLY
 	db 25,HAUNTER
 	db 20,CUBONE
-	db 22,CUBONE
-	db 24,MISDREAVUS
+	db 22,MISDREAVUS
+	db 24,CUBONE
 	db $00
