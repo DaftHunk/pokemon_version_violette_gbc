@@ -186,4 +186,4 @@ LeaderNameList:	;joenote - for restoring leader names
 	db $73,$74,$00
 
 GymLeaderFaceAndBadgeTileGraphics:
-	INCBIN "gfx/badges.2bpp"
+	INCBIN "gfx/tiles/badges.2bpp"

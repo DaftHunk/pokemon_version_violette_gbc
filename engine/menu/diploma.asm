@@ -46,7 +46,6 @@ DisplayDiploma:
 	call PlaceString
 
 ;joenote - support female player character
-IF DEF(_FPLAYER)	
 	ld a, [wUnusedD721]
 	bit 0, a	;check if girl
 	jr nz, .is_fplayer
@@ -55,10 +54,6 @@ IF DEF(_FPLAYER)
 .is_fplayer
 	callba DrawPlayerCharacter_F
 .fplayer_end
-ELSE
-	callba DrawPlayerCharacter
-ENDC
-
 ; Move the player 33 pixels right and set the priority bit so he appears
 ; behind the background layer.
 	ld hl, wOAMBuffer + $01

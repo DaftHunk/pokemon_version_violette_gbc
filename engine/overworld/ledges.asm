@@ -90,7 +90,7 @@ LoadHoppingShadowOAM:
 	ret
 
 LedgeHoppingShadow:
-	INCBIN "gfx/ledge_hopping_shadow.1bpp"
+	INCBIN "gfx/tiles/ledge_hopping_shadow.1bpp"
 LedgeHoppingShadowEnd:
 
 LedgeHoppingShadowOAM:

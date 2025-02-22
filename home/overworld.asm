@@ -1928,7 +1928,7 @@ RunMapScript::
 .return
 	ret
 
-;joenote - modified to properly load female trainer sprites using the _FPLAYER tag
+;joenote - modified to properly load female trainer sprites
 LoadWalkingPlayerSpriteGraphics::
 	callba LoadRedSpriteToDE
 ;	ld hl, vNPCSprites
@@ -1961,7 +1961,6 @@ LoadPlayerSpriteGraphicsCommon::
 	call .isfemaletrainer
 	jp CopyVideoData
 .isfemaletrainer
-IF DEF(_FPLAYER)
 	lb bc, BANK(RedFSprite), $0c
 	ld a, [wUnusedD721]
 	;load the regular sprite bank if female bit cleared or overriding female bit set
@@ -1969,7 +1968,6 @@ IF DEF(_FPLAYER)
 	and %00000101
 	xor %00000001
 	jr z, .donefemale
-ENDC
 	lb bc, BANK(RedSprite), $0c
 .donefemale
 	ret

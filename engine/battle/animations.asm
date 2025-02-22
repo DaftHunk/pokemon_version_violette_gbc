@@ -392,21 +392,14 @@ AnimationTilesetPointers:
 	db $FF
 
 AnimationTileset1:
-	INCBIN "gfx/attack_anim_1.2bpp"
+	INCBIN "gfx/tiles/attack_anim_1.2bpp"
 
 AnimationTileset2:
-	INCBIN "gfx/attack_anim_2.2bpp"
+	INCBIN "gfx/tiles/attack_anim_2.2bpp"
 
 SlotMachineTiles2:
-IF DEF(_RED)
-	INCBIN "gfx/red/slotmachine2.2bpp"
-ENDC
-IF DEF(_BLUE)
-	INCBIN "gfx/blue/slotmachine2.2bpp"
-ENDC
-IF DEF(_GREEN)
-	INCBIN "gfx/green/slotmachine2.2bpp"
-ENDC
+	INCBIN "gfx/tiles/slotmachine2.2bpp"
+
 SlotMachineTiles2END:
 
 MoveAnimation:
@@ -905,29 +898,16 @@ DoRockSlideSpecialEffects:
 
 FlashScreenEveryEightFrameBlocks:
 	ld a, [wSubAnimCounter]
-IF DEF(_JPFLASHING)
-;Japanese red & green had this flash every odd-numbered frame block.
-;The rate was reduce by 4x during localization
-	srl a
-	call c, AnimationFlashScreen
-ELSE
 	and 7 ; is the subanimation counter exactly 8?
 	call z, AnimationFlashScreen ; if so, flash the screen
-ENDC
 	ret
 
 ; flashes the screen if the subanimation counter is divisible by 4
 FlashScreenEveryFourFrameBlocks:
-IF DEF(_JPFLASHING)
-;Japanese red & green had this flash every frame block.
-;The rate was reduce by 4x during localization
-	jp AnimationFlashScreen
-ELSE
 	ld a, [wSubAnimCounter]
 	and 3
 	call z, AnimationFlashScreen
 	ret
-ENDC
 
 ; used for Explosion and Selfdestruct
 DoExplodeSpecialEffects:
@@ -1246,20 +1226,14 @@ AnimationFlashScreen:
 	ld a, %00011011 ; 0, 1, 2, 3 (inverted colors)
 	ld [rBGP], a
 	call UpdateGBCPal_BGP
-IF DEF(_JPFLASHING) 
 	ld c, 2
-ELSE
-	ld c, 2
-ENDC
+
 	call DelayFrames
 	xor a ; white out background
 	ld [rBGP], a
 	call UpdateGBCPal_BGP
-IF DEF(_JPFLASHING)
 	ld c, 2
-ELSE
-	ld c, 2
-ENDC
+
 	call DelayFrames
 	pop af
 	ld [rBGP], a ; restore initial palette
@@ -2013,7 +1987,7 @@ AnimationMinimizeMon:
 	jp AnimationShowMonPic
 
 MinimizedMonSprite:
-	INCBIN "gfx/minimized_mon_sprite.1bpp"
+	INCBIN "gfx/tiles/minimized_mon_sprite.1bpp"
 MinimizedMonSpriteEnd:
 
 AnimationSlideMonDownAndHide:

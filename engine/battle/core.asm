@@ -2093,9 +2093,7 @@ DrawPlayerHUDAndHPBar:
 	coord hl, 10, 7
 	call CenterMonName
 	call PlaceString
-IF DEF(_EXPBAR)
 	callba PrintEXPBar	;joenote - added in the exp bar
-ENDC
 	ld hl, wBattleMonSpecies
 	ld de, wLoadedMon
 	ld bc, wBattleMonDVs - wBattleMonSpecies
@@ -7333,7 +7331,6 @@ LoadPlayerBackPic:
 	ld de, OldManPic
 	jr .bankred
 .redback
-IF DEF(_FPLAYER)
 	ld a, [wUnusedD721]
 	bit 0, a	;check if girl
 	jr z, .bankred	;go to the normal red sprite bank if boy
@@ -7341,16 +7338,11 @@ IF DEF(_FPLAYER)
 	ld de, RedPicFBack
 	ld a, BANK(RedPicFBack)
 	jr .next
-ENDC
 .bankred
 	ld a, BANK(RedPicBack)
 .next
 	call UncompressSpriteFromDE
-IF DEF(_SWBACKS)
 	callba LoadUncompressedBackPics
-ELSE
-	call SpriteScalingAndInterlacing
-ENDC
 	ld hl, wOAMBuffer
 	xor a
 	ld [hOAMTile], a ; initial tile number
@@ -8039,11 +8031,7 @@ LoadMonBackPic:
 	call UncompressMonSprite
 
 ;joenote - needed for loading the 48x48 spaceworld back sprites
-IF DEF(_SWBACKS)
 	callba LoadUncompressedBackPics
-ELSE
-	call SpriteScalingAndInterlacing
-ENDC
 
 	ld hl, vSprites
 	ld de, vBackPic

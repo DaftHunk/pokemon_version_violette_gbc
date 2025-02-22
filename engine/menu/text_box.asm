@@ -557,10 +557,8 @@ TwoOptionMenuStrings:
 	dw .HealCancelMenu
 	db 4,3,0
 	dw .NoYesMenu
-IF DEF(_FPLAYER)	;joenote - text to ask if female trainer
 	db 7,3,0
 	dw .BoyGirlMenu	
-ENDC
 
 .NoYesMenu
 	db   "Non"
@@ -583,11 +581,9 @@ ENDC
 .HealCancelMenu
 	db   "Soin"
 	next "Retour@"
-IF DEF(_FPLAYER)	;joenote - text to ask if female trainer
 .BoyGirlMenu
 	db   "Garçon"
 	next "Fille@"	
-ENDC
 
 DisplayFieldMoveMonMenu:
 	xor a

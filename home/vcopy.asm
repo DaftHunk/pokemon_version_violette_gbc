@@ -435,25 +435,13 @@ UpdateMovingBgTiles::
 	ld [hMovingBGTilesCounter1], a
 
 	ld a, [wMovingBGTilesCounter2]
-IF DEF(_REDGREENJP)
 	and 2
 	cp 2
-ELSE
-	and 3
-	cp 1
-ENDC
 
-;IF DEF(_REDGREENJP) ;dafthunk : #7
+;dafthunk : #7
 	ld hl, FlowerTile1
 	jr c, .copy
 	ld hl, FlowerTile2
-;ELSE
-;	ld hl, FlowerTile1
-;	jr c, .copy
-;	ld hl, FlowerTile2
-;	jr z, .copy
-;	ld hl, FlowerTile3
-;ENDC
 .copy
 	ld de, vTileset + $3 * $10
 	ld c, $10
@@ -465,12 +453,6 @@ ENDC
 	jr nz, .loop
 	ret
 
-;IF DEF(_REDGREENJP) ;dafthunk : #7
-FlowerTile1: INCBIN "gfx/tilesets/green/flower/flower1.2bpp"
-FlowerTile2: INCBIN "gfx/tilesets/green/flower/flower2.2bpp"
-;ELSE
-;FlowerTile1: INCBIN "gfx/tilesets/flower/flower1.2bpp"
-;FlowerTile2: INCBIN "gfx/tilesets/flower/flower2.2bpp"
-;FlowerTile3: INCBIN "gfx/tilesets/flower/flower3.2bpp"
-;ENDC
-
+;dafthunk : #7
+FlowerTile1: INCBIN "gfx/tilesets/flower1.2bpp"
+FlowerTile2: INCBIN "gfx/tilesets/flower2.2bpp"

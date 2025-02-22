@@ -153,55 +153,31 @@ LyingOldManSprite:     INCBIN "gfx/sprites/lying_old_man.2bpp"
 
 
 SECTION "Graphics", ROMX, BANK[GFX]
-IF DEF(_JPLOGO)
-PokemonLogoGraphics:            INCBIN "gfx/pokemon_logo_jp.2bpp"
-ELSE
-PokemonLogoGraphics:            INCBIN "gfx/pokemon_logo.2bpp"
-ENDC
-FontGraphics:                   INCBIN "gfx/font.1bpp"
+PokemonLogoGraphics:            INCBIN "gfx/tiles/pokemon_logo.2bpp"
+FontGraphics:                   INCBIN "gfx/tiles/font.1bpp"
 FontGraphicsEnd:
-ABTiles:                        INCBIN "gfx/AB.2bpp"
-IF DEF(_REDGREENJP)
-HpBarAndStatusGraphics:         INCBIN "gfx/hp_bar_and_status_green.2bpp"
-ELSE
-HpBarAndStatusGraphics:         INCBIN "gfx/hp_bar_and_status.2bpp"
-ENDC
+ABTiles:                        INCBIN "gfx/tiles/AB.2bpp"
+HpBarAndStatusGraphics:         INCBIN "gfx/tiles/hp_bar_and_status.2bpp"
 HpBarAndStatusGraphicsEnd:
-BattleHudTiles1:                INCBIN "gfx/battle_hud1.1bpp"
+BattleHudTiles1:                INCBIN "gfx/tiles/battle_hud1.1bpp"
 BattleHudTiles1End:
-BattleHudTiles2:                INCBIN "gfx/battle_hud2.1bpp"
-BattleHudTiles3:                INCBIN "gfx/battle_hud3.1bpp"
+BattleHudTiles2:                INCBIN "gfx/tiles/battle_hud2.1bpp"
+BattleHudTiles3:                INCBIN "gfx/tiles/battle_hud3.1bpp"
 BattleHudTiles3End:
 
-IF DEF(_REDGREENJP)
-NintendoCopyrightLogoGraphics:  INCBIN "gfx/copyright_green.2bpp"
-ELIF DEF(_BLUEJP)
-NintendoCopyrightLogoGraphics:  INCBIN "gfx/copyright_bluejp.2bpp"
-ELSE
-NintendoCopyrightLogoGraphics:  INCBIN "gfx/copyright.2bpp"
-ENDC
+NintendoCopyrightLogoGraphics:  INCBIN "gfx/tiles/copyright.2bpp"
 
-IF DEF(_REDGREENJP)
-GamefreakLogoGraphics:          INCBIN "gfx/gamefreak_green.2bpp"
+GamefreakLogoGraphics:          INCBIN "gfx/tiles/gamefreak.2bpp"
 GamefreakLogoGraphicsEnd:
-TextBoxGraphics:                INCBIN "gfx/text_box_green.2bpp"
-ELSE
-GamefreakLogoGraphics:          INCBIN "gfx/gamefreak.2bpp"
-GamefreakLogoGraphicsEnd:
-Unk9Graphic:                    INCBIN "gfx/unk_9.2bpp"
+Unk9Graphic:                    INCBIN "gfx/tiles/unk_9.2bpp"
 Unk9GraphicEnd:
-TextBoxGraphics:                INCBIN "gfx/text_box.2bpp"
-ENDC
+TextBoxGraphics:                INCBIN "gfx/tiles/text_box.2bpp"
 TextBoxGraphicsEnd:
-PokedexTileGraphics:            INCBIN "gfx/pokedex.2bpp"
+PokedexTileGraphics:            INCBIN "gfx/tiles/pokedex.2bpp"
 PokedexTileGraphicsEnd:
-WorldMapTileGraphics:           INCBIN "gfx/town_map.2bpp"
+WorldMapTileGraphics:           INCBIN "gfx/tiles/town_map.2bpp"
 WorldMapTileGraphicsEnd:
-IF DEF(_RGTITLE)
-PlayerCharacterTitleGraphics:   INCBIN "gfx/player_title_green.2bpp"
-ELSE
-PlayerCharacterTitleGraphics:   INCBIN "gfx/player_title.2bpp"
-ENDC
+PlayerCharacterTitleGraphics:   INCBIN "gfx/tiles/player_title.2bpp"
 PlayerCharacterTitleGraphicsEnd:
 
 
@@ -211,9 +187,9 @@ INCLUDE "engine/overworld/is_player_just_outside_map.asm"
 INCLUDE "engine/menu/status_screen.asm"
 INCLUDE "engine/menu/party_menu.asm"
 
-RedPicFront:: INCBIN "pic/trainer/red.pic"
-ShrinkPic1::  INCBIN "pic/trainer/shrink1.pic"
-ShrinkPic2::  INCBIN "pic/trainer/shrink2.pic"
+RedPicFront:: INCBIN "gfx/trainer/red.pic"
+ShrinkPic1::  INCBIN "gfx/trainer/shrink1.pic"
+ShrinkPic2::  INCBIN "gfx/trainer/shrink2.pic"
 
 INCLUDE "engine/turn_sprite.asm"
 INCLUDE "engine/menu/start_sub_menus.asm"
@@ -229,10 +205,8 @@ INCLUDE "engine/battle/get_trainer_name.asm"
 INCLUDE "engine/random.asm"
 
 ;joenote - adding exp bar
-IF DEF(_EXPBAR)
-EXPBarGraphics:  INCBIN "gfx/exp_bar.2bpp"
+EXPBarGraphics:  INCBIN "gfx/tiles/exp_bar.2bpp"
 EXPBarGraphicsEnd:
-ENDC
 
 SECTION "NPC Sprites 2", ROMX, BANK[NPC_SPRITES_2]
 
@@ -480,11 +454,9 @@ INCLUDE "data/mapHeaders/saffronhouse1.asm"
 INCLUDE "scripts/saffronhouse1.asm"
 INCLUDE "data/mapObjects/saffronhouse1.asm"
 
-IF DEF(_MOVENPCS)
 ;joenote - adding Mateo's move relearner/deleter files
 INCLUDE "scripts/move_deleter.asm"
 INCLUDE "scripts/move_relearner.asm"
-ENDC
 
 INCLUDE "data/mapHeaders/saffronhouse2.asm"
 INCLUDE "scripts/saffronhouse2.asm"
@@ -566,12 +538,12 @@ INCLUDE "engine/battle/moveEffects/one_hit_ko_effect.asm"
 
 ;bank C stuff
 INCLUDE "engine/battle/display_effectiveness.asm"
-TrainerInfoTextBoxTileGraphics:  INCBIN "gfx/trainer_info.2bpp"
+TrainerInfoTextBoxTileGraphics:  INCBIN "gfx/tiles/trainer_info.2bpp"
 TrainerInfoTextBoxTileGraphicsEnd:
-BlankLeaderNames:                INCBIN "gfx/blank_leader_names.2bpp"
-;BlankLeaderNames:                INCBIN "gfx/leader_names.2bpp"	;joenote - restoring the names
-CircleTile:                      INCBIN "gfx/circle_tile.2bpp"
-BadgeNumbersTileGraphics:        INCBIN "gfx/badge_numbers.2bpp"
+BlankLeaderNames:                INCBIN "gfx/tiles/blank_leader_names.2bpp"
+;BlankLeaderNames:                INCBIN "gfx/tiles/leader_names.2bpp"	;joenote - restoring the names
+CircleTile:                      INCBIN "gfx/tiles/circle_tile.2bpp"
+BadgeNumbersTileGraphics:        INCBIN "gfx/tiles/badge_numbers.2bpp"
 INCLUDE "engine/items/tmhm.asm"
 INCLUDE "engine/battle/scale_sprites.asm"
 INCLUDE "engine/battle/moveEffects/pay_day_effect.asm"
@@ -609,12 +581,12 @@ INCLUDE "engine/battle/draw_hud_pokeball_gfx.asm"
 
 ;joenote - moved trading graphics to empty bank
 ;TradingAnimationGraphics:
-;INCBIN "gfx/game_boy.2bpp"
-;INCBIN "gfx/link_cable.2bpp"
+;INCBIN "gfx/tiles/game_boy.2bpp"
+;INCBIN "gfx/tiles/link_cable.2bpp"
 ;TradingAnimationGraphicsEnd:
 
 ;; Pokeball traveling through the link cable.
-;TradingAnimationGraphics2: INCBIN "gfx/trade2.2bpp"
+;TradingAnimationGraphics2: INCBIN "gfx/tiles/trade2.2bpp"
 ;TradingAnimationGraphics2End:
 
 INCLUDE "engine/evos_moves.asm"
@@ -746,20 +718,12 @@ INCLUDE "data/mapObjects/safarizoneresthouse4.asm"
 INCLUDE "data/mapHeaders/unknowndungeon2.asm"
 INCLUDE "scripts/unknowndungeon2.asm"
 INCLUDE "data/mapObjects/unknowndungeon2.asm"
-IF DEF(_REDGREENJP)
-UnknownDungeon2Blocks: INCBIN "maps/green/unknowndungeon2.blk"
-ELSE
 UnknownDungeon2Blocks: INCBIN "maps/unknowndungeon2.blk"
-ENDC
 
 INCLUDE "data/mapHeaders/unknowndungeon3.asm"
 INCLUDE "scripts/unknowndungeon3.asm"
 INCLUDE "data/mapObjects/unknowndungeon3.asm"
-IF DEF(_REDGREENJP)
-UnknownDungeon3Blocks: INCBIN "maps/green/unknowndungeon3.blk"
-ELSE
 UnknownDungeon3Blocks: INCBIN "maps/unknowndungeon3.blk"
-ENDC
 
 INCLUDE "data/mapHeaders/rocktunnel2.asm"
 INCLUDE "scripts/rocktunnel2.asm"
@@ -971,30 +935,30 @@ SafariZoneSecretHouseBlocks: INCBIN "maps/safarizonesecrethouse.blk"
 SECTION "bank13",ROMX,BANK[$13]
 
 SECTION "Trainer Pics 1", ROMX
-YoungsterPic::     INCBIN "pic/trainer/youngster.pic"
-BugCatcherPic::    INCBIN "pic/trainer/bugcatcher.pic"
-LassPic::          INCBIN "pic/trainer/lass.pic"
-SailorPic::        INCBIN "pic/trainer/sailor.pic"
-JrTrainerMPic::    INCBIN "pic/trainer/jr.trainerm.pic"
-JrTrainerFPic::    INCBIN "pic/trainer/jr.trainerf.pic"
-PokemaniacPic::    INCBIN "pic/trainer/pokemaniac.pic"
-SuperNerdPic::     INCBIN "pic/trainer/supernerd.pic"
-HikerPic::         INCBIN "pic/trainer/hiker.pic"
-BikerPic::         INCBIN "pic/trainer/biker.pic"
-BurglarPic::       INCBIN "pic/trainer/burglar.pic"
-EngineerPic::      INCBIN "pic/trainer/engineer.pic"
-FisherPic::        INCBIN "pic/trainer/fisher.pic"
-SwimmerPic::       INCBIN "pic/trainer/swimmer.pic"
-CueBallPic::       INCBIN "pic/trainer/cueball.pic"
-GamblerPic::       INCBIN "pic/trainer/gambler.pic"
-BeautyPic::        INCBIN "pic/trainer/beauty.pic"
-PsychicPic::       INCBIN "pic/trainer/psychic.pic"
-RockerPic::        INCBIN "pic/trainer/rocker.pic"
-JugglerPic::       INCBIN "pic/trainer/juggler.pic"
-TamerPic::         INCBIN "pic/trainer/tamer.pic"
-BirdKeeperPic::    INCBIN "pic/trainer/birdkeeper.pic"
-BlackbeltPic::     INCBIN "pic/trainer/blackbelt.pic"
-Rival1Pic::        INCBIN "pic/trainer/rival1.pic"
+YoungsterPic::     INCBIN "gfx/trainer/youngster.pic"
+BugCatcherPic::    INCBIN "gfx/trainer/bugcatcher.pic"
+LassPic::          INCBIN "gfx/trainer/lass.pic"
+SailorPic::        INCBIN "gfx/trainer/sailor.pic"
+JrTrainerMPic::    INCBIN "gfx/trainer/jr.trainerm.pic"
+JrTrainerFPic::    INCBIN "gfx/trainer/jr.trainerf.pic"
+PokemaniacPic::    INCBIN "gfx/trainer/pokemaniac.pic"
+SuperNerdPic::     INCBIN "gfx/trainer/supernerd.pic"
+HikerPic::         INCBIN "gfx/trainer/hiker.pic"
+BikerPic::         INCBIN "gfx/trainer/biker.pic"
+BurglarPic::       INCBIN "gfx/trainer/burglar.pic"
+EngineerPic::      INCBIN "gfx/trainer/engineer.pic"
+FisherPic::        INCBIN "gfx/trainer/fisher.pic"
+SwimmerPic::       INCBIN "gfx/trainer/swimmer.pic"
+CueBallPic::       INCBIN "gfx/trainer/cueball.pic"
+GamblerPic::       INCBIN "gfx/trainer/gambler.pic"
+BeautyPic::        INCBIN "gfx/trainer/beauty.pic"
+PsychicPic::       INCBIN "gfx/trainer/psychic.pic"
+RockerPic::        INCBIN "gfx/trainer/rocker.pic"
+JugglerPic::       INCBIN "gfx/trainer/juggler.pic"
+TamerPic::         INCBIN "gfx/trainer/tamer.pic"
+BirdKeeperPic::    INCBIN "gfx/trainer/birdkeeper.pic"
+BlackbeltPic::     INCBIN "gfx/trainer/blackbelt.pic"
+Rival1Pic::        INCBIN "gfx/trainer/rival1.pic"
 
 ;joenote - moved to a different bank
 ;INCLUDE "data/mapHeaders/tradecenter.asm"
@@ -1090,32 +1054,32 @@ INCLUDE "engine/menu/prize_menu.asm"
 INCLUDE "engine/hidden_object_functions14.asm"
 
 SECTION "Trainer Pics 2", ROMX
-ProfOakPic::       INCBIN "pic/trainer/prof.oak.pic"
-ChiefPic::		   ;INCBIN "pic/trainer/chief.pic"	;joenote - not enough rom space
-ScientistPic::     INCBIN "pic/trainer/scientist.pic"
-GiovanniPic::      INCBIN "pic/trainer/giovanni.pic"
-RocketPic::        INCBIN "pic/trainer/rocket.pic"
-CooltrainerMPic::  INCBIN "pic/trainer/cooltrainerm.pic"
-CooltrainerFPic::  INCBIN "pic/trainer/cooltrainerf.pic"
-BrunoPic::         INCBIN "pic/trainer/bruno.pic"
-BrockPic::         INCBIN "pic/ytrainer/brock.pic"
-MistyPic::         INCBIN "pic/ytrainer/misty.pic"
-LtSurgePic::       INCBIN "pic/trainer/lt.surge.pic"
-ErikaPic::         INCBIN "pic/ytrainer/erika.pic"	;joenote - use her yellow sprite to ditch the funerary clothes
-KogaPic::          INCBIN "pic/trainer/koga.pic"
-BlainePic::        INCBIN "pic/trainer/blaine.pic"
-SabrinaPic::       INCBIN "pic/trainer/sabrina.pic"
-GentlemanPic::     INCBIN "pic/trainer/gentleman.pic"
-Rival2Pic::        INCBIN "pic/trainer/rival2.pic"
-Rival3Pic::        INCBIN "pic/trainer/rival3.pic"
-LoreleiPic::       INCBIN "pic/trainer/lorelei.pic"
-ChannelerPic::     INCBIN "pic/trainer/channeler.pic"
-AgathaPic::        INCBIN "pic/trainer/agatha.pic"
-LancePic::         INCBIN "pic/trainer/lance.pic"
-JaninePic::        INCBIN "pic/ytrainer/janine.pic"
-JennyPic::         INCBIN "pic/ytrainer/jenny.pic"
-JoyPic::           INCBIN "pic/ytrainer/joy.pic"
-JessieJamesPic::   INCBIN "pic/ytrainer/jessiejames.pic"
+ProfOakPic::       INCBIN "gfx/trainer/prof.oak.pic"
+ChiefPic::		   ;INCBIN "gfx/trainer/chief.pic"	;joenote - not enough rom space
+ScientistPic::     INCBIN "gfx/trainer/scientist.pic"
+GiovanniPic::      INCBIN "gfx/trainer/giovanni.pic"
+RocketPic::        INCBIN "gfx/trainer/rocket.pic"
+CooltrainerMPic::  INCBIN "gfx/trainer/cooltrainerm.pic"
+CooltrainerFPic::  INCBIN "gfx/trainer/cooltrainerf.pic"
+BrunoPic::         INCBIN "gfx/trainer/bruno.pic"
+BrockPic::         INCBIN "gfx/trainer/brock.pic"
+MistyPic::         INCBIN "gfx/trainer/misty.pic"
+LtSurgePic::       INCBIN "gfx/trainer/lt.surge.pic"
+ErikaPic::         INCBIN "gfx/trainer/erika.pic"	;joenote - use her yellow sprite to ditch the funerary clothes
+KogaPic::          INCBIN "gfx/trainer/koga.pic"
+BlainePic::        INCBIN "gfx/trainer/blaine.pic"
+SabrinaPic::       INCBIN "gfx/trainer/sabrina.pic"
+GentlemanPic::     INCBIN "gfx/trainer/gentleman.pic"
+Rival2Pic::        INCBIN "gfx/trainer/rival2.pic"
+Rival3Pic::        INCBIN "gfx/trainer/rival3.pic"
+LoreleiPic::       INCBIN "gfx/trainer/lorelei.pic"
+ChannelerPic::     INCBIN "gfx/trainer/channeler.pic"
+AgathaPic::        INCBIN "gfx/trainer/agatha.pic"
+LancePic::         INCBIN "gfx/trainer/lance.pic"
+JaninePic::        INCBIN "gfx/trainer/janine.pic"
+JennyPic::         INCBIN "gfx/trainer/jenny.pic"
+JoyPic::           INCBIN "gfx/trainer/joy.pic"
+JessieJamesPic::   INCBIN "gfx/trainer/jessiejames.pic"
 
 SECTION "bank15",ROMX,BANK[$15]
 
@@ -1455,7 +1419,7 @@ ViridianForestBlocks:    INCBIN "maps/viridianforest.blk"
 UndergroundPathNSBlocks: INCBIN "maps/undergroundpathns.blk"
 UndergroundPathWEBlocks: INCBIN "maps/undergroundpathwe.blk"
 
-	INCBIN "maps/unusedblocks60258.blk"
+INCBIN "maps/unusedblocks60258.blk"
 
 SSAnne10Blocks:
 SSAnne9Blocks: INCBIN "maps/ssanne9.blk"
@@ -1490,7 +1454,7 @@ INCLUDE "scripts/pokemontower6.asm"
 INCLUDE "data/mapObjects/pokemontower6.asm"
 PokemonTower6Blocks: INCBIN "maps/pokemontower6.blk"
 
-	INCBIN "maps/unusedblocks60cef.blk"
+INCBIN "maps/unusedblocks60cef.blk"
 
 INCLUDE "data/mapHeaders/pokemontower7.asm"
 INCLUDE "scripts/pokemontower7.asm"
@@ -1589,13 +1553,7 @@ INCLUDE "engine/hidden_object_functions18.asm"
 
 
 SECTION "bank19",ROMX,BANK[$19]
-IF DEF(_REDGREENJP)
-Overworld_GFX:     INCBIN "gfx/tilesets/green/overworld.2bpp"
-ELIF DEF(_BLUEJP)
-Overworld_GFX:     INCBIN "gfx/tilesets/overworld_bluejp.2bpp"
-ELSE
 Overworld_GFX:     INCBIN "gfx/tilesets/overworld.2bpp"
-ENDC
 Overworld_Block:   INCBIN "gfx/blocksets/overworld.bst"
 
 RedsHouse1_GFX:
@@ -1621,15 +1579,7 @@ SECTION "bank1A",ROMX,BANK[$1A]
 INCLUDE "engine/battle/decrement_pp.asm"
 
 Version_GFX:
-IF (DEF(_GREEN))
-	INCBIN "gfx/red/redgreenversion.1bpp" ; 10 tiles
-ENDC
-IF (DEF(_RED))
-	INCBIN "gfx/red/redversion.1bpp" ; 10 tiles
-ENDC
-IF DEF(_BLUE)
-	INCBIN "gfx/blue/blueversion.1bpp" ; 10 tiles
-ENDC
+INCBIN "gfx/tiles/blueversion.1bpp" ; 10 tiles
 Version_GFXEnd:
 
 Dojo_GFX:
@@ -1649,11 +1599,7 @@ ForestGate_Block:
 Museum_Block:
 Gate_Block:        INCBIN "gfx/blocksets/gate.bst"
 
-IF DEF(_REDGREENJP)
-Forest_GFX:        INCBIN "gfx/tilesets/green/forest.2bpp"
-ELSE
 Forest_GFX:        INCBIN "gfx/tilesets/forest.2bpp"
-ENDC
 Forest_Block:      INCBIN "gfx/blocksets/forest.bst"
 Facility_GFX:      INCBIN "gfx/tilesets/facility.2bpp"
 Facility_Block:    INCBIN "gfx/blocksets/facility.bst"
@@ -1726,11 +1672,7 @@ INCLUDE "data/mapObjects/pewtermart.asm"
 INCLUDE "data/mapHeaders/unknowndungeon1.asm"
 INCLUDE "scripts/unknowndungeon1.asm"
 INCLUDE "data/mapObjects/unknowndungeon1.asm"
-IF DEF(_REDGREENJP)
-UnknownDungeon1Blocks: INCBIN "maps/green/unknowndungeon1.blk"
-ELSE
 UnknownDungeon1Blocks: INCBIN "maps/unknowndungeon1.blk"
-ENDC
 
 INCLUDE "data/mapHeaders/ceruleanhouse2.asm"
 INCLUDE "scripts/ceruleanhouse2.asm"
@@ -1861,20 +1803,18 @@ INCLUDE "custom_functions/func_shiny.asm"
 INCLUDE "custom_functions/func_nuzlocke.asm"
 INCLUDE "custom_functions/func_stat_reset.asm"
 INCLUDE "engine/battle/stats_functions.asm"	
-IF DEF(_EXPBAR)
 INCLUDE "engine/battle/exp_bar_print.asm"	
-ENDC
 INCLUDE "custom_functions/fisher_yates.asm"
 INCLUDE "custom_functions/func_transformations.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 TradingAnimationGraphics:
-INCBIN "gfx/game_boy.2bpp"
-INCBIN "gfx/link_cable.2bpp"
+INCBIN "gfx/tiles/game_boy.2bpp"
+INCBIN "gfx/tiles/link_cable.2bpp"
 TradingAnimationGraphicsEnd:
 
 ; Pokeball traveling through the link cable.
-TradingAnimationGraphics2: INCBIN "gfx/trade2.2bpp"
+TradingAnimationGraphics2: INCBIN "gfx/tiles/trade2.2bpp"
 TradingAnimationGraphics2End:
 
 ;joenote - moved this out of trainer_ai.asm in bank $E to here. 
@@ -1902,30 +1842,22 @@ INCLUDE "custom_functions/func_extra_menu.asm"
 INCLUDE "custom_functions/func_move_secrets.asm"
 INCLUDE "custom_functions/func_linkbattlecomms.asm"
 
-IF DEF(_FPLAYER)
 ;joenote - adding female trainer sprites
-	FPlayerCharacterTitleGraphics:   INCBIN "gfx/player_title_f.2bpp"
-	FPlayerCharacterTitleGraphicsEnd:
-	IF DEF(_SWBACKS)
-	RedPicFBack::           INCBIN "pic/swtrainerback/redb_f.pic"
-	ELSE
-	RedPicFBack::           INCBIN "pic/trainerback/redb_f.pic"
-	ENDC
-	RedPicFFront:: 			INCBIN "pic/trainer/red_f.pic"
-	RedFSprite:            INCBIN "gfx/sprites/redf.2bpp"
-	RedFCyclingSprite:     INCBIN "gfx/sprites/cyclingf.2bpp"
-ENDC
+FPlayerCharacterTitleGraphics:   INCBIN "gfx/tiles/player_title_f.2bpp"
+FPlayerCharacterTitleGraphicsEnd:
+RedPicFBack::           INCBIN "gfx/trainerback/redb_f.pic"
+RedPicFFront:: 			INCBIN "gfx/trainer/red_f.pic"
+RedFSprite:            INCBIN "gfx/sprites/redf.2bpp"
+RedFCyclingSprite:     INCBIN "gfx/sprites/cyclingf.2bpp"
 
-RedFishingTilesFront: INCBIN "gfx/red_fishing_tile_front.2bpp"
-RedFishingTilesBack:  INCBIN "gfx/red_fishing_tile_back.2bpp"
-RedFishingTilesSide:  INCBIN "gfx/red_fishing_tile_side.2bpp"
-RedFishingRodTiles:   INCBIN "gfx/red_fishingrod_tiles.2bpp"
+RedFishingTilesFront: INCBIN "gfx/tiles/red_fishing_tile_front.2bpp"
+RedFishingTilesBack:  INCBIN "gfx/tiles/red_fishing_tile_back.2bpp"
+RedFishingTilesSide:  INCBIN "gfx/tiles/red_fishing_tile_side.2bpp"
+RedFishingRodTiles:   INCBIN "gfx/tiles/red_fishingrod_tiles.2bpp"
 
-IF DEF(_FPLAYER)
-	RedFFishingTilesFront: INCBIN "gfx/redF_fishing_tile_front.2bpp"
-	RedFFishingTilesBack:  INCBIN "gfx/redF_fishing_tile_back.2bpp"
-	RedFFishingTilesSide:  INCBIN "gfx/redF_fishing_tile_side.2bpp"
-ENDC
+RedFFishingTilesFront: INCBIN "gfx/tiles/redF_fishing_tile_front.2bpp"
+RedFFishingTilesBack:  INCBIN "gfx/tiles/redF_fishing_tile_back.2bpp"
+RedFFishingTilesSide:  INCBIN "gfx/tiles/redF_fishing_tile_side.2bpp"
 
 SECTION "Pics 1", ROMX, BANK[PICS_1]
 INCLUDE "constants/pic_banks/pic1.asm"
@@ -1948,13 +1880,8 @@ INCLUDE "constants/pic_banks/pic6.asm"
 SECTION "Pics 7", ROMX, BANK[PICS_7]
 INCLUDE "constants/pic_banks/pic7.asm"
 
-IF DEF(_SWBACKS)
-	RedPicBack::           INCBIN "pic/swtrainerback/redb.pic"
-	OldManPic::            INCBIN "pic/swtrainerback/oldman.pic"
-ELSE
-	RedPicBack::           INCBIN "pic/trainerback/redb.pic"
-	OldManPic::            INCBIN "pic/trainerback/oldman.pic"
-ENDC
+RedPicBack::           INCBIN "gfx/trainerback/redb.pic"
+OldManPic::            INCBIN "gfx/trainerback/oldman.pic"
 
 INCLUDE "text/tmhm_names.asm"	;joenote - adding name list for tm and hm items
 tmhmNamesEnd:
@@ -1963,169 +1890,169 @@ INCLUDE "data/super_rod.asm"	;joenote - moving all the super rod data here
 
 SECTION "PARTY ICONS 1", ROMX
 MonIcons::
-INCBIN "gfx/icons/null.2bpp"
-INCBIN "gfx/icons/bulbasaur.2bpp"
-INCBIN "gfx/icons/ivysaur.2bpp"
-INCBIN "gfx/icons/venusaur.2bpp"
-INCBIN "gfx/icons/charmander.2bpp"
-INCBIN "gfx/icons/charmeleon.2bpp"
-INCBIN "gfx/icons/charizard.2bpp"
-INCBIN "gfx/icons/squirtle.2bpp"
-INCBIN "gfx/icons/wartortle.2bpp"
-INCBIN "gfx/icons/blastoise.2bpp"
-INCBIN "gfx/icons/caterpie.2bpp"
-INCBIN "gfx/icons/metapod.2bpp"
-INCBIN "gfx/icons/butterfree.2bpp"
-INCBIN "gfx/icons/weedle.2bpp"
-INCBIN "gfx/icons/kakuna.2bpp"
-INCBIN "gfx/icons/beedrill.2bpp"
-INCBIN "gfx/icons/pidgey.2bpp"
-INCBIN "gfx/icons/pidgeotto.2bpp"
-INCBIN "gfx/icons/pidgeot.2bpp"
-INCBIN "gfx/icons/rattata.2bpp"
-INCBIN "gfx/icons/raticate.2bpp"
-INCBIN "gfx/icons/spearow.2bpp"
-INCBIN "gfx/icons/fearow.2bpp"
-INCBIN "gfx/icons/ekans.2bpp"
-INCBIN "gfx/icons/arbok.2bpp"
-INCBIN "gfx/icons/pikachu.2bpp"
-INCBIN "gfx/icons/raichu.2bpp"
-INCBIN "gfx/icons/sandshrew.2bpp"
-INCBIN "gfx/icons/sandslash.2bpp"
-INCBIN "gfx/icons/nidoran_f.2bpp"
-INCBIN "gfx/icons/nidorina.2bpp"
-INCBIN "gfx/icons/nidoqueen.2bpp"
-INCBIN "gfx/icons/nidoran_m.2bpp"
-INCBIN "gfx/icons/nidorino.2bpp"
-INCBIN "gfx/icons/nidoking.2bpp"
-INCBIN "gfx/icons/clefairy.2bpp"
-INCBIN "gfx/icons/clefable.2bpp"
-INCBIN "gfx/icons/vulpix.2bpp"
-INCBIN "gfx/icons/ninetales.2bpp"
-INCBIN "gfx/icons/jigglypuff.2bpp"
-INCBIN "gfx/icons/wigglytuff.2bpp"
-INCBIN "gfx/icons/zubat.2bpp"
-INCBIN "gfx/icons/golbat.2bpp"
-INCBIN "gfx/icons/oddish.2bpp"
-INCBIN "gfx/icons/gloom.2bpp"
-INCBIN "gfx/icons/vileplume.2bpp"
-INCBIN "gfx/icons/paras.2bpp"
-INCBIN "gfx/icons/parasect.2bpp"
-INCBIN "gfx/icons/venonat.2bpp"
-INCBIN "gfx/icons/venomoth.2bpp"
-INCBIN "gfx/icons/diglett.2bpp"
-INCBIN "gfx/icons/dugtrio.2bpp"
-INCBIN "gfx/icons/meowth.2bpp"
-INCBIN "gfx/icons/persian.2bpp"
-INCBIN "gfx/icons/psyduck.2bpp"
-INCBIN "gfx/icons/golduck.2bpp"
-INCBIN "gfx/icons/mankey.2bpp"
-INCBIN "gfx/icons/primeape.2bpp"
-INCBIN "gfx/icons/growlithe.2bpp"
-INCBIN "gfx/icons/arcanine.2bpp"
-INCBIN "gfx/icons/poliwag.2bpp"
-INCBIN "gfx/icons/poliwhirl.2bpp"
-INCBIN "gfx/icons/poliwrath.2bpp"
-INCBIN "gfx/icons/abra.2bpp"
-INCBIN "gfx/icons/kadabra.2bpp"
-INCBIN "gfx/icons/alakazam.2bpp"
-INCBIN "gfx/icons/machop.2bpp"
-INCBIN "gfx/icons/machoke.2bpp"
-INCBIN "gfx/icons/machamp.2bpp"
-INCBIN "gfx/icons/bellsprout.2bpp"
-INCBIN "gfx/icons/weepinbell.2bpp"
-INCBIN "gfx/icons/victreebel.2bpp"
-INCBIN "gfx/icons/tentacool.2bpp"
-INCBIN "gfx/icons/tentacruel.2bpp"
-INCBIN "gfx/icons/geodude.2bpp"
-INCBIN "gfx/icons/graveler.2bpp"
-INCBIN "gfx/icons/golem.2bpp"
-INCBIN "gfx/icons/ponyta.2bpp"
-INCBIN "gfx/icons/rapidash.2bpp"
-INCBIN "gfx/icons/slowpoke.2bpp"
-INCBIN "gfx/icons/slowbro.2bpp"
-INCBIN "gfx/icons/magnemite.2bpp"
-INCBIN "gfx/icons/magneton.2bpp"
-INCBIN "gfx/icons/farfetchd.2bpp"
-INCBIN "gfx/icons/doduo.2bpp"
-INCBIN "gfx/icons/dodrio.2bpp"
-INCBIN "gfx/icons/seel.2bpp"
-INCBIN "gfx/icons/dewgong.2bpp"
-INCBIN "gfx/icons/grimer.2bpp"
-INCBIN "gfx/icons/muk.2bpp"
-INCBIN "gfx/icons/shellder.2bpp"
-INCBIN "gfx/icons/cloyster.2bpp"
-INCBIN "gfx/icons/gastly.2bpp"
-INCBIN "gfx/icons/haunter.2bpp"
-INCBIN "gfx/icons/gengar.2bpp"
-INCBIN "gfx/icons/onix.2bpp"
-INCBIN "gfx/icons/drowzee.2bpp"
-INCBIN "gfx/icons/hypno.2bpp"
-INCBIN "gfx/icons/krabby.2bpp"
-INCBIN "gfx/icons/kingler.2bpp"
-INCBIN "gfx/icons/voltorb.2bpp"
-INCBIN "gfx/icons/electrode.2bpp"
-INCBIN "gfx/icons/exeggcute.2bpp"
-INCBIN "gfx/icons/exeggutor.2bpp"
-INCBIN "gfx/icons/cubone.2bpp"
-INCBIN "gfx/icons/marowak.2bpp"
-INCBIN "gfx/icons/hitmonlee.2bpp"
-INCBIN "gfx/icons/hitmonchan.2bpp"
-INCBIN "gfx/icons/lickitung.2bpp"
-INCBIN "gfx/icons/koffing.2bpp"
-INCBIN "gfx/icons/weezing.2bpp"
-INCBIN "gfx/icons/rhyhorn.2bpp"
-INCBIN "gfx/icons/rhydon.2bpp"
-INCBIN "gfx/icons/chansey.2bpp"
-INCBIN "gfx/icons/tangela.2bpp"
-INCBIN "gfx/icons/kangaskhan.2bpp"
-INCBIN "gfx/icons/horsea.2bpp"
-INCBIN "gfx/icons/seadra.2bpp"
-INCBIN "gfx/icons/goldeen.2bpp"
-INCBIN "gfx/icons/seaking.2bpp"
-INCBIN "gfx/icons/staryu.2bpp"
-INCBIN "gfx/icons/starmie.2bpp"
-INCBIN "gfx/icons/mr_mime.2bpp"
-INCBIN "gfx/icons/scyther.2bpp"
-INCBIN "gfx/icons/jynx.2bpp"
-INCBIN "gfx/icons/electabuzz.2bpp"
-INCBIN "gfx/icons/magmar.2bpp"
-INCBIN "gfx/icons/pinsir.2bpp"
+INCBIN "gfx/pokemon/icons/null.2bpp"
+INCBIN "gfx/pokemon/icons/bulbasaur.2bpp"
+INCBIN "gfx/pokemon/icons/ivysaur.2bpp"
+INCBIN "gfx/pokemon/icons/venusaur.2bpp"
+INCBIN "gfx/pokemon/icons/charmander.2bpp"
+INCBIN "gfx/pokemon/icons/charmeleon.2bpp"
+INCBIN "gfx/pokemon/icons/charizard.2bpp"
+INCBIN "gfx/pokemon/icons/squirtle.2bpp"
+INCBIN "gfx/pokemon/icons/wartortle.2bpp"
+INCBIN "gfx/pokemon/icons/blastoise.2bpp"
+INCBIN "gfx/pokemon/icons/caterpie.2bpp"
+INCBIN "gfx/pokemon/icons/metapod.2bpp"
+INCBIN "gfx/pokemon/icons/butterfree.2bpp"
+INCBIN "gfx/pokemon/icons/weedle.2bpp"
+INCBIN "gfx/pokemon/icons/kakuna.2bpp"
+INCBIN "gfx/pokemon/icons/beedrill.2bpp"
+INCBIN "gfx/pokemon/icons/pidgey.2bpp"
+INCBIN "gfx/pokemon/icons/pidgeotto.2bpp"
+INCBIN "gfx/pokemon/icons/pidgeot.2bpp"
+INCBIN "gfx/pokemon/icons/rattata.2bpp"
+INCBIN "gfx/pokemon/icons/raticate.2bpp"
+INCBIN "gfx/pokemon/icons/spearow.2bpp"
+INCBIN "gfx/pokemon/icons/fearow.2bpp"
+INCBIN "gfx/pokemon/icons/ekans.2bpp"
+INCBIN "gfx/pokemon/icons/arbok.2bpp"
+INCBIN "gfx/pokemon/icons/pikachu.2bpp"
+INCBIN "gfx/pokemon/icons/raichu.2bpp"
+INCBIN "gfx/pokemon/icons/sandshrew.2bpp"
+INCBIN "gfx/pokemon/icons/sandslash.2bpp"
+INCBIN "gfx/pokemon/icons/nidoran_f.2bpp"
+INCBIN "gfx/pokemon/icons/nidorina.2bpp"
+INCBIN "gfx/pokemon/icons/nidoqueen.2bpp"
+INCBIN "gfx/pokemon/icons/nidoran_m.2bpp"
+INCBIN "gfx/pokemon/icons/nidorino.2bpp"
+INCBIN "gfx/pokemon/icons/nidoking.2bpp"
+INCBIN "gfx/pokemon/icons/clefairy.2bpp"
+INCBIN "gfx/pokemon/icons/clefable.2bpp"
+INCBIN "gfx/pokemon/icons/vulpix.2bpp"
+INCBIN "gfx/pokemon/icons/ninetales.2bpp"
+INCBIN "gfx/pokemon/icons/jigglypuff.2bpp"
+INCBIN "gfx/pokemon/icons/wigglytuff.2bpp"
+INCBIN "gfx/pokemon/icons/zubat.2bpp"
+INCBIN "gfx/pokemon/icons/golbat.2bpp"
+INCBIN "gfx/pokemon/icons/oddish.2bpp"
+INCBIN "gfx/pokemon/icons/gloom.2bpp"
+INCBIN "gfx/pokemon/icons/vileplume.2bpp"
+INCBIN "gfx/pokemon/icons/paras.2bpp"
+INCBIN "gfx/pokemon/icons/parasect.2bpp"
+INCBIN "gfx/pokemon/icons/venonat.2bpp"
+INCBIN "gfx/pokemon/icons/venomoth.2bpp"
+INCBIN "gfx/pokemon/icons/diglett.2bpp"
+INCBIN "gfx/pokemon/icons/dugtrio.2bpp"
+INCBIN "gfx/pokemon/icons/meowth.2bpp"
+INCBIN "gfx/pokemon/icons/persian.2bpp"
+INCBIN "gfx/pokemon/icons/psyduck.2bpp"
+INCBIN "gfx/pokemon/icons/golduck.2bpp"
+INCBIN "gfx/pokemon/icons/mankey.2bpp"
+INCBIN "gfx/pokemon/icons/primeape.2bpp"
+INCBIN "gfx/pokemon/icons/growlithe.2bpp"
+INCBIN "gfx/pokemon/icons/arcanine.2bpp"
+INCBIN "gfx/pokemon/icons/poliwag.2bpp"
+INCBIN "gfx/pokemon/icons/poliwhirl.2bpp"
+INCBIN "gfx/pokemon/icons/poliwrath.2bpp"
+INCBIN "gfx/pokemon/icons/abra.2bpp"
+INCBIN "gfx/pokemon/icons/kadabra.2bpp"
+INCBIN "gfx/pokemon/icons/alakazam.2bpp"
+INCBIN "gfx/pokemon/icons/machop.2bpp"
+INCBIN "gfx/pokemon/icons/machoke.2bpp"
+INCBIN "gfx/pokemon/icons/machamp.2bpp"
+INCBIN "gfx/pokemon/icons/bellsprout.2bpp"
+INCBIN "gfx/pokemon/icons/weepinbell.2bpp"
+INCBIN "gfx/pokemon/icons/victreebel.2bpp"
+INCBIN "gfx/pokemon/icons/tentacool.2bpp"
+INCBIN "gfx/pokemon/icons/tentacruel.2bpp"
+INCBIN "gfx/pokemon/icons/geodude.2bpp"
+INCBIN "gfx/pokemon/icons/graveler.2bpp"
+INCBIN "gfx/pokemon/icons/golem.2bpp"
+INCBIN "gfx/pokemon/icons/ponyta.2bpp"
+INCBIN "gfx/pokemon/icons/rapidash.2bpp"
+INCBIN "gfx/pokemon/icons/slowpoke.2bpp"
+INCBIN "gfx/pokemon/icons/slowbro.2bpp"
+INCBIN "gfx/pokemon/icons/magnemite.2bpp"
+INCBIN "gfx/pokemon/icons/magneton.2bpp"
+INCBIN "gfx/pokemon/icons/farfetchd.2bpp"
+INCBIN "gfx/pokemon/icons/doduo.2bpp"
+INCBIN "gfx/pokemon/icons/dodrio.2bpp"
+INCBIN "gfx/pokemon/icons/seel.2bpp"
+INCBIN "gfx/pokemon/icons/dewgong.2bpp"
+INCBIN "gfx/pokemon/icons/grimer.2bpp"
+INCBIN "gfx/pokemon/icons/muk.2bpp"
+INCBIN "gfx/pokemon/icons/shellder.2bpp"
+INCBIN "gfx/pokemon/icons/cloyster.2bpp"
+INCBIN "gfx/pokemon/icons/gastly.2bpp"
+INCBIN "gfx/pokemon/icons/haunter.2bpp"
+INCBIN "gfx/pokemon/icons/gengar.2bpp"
+INCBIN "gfx/pokemon/icons/onix.2bpp"
+INCBIN "gfx/pokemon/icons/drowzee.2bpp"
+INCBIN "gfx/pokemon/icons/hypno.2bpp"
+INCBIN "gfx/pokemon/icons/krabby.2bpp"
+INCBIN "gfx/pokemon/icons/kingler.2bpp"
+INCBIN "gfx/pokemon/icons/voltorb.2bpp"
+INCBIN "gfx/pokemon/icons/electrode.2bpp"
+INCBIN "gfx/pokemon/icons/exeggcute.2bpp"
+INCBIN "gfx/pokemon/icons/exeggutor.2bpp"
+INCBIN "gfx/pokemon/icons/cubone.2bpp"
+INCBIN "gfx/pokemon/icons/marowak.2bpp"
+INCBIN "gfx/pokemon/icons/hitmonlee.2bpp"
+INCBIN "gfx/pokemon/icons/hitmonchan.2bpp"
+INCBIN "gfx/pokemon/icons/lickitung.2bpp"
+INCBIN "gfx/pokemon/icons/koffing.2bpp"
+INCBIN "gfx/pokemon/icons/weezing.2bpp"
+INCBIN "gfx/pokemon/icons/rhyhorn.2bpp"
+INCBIN "gfx/pokemon/icons/rhydon.2bpp"
+INCBIN "gfx/pokemon/icons/chansey.2bpp"
+INCBIN "gfx/pokemon/icons/tangela.2bpp"
+INCBIN "gfx/pokemon/icons/kangaskhan.2bpp"
+INCBIN "gfx/pokemon/icons/horsea.2bpp"
+INCBIN "gfx/pokemon/icons/seadra.2bpp"
+INCBIN "gfx/pokemon/icons/goldeen.2bpp"
+INCBIN "gfx/pokemon/icons/seaking.2bpp"
+INCBIN "gfx/pokemon/icons/staryu.2bpp"
+INCBIN "gfx/pokemon/icons/starmie.2bpp"
+INCBIN "gfx/pokemon/icons/mr_mime.2bpp"
+INCBIN "gfx/pokemon/icons/scyther.2bpp"
+INCBIN "gfx/pokemon/icons/jynx.2bpp"
+INCBIN "gfx/pokemon/icons/electabuzz.2bpp"
+INCBIN "gfx/pokemon/icons/magmar.2bpp"
+INCBIN "gfx/pokemon/icons/pinsir.2bpp"
 
 
 SECTION "PARTY ICONS 2", ROMX
 MonIcons2::
-INCBIN "gfx/icons/tauros.2bpp"
-INCBIN "gfx/icons/magikarp.2bpp"
-INCBIN "gfx/icons/gyarados.2bpp"
-INCBIN "gfx/icons/lapras.2bpp"
-INCBIN "gfx/icons/ditto.2bpp"
-INCBIN "gfx/icons/eevee.2bpp"
-INCBIN "gfx/icons/vaporeon.2bpp"
-INCBIN "gfx/icons/jolteon.2bpp"
-INCBIN "gfx/icons/flareon.2bpp"
-INCBIN "gfx/icons/porygon.2bpp"
-INCBIN "gfx/icons/omanyte.2bpp"
-INCBIN "gfx/icons/omastar.2bpp"
-INCBIN "gfx/icons/kabuto.2bpp"
-INCBIN "gfx/icons/kabutops.2bpp"
-INCBIN "gfx/icons/aerodactyl.2bpp"
-INCBIN "gfx/icons/snorlax.2bpp"
-INCBIN "gfx/icons/articuno.2bpp"
-INCBIN "gfx/icons/zapdos.2bpp"
-INCBIN "gfx/icons/moltres.2bpp"
-INCBIN "gfx/icons/dratini.2bpp"
-INCBIN "gfx/icons/dragonair.2bpp"
-INCBIN "gfx/icons/dragonite.2bpp"
-INCBIN "gfx/icons/mewtwo.2bpp"
-INCBIN "gfx/icons/mew.2bpp"
-INCBIN "gfx/icons/steelix.2bpp"
-INCBIN "gfx/icons/scizor.2bpp"
-INCBIN "gfx/icons/umbreon.2bpp"
-INCBIN "gfx/icons/kingdra.2bpp"
-INCBIN "gfx/icons/sneasel.2bpp"
-INCBIN "gfx/icons/misdreavus.2bpp"
-INCBIN "gfx/icons/larvitar.2bpp"
-INCBIN "gfx/icons/pupitar.2bpp"
-INCBIN "gfx/icons/tyranitar.2bpp"
-INCBIN "gfx/icons/hooh.2bpp"
+INCBIN "gfx/pokemon/icons/tauros.2bpp"
+INCBIN "gfx/pokemon/icons/magikarp.2bpp"
+INCBIN "gfx/pokemon/icons/gyarados.2bpp"
+INCBIN "gfx/pokemon/icons/lapras.2bpp"
+INCBIN "gfx/pokemon/icons/ditto.2bpp"
+INCBIN "gfx/pokemon/icons/eevee.2bpp"
+INCBIN "gfx/pokemon/icons/vaporeon.2bpp"
+INCBIN "gfx/pokemon/icons/jolteon.2bpp"
+INCBIN "gfx/pokemon/icons/flareon.2bpp"
+INCBIN "gfx/pokemon/icons/porygon.2bpp"
+INCBIN "gfx/pokemon/icons/omanyte.2bpp"
+INCBIN "gfx/pokemon/icons/omastar.2bpp"
+INCBIN "gfx/pokemon/icons/kabuto.2bpp"
+INCBIN "gfx/pokemon/icons/kabutops.2bpp"
+INCBIN "gfx/pokemon/icons/aerodactyl.2bpp"
+INCBIN "gfx/pokemon/icons/snorlax.2bpp"
+INCBIN "gfx/pokemon/icons/articuno.2bpp"
+INCBIN "gfx/pokemon/icons/zapdos.2bpp"
+INCBIN "gfx/pokemon/icons/moltres.2bpp"
+INCBIN "gfx/pokemon/icons/dratini.2bpp"
+INCBIN "gfx/pokemon/icons/dragonair.2bpp"
+INCBIN "gfx/pokemon/icons/dragonite.2bpp"
+INCBIN "gfx/pokemon/icons/mewtwo.2bpp"
+INCBIN "gfx/pokemon/icons/mew.2bpp"
+INCBIN "gfx/pokemon/icons/steelix.2bpp"
+INCBIN "gfx/pokemon/icons/scizor.2bpp"
+INCBIN "gfx/pokemon/icons/umbreon.2bpp"
+INCBIN "gfx/pokemon/icons/kingdra.2bpp"
+INCBIN "gfx/pokemon/icons/sneasel.2bpp"
+INCBIN "gfx/pokemon/icons/misdreavus.2bpp"
+INCBIN "gfx/pokemon/icons/larvitar.2bpp"
+INCBIN "gfx/pokemon/icons/pupitar.2bpp"
+INCBIN "gfx/pokemon/icons/tyranitar.2bpp"
+INCBIN "gfx/pokemon/icons/hooh.2bpp"

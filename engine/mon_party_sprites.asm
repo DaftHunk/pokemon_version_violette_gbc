@@ -288,6 +288,6 @@ GetPartyMonSpriteID:
 INCLUDE "data/mon_party_sprites.asm"
 
 MonPartySprites:
-	INCBIN "gfx/mon_ow_sprites.2bpp"
+	INCBIN "gfx/tiles/mon_ow_sprites.2bpp"
 
 TradeBubbleIconGFX:  INCBIN "gfx/trade/bubble.2bpp"

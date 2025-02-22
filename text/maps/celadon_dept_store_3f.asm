@@ -40,7 +40,7 @@ _CeladonMart3Text2::
 	cont "d'Origine)!"
 	done
 
-;IF DEF(_JPTXT)	;joenote - this was changed in the localization for some reason
+;joenote - this was changed in the localization for some reason
 ;_CeladonMart3Text3::
 ;	text "Ouaiiis!"
 ;
@@ -63,7 +63,7 @@ _CeladonMart3Text2::
 ;	line "transformé en un"
 ;	cont "autre #mon!"
 ;	done
-;ELSE
+;
 _CeladonMart3Text3::
 	text "Ouaiiis!"
 

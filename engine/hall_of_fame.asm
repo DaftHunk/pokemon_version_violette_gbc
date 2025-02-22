@@ -185,7 +185,6 @@ HoFMonInfoText:
 
 HoFLoadPlayerPics:
 ;joenote - support female trainer sprites
-IF DEF(_FPLAYER)
 	ld a, [wUnusedD721]
 	bit 0, a	;check if girl
 	jr z, .loadmale
@@ -197,7 +196,6 @@ IF DEF(_FPLAYER)
 	ld de, RedPicFFront
 	ld a, BANK(RedPicFFront)
 	jr .doneload
-ENDC
 .loadmale
 	ld de, RedPicBack
 	ld a, BANK(RedPicBack)
@@ -220,13 +218,7 @@ ENDC
 	pop af ;pop bank bank
 	pop de ;pop back pic
 	call UncompressSpriteFromDE
-IF DEF(_SWBACKS)
 	callba LoadUncompressedBackPics
-ELSE
-	predef ScaleSpriteByTwo
-	ld de, vBackPic
-	call InterlaceMergeSpriteBuffers
-ENDC
 	ld c, $1
 	;fall through
 

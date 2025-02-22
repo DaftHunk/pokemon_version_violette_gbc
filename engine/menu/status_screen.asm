@@ -309,7 +309,7 @@ DrawLineBox:
 	ret
 
 PTile: ; This is a single 1bpp "P" tile
-	INCBIN "gfx/p_tile.1bpp"
+	INCBIN "gfx/tiles/p_tile.1bpp"
 PTileEnd:
 
 PrintStatsBox:

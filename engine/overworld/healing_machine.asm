@@ -66,7 +66,7 @@ AnimateHealingMachine:
 	jp UpdateSprites
 
 PokeCenterFlashingMonitorAndHealBall:
-	INCBIN "gfx/pokecenter_ball.2bpp"
+	INCBIN "gfx/tiles/pokecenter_ball.2bpp"
 
 PokeCenterOAMData:
 ;gbcnote - updated for GBC

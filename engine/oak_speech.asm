@@ -91,7 +91,6 @@ OakSpeech:
 	
 ;joenote - give option to play as a female trainer here
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-IF DEF(_FPLAYER)
 .askBoyGirl
 	ld hl, AskIfGirlText
 	call PrintText
@@ -106,7 +105,6 @@ IF DEF(_FPLAYER)
 	or b
 	ld [wUnusedD721], a
 	call ClearScreen
-ENDC
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, $FF
 	call PlaySound ; stop music
@@ -168,13 +166,11 @@ ENDC
 	call GBFadeOutToWhite
 	call ClearScreen
 ;joenote - support female sprite
-IF DEF(_FPLAYER)
 	ld de, RedPicFFront
 	lb bc, BANK(RedPicFFront), $00
 	ld a, [wUnusedD721]
 	bit 0, a	;check if girl
 	jr nz, .donefemale_front
-ENDC
 	ld de, RedPicFront
 	lb bc, BANK(RedPicFront), $00
 .donefemale_front	
@@ -196,13 +192,11 @@ ENDC
 	call GBFadeOutToWhite
 	call ClearScreen
 ;joenote - support female sprite
-IF DEF(_FPLAYER)
 	ld de, RedPicFFront
 	lb bc, BANK(RedPicFFront), $00
 	ld a, [wUnusedD721]
 	bit 0, a	;check if girl
 	jr nz, .donefemale_front2
-ENDC
 	ld de, RedPicFront
 	lb bc, BANK(RedPicFront), $00
 .donefemale_front2	
@@ -225,13 +219,11 @@ ENDC
 	call DelayFrames
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	;joenote - support female trainer
-IF DEF(_FPLAYER)
 	ld de, RedFSprite
 	lb bc, BANK(RedFSprite), $0C
 	ld a, [wUnusedD721]
 	bit 0, a	;check if girl
 	jr nz, .sprite_next
-ENDC
 	ld de, RedSprite
 	lb bc, BANK(RedSprite), $0C
 .sprite_next
@@ -402,7 +394,6 @@ DoNewGamePlus: ;joenote - selective wram clearing for new game plus
 	
 	ret
 
-IF DEF(_FPLAYER)
 AskIfGirlText::	;joenote - text to ask if female trainer
 	TX_FAR _AskIfGirlText
 	db "@"
@@ -414,7 +405,6 @@ BoyGirlChoice::	;joenote - added this
 	coord hl, 11, 7
 	ld bc, $80c ;dafthunk : moved cursor to the left 
 	jp DisplayYesNoChoice
-ENDC
 
 _PromptNewID:
 	text "Generate a new"

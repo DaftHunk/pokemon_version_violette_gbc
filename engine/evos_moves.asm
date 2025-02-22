@@ -608,7 +608,6 @@ Evolution_FlagAction:
 	predef_jump FlagActionPredef
 
 ;joenote - custom function by Mateo for move relearner
-IF DEF(_MOVENPCS)
 PrepareRelearnableMoveList:	
 ; Loads relearnable move list to wRelearnableMoves.
 ; Input: party mon index = [wWhichPokemon]
@@ -798,7 +797,6 @@ PrepareRelearnableMoveList:
 	ld hl, wMoveBuffer
 	ld [hl], c
 	ret
-ENDC
 	
 ;joenote - make it so a message is printed if the level requirement for an item evolution is not met
 _NeededLevelText:

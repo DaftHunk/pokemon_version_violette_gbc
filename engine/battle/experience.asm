@@ -80,10 +80,7 @@ GainExperience:
 	ld [wMonDataLocation], a
 	push hl
 
-IF DEF(_EXPBAR)
 	callba AnimateEXPBar	;joenote - animate the exp bar
-ENDC
-
 	call LoadMonData
 	pop hl	;HL equals wPartyMon'X'Exp
 	ld bc, wPartyMon1Level - wPartyMon1Exp
@@ -622,11 +619,9 @@ PrintExpGained:
 ;The new level is in the D register and HL = wPartyMon'X'Level
 ;So go through the whole rigamaroll of increasing the level
 LevelUpPokemon:
-IF DEF(_EXPBAR)
 	push hl
 	callba KeepEXPBarFull	;joenote - animate the exp bar
 	pop hl
-ENDC
 
 	ld a, [wCurEnemyLVL]
 	push af		;wCurEnemyLVL is going to be used for stuff, so back up its value
@@ -740,9 +735,7 @@ ENDC
 	set 7, a	;for shinpokered-related stuff, indicate that stat display is for level-up in case we're in the middle of battle
 	ld [wMonDataLocation], a
 
-IF DEF(_EXPBAR)
 	callba AnimateEXPBarAgain	;joenote - animate exp bar
-ENDC
 
 	call LoadMonData	;this clobbers the species value in wd0b5, which is needed for level-up moves
 	ld d, $1

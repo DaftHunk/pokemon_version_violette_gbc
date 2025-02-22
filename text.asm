@@ -240,11 +240,9 @@ SECTION "Text 3", ROMX, BANK[TEXT_3]
 INCLUDE "text/maps/rock_tunnel_b2f_2.asm"
 INCLUDE "text/maps/seafoam_islands_b4f.asm"
 
-IF DEF(_MOVENPCS)
 ;joenote - adding Mateo's move relearner/deleter files
 INCLUDE "text/move_deleter.asm"
 INCLUDE "text/move_relearner.asm"
-ENDC
 
 _AIBattleWithdrawText::
 	text_ram wTrainerName
@@ -874,11 +872,7 @@ _IndigoPlateauHQText::
 
 _RedBedroomSNESText::
 	text "<PLAYER> joue à la"
-IF DEF(_REDGREENJP)
-	line "NES!"	;joenote - the player still had an old famicom in japanese red & green
-ELSE
 	line "Super Nintendo!"
-ENDC
 	cont "...Bon!"
 	cont "On y va, non?"
 	done
@@ -3342,13 +3336,7 @@ _AfterTrade2Text::
 	text "Ton @"
 	text_ram wInGameTradeGiveMonName
 	text_start
-IF DEF(_ENCBLUEJP)
-	line "a évolué pendant"
-
-	para "l'échange!"	;Blue-JP trade uses Kadabra so this makes sense
-ELSE
 	line "apprend vite!"	;joenote - fixed nonsense about evolving
-ENDC
 	done
 
 _WannaTrade3Text::

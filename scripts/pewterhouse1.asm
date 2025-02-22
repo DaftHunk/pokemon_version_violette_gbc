@@ -9,11 +9,7 @@ PewterHouse1TextPointers:
 PewterHouse1Text1:
 	TX_FAR _PewterHouse1Text1
 	TX_ASM
-IF DEF(_GREEN)
-	ld a, NIDORAN_F	;joenote - this cry is female in the original green version
-ELSE
 	ld a, NIDORAN_M
-ENDC
 	call PlayCry
 	call WaitForSoundToFinish
 	jp TextScriptEnd

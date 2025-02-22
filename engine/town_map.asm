@@ -12,14 +12,11 @@ DisplayTownMap:
 	push af
 	ld b, $0
 	call DrawPlayerOrBirdSprite ; player sprite
-IF (DEF(_REDGREENJP) || DEF(_BLUEJP))
-	ld de, wcd6d
-	call PlaceMapName
-ELSE
+
 	coord hl, 1, 0
 	ld de, wcd6d
 	call PlaceString
-ENDC
+
 	ld hl, wOAMBuffer
 	ld de, wTileMapBackup
 	ld bc, $10
@@ -35,11 +32,7 @@ ENDC
 
 .townMapLoop
 	coord hl, 0, 0
-IF (DEF(_REDGREENJP) || DEF(_BLUEJP))
-	lb bc, 2, 10
-ELSE
 	lb bc, 1, 20
-ENDC
 	call ClearScreenArea
 	ld hl, TownMapOrder
 	ld a, [wWhichTownMapLocation]
@@ -65,14 +58,10 @@ ENDC
 	inc de
 	cp $50
 	jr nz, .copyMapName
-IF (DEF(_REDGREENJP) || DEF(_BLUEJP))
-	ld de, wcd6d
-	call PlaceMapName
-ELSE
 	coord hl, 1, 0
 	ld de, wcd6d
 	call PlaceString
-ENDC
+
 	ld hl, wOAMBuffer + $10
 	ld de, wTileMapBackup + 16
 	ld bc, $10
@@ -121,7 +110,7 @@ ENDC
 INCLUDE "data/town_map_order.asm"
 
 TownMapCursor:
-	INCBIN "gfx/town_map_cursor.1bpp"
+	INCBIN "gfx/tiles/town_map_cursor.1bpp"
 TownMapCursorEnd:
 
 LoadTownMap_Nest:
@@ -133,11 +122,8 @@ LoadTownMap_Nest:
 	push hl
 	call DisplayWildLocations
 	call GetMonName
-IF (DEF(_REDGREENJP) || DEF(_BLUEJP))
-	coord hl, 9, 0
-ELSE
 	coord hl, 8, 0
-ENDC
+
 	call PlaceString
 	coord hl, 1, 0
 	ld de, MonsNestText
@@ -150,11 +136,7 @@ ENDC
 	ret
 
 MonsNestText:
-IF (DEF(_REDGREENJP) || DEF(_BLUEJP))
-	db "Nids de @"
-ELSE
 	db "Nid de @"
-ENDC
 
 LoadTownMap_Fly:
 	call ClearSprites
@@ -175,34 +157,15 @@ LoadTownMap_Fly:
 	push af
 	ld [hl], $ff
 	push hl
-IF (DEF(_REDGREENJP) || DEF(_BLUEJP))
-	;do nothing
-ELSE
+
 	coord hl, 0, 0
 	ld de, ToText
 	call PlaceString
-ENDC
+
 	ld a, [wCurMap]
 	ld b, $0
 	call DrawPlayerOrBirdSprite
 	ld hl, wFlyLocationsList
-IF (DEF(_REDGREENJP) || DEF(_BLUEJP))
-.townMapFlyLoop
-	push hl
-	push hl
-	coord hl, 0, 0
-	lb bc, 2, 10
-	call ClearScreenArea
-	pop hl
-	ld a, [hl]
-	ld b, $4
-	call DrawPlayerOrBirdSprite ; draw bird sprite
-	ld de, wcd6d
-	call PlaceMapName
-;	ld c, 15
-;	call DelayFrames
-	call Delay3		;joenote - make the fly menu more responsive and snappy
-ELSE
 	coord de, 18, 0
 .townMapFlyLoop
 	ld a, " "
@@ -226,7 +189,6 @@ ELSE
 	ld [hl], "▲"
 	coord hl, 19, 0
 	ld [hl], "▼"
-ENDC
 	pop hl
 .inputLoop
 	push hl
@@ -289,12 +251,8 @@ ENDC
 	ld hl, wFlyLocationsList + 11
 	jr .pressedDown
 
-IF (DEF(_REDGREENJP) || DEF(_BLUEJP))
-;nothing
-ELSE
 ToText:
 	db " →@"
-ENDC
 
 BuildFlyLocationsList:
 	ld hl, wFlyLocationsList - 1
@@ -321,7 +279,7 @@ BuildFlyLocationsList:
 	ret
 
 TownMapUpArrow:
-	INCBIN "gfx/up_arrow.1bpp"
+	INCBIN "gfx/tiles/up_arrow.1bpp"
 TownMapUpArrowEnd:
 
 LoadTownMap:
@@ -376,11 +334,7 @@ LoadTownMap:
 
 CompressedMap:
 ; you can decompress this file with the redrle program in the extras/ dir
-IF (DEF(_REDGREENJP) || DEF(_BLUEJP))
-	INCBIN "gfx/town_map_jp.rle"
-ELSE
-	INCBIN "gfx/town_map.rle"
-ENDC
+	INCBIN "gfx/tiles/town_map.rle"
 
 ExitTownMap:
 ; clear town map graphics data and load usual graphics data
@@ -725,15 +679,10 @@ LoadTownMapEntry:
 	ret
 
 INCLUDE "data/town_map_entries.asm"
-
-IF (DEF(_REDGREENJP) || DEF(_BLUEJP))
-INCLUDE "text/map_names_jp.asm"
-ELSE
 INCLUDE "text/map_names.asm"
-ENDC
 
 MonNestIcon:
-	INCBIN "gfx/mon_nest_icon.1bpp"
+	INCBIN "gfx/tiles/mon_nest_icon.1bpp"
 MonNestIconEnd:
 
 TownMapSpriteBlinkingAnimation:
@@ -763,11 +712,3 @@ TownMapSpriteBlinkingAnimation:
 .done
 	ld [wAnimCounter], a
 	jp DelayFrame
-
-IF (DEF(_REDGREENJP) || DEF(_BLUEJP))
-PlaceMapName:
-	coord hl, 0, 0
-	ld [hl], "<UPDN>"
-	inc hl
-	jp PlaceString
-ENDC

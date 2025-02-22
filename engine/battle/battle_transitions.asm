@@ -210,7 +210,7 @@ LoadBattleTransitionTile:
 	jp CopyVideoData
 
 BattleTransitionTile:
-	INCBIN "gfx/battle_transition.2bpp"
+	INCBIN "gfx/tiles/battle_transition.2bpp"
 BattleTransitionTileEnd:
 
 BattleTransition_BlackScreen:
