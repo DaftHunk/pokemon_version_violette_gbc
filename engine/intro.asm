@@ -36,27 +36,12 @@ PlayIntroScene:
 	call UpdateGBCPal_OBP0
 	call UpdateGBCPal_OBP1
 	
-IF DEF(_BLUE)
-	push de
-	ld d, CONVERT_OBP0
-	ld e, 0
-	ld a, JIGGLYPUFF
-	ld [wcf91], a
-	callba TransferMonPal ;gbcnote - jigglypuff object needs its pal in blue version
-	pop de
-ENDC
-	
 	xor a
 	ld [hSCX], a
 	ld b, GENGAR_INTRO_TILES1
 	call IntroCopyTiles
 	
-;credit Dracrius/pocketrgb-en/commit/04c4fc74344c35fcb5179a6509a73dd380a16d97
-IF DEF(_REDGREENJP)
-	ld a, 8	; Nidorino is 8px further over than Jigglypuff in the JP Red and Green
-ELSE 
-	ld a, 0
-ENDC
+	ld a, 8
 
 	ld [wBaseCoordX], a
 	ld a, 80
@@ -68,22 +53,16 @@ ENDC
 	ret c
 
 ; hip
-IF DEF(_REDGREENJP)
-	ld a, SFX_SNARE_1
-ELSE
 	ld a, SFX_INTRO_HIP
-ENDC
+
 	call PlaySound
 	xor a
 	ld [wIntroNidorinoBaseTile], a
 	ld de, IntroNidorinoAnimation1
 	call AnimateIntroNidorino
 ; hop
-IF DEF(_REDGREENJP)
-	ld a, SFX_SNARE_4
-ELSE
 	ld a, SFX_INTRO_HOP
-ENDC
+
 	call PlaySound
 	ld de, IntroNidorinoAnimation2
 	call AnimateIntroNidorino
@@ -92,20 +71,14 @@ ENDC
 	ret c
 
 ; hip
-IF DEF(_REDGREENJP)
-	ld a, SFX_SNARE_1
-ELSE
 	ld a, SFX_INTRO_HIP
-ENDC
+
 	call PlaySound
 	ld de, IntroNidorinoAnimation1
 	call AnimateIntroNidorino
 ; hop
-IF DEF(_REDGREENJP)
-	ld a, SFX_SNARE_4
-ELSE
 	ld a, SFX_INTRO_HOP
-ENDC
+
 	call PlaySound
 	ld de, IntroNidorinoAnimation2
 	call AnimateIntroNidorino
@@ -132,11 +105,8 @@ ENDC
 	lb de, 16 / 2, MOVE_GENGAR_RIGHT
 	call IntroMoveMon
 ; hip
-IF DEF(_REDGREENJP)
-	ld a, SFX_SNARE_1
-ELSE
 	ld a, SFX_INTRO_HIP
-ENDC
+
 	call PlaySound
 	ld a, (FightIntroFrontMon2 - FightIntroFrontMon) / BYTES_PER_TILE
 	ld [wIntroNidorinoBaseTile], a
@@ -155,22 +125,16 @@ ENDC
 	ret c
 
 ; hip
-IF DEF(_REDGREENJP)
-	ld a, SFX_SNARE_1
-ELSE
 	ld a, SFX_INTRO_HIP
-ENDC
+
 	call PlaySound
 	xor a
 	ld [wIntroNidorinoBaseTile], a
 	ld de, IntroNidorinoAnimation4
 	call AnimateIntroNidorino
 ; hop
-IF DEF(_REDGREENJP)
-	ld a, SFX_SNARE_1
-ELSE
 	ld a, SFX_INTRO_HOP
-ENDC
+
 	call PlaySound
 	ld de, IntroNidorinoAnimation5
 	call AnimateIntroNidorino
@@ -192,14 +156,9 @@ ENDC
 	ld a, (FightIntroFrontMon3 - FightIntroFrontMon) / BYTES_PER_TILE
 	ld [wIntroNidorinoBaseTile], a
 	ld de, IntroNidorinoAnimation7
-IF DEF(_REDGREENJP)	;redjp and green have a delay after the leap for some reason
-	call AnimateIntroNidorino
-	ld c, 80
-	call DelayFrames
-	ret
-ELSE
+
 	jp AnimateIntroNidorino
-ENDC
+
 
 AnimateIntroNidorino:
 	ld a, [de]
@@ -561,32 +520,21 @@ IntroNidorinoAnimation7:
 	db ANIMATION_END
 
 GameFreakIntro:
-	INCBIN "gfx/gamefreak_intro.2bpp"
-	INCBIN "gfx/gamefreak_logo.2bpp"
+	INCBIN "gfx/tiles/gamefreak_intro.2bpp"
+	INCBIN "gfx/tiles/gamefreak_logo.2bpp"
 	ds $10 ; blank tile
 GameFreakIntroEnd:
 
 FightIntroBackMon:
-	INCBIN "gfx/intro_fight.2bpp"
+	INCBIN "gfx/tiles/intro_fight.2bpp"
 FightIntroBackMonEnd:
 
 FightIntroFrontMon:
-
-IF (DEF(_RED) || DEF(_GREEN))
-	INCBIN "gfx/red/intro_nido_1.2bpp"
+	INCBIN "gfx/tiles/intro_nido_1.2bpp"
 FightIntroFrontMon2:
-	INCBIN "gfx/red/intro_nido_2.2bpp"
+	INCBIN "gfx/tiles/intro_nido_2.2bpp"
 FightIntroFrontMon3:
-	INCBIN "gfx/red/intro_nido_3.2bpp"
-ENDC
-
-IF DEF(_BLUE)
-	INCBIN "gfx/blue/intro_purin_1.2bpp"
-FightIntroFrontMon2:
-	INCBIN "gfx/blue/intro_purin_2.2bpp"
-FightIntroFrontMon3:
-	INCBIN "gfx/blue/intro_purin_3.2bpp"
-ENDC
+	INCBIN "gfx/tiles/intro_nido_3.2bpp"
 
 FightIntroFrontMonEnd:
 

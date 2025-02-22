@@ -27,15 +27,11 @@ DisplayTitleScreen:
 	ld [H_AUTOBGTRANSFERENABLED], a
 	xor a
 	ld [hTilesetType], a
-IF DEF(_RGTITLE)
-	ld [hSCY], a
-	ld a, -112
-	ld [hSCX], a
-ELSE
+
 	ld [hSCX], a
 	ld a, $40
 	ld [hSCY], a
-ENDC
+
 	ld a, $90
 	ld [hWY], a
 	call ClearScreen
@@ -100,23 +96,16 @@ ENDC
 
 ; put a pokeball in the player's hand
 	ld hl, wOAMBuffer + $28
-IF DEF(_RGTITLE)
-	ld a, $70
-ELSE
+
 	ld a, $74
-ENDC
+
 	ld [hl], a
 
 ; place tiles for title screen copyright
-IF DEF(_REDGREENJP)
-	coord hl, 3, 17
-	ld de, .tileScreenCopyrightTiles
-	ld b, $0D
-ELSE
 	coord hl, 2, 17
 	ld de, .tileScreenCopyrightTiles
 	ld b, $10
-ENDC
+
 .tileScreenCopyrightTilesLoop
 	ld a, [de]
 	ld [hli], a
@@ -127,27 +116,16 @@ ENDC
 	jr .next
 
 .tileScreenCopyrightTiles
-IF DEF(_REDGREENJP)
-	db $41,$43,$44,$45,$46,$47,$48,$49,$4A,$4B,$4C,$4D,$4E ; ©1995 GAME FREAK inc.
-ELIF DEF(_BLUEJP)
-	db $41,$42,$43,$44,$42,$43,$45,$46,$47,$48,$49,$4A,$4B,$4C,$4D,$4E ; ©'95.'96.'98 GAME FREAK inc.
-ELSE
 	db $41,$42,$43,$44,$42,$43,$4f,$46,$47,$48,$49,$4A,$4B,$4C,$4D,$4E ; ©1995-1999 GAME FREAK inc.
-ENDC
+
 
 .next
 	call SaveScreenTilesToBuffer2
 	call LoadScreenTilesFromBuffer2
 	call EnableLCD
-IF DEF(_RED)
-	ld a, CHARMANDER ; which Pokemon to show first on the title screen
-ENDC
-IF DEF(_BLUE)
+
 	ld a, SQUIRTLE ; which Pokemon to show first on the title screen
-ENDC
-IF DEF(_GREEN)
-	ld a, BULBASAUR ; which Pokemon to show first on the title screen
-ENDC
+
 	ld [wTitleMonSpecies], a
 	call LoadTitleMonSprite
 	ld a, (vBGMap0 + $300) / $100
@@ -173,18 +151,10 @@ ENDC
 	callba TransferMonPal ;gbcnote - update the bg pal for the new title mon
 	pop de
 
-IF DEF(_RGTITLE)
-	ld a, SFX_INTRO_WHOOSH
-	call PlaySound
-	
-; make pokemon logo slide in from the right
-	ld bc, hSCX ; background scroll X
-	ld hl, .TitleScreenPokemonLogoXScrolls
-ELSE
 ; make pokemon logo bounce up and down
 	ld bc, hSCY ; background scroll Y
 	ld hl, .TitleScreenPokemonLogoYScrolls
-ENDC
+
 .bouncePokemonLogoLoop
 	ld a, [hli]
 	and a
@@ -201,10 +171,6 @@ ENDC
 	jr .bouncePokemonLogoLoop
 
 ; Controls the bouncing/sliding effect of the Pokemon logo on the title screen
-IF DEF(_RGTITLE)
-.TitleScreenPokemonLogoXScrolls:
-	db 4,28  ; y scroll amount, number of times to scroll
-ELSE
 .TitleScreenPokemonLogoYScrolls:
 	db -4,16  ; y scroll amount, number of times to scroll
 	db 3,4
@@ -213,7 +179,6 @@ ELSE
 	db -2,2
 	db 1,2
 	db -1,2
-ENDC
 	db 0      ; terminate list with 0
 
 .ScrollTitleScreenPokemonLogo:
@@ -231,20 +196,13 @@ ENDC
 	call LoadScreenTilesFromBuffer1
 	ld c, 36
 	call DelayFrames
-IF DEF(_RGTITLE)
-	;do nothing
-ELSE
 	ld a, SFX_INTRO_WHOOSH
 	call PlaySound
-ENDC
 
 ; scroll game version in from the right
 	call PrintGameVersionOnTitleScreen
 	ld a, SCREEN_HEIGHT_PIXELS
 	ld [hWY], a
-IF DEF(_RGTITLE)
-	call Delay3
-ELSE
 	ld d, 144
 .scrollTitleScreenGameVersionLoop
 	ld h, d
@@ -258,7 +216,6 @@ ELSE
 	ld d, a
 	and a
 	jr nz, .scrollTitleScreenGameVersionLoop
-ENDC
 
 	ld a, vBGMap1 / $100
 	call TitleScreenCopyTileMapToVRAM
@@ -286,11 +243,7 @@ ENDC
 .awaitUserInterruptionLoop
 
 ;credit Dracrius/pocketrgb-en/commit/04c4fc74344c35fcb5179a6509a73dd380a16d97
-IF DEF(_RGTITLE)	;Pokemon scroll fast in jp Red and Green
-	ld c, 255
-ELSE
 	ld c, 200
-ENDC
 
 	call CheckForUserInterruption
 	jr c, .finishedWaiting
@@ -396,14 +349,12 @@ ScrollTitleScreenGameVersion:
 	ret
 
 ;joenote - add support for female player
-IF DEF(_FPLAYER)
 DrawPlayerCharacter_F:
 	ld hl, FPlayerCharacterTitleGraphics
 	ld de, vSprites
 	ld bc, FPlayerCharacterTitleGraphicsEnd - FPlayerCharacterTitleGraphics
 	ld a, BANK(FPlayerCharacterTitleGraphics)
 	jr DrawPlayerCharacter.copy
-ENDC
 
 DrawPlayerCharacter:
 	ld hl, PlayerCharacterTitleGraphics
@@ -416,11 +367,7 @@ DrawPlayerCharacter:
 	xor a
 	ld [wPlayerCharacterOAMTile], a
 	ld hl, wOAMBuffer
-IF DEF(_RGTITLE)
-	ld de, $6030
-ELSE
 	ld de, $605a
-ENDC
 	ld b, 7
 .loop
 	push de
@@ -466,11 +413,7 @@ ClearBothBGMaps:
 LoadTitleMonSprite:
 	ld [wcf91], a
 	ld [wd0b5], a
-IF DEF(_RGTITLE)
-	coord hl, 9, 10
-ELSE
 	coord hl, 5, 10
-ENDC
 	call GetMonHeader
 	jp LoadFrontSpriteByMonIndex
 
@@ -489,52 +432,27 @@ LoadCopyrightTiles:
 	ld hl, vChars2 + $600
 	lb bc, BANK(NintendoCopyrightLogoGraphics), (GamefreakLogoGraphicsEnd - NintendoCopyrightLogoGraphics) / $0f
 	call CopyVideoData
-IF DEF(_REDGREENJP)
-	coord hl, 4, 7
-ELSE
 	coord hl, 2, 7
-ENDC
+
 	ld de, CopyrightTextString
 	jp PlaceString
 
 CopyrightTextString:
-IF DEF(_REDGREENJP)
-	db   $60,$62,$63,$64,$65,$66,$67,$68,$69,$6A             ; ©1995 Nintendo
-	next $60,$62,$63,$64,$6B,$6C,$6D,$6E,$6F,$70,$71,$72     ; ©1995 Creatures inc.
-	next $60,$62,$63,$64,$73,$74,$75,$76,$77,$78,$79,$7A,$7B ; ©1995 GAME FREAK inc.
-ELIF DEF(_BLUEJP)
-	db   $60,$61,$62,$63,$61,$62,$64,$65,$66,$67,$68,$69,$6A             ; ©1995.1996 Nintendo
-	next $60,$61,$62,$63,$61,$62,$64,$6B,$6C,$6D,$6E,$6F,$70,$71,$72     ; ©1995.1996 Creatures inc.
-	next $60,$61,$62,$63,$61,$62,$64,$73,$74,$75,$76,$77,$78,$79,$7A,$7B ; ©1995.1996 GAME FREAK inc.
-ELSE
 	db   $60,$61,$62,$63,$61,$62,$7C,$7F,$65,$66,$67,$68,$69,$6A             ; ©1995-1999 Nintendo
 	next $60,$61,$62,$63,$61,$62,$7C,$7F,$6B,$6C,$6D,$6E,$6F,$70,$71,$72     ; ©1995-1999 Creatures inc.
 	next $60,$61,$62,$63,$61,$62,$7C,$7F,$73,$74,$75,$76,$77,$78,$79,$7A,$7B ; ©1995-1999 GAME FREAK inc.
-ENDC
 	db   "@"
 
 INCLUDE "data/title_mons.asm"
 
 ; prints version text (red, blue)
 PrintGameVersionOnTitleScreen:
-IF DEF(_GREEN)
 	coord hl, 6, 8
-ELSE
-	coord hl, 6, 8
-ENDC
 	ld de, VersionOnTitleScreenText
 	jp PlaceString
 
 ; these point to special tiles specifically loaded for that purpose and are not usual text
 VersionOnTitleScreenText:
-IF DEF(_RED)
-	db $60,$61,$62,$63,$64,$65,$66,$67,$68,$69,"@" ; "Red Version"
-ENDC
-IF DEF(_BLUE)
 	db $60,$61,$62,$63,$64,$65,$66,$67,$68,$69,"@" ; "Blue Version"
-ENDC
-IF DEF(_GREEN)
-	db $62,$63,$64,$7F,$65,$66,$67,$68,$69,"@" ; "Green Version"
-ENDC
 NintenText: db "NINTEN@"
 SonyText:   db "SONY@"
