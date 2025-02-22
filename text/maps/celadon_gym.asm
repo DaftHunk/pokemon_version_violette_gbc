@@ -20,7 +20,7 @@ _CeladonGymText_48a5e::
 	cont "#mon sont du"
 	cont "type plante."
 
-	para "Il fit grand"
+	para "Il a fait grand"
 	line "froid hier, alors"
 	cont "j'ai mis un pull."
 	cont "Hein? Tu veux te"

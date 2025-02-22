@@ -266,5 +266,5 @@ GameFreakShootingStarOAMData:	;gbcnote - changing the attribute to use palette 4
 GameFreakShootingStarOAMDataEnd:
 
 FallingStar:
-	INCBIN "gfx/tiles/falling_star.2bpp"
+	INCBIN "gfx/mainmenu/falling_star.2bpp"
 FallingStarEnd:

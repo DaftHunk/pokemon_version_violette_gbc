@@ -153,7 +153,7 @@ LyingOldManSprite:     INCBIN "gfx/sprites/lying_old_man.2bpp"
 
 
 SECTION "Graphics", ROMX, BANK[GFX]
-PokemonLogoGraphics:            INCBIN "gfx/tiles/pokemon_logo.2bpp"
+PokemonLogoGraphics:            INCBIN "gfx/mainmenu/pokemon_logo.2bpp"
 FontGraphics:                   INCBIN "gfx/tiles/font.1bpp"
 FontGraphicsEnd:
 ABTiles:                        INCBIN "gfx/tiles/AB.2bpp"
@@ -165,9 +165,9 @@ BattleHudTiles2:                INCBIN "gfx/tiles/battle_hud2.1bpp"
 BattleHudTiles3:                INCBIN "gfx/tiles/battle_hud3.1bpp"
 BattleHudTiles3End:
 
-NintendoCopyrightLogoGraphics:  INCBIN "gfx/tiles/copyright.2bpp"
+NintendoCopyrightLogoGraphics:  INCBIN "gfx/mainmenu/copyright.2bpp"
 
-GamefreakLogoGraphics:          INCBIN "gfx/tiles/gamefreak.2bpp"
+GamefreakLogoGraphics:          INCBIN "gfx/mainmenu/gamefreak.2bpp"
 GamefreakLogoGraphicsEnd:
 Unk9Graphic:                    INCBIN "gfx/tiles/unk_9.2bpp"
 Unk9GraphicEnd:
@@ -177,7 +177,7 @@ PokedexTileGraphics:            INCBIN "gfx/tiles/pokedex.2bpp"
 PokedexTileGraphicsEnd:
 WorldMapTileGraphics:           INCBIN "gfx/tiles/town_map.2bpp"
 WorldMapTileGraphicsEnd:
-PlayerCharacterTitleGraphics:   INCBIN "gfx/tiles/player_title.2bpp"
+PlayerCharacterTitleGraphics:   INCBIN "gfx/mainmenu/player_title.2bpp"
 PlayerCharacterTitleGraphicsEnd:
 
 
@@ -1579,7 +1579,7 @@ SECTION "bank1A",ROMX,BANK[$1A]
 INCLUDE "engine/battle/decrement_pp.asm"
 
 Version_GFX:
-INCBIN "gfx/tiles/blueversion.1bpp" ; 10 tiles
+INCBIN "gfx/mainmenu/blueversion.1bpp" ; 10 tiles
 Version_GFXEnd:
 
 Dojo_GFX:
@@ -1843,10 +1843,10 @@ INCLUDE "custom_functions/func_move_secrets.asm"
 INCLUDE "custom_functions/func_linkbattlecomms.asm"
 
 ;joenote - adding female trainer sprites
-FPlayerCharacterTitleGraphics:   INCBIN "gfx/tiles/player_title_f.2bpp"
+FPlayerCharacterTitleGraphics:   INCBIN "gfx/mainmenu/player_title_f.2bpp"
 FPlayerCharacterTitleGraphicsEnd:
-RedPicFBack::           INCBIN "gfx/trainerback/redb_f.pic"
-RedPicFFront:: 			INCBIN "gfx/trainer/red_f.pic"
+RedPicFBack::          INCBIN "gfx/trainerback/redb_f.pic"
+RedPicFFront::         INCBIN "gfx/trainer/red_f.pic"
 RedFSprite:            INCBIN "gfx/sprites/redf.2bpp"
 RedFCyclingSprite:     INCBIN "gfx/sprites/cyclingf.2bpp"
 

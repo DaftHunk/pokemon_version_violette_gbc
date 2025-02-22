@@ -520,22 +520,21 @@ IntroNidorinoAnimation7:
 	db ANIMATION_END
 
 GameFreakIntro:
-	INCBIN "gfx/tiles/gamefreak_intro.2bpp"
-	INCBIN "gfx/tiles/gamefreak_logo.2bpp"
+	INCBIN "gfx/mainmenu/gamefreak_intro.2bpp"
+	INCBIN "gfx/mainmenu/gamefreak_logo.2bpp"
 	ds $10 ; blank tile
 GameFreakIntroEnd:
 
 FightIntroBackMon:
-	INCBIN "gfx/tiles/intro_fight.2bpp"
+	INCBIN "gfx/mainmenu/intro_fight.2bpp"
 FightIntroBackMonEnd:
 
 FightIntroFrontMon:
-	INCBIN "gfx/tiles/intro_nido_1.2bpp"
+	INCBIN "gfx/mainmenu/intro_nido_1.2bpp"
 FightIntroFrontMon2:
-	INCBIN "gfx/tiles/intro_nido_2.2bpp"
+	INCBIN "gfx/mainmenu/intro_nido_2.2bpp"
 FightIntroFrontMon3:
-	INCBIN "gfx/tiles/intro_nido_3.2bpp"
-
+	INCBIN "gfx/mainmenu/intro_nido_3.2bpp"
 FightIntroFrontMonEnd:
 
 	ds $10 ; blank tile

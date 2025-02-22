@@ -138,15 +138,12 @@ pokeblue_debug_opt = -cjsv -n 0 -k 01 -l 0x33 -m 0x13 -r 03 -t "POKEMON BLUE"
 	$(RGBLINK) -p $($*_pad) -d -m $*.map -n $*.sym -l layout.link -o $@ $(filter %.o,$^)
 	$(RGBFIX) -p $($*_pad) $($*_opt) $@
 
-gfx/blue/intro_purin_1.2bpp: rgbgfx += -h
-gfx/blue/intro_purin_2.2bpp: rgbgfx += -h
-gfx/blue/intro_purin_3.2bpp: rgbgfx += -h
-gfx/red/intro_nido_1.2bpp: rgbgfx += -h
-gfx/red/intro_nido_2.2bpp: rgbgfx += -h
-gfx/red/intro_nido_3.2bpp: rgbgfx += -h
+gfx/mainmenu/intro_nido_1.2bpp: rgbgfx += -Z
+gfx/mainmenu/intro_nido_2.2bpp: rgbgfx += -Z
+gfx/mainmenu/intro_nido_3.2bpp: rgbgfx += -Z
 
-gfx/game_boy.2bpp: tools/gfx += --remove-duplicates
-gfx/theend.2bpp: tools/gfx += --interleave --png=$<
+gfx/tiles/game_boy.2bpp: tools/gfx += --remove-duplicates
+gfx/tiles/theend.2bpp: tools/gfx += --interleave --png=$<
 gfx/tilesets/%.2bpp: tools/gfx += --trim-whitespace
 
 %.png: ;
