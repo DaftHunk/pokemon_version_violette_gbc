@@ -12,7 +12,7 @@ SilphCo10Object:
 	db 0 ; signs
 
 	db 6 ; objects
-	object SPRITE_ROCKET, 1, 9, STAY, RIGHT, 1, OPP_ROCKET, 38
+	object SPRITE_ROCKET, 1, 9, STAY, RIGHT, 1, OPP_ROCKET, 35
 	object SPRITE_OAK_AIDE, 10, 2, STAY, LEFT, 2, OPP_SCIENTIST, 10
 	object SPRITE_ERIKA, 9, 15, WALK, 0, 3 ; person
 	object SPRITE_BALL, 2, 12, STAY, NONE, 4, TM26_EARTHQUAKE

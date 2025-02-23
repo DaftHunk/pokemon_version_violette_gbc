@@ -13,7 +13,7 @@ Route4Object:
 
 	db 3 ; objects
 	object SPRITE_LASS, 9, 8, WALK, 0, 1 ; person
-	object SPRITE_LASS, 63, 3, STAY, RIGHT, 2, OPP_LASS, 4
+	object SPRITE_LASS, 63, 3, STAY, RIGHT, 2, OPP_LASS, 7
 	object SPRITE_BALL, 57, 3, STAY, NONE, 3, TM02_RAZOR_WIND
 
 	; warp-to
