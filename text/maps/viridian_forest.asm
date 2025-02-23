@@ -6,7 +6,6 @@ _ViridianForestText1::
 	line "pour se battre!"
 	done
 
-
 _ViridianForestBattleText1::
 	text "Hé! Mais tu as"
 	line "des #mon!"
@@ -75,6 +74,27 @@ _ViridianForestText8::
 
 	para "Il t'en faut"
 	line "toujours un max!"
+	done
+
+_ViridianForestBattleText4::
+	text "Salut, tu as un"
+	line "Pikachu?"
+	done
+
+_ViridianForestEndBattleText4::
+	text "Oh non,"
+	line "vraiment?"
+	prompt
+
+_ViridianForestAfterBattleText4::
+	text "J'ai cherché par-"
+	line "tout mais je n'ai"
+	cont "jamais trouvé de"
+	cont "Pikachu ici!"
+
+	para "Je suis tombée"
+	line "sur un Mystherbe"
+	cont "par contre!"
 	done
 
 _ViridianForestText9::

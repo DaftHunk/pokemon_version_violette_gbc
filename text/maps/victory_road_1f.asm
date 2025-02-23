@@ -28,3 +28,80 @@ _VictoryRoad1AfterBattleText2::
 	text "T'es fort, "
 	line "on a compris!"
 	done
+
+_VictoryRoad1FBugCatcherBattleText::
+	text "C'est pas juste "
+	line "des petits"
+	cont "insectes!"
+
+	para "Au combat!"
+	done
+
+_VictoryRoad1FBugCatcherEndBattleText::
+	text "MES"
+	line "INSECTES!!!"
+	prompt
+
+_VictoryRoad1FBugCatcherAfterBattleText::
+	text "Ne me juge pas."
+
+	para "Je suis juste"
+	line "fan du filet."
+	done
+
+_VictoryRoad1FBeautyBattleText::
+	text "J'ai toujours"
+	line "adoré Evoli!"
+
+	para "Laisse-moi te mon-"
+	line "trer comme ils"
+	cont "sont cool!"
+	done
+
+_VictoryRoad1FBeautyEndBattleText::
+	text "Aw,"
+	line "ma famille d'Evo-"
+	cont "li a perdu..."
+	prompt
+
+_VictoryRoad1FBeautyAfterBattleText::
+	text "Peu importe,"
+	line "Evoli reste le"
+	cont "meilleur à"
+	cont "mes yeux!"
+	done
+
+_VictoryRoad1FBurglarBattleText::
+	text "BUTIN ET PILLAGE!"
+	done
+
+_VictoryRoad1FBurglarEndBattleText::
+	text "Je"
+	line "pensais que tu"
+	cont "étais faiblard..."
+	prompt
+
+_VictoryRoad1FBurglarAfterBattleText::
+	text "Va-t'en, Je cher-"
+	line "che ma prochaine"
+	cont "victime!"
+
+	para "La vie de Pillard"
+	line "pour moi,"
+	cont "yo-ho!"
+	done
+
+_VictoryRoad1FSuperNerdBattleText::
+	text "Salut, on"
+	line "m'appelle le"
+	cont "timbré!"
+	done
+
+_VictoryRoad1FSuperNerdEndBattleText::
+	text "Ouai,"
+	line "c'est ça, ouai."
+	prompt
+
+_VictoryRoad1FSuperNerdAfterBattleText::
+	text "Mer il et fou."
+	done

@@ -57,6 +57,10 @@ VictoryRoad1TextPointers:
 	dw BoulderText
 	dw BoulderText
 	dw BoulderText
+	dw VictoryRoad1Text3
+	dw VictoryRoad1Text4
+	dw VictoryRoad1Text5
+	dw VictoryRoad1Text6
 
 VictoryRoad1TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_0
@@ -76,6 +80,42 @@ VictoryRoad1TrainerHeader1:
 	dw VictoryRoad1EndBattleText2 ; TextEndBattle
 	dw VictoryRoad1EndBattleText2 ; TextEndBattle
 
+VictoryRoad1TrainerHeader2:
+	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_2
+	db ($2 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_2
+	dw VictoryRoad1FBugCatcherBattleText ; TextBeforeBattle
+	dw VictoryRoad1FBugCatcherAfterBattleText ; TextAfterBattle
+	dw VictoryRoad1FBugCatcherEndBattleText ; TextEndBattle
+	dw VictoryRoad1FBugCatcherEndBattleText ; TextEndBattle
+
+VictoryRoad1TrainerHeader3:
+	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_3
+	db ($3 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_3
+	dw VictoryRoad1FBeautyBattleText ; TextBeforeBattle
+	dw VictoryRoad1FBeautyAfterBattleText ; TextAfterBattle
+	dw VictoryRoad1FBeautyEndBattleText ; TextEndBattle
+	dw VictoryRoad1FBeautyEndBattleText ; TextEndBattle
+
+VictoryRoad1TrainerHeader4:
+	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_4
+	db ($3 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_4
+	dw VictoryRoad1FBurglarBattleText ; TextBeforeBattle
+	dw VictoryRoad1FBurglarAfterBattleText ; TextAfterBattle
+	dw VictoryRoad1FBurglarEndBattleText ; TextEndBattle
+	dw VictoryRoad1FBurglarEndBattleText ; TextEndBattle
+
+VictoryRoad1TrainerHeader5:
+	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_5
+	db ($4 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_5
+	dw VictoryRoad1FSuperNerdBattleText ; TextBeforeBattle
+	dw VictoryRoad1FSuperNerdAfterBattleText ; TextAfterBattle
+	dw VictoryRoad1FSuperNerdEndBattleText ; TextEndBattle
+	dw VictoryRoad1FSuperNerdEndBattleText ; TextEndBattle
+
 	db $ff
 
 VictoryRoad1Text1:
@@ -87,6 +127,30 @@ VictoryRoad1Text1:
 VictoryRoad1Text2:
 	TX_ASM
 	ld hl, VictoryRoad1TrainerHeader1
+	call TalkToTrainer
+	jp TextScriptEnd
+
+VictoryRoad1Text3:
+	TX_ASM
+	ld hl, VictoryRoad1TrainerHeader2
+	call TalkToTrainer
+	jp TextScriptEnd
+
+VictoryRoad1Text4:
+	TX_ASM
+	ld hl, VictoryRoad1TrainerHeader3
+	call TalkToTrainer
+	jp TextScriptEnd
+
+VictoryRoad1Text5:
+	TX_ASM
+	ld hl, VictoryRoad1TrainerHeader4
+	call TalkToTrainer
+	jp TextScriptEnd
+
+VictoryRoad1Text6:
+	TX_ASM
+	ld hl, VictoryRoad1TrainerHeader5
 	call TalkToTrainer
 	jp TextScriptEnd
 
@@ -112,4 +176,52 @@ VictoryRoad1EndBattleText2:
 
 VictoryRoad1AfterBattleText2:
 	TX_FAR _VictoryRoad1AfterBattleText2
+	db "@"
+
+VictoryRoad1FBugCatcherBattleText:
+	TX_FAR _VictoryRoad1FBugCatcherBattleText
+	db "@"
+
+VictoryRoad1FBugCatcherEndBattleText:
+	TX_FAR _VictoryRoad1FBugCatcherEndBattleText
+	db "@"
+
+VictoryRoad1FBugCatcherAfterBattleText:
+	TX_FAR _VictoryRoad1FBugCatcherAfterBattleText
+	db "@"
+
+VictoryRoad1FBeautyBattleText:
+	TX_FAR _VictoryRoad1FBeautyBattleText
+	db "@"
+
+VictoryRoad1FBeautyEndBattleText:
+	TX_FAR _VictoryRoad1FBeautyEndBattleText
+	db "@"
+
+VictoryRoad1FBeautyAfterBattleText:
+	TX_FAR _VictoryRoad1FBeautyAfterBattleText
+	db "@"
+
+VictoryRoad1FBurglarBattleText:
+	TX_FAR _VictoryRoad1FBurglarBattleText
+	db "@"
+
+VictoryRoad1FBurglarEndBattleText:
+	TX_FAR _VictoryRoad1FBurglarEndBattleText
+	db "@"
+
+VictoryRoad1FBurglarAfterBattleText:
+	TX_FAR _VictoryRoad1FBurglarAfterBattleText
+	db "@"
+
+VictoryRoad1FSuperNerdBattleText:
+	TX_FAR _VictoryRoad1FSuperNerdBattleText
+	db "@"
+
+VictoryRoad1FSuperNerdEndBattleText:
+	TX_FAR _VictoryRoad1FSuperNerdEndBattleText
+	db "@"
+
+VictoryRoad1FSuperNerdAfterBattleText:
+	TX_FAR _VictoryRoad1FSuperNerdAfterBattleText
 	db "@"

@@ -21,6 +21,7 @@ ViridianForestTextPointers:
 	dw PickUpItemText
 	dw PickUpItemText
 	dw ViridianForestText8
+	dw ViridianForestText5
 	dw ViridianForestText9
 	dw ViridianForestText10
 	dw ViridianForestText11
@@ -55,6 +56,15 @@ ViridianForestTrainerHeader2:
 	dw ViridianForestEndBattleText3 ; TextEndBattle
 	dw ViridianForestEndBattleText3 ; TextEndBattle
 
+ViridianForestTrainerHeader3:
+	dbEventFlagBit EVENT_BEAT_VIRIDIAN_FOREST_TRAINER_3
+	db ($0 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_VIRIDIAN_FOREST_TRAINER_3
+	dw ViridianForestBattleText4 ; TextBeforeBattle
+	dw ViridianForestAfterBattleText4 ; TextAfterBattle
+	dw ViridianForestEndBattleText4 ; TextEndBattle
+	dw ViridianForestEndBattleText4 ; TextEndBattle
+
 	db $ff
 
 ViridianForestText1:
@@ -76,6 +86,12 @@ ViridianForestText3:
 ViridianForestText4:
 	TX_ASM
 	ld hl, ViridianForestTrainerHeader2
+	call TalkToTrainer
+	jp TextScriptEnd
+
+ViridianForestText5:
+	TX_ASM
+	ld hl, ViridianForestTrainerHeader3
 	call TalkToTrainer
 	jp TextScriptEnd
 
@@ -117,6 +133,18 @@ ViridianForestAfterBattleText3:
 
 ViridianForestText8:
 	TX_FAR _ViridianForestText8
+	db "@"
+
+ViridianForestBattleText4:
+	TX_FAR _ViridianForestBattleText4
+	db "@"
+
+ViridianForestEndBattleText4:
+	TX_FAR _ViridianForestEndBattleText4
+	db "@"
+
+ViridianForestAfterBattleText4:
+	TX_FAR _ViridianForestAfterBattleText4
 	db "@"
 
 ViridianForestText9:
