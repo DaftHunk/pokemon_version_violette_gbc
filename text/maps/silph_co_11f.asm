@@ -112,15 +112,28 @@ _SilphCo11BattleTextJessieJames::
 	done
 
 _SilphCo11EndBattleTextJessieJames::
-	text "..."
-	line "Ca craint..."
+	text "Team"
+	line "Rocket..."
+	cont "Plus rapide que"
+	cont "la lumière!"
+
+	para "Miaous: euh..."
+	line "du coup on va où?"
+
+	para "James: ben nul"
+	line "part, en fait."
+	cont "On doit attendre"
+	cont "le boss..."
 	prompt
 
 _SilphCo11AfterBattleTextJessieJames::
-	text "Team Rocket..."
-	line "A la vitesse"
-	cont "d'une voiture!"
-	cont "En gros..."
+	text "Jessie: c'est bon"
+	line "tu peux passer"
+	cont "gamin."
+	
+	para "De toute façon,"
+	line "il va te mettre"
+	cont "c'que tu mérites!"
 	done
 
 _SilphCo11BattleText2::
@@ -145,6 +158,11 @@ _SilphCo11AfterBattleText2::
 _SilphCo10Text_6237b::
 	text "Des #mon sur"
 	line "le moniteur!"
+	done
+
+_SilphCo11Text6::
+	text "James:..."
+	line "Ca craint..."
 	done
 
 ;;;;;;;;;;;;;;;;;;;;;;joenote - adding text for Chief battle

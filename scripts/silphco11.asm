@@ -158,7 +158,6 @@ SilphCo11Script_621c8:
 SilphCo11ScriptPointers:
 	dw SilphCo11Script0
 	dw DisplayEnemyTrainerTextAndStartBattle
-	dw SilphCo11ScriptJessieJames
 	dw EndTrainerBattle
 	dw SilphCo11Script3
 	dw SilphCo11Script4
@@ -224,7 +223,7 @@ SilphCo11Script5:
 	call SilphCo11Script_6221a
 	ld a, $f0
 	ld [wJoyIgnore], a
-	ld a, $6
+	ld a, $7
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	call GBFadeOutToBlack
@@ -275,37 +274,6 @@ SilphCo11Script4:
 	ld a, $5
 	jp SilphCo11Script_621c8
 
-SilphCo11ScriptJessieJames:
-	ld hl, wFlags_0xcd60
-	res 0, [hl]
-	ld a, [wIsInBattle]
-	cp $ff
-	CheckEvent EVENT_BEAT_SILPH_CO_11F_TRAINER_0
-	jp nz, SilphCo11Script_621c8
-;	ld a, [wcf0d]
-;	cp $2
-;	jp z, SilphCo11Script_621c8
-	; Display RocketHideout4AfterBattleText2
-	ld a, $7
-	ld [hSpriteIndexOrTextID], a
-	call DisplayTextID
-	; Jessie James hide
-	call GBFadeOutToBlack
-	ld a, HS_SILPH_CO_11F_JESSIE
-	ld [wMissableObjectIndex], a
-	predef HideObject
-	ld a, HS_SILPH_CO_11F_JAMES
-	ld [wMissableObjectIndex], a
-	predef HideObject
-	call UpdateSprites
-	call Delay3
-	call GBFadeInFromBlack
-	ld [hJoyHeld], a
-	xor a
-	ld [wJoyIgnore], a
-	ld a, $0
-	jp SilphCo11Script_621c8
-
 SilphCo11Script6:	;joenote - adding this function to set a flag if you beat the special trainer
 	xor a
 	ld [wJoyIgnore], a
@@ -327,7 +295,7 @@ SilphCo11TextPointers:
 	dw SilphCo11Text4
 	dw SilphCo11Text5
 	dw SilphCo11Text6
-	dw SilphCo11AfterBattleTextJessieJames
+	dw SilphCo11Text7
 
 SilphCo11TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_11F_TRAINER_0
@@ -435,6 +403,10 @@ SilphCo10Text_62330:
 	db "@"
 
 SilphCo11Text6:
+	TX_FAR _SilphCo11Text6
+	db "@"
+
+SilphCo11Text7:
 	TX_FAR _SilphCo10Text_62335
 	db "@"
 
