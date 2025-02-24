@@ -59,16 +59,16 @@ _VictoryRoad1FBeautyBattleText::
 	done
 
 _VictoryRoad1FBeautyEndBattleText::
-	text "Aw,"
+	text "Oh,"
 	line "ma famille d'Evo-"
 	cont "li a perdu..."
 	prompt
 
 _VictoryRoad1FBeautyAfterBattleText::
-	text "Peu importe,"
-	line "Evoli reste le"
-	cont "meilleur à"
-	cont "mes yeux!"
+	text "J'ai entendu dire"
+	line "qu'une autre"
+	cont "forme d'Evoli"
+	cont "existe!"
 	done
 
 _VictoryRoad1FBurglarBattleText::
