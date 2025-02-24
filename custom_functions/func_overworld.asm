@@ -428,9 +428,13 @@ LoadRedSpriteToDE:
 	ret
 	
 LoadSeelSpriteToDE:
-	ld de, SeelSprite
 	ld a, [wUnusedD721]
-	set 2, a	;regardless if boy or girl, need to set override bit to use the regular sprite bank
+	ld de, SeelFSprite
+	bit 0, a	;check if girl
+	jr nz, .next
+	ld de, SeelSprite
+.next
+	res 2, a
 	ld [wUnusedD721], a
 	ret
 

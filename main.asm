@@ -1849,6 +1849,7 @@ RedPicFBack::          INCBIN "gfx/trainerback/redb_f.pic"
 RedPicFFront::         INCBIN "gfx/trainer/red_f.pic"
 RedFSprite:            INCBIN "gfx/sprites/redf.2bpp"
 RedFCyclingSprite:     INCBIN "gfx/sprites/cyclingf.2bpp"
+SeelFSprite:           INCBIN "gfx/sprites/seelf.2bpp"
 
 RedFishingTilesFront: INCBIN "gfx/tiles/red_fishing_tile_front.2bpp"
 RedFishingTilesBack:  INCBIN "gfx/tiles/red_fishing_tile_back.2bpp"
