@@ -272,9 +272,9 @@ Route25TextRed:
 	call SaveEndBattleTextPointers	;save the win/lose text
 	ld a, $9
 	ld [wGymLeaderNo], a	;set bgm to champion music
-	ld a, OPP_JR_TRAINER_M	;load the trainer type
+	ld a, OPP_SACHA	;load the trainer type
 	ld [wCurOpponent], a	;set as the current opponent
-	ld a, 11	;get the right roster
+	ld a, 1	;get the right roster
 	ld [wTrainerNo], a
 	xor a
 	ld [hJoyHeld], a

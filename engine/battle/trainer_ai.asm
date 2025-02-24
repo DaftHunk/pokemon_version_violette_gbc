@@ -1381,12 +1381,14 @@ TrainerClassMoveChoiceModifications:
 	db 1,3,4,0  ; SONY3
 	db 1,2,3,4,0; LORELEI
 	db 1,4,0    ; CHANNELER
-	db 1,3,4,0    ; AGATHA
+	db 1,3,4,0  ; AGATHA
 	db 1,3,4,0  ; LANCE
-	db 1,3,4,0    ; JANINE
+	db 1,3,4,0  ; JANINE
 	db 1,3,4,0  ; JENNY
 	db 1,3,4,0  ; JOY
 	db 1,3,4,0  ; JESSIE_JAMES
+	db 1,2,3,4,0; MFUJI
+	db 1,2,3,4,0; SACHA
 
 INCLUDE "engine/battle/trainer_pic_money_pointers.asm"
 
@@ -1531,6 +1533,8 @@ TrainerAIPointers:
 	dbw 3,GenericAI ; Jenny
 	dbw 3,GenericAI ; Joy
 	dbw 3,GenericAI ; JessieJames
+	dbw 5,GenericAI ; MFuji
+	dbw 5,GenericAI ; Sacha
 
 ;joenote - reorganizing these AI routines to jump on carry instead of returning on not-carry
 ;also adding recognition of a switch-pkmn bit

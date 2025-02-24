@@ -50,3 +50,6 @@ TrainerNames:
 	db "Agent Jenny@"
 	db "Inf. Joelle@"
 	db "Jessie James@"
+	db "M.Fuji@"
+	db "Sacha@"
+

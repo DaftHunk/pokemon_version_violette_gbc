@@ -153,3 +153,9 @@ TrainerPicAndMoneyPointers:
 
 	dw JessieJamesPic
 	money 3000
+
+	dw MFujiPic
+	money 9900
+
+	dw SachaPic
+	money 9900

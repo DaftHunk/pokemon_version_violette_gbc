@@ -50,8 +50,8 @@ TrainerDataPointers:
 	dw JennyData
 	dw JoyData
 	dw JessieJamesData
-	;dw SachaData
-	;dw MFujiData
+	dw MFujiData
+	dw SachaData
 
 RosterLabelStart::
 ; if first byte != FF, then
@@ -726,8 +726,8 @@ JessieJamesData:
 ; Silph Co. [11F]
 	db $FF,42,WEEZING,41,LICKITUNG,42,ARBOK,44,MEOWTH,43,VICTREEBEL,0
 
-;SachaData:
-;	db $FF,88,PIKACHU,85,TAUROS,85,CHARIZARD,85,PIDGEOT,87,SNORLAX,83,POLIWRATH,0
+MFujiData:
+	db $FF,69,MAROWAK,70,OMASTAR,70,KABUTOPS,71,AERODACTYL,73,ARCANINE,100,DITTO,0
 
-;MFujiData:
-;	db $FF,69,MAROWAK,70,OMASTAR,70,KABUTOPS,71,AERODACTYL,73,ARCANINE,100,DITTO,0	;gentleman #5
+SachaData:
+	db $FF,88,PIKACHU,85,TAUROS,85,CHARIZARD,85,PIDGEOT,87,SNORLAX,83,POLIWRATH,0

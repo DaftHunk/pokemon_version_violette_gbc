@@ -140,9 +140,9 @@ LavenderHouse1Text5:
 	call SaveEndBattleTextPointers	;save the win/lose text
 	ld a, $8
 	ld [wGymLeaderNo], a	;set bgm to gym leader music
-	ld a, OPP_GENTLEMAN	;load the trainer type
+	ld a, OPP_MFUJI	;load the trainer type
 	ld [wCurOpponent], a	;set as the current opponent
-	ld a, 5	;get the right roster
+	ld a, 1	;get the right roster
 	ld [wTrainerNo], a
 	xor a
 	ld [hJoyHeld], a
