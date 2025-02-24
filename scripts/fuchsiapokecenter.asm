@@ -22,11 +22,8 @@ FuchsiaPokecenterScript0:
 FuchsiaPokecenterNurseText:
 	TX_ASM
 	callab DisplayPokemonCenterDialogue_
-	;has the other special battles been beaten?
-	ld a,[wBeatGymFlags]
-	and $0F
-	sub $0F
-	jr nz, .done
+	CheckEvent EVENT_908	;has elite 4 been beaten?
+	jr z, .done
 
 	callab NewPageButtonPressCheck
 	ld a, PLAYER_DIR_UP

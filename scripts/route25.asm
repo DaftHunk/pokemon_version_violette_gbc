@@ -251,16 +251,14 @@ Route25TextRed:
 	TX_ASM
 	ld hl, Route25PrintText12
 	call PrintText
-;	ld a,[wBeatGymFlags]	;has the other special battles been beaten?
-;	and $0F
-;	sub $0F
-;	jr nz, .specials_not_beaten
+	CheckEvent EVENT_908	;has elite 4 been beaten?
+	jr z, .no_e4_beaten
 	ld hl, RedText_challenge	;else ask if you want to challenge
 	call PrintText	;print the challenge text
 	call YesNoChoice	;prompt a yes/no choice
 	ld a, [wCurrentMenuItem]	;load the player choice
 	and a	;check the player choice
-	jr nz, .specials_not_beaten	;kick out if no chosen
+	jr nz, .no_e4_beaten	;kick out if no chosen
 	;otherwise begin loading battle
 	ld hl, RedText_prebattle	;load pre battle text
 	call PrintText	;print the pre battle text
@@ -282,7 +280,7 @@ Route25TextRed:
 	ld [wRoute25CurScript], a
 	ld [wCurMapScript], a
 	jp TextScriptEnd
-.specials_not_beaten
+.no_e4_beaten
 	ld hl, RedText_decline
 	call PrintText
 	jp TextScriptEnd
