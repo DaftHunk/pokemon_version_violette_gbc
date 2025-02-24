@@ -1055,7 +1055,7 @@ INCLUDE "engine/hidden_object_functions14.asm"
 
 SECTION "Trainer Pics 2", ROMX
 ProfOakPic::       INCBIN "gfx/trainer/prof.oak.pic"
-ChiefPic::		   ;INCBIN "gfx/trainer/chief.pic"	;joenote - not enough rom space
+ChiefPic::		   INCBIN "gfx/trainer/chief.pic"	;joenote - not enough rom space
 ScientistPic::     INCBIN "gfx/trainer/scientist.pic"
 GiovanniPic::      INCBIN "gfx/trainer/giovanni.pic"
 RocketPic::        INCBIN "gfx/trainer/rocket.pic"
@@ -1080,6 +1080,8 @@ JaninePic::        INCBIN "gfx/trainer/janine.pic"
 JennyPic::         INCBIN "gfx/trainer/jenny.pic"
 JoyPic::           INCBIN "gfx/trainer/joy.pic"
 JessieJamesPic::   INCBIN "gfx/trainer/jessiejames.pic"
+MFujiPic::         INCBIN "gfx/trainer/mfuji.pic"
+SachaPic::         INCBIN "gfx/trainer/sacha.pic"
 
 SECTION "bank15",ROMX,BANK[$15]
 
