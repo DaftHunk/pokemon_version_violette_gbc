@@ -1,4 +1,4 @@
-_PewterGymText_5c4a3::
+_PewterGymText_BrockAfterBattle::
 	text "Il y a plusieurs"
 	line "types de"
 	cont "dresseurs dans le"
@@ -13,6 +13,44 @@ _PewterGymText_5c4a3::
 	cont "tester tes"
 	cont "capacités."
 	done
+
+_PewterGymText_RematchPreBattle::
+	text "Depuis notre"
+	line "dernier combat,"
+	cont "j'ai grandement"
+	cont "amélioré mon"
+	cont "équipe!"
+
+	para "Alors que la"
+	line "roche gronde et"
+	cont "que les montagnes"
+	cont "tremblent!"
+	done
+
+_PewterGymText_RematchRefused::
+	text "Peut-être une"
+	line "prochaine fois."
+	done
+
+_PewterGymText_RematchPostBattle::
+	text "Très"
+	line "impressionnant!"
+
+	para "Ta force est"
+	line "inégalée!"
+
+	para "Tu fais honneur"
+	line "à ton titre de"
+	cont "Champion."
+
+	para "Continue à diri-"
+	line "ger tes #mon"
+	cont "avec honneur et"
+	cont "courage!"
+
+	para "Va! De nouveaux"
+	line "défis t'attendent."
+	prompt
 
 _TM34PreReceiveText::
 	text "Attends! Prends"
@@ -40,7 +78,7 @@ _TM34ExplanationText::
 	cont "à qui la donner!"
 
 	para "CT34 contient"
-	line "PATIENCE!"
+	line "Patience!"
 
 	para "Ton #mon"
 	line "absorbera les"
@@ -54,7 +92,7 @@ _TM34NoRoomText::
 	line "est plein!"
 	done
 
-_PewterGymText_5c4bc::
+_PewterGymText_BrockVictory1::
 	text "Hmm..."
 	line "Beau combat."
 
@@ -67,7 +105,7 @@ _PewterGymText_5c4bc::
 	line "le Badge Roche!@"
 	text_end
 
-_PewterGymText_5c4c1::
+_PewterGymText_BrockVictory2::
 	text_start
 
 	para "C'est un Badge"
@@ -84,7 +122,7 @@ _PewterGymText_5c4c1::
 	cont "utilisée!"
 	prompt
 
-_PewterGymBattleText1::
+_PewterGymText_Trainer0PreBattle::
 	text "Une minute,"
 	line "gamin!"
 
@@ -94,20 +132,20 @@ _PewterGymBattleText1::
 	cont "m'affronter!"
 	done
 
-_PewterGymEndBattleText1::
+_PewterGymText_Trainer0EndBattle::
 	text "Zut!"
 
 	para "J'aurais dû te"
 	line "laisser passer!"
 	prompt
 
-_PewterGymAfterBattleText1::
+_PewterGymText_Trainer0AfterBattle::
 	text "Tu es fort..."
 	line "Mais pas autant"
 	cont "que Pierre!"
 	done
 
-_PewterGymText_5c515::
+_PewterGymText_GuideAsk::
 	text "Salut graine de"
 	line "Champion!"
 
@@ -121,12 +159,12 @@ _PewterGymText_5c515::
 	cont "victoire!"
 	done
 
-_PewterGymText_5c51a::
+_PewterGymText_GuideYes::
 	text "OK! C'est"
 	line "parti!"
 	prompt
 
-_PewterGymText_5c51f::
+_PewterGymText_GuideTip::
 	text "Le 1er #mon"
 	line "apparaissant dans"
 	cont "un combat est"
@@ -140,12 +178,12 @@ _PewterGymText_5c51f::
 	cont "stratégie!"
 	done
 
-_PewterGymText_5c524::
+_PewterGymText_GuideNo::
 	text "C'est gratuit,"
 	line "profites-en! "
 	prompt
 
-_PewterGymText_5c529::
+_PewterGymText_GuideEnd::
 	text "Je le savais!"
 	line "Tu as l'âme d'un"
 	cont "champion!"
