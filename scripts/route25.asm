@@ -251,7 +251,7 @@ Route25TextRed:
 	TX_ASM
 	ld hl, Route25PrintText12
 	call PrintText
-	CheckEvent EVENT_908	;has elite 4 been beaten?
+	CheckEvent EVENT_ELITE_4_BEATEN	;has elite 4 been beaten?
 	jr z, .no_e4_beaten
 	ld hl, RedText_challenge	;else ask if you want to challenge
 	call PrintText	;print the challenge text

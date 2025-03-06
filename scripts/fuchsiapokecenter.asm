@@ -22,7 +22,7 @@ FuchsiaPokecenterScript0:
 FuchsiaPokecenterNurseText:
 	TX_ASM
 	callab DisplayPokemonCenterDialogue_
-	CheckEvent EVENT_908	;has elite 4 been beaten?
+	CheckEvent EVENT_ELITE_4_BEATEN	;has elite 4 been beaten?
 	jr z, .done
 
 	callab NewPageButtonPressCheck

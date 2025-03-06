@@ -62,7 +62,7 @@ VermilionCityScript0:
 	ld a, $3
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
-	CheckEvent EVENT_908 ;joenote - override the blocking guy if you beat the elite 4
+	CheckEvent EVENT_ELITE_4_BEATEN ;joenote - override the blocking guy if you beat the elite 4
 	jr nz, .ssane_returns3	;joenote - jump...
 	CheckEvent EVENT_SS_ANNE_LEFT
 	jr nz, .asm_19810
@@ -190,7 +190,7 @@ VermilionCityJennyAfterBattleText:
 
 VermilionCityText2:
 	TX_ASM
-	CheckEvent EVENT_908 ;joenote - add text for SS ANNE returning
+	CheckEvent EVENT_ELITE_4_BEATEN ;joenote - add text for SS ANNE returning
 	jr nz, .ssane_returns				;
 	CheckEvent EVENT_SS_ANNE_LEFT
 	jr nz, .asm_1989e
@@ -221,7 +221,7 @@ VermilionCityText_annereturns:	;joenote - add text for SS ANNE returning
 
 VermilionCityText3:
 	TX_ASM
-	CheckEvent EVENT_908 ;joenote - override the blocking guy if you beat the elite 4
+	CheckEvent EVENT_ELITE_4_BEATEN ;joenote - override the blocking guy if you beat the elite 4
 	jr nz, .ssane_returns2	;joenote - jump...
 	CheckEvent EVENT_SS_ANNE_LEFT
 	jr nz, .asm_198f6

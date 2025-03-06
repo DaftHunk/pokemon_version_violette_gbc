@@ -9,7 +9,7 @@ MirrorTrainerText1:
 	TX_ASM
 	ld hl, MirrorTrainerIntro
 	call PrintText
-	CheckEvent EVENT_908	;has elite 4 been beaten?
+	CheckEvent EVENT_ELITE_4_BEATEN	;has elite 4 been beaten?
 	jr nz, .ready	;jump if beaten
 	ld hl, MirrorTrainerNotReady
 	call PrintText

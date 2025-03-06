@@ -10,7 +10,7 @@ CeladonHouseTextPointers:
 CeladonHouseText1:	;joenote - adding offer to buy pokemon
 	TX_ASM
 	ld hl, CeladonHouseText1B
-	CheckEvent EVENT_908
+	CheckEvent EVENT_ELITE_4_BEATEN
 	jp z, .end
 	
 	ld a, [wPartyCount]

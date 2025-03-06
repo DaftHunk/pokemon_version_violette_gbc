@@ -9,7 +9,7 @@ ApplyOutOfBattlePoisonDamage:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - every interval of steps, have a chance to respawn both 1 missible and 1 hidden item if E4 have been beaten
 ;	push bc
-;	CheckEvent EVENT_908	;has elite 4 been beaten?
+;	CheckEvent EVENT_ELITE_4_BEATEN	;has elite 4 been beaten?
 ;	jr z, .no_item_respawn
 ;	ld a, [wStepCounter]
 ;	and $3F ; is the counter a multiple of 64?

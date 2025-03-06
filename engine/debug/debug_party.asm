@@ -22,7 +22,7 @@ DebugNewGameParty: ; unreferenced except in _DEBUG
 	db EEVEE, 56
 	db ONIX, 56
 	db ZAPDOS, 57
-	db MEW, 20
+	db MEW, 80
 	db -1 ; end
 
 PrepareNewGameDebug: ; dummy except in _DEBUG
@@ -43,7 +43,7 @@ IF DEF(_DEBUG)
 
 	; Exeggutor gets four HM moves.
 	ld hl, wPartyMon6Moves
-	ld a, FLY
+	ld a, PSYCHIC_M
 	ld [hli], a
 	ld a, CUT
 	ld [hli], a

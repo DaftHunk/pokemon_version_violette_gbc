@@ -715,7 +715,7 @@ DoDisobeyLevelCheck:
 	jr z, .return_usemove
 
 ; compare the mon's original trainer ID with the player's ID to see if it was traded
-;	CheckEvent EVENT_908	;joenote Check if Elite 4 beaten, and if so then don't even bother going further
+;	CheckEvent EVENT_ELITE_4_BEATEN	;joenote Check if Elite 4 beaten, and if so then don't even bother going further
 ;	jr nz, .return_usemove
 	ld a, [wUnusedD721]	;joenote - check if obedience level cap is active and always treat as traded if so
 	bit 5, a

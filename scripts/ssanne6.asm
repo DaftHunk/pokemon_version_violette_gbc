@@ -98,7 +98,7 @@ SSAnne6Text8: ;joenote - gym guy for post-game tournament
 
 .promptdefaulttext	
 	ld hl, SSAnne6Text_GymGuy	;load default text
-	CheckEvent EVENT_908
+	CheckEvent EVENT_ELITE_4_BEATEN
 	jp z, .endprint
 	ld hl, SSAnne6Text_GymGuy2	;load intro text after beating elite 4
 	call PrintText

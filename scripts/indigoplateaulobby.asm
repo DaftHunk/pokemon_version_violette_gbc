@@ -27,7 +27,7 @@ IndigoHealNurseText:
 
 IndigoPlateauLobbyText2:
 	TX_ASM
-	CheckEvent EVENT_908 ;joenote - add text for after beating the elite 4
+	CheckEvent EVENT_ELITE_4_BEATEN ;joenote - add text for after beating the elite 4
 	ld hl, IndigoPlateauLobbyText2_normal
 	jr z, .print
 	ld hl, IndigoPlateauLobbyText2_ALT

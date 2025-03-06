@@ -10,7 +10,7 @@ Lab2Text1:
 	TX_ASM
 	CheckBothEventsSet EVENT_GOT_DOME_FOSSIL, EVENT_GOT_HELIX_FOSSIL
 	jr z, .showAlreadyBoughtText;already bought fossils
-	CheckEvent EVENT_908	;has elite 4 been beaten?
+	CheckEvent EVENT_ELITE_4_BEATEN	;has elite 4 been beaten?
 	jr nz, .recognizeChampion
 	ld hl, Lab2TextFossile
 	call PrintText

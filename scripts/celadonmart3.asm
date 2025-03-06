@@ -1,7 +1,7 @@
 CeladonMart3Script:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - remove the blocker for the new vendor if the elite 4 is beaten
-	CheckEvent EVENT_908	;has e4 been beaten?
+	CheckEvent EVENT_ELITE_4_BEATEN	;has e4 been beaten?
 	jr z, .end 	;skip out if not
 	;else remove the blocking sprite
 	ld a, HS_CELADON_MART_3F_BLOCKER

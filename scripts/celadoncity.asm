@@ -97,7 +97,7 @@ CeladonCityText7:
 	
 CeladonCityText8:	;joenote - make this rocket hint about buying master balls
 	TX_ASM
-	CheckEvent EVENT_908
+	CheckEvent EVENT_ELITE_4_BEATEN
 	ld hl, CeladonCityText8_alternate
 	jr nz, .next	
 	ld hl, CeladonCityText8_continue
@@ -125,7 +125,7 @@ CeladonCityText8_alternate:
 
 CeladonCityText9:	;joenote - make this rocket grunt sell coins in the post-game
 	TX_ASM
-	CheckEvent EVENT_908
+	CheckEvent EVENT_ELITE_4_BEATEN
 	jp nz, BuyCoinsFromRocket	
 	ld hl, CeladonCityText9_continue
 	call PrintText

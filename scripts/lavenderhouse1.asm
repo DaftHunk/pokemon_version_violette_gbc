@@ -103,7 +103,7 @@ LavenderHouse1Text5:
 .asm_15ac2
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - fuji battle and MGENE item
-	CheckEvent EVENT_908	;has elite 4 been beaten?
+	CheckEvent EVENT_ELITE_4_BEATEN	;has elite 4 been beaten?
 	jr z, .no_e4_beaten		;kick out if e4 not beaten
 	
 	CheckEvent EVENT_129	;got the MGENE from showing mewtwo to Fuji?

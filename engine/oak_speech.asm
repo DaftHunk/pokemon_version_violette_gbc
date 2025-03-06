@@ -55,7 +55,7 @@ OakSpeech:
 	ld a, [wSaveFileStatus]
 	cp 2
 	jr nz, .normalnewgame
-	CheckEvent EVENT_908
+	CheckEvent EVENT_ELITE_4_BEATEN
 	jr z, .normalnewgame
 	ld a, [hJoyHeld]
 	and SELECT

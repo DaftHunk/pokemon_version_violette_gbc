@@ -41,7 +41,7 @@ SSAnne5TrainerHeader1:
 
 SSAnne5Text1:
 	TX_ASM
-	CheckEvent EVENT_908 ;joenote - add text for SS ANNE returning
+	CheckEvent EVENT_ELITE_4_BEATEN ;joenote - add text for SS ANNE returning
 	ld hl, SSAnne5Text1_normal
 	jr z, .print
 	ld hl, _SSAnne5Text1_ALT

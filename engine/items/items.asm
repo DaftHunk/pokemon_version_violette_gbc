@@ -1472,7 +1472,7 @@ ItemUseMedicine:
 .noCarry2
 	pop af
 	jr c, .e4notbeaten		;apply vitamin limiter of less than the level threshold
-	CheckEvent EVENT_908	;joenote - has elite 4 been beaten?
+	CheckEvent EVENT_ELITE_4_BEATEN	;joenote - has elite 4 been beaten?
 	jr z, .e4notbeaten 	;if not, apply the vitamin limiter
 
 	;else remove the vitamin limiter

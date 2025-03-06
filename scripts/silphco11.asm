@@ -337,7 +337,7 @@ SilphCo11Text1:
 .asm_62308
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - chief battle
-	CheckEvent EVENT_908	;has elite 4 been beaten?
+	CheckEvent EVENT_ELITE_4_BEATEN	;has elite 4 been beaten?
 	jr z, .no_e4_beaten		;kick out if e4 not beaten
 	ld hl, ChiefText_challenge	;else ask if you want to challenge
 	call PrintText	;print the challenge text

@@ -212,7 +212,7 @@ MainMenu:
 	ld a, [wNumHoFTeams]
 	and a
 	jr z, .noHoF
-	SetEvent EVENT_908	;if the elite 4 have been beaten, set the event flag for it
+	SetEvent EVENT_ELITE_4_BEATEN	;if the elite 4 have been beaten, set the event flag for it
 .noHoF
 	xor a
 	ld [wDestinationMap], a
