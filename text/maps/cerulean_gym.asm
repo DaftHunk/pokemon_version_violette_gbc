@@ -1,4 +1,4 @@
-_CeruleanGymText_MistyPreBattle::
+_CeruleanGymText_LeaderPreBattle::
 	text "Salut! T'es un"
 	line "nouveau!"
 
@@ -51,7 +51,7 @@ _CeruleanGymText_RematchEndBattle::
 	cont "rencontre."	
 	prompt
 
-_CeruleanGymText_MistyReceivedTM::
+_CeruleanGymText_LeaderAfterBattle::
 	text "La CT11 contient"
 	line "Bulles d'O!"
 
@@ -59,7 +59,7 @@ _CeruleanGymText_MistyReceivedTM::
 	line "#mon de l'eau!"
 	done
 
-_CeruleanGymText_MistyTMExplanation::
+_CeruleanGymText_TMExplanation::
 	text "Le BadgeCascade"
 	line "oblige tous les"
 	cont "#mon d'un"
@@ -74,7 +74,7 @@ _CeruleanGymText_MistyTMExplanation::
 	cont "utiliser la CS"
 	cont "Coupe!"
 
-	para "Tu peux CoupeR"
+	para "Tu peux Couper"
 	line "les arbustes"
 	cont "et ouvrir de"
 	cont "nouveaux chemins!"
@@ -93,7 +93,7 @@ _CeruleanGymText_BagFull::
 	line "est plein!"
 	done
 
-_CeruleanGymText_MistyAfterBattle::
+_CeruleanGymText_LeaderEndBattle::
 	text "Whouha!"
 	line "T'es super fort!"
 

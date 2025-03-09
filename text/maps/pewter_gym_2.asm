@@ -1,4 +1,4 @@
-_PewterGymText_BrockAfterBattle::
+_PewterGymText_LeaderAfterBattle::
 	text "Il y a plusieurs"
 	line "types de"
 	cont "dresseurs dans le"
@@ -52,12 +52,12 @@ _PewterGymText_BrockWait::
 	line "ça avec toi!"
 	done
 
-_PewterGymText_BrockReceivedTM::
+_PewterGymText_LeaderReceivedTM::
 	text "<PLAYER> reçoit"
 	line "la CT34!@"
 	text_end
 
-_PewterGymText_BrockTMExplanation::
+_PewterGymText_LeaderTMExplanation::
 	text_start
 
 	para "Une CT (Capsule"
@@ -87,7 +87,7 @@ _PewterGymText_BagFull::
 	line "est plein!"
 	done
 
-_PewterGymText_BrockEndBattle1::
+_PewterGymText_LeaderEndBattle1::
 	text "Hmm..."
 	line "Beau combat."
 
@@ -100,7 +100,7 @@ _PewterGymText_BrockEndBattle1::
 	line "le Badge Roche!@"
 	text_end
 
-_PewterGymText_BrockEndBattle2::
+_PewterGymText_LeaderEndBattle2::
 	text_start
 
 	para "C'est un Badge"

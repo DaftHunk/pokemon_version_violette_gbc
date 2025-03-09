@@ -33,9 +33,9 @@ CeruleanGymScriptPointers:
 	dw CheckFightingMapTrainers
 	dw DisplayEnemyTrainerTextAndStartBattle
 	dw EndTrainerBattle
-	dw CeruleanGymScriptBattle
+	dw CeruleanGymScript_Battle
 
-CeruleanGymScriptBattle:
+CeruleanGymScript_Battle:
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, CeruleanGymScript_Reset
@@ -71,11 +71,11 @@ CeruleanGymScript_GiveTM:
 	jp CeruleanGymScript_Reset
 
 CeruleanGymTextPointers:
-	dw CeruleanGymText_MistyMain
+	dw CeruleanGymText_Misty
 	dw CeruleanGymText_Trainer0
 	dw CeruleanGymText_Trainer1
 	dw CeruleanGymText_Guide
-	dw CeruleanGymText_MistyTMExplanation
+	dw CeruleanGymText_TMExplanation
 	dw CeruleanGymText_ReceivedTM
 	dw CeruleanGymText_BagFull
 
@@ -99,10 +99,10 @@ CeruleanGymTrainerHeader1:
 
 	db $ff
 
-CeruleanGymText_MistyMain:
+CeruleanGymText_Misty:
 	TX_ASM
 	CheckEvent EVENT_BEAT_MISTY
-	jr z, .mistyFight
+	jr z, .leaderFight
 	CheckEventReuseA EVENT_GOT_TM11
 	jr nz, .askForRematch
 	call z, CeruleanGymScript_GiveTM
@@ -115,22 +115,22 @@ CeruleanGymText_MistyMain:
 	call NoYesChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .mistyFight
+	jr nz, .leaderFight
 ;;;;;;;
-	ld hl, CeruleanGymText_MistyReceivedTM
+	ld hl, CeruleanGymText_LeaderAfterBattle
 	call PrintText
 	jr .endScript
-.mistyFight
+.leaderFight
 	CheckEvent EVENT_ELITE_4_BEATEN
-	jr nz, .mistyFightAfterElite4
+	jr nz, .leaderFightAfterElite4
 
-	ld hl, CeruleanGymText_MistyPreBattle
+	ld hl, CeruleanGymText_LeaderPreBattle
 	call PrintText
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, CeruleanGymText_MistyAfterBattle
-	ld de, CeruleanGymText_MistyAfterBattle
+	ld hl, CeruleanGymText_LeaderEndBattle
+	ld de, CeruleanGymText_LeaderEndBattle
 	call SaveEndBattleTextPointers
 	ld a, $2
 	ld [wGymLeaderNo], a
@@ -146,7 +146,8 @@ CeruleanGymText_MistyMain:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, $3
 	ld [wCeruleanGymCurScript], a
-.mistyFightAfterElite4
+	jr .endScript
+.leaderFightAfterElite4
 	ld hl, CeruleanGymText_RematchPreBattle
 	call PrintText
 
@@ -170,16 +171,16 @@ CeruleanGymText_MistyMain:
 .endScript
 	jp TextScriptEnd
 
-CeruleanGymText_MistyPreBattle:
-	TX_FAR _CeruleanGymText_MistyPreBattle
+CeruleanGymText_LeaderPreBattle:
+	TX_FAR _CeruleanGymText_LeaderPreBattle
 	db "@"
 
-CeruleanGymText_MistyReceivedTM:
-	TX_FAR _CeruleanGymText_MistyReceivedTM
+CeruleanGymText_LeaderAfterBattle:
+	TX_FAR _CeruleanGymText_LeaderAfterBattle
 	db "@"
 
-CeruleanGymText_MistyTMExplanation:
-	TX_FAR _CeruleanGymText_MistyTMExplanation
+CeruleanGymText_TMExplanation:
+	TX_FAR _CeruleanGymText_TMExplanation
 	db "@"
 
 CeruleanGymText_ReceivedTM:
@@ -191,8 +192,8 @@ CeruleanGymText_BagFull:
 	TX_FAR _CeruleanGymText_BagFull
 	db "@"
 
-CeruleanGymText_MistyAfterBattle:
-	TX_FAR _CeruleanGymText_MistyAfterBattle
+CeruleanGymText_LeaderEndBattle:
+	TX_FAR _CeruleanGymText_LeaderEndBattle
 	;joenote - now plays an unused item sfx for getting a badge
 	TX_SFX_KEY_ITEM ; actually plays the second channel of SFX_BALL_POOF due to the wrong music bank being loaded
 	TX_BLINK

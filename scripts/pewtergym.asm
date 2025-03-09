@@ -82,11 +82,11 @@ PewterGymScriptGiveTM:
 	jp PewterGymScriptReset
 
 PewterGymTextPointers:
-	dw PewterGymText_BrockMain
+	dw PewterGymText_Brock
 	dw PewterGymText_Trainer0
-	dw PewterGymText_GuideMain
+	dw PewterGymText_Guide
 	dw PewterGymText_BrockWait
-	dw PewterGymText_BrockReceivedTM
+	dw PewterGymText_LeaderReceivedTM
 	dw PewterGymText_BagFull
 
 PewterGymTrainerHeader0:
@@ -100,10 +100,10 @@ PewterGymTrainerHeader0:
 
 	db $ff
 
-PewterGymText_BrockMain:
+PewterGymText_Brock:
 	TX_ASM
 	CheckEvent EVENT_BEAT_BROCK
-	jr z, .brockFight
+	jr z, .leaderFight
 	CheckEventReuseA EVENT_GOT_TM34
 	jr nz, .askForRematch
 	call z, PewterGymScriptGiveTM
@@ -116,22 +116,22 @@ PewterGymText_BrockMain:
 	call NoYesChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .brockFight
+	jr nz, .leaderFight
 ;;;;;;;
-	ld hl, PewterGymText_BrockAfterBattle
+	ld hl, PewterGymText_LeaderAfterBattle
 	call PrintText
 	jp .endScript
-.brockFight
+.leaderFight
 	CheckEvent EVENT_ELITE_4_BEATEN
-	jr nz, .brockFightAfterElite4
+	jr nz, .leaderFightAfterElite4
 
-	ld hl, PewterGymText_BrockPreBattle
+	ld hl, PewterGymText_LeaderPreBattle
 	call PrintText
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, PewterGymText_BrockEndBattle1
-	ld de, PewterGymText_BrockEndBattle1
+	ld hl, PewterGymText_LeaderEndBattle1
+	ld de, PewterGymText_LeaderEndBattle1
 	call SaveEndBattleTextPointers
 	ld a, $1
 	ld [wGymLeaderNo], a
@@ -149,7 +149,7 @@ PewterGymText_BrockMain:
 	ld [wPewterGymCurScript], a
 	ld [wCurMapScript], a
 	jr .endScript
-.brockFightAfterElite4
+.leaderFightAfterElite4
 	ld hl, PewterGymText_RematchPreBattle
 	call PrintText
 	ld hl, wd72d
@@ -172,33 +172,33 @@ PewterGymText_BrockMain:
 .endScript
 	jp TextScriptEnd
 
-PewterGymText_BrockPreBattle:
-	TX_FAR _PewterGymText_BrockPreBattle
+PewterGymText_LeaderPreBattle:
+	TX_FAR _PewterGymText_LeaderPreBattle
 	db "@"
 
-PewterGymText_BrockAfterBattle:
-	TX_FAR _PewterGymText_BrockAfterBattle
+PewterGymText_LeaderAfterBattle:
+	TX_FAR _PewterGymText_LeaderAfterBattle
 	db "@"
 
 PewterGymText_BrockWait:
 	TX_FAR _PewterGymText_BrockWait
 	db "@"
 
-PewterGymText_BrockReceivedTM:
-	TX_FAR _PewterGymText_BrockReceivedTM
+PewterGymText_LeaderReceivedTM:
+	TX_FAR _PewterGymText_LeaderReceivedTM
 	TX_SFX_ITEM_1
-	TX_FAR _PewterGymText_BrockTMExplanation
+	TX_FAR _PewterGymText_LeaderTMExplanation
 	db "@"
 
 PewterGymText_BagFull:
 	TX_FAR _PewterGymText_BagFull
 	db "@"
 
-PewterGymText_BrockEndBattle1:
-	TX_FAR _PewterGymText_BrockEndBattle1
+PewterGymText_LeaderEndBattle1:
+	TX_FAR _PewterGymText_LeaderEndBattle1
 	;TX_SFX_LEVEL_UP ; probably supposed to play SFX_GET_ITEM_1 but the wrong music bank is loaded
 	TX_SFX_KEY_ITEM	;joenote - play an unused sfx instead (triggered by playing GET_KEY_ITEM in battle)
-	TX_FAR _PewterGymText_BrockEndBattle2
+	TX_FAR _PewterGymText_LeaderEndBattle2
 	db "@"
 
 PewterGymText_Trainer0:
@@ -227,7 +227,7 @@ PewterGymText_RematchEndBattle:
 	TX_FAR _PewterGymText_RematchEndBattle
 	db "@"
 
-PewterGymText_GuideMain:
+PewterGymText_Guide:
 	TX_ASM
 	ld a, [wObtainedBadges];[wBeatGymFlags]
 	bit 0, a
