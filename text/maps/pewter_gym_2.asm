@@ -27,12 +27,7 @@ _PewterGymText_RematchPreBattle::
 	cont "tremblent!"
 	done
 
-_PewterGymText_RematchRefused::
-	text "Peut-être une"
-	line "prochaine fois."
-	done
-
-_PewterGymText_RematchPostBattle::
+_PewterGymText_RematchEndBattle::
 	text "Très"
 	line "impressionnant!"
 
@@ -52,17 +47,17 @@ _PewterGymText_RematchPostBattle::
 	line "défis t'attendent."
 	prompt
 
-_TM34PreReceiveText::
+_PewterGymText_BrockWait::
 	text "Attends! Prends"
 	line "ça avec toi!"
 	done
 
-_ReceivedTM34Text::
+_PewterGymText_BrockReceivedTM::
 	text "<PLAYER> reçoit"
 	line "la CT34!@"
 	text_end
 
-_TM34ExplanationText::
+_PewterGymText_BrockTMExplanation::
 	text_start
 
 	para "Une CT (Capsule"
@@ -87,12 +82,12 @@ _TM34ExplanationText::
 	cont "le double!"
 	done
 
-_TM34NoRoomText::
+_PewterGymText_BagFull::
 	text "Votre inventaire"
 	line "est plein!"
 	done
 
-_PewterGymText_BrockVictory1::
+_PewterGymText_BrockEndBattle1::
 	text "Hmm..."
 	line "Beau combat."
 
@@ -105,7 +100,7 @@ _PewterGymText_BrockVictory1::
 	line "le Badge Roche!@"
 	text_end
 
-_PewterGymText_BrockVictory2::
+_PewterGymText_BrockEndBattle2::
 	text_start
 
 	para "C'est un Badge"

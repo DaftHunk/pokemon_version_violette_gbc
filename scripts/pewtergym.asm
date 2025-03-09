@@ -85,9 +85,9 @@ PewterGymTextPointers:
 	dw PewterGymText_BrockMain
 	dw PewterGymText_Trainer0
 	dw PewterGymText_GuideMain
-	dw PewterGymText_TM34PreReceiveText
-	dw PewterGymText_ReceivedTM34Text
-	dw PewterGymText_TM34NoRoomText
+	dw PewterGymText_BrockWait
+	dw PewterGymText_BrockReceivedTM
+	dw PewterGymText_BagFull
 
 PewterGymTrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_PEWTER_GYM_TRAINER_0
@@ -125,13 +125,13 @@ PewterGymText_BrockMain:
 	CheckEvent EVENT_ELITE_4_BEATEN
 	jr nz, .brockFightAfterElite4
 
-	ld hl, PewterGymText_BrockIntro
+	ld hl, PewterGymText_BrockPreBattle
 	call PrintText
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, PewterGymText_BrockVictory1
-	ld de, PewterGymText_BrockVictory1
+	ld hl, PewterGymText_BrockEndBattle1
+	ld de, PewterGymText_BrockEndBattle1
 	call SaveEndBattleTextPointers
 	ld a, $1
 	ld [wGymLeaderNo], a
@@ -155,8 +155,8 @@ PewterGymText_BrockMain:
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, PewterGymText_RematchPostBattle
-	ld de, PewterGymText_RematchPostBattle
+	ld hl, PewterGymText_RematchEndBattle
+	ld de, PewterGymText_RematchEndBattle
 	call SaveEndBattleTextPointers
 	ld a, $1
 	ld [wGymLeaderNo], a
@@ -172,33 +172,33 @@ PewterGymText_BrockMain:
 .endScript
 	jp TextScriptEnd
 
-PewterGymText_BrockIntro:
-	TX_FAR _PewterGymText_BrockIntro
+PewterGymText_BrockPreBattle:
+	TX_FAR _PewterGymText_BrockPreBattle
 	db "@"
 
 PewterGymText_BrockAfterBattle:
 	TX_FAR _PewterGymText_BrockAfterBattle
 	db "@"
 
-PewterGymText_TM34PreReceiveText:
-	TX_FAR _TM34PreReceiveText
+PewterGymText_BrockWait:
+	TX_FAR _PewterGymText_BrockWait
 	db "@"
 
-PewterGymText_ReceivedTM34Text:
-	TX_FAR _ReceivedTM34Text
+PewterGymText_BrockReceivedTM:
+	TX_FAR _PewterGymText_BrockReceivedTM
 	TX_SFX_ITEM_1
-	TX_FAR _TM34ExplanationText
+	TX_FAR _PewterGymText_BrockTMExplanation
 	db "@"
 
-PewterGymText_TM34NoRoomText:
-	TX_FAR _TM34NoRoomText
+PewterGymText_BagFull:
+	TX_FAR _PewterGymText_BagFull
 	db "@"
 
-PewterGymText_BrockVictory1:
-	TX_FAR _PewterGymText_BrockVictory1
+PewterGymText_BrockEndBattle1:
+	TX_FAR _PewterGymText_BrockEndBattle1
 	;TX_SFX_LEVEL_UP ; probably supposed to play SFX_GET_ITEM_1 but the wrong music bank is loaded
 	TX_SFX_KEY_ITEM	;joenote - play an unused sfx instead (triggered by playing GET_KEY_ITEM in battle)
-	TX_FAR _PewterGymText_BrockVictory2
+	TX_FAR _PewterGymText_BrockEndBattle2
 	db "@"
 
 PewterGymText_Trainer0:
@@ -223,12 +223,8 @@ PewterGymText_RematchPreBattle:
 	TX_FAR _PewterGymText_RematchPreBattle
 	db "@"
 
-PewterGymText_RematchRefused:
-	TX_FAR _PewterGymText_RematchRefused
-	db "@"
-
-PewterGymText_RematchPostBattle:
-	TX_FAR _PewterGymText_RematchPostBattle
+PewterGymText_RematchEndBattle:
+	TX_FAR _PewterGymText_RematchEndBattle
 	db "@"
 
 PewterGymText_GuideMain:

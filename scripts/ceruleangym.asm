@@ -2,7 +2,7 @@ CeruleanGymScript:
 	ld hl, wCurrentMapScriptFlags
 	bit 6, [hl]
 	res 6, [hl]
-	call nz, CeruleanGymScript_5c6d0
+	call nz, CeruleanGymScript_Header
 	call EnableAutoTextBoxDrawing
 	ld hl, CeruleanGymTrainerHeader0
 	ld de, CeruleanGymScriptPointers
@@ -11,7 +11,7 @@ CeruleanGymScript:
 	ld [wCeruleanGymCurScript], a
 	ret
 
-CeruleanGymScript_5c6d0:
+CeruleanGymScript_Header:
 	ld hl, Gym2CityName
 	ld de, Gym2LeaderName
 	jp LoadGymLeaderAndCityName
@@ -22,7 +22,7 @@ Gym2CityName:
 Gym2LeaderName:
 	db "Ondine@"
 
-CeruleanGymScript_5c6ed:
+CeruleanGymScript_Reset:
 	xor a
 	ld [wJoyIgnore], a
 	ld [wCeruleanGymCurScript], a
@@ -33,33 +33,33 @@ CeruleanGymScriptPointers:
 	dw CheckFightingMapTrainers
 	dw DisplayEnemyTrainerTextAndStartBattle
 	dw EndTrainerBattle
-	dw CeruleanGymScript3
+	dw CeruleanGymScriptBattle
 
-CeruleanGymScript3:
+CeruleanGymScriptBattle:
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, CeruleanGymScript_5c6ed
+	jp z, CeruleanGymScript_Reset
 	ld a, $f0
 	ld [wJoyIgnore], a
 
-CeruleanGymScript_5c70d:
+CeruleanGymScript_GiveTM:
 	ld a, $5
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_MISTY
 	lb bc, TM11_BUBBLEBEAM, 1
 	call GiveItem
-	jr nc, .BagFull
+	jr nc, .bagFull
 	ld a, $6
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_GOT_TM11
-	jr .asm_5c736
-.BagFull
+	jr .endScript
+.bagFull
 	ld a, $7
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
-.asm_5c736
+.endScript
 	ld hl, wObtainedBadges
 	set 1, [hl]
 	;ld hl, wBeatGymFlags	;joenote - redundant
@@ -68,66 +68,69 @@ CeruleanGymScript_5c70d:
 	; deactivate gym trainers
 	SetEvents EVENT_BEAT_CERULEAN_GYM_TRAINER_0, EVENT_BEAT_CERULEAN_GYM_TRAINER_1
 
-	jp CeruleanGymScript_5c6ed
+	jp CeruleanGymScript_Reset
 
 CeruleanGymTextPointers:
-	dw CeruleanGymText1
-	dw CeruleanGymText2
-	dw CeruleanGymText3
-	dw CeruleanGymText4
-	dw CeruleanGymText5
-	dw CeruleanGymText6
-	dw CeruleanGymText7
+	dw CeruleanGymText_MistyMain
+	dw CeruleanGymText_Trainer0
+	dw CeruleanGymText_Trainer1
+	dw CeruleanGymText_Guide
+	dw CeruleanGymText_MistyTMExplanation
+	dw CeruleanGymText_ReceivedTM
+	dw CeruleanGymText_BagFull
 
 CeruleanGymTrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_CERULEAN_GYM_TRAINER_0
 	db ($3 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_CERULEAN_GYM_TRAINER_0
-	dw CeruleanGymBattleText1 ; TextBeforeBattle
-	dw CeruleanGymAfterBattleText1 ; TextAfterBattle
-	dw CeruleanGymEndBattleText1 ; TextEndBattle
-	dw CeruleanGymEndBattleText1 ; TextEndBattle
+	dw CeruleanGymText_Trainer0PreBattle ; TextBeforeBattle
+	dw CeruleanGymText_Trainer0AfterBattle ; TextAfterBattle
+	dw CeruleanGymText_Trainer0EndBattle ; TextEndBattle
+	dw CeruleanGymText_Trainer0EndBattle ; TextEndBattle
 
 CeruleanGymTrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_CERULEAN_GYM_TRAINER_1
 	db ($3 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_CERULEAN_GYM_TRAINER_1
-	dw CeruleanGymBattleText2 ; TextBeforeBattle
-	dw CeruleanGymAfterBattleText2 ; TextAfterBattle
-	dw CeruleanGymEndBattleText2 ; TextEndBattle
-	dw CeruleanGymEndBattleText2 ; TextEndBattle
+	dw CeruleanGymText_Trainer1PreBattle ; TextBeforeBattle
+	dw CeruleanGymText_Trainer1AfterBattle ; TextAfterBattle
+	dw CeruleanGymText_Trainer1EndBattle ; TextEndBattle
+	dw CeruleanGymText_Trainer1EndBattle ; TextEndBattle
 
 	db $ff
 
-CeruleanGymText1:
+CeruleanGymText_MistyMain:
 	TX_ASM
 	CheckEvent EVENT_BEAT_MISTY
-	jr z, .asm_5c78d
+	jr z, .mistyFight
 	CheckEventReuseA EVENT_GOT_TM11
-	jr nz, .asm_5c785
-	call z, CeruleanGymScript_5c70d
+	jr nz, .askForRematch
+	call z, CeruleanGymScript_GiveTM
 	call DisableWaitingAfterTextDisplay
-	jr .asm_5c7bb
-.asm_5c785
+	jp .endScript
+.askForRematch
 ;;;;;;;joenote - have a rematch with gym leader?
 	ld hl, RematchTrainerText
 	call PrintText
 	call NoYesChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .asm_5c78d
+	jr nz, .mistyFight
 ;;;;;;;
-	ld hl, CeruleanGymText_5c7c3
+	ld hl, CeruleanGymText_MistyReceivedTM
 	call PrintText
-	jr .asm_5c7bb
-.asm_5c78d
-	ld hl, CeruleanGymText_5c7be
+	jr .endScript
+.mistyFight
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .mistyFightAfterElite4
+
+	ld hl, CeruleanGymText_MistyPreBattle
 	call PrintText
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, CeruleanGymText_5c7d8
-	ld de, CeruleanGymText_5c7d8
+	ld hl, CeruleanGymText_MistyAfterBattle
+	ld de, CeruleanGymText_MistyAfterBattle
 	call SaveEndBattleTextPointers
 	ld a, $2
 	ld [wGymLeaderNo], a
@@ -143,90 +146,119 @@ CeruleanGymText1:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, $3
 	ld [wCeruleanGymCurScript], a
-.asm_5c7bb
+.mistyFightAfterElite4
+	ld hl, CeruleanGymText_RematchPreBattle
+	call PrintText
+
+	ld hl, wd72d
+	set 6, [hl]
+	set 7, [hl]
+	ld hl, CeruleanGymText_RematchEndBattle
+	ld de, CeruleanGymText_RematchEndBattle
+	call SaveEndBattleTextPointers
+	ld a, $2
+	ld [wGymLeaderNo], a
+	ld a, [H_SPRITEINDEX]
+	ld [wSpriteIndex], a
+	call EngageMapTrainer
+	call InitBattleEnemyParameters
+	ld a, 2	;get the right roster
+	ld [wTrainerNo], a
+	xor a
+	ld [hJoyHeld], a
+	jr .endScript
+.endScript
 	jp TextScriptEnd
 
-CeruleanGymText_5c7be:
-	TX_FAR _CeruleanGymText_5c7be
+CeruleanGymText_MistyPreBattle:
+	TX_FAR _CeruleanGymText_MistyPreBattle
 	db "@"
 
-CeruleanGymText_5c7c3:
-	TX_FAR _CeruleanGymText_5c7c3
+CeruleanGymText_MistyReceivedTM:
+	TX_FAR _CeruleanGymText_MistyReceivedTM
 	db "@"
 
-CeruleanGymText5:
-	TX_FAR _CeruleanGymText_5c7c8
+CeruleanGymText_MistyTMExplanation:
+	TX_FAR _CeruleanGymText_MistyTMExplanation
 	db "@"
 
-CeruleanGymText6:
-	TX_FAR _ReceivedTM11Text
+CeruleanGymText_ReceivedTM:
+	TX_FAR _CeruleanGymText_ReceivedTM
 	TX_SFX_ITEM_1
 	db "@"
 
-CeruleanGymText7:
-	TX_FAR _CeruleanGymText_5c7d3
+CeruleanGymText_BagFull:
+	TX_FAR _CeruleanGymText_BagFull
 	db "@"
 
-CeruleanGymText_5c7d8:
-	TX_FAR _CeruleanGymText_5c7d8
+CeruleanGymText_MistyAfterBattle:
+	TX_FAR _CeruleanGymText_MistyAfterBattle
 	;joenote - now plays an unused item sfx for getting a badge
 	TX_SFX_KEY_ITEM ; actually plays the second channel of SFX_BALL_POOF due to the wrong music bank being loaded
 	TX_BLINK
 	db "@"
 
-CeruleanGymText2:
+CeruleanGymText_Trainer0:
 	TX_ASM
 	ld hl, CeruleanGymTrainerHeader0
 	call TalkToTrainer
 	jp TextScriptEnd
 
-CeruleanGymBattleText1:
-	TX_FAR _CeruleanGymBattleText1
+CeruleanGymText_Trainer0PreBattle:
+	TX_FAR _CeruleanGymText_Trainer0PreBattle
 	db "@"
 
-CeruleanGymEndBattleText1:
-	TX_FAR _CeruleanGymEndBattleText1
+CeruleanGymText_Trainer0EndBattle:
+	TX_FAR _CeruleanGymText_Trainer0EndBattle
 	db "@"
 
-CeruleanGymAfterBattleText1:
-	TX_FAR _CeruleanGymAfterBattleText1
+CeruleanGymText_Trainer0AfterBattle:
+	TX_FAR _CeruleanGymText_Trainer0AfterBattle
 	db "@"
 
-CeruleanGymText3:
+CeruleanGymText_Trainer1:
 	TX_ASM
 	ld hl, CeruleanGymTrainerHeader1
 	call TalkToTrainer
 	jp TextScriptEnd
 
-CeruleanGymBattleText2:
-	TX_FAR _CeruleanGymBattleText2
+CeruleanGymText_Trainer1PreBattle:
+	TX_FAR _CeruleanGymText_Trainer1PreBattle
 	db "@"
 
-CeruleanGymEndBattleText2:
-	TX_FAR _CeruleanGymEndBattleText2
+CeruleanGymText_Trainer1EndBattle:
+	TX_FAR _CeruleanGymText_Trainer1EndBattle
 	db "@"
 
-CeruleanGymAfterBattleText2:
-	TX_FAR _CeruleanGymAfterBattleText2
+CeruleanGymText_Trainer1AfterBattle:
+	TX_FAR _CeruleanGymText_Trainer1AfterBattle
 	db "@"
 
-CeruleanGymText4:
+CeruleanGymText_RematchPreBattle:
+	TX_FAR _CeruleanGymText_RematchPreBattle
+	db "@"
+
+CeruleanGymText_RematchEndBattle:
+	TX_FAR _CeruleanGymText_RematchEndBattle
+	db "@"
+
+CeruleanGymText_Guide:
 	TX_ASM
 	CheckEvent EVENT_BEAT_MISTY
-	jr nz, .asm_5c821
-	ld hl, CeruleanGymText_5c82a
+	jr nz, .arenaVictory
+	ld hl, CeruleanGymText_GuideTip
 	call PrintText
-	jr .asm_5c827
-.asm_5c821
-	ld hl, CeruleanGymText_5c82f
+	jr .endScript
+.arenaVictory
+	ld hl, CeruleanGymText_GuideVictory
 	call PrintText
-.asm_5c827
+.endScript
 	jp TextScriptEnd
 
-CeruleanGymText_5c82a:
-	TX_FAR _CeruleanGymText_5c82a
+CeruleanGymText_GuideTip:
+	TX_FAR _CeruleanGymText_GuideTip
 	db "@"
 
-CeruleanGymText_5c82f:
-	TX_FAR _CeruleanGymText_5c82f
+CeruleanGymText_GuideVictory:
+	TX_FAR _CeruleanGymText_GuideVictory
 	db "@"

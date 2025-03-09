@@ -1,4 +1,4 @@
-_CeruleanGymText_5c7be::
+_CeruleanGymText_MistyPreBattle::
 	text "Salut! T'es un"
 	line "nouveau!"
 
@@ -19,7 +19,39 @@ _CeruleanGymText_5c7be::
 	cont "aquatiques!"
 	done
 
-_CeruleanGymText_5c7c3::
+_CeruleanGymText_RematchPreBattle::
+	text "Tu as tellement"
+	line "évolué depuis"
+	cont "notre dernier"
+	cont "combat."
+
+	para "Tu es prêt pour"
+	line "une revanche à ma"
+	cont "pleine puissance?"
+
+	para "Je ne retiendrai"
+	line "pas mes coups"
+	cont "cette fois!"
+
+	para "Prêt à être sub-"
+	line "mergé, Champion?"
+
+	done
+
+_CeruleanGymText_RematchEndBattle::
+	text "Tu m'as"
+	line "encore battu!"
+
+	para "Ta puissance est"
+	line "inspirante!"
+
+	para "Je m'entraînerai"
+	line "encore plus pour"
+	cont "notre prochaine"
+	cont "rencontre."	
+	prompt
+
+_CeruleanGymText_MistyReceivedTM::
 	text "La CT11 contient"
 	line "Bulles d'O!"
 
@@ -27,7 +59,7 @@ _CeruleanGymText_5c7c3::
 	line "#mon de l'eau!"
 	done
 
-_CeruleanGymText_5c7c8::
+_CeruleanGymText_MistyTMExplanation::
 	text "Le BadgeCascade"
 	line "oblige tous les"
 	cont "#mon d'un"
@@ -51,17 +83,17 @@ _CeruleanGymText_5c7c8::
 	line "CT favorite!"
 	done
 
-_ReceivedTM11Text::
+_CeruleanGymText_ReceivedTM::
 	text "<PLAYER> reçoit"
 	line "la CT11!@"
 	text_end
 
-_CeruleanGymText_5c7d3::
+_CeruleanGymText_BagFull::
 	text "Ton inventaire"
 	line "est plein!"
 	done
 
-_CeruleanGymText_5c7d8::
+_CeruleanGymText_MistyAfterBattle::
 	text "Whouha!"
 	line "T'es super fort!"
 
@@ -72,20 +104,20 @@ _CeruleanGymText_5c7d8::
 	cont "m'avoir battue!@"
 	text_end
 
-_CeruleanGymBattleText1::
+_CeruleanGymText_Trainer0PreBattle::
 	text "Je suis très"
 	line "balèze!"
 
 	para "Ondine attendra!"
 	done
 
-_CeruleanGymEndBattleText1::
+_CeruleanGymText_Trainer0EndBattle::
 	text "Oh!"
 	line "J'me suis fait"
 	cont "écraser!"
 	prompt
 
-_CeruleanGymAfterBattleText1::
+_CeruleanGymText_Trainer0AfterBattle::
 	text "Tu dois te battre"
 	line "contre d'autres"
 	cont "dresseurs pour"
@@ -93,19 +125,19 @@ _CeruleanGymAfterBattleText1::
 	cont "niveau."
 	done
 
-_CeruleanGymBattleText2::
+_CeruleanGymText_Trainer1PreBattle::
 	text "Plaouff!"
 
 	para "J'suis preums!"
 	line "Baston!"
 	done
 
-_CeruleanGymEndBattleText2::
+_CeruleanGymText_Trainer1EndBattle::
 	text "Glargh!"
 	line "C'est dingue!"
 	prompt
 
-_CeruleanGymAfterBattleText2::
+_CeruleanGymText_Trainer1AfterBattle::
 	text "Ondine est super"
 	line "forte!"
 
@@ -115,7 +147,7 @@ _CeruleanGymAfterBattleText2::
 	cont "comme toi!"
 	done
 
-_CeruleanGymText_5c82a::
+_CeruleanGymText_GuideTip::
 	text "Salut à toi!"
 	line "Futur champion!"
 
@@ -135,7 +167,7 @@ _CeruleanGymText_5c82a::
 	cont "l'électricité!"
 	done
 
-_CeruleanGymText_5c82f::
+_CeruleanGymText_GuideVictory::
 	text "Tu as battu"
 	line "Ondine! Génial!"
 
