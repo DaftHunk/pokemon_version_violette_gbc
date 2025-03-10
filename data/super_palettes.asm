@@ -260,5 +260,5 @@ SuperPalettes:
 	; PAL_REDBLUE
 	SGB_WHITE 
 	RGB 31,  8,  0
-	RGB 11, 15, 23
+	RGB  5,  5, 23
 	RGB  3,  3,  3
