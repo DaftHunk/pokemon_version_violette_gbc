@@ -3,11 +3,11 @@ VermilionGymScript:
 	bit 5, [hl]
 	res 5, [hl]
 	push hl
-	call nz, VermilionGymScript_5ca4c
+	call nz, VermilionGymScript_Header
 	pop hl
 	bit 6, [hl]
 	res 6, [hl]
-	call nz, VermilionGymScript_5ca6d
+	call nz, VermilionGymScript_DoorPuzzle
 	call EnableAutoTextBoxDrawing
 	ld hl, VermilionGymTrainerHeader0
 	ld de, VermilionGymScriptPointers
@@ -16,7 +16,7 @@ VermilionGymScript:
 	ld [wVermilionGymCurScript], a
 	ret
 
-VermilionGymScript_5ca4c:
+VermilionGymScript_Header:
 	ld hl, Gym3CityName
 	ld de, Gym3LeaderName
 	jp LoadGymLeaderAndCityName
@@ -27,21 +27,21 @@ Gym3CityName:
 Gym3LeaderName:
 	db "Major Bob@"
 
-VermilionGymScript_5ca6d:
+VermilionGymScript_DoorPuzzle:
 	CheckEvent EVENT_2ND_LOCK_OPENED
-	jr nz, .asm_5ca78
+	jr nz, .doorSFX
 	ld a, $24
-	jr .asm_5ca7f
-.asm_5ca78
+	jr .openDoor
+.doorSFX
 	ld a, SFX_GO_INSIDE
 	call PlaySound
 	ld a, $5
-.asm_5ca7f
+.openDoor
 	ld [wNewTileBlockID], a
 	lb bc, 2, 2
 	predef_jump ReplaceTileBlock
 
-VermilionGymScript_5ca8a:
+VermilionGymScript_Reset:
 	xor a
 	ld [wJoyIgnore], a
 	ld [wVermilionGymCurScript], a
@@ -52,33 +52,33 @@ VermilionGymScriptPointers:
 	dw CheckFightingMapTrainers
 	dw DisplayEnemyTrainerTextAndStartBattle
 	dw EndTrainerBattle
-	dw VermilionGymScript3
+	dw VermilionGymScript_Battle
 
-VermilionGymScript3:
+VermilionGymScript_Battle:
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, VermilionGymScript_5ca8a
+	jp z, VermilionGymScript_Reset
 	ld a, $f0
 	ld [wJoyIgnore], a
 
-VermilionGymScript_5caaa:
+VermilionGymScript_GiveTM:
 	ld a, $6
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_LT_SURGE
 	lb bc, TM24_THUNDERBOLT, 1
 	call GiveItem
-	jr nc, .BagFull
+	jr nc, .bagFull
 	ld a, $7
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_GOT_TM24
-	jr .asm_5cad3
-.BagFull
+	jr .endScript
+.bagFull
 	ld a, $8
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
-.asm_5cad3
+.endScript
 	ld hl, wObtainedBadges
 	set 2, [hl]
 	;ld hl, wBeatGymFlags	;joenote - redundant
@@ -87,76 +87,79 @@ VermilionGymScript_5caaa:
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_VERMILION_GYM_TRAINER_0, EVENT_BEAT_VERMILION_GYM_TRAINER_2
 
-	jp VermilionGymScript_5ca8a
+	jp VermilionGymScript_Reset
 
 VermilionGymTextPointers:
-	dw VermilionGymText1
-	dw VermilionGymText2
-	dw VermilionGymText3
-	dw VermilionGymText4
-	dw VermilionGymText5
-	dw VermilionGymText6
-	dw VermilionGymText7
-	dw VermilionGymText8
+	dw VermilionGymText_MajorBob
+	dw VermilionGymText_Trainer0
+	dw VermilionGymText_Trainer1
+	dw VermilionGymText_Trainer2
+	dw VermilionGymText_Guide
+	dw VermilionGymText_Badge
+	dw VermilionGymText_ReceivedTM
+	dw VermilionGymText_BagFull
 
 VermilionGymTrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_VERMILION_GYM_TRAINER_0
 	db ($3 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_VERMILION_GYM_TRAINER_0
-	dw VermilionGymBattleText1 ; TextBeforeBattle
-	dw VermilionGymAfterBattleText1 ; TextAfterBattle
-	dw VermilionGymEndBattleText1 ; TextEndBattle
-	dw VermilionGymEndBattleText1 ; TextEndBattle
+	dw VermilionGymText_Trainer0PreBattle ; TextBeforeBattle
+	dw VermilionGymText_Trainer0AfterBattle ; TextAfterBattle
+	dw VermilionGymText_Trainer0EndBattle ; TextEndBattle
+	dw VermilionGymText_Trainer0EndBattle ; TextEndBattle
 
 VermilionGymTrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_VERMILION_GYM_TRAINER_1
 	db ($2 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_VERMILION_GYM_TRAINER_1
-	dw VermilionGymBattleText2 ; TextBeforeBattle
-	dw VermilionGymAfterBattleText2 ; TextAfterBattle
-	dw VermilionGymEndBattleText2 ; TextEndBattle
-	dw VermilionGymEndBattleText2 ; TextEndBattle
+	dw VermilionGymText_Trainer1PreBattle ; TextBeforeBattle
+	dw VermilionGymText_Trainer1AfterBattle ; TextAfterBattle
+	dw VermilionGymText_Trainer1EndBattle ; TextEndBattle
+	dw VermilionGymText_Trainer1EndBattle ; TextEndBattle
 
 VermilionGymTrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_VERMILION_GYM_TRAINER_2
 	db ($3 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_VERMILION_GYM_TRAINER_2
-	dw VermilionGymBattleText3 ; TextBeforeBattle
-	dw VermilionGymAfterBattleText3 ; TextAfterBattle
-	dw VermilionGymEndBattleText3 ; TextEndBattle
-	dw VermilionGymEndBattleText3 ; TextEndBattle
+	dw VermilionGymText_Trainer2PreBattle ; TextBeforeBattle
+	dw VermilionGymText_Trainer2AfterBattle ; TextAfterBattle
+	dw VermilionGymText_Trainer2EndBattle ; TextEndBattle
+	dw VermilionGymText_Trainer2EndBattle ; TextEndBattle
 
 	db $ff
 
-VermilionGymText1:
+VermilionGymText_MajorBob:
 	TX_ASM
 	CheckEvent EVENT_BEAT_LT_SURGE
-	jr z, .asm_5cb39
+	jr z, .leaderFight
 	CheckEventReuseA EVENT_GOT_TM24
-	jr nz, .asm_5cb31
-	call z, VermilionGymScript_5caaa
+	jr nz, .askForRematch
+	call z, VermilionGymScript_GiveTM
 	call DisableWaitingAfterTextDisplay
-	jr .asm_5cb6a
-.asm_5cb31
+	jp .endScript
+.askForRematch
 ;;;;;;;joenote - have a rematch with gym leader?
 	ld hl, RematchTrainerText
 	call PrintText
 	call NoYesChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .asm_5cb39
+	jr nz, .leaderFight
 ;;;;;;;
-	ld hl, VermilionGymText_5cb72
+	ld hl, VermilionGymText_LeaderAfterBattle
 	call PrintText
-	jr .asm_5cb6a
-.asm_5cb39
-	ld hl, VermilionGymText_5cb6d
+	jr .endScript
+.leaderFight
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .leaderFightAfterElite4
+
+	ld hl, VermilionGymText_LeaderPreBattle
 	call PrintText
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, ReceivedThunderbadgeText
-	ld de, ReceivedThunderbadgeText
+	ld hl, VermilionGymText_LeaderEndBattle
+	ld de, VermilionGymText_LeaderEndBattle
 	call SaveEndBattleTextPointers
 	ld a, $3
 	ld [wGymLeaderNo], a
@@ -173,109 +176,139 @@ VermilionGymText1:
 	ld a, $3
 	ld [wVermilionGymCurScript], a
 	ld [wCurMapScript], a
-.asm_5cb6a
+	jr .endScript
+.leaderFightAfterElite4
+	ld hl, VermilionGymText_RematchPreBattle
+	call PrintText
+
+	ld hl, wd72d
+	set 6, [hl]
+	set 7, [hl]
+	ld hl, VermilionGymText_RematchEndBattle
+	ld de, VermilionGymText_RematchEndBattle
+	call SaveEndBattleTextPointers
+	ld a, $3
+	ld [wGymLeaderNo], a
+	ld a, [H_SPRITEINDEX]
+	ld [wSpriteIndex], a
+	call EngageMapTrainer
+	call InitBattleEnemyParameters
+	ld a, 2	;get the right roster
+	ld [wTrainerNo], a
+	xor a
+	ld [hJoyHeld], a
+	jr .endScript
+.endScript
 	jp TextScriptEnd
 
-VermilionGymText_5cb6d:
-	TX_FAR _VermilionGymText_5cb6d
+VermilionGymText_LeaderPreBattle:
+	TX_FAR _VermilionGymText_LeaderPreBattle
 	db "@"
 
-VermilionGymText_5cb72:
-	TX_FAR _VermilionGymText_5cb72
+VermilionGymText_LeaderAfterBattle:
+	TX_FAR _VermilionGymText_LeaderAfterBattle
 	db "@"
 
-VermilionGymText6:
-	TX_FAR _VermilionGymText_5cb77
+VermilionGymText_Badge:
+	TX_FAR _VermilionGymText_Badge
 	db "@"
 
-VermilionGymText7:
-	TX_FAR _ReceivedTM24Text
+VermilionGymText_ReceivedTM:
+	TX_FAR _VermilionGymText_ReceivedTM
 	;TX_SFX_KEY_ITEM	;joenote - wrong SFX played
 	TX_SFX_ITEM_1
-	TX_FAR _TM24ExplanationText
+	TX_FAR _VermilionGymText_TMExplanation
 	db "@"
 
-VermilionGymText8:
-	TX_FAR _TM24NoRoomText
+VermilionGymText_BagFull:
+	TX_FAR _VermilionGymText_BagFull
 	db "@"
 
-ReceivedThunderbadgeText:
-	TX_FAR _ReceivedThunderbadgeText
+VermilionGymText_LeaderEndBattle:
+	TX_FAR _VermilionGymText_LeaderEndBattle
 	TX_SFX_KEY_ITEM	;joenote - play an unused sfx instead (triggered by playing GET_KEY_ITEM in battle)
 	db "@"
 
-VermilionGymText2:
+VermilionGymText_RematchPreBattle:
+	TX_FAR _VermilionGymText_RematchPreBattle
+	db "@"
+
+VermilionGymText_RematchEndBattle:
+	TX_FAR _VermilionGymText_RematchEndBattle
+	db "@"
+
+VermilionGymText_Trainer0:
 	TX_ASM
 	ld hl, VermilionGymTrainerHeader0
 	call TalkToTrainer
 	jp TextScriptEnd
 
-VermilionGymBattleText1:
-	TX_FAR _VermilionGymBattleText1
+VermilionGymText_Trainer0PreBattle:
+	TX_FAR _VermilionGymText_Trainer0PreBattle
 	db "@"
 
-VermilionGymEndBattleText1:
-	TX_FAR _VermilionGymEndBattleText1
+VermilionGymText_Trainer0EndBattle:
+	TX_FAR _VermilionGymText_Trainer0EndBattle
 	db "@"
 
-VermilionGymAfterBattleText1:
-	TX_FAR _VermilionGymAfterBattleText1
+VermilionGymText_Trainer0AfterBattle:
+	TX_FAR _VermilionGymText_Trainer0AfterBattle
 	db "@"
 
-VermilionGymText3:
+VermilionGymText_Trainer1:
 	TX_ASM
 	ld hl, VermilionGymTrainerHeader1
 	call TalkToTrainer
 	jp TextScriptEnd
 
-VermilionGymBattleText2:
-	TX_FAR _VermilionGymBattleText2
+VermilionGymText_Trainer1PreBattle:
+	TX_FAR _VermilionGymText_Trainer1PreBattle
 	db "@"
 
-VermilionGymEndBattleText2:
-	TX_FAR _VermilionGymEndBattleText2
+VermilionGymText_Trainer1EndBattle:
+	TX_FAR _VermilionGymText_Trainer1EndBattle
 	db "@"
 
-VermilionGymAfterBattleText2:
-	TX_FAR _VermilionGymAfterBattleText2
+VermilionGymText_Trainer1AfterBattle:
+	TX_FAR _VermilionGymText_Trainer1AfterBattle
 	db "@"
 
-VermilionGymText4:
+VermilionGymText_Trainer2:
 	TX_ASM
 	ld hl, VermilionGymTrainerHeader2
 	call TalkToTrainer
 	jp TextScriptEnd
 
-VermilionGymBattleText3:
-	TX_FAR _VermilionGymBattleText3
+VermilionGymText_Trainer2PreBattle:
+	TX_FAR _VermilionGymText_Trainer2PreBattle
 	db "@"
 
-VermilionGymEndBattleText3:
-	TX_FAR _VermilionGymEndBattleText3
+VermilionGymText_Trainer2EndBattle:
+	TX_FAR _VermilionGymText_Trainer2EndBattle
 	db "@"
 
-VermilionGymAfterBattleText3:
-	TX_FAR _VermilionGymAfterBattleText3
+VermilionGymText_Trainer2AfterBattle:
+	TX_FAR _VermilionGymText_Trainer2AfterBattle
 	db "@"
 
-VermilionGymText5:
+VermilionGymText_Guide:
 	TX_ASM
 	ld a, [wObtainedBadges];[wBeatGymFlags]
 	bit 2, a
-	jr nz, .asm_5cbeb
-	ld hl, VermilionGymText_5cbf4
+	jr nz, .arenaVictory
+	ld hl, VermilionGymText_GuideTip
 	call PrintText
-	jr .asm_5cbf1
-.asm_5cbeb
-	ld hl, VermilionGymText_5cbf9
+	jr .endScript
+.arenaVictory
+	ld hl, VermilionGymText_GuideVictory
 	call PrintText
-.asm_5cbf1
+.endScript
 	jp TextScriptEnd
 
-VermilionGymText_5cbf4:
-	TX_FAR _VermilionGymText_5cbf4
+VermilionGymText_GuideTip:
+	TX_FAR _VermilionGymText_GuideTip
 	db "@"
 
-VermilionGymText_5cbf9:
-	TX_FAR _VermilionGymText_5cbf9
+VermilionGymText_GuideVictory:
+	TX_FAR _VermilionGymText_GuideVictory
 	db "@"

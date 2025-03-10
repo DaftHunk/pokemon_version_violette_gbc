@@ -1,4 +1,4 @@
-_KogaBeforeBattleText::
+_FuchsiaGymText_LeaderPreBattle::
 	text "Koga: Gwahahaha!"
 
 	para "Un nain ose me"
@@ -18,7 +18,7 @@ _KogaBeforeBattleText::
 	cont "petits #mon!"
 	done
 
-_KogaAfterBattleText::
+_FuchsiaGymText_LeaderEndBattle::
 	text "Gwaha...heu?"
 	line "Tu as prouvé ta"
 	cont "valeur!"

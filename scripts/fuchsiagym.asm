@@ -1,5 +1,5 @@
 FuchsiaGymScript:
-	call FuchsiaGymScript_75453
+	call FuchsiaGymScript_Header
 	call EnableAutoTextBoxDrawing
 	ld hl, FuchsiaGymTrainerHeader0
 	ld de, FuchsiaGymScriptPointers
@@ -8,7 +8,7 @@ FuchsiaGymScript:
 	ld [wFuchsiaGymCurScript], a
 	ret
 
-FuchsiaGymScript_75453:
+FuchsiaGymScript_Header:
 	ld hl, wCurrentMapScriptFlags
 	bit 6, [hl]
 	res 6, [hl]
@@ -23,7 +23,7 @@ Gym5CityName:
 Gym5LeaderName:
 	db "Koga@"
 
-FuchsiaGymScript_75477:
+FuchsiaGymScript_Reset:
 	xor a
 	ld [wJoyIgnore], a
 	ld [wFuchsiaGymCurScript], a
@@ -34,13 +34,13 @@ FuchsiaGymScriptPointers:
 	dw CheckFightingMapTrainers
 	dw DisplayEnemyTrainerTextAndStartBattle
 	dw EndTrainerBattle
-	dw FuchsiaGymScript3
+	dw FuchsiaGymScript_Battle
 
-FuchsiaGymScript3:
+FuchsiaGymScript_Battle:
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, FuchsiaGymScript_75477
-
+	jp z, FuchsiaGymScript_Reset
+;;;;joenote added tutor
 	ld a, [wPartyCount]
 	dec a
 	jr nz, .notutor	;party count must be 1
@@ -54,31 +54,31 @@ FuchsiaGymScript3:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 .notutor
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, $f0
 	ld [wJoyIgnore], a
 ;;;;joenote - added for rematch to skip gym leader tm
 	CheckEvent EVENT_GOT_TM06
-	jp nz, FuchsiaGymScript_75477
+	jp nz, FuchsiaGymScript_Reset
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-FuchsiaGymScript3_75497:
+FuchsiaGymScript_GiveTM:
 	ld a, $9
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_KOGA
 	lb bc, TM06_TOXIC, 1
 	call GiveItem
-	jr nc, .BagFull
+	jr nc, .bagFull
 	ld a, $a
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_GOT_TM06
-	jr .asm_754c0
-.BagFull
+	jr .endScript
+.bagFull
 	ld a, $b
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
-.asm_754c0
+.endScript
 	ld hl, wObtainedBadges
 	set 4, [hl]
 	;ld hl, wBeatGymFlags	;joenote - redundant
@@ -87,88 +87,88 @@ FuchsiaGymScript3_75497:
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_FUCHSIA_GYM_TRAINER_0, EVENT_BEAT_FUCHSIA_GYM_JANINE
 
-	jp FuchsiaGymScript_75477
+	jp FuchsiaGymScript_Reset
 
 FuchsiaGymTextPointers:
-	dw FuchsiaGymText1
-	dw FuchsiaGymText2
-	dw FuchsiaGymText3
-	dw FuchsiaGymText4
-	dw FuchsiaGymText5
-	dw FuchsiaGymText6
+	dw FuchsiaGymText_Koga
+	dw FuchsiaGymText_Trainer0
+	dw FuchsiaGymText_Trainer1
+	dw FuchsiaGymText_Trainer2
+	dw FuchsiaGymText_Trainer3
+	dw FuchsiaGymText_Trainer4
 	dw FuchsiaGymJanineText
-	dw FuchsiaGymText8
-	dw FuchsiaGymText9
-	dw FuchsiaGymText10
-	dw FuchsiaGymText11
+	dw FuchsiaGymText_Guide
+	dw FuchsiaGymText_Badge
+	dw FuchsiaGymText_ReceiveTM
+	dw FuchsiaGymText_BagFull
 	dw KogaScytherNinjaTraining
 
 FuchsiaGymTrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_TRAINER_0
 	db ($2 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_FUCHSIA_GYM_TRAINER_0
-	dw FuchsiaGymBattleText1 ; TextBeforeBattle
-	dw FuchsiaGymAfterBattleText1 ; TextAfterBattle
-	dw FuchsiaGymEndBattleText1 ; TextEndBattle
-	dw FuchsiaGymEndBattleText1 ; TextEndBattle
+	dw FuchsiaGymText_Trainer0PreBattle ; TextBeforeBattle
+	dw FuchsiaGymText_Trainer0AfterBattle ; TextAfterBattle
+	dw FuchsiaGymText_Trainer0EndBattle ; TextEndBattle
+	dw FuchsiaGymText_Trainer0EndBattle ; TextEndBattle
 
 FuchsiaGymTrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_TRAINER_1
 	db ($2 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_FUCHSIA_GYM_TRAINER_1
-	dw FuchsiaGymBattleText2 ; TextBeforeBattle
-	dw FuchsiaGymAfterBattleText2 ; TextAfterBattle
-	dw FuchsiaGymEndBattleText2 ; TextEndBattle
-	dw FuchsiaGymEndBattleText2 ; TextEndBattle
+	dw FuchsiaGymText_Trainer1PreBattle ; TextBeforeBattle
+	dw FuchsiaGymText_Trainer1AfterBattle ; TextAfterBattle
+	dw FuchsiaGymText_Trainer1EndBattle ; TextEndBattle
+	dw FuchsiaGymText_Trainer1EndBattle ; TextEndBattle
 
 FuchsiaGymTrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_TRAINER_2
 	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_FUCHSIA_GYM_TRAINER_2
-	dw FuchsiaGymBattleText3 ; TextBeforeBattle
-	dw FuchsiaGymAfterBattleText3 ; TextAfterBattle
-	dw FuchsiaGymEndBattleText3 ; TextEndBattle
-	dw FuchsiaGymEndBattleText3 ; TextEndBattle
+	dw FuchsiaGymText_Trainer2PreBattle ; TextBeforeBattle
+	dw FuchsiaGymText_Trainer2AfterBattle ; TextAfterBattle
+	dw FuchsiaGymText_Trainer2EndBattle ; TextEndBattle
+	dw FuchsiaGymText_Trainer2EndBattle ; TextEndBattle
 
 FuchsiaGymTrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_TRAINER_3
 	db ($2 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_FUCHSIA_GYM_TRAINER_3
-	dw FuchsiaGymBattleText4 ; TextBeforeBattle
-	dw FuchsiaGymAfterBattleText4 ; TextAfterBattle
-	dw FuchsiaGymEndBattleText4 ; TextEndBattle
-	dw FuchsiaGymEndBattleText4 ; TextEndBattle
+	dw FuchsiaGymText_Trainer3PreBattle ; TextBeforeBattle
+	dw FuchsiaGymText_Trainer3AfterBattle ; TextAfterBattle
+	dw FuchsiaGymText_Trainer3EndBattle ; TextEndBattle
+	dw FuchsiaGymText_Trainer3EndBattle ; TextEndBattle
 
 FuchsiaGymTrainerHeader4:
 	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_TRAINER_4
 	db ($2 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_FUCHSIA_GYM_TRAINER_4
-	dw FuchsiaGymBattleText5 ; TextBeforeBattle
-	dw FuchsiaGymAfterBattleText5 ; TextAfterBattle
-	dw FuchsiaGymEndBattleText5 ; TextEndBattle
-	dw FuchsiaGymEndBattleText5 ; TextEndBattle
+	dw FuchsiaGymText_Trainer4PreBattle ; TextBeforeBattle
+	dw FuchsiaGymText_Trainer4AfterBattle ; TextAfterBattle
+	dw FuchsiaGymText_Trainer4EndBattle ; TextEndBattle
+	dw FuchsiaGymText_Trainer4EndBattle ; TextEndBattle
 
 FuchsiaGymJanineHeader:
 	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_JANINE
 	db ($2 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_FUCHSIA_GYM_JANINE
-	dw FuchsiaGymJanineBattleText ; TextBeforeBattle
-	dw FuchsiaGymJanineAfterBattleText ; TextAfterBattle
-	dw FuchsiaGymJanineEndBattleText ; TextEndBattle
-	dw FuchsiaGymJanineEndBattleText ; TextEndBattle
+	dw FuchsiaGymText_JaninePreBattle ; TextBeforeBattle
+	dw FuchsiaGymText_JanineAfterBattle ; TextAfterBattle
+	dw FuchsiaGymText_JanineEndBattle ; TextEndBattle
+	dw FuchsiaGymText_JanineEndBattle ; TextEndBattle
 
 	db $ff
 
-FuchsiaGymText1:
+FuchsiaGymText_Koga:
 	TX_ASM
 	CheckEvent EVENT_BEAT_KOGA
-	jr z, .asm_181b6
+	jr z, .leaderFight
 	CheckEventReuseA EVENT_GOT_TM06
-	jr nz, .asm_adc3b
-	call z, FuchsiaGymScript3_75497
+	jr nz, .askForRematch
+	call z, FuchsiaGymScript_GiveTM
 	call DisableWaitingAfterTextDisplay
-	jr .asm_e84c6
-.asm_adc3b
+	jp .endScript
+.askForRematch
 	call KogaScytherTutor
 	jp z, KogaScytherTutorEndScript
 ;;;;;;;joenote - have a rematch with gym leader?
@@ -177,19 +177,22 @@ FuchsiaGymText1:
 	call NoYesChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .asm_181b6
+	jr nz, .leaderFight
 ;;;;;;;
-	ld hl, KogaExplainToxicText
+	ld hl, FuchsiaGymText_LeaderAfterBattle
 	call PrintText
-	jr .asm_e84c6
-.asm_181b6
-	ld hl, KogaBeforeBattleText
+	jr .endScript
+.leaderFight
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .leaderFightAfterElite4
+
+	ld hl, FuchsiaGymText_LeaderPreBattle
 	call PrintText
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, KogaAfterBattleText
-	ld de, KogaAfterBattleText
+	ld hl, FuchsiaGymText_LeaderEndBattle
+	ld de, FuchsiaGymText_LeaderEndBattle
 	call SaveEndBattleTextPointers
 	ld a, $5
 	ld [wGymLeaderNo], a
@@ -201,127 +204,157 @@ FuchsiaGymText1:
 	ld [hJoyHeld], a
 	ld a, $3
 	ld [wFuchsiaGymCurScript], a
-.asm_e84c6
+	jr .endScript
+.leaderFightAfterElite4
+	ld hl, FuchsiaGymText_RematchPreBattle
+	call PrintText
+
+	ld hl, wd72d
+	set 6, [hl]
+	set 7, [hl]
+	ld hl, FuchsiaGymText_RematchEndBattle
+	ld de, FuchsiaGymText_RematchEndBattle
+	call SaveEndBattleTextPointers
+	ld a, $5
+	ld [wGymLeaderNo], a
+	ld a, [H_SPRITEINDEX]
+	ld [wSpriteIndex], a
+	call EngageMapTrainer
+	call InitBattleEnemyParameters
+	ld a, 3	;get the right roster
+	ld [wTrainerNo], a
+	xor a
+	ld [hJoyHeld], a
+	jr .endScript
+.endScript
 	jp TextScriptEnd
 
-KogaBeforeBattleText:
-	TX_FAR _KogaBeforeBattleText
+FuchsiaGymText_LeaderPreBattle:
+	TX_FAR _FuchsiaGymText_LeaderPreBattle
 	db "@"
 
-KogaAfterBattleText:
-	TX_FAR _KogaAfterBattleText
+FuchsiaGymText_LeaderEndBattle:
+	TX_FAR _FuchsiaGymText_LeaderEndBattle
 	TX_SFX_KEY_ITEM	;joenote - play an unused sfx instead (triggered by playing GET_KEY_ITEM in battle)
 	db "@"
 
-KogaExplainToxicText:
-	TX_FAR _KogaExplainToxicText
+FuchsiaGymText_LeaderAfterBattle:
+	TX_FAR _FuchsiaGymText_LeaderAfterBattle
 	db "@"
 
-FuchsiaGymText9:
-	TX_FAR _FuchsiaGymText9
+FuchsiaGymText_Badge:
+	TX_FAR _FuchsiaGymText_Badge
 	db "@"
 
-FuchsiaGymText10:
-	TX_FAR _ReceivedTM06Text
+FuchsiaGymText_ReceiveTM:
+	TX_FAR _FuchsiaGymText_ReceiveTM
 	;TX_SFX_KEY_ITEM	;joenote - wrong SFX played
 	TX_SFX_ITEM_1
 
-TM06ExplanationText:
-	TX_FAR _TM06ExplanationText
+FuchsiaGymText_TMExplanation:
+	TX_FAR _FuchsiaGymText_TMExplanation
 	db "@"
 
-FuchsiaGymText11:
-	TX_FAR _TM06NoRoomText
+FuchsiaGymText_BagFull:
+	TX_FAR _FuchsiaGymText_BagFull
 	db "@"
 
-FuchsiaGymText2:
+FuchsiaGymText_RematchPreBattle:
+	TX_FAR _FuchsiaGymText_RematchPreBattle
+	db "@"
+
+FuchsiaGymText_RematchEndBattle:
+	TX_FAR _FuchsiaGymText_RematchEndBattle
+	db "@"
+
+FuchsiaGymText_Trainer0:
 	TX_ASM
 	ld hl, FuchsiaGymTrainerHeader0
 	call TalkToTrainer
 	jp TextScriptEnd
 
-FuchsiaGymBattleText1:
-	TX_FAR _FuchsiaGymBattleText1
+FuchsiaGymText_Trainer0PreBattle:
+	TX_FAR _FuchsiaGymText_Trainer0PreBattle
 	db "@"
 
-FuchsiaGymEndBattleText1:
-	TX_FAR _FuchsiaGymEndBattleText1
+FuchsiaGymText_Trainer0EndBattle:
+	TX_FAR _FuchsiaGymText_Trainer0EndBattle
 	db "@"
 
-FuchsiaGymAfterBattleText1:
-	TX_FAR _FuchsiaGymAfterBattleText1
+FuchsiaGymText_Trainer0AfterBattle:
+	TX_FAR _FuchsiaGymText_Trainer0AfterBattle
 	db "@"
 
-FuchsiaGymText3:
+FuchsiaGymText_Trainer1:
 	TX_ASM
 	ld hl, FuchsiaGymTrainerHeader1
 	call TalkToTrainer
 	jp TextScriptEnd
 
-FuchsiaGymBattleText2:
-	TX_FAR _FuchsiaGymBattleText2
+FuchsiaGymText_Trainer1PreBattle:
+	TX_FAR _FuchsiaGymText_Trainer1PreBattle
 	db "@"
 
-FuchsiaGymEndBattleText2:
-	TX_FAR _FuchsiaGymEndBattleText2
+FuchsiaGymText_Trainer1EndBattle:
+	TX_FAR _FuchsiaGymText_Trainer1EndBattle
 	db "@"
 
-FuchsiaGymAfterBattleText2:
-	TX_FAR _FuchsiaGymAfterBattleText2
+FuchsiaGymText_Trainer1AfterBattle:
+	TX_FAR _FuchsiaGymText_Trainer1AfterBattle
 	db "@"
 
-FuchsiaGymText4:
+FuchsiaGymText_Trainer2:
 	TX_ASM
 	ld hl, FuchsiaGymTrainerHeader2
 	call TalkToTrainer
 	jp TextScriptEnd
 
-FuchsiaGymBattleText3:
-	TX_FAR _FuchsiaGymBattleText3
+FuchsiaGymText_Trainer2PreBattle:
+	TX_FAR _FuchsiaGymText_Trainer2PreBattle
 	db "@"
 
-FuchsiaGymEndBattleText3:
-	TX_FAR _FuchsiaGymEndBattleText3
+FuchsiaGymText_Trainer2EndBattle:
+	TX_FAR _FuchsiaGymText_Trainer2EndBattle
 	db "@"
 
-FuchsiaGymAfterBattleText3:
-	TX_FAR _FuchsiaGymAfterBattleText3
+FuchsiaGymText_Trainer2AfterBattle:
+	TX_FAR _FuchsiaGymText_Trainer2AfterBattle
 	db "@"
 
-FuchsiaGymText5:
+FuchsiaGymText_Trainer3:
 	TX_ASM
 	ld hl, FuchsiaGymTrainerHeader3
 	call TalkToTrainer
 	jp TextScriptEnd
 
-FuchsiaGymBattleText4:
-	TX_FAR _FuchsiaGymBattleText4
+FuchsiaGymText_Trainer3PreBattle:
+	TX_FAR _FuchsiaGymText_Trainer3PreBattle
 	db "@"
 
-FuchsiaGymEndBattleText4:
-	TX_FAR _FuchsiaGymEndBattleText4
+FuchsiaGymText_Trainer3EndBattle:
+	TX_FAR _FuchsiaGymText_Trainer3EndBattle
 	db "@"
 
-FuchsiaGymAfterBattleText4:
-	TX_FAR _FuchsiaGymAfterBattleText4
+FuchsiaGymText_Trainer3AfterBattle:
+	TX_FAR _FuchsiaGymText_Trainer3AfterBattle
 	db "@"
 
-FuchsiaGymText6:
+FuchsiaGymText_Trainer4:
 	TX_ASM
 	ld hl, FuchsiaGymTrainerHeader4
 	call TalkToTrainer
 	jp TextScriptEnd
 
-FuchsiaGymBattleText5:
-	TX_FAR _FuchsiaGymBattleText5
+FuchsiaGymText_Trainer4PreBattle:
+	TX_FAR _FuchsiaGymText_Trainer4PreBattle
 	db "@"
 
-FuchsiaGymEndBattleText5:
-	TX_FAR _FuchsiaGymEndBattleText5
+FuchsiaGymText_Trainer4EndBattle:
+	TX_FAR _FuchsiaGymText_Trainer4EndBattle
 	db "@"
 
-FuchsiaGymAfterBattleText5:
-	TX_FAR _FuchsiaGymAfterBattleText5
+FuchsiaGymText_Trainer4AfterBattle:
+	TX_FAR _FuchsiaGymText_Trainer4AfterBattle
 	db "@"
 
 FuchsiaGymJanineText:
@@ -330,36 +363,35 @@ FuchsiaGymJanineText:
 	call TalkToTrainer
 	jp TextScriptEnd
 
-FuchsiaGymJanineBattleText:
-	TX_FAR _FuchsiaGymJanineBattleText
+FuchsiaGymText_JaninePreBattle:
+	TX_FAR _FuchsiaGymText_JaninePreBattle
 	db "@"
 
-FuchsiaGymJanineEndBattleText:
-	TX_FAR _FuchsiaGymJanineEndBattleText
+FuchsiaGymText_JanineEndBattle:
+	TX_FAR _FuchsiaGymText_JanineEndBattle
 	db "@"
 
-FuchsiaGymJanineAfterBattleText:
-	TX_FAR _FuchsiaGymJanineAfterBattleText
+FuchsiaGymText_JanineAfterBattle:
+	TX_FAR _FuchsiaGymText_JanineAfterBattle
 	db "@"
 
-FuchsiaGymText8:
+FuchsiaGymText_Guide:
 	TX_ASM
 	CheckEvent EVENT_BEAT_KOGA
-	ld hl, FuchsiaGymText_75653
-	jr nz, .asm_50671
-	ld hl, FuchsiaGymText_7564e
-.asm_50671
+	ld hl, FuchsiaGymText_GuideVictory
+	jr nz, .endScript
+	ld hl, FuchsiaGymText_GuideTip
+.endScript
 	call PrintText
 	jp TextScriptEnd
 
-FuchsiaGymText_7564e:
-	TX_FAR _FuchsiaGymText_7564e
+FuchsiaGymText_GuideTip:
+	TX_FAR _FuchsiaGymText_GuideTip
 	db "@"
 
-FuchsiaGymText_75653:
-	TX_FAR _FuchsiaGymText_75653
+FuchsiaGymText_GuideVictory:
+	TX_FAR _FuchsiaGymText_GuideVictory
 	db "@"
-
 	
 
 	

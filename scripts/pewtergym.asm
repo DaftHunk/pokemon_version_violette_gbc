@@ -85,8 +85,8 @@ PewterGymTextPointers:
 	dw PewterGymText_Brock
 	dw PewterGymText_Trainer0
 	dw PewterGymText_Guide
-	dw PewterGymText_BrockWait
-	dw PewterGymText_LeaderReceivedTM
+	dw PewterGymText_Wait
+	dw PewterGymText_ReceivedTM
 	dw PewterGymText_BagFull
 
 PewterGymTrainerHeader0:
@@ -130,8 +130,8 @@ PewterGymText_Brock:
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, PewterGymText_LeaderEndBattle1
-	ld de, PewterGymText_LeaderEndBattle1
+	ld hl, PewterGymText_LeaderEndBattle
+	ld de, PewterGymText_LeaderEndBattle
 	call SaveEndBattleTextPointers
 	ld a, $1
 	ld [wGymLeaderNo], a
@@ -180,25 +180,25 @@ PewterGymText_LeaderAfterBattle:
 	TX_FAR _PewterGymText_LeaderAfterBattle
 	db "@"
 
-PewterGymText_BrockWait:
-	TX_FAR _PewterGymText_BrockWait
+PewterGymText_Wait:
+	TX_FAR _PewterGymText_Wait
 	db "@"
 
-PewterGymText_LeaderReceivedTM:
-	TX_FAR _PewterGymText_LeaderReceivedTM
+PewterGymText_ReceivedTM:
+	TX_FAR _PewterGymText_ReceivedTM
 	TX_SFX_ITEM_1
-	TX_FAR _PewterGymText_LeaderTMExplanation
+	TX_FAR _PewterGymText_TMExplanation
 	db "@"
 
 PewterGymText_BagFull:
 	TX_FAR _PewterGymText_BagFull
 	db "@"
 
-PewterGymText_LeaderEndBattle1:
-	TX_FAR _PewterGymText_LeaderEndBattle1
+PewterGymText_LeaderEndBattle:
+	TX_FAR _PewterGymText_LeaderEndBattle
 	;TX_SFX_LEVEL_UP ; probably supposed to play SFX_GET_ITEM_1 but the wrong music bank is loaded
 	TX_SFX_KEY_ITEM	;joenote - play an unused sfx instead (triggered by playing GET_KEY_ITEM in battle)
-	TX_FAR _PewterGymText_LeaderEndBattle2
+	TX_FAR _PewterGymText_Badge
 	db "@"
 
 PewterGymText_Trainer0:

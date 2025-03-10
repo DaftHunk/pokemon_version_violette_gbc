@@ -77,6 +77,35 @@ _TM38NoRoomText::
 	line "est plein!"
 	done
 
+_CinnabarGymText_RematchPreBattle::
+	text "Ah! Le Champion!"
+    
+    para "J'ai attisé les"
+    line "flammes comme ja-"
+    cont "mais auparavant!"
+    
+    para "Voyons si tu peux"
+    line "encaisser mon in-"
+    cont "ferno maitenant!"
+
+	para "Laisse-moi te"
+    line "montrer la vraie"
+	cont "signification de"
+	cont "la terre brulée!"
+	done
+
+_CinnabarGymText_RematchEndBattle::
+	text "Wow!"
+    
+    para "Ta détermination"
+    line "est plus ardente"
+    cont "que mes flammes!"
+    
+    para "Tu mérites vrai-"
+	line "ment le titre"
+    cont "de Champion."
+	prompt
+
 _CinnabarGymText_7595f::
 	text "Un #mon du"
 	line "feu, c'est chaud!"
@@ -226,7 +255,7 @@ _CinnabarGymText_75aa7::
 	cont "J'sais plus!"
 	done
 
-_CinnabarGymText_75ac2::
+_CinnabarGymText_GuideTip::
 	text "Salut! Graine de"
 	line "champion!"
 
@@ -245,7 +274,7 @@ _CinnabarGymText_75ac2::
 	cont "toujours servir!"
 	done
 
-_CinnabarGymText_75ac7::
+_CinnabarGymText_GuideVictory::
 	text "<PLAYER>! Tu as"
 	line "battu Auguste!"
 	done

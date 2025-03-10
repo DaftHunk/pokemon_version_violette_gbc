@@ -186,7 +186,7 @@ ViridianGymTextPointers:
 	dw ViridianGymText_Trainer7
 	dw ViridianGymText_Guide
 	dw PickUpItemText
-	dw ViridianGymText_LeaderEndBattle2
+	dw ViridianGymText_Badge
 	dw ViridianGymText_ReceivedTM
 	dw ViridianGymText_BagFull
 
@@ -300,8 +300,8 @@ ViridianGymText_Giovanni:
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, ViridianGymText_LeaderEndBattle1
-	ld de, ViridianGymText_LeaderEndBattle1
+	ld hl, ViridianGymText_LeaderEndBattle
+	ld de, ViridianGymText_LeaderEndBattle
 	call SaveEndBattleTextPointers
 	ld a, $8
 	ld [wGymLeaderNo], a
@@ -322,8 +322,8 @@ ViridianGymText_LeaderPreBattle:
 	TX_FAR _ViridianGymText_LeaderPreBattle
 	db "@"
 
-ViridianGymText_LeaderEndBattle1:
-	TX_FAR _ViridianGymText_LeaderEndBattle1
+ViridianGymText_LeaderEndBattle:
+	TX_FAR _ViridianGymText_LeaderEndBattle
 	;TX_SFX_LEVEL_UP ; probably supposed to play SFX_GET_ITEM_1 but the wrong music bank is loaded
 	TX_SFX_KEY_ITEM	;joenote - play an unused sfx instead (triggered by playing GET_KEY_ITEM in battle)
 	db "@"
@@ -333,8 +333,8 @@ ViridianGymText_LeaderAfterBattle:
 	TX_WAIT
 	db "@"
 
-ViridianGymText_LeaderEndBattle2:
-	TX_FAR _ViridianGymText_LeaderEndBattle2
+ViridianGymText_Badge:
+	TX_FAR _ViridianGymText_Badge
 	db "@"
 
 ViridianGymText_ReceivedTM:

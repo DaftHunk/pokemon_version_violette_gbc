@@ -59,7 +59,7 @@ _CeruleanGymText_LeaderAfterBattle::
 	line "#mon de l'eau!"
 	done
 
-_CeruleanGymText_TMExplanation::
+_CeruleanGymText_Badge::
 	text "Le BadgeCascade"
 	line "oblige tous les"
 	cont "#mon d'un"

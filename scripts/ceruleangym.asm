@@ -75,7 +75,7 @@ CeruleanGymTextPointers:
 	dw CeruleanGymText_Trainer0
 	dw CeruleanGymText_Trainer1
 	dw CeruleanGymText_Guide
-	dw CeruleanGymText_TMExplanation
+	dw CeruleanGymText_Badge
 	dw CeruleanGymText_ReceivedTM
 	dw CeruleanGymText_BagFull
 
@@ -179,8 +179,8 @@ CeruleanGymText_LeaderAfterBattle:
 	TX_FAR _CeruleanGymText_LeaderAfterBattle
 	db "@"
 
-CeruleanGymText_TMExplanation:
-	TX_FAR _CeruleanGymText_TMExplanation
+CeruleanGymText_Badge:
+	TX_FAR _CeruleanGymText_Badge
 	db "@"
 
 CeruleanGymText_ReceivedTM:

@@ -1,4 +1,4 @@
-_CeladonGymText_48a5e::
+_CeladonGymText_LeaderPreBattle::
 	text "Bonjour et sois"
 	line "le bienvenu. Il"
 	cont "fait beau, n'est-"
@@ -31,7 +31,7 @@ _CeladonGymText_48a5e::
 	line "Tu vas perdre!"
 	done
 
-_CeladonGymText_48a63::
+_CeladonGymText_LeaderEndBattle::
 	text "Oh!"
 	line "J'ai perdu?"
 
@@ -42,7 +42,7 @@ _CeladonGymText_48a63::
 	line "Badge Prisme."
 	prompt
 
-_CeladonGymText_48a68::
+_CeladonGymText_LeaderAfterBattle::
 	text "Tu recherches les"
 	line "#mon? Ta quête"
 	cont "est noble."
@@ -53,7 +53,7 @@ _CeladonGymText_48a68::
 	cont "#mon."
 	done
 
-_CeladonGymText9::
+_CeladonGymText_Badge::
 	text "Le Badge Prisme"
 	line "fera obéir les"
 	cont "#mon jusqu'au"
@@ -67,14 +67,14 @@ _CeladonGymText9::
 	line "ceci."
 	done
 
-_ReceivedTM21Text::
+_ReceivedCeladonGymText_TMReceived::
 	text "<PLAYER> reçoit"
 	line "@"
 	text_ram wStringBuffer
 	text "!@"
 	text_end
 
-_TM21ExplanationText::
+_CeladonGymText_TMExplanation::
 	text_start
 
 	para "CT21: "
@@ -86,40 +86,68 @@ _TM21ExplanationText::
 	cont "#mon!"
 	done
 
-_TM21NoRoomText::
+_CeladonGymText_BagFull::
 	text "Ton inventaire"
 	line "est plein."
 	done
 
-_CeladonGymBattleText2::
+_CeladonGymText_RematchPreBattle::
+	text "Tu sembles avoir"
+	line "mûri."
+
+	para "Que dirais-tu"
+	line "d'une revanche à"
+	cont "l'ancienne?"
+
+	para "Prépare-toi,"
+	line "mes #mon sont"
+	cont "en pleine"
+	cont "floraison!"
+	done
+
+_CeladonGymText_RematchEndBattle::
+	text "Eh bien!"
+
+	para "Ta force surpasse"
+	line "même la beauté de"
+	cont "mes #mons à"
+	cont "pleine maturitée."
+
+	para "Ta victoire est"
+	line "bien méritée."
+
+	para "Bien joué!"
+	prompt
+
+_CeladonGymText_Trainer0PreBattle::
 	text "Hé toi!"
 
 	para "C'est interdit"
 	line "par ici!"
 	done
 
-_CeladonGymEndBattleText2::
+_CeladonGymText_Trainer0EndBattle::
 	text "T'es..."
 	line "Trop fort!"
 	prompt
 
-_CeladonGymAfterBattleText2::
+_CeladonGymText_Trainer0AfterBattle::
 	text "Pfff!"
 	line "Erika va gagner"
 	cont "c'est sûr!"
 	done
 
-_CeladonGymBattleText3::
+_CeladonGymText_Trainer1PreBattle::
 	text "J'suis belle!!"
 	line "Hein? Hein?"
 	done
 
-_CeladonGymEndBattleText3::
+_CeladonGymText_Trainer1EndBattle::
 	text "Hein?"
 	line "Mes cheveux!"
 	prompt
 
-_CeladonGymAfterBattleText3::
+_CeladonGymText_Trainer1AfterBattle::
 	text "Un #mon des"
 	line "plantes est fort"
 	cont "face aux #mon"
@@ -131,23 +159,23 @@ _CeladonGymAfterBattleText3::
 	cont "la roche!"
 	done
 
-_CeladonGymBattleText4::
+_CeladonGymText_Trainer2PreBattle::
 	text "Mais kesstu fais"
 	line "là, toi?"
 	done
 
-_CeladonGymEndBattleText4::
+_CeladonGymText_Trainer2EndBattle::
 	text "..."
 	line "Tout perdu!"
 	prompt
 
-_CeladonGymAfterBattleText4::
+_CeladonGymText_Trainer2AfterBattle::
 	text "Ne me parle pas."
 	line "Mais alors...."
 	cont "Surtout pas!"
 	done
 
-_CeladonGymBattleText5::
+_CeladonGymText_Trainer3PreBattle::
 	text "#mon!"
 
 	para "Mes jolis petits"
@@ -159,11 +187,11 @@ _CeladonGymBattleText5::
 	cont "...Combat!!!"
 	done
 
-_CeladonGymEndBattleText5::
+_CeladonGymText_Trainer3EndBattle::
 	text "Waouargh!"
 	prompt
 
-_CeladonGymAfterBattleText5::
+_CeladonGymText_Trainer3AfterBattle::
 	text "Notre Arène"
 	line "n'utilise que des"
 	cont "#mon des"
@@ -173,38 +201,38 @@ _CeladonGymAfterBattleText5::
 	line "à décorer! Cool."
 	done
 
-_CeladonGymBattleText6::
+_CeladonGymText_Trainer4PreBattle::
 	text "C'est interdit"
 	line "aux #mon"
 	cont "insectes ou du"
 	cont "feu, ici!"
 	done
 
-_CeladonGymEndBattleText6::
+_CeladonGymText_Trainer4EndBattle::
 	text "Oh!"
 	line "Vilain."
 	prompt
 
-_CeladonGymAfterBattleText6::
+_CeladonGymText_Trainer4AfterBattle::
 	text "Erika, notre"
 	line "championne, est"
 	cont "silencieuse mais"
 	cont "meurtrière!"
 	done
 
-_CeladonGymBattleText7::
+_CeladonGymText_Trainer5PreBattle::
 	text "Toi..."
 	line "Je vais..."
 	cont "Je vais t'écraser"
 	cont "comme une puce."
 	done
 
-_CeladonGymEndBattleText7::
+_CeladonGymText_Trainer5EndBattle::
 	text "Qu...!"
 	line "Qu... Hein?"
 	prompt
 
-_CeladonGymAfterBattleText7::
+_CeladonGymText_Trainer5AfterBattle::
 	text "Les insectes."
 	line "J'aime pas."
 	cont "La tarte aux"
@@ -212,7 +240,7 @@ _CeladonGymAfterBattleText7::
 	cont "C'est bon."
 	done
 
-_CeladonGymBattleText8::
+_CeladonGymText_Trainer6PreBattle::
 	text "Bienvenue dans"
 	line "l'Arène de"
 	cont "Céladopole!"
@@ -223,12 +251,12 @@ _CeladonGymBattleText8::
 	cont "Oh que oui!"
 	done
 
-_CeladonGymEndBattleText8::
+_CeladonGymText_Trainer6EndBattle::
 	text "Oh!"
 	line "Pourquoi?"
 	prompt
 
-_CeladonGymAfterBattleText8::
+_CeladonGymText_Trainer6AfterBattle::
 	text "Ce n'était pas"
 	line "ma meilleure"
 	cont "équipe!"

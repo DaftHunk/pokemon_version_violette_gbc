@@ -20,7 +20,7 @@ _ViridianGymText_LeaderPreBattle::
 	cont "tu vas déguster!"
 	done
 
-_ViridianGymText_LeaderEndBattle1::
+_ViridianGymText_LeaderEndBattle::
 	text "Ah!"
 	line "Voilà ce que"
 	cont "j'appelle du"
@@ -52,7 +52,7 @@ _ViridianGymText_LeaderAfterBattle::
 	cont "nouveau! Adieu!@"
 	text_end
 
-_ViridianGymText_LeaderEndBattle2::
+_ViridianGymText_Badge::
 	text "Grâce au Badge"
 	line "Terre tous les"
 	cont "#mon obéiront"

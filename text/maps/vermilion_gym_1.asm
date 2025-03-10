@@ -1,4 +1,4 @@
-_VermilionGymText_5cb6d::
+_VermilionGymText_LeaderPreBattle::
 	text "Hé, gamin!"
 	line "Tu fais quoi là?"
 

@@ -47,17 +47,17 @@ _PewterGymText_RematchEndBattle::
 	line "défis t'attendent."
 	prompt
 
-_PewterGymText_BrockWait::
+_PewterGymText_Wait::
 	text "Attends! Prends"
 	line "ça avec toi!"
 	done
 
-_PewterGymText_LeaderReceivedTM::
+_PewterGymText_ReceivedTM::
 	text "<PLAYER> reçoit"
 	line "la CT34!@"
 	text_end
 
-_PewterGymText_LeaderTMExplanation::
+_PewterGymText_TMExplanation::
 	text_start
 
 	para "Une CT (Capsule"
@@ -87,7 +87,7 @@ _PewterGymText_BagFull::
 	line "est plein!"
 	done
 
-_PewterGymText_LeaderEndBattle1::
+_PewterGymText_LeaderEndBattle::
 	text "Hmm..."
 	line "Beau combat."
 
@@ -100,7 +100,7 @@ _PewterGymText_LeaderEndBattle1::
 	line "le Badge Roche!@"
 	text_end
 
-_PewterGymText_LeaderEndBattle2::
+_PewterGymText_Badge::
 	text_start
 
 	para "C'est un Badge"

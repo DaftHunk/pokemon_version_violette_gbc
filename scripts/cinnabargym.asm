@@ -10,14 +10,14 @@ CinnabarGymScript_75759:
 	bit 6, [hl]
 	res 6, [hl]
 	push hl
-	call nz, CinnabarGymScript_75772
+	call nz, CinnabarGymScript_Header
 	pop hl
 	bit 5, [hl]
 	res 5, [hl]
 	call nz, UpdateCinnabarGymGateTileBlocks
 	ResetEvent EVENT_2A7
 	ret
-CinnabarGymScript_75772:
+CinnabarGymScript_Header:
 	ld hl, Gym7CityName
 	ld de, Gym7LeaderName
 	jp LoadGymLeaderAndCityName
@@ -27,7 +27,7 @@ Gym7CityName:
 Gym7LeaderName:
 	db "Auguste@"
 
-CinnabarGymScript_75792:
+CinnabarGymScript_Reset:
 	xor a
 	ld [wJoyIgnore], a
 	ld [wCinnabarGymCurScript], a
@@ -41,12 +41,12 @@ CinnabarGymScript_757a0:
 	ret
 
 CinnabarGymScriptPointers:
-	dw CinnabarGymScript0
-	dw CinnabarGymScript1
-	dw CinnabarGymScript2
-	dw CinnabarGymScript3
+	dw CinnabarGymScript_MapTrainers
+	dw CinnabarGymScript_DisplayText
+	dw CinnabarGymScript_EndTrainerBattle
+	dw CinnabarGymScript_Battle
 
-CinnabarGymScript0:
+CinnabarGymScript_MapTrainers:
 	ld a, [wOpponentAfterWrongAnswer]
 	and a
 	ret z
@@ -77,7 +77,7 @@ MovementData_757da:
 	db NPC_MOVEMENT_LEFT
 	db $FF
 
-CinnabarGymScript1:
+CinnabarGymScript_DisplayText:
 	ld a, [wd730]
 	bit 0, a
 	ret nz
@@ -91,10 +91,10 @@ CinnabarGymScript1:
 CinnabarGymFlagAction:
 	predef_jump FlagActionPredef
 
-CinnabarGymScript2:
+CinnabarGymScript_EndTrainerBattle:
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, CinnabarGymScript_75792
+	jp z, CinnabarGymScript_Reset
 	ld a, [wTrainerHeaderFlagBit]
 	ld [$ffdb], a
 	AdjustEventBit EVENT_BEAT_CINNABAR_GYM_TRAINER_0, 2
@@ -133,30 +133,30 @@ CinnabarGymScript2:
 	ld [wCurMapScript], a
 	ret
 
-CinnabarGymScript3:
+CinnabarGymScript_Battle:
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, CinnabarGymScript_75792
+	jp z, CinnabarGymScript_Reset
 	ld a, $f0
 	ld [wJoyIgnore], a
-CinnabarGymScript3_75857:
+CinnabarGymScript_GiveTM:
 	ld a, $a
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_BLAINE
 	lb bc, TM38_FIRE_BLAST, 1
 	call GiveItem
-	jr nc, .BagFull
+	jr nc, .bagFull
 	ld a, $b
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_GOT_TM38
-	jr .asm_75880
-.BagFull
+	jr .endScript
+.bagFull
 	ld a, $c
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
-.asm_75880
+.endScript
 	ld hl, wObtainedBadges
 	set 6, [hl]
 	;ld hl, wBeatGymFlags	;joenote - redundant
@@ -168,10 +168,10 @@ CinnabarGymScript3_75857:
 	ld hl, wCurrentMapScriptFlags
 	set 5, [hl]
 
-	jp CinnabarGymScript_75792
+	jp CinnabarGymScript_Reset
 
 CinnabarGymTextPointers:
-	dw CinnabarGymText1
+	dw CinnabarGymText_Blaine
 	dw CinnabarGymText2
 	dw CinnabarGymText3
 	dw CinnabarGymText4
@@ -179,7 +179,7 @@ CinnabarGymTextPointers:
 	dw CinnabarGymText6
 	dw CinnabarGymText7
 	dw CinnabarGymText8
-	dw CinnabarGymText9
+	dw CinnabarGymText_Guide
 	dw BlaineBadgeText
 	dw ReceivedTM38Text
 	dw TM38NoRoomText
@@ -200,36 +200,39 @@ CinnabarGymScript_758b7:
 	cp $1
 	jr z, .asm_758d4
 	ld a, $2
-	jr .asm_758d6
+	jr .endScript
 .asm_758d4
 	ld a, $3
-.asm_758d6
+.endScript
 	ld [wCinnabarGymCurScript], a
 	ld [wCurMapScript], a
 	jp TextScriptEnd
 
-CinnabarGymText1:
+CinnabarGymText_Blaine:
 	TX_ASM
 	CheckEvent EVENT_BEAT_BLAINE
-	jr z, .asm_d9332
+	jr z, .leaderFight
 	CheckEventReuseA EVENT_GOT_TM38
-	jr nz, .asm_3012f
-	call z, CinnabarGymScript3_75857
+	jr nz, .askForRematch
+	call z, CinnabarGymScript_GiveTM
 	call DisableWaitingAfterTextDisplay
 	jp TextScriptEnd
-.asm_3012f
+.askForRematch
 ;;;;;;;joenote - have a rematch with gym leader?
 	ld hl, RematchTrainerText
 	call PrintText
 	call NoYesChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .asm_d9332
+	jr nz, .leaderFight
 ;;;;;;;
 	ld hl, BlaineFireBlastText
 	call PrintText
 	jp TextScriptEnd
-.asm_d9332
+.leaderFight
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .leaderFightAfterElite4
+
 	ld hl, BlaineBattleText
 	call PrintText
 	ld hl, BlaineEndBattleText
@@ -238,6 +241,27 @@ CinnabarGymText1:
 	ld a, $7
 	ld [wGymLeaderNo], a
 	jp CinnabarGymScript_758b7
+.leaderFightAfterElite4
+	ld hl, CinnabarGymText_RematchPreBattle
+	call PrintText
+
+	ld hl, wd72d
+	set 6, [hl]
+	set 7, [hl]
+	ld hl, CinnabarGymText_RematchEndBattle
+	ld de, CinnabarGymText_RematchEndBattle
+	call SaveEndBattleTextPointers
+	ld a, $7
+	ld [wGymLeaderNo], a
+	ld a, [H_SPRITEINDEX]
+	ld [wSpriteIndex], a
+	call EngageMapTrainer
+	call InitBattleEnemyParameters
+	ld a, 2	;get the right roster
+	ld [wTrainerNo], a
+	xor a
+	ld [hJoyHeld], a
+	jp TextScriptEnd
 
 BlaineBattleText:
 	TX_FAR _BlaineBattleText
@@ -266,6 +290,14 @@ ReceivedTM38Text:
 
 TM38NoRoomText:
 	TX_FAR _TM38NoRoomText
+	db "@"
+
+CinnabarGymText_RematchPreBattle:
+	TX_FAR _CinnabarGymText_RematchPreBattle
+	db "@"
+
+CinnabarGymText_RematchEndBattle:
+	TX_FAR _CinnabarGymText_RematchEndBattle
 	db "@"
 
 CinnabarGymText2:
@@ -550,24 +582,24 @@ CinnabarGymText_75aa7:
 	TX_FAR _CinnabarGymText_75aa7
 	db "@"
 
-CinnabarGymText9:
+CinnabarGymText_Guide:
 	TX_ASM
 	CheckEvent EVENT_BEAT_BLAINE
-	jr nz, .asm_627d9
-	ld hl, CinnabarGymText_75ac2
-	jr .asm_0b11d
-.asm_627d9
-	ld hl, CinnabarGymText_75ac7
-.asm_0b11d
+	jr nz, .arenaVictory
+	ld hl, CinnabarGymText_GuideTip
+	jr .endScript
+.arenaVictory
+	ld hl, CinnabarGymText_GuideVictory
+.endScript
 	call PrintText
 	jp TextScriptEnd
 
-CinnabarGymText_75ac2:
-	TX_FAR _CinnabarGymText_75ac2
+CinnabarGymText_GuideTip:
+	TX_FAR _CinnabarGymText_GuideTip
 	db "@"
 
-CinnabarGymText_75ac7:
-	TX_FAR _CinnabarGymText_75ac7
+CinnabarGymText_GuideVictory:
+	TX_FAR _CinnabarGymText_GuideVictory
 	db "@"
 
 	

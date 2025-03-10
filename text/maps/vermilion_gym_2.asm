@@ -1,4 +1,4 @@
-_VermilionGymText_5cb72::
+_VermilionGymText_LeaderAfterBattle::
 	text "Un p'tit conseil,"
 	line "gamin!"
 
@@ -11,7 +11,7 @@ _VermilionGymText_5cb72::
 	cont "la terre!"
 	done
 
-_VermilionGymText_5cb77::
+_VermilionGymText_Badge::
 	text "Le BadgeFoudre"
 	line "augmente la"
 	cont "Défense de tes"	;joenote - changed SPEED to DEFENSE in order to fix a typo
@@ -26,14 +26,14 @@ _VermilionGymText_5cb77::
 	cont "Prends ça!"
 	done
 
-_ReceivedTM24Text::
+_VermilionGymText_ReceivedTM::
 	text "<PLAYER> reçoit:"
 	line "@"
 	text_ram wStringBuffer
 	text "!@"
 	text_end
 
-_TM24ExplanationText::
+_VermilionGymText_TMExplanation::
 	text_start
 
 	para "CT24 : Tonnerre!"
@@ -43,14 +43,14 @@ _TM24ExplanationText::
 	cont "foudre!"
 	done
 
-_TM24NoRoomText::
+_VermilionGymText_BagFull::
 	text "Revue d'paquetage"
 	line "p'tit gars, ton"
 	cont "inventaire est"
 	cont "plein!"
 	done
 
-_ReceivedThunderbadgeText::
+_VermilionGymText_LeaderEndBattle::
 	text "Whoo!"
 
 	para "Gard'vous! T'es"
@@ -61,19 +61,49 @@ _ReceivedThunderbadgeText::
 	line "le BadgeFoudre!"
 	prompt
 
-_VermilionGymBattleText1::
+_VermilionGymText_RematchPreBattle::
+	text "Champion, hein?"
+
+	para "Pendant ce temps,"
+	line "j'suis reparti"
+	cont "en entrainement."
+
+	para "Prêt à faire des"
+	line "étincelles Champ?"
+
+	para "Va y'avoir de"
+	line "l'orage dans"
+	cont "l'air!"
+	done
+
+_VermilionGymText_RematchEndBattle::
+	text "Ton"
+	line "équipe possède"
+	cont "une force"
+	cont "électrifiante!"
+
+	para "T'as encore"
+	line "prouvé ta valeur"
+	cont "Champion."
+
+	para "Allez p'tit gars,"
+    line "permission"
+	cont "accordée!"
+	prompt
+
+_VermilionGymText_Trainer0PreBattle::
 	text "Dans l'armée, le"
 	line "Major Bob était"
 	cont "mon instructeur"
 	cont "de combat!"
 	done
 
-_VermilionGymEndBattleText1::
+_VermilionGymText_Trainer0EndBattle::
 	text "Stop!"
 	line "Tu es fort!"
 	prompt
 
-_VermilionGymAfterBattleText1::
+_VermilionGymText_Trainer0AfterBattle::
 	text "Les portes ne"
 	line "s'ouvrent pas?"
 
@@ -81,19 +111,19 @@ _VermilionGymAfterBattleText1::
 	line "est prudent!"
 	done
 
-_VermilionGymBattleText2::
+_VermilionGymText_Trainer1PreBattle::
 	text "J'suis un poids"
 	line "plume, mais je"
 	cont "suis bon avec"
 	cont "l'électricité!"
 	done
 
-_VermilionGymEndBattleText2::
+_VermilionGymText_Trainer1EndBattle::
 	text "Argh!"
 	line "J'suis cuit!"
 	prompt
 
-_VermilionGymAfterBattleText2::
+_VermilionGymText_Trainer1AfterBattle::
 	text "OK, je parle!"
 
 	para "Le Major Bob a"
@@ -103,19 +133,19 @@ _VermilionGymAfterBattleText2::
 	cont "...Quequ'part!"
 	done
 
-_VermilionGymBattleText3::
+_VermilionGymText_Trainer2PreBattle::
 	text "C'est pas un"
 	line "endroit pour les"
 	cont "gamins, ici!"
 	done
 
-_VermilionGymEndBattleText3::
+_VermilionGymText_Trainer2EndBattle::
 	text "Argh!"
 	line "Tu m'as eu par"
 	cont "surprise!"
 	prompt
 
-_VermilionGymAfterBattleText3::
+_VermilionGymText_Trainer2AfterBattle::
 	text "Il y a une double"
 	line "sécurité! Voici"
 	cont "un indice!"
@@ -125,7 +155,7 @@ _VermilionGymAfterBattleText3::
 	cont "est à côté!"
 	done
 
-_VermilionGymText_5cbf4::
+_VermilionGymText_GuideTip::
 	text "Salut! Champion"
 	line "en herbe!"
 
@@ -157,7 +187,7 @@ _VermilionGymText_5cbf4::
 	cont "lui!"
 	done
 
-_VermilionGymText_5cbf9::
+_VermilionGymText_GuideVictory::
 	text "Wouh! Ce match"
 	line "était survolté!"
 	done
