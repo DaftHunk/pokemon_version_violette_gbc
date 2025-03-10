@@ -168,7 +168,7 @@ CeladonGymText_Erika:
 ;;;;;;;
 	ld hl, CeladonGymText_LeaderAfterBattle
 	call PrintText
-	jr .endScript
+	jp .endScript
 .leaderFight
 	CheckEvent EVENT_ELITE_4_BEATEN
 	jr nz, .leaderFightAfterElite4
@@ -187,6 +187,28 @@ CeladonGymText_Erika:
 	ld [wSpriteIndex], a
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
+
+	; Check if both Koga and Sabrina are defeated
+	CheckBothEventsSet EVENT_BEAT_KOGA, EVENT_BEAT_SABRINA
+	jr z, .erika3
+	; Else only one of them is
+	CheckEitherEventSet EVENT_BEAT_KOGA, EVENT_BEAT_SABRINA
+	jr nz, .erika2
+	; Else none of them are defeated
+	jr .erika1
+.erika1
+	ld a, 1	;get the right roster
+	ld [wTrainerNo], a
+	jr .afterBattle
+.erika2
+	ld a, 2	;get the right roster
+	ld [wTrainerNo], a
+	jr .afterBattle
+.erika3
+	ld a, 3	;get the right roster
+	ld [wTrainerNo], a
+	jr .afterBattle
+.afterBattle
 ;;;;joenote - added for rematch to skip gym leader tm
 	CheckEvent EVENT_GOT_TM21
 	jp nz, TextScriptEnd
