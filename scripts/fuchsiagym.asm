@@ -181,7 +181,7 @@ FuchsiaGymText_Koga:
 ;;;;;;;
 	ld hl, FuchsiaGymText_LeaderAfterBattle
 	call PrintText
-	jr .endScript
+	jp .endScript
 .leaderFight
 	CheckEvent EVENT_ELITE_4_BEATEN
 	jr nz, .leaderFightAfterElite4
@@ -200,6 +200,25 @@ FuchsiaGymText_Koga:
 	ld [wSpriteIndex], a
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
+
+	; Check if Erika is defeated
+	CheckEvent EVENT_BEAT_ERIKA
+	jr nz, .koga2
+	; Else
+	jr .koga1
+.koga1
+	ld a, 1	;get the right roster
+	ld [wTrainerNo], a
+	jr .afterBattle
+.koga2
+	ld a, 2	;get the right roster
+	ld [wTrainerNo], a
+	jr .afterBattle
+.afterBattle
+;;;;joenote - added for rematch to skip gym leader tm
+	CheckEvent EVENT_GOT_TM46
+	jp nz, TextScriptEnd
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	xor a
 	ld [hJoyHeld], a
 	ld a, $3

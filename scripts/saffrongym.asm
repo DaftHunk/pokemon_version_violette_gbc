@@ -169,7 +169,7 @@ SaffronGymText_Sabrina:
 ;;;;;;;
 	ld hl, SaffronGymText_LeaderAfterBattle
 	call PrintText
-	jr .endScript
+	jp .endScript
 .leaderFight
 	CheckEvent EVENT_ELITE_4_BEATEN
 	jr nz, .leaderFightAfterElite4
@@ -188,6 +188,23 @@ SaffronGymText_Sabrina:
 	ld [wSpriteIndex], a
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
+
+	; Check if Erika is defeated
+	CheckEvent EVENT_BEAT_ERIKA
+	jr nz, .sabrina2
+	; Else
+	jr .sabrina1
+.sabrina1
+	ld a, 1	;get the right roster
+	ld [wTrainerNo], a
+	jr .afterBattle
+.sabrina2
+	ld a, 2	;get the right roster
+	ld [wTrainerNo], a
+	jr .afterBattle
+.afterBattle
+	xor a
+	ld [hJoyHeld], a
 ;;;;joenote - added for rematch to skip gym leader tm
 	CheckEvent EVENT_GOT_TM46
 	jp nz, TextScriptEnd
