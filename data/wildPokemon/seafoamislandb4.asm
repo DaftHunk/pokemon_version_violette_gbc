@@ -7,7 +7,7 @@ IslandMonsB4:
 	db 35,PSYDUCK
 	db 36,SEEL
 	db 36,PSYDUCK
-	db 35,SEEL
+	db 35,SNEASEL
 	db 41,GOLDUCK
 	db 42,GOLBAT
 	db $00
