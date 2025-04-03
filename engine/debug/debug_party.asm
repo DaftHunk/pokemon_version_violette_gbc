@@ -23,6 +23,13 @@ DebugNewGameParty: ; unreferenced except in _DEBUG
 	db ONIX, 56
 	db ZAPDOS, 57
 	db MEW, 80
+	; Test for gen 2
+	;db SCYTHER, 56
+	;db LARVITAR, 10
+	;db EEVEE, 56
+	;db ONIX, 56
+	;db SEADRA, 50
+	;db HOOH, 80
 	db -1 ; end
 
 PrepareNewGameDebug: ; dummy except in _DEBUG

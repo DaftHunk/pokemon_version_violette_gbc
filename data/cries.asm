@@ -49,25 +49,25 @@ CryData:
 	db $21, $20, $60; Psyduck
 	db $0D, $88, $20; Drowzee
 	db $12, $E0, $40; Golem
-	db $1A, $10, $20; Umbreon
+	db $1A, $44, $40; Umbreon
 	db $04, $FF, $30; Magmar
-	db $04, $FF, $30; Kingdra
+	db $19, $3C, $01; Kingdra
 	db $06, $8F, $FF; Electabuzz
 	db $1C, $20, $C0; Magneton
 	db $12, $E6, $DD; Koffing
-	db $12, $E6, $DD; Sneasel
+	db $19, $99, $FF; Sneasel
 	db $0A, $DD, $60; Mankey
 	db $0C, $88, $C0; Seel
 	db $0B, $AA, $01; Diglett
 	db $1D, $11, $40; Tauros
-	db $1D, $11, $40; Misdreavus
-	db $1D, $11, $40; Larvitar
-	db $1D, $11, $40; Pupitar
+	db $1C, $00, $80; Misdreavus
+	db $01, $00, $80; Larvitar
+	db $00, $2C, $C0; Pupitar
 	db $10, $DD, $01; Farfetch'd
 	db $1A, $44, $40; Venonat
 	db $0F, $3C, $C0; Dragonite
-	db $00, $80, $10; Tyranitar
-	db $00, $80, $10; Hooh
+	db $09, $00, $80; Tyranitar
+	db $09, $F8, $40; Hooh
 	db $1D, $E0, $80; MissingNo.
 	db $0B, $BB, $01; Doduo
 	db $0E, $FF, $FF; Poliwag
