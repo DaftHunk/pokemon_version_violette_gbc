@@ -59,6 +59,18 @@ BrunoScriptWalkIntoRoom:
 	ret
 
 BrunoScript0:
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .elite4Rematch
+	jr .continueScript
+.elite4Rematch
+	ld a, HS_BRUNO_1
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_BRUNO_2
+	ld [wMissableObjectIndex], a
+	predef ShowObject2
+	jr .continueScript
+.continueScript
 	ld hl, BrunoEntranceCoords
 	call ArePlayerCoordsInArray
 	jp nc, CheckFightingMapTrainers
@@ -73,7 +85,7 @@ BrunoScript0:
 	CheckAndSetEvent EVENT_AUTOWALKED_INTO_BRUNOS_ROOM
 	jr z, BrunoScriptWalkIntoRoom
 .stopPlayerFromLeaving
-	ld a, $2
+	ld a, $3
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID  ; "Don't run away!"
 	ld a, D_UP
@@ -109,12 +121,21 @@ BrunoScript2:
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, ResetBrunoScript
+	
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .elite4Rematch
+	
 	ld a, $1
+	ld [hSpriteIndexOrTextID], a
+	jp DisplayTextID
+.elite4Rematch
+	ld a, $2
 	ld [hSpriteIndexOrTextID], a
 	jp DisplayTextID
 
 BrunoTextPointers:
 	dw BrunoText1
+	dw BrunoText2
 	dw BrunoDontRunAwayText
 
 BrunoTrainerHeader0:
@@ -125,12 +146,28 @@ BrunoTrainerHeader0:
 	dw BrunoAfterBattleText ; TextAfterBattle
 	dw BrunoEndBattleText ; TextEndBattle
 	dw BrunoEndBattleText ; TextEndBattle
+BrunoTrainerHeader1:
+	dbEventFlagBit EVENT_BEAT_BRUNOS_ROOM_TRAINER_0
+	db ($0 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_BRUNOS_ROOM_TRAINER_0
+	dw RematchBrunoBeforeBattleText ; TextBeforeBattle
+	dw RematchBrunoAfterBattleText ; TextAfterBattle
+	dw RematchBrunoEndBattleText ; TextEndBattle
+	dw RematchBrunoEndBattleText ; TextEndBattle
 
 	db $ff
 
 BrunoText1:
 	TX_ASM
 	ld hl, BrunoTrainerHeader0
+	ld a, 8
+	ld [wGymLeaderNo], a	;joenote - use gym leader music
+	call TalkToTrainer
+	jp TextScriptEnd
+
+BrunoText2:
+	TX_ASM
+	ld hl, BrunoTrainerHeader1
 	ld a, 8
 	ld [wGymLeaderNo], a	;joenote - use gym leader music
 	call TalkToTrainer
@@ -146,6 +183,18 @@ BrunoEndBattleText:
 
 BrunoAfterBattleText:
 	TX_FAR _BrunoAfterBattleText
+	db "@"
+
+RematchBrunoBeforeBattleText:
+	TX_FAR _RematchBrunoBeforeBattleText
+	db "@"
+
+RematchBrunoEndBattleText:
+	TX_FAR _RematchBrunoEndBattleText
+	db "@"
+
+RematchBrunoAfterBattleText:
+	TX_FAR _RematchBrunoAfterBattleText
 	db "@"
 
 BrunoDontRunAwayText:

@@ -59,6 +59,18 @@ AgathaScriptWalkIntoRoom:
 	ret
 
 AgathaScript0:
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .elite4Rematch
+	jr .continueScript
+.elite4Rematch
+	ld a, HS_AGATHA_1
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_AGATHA_2
+	ld [wMissableObjectIndex], a
+	predef ShowObject2
+	jr .continueScript
+.continueScript
 	ld hl, AgathaEntranceCoords
 	call ArePlayerCoordsInArray
 	jp nc, CheckFightingMapTrainers
@@ -73,7 +85,7 @@ AgathaScript0:
 	CheckAndSetEvent EVENT_AUTOWALKED_INTO_AGATHAS_ROOM
 	jr z, AgathaScriptWalkIntoRoom
 .stopPlayerFromLeaving
-	ld a, $2
+	ld a, $3
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID  ; "Don't run away!"
 	ld a, D_UP
@@ -109,15 +121,29 @@ AgathaScript2:
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, ResetAgathaScript
+
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .elite4Rematch
+
 	ld a, $1
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
+
+	jp .endScript
+.elite4Rematch
+	ld a, $2
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
+
+	jp .endScript
+.endScript
 	ld a, $1
 	ld [wGaryCurScript], a
 	ret
 
 AgathaTextPointers:
 	dw AgathaText1
+	dw AgathaText2
 	dw AgathaDontRunAwayText
 
 AgathaTrainerHeader0:
@@ -128,12 +154,28 @@ AgathaTrainerHeader0:
 	dw AgathaAfterBattleText ; TextAfterBattle
 	dw AgathaEndBattleText ; TextEndBattle
 	dw AgathaEndBattleText ; TextEndBattle
+AgathaTrainerHeader1:
+	dbEventFlagBit EVENT_BEAT_AGATHAS_ROOM_TRAINER_0
+	db ($0 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_AGATHAS_ROOM_TRAINER_0
+	dw RematchAgathaBeforeBattleText ; TextBeforeBattle
+	dw RematchAgathaAfterBattleText ; TextAfterBattle
+	dw RematchAgathaEndBattleText ; TextEndBattle
+	dw RematchAgathaEndBattleText ; TextEndBattle
 
 	db $ff
 
 AgathaText1:
 	TX_ASM
 	ld hl, AgathaTrainerHeader0
+	ld a, 8
+	ld [wGymLeaderNo], a	;joenote - use gym leader music
+	call TalkToTrainer
+	jp TextScriptEnd
+
+AgathaText2:
+	TX_ASM
+	ld hl, AgathaTrainerHeader1
 	ld a, 8
 	ld [wGymLeaderNo], a	;joenote - use gym leader music
 	call TalkToTrainer
@@ -149,6 +191,18 @@ AgathaEndBattleText:
 
 AgathaAfterBattleText:
 	TX_FAR _AgathaAfterBattleText
+	db "@"
+
+RematchAgathaBeforeBattleText:
+	TX_FAR _RematchAgathaBeforeBattleText
+	db "@"
+
+RematchAgathaEndBattleText:
+	TX_FAR _RematchAgathaEndBattleText
+	db "@"
+
+RematchAgathaAfterBattleText:
+	TX_FAR _RematchAgathaAfterBattleText
 	db "@"
 
 AgathaDontRunAwayText:

@@ -8,8 +8,10 @@ LanceObject:
 
 	db 0 ; signs
 
-	db 1 ; objects
+	db 2 ; objects
 	object SPRITE_LANCE, 6, 1, STAY, DOWN, 1, OPP_LANCE, 1
+	; rematch
+	object SPRITE_LANCE, 6, 1, STAY, DOWN, 2, OPP_LANCE, 2
 
 	; warp-to
 	warp_to 24, 16, LANCES_ROOM_WIDTH ; AGATHAS_ROOM

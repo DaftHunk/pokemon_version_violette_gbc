@@ -118,7 +118,7 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw NoHS
+	dw LanceRoomHS
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -250,9 +250,9 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw UnusedMapF4HS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw LoreleiRoomHS
+	dw BrunoRoomHS
+	dw AgathaRoomHS
 	dw $FFFF
 
 ; Structure:
@@ -592,5 +592,17 @@ Museum2FHS:
 	db MUSEUM_2F,$06,Show	;joenote - added water gun tm to museum 2f
 VermilionDockHS:
 	db VERMILION_DOCK, $01, Hide
+LoreleiRoomHS:
+	db LORELEIS_ROOM, $01, Show
+	db LORELEIS_ROOM, $02, Hide
+BrunoRoomHS:
+	db BRUNOS_ROOM, $01, Show
+	db BRUNOS_ROOM, $02, Hide
+AgathaRoomHS:
+	db AGATHAS_ROOM, $01, Show
+	db AGATHAS_ROOM, $02, Hide
+LanceRoomHS:
+	db LANCES_ROOM, $01, Show
+	db LANCES_ROOM, $02, Hide
 
 	db $FF,$01,Show

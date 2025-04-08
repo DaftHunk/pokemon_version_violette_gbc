@@ -46,6 +46,49 @@ _AgathaAfterBattleText::
 	cont "passer."
 	done
 
+_RematchAgathaBeforeBattleText::
+	text "Gné encore toi?"
+
+	para "Tu es déjà"
+	line "Champion tu sais?"
+
+	para "Notre dernier"
+	line "duel m'a donné"
+	cont "envie de revoir"
+	cont "ce vieux machin"
+	cont "de Chen."
+
+	para "On s'est sacré-"
+	line "ment entrainé,"
+	cont "comme à l'époque!"
+
+	para "Il n'a pas perdu"
+	line "de sa vigueur"
+	cont "le bougre!"
+
+	para "Et moi non plus,"
+	line "laisse-moi te"
+	cont "montrer ça!"
+	done
+
+_RematchAgathaEndBattleText::
+	text "Héhé!"
+	line "Toi aussi tu"
+	cont "t'entraines à ce"
+	cont "que je vois."
+	prompt
+
+_RematchAgathaAfterBattleText::
+	text "Tu as revu Chen"
+	line "récemment? Je"
+	cont "suis sûr qu'il"
+	cont "serait ravi de"
+	cont "faire un duel"
+	cont "avec toi même"
+	cont "s'il n'ose pas"
+	cont "te le dire..."
+	done
+
 _AgathaDontRunAwayText::
 	text "Une voix:"
 	line "Ne fuis pas!"

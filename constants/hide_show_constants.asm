@@ -245,3 +245,11 @@ const_value = 0
 	const HS_UNDPATHWE_MGENE			  ; E6 ;joenote - mgene pickup item
 	const HS_MUSEUM_TM12				  ; E7 ;joenote - moving water gun here
 	const HS_MEW_VERMILION_DOCK
+	const HS_LORELEI_1
+	const HS_LORELEI_2
+	const HS_BRUNO_1
+	const HS_BRUNO_2
+	const HS_AGATHA_1
+	const HS_AGATHA_2
+	const HS_LANCE_1
+	const HS_LANCE_2

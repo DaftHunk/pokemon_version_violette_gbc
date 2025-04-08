@@ -62,6 +62,10 @@ GaryScript2:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	call Delay3
+
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .leaderFightAfterElite4
+
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
@@ -70,7 +74,6 @@ GaryScript2:
 	call SaveEndBattleTextPointers
 	ld a, OPP_SONY3
 	ld [wCurOpponent], a
-
 	; select which team to use during the encounter
 	ld a, [wRivalStarter]
 	cp STARTER2
@@ -84,6 +87,18 @@ GaryScript2:
 	jr .saveTrainerId
 .NotStarter3
 	ld a, $3
+	jr .saveTrainerId
+.leaderFightAfterElite4
+	ld hl, wd72d
+	set 6, [hl]
+	set 7, [hl]
+	ld hl, RematchGaryDefeatedText
+	ld de, GaryVictoryText
+	call SaveEndBattleTextPointers
+	ld a, OPP_SONY3
+	ld [wCurOpponent], a
+	ld a, $4
+	jr .saveTrainerId
 .saveTrainerId
 	ld [wTrainerNo], a
 
@@ -252,10 +267,29 @@ GaryTextPointers:
 
 GaryText1:
 	TX_ASM
+
 	CheckEvent EVENT_BEAT_CHAMPION_RIVAL
+	jr nz, .afterBattle
+
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .introRemath
+
+	jr .introBattle
+.introBattle
 	ld hl, GaryChampionIntroText
-	jr z, .printText
-	ld hl, GaryText_76103
+	jr .printText
+.introRemath
+	ld hl, RematchGaryChampionIntroText
+	jr .printText
+.afterBattle
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .afterRemath
+
+	ld hl, GaryText_AfterBattle
+	jr .printText
+.afterRemath
+	ld hl, RematchGaryText_AfterCombatText
+	jr .printText
 .printText
 	call PrintText
 	jp TextScriptEnd
@@ -272,8 +306,20 @@ GaryVictoryText:
 	TX_FAR _GaryVictoryText
 	db "@"
 
-GaryText_76103:
-	TX_FAR _GaryText_76103
+GaryText_AfterBattle:
+	TX_FAR _GaryText_AfterBattle
+	db "@"
+
+RematchGaryChampionIntroText:
+	TX_FAR _RematchGaryChampionIntroText
+	db "@"
+
+RematchGaryDefeatedText:
+	TX_FAR _RematchGaryDefeatedText
+	db "@"
+
+RematchGaryText_AfterCombatText:
+	TX_FAR _RematchGaryText_AfterCombatText
 	db "@"
 
 GaryText2:

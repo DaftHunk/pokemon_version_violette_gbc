@@ -61,6 +61,18 @@ LoreleiScriptWalkIntoRoom:
 	ret
 
 LoreleiScript0:
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .elite4Rematch
+	jr .continueScript
+.elite4Rematch
+	ld a, HS_LORELEI_1
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_LORELEI_2
+	ld [wMissableObjectIndex], a
+	predef ShowObject2
+	jr .continueScript
+.continueScript
 	ld hl, LoreleiEntranceCoords
 	call ArePlayerCoordsInArray
 	jp nc, CheckFightingMapTrainers
@@ -75,7 +87,7 @@ LoreleiScript0:
 	CheckAndSetEvent EVENT_AUTOWALKED_INTO_LORELEIS_ROOM
 	jr z, LoreleiScriptWalkIntoRoom
 .stopPlayerFromLeaving
-	ld a, $2
+	ld a, $3
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID  ; "Don't run away!"
 	ld a, D_UP
@@ -111,12 +123,21 @@ LoreleiScript2:
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, ResetLoreleiScript
+
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .elite4Rematch
+
 	ld a, $1
+	ld [hSpriteIndexOrTextID], a
+	jp DisplayTextID
+.elite4Rematch
+	ld a, $2
 	ld [hSpriteIndexOrTextID], a
 	jp DisplayTextID
 
 LoreleiTextPointers:
 	dw LoreleiText1
+	dw LoreleiText2
 	dw LoreleiDontRunAwayText
 
 LoreleiTrainerHeader0:
@@ -127,12 +148,28 @@ LoreleiTrainerHeader0:
 	dw LoreleiAfterBattleText ; TextAfterBattle
 	dw LoreleiEndBattleText ; TextEndBattle
 	dw LoreleiEndBattleText ; TextEndBattle
+LoreleiTrainerHeader1:
+	dbEventFlagBit EVENT_BEAT_LORELEIS_ROOM_TRAINER_0
+	db ($0 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_LORELEIS_ROOM_TRAINER_0
+	dw RematchLoreleiBeforeBattleText ; TextBeforeBattle
+	dw RematchLoreleiAfterBattleText ; TextAfterBattle
+	dw RematchLoreleiEndBattleText ; TextEndBattle
+	dw RematchLoreleiEndBattleText ; TextEndBattle
 
 	db $ff
 
 LoreleiText1:
 	TX_ASM
 	ld hl, LoreleiTrainerHeader0
+	ld a, 8
+	ld [wGymLeaderNo], a	;joenote - use gym leader music
+	call TalkToTrainer
+	jp TextScriptEnd
+
+LoreleiText2:
+	TX_ASM
+	ld hl, LoreleiTrainerHeader1
 	ld a, 8
 	ld [wGymLeaderNo], a	;joenote - use gym leader music
 	call TalkToTrainer
@@ -148,6 +185,18 @@ LoreleiEndBattleText:
 
 LoreleiAfterBattleText:
 	TX_FAR _LoreleiAfterBattleText
+	db "@"
+
+RematchLoreleiBeforeBattleText:
+	TX_FAR _RematchLoreleiBeforeBattleText
+	db "@"
+
+RematchLoreleiEndBattleText:
+	TX_FAR _RematchLoreleiEndBattleText
+	db "@"
+
+RematchLoreleiAfterBattleText:
+	TX_FAR _RematchLoreleiAfterBattleText
 	db "@"
 
 LoreleiDontRunAwayText:

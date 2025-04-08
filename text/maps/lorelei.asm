@@ -35,6 +35,37 @@ _LoreleiAfterBattleText::
 	cont "zurprizes!"
 	done
 
+_RematchLoreleiBeforeBattleText::
+	text "Du es de retour?"
+
+	para "Zedde fois zi,"
+	line "je vais de ré-"
+	cont "frigérer!"
+
+	para "J'ai pazzé mes"
+	line "vacanzes dans les"
+	cont "îles écumes."
+
+	para "Mes #mon"
+	line "zont maindenant"
+	cont "incazzables!"
+
+	para "Ach! Ach! Ach!"
+	line "Z'est parti!"
+	done
+
+_RematchLoreleiEndBattleText::
+	text "Encore!"
+	line "Z'est impozzible!"
+	prompt
+
+_RematchLoreleiAfterBattleText::
+	text "Zes grottes sont"
+	line "zublimes! Je"
+	cont "de conzeille d'y"
+	cont "faire un dour!"
+	done
+
 _LoreleiDontRunAwayText::
 	text "Une voix:"
 	line "Ne fuis pas!"

@@ -55,6 +55,18 @@ LanceScript4:
 LanceScript0:
 	CheckEvent EVENT_BEAT_LANCE
 	ret nz
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .elite4Rematch
+	jr .continueScript
+.elite4Rematch
+	ld a, HS_LANCE_1
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_LANCE_2
+	ld [wMissableObjectIndex], a
+	predef ShowObject2
+	jr .continueScript
+.continueScript
 	ld hl, LanceTriggerMovementCoords
 	call ArePlayerCoordsInArray
 	jp nc, CheckFightingMapTrainers
@@ -66,7 +78,14 @@ LanceScript0:
 	
 	call .DoFacings	;joenote - correct the facing
 	
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .startRematch
+
 	ld a, $1
+	ld [hSpriteIndexOrTextID], a
+	jp DisplayTextID
+.startRematch
+	ld a, $2
 	ld [hSpriteIndexOrTextID], a
 	jp DisplayTextID
 .notStandingNextToLance
@@ -95,6 +114,11 @@ LanceScript0:
 	ld [H_SPRITEINDEX], a
 	ld a, SPRITE_FACING_LEFT
   	ld [hSpriteFacingDirection], a
+	call SetSpriteFacingDirection
+	ld a, 2
+	ld [H_SPRITEINDEX], a
+	ld a, SPRITE_FACING_LEFT
+  	ld [hSpriteFacingDirection], a
   	jp SetSpriteFacingDirection
 
 LanceTriggerMovementCoords:
@@ -110,7 +134,15 @@ LanceScript2:
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, ResetLanceScript
+
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .elite4Rematch
+
 	ld a, $1
+	ld [hSpriteIndexOrTextID], a
+	jp DisplayTextID
+.elite4Rematch
+	ld a, $2
 	ld [hSpriteIndexOrTextID], a
 	jp DisplayTextID
 
@@ -149,6 +181,7 @@ LanceScript3:
 
 LanceTextPointers:
 	dw LanceText1
+	dw LanceText2
 
 LanceTrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_LANCES_ROOM_TRAINER_0
@@ -158,12 +191,28 @@ LanceTrainerHeader0:
 	dw LanceAfterBattleText ; TextAfterBattle
 	dw LanceEndBattleText ; TextEndBattle
 	dw LanceEndBattleText ; TextEndBattle
+LanceTrainerHeader1:
+	dbEventFlagBit EVENT_BEAT_LANCES_ROOM_TRAINER_0
+	db ($0 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_LANCES_ROOM_TRAINER_0
+	dw RematchLanceBeforeBattleText ; TextBeforeBattle
+	dw RematchLanceAfterBattleText ; TextAfterBattle
+	dw RematchLanceEndBattleText ; TextEndBattle
+	dw RematchLanceEndBattleText ; TextEndBattle
 
 	db $ff
 
 LanceText1:
 	TX_ASM
 	ld hl, LanceTrainerHeader0
+	ld a, 8
+	ld [wGymLeaderNo], a	;joenote - use gym leader music
+	call TalkToTrainer
+	jp TextScriptEnd
+
+LanceText2:
+	TX_ASM
+	ld hl, LanceTrainerHeader1
 	ld a, 8
 	ld [wGymLeaderNo], a	;joenote - use gym leader music
 	call TalkToTrainer
@@ -179,6 +228,33 @@ LanceEndBattleText:
 
 LanceAfterBattleText:
 	TX_FAR _LanceAfterBattleText
+	TX_ASM
+	SetEvent EVENT_BEAT_LANCE
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - if you have a dragonite in your first slot, let it learn fly
+	ld a, [wPartyMon1Species]
+	cp DRAGONITE
+	jp nz, TextScriptEnd
+	ld a, [wPartyMon1CatchRate]
+	cp 168
+	jp z, TextScriptEnd
+	ld a, DRAGONITE
+	call PlayCry
+	ld a, 168
+	ld [wPartyMon1CatchRate], a
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	jp TextScriptEnd
+
+RematchLanceBeforeBattleText:
+	TX_FAR _RematchLanceBeforeBattleText
+	db "@"
+
+RematchLanceEndBattleText:
+	TX_FAR _RematchLanceEndBattleText
+	db "@"
+
+RematchLanceAfterBattleText:
+	TX_FAR _RematchLanceAfterBattleText
 	TX_ASM
 	SetEvent EVENT_BEAT_LANCE
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

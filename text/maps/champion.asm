@@ -73,7 +73,7 @@ _GaryVictoryText::
 	cont "Minable!"
 	prompt
 
-_GaryText_76103::
+_GaryText_AfterBattle::
 	text "Qu...Comm...Hein?"
 	line "Moi? Pourquoi?"
 	cont "WHAAAAAAAAAAA!"
@@ -159,4 +159,61 @@ _GaryText_7612a::
 	line "C'est bien. "
 	cont "<PLAYER>!"
 	cont "Suis-moi!"
+	done
+
+_RematchGaryChampionIntroText::
+	text "<RIVAL>:"
+	line "Salut minable."
+
+	para "Cette fois-ci"
+	line "c'est la bonne"
+	cont "<PLAYER>!"
+
+	para "Après ma dernière"
+	line "défaite je suis"
+	cont "aller m'entraîner"
+	cont "encore plus loin"
+	cont "et plus fort!"
+
+	para "Et tout ça, rien"
+	line "que pour te cass-"
+	cont "ta p'tite tête de"
+	cont "minable!"
+
+	para "J'ai ainsi créé"
+	line "l'équipe ultime,"
+	cont "efficace contre"
+	cont "tous les types de"
+	cont "#mon!"
+
+	para "Prêt à perdre?"
+	line "que l'ultime"
+	cont "combat commence!"
+	done
+
+_RematchGaryDefeatedText::
+	text "..."
+
+	para "..."
+
+	para "..."
+	prompt
+
+_RematchGaryText_AfterCombatText::
+	text "Okay, tu sais"
+	line "quoi?"
+	
+	para "De toute façon"
+	line "maître #mon"
+	cont "ça veux dire quoi"
+	cont "hein?"
+
+	para "J'ai entendu dire"
+	line "que Jadielle"
+	cont "cherchait un"
+	cont "nouveau maître"
+	cont "d'arêne."
+
+	para "Ca ça en jette,"
+	line "minable!"
 	done

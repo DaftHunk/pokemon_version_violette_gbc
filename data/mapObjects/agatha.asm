@@ -9,8 +9,10 @@ AgathaObject:
 
 	db 0 ; signs
 
-	db 1 ; objects
+	db 2 ; objects
 	object SPRITE_AGATHA, 5, 2, STAY, DOWN, 1, OPP_AGATHA, 1
+	; Rematch
+	object SPRITE_AGATHA, 5, 2, STAY, DOWN, 2, OPP_AGATHA, 2
 
 	; warp-to
 	warp_to 4, 11, AGATHAS_ROOM_WIDTH ; BRUNOS_ROOM

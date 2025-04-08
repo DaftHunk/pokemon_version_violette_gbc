@@ -9,8 +9,10 @@ BrunoObject:
 
 	db 0 ; signs
 
-	db 1 ; objects
+	db 2 ; objects
 	object SPRITE_BRUNO, 5, 2, STAY, DOWN, 1, OPP_BRUNO, 1
+	; rematch
+	object SPRITE_BRUNO, 5, 2, STAY, DOWN, 2, OPP_BRUNO, 2
 
 	; warp-to
 	warp_to 4, 11, BRUNOS_ROOM_WIDTH ; LORELEIS_ROOM
