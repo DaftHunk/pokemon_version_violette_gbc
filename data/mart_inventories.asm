@@ -35,7 +35,7 @@ CeladonMart2Clerk2Text::
 
 ; Celadon Dept. Store 4F
 CeladonMart4ClerkText::
-	TX_MART POKE_DOLL, FIRE_STONE, THUNDER_STONE, WATER_STONE, LEAF_STONE, MOON_STONE, METAL_COAT
+	TX_MART POKE_DOLL, FIRE_STONE, THUNDER_STONE, WATER_STONE, LEAF_STONE
 
 ; Celadon Dept. Store 5F (1)
 CeladonMart5Clerk1Text::
@@ -52,7 +52,7 @@ FuchsiaCashierText::
 ; unused? joenote - repurposing for a new vendor on celadon dept store floor 3
 CeladonMart3ClerkText::
 	;TX_MART GREAT_BALL, HYPER_POTION, SUPER_POTION, FULL_HEAL, REVIVE
-	TX_MART ULTRA_BALL, FULL_RESTORE, MAX_POTION, FULL_HEAL, MAX_REVIVE, MAX_REPEL, RARE_CANDY, EXP_ALL
+	TX_MART ULTRA_BALL, FULL_RESTORE, MAX_POTION, FULL_HEAL, MAX_REVIVE, MAX_REPEL, RARE_CANDY, EXP_ALL, MOON_STONE, METAL_COAT
 
 ; Cinnabar
 CinnabarCashierText::

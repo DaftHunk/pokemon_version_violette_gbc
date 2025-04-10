@@ -180,6 +180,10 @@ _Route25PrintText12::
 _RedText_challenge::
 	text "Toi aussi? Alors"
 	line "je te défie!"
+
+	para "Je te préviens,"
+	line "ma stratégie"
+	cont "est sans faille!"
 	prompt
 	
 _RedText_prebattle::
@@ -195,7 +199,6 @@ _RedTextVictorySpeech::
 	prompt
 
 _RedText_decline::
-	text "Reviens me voir"
-	line "plus tard si tu"
-	cont "veux te battre."
+	text "Pas de soucis,"
+	line "je comprends."
 	done
