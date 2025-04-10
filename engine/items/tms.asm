@@ -89,5 +89,38 @@ SpecialMachineMoveList:
 	db PIKACHU, SURF
 	db DRAGONITE, FLY
 	db $ff
-		
+
+GetTMMoves:
+ 	ld de, wMoveBuffer ; reusing from move relearner for tmhm move list
+ 	ld a, 0
+ 	ld b, a ; current move ID / counter
+ .findTMloop
+ 	inc b
+ 	ld a, b
+ 	cp NUM_ATTACKS ; done if looked at all moves
+ 	jr z, .done
+ 
+ 	ld a, b
+ 	ld [wMoveNum], a
+ 	ld [wd11e], a
+ 	push de
+ 	push bc
+ 	predef CanLearnTM
+ 	ld a, c
+ 	and a ; can the pokemon learn the move?
+ 	pop bc
+ 	pop de
+ 	jr z, .cantLearn
+ .canLearn
+ 	ld a, b
+ 	ld [de], a ; add move ID to list of learnable moves
+ 	inc de
+ .cantLearn
+ 	ld a, b
+ 	jr .findTMloop
+ .done
+ 	ld a, 0 ; terminator
+ 	ld [de], a
+ 	ret
+
 INCLUDE "data/tms.asm"

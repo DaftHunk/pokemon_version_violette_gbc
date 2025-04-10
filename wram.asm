@@ -605,7 +605,10 @@ wSlotMachineSavedROMBank:: ; cc5e
 ; ROM back to return to when the player is done with the slot machine
 	ds 1
 
-	ds 26
+wMoveListCounter:: ; cc5f
+; dafthunk : added for move dex
+
+	ds 25
 
 wAnimPalette:: ; cc79
 	ds 1

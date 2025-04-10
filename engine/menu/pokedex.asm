@@ -104,6 +104,8 @@ HandlePokedexSideMenu:
 	jr z, .choseCry
 	dec a
 	jr z, .choseArea
+	dec a
+	jr z, .chosePrint
 .choseQuit
 	ld b, 1
 .exitSideMenu
@@ -135,6 +137,8 @@ HandlePokedexSideMenu:
 	jr .exitSideMenu
 
 .choseData
+	ld a, 0
+ 	ld [wMoveListCounter], a
 	call ShowPokedexDataInternal
 	ld b, 0
 	jr .exitSideMenu
@@ -150,6 +154,13 @@ HandlePokedexSideMenu:
 	predef LoadTownMap_Nest ; display pokemon areas
 	ld b, 0
 	jr .exitSideMenu
+
+.chosePrint ; Changed this to print learnsets
+ 	ld a, 1
+ 	ld [wMoveListCounter], a
+ 	call ShowPokedexDataInternal
+ 	ld b, 0
+ 	jr .exitSideMenu
 
 ; handles the list of pokemon on the left of the pokedex screen
 ; sets carry flag if player presses A, unsets carry flag if player presses B
@@ -374,6 +385,7 @@ PokedexMenuItemsText:
 	db   "Info"
 	next "Cri"
 	next "Zone"
+	next "Capa"
 	next "Ret@"
 
 ; tests if a pokemon's bit is set in the seen or owned pokemon bit fields
@@ -405,19 +417,75 @@ ShowPokedexDataInternal:
 	set 1, [hl]
 	ld a, $33 ; 3/7 volume
 	ld [rNR50], a
+	ld a, [hTilesetType]
+	push af
+	xor a
+	ld [hTilesetType], a
 	call GBPalWhiteOut ; zero all palettes
-	call ClearScreen
 	ld a, [wd11e] ; pokemon ID
 	ld [wcf91], a
 	push af
 	ld b, SET_PAL_POKEDEX
 	call RunPaletteCommand
+ 	ld a, [wMoveListCounter] ; using this as a temp variable
+ 	cp 1
+ 	jp z, .PrintMoves
 	pop af
 	ld [wd11e], a
-	ld a, [hTilesetType]
-	push af
-	xor a
+
+	call DrawDexEntryOnScreen
+	call c, Pokedex_PrintFlavorTextAtRow11
+	jr .waitForButtonPress
+.PrintMoves
+	pop af
+	ld [wd11e], a
+ 	call DrawDexEntryOnScreen
+ 	call c, Pokedex_PrintMovesText
+.waitForButtonPress
+	call JoypadLowSensitivity
+	ld a, [hJoy5]
+	and A_BUTTON | B_BUTTON
+	jr z, .waitForButtonPress
+	pop af
 	ld [hTilesetType], a
+	call GBPalWhiteOut
+	call ClearScreen
+	call RunDefaultPaletteCommand
+	call LoadTextBoxTilePatterns
+	call GBPalNormal
+	ld hl, wd72c
+	res 1, [hl]
+	ld a, $77 ; max volume
+	ld [rNR50], a
+	ret
+
+HeightWeightText:
+	db   "Tai ?",".","??","m"
+	next "Pds  ???kg@"
+; XXX does anything point to this?
+PokeText:
+	db "#@"
+
+; horizontal line that divides the pokedex text description from the rest of the data
+PokedexDataDividerLine:
+	db $68,$69,$6B,$69,$6B
+	db $69,$6B,$69,$6B,$6B
+	db $6B,$6B,$69,$6B,$69
+	db $6B,$69,$6B,$69,$6A
+	db "@"
+
+Pokedex_PrintFlavorTextAtRow11:
+	coord bc, 1, 11
+Pokedex_PrintFlavorTextAtBC:
+	ld a, %10
+	ldh [hClearLetterPrintingDelayFlags], a
+	call TextCommandProcessor ; print pokedex description text
+	xor a
+	ldh [hClearLetterPrintingDelayFlags], a
+	ret
+
+DrawDexEntryOnScreen:
+	call ClearScreen
 
 	coord hl, 0, 0
 	ld de, 1
@@ -516,7 +584,7 @@ ShowPokedexDataInternal:
 
 	ld a, c
 	and a
-	jp z, .waitForButtonPress ; if the pokemon has not been owned, don't print the height, weight, or description
+	ret z ; if the pokemon has not been owned, don't print the height, weight, or description
 	inc de ; de = address of feet (height)
 	ld a, [de] ; reads feet, but a is overwritten without being used
 	coord hl, 12, 6
@@ -569,44 +637,8 @@ ShowPokedexDataInternal:
 	ld [hDexWeight], a ; restore original value of [hDexWeight]
 	pop hl
 	inc hl ; hl = address of pokedex description text
-	coord bc, 1, 11
-	ld a, 2
-	ld [hClearLetterPrintingDelayFlags], a
-	call TextCommandProcessor ; print pokedex description text
-	xor a
-	ld [hClearLetterPrintingDelayFlags], a
-.waitForButtonPress
-	call JoypadLowSensitivity
-	ld a, [hJoy5]
-	and A_BUTTON | B_BUTTON
-	jr z, .waitForButtonPress
-	pop af
-	ld [hTilesetType], a
-	call GBPalWhiteOut
-	call ClearScreen
-	call RunDefaultPaletteCommand
-	call LoadTextBoxTilePatterns
-	call GBPalNormal
-	ld hl, wd72c
-	res 1, [hl]
-	ld a, $77 ; max volume
-	ld [rNR50], a
+	scf
 	ret
-
-HeightWeightText:
-	db   "Tai ?",".","??","m"
-	next "Pds  ???kg@"
-; XXX does anything point to this?
-PokeText:
-	db "#@"
-
-; horizontal line that divides the pokedex text description from the rest of the data
-PokedexDataDividerLine:
-	db $68,$69,$6B,$69,$6B
-	db $69,$6B,$69,$6B,$6B
-	db $6B,$6B,$69,$6B,$69
-	db $6B,$69,$6B,$69,$6A
-	db "@"
 
 ; draws a line of tiles
 ; INPUT:
@@ -679,3 +711,242 @@ NewPageButtonPressCheck::
 	and A_BUTTON | B_BUTTON
 	jr z, .waitForButtonPress
 	ret
+
+Pokedex_PrintMovesText:
+ 	ld a, [wd11e]
+ 	ld [wWhichPokemon], a
+ 	ld [wcf91], a
+ 
+ 	farcall PrepareLevelUpMoveList
+ 	ld de, wMoveBuffer
+ 
+ 	ld b, 0 ; counter
+ 
+ 	ld a, [wMoveListCounter]
+ 	cp 0
+ 	jp z, .done
+ 
+ .PrintLevelUpMovesLoop
+ 	push de
+ 	push bc
+ 	ld de, LevelUpMovesText
+ 	coord hl, 1, 11
+ 	call PlaceString
+ 	pop bc
+ 	pop de
+ 
+ 	push bc
+ 	ld a, [de]
+ 	coord hl, 1, 12
+ 	lb bc, 1, 3
+ 	call PrintNumber ; print number of seen pokemon
+ 	inc de
+ 	inc de
+ 	ld a, [de]
+ 	push de
+ 	ld [wd11e], a
+ 	call GetMoveName
+ 	coord hl, 5, 12
+ 	call PlaceString
+ 	pop de
+ 	pop bc
+ 
+ 	inc b
+ 	ld a, [wMoveListCounter]
+ 	cp b
+ 	jp z, .done
+ 
+ 	push bc
+ 	inc de
+ 	ld a, [de]
+ 	coord hl, 1, 13
+ 	lb bc, 1, 3
+ 	call PrintNumber ; print number of seen pokemon
+ 	inc de
+ 	inc de
+ 	ld a, [de]
+ 	push de
+ 	ld [wd11e], a
+ 	call GetMoveName
+ 	coord hl, 5, 13
+ 	call PlaceString
+ 	pop de
+ 	pop bc
+ 
+ 	inc b
+ 	ld a, [wMoveListCounter]
+ 	cp b
+ 	jp z, .done
+ 
+ 	push bc
+ 	inc de
+ 	ld a, [de]
+ 	coord hl, 1, 14
+ 	lb bc, 1, 3
+ 	call PrintNumber ; print number of seen pokemon
+ 	inc de
+ 	inc de
+ 	ld a, [de]
+ 	push de
+ 	ld [wd11e], a
+ 	call GetMoveName
+ 	coord hl, 5, 14
+ 	call PlaceString
+ 	pop de
+ 	pop bc
+ 
+ 	inc b
+ 	ld a, [wMoveListCounter]
+ 	cp b
+ 	jr z, .done
+ 
+ 	push bc
+ 	inc de
+ 	ld a, [de]
+ 	coord hl, 1, 15
+ 	lb bc, 1, 3
+ 	call PrintNumber ; print number of seen pokemon
+ 	inc de
+ 	inc de
+ 	ld a, [de]
+ 	push de
+ 	ld [wd11e], a
+ 	call GetMoveName
+ 	coord hl, 5, 15
+ 	call PlaceString
+ 	pop de
+ 	pop bc
+ 
+ 	inc b
+ 	ld a, [wMoveListCounter]
+ 	cp b
+ 	jr z, .done
+ 
+ 	push bc
+ 	inc de
+ 	ld a, [de]
+ 	coord hl, 1, 16
+ 	lb bc, 1, 3
+ 	call PrintNumber ; print number of seen pokemon
+ 	inc de
+ 	inc de
+ 	ld a, [de]
+ 	push de
+ 	ld [wd11e], a
+ 	call GetMoveName
+ 	coord hl, 5, 16
+ 	call PlaceString
+ 	pop de
+ 	pop bc
+ 
+ 	inc b
+ 	ld a, [wMoveListCounter]
+ 	cp b
+ 	jr z, .done
+ 
+ 	inc de
+ 
+ 	push de
+ 	push bc
+ 	call NewPageButtonPressCheck
+ 	coord hl, 1, 10
+ 	lb bc, 7, 18
+ 	call ClearScreenArea
+ 	pop bc
+ 	pop de
+ 	jp .PrintLevelUpMovesLoop
+ .done
+ 	call NewPageButtonPressCheck
+ 	coord hl, 1, 10
+ 	lb bc, 7, 18
+ 	call ClearScreenArea
+ 
+ .tmMoveset
+ 	farcall GetTMMoves
+ 	ld de, wMoveBuffer
+ 	ld a, [de]
+ 
+ .PrintTMMovesLoop
+ 	push de
+ 	ld de, TMHMMovesText
+ 	coord hl, 1, 11
+ 	call PlaceString
+ 	pop de
+ 
+ 	ld a, [de]
+ .first
+ 	cp 0
+ 	jp z, .done2
+ 	push de
+ 	ld [wd11e], a
+ 	call GetMoveName
+ 	coord hl, 2, 12
+ 	call PlaceString
+ 	pop de
+ 
+ 	inc de
+ 	ld a, [de]
+ .second
+ 	cp 0
+ 	jp z, .done2
+ 	push de
+ 	ld [wd11e], a
+ 	call GetMoveName
+ 	coord hl, 2, 13
+ 	call PlaceString
+ 	pop de
+ 
+ 	inc de
+ 	ld a, [de]
+ .third
+ 	cp 0
+ 	jp z, .done2
+ 	push de
+ 	ld [wd11e], a
+ 	call GetMoveName
+ 	coord hl, 2, 14
+ 	call PlaceString
+ 	pop de
+ .fourth
+ 	inc de
+ 	ld a, [de]
+ 	cp 0
+ 	jp z, .done2
+ 	push de
+ 	ld [wd11e], a
+ 	call GetMoveName
+ 	coord hl, 2, 15
+ 	call PlaceString
+ 	pop de
+ 
+ 	inc de
+ 	ld a, [de]
+ 	cp 0
+ 	jp z, .done2
+ 	push de
+ 	ld [wd11e], a
+ 	call GetMoveName
+ 	coord hl, 2, 16
+ 	call PlaceString
+ 	pop de
+ 
+ 	inc de
+ 
+ 	; wait for button press
+ 	push de
+ 	call NewPageButtonPressCheck
+ 
+ 	coord hl, 1, 10
+ 	lb bc, 7, 18
+ 	call ClearScreenArea
+ 	pop de
+ 	jp .PrintTMMovesLoop
+ .done2
+ 	ret
+ 
+ LevelUpMovesText:
+ 	db "Capacités:@"
+ 
+ TMHMMovesText:
+ 	db "CT/CS possibles:@"
+ 
