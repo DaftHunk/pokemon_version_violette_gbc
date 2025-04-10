@@ -146,10 +146,6 @@ VermilionCityTextPointers:
 
 VermilionCityJennyText:
 	TX_ASM
-	; return if already beaten
-	CheckEvent EVENT_BEAT_JENNY
-	jp nz, .alreadyBeaten
-	; else
 	ld hl, VermilionCityJennyBattleText
 	call PrintText
 	; set battle flags
@@ -166,7 +162,6 @@ VermilionCityJennyText:
 	; set after battle script
 	ld a, $0
 	ld [wVermilionCityCurScript], a
-	SetEvent EVENT_BEAT_JENNY
 	; after battle
 	ld hl, VermilionCityJennyEndBattleText
 	call SaveEndBattleTextPointers
