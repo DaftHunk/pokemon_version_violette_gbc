@@ -124,7 +124,7 @@ DisplayTitleScreen:
 	call LoadScreenTilesFromBuffer2
 	call EnableLCD
 
-	ld a, SQUIRTLE ; which Pokemon to show first on the title screen
+	ld a, NIDOKING ; which Pokemon to show first on the title screen
 
 	ld [wTitleMonSpecies], a
 	call LoadTitleMonSprite

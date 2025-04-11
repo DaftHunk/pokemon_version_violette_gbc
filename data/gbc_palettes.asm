@@ -83,12 +83,12 @@ GBCBasePalettes:
 	RGB 31, 31, 31	;white bg
 	RGB 31, 31,  0	;unused yellow logo text
 	RGB 21,  0,  4	;unused on title screen
-	RGB  3,  3, 23	;version subtitle text color
+	RGB 12,  1, 22	;version subtitle text color
 
 	; PAL_LOGO2
 	RGB 31, 31, 31	;white bg
 	RGB 31, 31,  0	;yellow logo text
-	RGB  7,  7, 25	;blue logo text shadow
+	RGB  12,  1, 22	;blue logo text shadow
 	RGB  0,  0, 17	;blue logo text outline
 
 	; PAL_0F
@@ -124,7 +124,7 @@ GBCBasePalettes:
 	; PAL_PURPLEMON
 	RGB 31, 31, 31
 	RGB 25, 15, 31
-	RGB 19,  0, 22
+	RGB  12,  1, 22
 	RGB  3,  3,  3
 
 	; PAL_BROWNMON
