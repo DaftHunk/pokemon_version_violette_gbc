@@ -102,9 +102,9 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 
 # Guides
 ## Emulateurs conseillés
-- Android : MyOldBoy, Arc gambat
-- PC : BGB
-- PSP : Arc gambat
+- **Android **: MyOldBoy, RetroArch 1.10.0 (Cette version spécifiquement !) : core Gambatte
+- **PC **: BGB
+- **PSP **: RetroArch 1.10.0 (Cette version spécifiquement !) : core Gambatte
 ## Documentation
 - Tableau des rencontres (Attention aux spoils !)
 https://docs.google.com/spreadsheets/d/1nh3vi-TdhZu3ZT1ZbH4gDMEPXbZw5eX-k1_drcTCmc4/edit?usp=sharing
