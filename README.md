@@ -1,4 +1,4 @@
-# :pokemon: Pokémon Version Violette :pokemon: 
+# Pokémon Version Violette
 Romhack entièrement en français pour remasteriser le jeu sans le dénaturer. 
 L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellement.
 
