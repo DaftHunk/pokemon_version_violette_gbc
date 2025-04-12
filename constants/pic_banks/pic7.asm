@@ -1,3 +1,7 @@
+OddishPicFront::       INCBIN "gfx/pokemon/front/oddish.pic"
+OddishPicBack::        INCBIN "gfx/pokemon/back/oddishb.pic"
+GloomPicFront::        INCBIN "gfx/pokemon/front/gloom.pic"
+GloomPicBack::         INCBIN "gfx/pokemon/back/gloomb.pic"
 VileplumePicFront::    INCBIN "gfx/pokemon/front/vileplume.pic"
 VileplumePicBack::     INCBIN "gfx/pokemon/back/vileplumeb.pic"
 BellsproutPicFront::   INCBIN "gfx/pokemon/front/bellsprout.pic"
