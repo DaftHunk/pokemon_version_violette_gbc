@@ -7,7 +7,7 @@ VermilionHouse2TextPointers:
 VermilionHouse2Text1:
 	TX_ASM
 	ld a, [wd728]
-	bit 3, a
+	bit 4, a
 	jr nz, .asm_03ef5
 	ld hl, VermilionHouse2Text_560b1
 	call PrintText
@@ -15,11 +15,11 @@ VermilionHouse2Text1:
 	ld a, [wCurrentMenuItem]
 	and a
 	jr nz, .asm_eb1b7
-	lb bc, OLD_ROD, 1
+	lb bc, GOOD_ROD, 1
 	call GiveItem
 	jr nc, .BagFull
 	ld hl, wd728
-	set 3, [hl]
+	set 4, [hl]
 	ld hl, VermilionHouse2Text_560b6
 	jr .asm_5dd95
 .BagFull

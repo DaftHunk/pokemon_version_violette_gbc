@@ -7,7 +7,7 @@ FuchsiaHouse3TextPointers:
 FuchsiaHouse3Text1:
 	TX_ASM
 	ld a, [wd728]
-	bit 4, a
+	bit 5, a
 	jr nz, .after
 
 	ld hl, FuchsiaHouse3Text_561bd
@@ -24,7 +24,7 @@ FuchsiaHouse3Text1:
 	jr nc, .full
 
 	ld hl, wd728
-	set 4, [hl]
+	set 5, [hl]
 
 	ld hl, FuchsiaHouse3Text_561c2
 	jr .talk
