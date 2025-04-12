@@ -608,7 +608,7 @@ wSlotMachineSavedROMBank:: ; cc5e
 wMoveListCounter:: ; cc5f
 ; dafthunk : added for move dex
 
-	ds 25
+	ds 26
 
 wAnimPalette:: ; cc79
 	ds 1
