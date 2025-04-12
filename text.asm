@@ -1507,7 +1507,7 @@ _GainedText::
 	text_end
 
 _WithExpAllText::
-	text "avec Multi exp,"
+	text "L'équipe à gagné"
 	line "@"
 	text_end
 
