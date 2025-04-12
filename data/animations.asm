@@ -220,10 +220,6 @@ ZigZagScreenAnim:
 
 PoundAnim:
 StruggleAnim:
-PursuitAnim:
-CrunchAnim:
-MetalClawAnim:
-IronTailAnim:
 	db $08,$00,$01
 	db $FF
 
@@ -480,7 +476,6 @@ DisableAnim:
 	db SE_RESET_SCREEN_PALETTE, $FF
 	db $FF
 
-SludgeBombAnim:
 AcidAnim:
 	db $46,$32,$13
 	db $46,$32,$14
@@ -761,6 +756,7 @@ TeleportAnim:
 	db SE_SHOOT_BALLS_UPWARD, $FF
 	db $FF
 
+PursuitAnim:
 NightShadeAnim:
 	db SE_FLASH_SCREEN_LONG, $5C
 	db SE_WAVY_SCREEN, $FF
@@ -898,6 +894,7 @@ SelfdestructAnim:
 	db $43,$77,$34
 	db $FF
 
+SludgeBombAnim:
 EggBombAnim:
 	db $44,$78,$41
 	db $44,$78,$42
@@ -979,6 +976,7 @@ SoftboiledAnim:
 	db SE_SHOW_MON_PIC, $FF
 	db $FF
 
+IronTailAnim:
 HiJumpKickAnim:
 	db $46,$87,$04
 	db $FF
@@ -1119,12 +1117,14 @@ TriAttackAnim:
 	db SE_DARK_SCREEN_FLASH, $FF
 	db $FF
 
+CrunchAnim:
 SuperFangAnim:
 	db SE_DARK_SCREEN_PALETTE, $48
 	db $46,$A1,$04
 	db SE_RESET_SCREEN_PALETTE, $FF
 	db $FF
 
+MetalClawAnim:
 SlashAnim:
 	db $06,$A2,$0F
 	db $FF
