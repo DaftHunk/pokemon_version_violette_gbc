@@ -522,7 +522,7 @@ RedFishingTiles:
 	dw vNPCSprites + $a0
 
 	dw RedFishingRodTiles
-	db 3, BANK(RedFishingRodTiles)
+	db 2, BANK(RedFishingRodTiles)
 	dw vNPCSprites2 + $7d0
 
 ;joenote - for female trainer
@@ -540,7 +540,7 @@ RedFFishingTiles:
 	dw vNPCSprites + $a0
 
 	dw RedFishingRodTiles
-	db 3, BANK(RedFishingRodTiles)
+	db 2, BANK(RedFishingRodTiles)
 	dw vNPCSprites2 + $7d0
 
 _HandleMidJump:

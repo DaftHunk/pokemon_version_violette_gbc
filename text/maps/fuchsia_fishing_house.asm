@@ -40,7 +40,7 @@ _FuchsiaHouse3Text_56217::
 	text "Salut,"
 	line "<PLAYER>!"
 
-	para "Utilise la Super"
+	para "Utilise la Mega"
 	line "Canne dans n'impo-"
 	cont "rte quelle eau!"
 	cont "Tu peux attraper"

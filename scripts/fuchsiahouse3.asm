@@ -53,16 +53,6 @@ FuchsiaHouse3Text_561c2:
 	TX_SFX_ITEM_1
 	db "@"
 
-UnusedText_561c8:
-	para "つり こそ"
-	line "おとこの ロマン だ!"
-
-	para "へぼいつりざおは"
-	line "コイキングしか つれ なんだが"
-	line "この いいつりざおなら"
-	line "もっと いいもんが つれるんじゃ!"
-	done
-
 FuchsiaHouse3Text_56212:
 	TX_FAR _FuchsiaHouse3Text_56212
 	db "@"
