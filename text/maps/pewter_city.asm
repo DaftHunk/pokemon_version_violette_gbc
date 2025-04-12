@@ -16,7 +16,7 @@ _PewterCityText2::
 	line "bons dresseurs"
 	cont "par ici!"
 
-	para "Ils sont ScoutS"
+	para "Ils sont Scouts"
 	line "pour la plupart"
 	cont "mais Pierre de"
 	cont "l'Arène d'Argenta"

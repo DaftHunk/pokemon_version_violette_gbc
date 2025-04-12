@@ -603,11 +603,6 @@ DrawTrainerInfo:
 	ld de, vChars2 + $770
 	ld bc, $0080
 	push bc
-	call TrainerInfo_FarCopyData ;joenote - do the circle tile separately from name tiles
-	ld hl, BlankLeaderNames
-	ld de, vChars2 + $600
-;	ld bc, $0160
-	ld bc, $0150	;joenote - going to restore the names which uses 16 less bytes
 	call TrainerInfo_FarCopyData
 	ld hl, CircleTile
 	ld de, vChars2 + $760

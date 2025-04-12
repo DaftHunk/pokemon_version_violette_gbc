@@ -578,8 +578,10 @@ Determine180degreeMove:
 CheckWestMap:
 	ld a, [wXCoord]
 	cp $ff
-	jp nz, CheckEastMap	
+	jp nz, CheckEastMap
 	ld a, [wMapConn3Ptr]
+	cp $ff ; is the west connection set to $FF?
+	jr z, CheckEastMap ; if so, branch
 	ld [wCurMap], a
 	ld a, [wWestConnectedMapXAlignment] ; new X coordinate upon entering west map
 	ld [wXCoord], a
@@ -618,6 +620,8 @@ CheckEastMap:
 	ld a, [wCurrentMapWidth2] ; map width
 	cp b
 	jp nz, CheckNorthMap
+	cp $ff ; is the east connection set to $FF?
+	jr z, CheckNorthMap ; if so, branch
 	ld a, [wMapConn4Ptr]
 	ld [wCurMap], a
 	ld a, [wEastConnectedMapXAlignment] ; new X coordinate upon entering east map
@@ -656,6 +660,8 @@ CheckNorthMap:
 	cp $ff
 	jp nz, CheckSouthMap
 	ld a, [wMapConn1Ptr]
+	cp $ff ; is the north connection set to $FF?
+	jr z, CheckSouthMap ; if so, branch
 	ld [wCurMap], a
 	ld a, [wNorthConnectedMapYAlignment] ; new Y coordinate upon entering north map
 	ld [wYCoord], a
@@ -686,6 +692,8 @@ CheckSouthMap:
 	cp b
 	ret nz
 	ld a, [wMapConn2Ptr]
+	cp $ff ; is the south connection set to $FF?
+	jp z, OverworldLoop ; if so, it's not worth crashing the game, so branch
 	ld [wCurMap], a
 	ld a, [wSouthConnectedMapYAlignment] ; new Y coordinate upon entering south map
 	ld [wYCoord], a

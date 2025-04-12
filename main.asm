@@ -526,7 +526,6 @@ INCLUDE "engine/debug/debug_party.asm"
 
 SECTION "Battle (bank 9)", ROMX, BANK[$9]
 INCLUDE "engine/battle/print_type.asm"
-INCLUDE "engine/battle/save_trainer_name.asm"
 INCLUDE "engine/battle/moveEffects/focus_energy_effect.asm"
 
 ;bank A stuff
@@ -540,8 +539,6 @@ INCLUDE "engine/battle/moveEffects/one_hit_ko_effect.asm"
 INCLUDE "engine/battle/display_effectiveness.asm"
 TrainerInfoTextBoxTileGraphics:  INCBIN "gfx/tiles/trainer_info.2bpp"
 TrainerInfoTextBoxTileGraphicsEnd:
-BlankLeaderNames:                INCBIN "gfx/tiles/blank_leader_names.2bpp"
-;BlankLeaderNames:                INCBIN "gfx/tiles/leader_names.2bpp"	;joenote - restoring the names
 CircleTile:                      INCBIN "gfx/tiles/circle_tile.2bpp"
 BadgeNumbersTileGraphics:        INCBIN "gfx/tiles/badge_numbers.2bpp"
 INCLUDE "engine/items/tmhm.asm"

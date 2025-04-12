@@ -4190,11 +4190,6 @@ PrintMonName1Text:
 	ld hl, MonName1Text
 	jp PrintText
 
-; this function wastes time calling DetermineExclamationPointTextNum
-; and choosing between Used1Text and Used2Text, even though
-; those text strings are identical and both continue at PrintInsteadText
-; this likely had to do with Japanese grammar that got translated,
-; but the functionality didn't get removed
 MonName1Text:
 	TX_FAR _MonName1Text
 	TX_ASM
@@ -4208,25 +4203,11 @@ MonName1Text:
 .playerTurn
 	ld [hl], a
 	ld [wd11e], a
-;	call DetermineExclamationPointTextNum	;joenote - useless, so removing
-;	ld a, [wMonIsDisobedient]
-;	and a
-	ld hl, Used2Text
-;	ret nz
-;	ld a, [wd11e]
-;	cp 3
-;	ld hl, Used2Text
-;	ret c
-;	ld hl, Used1Text
+	ld hl, UsedText
 	ret
 
-;Used1Text:
-;	TX_FAR _Used1Text
-;	TX_ASM
-;	jr PrintInsteadText
-
-Used2Text:
-	TX_FAR _Used2Text
+UsedText:
+	TX_FAR _UsedText
 	TX_ASM
 	; fall through
 
@@ -4249,91 +4230,13 @@ PrintMoveName:
 _PrintMoveName:	;joenote - removing useless exclamation points
 	TX_FAR _CF4BText
 	TX_ASM
-	ld hl, ExclamationPointPointerTable
-	xor a	;	ld a, [wd11e] ; exclamation point num
-	add a
-	push bc
-	ld b, $0
-	ld c, a
-	add hl, bc
-	pop bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	ld hl, ExclamationPointText
 	ret
 
-;joenote - cleaning up useless exclamation points from japanese grammar
-ExclamationPointPointerTable:
-	dw ExclamationPoint1Text
-;	dw ExclamationPoint2Text
-;	dw ExclamationPoint3Text
-;	dw ExclamationPoint4Text
-;	dw ExclamationPoint5Text
-
-ExclamationPoint1Text:
-	TX_FAR _ExclamationPoint1Text
+ExclamationPointText:
+	TX_FAR _ExclamationPointText
 	db "@"
-
-;ExclamationPoint2Text:
-;	TX_FAR _ExclamationPoint2Text
-;	db "@"
-
-;ExclamationPoint3Text:
-;	TX_FAR _ExclamationPoint3Text
-;	db "@"
-
-;ExclamationPoint4Text:
-;	TX_FAR _ExclamationPoint4Text
-;	db "@"
-
-;ExclamationPoint5Text:
-;	TX_FAR _ExclamationPoint5Text
-;	db "@"
-
-; this function does nothing useful
-; if the move being used is in set [1-4] from ExclamationPointMoveSets,
-; use ExclamationPoint[1-4]Text
-; otherwise, use ExclamationPoint5Text
-; but all five text strings are identical
-; this likely had to do with Japanese grammar that got translated,
-; but the functionality didn't get removed
-;DetermineExclamationPointTextNum:	;joenote - removing because useless
-;	push bc
-;	ld a, [wd11e] ; move ID
-;	ld c, a
-;	ld b, $0
-;	ld hl, ExclamationPointMoveSets
-;.loop
-;	ld a, [hli]
-;	cp $ff
-;	jr z, .done
-;	cp c
-;	jr z, .done
-;	and a
-;	jr nz, .loop
-;	inc b
-;	jr .loop
-;.done
-;	ld a, b
-;	ld [wd11e], a ; exclamation point num
-;	pop bc
-;	ret
-
-;joenote - commenting out because useless
-;ExclamationPointMoveSets:
-;	db SWORDS_DANCE, GROWTH
-;	db $00
-;	db RECOVER, BIDE, SELFDESTRUCT, AMNESIA
-;	db $00
-;	db MEDITATE, AGILITY, TELEPORT, MIMIC, DOUBLE_TEAM, BARRAGE
-;	db $00
-;	db POUND, SCRATCH, VICEGRIP, WING_ATTACK, FLY, BIND, SLAM, HORN_ATTACK, BODY_SLAM
-;	db WRAP, THRASH, TAIL_WHIP, LEER, BITE, GROWL, ROAR, SING, PECK, COUNTER
-;	db STRENGTH, ABSORB, STRING_SHOT, EARTHQUAKE, FISSURE, DIG, TOXIC, SCREECH, HARDEN
-;	db MINIMIZE, WITHDRAW, DEFENSE_CURL, METRONOME, LICK, CLAMP, CONSTRICT, POISON_GAS
-;	db LEECH_LIFE, BUBBLE, FLASH, SPLASH, ACID_ARMOR, FURY_SWIPES, REST, SHARPEN, SLASH, SUBSTITUTE
-;	db $00
-;	db $FF ; terminator
+	ret
 
 PrintMoveFailureText:
 	ld de, wPlayerMoveEffect
@@ -4342,7 +4245,6 @@ PrintMoveFailureText:
 	jr z, .playersTurn
 	ld de, wEnemyMoveEffect
 .playersTurn
-
 	ld hl, DoesntAffectMonText
 	ld a, [wDamageMultipliers]
 	and $7f
@@ -4420,11 +4322,6 @@ AttackMissedText:
 KeptGoingAndCrashedText:
 	TX_FAR _KeptGoingAndCrashedText
 	db "@"
-
-;joenote - Redundant, so it can be commented out
-;UnaffectedText:
-;	TX_FAR _UnaffectedText
-;	db "@"
 
 PrintDoesntAffectText:
 	ld hl, DoesntAffectMonText
