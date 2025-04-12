@@ -213,17 +213,17 @@ StartMenu_Pokemon:
 	call GBPalWhiteOutWithDelay3
 	jp .goBackToMap
 .teleport
-	call CheckIfInOutsideMap
-	jr z, .canTeleport
-	call .checkifforest	;allow teleporting out of forest maps
-	jr z, .canTeleport
-	ld a, [wWhichPokemon]
-	ld hl, wPartyMonNicks
-	call GetPartyMonName
-	ld hl, .cannotUseTeleportNowText
-	call PrintText
-	jp .loop
-.canTeleport
+;	call CheckIfInOutsideMap
+;	jr z, .canTeleport
+;	call .checkifforest	;allow teleporting out of forest maps
+;	jr z, .canTeleport
+;	ld a, [wWhichPokemon]
+;	ld hl, wPartyMonNicks
+;	call GetPartyMonName
+;	ld hl, .cannotUseTeleportNowText
+;	call PrintText
+;	jp .loop
+;.canTeleport
 	ld hl, .warpToLastPokemonCenterText
 	call PrintText
 	call .reset_safari	;make sure to reset the safari zone
