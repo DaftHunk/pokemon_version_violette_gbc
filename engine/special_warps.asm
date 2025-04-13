@@ -145,4 +145,4 @@ LoadSpecialWarpData:
 	ld [wDestinationWarpID], a
 	ret
 
-INCLUDE "data/special_warps.asm"
+INCLUDE "data/maps/special_warps.asm"

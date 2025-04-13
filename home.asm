@@ -116,7 +116,7 @@ Start::
 
 
 INCLUDE "home/joypad.asm"
-INCLUDE "data/map_header_pointers.asm"
+INCLUDE "data/maps/map_header_pointers.asm"
 INCLUDE "home/overworld.asm"
 
 CheckForUserInterruption::
@@ -955,7 +955,7 @@ InterlaceMergeSpriteBuffers::
 	jp CopyVideoData
 
 
-INCLUDE "data/collision_tile_ids.asm"
+INCLUDE "data/maps/collision_tile_ids.asm"
 INCLUDE "home/copy2.asm"
 INCLUDE "home/text.asm"
 INCLUDE "home/vcopy.asm"
@@ -991,7 +991,7 @@ UpdateSprites::
 	res 0, [hl];joenote - allow OAM updates again
 	ret
 
-INCLUDE "data/mart_inventories.asm"
+INCLUDE "data/items/mart_inventories.asm"
 
 TextScriptEndingChar::
 	db "@"
@@ -2875,7 +2875,7 @@ PlayTrainerMusic::
 	ld [wNewSoundID], a
 	jp PlaySound
 
-INCLUDE "data/trainer_types.asm"
+INCLUDE "data/battle/trainer_types.asm"
 
 ; checks if the player's coordinates match an arrow movement tile's coordinates
 ; and if so, decodes the RLE movement data

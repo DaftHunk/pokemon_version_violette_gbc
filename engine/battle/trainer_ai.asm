@@ -1396,14 +1396,6 @@ INCLUDE "text/trainer_names.asm"
 
 INCLUDE "engine/battle/bank_e_misc.asm"
 
-;joenote - moving all this to bank $2D to free up space for trainer AI in bank $E
-;		- This only gets called from a bank switch in core.asm anyway
-;INCLUDE "engine/battle/read_trainer_party.asm"
-
-;INCLUDE "data/trainer_moves.asm"
-
-;INCLUDE "data/trainer_parties.asm"
-
 TrainerAI:
 	and a
 	ld a, [wIsInBattle]

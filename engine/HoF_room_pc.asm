@@ -107,7 +107,7 @@ DisplayCreditsMon:
 	call UpdateGBCPal_BGP
 	ret
 
-INCLUDE "data/credit_mons.asm"
+INCLUDE "data/pokemons/credit_mons.asm"
 
 ScrollCreditsMonLeft:
 	ld h, b
@@ -260,7 +260,7 @@ TheEndTextString:
 	db $60," ",$62,$64," ",$66,"@"
 	db $61," ",$63,$65," ",$67,"@"
 
-INCLUDE "data/credits_order.asm"
+INCLUDE "data/pokemons/credits_order.asm"
 
 INCLUDE "text/credits_text.asm"
 

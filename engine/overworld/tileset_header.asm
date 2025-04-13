@@ -55,6 +55,6 @@ LoadTilesetHeader:
 .done
 	ret
 
-INCLUDE "data/dungeon_tilesets.asm"
+INCLUDE "data/maps/dungeon_tilesets.asm"
 
-INCLUDE "data/tileset_headers.asm"
+INCLUDE "data/maps/tileset_headers.asm"

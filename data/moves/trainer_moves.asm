@@ -43,13 +43,13 @@
 SpecialTrainerMoves:
 ; Route 9
 ;	db 28, SANDSHREW, 0
-	db JR_TRAINER_M,5
+	db JR_TRAINER_M,$5
 	db 1,4,FISSURE
 	db 0
 
 ;BrockData:
 ;	db $FF,10,GEODUDE,12,ONIX,0
-	db BROCK,1
+	db BROCK,$1
 	db 1,1,TACKLE
 	db 1,2,DEFENSE_CURL
 	db 1,3,ROCK_THROW
@@ -61,7 +61,7 @@ SpecialTrainerMoves:
 
 ; Rematch
 ;	db $FF,64,OMASTAR,65,STEELIX,64,KABUTOPS,64,GOLEM,64,RHYDON,65,NINETALES,0
-	db BROCK,2
+	db BROCK,$2
 	db 1,1,BLIZZARD
 	db 1,2,ROCK_SLIDE
 	db 1,3,CLAMP
@@ -124,7 +124,7 @@ SpecialTrainerMoves:
 
 ;MistyData:
 ;	db $FF,19,PSYDUCK,18,GOLDEEN,21,STARMIE,0
-	db MISTY,1
+	db MISTY,$1
 	db 1,1,SCRATCH
 	db 1,2,CONFUSION
 	db 1,3,BUBBLEBEAM
@@ -141,7 +141,7 @@ SpecialTrainerMoves:
 
 ; Rematch
 ;	db $FF,64,SEADRA,65,GOLDUCK,64,LAPRAS,64,BLASTOISE,64,VAPOREON,65,STARMIE,0
-	db MISTY,2
+	db MISTY,$2
 	db 1,1,ICE_BEAM
 	db 1,2,DOUBLE_TEAM
 	db 1,3,SLAM
@@ -170,7 +170,7 @@ SpecialTrainerMoves:
 
 ;LtSurgeData:
 ;	db $FF,29,RAICHU,0
-	db LT_SURGE,1
+	db LT_SURGE,$1
 	db 1,1,THUNDERBOLT
 	db 1,2,THUNDER_WAVE
 	db 1,3,BODY_SLAM
@@ -179,7 +179,7 @@ SpecialTrainerMoves:
 
 ; Rematch
 ;	db $FF,64,ELECTRODE,65,MAGNETON,64,JOLTEON,64,PORYGON,64,ELECTABUZZ,65,RAICHU,0
-	db LT_SURGE,2
+	db LT_SURGE,$2
 	db 1,1,LIGHT_SCREEN
 	db 1,2,THUNDER_WAVE
 	db 1,3,EXPLOSION
@@ -208,7 +208,7 @@ SpecialTrainerMoves:
 
 ;ErikaData:
 ;	db $FF,33,TANGELA,34,VICTREEBEL,31,IVYSAUR,35,VILEPLUME,0
-	db ERIKA,1
+	db ERIKA,$1
 	db 1,1,BIND
 	db 1,2,STUN_SPORE
 	db 1,3,SLEEP_POWDER
@@ -227,7 +227,7 @@ SpecialTrainerMoves:
 	db 0
 
 ;	db $FF,41,TANGELA,42,VICTREEBEL,42,VENUSAUR,43,VILEPLUME,0
-	db ERIKA,2
+	db ERIKA,$2
 	db 1,1,BIND
 	db 1,2,BODY_SLAM
 	db 1,3,SLEEP_POWDER
@@ -247,7 +247,7 @@ SpecialTrainerMoves:
     db 0 
 
 ;	db $FF,48,TANGELA,49,VICTREEBEL,48,VENUSAUR,49,EXEGGUTOR,50,VILEPLUME,0
-	db ERIKA,3
+	db ERIKA,$3
 	db 1,1,MEGA_DRAIN
 	db 1,2,STUN_SPORE
     db 1,3,SOLARBEAM
@@ -272,7 +272,7 @@ SpecialTrainerMoves:
 
 ; Rematch
 ;	db $FF,64,TANGELA,64,VENUSAUR,64,PARASECT,64,EXEGGUTOR,65,VICTREEBEL,65,VILEPLUME,0
-	db ERIKA,4
+	db ERIKA,$4
 	db 1,1,MEGA_DRAIN
 	db 1,2,BODY_SLAM
 	db 1,3,STUN_SPORE
@@ -301,7 +301,7 @@ SpecialTrainerMoves:
 
 ;KogaData:
 ;	db $FF,42,MUK,41,TENTACRUEL,43,VENOMOTH,42,SCYTHER,0
-	db KOGA,1
+	db KOGA,$1
 	db 1,1,ACID_ARMOR
 	db 1,2,SLUDGE
 	db 1,3,MEGA_DRAIN
@@ -321,7 +321,7 @@ SpecialTrainerMoves:
 	db 0
 
 ;	db $FF,48,MUK,49,TENTACRUEL,48,WEEZING,50,VENOMOTH,49,SCYTHER,0
-	db KOGA,2
+	db KOGA,$2
 	db 1,1,SLUDGE_BOMB
 	db 1,2,MEGA_DRAIN
 	db 1,3,TOXIC
@@ -346,7 +346,7 @@ SpecialTrainerMoves:
 
 ; Rematch
 ;	db $FF,64,MUK,64,TENTACRUEL,65,WEEZING,64,ARBOK,65,VENOMOTH,64,SCIZOR,0
-	db KOGA,3
+	db KOGA,$3
 	db 1,1,SLUDGE_BOMB
 	db 1,2,TOXIC
 	db 1,3,MEGA_DRAIN
@@ -375,7 +375,7 @@ SpecialTrainerMoves:
 
 ;SabrinaData:
 ;	db $FF,42,EXEGGUTOR,42,MR_MIME,43,KADABRA,43,ALAKAZAM,0
-	db SABRINA,1
+	db SABRINA,$1
 	db 1,1,REFLECT
 	db 1,2,EGG_BOMB
 	db 1,3,MEGA_DRAIN
@@ -395,7 +395,7 @@ SpecialTrainerMoves:
 	db 0
 
 ;	db $FF,48,EXEGGUTOR, 48,HYPNO,49,MR_MIME,50,KADABRA, 50,ALAKAZAM,0
-	db SABRINA,2
+	db SABRINA,$2
 	db 1,1,REFLECT
 	db 1,2,EGG_BOMB
 	db 1,3,MEGA_DRAIN
@@ -420,7 +420,7 @@ SpecialTrainerMoves:
 
 ; Rematch
 ;	db $FF,65,MR_MIME,64,HYPNO,64,SLOWBRO,64,JYNX,64,EXEGGUTOR,65,ALAKAZAM,0
-	db SABRINA,3
+	db SABRINA,$3
 	db 1,1,THUNDERBOLT
 	db 1,2,PSYCHIC_M
 	db 1,3,SUBSTITUTE
@@ -449,7 +449,7 @@ SpecialTrainerMoves:
 
 ;BlaineData:
 ;	db $FF,52,RAPIDASH,51,CHARIZARD,51,NINETALES,52,ARCANINE,53,MAGMAR,0
-	db BLAINE,1
+	db BLAINE,$1
 	db 1,1,FIRE_SPIN
 	db 1,2,TAKE_DOWN
 	db 1,3,FIRE_BLAST
@@ -474,7 +474,7 @@ SpecialTrainerMoves:
 
 ; Rematch
 ;	db $FF,64,RAPIDASH,64,FLAREON,64,CHARIZARD,64,NINETALES,65,ARCANINE,65,MAGMAR,0
-	db BLAINE,2
+	db BLAINE,$2
 	db 1,1,FIRE_SPIN
 	db 1,2,AGILITY
 	db 1,3,SOLARBEAM
@@ -504,7 +504,7 @@ SpecialTrainerMoves:
 ;GiovanniData:
 ; Rocket Hideout B4F
 ;	db $FF,29,ONIX,31,KANGASKHAN,30,MAROWAK,32,PERSIAN,0
-	db GIOVANNI,1
+	db GIOVANNI,$1
 	db 1,1,ROCK_THROW
 	db 1,2,DIG
 	db 1,3,SCREECH
@@ -523,7 +523,7 @@ SpecialTrainerMoves:
 
 ; Silph Co. 11F
 ;	db $FF,44,KINGLER,44,KANGASKHAN, 45,MACHOKE ,44,GOLEM,47,PERSIAN,0
-	db GIOVANNI,2
+	db GIOVANNI,$2
 	db 1,1,CRABHAMMER
 	db 1,2,CUT 
 	db 1,3,BODY_SLAM
@@ -546,7 +546,7 @@ SpecialTrainerMoves:
 
 ; Viridian Gym
 ;	db $FF,53,DUGTRIO,54,NIDOQUEEN,55,PERSIAN,54,NIDOKING,55,RHYDON,0
-	db GIOVANNI,3
+	db GIOVANNI,$3
 	db 1,1,EARTHQUAKE
 	db 1,2,SLASH
 	db 1,3,FISSURE
@@ -571,7 +571,7 @@ SpecialTrainerMoves:
 
 ;LoreleiData:
 ;	db $FF,56,SLOWBRO,55,CLOYSTER,55,DEWGONG,56,JYNX,57,LAPRAS,0
-	db LORELEI,1 
+	db LORELEI,$1 
 	db 1,1,EARTHQUAKE
 	db 1,2,BLIZZARD
 	db 1,3,AMNESIA
@@ -596,7 +596,7 @@ SpecialTrainerMoves:
 
 ; Rematch
 ;	db $FF,70,SLOWBRO,71,STARMIE,71,SNEASEL,70,OMASTAR,70,JYNX,72,LAPRAS,0
-	db LORELEI,2 
+	db LORELEI,$2 
 	db 1,1,EARTHQUAKE
 	db 1,2,BLIZZARD
 	db 1,3,AMNESIA
@@ -625,7 +625,7 @@ SpecialTrainerMoves:
 
 ;BrunoData:
 ;	db $FF,57,HITMONCHAN,56,POLIWRATH,57,HITMONLEE,56,ONIX,58,MACHAMP,0
-	db BRUNO,1 
+	db BRUNO,$1 
 	db 1,1,DIZZY_PUNCH
 	db 1,2,SUBMISSION
 	db 1,3,ICE_PUNCH
@@ -650,7 +650,7 @@ SpecialTrainerMoves:
 
 ; Rematch
 ;	db $FF,71,HITMONCHAN,71,POLIWRATH,70,HITMONLEE,72,STEELIX,72,PRIMEAPE,73,MACHAMP,0
-	db BRUNO,2 
+	db BRUNO,$2 
 	db 1,1,DIZZY_PUNCH
 	db 1,2,SUBMISSION
 	db 1,3,ICE_PUNCH
@@ -679,7 +679,7 @@ SpecialTrainerMoves:
 
 ;AgathaData:
 ;	db $FF,57,GENGAR,58,GOLBAT,57,MAROWAK,58,MISDREAVUS,59,GENGAR,0
-	db AGATHA,1 
+	db AGATHA,$1 
 	db 1,1,MEGA_DRAIN
 	db 1,2,TOXIC
 	db 1,3,HYPNOSIS
@@ -704,7 +704,7 @@ SpecialTrainerMoves:
 
 ; Rematch
 ;	db $FF,71,GENGAR,71,GOLBAT,72,MAROWAK,71,UMBREON,72,MISDREAVUS,73,GENGAR,0
-	db AGATHA,2 
+	db AGATHA,$2 
 	db 1,1,MEGA_DRAIN
 	db 1,2,TOXIC
 	db 1,3,HYPNOSIS
@@ -733,7 +733,7 @@ SpecialTrainerMoves:
 
 ;LanceData:
 ;	db $FF,61,DRAGONITE,60,GYARADOS,60,CHARIZARD,61,AERODACTYL,62,DRAGONITE,0
-	db LANCE,1 
+	db LANCE,$1 
 	db 1,1,WRAP
 	db 1,2,SLAM
 	db 1,3,THUNDER_WAVE
@@ -758,7 +758,7 @@ SpecialTrainerMoves:
 
 ; Rematch
 ;	db $FF,73,DRAGONITE,73,GYARADOS,74,AERODACTYL,74,CHARIZARD,72,KINGDRA,75,DRAGONITE,0
-	db LANCE,2 
+	db LANCE,$2 
 	db 1,1,WRAP
 	db 1,2,SLAM
 	db 1,3,THUNDER_WAVE
@@ -887,6 +887,7 @@ SpecialTrainerMoves:
 	db 6,2,BODY_SLAM
 	db 6,3,REST
 	db 6,4,DIG
+	db 0
 
 ;ProfOakData:
 ; Unused - joenote: restored
@@ -942,7 +943,7 @@ SpecialTrainerMoves:
 ;MFujiData:
 ;	db $FF,69,MAROWAK,70,OMASTAR,70,KABUTOPS,71,AERODACTYL,73,TYRANITAR,100,DITTO,0
 	;mr fuji battle
-	db GENTLEMAN,$5
+	db MFUJI,$1
 	;marowak
 	db 1,1,BONEMERANG
 	db 1,2,BODY_SLAM
@@ -1010,7 +1011,7 @@ SpecialTrainerMoves:
 ;SachaData:
 ;	db $FF,88,PIKACHU,85,TAUROS,85,CHARIZARD,85,PIDGEOT,87,SNORLAX,83,POLIWRATH,0
 	;Red battle
-	db JR_TRAINER_M,$9
+	db SACHA,$1
 	;PIKACHU
 	db 1,1,HYPER_BEAM
 	db 1,2,HYPER_BEAM
@@ -1142,7 +1143,7 @@ SpecialTrainerMoves:
 ;JessieJamesData:
 ; Mt. Moon [B2F]
 ;	db $FF,15,EKANS,16,MEOWTH,15,KOFFING,0
-	db JESSIE_JAMES,1
+	db JESSIE_JAMES,$1
 	db 1,1,LEER
     db 1,2,POISON_STING
     db 1,3,BITE
@@ -1157,7 +1158,7 @@ SpecialTrainerMoves:
 
 ; Rocket Hideout [B4F]
 ;	db $FF,28,KOFFING,29,MEOWTH,28,ARBOK,0
-	db JESSIE_JAMES,2
+	db JESSIE_JAMES,$2
 	db 1,1,TACKLE
     db 1,2,SMOG
 	db 1,3,ACID
@@ -1174,7 +1175,7 @@ SpecialTrainerMoves:
 
 ; PokemonTower [7F]
 ;	db $FF,33,MEOWTH,31,ARBOK,30,LICKITUNG,31,WEEZING,0
-	db JESSIE_JAMES,3
+	db JESSIE_JAMES,$3
 	db 1,1,BITE
     db 1,2,PAY_DAY
     db 1,3,SCREECH
@@ -1195,7 +1196,7 @@ SpecialTrainerMoves:
 
 ; Silph Co. [11F]
 ;	db $FF,42,WEEZING,41,LICKITUNG,42,ARBOK,44,MEOWTH,43,VICTREEBEL,0
-	db JESSIE_JAMES,4
+	db JESSIE_JAMES,$4
 	db 1,1,SMOKESCREEN
     db 1,2,SLUDGE_BOMB
     db 1,3,AMNESIA

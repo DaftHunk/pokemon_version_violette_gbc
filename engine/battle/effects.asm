@@ -21,7 +21,7 @@ _JumpMoveEffect:
 	ld l, a
 	jp hl ; jump to special effect handler
 
-INCLUDE "data/moves/effects_pointers.asm"
+INCLUDE "data/battle/effects_pointers.asm"
 
 SleepEffect:
 	ld de, wEnemyMonStatus

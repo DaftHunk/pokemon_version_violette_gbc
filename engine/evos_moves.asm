@@ -888,4 +888,4 @@ PrepareLevelUpMoveList:: ; I don't know how the fuck you're a single colon in sh
  .debug
  	ret
 
-INCLUDE "data/evos_moves.asm"
+INCLUDE "data/moves/evos_moves.asm"

@@ -1,4 +1,4 @@
-; See data/evos_moves.asm
+; See data/moves/evos_moves.asm
 
 ; Evolution types
 EV_LEVEL EQU 1

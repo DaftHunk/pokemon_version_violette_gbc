@@ -82,7 +82,7 @@ CheckForceBikeOrSurf:
 	ld [wWalkBikeSurfStateCopy], a
 	jp ForceBikeOrSurf
 
-INCLUDE "data/force_bike_surf.asm"
+INCLUDE "data/maps/force_bike_surf.asm"
 
 IsPlayerFacingEdgeOfMap:
 	push hl
@@ -231,7 +231,7 @@ IsPlayerStandingOnDoorTileOrWarpTile:
 	pop hl
 	ret
 
-INCLUDE "data/warp_tile_ids.asm"
+INCLUDE "data/maps/warp_tile_ids.asm"
 
 PrintSafariZoneSteps:
 	ld a, [wCurMap]

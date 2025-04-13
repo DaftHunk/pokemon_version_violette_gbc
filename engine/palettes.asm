@@ -1239,11 +1239,11 @@ BufferAllPokeyellowColorsGBC:
 	
 	
 	
-INCLUDE "data/sgb_packets.asm"
+INCLUDE "data/palettes/sgb_packets.asm"
 
-INCLUDE "data/mon_palettes.asm"
+INCLUDE "data/palettes/mon_palettes.asm"
 
-INCLUDE "data/super_palettes.asm"
-INCLUDE "data/gbc_palettes.asm"
+INCLUDE "data/palettes/super_palettes.asm"
+INCLUDE "data/palettes/gbc_palettes.asm"
 
-INCLUDE "data/sgb_border.asm"
+INCLUDE "data/palettes/sgb_border.asm"

@@ -929,7 +929,7 @@ SlotMachineMap:
 	INCBIN "gfx/tilemaps/slotmachine.tilemap"
 SlotMachineMapEnd:
 
-INCLUDE "data/slot_machine_wheels.asm"
+INCLUDE "data/items/slot_machine_wheels.asm"
 
 SlotMachineTiles1:
 	INCBIN "gfx/tiles/slotmachine1.2bpp"

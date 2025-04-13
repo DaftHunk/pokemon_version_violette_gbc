@@ -123,4 +123,4 @@ GetTMMoves:
  	ld [de], a
  	ret
 
-INCLUDE "data/tms.asm"
+INCLUDE "data/moves/tms.asm"

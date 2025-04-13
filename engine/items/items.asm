@@ -2207,7 +2207,7 @@ ItemUseGoodRod:
 	xor 1
 	jr RodResponse
 
-INCLUDE "data/good_rod.asm"
+INCLUDE "data/wildPokemons/good_rod.asm"
 
 ItemUseSuperRod:
 	call FishingInit
@@ -3053,7 +3053,7 @@ IsKeyItem_:
 	ld [wIsKeyItem], a
 	ret
 
-INCLUDE "data/key_items.asm"
+INCLUDE "data/items/key_items.asm"
 
 SendNewMonToBox:
 	ld de, wNumInBox

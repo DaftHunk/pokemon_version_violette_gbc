@@ -285,7 +285,7 @@ GetPartyMonSpriteID:
 	ld [wOAMBaseTile], a
 	ret
 
-INCLUDE "data/mon_party_sprites.asm"
+INCLUDE "data/pokemons/mon_party_sprites.asm"
 
 MonPartySprites:
 	INCBIN "gfx/tiles/mon_ow_sprites.2bpp"

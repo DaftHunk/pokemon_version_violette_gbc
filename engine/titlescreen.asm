@@ -443,7 +443,7 @@ CopyrightTextString:
 	next $60,$61,$62,$63,$61,$62,$7C,$7F,$73,$74,$75,$76,$77,$78,$79,$7A,$7B ; ©1995-1999 GAME FREAK inc.
 	db   "@"
 
-INCLUDE "data/title_mons.asm"
+INCLUDE "data/pokemons/title_mons.asm"
 
 ; prints version text (red, blue)
 PrintGameVersionOnTitleScreen:
