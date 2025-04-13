@@ -1,11 +1,11 @@
 _Route24Text_51510::
 	text "Félicitations!"
 	line "Tu as battu les"
-	cont "5 dresseurs!@"
-	text_end
+	cont "5 dresseurs!@@"
 
 _Route24Text_51515::
-	text "Ouvre tes mains"
+	db $0
+	para "Ouvre tes mains"
 	line "pendant que je"
 	cont "sors mes pépites."
 	prompt
@@ -14,8 +14,7 @@ _Route24Text_5151a::
 	text "<PLAYER> obtient:"
 	line "@"
 	text_ram wStringBuffer
-	text "!@"
-	text_end
+	text "!@@"
 
 _Route24Text_51521::
 	text "Votre inventaire"
