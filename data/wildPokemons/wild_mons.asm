@@ -104,7 +104,7 @@ WildDataPointers:
 	dw NoMons
 	dw NoMons
 	dw NoMons
-	dw BillsGardenMons
+	dw NoMons
 	dw NoMons
 	dw NoMons
 	dw PlateauMons1
@@ -317,7 +317,6 @@ INCLUDE "data/wildPokemons/maps/victoryroad2.asm"
 INCLUDE "data/wildPokemons/maps/victoryroad3.asm"
 INCLUDE "data/wildPokemons/maps/victoryroad1.asm"
 INCLUDE "data/wildPokemons/maps/diglettscave.asm"
-INCLUDE "data/wildPokemons/maps/billsgarden.asm"
 INCLUDE "data/wildPokemons/nomons.asm"
 INCLUDE "data/wildPokemons/waterpokemon.asm"
 WildDataLabelEnd::
