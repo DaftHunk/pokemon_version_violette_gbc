@@ -185,22 +185,27 @@ SetPal_Overworld:
 	ld de, wPalPacket
 	ld bc, $10
 	call CopyData
-	ld a, [wCurMapTileset]
-	cp CEMETERY
-	jr z, .PokemonTowerOrAgatha
-	cp CAVERN
-	jr z, .caveOrBruno
+
+	; first check if the current map has a custom palette
 	ld a, [wCurMap]
-	cp REDS_HOUSE_1F
-	jr c, .townOrRoute
-	cp CERULEAN_CAVE_2F
-	jr c, .normalDungeonOrBuilding
-	cp NAME_RATERS_HOUSE
-	jr c, .caveOrBruno
-	cp LORELEIS_ROOM
-	jr z, .Lorelei
-	cp BRUNOS_ROOM
-	jr z, .caveOrBruno
+	ld hl, MapPalettesJumpTable
+	ld de, 2
+	call IsInArray
+	jr c, .foundPalette
+
+	; lastly check if the tileset has its own map palette
+	ld a, [wCurMapTileset]
+	ld hl, MapTilesetPalettesTable
+ 	ld de, 2
+ 	call IsInArray
+ 	jr c, .foundPalette
+
+ 	; next, if it's a town or route, use the town palette or route palette
+ 	ld a, [wCurMap]
+ 	cp REDS_HOUSE_1F
+ 	jr c, .townOrRoute
+
+	; otherwise, use the last overworld map's palette for this indoor map
 .normalDungeonOrBuilding
 	ld a, [wLastMap] ; town or route that current dungeon or building is located
 .townOrRoute
@@ -215,15 +220,28 @@ SetPal_Overworld:
 	ld a, SET_PAL_OVERWORLD
 	ld [wDefaultPaletteCommand], a
 	ret
-.PokemonTowerOrAgatha
-	ld a, PAL_GREYMON - 1
+.foundPalette
+	inc hl
+	ld a, [hl]
 	jr .town
-.caveOrBruno
-	ld a, PAL_CAVE - 1
-	jr .town
-.Lorelei
-	xor a
-	jr .town
+
+MapTilesetPalettesTable:
+	db CEMETERY, PAL_GREYMON
+	db UNDERGROUND, PAL_ROUTE
+	db CAVERN, PAL_CAVE
+	db -1
+
+MapPalettesJumpTable:
+	db SEAFOAM_ISLANDS_1F, PAL_0F
+	db SEAFOAM_ISLANDS_B1F, PAL_0F
+	db SEAFOAM_ISLANDS_B2F, PAL_0F
+	db SEAFOAM_ISLANDS_B3F, PAL_0F
+	db SEAFOAM_ISLANDS_B4F, PAL_0F
+	db LORELEIS_ROOM, PAL_0F
+	db POWER_PLANT, PAL_YELLOWMON
+	db BRUNOS_ROOM, PAL_CAVE
+	db FUCHSIA_GOOD_ROD_HOUSE, PAL_FUCHSIA
+	db -1
 
 ; used when a Pokemon is the only thing on the screen
 ; such as evolution, trading and the Hall of Fame
