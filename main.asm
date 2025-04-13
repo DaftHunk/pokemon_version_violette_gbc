@@ -1618,8 +1618,6 @@ Lab_GFX:           INCBIN "gfx/tilesets/lab.2bpp"
 Lab_Block:         INCBIN "gfx/blocksets/lab.bst"
 Club_GFX:          INCBIN "gfx/tilesets/club.2bpp"
 Club_Block:        INCBIN "gfx/blocksets/club.bst"
-Underground_GFX:   INCBIN "gfx/tilesets/underground.2bpp"
-Underground_Block: INCBIN "gfx/blocksets/underground.bst"
 
 
 SECTION "bank1C",ROMX,BANK[$1C]
@@ -1638,6 +1636,9 @@ INCLUDE "engine/save.asm"
 
 
 SECTION "bank1D",ROMX,BANK[$1D]
+
+Underground_GFX:   INCBIN "gfx/tilesets/underground.2bpp"
+Underground_Block: INCBIN "gfx/blocksets/underground.bst"
 
 CopycatsHouse1FBlocks: INCBIN "maps/copycatshouse1f.blk"
 
