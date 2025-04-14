@@ -900,6 +900,7 @@ SpecialTrainerMoves:
 	db 1,4,HYPER_BEAM
 	;exeggutor - reflect, stomp, solarbeam, hypnosis
 	;arcanine - bite, fire blast, takedown, flamethrower
+	db 3,1,BITE
 	db 3,2,FIRE_BLAST
 	;blastoise - bite, withdraw, blizzard, hydro pump
 	db 4,3,BLIZZARD
@@ -916,6 +917,7 @@ SpecialTrainerMoves:
 	db 1,4,HYPER_BEAM
 	;exeggutor - reflect, stomp, solarbeam, hypnosis
 	;arcanine - bite, fire blast, takedown, flamethrower
+	db 3,1,BITE
 	db 3,2,FIRE_BLAST
 	;venusaur - razor leaf, growth, body slam, solar beam
 	db 4,3,BODY_SLAM
@@ -932,6 +934,7 @@ SpecialTrainerMoves:
 	db 1,4,HYPER_BEAM
 	;exeggutor - reflect, stomp, solarbeam, hypnosis
 	;arcanine - bite, fire blast, takedown, flamethrower
+	db 3,1,BITE
 	db 3,2,FIRE_BLAST
 	;charizard - toxic, slash, flamethrower, fire spin
 	db 4,1,TOXIC
@@ -1008,74 +1011,6 @@ SpecialTrainerMoves:
 	db 6,4,REST
 	db 0
 
-;SachaData:
-;	db $FF,88,PIKACHU,85,TAUROS,85,CHARIZARD,85,PIDGEOT,87,SNORLAX,83,POLIWRATH,0
-	;Red battle
-	db SACHA,$1
-	;PIKACHU
-	db 1,1,HYPER_BEAM
-	db 1,2,HYPER_BEAM
-	db 1,3,HYPER_BEAM
-	db 1,4,HYPER_BEAM
-	;TAUROS
-	db 2,1,HYPER_BEAM
-	db 2,2,HYPER_BEAM
-	db 2,3,HYPER_BEAM
-	db 2,4,HYPER_BEAM
-	;charizard
-	db 3,1,HYPER_BEAM
-	db 3,2,HYPER_BEAM
-	db 3,3,HYPER_BEAM
-	db 3,4,HYPER_BEAM
-	;PIDGEOT
-	db 4,1,HYPER_BEAM
-	db 4,2,HYPER_BEAM
-	db 4,3,HYPER_BEAM
-	db 4,4,HYPER_BEAM
-	;snorlax
-	db 5,1,HYPER_BEAM
-	db 5,2,HYPER_BEAM
-	db 5,3,HYPER_BEAM
-	db 5,4,HYPER_BEAM
-	;POLIWRATH
-	db 6,1,HYPER_BEAM
-	db 6,2,HYPER_BEAM
-	db 6,3,HYPER_BEAM
-	db 6,4,HYPER_BEAM
-	db 0
-
-	;PIKACHU
-;	db 1,1,THUNDER
-;	db 1,2,THUNDER_WAVE
-;	db 1,3,SURF
-;	db 1,4,DOUBLE_TEAM
-	;TAUROS
-;	db 2,1,HYPER_BEAM
-;	db 2,2,DOUBLE_EDGE
-;	db 2,3,STOMP
-;	db 2,4,REST
-	;charizard
-;	db 3,1,FIRE_BLAST
-;	db 3,2,EARTHQUAKE
-;	db 3,3,SWORDS_DANCE
-;	db 3,4,HYPER_BEAM
-	;PIDGEOT
-;	db 4,1,TAKE_DOWN
-;	db 4,2,AGILITY
-;	db 4,3,SKY_ATTACK
-;	db 4,4,TOXIC
-	;snorlax
-;	db 5,1,HYPER_BEAM
-;	db 5,2,REST
-;	db 5,3,BODY_SLAM
-;	db 5,4,EARTHQUAKE
-	;POLIWRATH
-;	db 6,1,ICE_BEAM
-;	db 6,2,HYPNOSIS
-;	db 6,3,AMNESIA
-;	db 6,4,HYDRO_PUMP
-;	db 0
-
 ;ChiefData:
 ;db $FF,128,MISSINGNO_B5,128,MISSINGNO_B5,128,MISSINGNO_B5,0	;joenote - another superboss
 	;multi missingno superboss battle
@@ -1097,7 +1032,7 @@ SpecialTrainerMoves:
 ;JoyData:
 ; Fuchsia Pokecenter
 ;	db 72,KANGASKHAN,SNORLAX,STARMIE,PORYGON,EXEGGUTOR,CHANSEY,0
-	db JOY,1
+	db JOY,$1
 	db 1,1,REST
     db 1,2,DOUBLE_TEAM
     db 1,3,FISSURE
@@ -1123,7 +1058,7 @@ SpecialTrainerMoves:
 ;JennyData:
 ; Vermilion City
 ;	db 65,PIDGEOT,BLASTOISE,TANGELA,GENGAR,PARASECT,ARCANINE,0
-	db JENNY,1
+	db JENNY,$1
 	db 1,1,TAKE_DOWN
     db 1,4,TOXIC
     db 2,1,SURF
@@ -1218,6 +1153,74 @@ SpecialTrainerMoves:
 	db 5,3,SLUDGE_BOMB
 	db 5,4,WRAP
 	db 0
+
+;SachaData:
+;	db $FF,88,PIKACHU,85,TAUROS,85,CHARIZARD,85,PIDGEOT,87,SNORLAX,83,POLIWRATH,0
+	;Red battle
+	db SACHA,$1
+	;PIKACHU
+	db 1,1,HYPER_BEAM
+	db 1,2,HYPER_BEAM
+	db 1,3,HYPER_BEAM
+	db 1,4,HYPER_BEAM
+	;TAUROS
+	db 2,1,HYPER_BEAM
+	db 2,2,HYPER_BEAM
+	db 2,3,HYPER_BEAM
+	db 2,4,HYPER_BEAM
+	;charizard
+	db 3,1,HYPER_BEAM
+	db 3,2,HYPER_BEAM
+	db 3,3,HYPER_BEAM
+	db 3,4,HYPER_BEAM
+	;PIDGEOT
+	db 4,1,HYPER_BEAM
+	db 4,2,HYPER_BEAM
+	db 4,3,HYPER_BEAM
+	db 4,4,HYPER_BEAM
+	;snorlax
+	db 5,1,HYPER_BEAM
+	db 5,2,HYPER_BEAM
+	db 5,3,HYPER_BEAM
+	db 5,4,HYPER_BEAM
+	;POLIWRATH
+	db 6,1,HYPER_BEAM
+	db 6,2,HYPER_BEAM
+	db 6,3,HYPER_BEAM
+	db 6,4,HYPER_BEAM
+	db 0
+
+	;PIKACHU
+;	db 1,1,THUNDER
+;	db 1,2,THUNDER_WAVE
+;	db 1,3,SURF
+;	db 1,4,DOUBLE_TEAM
+	;TAUROS
+;	db 2,1,HYPER_BEAM
+;	db 2,2,DOUBLE_EDGE
+;	db 2,3,STOMP
+;	db 2,4,REST
+	;charizard
+;	db 3,1,FIRE_BLAST
+;	db 3,2,EARTHQUAKE
+;	db 3,3,SWORDS_DANCE
+;	db 3,4,HYPER_BEAM
+	;PIDGEOT
+;	db 4,1,TAKE_DOWN
+;	db 4,2,AGILITY
+;	db 4,3,SKY_ATTACK
+;	db 4,4,TOXIC
+	;snorlax
+;	db 5,1,HYPER_BEAM
+;	db 5,2,REST
+;	db 5,3,BODY_SLAM
+;	db 5,4,EARTHQUAKE
+	;POLIWRATH
+;	db 6,1,ICE_BEAM
+;	db 6,2,HYPNOSIS
+;	db 6,3,AMNESIA
+;	db 6,4,HYDRO_PUMP
+;	db 0
 
 	db $ff
 	

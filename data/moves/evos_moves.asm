@@ -437,7 +437,7 @@ ArcanineEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 20, EMBER
+	db 10, EMBER
 	db 20, BITE
 	db 30, LEER
 	db 40, TAKE_DOWN
@@ -505,6 +505,7 @@ GastlyEvosMoves:
 ScytherEvosMoves:
 ; Evolutions
 	db EV_ITEM, METAL_COAT, 1, SCIZOR
+	db 0
 ; Learnsetjoenote-modified for yellow
 	db 6, FOCUS_ENERGY
 	db 12, PURSUIT
@@ -612,6 +613,7 @@ GrowlitheEvosMoves:
 OnixEvosMoves:
 ; Evolutions
 	db EV_ITEM, METAL_COAT, 1, STEELIX
+	db 0
 ; Learnset
 	db 10, BIND
 	db 14, ROCK_THROW
@@ -1219,7 +1221,7 @@ PikachuEvosMoves:
 	db 6, TAIL_WHIP
 	db 8, THUNDER_WAVE
 	db 11, QUICK_ATTACK
-	db 11, THUNDERSHOCK
+	db 12, THUNDERSHOCK
 	db 15, DOUBLE_TEAM
 	db 20, SLAM
 	db 26, THUNDERBOLT
