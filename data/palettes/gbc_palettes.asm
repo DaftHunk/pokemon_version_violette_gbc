@@ -49,6 +49,12 @@ GBCBasePalettes:
 	RGB 11, 23, 31
 	RGB  3,  3,  3
 
+	; PAL_SAFFRON
+	RGB 31, 31, 31
+	RGB 31, 31,  0
+	RGB 11, 23, 31
+	RGB  3,  3,  3
+
 	; PAL_FUCHSIA
 	RGB 31, 31, 31
 	RGB 31, 15, 15
@@ -64,12 +70,6 @@ GBCBasePalettes:
 	; PAL_INDIGO
 	RGB 31, 31, 31
 	RGB 11,  8, 31
-	RGB 11, 23, 31
-	RGB  3,  3,  3
-
-	; PAL_SAFFRON
-	RGB 31, 31, 31
-	RGB 31, 31,  0
 	RGB 11, 23, 31
 	RGB  3,  3,  3
 

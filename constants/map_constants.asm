@@ -12,10 +12,10 @@ ENDM
 	mapconst LAVENDER_TOWN,               9, 10 ; $04
 	mapconst VERMILION_CITY,             18, 20 ; $05
 	mapconst CELADON_CITY,               18, 25 ; $06
-	mapconst FUCHSIA_CITY,               18, 20 ; $07
-	mapconst CINNABAR_ISLAND,             9, 10 ; $08
-	mapconst INDIGO_PLATEAU,              9, 10 ; $09
-	mapconst SAFFRON_CITY,               18, 20 ; $0A
+	mapconst SAFFRON_CITY,               18, 20 ; $07
+	mapconst FUCHSIA_CITY,               18, 20 ; $08
+	mapconst CINNABAR_ISLAND,             9, 10 ; $09
+	mapconst INDIGO_PLATEAU,              9, 10 ; $0A
 	mapconst UNUSED_MAP_0B,               0,  0 ; $0B
 	mapconst ROUTE_1,                    18, 10 ; $0C
 	mapconst ROUTE_2,                    36, 10 ; $0D

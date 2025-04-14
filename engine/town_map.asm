@@ -262,7 +262,7 @@ BuildFlyLocationsList:
 	ld e, a
 	ld a, [wTownVisitedFlag + 1]
 	ld d, a
-	ld bc, SAFFRON_CITY + 1
+	ld bc, INDIGO_PLATEAU + 1
 .loop
 	srl d
 	rr e

@@ -6,10 +6,10 @@ ExternalMapEntries:
 	EMAP $E,$5,LavenderTownName
 	EMAP $A,$9,VermilionCityName
 	EMAP $7,$5,CeladonCityName
+	EMAP $A,$5,SaffronCityName
 	EMAP $8,$D,FuchsiaCityName
 	EMAP $2,$F,CinnabarIslandName
 	EMAP $0,$2,IndigoPlateauName
-	EMAP $A,$5,SaffronCityName
 	EMAP $0,$0,PalletTownName ; unused
 	EMAP $2,$A,Route1Name
 	EMAP $2,$6,Route2Name

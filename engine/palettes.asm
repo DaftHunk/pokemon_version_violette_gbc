@@ -209,7 +209,7 @@ SetPal_Overworld:
 .normalDungeonOrBuilding
 	ld a, [wLastMap] ; town or route that current dungeon or building is located
 .townOrRoute
-	cp SAFFRON_CITY + 1
+	cp INDIGO_PLATEAU + 1
 	jr c, .town
 	ld a, PAL_ROUTE - 1
 .town

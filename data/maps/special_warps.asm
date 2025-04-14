@@ -74,14 +74,14 @@ FlyWarpDataPtr:
 	dw VermilionCityFlyWarp
 	db CELADON_CITY, 0
 	dw CeladonCityFlyWarp
+	db SAFFRON_CITY, 0
+	dw SaffronCityFlyWarp
 	db FUCHSIA_CITY, 0
 	dw FuchsiaCityFlyWarp
 	db CINNABAR_ISLAND, 0
 	dw CinnabarIslandFlyWarp
 	db INDIGO_PLATEAU, 0
 	dw IndigoPlateauFlyWarp
-	db SAFFRON_CITY, 0
-	dw SaffronCityFlyWarp
 	db ROUTE_4, 0
 	dw Route4FlyWarp
 	db ROUTE_10, 0
@@ -105,14 +105,14 @@ VermilionCityFlyWarp:
 	FLYWARP_DATA VERMILION_CITY_WIDTH,   4, 11
 CeladonCityFlyWarp:
 	FLYWARP_DATA CELADON_CITY_WIDTH,    10, 41
+SaffronCityFlyWarp:
+	FLYWARP_DATA SAFFRON_CITY_WIDTH,    30,  9
 FuchsiaCityFlyWarp:
 	FLYWARP_DATA FUCHSIA_CITY_WIDTH,    28, 19
 CinnabarIslandFlyWarp:
 	FLYWARP_DATA CINNABAR_ISLAND_WIDTH, 12, 11
 IndigoPlateauFlyWarp:
 	FLYWARP_DATA INDIGO_PLATEAU_WIDTH,   6,  9
-SaffronCityFlyWarp:
-	FLYWARP_DATA SAFFRON_CITY_WIDTH,    30,  9
 Route4FlyWarp:
 	FLYWARP_DATA ROUTE_4_WIDTH,          6, 11
 Route10FlyWarp:

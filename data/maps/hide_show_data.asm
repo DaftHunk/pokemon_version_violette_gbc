@@ -12,10 +12,10 @@ MapHSPointers:
 	dw NoHS
 	dw VermilionCityHS	;joenote - added vermilion city
 	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
 	dw SaffronCityHS
+	dw NoHS
+	dw NoHS
+	dw NoHS
 	dw NoHS
 	dw NoHS
 	dw Route2HS

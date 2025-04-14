@@ -7,10 +7,10 @@ MapHeaderBanks:
 	db BANK(LavenderTown_h) ; LAVENDER_TOWN
 	db BANK(VermilionCity_h) ; VERMILION_CITY
 	db BANK(CeladonCity_h) ; CELADON_CITY
+	db BANK(SaffronCity_h) ; SAFFRON_CITY
 	db BANK(FuchsiaCity_h) ; FUCHSIA_CITY
 	db BANK(CinnabarIsland_h) ; CINNABAR_ISLAND
 	db BANK(IndigoPlateau_h) ; INDIGO_PLATEAU
-	db BANK(SaffronCity_h) ; SAFFRON_CITY
 	db $1 ; unused
 	db BANK(Route1_h) ; ROUTE_1
 	db BANK(Route2_h) ; ROUTE_2

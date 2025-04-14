@@ -6,10 +6,10 @@ WildDataPointers:
 	dw NoMons      ; LAVENDER_TOWN
 	dw NoMons      ; VERMILION_CITY
 	dw NoMons      ; CELADON_CITY
+	dw NoMons      ; SAFFRON_CITY
 	dw NoMons      ; FUCHSIA_CITY
 	dw NoMons      ; CINNABAR_ISLAND
 	dw NoMons      ; INDIGO_PLATEAU
-	dw NoMons      ; SAFFRON_CITY
 	dw NoMons      ; unused
 	dw Route1Mons  ; ROUTE_1
 	dw Route2Mons  ; ROUTE_2
