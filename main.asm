@@ -2023,3 +2023,6 @@ INCBIN "gfx/pokemon/icons/larvitar.2bpp"
 INCBIN "gfx/pokemon/icons/pupitar.2bpp"
 INCBIN "gfx/pokemon/icons/tyranitar.2bpp"
 INCBIN "gfx/pokemon/icons/hooh.2bpp"
+
+Reactor_GFX:       INCBIN "gfx/tilesets/reactor.2bpp"
+Reactor_Block:     INCBIN "gfx/blocksets/reactor.bst"

@@ -23,6 +23,7 @@ WarpTileIDPointers:
 	dw ClubWarpTileIDs
 	dw FacilityWarpTileIDs
 	dw PlateauWarpTileIDs
+	dw ReactorWarpTileIDs
 
 OverworldWarpTileIDs:
 	db $1B,$58,$FF
@@ -69,6 +70,9 @@ LabWarpTileIDs:
 	db $34,$FF
 
 FacilityWarpTileIDs:
+	db $43,$58,$20
+
+ReactorWarpTileIDs:
 	db $43,$58,$20
 
 CemeteryWarpTileIDs:

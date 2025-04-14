@@ -27,6 +27,7 @@ PowerPlantTextPointers:
 	dw PickUpItemText
 	dw PickUpItemText
 	dw PickUpItemText
+	dw PickUpItemText
 
 Voltorb0TrainerHeader:
 	dbEventFlagBit EVENT_BEAT_POWER_PLANT_VOLTORB_0

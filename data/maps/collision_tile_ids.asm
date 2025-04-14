@@ -66,3 +66,6 @@ Facility_Coll::
 
 Plateau_Coll::
 	coll_tiles $1b, $23, $2c, $2d, $3b, $45
+
+Reactor_Coll::
+	coll_tiles $01, $10, $13, $2F, $30, $3D, $42, $43, $52, $55, $56, $59, $5A

@@ -398,6 +398,7 @@ PowerPlantHS:
 	db POWER_PLANT,$0C,Show
 	db POWER_PLANT,$0D,Show
 	db POWER_PLANT,$0E,Show
+	db POWER_PLANT,$0F,Show
 VictoryRoad2FHS:
 	db VICTORY_ROAD_2,$06,Show
 	db VICTORY_ROAD_2,$07,Show
