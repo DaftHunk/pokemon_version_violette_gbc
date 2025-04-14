@@ -172,10 +172,10 @@ _OaksLabPleaseVisitText::
 _OaksLabText_1d31d::
 	text "Chen: Je suis"
 	line "content de te"
-	cont "revoir. Où en"
-	cont "es-tu avec ton"
-	cont "#dex?"
-	cont "Voyons, voyons..."
+	cont "revoir. Veux-tu"
+	cont "que je regarde"
+	cont "où tu en es avec"
+	cont "ton #dex?"
 	prompt
 
 _OaksLabText_1d32c::
@@ -519,12 +519,13 @@ _OaksLabText_challenge::
 	done
 
 _OaksLabText_prebattle::
-	text "Ca fait longtemps"
-	line "que je ne me suis"
-	cont "pas entrainé."
+	text "Je me suis en"
+	line "effet entrainé"
+	cont "récemment."
 	
-	para "Je suppose que"
-	line "c'est l'occasion."
+	para "La fougue de la"
+	line "jeunesse doit"
+	cont "être contagieuse."
 	done
 
 _OakVictorySpeech::
@@ -536,14 +537,15 @@ _OakVictorySpeech::
 	line "sel du duel."
 	cont "Quel beau match."
 
-	para "Tu connais M.Fuji?"
-	line "Il étudiait les"
+	para "Tu connais le"
+	line "docteur Fuji?"
+	cont "Il étudiait les"
 	cont "#mon sur-"
 	cont "puissants."
 
 	para "Tu devrais aller"
-	line "le voir. Il a pris"
-	cont "sa retraite"
+	line "le voir. Il a"
+	cont "pris sa retraite"
 	cont "à Lavanville."
 	prompt
 ; dafthunk : changed dialog for assistants

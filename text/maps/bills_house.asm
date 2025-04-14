@@ -92,13 +92,15 @@ _BillsHouseText_1e8da::
 _BillGardenText::
 	text "Bill: Hey, mec!"
 	line "C'est vraiment le"
-	cont "fabuleux Mew? Wow!"
-	cont "C'est une nouvelle"
-	cont "espèce de #mon."
+	cont "fabuleux Mew?"
+	cont "Wow! C'est une"
+	cont "nouvelle espèce"
+	cont "de #mon."
 	
-	para "En remerciement de"
-	line "me l'avoir montré,"
-	cont "Je vais te montrer"
-	cont "un endroit secret."
+	para "Pour te remercier"
+	line "de me l'avoir"
+	cont "montré, je vais"
+	cont "te révéler un"
+	cont "endroit secret."
 	done
 	

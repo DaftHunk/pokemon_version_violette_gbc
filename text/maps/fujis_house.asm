@@ -148,8 +148,9 @@ _FujiTextVictorySpeech::
 
 	para "Le PDG de la Syl-"
 	line "phe est un vieil"
-	cont "ami, va aussi lui"
-	cont "rendre visite."
+	cont "ami, tu devrais"
+	cont "aussi lui rendre"
+	cont "visite."
 	prompt
 	
 _FujiTextMewtwo::
