@@ -18,7 +18,7 @@ _OakWalksUpText::
 	para "Suis-moi!"
 	done
 
-_PalletTownText2::
+_PalletTownText_Girl::
 	text "J'élève des"
 	line "#mon, moi"
 	cont "aussi!"
@@ -28,7 +28,19 @@ _PalletTownText2::
 	cont "protéger!"
 	done
 
-_PalletTownText3::
+_PalletTownText_GirlAfterElite4::
+	text "Oh mais c'est toi"
+	line "qui vient de"
+	cont "battre le conseil"
+	cont "des 4!"
+
+	para "Tu pourras me"
+	line "donner des"
+	cont "conseil à"
+	cont "l'occasion?"
+	done
+
+_PalletTownText_Man::
 	text "Le progrès..."
 	line "C'est dément!"
 
@@ -37,6 +49,15 @@ _PalletTownText3::
 	cont "retirer des"
 	cont "objets ou des"
 	cont "#mon via PC!"
+	done
+
+_PalletTownText_ManAfterElite4::
+	text "Il parait que le"
+	line "nouveau Champion"
+	cont "vient de notre"
+	cont "village!"
+	
+	para "C'est dingue!"
 	done
 
 _PalletTownText4::

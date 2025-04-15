@@ -1000,7 +1000,7 @@ OaksLabText32:
 OaksLabText5:
 	TX_ASM
 	CheckEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
-	jr nz, .asm_1d266
+	jr nz, .oakAskForDexCheck
 ;	ld hl, wPokedexOwned
 ;	ld b, wPokedexOwnedEnd - wPokedexOwned
 ;	call CountSetBits
@@ -1013,13 +1013,20 @@ OaksLabText5:
 	
 	CheckEvent EVENT_GOT_POKEDEX
 	jp z, .asm_1d279
-.asm_1d266
-	ld hl, OaksLabText_1d31d
+.oakAskForDexCheck
+	CheckEvent EVENT_ELITE_4_BEATEN	;has elite 4 been beaten?
+	jr z, .dexCheckLoadText
+	; else 
+	ld hl, OaksLabText_AskForPokedexRatingAfterElite4
 	call PrintText
+	jp .profOakBattle
+.dexCheckLoadText
+	ld hl, OaksLabText_AskForPokedexRating
+	call PrintText
+	jr z, .dexcheck	;if no then leave this section and do the pokedex check like normal
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - prof oak battle
-	CheckEvent EVENT_ELITE_4_BEATEN	;has elite 4 been beaten?
-	jr z, .dexcheck	;if no then leave this section and do the pokedex check like normal
+.profOakBattle
 	call YesNoChoice	;else call a yes/no choice box
 	ld a, [wCurrentMenuItem]	;load the player choice
 	and a	;check the player choice
@@ -1159,8 +1166,12 @@ OaksLabPleaseVisitText:
 	TX_FAR _OaksLabPleaseVisitText
 	db "@"
 
-OaksLabText_1d31d:
-	TX_FAR _OaksLabText_1d31d
+OaksLabText_AskForPokedexRating:
+	TX_FAR _OaksLabText_AskForPokedexRating
+	db "@"
+
+OaksLabText_AskForPokedexRatingAfterElite4:
+	TX_FAR _OaksLabText_AskForPokedexRatingAfterElite4
 	db "@"
 
 OaksLabText7:

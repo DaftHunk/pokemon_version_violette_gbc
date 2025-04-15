@@ -23,7 +23,21 @@ MomWakeUpText:
 	db "@"
 
 MomHealPokemon:
-	ld hl, MomHealText1
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .afterElite4
+	; else
+	ld hl, .beforeElite4Text
+	jp .done
+.beforeElite4Text
+	TX_FAR _MomHealText1
+	db "@"
+.afterElite4
+	ld hl, .afterElite4Text
+	jp .done
+.afterElite4Text
+	TX_FAR _MomHealText1AfterElite4
+	db "@"
+.done
 	call PrintText
 	call GBFadeOutToWhite
 	call ReloadMapData
@@ -42,9 +56,6 @@ MomHealPokemon:
 	ld hl, MomHealText2
 	jp PrintText
 
-MomHealText1:
-	TX_FAR _MomHealText1
-	db "@"
 MomHealText2:
 	TX_FAR _MomHealText2
 	db "@"

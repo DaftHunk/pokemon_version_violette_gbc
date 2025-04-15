@@ -17,6 +17,22 @@ _MomHealText1::
 	cont "une sieste."
 	prompt
 
+_MomHealText1AfterElite4::
+	text "Mère: <PLAYER>!"
+	line "Tu as réussi, je"
+	cont "suis si fière de"
+	cont "toi!"
+
+	para "Tu as tellement"
+	line "grandi depuis ton"
+	cont "départ de la"
+	cont "maison!"
+
+	para "Prends le temps"
+	line "de te reposer toi"
+	cont "et tes #mons."
+	prompt
+
 _MomHealText2::
 	text "Mère: Ah, bien!"
 	line "Toi et tes"

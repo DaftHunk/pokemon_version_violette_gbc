@@ -37,6 +37,22 @@ _BluesHouseText2::
 	cont "reposer!"
 	done
 
+_BluesHouseText2AfterElite4::
+	text "Salut <PLAYER>!"
+	line "Félicitation pour"
+	cont "ta victoire."
+
+	para "Je suis un peu"
+	line "triste pour"
+	cont "<RIVAL> mais"
+	cont "peut-être que ça"
+	cont "le poussera à"
+	cont "mûrir un peu,"
+	cont "il a tendance à"
+	cont "prendre tout ça"
+	cont "trop à coeur..."
+	done
+
 _BluesHouseText3::
 	text "Une carte de"
 	line "Kanto! Ca serait"

@@ -150,8 +150,8 @@ PalletTownScript6:
 
 PalletTownTextPointers:
 	dw PalletTownText1
-	dw PalletTownText2
-	dw PalletTownText3
+	dw PalletTownText_Girl
+	dw PalletTownText_Man
 	dw PalletTownText4
 	dw PalletTownText5
 	dw PalletTownText6
@@ -189,13 +189,45 @@ OakWalksUpText:
 	TX_FAR _OakWalksUpText
 	db "@"
 
-PalletTownText2: ; girl
-	TX_FAR _PalletTownText2
+PalletTownText_Girl: ; girl
+	TX_ASM
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .afterElite4
+	; else
+	ld hl, .beforeElite4Text
+	jp .done
+.beforeElite4Text
+	TX_FAR _PalletTownText_Girl
 	db "@"
+.afterElite4
+	ld hl, .afterElite4Text
+	jp .done
+.afterElite4Text
+	TX_FAR _PalletTownText_GirlAfterElite4
+	db "@"
+.done
+	call PrintText
+	jp TextScriptEnd
 
-PalletTownText3: ; fat man
-	TX_FAR _PalletTownText3
+PalletTownText_Man: ; fat man
+	TX_ASM
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .afterElite4
+	; else
+	ld hl, .beforeElite4Text
+	jp .done
+.beforeElite4Text
+	TX_FAR _PalletTownText_Man
 	db "@"
+.afterElite4
+	ld hl, .afterElite4Text
+	jp .done
+.afterElite4Text
+	TX_FAR _PalletTownText_ManAfterElite4
+	db "@"
+.done
+	call PrintText
+	jp TextScriptEnd
 
 PalletTownText4: ; sign by lab
 	TX_FAR _PalletTownText4

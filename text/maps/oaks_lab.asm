@@ -169,11 +169,37 @@ _OaksLabPleaseVisitText::
 	cont "#dex."
 	done
 
-_OaksLabText_1d31d::
+_OaksLabText_AskForPokedexRating::
 	text "Chen: Je suis"
 	line "content de te"
 	cont "revoir. Veux-tu"
 	cont "que je regarde"
+	cont "où tu en es avec"
+	cont "ton #dex?"
+	prompt
+
+_OaksLabText_AskForPokedexRatingAfterElite4::
+	text "Chen: Encore"
+	line "bravo pour ta"
+	cont "victoire sur"
+	cont "la ligue!"
+
+	para "J'ai entendu dire"
+	line "que tes prouesses"
+	cont "ont fait des"
+	cont "émules et que les"
+	cont "maîtres d'arènes"
+	cont "ont revu leurs"
+	cont "stratégies."
+
+	para "N'hésites pas"
+	line "à retourner les"
+	cont "voir si tu"
+	cont "cherches du"
+	cont "challenge!"
+
+	para "Au fait, veux-tu"
+	line "que je regarde"
 	cont "où tu en es avec"
 	cont "ton #dex?"
 	prompt

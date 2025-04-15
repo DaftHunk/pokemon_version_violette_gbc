@@ -23,7 +23,6 @@ BluesHouseTextPointers:
 	dw BluesHouseText1
 	dw BluesHouseText2
 	dw BluesHouseText3
-;	dw ShimmerToggleText
 
 BluesHouseText1:
 	TX_ASM
@@ -82,47 +81,25 @@ DaisyUseMapText:
 	db "@"
 
 BluesHouseText2: ; Daisy, walking around
+	TX_ASM
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .afterElite4
+	; else
+	ld hl, .beforeElite4Text
+	jp .done
+.beforeElite4Text
 	TX_FAR _BluesHouseText2
 	db "@"
+.afterElite4
+	ld hl, .afterElite4Text
+	jp .done
+.afterElite4Text
+	TX_FAR _BluesHouseText2AfterElite4
+	db "@"
+.done
+	call PrintText
+	jp TextScriptEnd
 
 BluesHouseText3: ; map on table
 	TX_FAR _BluesHouseText3
 	db "@"
-
-
-	
-;joenote - toggle for shimmer function and associated text
-;ShimmerToggleText:
-;	TX_ASM
-;	CheckEvent EVENT_8C7
-;	jr nz, .off
-;.on
-;	SetEvent EVENT_8C7
-;	ld hl, _TXTShimmerON
-;	jr .print
-;.off
-;	ResetEvent EVENT_8C7
-;	ld hl, _TXTShimmerOFF
-;.print
-;	call PrintText
-;.done
-;	jp TextScriptEnd
-;_TXTShimmerON:
-;	text "Une # ball en"
-;	line "verre brille."	
-;	para "Vous sentez que"
-;	line "certains #mons"
-;	cont "pourraient"
-;	cont "manifester un"
-;	cont "potentiel caché."
-;	done
-;	db "@"
-;_TXTShimmerOFF:
-;	text "Une # ball en"
-;	line "verre est..."
-;	cont "juste une simple"
-;	cont "décoration."
-;	para "Vous avez dû"
-;	line "vous fourvoyer."
-;	done
-;	db "@"
