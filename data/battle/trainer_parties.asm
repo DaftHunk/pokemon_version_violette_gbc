@@ -200,9 +200,8 @@ PokemaniacData:
 	db 26,CHARMELEON,CUBONE,0
 	db 25,SLOWPOKE,0
 ; Route 10
+	db 43,MAGMAR,JYNX,LAPRAS,0 ; this one is actually in front of the power plant
 	db 27,KANGASKHAN,0
-	; this one is actually in front of the power plant
-	db 43,MAGMAR,JYNX,LAPRAS,0
 ; Victory Road 2F
 	db 52,VENUSAUR,LAPRAS,LICKITUNG,0
 
