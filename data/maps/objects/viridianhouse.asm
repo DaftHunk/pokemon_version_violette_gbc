@@ -10,7 +10,7 @@ ViridianHouseObject:
 	db 4 ; objects
 	object SPRITE_BALDING_GUY, 5, 3, STAY, NONE, 1 ; person
 	object SPRITE_LITTLE_GIRL, 1, 4, WALK, 1, 2 ; person
-	object SPRITE_BIRD, 5, 5, WALK, 2, 3 ; person
+	object SPRITE_SPEAROW, 5, 5, WALK, 2, 3 ; person
 	object SPRITE_CLIPBOARD, 4, 0, STAY, NONE, 4 ; person
 	
 	; warp-to

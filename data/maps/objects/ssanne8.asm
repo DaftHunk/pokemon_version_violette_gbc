@@ -19,7 +19,7 @@ SSAnne8Object:
 	object SPRITE_GIRL, 22, 3, WALK, 1, 5 ; person
 	object SPRITE_FAT_BALD_GUY, 0, 14, STAY, NONE, 6 ; person
 	object SPRITE_LITTLE_GIRL, 2, 11, STAY, DOWN, 7 ; person
-	object SPRITE_CLEFAIRY, 3, 11, STAY, DOWN, 8 ; person
+	object SPRITE_WIGGLYTUFF, 3, 11, STAY, DOWN, 8 ; person
 	object SPRITE_GIRL, 10, 13, STAY, RIGHT, 9 ; person
 	object SPRITE_BALL, 12, 15, STAY, NONE, 10, TM08_BODY_SLAM
 	object SPRITE_GENTLEMAN, 21, 13, WALK, 2, 11 ; person

@@ -166,16 +166,14 @@ const_value = 0
 
 ; overworld sprites
 const_value = 1
-
+	; NPC
 	const SPRITE_RED                       ; $01
 	const SPRITE_BLUE                      ; $02
 	const SPRITE_OAK                       ; $03
 	const SPRITE_BUG_CATCHER               ; $04
-	const SPRITE_SLOWBRO                   ; $05
 	const SPRITE_LASS                      ; $06
 	const SPRITE_BLACK_HAIR_BOY_1          ; $07
 	const SPRITE_LITTLE_GIRL               ; $08
-	const SPRITE_BIRD                      ; $09
 	const SPRITE_FAT_BALD_GUY              ; $0a
 	const SPRITE_GAMBLER                   ; $0b
 	const SPRITE_BLACK_HAIR_BOY_2          ; $0c
@@ -222,11 +220,45 @@ const_value = 1
 	const SPRITE_YOUNG_BOY                 ; $35
 	const SPRITE_GAMEBOY_KID               ; $36
 	const SPRITE_GAMEBOY_KID_COPY          ; $37
-	const SPRITE_CLEFAIRY                  ; $38
 	const SPRITE_AGATHA                    ; $39
 	const SPRITE_BRUNO                     ; $3a
 	const SPRITE_LORELEI                   ; $3b
 	const SPRITE_SEEL                      ; $3c
+	const SPRITE_JENNY
+	const SPRITE_JESSIE
+	const SPRITE_JAMES
+	; Pokemons
+	const SPRITE_SLOWBRO                   ; $05
+	const SPRITE_BIRD                      ; $09
+	const SPRITE_CLEFAIRY                  ; $38
+	const SPRITE_ARTICUNO				 ; $3d
+ 	const SPRITE_CHANSEY				 ; $3e
+ 	const SPRITE_CUBONE					 ; $40
+ 	const SPRITE_KANGASKHAN				 ; $41
+ 	const SPRITE_LAPRAS  				 ; $42
+ 	const SPRITE_MEOWTH					 ; $43
+ 	const SPRITE_MEWTWO					 ; $44
+ 	const SPRITE_MOLTRES				 ; $45
+ 	const SPRITE_NIDORINO				 ; $46
+ 	const SPRITE_PIDGEOT				 ; $47
+ 	const SPRITE_POLYWRATH				 ; $48
+ 	const SPRITE_PSYDUCK				 ; $49
+ 	const SPRITE_SLOWPOKE				 ; $4b
+ 	const SPRITE_SPEAROW				 ; $4c
+ 	const SPRITE_WIGGLYTUFF				 ; $4e
+	const SPRITE_MEW
+ 	; Pokémons with odd pixel number
+ 	const SPRITE_DODUO					 ; $4f
+ 	const SPRITE_FEAROW					 ; $50
+ 	const SPRITE_JIGGLYPUFF				 ; $51
+ 	const SPRITE_MACHOKE				 ; $52
+ 	const SPRITE_MACHOP					 ; $53
+ 	const SPRITE_NIDORANF				 ; $54
+ 	const SPRITE_NIDORANM				 ; $55
+ 	const SPRITE_PIDGEY					 ; $56
+ 	const SPRITE_PIKACHU				 ; $57
+ 	const SPRITE_SEEL2					 ; $58
+ 	const SPRITE_ZAPDOS					 ; $59
 	const SPRITE_BALL                      ; $3d
 	const SPRITE_OMANYTE                   ; $3e
 	const SPRITE_BOULDER                   ; $3f

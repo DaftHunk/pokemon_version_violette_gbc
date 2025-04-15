@@ -35,7 +35,7 @@ SaffronCityObject:
 	object SPRITE_LAPRAS_GIVER, 23, 23, STAY, NONE, 9 ; person
 	object SPRITE_ERIKA, 17, 30, WALK, 2, 10 ; person
 	object SPRITE_GENTLEMAN, 30, 12, STAY, DOWN, 11 ; person
-	object SPRITE_BIRD, 31, 12, STAY, DOWN, 12 ; person
+	object SPRITE_PIDGEOT, 31, 12, STAY, DOWN, 12 ; person
 	object SPRITE_ROCKER, 18, 8, STAY, UP, 13 ; person
 	object SPRITE_ROCKET, 18, 22, STAY, DOWN, 14 ; person
 	object SPRITE_ROCKET, 19, 22, STAY, DOWN, 15 ; person

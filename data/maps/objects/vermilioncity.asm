@@ -22,11 +22,11 @@ VermilionCityObject:
 	sign 27, 3, 14 ; VermilionCityText7	;joenote - reassigning to text pointer position 14
 
 	db 7 ; objects
-	object SPRITE_GUARD, 19, 15, STAY, DOWN, 1 ; Jenny
+	object SPRITE_JENNY, 19, 15, STAY, DOWN, 1 ; Jenny
 	object SPRITE_GAMBLER, 14, 6, STAY, NONE, 2 ; person
 	object SPRITE_SAILOR, 19, 30, STAY, UP, 3 ; person
 	object SPRITE_GAMBLER, 30, 7, STAY, NONE, 4 ; person
-	object SPRITE_SLOWBRO, 29, 9, WALK, 1, 5 ; person
+	object SPRITE_MACHOP, 29, 9, WALK, 1, 5 ; person
 	object SPRITE_SAILOR, 25, 27, WALK, 2, 6 ; person
 	object SPRITE_SLOWBRO, 15, 19, STAY, DOWN, 7 ; person	;joenote - replaced bush with an object that goes away after getting CUT
 
