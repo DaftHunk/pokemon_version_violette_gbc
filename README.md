@@ -109,11 +109,14 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 - Tableau des rencontres (Attention aux spoils !)
 https://docs.google.com/spreadsheets/d/1nh3vi-TdhZu3ZT1ZbH4gDMEPXbZw5eX-k1_drcTCmc4/edit?usp=sharing
 - Les sources 
-https://github.com/DaftHunk/pokemon_bleu_remunster
+https://github.com/DaftHunk/pokemon_version_violette
 
 ## Credits
-- Shin Pokered pour la base du hack
-- Yellow Legacy dont une partie de la progression est basée
+- [Pokered](https://github.com/pret/pokered) sans qui rien de tout ça ne serait possible
+- [Shin Pokered](https://github.com/jojobear13/shinpokered) pour la base du hack
+- [Yellow Legacy](https://github.com/cRz-Shadows/Pokemon_Yellow_Legacy) dont une partie de la progression est basée
+- [pureRGB](https://github.com/Vortyne/pureRGB) pour de nombreux sprites magnifiques
+- [pokered-gbc-plus-fr](https://github.com/Engezerstorung/pokered-gbc-plus-fr) pour les fantastiques sprites des pokémons dans le monde
 - Nurse Joy Battle Sprite - ZuperZACH
 - Officer Jenny Battle Sprite - Karlos
 
