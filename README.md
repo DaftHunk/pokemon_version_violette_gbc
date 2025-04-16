@@ -98,13 +98,14 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 - L'alarme de point de vie bas ne se joue maintenant que 3 fois
 - La pension donne maintenant de l'exp en fonction du nombre de badges
 
-***Et bien plus encore, de nombreux contenus sont cachés !***
-
 # Guides
 ## Emulateurs conseillés
-- **Android** : MyOldBoy, RetroArch 1.10.0 (Cette version spécifiquement !) : core Gambatte
-- **PC** : BGB
+- **PC** : BGB est le meilleurs d'entre tous, mGBA marche bien aussi
+- **Android** : RetroArch 1.10.0 (Cette version spécifiquement !) : core Gambatte
+- **iOS** : Delta emulator 
 - **PSP** : RetroArch 1.10.0 (Cette version spécifiquement !) : core Gambatte
+## Emulateurs déconseillés
+- Goomba, Visual Boy Advance, and VBA-M
 ## Documentation
 - Tableau des rencontres (Attention aux spoils !)
 https://docs.google.com/spreadsheets/d/1nh3vi-TdhZu3ZT1ZbH4gDMEPXbZw5eX-k1_drcTCmc4/edit?usp=sharing
