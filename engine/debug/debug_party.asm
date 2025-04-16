@@ -48,7 +48,7 @@ IF DEF(_DEBUG)
 
 	call SetDebugNewGameParty
 
-	; Exeggutor gets four HM moves.
+	; MEW gets four HM moves.
 	ld hl, wPartyMon6Moves
 	ld a, PSYCHIC_M
 	ld [hli], a
@@ -73,6 +73,22 @@ IF DEF(_DEBUG)
 	ld [hl], a
 	ld hl, wPartyMon1PP
 	ld a, 15
+	ld [hl], a
+
+	; ONIX new attack test
+	ld hl, wPartyMon4Moves
+	ld a, SLUDGE_BOMB
+	ld [hli], a
+	ld a, METAL_CLAW
+	ld [hli], a
+	ld a, CRUNCH
+	ld [hli], a
+	ld a, IRON_TAIL
+	ld [hl], a
+
+	; EEVEE gets PURSUIT.
+	ld hl, wPartyMon3Moves
+	ld a, PURSUIT
 	ld [hl], a
 
 	; ZAPDOS gets Fly.
@@ -104,8 +120,12 @@ IF DEF(_DEBUG)
 	call DebugSetPokedexEntries
 	ld hl, wPokedexSeen
 	call DebugSetPokedexEntries
-	SetEvent EVENT_GOT_POKEDEX
 
+	; Set tutorial events
+	SetEvent EVENT_GOT_POKEDEX
+	SetEvent EVENT_GENDER_CAUGHT_INDICATOR
+	SetEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
+	
 	; Rival chose Squirtle,
 	; Player chose Charmander.
 	ld hl, wRivalStarter
