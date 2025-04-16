@@ -16,7 +16,15 @@ LoadTrainerPic::
 	ld a, BANK("Trainer Pics 1")
 	jr .loadSprite
 .useRed
+	;joenote - support female trainer over link
+	CheckEvent EVENT_LINKED_FPLAYER
+	jr nz, .isFemelle
+
 	ld a, Bank(RedPicFront)
+	jr .loadSprite
+.isFemelle
+	ld a, Bank(RedPicFFront)
+	jr .loadSprite
 .loadSprite
 	call UncompressSpriteFromDE
 	ld de, vFrontPic
