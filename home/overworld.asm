@@ -101,6 +101,12 @@ OverworldLoopLessDelay::
 	ld a, [wd730]
 	bit 2, a	;check if input is being ignored
 	jp nz, .noDirectionButtonsPressed
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - check if trainer is wanting to battle
+	ld a, [wFlags_D733]
+	bit 3, a
+	jp nz, .noDirectionButtonsPressed
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	call IsPlayerCharacterBeingControlledByGame
 	jr nz, .checkForOpponent
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1282,6 +1288,7 @@ TilePairCollisionsWater::
 	db $FF
 
 ; this builds a tile map from the tile block map based on the current X/Y coordinates of the player's character
+; clobbers BC, HL, and DE
 LoadCurrentMapView::
 	ld a, [H_LOADEDROMBANK]
 	push af
@@ -1370,6 +1377,12 @@ LoadCurrentMapView::
 	pop af
 	ld [H_LOADEDROMBANK], a
 	ld [MBC1RomBank], a ; restore previous ROM bank
+		
+;GBCnote - use the new Tile Map to make BGMap Attributes for enhanced GBC color
+;	--> build the whole thing if the player is not advancing movement
+	callba MakeOverworldBGMapAttributes	
+	;now transfer the BG Map Attributes
+;	callba TransferGBCEnhancedBGMapAttributes
 	ret
 
 AdvancePlayerSprite::
@@ -1518,6 +1531,13 @@ AdvancePlayerSprite::
 	ld a, [wCurMapWidth]
 	call MoveTileBlockMapPointerNorth
 .updateMapView
+	;GBCnote - use a flag to indicate that LoadCurrentMapView is being called during player movement
+	ld hl, hFlags_0xFFF6
+	set 3, [hl]
+	call LoadCurrentMapView
+	ld hl, hFlags_0xFFF6
+	res 3, [hl]
+
 	call LoadCurrentMapView
 	ld a, [wSpriteStateData1 + 3] ; delta Y
 	cp $01
@@ -2282,7 +2302,7 @@ LoadMapData::
 ;joenote - No need to disable/enable lcd. Pick a spare bit to use as a flag instead.
 ;	call DisableLCD
 	ld hl, hFlagsFFFA
-	set 3, [hl]
+	set 3, [hl]	;When set, the CopyData function will only copy when safe to do so for VRAM
 
 	callba InitMapSprites ; load tile pattern data for sprites
 	call LoadTileBlockMap
@@ -2331,6 +2351,9 @@ LoadMapData::
 	pop af
 	ld [H_LOADEDROMBANK], a
 	ld [MBC1RomBank], a
+		
+;	callba TransferGBCEnhancedBGMapAttributes	;GBCnote - transfer BGMap Attributes for enhanced GBC color
+;commenting out because this is already done during the above call of RunPaletteCommand
 	ret
 
 ; function to switch to the ROM bank that a map is stored in

@@ -223,7 +223,7 @@ BillsHouseText3:
 	jp TextScriptEnd
 
 BillsGarden:	;joenote - adding this as an easter egg
-	SetEvent EVENT_8C3	;make it so you can get the mist_stone
+	SetEvent EVENT_MIST_STONE	;make it so you can get the mist_stone
 	xor a
 	ld [wBillsHouseCurScript], a
 	ld a, 1

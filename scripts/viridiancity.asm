@@ -28,6 +28,14 @@ ViridianCityScript_1900b:
 ;	predef ShowObject
 ;.GioNoReload
 ;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - mark if pokeballs are available for nuzlocke purposes
+	CheckEvent EVENT_POKEBALL_ACCESS
+	jr z, .next1	
+	CheckEvent EVENT_GOT_POKEDEX
+	jr z, .next1
+	ResetEvent EVENT_POKEBALL_ACCESS
+.next1
+;;;;;;;;;;;;;;;;;;;;;;;
 	CheckEvent EVENT_VIRIDIAN_GYM_OPEN
 	ret nz
 	ld a, [wObtainedBadges]
@@ -98,12 +106,12 @@ ViridianCityScript1:
 	ld a, $2
 	ld [wViridianCityCurScript], a
 	;joenote - activate cinnabar shore
-	CheckEvent EVENT_90B	;check if the dex diploma has been gained
+	CheckEvent EVENT_GOT_DEX_DIPLOMA	;check if the dex diploma has been gained
 	jr nz, .havediploma
-	ResetEvent EVENT_8DA	;clear cinnabar shore activation
+	ResetEvent EVENT_CINNABAR_SHORE_MISSINGNO	;clear cinnabar shore activation
 	ret
 .havediploma
-	SetEvent EVENT_8DA	;activate cinnabar shore
+	SetEvent EVENT_CINNABAR_SHORE_MISSINGNO	;activate cinnabar shore
 	ret
 
 ViridianCityScript2:

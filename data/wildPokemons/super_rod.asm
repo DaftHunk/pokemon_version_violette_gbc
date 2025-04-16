@@ -25,7 +25,7 @@ ReadSuperRodData:
 	ld a, [hl]
 	cp CERULEAN_CAVE_B1F
 	jr nz, .skipmapID
-	CheckEvent EVENT_8DE
+	CheckEvent EVENT_ENABLE_RANDOMIZE_WILD
 	jr z, .skipmapID
 	inc hl
 	inc hl

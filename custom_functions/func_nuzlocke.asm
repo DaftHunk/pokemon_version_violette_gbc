@@ -22,8 +22,8 @@ IsPartyMonDead:
 
 
 EndOfBattle_NuzlockeHandler:
-	ResetEvent EVENT_9AF	;clear the map-flag-handled event for this battle
-	ResetEvent EVENT_9AE	;clear the flag that prevent using pokeballs
+	ResetEvent EVENT_NUZZLOCK_MAP_BATTLED	;clear the map-flag-handled event for this battle
+	ResetEvent EVENT_NUZZLOCK_DISALLOW_CATCH	;clear the flag that prevent using pokeballs
 
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
@@ -76,12 +76,12 @@ HealParty_NuzlockeHandler:
 
 EncounterLoad_NuzlockeHandler:
 	call IsNuzlocke
-	jr z, .return_immediate	;return if not in nuzlocke mode
+	jp z, .return_immediate	;return if not in nuzlocke mode
 	
-	CheckEvent EVENT_9AF	;update catch symbol & return if the flags have already been handled this battle
+	CheckEvent EVENT_NUZZLOCK_MAP_BATTLED	;update catch symbol & return if the flags have already been handled this battle
 	jr nz, .return
 	
-	SetEvent EVENT_9AF	;Set an event to signal that the map flag has been handled for this battle...
+	SetEvent EVENT_NUZZLOCK_MAP_BATTLED	;Set an event to signal that the map flag has been handled for this battle...
 	;...because this should only continue onward once per battle
 
 	;comming from its position in PlaceEnemyHUDTiles, the enemy should already be a wild non-tower_ghost
@@ -92,6 +92,15 @@ EncounterLoad_NuzlockeHandler:
 	dec a
 	jr z, .return
 	
+	CheckEvent EVENT_AT_LEAST_ONE_CATCHED	;enforce the catching rule if the player has caught a pokemon this save file
+	jr z, .enforceCatchingRule
+	
+	CheckEvent EVENT_POKEBALL_ACCESS	;enforce the catching rule if the player has access to pokeballs this save file
+	jr z, .enforceCatchingRule
+	
+	jr .return
+	
+.enforceCatchingRule	
 	call GetTownMapLocationCoords
 	call GetNuzlockeEncounterMapFlag
 	jr z, .return	;map not found on list of tracked nuzlocke maps
@@ -110,16 +119,16 @@ EncounterLoad_NuzlockeHandler:
 	jr nz, .no_set
 	call SetNuzlockeEncounterEvent	
 .no_set
-	ResetEvent EVENT_9AE	;...and clear the flag that disallows catching
+	ResetEvent EVENT_NUZZLOCK_DISALLOW_CATCH	;...and clear the flag that disallows catching
 	jr .return
 	
 .noCatchFlag
-	SetEvent EVENT_9AE
+	SetEvent EVENT_NUZZLOCK_DISALLOW_CATCH
 
 .return
 	;if catching is allowed, print an up/down arrow symbol
 	call .handleShiny
-	CheckEvent EVENT_9AE
+	CheckEvent EVENT_NUZZLOCK_DISALLOW_CATCH
 	jr nz, .return_immediate
 	coord hl, 2, 1
 	ld [hl], "<UPDN>"
@@ -132,7 +141,7 @@ EncounterLoad_NuzlockeHandler:
 	ld a, [wUnusedD366]
 	bit 7, a
 	ret z
-	ResetEvent EVENT_9AE
+	ResetEvent EVENT_NUZZLOCK_DISALLOW_CATCH
 	ret
 	
 
@@ -164,7 +173,7 @@ NoCatch_NuzlockeHandler:
 	dec a
 	ret z ;return if this is the OldManBattle
 	
-	CheckEvent EVENT_9AE
+	CheckEvent EVENT_NUZZLOCK_DISALLOW_CATCH
 	ret
 
 

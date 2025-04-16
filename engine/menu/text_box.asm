@@ -592,6 +592,7 @@ DisplayFieldMoveMonMenu:
 	ld [hli], a ; wFieldMoves + 1
 	ld [hli], a ; wFieldMoves + 2
 	ld [hli], a ; wFieldMoves + 3
+	ld [hli], a ; wFieldMoves + 4	;joenote - increase field moves list
 	ld [hli], a ; wNumFieldMoves
 	ld [hl], 12 ; wFieldMovesLeftmostXCoord
 	call GetMonFieldMoves
@@ -779,9 +780,9 @@ GetMonFieldMoves:
 	cp $FF
 	jr z, .done
 	
-	ld a, [wNumFieldMoves]
-	cp NUM_MOVES
-	jr nc, .done
+;	ld a, [wNumFieldMoves]
+;	cp NUM_MOVES
+;	jr nc, .done
 	
 	ld a, [wWhichPokemon]
 	ld c, a

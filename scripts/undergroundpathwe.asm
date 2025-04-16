@@ -50,7 +50,7 @@ RandTrainerText1:
 	and a	;check the player choice
 	jr nz, .goodbye	;if no, jump
 	;otherwise begin loading battle
-	SetEvent EVENT_90A
+	SetEvent EVENT_RANDOM_TRAINER
 	ld hl, RandTrainerPre
 	call PrintText
 	ld hl, wd72d;set the bits for triggering battle

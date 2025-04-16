@@ -14,65 +14,14 @@ SlidePlayerAndEnemySilhouettesOnScreen:
 	coord hl, 1, 5
 	lb bc, 3, 7
 	call ClearScreenArea
-
-	; call DisableLCD
-	; call LoadFontTilePatterns	;this can account for the LCD being on
-	; call LoadHudAndHpBarAndStatusTilePatterns	;this can account for the LCD being on
-	; ld hl, vBGMap0
-	; ld bc, $400
-; .clearBackgroundLoop
-	; ld a, " "
-	; ld [hli], a
-	; dec bc
-	; ld a, b
-	; or c
-	; jr nz, .clearBackgroundLoop
-; ; copy the work RAM tile map to VRAM
-	; coord hl, 0, 0
-	; ld de, vBGMap0
-	; ld b, 18 ; number of rows
-; .copyRowLoop
-	; ld c, 20 ; number of columns
-; .copyColumnLoop
-	; ld a, [hli]
-	; ld [de], a
-	; inc e
-	; dec c
-	; jr nz, .copyColumnLoop
-	; ld a, 12 ; number of off screen tiles to the right of screen in VRAM
-	; add e ; skip the off screen tiles
-	; ld e, a
-	; jr nc, .noCarry
-	; inc d
-; .noCarry
-	; dec b
-	; jr nz, .copyRowLoop
-	; call EnableLCD
 	
 ;joenote - try to recode this to give a little more control over things
 	call DisableLCD
 	call LoadFontTilePatterns	;this can account for the LCD being on
 	call LoadHudAndHpBarAndStatusTilePatterns	;this can account for the LCD being on
-;	ld hl, hFlagsFFFA
-;	set 3, [hl]
 	ld hl, vBGMap0
 	ld bc, $400
 .clearBackgroundLoop
-
-;joenote - loop until we're in a safe period to transfer to VRAM
-;wait if in mode 2 or mode 3
-;HBLANK length (mode 0) is highly variable. Worst case scenario is 21 cycles.
-;Can also write VRAM during OAM scan (mode 2) which is always 20 cycles.
-;.waitMode3
-;	ldh a, [rSTAT]		;read from stat register to get the mode
-;	and %11				;4 cycles
-;	cp 3				;4 cycles
-;	jr nz, .waitMode3	;6 cycles to pass or 10 to loop
-;.waitVRAM
-;	ldh a, [rSTAT]		;2 cycles - read from stat register to get the mode
-;	and %10				;4 cycles
-;	jr nz, .waitVRAM	;6 cycles to pass or 10 to loop
-
 	ld a, " "
 	ld [hli], a
 	dec bc
@@ -130,8 +79,6 @@ SlidePlayerAndEnemySilhouettesOnScreen:
 	call UpdateGBCPal_OBP1
 
 	call EnableLCD	;joenote - re-enable the LCD way down here where the battle screen is ready to go
-;	ld hl, hFlagsFFFA
-;	res 3, [hl]
 
 .slideSilhouettesLoop ; slide silhouettes of the player's pic and the enemy's pic onto the screen
 	ld h, b
@@ -264,7 +211,6 @@ StartBattle:	;joedebug - start of the battle
 	jp PrintText
 .notOutOfSafariBalls
 	callab PrintSafariZoneBattleText
-	;ld a, [wEnemyMonSpeed + 1]
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - make escaping pokemon based on level instead of speed
 	ld a, [wEnemyMonLevel]		
@@ -418,7 +364,6 @@ MainInBattleLoop:
 	ld a, $FF
 	ld [wPlayerMoveAccuracy], a
 .not_player_raging
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - if thrashing, reset the move accuracy here to prevent degradation
 	ld a, [wPlayerBattleStatus1]
@@ -1001,56 +946,11 @@ FaintEnemyPokemon:
 	call SaveScreenTilesToBuffer1
 	xor a
 	ld [wBattleResult], a
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;joenote - This is the vanilla code for dealing with all the exp gain stuff. Commenting this all out.
-;	ld b, EXP_ALL
-;	call IsItemInBag
-;	push af
-;	jr z, .giveExpToMonsThatFought ; if no exp all, then jump
-;
-; the player has exp all
-; first, we halve the values that determine exp gain
-; the enemy mon base stats are added to stat exp, so they are halved
-; the base exp (which determines normal exp) is also halved
-;	ld hl, wEnemyMonBaseStats
-;	ld b, $7
-;.halveExpDataLoop
-;	srl [hl]
-;	inc hl
-;	dec b
-;	jr nz, .halveExpDataLoop
-;
-;; give exp (divided evenly) to the mons that actually fought in battle against the enemy mon that has fainted
-;; if exp all is in the bag, this will be only be half of the stat exp and normal exp, due to the above loop
-;.giveExpToMonsThatFought
-;	xor a
-;	ld [wBoostExpByExpAll], a
-;	callab GainExperience
-;	pop af
-;	ret z ; return if no exp all
-;
-;; the player has exp all
-;; now, set the gain exp flag for every party member
-;; half of the total stat exp and normal exp will divided evenly amongst every party member
-;	ld a, $1
-;	ld [wBoostExpByExpAll], a
-;	ld a, [wPartyCount]
-;	ld b, 0
-;.gainExpFlagsLoop
-;	scf
-;	rl b
-;	dec a
-;	jr nz, .gainExpFlagsLoop
-;	ld a, b
-;	ld [wPartyGainExpFlags], a
-;	jpab GainExperience
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - GainExperience now handles everything including EXP All
 	xor a
 	ld [wBoostExpByExpAll], a
 	callab GainExperience
 	ret
-
 
 EnemyMonFaintedText:
 	TX_FAR _EnemyMonFaintedText
@@ -1086,7 +986,13 @@ AnyEnemyPokemonAliveCheck:
 ; stores whether enemy ran in Z flag
 ReplaceFaintedEnemyMon:
 	ld hl, wEnemyHPBarColor
-	ld e, $30
+;	ld e, $30	;get health bar palette of an HP bar E pixels long.
+
+	;joenote - make the trainer pokeballs red
+	ld a, HP_BAR_GREEN
+	ld [hl], a	;reset the enemy HP bar to green because GetBattleHealthBarColor only works on differing colors
+	ld e, 0	;now prepare to load the color for a 0-pixel health bar (that being red)
+
 	call GetBattleHealthBarColor
 	ldPal a, BLACK, DARK_GRAY, LIGHT_GRAY, WHITE
 	ld [rOBP0], a
@@ -1380,11 +1286,6 @@ HandlePlayerBlackOut:
 	cp OAKS_LAB
 	ret z            ; starter battle in oak's lab: don't black out
 	jr .notSony1Battle
-
-;joenote - not needed anymore
-;Sony1WinText:
-;	TX_FAR _Sony1WinText
-;	db "@"
 
 PlayerBlackedOutText2:
 	TX_FAR _PlayerBlackedOutText2
@@ -1894,14 +1795,6 @@ LoadBattleMonFromParty:
 	ld bc, NAME_LENGTH
 	call CopyData
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;Transformation hook-in point.
-; If you wanted to do some adjustments on the active pokemon battle struct, 
-; such as for some kind of ability or implementing a transformation, 
-; then this point is a good place to handle the player active pokemon.
-	predef ShimmerTransformationPlayer
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
-
 	ld hl, wBattleMonLevel
 	ld de, wPlayerMonUnmodifiedLevel ; block of memory used for unmodified stats
 	ld bc, 1 + NUM_STATS * 2
@@ -1949,14 +1842,7 @@ LoadEnemyMonFromParty:	;function for link battles
 	ld de, wEnemyMonNick
 	ld bc, NAME_LENGTH
 	call CopyData
-	
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;Transformation hook-in point.
-; If you wanted to do some adjustments on the link enemy stats battle struct, 
-; such as for some kind of ability or implementing a transformation, 
-; then this point is a good place to handle the link enemy pokemon.
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
-	
+
 	ld hl, wEnemyMonLevel
 	ld de, wEnemyMonUnmodifiedLevel ; block of memory used for unmodified stats
 	ld bc, 1 + NUM_STATS * 2
@@ -2233,6 +2119,9 @@ DrawEnemyHUDAndHPBar:
 	ld [H_AUTOBGTRANSFERENABLED], a
 	ld hl, wEnemyHPBarColor
 
+;get the current health bar color in B
+;get the new health bar color in A
+;update the health bar color if they are not the name
 GetBattleHealthBarColor:
 	ld b, [hl]
 	call GetHealthBarColor
@@ -2355,15 +2244,16 @@ DisplayBattleMenu:
 	ld a, $1
 	ld [hli], a ; wMaxMenuItem
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;joenote - adding SELECT.
-;Aim is to play enemy pokemon's cry if it has been already caught when select is pressed
-	ld [hl], D_RIGHT | A_BUTTON | SELECT ; wMenuWatchedKeys	
+;joenote - adding SELECT and B
+	ld [hl], D_RIGHT | A_BUTTON | B_BUTTON | SELECT ; wMenuWatchedKeys
 	call HandleMenuInput
-	bit 4, a ; check if right was pressed
+	bit BIT_D_RIGHT, a ; check if right was pressed
 	jr nz, .rightColumn
-	bit 0, a ;check if A was pressed
-	;jr .AButtonPressed 
-	jr nz, .AButtonPressed 
+	bit BIT_A_BUTTON, a ;check if A was pressed
+	jr nz, .AButtonPressed
+	bit BIT_B_BUTTON, a
+	jr nz, .BButtonPressed
+.SelectButtonPressed	
 	push bc
 	push hl
 	callba CryIfOwned
@@ -2399,14 +2289,20 @@ DisplayBattleMenu:
 	inc hl
 	ld a, $1
 	ld [hli], a ; wMaxMenuItem
-	ld a, D_LEFT | A_BUTTON
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - adding B button
+	ld a, D_LEFT | A_BUTTON | B_BUTTON
 	ld [hli], a ; wMenuWatchedKeys
 	call HandleMenuInput
-	bit 5, a ; check if left was pressed
+	bit BIT_B_BUTTON, a
+	jr nz, .BButtonPressed
+	bit BIT_D_LEFT, a ; check if left was pressed
 	jp nz, .leftColumn ; if left was pressed, jump
+	;else A button was pressed
 	ld a, [wCurrentMenuItem]
 	add $2 ; if we're in the right column, the actual id is +2
 	ld [wCurrentMenuItem], a
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .AButtonPressed
 	call PlaceUnfilledArrowMenuCursor
 	ld a, [wBattleType]
@@ -2422,6 +2318,13 @@ DisplayBattleMenu:
 ; item menu was selected
 	inc a ; increment a to 2
 	jr .handleMenuSelection
+
+;joenote - make it so the cursor automatically moves to RUN when pressing B
+.BButtonPressed
+	ld a, 3
+	ld [wBattleAndStartSavedMenuItem], a
+	jp DisplayBattleMenu
+
 .notItemMenu
 	cp $2 ; was the party menu selected?
 	jr nz, .handleMenuSelection
@@ -3561,7 +3464,7 @@ PlayerCalcMoveDamage:
 	jr z, handleIfPlayerMoveMissed
 	call GetDamageVarsForPlayerAttack
 	call CalculateDamage
-	jp z, playerCheckIfFlyOrChargeEffect ; for moves with 0 BP, skip any further damage calculation and, for now, skip MoveHitTest
+	jp z, playerCheckIfFlyOrChargeEffect ; for moves with 0 BP, and ohko moves, skip any further damage calculation and, for now, skip MoveHitTest
 	               ; for these moves, accuracy tests will only occur if they are called as part of the effect itself
 .static_skiphere	;joenote - skip here if a static damage move
 	call AdjustDamageForMoveType
@@ -4829,6 +4732,7 @@ GetEnemyMonStat:
 	ret
 
 CalculateDamage:
+;Basic calculation function for unmodified damage. Caps at 999 damage. Minimum 1 Damage.
 ; input:
 ;   b: attack
 ;   c: opponent defense
@@ -4857,6 +4761,7 @@ CalculateDamage:
 	jr z, .skipbp
 
 ; Calculate OHKO damage based on remaining HP.
+; See if OHKO move can hit (having higher speed) and if so, input its damage.
 	cp OHKO_EFFECT
 	jp z, JumpToOHKOMoveEffect
 
@@ -5261,6 +5166,7 @@ ApplyAttackToEnemyPokemon:
 .damage_stored
 	call DrawHUDsAndHPBars
 	pop bc
+;fall through
 
 ApplyDamageToEnemyPokemon:
 	ld hl, wDamage
@@ -5377,6 +5283,7 @@ ApplyAttackToPlayerPokemon:
 .damage_stored
 	call DrawHUDsAndHPBars
 	pop bc
+;fall through
 	
 ApplyDamageToPlayerPokemon:
 	ld hl, wDamage
@@ -5625,12 +5532,13 @@ IncrementMovePP:
 	inc [hl] ; increment PP in the party memory location
 	ret
 
-; function to adjust the base damage of an attack to account for type effectiveness
+;Function to adjust the base damage of an attack to account for type effectiveness
 ;joenote - re-writing this function to fix various bugs
 ;Effectiveness multiplier will be adjusted for both type 1 and 2 of the defender
 ;Type 1 and 2 are checked individually, so their order no longer matters
 ;Static damage moves will give a neutral multiplier if super effective or not very effective
 ;Static damage moves will obey type immunity
+;Has overflow protection for STAB modifier and 2X/4X weakness modifier
 AdjustDamageForMoveType:
 	ld a, $a
 	ld [wDamageMultipliers], a	;joenote - move this to AdjustDamageForMoveType to prevent multi-attack overflows
@@ -5683,6 +5591,7 @@ AdjustDamageForMoveType:
 	ld [wDamage], a
 	ld a, l
 	ld [wDamage + 1], a
+	call c, .overflow	;joenote - handle damage overflow
 	ld hl, wDamageMultipliers
 	set 7, [hl]
 .skipSameTypeAttackBonus
@@ -5703,7 +5612,7 @@ AdjustDamageForMoveType:
 	and $7F
 	jr z, .negate
 	
-	;static moves return neutral except for type immunity
+	;There is no type immunity at this line, so make any static moves return neutral
 	push af
 	ld a, [wUnusedC000]
 	ld b, a
@@ -5747,6 +5656,7 @@ AdjustDamageForMoveType:
 	sla [hl]
 	dec hl
 	rl [hl]
+	call c, .overflow	;joenote - handle damage overflow
 	ret
 .zerocheck
 ; if damage is 0, make the move miss
@@ -5765,6 +5675,11 @@ AdjustDamageForMoveType:
 	or $A
 	ld [wDamageMultipliers], a
 	jr .done
+.overflow	;joenote - cap damage at 65535
+	ld a, $ff
+	ld [wDamage], a
+	ld [wDamage+1], a	
+	ret
 	
 ;c = defender type 1 or 2
 TypeXEffectiveness:
@@ -6368,7 +6283,7 @@ EnemyCalcMoveDamage:
 	call GetDamageVarsForEnemyAttack
 	call SwapPlayerAndEnemyLevels
 	call CalculateDamage
-	jp z, EnemyCheckIfFlyOrChargeEffect
+	jp z, EnemyCheckIfFlyOrChargeEffect ; for moves with 0 BP, and ohko moves, skip any further damage calculation and, for now, skip MoveHitTest
 .static_skiphere	;joenote - skip here if a static damage move
 	call AdjustDamageForMoveType
 	call RandomizeDamage
@@ -7134,16 +7049,6 @@ LoadEnemyMonData:
 	ld hl, wPokedexSeen
 	predef FlagActionPredef ; mark this mon as seen in the pokedex
 .skip_seen
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;Transformation hook-in point.
-; If you wanted to do some adjustments on the enemy stats battle struct, 
-; such as for some kind of ability or implementing a transformation, 
-; then this point is a good place to handle the enemy pokemon.
-; But remember that this section gets run before battle if the enemy mon is wild.
-	predef ShimmerTransformationEnemy
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 	ld hl, wEnemyMonLevel
 	ld de, wEnemyMonUnmodifiedLevel
 	ld bc, 1 + NUM_STATS * 2
@@ -7666,7 +7571,7 @@ InitBattleCommon:
 	call GetTrainerInformation
 	callab ReadTrainer
 	call DoBattleTransitionAndInitBattleVariables
-	call _LoadTrainerPic
+	callab LoadTrainerPic
 	xor a
 	ld [wEnemyMonSpecies2], a
 	ld [hStartTileID], a
@@ -7722,7 +7627,7 @@ InitWildBattle:
 	call DoBattleTransitionAndInitBattleVariables
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	;joenote - use a bit to determine if this is a ghost marowak battle
-	CheckEvent EVENT_10E
+	CheckEvent EVENT_ACTIVATE_GHOST_MAROWAK
 	jr nz, .isGhost
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;	ld a, [wCurOpponent]
@@ -7787,152 +7692,3 @@ _InitBattleCommon:
 	ret
 .emptyString
 	db "@"
-
-_LoadTrainerPic:
-; wd033-wd034 contain pointer to pic
-	ld a, [wTrainerPicPointer]
-	ld e, a
-	ld a, [wTrainerPicPointer + 1]
-	ld d, a ; de contains pointer to trainer pic
-	ld a, [wLinkState]
-	and a
-;	ld a, Bank(TrainerPics) ; this is where all the trainer pics are (not counting Red's)
-;	jr z, .loadSprite
-	jr nz, .useRed
-	ld a, [wTrainerClass]
-	cp PROF_OAK ; first trainer class in "Trainer Pics 2"
-	ld a, BANK("Trainer Pics 2")
-	jr nc, .loadSprite
-	ld a, BANK("Trainer Pics 1")
-	jr .loadSprite
-.useRed
-	ld a, Bank(RedPicFront)
-.loadSprite
-	call UncompressSpriteFromDE
-	ld de, vFrontPic
-	ld a, $77
-	ld c, a
-	jp LoadUncompressedSpriteData
-
-; unreferenced
-ResetCryModifiers:
-	xor a
-	ld [wFrequencyModifier], a
-	ld [wTempoModifier], a
-	jp PlaySound
-
-; animates the mon "growing" out of the pokeball
-AnimateSendingOutMon:
-	ld a, [wPredefRegisters]
-	ld h, a
-	ld a, [wPredefRegisters + 1]
-	ld l, a
-	ld a, [hStartTileID]
-	ld [hBaseTileID], a
-	ld b, $4c
-	ld a, [wIsInBattle]
-	and a
-	jr z, .notInBattle
-	add b
-	ld [hl], a
-	call Delay3
-	ld bc, -(SCREEN_WIDTH * 2 + 1)
-	add hl, bc
-	ld a, 1
-	ld [wDownscaledMonSize], a
-	lb bc, 3, 3
-	predef CopyDownscaledMonTiles
-	ld c, 4
-	call DelayFrames
-	ld bc, -(SCREEN_WIDTH * 2 + 1)
-	add hl, bc
-	xor a
-	ld [wDownscaledMonSize], a
-	lb bc, 5, 5
-	predef CopyDownscaledMonTiles
-	ld c, 5
-	call DelayFrames
-	ld bc, -(SCREEN_WIDTH * 2 + 1)
-	jr .next
-.notInBattle
-	ld bc, -(SCREEN_WIDTH * 6 + 3)
-.next
-	add hl, bc
-	ld a, [hBaseTileID]
-	add $31
-	jr CopyUncompressedPicToHL
-
-CopyUncompressedPicToTilemap:
-	ld a, [wPredefRegisters]
-	ld h, a
-	ld a, [wPredefRegisters + 1]
-	ld l, a
-	ld a, [hStartTileID]
-CopyUncompressedPicToHL:
-	lb bc, 7, 7
-	ld de, SCREEN_WIDTH
-	push af
-	ld a, [wSpriteFlipped]
-	and a
-	jr nz, .flipped
-	pop af
-.loop
-	push bc
-	push hl
-.innerLoop
-	ld [hl], a
-	add hl, de
-	inc a
-	dec c
-	jr nz, .innerLoop
-	pop hl
-	inc hl
-	pop bc
-	dec b
-	jr nz, .loop
-	ret
-
-.flipped
-	push bc
-	ld b, 0
-	dec c
-	add hl, bc
-	pop bc
-	pop af
-.flippedLoop
-	push bc
-	push hl
-.flippedInnerLoop
-	ld [hl], a
-	add hl, de
-	inc a
-	dec c
-	jr nz, .flippedInnerLoop
-	pop hl
-	dec hl
-	pop bc
-	dec b
-	jr nz, .flippedLoop
-	ret
-
-LoadMonBackPic:
-; Assumes the monster's attributes have
-; been loaded with GetMonHeader.
-	ld a, [wBattleMonSpecies2]
-	ld [wcf91], a
-	coord hl, 1, 5
-	ld b, 7
-	ld c, 8
-	call ClearScreenArea
-	ld hl,  wMonHBackSprite - wMonHeader
-	call UncompressMonSprite
-
-;joenote - needed for loading the 48x48 spaceworld back sprites
-	callba LoadUncompressedBackPics
-
-	ld hl, vSprites
-	ld de, vBackPic
-	ld c, (2*SPRITEBUFFERSIZE)/16 ; count of 16-byte chunks to be copied
-	ld a, [H_LOADEDROMBANK]
-	ld b, a
-	jp CopyVideoData

@@ -155,7 +155,7 @@ PlaceEnemyHUDTiles:
 	ld a, [wFlags_D733]
 	bit 6, a
 	jr nz, .noDraw 
-	CheckEvent EVENT_10E
+	CheckEvent EVENT_ACTIVATE_GHOST_MAROWAK
 	jr nz, .noDraw
 
 ;joenote - let's draw a shiny symbol if applicable
@@ -176,7 +176,7 @@ PlaceEnemyHUDTiles:
 
 ;let's draw a pokeball to indicate an owned mon
 ;also let's handle a gender symbol	
-	CheckEvent EVENT_90E
+	CheckEvent EVENT_GENDER_CAUGHT_INDICATOR
 	jr z, .noDraw
 	
 	push de
@@ -235,7 +235,7 @@ PlaceHUDTiles:
 	ld [hl], a
 	
 	;joenote - show or clear the damage values
-	CheckEvent EVENT_910
+	CheckEvent EVENT_DEBUG_SHOW_DAMAGE_VALUES
 	jr z, .end_printdamage
 	coord hl, 6, 4
 	ld de, wBattleMonHP ; current player HP
@@ -295,7 +295,8 @@ SetupPlayerAndEnemyPokeballs:
 	ld a, $50
 	ld [hli], a
 	ld [hl], $68
-	ld a, $1
+;	ld a, $1
+	xor a ;gbcnote - make the enemy pokeballs use the same color register as the player
 	ld [wdeed], a
 	ld hl, wOAMBuffer + $18
 	jp WritePokeballOAMData

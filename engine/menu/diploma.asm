@@ -20,7 +20,7 @@ DisplayDiploma:
 	;joenote - adding master text if the seafoam missingno battle is beaten
 	ld hl, DiplomaTextPointersAndCoords_master
 	ld c, $6
-	CheckEvent EVENT_8C6
+	CheckEvent EVENT_DEFEATED_SEAFOAM_MISSINGNO
 	jr nz, .asm_56715
 	
 	ld hl, DiplomaTextPointersAndCoords

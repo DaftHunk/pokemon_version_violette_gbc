@@ -37,7 +37,7 @@ PrintBeginningBattleText:
 ;	jr z, .isMarowak
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	;joenote - use a bit to determine if this is a ghost marowak battle
-	CheckEvent EVENT_10E
+	CheckEvent EVENT_ACTIVATE_GHOST_MAROWAK
 	jr nz, .isMarowak
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, b

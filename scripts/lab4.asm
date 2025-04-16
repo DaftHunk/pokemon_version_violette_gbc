@@ -55,9 +55,9 @@ Lab4Text1:
 	
 	;joenote - do not allow if the cloning event sequence has been initiated
 	ld hl, Lab4Text_MachineUsed
-	CheckEvent EVENT_2E3
+	CheckEvent EVENT_GAVE_GENE_TO_LAB
 	jr nz, .done
-	CheckEvent EVENT_2E4
+	CheckEvent EVENT_CLONING_STILL_GESTATING
 	jr nz, .done
 
 	CheckEvent EVENT_GAVE_FOSSIL_TO_LAB
@@ -133,7 +133,7 @@ Lab4Text3:
 	jp nz, .done
 	CheckEvent EVENT_LAB_HANDING_OVER_FOSSIL_MON
 	jp nz, .done
-	CheckEvent EVENT_2E4	;still gestating pokemon
+	CheckEvent EVENT_CLONING_STILL_GESTATING	;still gestating pokemon
 	jp nz, .done
 	
 	ld hl, Lab4Text_Party
@@ -143,7 +143,7 @@ Lab4Text3:
 	cp 6
 	jp nc, .done
 	
-	CheckEvent EVENT_2E3	;gave gene sample to lab
+	CheckEvent EVENT_GAVE_GENE_TO_LAB	;gave gene sample to lab
 	jp nz, .getMon
 	
 ;do not allow cloning of legendary pokemon
@@ -271,8 +271,8 @@ Lab4Text3:
 
 	ld a, [wPartyMon1Species]
 	ld [wFossilMon], a
-	SetEvent EVENT_2E3
-	SetEvent EVENT_2E4
+	SetEvent EVENT_GAVE_GENE_TO_LAB
+	SetEvent EVENT_CLONING_STILL_GESTATING
 	ld hl, Lab4Text_Clone3
 
 .done
@@ -306,7 +306,7 @@ Lab4Text3:
 	ld a, [wFossilMonDVs+1]
 	ld [hl], a
 
-	ResetEvents EVENT_2E3, EVENT_2E4
+	ResetEvents EVENT_GAVE_GENE_TO_LAB, EVENT_CLONING_STILL_GESTATING
 	jr .end
 	
 

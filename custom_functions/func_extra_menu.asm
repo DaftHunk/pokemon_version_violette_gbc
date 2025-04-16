@@ -446,7 +446,7 @@ NuzlockeSettings:
 	res 3, [hl]	;make sure trainers use smart switching
 ;activate or deactivate level cap depending on state of trainer scaling
 	set 5, [hl]
-	CheckEvent EVENT_90C
+	CheckEvent EVENT_TRAINER_LVL_SCALING
 	jr z, .next
 	res 5, [hl]
 .next

@@ -4,9 +4,9 @@ DisallowWildMew:
 	cp MEW	;is it mew? zet zero flag if true
 	ret nz	;if not mew, then return
 	;else we have a potential mew encounter on our hands
-	CheckEvent EVENT_90B
+	CheckEvent EVENT_GOT_DEX_DIPLOMA
 	jr z, .replace_mew	;if event 90B is zero, then diploma has not been granted. mew is not allowed.
-	CheckEvent EVENT_8C0
+	CheckEvent EVENT_ENCOUTERED_MEW
 	jr z, .mew_allowed	;mew can appear if not already encountered
 .replace_mew
 	ld a, DITTO	;load the ditto constant
@@ -20,8 +20,8 @@ DisallowWildMew:
 ;	bit 0, a
 ;	jr nz, .replace_mew
 	;going to encounter mew now
-	SetEvent EVENT_8C0 ;mew has been encountered now
-	ResetEvent EVENT_8C2 ;turn on mew notification
+	SetEvent EVENT_ENCOUTERED_MEW ;mew has been encountered now
+	ResetEvent EVENT_MEW_TEXT ;turn on mew notification
 	ret
 
 	
@@ -96,7 +96,7 @@ GetRandRoster:
 	push de
 	ld b, 6
 	ld de, ListNonMythPkmn
-	CheckEvent EVENT_90B	;check for diploma
+	CheckEvent EVENT_GOT_DEX_DIPLOMA	;check for diploma
 	jp z, GetRandRosterLoop	;no mew if no diploma
 	ld de, ListRealPkmn
 	jp GetRandRosterLoop
@@ -331,7 +331,7 @@ ScaleTrainer:
 	ret
 	
 ScaleTrainer_level:
-	CheckEvent EVENT_90C
+	CheckEvent EVENT_TRAINER_LVL_SCALING
 	ret z
 	push bc
 
@@ -382,7 +382,7 @@ ScaleTrainer_level:
 	ret
 
 ScaleTrainer_evolution:
-	CheckEvent EVENT_90C
+	CheckEvent EVENT_TRAINER_LVL_SCALING
 	ret z
 	
 	push bc
@@ -424,7 +424,7 @@ IsInSafariZone:
 ;Generate a random mon for an expanded safari zone roster
 GetRandMonSafari:
 	;return if special safari zone not activated
-	CheckEvent EVENT_90F
+	CheckEvent EVENT_SPECIAL_SAFARI_ZONE
 	ret z	
 	;return if not in safari zone
 	call IsInSafariZone
@@ -487,7 +487,7 @@ PreventARegOverflow:
 ;A bias is applied so that trainer 'mons need more levels to evolve
 ;Also, the stronger end of unevolved pokemon will only show up in level-30 or higher trainer teams
 RandomizeRegularTrainerMons:
-	CheckEvent EVENT_8D8
+	CheckEvent EVENT_ENABLE_NORMAL_TRAINER_RANDOMIZATION
 	ret z
 	push de
 	ld de, ListNonLegendUnEvoPkmn_early

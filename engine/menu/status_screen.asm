@@ -163,7 +163,7 @@ StatusScreen:
 	
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - print gender symbol here
-	CheckEvent EVENT_90E
+	CheckEvent EVENT_GENDER_CAUGHT_INDICATOR
 	jr z, .nosymbol
 	push de
 	ld a, [wLoadedMonSpecies]

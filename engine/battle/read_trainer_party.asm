@@ -51,16 +51,16 @@ ReadTrainer:
 .IterateTrainer
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joedebug - get a random 6 pkmn roster based on 1st party mon's level
-	CheckEvent EVENT_90A
+	CheckEvent EVENT_RANDOM_TRAINER
 	jr z, .not_rand_roster
 	callba GetRandRoster
-	ResetEvent EVENT_90A
+	ResetEvent EVENT_RANDOM_TRAINER
 	jp z, .FinishUp
 .not_rand_roster
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joedebug - get a random 3 pkmn roster based on 1st party mon's level
-	CheckEvent EVENT_90D
+	CheckEvent EVENT_3_MONS_RANDOM_TRAINER
 	jr z, .not_rand_roster3
 	callba GetRandRoster3
 	jp z, .FinishUp
@@ -234,7 +234,7 @@ ReadTrainer:
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - check for and load a mirror-match
-	CheckAndResetEvent EVENT_8DF
+	CheckAndResetEvent EVENT_LOAD_MIRROR_MATCH
 	jr z, .end_mirror_match
 	ld bc, wPartyDataEnd - wPartyDataStart
 	ld hl, wPartyDataStart

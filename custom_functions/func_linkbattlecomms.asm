@@ -11,6 +11,7 @@ SyncBattleClauses:
 
 	call ClauseFlagsToNybble
 	call ExchangeNybbleBC
+	ret nz
 	
 	;bitwise OR your clauses with the opponent's clauses
 	ld a, b
@@ -19,6 +20,7 @@ SyncBattleClauses:
 	
 	;exchange the OR'd clause nybble and verify it matches what the opponent has
 	call ExchangeNybbleBC
+	ret nz
 	ld a, b
 	cp c
 	ret nz	;return
@@ -46,6 +48,8 @@ VerifyComms:
 	;Let's send a 0 across the link to make sure the other game can communicate.
 	ld [wSerialExchangeNybbleSendData], a
 	call Serial_PrintWaitingTextAndSyncAndExchangeNybble
+	call CheckCommTimeout
+	ret nz	;return if a timeout happened
 	;wSerialExchangeNybbleReceiveData holds the nybble recieved from the other game.
 	;This defaults to FF to indicate that no information was recieved.
 	ld a, [wSerialExchangeNybbleReceiveData]
@@ -57,13 +61,13 @@ VerifyComms:
 ;get the event bits for freeze, sleep, trapping move, and hyper beam clauses and put them in one nybble
 ClauseFlagsToNybble:
 	ld b, 0
-	CheckEvent EVENT_8DC 
+	CheckEvent EVENT_ENABLE_SLEEP_CLAUSE 
 	call nz, .sleep
-	CheckEvent EVENT_8DD 
+	CheckEvent EVENT_ENABLE_FREEZE_CLAUSE 
 	call nz, .freeze
-	CheckEvent EVENT_8C5 
+	CheckEvent EVENT_ENABLE_TRAPPING_CLAUSE 
 	call nz, .trapping
-	CheckEvent EVENT_8C8 
+	CheckEvent EVENT_ENABLE_HYPER_BEAM_CLAUSE 
 	call nz, .hyperbeam
 	ret
 .sleep
@@ -91,20 +95,21 @@ NybbleToClauses:
 	call nz, .hyperbeam
 	ret
 .sleep
-	SetEvent EVENT_8DC 
+	SetEvent EVENT_ENABLE_SLEEP_CLAUSE 
 	ret
 .freeze
-	SetEvent EVENT_8DD 
+	SetEvent EVENT_ENABLE_FREEZE_CLAUSE 
 	ret
 .trapping
-	SetEvent EVENT_8C5 
+	SetEvent EVENT_ENABLE_TRAPPING_CLAUSE 
 	ret
 .hyperbeam
-	SetEvent EVENT_8C8 
+	SetEvent EVENT_ENABLE_HYPER_BEAM_CLAUSE 
 	ret
 
 ;Send a nybble in register B over link
 ;Put the recieved nybble in register C
+;Clears Z flag if connection timed out
 ExchangeNybbleBC:
 	;wUnknownSerialCounter is two bytes. Write the default of 03 00 to it.
 	;This acts as a timeout counter for when two linked gameboys are trying to sync up.
@@ -120,10 +125,13 @@ ExchangeNybbleBC:
 	push bc
 	call Serial_PrintWaitingTextAndSyncAndExchangeNybble
 	pop bc
+	call CheckCommTimeout
+	ret nz	;return if a timeout happened
 	;wSerialExchangeNybbleReceiveData holds the nybble recieved from the other game.
 	;This defaults to FF to indicate that no information was recieved.
 	ld a, [wSerialExchangeNybbleReceiveData]
 	ld c, a
+	xor a
 	ret
 
 
@@ -184,3 +192,29 @@ LinkClausesTXT_Trapping:
 	db "TRAPPING@"
 LinkClausesTXT_Hypbeam:
 	db "HYP.BEAM@"
+
+;Check wUnknownSerialCounter. If FFFF is there, then the connection timed out.
+;Clears Z flag if timeout occurred
+;Also resets the counter to zero
+CheckCommTimeout:	
+	ld hl, wUnknownSerialCounter
+	ld a, [hli]
+	inc a
+	jr nz, .connected
+	ld a, [hl]
+	inc a
+	jr nz, .connected
+;timed out, so reset the counter and return with z flag cleared 
+	;a = 0 right now
+	ld [hld], a
+	ld [hl], a
+	dec a
+	ret
+.connected
+	;Remember to reset the serial counter once finished
+	ld hl, wUnknownSerialCounter
+	xor a
+	ld [hli], a
+	ld [hl], a
+	ret
+	

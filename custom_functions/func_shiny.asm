@@ -43,7 +43,7 @@ CheckEnemyShinyDVs:
 	ld a, [wFlags_D733]
 	bit 6, a
 	jr nz, .next_enc_shiny	;grant mercy if this is a tower ghost battle
-	CheckEvent EVENT_10E
+	CheckEvent EVENT_ACTIVATE_GHOST_MAROWAK
 	jr nz, .next_enc_shiny	;grant mercy if this is the ghost marowak battle
 	ld a, [wIsInBattle]
 	cp 2

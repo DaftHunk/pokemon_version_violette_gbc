@@ -19,7 +19,7 @@ Route20Script:
 	ret
 
 MissingnoShore:
-	CheckEvent EVENT_8DA	;check if old man has been talked to to activate the shore
+	CheckEvent EVENT_CINNABAR_SHORE_MISSINGNO	;check if old man has been talked to to activate the shore
 	jr z, .return	;leave if it hasn't
 	ld hl, MissingnoCoordsData	;load the table of coordinates defining the infamous cinnabar shore
 	call ArePlayerCoordsInArray	;check player coordinates and set the carry flag if a match is found
@@ -29,7 +29,7 @@ MissingnoShore:
 	ld a, [hRandomAdd]
 	and a 
 	jr nz, .return
-	ResetEvent EVENT_8DA	;clear cinnabar shore activation
+	ResetEvent EVENT_CINNABAR_SHORE_MISSINGNO	;clear cinnabar shore activation
 
 	ld hl, wFlags_D733
 	set 4, [hl]
@@ -72,7 +72,7 @@ EndMissingnoBattle:
 	and a
 	ret nz
 	;set the event to indicate that the player won
-	SetEvent EVENT_8C6
+	SetEvent EVENT_DEFEATED_SEAFOAM_MISSINGNO
 	;return if less than 6 items in bag
 	ld a, [wNumBagItems]
 	cp 6

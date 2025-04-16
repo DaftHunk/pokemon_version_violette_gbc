@@ -1748,6 +1748,24 @@ SECTION "Engine Spillover", ROMX
 INCLUDE "engine/menu/item_descriptions.asm"
 
 
+;joenote - adding female trainer sprites
+FPlayerCharacterTitleGraphics:   INCBIN "gfx/mainmenu/player_title_f.2bpp"
+FPlayerCharacterTitleGraphicsEnd:
+RedPicFBack::          INCBIN "gfx/trainerback/redb_f.pic"
+RedPicFFront::         INCBIN "gfx/trainer/red_f.pic"
+RedFSprite:            INCBIN "gfx/sprites/redf.2bpp"
+RedFCyclingSprite:     INCBIN "gfx/sprites/cyclingf.2bpp"
+SeelFSprite:           INCBIN "gfx/sprites/seelf.2bpp"
+
+RedFishingTilesFront: INCBIN "gfx/tiles/red_fishing_tile_front.2bpp"
+RedFishingTilesBack:  INCBIN "gfx/tiles/red_fishing_tile_back.2bpp"
+RedFishingTilesSide:  INCBIN "gfx/tiles/red_fishing_tile_side.2bpp"
+RedFishingRodTiles:   INCBIN "gfx/tiles/red_fishingrod_tiles.2bpp"
+
+RedFFishingTilesFront: INCBIN "gfx/tiles/redF_fishing_tile_front.2bpp"
+RedFFishingTilesBack:  INCBIN "gfx/tiles/redF_fishing_tile_back.2bpp"
+RedFFishingTilesSide:  INCBIN "gfx/tiles/redF_fishing_tile_side.2bpp"
+
 SECTION "bank2D",ROMX,BANK[$2D]	;joenote - This is a known empty bank. Going to start moving stuff here
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -1764,7 +1782,7 @@ INCLUDE "custom_functions/func_stat_reset.asm"
 INCLUDE "engine/battle/stats_functions.asm"	
 INCLUDE "engine/battle/exp_bar_print.asm"	
 INCLUDE "custom_functions/fisher_yates.asm"
-INCLUDE "custom_functions/func_transformations.asm"
+INCLUDE "engine/battle/load_pics.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 TradingAnimationGraphics:
@@ -1801,24 +1819,6 @@ INCLUDE "custom_functions/func_extra_menu.asm"
 INCLUDE "custom_functions/func_move_secrets.asm"
 INCLUDE "custom_functions/func_linkbattlecomms.asm"
 
-;joenote - adding female trainer sprites
-FPlayerCharacterTitleGraphics:   INCBIN "gfx/mainmenu/player_title_f.2bpp"
-FPlayerCharacterTitleGraphicsEnd:
-RedPicFBack::          INCBIN "gfx/trainerback/redb_f.pic"
-RedPicFFront::         INCBIN "gfx/trainer/red_f.pic"
-RedFSprite:            INCBIN "gfx/sprites/redf.2bpp"
-RedFCyclingSprite:     INCBIN "gfx/sprites/cyclingf.2bpp"
-SeelFSprite:           INCBIN "gfx/sprites/seelf.2bpp"
-
-RedFishingTilesFront: INCBIN "gfx/tiles/red_fishing_tile_front.2bpp"
-RedFishingTilesBack:  INCBIN "gfx/tiles/red_fishing_tile_back.2bpp"
-RedFishingTilesSide:  INCBIN "gfx/tiles/red_fishing_tile_side.2bpp"
-RedFishingRodTiles:   INCBIN "gfx/tiles/red_fishingrod_tiles.2bpp"
-
-RedFFishingTilesFront: INCBIN "gfx/tiles/redF_fishing_tile_front.2bpp"
-RedFFishingTilesBack:  INCBIN "gfx/tiles/redF_fishing_tile_back.2bpp"
-RedFFishingTilesSide:  INCBIN "gfx/tiles/redF_fishing_tile_side.2bpp"
-
 SECTION "Pics 1", ROMX, BANK[PICS_1]
 INCLUDE "constants/pic_banks/pic1.asm"
 
@@ -1847,6 +1847,12 @@ INCLUDE "text/tmhm_names.asm"	;joenote - adding name list for tm and hm items
 tmhmNamesEnd:
 
 INCLUDE "data/wildPokemons/super_rod.asm"	;joenote - moving all the super rod data here
+
+SECTION "bank32",ROMX,BANK[$32]	
+INCLUDE "custom_functions/func_enhancedcolor.asm"
+INCLUDE "custom_functions/func_bag.asm"
+INCLUDE "custom_functions/func_emuchecks.asm"
+INCLUDE "engine/overworld/cut3.asm"
 
 SECTION "PARTY ICONS 1", ROMX
 MonIcons::

@@ -3398,6 +3398,11 @@ _RomHackVersionText::
 	cont "par sécurité?"
 	done
 
+_RematchTrainerText::
+	text "Proposer une"
+	line "revanche?"
+	done
+
 SECTION "Pokedex Text", ROMX, BANK[POKEDEX_TEXT]
 
 INCLUDE "text/pokedex.asm"

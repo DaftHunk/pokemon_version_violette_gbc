@@ -118,6 +118,10 @@ OakSpeech:
 	ld a, 1
 	ld [wItemQuantity], a
 	call AddItemToInventory  ; give one potion
+	
+	SetEvent EVENT_AT_LEAST_ONE_CATCHED	;joenote - set a flag to indicate that a pokemon hasn't been caught yet
+	SetEvent EVENT_POKEBALL_ACCESS	;joenote - nuzlocke: set a flag to indicate there is no access to pokeballs yet
+
 	ld a, [wDefaultMap]
 	ld [wDestinationMap], a
 	call SpecialWarpIn

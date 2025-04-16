@@ -2,7 +2,7 @@ SSAnne6Script:
 	call EnableAutoTextBoxDrawing
 	
 ;joenote - set up tournament
-	CheckEvent EVENT_90D
+	CheckEvent EVENT_3_MONS_RANDOM_TRAINER
 	jr z, .mainreturn
 	ld a, [wIsInBattle]
 	cp $ff	;don't continue the tournament if you lost
@@ -69,7 +69,7 @@ SSAnne6Text8: ;joenote - gym guy for post-game tournament
 	TX_ASM
 
 	;check if your are in tournament
-	CheckEvent EVENT_90D
+	CheckEvent EVENT_3_MONS_RANDOM_TRAINER
 	jr z, .promptdefaulttext
 	predef HealParty
 	
@@ -121,7 +121,7 @@ SSAnne6Text8: ;joenote - gym guy for post-game tournament
 
 .startbattle
 	;if everything checks out, begin initiating battle with a random trainer
-	SetEvent EVENT_90D	;used for the 3-pkmn tournament
+	SetEvent EVENT_3_MONS_RANDOM_TRAINER	;used for the 3-pkmn tournament
 	ld hl, SSAnne6Text_GymGuy_ready
 	call PrintText
 	ld hl, wd72d;set the bits for triggering battle
@@ -150,7 +150,7 @@ SSAnne6Text8: ;joenote - gym guy for post-game tournament
 .endtournament
 	xor a
 	ld [wUnusedD5A3], a
-	ResetEvent EVENT_90D
+	ResetEvent EVENT_3_MONS_RANDOM_TRAINER
 	ld hl, SSAnne6Text_GymGuy_bye
 .endprint
 	call PrintText

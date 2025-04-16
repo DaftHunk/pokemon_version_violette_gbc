@@ -94,7 +94,7 @@ DetermineWildMonDVs:
 	ld a, [wFlags_D733]
 	bit 6, a
 	jr nz, .do_random 
-	CheckEvent EVENT_10E
+	CheckEvent EVENT_ACTIVATE_GHOST_MAROWAK
 	jr nz, .do_random	
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld b, $AA
@@ -104,7 +104,7 @@ DetermineWildMonDVs:
 	or $0A	;set the lower nyble to $A
 	jr .load
 .do_random
-	CheckEvent EVENT_90F	;special safari zone active?
+	CheckEvent EVENT_SPECIAL_SAFARI_ZONE	;special safari zone active?
 	jr z, .notsafari	
 	call IsInSafariZone
 	jr nz, .do_random_safari
@@ -712,15 +712,21 @@ DoDisobeyLevelCheck:
 	ld [wMonIsDisobedient], a
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
-	jr z, .return_usemove
+	jr z, .return_usemove	;never apply obedience in link battles
 
 ; compare the mon's original trainer ID with the player's ID to see if it was traded
 ;	CheckEvent EVENT_ELITE_4_BEATEN	;joenote Check if Elite 4 beaten, and if so then don't even bother going further
 ;	jr nz, .return_usemove
+
 	ld a, [wUnusedD721]	;joenote - check if obedience level cap is active and always treat as traded if so
 	bit 5, a
 	jr nz, .monIsTraded
 	
+	CheckEvent EVENT_TRAINER_LVL_SCALING
+	jr nz, .return_usemove	;do not apply obedience if level scaling is active
+	
+; compare the mon's original trainer ID with the player's ID to see if it was traded
+
 	ld hl, wPartyMon1OTID
 	ld bc, wPartyMon2 - wPartyMon1
 	ld a, [wPlayerMonNumber]

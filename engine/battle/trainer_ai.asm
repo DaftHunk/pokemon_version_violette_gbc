@@ -160,10 +160,10 @@ AIMoveChoiceModification1:
 	bit 2, a
 	ret nz
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	ld a, [wBattleMonStatus]
-	and a
-	;joenote - don't return yet. going to check for dream eater. will do this later
-	;ret z ; return if no status ailment on player's mon
+;	ld a, [wBattleMonStatus]
+;	and a
+;	ret z ; return if no status ailment on player's mon
+;joenote - don't return yet. going to check for dream eater. will do this later
 	ld hl, wBuffer - 1 ; temp move selection array (-1 byte offset)
 	ld de, wEnemyMonMoves ; enemy moves
 	ld b, NUM_MOVES + 1
@@ -177,6 +177,7 @@ AIMoveChoiceModification1:
 	inc de
 	call ReadMove
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.checkBadMoves
 ;joenote - do not use effects that end battle because this is a trainer battle and they do not work
 	ld a, [wEnemyMoveEffect]	;load the move effect
 	cp SWITCH_AND_TELEPORT_EFFECT	;see if it is a battle-ending effect
@@ -184,6 +185,11 @@ AIMoveChoiceModification1:
 ;and dont try to use splash either
 	cp SPLASH_EFFECT	
 	jp z, .heavydiscourage
+;rage kind of sucks even though it does something, so slightly discourage it
+	cp RAGE_EFFECT
+	jr nz, .endBadMoves
+	inc [hl]
+.endBadMoves
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - do not use dream eater if enemy not asleep, otherwise encourage it
@@ -239,13 +245,11 @@ AIMoveChoiceModification1:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Heavily discourage healing or exploding moves if HP is full. Encourage if hp is low
-;Exploding has a slight preference over healing because overall this hurts the player more than the AI
 	ld a, [wEnemyMoveEffect]	;load the move effect
 	cp HEAL_EFFECT	;see if it is a healing move
 	jr z, .heal_explode	;skip out if move is not
 	cp EXPLODE_EFFECT	;what about an explosion effect?
 	jr nz, .not_heal_explode	;skip out if move is not
-	dec [hl]	;otherwise give a slight edge to exploding
 	
 	;since this is an explosion effect, it would be good to heavily discourage if
 	;the opponent is in fly/dig state and the exploder is for-sure faster than the opponent
@@ -258,16 +262,16 @@ AIMoveChoiceModification1:
 .heal_explode
 	ld a, 1	;
 	call AICheckIfHPBelowFraction
-	jp nc, .heavydiscourage	;heavy discourage if hp at max (heal +5 & explode +4)
-	inc [hl]	;1/2 hp to max hp - slight discourage (heal +1 & explode 0)
+	jp nc, .heavydiscourage	;heavy discourage if hp at max (heal +5 & explode +5)
+	inc [hl]	;1/2 hp to max hp - slight discourage (heal +1 & explode +1)
 	ld a, 2	;
 	call AICheckIfHPBelowFraction
 	jp nc, .nextMove	;if hp is 1/2 or more, get next move
-	dec [hl]	;else 1/3 to 1/2 hp - neutral (heal 0 & explode -1)
+	dec [hl]	;else 1/3 to 1/2 hp - neutral (heal 0 & explode 0)
 	ld a, 3	;
 	call AICheckIfHPBelowFraction
 	jp nc, .nextMove	;if hp is 1/3 or more, get next move
-	dec [hl]	;else 0 to 1/3 hp - slight preference (heal -1 & explode -2)
+	dec [hl]	;else 0 to 1/3 hp - slight preference (heal -1 & explode -1)
 	jp .nextMove	;get next move
 .not_heal_explode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -775,6 +779,13 @@ AIMoveChoiceModification3:
 	bit 2, a
 	ret nz
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - If player switched pokemon, do not run AIMoveChoiceModification3.
+;This is because the AI opponent should not have perfect knowledge of the pokemon sent in.
+;It will have to simply pick a move without the benefit of knowing the player 'mon information.
+	ld a, [wActionResultOrTookBattleTurn]
+	cp $A
+	ret z
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, wBuffer - 1 ; temp move selection array (-1 byte offset)
 	ld de, wEnemyMonMoves ; enemy moves
 	ld b, NUM_MOVES + 1
@@ -892,15 +903,16 @@ AIMoveChoiceModification3:
 .specialBPend
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	;90.625% chance per move that AI is blind to the player switching, so treat the move as neutrally effective
-	ld a, [wActionResultOrTookBattleTurn]
-	cp $A
-	jr nz, .blind_end
-	call Random
-	cp 232
-	jr c, .neutral_effective	; if <, treat move as neutral damage
-	;else proceed as normal
-.blind_end
+;	;90.625% chance per move that AI is blind to the player switching, so treat the move as neutrally effective
+;	commented out because a different solution is used higher up
+;	ld a, [wActionResultOrTookBattleTurn]
+;	cp $A
+;	jr nz, .blind_end
+;	call Random
+;	cp 232
+;	jr c, .neutral_effective	; if <, treat move as neutral damage
+;	;else proceed as normal
+;.blind_end
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - heavily discourage attack moves that have no effect due to typing
@@ -1446,7 +1458,7 @@ TrainerAI:
 	ld a, [wTrainerClass]
 	cp JUGGLER
 	jr z, .checkAIcount
-	CheckEvent EVENT_8DB
+	CheckEvent EVENT_ENABLE_ITEM_CLAUSE
 	jr z, .checkAIcount	
 	;done if item clause active
 .NoItem
