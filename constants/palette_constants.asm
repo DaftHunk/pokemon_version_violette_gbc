@@ -42,7 +42,7 @@ const_value = 0
 	const PAL_0F        ; $0F
 	const PAL_MEWMON    ; $10
 	const PAL_BLUEMON   ; $11
-	const PAL_ORANGEMON    ; $12
+	const PAL_ORANGEMON ; $12
 	const PAL_CYANMON   ; $13
 	const PAL_PURPLEMON ; $14
 	const PAL_BROWNMON  ; $15

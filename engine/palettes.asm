@@ -279,6 +279,9 @@ MapPalettesJumpTable:
 	db POWER_PLANT, PAL_YELLOWMON
 	db BRUNOS_ROOM, PAL_CAVE
 	db FUCHSIA_GOOD_ROD_HOUSE, PAL_FUCHSIA
+	db CERULEAN_CAVE_1F, PAL_CYANMON
+	db CERULEAN_CAVE_2F, PAL_CYANMON
+	db CERULEAN_CAVE_B1F, PAL_CYANMON
 	db -1
 
 ; used when a Pokemon is the only thing on the screen
