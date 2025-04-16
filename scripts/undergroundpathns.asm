@@ -22,7 +22,7 @@ MirrorTrainerText1:
 	and a	;check the player choice
 	jr nz, .goodbye	;if no, jump
 	;otherwise begin loading battle
-	SetEvent EVENT_8DF
+	SetEvent EVENT_LOAD_MIRROR_MATCH
 	ld hl, MirrorTrainerPre
 	call PrintText
 	ld hl, wd72d;set the bits for triggering battle

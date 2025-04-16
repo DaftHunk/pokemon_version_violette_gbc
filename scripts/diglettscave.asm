@@ -10,10 +10,10 @@ DiglettsCaveTextPointers:
 Mist_Stone_Text:
 	TX_ASM
 
-	CheckEvent EVENT_8C4
+	CheckEvent EVENT_GOT_MIST_STONE
 	jr nz, .read_book
 	
-	CheckEvent EVENT_8C3
+	CheckEvent EVENT_MIST_STONE
 	jr z, .read_book
 	
 .mist_stone
@@ -22,7 +22,7 @@ Mist_Stone_Text:
 	call GiveItem
 	ld hl, _TXTBag
 	jr nc, .next	;jump if not enough room in bag
-	SetEvent EVENT_8C4
+	SetEvent EVENT_GOT_MIST_STONE
 	ld hl, _TXTMist_Stone
 	call PrintText
 	ld a, SFX_GET_ITEM_1

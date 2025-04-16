@@ -318,7 +318,7 @@ SafariZoneEntranceTextPointers:
 	ld hl, .NotReady
 	jr z, .end
 	
-	CheckEvent EVENT_90F
+	CheckEvent EVENT_SPECIAL_SAFARI_ZONE
 	jr nz, .activeevent
 	
 	ld hl, .Ready
@@ -343,10 +343,10 @@ SafariZoneEntranceTextPointers:
 	call PrintText
 	jp TextScriptEnd
 .setevent
-	SetEvent EVENT_90F	;turn on special safari event
+	SetEvent EVENT_SPECIAL_SAFARI_ZONE	;turn on special safari event
 	ret
 .resetevent
-	ResetEvent EVENT_90F	;turn off special safari event
+	ResetEvent EVENT_SPECIAL_SAFARI_ZONE	;turn off special safari event
 	ret
 .NotReady
 	TX_FAR _SafariZoneEntranceTextSpecial_NotReady

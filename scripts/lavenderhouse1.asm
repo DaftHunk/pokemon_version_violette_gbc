@@ -106,7 +106,7 @@ LavenderHouse1Text5:
 	CheckEvent EVENT_ELITE_4_BEATEN	;has elite 4 been beaten?
 	jr z, .no_e4_beaten		;kick out if e4 not beaten
 	
-	CheckEvent EVENT_129	;got the MGENE from showing mewtwo to Fuji?
+	CheckEvent EVENT_FUJI_GAVE_MGENE	;got the MGENE from showing mewtwo to Fuji?
 	jr nz, .doBattle
 	ld a, [wPartyMon1Species]
 	cp MEWTWO	;is mewtwo at the top of the party?
@@ -119,7 +119,7 @@ LavenderHouse1Text5:
 	jr nc, .BagFull
 	ld hl, ReceivedMGENEText
 	call PrintText
-	SetEvent EVENT_129
+	SetEvent EVENT_FUJI_GAVE_MGENE
 	jr .asm_da749
 	
 .doBattle

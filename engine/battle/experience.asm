@@ -457,7 +457,7 @@ BoostExp:
 ;joenote - apply a big exp boost if an underleveled active pokemon scored the K.O.
 ;shinpokered-master feature
 CatchUpBoost:	
-	CheckEvent EVENT_8D9
+	CheckEvent EVENT_ENABLE_CATCH_UP_BOOST
 	ret z
 	ld a, [wBattleMonLevel]
 	ld b, a

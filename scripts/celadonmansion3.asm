@@ -53,7 +53,7 @@ DirectorText:
 	TX_ASM
 	callab DisplayDiploma
 	
-	SetEvent EVENT_90B	;joenote - set event that diploma has been attained
+	SetEvent EVENT_GOT_DEX_DIPLOMA	;joenote - set event that diploma has been attained
 
 	;dafthunk : Added award #53
 	lb bc, SURFBOARD, 1

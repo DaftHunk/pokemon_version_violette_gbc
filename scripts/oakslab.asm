@@ -605,7 +605,7 @@ OaksLabScript16:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_GOT_POKEDEX
-	SetEvent EVENT_90E ;dafthunk : gender/caught enabled by default
+	SetEvent EVENT_GENDER_CAUGHT_INDICATOR ;dafthunk : gender/caught enabled by default
 	SetEvent EVENT_OAK_GOT_PARCEL
 	ld a, HS_LYING_OLD_MAN
 	ld [wMissableObjectIndex], a
@@ -1008,7 +1008,7 @@ OaksLabText5:
 ;	cp 2
 ;	jp c, .asm_1d279
 ;joenote - check an event instead of checking the pokedex
-	CheckEvent EVENT_01B
+	CheckEvent EVENT_AT_LEAST_ONE_CATCHED	;if set, the player has thrown any balls
 	jp nz, .asm_1d279
 	
 	CheckEvent EVENT_GOT_POKEDEX
@@ -1120,7 +1120,7 @@ OaksLabText5:
 	jr nz, .asm_1d2e7
 	lb bc, POKE_BALL, 5
 	;joenote - check to see if beaten on hard mode and give a different gift if true
-	CheckEvent EVENT_01C
+	CheckEvent EVENT_BEATEN_ROUTE_22_RIVAL
 	jr z, .next
 	lb bc, GREAT_BALL, 5
 .next

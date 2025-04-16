@@ -19,18 +19,33 @@ GetPredefPointer:
 	ld [hli], a
 	ld [hl], c
 
-	ld hl, PredefPointers
-	ld de, 0
+;joenote - because the carry bit is only accounted for one time, only 127 predefs are supported without overflowing
+;Let's fix that so we can have up to 255 predefs.
 
+;	ld hl, PredefPointers
+;	ld de, 0
+;
+;	ld a, [wPredefID]
+;	ld e, a
+;	add a
+;	add e
+;	ld e, a
+;	jr nc, .nocarry
+;	inc d
+;
+;.nocarry
+
+	ld hl, 0
+	ld d, 0
 	ld a, [wPredefID]
 	ld e, a
-	add a
-	add e
-	ld e, a
-	jr nc, .nocarry
-	inc d
+	add hl, de
+	add hl, de
+	add hl, de
+	ld d, h
+	ld e, l
+	ld hl, PredefPointers
 
-.nocarry
 	add hl, de
 	ld d, h
 	ld e, l
@@ -176,7 +191,5 @@ PredefPointers::
 	add_predef PrintPlayTime
 	add_predef DVPunnettSquare
 	add_predef GetCriticalHitProbability
-	add_predef ShimmerTransformationPlayer
-	add_predef ShimmerTransformationEnemy
 	add_predef ReadSuperRodData
 	add_predef _CalcStat

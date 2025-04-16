@@ -52,10 +52,10 @@ SoftlockTeleport:
 
 ShowDamageValues:	;joenote - toggle damage values being shown in battle
 	call WaitForSoundToFinish
-	CheckAndResetEvent EVENT_910
+	CheckAndResetEvent EVENT_DEBUG_SHOW_DAMAGE_VALUES
 	ld a, SFX_TURN_OFF_PC
 	jr nz, .return
-	SetEvent EVENT_910
+	SetEvent EVENT_DEBUG_SHOW_DAMAGE_VALUES
 	ld a, SFX_ENTER_PC
 .return
 	call PlaySound	
@@ -74,31 +74,31 @@ ResetAllOptions: ;joenote - reset all the special options (like for patching-up)
 	and %10000111
 	ld [wUnusedD721], a
 	
-	ResetEvent EVENT_8D7
-	ResetEvent EVENT_8D8
-	ResetEvent EVENT_8D9
-	ResetEvent EVENT_8DA
-	ResetEvent EVENT_8DB
-	ResetEvent EVENT_8DC
-	ResetEvent EVENT_8DD
-	ResetEvent EVENT_8DE
-	ResetEvent EVENT_8DF
+	ResetEvent EVENT_ENABLE_WILD_RANDOMIZATION
+	ResetEvent EVENT_ENABLE_NORMAL_TRAINER_RANDOMIZATION
+	ResetEvent EVENT_ENABLE_CATCH_UP_BOOST
+	ResetEvent EVENT_CINNABAR_SHORE_MISSINGNO
+	ResetEvent EVENT_ENABLE_ITEM_CLAUSE
+	ResetEvent EVENT_ENABLE_SLEEP_CLAUSE
+	ResetEvent EVENT_ENABLE_FREEZE_CLAUSE
+	ResetEvent EVENT_ENABLE_RANDOMIZE_WILD
+	ResetEvent EVENT_LOAD_MIRROR_MATCH
 	
-	ResetEvent EVENT_909
-	ResetEvent EVENT_90A
-	ResetEvent EVENT_90C
-	ResetEvent EVENT_90E
-	ResetEvent EVENT_90F
-	ResetEvent EVENT_910
+	ResetEvent EVENT_REMATCH_DELAY
+	ResetEvent EVENT_RANDOM_TRAINER
+	ResetEvent EVENT_TRAINER_LVL_SCALING
+	ResetEvent EVENT_GENDER_CAUGHT_INDICATOR
+	ResetEvent EVENT_SPECIAL_SAFARI_ZONE
+	ResetEvent EVENT_DEBUG_SHOW_DAMAGE_VALUES
 	
-	ResetEvent EVENT_8C5
-	ResetEvent EVENT_8C7
-	ResetEvent EVENT_8C8
+	ResetEvent EVENT_ENABLE_TRAPPING_CLAUSE
+	ResetEvent EVENT_ENABLE_SHIMMER_FEATURE
+	ResetEvent EVENT_ENABLE_HYPER_BEAM_CLAUSE
 	ret
 
 TrainerRematch:
 	xor a
-	CheckEvent EVENT_909
+	CheckEvent EVENT_REMATCH_DELAY
 	jr nz, .skip_rematch_choice
 	ld hl, RematchTrainerText
 	call PrintText
@@ -107,7 +107,7 @@ TrainerRematch:
 	and a
 	ret nz
 .skip_rematch_choice
-	ResetEvent EVENT_909
+	ResetEvent EVENT_REMATCH_DELAY
 	xor a
 	ret
 

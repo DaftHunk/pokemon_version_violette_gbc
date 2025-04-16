@@ -346,6 +346,8 @@ wTileMap:: ; c3a0
 ; buffer for tiles that are visible on screen (20 columns by 18 rows)
 	ds 20 * 18
 
+wTileMap_End::
+
 wSerialPartyMonsPatchList:: ; c508
 ; list of indexes to patch with SERIAL_NO_DATA_BYTE after transfer
 
@@ -948,7 +950,7 @@ wSwappedMenuItem:: ; cd3d
 wHoFMonSpecies:: ; cd3d
 
 wFieldMoves:: ; cd3d
-; 4 bytes
+; 4 bytes	;joenote - extended to 5 bytes
 ; the current mon's field moves
 
 wBadgeNumberTile:: ; cd3d
@@ -1096,8 +1098,6 @@ wHiddenObjectX:: ; cd41
 wSlotMachineWinningSymbol:: ; cd41
 ; the OAM tile number of the upper left corner of the winning symbol minus 2
 
-wNumFieldMoves:: ; cd41
-
 wSlotMachineWheel1BottomTile:: ; cd41
 
 wTrainerScreenX:: ; cd41
@@ -1106,16 +1106,19 @@ wTrainerScreenX:: ; cd41
 
 wHoFTeamNo:: ; cd42
 
+wNumFieldMoves:: ; cd42	;joenote - moved to cd42 from cd41
+
 wSlotMachineWheel1MiddleTile:: ; cd42
 
-wFieldMovesLeftmostXCoord:: ; cd42
 	ds 1
-
-wLastFieldMoveID:: ; cd43
-; unused
 
 wSlotMachineWheel1TopTile:: ; cd43
+
+wFieldMovesLeftmostXCoord:: ; joenote - moved to cd43 from cd42
 	ds 1
+
+wLastFieldMoveID:: ; joenote - moved to cd44 from cd43
+; unused
 
 wSlotMachineWheel2BottomTile:: ; cd44
 	ds 1
@@ -1710,9 +1713,11 @@ wBattleType:: ; d05a
 wDamageMultipliers:: ; d05b
 ; bits 0-6: Effectiveness
    ;  $0 = immune
+   ;  $2 = really not very effective (quarter damage)
    ;  $5 = not very effective
    ;  $a = neutral
    ; $14 = super-effective
+   ; $28 = really super-effective (quadruple damage)
 ; bit 7: STAB
 	ds 1
 
@@ -3043,8 +3048,11 @@ wLastOBP1::
 	ds 1 
 wBGPPalsBuffer:: 
 	ds NUM_ACTIVE_PALS * PAL_SIZE ;32 bytes
-	
-	ds 5
+
+wUpdateGBCPal_Index::
+	ds 1
+
+	ds 4
 
 wObtainedHiddenItemsFlags::
 	ds 14
@@ -3140,7 +3148,7 @@ wUnusedD721:: ; d721	;joenote - use to set various wram flags
 	;bit 4 - 60fps option flag
 	;bit 5 - obedience level cap
 	;bit 6 - nuzlocke mode activated
-	;bit 7 - not used
+	;bit 7 - enhanced GBC colors toggle
 ;;;;;;;;;;;;;;joenote - use these unused locations for debugging and parsing DV scores or holding temp values
 wUnusedD722:: 
 	ds 4

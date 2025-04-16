@@ -31,7 +31,7 @@ randomMonPrizes:
 ;finds the vanilla mon value that would randomize to it
 ;saves it back into wd11e
 LookupWildRandomMon:
-	CheckEvent EVENT_8DE
+	CheckEvent EVENT_ENABLE_RANDOMIZE_WILD
 	jr z, .return
 	
 	ld hl, ListRealPkmn
@@ -61,10 +61,10 @@ LookupWildRandomMon:
 ;converts the value to its randomized list value
 ;stores that value back into wcf91 and wEnemyMonSpecies2
 _ReplaceMon:
-	CheckEvent EVENT_8DE
+	CheckEvent EVENT_ENABLE_RANDOMIZE_WILD
 	ret z
 	
-	CheckEvent EVENT_10E   ;active ghost marowak?
+	CheckEvent EVENT_ACTIVATE_GHOST_MAROWAK   ;active ghost marowak?
 	ret nz
 	
 	ld a, [wRandomizerSeed]
@@ -78,7 +78,7 @@ _ReplaceMon:
 .no_update
 	ld [wUnusedD722], a
 	
-	CheckEvent EVENT_8D7
+	CheckEvent EVENT_ENABLE_WILD_RANDOMIZATION
 	jr z, .tieredRandom
 	ld hl, MonListTrueRandom
 	CheckEvent EVENT_GOT_STARTER

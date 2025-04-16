@@ -6,7 +6,7 @@ UseItem_:
 	ld a, [wIsInBattle]
 	cp 2
 	jr nz, .nottrainerbattle
-	CheckEvent EVENT_8DB
+	CheckEvent EVENT_ENABLE_ITEM_CLAUSE
 	jp nz, UnusableItem	;done if item clause active
 .nottrainerbattle
 
@@ -210,7 +210,7 @@ ItemUseBall:
 	;jp z, .setAnimData
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	;joenote - use a bit to determine if this is a ghost marowak battle
-	CheckEvent EVENT_10E
+	CheckEvent EVENT_ACTIVATE_GHOST_MAROWAK
 	jr z, .loop
 	ld b, $10 ; can't be caught value
 	jp .setAnimData
@@ -607,6 +607,12 @@ ItemUseBall:
 	ld hl, ItemUseBallText05
 	call PrintText
 
+; Clear a flag to indicate that the player has caught a pokemon with a ball throw at least once
+	CheckEvent EVENT_AT_LEAST_ONE_CATCHED
+	jr z, .madefirstcatchofgame
+	ResetEvent EVENT_AT_LEAST_ONE_CATCHED
+	;fallthrough
+.madefirstcatchofgame
 ; Add the caught Pokémon to the Pokédex.
 	predef IndexToPokedex
 	ld a, [wd11e]
@@ -1895,7 +1901,7 @@ ItemUsePokedoll:
 	jp nz, ItemUseNotTime
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	;joenote - if this is a ghost marowak battle, prevent using a pokedoll
-	CheckEvent EVENT_10E
+	CheckEvent EVENT_ACTIVATE_GHOST_MAROWAK
 	jp nz, ItemUseNotTime
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, $01

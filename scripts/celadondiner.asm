@@ -69,14 +69,14 @@ CeladonDinerText_491b7:
 ;;;;;;;;;;;;;;;;;;;;;;;;;joenote - add text for catch-up exp boost
 CeladonDinerText6:
 	TX_ASM
-	CheckEvent EVENT_8D9
+	CheckEvent EVENT_ENABLE_CATCH_UP_BOOST
 	jr z, .RegRandON
 	ld hl, CeladonDiner_EXPCatchUpOFF 
 	call PrintText
 	call .choose
 	ld hl, CeladonDiner_AideQ_reject
 	jr z, .end
-	ResetEvent EVENT_8D9
+	ResetEvent EVENT_ENABLE_CATCH_UP_BOOST
 	jr .print_done
 .RegRandON
 	ld hl, CeladonDiner_EXPCatchUpON
@@ -84,7 +84,7 @@ CeladonDinerText6:
 	call .choose
 	ld hl, CeladonDiner_AideQ_reject
 	jr z, .end
-	SetEvent EVENT_8D9
+	SetEvent EVENT_ENABLE_CATCH_UP_BOOST
 .print_done
 	ld hl, CeladonDiner_AideQ_done
 .end

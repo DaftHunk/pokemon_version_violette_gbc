@@ -1278,7 +1278,7 @@ PokemartGreetingText::
 	db "@"
 
 RematchTrainerText::	;joenote - for trainer rematch
-	TX_FAR _OneMoreGoSlotMachineText
+	TX_FAR _RematchTrainerText
 	db "@"
 
 LoadItemList::
@@ -2520,7 +2520,7 @@ TalkToTrainer::
 	jp PrintText
 	
 .trainerNotYetFought
-	SetEvent EVENT_909	;joenote - make it so you cannot rematch a defeated trainer until talking to any defeated trainer
+	SetEvent EVENT_REMATCH_DELAY	;joenote - make it so you cannot rematch a defeated trainer until talking to any defeated trainer
 	ld a, $4
 	call ReadTrainerHeaderInfo     ; print before battle text
 	call PrintText
@@ -3160,6 +3160,11 @@ GetTrainerInformation::
 .linkBattle
 	ld hl, wTrainerPicPointer
 	ld de, RedPicFront
+	;joenote - support female trainer over link
+	CheckEvent EVENT_LINKED_FPLAYER
+	jr z, .next
+	ld de, RedPicFFront
+.next
 	ld [hl], e
 	inc hl
 	ld [hl], d

@@ -20,10 +20,10 @@ ColosseumResetClauses:
 	call .choice
 	jr z, .end
 	
-	ResetEvent EVENT_8DC 
-	ResetEvent EVENT_8DD 
-	ResetEvent EVENT_8C5 
-	ResetEvent EVENT_8C8 
+	ResetEvent EVENT_ENABLE_SLEEP_CLAUSE 
+	ResetEvent EVENT_ENABLE_FREEZE_CLAUSE 
+	ResetEvent EVENT_ENABLE_TRAPPING_CLAUSE 
+	ResetEvent EVENT_ENABLE_HYPER_BEAM_CLAUSE 
 	
 	ld hl, _TXTSleep
 	call PrintText
@@ -58,16 +58,16 @@ ColosseumResetClauses:
 	and a
 	ret
 .sleep
-	SetEvent EVENT_8DC 
+	SetEvent EVENT_ENABLE_SLEEP_CLAUSE 
 	ret
 .freeze
-	SetEvent EVENT_8DD 
+	SetEvent EVENT_ENABLE_FREEZE_CLAUSE 
 	ret
 .trapping
-	SetEvent EVENT_8C5 
+	SetEvent EVENT_ENABLE_TRAPPING_CLAUSE 
 	ret
 .hyperbeam
-	SetEvent EVENT_8C8 
+	SetEvent EVENT_ENABLE_HYPER_BEAM_CLAUSE 
 	ret
 
 _TXTAskReset:

@@ -6,9 +6,9 @@ UnknownDungeon3Script:
 	call ExecuteCurMapScriptInTable
 	ld [wUnknownDungeon3CurScript], a
 
-	CheckEvent EVENT_90B	
+	CheckEvent EVENT_GOT_DEX_DIPLOMA	
 	ret z	;return if you don't have diploma
-	CheckEvent EVENT_8C2	
+	CheckEvent EVENT_MEW_TEXT	
 	ret nz	;return if mew notification is deactivated
 	ld a, $3
 	ld [wUnknownDungeon3CurScript], a
@@ -67,7 +67,7 @@ MewNotifyScript:
 	pop bc
 	
 	ld hl, MewUnavailableText
-	CheckEvent EVENT_8C0	;has mew been encountered before?
+	CheckEvent EVENT_ENCOUTERED_MEW	;has mew been encountered before?
 	jr nz, .print
 	ld hl, MewAvailableText
 .print
@@ -77,7 +77,7 @@ MewNotifyScript:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	
-	SetEvent EVENT_8C2	;deactivate mew notification
+	SetEvent EVENT_MEW_TEXT	;deactivate mew notification
 	xor a
 	ld [wCurMapScript], a
 	ret
