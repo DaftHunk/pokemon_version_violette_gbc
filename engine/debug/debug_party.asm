@@ -148,6 +148,8 @@ DebugSetPokedexEntries:
 	ret
 
 DebugItemsList:
+	db MAX_REVIVE, 99
+	db MAX_ELIXER, 99
 	db BICYCLE, 1
 	db FULL_RESTORE, 99
 	db FULL_HEAL, 99
