@@ -113,6 +113,8 @@ https://docs.google.com/spreadsheets/d/1nh3vi-TdhZu3ZT1ZbH4gDMEPXbZw5eX-k1_drcTC
 https://github.com/DaftHunk/pokemon_version_violette
 
 ## Credits
+- A huge thanks for the whole romhack community, open source rules and should be a norm !
+- Ce projet est open-source, vous pouvez vous servir du contenu de ce projet comme bon vous semble, n'oubliez pas de créditer les auteurs originaux ;)
 - [Pokered](https://github.com/pret/pokered) sans qui rien de tout ça ne serait possible
 - [Shin Pokered](https://github.com/jojobear13/shinpokered) pour la base du hack
 - [Yellow Legacy](https://github.com/cRz-Shadows/Pokemon_Yellow_Legacy) dont une partie de la progression est basée
