@@ -212,6 +212,8 @@ MainMenu:
 	and a
 	jr z, .noHoF
 	SetEvent EVENT_ELITE_4_BEATEN	;if the elite 4 have been beaten, set the event flag for it
+	; After beating elite 4 level scaling is now enabled
+	SetEvent EVENT_TRAINER_LVL_SCALING
 .noHoF
 	xor a
 	ld [wDestinationMap], a
