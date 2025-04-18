@@ -19,7 +19,7 @@ DebugNewGameParty: ; unreferenced except in _DEBUG
 	; From https://web.archive.org/web/20000607152840/http://pocket.ign.com/news/14973.html
 	db MAGNETON, 90
 	db EXEGGUTOR, 50
-	db EEVEE, 56
+	db EEVEE, 10
 	db ONIX, 56
 	db ZAPDOS, 57
 	db MEW, 80
@@ -89,6 +89,13 @@ IF DEF(_DEBUG)
 	; EEVEE gets PURSUIT.
 	ld hl, wPartyMon3Moves
 	ld a, PURSUIT
+	ld [hli], a
+	ld a, ICE_BEAM
+	ld [hli], a
+	ld a, FLAMETHROWER
+	ld [hl], a
+	ld hl, wPartyMon5PP
+	ld a, 30
 	ld [hl], a
 
 	; ZAPDOS gets Fly.

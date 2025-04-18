@@ -75,7 +75,7 @@ _SSAnne6Text_61816::
 	line "que je n'ai plus"
 	cont "de viande?!"
 	done
-; mina : traduction svp jusqu'à la fin
+
 _SSAnne6Text_GymGuy::
 	text "Yo, champion en"
 	line "devenir!"
