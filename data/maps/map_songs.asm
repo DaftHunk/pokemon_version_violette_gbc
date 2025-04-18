@@ -104,7 +104,7 @@ MapSongBanks:
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ; SSAnne8
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ; SSAnne9
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ; SSAnne10
-	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ;unused
+	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown) ;BillsGarden
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ;unused
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ;unused
 	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; VictoryRoad1

@@ -86,6 +86,11 @@ _BillsHouseText_1e8da::
 	line "un peu ma collec'."
 	cont "J'ai des #mon"
 	cont "très rares!"
+
+	para "Qu'est ce que je"
+	line "donnerais pour"
+	cont "voir un #mon"
+	cont "encore inconnu..."
 	done
 
 ;joenote - textfor bill letting you into his garden	
@@ -95,12 +100,19 @@ _BillGardenText::
 	cont "fabuleux Mew?"
 	cont "Wow! C'est une"
 	cont "nouvelle espèce"
-	cont "de #mon."
+	cont "de #mon!!!"
 	
 	para "Pour te remercier"
 	line "de me l'avoir"
 	cont "montré, je vais"
-	cont "te révéler un"
-	cont "endroit secret."
+	cont "te révéler mon"
+	cont "jardin secret."
+
+	para "Non vraiment,"
+	line "j'plaisante pas,"
+	cont "c'est littéral-"
+	cont "ement mon jardin!"
+	cont "J'y reproduis des"
+	cont "espèces rares."
 	done
 	

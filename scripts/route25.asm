@@ -1,7 +1,6 @@
 Route25Script:
 	call Route25Script_515e1
 	call EnableAutoTextBoxDrawing
-	call BillSecretGarden	;joenote - fun little easter egg
 	ld hl, Route25TrainerHeader0
 	ld de, Route25ScriptPointers
 	ld a, [wRoute25CurScript]
@@ -40,7 +39,6 @@ Route25ScriptPointers:
 	dw CheckFightingMapTrainers
 	dw DisplayEnemyTrainerTextAndStartBattle
 	dw EndTrainerBattle
-	dw Route25Script3
 
 Route25TextPointers:
 	dw Route25Text1
@@ -53,7 +51,6 @@ Route25TextPointers:
 	dw Route25Text8
 	dw Route25Text9
 	dw PickUpItemText
-	dw Route25TextRed
 	dw Route25Text11
 	
 Route25TrainerHeader0:
@@ -138,59 +135,6 @@ Route25TrainerHeader8:
 	dw Route25EndBattleText9 ; TextEndBattle
 
 	db $ff
-
-Route25Script3:	;joenote - adding this function to respawn the legendaries if future red is beaten
-	xor a
-	ld [wJoyIgnore], a
-	ld [wRoute25CurScript], a
-	ld [wCurMapScript], a
-	ld a, [wIsInBattle]
-	cp $ff
-	ret z
-;reset the special trainer flags
-	ld a, [wBeatGymFlags]
-	and $F0
-	ld [wBeatGymFlags], a
-;reset MIST_STONE events
-	ResetEvent EVENT_MIST_STONE
-	ResetEvent EVENT_GOT_MIST_STONE
-;reset Mew events
-	ResetEvent EVENT_ENCOUTERED_MEW
-	ResetEvent EVENT_MEW_TEXT
-;reset articuno's seafoam islands puzzles
-	ld a, HS_SEAFOAM_ISLANDS_B3F_BOULDER_1
-	call .showstuff
-	ld a, HS_SEAFOAM_ISLANDS_B3F_BOULDER_2
-	call .showstuff
-	ld a, HS_SEAFOAM_ISLANDS_B4F_BOULDER_1
-	call .hidestuff
-	ld a, HS_SEAFOAM_ISLANDS_B4F_BOULDER_2
-	call .hidestuff
-	ResetEvents EVENT_SEAFOAM4_BOULDER1_DOWN_HOLE, EVENT_SEAFOAM4_BOULDER2_DOWN_HOLE
-;reset mewtwo
-	ld a, HS_MEWTWO
-	call .showstuff
-	ResetEvent EVENT_BEAT_MEWTWO
-;reset moltres
-	ld a, HS_MOLTRES
-	call .showstuff
-	ResetEvent EVENT_BEAT_MOLTRES
-;reset zapdos
-	ld a, HS_ZAPDOS
-	call .showstuff
-	ResetEvent EVENT_BEAT_ZAPDOS	
-;reset articuno and its specific puzzle
-	ld a, HS_ARTICUNO
-	call .showstuff
-	ResetEvent EVENT_BEAT_ARTICUNO
-;return now
-	ret
-.showstuff
-	ld [wMissableObjectIndex], a
-	predef_jump ShowObject
-.hidestuff
-	ld [wMissableObjectIndex], a
-	predef_jump HideObject
 	
 Route25Text1:
 	TX_ASM
@@ -245,107 +189,6 @@ Route25Text9:
 	ld hl, Route25TrainerHeader8
 	call TalkToTrainer
 	jp TextScriptEnd
-	
-;joenote - text for red battle
-Route25TextRed:
-	TX_ASM
-	ld hl, Route25PrintText12
-	call PrintText
-	CheckEvent EVENT_ELITE_4_BEATEN	;has elite 4 been beaten?
-	jr z, .no_e4_beaten
-	ld hl, RedText_challenge	;else ask if you want to challenge
-	call PrintText	;print the challenge text
-	call YesNoChoice	;prompt a yes/no choice
-	ld a, [wCurrentMenuItem]	;load the player choice
-	and a	;check the player choice
-	jr nz, .no_e4_beaten	;kick out if no chosen
-	;otherwise begin loading battle
-	ld hl, RedText_prebattle	;load pre battle text
-	call PrintText	;print the pre battle text
-	ld hl, wd72d;set the bits for triggering battle
-	set 6, [hl]	;
-	set 7, [hl]	;
-	ld hl, RedTextVictorySpeech	;load text for when you win
-	ld de, RedTextVictorySpeech	;load text for when you lose
-	call SaveEndBattleTextPointers	;save the win/lose text
-	ld a, $9
-	ld [wGymLeaderNo], a	;set bgm to champion music
-	ld a, OPP_SACHA	;load the trainer type
-	ld [wCurOpponent], a	;set as the current opponent
-	ld a, 1	;get the right roster
-	ld [wTrainerNo], a
-	xor a
-	ld [hJoyHeld], a
-	ld a, $3
-	ld [wRoute25CurScript], a
-	ld [wCurMapScript], a
-	jp TextScriptEnd
-.no_e4_beaten
-	ld hl, RedText_decline
-	call PrintText
-	jp TextScriptEnd
-	
-BillSecretGarden:
-	ld hl, GardenCoordsData	;load the table of coordinates defining the garden
-	call ArePlayerCoordsInArray	;check player coordinates and set the carry flag if a match is found
-	jr nc, .return	;leave if the carry flag is not set
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;everything checks out, so do stuff
-	;generate an encounter if the random number adder is 0
-	ld a, [hRandomAdd]
-	and a
-	jr nz, .return
-
-	;make it shiny if random number subtracter is below 2 (that's 1 in 128 odds)
-	ld a, [hRandomSub]
-	cp 2
-	jr nc, .noshiny
-	ld a, [wFontLoaded]
-	set 7, a 
-	ld [wFontLoaded], a
-.noshiny
-
-	;load the pokemon level
-	ld a, 5
-	ld [wCurEnemyLVL], a
-
-	;set the current opponent
-	call Random
-	and $07
-	ld b, 0
-	ld c, a
-	ld hl, GardenList
-	add hl, bc
-	ld a, [hl]
-	ld [wCurOpponent], a
-
-	ld hl, wd72d;set the bits for triggering battle
-	set 6, [hl]	;
-	set 7, [hl]	;
-	xor a
-	ld [hJoyHeld], a
-	jp TextScriptEnd
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-.return
-	ret
-
-GardenList:
-	db PIKACHU
-	db EEVEE
-	db CLEFAIRY
-	db BULBASAUR
-	db SQUIRTLE
-	db CHARMANDER
-	db ABRA
-	db PORYGON
-
-GardenCoordsData:
-		;Y,X
-	db $00,$2F
-	db $00,$2E
-	db $00,$2D
-	db $00,$2C
-	db $ff
 
 Route25BattleText1:
 	TX_FAR _Route25BattleText1
@@ -457,21 +300,4 @@ Route25AfterBattleText9:
 
 Route25Text11:
 	TX_FAR _Route25Text11
-	db "@"
-
-;joenote - dialogue for Red battle
-Route25PrintText12:
-	TX_FAR _Route25PrintText12
-	db "@"
-RedText_challenge:
-	TX_FAR _RedText_challenge
-	db "@"
-RedText_prebattle:
-	TX_FAR _RedText_prebattle
-	db "@"
-RedTextVictorySpeech:
-	TX_FAR _RedTextVictorySpeech
-	db "@"	
-RedText_decline:
-	TX_FAR _RedText_decline
 	db "@"

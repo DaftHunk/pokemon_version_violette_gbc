@@ -1,0 +1,13 @@
+BillsGardenMons:
+	db $0F
+	db 15,ABRA
+	db 14,PIKACHU
+	db 13,CLEFAIRY
+	db 13,SQUIRTLE
+	db 12,CHARMANDER
+	db 14,BULBASAUR
+	db 10,EEVEE
+	db 11,EEVEE
+	db 15,PORYGON
+	db 80,HOOH
+	db $00

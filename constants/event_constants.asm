@@ -2240,9 +2240,9 @@ const_value = 0
 	const EVENT_8BD                                  ; 8BD, (D85E, bit 5)
 	const EVENT_8BE                                  ; 8BE, (D85E, bit 6)
 	const EVENT_8BF                                  ; 8BF, (D85E, bit 7)
-	const EVENT_ENCOUTERED_MEW                       ; 8C0, (D85F, bit 0)	;joenote
+	const EVENT_8C0                                  ; 8C0, (D85F, bit 0)
 	const EVENT_BEAT_MEWTWO                          ; 8C1, (D85F, bit 1)
-	const EVENT_MEW_TEXT                             ; 8C2, (D85F, bit 2)
+	const EVENT_8C2                                  ; 8C2, (D85F, bit 2)
 	const EVENT_MIST_STONE                           ; 8C3, (D85F, bit 3)	;joenote
 	const EVENT_GOT_MIST_STONE                       ; 8C4, (D85F, bit 4)
 	const EVENT_ENABLE_TRAPPING_CLAUSE               ; 8C5, (D85F, bit 5)

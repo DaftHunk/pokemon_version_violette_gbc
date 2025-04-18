@@ -2113,6 +2113,7 @@ SECTION "Text 6", ROMX, BANK[TEXT_6]
 
 INCLUDE "text/maps/route_24_2.asm"
 INCLUDE "text/maps/route_25.asm"
+INCLUDE "text/maps/bills_garden.asm"
 
 _FileDataDestroyedText::
 	text "La sauvegarde est"

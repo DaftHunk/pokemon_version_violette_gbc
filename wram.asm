@@ -3010,6 +3010,7 @@ wPowerPlantCurScript:: ; d663
 wRoute7GateCurScript:: ; d663
 ; overload
 	ds 1
+wBillsGardenCurScript:: ; d664
 	ds 1
 wSSAnne2CurScript:: ; d665
 	ds 1

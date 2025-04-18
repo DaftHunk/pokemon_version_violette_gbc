@@ -507,6 +507,11 @@ INCLUDE "scripts/billshouse.asm"
 INCLUDE "data/maps/objects/billshouse.asm"
 BillsHouseBlocks: INCBIN "maps/billshouse.blk"
 
+INCLUDE "data/maps/headers/billsgarden.asm"
+INCLUDE "scripts/billsgarden.asm"
+INCLUDE "data/maps/objects/billsgarden.asm"
+BillsGardenBlocks: INCBIN "maps/billsgarden.blk"
+
 INCLUDE "engine/menu/oaks_pc.asm"
 
 INCLUDE "engine/hidden_object_functions7.asm"
