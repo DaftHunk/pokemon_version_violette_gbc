@@ -369,7 +369,7 @@ _HM04Description::
 	text "Appuyez sur SELECT"
 	line "face à un rocher"
 	cont "pour l'activer."
-	para "Force:Normal"
+	para "Force:Combat"
 	line "Dég: 80;Pré: 100"
 	prompt
 
@@ -377,8 +377,8 @@ _HM05Description::
 	text "Appuyez sur SELECT"
 	line "dans le noir pour"
 	cont "l'utiliser."
-	para "Flash:Normal"
-	line "Dég: -;Pré: 70"
+	para "Flash:Electr"
+	line "Dég: -;Pré: 100"
 	prompt
 
 _TM01Description::
@@ -388,7 +388,7 @@ _TM01Description::
 
 _TM02Description::
 	text "Coupe-Vent:Normal"
-	next "Dég: 80;Pré: 75"
+	next "Dég: 80;Pré: 100"
 	prompt
 
 _TM03Description::
@@ -518,7 +518,7 @@ _TM27Description::
 
 _TM28Description::
 	text "Tunnel:Sol"
-	next "Dég: 60;Pré: 100"
+	next "Dég: 80;Pré: 100"
 	prompt
 
 _TM29Description::
@@ -563,7 +563,7 @@ _TM36Description::
 
 _TM37Description::
 	text "Bomb-Beurk:Poison"
-	next "Dég: 90;Pré: 100"
+	next "Dég: 95;Pré: 100"
 	prompt
 
 _TM38Description::

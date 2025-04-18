@@ -9,7 +9,7 @@ MACRO move
 	db \5 percent ; accuracy
 	db \6 ; pp
 ENDM
-
+;        move          effect                    power  type  accuracy pp
 	move POUND,        NO_ADDITIONAL_EFFECT,        40, NORMAL,   100, 35
 MoveEnd:
 	move KARATE_CHOP,  NO_ADDITIONAL_EFFECT,        50, FIGHTING, 100, 25
@@ -23,7 +23,7 @@ MoveEnd:
 	move SCRATCH,      NO_ADDITIONAL_EFFECT,        40, NORMAL,   100, 35
 	move VICEGRIP,     NO_ADDITIONAL_EFFECT,        55, NORMAL,   100, 30
 	move GUILLOTINE,   OHKO_EFFECT,                  1, NORMAL,    30,  5
-	move RAZOR_WIND,   CHARGE_EFFECT,               80, NORMAL,    75, 10
+	move RAZOR_WIND,   CHARGE_EFFECT,               80, NORMAL,   100, 10
 	move SWORDS_DANCE, ATTACK_UP2_EFFECT,            0, NORMAL,   100, 30
 	move CUT,          NO_ADDITIONAL_EFFECT,        55, BUG,      100, 30
 	move GUST,         NO_ADDITIONAL_EFFECT,        40, FLYING,   100, 35
@@ -80,7 +80,7 @@ MoveEnd:
 	move LOW_KICK,     FLINCH_SIDE_EFFECT2,         50, FIGHTING,  90, 20
 	move COUNTER,      NO_ADDITIONAL_EFFECT,         1, FIGHTING, 100, 20
 	move SEISMIC_TOSS, SPECIAL_DAMAGE_EFFECT,        1, FIGHTING, 100, 20
-	move STRENGTH,     NO_ADDITIONAL_EFFECT,        80, NORMAL,   100, 15
+	move STRENGTH,     NO_ADDITIONAL_EFFECT,        80, FIGHTING, 100, 15
 	move ABSORB,       DRAIN_HP_EFFECT,             20, GRASS,    100, 20
 	move MEGA_DRAIN,   DRAIN_HP_EFFECT,             40, GRASS,    100, 10
 	move LEECH_SEED,   LEECH_SEED_EFFECT,            0, GRASS,     90, 10
@@ -101,7 +101,7 @@ MoveEnd:
 	move ROCK_THROW,   NO_ADDITIONAL_EFFECT,        50, ROCK,      90, 15
 	move EARTHQUAKE,   NO_ADDITIONAL_EFFECT,       100, GROUND,   100, 10
 	move FISSURE,      OHKO_EFFECT,                  1, GROUND,    30,  5
-	move DIG,          CHARGE_EFFECT,               60, GROUND,   100, 10
+	move DIG,          CHARGE_EFFECT,               80, GROUND,   100, 10
 	move TOXIC,        POISON_EFFECT,                0, POISON,    85, 10
 	move CONFUSION,    CONFUSION_SIDE_EFFECT,       50, PSYCHIC,  100, 25
 	move PSYCHIC_M,    SPECIAL_DOWN_SIDE_EFFECT,    90, PSYCHIC,  100, 10
@@ -158,7 +158,7 @@ MoveEnd:
 	move BUBBLE,       SPEED_DOWN_SIDE_EFFECT,      20, WATER,    100, 30
 	move DIZZY_PUNCH,  NO_ADDITIONAL_EFFECT,        70, NORMAL,   100, 10
 	move SPORE,        SLEEP_EFFECT,                 0, GRASS,    100, 15
-	move FLASH,        ACCURACY_DOWN1_EFFECT,        0, NORMAL,    70, 20
+	move FLASH,        ACCURACY_DOWN1_EFFECT,        0, ELECTRIC, 100, 20
 	move PSYWAVE,      SPECIAL_DAMAGE_EFFECT,        1, PSYCHIC,   80, 15
 	move SPLASH,       SPLASH_EFFECT,                0, NORMAL,   100, 40
 	move ACID_ARMOR,   DEFENSE_UP2_EFFECT,           0, POISON,   100, 40
@@ -175,7 +175,7 @@ MoveEnd:
 	move SUPER_FANG,   SUPER_FANG_EFFECT,            1, NORMAL,    90, 10
 	move SLASH,        NO_ADDITIONAL_EFFECT,        70, NORMAL,   100, 20
 	move SUBSTITUTE,   SUBSTITUTE_EFFECT,            0, NORMAL,   100, 10
-	move SLUDGE_BOMB,  POISON_SIDE_EFFECT2,         90, POISON,   100, 10 ; dafthunk #46 
+	move SLUDGE_BOMB,  POISON_SIDE_EFFECT2,         95, POISON,   100, 10 ; dafthunk #46 
 	move PURSUIT,      DEFENSE_DOWN_SIDE_EFFECT,    40, DARK,     100, 20 ; dafthunk #20
 	move CRUNCH,       DEFENSE_DOWN_SIDE_EFFECT,    80, DARK,     100, 15 ; dafthunk #20
 	move METAL_CLAW,   NO_ADDITIONAL_EFFECT,        50, STEEL,    100, 35 ; dafthunk #20

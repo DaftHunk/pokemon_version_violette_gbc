@@ -15,13 +15,13 @@ NoThanksText:
 PrizeMenuMon1Entries:
 	db ABRA
 	db PIKACHU
-	db HORSEA
+	db EEVEE
 	db "@"
 
 PrizeMenuMon1Cost:
 	coins 150
 	coins 750
-	coins 1200
+	coins 1500
 	db "@"
 
 PrizeMenuMon2Entries:
@@ -37,13 +37,13 @@ PrizeMenuMon2Cost:
 	db "@"
 
 PrizeMenuTMsEntries:
+	db TM04_FLAMETHROWER
+	db TM13_ICE_BEAM
 	db TM24_THUNDERBOLT
-	db TM14_BLIZZARD
-	db TM15_HYPER_BEAM
 	db "@"
 
 PrizeMenuTMsCost:
-	coins 3300
 	coins 5500
-	coins 7700
+	coins 5500
+	coins 5500
 	db "@"
