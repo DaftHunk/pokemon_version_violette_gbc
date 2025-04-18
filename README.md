@@ -112,15 +112,16 @@ https://docs.google.com/spreadsheets/d/1nh3vi-TdhZu3ZT1ZbH4gDMEPXbZw5eX-k1_drcTC
 - Les sources 
 https://github.com/DaftHunk/pokemon_version_violette
 
-## Credits
+## Credits et remerciements 
 - A huge thanks for the whole romhack community, open source rules and should be a norm !
 - Ce projet est open-source, vous pouvez vous servir du contenu de ce projet comme bon vous semble, n'oubliez pas de créditer les auteurs originaux ;)
 - [Pokered](https://github.com/pret/pokered) sans qui rien de tout ça ne serait possible
-- [Shin Pokered](https://github.com/jojobear13/shinpokered) pour la base du hack
-- [Yellow Legacy](https://github.com/cRz-Shadows/Pokemon_Yellow_Legacy) dont une partie de la progression est basée
-- [pureRGB](https://github.com/Vortyne/pureRGB) pour de nombreux sprites magnifiques
-- [pokered-gbc-plus-fr](https://github.com/Engezerstorung/pokered-gbc-plus-fr) pour les fantastiques sprites des pokémons dans le monde
+- [Shin Pokered](https://github.com/jojobear13/shinpokered) pour la base du hack et la qualité de sa romhack
+- [Yellow Legacy](https://github.com/cRz-Shadows/Pokemon_Yellow_Legacy) qui m'a pas mal inspiré sur le nivelement et la progression du jeu
+- [pureRGB](https://github.com/Vortyne/pureRGB) pour ses magnifiques tuiles de la centrale et certains backsprites améliorés
+- [pokered-gbc-plus-fr](https://github.com/Engezerstorung/pokered-gbc-plus-fr) pour ses fantastiques sprites de pokémons dans le monde
+- [tournepivoine](https://github.com/tournepivoine/shinpokered-fr) pour sa traduction qui m'a beaucoup fait gagné de temps
 - Nurse Joy Battle Sprite - ZuperZACH
 - Officer Jenny Battle Sprite - Karlos
 
-***/!\ Pas encore disponible, terminée à 98%***
+***/!\ Pas encore disponible, terminée à 99%***
