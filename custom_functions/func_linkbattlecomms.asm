@@ -27,7 +27,6 @@ SyncBattleClauses:
 	
 	call NybbleToClauses
 	
-	call DisplayClauseSplashScreen
 	
 	xor a	;success, so set Z flag
 	ret
@@ -133,65 +132,6 @@ ExchangeNybbleBC:
 	ld c, a
 	xor a
 	ret
-
-
-DisplayClauseSplashScreen:
-	push bc
-	
-	call ClearScreen
-	coord hl, $1, $1
-	ld de, LinkClausesTXT_Active
-	call PlaceString
-.sleep
-	pop bc
-	push bc
-	bit 3, b
-	jr z, .freeze
-	coord hl, $3, $3
-	ld de, LinkClausesTXT_Sleep
-	call PlaceString
-.freeze
-	pop bc
-	push bc
-	bit 2, b
-	jr z, .trapping
-	coord hl, $3, $4
-	ld de, LinkClausesTXT_Freeze
-	call PlaceString
-.trapping
-	pop bc
-	push bc
-	bit 1, b
-	jr z, .hbeam
-	coord hl, $3, $5
-	ld de, LinkClausesTXT_Trapping
-	call PlaceString
-.hbeam
-	pop bc
-	push bc
-	bit 0, b
-	jr z, .done
-	coord hl, $3, $6
-	ld de, LinkClausesTXT_Hypbeam
-	call PlaceString
-	inc h
-.done
-	ld c, 120
-	call DelayFrames
-	pop bc
-	ret
-
-
-LinkClausesTXT_Active:
-	db "Active Clauses@"
-LinkClausesTXT_Sleep:
-	db "SLEEP@"
-LinkClausesTXT_Freeze:
-	db "FREEZE@"
-LinkClausesTXT_Trapping:
-	db "TRAPPING@"
-LinkClausesTXT_Hypbeam:
-	db "HYP.BEAM@"
 
 ;Check wUnknownSerialCounter. If FFFF is there, then the connection timed out.
 ;Clears Z flag if timeout occurred
