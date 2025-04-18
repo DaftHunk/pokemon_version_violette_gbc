@@ -4,5 +4,5 @@ CinnabarIsland_h:
 	dw CinnabarIslandBlocks, CinnabarIslandTextPointers, CinnabarIslandScript ; blocks, texts, scripts
 	db NORTH | EAST ; connections
 	NORTH_MAP_CONNECTION CINNABAR_ISLAND, ROUTE_21, 0, 0, Route21Blocks
-	EAST_MAP_CONNECTION CINNABAR_ISLAND, ROUTE_20, 0, 0, Route20Blocks
+	EAST_MAP_CONNECTION CINNABAR_ISLAND, ROUTE_20, -1, 0, Route20Blocks
 	dw CinnabarIslandObject ; objects

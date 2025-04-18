@@ -36,7 +36,7 @@ ENDM
 	mapconst ROUTE_17,                   72, 10 ; $1C
 	mapconst ROUTE_18,                    9, 25 ; $1D
 	mapconst ROUTE_19,                   27, 10 ; $1E
-	mapconst ROUTE_20,                    9, 50 ; $1F
+	mapconst ROUTE_20,                   10, 50 ; $1F
 	mapconst ROUTE_21,                   45, 10 ; $20
 	mapconst ROUTE_22,                    9, 20 ; $21
 	mapconst ROUTE_23,                   72, 10 ; $22
