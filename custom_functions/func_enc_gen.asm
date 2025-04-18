@@ -1,32 +1,4 @@
 ;replace random mew encounters with ditto if dex diploma not attained
-DisallowWildMew:
-	ld a, [wcf91]	;get the current pokemon in question
-	cp MEW	;is it mew? zet zero flag if true
-	ret nz	;if not mew, then return
-	;else we have a potential mew encounter on our hands
-	CheckEvent EVENT_GOT_DEX_DIPLOMA
-	jr z, .replace_mew	;if event 90B is zero, then diploma has not been granted. mew is not allowed.
-	CheckEvent EVENT_ENCOUTERED_MEW
-	jr z, .mew_allowed	;mew can appear if not already encountered
-.replace_mew
-	ld a, DITTO	;load the ditto constant
-	ld [wcf91], a	;overwrite mew with ditto
-	ld [wEnemyMonSpecies2], a
-	ret
-.mew_allowed
-;	;the slot that triggered the mew encounter has it's likelihood of a mew cut in half
-;	;idea is to give mew a 0.6% encounter rate (lowest in the game)
-;	ld a, [hRandomSub]
-;	bit 0, a
-;	jr nz, .replace_mew
-	;going to encounter mew now
-	SetEvent EVENT_ENCOUTERED_MEW ;mew has been encountered now
-	ResetEvent EVENT_MEW_TEXT ;turn on mew notification
-	ret
-
-	
-	
-
 CheckIfPkmnReal:
 ;set the carry if pokemon number in 'a' is found on the list of legit pokemon
 	push hl

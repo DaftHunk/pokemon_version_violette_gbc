@@ -111,10 +111,6 @@ TryDoWildEncounter:
 	and a
 	ret
 .willEncounter
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;joenote - disallow mew if pokedex not complete
-	callba DisallowWildMew
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	xor a
 	ret
 .shinycheck_repel
@@ -123,23 +119,6 @@ TryDoWildEncounter:
 	bit 7, a
 	jr nz, .willEncounter
 	jr .CantEncounter2
-
-;joenote - This is obsolete and no longer needed.
-;fix a grass tile not generating encounters
-;c = lower-left tile to check
-;gives z if grass tile
-;give nz if not grass tile
-;TestGrassTile:
-;	ld a, [wGrassTile]
-;	cp c
-;	jr z, .return
-;	ld a, [wCurMapTileset]
-;	cp FOREST
-;	jr nz, .return
-;	ld a, $34	;check for the extra grass tile in the forest tileset
-;	cp c
-;.return
-;	ret
 	
 WildMonEncounterSlotChances:
 ; There are 10 slots for wild pokemon, and this is the table that defines how common each of

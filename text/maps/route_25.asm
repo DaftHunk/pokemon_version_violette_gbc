@@ -164,41 +164,4 @@ _Route25AfterBattleText9::
 _Route25Text11::
 	text "Villa"
 	line "Léo habite ici!"
-
-;Joenote - setting up the Red battle
-; dafthunk : Replaced with Sacha
-_Route25PrintText12::
-	text "Salut! Je suis"
-	line "Sacha du Bourg"
-	cont "Palette!"
-	
-	para "Je suis revenu"
-	line "affronter à nou-"
-	cont "veau la ligue."
-	prompt
-
-_RedText_challenge::
-	text "Toi aussi? Alors"
-	line "je te défie!"
-
-	para "Je te préviens,"
-	line "ma stratégie"
-	cont "est sans faille!"
-	prompt
-	
-_RedText_prebattle::
-	text "Pikachu, je"
-	line "te choisis!"
-	done
-	
-_RedTextVictorySpeech::
-	text "..."
-	line "Un jour je serai"
-	cont "le meilleur"
-	cont "dresseur!"
-	prompt
-
-_RedText_decline::
-	text "Pas de soucis,"
-	line "je comprends."
 	done
