@@ -1303,7 +1303,7 @@ _ScaredText::
 	prompt
 
 _GetOutText::
-	text "Spectre: Va-t'en..."
+	text "Spectre: Va-t'en."
 	line "Dehors..."
 	prompt
 
