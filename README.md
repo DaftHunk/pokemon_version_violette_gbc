@@ -120,7 +120,7 @@ https://github.com/DaftHunk/pokemon_version_violette
 - [Yellow Legacy](https://github.com/cRz-Shadows/Pokemon_Yellow_Legacy) qui m'a pas mal inspiré sur le nivelement et la progression du jeu
 - [pureRGB](https://github.com/Vortyne/pureRGB) pour ses magnifiques tuiles de la centrale et certains backsprites améliorés
 - [pokered-gbc-plus-fr](https://github.com/Engezerstorung/pokered-gbc-plus-fr) pour ses fantastiques sprites de pokémons dans le monde
-- [tournepivoine](https://github.com/tournepivoine/shinpokered-fr) pour sa traduction qui m'a beaucoup fait gagné de temps
+- [tournepivoine](https://github.com/tournepivoine/shinpokered-fr) pour sa traduction qui m'a beaucoup fait gagner de temps
 - Nurse Joy Battle Sprite - ZuperZACH
 - Officer Jenny Battle Sprite - Karlos
 
