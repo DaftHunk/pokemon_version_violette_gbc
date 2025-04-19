@@ -41,7 +41,6 @@ DoorTileIDPointers:
 	dbw FACILITY,    FacilityDoorTileIDs
 	dbw PLATEAU,     PlateauDoorTileIDs
 	dbw INTERIOR,    InteriorDoorTileIDs
-	dbw REACTOR,     ReactorDoorTileIDs
 	db $ff
 
 OverworldDoorTileIDs:
@@ -80,5 +79,3 @@ PlateauDoorTileIDs:
 InteriorDoorTileIDs:
 	db $04,$15,$00
 
-ReactorDoorTileIDs:
-	db $43,$58,$20,$00

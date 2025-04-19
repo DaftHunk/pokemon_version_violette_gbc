@@ -69,6 +69,8 @@ const_value = 0
 	const PAL_BW        ; $28	;gbc only
 	const PAL_UBALL		; $29	;gbc only
 
-	const PAL_REDMON ; $30
+	const PAL_REDMON      ; $30
 	const PAL_GREYBLUEMON ; $31
-	const PAL_REDBLUE ; $32
+	const PAL_REDBLUEMON  ; $32
+	const PAL_VOLCANO     ; $33
+	

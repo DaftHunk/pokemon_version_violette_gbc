@@ -512,6 +512,11 @@ INCLUDE "scripts/billsgarden.asm"
 INCLUDE "data/maps/objects/billsgarden.asm"
 BillsGardenBlocks: INCBIN "maps/billsgarden.blk"
 
+INCLUDE "data/maps/headers/volcano1f.asm"
+INCLUDE "scripts/volcano1f.asm"
+INCLUDE "data/maps/objects/volcano1f.asm"
+Volcano1FBlocks: INCBIN "maps/volcano1f.blk"
+
 INCLUDE "engine/menu/oaks_pc.asm"
 
 INCLUDE "engine/hidden_object_functions7.asm"
@@ -1859,6 +1864,11 @@ INCLUDE "custom_functions/func_bag.asm"
 INCLUDE "custom_functions/func_emuchecks.asm"
 INCLUDE "engine/overworld/cut3.asm"
 
+Reactor_GFX:       INCBIN "gfx/tilesets/reactor.2bpp"
+Reactor_Block:     INCBIN "gfx/blocksets/reactor.bst"
+Volcano_GFX:       INCBIN "gfx/tilesets/volcano.2bpp"
+Volcano_Block:     INCBIN "gfx/blocksets/volcano.bst"
+
 SECTION "PARTY ICONS 1", ROMX
 MonIcons::
 INCBIN "gfx/pokemon/icons/null.2bpp"
@@ -2027,9 +2037,6 @@ INCBIN "gfx/pokemon/icons/larvitar.2bpp"
 INCBIN "gfx/pokemon/icons/pupitar.2bpp"
 INCBIN "gfx/pokemon/icons/tyranitar.2bpp"
 INCBIN "gfx/pokemon/icons/hooh.2bpp"
-
-Reactor_GFX:       INCBIN "gfx/tilesets/reactor.2bpp"
-Reactor_Block:     INCBIN "gfx/blocksets/reactor.bst"
 
 SECTION "NPC Sprites 3", ROMX
 JennySprite:          INCBIN "gfx/sprites/jenny.2bpp"

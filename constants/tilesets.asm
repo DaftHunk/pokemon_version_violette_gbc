@@ -25,3 +25,4 @@ const_value = 0
 	const FACILITY     ; 22
 	const PLATEAU      ; 23
 	const REACTOR      ; 24
+	const VOLCANO      ; 25

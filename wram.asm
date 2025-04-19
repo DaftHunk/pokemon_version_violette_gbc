@@ -3022,6 +3022,7 @@ wSeafoamIslands5CurScript:: ; d668
 	ds 1
 wRoute18GateCurScript:: ; d669
 	ds 1
+wVolcanoCurScript:: ; d670
 ;usused space
 	ds 30
 wTempFieldMoveSLots::	;joenote - for field move slot

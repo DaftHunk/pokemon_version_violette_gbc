@@ -1,7 +1,8 @@
 Route21Object:
 	db $43 ; border block
 
-	db 0 ; warps
+	db 1 ; warps
+	warp 14,  87, 0, VOLCANO_1F
 
 	db 0 ; signs
 
@@ -15,3 +16,6 @@ Route21Object:
 	object SPRITE_SWIMMER, 13, 71, STAY, LEFT, 7, OPP_SWIMMER, 15
 	object SPRITE_FISHER2, 14, 56, STAY, LEFT, 8, OPP_FISHER, 10
 	object SPRITE_FISHER2, 17, 57, STAY, RIGHT, 9, OPP_FISHER, 11
+
+	; warp-to
+	warp_to 14,  87, ROUTE_21_WIDTH ; VOLCANO_1F

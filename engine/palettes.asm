@@ -264,9 +264,10 @@ SetPal_Overworld:
 	ret
 
 MapTilesetPalettesTable:
-	db CEMETERY, PAL_GREYMON
-	db UNDERGROUND, PAL_ROUTE
-	db CAVERN, PAL_CAVE
+	db CEMETERY, PAL_GREYMON - 1
+	db UNDERGROUND, PAL_ROUTE - 1
+	db CAVERN, PAL_CAVE - 1
+	db VOLCANO, PAL_VOLCANO - 1
 	db -1
 
 MapPalettesJumpTable:

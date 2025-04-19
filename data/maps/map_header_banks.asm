@@ -106,7 +106,7 @@ MapHeaderBanks:
 	db BANK(SSAnne9_h)
 	db BANK(SSAnne10_h)
 	db BANK(BillsGarden_h)
-	db $1D ;unused
+	db BANK(Volcano1F_h)
 	db $1D ;unused
 	db BANK(VictoryRoad1_h)
 	db $1D ;unused
