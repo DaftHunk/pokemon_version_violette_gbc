@@ -88,7 +88,7 @@ SpecialTrainerMoves:
 	db 6,4,FIRE_SPIN
 	db 0
 
-;Green1Data:
+;Rival1Data:
 ; Cerulean City
 ;	db $FF,18,PIDGEOTTO,15,ABRA,15,RATTATA,17,SQUIRTLE,0
 	;joenote - give the abra of the cerulean rival something to do
@@ -785,7 +785,7 @@ SpecialTrainerMoves:
 	db 6,4,HYPER_BEAM
 	db 0
 
-;Green3Data:
+;Rival3Data:
 ;	db $FF,63,PIDGEOT,60,ALAKAZAM,61,RHYDON,63,ARCANINE,62,EXEGGUTOR,65,BLASTOISE,0
 	db SONY3,$1
 	;pidgeot
