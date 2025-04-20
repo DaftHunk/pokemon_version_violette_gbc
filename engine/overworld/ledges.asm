@@ -4,15 +4,21 @@ HandleLedges:
 	ret nz
 	ld a, [wCurMapTileset]
 	and a ; OVERWORLD
-	ret nz
+	;ret nz
+	jr z, .overworld
+ 	cp VOLCANO
+ 	jr z, .volcano
+ 	ret
+ .overworld
 	predef GetTileAndCoordsInFrontOfPlayer
+	ld hl, LedgeTiles
 	ld a, [wSpriteStateData1 + 9]
 	ld b, a
 	aCoord 8, 9
 	ld c, a
 	ld a, [wTileInFrontOfPlayer]
 	ld d, a
-	ld hl, LedgeTiles
+	;ld hl, LedgeTiles
 .loop
 	ld a, [hli]
 	cp $ff
@@ -66,6 +72,36 @@ HandleLedges:
 	call PlaySound
 	ret
 
+;;;;;;;;;; PureRGBnote: ADDED: in the volcano area, we need custom code for new ledges
+ .volcano
+ 	ld a, [wSpriteStateData1 + 9]
+ 	cp SPRITE_FACING_DOWN
+ 	jr z, .down
+ 	cp SPRITE_FACING_LEFT
+ 	jr z, .left
+ 	cp SPRITE_FACING_RIGHT
+ 	jr z, .right
+ 	ret
+ .down
+ 	aCoord 8, 10
+ 	cp $41 ; down ledge
+ 	ret nz
+ 	ld e, D_DOWN
+ 	jr .foundMatch
+ .left
+ 	aCoord 7, 9
+ 	cp $30 ; left ledge
+ 	ret nz
+ 	ld e, D_LEFT
+ 	jr .foundMatch
+ .right
+ 	aCoord 10, 9
+ 	cp $40 ; right ledge
+ 	ret nz
+ 	ld e, D_RIGHT
+ 	jr .foundMatch
+ ;;;;;;;;
+
 	; (player direction) (tile player standing on) (ledge tile) (input required)
 LedgeTiles:
 	db SPRITE_FACING_DOWN, $2C,$37,D_DOWN
@@ -77,6 +113,15 @@ LedgeTiles:
 	db SPRITE_FACING_RIGHT,$2C,$1D,D_RIGHT
 	db SPRITE_FACING_RIGHT,$39,$0D,D_RIGHT
 	db $FF
+
+; PureRGBnote: ADDED: in the volcano you can jump over specific new tiles like ledges.
+VolcanoLedgeTiles:
+	; player direction, ledge tile, input required
+	db SPRITE_FACING_DOWN, $41,D_DOWN
+	db SPRITE_FACING_RIGHT,$40,D_RIGHT
+	db SPRITE_FACING_LEFT, $30,D_LEFT
+	db $FF
+
 
 LoadHoppingShadowOAM:
 	ld hl, vChars1 + $7f0

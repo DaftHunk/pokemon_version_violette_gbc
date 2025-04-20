@@ -105,10 +105,10 @@ WildDataPointers:
 	dw NoMons
 	dw NoMons
 	dw BillsGardenMons
-	dw NoMons
-	dw NoMons
+	dw Volcano1FMons
+	dw VolcanoB1FMons
 	dw PlateauMons1
-	dw NoMons
+	dw VolcanoB2FMons
 	dw NoMons
 	dw NoMons
 	dw NoMons
@@ -318,6 +318,9 @@ INCLUDE "data/wildPokemons/maps/victoryroad3.asm"
 INCLUDE "data/wildPokemons/maps/victoryroad1.asm"
 INCLUDE "data/wildPokemons/maps/diglettscave.asm"
 INCLUDE "data/wildPokemons/maps/billsgarden.asm"
+INCLUDE "data/wildPokemons/maps/volcano1f.asm"
+INCLUDE "data/wildPokemons/maps/volcanob1f.asm"
+INCLUDE "data/wildPokemons/maps/volcanob2f.asm"
 INCLUDE "data/wildPokemons/nomons.asm"
 INCLUDE "data/wildPokemons/waterpokemon.asm"
 WildDataLabelEnd::

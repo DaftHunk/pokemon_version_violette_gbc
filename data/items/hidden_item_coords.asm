@@ -71,4 +71,5 @@ HiddenItemCoords:
 	db ROUTE_11,17,55
 	db ROUTE_8,4,51
 	db ROUTE_4,3,62
+	db VOLCANO_B2F,13,13
 	db $ff

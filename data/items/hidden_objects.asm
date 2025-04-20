@@ -91,6 +91,7 @@ HiddenObjectMaps:
 	db ROUTE_6	;joenote - added some hidden items
 	db VERMILION_DOCK
 	db DAYCAREM
+	db VOLCANO_B2F
 	db $FF
 
 HiddenObjectPointers:
@@ -187,6 +188,7 @@ HiddenObjectPointers:
 	dw Route6HiddenObjects	;joenote - added hidden items
 	dw VermilionDockHiddenObjects
 	dw DaycareHiddenObjects
+	dw VolcanoB2FHiddenObject
 	
 ; format: y-coord, x-coord, text id/item id, object routine
 TradeCenterHiddenObjects:
@@ -916,4 +918,8 @@ DaycareHiddenObjects:	;joenote - added a PC to the daycare
 	db $01,$00,$04
 	db BANK(OpenPokemonCenterPC)
 	dw OpenPokemonCenterPC
+	db $FF
+VolcanoB2FHiddenObject:
+	db 13,13,PP_UP
+	dbw BANK(HiddenItems),HiddenItems
 	db $FF

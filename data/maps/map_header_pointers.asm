@@ -107,9 +107,9 @@ MapHeaderPointers::
 	dw SSAnne10_h
 	dw BillsGarden_h
 	dw Volcano1F_h
-	dw Lance_h ; unused
+	dw VolcanoB1F_h
 	dw VictoryRoad1_h
-	dw Lance_h ; unused
+	dw VolcanoB2F_h
 	dw Lance_h ; unused ;id=110
 	dw Lance_h ; unused
 	dw Lance_h ; unused

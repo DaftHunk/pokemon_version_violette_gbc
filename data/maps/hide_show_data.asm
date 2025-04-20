@@ -111,10 +111,10 @@ MapHSPointers:
 	dw SSAnne2FRoomsHS
 	dw SSAnneB1FRoomsHS
 	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw Volcano1FHS
+	dw VolcanoB1FHS
 	dw VictoryRoad1FHS
-	dw NoHS
+	dw VolcanoB2FHS
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -605,5 +605,14 @@ AgathaRoomHS:
 LanceRoomHS:
 	db LANCES_ROOM, $01, Show
 	db LANCES_ROOM, $02, Hide
+Volcano1FHS:
+	db VOLCANO_1F, $04, Show
+	db VOLCANO_1F, $05, Show
+VolcanoB1FHS:
+	db VOLCANO_B1F, $03, Show
+	db VOLCANO_B1F, $04, Show
+	db VOLCANO_B1F, $05, Show
+VolcanoB2FHS:
+	db VOLCANO_B2F, $01, Show
 
 	db $FF,$01,Show

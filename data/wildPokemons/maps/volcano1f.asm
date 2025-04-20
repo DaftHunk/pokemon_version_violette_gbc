@@ -1,0 +1,13 @@
+Volcano1FMons:
+	db $0A
+	db 32,GRAVELER
+	db 30,ARCANINE
+	db 34,ARCANINE
+	db 30,PONYTA
+	db 34,NINETALES
+	db 37,GRAVELER
+	db 32,ONIX
+	db 28,PONYTA
+	db 30,CHARMELEON
+	db 39,MAGMAR
+	db $00

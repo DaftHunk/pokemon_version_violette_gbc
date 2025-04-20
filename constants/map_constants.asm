@@ -112,9 +112,9 @@ ENDM
 	mapconst SS_ANNE_B1F_ROOMS,           8, 12 ; $68
 	mapconst BILLS_GARDEN,                7, 11 ; $69
 	mapconst VOLCANO_1F,                 12, 12 ; $F8
-	mapconst UNUSED_MAP_6B,               0,  0 ; $6B
+	mapconst VOLCANO_B1F,                20,  8 ; $6B
 	mapconst VICTORY_ROAD_1F,             9, 10 ; $6C
-	mapconst UNUSED_MAP_6D,               0,  0 ; $6D
+	mapconst VOLCANO_B2F,                 9,  9 ; $6D
 	mapconst UNUSED_MAP_6E,               0,  0 ; $6E
 	mapconst UNUSED_MAP_6F,               0,  0 ; $6F
 	mapconst UNUSED_MAP_70,               0,  0 ; $70

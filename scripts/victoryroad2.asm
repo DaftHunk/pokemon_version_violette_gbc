@@ -104,7 +104,6 @@ VictoryRoad2TextPointers:
 	dw VictoryRoad2Text3
 	dw VictoryRoad2Text4
 	dw VictoryRoad2Text5
-	dw MoltresText
 	dw PickUpItemText
 	dw PickUpItemText
 	dw PickUpItemText
@@ -158,15 +157,6 @@ VictoryRoad2TrainerHeader4:
 	dw VictoryRoad2EndBattleText5 ; TextEndBattle
 	dw VictoryRoad2EndBattleText5 ; TextEndBattle
 
-MoltresTrainerHeader:
-	dbEventFlagBit EVENT_BEAT_MOLTRES
-	db ($0 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_MOLTRES
-	dw MoltresBattleText ; TextBeforeBattle
-	dw MoltresBattleText ; TextAfterBattle
-	dw MoltresBattleText ; TextEndBattle
-	dw MoltresBattleText ; TextEndBattle
-
 	db $ff
 
 VictoryRoad2Text1:
@@ -197,26 +187,6 @@ VictoryRoad2Text5:
 	TX_ASM
 	ld hl, VictoryRoad2TrainerHeader4
 	call TalkToTrainer
-	jp TextScriptEnd
-
-MoltresText:
-	TX_ASM
-	ld hl, MoltresTrainerHeader
-	;make the shiny attract cheat work on static wild encounters
-	push hl
-	push bc
-	callba ShinyAttractFunction
-	pop bc
-	pop hl
-	call TalkToTrainer
-	jp TextScriptEnd
-
-MoltresBattleText:
-	TX_FAR _MoltresBattleText
-	TX_ASM
-	ld a, MOLTRES
-	call PlayCry
-	call WaitForSoundToFinish
 	jp TextScriptEnd
 
 VictoryRoad2BattleText1:

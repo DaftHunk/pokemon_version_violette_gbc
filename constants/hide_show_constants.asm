@@ -130,6 +130,11 @@ const_value = 0
 	const HS_SS_ANNE_B1F_ROOMS_ITEM_1            ; 75 X
 	const HS_SS_ANNE_B1F_ROOMS_ITEM_2            ; 76 X
 	const HS_SS_ANNE_B1F_ROOMS_ITEM_3            ; 77 X
+	const HS_VOLCANO_1F_ITEM_1
+	const HS_VOLCANO_1F_ITEM_2
+	const HS_VOLCANO_B1F_ITEM_1
+	const HS_VOLCANO_B1F_ITEM_2
+	const HS_VOLCANO_B1F_ITEM_3
 	const HS_VICTORY_ROAD_3F_ITEM_1        ; 78 X
 	const HS_VICTORY_ROAD_3F_ITEM_2        ; 79 X
 	const HS_VICTORY_ROAD_3F_BOULDER       ; 7A

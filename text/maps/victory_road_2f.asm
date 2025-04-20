@@ -1,7 +1,3 @@
-_MoltresBattleText::
-	text "Yahoo!@"
-	text_end
-
 _VictoryRoad2BattleText1::
 	text "La Route Victoire"
 	line "est l'épreuve"

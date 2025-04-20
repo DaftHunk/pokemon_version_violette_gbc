@@ -106,9 +106,9 @@ MapSongBanks:
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ; SSAnne10
 	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown) ;BillsGarden
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ;Volcano1F_h
-	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ;unused
+	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ;VolcanoB1F_h
 	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; VictoryRoad1
-	db MUSIC_POKEMON_TOWER, BANK(Music_PokemonTower) ;unused
+	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ;VolcanoB2F_h
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ;unused
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ;unused
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ;unused

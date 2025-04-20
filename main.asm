@@ -517,6 +517,16 @@ INCLUDE "scripts/volcano1f.asm"
 INCLUDE "data/maps/objects/volcano1f.asm"
 Volcano1FBlocks: INCBIN "maps/volcano1f.blk"
 
+INCLUDE "data/maps/headers/volcanob1f.asm"
+INCLUDE "scripts/volcanob1f.asm"
+INCLUDE "data/maps/objects/volcanob1f.asm"
+VolcanoB1FBlocks: INCBIN "maps/volcanob1f.blk"
+
+INCLUDE "data/maps/headers/volcanob2f.asm"
+INCLUDE "scripts/volcanob2f.asm"
+INCLUDE "data/maps/objects/volcanob2f.asm"
+VolcanoB2FBlocks: INCBIN "maps/volcanob2f.blk"
+
 INCLUDE "engine/menu/oaks_pc.asm"
 
 INCLUDE "engine/hidden_object_functions7.asm"
