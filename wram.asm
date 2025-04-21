@@ -2850,9 +2850,7 @@ wRoute10CurScript:: ; d605
 	ds 1
 wMtMoon1FCurScript:: ; d606
 	ds 1
-wMtMoonB1FCurScript::
-	ds 1
-wMtMoonB2FCurScript:: ; d607
+wMtMoonB1FCurScript:: ; d607
 	ds 1
 wSSAnne8CurScript:: ; d608
 	ds 1
@@ -2860,6 +2858,7 @@ wSSAnne9CurScript:: ; d609
 	ds 1
 wRoute22CurScript:: ; d60a
 	ds 1
+wMtMoonB2FCurScript::
 	ds 1
 wRedsHouse2CurScript:: ; d60c
 	ds 1
