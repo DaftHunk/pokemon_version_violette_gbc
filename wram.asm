@@ -2421,10 +2421,10 @@ wPokedexSeen:: ; d30a
 wPokedexSeenEnd::
 
 
-wNumBagItems:: ; d31d
+wNumBagItems:: ; d31d 
 	ds 1
 wBagItems:: ; d31e
-; item, quantity
+; item, quantity 62 bits
 	ds BAG_ITEM_CAPACITY * 2
 wBagItemsTerminator::	;holds FF when the bag becomes full
 	ds 1 ; end
@@ -2868,7 +2868,6 @@ wRoute22GateCurScript:: ; d60e
 	ds 1
 wCeruleanCityCurScript:: ; d60f
 	ds 1
-	ds 7
 wSSAnne5CurScript:: ; d617
 	ds 1
 wViridianForestCurScript:: ; d618
@@ -2978,10 +2977,8 @@ wUnknownDungeon3CurScript:: ; d650
 	ds 1
 wVictoryRoad1CurScript:: ; d651
 	ds 1
-	ds 1
 wLanceCurScript:: ; d653
 	ds 1
-	ds 4
 wSilphCo10CurScript:: ; d658
 	ds 1
 wSilphCo11CurScript:: ; d659
@@ -2991,7 +2988,6 @@ wFuchsiaPokecenterCurScript::
 wFuchsiaGymCurScript:: ; d65b
 	ds 1
 wSaffronGymCurScript:: ; d65c
-	ds 1
 	ds 1
 wCinnabarGymCurScript:: ; d65e
 	ds 1
@@ -3024,11 +3020,12 @@ wRoute18GateCurScript:: ; d669
 wVolcano1FCurScript:: ; d670
 wVolcanoB1FCurScript:: ; d670
 wVolcanoB2FCurScript:: ; d670
+	ds 1
 ;usused space
-	ds 30
+	ds 2
 wTempFieldMoveSLots::	;joenote - for field move slot
 	ds 6
-wBagBackupSpace::	;joenote - added to expand the bag space (42 bytes long)
+wBagBackupSpace::	;joenote - added to expand the bag space (62 bytes long)
 wBagNumBackup::
 	ds 1
 wBagItemsBackup::
