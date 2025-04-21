@@ -22,25 +22,27 @@ MACRO callbs	;joenote - added from pokeyellow
 	ENDM
 
 farcall EQUS "callba"
-
 MACRO callba
 	ld b, BANK(\1)
 	ld hl, \1
 	call Bankswitch
 ENDM
 
+callfar EQUS "callab"
 MACRO callab
 	ld hl, \1
 	ld b, BANK(\1)
 	call Bankswitch
 ENDM
 
+farjp EQUS "jpba"
 MACRO jpba
 	ld b, BANK(\1)
 	ld hl, \1
 	jp Bankswitch
 ENDM
 
+jpfar EQUS "jpab"
 MACRO jpab
 	ld hl, \1
 	ld b, BANK(\1)
@@ -56,6 +58,10 @@ MACRO validateCoords
 	ENDC
 ENDM
 
+DEF hlcoord EQUS "coord hl,"
+DEF bccoord EQUS "coord bc,"
+DEF decoord EQUS "coord de,"
+
 ;\1 = r
 ;\2 = X
 ;\3 = Y
@@ -69,10 +75,44 @@ MACRO coord
 	ENDC
 ENDM
 
+DEF hlbgcoord EQUS "bgcoord hl,"
+DEF bcbgcoord EQUS "bgcoord bc,"
+DEF debgcoord EQUS "bgcoord de,"
+
+MACRO bgcoord
+; register, x, y[, origin]
+	validate_coords \2, \3, BG_MAP_WIDTH, BG_MAP_HEIGHT
+	IF _NARG >= 4
+		ld \1, (\3) * BG_MAP_WIDTH + (\2) + \4
+	ELSE
+		ld \1, (\3) * BG_MAP_WIDTH + (\2) + vBGMap0
+	ENDC
+ENDM
+
+DEF hlowcoord EQUS "overworldMapCoord hl,"
+DEF bcowcoord EQUS "overworldMapCoord bc,"
+DEF deowcoord EQUS "overworldMapCoord de,"
+
+MACRO event_displacement
+; map width, x blocks, y blocks
+	dw (wOverworldMap + 7 + (\1) + ((\1) + 6) * ((\3) >> 1) + ((\2) >> 1))
+	db \3, \2
+ENDM
+
+MACRO dbmapcoord
+; x, y
+	db \2, \1
+ENDM
+
+MACRO inc_hl_ycoord
+	lb de, 0, SCREEN_WIDTH
+	add hl, de
+ENDM
+
 ;\1 = X
 ;\2 = Y
 ;\3 = which tilemap (optional)
-MACRO aCoord
+MACRO aCoord ; lda_coord
 	validateCoords \1, \2
 	IF _NARG >= 3
 		ld a, [\3 + SCREEN_WIDTH * \2 + \1]
@@ -84,7 +124,7 @@ ENDM
 ;\1 = X
 ;\2 = Y
 ;\3 = which tilemap (optional)
-MACRO Coorda
+MACRO Coorda ; ldcoord_a
 	validateCoords \1, \2
 	IF _NARG >= 3
 		ld [\3 + SCREEN_WIDTH * \2 + \1], a
@@ -206,3 +246,6 @@ MACRO hl_deref
 	ld h, [hl]
 	ld l, a
 ENDM
+
+DEF tiles EQUS "* LEN_2BPP_TILE"
+DEF tile  EQUS "+ LEN_2BPP_TILE *"
