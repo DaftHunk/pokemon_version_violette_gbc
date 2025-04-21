@@ -1348,47 +1348,47 @@ ReadMoveForAIscoring:
 ;3 - Try to do type-matching when selecting attacks
 ;4 - switch if active pkmn is in trouble
 TrainerClassMoveChoiceModifications:
-	db 0      ; YOUNGSTER
-	db 1,0    ; BUG CATCHER
-	db 1,0    ; LASS
-	db 1,3,0  ; SAILOR
-	db 1,3,4,0    ; JR_TRAINER_M
-	db 1,3,4,0    ; JR_TRAINER_F
+	db 0        ; YOUNGSTER
+	db 1,0      ; BUG CATCHER
+	db 1,0      ; LASS
+	db 1,3,0    ; SAILOR
+	db 1,3,4,0  ; JR_TRAINER_M
+	db 1,3,4,0  ; JR_TRAINER_F
 	db 1,2,3,4,0; POKEMANIAC
-	db 1,2,0  ; SUPER_NERD
+	db 1,2,0    ; SUPER_NERD
 	db 1,4,0    ; HIKER
-	db 1,0    ; BIKER
-	db 1,3,0  ; BURGLAR
+	db 1,0      ; BIKER
+	db 1,3,0    ; BURGLAR
 	db 1,3,0    ; ENGINEER
-	db 1,2,0  ; JUGGLER_X
-	db 1,3,0  ; FISHER
-	db 1,3,0  ; SWIMMER
+	db 1,2,0    ; JUGGLER_X
+	db 1,3,0    ; FISHER
+	db 1,3,0    ; SWIMMER
 	db 4,0      ; CUE_BALL
-	db 1,0    ; GAMBLER
-	db 1,3,0  ; BEAUTY
+	db 1,0      ; GAMBLER
+	db 1,3,0    ; BEAUTY
 	db 1,2,4,0  ; PSYCHIC_TR
-	db 1,3,0  ; ROCKER
+	db 1,3,0    ; ROCKER
 	db 1,3,0    ; JUGGLER
-	db 1,3,4,0    ; TAMER
+	db 1,3,4,0  ; TAMER
 	db 1,3,0    ; BIRD_KEEPER
-	db 1,3,4,0    ; BLACKBELT
-	db 1,3,4,0    ; SONY1
+	db 1,3,4,0  ; BLACKBELT
+	db 1,3,4,0  ; SONY1
 	db 1,3,4,0  ; PROF_OAK
-	db 1,2,3,4,0  ; CHIEF
+	db 1,2,3,4,0; CHIEF
 	db 1,2,3,0  ; SCIENTIST
 	db 1,3,4,0  ; GIOVANNI
 	db 1,4,0    ; ROCKET
 	db 1,3,4,0  ; COOLTRAINER_M
 	db 1,3,4,0  ; COOLTRAINER_F
-	db 1,3,4,0    ; BRUNO
-	db 1,3,4,0    ; BROCK
+	db 1,3,4,0  ; BRUNO
+	db 1,3,4,0  ; BROCK
 	db 1,3,4,0  ; MISTY
 	db 1,3,4,0  ; LT_SURGE
 	db 1,3,4,0  ; ERIKA
 	db 1,3,4,0  ; KOGA
 	db 1,3,4,0  ; BLAINE
 	db 1,3,4,0  ; SABRINA
-	db 1,2,3,4,0  ; GENTLEMAN
+	db 1,2,3,4,0; GENTLEMAN
 	db 1,3,4,0  ; SONY2
 	db 1,3,4,0  ; SONY3
 	db 1,2,3,4,0; LORELEI
@@ -1401,6 +1401,7 @@ TrainerClassMoveChoiceModifications:
 	db 1,3,4,0  ; JESSIE_JAMES
 	db 1,2,3,4,0; MFUJI
 	db 1,2,3,4,0; SACHA
+	db 1,3,0    ; SOLDIER
 
 INCLUDE "engine/battle/trainer_pic_money_pointers.asm"
 
@@ -1539,6 +1540,7 @@ TrainerAIPointers:
 	dbw 3,GenericAI ; JessieJames
 	dbw 5,GenericAI ; MFuji
 	dbw 5,GenericAI ; Sacha
+	dbw 3,GenericAI ; Soldier
 
 ;joenote - reorganizing these AI routines to jump on carry instead of returning on not-carry
 ;also adding recognition of a switch-pkmn bit

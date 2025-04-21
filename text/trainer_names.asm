@@ -52,4 +52,5 @@ TrainerNames:
 	db "Jessie James@"
 	db "M.Fuji@"
 	db "Sacha@"
+	db "Soldat@"
 

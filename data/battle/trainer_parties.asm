@@ -52,6 +52,7 @@ TrainerDataPointers:
 	dw JessieJamesData
 	dw MFujiData
 	dw SachaData
+	dw SoldierData
 
 RosterLabelStart::
 ; if first byte != FF, then
@@ -284,6 +285,9 @@ EngineerData:
 ; Route 11
 	db 21,MAGNEMITE,0
 	db 18,MAGNEMITE,MACHOP,MAGNEMITE,0
+; Volcano1F
+	db 43,POLIWRATH,DITTO,0
+	db 40,STARMIE,MACHOKE,0
 
 Juggler1Data:
 ; none
@@ -730,3 +734,14 @@ MFujiData:
 
 SachaData:
 	db $FF,88,PIKACHU,85,TAUROS,85,CHARIZARD,85,PIDGEOT,87,SNORLAX,83,POLIWRATH,0
+
+SoldierData:
+; Vermilion Gym
+	db 22,VOLTORB,MAGNEMITE,0
+	db 24,MAGNEMITE,0
+; Volcano1F
+	db 45,HITMONCHAN,RAICHU,0
+; VolcanoB1F
+	db 45,PRIMEAPE,BLASTOISE,0
+	db 42,ELECTRODE,ELECTRODE,ELECTRODE,ELECTRODE,WARTORTLE,0
+	

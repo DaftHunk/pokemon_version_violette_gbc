@@ -59,3 +59,4 @@ const_value = 1
 	trainer_const JESSIE_JAMES
 	trainer_const MFUJI
 	trainer_const SACHA
+	trainer_const SOLDIER

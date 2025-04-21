@@ -8,6 +8,6 @@ VolcanoB1FMons:
 	db 40,PONYTA
 	db 36,ONIX
 	db 38,MAGMAR
-	db 38,CHARMALEON
+	db 38,CHARMELEON
 	db 42,RAPIDASH
 	db $00

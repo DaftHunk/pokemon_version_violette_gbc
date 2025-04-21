@@ -159,3 +159,7 @@ TrainerPicAndMoneyPointers:
 
 	dw SachaPic
 	money 9900
+
+	dw SoldierPic
+	money 3000
+	
