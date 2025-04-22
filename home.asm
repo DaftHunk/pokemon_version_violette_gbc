@@ -3408,6 +3408,34 @@ LoadHpBarAndStatusTilePatterns::
 	lb bc, BANK(EXPBarGraphics), (EXPBarGraphicsEnd - EXPBarGraphics) / $10
 	jp CopyVideoData
 
+; draws a line of tiles
+; INPUT:
+; b = tile ID
+; c = number of tile ID's to write
+; de = amount to destination address after each tile (1 for horizontal, 20 for vertical)
+; hl = destination address
+
+DrawTileLine::
+	push bc
+	ld a, b
+	ld b, 0 ; tile number stays the same during the loop
+TileLineLoop:
+	push de
+.loop
+	ld [hl], a
+	add hl, de
+	add a, b
+	dec c
+	jr nz, .loop
+	pop de
+	pop bc
+	ret
+
+DrawTileLineIncrement::
+	push bc
+	ld a, b
+	ld b, 1
+	jr TileLineLoop
 
 FillMemory::
 ; Fill bc bytes at hl with a.
@@ -3423,7 +3451,6 @@ FillMemory::
 	pop de
 	ret
 
-
 UncompressSpriteFromDE::
 ; Decompress pic at a:de.
 	ld hl, wSpriteInputPtr
@@ -3432,9 +3459,16 @@ UncompressSpriteFromDE::
 	ld [hl], d
 	jp UncompressSpriteData
 
+; PureRGBnote: CHANGED: refactored the below code a bit to use less space. Does the same thing it always did but with less space taken up.
 SaveScreenTilesToBuffer2::
-	coord hl, 0, 0
 	ld de, wTileMapBackup2
+	jr SaveScreenTilesCommon
+
+SaveScreenTilesToBuffer1::
+	ld de, wTileMapBackup
+	; fall through
+SaveScreenTilesCommon:
+	coord hl, 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	call CopyData
 	ret
@@ -3447,29 +3481,22 @@ LoadScreenTilesFromBuffer2::
 
 ; loads screen tiles stored in wTileMapBackup2 but leaves H_AUTOBGTRANSFERENABLED disabled
 LoadScreenTilesFromBuffer2DisableBGTransfer::
-	xor a
-	ld [H_AUTOBGTRANSFERENABLED], a
 	ld hl, wTileMapBackup2
-	coord de, 0, 0
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	call CopyData
-	ret
-
-SaveScreenTilesToBuffer1::
-	coord hl, 0, 0
-	ld de, wTileMapBackup
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	jp CopyData
+	jr LoadScreenTilesCommon
 
 LoadScreenTilesFromBuffer1::
-	xor a
-	ld [H_AUTOBGTRANSFERENABLED], a
 	ld hl, wTileMapBackup
-	coord de, 0, 0
+	call LoadScreenTilesCommon
+	ld a, 1
+	ldh [H_AUTOBGTRANSFERENABLED], a
+	ret
+
+LoadScreenTilesCommon:
+	xor a
+	ldh [H_AUTOBGTRANSFERENABLED], a
+	decoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	call CopyData
-	ld a, 1
-	ld [H_AUTOBGTRANSFERENABLED], a
 	ret
 
 DelayFrames::

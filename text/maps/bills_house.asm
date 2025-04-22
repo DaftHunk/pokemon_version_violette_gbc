@@ -79,6 +79,22 @@ _BillsHouseText_1e8cb::
 	cont "ne supporte pas"
 	cont "ces mariolles!"
 	cont "Vas-y à ma place."
+
+	para "D'ailleurs, tant"
+	line "que tu es là tu"
+	cont "vas me servir de"
+	cont "bêta-testeur pour"
+	cont "ma nouvelle"
+	cont "invention."
+
+	para "C'est un bracelet"
+	line "qui te permet de"
+	cont "changer de boîte"
+	cont "PC à distance!"
+
+	para "Cool, nan? Ca"
+	line "va cartonner,"
+	cont "c'est sûr!"
 	done
 
 _BillsHouseText_1e8da::

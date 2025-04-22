@@ -109,6 +109,16 @@ event_byte = ((\1) / 8)
 	res (\1) % 8, [hl]
 	ENDM
 
+MACRO SetEventA
+	ld a, [wEventFlags + ((\1) / 8)]
+	set (\1) % 8, a
+	ld [wEventFlags + ((\1) / 8)], a
+ENDM
+
+MACRO SetFlag
+	SetEventA \1
+ENDM
+
 ;\1 = event index
 MACRO CheckAndSetEventA
 	ld a, [wEventFlags + ((\1) / 8)]
@@ -124,6 +134,16 @@ MACRO CheckAndResetEventA
 	res (\1) % 8, a
 	ld [wEventFlags + ((\1) / 8)], a
 	ENDM
+
+MACRO ResetEventA
+	ld a, [wEventFlags + ((\1) / 8)]
+	res (\1) % 8, a
+	ld [wEventFlags + ((\1) / 8)], a
+ENDM
+
+MACRO ResetFlag
+	ResetEventA \1
+ENDM
 
 ;\1 = event index
 MACRO SetEvent

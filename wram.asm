@@ -3066,7 +3066,10 @@ wWalkBikeSurfState:: ; d700
 ; $02 = surfing
 	ds 1
 
-	ds 10
+wSum:: ; a temp store for 16 bit values created by addition, used with PrintNumber to display the sum on screen
+	ds 2
+
+	ds 8
 
 wTownVisitedFlag:: ; d70b
 	flag_array 13

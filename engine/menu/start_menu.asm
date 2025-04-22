@@ -25,10 +25,21 @@ RedisplayStartMenu::
 	and a
 	jr nz, .loop
 ; if the player pressed tried to go past the top item, wrap around to the bottom
+	CheckEvent EVENT_GOT_SS_TICKET
+	jr nz, .hasMeetBillTop
+
 	CheckEvent EVENT_GOT_POKEDEX
-	ld a, 6 ; there are 7 menu items with the pokedex, so the max index is 6
-	jr nz, .wrapMenuItemId
-	dec a ; there are only 6 menu items without the pokedex
+	jr nz, .hasPokedexTop
+
+	ld a, 5 ; there are only 6 menu items without the pokedex + portablePC
+	jr .wrapMenuItemId
+.hasPokedexTop
+	ld a, 6 ; edited; there are 7 menu items with the pokedex, so the max index is 6 
+	jr .wrapMenuItemId
+.hasMeetBillTop
+	ld a, 7; edited; there are 8 menu items with the pokedex + portablePC, so the max index is 7
+	jr .wrapMenuItemId
+
 .wrapMenuItemId
 	ld [wCurrentMenuItem], a
 	call EraseMenuCursor
@@ -36,13 +47,24 @@ RedisplayStartMenu::
 .checkIfDownPressed
 	bit 7, a
 	jr z, .buttonPressed
-; if the player pressed tried to go past the bottom item, wrap around to the top
+; if the player pressed tried to go past the bottom item, wrap around to the top	
+	CheckEvent EVENT_GOT_SS_TICKET
+	jr nz, .hasMeetBillBottom
+
 	CheckEvent EVENT_GOT_POKEDEX
-	ld a, [wCurrentMenuItem]
-	ld c, 7 ; there are 7 menu items with the pokedex
-	jr nz, .checkIfPastBottom
-	dec c ; there are only 6 menu items without the pokedex
+	jr nz, .hasPokedexBottom
+
+	ld c, 6 ; edited, there are only 6 menu items without the pokedex + portablePC
+	jr .checkIfPastBottom
+.hasPokedexBottom
+	ld c, 7 ; edited, there are only 7 menu items with the pokedex
+	jr .checkIfPastBottom
+.hasMeetBillBottom
+	ld c, 8 ; edited, there are 8 menu items with the pokedex + portablePC
+	jr .checkIfPastBottom
+
 .checkIfPastBottom
+	ld a, [wCurrentMenuItem]
 	cp c
 	jr nz, .loop
 ; the player went past the bottom, so wrap to the top
@@ -75,6 +97,15 @@ RedisplayStartMenu::
 	jp z, StartMenu_SaveReset
 	cp 5
 	jp z, StartMenu_Option
+	cp 6
+	jp z, .exitOrPortablePC
+	jr CloseStartMenu
+
+.exitOrPortablePC
+	CheckEvent EVENT_GOT_SS_TICKET
+	jr z, CloseStartMenu
+	jp StartMenu_PortablePC
+ ; back to vanilla
 
 ; EXIT falls through to here
 CloseStartMenu::

@@ -1874,11 +1874,16 @@ INCLUDE "custom_functions/func_enhancedcolor.asm"
 INCLUDE "custom_functions/func_bag.asm"
 INCLUDE "custom_functions/func_emuchecks.asm"
 INCLUDE "engine/overworld/cut3.asm"
+INCLUDE "engine/menu/multi_choice_menu.asm"
+INCLUDE "engine/menu/change_box_menu.asm"
 
 Reactor_GFX:       INCBIN "gfx/tilesets/reactor.2bpp"
 Reactor_Block:     INCBIN "gfx/blocksets/reactor.bst"
 Volcano_GFX:       INCBIN "gfx/tilesets/volcano.2bpp"
 Volcano_Block:     INCBIN "gfx/blocksets/volcano.bst"
+
+ExtraMenuBorderConnectors:: INCBIN "gfx/tiles/extra_menu_border_connectors.2bpp"
+FromToChangeBoxPrompt:: INCBIN "gfx/tiles/from_to_change_box_prompt.2bpp"
 
 SECTION "PARTY ICONS 1", ROMX
 MonIcons::

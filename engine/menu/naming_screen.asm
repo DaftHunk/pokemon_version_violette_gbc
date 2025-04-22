@@ -371,7 +371,7 @@ PrintAlphabet:
 	jp Delay3
 
 LowerCaseAlphabet:
-	db "abcdefghijklmnopqrstuvwxyz àâéèêùûïîôç     ,¥MAJUSCULES@"
+	db "abcdefghijklmnopqrstuvwxyz àâéèêùûïîôçäöüë ,¥MAJUSCULES@"
 
 UpperCaseAlphabet:
 	db "ABCDEFGHIJKLMNOPQRSTUVWXYZ ×():;[]",$e1,$e2,"-?!♂♀/⠄,¥minuscules@"

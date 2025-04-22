@@ -376,25 +376,56 @@ BoxSRAMPointerTable:
 	dw sBox5 ; sBox11
 	dw sBox6 ; sBox12
 
+; PureRGBnote: CHANGED: a lot of this function was modified to have a more advanced change box menu
 ChangeBox::
+	CheckEvent EVENT_HIDE_CHANGE_BOX_SAVE_MSG
+	ld a, [wd730]
+	push af
+	jr nz, .savePromptSkip
+	res 6, a ; turn on letter printing delay so we don't get instant text
+	ld [wd730], a 
+	
 	ld hl, WhenYouChangeBoxText
 	call PrintText
-	call YesNoChoice
+
+	ld hl, YesNoHide
+	ld a, l
+	ld [wListPointer], a
+	ld a, h
+	ld [wListPointer + 1], a
+	xor a
+	ld [wCurrentMenuItem], a
+	ld a, A_BUTTON | B_BUTTON
+	ld [wMenuWatchedKeys], a
+	callfar DisplayMultiChoiceMenu
+	ldh a, [hJoy5]
+	bit BIT_B_BUTTON, a
+	jr nz, .done
 	ld a, [wCurrentMenuItem]
 	and a
-	ret nz ; return if No was chosen
+	jr z, .yes ; jump if yes was chosen
+	cp 1
+	jr z, .done ; return if no was chosen
+
+	SetEvent EVENT_HIDE_CHANGE_BOX_SAVE_MSG ; set this flag if SKIP was chosen
+	ld hl, SkippedForeverText
+	call PrintText
+.savePromptSkip
+.yes
+	set 6, a ; turn off letter printing delay so we get instant text
+	ld [wd730], a
 	ld hl, wCurrentBoxNum
 	bit 7, [hl] ; is it the first time player is changing the box?
 	call z, EmptyAllSRAMBoxes ; if so, empty all boxes in SRAM
-	call DisplayChangeBoxMenu
+	callfar DisplayChangeBoxMenu
 	call UpdateSprites
 	ld hl, hFlags_0xFFF6
 	set 1, [hl]
 	call HandleMenuInput
 	ld hl, hFlags_0xFFF6
 	res 1, [hl]
-	bit 1, a ; pressed b
-	ret nz
+	bit BIT_B_BUTTON, a
+	jr nz, .done
 	call GetBoxSRAMLocation
 	ld e, l
 	ld d, h
@@ -420,11 +451,18 @@ ChangeBox::
 	ld a, SFX_SAVE
 	call PlaySoundWaitForCurrent
 	call WaitForSoundToFinish
+.done
+	pop af
+	ld [wd730], a
 	ret
 
 WhenYouChangeBoxText:
 	TX_FAR _WhenYouChangeBoxText
-	db "@"
+	text_end
+
+SkippedForeverText:
+	TX_FAR _SkippedForever
+	text_end
 
 CopyBoxToOrFromSRAM:
 ; copy an entire box from hl to de with b as the SRAM bank
@@ -454,98 +492,6 @@ CopyBoxToOrFromSRAM:
 	ld [MBC1SRamBankingMode], a
 	ld [MBC1SRamEnable], a
 	ret
-
-DisplayChangeBoxMenu:
-	xor a
-	ld [H_AUTOBGTRANSFERENABLED], a
-	ld a, A_BUTTON | B_BUTTON
-	ld [wMenuWatchedKeys], a
-	ld a, 11
-	ld [wMaxMenuItem], a
-	ld a, 1
-	ld [wTopMenuItemY], a
-	ld a, 10
-	ld [wTopMenuItemX], a
-	xor a
-	ld [wMenuWatchMovingOutOfBounds], a
-	ld a, [wCurrentBoxNum]
-	and $7f
-	ld [wCurrentMenuItem], a
-	ld [wLastMenuItem], a
-	coord hl, 0, 0
-	ld b, 2
-	ld c, 7
-	call TextBoxBorder
-	ld hl, ChooseABoxText
-	call PrintText
-	coord hl, 9, 0
-	ld b, 12
-	ld c, 9
-	call TextBoxBorder
-	ld hl, hFlags_0xFFF6
-	set 2, [hl]
-	ld de, BoxNames
-	coord hl, 11, 1
-	call PlaceString
-	ld hl, hFlags_0xFFF6
-	res 2, [hl]
-	ld a, [wCurrentBoxNum]
-	and $7f
-	cp 9
-	jr c, .singleDigitBoxNum
-	sub 9
-	coord hl, 6, 2
-	ld [hl], "1"
-	add "0"
-	jr .next
-.singleDigitBoxNum
-	add "1"
-.next
-	Coorda 7, 2
-	coord hl, 1, 2
-	ld de, BoxNoText
-	call PlaceString
-	call GetMonCountsForAllBoxes
-	coord hl, 18, 1
-	ld de, wBoxMonCounts
-	ld bc, SCREEN_WIDTH
-	ld a, $c
-.loop
-	push af
-	ld a, [de]
-	and a ; is the box empty?
-	jr z, .skipPlacingPokeball
-	ld [hl], $78 ; place pokeball tile next to box name if box not empty
-.skipPlacingPokeball
-	add hl, bc
-	inc de
-	pop af
-	dec a
-	jr nz, .loop
-	ld a, 1
-	ld [H_AUTOBGTRANSFERENABLED], a
-	ret
-
-ChooseABoxText:
-	TX_FAR _ChooseABoxText
-	db "@"
-
-BoxNames:
-	db   "BOITE 1"
-	next "BOITE 2"
-	next "BOITE 3"
-	next "BOITE 4"
-	next "BOITE 5"
-	next "BOITE 6"
-	next "BOITE 7"
-	next "BOITE 8"
-	next "BOITE 9"
-	next "BOITE10"
-	next "BOITE11"
-	next "BOITE12@"
-
-BoxNoText:
-	db "BOITE@"
 
 EmptyAllSRAMBoxes:
 ; marks all boxes in SRAM as empty (initialisation for the first time the
@@ -583,8 +529,7 @@ EmptySRAMBoxesInBank:
 	ld bc, sBank2AllBoxesChecksum - sBox1
 	call SAVCheckSum
 	ld [sBank2AllBoxesChecksum], a ; sBank3AllBoxesChecksum
-	call CalcIndividualBoxCheckSums
-	ret
+	jp CalcIndividualBoxCheckSums
 
 EmptySRAMBox:
 	xor a
