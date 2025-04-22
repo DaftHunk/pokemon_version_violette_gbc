@@ -1,7 +1,7 @@
 _MomWakeUpText::
 	text "Mère: Bon."
 	line "Il arrive qu'un"
-	cont "jour l'enfant aimé"
+	cont "jour son enfant"
 	cont "quitte la maison."
 	cont "C'est la vie!"
 

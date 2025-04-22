@@ -379,16 +379,17 @@ _OaksLabText26::
 	cont "travail!"
 
 ;joenote - add hotkey info
-	para "Rappelez-vous que"
-	line "vous pouvez passer"
-	cont "d'un sac à l'autre"	
-	cont "avec START dans le"
-	cont "le menu Objets."
+	para "Rappelez-vous"
+	line "que vous pouvez"
+	cont "passer d'un sac"
+	cont "à l'autre avec"	
+	cont "START dans le"
+	cont "menu Objets."
 
 	para "Vous pouvez aussi"
 	line "trier les objets"
 	cont "en maintenant"
-	cont "SELECT et START."
+	cont "SELECT et START!"
 	done
 
 _OaksLabText27::
