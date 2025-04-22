@@ -1,15 +1,25 @@
 ; function that displays the start menu
 DrawStartMenu:
+	CheckEvent EVENT_GOT_SS_TICKET
+	jr nz, .hasMeetBill
+
 	CheckEvent EVENT_GOT_POKEDEX
-; menu with pokedex
+	jr nz, .hasPokedex
+
+	; shorter menu if the player doesn't have the pokedex and portablePC
 	coord hl, 10, 0
-	ld b, $0e
-	ld c, $08
-	jr nz, .drawTextBoxBorder
-; shorter menu if the player doesn't have the pokedex
+	lb bc, 12, 8
+	jr .drawTextBoxBorder
+.hasPokedex
+	; menu with pokedex
 	coord hl, 10, 0
-	ld b, $0c
-	ld c, $08
+	lb bc, 14, 8
+	jr .drawTextBoxBorder
+.hasMeetBill
+	; menu with pokedex + portablePC
+	coord hl, 10, 0
+	lb bc, 16, 8
+	jr .drawTextBoxBorder
 .drawTextBoxBorder
 	call TextBoxBorder
 	ld a, D_DOWN | D_UP | START | B_BUTTON | A_BUTTON
@@ -28,7 +38,7 @@ DrawStartMenu:
 	coord hl, 12, 2
 	CheckEvent EVENT_GOT_POKEDEX
 ; case for not having pokedex
-	ld a, $06
+	ld a, $08 ; edited for portablePC
 	jr z, .storeMenuItemCount
 ; case for having pokedex
 	ld de, StartMenuPokedexText
@@ -53,7 +63,14 @@ DrawStartMenu:
 	call PrintStartMenuItem
 	ld de, StartMenuOptionText
 	call PrintStartMenuItem
+;;; Portable PC in the START menu
+	CheckEvent EVENT_GOT_SS_TICKET
+	jr z, .dontPrintPortablePC
+	ld de, StartMenuPortablePCText
+	call PrintStartMenuItem
+.dontPrintPortablePC
 	ld de, StartMenuExitText
+;;;;;;;;;;;;;;;
 	call PlaceString
 	ld hl, wd730
 	res 6, [hl] ; turn pauses between printing letters back on
@@ -79,6 +96,9 @@ StartMenuExitText:
 
 StartMenuOptionText:
 	db "Option@"
+
+StartMenuPortablePCText: ; new
+	db "Box PC@"
 
 PrintStartMenuItem:
 	push hl

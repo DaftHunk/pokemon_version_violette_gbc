@@ -1859,6 +1859,11 @@ _WhatText::
 	text "Que faire?"
 	done
 
+_ViewModeText::
+	text "Mode consultation"
+	line "de Box activé."
+	done
+
 _DepositWhichMonText::
 	text "Stocker quel"
 	line "#mon?"
@@ -1928,6 +1933,11 @@ _CF4BExclamationText::
 	text_ram wStringBuffer
 	text "!"
 	prompt
+
+_PressStartToReleaseText::
+	text "Appuyez sur START"
+	line "pour confirmer.@"
+	text_end
 
 _RequireCoinCaseText::
 	text "Vous n'avez pas"
@@ -2155,6 +2165,16 @@ _ChooseABoxText::
 	text "Choisissez une"
 	line "Boite <PKMN>.@"
 	text_end
+
+_SkippedForever::
+ 	text "Cette question n'"
+ 	line "apparaitra plus."
+ 	prompt
+ 
+_ChooseABoxDataWillSaveText::
+ 	text "Choisir une Box <PKMN>"
+ 	line "Sauvegarde auto.@"
+ 	text_end
 
 _EvolvedText::
 	text_ram wStringBuffer
@@ -2891,7 +2911,8 @@ _BoxIsFullText::
 
 	para "Changez de Boite"
 	line "dans un Centre"
-	cont "#mon!"
+	cont "#mon ou"
+	cont "via le menu!"
 	done
 
 _BoxIsFullReminderText::
@@ -2905,7 +2926,8 @@ _BoxIsFullReminderText::
 	
 	para "Changez de Boite"
 	line "dans un Centre"
-	cont "#mon!"
+	cont "#mon ou"
+	cont "via le menu!"
 	prompt
 
 INCLUDE "text/maps/pallet_town.asm"
