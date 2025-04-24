@@ -133,17 +133,17 @@ MagikarpSalesmanText_DragonRageKarp:
 
 	ld a, DRAGON_RAGE
 	ld [wMoveNum], a
-	ld [wd11e],a
+	ld [wPokedexNum],a
 	call GetMoveName
 	call CopyStringToCF4B ; copy name to wcf4b
 
-	ld a, [wd11e]
+	ld a, [wPokedexNum]
 	push af
 	ld a, [wPartyMon1Species]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetMonName
 	pop af
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	
 	callba CheckIfMoveIsKnown
 	jp c, MagikarpSalesmanText.backFromCheckEventMons
@@ -205,17 +205,17 @@ MagikarpSalesmanText_PayDayRapidashOrFearow:
 
 	ld a, PAY_DAY
 	ld [wMoveNum], a
-	ld [wd11e],a
+	ld [wPokedexNum],a
 	call GetMoveName
 	call CopyStringToCF4B ; copy name to wcf4b
 
-	ld a, [wd11e]
+	ld a, [wPokedexNum]
 	push af
 	ld a, [wPartyMon1Species]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetMonName
 	pop af
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	
 	callba CheckIfMoveIsKnown
 	jp c, MagikarpSalesmanText.backFromCheckEventMons
@@ -282,17 +282,17 @@ MagikarpSalesmanText_FlyingPikachu:
 
 	ld a, FLY
 	ld [wMoveNum], a
-	ld [wd11e],a
+	ld [wPokedexNum],a
 	call GetMoveName
 	call CopyStringToCF4B ; copy name to wcf4b
 
-	ld a, [wd11e]
+	ld a, [wPokedexNum]
 	push af
 	ld a, [wPartyMon1Species]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetMonName
 	pop af
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	
 	callba CheckIfMoveIsKnown
 	jp c, MagikarpSalesmanText.backFromCheckEventMons

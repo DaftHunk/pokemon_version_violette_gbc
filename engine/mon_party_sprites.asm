@@ -116,18 +116,18 @@ LoadAnimSpriteGfx:
 LoadMonPartySpriteGfx: ; nickname screen, etc
 	call DisableLCD
 	ld a, [wcf91] ; contains mon id
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	push de
 	predef IndexToPokedex
 	pop de
-	ld a, [wd11e]
+	ld a, [wPokedexNum]
 	dec a
 	ld hl, MonPartyData
 	ld e, a
 	ld d, 0
 	add hl, de
 	ld a, [hl] ; read the icon id
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	cp $80                      ; Compare the icon ID with $80
     jr c, .useMonIcons1          ; If the icon ID is < $80, use MonIcons
 	; Handling icon IDs >= $80
@@ -140,7 +140,7 @@ LoadMonPartySpriteGfx: ; nickname screen, etc
 	ld bc, $80
 	call AddNTimes ; hl now contains pointer to mon icon
 	
-	ld a, [wd11e]
+	ld a, [wPokedexNum]
 	cp $80                      ; Compare the icon ID with $80
     jr c, .useMonIcons2          ; If the icon ID is < $80, use MonIcons
 	; Handling icon IDs >= $80
@@ -173,11 +173,11 @@ LoadMonPartySpriteGfxWithLCDDisabled:
 	; load the correct mon icon into each subsequent OAM slot
 	ld a, [hli] ; contains mon id
 	push hl
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	push de
 	predef IndexToPokedex
 	pop de
-	ld a, [wd11e]
+	ld a, [wPokedexNum]
 	dec a
 	ld hl, MonPartyData
 	ld e, a
@@ -185,7 +185,7 @@ LoadMonPartySpriteGfxWithLCDDisabled:
 	add hl, de
 	
 	ld a, [hl] ; read the icon id
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	cp $80                      ; Compare the icon ID with $80
     jr c, .useMonIcons1          ; If the icon ID is < $80, use MonIcons
 	; Handling icon IDs >= $80
@@ -211,7 +211,7 @@ LoadMonPartySpriteGfxWithLCDDisabled:
 	call AddNTimes
 	ld d, h
 	ld e, l
-	ld a, [wd11e]
+	ld a, [wPokedexNum]
 	cp $80                      ; Compare the icon ID with $80
     jr c, .useMonIcons2          ; If the icon ID is < $80, use MonIcons
 	; Handling icon IDs >= $80

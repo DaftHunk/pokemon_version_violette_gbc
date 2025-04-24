@@ -23,7 +23,7 @@ Route11GateUpstairsText2:
 	ld [hOaksAideRequirement], a
 	ld a, ITEMFINDER ; oak's aide reward
 	ld [hOaksAideRewardItem], a
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetItemName
 	ld h, d
 	ld l, e

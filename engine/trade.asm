@@ -188,14 +188,14 @@ LoadTradingGFXAndMonNames:
 	xor a
 	ld [H_AUTOBGTRANSFERENABLED], a
 	ld a, [wTradedPlayerMonSpecies]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetMonName
 	ld hl, wcd6d
 	ld de, wcf4b
 	ld bc, NAME_LENGTH
 	call CopyData
 	ld a, [wTradedEnemyMonSpecies]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	jp GetMonName
 
 Trade_LoadMonPartySpriteGfx:

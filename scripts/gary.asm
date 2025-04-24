@@ -329,7 +329,7 @@ GaryText2:
 GaryText3:
 	TX_ASM
 	ld a, [wPlayerStarter]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetMonName
 	ld hl, GaryText_76120
 	call PrintText

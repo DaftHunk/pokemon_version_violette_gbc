@@ -799,7 +799,7 @@ DoBallTossSpecialEffects:
 	ld a, [wIsInBattle]
 	cp 02 ; is it a trainer battle?
 	jr z, .isTrainerBattle
-	ld a, [wd11e]
+	ld a, [wPokedexNum]
 	cp $10 ; is the enemy pokemon the Ghost Marowak?
 	ret nz
 ; if the enemy pokemon is the Ghost Marowak, make it dodge during the last 3 frames
@@ -2680,7 +2680,7 @@ MoveSoundTable:
 	db SFX_BATTLE_2C,         $d8,$04 ; SUBSTITUTE
 	db SFX_BATTLE_34,         $00,$40 ; SLUDGE_BOMB
 	db SFX_NOT_VERY_EFFECTIVE,$f0,$e0 ; PURSUIT
-	db SFX_BATTLE_26,         $f0,$ff ; CRUNSH
+	db SFX_BATTLE_26,         $f0,$ff ; CRUNCH
 	db SFX_BATTLE_36,         $f0,$20 ; METAL_CLAW
 	db SFX_BATTLE_36,         $f0,$20 ; IRON_TAIL
 	db SFX_BATTLE_0B,         $00,$80 ; STRUGGLE

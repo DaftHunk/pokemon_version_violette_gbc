@@ -329,7 +329,7 @@ OaksLabScript9:
 	ld a, [wRivalStarterTemp]
 	ld [wRivalStarter], a
 	ld [wcf91], a
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetMonName
 	ld a, $1
 	ld [H_SPRITEINDEX], a
@@ -859,7 +859,7 @@ OaksLabScript_1d133:
 	predef ReplaceWildMon
 	ld a, [wcf91]
 	
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	ld a, b
 	ld [wSpriteIndex], a
 	CheckEvent EVENT_GOT_STARTER
@@ -933,7 +933,7 @@ OaksLabMonChoiceMenu:
 	jr nz, OaksLabMonChoiceEnd
 	ld a, [wcf91]
 	ld [wPlayerStarter], a
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetMonName
 	ld a, [wSpriteIndex]
 	cp $2
@@ -961,7 +961,7 @@ OaksLabMonChoiceMenu:
 	ld a, 5
 	ld [wCurEnemyLVL], a
 	ld a, [wcf91]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call AddPartyMon
 	ld hl, wd72e
 	set 3, [hl]

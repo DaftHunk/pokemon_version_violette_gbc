@@ -12,17 +12,17 @@ CanLearnTM:
 	ld b, FLAG_TEST
 	predef_jump FlagActionPredef
 
-; converts TM/HM number in wd11e into move number
+; converts TM/HM number in wPokedexNum into move number
 ; HMs start at 51
 TMToMove:
-	ld a, [wd11e]
+	ld a, [wPokedexNum]
 	dec a
 	ld hl, TechnicalMachines
 	ld b, $0
 	ld c, a
 	add hl, bc
 	ld a, [hl]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	ret
 
 ;takes a machine move in A, finds the corresponding arry bit offset, and puts that into C
@@ -102,7 +102,7 @@ GetTMMoves:
  
  	ld a, b
  	ld [wMoveNum], a
- 	ld [wd11e], a
+ 	ld [wPokedexNum], a
  	push de
  	push bc
  	predef CanLearnTM

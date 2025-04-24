@@ -59,7 +59,7 @@ MoveDeleterText1:
 	push de
 	push bc
 	ld [wMoveNum], a
-	ld [wd11e],a
+	ld [wPokedexNum],a
 	call GetMoveName
 	call CopyStringToCF4B ; copy name to wcf4b
 	ld hl, MoveDeleterConfirmText

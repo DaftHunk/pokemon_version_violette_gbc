@@ -497,7 +497,7 @@ CheckForRodBike:
 	;determine item to use
 	ld a, b
 	ld [wcf91], a	;load item to be used
-	ld [wd11e], a	;load item so its name can be grabbed
+	ld [wPokedexNum], a	;load item so its name can be grabbed
 	call GetItemName	;get the item name into de register
 	call CopyStringToCF4B ; copy name from de to wcf4b so it shows up in text
 	call UseItem	;use the item

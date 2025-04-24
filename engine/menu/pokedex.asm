@@ -9,7 +9,7 @@ ShowPokedexMenu:
 	ld [wListScrollOffset], a
 	ld [wLastMenuItem], a
 	inc a
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	ld [hJoy7], a
 .setUpGraphics
 	ld b, SET_PAL_GENERIC

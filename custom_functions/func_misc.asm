@@ -338,7 +338,7 @@ Hex2BCD:	;convert number in A to BCD in HL
 IsEnemyMonOwned:
 	push de
 	ld a, [wEnemyMonSpecies]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	predef IndexToPokedex
 	callba IsPokemonOwnedBitSet
 	pop de

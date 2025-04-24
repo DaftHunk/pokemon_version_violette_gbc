@@ -197,11 +197,11 @@ StatusScreen:
 	coord hl, 14, 2
 	call PrintLevel ; Pokémon level
 	ld a, [wMonHIndex]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	ld [wd0b5], a
 	predef IndexToPokedex
 	coord hl, 3, 7
-	ld de, wd11e
+	ld de, wPokedexNum
 	lb bc, LEADING_ZEROES | 1, 3
 	call PrintNumber ; Pokémon no.
 	coord hl, 11, 10
@@ -528,7 +528,7 @@ StatusScreen2:
 	coord hl, 9, 1
 	call StatusScreen_ClearName
 	ld a, [wMonHIndex]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetMonName
 	coord hl, 9, 1
 	call PlaceString

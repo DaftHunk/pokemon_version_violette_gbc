@@ -82,7 +82,7 @@ CeladonHouseText1:	;joenote - adding offer to buy pokemon
 	
 	
 	ld a, [wPartyMon1Species]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetMonName
 	
 	ld hl, CeladonHouseTextChiefIntro

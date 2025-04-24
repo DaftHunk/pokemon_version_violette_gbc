@@ -2421,7 +2421,7 @@ DisplayBagMenu:
 UseBagItem:
 	; either use an item from the bag or use a safari zone item
 	ld a, [wcf91]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetItemName
 	call CopyStringToCF4B ; copy name
 	xor a
@@ -3931,7 +3931,7 @@ CheckPlayerStatusConditions:
 	bit USING_RAGE, a ; is mon using rage?
 	jp z, .checkPlayerStatusConditionsDone ; if we made it this far, mon can move normally this turn
 	ld a, RAGE
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetMoveName
 	call CopyStringToCF4B
 	xor a
@@ -4021,7 +4021,7 @@ PrintMoveIsDisabledText:
 	res CHARGING_UP, a ; end the pokemon's
 	ld [de], a
 	ld a, [hl]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetMoveName
 	ld hl, MoveIsDisabledText
 	jp PrintText
@@ -4105,7 +4105,7 @@ MonName1Text:
 	ld hl, wEnemyUsedMove
 .playerTurn
 	ld [hl], a
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	ld hl, UsedText
 	ret
 
@@ -5445,7 +5445,7 @@ MirrorMoveFailedText:
 
 ; function used to reload move data for moves like Mirror Move and Metronome
 ReloadMoveData:
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	dec a
 	ld hl, Moves
 	ld bc, MoveEnd - Moves
@@ -6739,7 +6739,7 @@ CheckEnemyStatusConditions:
 	bit USING_RAGE, a ; is mon using rage?
 	jp z, .checkEnemyStatusConditionsDone ; if we made it this far, mon can move normally this turn
 	ld a, RAGE
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetMoveName
 	call CopyStringToCF4B
 	xor a
@@ -7032,16 +7032,16 @@ LoadEnemyMonData:
 	ld a, [hl]     ; base exp
 	ld [de], a
 	ld a, [wEnemyMonSpecies2]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetMonName
 	ld hl, wcd6d
 	ld de, wEnemyMonNick
 	ld bc, NAME_LENGTH
 	call CopyData
 	ld a, [wEnemyMonSpecies2]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	predef IndexToPokedex
-	ld a, [wd11e]
+	ld a, [wPokedexNum]
 	sub 1;dec a
 	jr c, .skip_seen	;joenote - check for missingno. do not mark as seen to prevent item duplication
 	ld c, a

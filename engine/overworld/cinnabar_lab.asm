@@ -98,7 +98,7 @@ PrintFossilsInBag:
 	cp $ff
 	ret z
 	push hl
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetItemName
 	coord hl, 2, 2
 	ld a, [hItemCounter]
@@ -114,10 +114,10 @@ PrintFossilsInBag:
 ; loads the names of the fossil item and the resulting mon
 LoadFossilItemAndMonName:
 	ld a, [wFossilMon]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetMonName
 	call CopyStringToCF4B
 	ld a, [wFossilItem]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetItemName
 	ret

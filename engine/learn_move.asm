@@ -34,7 +34,7 @@ DontAbandonLearning:
 	jp c, AbandonLearning
 	push hl
 	push de
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetMoveName
 	ld hl, OneTwoAndText
 	call PrintText

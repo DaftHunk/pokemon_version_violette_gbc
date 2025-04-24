@@ -195,7 +195,7 @@ DayCareMText1:
 	
 ;joenote - prompt move learning and evolution if possible
 	ld a, [wDayCareMonSpecies]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call DaycareMoveLearning
 	call DaycareEvolution	;returns with z flag set if evolution did not happen
 	jr z, .doneEvos
@@ -211,7 +211,7 @@ DayCareMText1:
 	ld bc, wPartyMon2 - wPartyMon1
 	call AddNTimes
 	ld a, [hl]
-	ld [wd11e], a	;update the species to the new evolution
+	ld [wPokedexNum], a	;update the species to the new evolution
 	call DaycareEvolution	;See if a 2nd evolution is needed
 
 .doneEvos

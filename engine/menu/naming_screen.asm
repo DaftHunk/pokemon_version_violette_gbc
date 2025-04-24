@@ -9,7 +9,7 @@ AskName:
 	ld c, 11
 	call z, ClearScreenArea ; only if in wild battle
 	ld a, [wcf91]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetMonName
 	
 	;joenote - always ask to name if in nuzlocke mode
@@ -456,7 +456,7 @@ PrintNamingText:
 	push af
 	callba WriteMonPartySpriteOAMBySpecies
 	pop af
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetMonName
 	coord hl, 4, 1
 	call PlaceString

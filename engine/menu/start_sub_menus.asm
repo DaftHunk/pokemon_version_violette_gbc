@@ -394,7 +394,7 @@ StartMenu_Item:
 	jp ItemMenuLoop
 .useOrTossItem ; if the player made the choice to use or toss the item
 	ld a, [wcf91]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetItemName
 	call CopyStringToCF4B ; copy name to wcf4b
 ;	ld a, [wcf91]

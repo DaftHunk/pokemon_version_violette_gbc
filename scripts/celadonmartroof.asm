@@ -13,7 +13,7 @@ CeladonMartRoofScript_GetDrinksInBag:
 	jr z, .done
 	push hl
 	push de
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	ld b, a
 	predef GetQuantityOfItemInBag
 	pop de
@@ -21,7 +21,7 @@ CeladonMartRoofScript_GetDrinksInBag:
 	ld a, b
 	and a
 	jr z, .loop ; if the item isn't in the bag
-	ld a, [wd11e]
+	ld a, [wPokedexNum]
 	ld [de], a
 	inc de
 	push hl
@@ -192,7 +192,7 @@ CeladonMartRoofScript_PrintDrinksInBag:
 	cp $ff
 	ret z
 	push hl
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetItemName
 	coord hl, 2, 2
 	ld a, [hItemCounter]

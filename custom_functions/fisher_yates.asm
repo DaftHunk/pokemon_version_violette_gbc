@@ -27,9 +27,9 @@ randomMonPrizes:
 	call GetPredefRegisters
 	ret
 
-;takes a mon value in wd11e
+;takes a mon value in wPokedexNum
 ;finds the vanilla mon value that would randomize to it
-;saves it back into wd11e
+;saves it back into wPokedexNum
 LookupWildRandomMon:
 	CheckEvent EVENT_ENABLE_RANDOMIZE_WILD
 	jr z, .return
@@ -45,14 +45,14 @@ LookupWildRandomMon:
 	pop hl
 	ld a, [wcf91]
 	ld b, a
-	ld a, [wd11e]
+	ld a, [wPokedexNum]
 	cp b
 	jr z, .match
 	inc hl
 	jr .loop
 .match
 	ld a, [hl]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 .return
 	call GetPredefRegisters
 	ret

@@ -71,7 +71,7 @@ MoveRelearnerText1:
 	; Save the selected move id.
 	ld a, [wcf91]
 	ld [wMoveNum], a
-	ld [wd11e],a
+	ld [wPokedexNum],a
 	call GetMoveName
 	call CopyStringToCF4B ; copy name to wcf4b
 	pop bc

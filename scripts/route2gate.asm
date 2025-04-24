@@ -13,7 +13,7 @@ Route2GateText1:
 	ld [hOaksAideRequirement], a
 	ld a, HM05_FLASH ; oak's aide reward
 	ld [hOaksAideRewardItem], a
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetItemName
 	ld hl, wcd6d
 	ld de, wOaksAideRewardItemName

@@ -23,7 +23,7 @@ CeladonHotelCoinGuy:
 	TX_ASM
 	ld hl, CeladonHotelCoinGuyText_intro	
 	ld a, [wUnusedD5A3]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetMonName
 	call PrintText
 	ld b, COIN_CASE

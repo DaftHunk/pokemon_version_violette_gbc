@@ -637,7 +637,7 @@ LevelUpPokemon:
 	add hl, bc	;HL = wPartyMon'X'Species
 	ld a, [hl]
 	ld [wd0b5], a
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	
 	push af		;backup the species value
 	
@@ -747,7 +747,7 @@ LevelUpPokemon:
 	
 	pop af			;restore saved species value
 	ld [wd0b5], a
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	
 	
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

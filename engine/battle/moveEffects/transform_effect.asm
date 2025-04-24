@@ -184,7 +184,7 @@ TransformEffect_:
 ; original (unmodified) stats and stat mods
 	pop hl
 	ld a, [hl]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetMonName
 	ld hl, wEnemyMonUnmodifiedAttack
 	ld de, wPlayerMonUnmodifiedAttack

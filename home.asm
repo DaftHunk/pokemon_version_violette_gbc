@@ -1,7 +1,8 @@
 
 ; The rst vectors are unused.
 SECTION "rst 00", ROM0 [$00]
-	rst $38
+_Bankswitch::
+	jp Bankswitch
 SECTION "rst 08", ROM0 [$08]
 	rst $38
 SECTION "rst 10", ROM0 [$10]
@@ -276,12 +277,12 @@ LoadFlippedFrontSpriteByMonIndex::
 
 LoadFrontSpriteByMonIndex::
 	push hl
-	ld a, [wd11e]
+	ld a, [wPokedexNum]
 	push af
 	ld a, [wcf91]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	predef IndexToPokedex
-	ld hl, wd11e
+	ld hl, wPokedexNum
 	ld a, [hl]
 	pop bc
 	ld [hl], b
@@ -541,8 +542,8 @@ PrintLevelFull::
 	ld a, [wLoadedMonLevel] ; level
 
 PrintLevelCommon::
-	ld [wd11e], a
-	ld de, wd11e
+	ld [wPokedexNum], a
+	ld de, wPokedexNum
 	ld b, LEFT_ALIGN | 1 ; 1 byte
 	jp PrintNumber
 
@@ -567,10 +568,10 @@ GetMonHeader::
 	push bc
 	push de
 	push hl
-	ld a, [wd11e]
+	ld a, [wPokedexNum]
 	push af
 	ld a, [wd0b5]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 ;joenote - checks for special ID
 	
 	
@@ -587,8 +588,8 @@ GetMonHeader::
 	cp FOSSIL_AERODACTYL
 	jr z, .specialID
 
-	predef IndexToPokedex   ; convert pokemon ID in [wd11e] to pokedex number
-	ld a, [wd11e]
+	predef IndexToPokedex   ; convert pokemon ID in [wPokedexNum] to pokedex number
+	ld a, [wPokedexNum]
 	sub $01
 	jr c, .missingno	;joenote - missingno has a pokedex index of 0
 	ld bc, MonBaseStatsEnd - MonBaseStats
@@ -630,7 +631,7 @@ GetMonHeader::
 	ld a, [wd0b5]
 	ld [wMonHIndex], a
 	pop af
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	pop hl
 	pop de
 	pop bc
@@ -1848,7 +1849,7 @@ PrintListMenuEntries::
 	ld a, b
 	ld [wWhichPokemon], a
 	ld a, [de]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	cp $ff
 	jp z, .printCancelMenuItem
 	push bc
@@ -1908,7 +1909,7 @@ PrintListMenuEntries::
 	and a
 	jr nz, .skipPrintingPokemonLevel
 .printPokemonLevel
-	ld a, [wd11e]
+	ld a, [wPokedexNum]
 	push af
 	push hl
 	ld hl, wPartyCount
@@ -1941,7 +1942,7 @@ PrintListMenuEntries::
 	add hl, bc
 	call PrintLevel
 	pop af
-	ld [wd11e], a
+	ld [wPokedexNum], a
 .skipPrintingPokemonLevel
 	pop hl
 	pop de
@@ -1950,7 +1951,7 @@ PrintListMenuEntries::
 	cp ITEMLISTMENU
 	jr nz, .nextListEntry
 .printItemQuantity
-	ld a, [wd11e]
+	ld a, [wPokedexNum]
 	ld [wcf91], a
 	call IsKeyItem ; check if item is unsellable
 	ld a, [wIsKeyItem]
@@ -1961,18 +1962,18 @@ PrintListMenuEntries::
 	add hl, bc
 	ld a, "×"
 	ld [hli], a
-	ld a, [wd11e]
+	ld a, [wPokedexNum]
 	push af
 	ld a, [de]
 	ld [wMaxItemQuantity], a
 	push de
-	ld de, wd11e
+	ld de, wPokedexNum
 	ld [de], a
 	lb bc, 1, 2
 	call PrintNumber
 	pop de
 	pop af
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	pop hl
 .skipPrintingItemQuantity
 	inc de
@@ -2015,7 +2016,7 @@ GetMonName::
 	ld a, BANK(MonsterNames)
 	ld [H_LOADEDROMBANK], a
 	ld [MBC1RomBank], a
-	ld a, [wd11e]
+	ld a, [wPokedexNum]
 	dec a
 	ld hl, MonsterNames
 	ld c, 10
@@ -2035,7 +2036,7 @@ GetMonName::
 	ret
 
 GetItemName::
-; given an item ID at [wd11e], store the name of the item into a string
+; given an item ID at [wPokedexNum], store the name of the item into a string
 ;     starting at wcd6d
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - rewriting this function for list of tm & hm names
@@ -2043,7 +2044,7 @@ GetItemName::
 	push bc
 	ld a, ITEM_NAME
 	ld [wNameListType], a
-	ld a, [wd11e]
+	ld a, [wPokedexNum]
 	ld [wd0b5], a
 	cp HM01_CUT ; is this a TM/HM?
 	jr nc, .Machine
@@ -2061,7 +2062,7 @@ GetItemName::
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;	push hl
 ;	push bc
-;	ld a, [wd11e]
+;	ld a, [wPokedexNum]
 ;	cp HM01_CUT ; is this a TM/HM?
 ;	jr nc, .Machine
 ;	ld [wd0b5], a
@@ -2080,18 +2081,18 @@ GetItemName::
 ;	ret
 
 ;GetMachineName::	;joenote - not needed since using list for tm and hm names
-;; copies the name of the TM/HM in [wd11e] to wcd6d
+;; copies the name of the TM/HM in [wPokedexNum] to wcd6d
 ;	push hl
 ;	push de
 ;	push bc
-;	ld a, [wd11e]
+;	ld a, [wPokedexNum]
 ;	push af
 ;	cp TM01_MEGA_PUNCH ; is this a TM? [not HM]
 ;	jr nc, .WriteTM
 ;; if HM, then write "HM" and add 5 to the item ID, so we can reuse the
 ;; TM printing code
 ;	add 5
-;	ld [wd11e], a
+;	ld [wPokedexNum], a
 ;	ld hl, HiddenPrefix ; points to "HM"
 ;	ld bc, 2
 ;	jr .WriteMachinePrefix
@@ -2102,7 +2103,7 @@ GetItemName::
 ;	ld de, wcd6d
 ;	call CopyData
 ;; now get the machine number and convert it to text
-;	ld a, [wd11e]
+;	ld a, [wPokedexNum]
 ;	sub TM01_MEGA_PUNCH - 1
 ;	ld b, "0"
 ;.FirstDigit
@@ -2124,7 +2125,7 @@ GetItemName::
 ;	ld a, "@"
 ;	ld [de], a
 ;	pop af
-;	ld [wd11e], a
+;	ld [wPokedexNum], a
 ;	pop bc
 ;	pop de
 ;	pop hl
@@ -2160,7 +2161,7 @@ GetMoveName::
 	push hl
 	ld a, MOVE_NAME
 	ld [wNameListType], a
-	ld a, [wd11e]
+	ld a, [wPokedexNum]
 	ld [wd0b5], a
 	ld a, BANK(MoveNames)
 	ld [wPredefBank], a
@@ -2950,7 +2951,7 @@ IsItemInBag::
 	ret
 
 DisplayPokedex::
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	jpba _DisplayPokedex
 
 SetSpriteFacingDirectionAndDelay::
@@ -3552,7 +3553,7 @@ GetName::
 ;
 ; returns pointer to name in de
 	ld a, [wd0b5]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 
 	; TM names are separate from item names.
 	; BUG: This applies to all names instead of just items.
@@ -3639,7 +3640,7 @@ GetName::
 ;	ld a, d
 ;	ld [wUnusedCF8D + 1], a
 
-	ld a, [wd11e]
+	ld a, [wPokedexNum]
 	cp HM01_CUT
 	jr c, .notMachine2
 	ld a, ITEM_NAME	;this needs to be reset because machines can be in the same listings as items	
@@ -4498,7 +4499,7 @@ GiveItem::
 ; and copy the item's name to wcf4b.
 ; Return carry on success.
 	ld a, b
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	ld [wcf91], a
 	ld a, c
 	ld [wItemQuantity], a

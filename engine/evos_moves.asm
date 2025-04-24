@@ -204,12 +204,12 @@ Evolution_PartyMonLoop: ; loop over party mons
 	call DelayFrames
 	call ClearScreen
 	call RenameEvolvedMon
-	ld a, [wd11e]
+	ld a, [wPokedexNum]
 	push af
 	ld a, [wd0b5]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	predef IndexToPokedex
-	ld a, [wd11e]
+	ld a, [wPokedexNum]
 	dec a
 	ld hl, BaseStats
 	ld bc, MonBaseStatsEnd - MonBaseStats
@@ -219,7 +219,7 @@ Evolution_PartyMonLoop: ; loop over party mons
 	ld a, [wd0b5]
 	ld [wMonHIndex], a
 	pop af
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	ld hl, wLoadedMonHPExp - 1
 	ld de, wLoadedMonStats
 	ld b, $1
@@ -255,7 +255,7 @@ Evolution_PartyMonLoop: ; loop over party mons
 	pop bc
 	call CopyData
 	ld a, [wd0b5]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	xor a
 	ld [wMonDataLocation], a
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -299,7 +299,7 @@ Evolution_PartyMonLoop: ; loop over party mons
 	and a
 	call z, Evolution_ReloadTilesetTilePatterns
 	predef IndexToPokedex
-	ld a, [wd11e]
+	ld a, [wPokedexNum]
 	dec a
 	ld c, a
 	ld b, FLAG_SET
@@ -407,7 +407,7 @@ Evolution_ReloadTilesetTilePatterns:
 ;joenote - this has been modified to allow for learning multiple moves at the same level
 LearnMoveFromLevelUp:
 	ld hl, EvosMovesPointerTable
-	ld a, [wd11e] ; species
+	ld a, [wPokedexNum] ; species
 	ld [wcf91], a
 	dec a
 	ld bc, 0
@@ -458,7 +458,7 @@ LearnMoveFromLevelUp:
 	jr nz, .checkCurrentMovesLoop
 	ld a, d
 	ld [wMoveNum], a
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	call GetMoveName
 	call CopyStringToCF4B
 	predef LearnMove
@@ -469,7 +469,7 @@ LearnMoveFromLevelUp:
 	
 .done
 	ld a, [wcf91]
-	ld [wd11e], a
+	ld [wPokedexNum], a
 	ret
 
 ; writes the moves a mon has at level [wCurEnemyLVL] to [de]
