@@ -737,7 +737,7 @@ IF DEF(_DEBUG)
 ELSE
 	dw TextCommand_SCROLL        ; TX_SCROLL
 ENDC
-	dw TextCommand_START_ASM     ; TX_START_ASM
+	dw TextCommand_START_ASM     ; TX_ASM
 	dw TextCommand_NUM           ; TX_NUM
 	dw TextCommand_PAUSE         ; TX_DELAY
 	dw TextCommand_SOUND         ; TX_SFX_ITEM_1 (also handles other TX_SOUND_* commands)
