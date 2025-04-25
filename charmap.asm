@@ -1,3 +1,159 @@
+;joenote - add Rangi's line-feed implementation
+;as well as some of Rangi's font symbols from Red/Blue Star
+; Control characters (see home/text.asm)
+charmap "<LF>", $1F
+charmap "<PK>", $E1
+charmap "<MN>", $E2
+charmap "<BALL>", $E4
+charmap "<SHINY>", $E5
+charmap "<BAGE>", $48 ; PureRGBnote: ADDED: same as PAGE, but can watch more buttons than just A or B for being pressed
+charmap "<pkmn>", $4A ; PkMn
+charmap "<PKMN>", $4A ; PkMn
+charmap "<SCROLL>", $4c
+charmap "@", $50
+charmap "<PLAYER>", $52
+charmap "<RIVAL>", $53
+charmap "#", $54
+;charmap "POKé", $54
+charmap "<TARGET>", $59
+charmap "<USER>", $5A
+charmap "<COLON>", $6D
+
+; Actual characters (from gfx/font/font_extra.png)
+charmap "′", $71
+charmap "″", $73
+charmap "№", $74
+charmap "…", $75
+charmap "┌", $79
+charmap "─", $7A
+charmap "┐", $7B
+charmap "│", $7C
+charmap "└", $7D
+charmap "┘", $7E
+
+; Actual characters (from gfx/font/font_battle_extra.png)
+
+; Actual characters (from other graphics files)
+
+; Actual characters (from gfx/font/font.png)
+charmap " ", $7F
+charmap "A", $80
+charmap "B", $81
+charmap "C", $82
+charmap "D", $83
+charmap "E", $84
+charmap "F", $85
+charmap "G", $86
+charmap "H", $87
+charmap "I", $88
+charmap "J", $89
+charmap "K", $8A
+charmap "L", $8B
+charmap "M", $8C
+charmap "N", $8D
+charmap "O", $8E
+charmap "P", $8F
+charmap "Q", $90
+charmap "R", $91
+charmap "S", $92
+charmap "T", $93
+charmap "U", $94
+charmap "V", $95
+charmap "W", $96
+charmap "X", $97
+charmap "Y", $98
+charmap "Z", $99
+
+charmap "a", $A0
+charmap "b", $A1
+charmap "c", $A2
+charmap "d", $A3
+charmap "e", $A4
+charmap "f", $A5
+charmap "g", $A6
+charmap "h", $A7
+charmap "i", $A8
+charmap "j", $A9
+charmap "k", $AA
+charmap "l", $AB
+charmap "m", $AC
+charmap "n", $AD
+charmap "o", $AE
+charmap "p", $AF
+charmap "q", $B0
+charmap "r", $B1
+charmap "s", $B2
+charmap "t", $B3
+charmap "u", $B4
+charmap "v", $B5
+charmap "w", $B6
+charmap "x", $B7
+charmap "y", $B8
+charmap "z", $B9
+
+; French characters
+charmap "é", $BA
+charmap "à", $BB
+charmap "è", $BC
+charmap "ù", $BD
+charmap "ç", $BE
+charmap "î", $BF
+;;;;;;;;;;;;;;;;
+; $C0
+; Space left empty
+; for dynamic characters
+; $D6
+;;;;;;;;;;;;;;;;
+charmap "ï", $D7
+charmap "â", $D8
+charmap "ô", $D9
+charmap "û", $DA
+charmap "ê", $DB
+charmap "ä", $DC
+charmap "ö", $DD
+charmap "ü", $DE
+charmap "ë", $DF
+
+charmap "(", $9A
+charmap ")", $9B
+charmap ":", $9C
+charmap ";", $9D
+charmap "[", $9E
+charmap "]", $9F
+charmap "'", $E0
+
+charmap "-", $E3
+charmap "?", $E6
+charmap "!", $E7
+charmap ".", $E8
+
+charmap "→", $e9 ; PureRGBnote: ADDED: right facing arrow character
+charmap "+", $ea ; PureRGBnote: ADDED: plus sign
+charmap "%", $eb ; PureRGBnote: ADDED: percent sign
+charmap "▷", $EC
+charmap "▶", $ED
+charmap "▲", $ED
+charmap "▼", $EE
+charmap "♂", $EF
+charmap "¥", $F0
+charmap "×", $F1
+charmap "⠄", $F2
+charmap "/", $F3
+charmap ",", $F4
+charmap "♀", $F5
+
+charmap "0", $F6
+charmap "1", $F7
+charmap "2", $F8
+charmap "3", $F9
+charmap "4", $FA
+charmap "5", $FB
+charmap "6", $FC
+charmap "7", $FD
+charmap "8", $FE
+charmap "9", $FF
+
+; Japanese kana, for those bits of text that were not translated to French
 charmap "ガ", $05
 charmap "ギ", $06
 charmap "グ", $07
@@ -146,156 +302,3 @@ charmap "ゃ", $E0
 charmap "ゅ", $E1
 charmap "ょ", $E2
 charmap "ー", $E3
-
-;joenote - add Rangi's line-feed implementation
-;as well as some of Rangi's font symbols from Red/Blue Star
-charmap "<LF>", $1F
-charmap "<BALL>", $DC
-charmap "<UPDN>", $DD
-charmap "<:L>", $DE
-charmap "<SHINY>", $DF
-
-charmap "<pkmn>", $4A ; PkMn
-charmap "<PKMN>", $4A ; PkMn
-charmap "<SCROLL>", $4c
-charmap "@", $50
-charmap "<PLAYER>", $52
-charmap "<RIVAL>", $53
-charmap "#", $54
-;charmap "POKé", $54
-charmap "<TARGET>", $59
-charmap "<USER>", $5A
-charmap "<COLON>", $6D
-charmap "′", $71
-charmap "″", $73
-charmap "№", $74
-charmap "…", $75
-
-charmap "┌", $79
-charmap "─", $7A
-charmap "┐", $7B
-charmap "│", $7C
-charmap "└", $7D
-charmap "┘", $7E
-
-charmap " ", $7F
-charmap "A", $80
-charmap "B", $81
-charmap "C", $82
-charmap "D", $83
-charmap "E", $84
-charmap "F", $85
-charmap "G", $86
-charmap "H", $87
-charmap "I", $88
-charmap "J", $89
-charmap "K", $8A
-charmap "L", $8B
-charmap "M", $8C
-charmap "N", $8D
-charmap "O", $8E
-charmap "P", $8F
-charmap "Q", $90
-charmap "R", $91
-charmap "S", $92
-charmap "T", $93
-charmap "U", $94
-charmap "V", $95
-charmap "W", $96
-charmap "X", $97
-charmap "Y", $98
-charmap "Z", $99
-charmap "(", $9A
-charmap ")", $9B
-charmap ":", $9C
-charmap ";", $9D
-charmap "[", $9E
-charmap "]", $9F
-charmap "a", $A0
-charmap "b", $A1
-charmap "c", $A2
-charmap "d", $A3
-charmap "e", $A4
-charmap "f", $A5
-charmap "g", $A6
-charmap "h", $A7
-charmap "i", $A8
-charmap "j", $A9
-charmap "k", $AA
-charmap "l", $AB
-charmap "m", $AC
-charmap "n", $AD
-charmap "o", $AE
-charmap "p", $AF
-charmap "q", $B0
-charmap "r", $B1
-charmap "s", $B2
-charmap "t", $B3
-charmap "u", $B4
-charmap "v", $B5
-charmap "w", $B6
-charmap "x", $B7
-charmap "y", $B8
-charmap "z", $B9
-charmap "é", $BA
-charmap "à", $BB
-charmap "è", $BC
-charmap "ù", $BD
-charmap "ç", $BE
-charmap "î", $BF
-
-charmap "ï", $C0
-charmap "â", $C1
-charmap "ô", $C2
-charmap "û", $C3
-charmap "ê", $C4
-charmap "ä", $C5
-charmap "ö", $C6
-charmap "ü", $C7
-charmap "ë", $C8
-;charmap "", $C9
-;charmap "c'", $CA
-;charmap "d'", $CB
-;charmap "j'", $CC
-;charmap "l'", $CD
-;charmap "m'", $CE
-;charmap "n'", $CF
-;$D0 from here to $D8 = EXPBarGraphics
-;charmap "p'", $D0
-;charmap "s'", $D1
-;charmap "t'", $D2
-;charmap "u'", $D3
-;charmap "y'", $D4
-charmap "→", $DA
-charmap "+", $DB
-
-charmap "'", $E0
-
-charmap "-", $E3
-charmap "'r", $E4
-charmap "'m", $E5
-charmap "?", $E6
-charmap "!", $E7
-charmap ".", $E8
-
-charmap "▷", $EC
-charmap "▶", $ED
-charmap "▲", $ED
-charmap "▼", $EE
-charmap "♂", $EF
-charmap "¥", $F0
-charmap "×", $F1
-charmap "⠄", $F2
-charmap "/", $F3
-charmap ",", $F4
-charmap "♀", $F5
-charmap "0", $F6
-charmap "1", $F7
-charmap "2", $F8
-charmap "3", $F9
-charmap "4", $FA
-charmap "5", $FB
-charmap "6", $FC
-charmap "7", $FD
-charmap "8", $FE
-charmap "9", $FF
