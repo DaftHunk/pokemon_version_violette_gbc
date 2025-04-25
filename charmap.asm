@@ -31,10 +31,6 @@ charmap "│", $7C
 charmap "└", $7D
 charmap "┘", $7E
 
-; Actual characters (from gfx/font/font_battle_extra.png)
-
-; Actual characters (from other graphics files)
-
 ; Actual characters (from gfx/font/font.png)
 charmap " ", $7F
 charmap "A", $80

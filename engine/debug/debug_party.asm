@@ -133,7 +133,6 @@ IF DEF(_DEBUG)
 	ld b, wPokedexSeenEnd - wPokedexSeen - 1
 	call DebugSetPokedexEntries
 	ld [hl], %00000001
-	call DebugSetPokedexEntries
 
 	; Set tutorial events
 	SetEvent EVENT_GOT_POKEDEX
