@@ -92,6 +92,8 @@ IF DEF(_DEBUG)
 	ld [hli], a
 	ld a, ICE_BEAM
 	ld [hli], a
+	ld a, STRUGGLE
+	ld [hli], a
 	ld a, FLAMETHROWER
 	ld [hl], a
 	ld hl, wPartyMon5PP
@@ -124,12 +126,18 @@ IF DEF(_DEBUG)
 
 	; Complete the Pokédex.
 	ld hl, wPokedexOwned
+	ld b, wPokedexOwnedEnd - wPokedexOwned - 1
 	call DebugSetPokedexEntries
+	ld [hl], %00000001
 	ld hl, wPokedexSeen
+	ld b, wPokedexSeenEnd - wPokedexSeen - 1
+	call DebugSetPokedexEntries
+	ld [hl], %00000001
 	call DebugSetPokedexEntries
 
 	; Set tutorial events
 	SetEvent EVENT_GOT_POKEDEX
+	SetEvent EVENT_GOT_TOWN_MAP
 	SetEvent EVENT_GENDER_CAUGHT_INDICATOR
 	SetEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
 	
@@ -145,13 +153,11 @@ IF DEF(_DEBUG)
 	ret
 
 DebugSetPokedexEntries:
-	ld b, wPokedexOwnedEnd - wPokedexOwned - 1
 	ld a, %11111111
 .loop
 	ld [hli], a
 	dec b
 	jr nz, .loop
-	ld [hl], %01111111
 	ret
 
 DebugItemsList:

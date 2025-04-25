@@ -3393,7 +3393,7 @@ LoadHpBarAndStatusTilePatterns::
 	;jp FarCopyData2 ; if LCD is off, transfer all at once
 	call FarCopyData2
 	ld hl, EXPBarGraphics
-	ld de, vChars1 + $500
+	ld de, vChars1 + $400
 	ld bc, EXPBarGraphicsEnd - EXPBarGraphics
 	ld a, BANK(EXPBarGraphics)
 	jp FarCopyData2
@@ -3405,7 +3405,7 @@ LoadHpBarAndStatusTilePatterns::
 	;jp CopyVideoData ; if LCD is on, transfer during V-blank
 	call CopyVideoData
 	ld de,EXPBarGraphics
-	ld hl, vChars1 + $500
+	ld hl, vChars1 + $400
 	lb bc, BANK(EXPBarGraphics), (EXPBarGraphicsEnd - EXPBarGraphics) / $10
 	jp CopyVideoData
 

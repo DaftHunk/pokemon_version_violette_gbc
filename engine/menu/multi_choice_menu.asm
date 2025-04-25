@@ -56,11 +56,11 @@ TwoOptionMenu::
 	ld a, 5
 	ld [wTopMenuItemX], a
 
-	hlcoord 4, 7
+	coord hl, 4, 7
 	lb bc, 3, 14  ; height, width
 	call TextBoxBorder
 
-	hlcoord 6, 8 ; where the list will be drawn at
+	coord hl, 6, 8 ; where the list will be drawn at
 	jp DoneDrawFunc
 
 TwoOptionSmallMenu::
@@ -73,11 +73,11 @@ TwoOptionSmallMenu::
 	ld a, 14
 	ld [wTopMenuItemX], a
 
-	hlcoord 13, 7
+	coord hl, 13, 7
 	lb bc, 3, 5  ; height, width
 	call TextBoxBorder
 
-	hlcoord 15, 8 ; where the list will be drawn at
+	coord hl, 15, 8 ; where the list will be drawn at
 	jp DoneDrawFunc
 
 ThreeOptionMenu::
@@ -90,11 +90,11 @@ ThreeOptionMenu::
 	ld a, 5
 	ld [wTopMenuItemX], a
 
-	hlcoord 4, 5
+	coord hl, 4, 5
 	lb bc, 5, 13  ; height, width
 	call TextBoxBorder
 
-	hlcoord 6, 6 ; where the list will be drawn at
+	coord hl, 6, 6 ; where the list will be drawn at
 	jp DoneDrawFunc
 
 InitThreeOptionMenuSmall::
@@ -110,19 +110,19 @@ InitThreeOptionMenuSmall::
 ThreeOptionMenuSmall::
 	ld a, 6
 	call InitThreeOptionMenuSmall
-	hlcoord 11, 5
+	coord hl, 11, 5
 	call TextBoxBorder
 
-	hlcoord 13, 6 ; where the list will be drawn at
+	coord hl, 13, 6 ; where the list will be drawn at
 	jp DoneDrawFunc
 
 ThreeOptionMenuSmallLower::
 	ld a, 8
 	call InitThreeOptionMenuSmall
-	hlcoord 11, 7
+	coord hl, 11, 7
 	call TextBoxBorder
 
-	hlcoord 13, 8 ; where the list will be drawn at
+	coord hl, 13, 8 ; where the list will be drawn at
 	jp DoneDrawFunc
 
 
@@ -143,11 +143,11 @@ FourOptionMenuCommon::
 	ld a, 5
 	ld [wTopMenuItemX], a
 
-	hlcoord 4, 3
+	coord hl, 4, 3
 	ld b, 7  ; height
 	call TextBoxBorder
 
-	hlcoord 6, 4 ; where the list will be drawn at
+	coord hl, 6, 4 ; where the list will be drawn at
 	jp DoneDrawFunc
 
 FiveOptionMenu::
@@ -161,11 +161,11 @@ FiveOptionMenu::
 	ld a, 5
 	ld [wTopMenuItemX], a
 
-	hlcoord 4, 1
+	coord hl, 4, 1
 	lb bc, 9, 13  ; height, width
 	call TextBoxBorder
 	
-	hlcoord 6, 2 ; where the list will be drawn at
+	coord hl, 6, 2 ; where the list will be drawn at
 	jp DoneDrawFunc
 
 SixOptionMenu::
@@ -178,11 +178,11 @@ SixOptionMenu::
 	ld a, 5
 	ld [wTopMenuItemX], a
 
-	hlcoord 4, 0
+	coord hl, 4, 0
 	lb bc, 11, 13 ; height, width
 	call TextBoxBorder
 	
-	hlcoord 6, 1 ; where the list will be drawn at
+	coord hl, 6, 1 ; where the list will be drawn at
 	jp DoneDrawFunc
 
 YesNoHide::

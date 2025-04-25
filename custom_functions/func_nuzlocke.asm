@@ -131,7 +131,7 @@ EncounterLoad_NuzlockeHandler:
 	CheckEvent EVENT_NUZZLOCK_DISALLOW_CATCH
 	jr nz, .return_immediate
 	coord hl, 2, 1
-	ld [hl], "<UPDN>"
+	ld [hl], "<PK>"
 
 .return_immediate
 	call GetPredefRegisters

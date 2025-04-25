@@ -5,7 +5,7 @@ AnimateEXPBarAgain:
 	xor a
 	ld [wEXPBarPixelLength], a
 	coord hl, 17, 11
-	ld a, $d0
+	ld a, $c0
 	ld c, $08
 .loop
 	ld [hld], a
@@ -38,7 +38,7 @@ AnimateEXPBar:
 	coord hl, 17, 11
 .loop1
 	ld a, [hl]
-	cp $d8
+	cp $c8
 	jr nz, .loop2
 	dec hl
 	dec c
@@ -94,7 +94,7 @@ PrintEXPBar:
 	jr .loop
 .skip
 	ld b, a
-	ld a, $d0
+	ld a, $c0
 	add c
 .loop2
 	ld [hld], a
@@ -103,7 +103,7 @@ PrintEXPBar:
 	ld a, b
 	and a
 	jr nz, .loop
-	ld a, $d0
+	ld a, $c0
 	jr .loop2
 
 CalcEXPBarPixelLength:

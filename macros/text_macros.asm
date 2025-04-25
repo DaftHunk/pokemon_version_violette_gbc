@@ -21,7 +21,7 @@ ENDM
 MACRO TX_RAM
 ; prints text to screen
 ; \1: RAM address to read from
-	db $1
+	db $01
 	dw \1
 ENDM
 
@@ -32,7 +32,7 @@ ENDM
 MACRO TX_BCD
 ; \1: RAM address to read from
 ; \2: number of bytes + print flags
-	db $2
+	db $02
 	dw \1
 	db \2
 ENDM
@@ -41,6 +41,8 @@ MACRO text_bcd ; Alias for french text
 	TX_BCD \1, \2
 ENDM
 
+; TX_MOVE   EQUS "db $03"
+; TX_BOX    EQUS "db $04"
 TX_LINE    EQUS "db $05"
 TX_BLINK   EQUS "db $06"
 TX_SCROLL  EQUS "db $07"

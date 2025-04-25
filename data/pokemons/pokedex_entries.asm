@@ -1322,7 +1322,7 @@ TyranitarDexEntry:
 	db "@"
 
 HoohDexEntry:
-	db "Arc-en-ciel@"
+	db "Arcenciel@"
 	db 3,80
 	dw 199
 	TX_FAR _HoohDexEntry
