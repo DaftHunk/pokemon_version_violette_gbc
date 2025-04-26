@@ -558,6 +558,18 @@ _NewBicycleText::
 _PushStartText::
 	text "START et...paf!"
 	line "V'là le Menu!"
+
+	;joenote - add hotkey info
+	para "Vous pouvez"
+	line "passer d'un sac"
+	cont "à l'autre avec"	
+	cont "START dans le"
+	cont "menu Objets."
+
+	para "Vous pouvez aussi"
+	line "trier les objets"
+	cont "en maintenant"
+	cont "SELECT et START!"
 	done
 
 _SaveOptionText::
