@@ -52,19 +52,19 @@ PlaceNextChar::
 	ld a, [de]
 
 	cp "@"
-	jr nz, Char4ETest
+	jr nz, LineFeedText
 	ld b, h
 	ld c, l
 	pop hl
 	ret
 
-Char4ETest::
+LineFeedText::
 	;joenote - add Rangi's line-feed implementation
 	cp "<LF>"
 	jr z, .line_feed
 	
 	cp $4E ; next
-	jr nz, .char4FTest
+	jr nz, .lineText
 	ld bc, 2 * SCREEN_WIDTH
 	ld a, [hFlags_0xFFF6]
 	bit 2, a
@@ -77,7 +77,7 @@ Char4ETest::
 	push hl
 	jp PlaceNextChar_inc
 
-.char4FTest
+.lineText
 	cp $4F ; line
 	jr nz, .next3
 	pop hl
@@ -95,26 +95,27 @@ endc
 	jp z, \2
 ENDM
 
-	dict $00, Char00 ; error
-	dict $4C, Char4C ; autocont
-	dict $4B, Char4B ; cont_
-	dict $51, Char51 ; para
-	dict $49, Char49 ; page
-	dict $52, Char52 ; player
-	dict $53, Char53 ; rival
-	dict $54, Char54 ; POKé
-	dict $5B, Char5B ; PC
-	dict $5E, Char5E ; ROCKET
-	dict $5C, Char5C ; TM
-	dict $5D, Char5D ; TRAINER
-	dict $55, Char55 ; cont
-	dict $56, Char56 ; 6 dots
-	dict $57, Char57 ; done
-	dict $58, Char58 ; prompt
-	dict $4A, Char4A ; PKMN
-	dict $5F, Char5F ; dex
-	dict $59, Char59 ; TARGET
-	dict $5A, Char5A ; USER
+	dict $00, ErrorChar ; error
+	dict $4C, AutoContChar ; autocont
+	dict $4B, ContChar ; cont_
+	dict $51, Paragraph ; para
+;	dict $48, MultiButtonPageChar ; Bage
+	dict $49, PageChar ; page
+	dict $52, PlayerChar ; player
+	dict $53, RivalChar ; rival
+	dict $54, PokeChar ; POKé
+	dict $5B, PCChar ; PC
+	dict $5E, RocketChar ; ROCKET
+	dict $5C, TMChar ; TM
+	dict $5D, TrainerChar ; TRAINER
+	dict $55, ContText ; cont
+	dict $56, DotsChar ; 6 dots
+	dict $57, DoneText ; done
+	dict $58, PromptText ; prompt
+	dict $4A, PKMNChar ; PKMN
+	dict $5F, PlaceDexEnd ; dex
+	dict $59, TargetChar ; TARGET
+	dict $5A, UserChar ; USER
 
 	ld [hli], a
 	call PrintLetterDelay
@@ -122,74 +123,74 @@ PlaceNextChar_inc::
 	inc de
 	jp PlaceNextChar
 
-Char00::
+ErrorChar::
 	ld b, h
 	ld c, l
 	pop hl
-	ld de, Char00Text
+	ld de, ErrorCharText
 	dec de
 	ret
 
-Char00Text:: ; “%d ERROR.”
-	TX_FAR _Char00Text
+ErrorCharText:: ; “%d ERROR.”
+	TX_FAR _ErrorCharText
 	db "@"
 
-Char52:: ; player’s name
+PlayerChar:: ; player’s name
 	push de
 	ld de, wPlayerName
 	jr FinishDTE
 
-Char53:: ; rival’s name
+RivalChar:: ; rival’s name
 	push de
 	ld de, wRivalName
 	jr FinishDTE
 
-Char5D:: ; TRAINER
+TrainerChar:: ; TRAINER
 	push de
-	ld de, Char5DText
+	ld de, TeamCharText
 	jr FinishDTE
 
-Char5C:: ; TM
+TMChar:: ; TM
 	push de
-	ld de, Char5CText
+	ld de, TMCharText
 	jr FinishDTE
 
-Char5B:: ; PC
+PCChar:: ; PC
 	push de
-	ld de, Char5BText
+	ld de, PCCharText
 	jr FinishDTE
 
-Char5E:: ; ROCKET
+RocketChar:: ; ROCKET
 	push de
-	ld de, Char5EText
+	ld de, RocketCharText
 	jr FinishDTE
 
-Char54:: ; POKé
+PokeChar:: ; POKé
 	push de
-	ld de, Char54Text
+	ld de, PokeCharText
 	jr FinishDTE
 
-Char56:: ; ……
+DotsChar:: ; ……
 	push de
-	ld de, Char56Text
+	ld de, ThreeDotsText
 	jr FinishDTE
 
-Char4A:: ; PKMN
+PKMNChar:: ; PKMN
 	push de
-	ld de, Char4AText
+	ld de, PokemonText
 	jr FinishDTE
 
-Char59::
+TargetChar::
 ; depending on whose turn it is, print
 ; enemy active monster’s name, prefixed with “Enemy ”
 ; or
 ; player active monster’s name
-; (like Char5A but flipped)
+; (like UserChar but flipped)
 	ld a, [H_WHOSETURN]
 	xor 1
 	jr MonsterNameCharsCommon
 
-Char5A::
+UserChar::
 ; depending on whose turn it is, print
 ; player active monster’s name
 ; or
@@ -204,7 +205,7 @@ MonsterNameCharsCommon::
 
 .Enemy
 	; print “Enemy ”
-	ld de, Char5AText
+	ld de, OpponentText
 	call PlaceString
 	ld h, b
 	ld l, c
@@ -218,28 +219,28 @@ FinishDTE::
 	inc de
 	jp PlaceNextChar
 
-Char5CText::
+TMCharText::
 	db "CT@"
-Char5DText::
+TeamCharText::
 	db "Dres.@"
-Char5BText::
+PCCharText::
 	db "PC@"
-Char5EText::
+RocketCharText::
 	db "Rocket@"
-Char54Text::
+PokeCharText::
 	db "Poké@"
-Char56Text::
-	db "……@"
-Char5AText::
+ThreeDotsText::
+	db "…@"
+OpponentText::
 	db "@ ennemi"
-Char4AText::
+PokemonText::
 	db $E1,$E2,"@" ; PKMN
 
-Char55::
+ContText::
 	push de
 	ld b, h
 	ld c, l
-	ld hl, Char55Text
+	ld hl, ContTextText
 	call TextCommandProcessor
 	ld h, b
 	ld l, c
@@ -247,18 +248,18 @@ Char55::
 	inc de
 	jp PlaceNextChar
 
-Char55Text::
-; equivalent to Char4B
-	TX_FAR _Char55Text
+ContTextText::
+; equivalent to ContChar
+	TX_FAR _ContTextText
 	db "@"
 
-Char5F::
+PlaceDexEnd::
 ; ends a Pokédex entry
 	ld [hl], "."
 	pop hl
 	ret
 
-Char58:: ; prompt
+PromptText:: ; prompt
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	jp z, .ok
@@ -269,16 +270,16 @@ Char58:: ; prompt
 	call ManualTextScroll
 	ld a, " "
 	Coorda 18, 16
-Char57:: ; done
+DoneText:: ; done
 	pop hl
-	ld de, Char58Text
+	ld de, PromptTextText
 	dec de
 	ret
 
-Char58Text::
+PromptTextText::
 	db "@"
 
-Char51:: ; para
+Paragraph:: ; para
 	push de
 	ld a, "▼"
 	Coorda 18, 16
@@ -293,7 +294,7 @@ Char51:: ; para
 	coord hl, 1, 14
 	jp PlaceNextChar_inc
 
-Char49::
+PageChar::
 	push de
 	ld a, "▼"
 	Coorda 18, 16
@@ -310,7 +311,8 @@ Char49::
 	push hl
 	jp PlaceNextChar_inc
 
-Char4B::
+;;;;;;;;; PureRGBnote: ADDED: new text command that allows multiple buttons to be watched while waiting on a text prompt 
+ContChar::
 	ld a, "▼"
 	Coorda 18, 16
 	call ProtectedDelay3
@@ -319,8 +321,8 @@ Char4B::
 	pop de
 	ld a, " "
 	Coorda 18, 16
-	jr Char4C.nodelay
-Char4C::	;auto-continue
+	jr AutoContChar.nodelay
+AutoContChar::	;auto-continue
 	ld c, 30			;joenote - added a frame delay when just doing auto-continue
 	call DelayFrames
 .nodelay
@@ -733,7 +735,7 @@ TextCommandJumpTable::
 	dw TextCommand_LOW           ; TX_LINE
 	dw TextCommand_PROMPT_BUTTON ; TX_BLINK
 IF DEF(_DEBUG)
-	dw Char57                    ; TX_SCROLL
+	dw DoneText                    ; TX_SCROLL
 ELSE
 	dw TextCommand_SCROLL        ; TX_SCROLL
 ENDC
