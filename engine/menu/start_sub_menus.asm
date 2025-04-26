@@ -610,7 +610,7 @@ DrawTrainerInfo:
 	call TrainerInfo_FarCopyData
 	pop bc
 	ld hl, BadgeNumbersTileGraphics  ; badge number tile patterns
-	ld de, vChars1 + $580
+	ld de, vChars1 + $480
 	call TrainerInfo_FarCopyData
 	ld hl, GymLeaderFaceAndBadgeTileGraphics  ; gym leader face and badge tile patterns
 	ld de, vChars2 + $200
@@ -620,14 +620,14 @@ DrawTrainerInfo:
 	ld hl, TextBoxGraphics
 	ld de, $00d0
 	add hl, de ; hl = colon tile pattern
-	ld de, vChars1 + $560
+	ld de, vChars1 + $460
 	ld bc, $0010
 	ld a, $04
 	push bc
 	call FarCopyData2
 	pop bc
 	ld hl, TrainerInfoTextBoxTileGraphics + $80  ; background tile pattern
-	ld de, vChars1 + $570
+	ld de, vChars1 + $470
 	call TrainerInfo_FarCopyData
 	call EnableLCD
 	ld hl, wTrainerInfoTextBoxWidthPlus1
@@ -647,7 +647,7 @@ DrawTrainerInfo:
 	coord hl, 1, 10
 	call TrainerInfo_DrawTextBox
 	coord hl, 0, 10
-	ld a, $d7
+	ld a, $c7
 	call TrainerInfo_DrawVerticalLine
 	coord hl, 19, 10
 	call TrainerInfo_DrawVerticalLine
@@ -669,12 +669,12 @@ DrawTrainerInfo:
 ;	ld de, wPlayTimeHours ; hours
 ;	lb bc, LEFT_ALIGN | 1, 3
 ;	call PrintNumber
-;	ld [hl], $d6 ; colon tile ID
+;	ld [hl], $c6 ; colon tile ID
 ;	inc hl
 ;	ld de, wPlayTimeMinutes ; minutes
 ;	lb bc, LEADING_ZEROES | 1, 2
 ;	jp PrintNumber
-	ld d, $d6
+	ld d, $c6
 	predef PrintPlayTime
 	ret
 
