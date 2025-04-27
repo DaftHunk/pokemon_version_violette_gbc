@@ -28,6 +28,8 @@ InitBattleVariables:
 	ld [wPlayerMonNumber], a
 	ld [wEscapedFromBattle], a
 	ld [wMapPalOffset], a
+	ld [wPokedexDataFlags], a
+	ld [wBattleFunctionalFlags], a
 ;	ld hl, wPlayerHPBarColor
 ;a=0=HP_BAR_GREEN
 ;	ld [hli], a ; wPlayerHPBarColor

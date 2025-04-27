@@ -99,7 +99,7 @@ ENDM
 	dict $4C, AutoContChar ; autocont
 	dict $4B, ContChar ; cont_
 	dict $51, Paragraph ; para
-;	dict $48, MultiButtonPageChar ; Bage
+	dict $48, MultiButtonPageChar ; Bage
 	dict $49, PageChar ; page
 	dict $52, PlayerChar ; player
 	dict $53, RivalChar ; rival
@@ -312,6 +312,23 @@ PageChar::
 	jp PlaceNextChar_inc
 
 ;;;;;;;;; PureRGBnote: ADDED: new text command that allows multiple buttons to be watched while waiting on a text prompt 
+MultiButtonPageChar::
+	push de
+	callfar TextCommandPromptMultiButton
+	; d = what to do after this
+	ld a, d
+	and a
+	jr nz, .exit
+	pop de
+	pop hl
+	coord hl, 1, 11
+	push hl
+	jp PlaceNextChar_inc
+.exit
+	pop de
+	jp DoneText
+;;;;;;;;;
+
 ContChar::
 	ld a, "▼"
 	Coorda 18, 16
@@ -387,6 +404,7 @@ NextTextCommand::
 	ld a, [hli]
 	cp "@" ; terminator
 	jr nz, .doTextCommand
+.NoNextTextCommand:
 	pop af
 	ld [wLetterPrintingDelayFlags], a
 	ret
@@ -394,7 +412,7 @@ NextTextCommand::
 	push hl
 	cp $17
 	jp z, TextCommand17
-	cp $0e
+	cp $10
 	jp nc, TextCommand_SOUND ; if a != 0x17 and a >= 0xE, go to command 0xB
 ; if a < 0xE, use a jump table
 	ld hl, TextCommandJumpTable
@@ -431,10 +449,16 @@ TextCommand_BOX::
 	pop hl
 	jr NextTextCommand
 
+TextCommand_START_storeFlags:
+	ld a, [wLetterPrintingDelayFlags]
+	push af
+	jr TextCommand_START_noPop
+
 ; place string inline
 ; 00{string}
 TextCommand_START::
 	pop hl
+TextCommand_START_noPop::
 	ld d, h
 	ld e, l
 	ld h, b
@@ -483,6 +507,31 @@ TextCommand_BCD::
 	ld c, l
 	pop hl
 	jr NextTextCommand
+
+; PureRGBnote: ADDED: jump to a different address in the same text bank so we can reuse text
+TextCommand_JUMP::
+	pop hl
+	hl_deref
+	push hl
+	jr TextCommand_START
+
+; PureRGBnote: ADDED: call different text in the same bank then come back
+TextCommand_CALL::
+	pop hl
+	push hl
+	hl_deref
+	ResetFlag EVENT_INTERRUPTED_TEXT
+	call TextCommand_START_storeFlags
+	ld b, h
+	ld c, l
+	pop hl
+	CheckEvent EVENT_INTERRUPTED_TEXT
+	jp nz, NextTextCommand.NoNextTextCommand
+	; inc hl twice to increment past the TX_CALL address
+	inc hl
+	inc hl
+	jp TextCommand_START_noPop ; assumes after returning from call we will do additional text
+
 
 ; repoint destination address
 ; 03AAAA
@@ -725,6 +774,19 @@ TextCommand17::
 	ld [MBC1RomBank], a
 	jp NextTextCommand
 
+NewPageButtonPressCheck::
+.waitForButtonPressLetGo
+	call Joypad
+	ldh a, [hJoyHeld]
+	and A_BUTTON | B_BUTTON
+	jr nz, .waitForButtonPressLetGo
+.waitForButtonPress
+	call Joypad
+	ldh a, [hJoyHeld]
+	and A_BUTTON | B_BUTTON
+	jr z, .waitForButtonPress
+	ret
+
 TextCommandJumpTable::
 ; entries correspond to TX_* constants (see macros/text_macros.asm)
 	dw TextCommand_START         ; TX_START
@@ -745,4 +807,6 @@ ENDC
 	dw TextCommand_SOUND         ; TX_SFX_ITEM_1 (also handles other TX_SOUND_* commands)
 	dw TextCommand_DOTS          ; TX_ELLIPSES
 	dw TextCommand_WAIT_BUTTON   ; TX_WAIT
+	dw TextCommand_JUMP          ; TX_JUMP
+	dw TextCommand_CALL          ; TX_CALL
 	; greater TX_* constants are handled directly by NextTextCommand 

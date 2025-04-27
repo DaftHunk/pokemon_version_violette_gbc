@@ -303,3 +303,5 @@ DataSnd_725b8: DATA_SND $810, $0, 11
 	db  $60                 ; rts
 	db  $EA                 ; nop
 	db  $EA                 ; nop
+
+PalPacket_Movedex:        PAL_SET PAL_PURPLEMON, 0, 0, 0

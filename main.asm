@@ -601,6 +601,8 @@ INCLUDE "engine/menu/pokedex.asm"
 INCLUDE "engine/trade.asm"
 INCLUDE "engine/intro.asm"
 INCLUDE "engine/trade2.asm"
+INCLUDE "engine/menu/movedex.asm"
+INCLUDE "data/moves/movedex_type_palettes.asm"
 
 
 SECTION "bank11",ROMX,BANK[$11]
@@ -1875,15 +1877,13 @@ INCLUDE "custom_functions/func_bag.asm"
 INCLUDE "custom_functions/func_emuchecks.asm"
 INCLUDE "engine/overworld/cut3.asm"
 INCLUDE "engine/menu/multi_choice_menu.asm"
+INCLUDE "engine/menu/text_multi_button_prompt.asm"
 INCLUDE "engine/menu/change_box_menu.asm"
 
 Reactor_GFX:       INCBIN "gfx/tilesets/reactor.2bpp"
 Reactor_Block:     INCBIN "gfx/blocksets/reactor.bst"
 Volcano_GFX:       INCBIN "gfx/tilesets/volcano.2bpp"
 Volcano_Block:     INCBIN "gfx/blocksets/volcano.bst"
-
-ExtraMenuBorderConnectors:: INCBIN "gfx/tiles/extra_menu_border_connectors.2bpp"
-FromToChangeBoxPrompt:: INCBIN "gfx/tiles/from_to_change_box_prompt.2bpp"
 
 SECTION "PARTY ICONS 1", ROMX
 MonIcons::
@@ -2092,3 +2092,40 @@ VoltorbSprite:        INCBIN "gfx/sprites/pokemons/voltorb.2bpp"
 WigglytuffSprite:     INCBIN "gfx/sprites/pokemons/wigglytuff.2bpp"
 ZapdosSprite:         INCBIN "gfx/sprites/pokemons/zapdos.2bpp"
 MewSprite:            INCBIN "gfx/sprites/pokemons/mew.2bpp"
+
+SECTION "Type Icons", ROMX
+
+NormalTypeIcon::     INCBIN "gfx/tiles/type_icons/normal.2bpp"
+FightingTypeIcon::   INCBIN "gfx/tiles/type_icons/fighting.2bpp"
+FlyingTypeIcon::     INCBIN "gfx/tiles/type_icons/flying.2bpp"
+PoisonTypeIcon::     INCBIN "gfx/tiles/type_icons/poison.2bpp"
+GroundTypeIcon::     INCBIN "gfx/tiles/type_icons/ground.2bpp"
+RockTypeIcon::       INCBIN "gfx/tiles/type_icons/rock.2bpp"
+TypelessIcon::       INCBIN "gfx/tiles/type_icons/typeless.2bpp"
+BugTypeIcon::        INCBIN "gfx/tiles/type_icons/bug.2bpp"
+GhostTypeIcon::      INCBIN "gfx/tiles/type_icons/ghost.2bpp"
+FireTypeIcon::       INCBIN "gfx/tiles/type_icons/fire.2bpp"
+WaterTypeIcon::      INCBIN "gfx/tiles/type_icons/water.2bpp"
+GrassTypeIcon::      INCBIN "gfx/tiles/type_icons/grass.2bpp"
+ElectricTypeIcon::   INCBIN "gfx/tiles/type_icons/electric.2bpp"
+PsychicTypeIcon::    INCBIN "gfx/tiles/type_icons/psychic_gbc.2bpp"
+IceTypeIcon::        INCBIN "gfx/tiles/type_icons/ice.2bpp"
+DragonTypeIcon::     INCBIN "gfx/tiles/type_icons/dragon.2bpp"
+SteelTypeIcon::      INCBIN "gfx/tiles/type_icons/steel.2bpp"
+DarkTypeIcon::       INCBIN "gfx/tiles/type_icons/dark.2bpp"
+
+SECTION "Menu Prompt Graphics", ROMX
+
+PokedexPromptGraphics::  INCBIN "gfx/tiles/prompts_pokedex.2bpp"
+PokedexPromptGraphicsEnd::
+MovedexPromptGraphics::  INCBIN "gfx/tiles/prompts_movedex.2bpp"
+MovedexPromptGraphicsEnd::
+MovedexUI::          INCBIN "gfx/tiles/movedex_ui.1bpp"
+MovedexUIEnd::
+PokedexDataUI::	INCBIN "gfx/tiles/left_right.1bpp"
+PokedexDataUIEnd::
+MapAreasUI::	INCBIN "gfx/tiles/area_type_ui.2bpp"
+MapAreasUIEnd::
+FishingWaterIcons:: INCBIN "gfx/tiles/mon_fishing_water_icons.1bpp"
+ExtraMenuBorderConnectors:: INCBIN "gfx/tiles/extra_menu_border_connectors.2bpp"
+FromToChangeBoxPrompt:: INCBIN "gfx/tiles/from_to_change_box_prompt.2bpp"

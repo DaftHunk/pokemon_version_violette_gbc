@@ -37,9 +37,6 @@ BluesHouseText1:
 .GiveMap
 	ld hl, DaisyOfferMapText
 	call PrintText
-	lb bc, TOWN_MAP, 1
-	call GiveItem
-	jr nc, .BagFull
 	ld a, HS_TOWN_MAP
 	ld [wMissableObjectIndex], a
 	predef HideObject ; hide table map object
@@ -53,9 +50,6 @@ BluesHouseText1:
 	call PrintText
 	jr .done
 
-.BagFull
-	ld hl, DaisyBagFullText
-	call PrintText
 .done
 	jp TextScriptEnd
 
@@ -70,10 +64,7 @@ DaisyOfferMapText:
 GotMapText:
 	TX_FAR _GotMapText
 	TX_SFX_KEY_ITEM
-	db "@"
-
-DaisyBagFullText:
-	TX_FAR _DaisyBagFullText
+	TX_FAR _GotMapTextHint
 	db "@"
 
 DaisyUseMapText:

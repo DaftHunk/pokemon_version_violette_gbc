@@ -155,6 +155,22 @@ SetPal_Pokedex:
 	ld de, BlkPacket_Pokedex
 	ret
 
+; PureRGBnote: ADDED: new function for setting the palette including the type icon color on the movedex data page
+SetPal_Movedex:
+	ld hl, PalPacket_Movedex
+	ld de, wPalPacket
+	ld bc, $10
+	call CopyData
+	ld a, [wcf91]
+	ld d, a
+	callfar GetTypePalette
+	ld a, d
+	ld hl, wPalPacket + 3
+	ld [hl], a
+	ld hl, wPalPacket
+	ld de, BlkPacket_Pokedex
+	ret
+
 SetPal_Slots:
 	ld hl, PalPacket_Slots
 	ld de, BlkPacket_Slots
@@ -371,6 +387,7 @@ SetPalFunctions:
 	dw SetPal_PokemonWholeScreen
 	dw SetPal_GameFreakIntro
 	dw SetPal_TrainerCard
+	dw SetPal_Movedex
 	;gbctest - adding packets from yellow
 	dw SendUnknownPalPacket_7205d
 	dw SendUnknownPalPacket_72064

@@ -247,5 +247,56 @@ MACRO hl_deref
 	ld l, a
 ENDM
 
+MACRO hl_deref_reverse
+	IF _NARG > 0
+		ld hl, \1 + 1
+	ENDC
+	ld a, [hld]
+	ld h, [hl]
+	ld l, a
+ENDM
+
 DEF tiles EQUS "* LEN_2BPP_TILE"
 DEF tile  EQUS "+ LEN_2BPP_TILE *"
+
+MACRO _redef_current_label
+	IF DEF(\1)
+		PURGE \1
+	ENDC
+	IF _NARG == 3 + (\3)
+		DEF \1 EQUS "\<_NARG>"
+	ELIF DEF(..)
+		IF .. - @ == 0
+			DEF \1 EQUS "{..}"
+		ENDC
+	ELIF DEF(.)
+		if . - @ == 0
+			DEF \1 EQUS "{.}"
+		ENDC
+	ENDC
+	if !DEF(\1)
+		DEF \1 EQUS \2
+		{\1}:
+	ENDC
+ENDM
+
+MACRO table_width
+	DEF CURRENT_TABLE_WIDTH = \1
+	_redef_current_label CURRENT_TABLE_START, "._table_width\@", 2, \#
+ENDM
+
+MACRO assert_table_length
+	DEF x = \1
+	ASSERT x * CURRENT_TABLE_WIDTH == @ - {CURRENT_TABLE_START}, \
+		"{CURRENT_TABLE_START}: expected {d:x} entries, each {d:CURRENT_TABLE_WIDTH} bytes"
+ENDM
+
+MACRO assert_max_table_length
+	DEF x = \1
+	ASSERT x * CURRENT_TABLE_WIDTH >= @ - {CURRENT_TABLE_START}, \
+		"{CURRENT_TABLE_START}: expected a maximum of {d:x} entries, each {d:CURRENT_TABLE_WIDTH} bytes"
+ENDM
+
+MACRO vc_hook
+	.VC_\1::
+ENDM

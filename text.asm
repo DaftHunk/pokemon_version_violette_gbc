@@ -3452,3 +3452,7 @@ INCLUDE "text/move_names.asm"
 SECTION "Item Descriptions", ROMX
 
 INCLUDE "text/item_descriptions.asm"
+
+SECTION "Movedex Text", ROMX
+
+INCLUDE "data/moves/movedex_text.asm"
