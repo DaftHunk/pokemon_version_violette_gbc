@@ -62,12 +62,12 @@ DisplayChangeBoxMenu:
 	Coorda 6, 4 
 	Coorda 6, 12
 	ld de, 1
-	ld b, $C8 ; start of FROM prompt
-	ld c, 3
+	ld b, $CB ; start of FROM prompt
+	ld c, 2
 	coord hl, 1, 0
 	call DrawTileLineIncrement
-	ld b, $CB ; start of TO prompt
-	ld c, 2
+	ld b, $C8 ; start of TO prompt
+	ld c, 3
 	coord hl, 7, 0
 	call DrawTileLineIncrement
 
