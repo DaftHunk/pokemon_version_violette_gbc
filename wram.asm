@@ -3170,7 +3170,7 @@ wWhichDungeonWarp:: ; d71e
 ; which dungeon warp within the source map was used
 	ds 1
 
-wUnusedD71F:: ; d71f	;joenote - used as a backup address for the wDamage value (2 bytes)
+wDamageIntention:: ; d71f	;joenote - used as a backup address for the wDamage value (2 bytes)
 	ds 1
 wSpinnerTileFrameCount::	;d720	;joenote - used as a counter for the spinner tiles out of battle
 	ds 1							

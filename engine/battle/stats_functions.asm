@@ -632,4 +632,5 @@ HighCriticalMoves:
 	db RAZOR_LEAF
 	db CRABHAMMER
 	db SLASH
+	db RAZOR_WIND
 	db $FF

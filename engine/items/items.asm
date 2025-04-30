@@ -1805,7 +1805,7 @@ ItemUseXAccuracy:
 ItemUseCardKey:
 	jp ItemUseNotTime
 ;	xor a
-;	ld [wUnusedD71F], a
+;	ld [wDamageIntention], a
 ;	call GetTileAndCoordsInFrontOfPlayer
 ;	;ld a, [GetTileAndCoordsInFrontOfPlayer]
 ;	ld a, [wTileInFrontOfPlayer]	;load from the correct ram address
@@ -1838,7 +1838,7 @@ ItemUseCardKey:
 ;	cp e
 ;	jr nz, .nextEntry3
 ;	ld a, [hl]
-;	ld [wUnusedD71F], a
+;	ld [wDamageIntention], a
 ;	jr .done
 ;.nextEntry1
 ;	inc hl
