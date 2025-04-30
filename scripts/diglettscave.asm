@@ -109,7 +109,7 @@ _TXTBookP2:
 	
 _TXTBookP3:
 	text "Il parait que la"
-	line "Pierre Brume peux"
+	line "Pierre Brume peut"
 	cont "libérer le"
 	cont "potentiel caché"
 	cont "d'un #mon."
@@ -127,7 +127,7 @@ _TXTBookP3:
 	
 _TXTMist_Stone:
 	text "Sous le journal"
-	line "pourri se trouve"
+	line "moisi se trouve"
 	cont "une petite"
 	cont "crevasse dans"
 	cont "le sol."

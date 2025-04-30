@@ -194,7 +194,7 @@ MagikarpSalesmanText_DragonRageKarp:
 	line "de son Magicarpe?"
 	para "Je peux lui"
 	line "apprendre Draco"
-	cont "Rage pour ¥5000!"
+	cont "Rage pour 5000¥!"
 	cont "Qu'en dis-tu?"
 	done
 	db "@"	
@@ -262,16 +262,16 @@ MagikarpSalesmanText_PayDayRapidashOrFearow:
 	ld hl, MagikarpSalesmanText_Thanks
 	jp MagikarpSalesmanText.printText
 .Text1
-	text "Homme: Tu veux te"
-	line "faire de l'argent"
-	cont "avec ton"
-	cont "@?"
+	text "Homme: Tu veux"
+	line "te faire de l'"
+	cont "argent avec ton"
+	cont "@"
 	TX_RAM wcd6d
-	db $0
-	para "Je peux lui"
-	line "apprendre la"
-	cont "compétence Jackpot"
-	cont "pour juste ¥1000!"
+	text "?"
+	para "Je peux lui appr-"
+	line "endre la compét-"
+	cont "ence Jackpot"
+	cont "pour juste 1000¥!"
 	cont "T'en dit quoi?"
 	done
 	db "@"
@@ -308,7 +308,7 @@ MagikarpSalesmanText_FlyingPikachu:
 	jp nz, MagikarpSalesmanText.choseNo
 	ld [hMoney], a
 	ld [hMoney + 2], a
-	ld a, $20
+	ld a, $90
 	ld [hMoney + 1], a
 	call HasEnoughMoney
 	jr nc, .enoughMoney
@@ -325,7 +325,7 @@ MagikarpSalesmanText_FlyingPikachu:
 	xor a
 	ld [wPriceTemp], a
 	ld [wPriceTemp + 2], a
-	ld a, $20
+	ld a, $90
 	ld [wPriceTemp + 1], a
 	ld hl, wPriceTemp + 2
 	ld de, wPlayerMoney + 2
@@ -342,13 +342,16 @@ MagikarpSalesmanText_FlyingPikachu:
 	ld hl, MagikarpSalesmanText_Thanks
 	jp MagikarpSalesmanText.printText
 .Text1
-	text "MAN: Tu as déjà vu"
-	line "un Pikachu volant?"
-	para "Je peux lui"
-	line "apprendre Vol pour"
-	cont "la minuscule somme"
-	cont "de ¥2000!"
-	cont "Ca te tente?"
+	text "Homme: Tu as déjà"
+	line "vu un Pikachu"
+	cont "volant?"
+
+	para "Je peux lui appr-"
+	line "endre Vol pour la"
+	cont "minuscule somme"
+	cont "de 9000¥!"
+	
+	para "Ca te tente?"
 	done
 	db "@"
 

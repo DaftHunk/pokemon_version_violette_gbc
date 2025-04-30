@@ -26,7 +26,6 @@ _MagikarpSalesmanText1::
 
 	para "Je t'offre une"
 	line "Magicarpe pour"
-;	cont "juste ¥500!"	tournenote - fix ¥ position
 	cont "juste 500¥!"
 	cont "Qu'en dis-tu?"
 	done
@@ -45,6 +44,15 @@ _MagikarpSalesmanNoMoneyText::
 _MagikarpSalesmanText2::
 	text "Ni repris,"
 	line "ni échangé!"
+
+	para "Par contre, si"
+	line "tu me ramènes"
+	cont "un Galopa,"
+	cont "un Rapasdepic ou"
+	cont "un Magicarpe,"
+
+	para "je te proposerai"
+	line "un plan d'enfer!"
 	done
 
 _MtMoonPokecenterText5::

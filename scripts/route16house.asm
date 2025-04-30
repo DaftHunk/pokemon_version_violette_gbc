@@ -66,6 +66,8 @@ CheckFearowTutor:
 	jr z, .next
 	ret
 .next
+	call .printTextStart
+
 	xor a
 	ld [wWhichPokemon], a
 
@@ -84,7 +86,7 @@ CheckFearowTutor:
 	ld [wPokedexNum], a
 	
 	callba CheckIfMoveIsKnown
-	jr c, .finish
+	jr c, .printTextEnd
 
 	ld hl, wFlags_D733
 	set 6, [hl]
@@ -94,14 +96,29 @@ CheckFearowTutor:
 	res 6, [hl]
 	ld a, b
 	and a
-	ret z	
-.finish
-	ld hl, .Text1
+	ret z
+.printTextEnd
+	ld hl, .textEnd
 	call PrintText
 	ret
-.Text1
-	text "Rapasdepic"
-	line "s'élance dans"
-	cont "tous les sens."
+.textEnd
+	text "Vrivri s'élance"
+	line "joyeusement dans"
+	cont "tous les sens!"
+	done
+	db "@"
+.printTextStart
+	ld hl, .textStart
+	call PrintText
+	ret
+.textStart
+	text "Vrivri et votre"
+	line "#mon jouent"
+	cont "ensemble!"
+
+	para "Tiens? On dirait"
+	line "qu'elle veut lui"
+	cont "montrer quelque"
+	cont "chose..."
 	done
 	db "@"

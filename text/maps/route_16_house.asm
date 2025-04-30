@@ -19,7 +19,19 @@ _HM02ExplanationText::
 	cont "de revenir dans"
 	cont "une ville."
 
-	para "Bien pratique!"
+	para "Pas un mot! J'ai"
+	line "enfin trouvé un"
+	cont "endroit où pers-"
+	cont "onne ne vient"
+	cont "nous déranger."
+
+	para "Je suis juste un"
+	line "peu triste pour"
+	cont "Vrivri."
+	
+	para "Elle avait un co-"
+	line "pain Roucoups où"
+	cont "on était avant..."
 	done
 
 _HM02NoRoomText::
@@ -28,6 +40,8 @@ _HM02NoRoomText::
 	done
 
 _Route16HouseText_1e652::
-	text "Rapasdepic:"
+	text "Vrivri:"
 	line "Piiiiiik!"
+	cont "Elle semble"
+	cont "s'ennuyer..."
 	done

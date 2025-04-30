@@ -1,10 +1,7 @@
-;joenote - add secret cave for mist_stone with associated warps
 Route13Object:
 	db $43 ; border block
 
-;	db 0 ; warps
-	db 1 ; warps
-	warp 58, 15, 2, DIGLETTS_CAVE
+	db 0 ; warps
 
 	db 3 ; signs
 	sign 15, 13, 11 ; Route13Text11
@@ -22,7 +19,3 @@ Route13Object:
 	object SPRITE_FOULARD_WOMAN, 32, 6, STAY, DOWN, 8, OPP_BEAUTY, 5
 	object SPRITE_BIKER, 10, 7, STAY, UP, 9, OPP_BIKER, 1
 	object SPRITE_BLACK_HAIR_BOY_1, 7, 13, STAY, UP, 10, OPP_BIRD_KEEPER, 3
-
-	; warp-to
-	warp_to 58, 15, ROUTE_13_WIDTH
-	
