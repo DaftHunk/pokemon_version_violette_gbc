@@ -1,174 +1,174 @@
 ; PureRGBnote: ADDED: used to alphabetically order the movedex
 MovedexOrder:
 	table_width 1, MovedexOrder
-	db ABSORB
-	db ACID
-	db ACID_ARMOR
-	db AGILITY
-	db AMNESIA
-	db AURORA_BEAM
-	db BARRAGE
-	db BARRIER
-	db BIDE
-	db BIND
-	db BITE
-	db BLIZZARD
-	db BODY_SLAM
-	db BONE_CLUB
-	db BONEMERANG
-	db BUBBLE
-	db BUBBLEBEAM
-	db CLAMP
-	db COMET_PUNCH
-	db CONFUSE_RAY
-	db CONFUSION
-	db CONVERSION
-	db CRABHAMMER
-	db CUT
-	db DEFENSE_CURL
-	db DIG
-	db DISABLE
-	db DIZZY_PUNCH
-	db DOUBLE_KICK
-	db DOUBLESLAP
-	db DOUBLE_TEAM
-	db DOUBLE_EDGE
-	db DRAGON_RAGE
-	db COUNTER ; DRAIN PUNCH 
-	db DREAM_EATER
-	db DRILL_PECK
-	db FURY_SWIPES ; DUST_CLAW 
-	db EARTHQUAKE
-	db EGG_BOMB
-	db EMBER
-	db EXPLOSION
-	db SLAM ; FILTHY_SLAM 
-	db FIRE_BLAST
-	db FIRE_PUNCH
-	db FIRE_SPIN
-	db KINESIS ; FIREWALL
-	db FISSURE
-	db FLAMETHROWER
-	db FLASH
-	db FLY
-	db FOCUS_ENERGY
-	db FURY_ATTACK
-	db GLARE
-	db GROWL
-	db GROWTH
-	db GUILLOTINE
-	db GUST
-	db HARDEN
-	db HAZE
-	db HEADBUTT
-	db TAKE_DOWN ; HEAT_RUSH
-	db HI_JUMP_KICK
-	db HORN_ATTACK
-	db HORN_DRILL
-	db HYDRO_PUMP
-	db HYPER_BEAM
-	db HYPER_FANG
-	db HYPNOSIS
-	db ICE_BEAM
-	db ICE_PUNCH
-	db JUMP_KICK
-	db KARATE_CHOP
-	db LEECH_LIFE
-	db LEECH_SEED
-	db LEER
-	db LICK
-	db LIGHT_SCREEN
-	db LOVELY_KISS
-	db LOW_KICK
-	db MEDITATE
-	db MEGA_DRAIN
-	db MEGA_KICK
-	db MEGA_PUNCH
-	db METRONOME
-	db MIMIC
-	db MINIMIZE
-	db MIRROR_MOVE
-	db MIST
-	db NIGHT_SHADE
-	db PAY_DAY
-	db PECK
-	db PETAL_DANCE
-	db PIN_MISSILE
-	db POISON_GAS
-	db POISONPOWDER
-	db POISON_STING
-	db POUND
-	db PSYBEAM
-	db PSYCHIC_M
-	db PSYWAVE
-	db QUICK_ATTACK
-	db RAGE
-	db RAZOR_LEAF
-	db RECOVER
-	db REFLECT
-	db REST
-	db ROAR
-	db ROCK_SLIDE
-	db ROCK_THROW
-	db ROLLING_KICK
-	db RAZOR_WIND ; ROOST 
-	db SAND_ATTACK
-	db SCRATCH
-	db SCREECH
-	db SEISMIC_TOSS
-	db SELFDESTRUCT
-	db SHARPEN
-	db SING
-	db SKULL_BASH
-	db SKY_ATTACK
-	db SLASH
-	db SLEEP_POWDER
-	db SLUDGE
-	db SMOG
-	db SMOKESCREEN
-	db SOFTBOILED
-	db SOLARBEAM
-	db SONICBOOM
-	db SPIKE_CANNON
-	db SPLASH
-	db SPORE
-	db CONSTRICT ; STATIC_SNAG
-	db STOMP
-	db STRENGTH
-	db STRING_SHOT
-	db STRUGGLE
-	db STUN_SPORE
-	db SUBMISSION
-	db SUBSTITUTE
-	db SUPER_FANG
-	db SUPERSONIC
-	db SURF
-	db SWIFT
-	db SWORDS_DANCE
-	db TACKLE
-	db TAIL_WHIP
-	db TELEPORT
-	db THRASH
-	db THUNDER
-	db THUNDERBOLT
-	db THUNDERPUNCH
-	db THUNDERSHOCK
-	db THUNDER_WAVE
-	db TOXIC
-	db TRANSFORM
-	db TRI_ATTACK
-	db TWINEEDLE
-	db VINE_WHIP
-	db VICEGRIP
-	db WATER_GUN
-	db WATERFALL
-	db WHIRLWIND
-	db WING_ATTACK
-	db WITHDRAW
-	db WRAP
-	db SLUDGE_BOMB
-	db PURSUIT
-	db CRUNCH
-	db METAL_CLAW
-	db IRON_TAIL
+	db FISSURE      ; 5a
+	db ACID_ARMOR   ; 97
+	db ACID         ; 33
+	db CONVERSION   ; a0
+	db SHARPEN      ; 9f
+	db AMNESIA      ; 85
+	db HARDEN       ; 6a
+	db LOW_KICK     ; 43
+	db DRILL_PECK   ; 41
+	db TAKE_DOWN    ; 24
+	db SING         ; 2f
+	db BLIZZARD     ; 3b	
+	db SLUDGE_BOMB  ; a5 ; dafthunk #46
+	db EGG_BOMB     ; 79
+	db BARRIER      ; 70
+	db DEFENSE_CURL ; 6f
+	db SMOKESCREEN  ; 6c
+	db HAZE         ; 72
+	db MIST         ; 36
+	db BUBBLEBEAM   ; 3d
+	db THUNDER_WAVE ; 56
+	db WATERFALL    ; 7f
+	db TACKLE       ; 21
+	db CONFUSION    ; 5d
+	db CLAMP        ; 80
+	db SUBSTITUTE   ; a4
+	db FURY_SWIPES  ; 9a
+	db CONSTRICT    ; 84
+	db MIMIC        ; 66
+	db SKULL_BASH   ; 82
+	db HEADBUTT     ; 1d
+	db CUT          ; 0f
+	db RAZOR_WIND   ; 0d
+	db SUPER_FANG   ; a2
+	db HYPER_FANG   ; 9e
+	db GROWTH       ; 4a
+	db WING_ATTACK  ; 11
+	db WHIRLWIND    ; 12
+	db DOUBLE_EDGE  ; 26
+	db PETAL_DANCE  ; 50
+	db SWORDS_DANCE ; 0e	
+	db FIRE_SPIN    ; 53
+	db PIN_MISSILE  ; 2a
+	db POISON_STING ; 28
+	db FIRE_BLAST   ; 7e
+	db SELFDESTRUCT ; 78
+	db SLUDGE       ; 7c
+	db DREAM_EATER  ; 8a
+	db DOUBLE_KICK  ; 18
+	db TWINEEDLE    ; 29
+	db DRAGON_RAGE  ; 52
+	db SOFTBOILED   ; 87
+	db ROCK_SLIDE   ; 9d
+	db THUNDERSHOCK ; 54
+	db POUND        ; 01
+	db STOMP        ; 17
+	db BUBBLE       ; 91
+	db HORN_DRILL   ; 20
+	db DISABLE      ; 32
+	db BIND         ; 14
+	db EXPLOSION    ; 99
+	db THUNDER      ; 57
+	db EMBER        ; 34
+	db FLASH        ; 94
+	db STRENGTH     ; 46
+	db VICEGRIP     ; 0b
+	db VINE_WHIP    ; 16
+	db SEISMIC_TOSS ; 45
+	db RAGE         ; 63
+	db FURY_ATTACK  ; 1f
+	db POISON_GAS   ; 8b
+	db SCRATCH      ; 0a	
+	db METAL_CLAW   ; a8 ; dafthunk #20
+	db SCREECH      ; 67
+	db LOVELY_KISS  ; 8e
+	db LEER         ; 2b
+	db GUILLOTINE   ; 0c
+	db AGILITY      ; 61
+	db ROAR         ; 2e
+	db HYDRO_PUMP   ; 38
+	db HYPNOSIS     ; 5f
+	db GLARE        ; 89
+	db PAY_DAY      ; 06
+	db SAND_ATTACK  ; 1c
+	db ROCK_THROW   ; 58
+	db HORN_ATTACK  ; 1e
+	db FLAMETHROWER ; 35
+	db SOLARBEAM    ; 4c
+	db ICE_BEAM     ; 3a
+	db LICK         ; 7a
+	db WRAP         ; 23
+	db MINIMIZE     ; 6b
+	db STRUGGLE	
+	db CRUNCH       ; a7 ; dafthunk #20
+	db THRASH       ; 25
+	db BONE_CLUB    ; 7d
+	db ROLLING_KICK ; 1b
+	db MEGA_DRAIN   ; 48
+	db SWIFT        ; 81
+	db METRONOME    ; 76
+	db TAIL_WHIP    ; 27
+	db MIRROR_MOVE  ; 77
+	db TRANSFORM    ; 90
+	db BITE         ; 2c
+	db LIGHT_SCREEN ; 71
+	db AURORA_BEAM  ; 3e
+	db CONFUSE_RAY  ; 6d
+	db BONEMERANG   ; 9b
+	db STUN_SPORE   ; 4e
+	db BIDE         ; 75
+	db SPIKE_CANNON ; 83
+	db PECK         ; 40
+	db JUMP_KICK    ; 1a
+	db HI_JUMP_KICK ; 88
+	db BARRAGE      ; 8c
+	db CRABHAMMER   ; 98
+	db SKY_ATTACK   ; 8f
+	db WATER_GUN    ; 37
+	db BODY_SLAM    ; 22
+	db COMET_PUNCH  ; 04
+	db FIRE_PUNCH   ; 07
+	db THUNDERPUNCH ; 09
+	db KARATE_CHOP  ; 02
+	db ICE_PUNCH    ; 08
+	db SLEEP_POWDER ; 4f
+	db POISONPOWDER ; 4d	
+	db PURSUIT      ; a6 ; dafthunk #20
+	db REFLECT      ; 73
+	db PSYCHIC_M    ; 5e
+	db FOCUS_ENERGY ; 74
+	db SMOG         ; 7b	
+	db IRON_TAIL    ; a9 ; dafthunk #20
+	db PSYBEAM      ; 3c
+	db DOUBLE_TEAM  ; 68
+	db WITHDRAW     ; 6e
+	db REST         ; 9c
+	db COUNTER      ; 44
+	db GROWL        ; 2d
+	db SUBMISSION   ; 42
+	db STRING_SHOT  ; 51
+	db EARTHQUAKE   ; 59
+	db RECOVER      ; 69
+	db SONICBOOM    ; 31
+	db SLAM         ; 15
+	db SPORE        ; 93
+	db SURF         ; 39
+	db KINESIS      ; 86
+	db TELEPORT     ; 64
+	db NIGHT_SHADE  ; 65
+	db THUNDERBOLT  ; 55
+	db DOUBLESLAP   ; 03
+	db GUST         ; 10
+	db TOXIC        ; 5c
+	db RAZOR_LEAF   ; 4b
+	db SLASH        ; a3
+	db SPLASH       ; 96
+	db TRI_ATTACK   ; a1
+	db DIG          ; 5b
+	db MEGA_PUNCH   ; 05
+	db MEGA_KICK    ; 19
+	db HYPER_BEAM   ; 3f
+	db SUPERSONIC   ; 30
+	db DIZZY_PUNCH  ; 92
+	db PSYWAVE      ; 95
+	db LEECH_SEED   ; 49
+	db LEECH_LIFE   ; 8d
+	db QUICK_ATTACK ; 62
+	db FLY          ; 13
+	db ABSORB       ; 47
+	db MEDITATE     ; 60	
 	assert_table_length NUM_ATTACKS + 1
