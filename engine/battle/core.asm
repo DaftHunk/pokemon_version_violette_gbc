@@ -1744,6 +1744,10 @@ TryRunningFromBattle:
 	dec a
 .playSound
 	ld [wBattleResult], a
+;;;;;;;;;; PureRGBnote: ADDED: set the flag that makes the animation code mark this move as seen in the movedex
+	ld hl, wBattleFunctionalFlags
+	set 1, [hl] ; indicates we ran from battle rather than caught the pokemon
+;;;;;;;;;;
 	ld a, SFX_RUN
 	call PlaySoundWaitForCurrent
 	ld hl, GotAwayText
@@ -3495,6 +3499,10 @@ playPlayerMoveAnimation:
 	pop af
 	ld [wAnimationType], a
 	ld a, [wPlayerMoveNum]
+;;;;;;;;;; PureRGBnote: ADDED: set the flag that makes the animation code mark this move as seen in the movedex
+	ld hl, wBattleFunctionalFlags
+	set 0, [hl]
+;;;;;;;;;;
 	call PlayMoveAnimation
 	call HandleExplodingAnimation
 	call DrawPlayerHUDAndHPBar
@@ -4188,7 +4196,7 @@ PrintMoveFailureText:
 	;ld hl, wDamage ; since the move missed, wDamage will always contain 0 at this point.
 	                ; Thus, recoil damage will always be equal to 1
 	                ; even if it was intended to be potential damage/8.
-	ld hl, wUnusedD71F ;joenote - threatened damage now gets put in this address on a miss.
+	ld hl, wDamageIntention ;joenote - threatened damage now gets put in this address on a miss.
 						;This should fix the issue with the proper recoil damage
 	ld a, [hli]
 	ld b, [hl]
@@ -5465,6 +5473,10 @@ MetronomePickMove:
 	xor a
 	ld [wAnimationType], a
 	ld a, METRONOME
+;;;;;;;;;; PureRGBnote: ADDED: set the flag that makes the animation code mark this move as seen in the movedex
+	ld hl, wBattleFunctionalFlags
+	set 0, [hl] ; metronome will be marked off on the movedex
+;;;;;;;;;;
 	call PlayMoveAnimation ; play Metronome's animation
 ; values for player turn
 	ld de, wPlayerMoveNum
@@ -6047,9 +6059,9 @@ MoveHitTest:
 	ret
 .moveMissed
 ;;;;;;;;;;;;;;;;;;;;
-;joenote - if a move misses, store the damage it threatened into wUnusedD71F.
+;joenote - if a move misses, store the damage it threatened into wDamageIntention.
 ;this is so the Jump Kick effect works correctly
-	ld hl, wUnusedD71F
+	ld hl, wDamageIntention
 	ld a, [wDamage]
 	ld [hli], a
 	ld a, [wDamage + 1]
@@ -6321,6 +6333,10 @@ playEnemyMoveAnimation:
 	pop af
 	ld [wAnimationType], a
 	ld a, [wEnemyMoveNum]
+;;;;;;;;;; PureRGBnote: ADDED: set the flag that makes the animation code mark this move as seen in the movedex
+	ld hl, wBattleFunctionalFlags
+	set 0, [hl]
+;;;;;;;;;;
 	call PlayMoveAnimation
 	call HandleExplodingAnimation
 	call DrawEnemyHUDAndHPBar

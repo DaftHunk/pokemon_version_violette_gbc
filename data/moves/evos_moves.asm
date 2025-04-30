@@ -972,7 +972,6 @@ MisdreavusEvosMoves:
 	db 21, NIGHT_SHADE
 	db 27, PSYBEAM
 	db 30, HYPNOSIS
-	db 39, DREAM_EATER
 	db 0
 
 LarvitarEvosMoves:

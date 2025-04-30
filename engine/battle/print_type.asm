@@ -94,3 +94,12 @@ PrintMonType_StatusScreen:
 	jp PrintType
 	
 INCLUDE "text/type_names.asm"
+
+; PureRGBnote: ADDED: version of this subroutine that can be called from other banks
+; de = destination address
+; wPlayerMoveType = type
+FarPrintType:
+	ld h, d
+	ld l, e
+	ld a, [wPlayerMoveType]
+	jp PrintType

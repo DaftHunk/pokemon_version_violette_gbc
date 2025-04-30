@@ -910,8 +910,6 @@ wBoxMonCounts:: ; cd3d
 ; 12 bytes
 ; array of the number of mons in each box
 
-wDexMaxSeenMon:: ; cd3d
-
 wPPRestoreItem:: ; cd3d
 
 wWereAnyMonsAsleep:: ; cd3d
@@ -1350,7 +1348,11 @@ wHPBarDelta:: ; ceef
 wHPBarTempHP:: ; cef0
 	ds 2
 
-	ds 11
+wDexMaxSeenMove::
+wDexMaxSeenMon::
+	ds 2
+
+	ds 9
 
 wHPBarHPDifference:: ; cefd
 	ds 1
@@ -1492,7 +1494,11 @@ wcf4b:: ds 2 ; storage buffer for various strings
 wGainBoostedExp:: ; cf4d
 	ds 1
 
-	ds 17
+wDexMinSeenMon::
+wDexMinSeenMove:: 
+	ds 2
+
+	ds 15
 
 wGymCityName:: ; cf5f
 	ds 17
@@ -1500,8 +1506,17 @@ wGymCityName:: ; cf5f
 wGymLeaderName:: ; cf70
 	ds NAME_LENGTH
 
-wItemList:: ; cf7b
-	ds 16
+UNION
+
+ds 16
+
+NEXTU
+
+wStoredMovedexListIndex:: db 
+wItemList:: db ; cf7b
+; 7 unused bytes left
+;;;;;;;;;;
+ENDU
 
 wListPointer:: ; cf8b
 	ds 2
@@ -2210,26 +2225,21 @@ wFirstMonsNotOutYet:: ; d11d
 ; which will be the first mon sent out.
 	ds 1
 
-wPokeBallCaptureCalcTemp:: ; d11e
-
+wNumSetBits::
+wTypeEffectiveness::
+wMoveType::
+wPokedexNum:: 
+; used as a Pokemon and Item storage value. Also used as an output value for CountSetBits
+wMovedexMoveID::
+wUsingPPUp::
+wMaxPP::
+; 0 for player, non-zero for enemy
+wCalculateWhoseStats::
+wPokeBallCaptureCalcTemp::
 ; lower nybble: number of shakes
 ; upper nybble: number of animations to play
 wPokeBallAnimData:: ; d11e
-
-wUsingPPUp:: ; d11e
-
-wMaxPP:: ; d11e
-
-; 0 for player, non-zero for enemy
-wCalculateWhoseStats:: ; d11e
-
-wTypeEffectiveness:: ; d11e
-
-wMoveType:: ; d11e
-
-wNumSetBits:: ; d11e
-
-wPokedexNum:: ds 1 ; used as a Pokemon and Item storage value. Also used as an output value for CountSetBits
+	db
 
 wForcePlayerToChooseMon:: ; d11f
 ; When this value is non-zero, the player isn't allowed to exit the party menu
@@ -2760,7 +2770,7 @@ wTilesetTalkingOverTiles:: ; d532
 wGrassTile:: ; d535
 	ds 1
 
-	ds 4
+	ds 1
 
 wNumBoxItems:: ; d53a
 	ds 1
@@ -2791,8 +2801,6 @@ wMissableObjectFlags:: ; d5a6
 ; bit array of missable objects. set = removed
 	ds 32
 wMissableObjectFlagsEnd::
-
-	ds 7
 
 wd5cd:: ds 1 ; temp copy of c1x2 (sprite facing/anim)
 
@@ -3021,8 +3029,6 @@ wVolcano1FCurScript:: ; d670
 wVolcanoB1FCurScript:: ; d670
 wVolcanoB2FCurScript:: ; d670
 	ds 1
-;usused space
-	ds 2
 wTempFieldMoveSLots::	;joenote - for field move slot
 	ds 6
 wBagBackupSpace::	;joenote - added to expand the bag space (62 bytes long)
@@ -3052,7 +3058,25 @@ wBGPPalsBuffer::
 wUpdateGBCPal_Index::
 	ds 1
 
-	ds 4
+;;; PureRGBnote: ADDED: new properties in this previously empty space
+; bit 0 = set to 1 when we should mark a move as seen in the movedex flags on showing its animation, 0 otherwise
+; bit 1 = set if we ran from battle
+; bit 2-7 = unused
+wBattleFunctionalFlags:: db
+
+;;;;; PureRGBnote: CHANGED: this property is also used in the pokedex for some flags.
+;;;;; bit 0 -> How we're displaying pokedex data. 0 = internal (from the pokedex), 1 = external (from dialog)
+;;;;; bit 1 -> Which sprite is currently displayed on a pokedex data page. 0 = front sprite, 1 = back sprite 
+;;;;; bit 2 -> used to indicate whether we're in the pokedex data page or not
+wPokedexDataFlags::
+;;;;; PureRGBnote: CHANGED: this property is also used in the "AREA" option in the pokedex for indicating which states are available for a pokemon
+;;;;; bit 0 -> pokemon has old rod locations
+;;;;; bit 1 -> pokemon has good rod locations in fresh water areas
+;;;;; bit 2 -> pokemon has good rod locations in salt water areas
+;;;;; bit 3 -> pokemon has super rod locations
+;;;;; bit 4 -> pokemon has grass / cave / building locations
+;;;;; bit 5 -> pokemon has surfing locations
+wTownMapAreaTypeFlags:: db
 
 wObtainedHiddenItemsFlags::
 	ds 14
@@ -3069,7 +3093,16 @@ wWalkBikeSurfState:: ; d700
 wSum:: ; a temp store for 16 bit values created by addition, used with PrintNumber to display the sum on screen
 	ds 2
 
-	ds 8
+UNION
+
+ds 22 ; 22 of the 42 bytes of space are alotted to movedex seen flags
+
+NEXTU
+
+wMovedexSeen:: flag_array NUM_ATTACKS ; PureRGBnote: ADDED: flags for the movedex, uses all 22 bytes
+wMovedexSeenEnd::
+
+ENDU
 
 wTownVisitedFlag:: ; d70b
 	flag_array 13
@@ -3137,7 +3170,7 @@ wWhichDungeonWarp:: ; d71e
 ; which dungeon warp within the source map was used
 	ds 1
 
-wUnusedD71F:: ; d71f	;joenote - used as a backup address for the wDamage value (2 bytes)
+wDamageIntention:: ; d71f	;joenote - used as a backup address for the wDamage value (2 bytes)
 	ds 1
 wSpinnerTileFrameCount::	;d720	;joenote - used as a counter for the spinner tiles out of battle
 	ds 1							

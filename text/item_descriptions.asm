@@ -118,22 +118,22 @@ _HPUpDescription::
 	prompt
 
 _ProteinDescription::
-	text "Augmente l'ATQ"
+	text "Augmente l'Atq"
 	next "d'un #mon."
 	prompt
 
 _IronDescription::
-	text "Augmente la FOR"
+	text "Augmente la For"
 	next "d'un #mon."
 	prompt
 
 _CarbosDescription::
-	text "Augmente la VIT"
+	text "Augmente la Vit"
 	next "d'un #mon."
 	prompt
 
 _CalciumDescription::
-	text "Augmente le SPE"
+	text "Augmente le Spé"
 	next "d'un #mon."
 	prompt
 
@@ -158,7 +158,7 @@ _BikeVoucherDescription::
 	prompt
 
 _XAccuracyDescription::
-	text "Augmente la PRE"
+	text "Augmente la Pré"
 	next "pour un combat."
 	prompt
 
@@ -208,7 +208,7 @@ _MaxRepelDescription::
 	prompt
 
 _DireHitDescription::
-	text "Augmente les CRIT"
+	text "Augmente les Crit"
 	next "pour un combat."
 	prompt
 
@@ -238,22 +238,22 @@ _GoldTeethDescription::
 	prompt
 
 _XAttackDescription::
-	text "Augmente l'ATQ"
+	text "Augmente l'Atq"
 	next "pour un combat."
 	prompt
 
 _XDefendDescription::
-	text "Augmente la DEF"
+	text "Augmente la Déf"
 	next "pour un combat."
 	prompt
 
 _XSpeedDescription::
-	text "Augmente la VIT"
+	text "Augmente la Vit"
 	next "pour un combat."
 	prompt
 
 _XSpecialDescription::
-	text "Augmente le SPE"
+	text "Augmente le Spé"
 	next "pour un combat."
 	prompt
 

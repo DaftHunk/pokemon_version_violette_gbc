@@ -558,6 +558,18 @@ _NewBicycleText::
 _PushStartText::
 	text "START et...paf!"
 	line "V'là le Menu!"
+
+	;joenote - add hotkey info
+	para "Vous pouvez"
+	line "passer d'un sac"
+	cont "à l'autre avec"	
+	cont "START dans le"
+	cont "menu Objets."
+
+	para "Vous pouvez aussi"
+	line "trier les objets"
+	cont "en maintenant"
+	cont "SELECT et START!"
 	done
 
 _SaveOptionText::
@@ -2043,12 +2055,12 @@ _WillBeTradedText::
 	cont "échangés."
 	done
 
-_Char00Text::
+_ErrorCharText::
 	text_decimal hSpriteIndexOrTextID,1,2
 	text " ERREUR."
 	done
 
-_Char55Text::
+_ContTextText::
 	text $4B,"@@"
 
 INCLUDE "text/maps/digletts_cave_route_2_entrance.asm"
@@ -3440,3 +3452,7 @@ INCLUDE "text/move_names.asm"
 SECTION "Item Descriptions", ROMX
 
 INCLUDE "text/item_descriptions.asm"
+
+SECTION "Movedex Text", ROMX
+
+INCLUDE "data/moves/movedex_text.asm"

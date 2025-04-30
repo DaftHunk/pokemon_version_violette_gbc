@@ -377,19 +377,6 @@ _OaksLabText26::
 	line "veux que vous"
 	cont "terminiez mon"
 	cont "travail!"
-
-;joenote - add hotkey info
-	para "Rappelez-vous"
-	line "que vous pouvez"
-	cont "passer d'un sac"
-	cont "à l'autre avec"	
-	cont "START dans le"
-	cont "menu Objets."
-
-	para "Vous pouvez aussi"
-	line "trier les objets"
-	cont "en maintenant"
-	cont "SELECT et START!"
 	done
 
 _OaksLabText27::

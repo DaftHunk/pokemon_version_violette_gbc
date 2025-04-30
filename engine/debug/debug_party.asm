@@ -124,7 +124,7 @@ IF DEF(_DEBUG)
 	jr .items_loop
 .items_end
 
-	; Complete the Pokédex.
+	; Complete the Pokédex and Movedex
 	ld hl, wPokedexOwned
 	ld b, wPokedexOwnedEnd - wPokedexOwned - 1
 	call DebugSetPokedexEntries
@@ -133,6 +133,10 @@ IF DEF(_DEBUG)
 	ld b, wPokedexSeenEnd - wPokedexSeen - 1
 	call DebugSetPokedexEntries
 	ld [hl], %00000001
+	ld hl, wMovedexSeen
+	ld b, wMovedexSeenEnd - wMovedexSeen - 1
+	call DebugSetPokedexEntries
+	ld [hl], %00000011
 
 	; Set tutorial events
 	SetEvent EVENT_GOT_POKEDEX

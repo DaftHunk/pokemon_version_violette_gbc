@@ -3,7 +3,7 @@ _RhydonDexEntry::
 	next "épais lui permet"
 	next "de survivre dans"
 
-	page "un environnement"
+	bage "un environnement"
 	next "de plus de 3600"
 	next "degrés"
 	dex
@@ -13,7 +13,7 @@ _KangaskhanDexEntry::
 	next "quitte la poche"
 	next "ventrale"
 
-	page "protectrice qu'à"
+	bage "protectrice qu'à"
 	next "l'âge de 3 ans"
 	dex
 
@@ -22,7 +22,7 @@ _NidoranMDexEntry::
 	next "fine l'avertit du"
 	next "danger. Plus"
 
-	page "ses cornes sont"
+	bage "ses cornes sont"
 	next "grandes, plus son"
 	next "poison est mortel"
 	dex
@@ -32,7 +32,7 @@ _ClefairyDexEntry::
 	next "pour son aura"
 	next "mystique, il est"
 
-	page "très rare et ne"
+	bage "très rare et ne"
 	next "vit que dans des"
 	next "endroits précis"
 	dex
@@ -42,7 +42,7 @@ _SpearowDexEntry::
 	next "insectes dans les"
 	next "hautes herbes."
 
-	page "Ses petites ailes"
+	bage "Ses petites ailes"
 	next "lui permettent de"
 	next "voler très vite"
 	dex
@@ -52,7 +52,7 @@ _VoltorbDexEntry::
 	next "centrales, ce"
 	next "#mon survolté"
 
-	page "est souvent"
+	bage "est souvent"
 	next "confondu avec une"
 	next "# ball"
 	dex
@@ -62,7 +62,7 @@ _NidokingDexEntry::
 	next "arme redoutable,"
 	next "il s'en sert pour"
 
-	page "attraper sa proie"
+	bage "attraper sa proie"
 	next "et lui broyer les"
 	next "os"
 	dex
@@ -72,7 +72,7 @@ _SlowbroDexEntry::
 	next "accroché à la"
 	next "queue du Ramoloss"
 
-	page "se nourrit des"
+	bage "se nourrit des"
 	next "restes de son"
 	next "hôte"
 	dex
@@ -82,7 +82,7 @@ _IvysaurDexEntry::
 	next "devient si gros"
 	next "qu'il ne peut"
 
-	page "plus se tenir sur"
+	bage "plus se tenir sur"
 	next "ses membres"
 	next "postérieurs"
 	dex
@@ -92,7 +92,7 @@ _ExeggutorDexEntry::
 	next "une de ses têtes"
 	next "se détache, elle"
 
-	page "se transforme en"
+	bage "se transforme en"
 	next "un Noeunoeuf"
 	dex
 
@@ -101,7 +101,7 @@ _LickitungDexEntry::
 	next "sa langue comme"
 	next "un caméléon. Tout"
 
-	page "contact avec elle"
+	bage "contact avec elle"
 	next "provoque une"
 	next "irritation"
 	dex
@@ -111,7 +111,7 @@ _ExeggcuteDexEntry::
 	next "des oeufs, ils"
 	next "attaquent en"
 
-	page "groupe comme un"
+	bage "groupe comme un"
 	next "essaim"
 	dex
 
@@ -120,7 +120,7 @@ _GrimerDexEntry::
 	next "tas d'ordures, il"
 	next "se nourrit des"
 
-	page "déchets polluants"
+	bage "déchets polluants"
 	next "rejetés par les"
 	next "usines"
 	dex
@@ -130,7 +130,7 @@ _GengarDexEntry::
 	next "pleine Lune, il"
 	next "imite l'ombre des"
 
-	page "passants et se"
+	bage "passants et se"
 	next "moque de leur"
 	next "effroi"
 	dex
@@ -140,7 +140,7 @@ _NidoranFDexEntry::
 	next "hérissé de dards"
 	next "empoisonnés."
 
-	page "Les femelles ont"
+	bage "Les femelles ont"
 	next "des dards plus"
 	next "petits"
 	dex
@@ -150,7 +150,7 @@ _NidoqueenDexEntry::
 	next "résistantes et"
 	next "son corps massif"
 
-	page "sont des armes"
+	bage "sont des armes"
 	next "dévastatrices"
 	dex
 
@@ -159,7 +159,7 @@ _CuboneDexEntry::
 	next "jamais son casque"
 	next "en os. Personne"
 
-	page "n'a jamais vu le"
+	bage "n'a jamais vu le"
 	next "visage de ce"
 	next "#mon"
 	dex
@@ -169,7 +169,7 @@ _RhyhornDexEntry::
 	next "1000 fois plus"
 	next "résistante que"
 
-	page "celle de l'homme,"
+	bage "celle de l'homme,"
 	next "ses charges sont"
 	next "dévastatrices"
 	dex
@@ -179,7 +179,7 @@ _LaprasDexEntry::
 	next "voie d'extinction"
 	next "peut transporter"
 
-	page "des passagers sur"
+	bage "des passagers sur"
 	next "son dos par-delà"
 	next "les océans"
 	dex
@@ -189,7 +189,7 @@ _ArcanineDexEntry::
 	next "recherché pour sa"
 	next "grâce légendaire."
 
-	page "Son pas élégant"
+	bage "Son pas élégant"
 	next "semble glisser"
 	next "sur le vent"
 	dex
@@ -199,7 +199,7 @@ _MewDexEntry::
 	next "son existence est"
 	next "remise en cause"
 
-	page "par les experts."
+	bage "par les experts."
 	next "Peu nombreux sont"
 	next "ceux qui l'ont vu"
 	dex
@@ -209,7 +209,7 @@ _GyaradosDexEntry::
 	next "maléfique, il est"
 	next "capable de raser"
 
-	page "une ville dans un"
+	bage "une ville dans un"
 	next "accès de rage"
 	next "terrifiante"
 	dex
@@ -219,7 +219,7 @@ _ShellderDexEntry::
 	next "carapace très"
 	next "résistante, il"
 
-	page "est vulnérable"
+	bage "est vulnérable"
 	next "quand celle-ci"
 	next "s'ouvre"
 	dex
@@ -229,7 +229,7 @@ _TentacoolDexEntry::
 	next "des côtes, les"
 	next "pêcheurs se font"
 
-	page "souvent arroser"
+	bage "souvent arroser"
 	next "d'acide quand ils"
 	next "en accrochent un"
 	dex
@@ -239,7 +239,7 @@ _GastlyDexEntry::
 	next "plonge ses"
 	next "victimes dans un"
 
-	page "profond sommeil"
+	bage "profond sommeil"
 	next "sans qu'elles ne"
 	next "s'en aperçoivent"
 	dex
@@ -249,7 +249,7 @@ _ScytherDexEntry::
 	next "comme un ninja,"
 	next "il se déplace si"
 
-	page "vite qu'il crée"
+	bage "vite qu'il crée"
 	next "l'illusion d'être"
 	next "en groupe"
 	dex
@@ -259,7 +259,7 @@ _StaryuDexEntry::
 	next "curieux qui peut"
 	next "régénérer ses"
 
-	page "appendices"
+	bage "appendices"
 	next "sectionnés lors"
 	next "d'un combat"
 	dex
@@ -269,7 +269,7 @@ _BlastoiseDexEntry::
 	next "armé de canons"
 	next "hydrauliques."
 
-	page "Ses puissants"
+	bage "Ses puissants"
 	next "jets d'eau sont"
 	next "dévastateurs"
 	dex
@@ -279,7 +279,7 @@ _PinsirDexEntry::
 	next "écraser sa proie"
 	next "avec sa pince, il"
 
-	page "la secoue et"
+	bage "la secoue et"
 	next "l'envoie dans les"
 	next "airs"
 	dex
@@ -289,7 +289,7 @@ _TangelaDexEntry::
 	next "recouvert de"
 	next "lianes similaires"
 
-	page "à des algues."
+	bage "à des algues."
 	next "Elles bougent"
 	next "quand il marche"
 	dex
@@ -299,7 +299,7 @@ _GrowlitheDexEntry::
 	next "son territoire il"
 	next "aboie et mord"
 
-	page "jusqu'à ce que"
+	bage "jusqu'à ce que"
 	next "les intrus"
 	next "s'enfuient"
 	dex
@@ -309,7 +309,7 @@ _OnixDexEntry::
 	next "pierre de son"
 	next "corps durcissent"
 
-	page "pour devenir"
+	bage "pour devenir"
 	next "comme un diamant"
 	next "de couleur noire"
 	dex
@@ -319,7 +319,7 @@ _FearowDexEntry::
 	next "lui permettent de"
 	next "planer si"
 
-	page "longtemps qu'il"
+	bage "longtemps qu'il"
 	next "ne se pose que"
 	next "très rarement"
 	dex
@@ -329,7 +329,7 @@ _PidgeyDexEntry::
 	next "dans les forêts."
 	next "Il brasse l'air"
 
-	page "de ses ailes près"
+	bage "de ses ailes près"
 	next "du sol pour"
 	next "projeter du sable"
 	dex
@@ -339,7 +339,7 @@ _SlowpokeDexEntry::
 	next "endormi, il lui"
 	next "faut 5 secondes"
 
-	page "pour ressentir"
+	bage "pour ressentir"
 	next "la douleur d'une"
 	next "attaque"
 	dex
@@ -349,7 +349,7 @@ _KadabraDexEntry::
 	next "des ondes alpha"
 	next "provoquant des"
 
-	page "migraines à ceux"
+	bage "migraines à ceux"
 	next "qui se trouvent à"
 	next "proximité"
 	dex
@@ -359,7 +359,7 @@ _GravelerDexEntry::
 	next "il dégringole le"
 	next "long des pentes."
 
-	page "Il pulvérise tout"
+	bage "Il pulvérise tout"
 	next "obstacle sur son"
 	next "passage"
 	dex
@@ -369,7 +369,7 @@ _ChanseyDexEntry::
 	next "et difficile à"
 	next "capturer qui"
 
-	page "porte chance et"
+	bage "porte chance et"
 	next "bien-être à son"
 	next "possesseur"
 	dex
@@ -379,7 +379,7 @@ _MachokeDexEntry::
 	next "puissant qu'il"
 	next "lui faut une"
 
-	page "ceinture de force"
+	bage "ceinture de force"
 	next "pour équilibrer"
 	next "ses mouvements"
 	dex
@@ -389,7 +389,7 @@ _MrMimeDexEntry::
 	next "pendant qu'il"
 	next "mime et il se"
 
-	page "battra en"
+	bage "battra en"
 	next "distribuant des"
 	next "volées de claques"
 	dex
@@ -399,7 +399,7 @@ _HitmonleeDexEntry::
 	next "ses jambes"
 	next "s'allongent"
 
-	page "progressivement."
+	bage "progressivement."
 	next "Il court alors"
 	next "très rapidement"
 	dex
@@ -409,7 +409,7 @@ _HitmonchanDexEntry::
 	next "séries de coups"
 	next "de poing rapides"
 
-	page "comme l'éclair,"
+	bage "comme l'éclair,"
 	next "invisibles à"
 	next "l'oeil nu"
 	dex
@@ -419,7 +419,7 @@ _ArbokDexEntry::
 	next "féroces peints"
 	next "sur son corps"
 
-	page "changent selon"
+	bage "changent selon"
 	next "son environnement"
 	dex
 
@@ -428,7 +428,7 @@ _ParasectDexEntry::
 	next "entre un parasite"
 	next "et un insecte. Le"
 
-	page "champignon a pris"
+	bage "champignon a pris"
 	next "le contrôle de"
 	next "son hôte"
 	dex
@@ -438,7 +438,7 @@ _PsyduckDexEntry::
 	next "ennemis avec des"
 	next "grimaces débiles"
 
-	page "et les attaque"
+	bage "et les attaque"
 	next "ensuite avec ses"
 	next "pouvoirs psy"
 	dex
@@ -448,7 +448,7 @@ _DrowzeeDexEntry::
 	next "ennemis et dévore"
 	next "leurs songes."
 
-	page "En mangeant de"
+	bage "En mangeant de"
 	next "mauvais rêves, il"
 	next "devient malade"
 	dex
@@ -458,7 +458,7 @@ _GolemDexEntry::
 	next "pierre est"
 	next "indestructible."
 
-	page "Il peut supporter"
+	bage "Il peut supporter"
 	next "des explosions de"
 	next "dynamite"
 	dex
@@ -468,7 +468,7 @@ _MagmarDexEntry::
 	next "fusion brûle"
 	next "d'une flamme"
 
-	page "orangée, le"
+	bage "orangée, le"
 	next "rendant invisible"
 	next "dans le feu"
 	dex
@@ -478,7 +478,7 @@ _ElectabuzzDexEntry::
 	next "centrales, il"
 	next "provoque des"
 
-	page "pannes de courant"
+	bage "pannes de courant"
 	next "en s'aventurant"
 	next "en ville"
 	dex
@@ -488,7 +488,7 @@ _MagnetonDexEntry::
 	next "Magnéti reliés"
 	next "les uns aux"
 
-	page "autres, il"
+	bage "autres, il"
 	next "apparaît lorsque"
 	next "le soleil brille"
 	dex
@@ -498,7 +498,7 @@ _KoffingDexEntry::
 	next "constitué de gaz"
 	next "toxiques et"
 
-	page "instables, peut"
+	bage "instables, peut"
 	next "exploser"
 	next "soudainement"
 	dex
@@ -508,7 +508,7 @@ _MankeyDexEntry::
 	next "colère très vite."
 	next "Calme ou furieux,"
 
-	page "son humeur change"
+	bage "son humeur change"
 	next "d'une seconde à"
 	next "l'autre"
 	dex
@@ -518,7 +518,7 @@ _SeelDexEntry::
 	next "front est très"
 	next "résistante. Elle"
 
-	page "lui sert à"
+	bage "lui sert à"
 	next "percer des"
 	next "blocs de glace"
 	dex
@@ -528,7 +528,7 @@ _DiglettDexEntry::
 	next "sous la terre et"
 	next "se nourrit de"
 
-	page "racines. Il"
+	bage "racines. Il"
 	next "apparaît rarement"
 	next "à la surface"
 	dex
@@ -538,7 +538,7 @@ _TaurosDexEntry::
 	next "en vue, il la"
 	next "charge"
 
-	page "furieusement en"
+	bage "furieusement en"
 	next "fouettant l'air"
 	next "de sa queue"
 	dex
@@ -548,7 +548,7 @@ _FarfetchdDexEntry::
 	next "l'oignon qu'il a"
 	next "dans la bouche"
 
-	page "comme une épée"
+	bage "comme une épée"
 	next "d'acier"
 	dex
 
@@ -557,7 +557,7 @@ _VenonatDexEntry::
 	next "des grands arbres"
 	next "où il mange des"
 
-	page "insectes. Il"
+	bage "insectes. Il"
 	next "est attiré par la"
 	next "lumière"
 	dex
@@ -567,7 +567,7 @@ _DragoniteDexEntry::
 	next "marin extrêmement"
 	next "rare. On dit"
 
-	page "qu'il est aussi"
+	bage "qu'il est aussi"
 	next "intelligent que"
 	next "l'homme"
 	dex
@@ -577,7 +577,7 @@ _DoduoDexEntry::
 	next "très mal mais"
 	next "court très vite."
 
-	page "Il laisse de"
+	bage "Il laisse de"
 	next "gigantesques"
 	next "empreintes de pas"
 	dex
@@ -587,7 +587,7 @@ _PoliwagDexEntry::
 	next "avec ses petites"
 	next "pattes."
 
-	page "Il préfère nager"
+	bage "Il préfère nager"
 	next "que de se tenir"
 	next "debout"
 	dex
@@ -597,7 +597,7 @@ _JynxDexEntry::
 	next "hanches en"
 	next "marchant et"
 
-	page "entraîne les gens"
+	bage "entraîne les gens"
 	next "dans des danses"
 	next "frénétiques"
 	dex
@@ -607,7 +607,7 @@ _MoltresDexEntry::
 	next "oiseau du feu."
 	next "Une pluie de"
 
-	page "flammes surgit à"
+	bage "flammes surgit à"
 	next "chaque battement"
 	next "de ses ailes"
 	dex
@@ -617,7 +617,7 @@ _ArticunoDexEntry::
 	next "oiseau des glaces."
 	next "On dit qu'il"
 
-	page "apparaît aux gens"
+	bage "apparaît aux gens"
 	next "perdus dans les"
 	next "sommets"
 	dex
@@ -627,7 +627,7 @@ _ZapdosDexEntry::
 	next "légendaire de la"
 	next "foudre. Il"
 
-	page "surgit hors des"
+	bage "surgit hors des"
 	next "nuages en lançant"
 	next "d'énormes éclairs"
 	dex
@@ -637,7 +637,7 @@ _DittoDexEntry::
 	next "copier le code"
 	next "génétique d'un"
 
-	page "ennemi pour se"
+	bage "ennemi pour se"
 	next "transformer en"
 	next "son double"
 	dex
@@ -647,7 +647,7 @@ _MeowthDexEntry::
 	next "pièces de monnaie."
 	next "Il hante les rues"
 
-	page "à la recherche de"
+	bage "à la recherche de"
 	next "pièces oubliées"
 	next "par les passants"
 	dex
@@ -657,7 +657,7 @@ _KrabbyDexEntry::
 	next "des armes très"
 	next "puissantes. Elles"
 
-	page "lui servent aussi"
+	bage "lui servent aussi"
 	next "à garder son"
 	next "équilibre"
 	dex
@@ -667,7 +667,7 @@ _VulpixDexEntry::
 	next "seule queue à la"
 	next "naissance. Sa"
 
-	page "queue se divise"
+	bage "queue se divise"
 	next "à la pointe au"
 	next "fil des ans"
 	dex
@@ -677,7 +677,7 @@ _NinetalesDexEntry::
 	next "et rancunier."
 	next "Attrapez-lui une"
 
-	page "de ses queues et"
+	bage "de ses queues et"
 	next "il vous maudira"
 	next "pour 1000 ans"
 	dex
@@ -687,7 +687,7 @@ _PikachuDexEntry::
 	next "de ces #mon"
 	next "se réunissent,"
 
-	page "ils provoquent"
+	bage "ils provoquent"
 	next "de gigantesques"
 	next "orages"
 	dex
@@ -697,7 +697,7 @@ _RaichuDexEntry::
 	next "queue en contact"
 	next "avec le sol pour"
 
-	page "éviter toute"
+	bage "éviter toute"
 	next "électrocution"
 	dex
 
@@ -706,7 +706,7 @@ _DratiniDexEntry::
 	next "considéré comme"
 	next "légendaire, une"
 
-	page "colonie fut"
+	bage "colonie fut"
 	next "découverte dans"
 	next "les océans"
 	dex
@@ -716,7 +716,7 @@ _DragonairDexEntry::
 	next "légendaire plein"
 	next "de charme."
 
-	page "Il peut contrôler"
+	bage "Il peut contrôler"
 	next "les variations"
 	next "climatiques"
 	dex
@@ -726,7 +726,7 @@ _KabutoDexEntry::
 	next "reconstitué à"
 	next "partir d'un"
 
-	page "fossile trouvé"
+	bage "fossile trouvé"
 	next "dans un site"
 	next "préhistorique"
 	dex
@@ -736,7 +736,7 @@ _KabutopsDexEntry::
 	next "lui permet de"
 	next "nager rapidement."
 
-	page "Il lacère sa"
+	bage "Il lacère sa"
 	next "proie avant d'en"
 	next "absorber la vie"
 	dex
@@ -746,7 +746,7 @@ _HorseaDexEntry::
 	next "avec précision"
 	next "un jet d'encre"
 
-	page "sur des insectes"
+	bage "sur des insectes"
 	next "volants depuis la"
 	next "surface de l'eau"
 	dex
@@ -756,7 +756,7 @@ _SeadraDexEntry::
 	next "l'envers en"
 	next "agitant ses"
 
-	page "petites nageoires"
+	bage "petites nageoires"
 	next "pectorales"
 	dex
 
@@ -765,7 +765,7 @@ _SandshrewDexEntry::
 	next "les régions"
 	next "arides et"
 
-	page "désertiques. Il"
+	bage "désertiques. Il"
 	next "émerge seulement"
 	next "pour chasser"
 	dex
@@ -775,7 +775,7 @@ _SandslashDexEntry::
 	next "boule hérissée de"
 	next "piques s'il est"
 
-	page "menacé. Il peut"
+	bage "menacé. Il peut"
 	next "ainsi s'enfuir ou"
 	next "attaquer"
 	dex
@@ -785,7 +785,7 @@ _OmanyteDexEntry::
 	next "longtemps, il"
 	next "peut être réanimé"
 
-	page "génétiquement à"
+	bage "génétiquement à"
 	next "partir d'anciens"
 	next "fossiles"
 	dex
@@ -795,7 +795,7 @@ _OmastarDexEntry::
 	next "préhistorique qui"
 	next "disparut quand sa"
 
-	page "coquille devint"
+	bage "coquille devint"
 	next "trop lourde à"
 	next "déplacer"
 	dex
@@ -805,7 +805,7 @@ _JigglypuffDexEntry::
 	next "s'illuminent, il"
 	next "chante une"
 
-	page "mystérieuse"
+	bage "mystérieuse"
 	next "berceuse"
 	dex
 
@@ -814,7 +814,7 @@ _WigglytuffDexEntry::
 	next "il gonfle d'air"
 	next "son corps doux et"
 
-	page "potelé dans des"
+	bage "potelé dans des"
 	next "proportions"
 	next "gigantesques"
 	dex
@@ -824,7 +824,7 @@ _EeveeDexEntry::
 	next "particulière lui"
 	next "permet d'évoluer"
 
-	page "s'il est exposé"
+	bage "s'il est exposé"
 	next "aux radiations"
 	next "d'une pierre"
 	dex
@@ -834,7 +834,7 @@ _FlareonDexEntry::
 	next "suffisamment de"
 	next "chaleur pour"
 
-	page "atteindre des"
+	bage "atteindre des"
 	next "températures de"
 	next "1600 degrés"
 	dex
@@ -844,7 +844,7 @@ _JolteonDexEntry::
 	next "d'électricité"
 	next "statique pour"
 
-	page "envoyer des"
+	bage "envoyer des"
 	next "décharges de"
 	next "10000 volts"
 	dex
@@ -854,7 +854,7 @@ _VaporeonDexEntry::
 	next "l'eau. Sa"
 	next "queue lui donne"
 
-	page "l'apparence d'une"
+	bage "l'apparence d'une"
 	next "sirène"
 	dex
 
@@ -863,7 +863,7 @@ _MachopDexEntry::
 	next "musculation."
 	next "Il pratique les"
 
-	page "arts martiaux"
+	bage "arts martiaux"
 	next "pour devenir"
 	next "encore plus fort"
 	dex
@@ -873,7 +873,7 @@ _ZubatDexEntry::
 	next "colonie dans les"
 	next "endroits sombres."
 
-	page "Il s'oriente"
+	bage "Il s'oriente"
 	next "grâce aux"
 	next "ultrasons"
 	dex
@@ -883,7 +883,7 @@ _EkansDexEntry::
 	next "silence pour"
 	next "dévorer des oeufs"
 
-	page "de Roucool ou de"
+	bage "de Roucool ou de"
 	next "Piafabec"
 	dex
 
@@ -892,7 +892,7 @@ _ParasDexEntry::
 	next "sur son dos se"
 	next "nourrissent des"
 
-	page "nutriments de"
+	bage "nutriments de"
 	next "leur hôte"
 	next "insectoïde"
 	dex
@@ -902,7 +902,7 @@ _PoliwhirlDexEntry::
 	next "vivre à l'air"
 	next "libre mais il"
 
-	page "doit rester"
+	bage "doit rester"
 	next "mouillé pour"
 	next "survivre"
 	dex
@@ -912,7 +912,7 @@ _PoliwrathDexEntry::
 	next "il pratique le"
 	next "crawl ou la nage"
 
-	page "papillon mieux"
+	bage "papillon mieux"
 	next "qu'un champion"
 	next "olympique"
 	dex
@@ -922,7 +922,7 @@ _WeedleDexEntry::
 	next "feuilles dans les"
 	next "forêts."
 
-	page "L'aiguillon sur"
+	bage "L'aiguillon sur"
 	next "son front est"
 	next "empoisonné"
 	dex
@@ -932,7 +932,7 @@ _KakunaDexEntry::
 	next "déplacer de lui-"
 	next "même, il se"
 
-	page "défend en"
+	bage "défend en"
 	next "durcissant sa"
 	next "carapace"
 	dex
@@ -942,7 +942,7 @@ _BeedrillDexEntry::
 	next "grande vitesse."
 	next "Il se bat avec"
 
-	page "les dards"
+	bage "les dards"
 	next "empoisonnés de"
 	next "ses bras"
 	dex
@@ -952,7 +952,7 @@ _DodrioDexEntry::
 	next "plans complexes"
 	next "avec ses trois"
 
-	page "cerveaux. Une de"
+	bage "cerveaux. Une de"
 	next "ses têtes reste"
 	next "toujours éveillée"
 	dex
@@ -962,7 +962,7 @@ _PrimeapeDexEntry::
 	next "teigneux, il"
 	next "poursuit son"
 
-	page "gibier jusqu'à"
+	bage "gibier jusqu'à"
 	next "épuisement"
 	next "complet"
 	dex
@@ -972,7 +972,7 @@ _DugtrioDexEntry::
 	next "Taupiqueur. Il"
 	next "crée des séismes"
 
-	page "en creusant à"
+	bage "en creusant à"
 	next "plus de 100km de"
 	next "profondeur"
 	dex
@@ -982,7 +982,7 @@ _VenomothDexEntry::
 	next "de ses ailes"
 	next "changent en"
 
-	page "fonction de son"
+	bage "fonction de son"
 	next "type de poison"
 	dex
 
@@ -991,7 +991,7 @@ _DewgongDexEntry::
 	next "chaleur dans son"
 	next "corps. Il peut"
 
-	page "nager dans l'eau"
+	bage "nager dans l'eau"
 	next "glacée à plus de"
 	next "8 noeuds"
 	dex
@@ -1001,7 +1001,7 @@ _CaterpieDexEntry::
 	next "pattes sont"
 	next "équipées de"
 
-	page "ventouses, lui"
+	bage "ventouses, lui"
 	next "permettant de"
 	next "grimper aux murs"
 	dex
@@ -1011,7 +1011,7 @@ _MetapodDexEntry::
 	next "aux attaques tant"
 	next "que sa carapace"
 
-	page "fragile expose"
+	bage "fragile expose"
 	next "son corps tendre"
 	next "et mou"
 	dex
@@ -1021,7 +1021,7 @@ _ButterfreeDexEntry::
 	next "des ailes très"
 	next "rapidement pour"
 
-	page "projeter des"
+	bage "projeter des"
 	next "poudres toxiques"
 	next "sur ses ennemis"
 	dex
@@ -1031,7 +1031,7 @@ _MachampDexEntry::
 	next "poing sont si"
 	next "puissants qu'ils"
 
-	page "font voler ses"
+	bage "font voler ses"
 	next "adversaires"
 	next "jusqu'à l'horizon"
 	dex
@@ -1041,7 +1041,7 @@ _GolduckDexEntry::
 	next "élégance le long"
 	next "des côtes. Il est"
 
-	page "souvent confondu"
+	bage "souvent confondu"
 	next "avec le monstre"
 	next "japonais: Kappa"
 	dex
@@ -1051,7 +1051,7 @@ _HypnoDexEntry::
 	next "adversaire, il"
 	next "l'assaille avec"
 
-	page "les attaques Psy"
+	bage "les attaques Psy"
 	next "d'Hypnose et de"
 	next "Choc mental"
 	dex
@@ -1061,7 +1061,7 @@ _GolbatDexEntry::
 	next "adversaire mordu,"
 	next "il absorbera son"
 
-	page "énergie même s'il"
+	bage "énergie même s'il"
 	next "devient trop gros"
 	next "pour voler"
 	dex
@@ -1071,7 +1071,7 @@ _MewtwoDexEntry::
 	next "de nombreuses"
 	next "expériences"
 
-	page "génétiques"
+	bage "génétiques"
 	next "horribles et"
 	next "malsaines"
 	dex
@@ -1081,7 +1081,7 @@ _SnorlaxDexEntry::
 	next "il ne fait que"
 	next "manger et dormir."
 
-	page "Plus il est gros,"
+	bage "Plus il est gros,"
 	next "plus il devient"
 	next "fainéant"
 	dex
@@ -1091,7 +1091,7 @@ _MagikarpDexEntry::
 	next "était beaucoup"
 	next "plus puissant que"
 
-	page "cette créature"
+	bage "cette créature"
 	next "minablement"
 	next "faible"
 	dex
@@ -1101,7 +1101,7 @@ _MukDexEntry::
 	next "d'une épaisse"
 	next "couche toxique."
 
-	page "Il laisse une"
+	bage "Il laisse une"
 	next "trace empoisonnée"
 	next "derrière lui"
 	dex
@@ -1111,7 +1111,7 @@ _KinglerDexEntry::
 	next "peut déployer une"
 	next "pression de"
 
-	page "1000 Kg. Mais"
+	bage "1000 Kg. Mais"
 	next "elle est très"
 	next "encombrante"
 	dex
@@ -1121,7 +1121,7 @@ _CloysterDexEntry::
 	next "il envoie de"
 	next "rapides volées de"
 
-	page "dards. Sa"
+	bage "dards. Sa"
 	next "partie interne"
 	next "est inconnue"
 	dex
@@ -1131,7 +1131,7 @@ _ElectrodeDexEntry::
 	next "quantités énormes"
 	next "de courant"
 
-	page "électrique sous"
+	bage "électrique sous"
 	next "pression pouvant"
 	next "exploser"
 	dex
@@ -1141,7 +1141,7 @@ _ClefableDexEntry::
 	next "petite fée très"
 	next "rare. Il"
 
-	page "se cache en"
+	bage "se cache en"
 	next "apercevant un"
 	next "être humain"
 	dex
@@ -1151,7 +1151,7 @@ _WeezingDexEntry::
 	next "peuvent se"
 	next "combiner en un"
 
-	page "Smogogo en"
+	bage "Smogogo en"
 	next "mélangeant leurs"
 	next "gaz"
 	dex
@@ -1161,7 +1161,7 @@ _PersianDexEntry::
 	next "pour sa fourrure,"
 	next "il est difficile"
 
-	page "à apprivoiser en"
+	bage "à apprivoiser en"
 	next "raison de son"
 	next "caractère rétif"
 	dex
@@ -1171,7 +1171,7 @@ _MarowakDexEntry::
 	next "dans sa main est"
 	next "une arme. Il peut"
 
-	page "le lancer avec"
+	bage "le lancer avec"
 	next "adresse pour"
 	next "assommer sa proie"
 	dex
@@ -1181,7 +1181,7 @@ _HaunterDexEntry::
 	next "glisser à travers"
 	next "les murs comme"
 
-	page "une créature"
+	bage "une créature"
 	next "d'une autre"
 	next "dimension"
 	dex
@@ -1191,7 +1191,7 @@ _AbraDexEntry::
 	next "télépathie lui"
 	next "permet de sentir"
 
-	page "le danger et de"
+	bage "le danger et de"
 	next "se Téléporter en"
 	next "un lieu sûr"
 	dex
@@ -1201,7 +1201,7 @@ _AlakazamDexEntry::
 	next "peut effectuer"
 	next "des opérations à"
 
-	page "la vitesse d'un"
+	bage "la vitesse d'un"
 	next "ordinateur. Il"
 	next "a un Q.I. de 5000"
 	dex
@@ -1211,7 +1211,7 @@ _PidgeottoDexEntry::
 	next "territoire avec"
 	next "ardeur et"
 
-	page "repousse à coups"
+	bage "repousse à coups"
 	next "de bec tout"
 	next "intrus"
 	dex
@@ -1221,7 +1221,7 @@ _PidgeotDexEntry::
 	next "survolant la"
 	next "surface de l'eau"
 
-	page "et en plongeant"
+	bage "et en plongeant"
 	next "pour attraper des"
 	next "proies faciles"
 	dex
@@ -1231,7 +1231,7 @@ _StarmieDexEntry::
 	next "des couleurs de"
 	next "l'arc-en-ciel."
 
-	page "On raconte que"
+	bage "On raconte que"
 	next "c'est une pierre"
 	next "précieuse"
 	dex
@@ -1241,7 +1241,7 @@ _BulbasaurDexEntry::
 	next "graine plantée"
 	next "sur son dos."
 
-	page "Elle grandit avec"
+	bage "Elle grandit avec"
 	next "lui depuis la"
 	next "naissance"
 	dex
@@ -1251,7 +1251,7 @@ _VenusaurDexEntry::
 	next "en absorbant les"
 	next "rayons du soleil."
 
-	page "Il migre souvent"
+	bage "Il migre souvent"
 	next "vers les endroits"
 	next "ensoleillés"
 	dex
@@ -1261,7 +1261,7 @@ _TentacruelDexEntry::
 	next "sont rétractés au"
 	next "repos. En"
 
-	page "situation de"
+	bage "situation de"
 	next "chasse, ils"
 	next "s'allongent"
 	dex
@@ -1271,7 +1271,7 @@ _GoldeenDexEntry::
 	next "gracieusement"
 	next "comme un voile."
 
-	page "On l'appelle:"
+	bage "On l'appelle:"
 	next "Reine Des Océans"
 	dex
 
@@ -1280,7 +1280,7 @@ _SeakingDexEntry::
 	next "saison des"
 	next "amours, on peut"
 
-	page "le voir nager"
+	bage "le voir nager"
 	next "dans les rivières"
 	next "et les lacs"
 	dex
@@ -1290,7 +1290,7 @@ _PonytaDexEntry::
 	next "plus résistants"
 	next "que le diamant."
 
-	page "Il peut aplatir"
+	bage "Il peut aplatir"
 	next "n'importe quoi en"
 	next "le piétinant"
 	dex
@@ -1300,7 +1300,7 @@ _RapidashDexEntry::
 	next "de compétition,"
 	next "il poursuit"
 
-	page "toute créature"
+	bage "toute créature"
 	next "rapide pour"
 	next "faire la course"
 	dex
@@ -1310,7 +1310,7 @@ _RattataDexEntry::
 	next "très puissante."
 	next "Petit et rapide,"
 
-	page "on en voit un"
+	bage "on en voit un"
 	next "peu partout"
 	dex
 
@@ -1319,7 +1319,7 @@ _RaticateDexEntry::
 	next "sont coupées, il"
 	next "perd le sens de"
 
-	page "l'équilibre et"
+	bage "l'équilibre et"
 	next "devient moins"
 	next "rapide"
 	dex
@@ -1329,7 +1329,7 @@ _NidorinoDexEntry::
 	next "est prompt à"
 	next "répondre à la"
 
-	page "violence. La"
+	bage "violence. La"
 	next "corne sur sa tête"
 	next "est venimeuse"
 	dex
@@ -1339,7 +1339,7 @@ _NidorinaDexEntry::
 	next "femelle grandit"
 	next "lentement. Elle"
 
-	page "préfère attaquer"
+	bage "préfère attaquer"
 	next "avec ses griffes"
 	next "et sa gueule"
 	dex
@@ -1349,7 +1349,7 @@ _GeodudeDexEntry::
 	next "plaines ou les"
 	next "montagnes. On"
 
-	page "le confond"
+	bage "le confond"
 	next "souvent avec un"
 	next "petit caillou"
 	dex
@@ -1359,7 +1359,7 @@ _PorygonDexEntry::
 	next "de programmes et"
 	next "d'algorithmes. Il"
 
-	page "peut survivre en"
+	bage "peut survivre en"
 	next "milieu virtuel"
 	dex
 
@@ -1368,7 +1368,7 @@ _AerodactylDexEntry::
 	next "préhistorique qui"
 	next "attaque son"
 
-	page "ennemi à la gorge"
+	bage "ennemi à la gorge"
 	next "avec ses crocs"
 	next "acérés"
 	dex
@@ -1378,7 +1378,7 @@ _MagnemiteDexEntry::
 	next "gravité pour"
 	next "pouvoir voler. Il"
 
-	page "attaque avec des"
+	bage "attaque avec des"
 	next "Cage-Eclair"
 	dex
 
@@ -1387,7 +1387,7 @@ _CharmanderDexEntry::
 	next "endroits chauds."
 	next "En cas de pluie,"
 
-	page "de la vapeur"
+	bage "de la vapeur"
 	next "se forme autour"
 	next "de sa queue"
 	dex
@@ -1397,7 +1397,7 @@ _SquirtleDexEntry::
 	next "avec l'âge et"
 	next "devient une super"
 
-	page "carapace. Il peut"
+	bage "carapace. Il peut"
 	next "cracher des"
 	next "jets d'écume"
 	dex
@@ -1407,7 +1407,7 @@ _CharmeleonDexEntry::
 	next "queue, il peut"
 	next "élever le niveau"
 
-	page "de la température"
+	bage "de la température"
 	next "à un degré"
 	next "incroyable"
 	dex
@@ -1417,7 +1417,7 @@ _WartortleDexEntry::
 	next "fond de l'eau"
 	next "pour guetter sa"
 
-	page "proie. Ses"
+	bage "proie. Ses"
 	next "oreilles sont des"
 	next "gouvernails"
 	dex
@@ -1427,7 +1427,7 @@ _CharizardDexEntry::
 	next "la roche de son"
 	next "souffle brûlant."
 
-	page "Il est souvent la"
+	bage "Il est souvent la"
 	next "cause de nombreux"
 	next "incendies"
 	dex
@@ -1437,7 +1437,7 @@ _OddishDexEntry::
 	next "journée il se"
 	next "cache sous terre."
 
-	page "Il s'aventure la"
+	bage "Il s'aventure la"
 	next "nuit pour planter"
 	next "des graines"
 	dex
@@ -1447,7 +1447,7 @@ _GloomDexEntry::
 	next "s'écoule de sa"
 	next "bouche est"
 
-	page "comestible. Il"
+	bage "comestible. Il"
 	next "sert à appâter sa"
 	next "proie"
 	dex
@@ -1457,7 +1457,7 @@ _VileplumeDexEntry::
 	next "sont grands,"
 	next "plus ils"
 
-	page "contiennent de"
+	bage "contiennent de"
 	next "pollen toxique"
 	dex
 
@@ -1466,7 +1466,7 @@ _BellsproutDexEntry::
 	next "carnivore qui se"
 	next "nourrit de petits"
 
-	page "insectes. Ses"
+	bage "insectes. Ses"
 	next "racines servent"
 	next "d'attaches"
 	dex
@@ -1476,7 +1476,7 @@ _WeepinbellDexEntry::
 	next "Poudre Toxik pour"
 	next "immobiliser sa"
 
-	page "proie et il"
+	bage "proie et il"
 	next "l'achève avec de"
 	next "l'Acide"
 	dex
@@ -1486,7 +1486,7 @@ _VictreebelDexEntry::
 	next "colonie dans la"
 	next "jungle mais"
 
-	page "personne n'en est"
+	bage "personne n'en est"
 	next "jamais revenu"
 	next "vivant"
 	dex
@@ -1496,7 +1496,7 @@ _SteelixDexEntry::
 	next "d'une infinité"
 	next "de particules"
 
-	page "d'acier qui"
+	bage "d'acier qui"
 	next "reflètent"
 	next "la lumière"
 	dex
@@ -1506,7 +1506,7 @@ _ScizorDexEntry::
 	next "emi en agitant ses"
 	next "pinces en forme"
 
-	page "d'oeil et donne"
+	bage "d'oeil et donne"
 	next "l'impression"
 	next "d'avoir 3 têtes"
 	dex
@@ -1516,7 +1516,7 @@ _UmbreonDexEntry::
 	next "ce #mon émet un"
 	next "gaz empoisonné"
 
-	page "par les pores"
+	bage "par les pores"
 	next "de sa peau"
 	dex
 
@@ -1525,7 +1525,7 @@ _KingdraDexEntry::
 	next "l'énergie en"
 	next "restant dans les"
 
-	page "fonds marins, là"
+	bage "fonds marins, là"
 	next "où rien d'autre"
 	next "ne peut survivre"
 	dex
@@ -1535,7 +1535,7 @@ _SneaselDexEntry::
 	next "cache dans l'ombre"
 	next "et attend"
 
-	page "patiemment de fon-"
+	bage "patiemment de fon-"
 	next "dre sur sa proie"
 	dex
 
@@ -1544,7 +1544,7 @@ _MisdreavusDexEntry::
 	next "en criant ou en"
 	next "apparaissant soud-"
 
-	page "ainement. Il reg-"
+	bage "ainement. Il reg-"
 	next "arde ensuite ses"
 	next "victimes et rit"
 	dex
@@ -1554,7 +1554,7 @@ _LarvitarDexEntry::
 	next "il devient une"
 	next "nymphe en avalant"
 
-	page "assez de terre"
+	bage "assez de terre"
 	next "pour recouvrir"
 	next "une montagne"
 	dex
@@ -1564,7 +1564,7 @@ _PupitarDexEntry::
 	next "immobile."
 	next "Il possède déjà"
 
-	page "des pattes avant"
+	bage "des pattes avant"
 	next "et arrière dans"
 	next "sa carapace"
 	dex
@@ -1574,7 +1574,7 @@ _TyranitarDexEntry::
 	next "ement il a assez"
 	next "de force pour"
 
-	page "faire trembler la"
+	bage "faire trembler la"
 	next "terre et s'écrou-"
 	next "ler une montagne"
 	dex
@@ -1584,7 +1584,7 @@ _HoohDexEntry::
 	next "qu'à un Dresseur"
 	next "au coeur pur"
 
-	page "en dévoilant ses"
+	bage "en dévoilant ses"
 	next "magnifiques ailes"
 	next "colorées"
 	dex

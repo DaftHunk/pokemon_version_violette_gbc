@@ -10,6 +10,7 @@ done   EQUS "db $57"  ; End a text box.
 prompt EQUS "db $58"  ; Prompt the player to end a text box (initiating some other event).
 
 page   EQUS "db $49,"     ; Start a new Pokedex page.
+bage   EQUS "db $48," ; same as page, but can watch multiple buttons
 dex    EQUS "db $5f, $50" ; End a Pokedex entry.
 
 wStringBuffer EQUS "wcf4b" ; Alias for french text
@@ -68,6 +69,8 @@ TX_SFX_LEVEL_UP       EQUS "db $0b"
 ;TX_ELLIPSES          EQUS "db $0c"
 TX_WAIT               EQUS "db $0d"
 ;TX_SFX_DEX_RATING    EQUS "db $0e"
+TX_JUMP               EQUS "db $0e"
+TX_CALL               EQUS "db $0f"
 TX_SFX_ITEM_2         EQUS "db $10"
 TX_SFX_KEY_ITEM       EQUS "db $11"
 TX_SFX_CAUGHT_MON     EQUS "db $12"
@@ -75,6 +78,16 @@ TX_SFX_DEX_PAGE_ADDED EQUS "db $13"
 TX_CRY_NIDORINO       EQUS "db $14"
 TX_CRY_PIDGEOT        EQUS "db $15"
 ;TX_CRY_DEWGONG       EQUS "db $16"
+
+MACRO text_jump
+	TX_JUMP
+	dw \1 ; address of text commands
+ENDM
+
+MACRO text_call
+	TX_CALL
+	dw \1 ; address of text commands
+ENDM
 
 MACRO TX_FAR
 	db $17

@@ -252,3 +252,11 @@ DEF BATTLE_NOSWITCH  		EQU %00001000	; bit 3
 DEF TILE_WIDTH EQU 8 ; pixels
 DEF LEN_1BPP_TILE EQU 1 * TILE_WIDTH ; bytes
 DEF LEN_2BPP_TILE EQU 2 * TILE_WIDTH ; bytes
+
+;;;;;;;;;; PureRGBnote: ADDED: pokedex flags
+
+	const_def
+	const BIT_POKEDEX_DATA_DISPLAY_TYPE    ; 0
+	const BIT_POKEDEX_WHICH_SPRITE_SHOWING ; 1 
+	const BIT_VIEWING_POKEDEX              ; 2
+;;;;;;;;;;

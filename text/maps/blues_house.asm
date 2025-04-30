@@ -1,7 +1,7 @@
 _DaisyInitialText::
 	text "Salut <PLAYER>!"
 	line "<RIVAL> est dans"
-	cont "le labo de pépé! "
+	cont "le labo de pépé!"
 	done
 
 _DaisyOfferMapText::
@@ -13,14 +13,13 @@ _DaisyOfferMapText::
 
 _GotMapText::
 	text "<PLAYER> obtient:"
-	line "@"
-	text_ram wStringBuffer
-	text "!@"
+	line "la Carte!@"
 	text_end
 
-_DaisyBagFullText::
-	text "Votre inventaire"
-	line "est plein."
+_GotMapTextHint::
+	text_start
+	para "Vous la rangez"
+	line "dans le #dex."
 	done
 
 _DaisyUseMapText::
