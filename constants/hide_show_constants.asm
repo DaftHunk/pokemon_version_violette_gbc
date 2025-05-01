@@ -99,7 +99,6 @@ const_value = 0
 	const HS_POWER_PLANT_ITEM_4           ; 59 X
 	const HS_POWER_PLANT_ITEM_5           ; 5A X
 	const HS_POWER_PLANT_ITEM_6           ; 5A X
-	const HS_MOLTRES                      ; 5B X
 	const HS_VICTORY_ROAD_2_ITEM_1        ; 5C X
 	const HS_VICTORY_ROAD_2_ITEM_2        ; 5D X
 	const HS_VICTORY_ROAD_2_ITEM_3        ; 5E X
@@ -138,6 +137,7 @@ const_value = 0
 	const HS_VICTORY_ROAD_3F_ITEM_1        ; 78 X
 	const HS_VICTORY_ROAD_3F_ITEM_2        ; 79 X
 	const HS_VICTORY_ROAD_3F_BOULDER       ; 7A
+	const HS_MOLTRES                      ; 5B X
 	const HS_ROCKET_HIDEOUT_B1F_ITEM_1      ; 7B X
 	const HS_ROCKET_HIDEOUT_B1F_ITEM_2      ; 7C X
 	const HS_ROCKET_HIDEOUT_B2F_ITEM_1      ; 7D X

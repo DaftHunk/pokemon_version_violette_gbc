@@ -405,7 +405,6 @@ VictoryRoad2FHS:
 	db VICTORY_ROAD_2,$08,Show
 	db VICTORY_ROAD_2,$09,Show
 	db VICTORY_ROAD_2,$0A,Show
-	db VICTORY_ROAD_2,$0D,Show
 BillsHouseHS:
 	db BILLS_HOUSE,$01,Show
 	db BILLS_HOUSE,$02,Hide
@@ -440,10 +439,19 @@ SSAnneB1FRoomsHS:
 	db SS_ANNE_B1F_ROOMS,$09,Show
 	db SS_ANNE_B1F_ROOMS,$0A,Show
 	db SS_ANNE_B1F_ROOMS,$0B,Show
+Volcano1FHS:
+	db VOLCANO_1F, $04, Show
+	db VOLCANO_1F, $05, Show
+VolcanoB1FHS:
+	db VOLCANO_B1F, $03, Show
+	db VOLCANO_B1F, $04, Show
+	db VOLCANO_B1F, $05, Show
 VictoryRoad3FHS:
 	db VICTORY_ROAD_3F,$05,Show
 	db VICTORY_ROAD_3F,$06,Show
 	db VICTORY_ROAD_3F,$0A,Show
+VolcanoB2FHS:
+	db VOLCANO_B2F, $01, Show
 RocketHideoutB1FHS:
 	db ROCKET_HIDEOUT_B1F,$06,Show
 	db ROCKET_HIDEOUT_B1F,$07,Show
@@ -605,14 +613,5 @@ AgathaRoomHS:
 LanceRoomHS:
 	db LANCES_ROOM, $01, Show
 	db LANCES_ROOM, $02, Hide
-Volcano1FHS:
-	db VOLCANO_1F, $04, Show
-	db VOLCANO_1F, $05, Show
-VolcanoB1FHS:
-	db VOLCANO_B1F, $03, Show
-	db VOLCANO_B1F, $04, Show
-	db VOLCANO_B1F, $05, Show
-VolcanoB2FHS:
-	db VOLCANO_B2F, $01, Show
 
 	db $FF,$01,Show
