@@ -111,6 +111,13 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 https://docs.google.com/spreadsheets/d/1nh3vi-TdhZu3ZT1ZbH4gDMEPXbZw5eX-k1_drcTCmc4/edit?usp=sharing
 - Les sources 
 https://github.com/DaftHunk/pokemon_version_violette
+## Cheats
+- **Désactiver les rencontres** : 01033CD1
+- **Traverser les murs** : 010138CD
+- **Argent infini** : 00995FD3
+- **PV infini** : 01FF16D0
+- **Remplacer les Pokémons sauvages** : 00XXD8CF (Remplacer XX pour l'[id du Pokémon](https://github.com/DaftHunk/pokemon_version_violette/blob/master/constants/pokemon_constants.asm))
+- **Remplacer le premier object du sac et l'avoir à l'infini** : 00XX22D3 (Remplacer XX pour l'[id de l'objet](https://github.com/DaftHunk/pokemon_version_violette/blob/master/constants/item_constants.asm))
 
 ## Credits et remerciements 
 - A huge thanks for the whole romhack community, open source rules and should be a norm !
