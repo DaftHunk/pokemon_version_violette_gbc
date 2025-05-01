@@ -526,4 +526,6 @@ NuzlockeMapList:
 	db $04	; VictoryRoadName
 	db $28	; ViridianCityName
 	db $24	; ViridianForestName
+	db $2E  ; VolcanoName
+	db $C0  ; SeaCottageName
 	db $FF	; list terminator

@@ -105,3 +105,5 @@ CeruleanCaveName:
 	db "Grotte Inconnue@"
 PowerPlantName:
 	db "Centrale@"
+VolcanoName:
+	db "Volcan@"
