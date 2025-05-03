@@ -1,4 +1,4 @@
-_OaksLabGaryText1::
+_OaksLabRivalText1::
 	text "<RIVAL>: Yo!"
 	line "<PLAYER>! Pépé"
 	cont "n'est pas là!"
@@ -184,12 +184,18 @@ _OaksLabText_AskForPokedexRatingAfterElite4::
 	cont "victoire sur"
 	cont "la ligue!"
 
+	para "J'espère que tes"
+	line "vacances se sont"
+	cont "bien passées."
+
+	para "En tout cas, tes"
+	line "prouesses ont"
+	cont "fait des émules."
+
 	para "J'ai entendu dire"
-	line "que tes prouesses"
-	cont "ont fait des"
-	cont "émules et que les"
-	cont "maîtres d'arènes"
-	cont "ont revu leurs"
+	line "que les maîtres"
+	cont "d'arènes ont"
+	cont "revu leurs"
 	cont "stratégies."
 
 	para "N'hésites pas"

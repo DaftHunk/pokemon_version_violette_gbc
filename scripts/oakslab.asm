@@ -793,7 +793,7 @@ OaksLabText1:
 	TX_ASM
 	CheckEvent EVENT_FOLLOWED_OAK_INTO_LAB_2
 	jr nz, .asm_1d0de
-	ld hl, OaksLabGaryText1
+	ld hl, OaksLabRivalText1
 	call PrintText
 	jr .asm_1d0f0
 .asm_1d0de
@@ -808,8 +808,8 @@ OaksLabText1:
 .asm_1d0f0
 	jp TextScriptEnd
 
-OaksLabGaryText1:
-	TX_FAR _OaksLabGaryText1
+OaksLabRivalText1:
+	TX_FAR _OaksLabRivalText1
 	db "@"
 
 OaksLabText40:

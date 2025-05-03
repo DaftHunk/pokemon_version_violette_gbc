@@ -119,7 +119,7 @@ MapSongBanks:
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ;unused
 	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown) ; HallofFameRoom
 	db MUSIC_ROUTES1, BANK(Music_Routes1) ; UndergroundPathNS
-	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; Gary
+	db MUSIC_INDIGO_PLATEAU, BANK(Music_IndigoPlateau) ; Rival
 	db MUSIC_ROUTES1, BANK(Music_Routes1) ; UndergroundPathWE
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; CeladonMart1
 	db MUSIC_POKECENTER, BANK(Music_Pokecenter) ; CeladonMart2

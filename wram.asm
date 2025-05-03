@@ -2973,7 +2973,7 @@ wSilphCo9CurScript:: ; d64a
 	ds 1
 wHallOfFameRoomCurScript:: ; d64b
 	ds 1
-wGaryCurScript:: ; d64c
+wRivalCurScript:: ; d64c
 	ds 1
 wLoreleiCurScript:: ; d64d
 	ds 1

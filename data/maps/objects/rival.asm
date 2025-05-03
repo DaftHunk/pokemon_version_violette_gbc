@@ -1,4 +1,4 @@
-GaryObject:
+RivalObject:
 	db $3 ; border block
 
 	db 4 ; warps

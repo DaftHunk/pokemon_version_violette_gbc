@@ -120,7 +120,7 @@ MapHeaderBanks:
 	db $1D ;unused
 	db BANK(HallofFameRoom_h)
 	db BANK(UndergroundPathNS_h)
-	db BANK(Gary_h)
+	db BANK(Rival_h)
 	db BANK(UndergroundPathWE_h)
 	db BANK(CeladonMart1_h)
 	db BANK(CeladonMart2_h)

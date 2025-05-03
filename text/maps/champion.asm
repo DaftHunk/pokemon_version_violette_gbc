@@ -1,4 +1,4 @@
-_GaryChampionIntroText::
+_RivalChampionIntroText::
 	text "<RIVAL>:"
 	line "Bonjour minable."
 
@@ -40,7 +40,7 @@ _GaryChampionIntroText::
 	cont "monde! Yaaa!"
 	done
 
-_GaryDefeatedText::
+_RivalDefeatedText::
 	text "NOoOoON!"
 	line "IMPOSSIBLE!!!"
 	cont "Mon équipe de"
@@ -56,7 +56,7 @@ _GaryDefeatedText::
 	cont "C'est pas juste!"
 	prompt
 
-_GaryVictoryText::
+_RivalVictoryText::
 	text "Hahaha!"
 	line "J'ai gagné!"
 	cont "Nya na nana na!"
@@ -73,7 +73,7 @@ _GaryVictoryText::
 	cont "Minable!"
 	prompt
 
-_GaryText_AfterBattle::
+_RivalText_AfterBattle::
 	text "Qu...Comm...Hein?"
 	line "Moi? Pourquoi?"
 	cont "WHAAAAAAAAAAA!"
@@ -90,11 +90,11 @@ _GaryText_AfterBattle::
 	line "Ca me la coupe."
 	done
 
-_GaryText2::
+_OakCallOutroText::
 	text "Chen: <PLAYER>!"
 	done
 
-_GaryText_76120::
+_OakCongratOutroText::
 	text "Chen: Tu as gagné!"
 	line "Félicitations!"
 	cont "Tu es le nouveau"
@@ -111,7 +111,13 @@ _GaryText_76120::
 	line "grand maintenant!"
 	done
 
-_GaryText_76125::
+_RematchOakCongratOutroText::
+	text "Chen: Eh bien!"
+	line "Cette situation"
+	cont "m'est familière!"
+	done
+
+_OakRivalOutroText::
 	text "Chen: <RIVAL>!"
 	line "Je suis... déçu!"
 
@@ -143,7 +149,7 @@ _GaryText_76125::
 	cont "pis c'est tout!"
 	done
 
-_GaryText_7612a::
+_OakFollowOutroText::
 	text "Chen: <PLAYER>!"
 
 	para "Cette victoire..."
@@ -161,7 +167,14 @@ _GaryText_7612a::
 	cont "Suis-moi!"
 	done
 
-_RematchGaryChampionIntroText::
+_RematchOakRivalOutroText::
+	text "Chen: <RIVAL>,"
+	line "tu n'as pas re-"
+	cont "tenu la leçon à"
+	cont "ce que je vois..."
+	done
+
+_RematchRivalChampionIntroText::
 	text "<RIVAL>:"
 	line "Salut minable."
 
@@ -191,7 +204,7 @@ _RematchGaryChampionIntroText::
 	cont "combat commence!"
 	done
 
-_RematchGaryDefeatedText::
+_RematchRivalDefeatedText::
 	text "..."
 
 	para "..."
@@ -199,7 +212,7 @@ _RematchGaryDefeatedText::
 	para "..."
 	prompt
 
-_RematchGaryText_AfterCombatText::
+_RematchRivalText_AfterCombatText::
 	text "Okay, tu sais"
 	line "quoi?"
 	

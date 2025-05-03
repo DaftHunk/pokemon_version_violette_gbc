@@ -1,6 +1,6 @@
-Gary_h:
+Rival_h:
 	db GYM ;tileset
 	db CHAMPIONS_ROOM_HEIGHT, CHAMPIONS_ROOM_WIDTH ; Height, Width
-	dw GaryBlocks, GaryTextPointers, GaryScript
+	dw RivalBlocks, RivalTextPointers, RivalScript
 	db $0 ;No Connections
-	dw GaryObject
+	dw RivalObject

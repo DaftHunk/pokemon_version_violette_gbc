@@ -1,51 +1,51 @@
-GaryScript:
+RivalScript:
 	call EnableAutoTextBoxDrawing
-	ld hl, GaryScriptPointers
-	ld a, [wGaryCurScript]
+	ld hl, RivalScriptPointers
+	ld a, [wRivalCurScript]
 	jp CallFunctionInTable
 
-ResetGaryScript:
+ResetRivalScript:
 	xor a
 	ld [wJoyIgnore], a
-	ld [wGaryCurScript], a
+	ld [wRivalCurScript], a
 	ret
 
-GaryScriptPointers:
-	dw GaryScript0
-	dw GaryScript1
-	dw GaryScript2
-	dw GaryScript3
-	dw GaryScript4
-	dw GaryScript5
-	dw GaryScript6
-	dw GaryScript7
-	dw GaryScript8
-	dw GaryScript9
-	dw GaryScript10
+RivalScriptPointers:
+	dw RivalScript0
+	dw RivalScript1
+	dw RivalScript2
+	dw RivalScript3
+	dw RivalScript4
+	dw RivalScript5
+	dw RivalScript6
+	dw RivalScript7
+	dw RivalScript8
+	dw RivalScript9
+	dw RivalScript10
 
-GaryScript0:
+RivalScript0:
 	ret
 
-GaryScript1:
+RivalScript1:
 	ld a, $ff
 	ld [wJoyIgnore], a
 	ld hl, wSimulatedJoypadStatesEnd
-	ld de, GaryEntrance_RLEMovement
+	ld de, RivalEntrance_RLEMovement
 	call DecodeRLEList
 	dec a
 	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
 	ld a, $2
-	ld [wGaryCurScript], a
+	ld [wRivalCurScript], a
 	ret
 
-GaryEntrance_RLEMovement:
+RivalEntrance_RLEMovement:
 	db D_UP,1
 	db D_RIGHT,1
 	db D_UP,3
 	db $ff
 
-GaryScript2:
+RivalScript2:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
@@ -69,8 +69,8 @@ GaryScript2:
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, GaryDefeatedText
-	ld de, GaryVictoryText
+	ld hl, RivalDefeatedText
+	ld de, RivalVictoryText
 	call SaveEndBattleTextPointers
 	ld a, OPP_SONY3
 	ld [wCurOpponent], a
@@ -92,8 +92,8 @@ GaryScript2:
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, RematchGaryDefeatedText
-	ld de, GaryVictoryText
+	ld hl, RematchRivalDefeatedText
+	ld de, RivalVictoryText
 	call SaveEndBattleTextPointers
 	ld a, OPP_SONY3
 	ld [wCurOpponent], a
@@ -105,32 +105,32 @@ GaryScript2:
 	xor a
 	ld [hJoyHeld], a
 	ld a, $3
-	ld [wGaryCurScript], a
+	ld [wRivalCurScript], a
 	ret
 
-GaryScript3:
+RivalScript3:
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, ResetGaryScript
+	jp z, ResetRivalScript
 	call UpdateSprites
 	SetEvent EVENT_BEAT_CHAMPION_RIVAL
 	ld a, $f0
 	ld [wJoyIgnore], a
 	ld a, $1
 	ld [hSpriteIndexOrTextID], a
-	call GaryScript_760c8
+	call RivalScript_760c8
 	ld a, $1
 	ld [H_SPRITEINDEX], a
 	call SetSpriteMovementBytesToFF
 	ld a, $4
-	ld [wGaryCurScript], a
+	ld [wRivalCurScript], a
 	ret
 
-GaryScript4:
+RivalScript4:
 	callba Music_Cities1AlternateTempo
 	ld a, $2
 	ld [hSpriteIndexOrTextID], a
-	call GaryScript_760c8
+	call RivalScript_760c8
 	ld a, $2
 	ld [H_SPRITEINDEX], a
 	call SetSpriteMovementBytesToFF
@@ -142,7 +142,7 @@ GaryScript4:
 	ld [wMissableObjectIndex], a
 	predef ShowObject2
 	ld a, $5
-	ld [wGaryCurScript], a
+	ld [wRivalCurScript], a
 	ret
 
 OakEntranceAfterVictoryMovement:
@@ -153,7 +153,7 @@ OakEntranceAfterVictoryMovement:
 	db NPC_MOVEMENT_UP
 	db $FF
 
-GaryScript5:
+RivalScript5:
 	ld a, [wd730]
 	bit 0, a
 	ret nz
@@ -171,12 +171,12 @@ GaryScript5:
 	call SetSpriteFacingDirectionAndDelay
 	ld a, $3
 	ld [hSpriteIndexOrTextID], a
-	call GaryScript_760c8
+	call RivalScript_760c8
 	ld a, $6
-	ld [wGaryCurScript], a
+	ld [wRivalCurScript], a
 	ret
 
-GaryScript6:
+RivalScript6:
 	ld a, $2
 	ld [H_SPRITEINDEX], a
 	ld a, SPRITE_FACING_RIGHT
@@ -184,12 +184,12 @@ GaryScript6:
 	call SetSpriteFacingDirectionAndDelay
 	ld a, $4
 	ld [hSpriteIndexOrTextID], a
-	call GaryScript_760c8
+	call RivalScript_760c8
 	ld a, $7
-	ld [wGaryCurScript], a
+	ld [wRivalCurScript], a
 	ret
 
-GaryScript7:
+RivalScript7:
 	ld a, $2
 	ld [H_SPRITEINDEX], a
 	xor a ; SPRITE_FACING_DOWN
@@ -197,21 +197,21 @@ GaryScript7:
 	call SetSpriteFacingDirectionAndDelay
 	ld a, $5
 	ld [hSpriteIndexOrTextID], a
-	call GaryScript_760c8
-	ld de, OakExitGaryRoomMovement
+	call RivalScript_760c8
+	ld de, OakExitRivalRoomMovement
 	ld a, $2
 	ld [H_SPRITEINDEX], a
 	call MoveSprite
 	ld a, $8
-	ld [wGaryCurScript], a
+	ld [wRivalCurScript], a
 	ret
 
-OakExitGaryRoomMovement:
+OakExitRivalRoomMovement:
 	db NPC_MOVEMENT_UP
 	db NPC_MOVEMENT_UP
 	db $FF
 
-GaryScript8:
+RivalScript8:
 	ld a, [wd730]
 	bit 0, a
 	ret nz
@@ -219,10 +219,10 @@ GaryScript8:
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	ld a, $9
-	ld [wGaryCurScript], a
+	ld [wRivalCurScript], a
 	ret
 
-GaryScript9:
+RivalScript9:
 	ld a, $ff
 	ld [wJoyIgnore], a
 	ld hl, wSimulatedJoypadStatesEnd
@@ -232,7 +232,7 @@ GaryScript9:
 	ld [wSimulatedJoypadStatesIndex], a
 	call StartSimulatingJoypadStates
 	ld a, $a
-	ld [wGaryCurScript], a
+	ld [wRivalCurScript], a
 	ret
 
 WalkToHallOfFame_RLEMovment:
@@ -240,17 +240,17 @@ WalkToHallOfFame_RLEMovment:
 	db D_LEFT,1
 	db $ff
 
-GaryScript10:
+RivalScript10:
 	ld a, [wSimulatedJoypadStatesIndex]
 	and a
 	ret nz
 	xor a
 	ld [wJoyIgnore], a
 	ld a, $0
-	ld [wGaryCurScript], a
+	ld [wRivalCurScript], a
 	ret
 
-GaryScript_760c8:
+RivalScript_760c8:
 	ld a, $f0
 	ld [wJoyIgnore], a
 	call DisplayTextID
@@ -258,14 +258,14 @@ GaryScript_760c8:
 	ld [wJoyIgnore], a
 	ret
 
-GaryTextPointers:
-	dw GaryText1
-	dw GaryText2
-	dw GaryText3
-	dw GaryText4
-	dw GaryText5
+RivalTextPointers:
+	dw RivalMainText
+	dw OakCallOutroText
+	dw OakOutroText
+	dw OakRivalOutroText
+	dw OakFollowOutroText
 
-GaryText1:
+RivalMainText:
 	TX_ASM
 
 	CheckEvent EVENT_BEAT_CHAMPION_RIVAL
@@ -276,73 +276,102 @@ GaryText1:
 
 	jr .introBattle
 .introBattle
-	ld hl, GaryChampionIntroText
+	ld hl, RivalChampionIntroText
 	jr .printText
 .introRemath
-	ld hl, RematchGaryChampionIntroText
+	ld hl, RematchRivalChampionIntroText
 	jr .printText
 .afterBattle
 	CheckEvent EVENT_ELITE_4_BEATEN
 	jr nz, .afterRemath
 
-	ld hl, GaryText_AfterBattle
+	ld hl, RivalText_AfterBattle
 	jr .printText
 .afterRemath
-	ld hl, RematchGaryText_AfterCombatText
+	ld hl, RematchRivalText_AfterCombatText
 	jr .printText
 .printText
 	call PrintText
 	jp TextScriptEnd
 
-GaryChampionIntroText:
-	TX_FAR _GaryChampionIntroText
+RivalChampionIntroText:
+	TX_FAR _RivalChampionIntroText
 	db "@"
 
-GaryDefeatedText:
-	TX_FAR _GaryDefeatedText
+RivalDefeatedText:
+	TX_FAR _RivalDefeatedText
 	db "@"
 
-GaryVictoryText:
-	TX_FAR _GaryVictoryText
+RivalVictoryText:
+	TX_FAR _RivalVictoryText
 	db "@"
 
-GaryText_AfterBattle:
-	TX_FAR _GaryText_AfterBattle
+RivalText_AfterBattle:
+	TX_FAR _RivalText_AfterBattle
 	db "@"
 
-RematchGaryChampionIntroText:
-	TX_FAR _RematchGaryChampionIntroText
+RematchRivalChampionIntroText:
+	TX_FAR _RematchRivalChampionIntroText
 	db "@"
 
-RematchGaryDefeatedText:
-	TX_FAR _RematchGaryDefeatedText
+RematchRivalDefeatedText:
+	TX_FAR _RematchRivalDefeatedText
 	db "@"
 
-RematchGaryText_AfterCombatText:
-	TX_FAR _RematchGaryText_AfterCombatText
+RematchRivalText_AfterCombatText:
+	TX_FAR _RematchRivalText_AfterCombatText
 	db "@"
 
-GaryText2:
-	TX_FAR _GaryText2
+OakCallOutroText:
+	TX_FAR _OakCallOutroText
 	db "@"
 
-GaryText3:
+OakOutroText:
 	TX_ASM
 	ld a, [wPlayerStarter]
 	ld [wPokedexNum], a
 	call GetMonName
-	ld hl, GaryText_76120
+
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .afterRemath
+	; else
+	ld hl, .oakCongratOutroText
+	jr .printText
+.afterRemath
+	ld hl, .rematchOakCongratOutroText
+	; fallthrough
+.printText
 	call PrintText
 	jp TextScriptEnd
 
-GaryText_76120:
-	TX_FAR _GaryText_76120
+.oakCongratOutroText:
+	TX_FAR _OakCongratOutroText
+	db "@"
+.rematchOakCongratOutroText:
+	TX_FAR _RematchOakCongratOutroText
 	db "@"
 
-GaryText4:
-	TX_FAR _GaryText_76125
+OakRivalOutroText:
+	TX_ASM
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .afterRemath
+	; else
+	ld hl, .oakRivalOutroText
+	jr .printText
+.afterRemath
+	ld hl, .rematchOakRivalOutroText
+	; fallthrough
+.printText
+	call PrintText
+	jp TextScriptEnd
+
+.oakRivalOutroText
+	TX_FAR _OakRivalOutroText
+	db "@"
+.rematchOakRivalOutroText
+	TX_FAR _RematchOakRivalOutroText
 	db "@"
 
-GaryText5:
-	TX_FAR _GaryText_7612a
+OakFollowOutroText:
+	TX_FAR _OakFollowOutroText
 	db "@"

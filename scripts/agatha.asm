@@ -138,7 +138,7 @@ AgathaScript2:
 	jp .endScript
 .endScript
 	ld a, $1
-	ld [wGaryCurScript], a
+	ld [wRivalCurScript], a
 	ret
 
 AgathaTextPointers:
