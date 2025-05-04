@@ -104,11 +104,11 @@ MapSongBanks:
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ; SSAnne8
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ; SSAnne9
 	db MUSIC_SS_ANNE, BANK(Music_SSAnne) ; SSAnne10
-	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown) ;BillsGarden
-	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ;Volcano1F_h
-	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ;VolcanoB1F_h
+	db MUSIC_PALLET_TOWN, BANK(Music_PalletTown) ; BillsGarden
+	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; Volcano1F_h
+	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; VolcanoB1F_h
 	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; VictoryRoad1
-	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ;VolcanoB2F_h
+	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; VolcanoB2F_h
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ;unused
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ;unused
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ;unused
@@ -225,9 +225,9 @@ MapSongBanks:
 	db MUSIC_SAFARI_ZONE, BANK(Music_SafariZone) ; SafariZoneRestHouse2
 	db MUSIC_SAFARI_ZONE, BANK(Music_SafariZone) ; SafariZoneRestHouse3
 	db MUSIC_SAFARI_ZONE, BANK(Music_SafariZone) ; SafariZoneRestHouse4
-	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; UnknownDungeon2
-	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; UnknownDungeon3
-	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; UnknownDungeon1
+	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; UnknownDungeon2
+	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; UnknownDungeon3
+	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; UnknownDungeon1
 	db MUSIC_CITIES2, BANK(Music_Cities2) ; NameRater
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; CeruleanHouse2
 	db MUSIC_CINNABAR, BANK(Music_Cinnabar)

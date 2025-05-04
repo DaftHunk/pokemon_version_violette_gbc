@@ -44,4 +44,6 @@ MoltresBattleText:
 	ld a, MOLTRES
 	call PlayCry
 	call WaitForSoundToFinish
+	ld a, 8
+	ld [wGymLeaderNo], a	;joenote - use gym leader music
 	jp TextScriptEnd

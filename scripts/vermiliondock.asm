@@ -259,6 +259,8 @@ MewBattleText:
 	ld a, MEW
 	call PlayCry
 	call WaitForSoundToFinish
+	ld a, 8
+	ld [wGymLeaderNo], a	; use gym leader music
 	jp TextScriptEnd
 
 TruckOAMTable:
