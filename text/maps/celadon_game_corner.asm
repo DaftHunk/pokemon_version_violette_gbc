@@ -13,7 +13,6 @@ _CeladonGameCornerText_48d22::
 	para "Désirez-vous des"
 	line "jetons?"
 
-;	para "¥1000 pour 50"	tournenote - fix ¥ position
 	para "1000¥ pour 50"
 	line "jetons. OK?"
 	done

@@ -108,18 +108,20 @@ CeladonCityText8_continue:
 	TX_FAR _CeladonCityText8
 	db "@"
 CeladonCityText8_alternate:
-	text "J'ai eu une entrée"
-	line "de la Sylphe SARL."
-	cont "à la présentation"
-	cont "de la Master Ball"
-	cont "et je fournis un"
-	cont "gars au DEPT."
-	cont "STORE en cachette."
+	text "Tu veux quoi?"
+	line "T'es d'la police?"
+
+	para "Ouai c'est moi"
+	line "qui fournit le"
+	cont "centre commercial"
+	cont "en Master Ball,"
+	cont "ils sont pas re-"
+	cont "gardant sur la"
+	cont "provenance, héhé."
 	
 	para "Pas besoin de la"
 	line "Team Rocket pour"
-	cont "se faire de"
-	cont "l'argent."
+	cont "s'faire du blé!"
 	done
 	db "@"
 
@@ -231,10 +233,10 @@ BuyCoinsFromRocket:
 _TXTSolicitCoins:
 	text "Pssst! Hey gamin."
 	line "Tu veux acheter"
-	cont "des Jetons ?"
-	cont "J'te fais les 1000"
-	cont "pour seulement"
-	cont "¥15000."
+	cont "des Jetons?"
+	cont "J'te fais les"
+	cont "1000 pour seule-"
+	cont "ment 15000¥!"
 	done
 	db "@"
 _TXTRefuseCoins:
@@ -245,8 +247,8 @@ _TXTRefuseCoins:
 	para "C'est déjà galère"
 	line "de se faire de la"
 	cont "tune maintenant"
-	cont "que la Team Rocket"
-	cont "est partie."
+	cont "que la Team Rock-"
+	cont "et est partie..."
 	done
 	db "@"
 _TXTNeedCoinCase:

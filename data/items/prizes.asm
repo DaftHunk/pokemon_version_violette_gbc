@@ -43,7 +43,7 @@ PrizeMenuTMsEntries:
 	db "@"
 
 PrizeMenuTMsCost:
-	coins 5500
-	coins 5500
-	coins 5500
+	coins 5000
+	coins 5000
+	coins 5000
 	db "@"

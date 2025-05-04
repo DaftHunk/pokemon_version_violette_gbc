@@ -124,8 +124,8 @@ _SSAnne6Text_GymGuy2::
 	cont "d'un peu partout."
 
 	para "Il y a un PC de"
-	line "bord dans le"
-	cont "coin en cas de"
+	line "bord en haut à"
+	cont "droite de moi si"
 	cont "besoin."
 	
 	para "Tu es prêt?"
@@ -143,8 +143,8 @@ _SSAnne6Text_GymGuy_noroom::
 	
 _SSAnne6Text_GymGuy_party::
 	text "Tu dois avoir ex-"
-	line "actement 3 #mon"
-	cont "pour entrer."
+	line "actement 3 poké-"
+	cont "mon pour entrer."
 	done
 
 _SSAnne6Text_GymGuy_bye::

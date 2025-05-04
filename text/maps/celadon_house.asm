@@ -22,17 +22,18 @@ _CeladonHouseText3::
 	done
 
 _CeladonHouseTextChiefIntro::	;joenote - adding text for selling pokemon
-	text "Héhé! Les machines"
-	line "à sous sont de"
-	cont "vrais aspirateurs"
-	cont "à pognons."
+	text "Héhé! Les mach-"
+	line "ines à sous sont"
+	cont "de vrais aspirat-"
+	cont "eurs à pognons."
 	
 	para "Mais j'vais vite"
 	line "manquer d'lots"
-	cont "#mon sans l'Boss."
+	cont "#mon sans"
+	cont "l'Boss."
 	
-	para "Hey gamin! Joli"
-	line "@"
+	para "Hey gamin!"
+	line "Joli @"
 	TX_RAM wcd6d
 	db $0
 	cont "qu't'as là."

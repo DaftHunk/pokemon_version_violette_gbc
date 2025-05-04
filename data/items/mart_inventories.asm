@@ -52,7 +52,7 @@ FuchsiaCashierText::
 ; unused? joenote - repurposing for a new vendor on celadon dept store floor 3 - Céladopole
 CeladonMart3ClerkText::
 	;TX_MART GREAT_BALL, HYPER_POTION, SUPER_POTION, FULL_HEAL, REVIVE
-	TX_MART ULTRA_BALL, FULL_RESTORE, MAX_POTION, FULL_HEAL, MAX_REVIVE, MAX_REPEL, RARE_CANDY, EXP_ALL, MOON_STONE, METAL_COAT
+	TX_MART MASTER_BALL, ULTRA_BALL, FULL_RESTORE, MAX_POTION, FULL_HEAL, MAX_REVIVE, MAX_REPEL, RARE_CANDY, EXP_ALL, MOON_STONE, METAL_COAT
 
 ; Cinnabar - Cramois'Île
 CinnabarCashierText::

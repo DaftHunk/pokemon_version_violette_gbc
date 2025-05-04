@@ -88,7 +88,7 @@ _Lab4Text_610bd::
 _Lab4Text_Clone0::
 	text "Une analyse du"
 	line "carré de Punnett"
-	cont "pour ¥200, ça"
+	cont "pour 200¥, ça"
 	cont "t'intéresse?"
 	done
 	
@@ -108,7 +108,7 @@ _Lab4Text_Clone1::
 	done
 
 _Lab4Text_Clone2::
-	text "C'est ¥10000 pour"
+	text "C'est 10000¥ pour"
 	line "cloner ces gènes."
 	cont "Toujours inté-"
 	cont "ressé?"

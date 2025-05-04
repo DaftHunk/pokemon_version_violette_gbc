@@ -9,7 +9,7 @@ _MoveRelearnerGreetingText::
 	cont "techniques qu'ils"
 	cont "ont oublié."
 
-	para "C'est ¥1000 le"
+	para "C'est 1000¥ le"
 	line "cours,"
 	cont "qu'en dis-tu?"
 	done

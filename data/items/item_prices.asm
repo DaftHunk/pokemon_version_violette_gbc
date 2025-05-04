@@ -38,7 +38,7 @@ ItemPrices:;joenote - added prices for amber/fossils/moon stone/pp_up/exp all/ma
 	money 9800  ; IRON
 	money 9800  ; CARBOS
 	money 9800  ; CALCIUM
-	money 4800  ; RARE_CANDY
+	money 6000  ; RARE_CANDY
 	money 12000 ; DOME_FOSSIL
 	money 12000 ; HELIX_FOSSIL
 	money 0     ; SECRET_KEY
