@@ -18,13 +18,21 @@ _RandTrainerIntro::
 	line "d'être sorti d'la"
 	cont "Caverne Azurée en"
 	cont "un seul morceau."
-	cont "J'y ai choppé ces"
-	cont "étranges Métamorph"
-	cont "qui copient tout."
+	
+	para "J'y ai choppé ces"
+	line "étranges Méta-"
+	cont "morph qui copient"
+	cont "tout."
 	done
 	
 _RandTrainerChallenge::
-	text "Testons-les."
+	text "Ca te dit de les"
+	line "tester?"
+
+	para "Je te donnerai"
+	line "un truc que j'ai"
+	cont "trouvé là-bas si"
+	cont "tu me bas 5 fois."
 	done
 	
 _RandTrainerBye::
@@ -38,5 +46,10 @@ _RandTrainerPre::
 	
 _RandTrainerPost::
 	text "Okay!"
-	line "Bataille terminée."
+	line "Bien joué!"
+	prompt
+
+_RandTrainerWin::
+	text "Bravo! Voilà"
+	line "pour toi!"
 	prompt

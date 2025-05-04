@@ -9,6 +9,7 @@ UndergroundPathWEScript:
 UndergroundPathWETextPointers:
 	dw RandTrainerText1
 	dw PickUpItemText
+	dw RandTrainerWin
 
 CheckLostRandBattle:
 	ld a, [wIsInBattle]
@@ -30,6 +31,10 @@ CheckWinstreak:
 	predef ShowObject
 	xor a
 	ld [wUnusedD5A3], a
+	
+	ld a, $3
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
 	ret
 	
 RandTrainerText1:
@@ -61,7 +66,11 @@ RandTrainerText1:
 	call SaveEndBattleTextPointers	;save the win/lose text
 	ld a, [H_SPRITEINDEX]
 	ld [wSpriteIndex], a
-	callba GetRandTrainer
+	;callba GetRandTrainer
+	ld a, $D3
+	ld [wEngagedTrainerClass], a
+	ld a, 1
+	ld [wEngagedTrainerSet], a
 	;call EngageMapTrainer
 	call InitBattleEnemyParameters
 	;ld a, $09	;load 9 into the gym leader value to play final battle music 
@@ -81,7 +90,6 @@ RandTrainerText1:
 .textend
 	jp TextScriptEnd
 	
-	
 RandTrainerNotReady:
 	TX_FAR _RandTrainerNotReady
 	db "@"
@@ -99,4 +107,7 @@ RandTrainerPre:
 	db "@"
 RandTrainerPost:
 	TX_FAR _RandTrainerPost
+	db "@"
+RandTrainerWin:
+	TX_FAR _RandTrainerWin
 	db "@"
