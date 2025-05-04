@@ -1555,8 +1555,6 @@ ShipPort_GFX:      INCBIN "gfx/tilesets/ship_port.2bpp"
 ShipPort_Block:    INCBIN "gfx/blocksets/ship_port.bst"
 Interior_GFX:      INCBIN "gfx/tilesets/interior.2bpp"
 Interior_Block:    INCBIN "gfx/blocksets/interior.bst"
-Plateau_GFX:       INCBIN "gfx/tilesets/plateau.2bpp"
-Plateau_Block:     INCBIN "gfx/blocksets/plateau.bst"
 
 
 SECTION "bank1A",ROMX,BANK[$1A]
@@ -1567,6 +1565,8 @@ Version_GFX:
 INCBIN "gfx/mainmenu/blueversion.1bpp" ; 10 tiles
 Version_GFXEnd:
 
+Plateau_GFX:       INCBIN "gfx/tilesets/plateau.2bpp"
+Plateau_Block:     INCBIN "gfx/blocksets/plateau.bst"
 Dojo_GFX:
 Gym_GFX:           INCBIN "gfx/tilesets/gym.2bpp"
 Dojo_Block:
@@ -1586,12 +1586,12 @@ Gate_Block:        INCBIN "gfx/blocksets/gate.bst"
 
 Forest_GFX:        INCBIN "gfx/tilesets/forest.2bpp"
 Forest_Block:      INCBIN "gfx/blocksets/forest.bst"
-Facility_GFX:      INCBIN "gfx/tilesets/facility.2bpp"
-Facility_Block:    INCBIN "gfx/blocksets/facility.bst"
 
 
 SECTION "bank1B",ROMX,BANK[$1B]
 
+Facility_GFX:      INCBIN "gfx/tilesets/facility.2bpp"
+Facility_Block:    INCBIN "gfx/blocksets/facility.bst"
 Cemetery_GFX:      INCBIN "gfx/tilesets/cemetery.2bpp"
 Cemetery_Block:    INCBIN "gfx/blocksets/cemetery.bst"
 Cavern_GFX:        INCBIN "gfx/tilesets/cavern.2bpp"
@@ -1600,10 +1600,6 @@ Lobby_GFX:         INCBIN "gfx/tilesets/lobby.2bpp"
 Lobby_Block:       INCBIN "gfx/blocksets/lobby.bst"
 Ship_GFX:          INCBIN "gfx/tilesets/ship.2bpp"
 Ship_Block:        INCBIN "gfx/blocksets/ship.bst"
-Lab_GFX:           INCBIN "gfx/tilesets/lab.2bpp"
-Lab_Block:         INCBIN "gfx/blocksets/lab.bst"
-Club_GFX:          INCBIN "gfx/tilesets/club.2bpp"
-Club_Block:        INCBIN "gfx/blocksets/club.bst"
 
 
 SECTION "bank1C",ROMX,BANK[$1C]
@@ -1620,9 +1616,6 @@ INCLUDE "engine/save.asm"
 
 
 SECTION "bank1D",ROMX,BANK[$1D]
-
-Underground_GFX:   INCBIN "gfx/tilesets/underground.2bpp"
-Underground_Block: INCBIN "gfx/blocksets/underground.bst"
 
 CopycatsHouse1FBlocks: INCBIN "maps/copycatshouse1f.blk"
 
@@ -1880,6 +1873,12 @@ INCLUDE "engine/menu/multi_choice_menu.asm"
 INCLUDE "engine/menu/text_multi_button_prompt.asm"
 INCLUDE "engine/menu/change_box_menu.asm"
 
+Lab_GFX:           INCBIN "gfx/tilesets/lab.2bpp"
+Lab_Block:         INCBIN "gfx/blocksets/lab.bst"
+Club_GFX:          INCBIN "gfx/tilesets/club.2bpp"
+Club_Block:        INCBIN "gfx/blocksets/club.bst"
+Underground_GFX:   INCBIN "gfx/tilesets/underground.2bpp"
+Underground_Block: INCBIN "gfx/blocksets/underground.bst"
 Reactor_GFX:       INCBIN "gfx/tilesets/reactor.2bpp"
 Reactor_Block:     INCBIN "gfx/blocksets/reactor.bst"
 Volcano_GFX:       INCBIN "gfx/tilesets/volcano.2bpp"
