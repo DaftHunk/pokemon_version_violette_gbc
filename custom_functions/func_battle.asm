@@ -676,8 +676,8 @@ TypePalColorList:
 	db PAL_GREYMON;rock
 	db PAL_BW;untyped/bird
 	db PAL_GREENMON;bug
-	db PAL_PURPLEMON;ghost
-	db PAL_BW;unused
+	db PAL_REDBLUEMON;dragon
+	db PAL_GREYBLUEMON;steel
 	db PAL_BW;unused
 	db PAL_BW;unused
 	db PAL_BW;unused
@@ -694,7 +694,8 @@ TypePalColorList:
 	db PAL_YELLOWMON;electric
 	db PAL_PINKMON;psychic
 	db PAL_CYANMON;ice
-	db PAL_ORANGEMON;dragon
+	db PAL_PURPLEMON;ghost
+	db PAL_BW;dark
 ItemPalList:
 	db PAL_BW	;null item
 	db PAL_PURPLEMON	;master ball
