@@ -31,7 +31,7 @@ MirrorTrainerText1:
 	ld hl, MirrorTrainerPost	;load text for when you win
 	ld de, MirrorTrainerPost	;load text for when you lose
 	call SaveEndBattleTextPointers	;save the win/lose text
-	ld a, OPP_POKEMANIAC	;load the trainer type
+	ld a, OPP_GENTLEMAN	;load the trainer type
 	ld [wCurOpponent], a	;set as the current opponent
 	ld a, 1	;get a basic roster (doesn't matter)
 	ld [wTrainerNo], a
@@ -45,27 +45,29 @@ MirrorTrainerText1:
 	jp TextScriptEnd
 
 MirrorTrainerIntro:
-	text "Je suis Pagliaccio"
+	text "Je suis Silke"
 	line "artiste extra-"
 	cont "ordinaire et"
 	cont "maître du mime!"
 	prompt
 	db "@"
 MirrorTrainerNotReady:
-	text "Mais je dois finir"
-	line "de me poudrer et"
-	cont "préparer tous mes"
-	cont "mes costumes."
+	text "Mais je dois fi-"
+	line "nir de me poudrer"
+	cont "et préparer tous"
+	cont "mes mes costumes."
 	
 	para "Je serai prêt"
-	line "quand la finale de"
-	cont "la Ligue #mon"
-	cont "sera terminée."
+	line "quand la finale"
+	cont "de la Ligue #-"
+	cont "mon sera ter-"
+	cont "minée."
 	done
 	db "@"
 MirrorTrainerChallenge:
-	text "Tu veux tester tes"
-	line "stratégies sur moi"
+	text "Tu veux tester"
+	line "tes stratégies"
+	cont "sur moi,"
 	cont "jeune Champion?"
 	done
 	db "@"
