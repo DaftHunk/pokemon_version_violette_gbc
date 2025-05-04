@@ -1,5 +1,5 @@
 _ViridianCityText1::
-	text "Des # ball!"
+	text "Des # Ball!"
 	line "Mais... T'as des"
 	cont "#mon!"
 
@@ -15,7 +15,7 @@ _ViridianCityText_19122::
 	cont "toujours fermée."
 
 	para "Mais qui en est"
-	line "le CHAMPION?"
+	line "le Champion?"
 	done
 
 _ViridianCityText_19127::

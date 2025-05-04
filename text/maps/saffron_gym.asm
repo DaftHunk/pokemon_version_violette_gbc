@@ -268,7 +268,7 @@ _SaffronGymText_Trainer5AfterBattle::
 	done
 
 _SaffronGymText_Trainer6PreBattle::
-	text "Le CHAMPION de"
+	text "Le Champion de"
 	line "l'Arène #mon"
 	cont "de Safrania est"
 	cont "une médium psy!"

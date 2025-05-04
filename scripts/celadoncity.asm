@@ -253,12 +253,12 @@ _TXTRefuseCoins:
 	db "@"
 _TXTNeedCoinCase:
 	text "Ben ramène ta"
-	line "Boîte jeton,"
+	line "Boîte Jeton,"
 	cont "gros malin."
 	done
 	db "@"
 _TXTCoinCaseFull:
-	text "Ta Boîte jeton"
+	text "Ta Boîte Jeton"
 	line "est déjà pleine."
 	done
 	db "@"

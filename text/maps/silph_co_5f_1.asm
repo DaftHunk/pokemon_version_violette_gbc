@@ -30,7 +30,7 @@ _SilphCo5AfterBattleText2::
 _SilphCo5BattleText3::
 	text "Nous étudions la"
 	line "technologie des"
-	cont "# ball!"
+	cont "# Ball!"
 	done
 
 _SilphCo5EndBattleText3::
@@ -40,7 +40,7 @@ _SilphCo5EndBattleText3::
 
 _SilphCo5AfterBattleText3::
 	text "Nous recherchons"
-	line "la # ball"
+	line "la # Ball"
 	cont "ultime, capable"
 	cont "de tout attraper!"
 	done

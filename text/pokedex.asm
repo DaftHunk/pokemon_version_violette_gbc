@@ -54,7 +54,7 @@ _VoltorbDexEntry::
 
 	bage "est souvent"
 	next "confondu avec une"
-	next "# ball"
+	next "# Ball"
 	dex
 
 _NidokingDexEntry::

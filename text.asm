@@ -328,12 +328,12 @@ _PlaySlotMachineText::
 
 _OutOfCoinsSlotMachineText::
 	text "Zut de flûte!"
-	line "Pas de jetons!"
+	line "Pas de Jetons!"
 	done
 
 _BetHowManySlotMachineText::
 	text "Combien de"
-	line "jetons?"
+	line "Jetons?"
 	done
 
 _StartSlotMachineText::
@@ -342,7 +342,7 @@ _StartSlotMachineText::
 
 _NotEnoughCoinsSlotMachineText::
 	text "Pas assez de"
-	line "jetons!"
+	line "Jetons!"
 	prompt
 
 _OneMoreGoSlotMachineText::
@@ -354,7 +354,7 @@ _LinedUpText::
 	text " en ligne!"
 	line "@"
 	text_ram wStringBuffer
-	text " jetons!"
+	text " Jetons!"
 	done
 
 _NotThisTimeText::
@@ -738,7 +738,7 @@ _GameCornerCoinCaseText::
 
 _GameCornerNoCoinsText::
 	text "Vous n'avez pas"
-	line "de jetons!"
+	line "de Jetons!"
 	done
 
 _GameCornerOutOfOrderText::
@@ -793,7 +793,7 @@ _ViridianSchoolNotebookText1::
 
 	para "Première page..."
 
-	para "Les # balls"
+	para "Les # Balls"
 	line "peuvent capturer"
 	cont "les #mons."
 
@@ -1086,19 +1086,19 @@ _FoundHiddenCoinsText::
 	text "<PLAYER> trouve"
 	line "@"
 	text_bcd hCoins, 2 | LEADING_ZEROES | LEFT_ALIGN
-	text " jetons!@"
+	text " Jetons!@"
 	text_end
 
 _FoundHiddenCoins2Text::
 	text "<PLAYER> trouve"
 	line "@"
 	text_bcd hCoins, 2 | LEADING_ZEROES | LEFT_ALIGN
-	text " jetons!@"
+	text " Jetons!@"
 	text_end
 
 _DroppedHiddenCoinsText::
 	text_start
-	para "Oups! Des jetons"
+	para "Oups! Des Jetons"
 	line "sont tombés!"
 	done
 
@@ -1959,7 +1959,7 @@ _RequireCoinCaseText::
 _ExchangeCoinsForPrizesText::
 	text "Nous échangeons"
 	line "des prix contre"
-	cont "des jetons."
+	cont "des Jetons."
 	prompt
 
 _WhichPrizeText::
@@ -1978,7 +1978,7 @@ _SoYouWantPrizeText::
 
 _SorryNeedMoreCoinsText::
 	text "Vous n'avez pas"
-	line "assez de jetons.@"
+	line "assez de Jetons.@"
 	text_end
 
 _OopsYouDontHaveEnoughRoomText::

@@ -10,7 +10,7 @@ _UltraBallDescription::
 
 _GreatBallDescription::
 	text "Plus efficace qu'"
-	next "une # ball."
+	next "une # Ball."
 	prompt
 
 _PokeBallDescription::
@@ -295,6 +295,7 @@ _ExpAllDescription::
 _OldRodDescription::
 	text "Utilise sur l'eau"
 	line "pour pêcher."
+
 	para "Appuyez sur SELECT"
 	line "en maintenant A"
 	cont "pour l'utiliser"
@@ -302,8 +303,9 @@ _OldRodDescription::
 	prompt
 
 _GoodRodDescription::
-	text "Une bonne canne"
+	text "Une bonne Canne"
 	line "pour la pêche."
+
 	para "Appuyez sur SELECT"
 	line "en maintenant A"
 	cont "pour l'utiliser"
@@ -311,8 +313,9 @@ _GoodRodDescription::
 	prompt
 
 _SuperRodDescription::
-	text "La meilleure canne"
+	text "La meilleure Canne"
 	line "pour la pêche."
+
 	para "Appuyez sur SELECT"
 	line "en maintenant A"
 	cont "pour l'utiliser"
@@ -348,6 +351,7 @@ _HM01Description::
 	text "Appuyer sur SELECT"
 	line "devant un buisson"
 	cont "pour l'utiliser."
+
 	para "Coupe:Insecte"
 	line "Dég: 55;Pré: 100"
 	prompt
@@ -361,6 +365,7 @@ _HM03Description::
 	text "Appuie sur SELECT"
 	line "devant de l'eau"
 	cont "pour l'utiliser."
+
 	para "Surf:Eau"
 	line "Dég: 95;Pré: 100"
 	prompt
@@ -369,6 +374,7 @@ _HM04Description::
 	text "Appuyez sur SELECT"
 	line "face à un rocher"
 	cont "pour l'activer."
+
 	para "Force:Combat"
 	line "Dég: 80;Pré: 100"
 	prompt
@@ -377,6 +383,7 @@ _HM05Description::
 	text "Appuyez sur SELECT"
 	line "dans le noir pour"
 	cont "l'utiliser."
+	
 	para "Flash:Electr"
 	line "Dég: -;Pré: 100"
 	prompt

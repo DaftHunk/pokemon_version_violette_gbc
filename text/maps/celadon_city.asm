@@ -27,7 +27,7 @@ _CeladonCityText4::
 
 	para "J'aurais dû"
 	line "acheter un prix"
-	cont "avec mes jetons"
+	cont "avec mes Jetons"
 	cont "avant de tout"
 	cont "claquer!"
 	done
@@ -161,7 +161,7 @@ _CeladonCityText16::
 
 _CeladonCityText17::
 	text "Change"
-	line "Des jetons contre"
+	line "Des Jetons contre"
 	cont "de bô prix!"
 	done
 

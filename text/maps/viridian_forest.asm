@@ -67,7 +67,7 @@ _ViridianFrstAfterBattleText3::
 
 _ViridianForestText8::
 	text "J'suis à court de"
-	line "# ball!"
+	line "# Ball!"
 	cont "Je ne peux plus"
 	cont "attraper de"
 	cont "#mon!"

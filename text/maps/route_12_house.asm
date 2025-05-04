@@ -15,7 +15,7 @@ _Route12HouseText_564c5::
 	line "J't'aime bien!"
 
 	para "Prends cette"
-	line "canne à pêche,"
+	line "Canne à pêche,"
 
 ;joenote - add hotkey info
 	para "appuie sur SELECT"

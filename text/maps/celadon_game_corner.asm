@@ -2,7 +2,7 @@ _CeladonGameCornerText1::
 	text "Bienvenue!"
 
 	para "Echangez vos"
-	line "jetons contre des"
+	line "Jetons contre des"
 	cont "prix à côté."
 	done
 
@@ -11,15 +11,15 @@ _CeladonGameCornerText_48d22::
 	line "Casino Rocket!"
 
 	para "Désirez-vous des"
-	line "jetons?"
+	line "Jetons?"
 
 	para "1000¥ pour 50"
-	line "jetons. OK?"
+	line "Jetons. OK?"
 	done
 
 _CeladonGameCornerText_48d27::
 	text "Merci! Voici vos"
-	line "50 jetons!"
+	line "50 Jetons!"
 	done
 
 _CeladonGameCornerText_48d2c::
@@ -29,7 +29,7 @@ _CeladonGameCornerText_48d2c::
 
 _CeladonGameCornerText_48d31::
 	text "Pas d'sous."
-	line "Pas d'jetons."
+	line "Pas d'Jetons."
 	done
 
 _CeladonGameCornerText_48d36::
@@ -65,12 +65,12 @@ _CeladonGameCornerText_48d9c::
 
 _Received10CoinsText::
 	text "<PLAYER> reçoit"
-	line "10 jetons!@"
+	line "10 Jetons!@"
 	text_end
 
 _CeladonGameCornerText_48da7::
 	text "T'as pas besoin"
-	line "d'mes jetons!"
+	line "d'mes Jetons!"
 	done
 
 _CeladonGameCornerText_48dac::
@@ -108,7 +108,7 @@ _CeladonGameCornerText_48dcf::
 	text "De très rares"
 	line "#mon sont à"
 	cont "échanger contre"
-	cont "des jetons."
+	cont "des Jetons."
 
 	para "Mais c'est trop"
 	line "dur de gagner!"
@@ -123,29 +123,29 @@ _CeladonGameCornerText8::
 
 _CeladonGameCornerText_48e26::
 	text "Quoi ça? Tu veux"
-	line "des jetons?"
+	line "des Jetons?"
 	prompt
 
 _Received20CoinsText::
 	text "<PLAYER> reçoit"
-	line "20 jetons!@"
+	line "20 Jetons!@"
 	text_end
 
 _CeladonGameCornerText_48e31::
 	text "T'en as des"
-	line "jetons, toi!"
+	line "Jetons, toi!"
 	done
 
 _CeladonGameCornerText_48e36::
 	text "Méga-mince!"
 	line "Y m'faut des"
-	cont "jetons pour"
+	cont "Jetons pour"
 	cont "acheter un joli"
 	cont "#mon!"
 	done
 
 _CeladonGameCornerText_48e88::
-	text "Hein? Des jetons?"
+	text "Hein? Des Jetons?"
 	line "En voilà! Mais..."
 	cont "Comment dire..."
 	cont "Dégage!"
@@ -153,11 +153,11 @@ _CeladonGameCornerText_48e88::
 
 _CeladonGameCornerText_48e8d::
 	text "<PLAYER> reçoit"
-	line "20 jetons!@"
+	line "20 Jetons!@"
 	text_end
 
 _CeladonGameCornerText_48e93::
-	text "T'as tes jetons?"
+	text "T'as tes Jetons?"
 	line "Alors va jouer..."
 	done
 
