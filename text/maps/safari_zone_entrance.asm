@@ -104,24 +104,27 @@ _SafariZoneEntranceText_753f0::
 _SafariZoneEntranceTextSpecial_NotReady::
 	text "Nous travaillons"
 	line "sur un évenement"
-	cont "spécial mais il ne"
-	cont "sera pas prêt"
-	cont "avant la finale de"
-	cont "Ligue #mon."
+	cont "spécial mais il"
+	cont "ne sera pas prêt"
+	cont "avant la finale"
+	cont "de la Ligue"
+	cont "#mon."
 	done
 _SafariZoneEntranceTextSpecial_Ready::
 	text "Salut Champion!"
-	line "Veux-tu participer"
-	cont "à un évenement"
-	cont "spécial?"
+	line "Veux-tu partici-"
+	cont "per à un évene-"
+	cont "ment spécial?"
+
 	para "Les #mon seront"
-	line "meilleurs et il"
-	cont "a de rares chances"
-	cont "de rencontrer de"
-	cont "nouvelles espèces!"
+	line "meilleurs et il y"
+	cont "a même de rares"
+	cont "chances de ren-"
+	cont "contrer de nou-"
+	cont "velles espèces!"
 	done
 _SafariZoneEntranceTextSpecial_Active::
-	text "Veux-tu mettre fin"
-	line "à l'évenement"
-	cont "spécial?"
+	text "Veux-tu mettre"
+	line "fin à l'évene-"
+	cont "ment spécial?"
 	done

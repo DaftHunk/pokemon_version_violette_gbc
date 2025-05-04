@@ -74,14 +74,16 @@ _PokemonTower7AfterBattleText2::
 
 _PokemonTower7BattleTextJessieJames::
 	text "James: Pas"
-	line "bouger !"
+	line "bouger!"
 	para "Jessie: Le vieux"
-	line "s'est plaint alors"
-	cont "on l'a enfermé !"
+	line "s' est plaint"
+	cont "alors on l'a"
+	cont "enfermé!"
 
 	para "Alors toi, fais"
 	line "cou-couche panier"
-	cont "ou bobo la tête !"
+	cont "ou on va te"
+	cont "casser la tête!"
 	done
 
 _PokemonTower7EndBattleTextJessieJames::
