@@ -158,16 +158,17 @@ _FujiTextMewtwo::
 	line "as avec toi..."
 	
 	para "...Possède une"
-	line "telle colère."
+	line "telle haine."
 	cont "Pourtant, tu"
 	cont "sembles avoir"
 	cont "apaisé sa colère."
 
-	para "Tu dois avoir un"
-	line "grand amour envers"
-	cont "tes #mon."
+	para "Tu dois avoir"
+	line "un grand amour"
+	cont "envers tes"
+	cont "#mon."
 	
-	para "Prends ça. Je n'ai"
-	line "aucune raison de"
-	cont "le garder."
+	para "Prends ça. Je n'"
+	line "ai aucune raison"
+	cont "de le garder."
 	prompt
