@@ -5,7 +5,8 @@ PokemonTower2Object:
 	warp 3, 9, 0, POKEMONTOWER_3F
 	warp 18, 9, 2, POKEMONTOWER_1F
 
-	db 0 ; signs
+	db 1 ; signs
+	sign 16, 4, 3 ; Rival's raticate's tomb
 
 	db 2 ; objects
 	object SPRITE_BLUE, 14, 5, STAY, NONE, 1 ; person

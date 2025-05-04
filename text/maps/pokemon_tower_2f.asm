@@ -59,3 +59,8 @@ _PokemonTower2Text2::
 	line "pourrait les"
 	cont "démasquer."
 	done
+
+_PokemonTowerTombSign::
+	text "Ci-jît:"
+	line "Rattatac"
+	done

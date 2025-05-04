@@ -125,6 +125,7 @@ PokemonTower2Script2:
 PokemonTower2TextPointers:
 	dw PokemonTower2Text1
 	dw PokemonTower2Text2
+	dw PokemonTowerTombSign
 
 PokemonTower2Text1:
 	TX_ASM
@@ -192,4 +193,8 @@ PokemonTower2Text_6063c:
 
 PokemonTower2Text2:
 	TX_FAR _PokemonTower2Text2
+	db "@"
+
+PokemonTowerTombSign:
+	TX_FAR _PokemonTowerTombSign
 	db "@"
