@@ -171,6 +171,12 @@ MovedexEntryPointers:
 	dw CrunchDexEntry      ; a7 ; dafthunk #20
 	dw MetalClawDexEntry   ; a8 ; dafthunk #20
 	dw IronTailDexEntry    ; a9 ; dafthunk #20
+	dw XScissorDexEntry    ; a5 ; dafthunk #128
+	dw BugBuzzDexEntry     ; a6 ; dafthunk #128
+	dw DarkPulseDexEntry   ; a7 ; dafthunk #128
+	dw ShadowBallDexEntry  ; a8 ; dafthunk #128
+	dw DragonRushDexEntry  ; a9 ; dafthunk #128
+	dw FlashCannonDexEntry ; a9 ; dafthunk #128
 	dw StruggleDexEntry
 	assert_table_length NUM_ATTACKS + 1
 
@@ -848,6 +854,30 @@ MetalClawDexEntry:
 
 IronTailDexEntry:
 	TX_FAR _IronTailDexEntry
+	text_end
+
+XScissorDexEntry:
+	TX_FAR _XScissorDexEntry
+	text_end
+
+BugBuzzDexEntry:
+	TX_FAR _BugBuzzDexEntry
+	text_end
+
+DarkPulseDexEntry:
+	TX_FAR _DarkPulseDexEntry
+	text_end
+
+ShadowBallDexEntry:
+	TX_FAR _ShadowBallDexEntry
+	text_end
+
+DragonRushDexEntry:
+	TX_FAR _DragonRushDexEntry
+	text_end
+
+FlashCannonDexEntry:
+	TX_FAR _FlashCannonDexEntry
 	text_end
 
 StruggleDexEntry:

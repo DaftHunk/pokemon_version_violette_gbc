@@ -1437,6 +1437,57 @@ _IronTailDexEntry::
 	next "de fer.@"
 	; fall through
 	text_jump _Generic33PercentLowDef1Text
+
+_XScissorDexEntry::
+	text "Le lanceur tailla-"
+	next "de l'ennemi en ut-"
+	next "ilisant ses faux"
+	
+	bage "ou ses griffes co-"
+	next "mme une paire de"
+	next "ciseaux"
+	dex
+
+_BugBuzzDexEntry::
+	text "Le lanceur fait"
+	next "vibrer son corps"
+	next "pour lancer une"
+
+	bage "vague sonique.@"
+	; fall through
+	text_jump _Generic33PercentLowDef1Text
+
+_DarkPulseDexEntry::
+	text "Le lanceur dégage"
+	next "une horrible aura"
+	next "chargée de pensées"
+
+	bage "maléfiques.@"
+	; fall through
+	text_jump _Generic10PercentFlinchText
+
+_ShadowBallDexEntry::
+	text "Projette une gran-"
+	next "de ombre sur"
+	next "l'ennemi.@"
+	; fall through
+	text_jump _Generic33PercentLowSpe1Text
+
+_DragonRushDexEntry::
+	text "Le lanceur attaque"
+	next "en prenant un air"
+	next "menaçant.@"
+	; fall through
+	text_jump _Generic10PercentFlinchText
+
+_FlashCannonDexEntry::
+	text "Le lanceur concen-"
+	next "tre son énergie"
+	next "lumineuse et la"
+	
+	bage "fait exploser.@"
+	; fall through
+	text_jump _Generic33PercentLowSpe1Text
 	
 _StruggleDexEntry::
 	text "Une attaque dése-"

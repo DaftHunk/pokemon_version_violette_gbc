@@ -90,11 +90,11 @@ IF DEF(_DEBUG)
 	ld hl, wPartyMon3Moves
 	ld a, PURSUIT
 	ld [hli], a
-	ld a, ICE_BEAM
+	ld a, FLASH_CANNON
 	ld [hli], a
-	ld a, STRUGGLE
+	ld a, SHADOW_BALL
 	ld [hli], a
-	ld a, FLAMETHROWER
+	ld a, DARK_PULSE
 	ld [hl], a
 	ld hl, wPartyMon5PP
 	ld a, 30
@@ -103,6 +103,12 @@ IF DEF(_DEBUG)
 	; ZAPDOS gets Fly.
 	ld hl, wPartyMon5Moves
 	ld a, FLY
+	ld [hli], a
+	ld a, DRAGON_RUSH
+	ld [hli], a
+	ld a, BUG_BUZZ
+	ld [hli], a
+	ld a, X_SCISSOR
 	ld [hl], a
 	ld hl, wPartyMon5PP
 	ld a, 15
@@ -134,9 +140,8 @@ IF DEF(_DEBUG)
 	call DebugSetPokedexEntries
 	ld [hl], %00000001
 	ld hl, wMovedexSeen
-	ld b, wMovedexSeenEnd - wMovedexSeen - 1
+	ld b, wMovedexSeenEnd - wMovedexSeen
 	call DebugSetPokedexEntries
-	ld [hl], %00000011
 
 	; Set tutorial events
 	SetEvent EVENT_GOT_POKEDEX

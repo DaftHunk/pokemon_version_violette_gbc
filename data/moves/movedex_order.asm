@@ -9,6 +9,7 @@ MovedexOrder:
 	db AMNESIA      ; 85
 	db HARDEN       ; 6a
 	db LOW_KICK     ; 43
+	db SHADOW_BALL  ; ad ; dafthunk #128
 	db DRILL_PECK   ; 41
 	db TAKE_DOWN    ; 24
 	db SING         ; 2f
@@ -16,6 +17,7 @@ MovedexOrder:
 	db SLUDGE_BOMB  ; a5 ; dafthunk #46
 	db EGG_BOMB     ; 79
 	db BARRIER      ; 70
+	db BUG_BUZZ     ; ab ; dafthunk #128
 	db DEFENSE_CURL ; 6f
 	db SMOKESCREEN  ; 6c
 	db HAZE         ; 72
@@ -51,6 +53,7 @@ MovedexOrder:
 	db DREAM_EATER  ; 8a
 	db DOUBLE_KICK  ; 18
 	db TWINEEDLE    ; 29
+	db DRAGON_RUSH  ; ae ; dafthunk #128
 	db DRAGON_RAGE  ; 52
 	db SOFTBOILED   ; 87
 	db ROCK_SLIDE   ; 9d
@@ -93,7 +96,8 @@ MovedexOrder:
 	db LICK         ; 7a
 	db WRAP         ; 23
 	db MINIMIZE     ; 6b
-	db STRUGGLE	
+	db STRUGGLE
+	db FLASH_CANNON ; af ; dafthunk #128
 	db CRUNCH       ; a7 ; dafthunk #20
 	db THRASH       ; 25
 	db BONE_CLUB    ; 7d
@@ -113,6 +117,7 @@ MovedexOrder:
 	db BIDE         ; 75
 	db SPIKE_CANNON ; 83
 	db PECK         ; 40
+	db X_SCISSOR    ; aa ; dafthunk #128
 	db JUMP_KICK    ; 1a
 	db HI_JUMP_KICK ; 88
 	db BARRAGE      ; 8c
@@ -167,6 +172,7 @@ MovedexOrder:
 	db PSYWAVE      ; 95
 	db LEECH_SEED   ; 49
 	db LEECH_LIFE   ; 8d
+	db DARK_PULSE   ; ac ; dafthunk #128
 	db QUICK_ATTACK ; 62
 	db FLY          ; 13
 	db ABSORB       ; 47

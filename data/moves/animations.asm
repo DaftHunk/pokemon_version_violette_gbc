@@ -168,6 +168,12 @@ AttackAnimationPointers:
 	dw CrunchAnim       ; dafthunk #20
 	dw MetalClawAnim    ; dafthunk #20
 	dw IronTailAnim     ; dafthunk #20
+	dw XScissorAnim     ; dafthunk #128
+	dw BugBuzzAnim      ; dafthunk #128
+	dw DarkPulseAnim    ; dafthunk #128
+	dw ShadowBallAnim   ; dafthunk #128
+	dw DragonRushAnim   ; dafthunk #128
+	dw FlashCannonAnim  ; dafthunk #128
 	dw StruggleAnim
 	dw ShowPicAnim
 	dw EnemyFlashAnim
@@ -271,6 +277,7 @@ VicegripAnim:
 	db $08,$0A,$2A
 	db $FF
 
+XScissorAnim:
 GuillotineAnim:
 	db $06,$0B,$2A
 	db $FF
@@ -462,6 +469,7 @@ SupersonicAnim:
 	db $06,$2F,$31
 	db $FF
 
+BugBuzzAnim:
 SonicBoomAnim:
 	db $46,$2D,$15
 	db $46,$2D,$15
@@ -530,6 +538,7 @@ BubbleBeamAnim:
 	db $12,$3C,$35
 	db $FF
 
+FlashCannonAnim:
 AuroraBeamAnim:
 	db $03,$3D,$2E
 	db SE_DELAY_ANIMATION_10, $FF
@@ -554,6 +563,7 @@ DrillPeckAnim:
 	db $46,$40,$04
 	db $FF
 
+DragonRushAnim:
 SubmissionAnim:
 	db SE_SLIDE_MON_OFF, $41
 	db $06,$FF,$01
@@ -822,6 +832,7 @@ SmokeScreenAnim:
 	db SE_RESET_SCREEN_PALETTE, $FF
 	db $FF
 
+DarkPulseAnim:
 ConfuseRayAnim:
 	db SE_DARK_SCREEN_PALETTE, $6C
 	db $46,$FF,$3E
@@ -894,6 +905,7 @@ SelfdestructAnim:
 	db $43,$77,$34
 	db $FF
 
+ShadowBallAnim:
 SludgeBombAnim:
 EggBombAnim:
 	db $44,$78,$41

@@ -367,7 +367,9 @@ GengarEvosMoves:
 ; Learnset
 	db 21, NIGHT_SHADE
 	db 31, CONFUSE_RAY
+	db 35, SHADOW_BALL
 	db 39, DREAM_EATER
+	db 42, DARK_PULSE
 	db 0
 
 ;joenote-modified the moveliest of nidoqueen line to be like yellow
@@ -499,7 +501,9 @@ GastlyEvosMoves:
 ; Learnset
 	db 21, NIGHT_SHADE
 	db 28, CONFUSE_RAY
+	db 29, SHADOW_BALL
 	db 33, DREAM_EATER
+	db 36, DARK_PULSE
 	db 0
 
 ScytherEvosMoves:
@@ -512,6 +516,7 @@ ScytherEvosMoves:
 	db 24, AGILITY
 	db 30, WING_ATTACK
 	db 36, SLASH
+	db 40, X_SCISSOR
 	db 42, SWORDS_DANCE
 	db 48, DOUBLE_TEAM
 	db 0
@@ -540,6 +545,7 @@ BlastoiseEvosMoves:
 	db 13, WATER_GUN
 	db 19, BITE
 	db 30, BUBBLEBEAM
+	db 35, FLASH_CANNON
 	db 42, SKULL_BASH
 	db 55, HYDRO_PUMP
 	db 0
@@ -553,6 +559,7 @@ PinsirEvosMoves:
 	db 19, SEISMIC_TOSS
 	db 25, HARDEN
 	db 31, GUILLOTINE
+	db 34, X_SCISSOR
 	db 37, SUBMISSION
 	db 43, SWORDS_DANCE
 	db 0
@@ -594,6 +601,7 @@ ScizorEvosMoves:
 	db 24, AGILITY
 	db 30, METAL_CLAW
 	db 36, SLASH
+	db 40, X_SCISSOR
 	db 42, SWORDS_DANCE
 	db 48, DOUBLE_TEAM
 	db 0
@@ -782,6 +790,7 @@ ParasectEvosMoves:
 	db 31, SLASH
 	db 37, GROWTH
 	db 43, MEGA_DRAIN
+	db 55, X_SCISSOR
 	db 0
 
 PsyduckEvosMoves:
@@ -832,6 +841,7 @@ UmbreonEvosMoves:
 	db 23, QUICK_ATTACK
 	db 30, CONFUSE_RAY
 	db 36, CRUNCH ; dafthunk : gived Crunch instead of Faint Attack
+	db 40, DARK_PULSE
 	db 47, SCREECH
 	db 0
 
@@ -880,6 +890,7 @@ MagnetonEvosMoves:
 	db 11, SUPERSONIC
 	db 16, SONICBOOM
 	db 21, THUNDER_WAVE
+	db 34, FLASH_CANNON
 	db 35, TRI_ATTACK
 	db 43, SCREECH
 	db 0
@@ -910,6 +921,7 @@ SneaselEvosMoves:
 	db 49, SLASH
 	db 57, CRUNCH
 	db 65, METAL_CLAW
+	db 66, DARK_PULSE
 	db 0
 
 MankeyEvosMoves:
@@ -972,6 +984,7 @@ MisdreavusEvosMoves:
 	db 21, NIGHT_SHADE
 	db 27, PSYBEAM
 	db 30, HYPNOSIS
+	db 37, SHADOW_BALL
 	db 0
 
 LarvitarEvosMoves:
@@ -981,6 +994,7 @@ LarvitarEvosMoves:
 ; Learnset
 	db 8, SAND_ATTACK
 	db 15, ROCK_SLIDE
+	db 24, DARK_PULSE
 	db 29, THRASH
 	db 43, CRUNCH
 	db 50, EARTHQUAKE
@@ -995,6 +1009,7 @@ PupitarEvosMoves:
 	db 8, SAND_ATTACK
 	db 15, SCREECH
 	db 22, ROCK_SLIDE
+	db 24, DARK_PULSE
 	db 29, THRASH
 	db 47, CRUNCH
 	db 56, EARTHQUAKE
@@ -1035,6 +1050,7 @@ DragoniteEvosMoves:
 	db 8, THUNDER_WAVE
 	db 22, DRAGON_RAGE
 	db 29, SLAM
+	db 39, DRAGON_RUSH
 	db 38, AGILITY
 	db 55, WING_ATTACK
 	db 75, HYPER_BEAM
@@ -1047,6 +1063,7 @@ TyranitarEvosMoves:
 	db 8, SAND_ATTACK
 	db 15, SCREECH
 	db 22, ROCK_SLIDE
+	db 24, DARK_PULSE
 	db 29, THRASH
 	db 47, CRUNCH
 	db 61, EARTHQUAKE
@@ -1262,7 +1279,8 @@ DratiniEvosMoves:
 	db 8, THUNDER_WAVE
 	db 22, DRAGON_RAGE
 	db 29, SLAM
-	db 36, AGILITY
+	db 35, DRAGON_RUSH
+	db 38, AGILITY
 	db 57, HYPER_BEAM
 	db 0
 
@@ -1274,6 +1292,7 @@ DragonairEvosMoves:
 	db 8, THUNDER_WAVE
 	db 22, DRAGON_RAGE
 	db 29, SLAM
+	db 35, DRAGON_RUSH
 	db 38, AGILITY
 	db 65, HYPER_BEAM
 	db 0
@@ -1519,6 +1538,7 @@ ParasEvosMoves:
 	db 27, SPORE
 	db 34, SLASH
 	db 41, GROWTH
+	db 45, X_SCISSOR
 	db 0
 
 PoliwhirlEvosMoves:
@@ -1631,6 +1651,7 @@ VenomothEvosMoves:
 	db 36, PSYBEAM
 	db 42, SLEEP_POWDER
 	db 52, PSYCHIC_M
+	db 59, BUG_BUZZ
 	db 0
 
 DewgongEvosMoves:
@@ -1683,6 +1704,7 @@ ButterfreeEvosMoves:
 	db 23, WHIRLWIND
 	db 28, GUST;joenote - yellow update
 	db 34, PSYBEAM
+	db 40, BUG_BUZZ
 	db 0
 
 MachampEvosMoves:
@@ -1897,7 +1919,9 @@ HaunterEvosMoves:
 ; Learnset
 	db 21, NIGHT_SHADE
 	db 31, CONFUSE_RAY
+	db 33, SHADOW_BALL
 	db 39, DREAM_EATER
+	db 42, DARK_PULSE
 	db 0
 
 AbraEvosMoves:
@@ -1984,6 +2008,7 @@ VenusaurEvosMoves:
 	db 15, POISONPOWDER
 	db 17, SLEEP_POWDER
 	db 22, RAZOR_LEAF
+	db 35, DARK_PULSE
 	db 41, GROWTH
 	db 65, SOLARBEAM
 	db 0
@@ -2188,6 +2213,7 @@ MagnemiteEvosMoves:
 	db 11, SUPERSONIC
 	db 16, SONICBOOM
 	db 21, THUNDER_WAVE
+	db 32, FLASH_CANNON
 	db 33, SWIFT
 	db 39, SCREECH
 	db 0
@@ -2268,6 +2294,7 @@ CharizardEvosMoves:
 	db 13, SMOKESCREEN
 	db 20, RAGE
 	db 34, FLAMETHROWER
+	db 35, DRAGON_RUSH
 	db 36, WING_ATTACK
 	db 44, SLASH
 	db 54, DRAGON_RAGE

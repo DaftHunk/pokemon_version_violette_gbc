@@ -169,6 +169,12 @@ const_value = 1
 	const CRUNCH       ; a7 ; dafthunk #20
 	const METAL_CLAW   ; a8 ; dafthunk #20
 	const IRON_TAIL    ; a9 ; dafthunk #20
+	const X_SCISSOR    ; aa ; dafthunk #128
+	const BUG_BUZZ     ; ab ; dafthunk #128
+	const DARK_PULSE   ; ac ; dafthunk #128
+	const SHADOW_BALL  ; ad ; dafthunk #128
+	const DRAGON_RUSH  ; ae ; dafthunk #128
+	const FLASH_CANNON ; af ; dafthunk #128
 
 NUM_ATTACKS EQU const_value + -1
 
