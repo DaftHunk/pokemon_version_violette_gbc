@@ -21,8 +21,7 @@ SaffronHouse2Text1:
 	ld hl, TM29NoRoomText
 	call PrintText
 	jr .asm_fe4e1
-.asm_9e72b
-	call MrPsychicTutor
+.asm_9e72b	
 	ld hl, TM29ExplanationText
 	call PrintText
 .asm_fe4e1
@@ -44,60 +43,3 @@ TM29ExplanationText:
 TM29NoRoomText:
 	TX_FAR _TM29NoRoomText
 	db "@"
-
-	
-;joenote - place a ninetales at top of the party.
-;Then talk to mr psychic after getting his TM.
-;Your pokemon will learn a move.
-MrPsychicTutor:
-	ld a, [wPartyMon1Species]
-	cp NINETALES
-	jr z, .next
-	ret
-.next
-	ld hl, .Text1
-	call PrintText
-	call YesNoChoice
-	ld a, [wCurrentMenuItem]
-	and a
-	jr nz, .finish
-	xor a
-	ld [wWhichPokemon], a
-	ld a, HYPNOSIS
-	call .learnmove
-.finish
-	ret
-.Text1
-	text "Je ressens de"
-	line "grandes forces"
-	cont "mystiques avec ton"
-	cont "Feunard. Je peux"
-	cont "lui apprendre un"
-	cont "truc sympa."
-	done
-	db "@"
-	
-.learnmove
-	ld [wMoveNum], a
-	ld [wPokedexNum],a
-	call GetMoveName
-	call CopyStringToCF4B ; copy name to wcf4b
-
-	ld a, [wPokedexNum]
-	push af
-	ld a, [wPartyMon1Species]
-	ld [wPokedexNum], a
-	call GetMonName
-	pop af
-	ld [wPokedexNum], a
-	
-	callba CheckIfMoveIsKnown
-	ret c	;carry set of move known already
-
-	ld hl, wFlags_D733
-	set 6, [hl]
-	push hl		;make it so the move-forget list covers up sprites
-	predef LearnMove
-	pop hl
-	res 6, [hl]
-	ret

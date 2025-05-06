@@ -43,8 +43,21 @@ _PewterGymText_RematchEndBattle::
 	cont "avec honneur et"
 	cont "courage!"
 
+	para "En récompense, je"
+	line "peux réapprendre"
+	cont "à tes #mons"
+	cont "fossiles évolués"
+	cont "des attaques qu'"
+	cont "ils avaient oub-"
+	cont "lié au cours des"
+	cont "âges!"
+
+	para "Revient me voir"
+	line "avec eux si ça"
+	cont "t'intéresse."
+
 	para "Va! De nouveaux"
-	line "défis t'attendent."
+	line "défis t'attendent"
 	prompt
 
 _PewterGymText_Wait::

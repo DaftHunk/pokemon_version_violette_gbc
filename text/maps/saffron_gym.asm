@@ -103,12 +103,21 @@ _SaffronGymText_RematchPreBattle::
 
 _SaffronGymText_RematchEndBattle::
 	text "Oh!"
-    line "Quel mental"
-    cont "d'acier!"
+	line "Quel mental"
+	cont "d'acier!"
 
-    para "Cette défaite"
-    line "a affuté mes"
-    cont "sens psychiques."
+	para "Cette défaite"
+	line "a affuté mes"
+	cont "sens psychiques."
+
+	para "Pour te récompen-"
+	line "ser, je tenterai"
+	cont "d'apprendre un"
+	cont "tour de magie à"
+	cont "ton Feunard."
+
+	para "S'il en a les"
+	line "capacités!"
 	prompt
 
 _SaffronGymText_GuideTip::

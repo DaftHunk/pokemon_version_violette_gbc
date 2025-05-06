@@ -167,6 +167,9 @@ SaffronGymText_Sabrina:
 	and a
 	jr nz, .leaderFight
 ;;;;;;;
+	CheckEvent EVENT_BEAT_SABRINA_REMATCH
+	call nz, NinetalesTutor
+
 	ld hl, SaffronGymText_LeaderAfterBattle
 	call PrintText
 	jp .endScript
@@ -269,6 +272,12 @@ SaffronGymText_RematchPreBattle:
 	db "@"
 
 SaffronGymText_RematchEndBattle:
+	TX_ASM
+	SetEvent EVENT_BEAT_SABRINA_REMATCH
+	ld hl, .saffronGymText_RematchEndBattle
+	call PrintText
+	jp TextScriptEnd
+.saffronGymText_RematchEndBattle
 	TX_FAR _SaffronGymText_RematchEndBattle
 	db "@"
 
@@ -418,3 +427,58 @@ SaffronGymText_Trainer6EndBattle:
 SaffronGymText_Trainer6AfterBattle:
 	TX_FAR _SaffronGymText_Trainer6AfterBattle
 	db "@"
+
+NinetalesTutor:
+	ld a, [wPartyMon1Species]
+	cp NINETALES
+	jr z, .next
+	ret
+.next
+	ld hl, .Text1
+	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .finish
+	xor a
+	ld [wWhichPokemon], a
+	ld a, HYPNOSIS
+	call .learnmove
+	ld a, DARK_PULSE
+	call .learnmove
+.finish
+	ret
+.Text1
+	text "Je ressens de gr-"
+	line "andes forces my-"
+	cont "stiques avec ton"
+	cont "Feunard. Je peux"
+	cont "lui apprendre un"
+	cont "truc sympa."
+	prompt
+	db "@"
+	
+.learnmove
+	ld [wMoveNum], a
+	ld [wPokedexNum],a
+	call GetMoveName
+	call CopyStringToCF4B ; copy name to wcf4b
+
+	ld a, [wPokedexNum]
+	push af
+	ld a, [wPartyMon1Species]
+	ld [wPokedexNum], a
+	call GetMonName
+	pop af
+	ld [wPokedexNum], a
+	
+	callba CheckIfMoveIsKnown
+	ret c	;carry set of move known already
+
+	ld hl, wFlags_D733
+	set 6, [hl]
+	push hl		;make it so the move-forget list covers up sprites
+	predef LearnMove
+	pop hl
+	res 6, [hl]
+	ret

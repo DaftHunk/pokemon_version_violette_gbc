@@ -73,7 +73,6 @@ LavenderHouse1Text3:
 	TX_ASM
 	ld a, PSYDUCK
 	call PlayCry
-	call CheckAmnesiaPsyduck	;joenote - secret event for getting amnesia psyduck
 	jp TextScriptEnd
 
 LavenderHouse1Text4:
@@ -196,57 +195,3 @@ ReceivedMGENEText:
 	TX_SFX_ITEM_1
 	db "@"
 
-
-;joenote - place a psyduck at the top of your party
-;then talk to the psyduck in Mr. Fuji's house
-;if you have caught all 151 pokemon, your psyduck will learn amnesia
-CheckAmnesiaPsyduck:
-	ld hl, wPokedexOwned
-	ld b, wPokedexOwnedEnd - wPokedexOwned
-	call CountSetBits
-	ld a, [wNumSetBits]
-	cp 151
-	ret c
-
-	ld a, [wPartyMon1Species]
-	cp PSYDUCK
-	ret nz
-
-	xor a
-	ld [wWhichPokemon], a
-
-	ld a, AMNESIA
-	ld [wMoveNum], a
-	ld [wPokedexNum],a
-	call GetMoveName
-	call CopyStringToCF4B ; copy name to wcf4b
-
-	ld a, [wPokedexNum]
-	push af
-	ld a, [wPartyMon1Species]
-	ld [wPokedexNum], a
-	call GetMonName
-	pop af
-	ld [wPokedexNum], a
-	
-	callba CheckIfMoveIsKnown
-	jr c, .finish
-
-	ld hl, wFlags_D733
-	set 6, [hl]
-	push hl		;make it so the move-forget list covers up sprites
-	predef LearnMove
-	pop hl
-	res 6, [hl]
-	ld a, b
-	and a
-	ret z	
-.finish
-	ld hl, .Text1
-	call PrintText
-	ret
-.Text1
-	text "Psykokwak te fixe"
-	line "bizarrement."
-	done
-	db "@"

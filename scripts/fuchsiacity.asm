@@ -143,7 +143,6 @@ FuchsiaCityText24:
 	call PrintText
 	jr .asm_4343f
 .asm_3b4e8
-	call FossilTutor
 	ld hl, FuchsiaCityOmanyteText
 	call PrintText
 	ld a, OMANYTE
@@ -167,63 +166,4 @@ FuchsiaCityKabutoText:
 
 FuchsiaCityText_19b2a:
 	TX_FAR _FuchsiaCityText_19b2a
-	db "@"
-
-	
-;joenote - place a fully evolved fossil pokemon at the top of your party
-;then examine the omanyte sign
-;your pokemon will a move that it knew in the ancient past
-FossilTutor:
-	ld a, [wPartyMon1Species]
-	cp OMASTAR
-	ld a, ROCK_SLIDE
-	jr z, .next
-	ld a, [wPartyMon1Species]
-	cp KABUTOPS
-	ld a, MEGA_DRAIN
-	jr z, .next
-	ld a, [wPartyMon1Species]
-	cp AERODACTYL
-	ld a, EARTHQUAKE
-	jr z, .next
-	ret
-.next
-	ld [wMoveNum], a
-	ld [wPokedexNum],a
-	xor a
-	ld [wWhichPokemon], a
-	call GetMoveName
-	call CopyStringToCF4B ; copy name to wcf4b
-
-	ld a, [wPokedexNum]
-	push af
-	ld a, [wPartyMon1Species]
-	ld [wPokedexNum], a
-	call GetMonName
-	pop af
-	ld [wPokedexNum], a
-	
-	callba CheckIfMoveIsKnown
-	jr c, .finish
-
-	ld hl, wFlags_D733
-	set 6, [hl]
-	push hl		;make it so the move-forget list covers up sprites
-	predef LearnMove
-	pop hl
-	res 6, [hl]
-	ld a, b
-	and a
-	ret z	
-.finish
-	ld hl, .Text1
-	call PrintText
-	ret
-.Text1
-	text "Votre #mon"
-	line "semble avoir"
-	cont "retrouvé un"
-	cont "souvenir d'un"
-	cont "passé lointain."
-	done
 	db "@"

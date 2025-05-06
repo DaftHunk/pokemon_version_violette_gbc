@@ -40,21 +40,6 @@ FuchsiaGymScript_Battle:
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, FuchsiaGymScript_Reset
-;;;;joenote added tutor
-	ld a, [wPartyCount]
-	dec a
-	jr nz, .notutor	;party count must be 1
-	ld a, [wPartyMon1Species]
-	cp SCYTHER
-	jr nz, .notutor	;must have a solo scyther
-	ld a, [wPartyMon1Type2]
-	cp GHOST
-	jr z, .notutor	;can't aready have a ghost scyther
-	ld a, 12
-	ld [hSpriteIndexOrTextID], a
-	call DisplayTextID
-.notutor
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, $f0
 	ld [wJoyIgnore], a
 ;;;;joenote - added for rematch to skip gym leader tm
@@ -101,7 +86,6 @@ FuchsiaGymTextPointers:
 	dw FuchsiaGymText_Badge
 	dw FuchsiaGymText_ReceiveTM
 	dw FuchsiaGymText_BagFull
-	dw KogaScytherNinjaTraining
 
 FuchsiaGymTrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_TRAINER_0
@@ -169,8 +153,6 @@ FuchsiaGymText_Koga:
 	call DisableWaitingAfterTextDisplay
 	jp .endScript
 .askForRematch
-	call KogaScytherTutor
-	jp z, KogaScytherTutorEndScript
 ;;;;;;;joenote - have a rematch with gym leader?
 	ld hl, RematchTrainerText
 	call PrintText
@@ -179,6 +161,9 @@ FuchsiaGymText_Koga:
 	and a
 	jr nz, .leaderFight
 ;;;;;;;
+	CheckEvent EVENT_BEAT_KOGA_REMATCH
+	call nz, ScytherTutor
+
 	ld hl, FuchsiaGymText_LeaderAfterBattle
 	call PrintText
 	jp .endScript
@@ -216,7 +201,7 @@ FuchsiaGymText_Koga:
 	jr .afterBattle
 .afterBattle
 ;;;;joenote - added for rematch to skip gym leader tm
-	CheckEvent EVENT_GOT_TM46
+	CheckEvent EVENT_GOT_TM06
 	jp nz, TextScriptEnd
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	xor a
@@ -283,6 +268,12 @@ FuchsiaGymText_RematchPreBattle:
 	db "@"
 
 FuchsiaGymText_RematchEndBattle:
+	TX_ASM
+	SetEvent EVENT_BEAT_KOGA_REMATCH
+	ld hl, .fuchsiaGymText_RematchEndBattle
+	call PrintText
+	jp TextScriptEnd
+.fuchsiaGymText_RematchEndBattle
 	TX_FAR _FuchsiaGymText_RematchEndBattle
 	db "@"
 
@@ -412,135 +403,25 @@ FuchsiaGymText_GuideVictory:
 	TX_FAR _FuchsiaGymText_GuideVictory
 	db "@"
 	
-
-	
-;joenote - allow Scyther to be trained as a ninja if Koga was beaten solo	
-;Gives it bug/ghost typing and allows it to be tutored in a number of ninja-like moves	
-	
-KogaScytherNinjaTraining:
-	TX_ASM
-	ld hl, _KogaTutorOffer
-	call PrintText
-	call YesNoChoice
-	ld a, [wCurrentMenuItem]
-	and a
-	jp nz, KogaScytherTutorEndScript
-.yes
-	call GBFadeOutToBlack
-	ld a, GHOST
-	ld [wPartyMon1Type2], a
-	ld a, SFX_GET_ITEM_2
-	call PlaySound 
-	call WaitForSoundToFinish
-	call GBFadeInFromBlack	
-	ld hl, _KogaTutorOffer2
-	call PrintText
-.end
-	jp TextScriptEnd
-
-KogaScytherTutorEndScript:
-	ld hl, _KogaTutorBye
-	call PrintText
-	jp TextScriptEnd
-	
-KogaScytherTutor:
+ScytherTutor:
 	ld a, [wPartyMon1Species]
 	cp SCYTHER
-	jp nz, .ret_cont
-	ld a, [wPartyMon1Type2]
-	cp GHOST
-	jr nz, .ret_cont
-	ld hl, _KogaTutorIntro
-	call PrintText
-	call YesNoChoice
-	ld a, [wCurrentMenuItem]
-	and a
-	jr nz, .ret_cont
-	
-	ld hl, wMoveBuffer+1
-	push hl
-	
+	ret nz
 
-	ld b, 0
-	ld de, KogaTutorMoves
-.loop2
-	ld a, [de]
-	and a
-	jr z, .endloop2
-
-	ld hl, wPartyMon1Moves
-	ld c, 4
-.loop1
-	cp [hl]
-	jr z, .endloop1
-	inc hl
-	dec c
-	jr nz, .loop1
-	pop hl
-	ld [hli], a
-	inc b
-	push hl
-.endloop1
-
-	inc de
-	jr .loop2
-.endloop2
-	
-	
-	pop hl
-	ld a, $ff
-	ld [hl], a
-	ld a, b
-	ld [wMoveBuffer], a
-	
 	xor a
-	ld [wListScrollOffset], a
-	ld [wCurrentMenuItem], a
-	ld [wLastMenuItem], a
-	ld a, MOVESLISTMENU
-	ld [wListMenuID], a
-	ld de, wMoveBuffer
-	ld hl, wListPointer
-	ld [hl], e
-	inc hl
-	ld [hl], d
-	xor a
-	ld [wPrintItemPrices], a ; don't print prices
-	call DisplayListMenuID
-	jr c, .ret_close	;return if cancel selected	
-	; Save the selected move id.
-	ld a, [wcf91]
-	ld [wMoveNum], a
-	ld [wPokedexNum],a
-	call GetMoveName
-	call CopyStringToCF4B ; copy name to wcf4b
-	xor a	;working with first party pokemon
 	ld [wWhichPokemon], a
-	ld a, [wLetterPrintingDelayFlags]
-	push af
-	xor a
-	ld [wLetterPrintingDelayFlags], a
-	predef LearnMove
-	pop af
-	ld [wLetterPrintingDelayFlags], a	
-	ret
-.ret_close
-	xor a
-	ret
-.ret_cont
-	ld a, 1
-	and a
-	ret
 
-KogaTutorMoves:
-	db CONFUSE_RAY	;"erie lights" in japanese, scyther reflects light off its blades
-	db HYPNOSIS		;genjutsu
-	db PIN_MISSILE	;shuriken
-	db ROLLING_KICK	;martial arts
-	db LIGHT_SCREEN	;invisible walls
-	db $00
-	
-_KogaTutorOffer:
+	ld hl, .textStart
+	call PrintText
+
+	ld a, HYPNOSIS		;genjutsu
+	call .learnmove
+	ld a, PIN_MISSILE	;shuriken
+	call .learnmove
+	ld a, LIGHT_SCREEN	;invisible walls
+	call .learnmove
+	ret
+.textStart
 	text "Tu as un"
 	line "Insécateur très"
 	cont "talentueux."
@@ -548,33 +429,40 @@ _KogaTutorOffer:
 	cont "apprendre la voie"
 	cont "secrète du Ninja."
 
-	para "Ses mouvements"
-	line "seront si rapide"
-	cont "que ses ennemis"
-	cont "seront traversés"
-	cont "tel des fantômes."
-	done
+	para "Un vrai Ninja doit"
+	line "maîtriser l'art"
+	cont "du Genjutsu, le"
+	cont "lancer de Shuri-"
+	cont "ken et bien évi-"
+	cont "demment, les murs"
+	cont "invisibles!"
+	prompt
 	db "@"
+.learnmove
+	ld [wMoveNum], a
+	ld [wPokedexNum],a
+	call GetMoveName
+	call CopyStringToCF4B ; copy name to wcf4b
 
-_KogaTutorOffer2:
-	text "L'entraînement est"
-	line "terminé. Reviens"
-	cont "me voir si tu as"
-	cont "de nouveau besoin"
-	cont "de ma maitrise."
-	done
-	db "@"
+	ld a, [wPokedexNum]
+	push af
+	ld a, [wPartyMon1Species]
+	ld [wPokedexNum], a
+	call GetMonName
+	pop af
+	ld [wPokedexNum], a
+	
+	callba CheckIfMoveIsKnown
+	jr c, .finish
 
-_KogaTutorIntro:
-	text "Ton Insécateur est"
-	line "un grand Ninja."
-	cont "Devrais-je lui"
-	cont "apprendre plus?"
-	done
-	db "@"
-
-_KogaTutorBye:
-	text "Je te souhaite"
-	line "bonne chance."
-	done
-	db "@"
+	ld hl, wFlags_D733
+	set 6, [hl]
+	push hl		;make it so the move-forget list covers up sprites
+	predef LearnMove
+	pop hl
+	res 6, [hl]
+	ld a, b
+	and a
+	ret z
+.finish
+	ret

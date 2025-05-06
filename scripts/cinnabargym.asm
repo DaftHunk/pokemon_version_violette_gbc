@@ -226,6 +226,9 @@ CinnabarGymText_Blaine:
 	and a
 	jr nz, .leaderFight
 ;;;;;;;
+	CheckEvent EVENT_BEAT_BLAINE_REMATCH
+	call nz, MoltresTutor
+
 	ld hl, BlaineFireBlastText
 	call PrintText
 	jp TextScriptEnd
@@ -297,6 +300,12 @@ CinnabarGymText_RematchPreBattle:
 	db "@"
 
 CinnabarGymText_RematchEndBattle:
+	TX_ASM
+	SetEvent EVENT_BEAT_BLAINE_REMATCH
+	ld hl, .cinnabarGymText_RematchEndBattle
+	call PrintText
+	jp TextScriptEnd
+.cinnabarGymText_RematchEndBattle
 	TX_FAR _CinnabarGymText_RematchEndBattle
 	db "@"
 
@@ -564,8 +573,6 @@ CinnabarGymText8:
 	jr nz, .cinnabar_rematch6
 .rematch6_end
 ;;;;;;;
-	call BlaineTutor
-;;;;;;;
 	ld hl, CinnabarGymText_75aa7
 	call PrintText
 	jp TextScriptEnd
@@ -602,18 +609,13 @@ CinnabarGymText_GuideVictory:
 	TX_FAR _CinnabarGymText_GuideVictory
 	db "@"
 
-	
-;joenote - place a moltres at top of the party.
-;Then talk to blaine after beating him.
-;Decline the rematch.
-;Your pokemon will learn a move.
-BlaineTutor:
+MoltresTutor:
 	ld a, [wPartyMon1Species]
 	cp MOLTRES
 	jr z, .next
 	ret
 .next
-	ld hl, .Text1
+	ld hl, .textStart
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
@@ -621,18 +623,23 @@ BlaineTutor:
 	jr nz, .finish
 	xor a
 	ld [wWhichPokemon], a
+
 	ld a, FLAMETHROWER
+	call .learnmove
+	ld a, DRAGON_RUSH
+	call .learnmove
+	ld a, RAZOR_WIND
 	call .learnmove
 .finish
 	ret
-.Text1
+.textStart
 	text "Quel panache!"
-	line "Serait-ce le même"
+	line "Serait-ce celui"
 	cont "qui m'a sauvé?"
-	cont "Permet-moi de te"
-	cont "rendre la "
+	cont "Permet-moi de"
+	cont "lui rendre la "
 	cont "pareille."
-	done
+	prompt
 	db "@"
 .learnmove
 	ld [wMoveNum], a

@@ -104,6 +104,20 @@ _CinnabarGymText_RematchEndBattle::
     para "Tu mérites vrai-"
 	line "ment le titre"
     cont "de Champion."
+
+	para "Tu sais, j'ai été"
+	line "sauvé par un"
+	cont "Sulfura dans ma"
+	cont "jeunesse."
+	
+	para "Si, par le plus"
+	line "grand des hasards"
+	cont "tu en recontres"
+	cont "un, amène-le moi."
+	
+	para "Je tiens à le"
+	cont "remercier comme"
+	cont "il se doit."
 	prompt
 
 _CinnabarGymText_7595f::

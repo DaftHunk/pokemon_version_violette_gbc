@@ -118,6 +118,9 @@ PewterGymText_Brock:
 	and a
 	jr nz, .leaderFight
 ;;;;;;;
+	CheckEvent EVENT_BEAT_BROCK_REMATCH
+	call nz, FossilTutor
+
 	ld hl, PewterGymText_LeaderAfterBattle
 	call PrintText
 	jp .endScript
@@ -224,6 +227,12 @@ PewterGymText_RematchPreBattle:
 	db "@"
 
 PewterGymText_RematchEndBattle:
+	TX_ASM
+	SetEvent EVENT_BEAT_BROCK_REMATCH
+	ld hl, .pewterGymText_RematchEndBattle
+	call PrintText
+	jp TextScriptEnd
+.pewterGymText_RematchEndBattle
 	TX_FAR _PewterGymText_RematchEndBattle
 	db "@"
 
@@ -273,3 +282,59 @@ PewterGymText_GuideNo:
 PewterGymText_GuideEnd:
 	TX_FAR _PewterGymText_GuideEnd
 	db "@"
+
+FossilTutor:
+	ld a, [wPartyMon1Species]
+	cp OMASTAR
+	ld a, ROCK_SLIDE
+	jr z, .next
+	ld a, [wPartyMon1Species]
+	cp KABUTOPS
+	ld a, MEGA_DRAIN
+	jr z, .next
+	ld a, [wPartyMon1Species]
+	cp AERODACTYL
+	ld a, EARTHQUAKE
+	jr z, .next
+	ret
+.next
+	ld [wMoveNum], a
+	ld [wPokedexNum],a
+	xor a
+	ld [wWhichPokemon], a
+	call GetMoveName
+	call CopyStringToCF4B ; copy name to wcf4b
+
+	ld hl, .textStart
+	call PrintText
+
+	ld a, [wPokedexNum]
+	push af
+	ld a, [wPartyMon1Species]
+	ld [wPokedexNum], a
+	call GetMonName
+	pop af
+	ld [wPokedexNum], a
+	
+	callba CheckIfMoveIsKnown
+	jr c, .finish
+
+	ld hl, wFlags_D733
+	set 6, [hl]
+	push hl		;make it so the move-forget list covers up sprites
+	predef LearnMove
+	pop hl
+	res 6, [hl]
+	ld a, b
+	and a
+	ret z
+.textStart
+	text "Je peux aider"
+	line "ton #mon"
+	cont "à retrouver une"
+	cont "attaque venant"
+	cont "de son passé."
+	prompt
+	db "@"
+.finish
+	ret

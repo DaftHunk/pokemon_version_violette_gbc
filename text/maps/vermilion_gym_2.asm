@@ -86,6 +86,11 @@ _VermilionGymText_RematchEndBattle::
 	line "prouvé ta valeur"
 	cont "Champion."
 
+	para "Ramène-moi ton"
+	line "Pikachu et j'en"
+	cont "ferai le plus"
+	cont "cool des #mon!"
+
 	para "Allez p'tit gars,"
     line "permission"
 	cont "accordée!"

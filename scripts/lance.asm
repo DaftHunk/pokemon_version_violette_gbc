@@ -257,17 +257,4 @@ RematchLanceAfterBattleText:
 	TX_FAR _RematchLanceAfterBattleText
 	TX_ASM
 	SetEvent EVENT_BEAT_LANCE
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;joenote - if you have a dragonite in your first slot, let it learn fly
-	ld a, [wPartyMon1Species]
-	cp DRAGONITE
-	jp nz, TextScriptEnd
-	ld a, [wPartyMon1CatchRate]
-	cp 168
-	jp z, TextScriptEnd
-	ld a, DRAGONITE
-	call PlayCry
-	ld a, 168
-	ld [wPartyMon1CatchRate], a
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	jp TextScriptEnd

@@ -48,7 +48,13 @@ _CeruleanGymText_RematchEndBattle::
 	para "Je m'entraînerai"
 	line "encore plus pour"
 	cont "notre prochaine"
-	cont "rencontre."	
+	cont "rencontre."
+
+	para "Si tu as un Psy-"
+	line "kokwak à me mon-"
+	cont "trer, je lui"
+	cont "apprendrai quel-"
+	cont "que chose."
 	prompt
 
 _CeruleanGymText_LeaderAfterBattle::

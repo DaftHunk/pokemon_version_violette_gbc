@@ -117,6 +117,9 @@ CeruleanGymText_Misty:
 	and a
 	jr nz, .leaderFight
 ;;;;;;;
+	CheckEvent EVENT_BEAT_MISTY_REMATCH
+	call nz, PsyduckTutor
+
 	ld hl, CeruleanGymText_LeaderAfterBattle
 	call PrintText
 	jr .endScript
@@ -240,6 +243,12 @@ CeruleanGymText_RematchPreBattle:
 	db "@"
 
 CeruleanGymText_RematchEndBattle:
+	TX_ASM
+	SetEvent EVENT_BEAT_MISTY_REMATCH
+	ld hl, .ceruleanGymText_RematchEndBattle
+	call PrintText
+	jp TextScriptEnd
+.ceruleanGymText_RematchEndBattle
 	TX_FAR _CeruleanGymText_RematchEndBattle
 	db "@"
 
@@ -263,3 +272,54 @@ CeruleanGymText_GuideTip:
 CeruleanGymText_GuideVictory:
 	TX_FAR _CeruleanGymText_GuideVictory
 	db "@"
+
+PsyduckTutor:
+	ld a, [wPartyMon1Species]
+	cp PSYDUCK
+	ret nz
+
+	xor a
+	ld [wWhichPokemon], a
+
+	ld hl, .textStart
+	call PrintText
+
+	ld a, AMNESIA
+	call .learnmove
+	ld a, PSYCHIC_M
+	call .learnmove
+	ret
+.textStart
+	text "Psykokwak te fixe"
+	line "bizarrement..."
+	prompt
+	db "@"
+.learnmove
+	ld [wMoveNum], a
+	ld [wPokedexNum],a
+	call GetMoveName
+	call CopyStringToCF4B ; copy name to wcf4b
+
+
+	ld a, [wPokedexNum]
+	push af
+	ld a, [wPartyMon1Species]
+	ld [wPokedexNum], a
+	call GetMonName
+	pop af
+	ld [wPokedexNum], a
+	
+	callba CheckIfMoveIsKnown
+	jr c, .finish
+
+	ld hl, wFlags_D733
+	set 6, [hl]
+	push hl		;make it so the move-forget list covers up sprites
+	predef LearnMove
+	pop hl
+	res 6, [hl]
+	ld a, b
+	and a
+	ret z
+.finish
+	ret

@@ -72,7 +72,7 @@ SpecialTrainerMoves:
 	db 2,4,BIND
 	db 3,1,SLASH
 	db 3,2,SWORDS_DANCE
-	db 3,3,ROCK_SLIDE
+	db 3,3,MEGA_DRAIN
 	db 3,4,HYDRO_PUMP
 	db 4,1,BODY_SLAM
 	db 4,2,ROCK_SLIDE

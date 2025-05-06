@@ -167,11 +167,3 @@ _SSAnne6Text_GymGuy_win::
 	para "<PLAYER> gagne"
 	line "une Master Ball!@@"
 	
-_SSAnne6Text_GymGuy_pikachu::
-	text "Ton Pikachu est"
-	line "très spécial!"
-	
-	para "Il fait parti de"
-	line "ceux qui peuvent"
-	cont "apprendre Surf!"
-	prompt

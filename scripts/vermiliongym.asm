@@ -146,6 +146,9 @@ VermilionGymText_MajorBob:
 	and a
 	jr nz, .leaderFight
 ;;;;;;;
+	CheckEvent EVENT_BEAT_LT_SURGE_REMATCH
+	call nz, PikachuTutor
+
 	ld hl, VermilionGymText_LeaderAfterBattle
 	call PrintText
 	jr .endScript
@@ -234,6 +237,12 @@ VermilionGymText_RematchPreBattle:
 	db "@"
 
 VermilionGymText_RematchEndBattle:
+	TX_ASM
+	SetEvent EVENT_BEAT_LT_SURGE_REMATCH
+	ld hl, .vermilionGymText_RematchEndBattle
+	call PrintText
+	jp TextScriptEnd
+.vermilionGymText_RematchEndBattle
 	TX_FAR _VermilionGymText_RematchEndBattle
 	db "@"
 
@@ -312,3 +321,56 @@ VermilionGymText_GuideTip:
 VermilionGymText_GuideVictory:
 	TX_FAR _VermilionGymText_GuideVictory
 	db "@"
+
+PikachuTutor:
+	ld a, [wPartyMon1Species]
+	cp PIKACHU
+	ret nz
+
+	xor a
+	ld [wWhichPokemon], a
+
+	ld hl, .textStart
+	call PrintText
+
+	ld a, SURF
+	call .learnmove
+	ret
+.textStart
+	text "Ton Pikachu est"
+	line "très spécial!"
+
+	para "Il fait parti de"
+	line "ceux qui peuvent"
+	cont "apprendre Surf!"
+	prompt
+	db "@"
+.learnmove
+	ld [wMoveNum], a
+	ld [wPokedexNum],a
+	call GetMoveName
+	call CopyStringToCF4B ; copy name to wcf4b
+
+
+	ld a, [wPokedexNum]
+	push af
+	ld a, [wPartyMon1Species]
+	ld [wPokedexNum], a
+	call GetMonName
+	pop af
+	ld [wPokedexNum], a
+	
+	callba CheckIfMoveIsKnown
+	jr c, .finish
+
+	ld hl, wFlags_D733
+	set 6, [hl]
+	push hl		;make it so the move-forget list covers up sprites
+	predef LearnMove
+	pop hl
+	res 6, [hl]
+	ld a, b
+	and a
+	ret z
+.finish
+	ret

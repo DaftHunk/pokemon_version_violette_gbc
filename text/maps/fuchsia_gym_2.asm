@@ -83,6 +83,11 @@ _FuchsiaGymText_RematchEndBattle::
 	cont "est la voie"
 	cont "du ninja."
 
+	para "Si tu le souhai-"
+	line "tes, je peux app-"
+	cont "rendre cette voie"
+	cont "à ton Insécateur."
+
 	para "Disparition!"
 	line "Tchaaa tcha tcha"
 	cont "tcha tchaaa..."
