@@ -150,7 +150,7 @@ MoveEnd:
 	move GLARE,        PARALYZE_EFFECT,              0, NORMAL,    75, 30
 	move DREAM_EATER,  DREAM_EATER_EFFECT,         100, GHOST,    100, 15
 	move POISON_GAS,   POISON_EFFECT,                0, POISON,    55, 40
-	move BARRAGE,      TWO_TO_FIVE_ATTACKS_EFFECT,  15, NORMAL,    85, 20
+	move BARRAGE,      TWO_TO_FIVE_ATTACKS_EFFECT,  15, GRASS,     85, 20
 	move LEECH_LIFE,   DRAIN_HP_EFFECT,             20, BUG,      100, 15
 	move LOVELY_KISS,  SLEEP_EFFECT,                 0, NORMAL,    75, 10
 	move SKY_ATTACK,   CHARGE_EFFECT,              140, FLYING,   100,  5

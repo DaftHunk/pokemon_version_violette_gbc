@@ -140,12 +140,12 @@ SpecialTrainerMoves:
 	db 0
 
 ; Rematch
-;	db $FF,64,SEADRA,65,GOLDUCK,64,LAPRAS,64,BLASTOISE,64,VAPOREON,65,STARMIE,0
+;	db $FF,64,KINGLER,65,GOLDUCK,64,LAPRAS,64,BLASTOISE,64,VAPOREON,65,STARMIE,0
 	db MISTY,$2
 	db 1,1,ICE_BEAM
-	db 1,2,DOUBLE_TEAM
+	db 1,2,METAL_CLAW
 	db 1,3,SLAM
-	db 1,4,HYDRO_PUMP
+	db 1,4,CRABHAMMER
 	db 2,1,BLIZZARD
 	db 2,2,PSYCHIC_M
 	db 2,3,AMNESIA
@@ -157,7 +157,7 @@ SpecialTrainerMoves:
 	db 4,1,SURF
 	db 4,2,EARTHQUAKE
 	db 4,3,ICE_BEAM
-	db 4,4,REFLECT
+	db 4,4,FLASH_CANNON
 	db 5,1,SUBSTITUTE
 	db 5,2,ACID_ARMOR
 	db 5,3,BLIZZARD
@@ -186,7 +186,7 @@ SpecialTrainerMoves:
 	db 1,4,THUNDER
 	db 2,1,THUNDER_WAVE
 	db 2,2,TRI_ATTACK
-	db 2,3,REFLECT
+	db 2,3,FLASH_CANNON
 	db 2,4,THUNDER
 	db 3,1,HEADBUTT
 	db 3,2,DIG
@@ -234,16 +234,16 @@ SpecialTrainerMoves:
 	db 1,4,MEGA_DRAIN
     db 2,1,SWORDS_DANCE
 	db 2,2,WRAP
-	db 2,3,SLUDGE
+	db 2,3,SLUDGE_BOMB
 	db 2,4,RAZOR_LEAF
-    db 3,1,RAZOR_LEAF
+    db 3,1,DARK_PULSE
     db 3,2,LEECH_SEED
-    db 3,3,SLUDGE
+    db 3,3,SLUDGE_BOMB
 	db 3,4,BODY_SLAM
 	db 4,1,MEGA_DRAIN
     db 4,2,SLEEP_POWDER
 	db 4,3,PETAL_DANCE
-	db 4,4,SLUDGE
+	db 4,4,SLUDGE_BOMB
     db 0 
 
 ;	db $FF,48,TANGELA,49,VICTREEBEL,48,VENUSAUR,49,EXEGGUTOR,50,VILEPLUME,0
@@ -257,7 +257,7 @@ SpecialTrainerMoves:
 	db 2,3,WRAP
     db 2,4,SWORDS_DANCE
 	db 3,1,RAZOR_LEAF
-    db 3,2,SOLARBEAM
+    db 3,2,DARK_PULSE
     db 3,3,LEECH_SEED
 	db 3,4,BODY_SLAM
     db 4,1,REFLECT
@@ -283,8 +283,8 @@ SpecialTrainerMoves:
 	db 2,4,RAZOR_LEAF
 	db 3,1,LEECH_LIFE
 	db 3,2,MEGA_DRAIN
-	db 3,3,SOLARBEAM
-	db 3,4,GROWTH
+	db 3,3,X_SCISSOR
+	db 3,4,SPORE
 	db 4,1,MEGA_DRAIN
 	db 4,2,SUBSTITUTE
 	db 4,3,PSYCHIC_M
@@ -314,7 +314,7 @@ SpecialTrainerMoves:
 	db 3,2,DOUBLE_TEAM
 	db 3,3,TOXIC
 	db 3,4,PSYCHIC_M
-	db 4,1,PURSUIT
+	db 4,1,X_SCISSOR
 	db 4,2,SLASH
 	db 4,3,SWORDS_DANCE
 	db 4,4,DOUBLE_TEAM
@@ -338,7 +338,7 @@ SpecialTrainerMoves:
 	db 4,2,DOUBLE_TEAM
 	db 4,3,TOXIC
 	db 4,4,SLUDGE_BOMB
-	db 5,1,PURSUIT
+	db 5,1,X_SCISSOR
 	db 5,2,SLASH
 	db 5,3,SWORDS_DANCE
 	db 5,4,DOUBLE_TEAM
@@ -369,7 +369,7 @@ SpecialTrainerMoves:
 	db 5,4,LEECH_LIFE
 	db 6,1,CONFUSE_RAY	;"erie lights" in japanese, scyther reflects light off its blades
 	db 6,2,HYPNOSIS		;genjutsu
-	db 6,3,PIN_MISSILE	;shuriken
+	db 6,3,X_SCISSOR
 	db 6,4,METAL_CLAW
 	db 0
 
@@ -463,7 +463,7 @@ SpecialTrainerMoves:
 	db 3,3,SOLARBEAM
 	db 3,4,FIRE_SPIN
 	db 4,1,FIRE_BLAST 
-	db 4,2,DOUBLE_EDGE
+	db 4,2,CRUNCH
 	db 4,3,DIG
 	db 4,4,AGILITY
 	db 5,1,FIRE_BLAST
@@ -493,7 +493,7 @@ SpecialTrainerMoves:
 	db 4,4,FIRE_SPIN
 	db 5,1,FIRE_BLAST
 	db 5,2,DIG
-	db 5,3,DOUBLE_EDGE
+	db 5,3,CRUNCH
 	db 5,4,AGILITY
 	db 6,1,THUNDERPUNCH
 	db 6,2,PSYCHIC_M
@@ -531,7 +531,7 @@ SpecialTrainerMoves:
 	db 2,1,ICE_PUNCH
 	db 2,2,ROCK_SLIDE
 	db 2,3,SUBMISSION
-	db 2,4,BODY_SLAM
+	db 2,4,CRUNCH
 	db 3,1,DIG
 	db 3,2,BODY_SLAM
 	db 3,3,ROCK_SLIDE
@@ -554,7 +554,7 @@ SpecialTrainerMoves:
 	db 2,1,EARTHQUAKE
 	db 2,2,ICE_BEAM
 	db 2,3,THUNDERBOLT
-	db 2,4,BODY_SLAM
+	db 2,4,CRUNCH
 	db 3,1,SLASH
 	db 3,2,HYPER_BEAM
 	db 3,3,BUBBLEBEAM
@@ -606,7 +606,7 @@ SpecialTrainerMoves:
     db 2,3,THUNDER
     db 2,4,SURF
 	db 3,1,METAL_CLAW
-    db 3,2,CRUNCH
+    db 3,2,DARK_PULSE
     db 3,3,SLASH
     db 3,4,AGILITY
     db 4,1,BLIZZARD
@@ -695,9 +695,9 @@ SpecialTrainerMoves:
 	db 4,1,THUNDER
 	db 4,2,NIGHT_SHADE
 	db 4,3,HYPNOSIS
-	db 4,4,DREAM_EATER
-	db 5,1,PSYCHIC_M
-	db 5,2,NIGHT_SHADE
+	db 4,4,SHADOW_BALL
+	db 5,1,DARK_PULSE
+	db 5,2,SHADOW_BALL
 	db 5,3,MEGA_DRAIN
 	db 5,4,THUNDER
 	db 0
@@ -717,33 +717,33 @@ SpecialTrainerMoves:
 	db 3,2,BODY_SLAM
 	db 3,3,ROCK_SLIDE
 	db 3,4,EARTHQUAKE
-	db 4,1,CRUNCH
+	db 4,1,DARK_PULSE
 	db 4,2,CONFUSE_RAY
 	db 4,3,ICE_BEAM
 	db 4,4,SURF
    	db 5,1,THUNDER
 	db 5,2,NIGHT_SHADE
 	db 5,3,HYPNOSIS
-	db 5,4,DREAM_EATER
+	db 5,4,SHADOW_BALL
     db 6,1,CONFUSE_RAY
-	db 6,2,NIGHT_SHADE
-    db 6,3,EXPLOSION
+	db 6,2,SHADOW_BALL
+    db 6,3,DARK_PULSE
     db 6,4,THUNDERBOLT
 	db 0
 
 ;LanceData:
 ;	db $FF,61,DRAGONITE,60,GYARADOS,60,CHARIZARD,61,AERODACTYL,62,DRAGONITE,0
 	db LANCE,$1 
-	db 1,1,WRAP
+	db 1,1,DRAGON_RUSH
 	db 1,2,SLAM
 	db 1,3,THUNDER_WAVE
 	db 1,4,HYPER_BEAM
 	db 2,1,FLY
 	db 2,2,SURF
-	db 2,3,SLAM
+	db 2,3,CRUNCH
 	db 2,4,HYPER_BEAM
 	db 3,1,SEISMIC_TOSS
-	db 3,2,DRAGON_RAGE
+	db 3,2,DRAGON_RUSH
 	db 3,3,HYPER_BEAM
 	db 3,4,EARTHQUAKE
 	db 4,1,WING_ATTACK
@@ -759,11 +759,11 @@ SpecialTrainerMoves:
 ; Rematch
 ;	db $FF,73,DRAGONITE,73,GYARADOS,74,AERODACTYL,74,CHARIZARD,72,KINGDRA,75,DRAGONITE,0
 	db LANCE,$2 
-	db 1,1,WRAP
+	db 1,1,DRAGON_RUSH
 	db 1,2,SLAM
 	db 1,3,THUNDER_WAVE
 	db 1,4,HYPER_BEAM
-	db 2,1,DOUBLE_TEAM
+	db 2,1,CRUNCH
 	db 2,2,SURF
 	db 2,3,BODY_SLAM
 	db 2,4,HYPER_BEAM
@@ -772,7 +772,7 @@ SpecialTrainerMoves:
 	db 3,3,EARTHQUAKE
 	db 3,4,HYPER_BEAM
 	db 4,1,SEISMIC_TOSS
-	db 4,2,DRAGON_RAGE
+	db 4,2,DRAGON_RUSH
 	db 4,3,HYPER_BEAM
 	db 4,4,EARTHQUAKE
     db 5,1,DRAGON_RAGE
@@ -804,6 +804,7 @@ SpecialTrainerMoves:
 	db 4,1,REFLECT
 	db 4,2,REST
 	db 4,3,DOUBLE_EDGE
+	db 4,4,CRUNCH
 	;exeggutor - leech seed, stomp, solar beam, hypnosis
 	db 5,1,LEECH_SEED
 	;blastoise - blizzard, reflect, skull bash, hydro pump
@@ -832,6 +833,7 @@ SpecialTrainerMoves:
 	db 5,1,REFLECT
 	db 5,2,REST
 	db 5,3,DOUBLE_EDGE
+	db 5,4,CRUNCH
 	;venusaur - razor leaf, toxic, sleep powder, solar beam
 	db 6,2,TOXIC
 	db 0
@@ -858,6 +860,7 @@ SpecialTrainerMoves:
 	;charizard - fly, slash, fire blast, fire spin
 	db 6,1,FLY
 	db 6,3,FIRE_BLAST
+	db 6,4,DRAGON_RUSH
 	db 0
 
 ; Rematch
@@ -886,7 +889,7 @@ SpecialTrainerMoves:
 	db 6,1,FIRE_BLAST
 	db 6,2,BODY_SLAM
 	db 6,3,REST
-	db 6,4,DIG
+	db 6,4,CRUNCH
 	db 0
 
 ;ProfOakData:
@@ -903,6 +906,7 @@ SpecialTrainerMoves:
 	db 3,1,BITE
 	db 3,2,FIRE_BLAST
 	;blastoise - bite, withdraw, blizzard, hydro pump
+	db 4,2,FLASH_CANNON
 	db 4,3,BLIZZARD
 	;gyarados - thunderbolt, ice beam, hydro pump, hyper beam
 	db 5,1,THUNDERBOLT
@@ -920,6 +924,7 @@ SpecialTrainerMoves:
 	db 3,1,BITE
 	db 3,2,FIRE_BLAST
 	;venusaur - razor leaf, growth, body slam, solar beam
+	db 4,2,DARK_PULSE
 	db 4,3,BODY_SLAM
 	;gyarados - thunderbolt, ice beam, hydro pump, hyper beam
 	db 5,1,THUNDERBOLT
@@ -938,6 +943,7 @@ SpecialTrainerMoves:
 	db 3,2,FIRE_BLAST
 	;charizard - toxic, slash, flamethrower, fire spin
 	db 4,1,TOXIC
+	db 4,2,DRAGON_RUSH
 	;gyarados - thunderbolt, ice beam, hydro pump, hyper beam
 	db 5,1,THUNDERBOLT
 	db 5,2,ICE_BEAM
@@ -980,8 +986,8 @@ SpecialTrainerMoves:
 	;Chief battle
 	db CHIEF,$1
 	;kangaskhan
-	db 1,1,BODY_SLAM
-	db 1,2,SUBMISSION
+	db 1,1,CRUNCH
+	db 1,2,DIZZY_PUNCH
 	db 1,3,FIRE_BLAST
 	db 1,4,HYPER_BEAM
 	;rhydon
@@ -998,7 +1004,7 @@ SpecialTrainerMoves:
 	db 4,1,SLASH
 	db 4,2,SWORDS_DANCE
 	db 4,3,SEISMIC_TOSS
-	db 4,4,BODY_SLAM
+	db 4,4,X_SCISSOR
 	;scyther
 	db 5,1,SWORDS_DANCE
 	db 5,2,SLASH
@@ -1034,8 +1040,9 @@ SpecialTrainerMoves:
 ;	db 72,KANGASKHAN,SNORLAX,STARMIE,PORYGON,EXEGGUTOR,CHANSEY,0
 	db JOY,$1
 	db 1,1,REST
-    db 1,2,DOUBLE_TEAM
+    db 1,2,CRUNCH
     db 1,3,FISSURE
+	db 1,4,DIZZY_PUNCH
     db 2,2,ICE_BEAM
     db 2,3,AMNESIA
     db 2,4,DOUBLE_TEAM
@@ -1063,11 +1070,14 @@ SpecialTrainerMoves:
     db 1,4,TOXIC
     db 2,1,SURF
     db 2,2,EARTHQUAKE
+	db 2,3,FLASH_CANNON
     db 2,4,BODY_SLAM
     db 3,2,SLEEP_POWDER
     db 3,3,MIMIC
     db 4,1,PSYCHIC_M
     db 4,4,THUNDERBOLT
+	db 5,2,SPORE
+	db 5,3,X_SCISSOR
     db 5,4,LEECH_LIFE
     db 6,1,REFLECT
     db 6,2,FIRE_BLAST
@@ -1203,7 +1213,7 @@ SpecialTrainerMoves:
 	;charizard
 ;	db 3,1,FIRE_BLAST
 ;	db 3,2,EARTHQUAKE
-;	db 3,3,SWORDS_DANCE
+;	db 3,3,DRAGON_RUSH
 ;	db 3,4,HYPER_BEAM
 	;PIDGEOT
 ;	db 4,1,TAKE_DOWN

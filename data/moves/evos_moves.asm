@@ -212,6 +212,7 @@ KangaskhanEvosMoves:
 	db 26, BITE
 	db 31, TAIL_WHIP
 	db 36, MEGA_PUNCH
+	db 39, CRUNCH
 	db 41, LEER
 	db 46, DIZZY_PUNCH
 	db 0
@@ -248,9 +249,9 @@ SpearowEvosMoves:
 	db EV_LEVEL, 20, FEAROW
 	db 0
 ; Learnset
-	db 7, LEER
+	db 7, LEER	
 	db 13, FURY_ATTACK
-	db 25, PURSUIT
+	db 20, PURSUIT
 	db 31, MIRROR_MOVE
 	db 37, DRILL_PECK
 	db 43, AGILITY
@@ -384,6 +385,7 @@ NidoranFEvosMoves:
 	db 23, TAIL_WHIP
 	db 30, BITE
 	db 38, FURY_SWIPES
+	db 50, CRUNCH
 	db 0
 
 NidoqueenEvosMoves:
@@ -394,6 +396,7 @@ NidoqueenEvosMoves:
 	db 12, DOUBLE_KICK
 	db 19, POISON_STING
 	db 23, BODY_SLAM
+	db 50, CRUNCH
 	db 0
 
 CuboneEvosMoves:
@@ -443,6 +446,7 @@ ArcanineEvosMoves:
 	db 20, BITE
 	db 30, LEER
 	db 40, TAKE_DOWN
+	db 45, CRUNCH
 	db 50, FLAMETHROWER
 	db 0
 
@@ -463,6 +467,7 @@ GyaradosEvosMoves:
 	db 20, BITE
 	db 25, DRAGON_RAGE
 	db 30, LEER
+	db 35, CRUNCH
 	db 40, HYDRO_PUMP
 	db 50, HYPER_BEAM
 	db 0
@@ -615,6 +620,7 @@ GrowlitheEvosMoves:
 	db 18, LEER
 	db 26, TAKE_DOWN
 	db 42, AGILITY
+	db 45, CRUNCH
 	db 50, FLAMETHROWER
 	db 0
 
@@ -840,7 +846,6 @@ UmbreonEvosMoves:
 	db 16, PURSUIT
 	db 23, QUICK_ATTACK
 	db 30, CONFUSE_RAY
-	db 36, CRUNCH ; dafthunk : gived Crunch instead of Faint Attack
 	db 40, DARK_PULSE
 	db 47, SCREECH
 	db 0
@@ -905,6 +910,7 @@ KoffingEvosMoves:
 	db 21, SLUDGE	;joenote - added for late-game trainers
 	db 25, SMOKESCREEN
 	db 33, HAZE
+	db 38, SLUDGE_BOMB
 	db 41, EXPLOSION
 	db 45, MIMIC	;joenote - added for late-game trainers
 	db 0
@@ -919,7 +925,6 @@ SneaselEvosMoves:
 	db 33, FURY_SWIPES
 	db 41, AGILITY
 	db 49, SLASH
-	db 57, CRUNCH
 	db 65, METAL_CLAW
 	db 66, DARK_PULSE
 	db 0
@@ -930,6 +935,7 @@ MankeyEvosMoves:
 	db 0
 ; Learnset;joenote-modified for yellow
 	db 9, LOW_KICK
+	db 12, PURSUIT
 	db 15, KARATE_CHOP
 	db 21, FURY_SWIPES
 	db 27, FOCUS_ENERGY
@@ -1183,6 +1189,7 @@ KrabbyEvosMoves:
 	db 5, LEER
 	db 12, VICEGRIP
 	db 16, HARDEN
+	db 20, METAL_CLAW
 	db 23, STOMP
 	db 27, GUILLOTINE
 	db 41, CRABHAMMER
@@ -1400,6 +1407,7 @@ OmastarEvosMoves:
 	db 19, WATER_GUN
 	db 25, HORN_ATTACK
 	db 31, LEER
+	db 35, CRUNCH
 	db 40, SPIKE_CANNON
 	db 65, HYDRO_PUMP
 	db 0
@@ -1587,9 +1595,9 @@ BeedrillEvosMoves:
 ; Learnset
 	db 10, FURY_ATTACK
 	db 15, FOCUS_ENERGY
+	db 17, PURSUIT
 	db 20, TWINEEDLE
 	db 25, RAGE
-	db 30, PURSUIT
 	db 35, PIN_MISSILE
 	db 40, AGILITY
 	db 0
@@ -1617,6 +1625,7 @@ PrimeapeEvosMoves:
 	db 0
 ; Learnset;joenote-modified for yellow
 	db 9, LOW_KICK
+	db 12, PURSUIT
 	db 15, KARATE_CHOP
 	db 21, FURY_SWIPES
 	db 27, FOCUS_ENERGY
@@ -1779,6 +1788,7 @@ SnorlaxEvosMoves:
 	db 15, DEFENSE_CURL
 	db 29, HEADBUTT
 	db 36, REST
+	db 40, CRUNCH
 	db 43, BODY_SLAM
 	db 50, DOUBLE_EDGE
 	db 57, HYPER_BEAM
@@ -1829,6 +1839,7 @@ KinglerEvosMoves:
 	db 5, LEER
 	db 12, VICEGRIP
 	db 16, HARDEN
+	db 20, METAL_CLAW
 	db 23, STOMP
 	db 27, GUILLOTINE
 	db 49, CRABHAMMER
@@ -1876,6 +1887,7 @@ WeezingEvosMoves:
 	db 21, SLUDGE	;joenote - added for late-game trainers
 	db 25, SMOKESCREEN
 	db 33, HAZE
+	db 38, SLUDGE_BOMB
 	db 44, EXPLOSION
 	db 51, MIMIC	;joenote - added for late-game trainers
 	db 0
@@ -2119,8 +2131,8 @@ RattataEvosMoves:
 ; Learnset
 	db 7, QUICK_ATTACK
 	db 13, HYPER_FANG
+	db 17, PURSUIT
 	db 20, FOCUS_ENERGY
-	db 27, PURSUIT
 	db 34, SUPER_FANG
 	db 0
 
@@ -2130,8 +2142,8 @@ RaticateEvosMoves:
 ; Learnset
 	db 7, QUICK_ATTACK
 	db 13, HYPER_FANG
+	db 17, PURSUIT
 	db 20, FOCUS_ENERGY
-	db 27, PURSUIT
 	db 40, SUPER_FANG
 	db 0
 
@@ -2159,6 +2171,7 @@ NidorinaEvosMoves:
 	db 27, TAIL_WHIP
 	db 36, BITE
 	db 46, FURY_SWIPES
+	db 50, CRUNCH
 	db 0
 
 GeodudeEvosMoves:
@@ -2194,6 +2207,7 @@ AerodactylEvosMoves:
 	db 15, BITE
 	db 22, SUPERSONIC
 	db 36, ROCK_THROW
+	db 40, CRUNCH
 	db 43, TAKE_DOWN
 	db 50, HYPER_BEAM
 	db 0
