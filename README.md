@@ -100,8 +100,8 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 
 # Guides
 ## Emulateurs conseillés
-- **PC** : BGB est le meilleurs d'entre tous, mGBA marche bien aussi
-- **Android** : RetroArch 1.10.0 (Cette version spécifiquement !) : core Gambatte
+- **PC** : [BGB (win64)](https://bgb.bircd.org/downloads.html) est le meilleurs d'entre tous, mGBA marche bien aussi
+- **Android** : RetroArch : core Gambatte
 - **iOS** : Delta emulator 
 - **PSP** : RetroArch 1.10.0 (Cette version spécifiquement !) : core Gambatte
 ## Emulateurs déconseillés
@@ -131,4 +131,4 @@ https://github.com/DaftHunk/pokemon_version_violette
 - Nurse Joy Battle Sprite - ZuperZACH
 - Officer Jenny Battle Sprite - Karlos
 
-***/!\ Pas encore disponible, terminée à 99%***
+***/!\ Terminée à 100% ! Par contre, pensez à créer des saves-states dans votre émulateur régulièrement au cas où, la rom à beaucoup été testée mais vaut mieux éviter les mauvaises surprises***
