@@ -157,7 +157,7 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 *File/ROM SHA-1: D7037C83E1AE5B39BDE3C30787637BA1D4C48CE2*
 - Téléchargez la dernière version du patch :
 
-https://github.com/DaftHunk/pokemon_version_violette/releases/tag/1.0
+https://github.com/DaftHunk/pokemon_version_violette/releases/
 - Appliquez le patch sur la rom via :
 
 https://www.marcrobledo.com/RomPatcher.js/
