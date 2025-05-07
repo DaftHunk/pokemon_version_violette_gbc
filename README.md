@@ -33,7 +33,10 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 - Ajout d'un PNJ au Diner de Céladopole qui donnera un boost de gain d'exp aux Pokémons bas niveau
   
 ![bgb00029](https://github.com/user-attachments/assets/3c5d47fe-3249-42e9-bf22-fc7c6b3ac11f)
-![bgb00028](https://github.com/user-attachments/assets/1f2c94ce-03e5-40c1-a2b4-3f294ac78cbc)
+![bgb00033](https://github.com/user-attachments/assets/b2e51347-ad30-4ab7-b91c-73a5a7d5c3e9)
+![bgb00034](https://github.com/user-attachments/assets/3869a00c-5413-4405-b1c6-6b961b14fb13)
+![bgb00035](https://github.com/user-attachments/assets/bf615c6a-fb56-4ef5-b165-917a714fe6d5)
+
 
 ## Equilibrage des combats
 - Ajout du type Acier et Ténèbres
@@ -131,7 +134,8 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 - Appuyez sur **SELECT** en choisissant un Pokémon du Pokédex pour voir sa version Shiny
 - L'alarme de point de vie bas ne se joue maintenant que 3 fois
 - La pension donne maintenant de l'exp en fonction du nombre de badges
-  
+
+![bgb00028](https://github.com/user-attachments/assets/1f2c94ce-03e5-40c1-a2b4-3f294ac78cbc)
 ![bgb00018](https://github.com/user-attachments/assets/bde5b2d2-23a1-49e4-a57d-d0692fb4f3f2)
 ![bgb00010](https://github.com/user-attachments/assets/0261ecc5-e7af-40ac-ad38-6e731343117c)
 ![bgb00020](https://github.com/user-attachments/assets/798a0468-60f0-4f25-974f-1e5fa34c9bc4)
