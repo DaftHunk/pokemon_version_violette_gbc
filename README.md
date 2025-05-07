@@ -102,7 +102,6 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
   
 ![bgb00030](https://github.com/user-attachments/assets/a8175fff-0303-4f19-a517-db32951ce6ca)
 
-
 ## Interface améliorée
 - Le pokédex affiche maintenant les capacités apprises par niveau par Pokémon !
 - La carte est maintenant stockée dedans
@@ -151,6 +150,22 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 ![bgb00010](https://github.com/user-attachments/assets/0261ecc5-e7af-40ac-ad38-6e731343117c)
 ![bgb00020](https://github.com/user-attachments/assets/798a0468-60f0-4f25-974f-1e5fa34c9bc4)
 ![bgb00026](https://github.com/user-attachments/assets/807fe063-9941-41fc-a56b-0f57142ca702)
+
+# Installation
+- Vous avez besoin d'une rom de **Pokemon Blue US**
+
+*File/ROM SHA-1: D7037C83E1AE5B39BDE3C30787637BA1D4C48CE2*
+- Téléchargez la dernière version du patch :
+
+https://github.com/DaftHunk/pokemon_version_violette/releases/tag/1.0
+- Appliquez le patch sur la rom via :
+
+https://www.marcrobledo.com/RomPatcher.js/
+- Téléchargez la rom patchée et renommez-là de :
+
+**Pokemon Blue (patched).gb** 
+en 
+**pokemon_version_violette.gbc**
 
 # Guides
 ## Emulateurs conseillés
