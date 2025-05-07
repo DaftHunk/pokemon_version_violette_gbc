@@ -123,6 +123,8 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 ![bgb00011](https://github.com/user-attachments/assets/20e485ff-592a-485b-860c-a8d63224a8cc)
 ![bgb00012](https://github.com/user-attachments/assets/220be056-7034-4c85-9140-42d0cb0e9df4)
 ![bgb00017](https://github.com/user-attachments/assets/8bd3f998-11b6-4934-95cb-57c93695ceee)
+![bgb00043](https://github.com/user-attachments/assets/8e25d9ea-b0a4-4a95-a139-b74f38362eb0)
+![bgb00044](https://github.com/user-attachments/assets/7f6b5572-0235-45f1-af0e-284fa8882f1b)
 
 ## Qualité de vie 
 - La plupart des bugs et crash corrigés
