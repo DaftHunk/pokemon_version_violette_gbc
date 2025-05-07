@@ -48,7 +48,7 @@ SpecialTrainerMoves:
 	db 0
 
 ;BrockData:
-;	db $FF,10,GEODUDE,12,ONIX,0
+;	db $FF,12,GEODUDE,14,ONIX,0
 	db BROCK,$1
 	db 1,1,TACKLE
 	db 1,2,DEFENSE_CURL
