@@ -152,6 +152,18 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 ![bgb00020](https://github.com/user-attachments/assets/798a0468-60f0-4f25-974f-1e5fa34c9bc4)
 ![bgb00026](https://github.com/user-attachments/assets/807fe063-9941-41fc-a56b-0f57142ca702)
 
+# Installation
+- Vous avez besoin d'une rom de **Pokemon Blue US** 
+*File/ROM SHA-1: D7037C83E1AE5B39BDE3C30787637BA1D4C48CE2*
+- Téléchargez la dernière version du patch :
+https://github.com/DaftHunk/pokemon_version_violette/releases/tag/1.0
+- Appliquez le patch sur la rom via :
+https://www.marcrobledo.com/RomPatcher.js/
+- Téléchargez la rom patchée et renommez-là de :
+**Pokemon Blue (patched).gb** 
+en 
+**pokemon_version_violette.gbc**
+
 # Guides
 ## Emulateurs conseillés
 - **PC** : [BGB (win64)](https://bgb.bircd.org/downloads.html) est le meilleurs d'entre tous, mGBA marche bien aussi
