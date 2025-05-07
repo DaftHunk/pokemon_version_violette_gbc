@@ -53,6 +53,8 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
   
 ![bgb00013](https://github.com/user-attachments/assets/fe63d787-3ea6-4454-9267-34dab2b1bb7f)
 ![bgb00014](https://github.com/user-attachments/assets/012a58ac-00c3-408c-ada6-ec1eeafc2f33)
+![bgb00036](https://github.com/user-attachments/assets/3f245e82-080a-46dc-93fd-3ae283feb404)
+![bgb00037](https://github.com/user-attachments/assets/12d039d5-e888-4789-99d2-dc31951025cf)
 
 ## Refonte des Pokémons disponibles
 - Tous les Pokémons sont disponibles et sont placés de manière cohérente et intéressante
@@ -64,6 +66,10 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 - Refonte des apprentissages de capacités de certains Pokémons (Dracaufeu peut apprendre Vol !)
 - Refonte des stats des Pokémons en prenant appui sur les changements de gen 2
 - Les cannes sont accessibles beaucoup plus tôt
+  
+![bgb00038](https://github.com/user-attachments/assets/9773c9d5-fbba-447d-9fc5-08d8c1144ffa)
+![bgb00039](https://github.com/user-attachments/assets/185625e1-5257-498f-a80c-4241ccd5854d)
+![bgb00040](https://github.com/user-attachments/assets/71a69528-96cb-468a-8b86-f496a62c23ed)
 
 ## Extension de l'histoire
 - Ajout de pleins de petits contenus de l'univers du jeu (notamment de la série)
@@ -81,6 +87,8 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 ![bgb00024](https://github.com/user-attachments/assets/ae6b4be9-0c78-4d47-946b-379d48307466)
 ![bgb00025](https://github.com/user-attachments/assets/3952ed2b-aacd-4afa-84a3-18096d0eca5b)
 ![bgb00021](https://github.com/user-attachments/assets/cbd6a6ea-97ff-4707-8036-0876905c6c56)
+![bgb00041](https://github.com/user-attachments/assets/d3a4ab5e-3ca8-4908-9670-996a9ce0cd61)
+![bgb00042](https://github.com/user-attachments/assets/06f75e91-b23d-4901-90bc-420f921bddb5)
 
 ## Contenu après ligue des quatres
 - Réaffrontez les maîtres d'arène et la ligue au maximum de leur potentiel !
@@ -93,6 +101,7 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 - Les dialogues du Bourg Palette changent
   
 ![bgb00030](https://github.com/user-attachments/assets/a8175fff-0303-4f19-a517-db32951ce6ca)
+
 
 ## Interface améliorée
 - Le pokédex affiche maintenant les capacités apprises par niveau par Pokémon !
