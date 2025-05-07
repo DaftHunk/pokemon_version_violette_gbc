@@ -102,7 +102,6 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
   
 ![bgb00030](https://github.com/user-attachments/assets/a8175fff-0303-4f19-a517-db32951ce6ca)
 
-
 ## Interface améliorée
 - Le pokédex affiche maintenant les capacités apprises par niveau par Pokémon !
 - La carte est maintenant stockée dedans
