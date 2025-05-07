@@ -186,9 +186,9 @@ TextBoxTextAndCoordTable:
 	db 2,7   ; text coordinates
 
 	db BATTLE_MENU_TEMPLATE
-	db 6,12,19,17  ; text box coordinates
+	db 4,12,19,17  ; text box coordinates
 	dw BattleMenuText
-	db 8,14 ; text coordinates
+	db 6,14 ; text coordinates
 
 	db SAFARI_BATTLE_MENU_TEMPLATE
 	db 0,12,19,17  ; text box coordinates
@@ -255,8 +255,8 @@ JapaneseMainMenuText:
 	next "さいしょから@"
 
 BattleMenuText:
-	db   "Attaq ",$E1,$E2
-	next "Objet Fuite@"
+	db   "Attaque ",$E1,$E2
+	next "Objets  Fuite@"
 
 SafariZoneBattleMenuText:
 	db   "Ball×      Appât"
