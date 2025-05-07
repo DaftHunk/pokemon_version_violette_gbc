@@ -16,15 +16,24 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 - Changement du sprite de nage
 - Attaque en couleur
 - Shiny animés et visibles
+![bgb00009](https://github.com/user-attachments/assets/42526df1-47c3-4835-857c-7a6eba2a8315)
+![bgb00016](https://github.com/user-attachments/assets/35384b55-ec02-4bd3-a592-e0ac6be141ce)
+![bgb00019](https://github.com/user-attachments/assets/0907483b-b058-4c26-aa4b-ffadc826e40d)
+![bgb00027](https://github.com/user-attachments/assets/d4ad4449-e397-4da4-80f4-76525e0205dd)
+![bgb00031](https://github.com/user-attachments/assets/f808f509-3233-460f-a631-6eb7e0a3f6c3)
 
 ## Refonte de la progression
 - Maîtres d'arène plus forts
 - Tous les dresseurs peuvent être affronté à loisir
-- Scaling dynamique des arènes 4,5 et 6 pour pouvoir les faires dans l'ordre qu'on veut 
+- Nivellement dynamique des arènes 4,5 et 6 pour pouvoir les faires dans l'ordre qu'on veut 
 - Refonte des niveaux des dresseurs pour une progression plus fluide 
 - Changement de Pokémon pour certains dresseur pour plus de variété tout en respectant le lore
 - Refonte des prix Pokémon au casino
 - Ajout d'un PNJ au Diner de Céladopole qui donnera un boost de gain d'exp aux Pokémons bas niveau
+![bgb00013](https://github.com/user-attachments/assets/fe63d787-3ea6-4454-9267-34dab2b1bb7f)
+![bgb00014](https://github.com/user-attachments/assets/012a58ac-00c3-408c-ada6-ec1eeafc2f33)
+![bgb00029](https://github.com/user-attachments/assets/3c5d47fe-3249-42e9-bf22-fc7c6b3ac11f)
+![bgb00028](https://github.com/user-attachments/assets/1f2c94ce-03e5-40c1-a2b4-3f294ac78cbc)
 
 ## Equilibrage des combats
 - Ajout du type Acier et Ténèbres
@@ -33,10 +42,12 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 - Changement d'effet de certaines attaques pour les nouvelles versions (triplattaque par ex)
 - Efficacité de type de gen 2
 - Changement de quelques CTs pour des plus utiles (ex lance-flamme à la place de cyclone)
-- Rééquilibrage des attaques, types, stats et niveaux
+- Rééquilibrage des attaques, types, stats et niveaux : le but n'est pas d'être compétitif mais de rendre les choses plus intéressantes à jouer
 - Amélioration de l'IA des dresseurs, ils peuvent, entre autre, changer de Pokémon
 - Changer de Pokémon lorsqu'il est piégé, fait perdre le tour de celui qui l'a lancé 
 - Le sommeil est maintenant plus proche des générations suivantes et seul un Pokémon à la fois peut l'être
+- Ajout du capadex, sorte de pokedex des capacités à collectionner
+![bgb00020](https://github.com/user-attachments/assets/e94d689a-60a8-4d56-a18f-6e7ffe4daeb4)
 
 ## Refonte des Pokémons disponibles
 - Tous les Pokémons sont disponibles et sont placés de manière cohérente et intéressante
@@ -47,6 +58,7 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 - Refonte du parc safari
 - Refonte des apprentissages de capacités de certains Pokémons (Dracaufeu peut apprendre Vol !)
 - Refonte des stats des Pokémons en prenant appui sur les changements de gen 2
+- Les cannes sont accessibles beaucoup plus tôt
 
 ## Extension de l'histoire
 - Ajout de pleins de petits contenus de l'univers du jeu (notamment de la série)
@@ -56,17 +68,28 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 - Ajout de certains contenu de jaune comme Jessie et James et l'infirmière Joëlle
 - Possibilité de jouer un personnage féminin
 - Ajout d'un PNJ pour réapprendre une ancienne capacité et pour en oublier une (CS comprise !)
+- Amélioration des donjons des légendaires
+- De nombreux easters eggs
+![bgb00022](https://github.com/user-attachments/assets/b5c69975-a80c-453f-b42f-e54e7dcb5611)
+![bgb00023](https://github.com/user-attachments/assets/a2b99045-7617-404a-807b-044af77d1f23)
+![bgb00024](https://github.com/user-attachments/assets/ae6b4be9-0c78-4d47-946b-379d48307466)
+![bgb00025](https://github.com/user-attachments/assets/3952ed2b-aacd-4afa-84a3-18096d0eca5b)
+![bgb00021](https://github.com/user-attachments/assets/cbd6a6ea-97ff-4707-8036-0876905c6c56)
 
 ## Contenu après ligue des quatres
 - Réaffrontez les maîtres d'arène et la ligue au maximum de leur potentiel !
 - Ajout de 5 nouveaux dresseurs tirés du lore et de l'anime disponible après la ligue
+- Tous les dresseurs seront nivelés à votre niveau
 - Un membre de la team rocket vous vendra les jetons du casino en gros lot
 - Un nouveau vendeur sera disponible au centre commercial de Céladopole
 - Dans les souterrains deux pnjs générant des combats sont disponibles
 - L'Océane revient avec un tournois organisé dans les cuisines
+- Les dialogues du Bourg Palette changent
+![bgb00030](https://github.com/user-attachments/assets/a8175fff-0303-4f19-a517-db32951ce6ca)
 
 ## Interface améliorée
-- Le pokédex affiche maintenant les capacités apprises par niveau et les CT/CS apprenable par Pokémon !
+- Le pokédex affiche maintenant les capacités apprises par niveau par Pokémon !
+- La carte est maintenant stockée dedans
 - Ajout d'icône attrapé/genre en combat
 - Ajout d'une barre d'expérience en combat
 - Ajout d'un système de description des objets et des attaques des CTs
@@ -78,6 +101,11 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 - Vous pouvez fuir les combats de dresseurs (compte comme un hors-jeu)
 - Un deuxième sac est disponible, appuyez sur **start** pour passer de l'un à l'autre
 - Maintenez **SELECT** puis **START** pour trier vos objets
+- Ajout d'une indication de l'espace de la boîte restante
+![bgb00015](https://github.com/user-attachments/assets/49c71c8e-a973-476f-af1e-7d9e1c3d93f6)
+![bgb00011](https://github.com/user-attachments/assets/20e485ff-592a-485b-860c-a8d63224a8cc)
+![bgb00012](https://github.com/user-attachments/assets/220be056-7034-4c85-9140-42d0cb0e9df4)
+![bgb00017](https://github.com/user-attachments/assets/8bd3f998-11b6-4934-95cb-57c93695ceee)
 
 ## Qualité de vie 
 - La plupart des bugs et crash corrigés
@@ -90,6 +118,7 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 - Les CS peuvents être apprises dans un 5ème emplacement temporaire (mais ne sera du coup pas dispo en combat)
 - Notification quand la boite du PC est pleine
 - Le Cherch-objet a complètement été refait et corrigé
+- Bill vous donnera accès à un changement de boîte PC à distance
 - Ajout de nouvelles fonctionnalités génétiques au labo de Cramois'Île
 - Appuyez sur **B** pour sprinter, fonctionne à pied, à vélo et sur l'eau !
 - Action rapide : appuyez sur **SELECT** pour utiliser les CS automatiquement selon le contexte
@@ -97,6 +126,10 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 - Appuyez sur **SELECT** en choisissant un Pokémon du Pokédex pour voir sa version Shiny
 - L'alarme de point de vie bas ne se joue maintenant que 3 fois
 - La pension donne maintenant de l'exp en fonction du nombre de badges
+![bgb00018](https://github.com/user-attachments/assets/bde5b2d2-23a1-49e4-a57d-d0692fb4f3f2)
+![bgb00010](https://github.com/user-attachments/assets/0261ecc5-e7af-40ac-ad38-6e731343117c)
+![bgb00020](https://github.com/user-attachments/assets/798a0468-60f0-4f25-974f-1e5fa34c9bc4)
+![bgb00026](https://github.com/user-attachments/assets/807fe063-9941-41fc-a56b-0f57142ca702)
 
 # Guides
 ## Emulateurs conseillés
@@ -122,6 +155,7 @@ https://github.com/DaftHunk/pokemon_version_violette
 ## Credits et remerciements 
 - A huge thanks for the whole romhack community, open source rules and should be a norm !
 - Ce projet est open-source, vous pouvez vous servir du contenu de ce projet comme bon vous semble, n'oubliez pas de créditer les auteurs originaux ;)
+- [Pokémon Bleu Abysse](https://www.romstation.fr/games/gb/pokemon-bleu-abysse-r88400/) pour m'avoir donné envie de faire ma propre romhack
 - [Pokered](https://github.com/pret/pokered) sans qui rien de tout ça ne serait possible
 - [Shin Pokered](https://github.com/jojobear13/shinpokered) pour la base du hack et la qualité de sa romhack
 - [Yellow Legacy](https://github.com/cRz-Shadows/Pokemon_Yellow_Legacy) qui m'a pas mal inspiré sur le nivelement et la progression du jeu
