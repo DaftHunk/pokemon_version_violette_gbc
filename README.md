@@ -32,8 +32,6 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 - Refonte des prix Pokémon au casino
 - Ajout d'un PNJ au Diner de Céladopole qui donnera un boost de gain d'exp aux Pokémons bas niveau
   
-![bgb00013](https://github.com/user-attachments/assets/fe63d787-3ea6-4454-9267-34dab2b1bb7f)
-![bgb00014](https://github.com/user-attachments/assets/012a58ac-00c3-408c-ada6-ec1eeafc2f33)
 ![bgb00029](https://github.com/user-attachments/assets/3c5d47fe-3249-42e9-bf22-fc7c6b3ac11f)
 ![bgb00028](https://github.com/user-attachments/assets/1f2c94ce-03e5-40c1-a2b4-3f294ac78cbc)
 
@@ -50,7 +48,8 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 - Le sommeil est maintenant plus proche des générations suivantes et seul un Pokémon à la fois peut l'être
 - Ajout du capadex, sorte de pokedex des capacités à collectionner
   
-![bgb00020](https://github.com/user-attachments/assets/e94d689a-60a8-4d56-a18f-6e7ffe4daeb4)
+![bgb00013](https://github.com/user-attachments/assets/fe63d787-3ea6-4454-9267-34dab2b1bb7f)
+![bgb00014](https://github.com/user-attachments/assets/012a58ac-00c3-408c-ada6-ec1eeafc2f33)
 
 ## Refonte des Pokémons disponibles
 - Tous les Pokémons sont disponibles et sont placés de manière cohérente et intéressante
