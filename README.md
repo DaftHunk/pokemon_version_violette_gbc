@@ -16,6 +16,7 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 - Changement du sprite de nage
 - Attaque en couleur
 - Shiny animés et visibles
+
 ![bgb00009](https://github.com/user-attachments/assets/42526df1-47c3-4835-857c-7a6eba2a8315)
 ![bgb00016](https://github.com/user-attachments/assets/35384b55-ec02-4bd3-a592-e0ac6be141ce)
 ![bgb00019](https://github.com/user-attachments/assets/0907483b-b058-4c26-aa4b-ffadc826e40d)
@@ -30,6 +31,7 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 - Changement de Pokémon pour certains dresseur pour plus de variété tout en respectant le lore
 - Refonte des prix Pokémon au casino
 - Ajout d'un PNJ au Diner de Céladopole qui donnera un boost de gain d'exp aux Pokémons bas niveau
+  
 ![bgb00013](https://github.com/user-attachments/assets/fe63d787-3ea6-4454-9267-34dab2b1bb7f)
 ![bgb00014](https://github.com/user-attachments/assets/012a58ac-00c3-408c-ada6-ec1eeafc2f33)
 ![bgb00029](https://github.com/user-attachments/assets/3c5d47fe-3249-42e9-bf22-fc7c6b3ac11f)
@@ -47,6 +49,7 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 - Changer de Pokémon lorsqu'il est piégé, fait perdre le tour de celui qui l'a lancé 
 - Le sommeil est maintenant plus proche des générations suivantes et seul un Pokémon à la fois peut l'être
 - Ajout du capadex, sorte de pokedex des capacités à collectionner
+  
 ![bgb00020](https://github.com/user-attachments/assets/e94d689a-60a8-4d56-a18f-6e7ffe4daeb4)
 
 ## Refonte des Pokémons disponibles
@@ -70,6 +73,7 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 - Ajout d'un PNJ pour réapprendre une ancienne capacité et pour en oublier une (CS comprise !)
 - Amélioration des donjons des légendaires
 - De nombreux easters eggs
+  
 ![bgb00022](https://github.com/user-attachments/assets/b5c69975-a80c-453f-b42f-e54e7dcb5611)
 ![bgb00023](https://github.com/user-attachments/assets/a2b99045-7617-404a-807b-044af77d1f23)
 ![bgb00024](https://github.com/user-attachments/assets/ae6b4be9-0c78-4d47-946b-379d48307466)
@@ -85,6 +89,7 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 - Dans les souterrains deux pnjs générant des combats sont disponibles
 - L'Océane revient avec un tournois organisé dans les cuisines
 - Les dialogues du Bourg Palette changent
+  
 ![bgb00030](https://github.com/user-attachments/assets/a8175fff-0303-4f19-a517-db32951ce6ca)
 
 ## Interface améliorée
@@ -102,6 +107,7 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 - Un deuxième sac est disponible, appuyez sur **start** pour passer de l'un à l'autre
 - Maintenez **SELECT** puis **START** pour trier vos objets
 - Ajout d'une indication de l'espace de la boîte restante
+  
 ![bgb00015](https://github.com/user-attachments/assets/49c71c8e-a973-476f-af1e-7d9e1c3d93f6)
 ![bgb00011](https://github.com/user-attachments/assets/20e485ff-592a-485b-860c-a8d63224a8cc)
 ![bgb00012](https://github.com/user-attachments/assets/220be056-7034-4c85-9140-42d0cb0e9df4)
@@ -126,6 +132,7 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 - Appuyez sur **SELECT** en choisissant un Pokémon du Pokédex pour voir sa version Shiny
 - L'alarme de point de vie bas ne se joue maintenant que 3 fois
 - La pension donne maintenant de l'exp en fonction du nombre de badges
+  
 ![bgb00018](https://github.com/user-attachments/assets/bde5b2d2-23a1-49e4-a57d-d0692fb4f3f2)
 ![bgb00010](https://github.com/user-attachments/assets/0261ecc5-e7af-40ac-ad38-6e731343117c)
 ![bgb00020](https://github.com/user-attachments/assets/798a0468-60f0-4f25-974f-1e5fa34c9bc4)
