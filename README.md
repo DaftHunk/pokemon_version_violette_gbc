@@ -208,7 +208,7 @@ https://github.com/DaftHunk/pokemon_version_violette
 - [Pokémon Bleu Abysse](https://www.romstation.fr/games/gb/pokemon-bleu-abysse-r88400/) pour m'avoir donné envie de faire ma propre romhack
 - [Pokered](https://github.com/pret/pokered) sans qui rien de tout ça ne serait possible
 - [Shin Pokered](https://github.com/jojobear13/shinpokered) pour la base du hack et la qualité de sa romhack
-- [Yellow Legacy](https://github.com/cRz-Shadows/Pokemon_Yellow_Legacy) qui m'a pas mal inspiré sur le nivelement et la progression du jeu
+- [Yellow Legacy](https://github.com/cRz-Shadows/Pokemon_Yellow_Legacy) qui m'a pas mal inspiré sur le nivelement et la progression du jeu et pour ces fantastiques miniatures du menu
 - [pureRGB](https://github.com/Vortyne/pureRGB) pour ses magnifiques tuiles de la centrale, du volcan, certains backsprites améliorés, le pc portable et le capadex !
 - [pokered-gbc-plus-fr](https://github.com/Engezerstorung/pokered-gbc-plus-fr) pour ses fantastiques sprites de pokémons dans le monde
 - [tournepivoine](https://github.com/tournepivoine/shinpokered-fr) pour sa traduction qui m'a beaucoup fait gagner de temps
