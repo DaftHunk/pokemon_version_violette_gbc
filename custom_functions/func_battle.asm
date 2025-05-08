@@ -668,8 +668,8 @@ SetAttackAnimPal_otheranim:
 	pop hl
 	ret
 TypePalColorList:
-	db PAL_YELLOWMON;normal
-	db PAL_GREYMON;fighting
+	db PAL_BW;normal
+	db PAL_ORANGEMON;fighting
 	db PAL_MEWMON;flying
 	db PAL_PURPLEMON;poison
 	db PAL_BROWNMON;ground
