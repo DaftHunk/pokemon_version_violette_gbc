@@ -171,7 +171,7 @@ en
 Toutes les fonctionnalités de duel et d'échange ont été conservées, il suffit d'être en lan pour échanger et faire des duels entre vous comme à l'époque ! 
 
 ## Logiciel de lan
-Pour mettre en place une lan, il faut un logiciel le simulant sur internet. Certains d'entre vous connaissent surement **Hamachi ** mais je le déconseille maintenant.
+Pour mettre en place une lan, il faut un logiciel le simulant sur internet. Certains d'entre vous connaissent surement **Hamachi** mais je le déconseille maintenant.
 Il existe d'autres alternatives comme :
 - [Zerotier](https://accounts.zerotier.com/realms/zerotier/protocol/openid-connect/auth?client_id=zt-central&redirect_uri=https%3A%2F%2Fmy.zerotier.com%2Fauth%2Fcallback&response_type=code&scope=openid+profile+email+offline_access&state=26feb68912d14c69828966a488a00d63&code_challenge=glrenD1zX0M-TtKJNz9BMwlw2FVcJUamJDAWi6dY9u0&code_challenge_method=S256&response_mode=query) : gratuit jusqu'à 10 utilisateurs et très stable
 -  [Radmin VPN](https://www.radmin-vpn.com/) : gratuit aussi mais seulement pour Windows
