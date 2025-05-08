@@ -45,7 +45,7 @@ MirrorTrainerText1:
 	jp TextScriptEnd
 
 MirrorTrainerIntro:
-	text "Je suis Silke"
+	text "Je suis Cilque,"
 	line "artiste extra-"
 	cont "ordinaire et"
 	cont "maître du mime!"
@@ -55,7 +55,7 @@ MirrorTrainerNotReady:
 	text "Mais je dois fi-"
 	line "nir de me poudrer"
 	cont "et préparer tous"
-	cont "mes mes costumes."
+	cont "mes costumes."
 	
 	para "Je serai prêt"
 	line "quand la finale"
