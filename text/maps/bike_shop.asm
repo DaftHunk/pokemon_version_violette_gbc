@@ -30,7 +30,7 @@ _BikeShopText_1d81f::
 _BikeShopText_1d824::
 	text "<PLAYER> échange"
 	line "le Bon contre"
-	cont "une Bicyclette.@"
+	cont "une Bicyclette."
 ;joenote - add hotkey info
 	para "Maintiens A et"
 	line "appuie sur SELECT"
