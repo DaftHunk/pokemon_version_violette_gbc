@@ -695,7 +695,7 @@ TypePalColorList:
 	db PAL_PINKMON;psychic
 	db PAL_CYANMON;ice
 	db PAL_PURPLEMON;ghost
-	db PAL_BW;dark
+	db PAL_LIGHTDARK;dark
 ItemPalList:
 	db PAL_BW	;null item
 	db PAL_PURPLEMON	;master ball

@@ -280,3 +280,9 @@ SuperPalettes:
 	RGB 29,  4,  0
 	RGB 10, 11, 11
 	RGB  3,  3,  3
+
+	; PAL_LIGHTDARK
+	SGB_WHITE
+	RGB 7, 7, 7
+	RGB 7, 7, 7
+	RGB 7, 7, 7
