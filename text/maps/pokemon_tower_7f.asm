@@ -76,7 +76,7 @@ _PokemonTower7BattleTextJessieJames::
 	text "James: Pas"
 	line "bouger!"
 	para "Jessie: Le vieux"
-	line "s' est plaint"
+	line "s'est plaint"
 	cont "alors on l'a"
 	cont "enfermé!"
 
