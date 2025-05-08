@@ -70,6 +70,14 @@ _FuchsiaCityChanseyText::
 	para "Il faut un bol"
 	line "d'enfer pour en"
 	cont "capturer un."
+
+	para "La légende"
+	line "raconte que le"
+	cont "plus puissant"
+	cont "des Leveinard"
+	cont "attirerait des"
+	cont "#mon à la robe"
+	cont "étrange..."
 	prompt
 
 _FuchsiaCityVoltorbText::

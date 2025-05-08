@@ -22,7 +22,7 @@ _Route25BattleText2::
 	text "Je suis allé à"
 	line "une super fête."
 	cont "C'était sur"
-	cont "L'Océane, à"
+	cont "l'Océane, à"
 	cont "Carmin sur mer!"
 	done
 
@@ -32,7 +32,7 @@ _Route25EndBattleText2::
 	prompt
 
 _Route25AfterBattleText2::
-	text "Sur L'Océane,"
+	text "Sur l'Océane,"
 	line "j'ai vu des"
 	cont "dresseurs du"
 	cont "monde entier."

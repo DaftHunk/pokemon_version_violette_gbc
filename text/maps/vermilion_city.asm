@@ -18,7 +18,7 @@ _VermilionJennyAfterBattleText1::
 
 _VermilionCityText_198a7::
 	text "As-tu vu"
-	line "L'Océane au port?"
+	line "l'Océane au port?"
 	done
 
 _VermilionCityText_198ac::	
@@ -42,12 +42,12 @@ _VermilionCityText_annereturns::	;joenote - added text
 
 _SSAnneWelcomeText4::
 	text "Bienvenue à bord"
-	line "de L'Océane!"
+	line "de l'Océane!"
 	done
 
 _SSAnneWelcomeText9::
 	text "Bienvenue à bord"
-	line "de L'Océane!"
+	line "de l'Océane!"
 
 	para "Puis-je voir"
 	line "votre passe?"
