@@ -31,7 +31,7 @@ _ViridianPokeCenter_RegRandomON::
 	
 _ViridianPokeCenter_RegRandomOFF::
 	text "Tu veux revenir"
-	line "en arrière ? Hmm..."
+	line "en arrière? Hmm."
 	
 	para "Je peux te rendre"
 	line "les dresseurs"
