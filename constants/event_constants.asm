@@ -2243,8 +2243,8 @@ const_value = 0
 	const EVENT_8C0                                  ; 8C0, (D85F, bit 0)
 	const EVENT_BEAT_MEWTWO                          ; 8C1, (D85F, bit 1)
 	const EVENT_8C2                                  ; 8C2, (D85F, bit 2)
-	const EVENT_MIST_STONE                           ; 8C3, (D85F, bit 3)	;joenote
-	const EVENT_GOT_MIST_STONE                       ; 8C4, (D85F, bit 4)
+	const EVENT_GOT_SACHA_STONE                      ; 8C3, (D85F, bit 3)	;joenote
+	const EVENT_MIST_STONE_WAIT                      ; 8C4, (D85F, bit 4)
 	const EVENT_ENABLE_TRAPPING_CLAUSE               ; 8C5, (D85F, bit 5)
 	const EVENT_DEFEATED_SEAFOAM_MISSINGNO           ; 8C6, (D85F, bit 6)
 	const EVENT_ENABLE_SHIMMER_FEATURE               ; 8C7, (D85F, bit 7)

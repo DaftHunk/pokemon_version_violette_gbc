@@ -36,10 +36,14 @@ _FireStoneDescription::
 _ThunderStoneDescription::
 _WaterStoneDescription::
 _LeafStoneDescription::
-_MistStoneDescription::
 _MetalCoatDescription::
 	text "Permet d'évoluer"
 	next "certains #mon."
+	prompt
+
+_MistStoneDescription::
+	text "Maximise l'Exp de"
+	next "Stats."
 	prompt
 
 _MGeneDescription::

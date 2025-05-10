@@ -12,10 +12,17 @@ BillsGardenScriptPointers:
 
 BillsGardenTextPointers:
     dw BillGardenText_Sacha
+	dw BillsGarden_SachaCongrat
+	dw BillsGarden_SachaBagFull
+	dw BillsGarden_SachaStoneExplain
 
 ;joenote - text for red battle
 BillGardenText_Sacha:
 	TX_ASM
+
+	CheckEvent EVENT_MIST_STONE_WAIT
+	jr nz, BillGarden_ResetScript
+
 	ld hl, BillsGarden_SachaGreet
 	call PrintText
 	ld hl, BillsGarden_SachaBattle
@@ -58,13 +65,29 @@ BillGarden_ResetLegendaries:	;joenote - adding this function to respawn the lege
 	ld a, [wIsInBattle]
 	cp $ff
 	ret z
+	; else fallthrough
+BillGarden_ResetScript:
+	ResetEvent EVENT_MIST_STONE_WAIT
+	ld a, $2
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
+
+	;give MIST_STONE item
+	lb bc, MIST_STONE, 1
+	call GiveItem
+	jr nc, .bagFull	;jump if not enough room in bag
+
+	ld a, SFX_GET_ITEM_1
+	call PlaySound 
+	call WaitForSoundToFinish
+
+	ld a, $4
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
 ;reset the special trainer flags
 	ld a, [wBeatGymFlags]
 	and $F0
 	ld [wBeatGymFlags], a
-;reset MIST_STONE events
-	ResetEvent EVENT_MIST_STONE
-	ResetEvent EVENT_GOT_MIST_STONE
 ;reset Mew events
 	ResetEvent EVENT_ENCOUNTERED_MEW
 	ResetEvent EVENT_FOUND_MEW
@@ -95,7 +118,17 @@ BillGarden_ResetLegendaries:	;joenote - adding this function to respawn the lege
 	call .showstuff
 	ResetEvent EVENT_BEAT_ARTICUNO
 ;return now
-	ret
+	jp .end
+.bagFull
+	SetEvent EVENT_MIST_STONE_WAIT
+	ld a, $3
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
+.end
+	xor a
+	ld [hJoyHeld], a
+	jp TextScriptEnd
+
 .showstuff
 	ld [wMissableObjectIndex], a
 	predef_jump ShowObject
@@ -117,4 +150,13 @@ BillsGarden_SachaAfterBattle:
 	db "@"	
 BillsGarden_SachaDecline:
 	TX_FAR _BillsGarden_SachaDecline
+	db "@"
+BillsGarden_SachaCongrat:
+	TX_FAR _BillsGarden_SachaCongrat
+	db "@"
+BillsGarden_SachaBagFull:
+	TX_FAR _BillsGarden_SachaBagFull
+	db "@"
+BillsGarden_SachaStoneExplain:
+	TX_FAR _BillsGarden_SachaStoneExplain
 	db "@"

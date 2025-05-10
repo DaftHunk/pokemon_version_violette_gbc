@@ -57,3 +57,46 @@ _BillsGarden_SachaDecline::
 	text "Pas de soucis,"
 	line "je comprends."
 	done
+
+_BillsGarden_SachaCongrat::
+	text "Eh bien bravo!"
+	line "J'aurai ma revan-"
+	cont "che, j'en fait le"
+	cont "serment <PLAYER>!"
+
+	para "En attendant,"
+	line "voilà pour toi."
+	done
+
+_BillsGarden_SachaGiveStone::
+	text "<PLAYER> reçoit"
+	line "la Pierre Brume!@"
+	text_end
+
+_BillsGarden_SachaBagFull::
+	text "Ton sac est"
+	line "plein!"
+	done
+
+_BillsGarden_SachaStoneExplain::
+	text "C'est une Pierre"
+	line "mais elle n'a pas"
+	cont "l'air de faire"
+	cont "évoluer de"
+	cont "#mon..."
+
+	para "Peut-être que tu"
+	line "auras plus d'idées"
+	cont "que moi..."
+
+	para "Wow! C'était quoi"
+	line "ça? On aurait"
+	cont "dit le cri de"
+	cont "pleins de"
+	cont "#mon!"
+
+	para "On aurait dit que"
+	line "ça venait de la"
+	cont "Grotte Azurée et"
+	cont "de la Centrale!"
+	done

@@ -42,7 +42,7 @@ ItemNames:
 	db "Fossile Dôme@"
 	db "Nautile@"
 	db "Clé Secrète@"
-	db "?????@"
+	db "Pierre Brume@"
 	db "Bon Commande@"
 	db "Précision +@"
 	db "PierrePlante@"

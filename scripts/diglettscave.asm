@@ -9,28 +9,6 @@ DiglettsCaveTextPointers:
 	
 Mist_Stone_Text:
 	TX_ASM
-
-	CheckEvent EVENT_GOT_MIST_STONE
-	jr nz, .read_book
-	
-	CheckEvent EVENT_MIST_STONE
-	jr z, .read_book
-	
-.mist_stone
-	;give MIST_STONE item
-	lb bc, MIST_STONE, 1
-	call GiveItem
-	ld hl, _TXTBag
-	jr nc, .next	;jump if not enough room in bag
-	SetEvent EVENT_GOT_MIST_STONE
-	ld hl, _TXTMist_Stone
-	call PrintText
-	ld a, SFX_GET_ITEM_1
-	call PlaySound 
-	call WaitForSoundToFinish
-	jr .end
-
-.read_book		
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 
@@ -48,13 +26,37 @@ Mist_Stone_Text:
 	call PrintText
 	call .choice
 	jr nz, .end
-	
-	xor a
-	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+
 	ld hl, _TXTBookP3
+	call PrintText
+	call .choice
+	jr nz, .end
+	
+	ld hl, _TXTBookP4
+	call PrintText
+
+	CheckEvent EVENT_GOT_SACHA_STONE
+	jr nz, .end
+
+	lb bc, MOON_STONE, 1
+	call GiveItem
+	ld hl, _TXTBag
+	jr nc, .next	;jump if not enough room in bag
+
+	SetEvent EVENT_GOT_SACHA_STONE
+	ld hl, _TXTSacha_Stone
+	call PrintText
+	ld a, SFX_GET_ITEM_1
+	call PlaySound 
+	call WaitForSoundToFinish
+	jr .end
+
 .next
 	call PrintText
 .end
+	xor a
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	ld [hJoyHeld], a
 	jp TextScriptEnd
 .choice
 	call YesNoChoice ; yes/no menu
@@ -88,7 +90,7 @@ _TXTBookP1:
 
 _TXTBookP2:
 	text "J'ai entendu dire"
-	line "que Bill a un"
+	line "que Léo a un"
 	cont "Jardin Secret"
 	cont "derrière"
 	cont "sa maison."
@@ -119,31 +121,36 @@ _TXTBookP3:
 	cont "dans cet endroit."
 	
 	para "L'air brumeux de"
-	line "cette cave devrait"
-	cont "fournir les bonnes"
+	line "cette cave"
+	cont "devrait fournir"
+	cont "les bonnes"
 	cont "conditions."
+	
+	para "Vous trouvez une"
+	line "note griffonnée,"
+	cont "la lire?"
 	done
 	db "@"
-	
-_TXTMist_Stone:
-	text "Sous le journal"
-	line "moisi se trouve"
-	cont "une petite"
-	cont "crevasse dans"
-	cont "le sol."
-	
-	para "Un objet brille"
-	line "faiblement à"
-	cont "l'intérieur."
-	
-	para "Vous recevez la"
-	line "Pierre Brume!@@"
+
+_TXTBookP4:
+	text "J'ai trouvé la"
+	line "Pierre! Merci"
+	cont "pour l'info!"
+
+	para "PS: j'ai laissé"
+	line "un petit cadeau"
+	cont "en remerciement."
+	cont "Sacha."
+	prompt
 	db "@"
-	
+
+_TXTSacha_Stone:
+	text "Vous recevez la"
+	line "Pierre Lune!@@"
+	db "@"
+
 _TXTBag:
-	text "Il y a quelque"
-	line "chose ici"
-	cont "mais votre sac"
-	cont "est plein."
+	text "Votre sac"
+	line "est plein."
 	done
 	db "@"
