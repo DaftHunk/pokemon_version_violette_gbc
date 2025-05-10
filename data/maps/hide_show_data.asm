@@ -404,7 +404,7 @@ VictoryRoad2FHS:
 	db VICTORY_ROAD_2,$07,Show
 	db VICTORY_ROAD_2,$08,Show
 	db VICTORY_ROAD_2,$09,Show
-	db VICTORY_ROAD_2,$0A,Show
+	db VICTORY_ROAD_2,$0C,Show
 BillsHouseHS:
 	db BILLS_HOUSE,$01,Show
 	db BILLS_HOUSE,$02,Hide
@@ -569,8 +569,8 @@ CeruleanCaveB1FHS:
 	db CERULEAN_CAVE_B1F,$02,Show
 	db CERULEAN_CAVE_B1F,$03,Show
 VictoryRoad1FHS:
-	db VICTORY_ROAD_1F,$03,Show
-	db VICTORY_ROAD_1F,$04,Show
+	db VICTORY_ROAD_1F,$07,Show
+	db VICTORY_ROAD_1F,$08,Show
 ChampionsRoomHS:
 	db CHAMPIONS_ROOM,$02,Hide
 SeafoamIslands1FHS:

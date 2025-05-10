@@ -16,11 +16,11 @@ VictoryRoad1Script:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; wispnote - If the switch is activated place the boulder in switch's coordinates.
 ; Sprite05 indexes the boulder, and ($11, $0D) are the swtich's coordinates.
-	ld hl, Sprite05MapY
+	ld hl, Sprite09MapY
 	ld a, $0D
 	add 4; wispnote - We need to offset coordinates by 4
 	ld [hl], a
-	ld hl, Sprite05MapX
+	ld hl, Sprite09MapX
 	ld a, $11
 	add 4; wispnote - We need to offset coordinates by 4
 	ld [hl], a
@@ -52,15 +52,15 @@ CoordsData_5da5c:
 VictoryRoad1TextPointers:
 	dw VictoryRoad1Text1
 	dw VictoryRoad1Text2
-	dw PickUpItemText
-	dw PickUpItemText
-	dw BoulderText
-	dw BoulderText
-	dw BoulderText
 	dw VictoryRoad1Text3
 	dw VictoryRoad1Text4
 	dw VictoryRoad1Text5
 	dw VictoryRoad1Text6
+	dw PickUpItemText
+	dw PickUpItemText
+	dw BoulderText
+	dw BoulderText
+	dw BoulderText
 
 VictoryRoad1TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_0
