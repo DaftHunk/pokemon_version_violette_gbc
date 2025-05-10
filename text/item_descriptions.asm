@@ -389,7 +389,7 @@ _HM05Description::
 	prompt
 
 _TM01Description::
-	text "Ultimapoing:Normal"
+	text "Ultimapoing:Combat"
 	next "Dég: 80;Pré: 85"
 	prompt
 
@@ -409,7 +409,7 @@ _TM04Description::
 	prompt
 
 _TM05Description::
-	text "Ultimawashi:Normal"
+	text "Ultimawashi:Combat"
 	next "Dég: 120;Pré: 75"
 	prompt
 
@@ -594,13 +594,13 @@ _TM41Description::
 	prompt
 
 _TM42Description::
-	text "Dévorêve:Psy"
+	text "Dévorêve:Spectre"
 	next "Dég: 100;Pré: 100"
 	prompt
 
 _TM43Description::
 	text "Piqué:Vol"
-	next "Dég: 140;Pré: 90"
+	next "Dég: 140;Pré: 100"
 	prompt
 
 _TM44Description::
