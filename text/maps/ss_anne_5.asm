@@ -41,7 +41,7 @@ _SSAnne5AfterBattleText1::
 
 _SSAnne5BattleText2::
 	text "Hoho! Alors, on"
-	line "a le mal de mer? "
+	line "a le mal de mer?"
 	done
 
 _SSAnne5EndBattleText2::
@@ -51,8 +51,8 @@ _SSAnne5EndBattleText2::
 
 _SSAnne5AfterBattleText2::
 	text "Mon Pôpa, y dit"
-	line "qu'y a 100 #mon"
-	cont "différents. J'suis"
-	cont "sûr qu'y en a"
-	cont "plus..."
+	line "qu'y a 100 #-"
+	cont "mon différents."
+	cont "J'suis sûr qu'y"
+	cont "en a plus..."
 	done

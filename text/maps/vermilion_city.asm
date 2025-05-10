@@ -1,7 +1,7 @@
 _VermilionJennyBattleText1::
 	text "Hey ! C'est toi"
 	line "le trafiquant de"
-	cont "poudre soin ?"
+	cont "Poudre Soin?"
 	done
 
 _VermilionJennyEndBattleText1::
@@ -30,7 +30,7 @@ _VermilionCityText_198ac::
 	done
 
 _VermilionCityText_annereturns::	;joenote - added text
-	text "Tu as vu l'Océ"
+	text "Tu as vu l'Océ-"
 	line "anne amarrée"
 	cont "au port?"
 

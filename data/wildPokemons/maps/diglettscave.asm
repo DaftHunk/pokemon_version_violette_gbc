@@ -7,7 +7,7 @@ CaveMons:;joenote - added snorlax
 	db 16,DIGLETT
 	db 15,DIGLETT
 	db 21,DIGLETT
-	db 25,SNORLAX
 	db 29,DUGTRIO
 	db 31,DUGTRIO
+	db 25,SNORLAX
 	db $00

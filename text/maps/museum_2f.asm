@@ -1,5 +1,5 @@
 _Museum2FText1::
-	text "Pierre Lune ?"
+	text "Pierre Lune?"
 
 	para "Ouais? Et alors?"
 ;joenote - added text to hint at evolving kadabra
@@ -52,6 +52,6 @@ _Museum2FText7::
 	text "Des météores sont"
 	line "tombés sur le"
 	cont "Mont Sélénite."
-	cont "(Pierre Lune ?)"
+	cont "(Pierre Lune?)"
 	done
 

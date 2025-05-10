@@ -111,7 +111,7 @@ _BillsHouseText_1e8da::
 
 ;joenote - textfor bill letting you into his garden	
 _BillGardenText::
-	text "Bill: Hey, mec!"
+	text "Léo: Hey, mec!"
 	line "C'est vraiment le"
 	cont "fabuleux Mew?"
 	cont "Wow! C'est une"
