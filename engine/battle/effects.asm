@@ -1122,7 +1122,7 @@ ChargeEffect:
 	xor a
 	ld [wAnimationType], a
 	ld a, b
-	callab PlayBattleAnimation
+	call PlayBattleAnimation
 	ld a, [de]
 	ld [wChargeMoveNum], a
 	ld hl, ChargeMoveEffectText
@@ -1431,7 +1431,7 @@ DisableEffect:
 	jr z, .pickMoveToDisable ; pick another move if this one had 0 PP
 ;.playerTurnNotLinkBattle
 ; non-link battle enemies have unlimited PP so the previous checks aren't needed
-	callab BattleRandom
+	call BattleRandom
 	and $7
 	inc a ; 1-8 turns disabled
 

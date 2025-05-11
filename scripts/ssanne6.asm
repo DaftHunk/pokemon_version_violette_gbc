@@ -108,7 +108,7 @@ SSAnne6Text8: ;joenote - gym guy for post-game tournament
 	
 	;make sure the bag isn't full
 	ld a, [wNumBagItems]
-	cp 20
+	cp 30
 	jr nc, .nobagroom
 	
 	;make sure party is 3 pkmn
