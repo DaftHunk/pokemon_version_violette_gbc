@@ -64,6 +64,12 @@ _BillsGarden_SachaCongrat::
 	cont "che, j'en fait le"
 	cont "serment <PLAYER>!"
 
+	para "Je te laisse l'"
+	line "honneur de cha-"
+	cont "sser l'oiseau,"
+	cont "je l'ai vu dans"
+	cont "les environs."
+
 	para "En attendant,"
 	line "voilà pour toi."
 	done

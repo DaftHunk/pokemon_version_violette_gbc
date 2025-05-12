@@ -31,8 +31,13 @@ Mist_Stone_Text:
 	call PrintText
 	call .choice
 	jr nz, .end
-	
+
 	ld hl, _TXTBookP4
+	call PrintText
+	call .choice
+	jr nz, .end
+	
+	ld hl, _TXTBookP5
 	call PrintText
 
 	CheckEvent EVENT_GOT_SACHA_STONE
@@ -108,8 +113,24 @@ _TXTBookP2:
 	para "Continuer à lire?"
 	done
 	db "@"
-	
+
 _TXTBookP3:
+	text "J'ai entendu dire"
+	line "qu'un étrange"
+	cont "camion se trouve"
+	cont "sur les quais de"
+	cont "Carmin-sur-mer."
+	
+	para "Si seulement j'"
+	line "arrivais à avoir"
+	cont "un ticket pour y"
+	cont "accéder..."
+	
+	para "Continuer à lire?"
+	done
+	db "@"
+	
+_TXTBookP4:
 	text "Il parait que la"
 	line "Pierre Brume peut"
 	cont "libérer le"
@@ -132,7 +153,7 @@ _TXTBookP3:
 	done
 	db "@"
 
-_TXTBookP4:
+_TXTBookP5:
 	text "J'ai trouvé la"
 	line "Pierre! Merci"
 	cont "pour l'info!"
