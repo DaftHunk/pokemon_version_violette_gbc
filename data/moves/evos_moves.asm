@@ -550,7 +550,7 @@ BlastoiseEvosMoves:
 	db 13, WATER_GUN
 	db 19, BITE
 	db 30, BUBBLEBEAM
-	db 35, FLASH_CANNON
+	db 39, FLASH_CANNON
 	db 42, SKULL_BASH
 	db 55, HYDRO_PUMP
 	db 0
@@ -2020,7 +2020,7 @@ VenusaurEvosMoves:
 	db 15, POISONPOWDER
 	db 17, SLEEP_POWDER
 	db 22, RAZOR_LEAF
-	db 35, DARK_PULSE
+	db 39, DARK_PULSE
 	db 41, GROWTH
 	db 65, SOLARBEAM
 	db 0
@@ -2308,8 +2308,8 @@ CharizardEvosMoves:
 	db 13, SMOKESCREEN
 	db 20, RAGE
 	db 34, FLAMETHROWER
-	db 35, DRAGON_RUSH
 	db 36, WING_ATTACK
+	db 39, DRAGON_RUSH
 	db 44, SLASH
 	db 54, DRAGON_RAGE
 	db 64, FIRE_SPIN
