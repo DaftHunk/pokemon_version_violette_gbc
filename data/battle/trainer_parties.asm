@@ -469,8 +469,6 @@ ProfOakData:
 ChiefData:
 ;joenote - special fight with the silph chief
 	db $FF,72,KANGASKHAN,73,RHYDON,73,GOLDUCK,74,PINSIR,74,SCYTHER,76,TAUROS,0
-	db $FF,128,MISSINGNO_B5,0	;joenote - fight with missingno
-	db $FF,128,MISSINGNO_B5,128,MISSINGNO_B5,128,MISSINGNO_B5,0	;joenote - another superboss
 
 ScientistData:
 ; Silph Co. 2F

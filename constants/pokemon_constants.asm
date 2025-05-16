@@ -68,7 +68,7 @@ const_value = 1
 	const DRAGONITE    ; $42
 	const TYRANITAR    ; $43
 	const HOOH         ; $44
-	const MISSINGNO_45 ; $45
+	const MISSINGNO    ; $45
 	const DODUO        ; $46
 	const POLIWAG      ; $47
 	const JYNX         ; $48

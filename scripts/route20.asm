@@ -33,15 +33,6 @@ MissingnoShore:
 
 	ld hl, wFlags_D733
 	set 4, [hl]
-	
-	ld a, 2	;get the right roster
-	ld [wTrainerNo], a
-	ld hl, MissingnoCoordsData2
-	call ArePlayerCoordsInArray
-	jr nc, .next
-	ld a, 3
-	ld [wTrainerNo], a
-.next
 
 	ld hl, wd72d;set the bits for triggering battle
 	set 6, [hl]	;
@@ -51,8 +42,12 @@ MissingnoShore:
 	call SaveEndBattleTextPointers	;save the win/lose text
 	ld a, $9
 	ld [wGymLeaderNo], a	;set bgm to champion music
-	ld a, OPP_CHIEF	;load the trainer type
+	ld a, MISSINGNO	;load the trainer type
 	ld [wCurOpponent], a	;set as the current opponent
+	ld a, 1	;get the right roster
+	ld [wTrainerNo], a
+	ld a, 128
+	ld [wCurEnemyLVL], a
 	ld a, 3
 	ld [wRoute20CurScript], a
 	ld [wCurMapScript], a
@@ -91,11 +86,7 @@ EndMissingnoBattle:
 	
 	
 MissingnoCoordsData:
-		;Y,X
-	db $02,$00
-	db $03,$00
-	db $04,$00
-	db $05,$00
+	  ;Y  ,X
 	db $06,$00
 	db $07,$00
 	db $08,$00
@@ -104,16 +95,8 @@ MissingnoCoordsData:
 	db $0B,$00
 	db $0C,$00
 	db $0D,$00
-	;fall through
-MissingnoCoordsData2:
-	db $02,$3e
-	db $03,$3e
-	db $04,$3e
-	db $05,$3e
-	db $06,$3e
-	db $07,$3e
-	db $08,$3e
-	db $09,$3e
+	db $0E,$00
+	db $0F,$00
 	db $ff
 
 Route20Script_50cc6:

@@ -1588,3 +1588,11 @@ _HoohDexEntry::
 	next "magnifiques ailes"
 	next "colorées"
 	dex
+
+_MissingNoDexEntry::
+	text "コメント"
+	next "さくせい"
+
+	bage "ガギグゲゴ"
+	next "ザジズょゅ"
+	dex

@@ -161,5 +161,6 @@ const_value = 1
 	const DEX_PUPITAR    ; 159
 	const DEX_TYRANITAR  ; 160
 	const DEX_HOOH       ; 161
+	const DEX_MISSINGNO  ; 162
 
-NUM_POKEMON    EQU 161
+NUM_POKEMON    EQU 162

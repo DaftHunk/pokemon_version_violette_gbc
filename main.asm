@@ -2052,6 +2052,7 @@ INCBIN "gfx/pokemon/icons/larvitar.2bpp"
 INCBIN "gfx/pokemon/icons/pupitar.2bpp"
 INCBIN "gfx/pokemon/icons/tyranitar.2bpp"
 INCBIN "gfx/pokemon/icons/hooh.2bpp"
+INCBIN "gfx/pokemon/icons/missingno.2bpp"
 
 SECTION "NPC Sprites 3", ROMX
 JennySprite:          INCBIN "gfx/sprites/jenny.2bpp"

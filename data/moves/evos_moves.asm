@@ -70,7 +70,7 @@ EvosMovesPointerTable:
 	dw DragoniteEvosMoves
 	dw TyranitarEvosMoves
 	dw HoohEvosMoves
-	dw MissingNo45EvosMoves
+	dw MissingNoEvosMoves
 	dw DoduoEvosMoves
 	dw PoliwagEvosMoves
 	dw JynxEvosMoves
@@ -1089,7 +1089,7 @@ HoohEvosMoves:
 	db 88, SWIFT
 	db 0
 
-MissingNo45EvosMoves:
+MissingNoEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset

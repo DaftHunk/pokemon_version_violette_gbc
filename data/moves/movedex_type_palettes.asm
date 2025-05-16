@@ -66,7 +66,7 @@ TypeGraphicMapping:
 	dw PoisonTypeIcon;poison
 	dw GroundTypeIcon;ground
 	dw RockTypeIcon;rock
-	dw NormalTypeIcon;typeless
+	dw TypelessIcon;typeless
 	dw BugTypeIcon;bug
 	dw DragonTypeIcon;dragon
 	dw SteelTypeIcon;steel

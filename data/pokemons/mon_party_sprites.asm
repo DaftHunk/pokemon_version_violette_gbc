@@ -160,4 +160,5 @@ MonPartyData:
 	db ICON_PUPITAR       ; Pupitar
 	db ICON_TYRANITAR     ; Tyranitar
 	db ICON_HOOH          ; Hooh
+	db ICON_MISSINGNO     ; MissingNo
 	

@@ -136,7 +136,7 @@ ItemUseBall:
 
 ;joenote - Disallow balls against wild pokemon above the level cap
 	ld a, [wEnemyMonLevel]
-	cp MAX_LEVEL+1
+	cp 129
 	jp nc, ItemUseNoEffect
 	
 ; Balls can't be used out of battle.

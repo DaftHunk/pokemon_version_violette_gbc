@@ -130,7 +130,7 @@ FishingGroup1:
 
 FishingGroup2:
 	db 4
-	db 120,DITTO
+	db 140,DITTO
 	db 160,DITTO
 	db 200,DITTO
 	db 240,DITTO
