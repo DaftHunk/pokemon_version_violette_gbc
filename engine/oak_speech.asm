@@ -411,13 +411,13 @@ BoyGirlChoice::	;joenote - added this
 	jp DisplayYesNoChoice
 
 _PromptNewID:
-	text "Generate a new"
-	line "TRAINER ID?"
+	text "Regénérer l'ID"
+	line "de dresseur?"
 	done
 	db "@"
 	
 DebugNewGamePlayerName:
-	db "Ninten@"
+	db "Nintend@"
 
 DebugNewGameRivalName:
 	db "Sony@"
