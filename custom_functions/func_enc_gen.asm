@@ -536,6 +536,8 @@ EnemyMonEvolve:
 	ld a, [wcf91]
 	cp EEVEE	;deal with eevee separately
 	jr z, .handleeevee
+	cp PIKACHU	;don't evolve Pikachu
+	ret z
 	ld a, [hli]
 	ld b, a
 	ld a, [wCurEnemyLVL]
