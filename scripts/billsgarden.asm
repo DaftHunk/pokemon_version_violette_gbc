@@ -41,11 +41,19 @@ BillGardenText_Sacha:
 	ld de, BillsGarden_SachaAfterBattle	;load text for when you lose
 	call SaveEndBattleTextPointers	;save the win/lose text
 	ld a, $9
-	ld [wGymLeaderNo], a	;set bgm to champion music
+	ld [wGymLeaderNo], a ;set bgm to champion music
 	ld a, OPP_SACHA	;load the trainer type
-	ld [wCurOpponent], a	;set as the current opponent
-	ld a, 1	;get the right roster
+	ld [wCurOpponent], a ;set as the current opponent
+
+	ld a, 1 ;get the right roster
 	ld [wTrainerNo], a
+
+	CheckEvent EVENT_GOT_MIST_STONE
+	jr z, .next ; if Sacha never beaten
+	; else
+	ld a, 2 ;get the right roster
+	ld [wTrainerNo], a
+.next
 	xor a
 	ld [hJoyHeld], a
 	ld a, $3
@@ -84,6 +92,8 @@ BillGarden_ResetScript:
 	ld a, $4
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
+
+	SetEvent EVENT_GOT_MIST_STONE
 ;reset the special trainer flags
 	ld a, [wBeatGymFlags]
 	and $F0
