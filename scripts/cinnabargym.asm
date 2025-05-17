@@ -159,7 +159,7 @@ CinnabarGymScript_GiveTM:
 .endScript
 	ld hl, wObtainedBadges
 	set 6, [hl]
-	;ld hl, wBeatGymFlags	;joenote - redundant
+	;ld hl, wBeatSpecial4Flags	;joenote - redundant
 	;set 6, [hl]
 
 	; deactivate gym trainers

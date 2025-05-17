@@ -283,9 +283,9 @@ SilphCo11Script6:	;joenote - adding this function to set a flag if you beat the 
 	cp $ff
 	ret z
 ;set the special trainer flag
-	ld a, [wBeatGymFlags]
+	ld a, [wBeatSpecial4Flags]
 	set 2, a
-	ld [wBeatGymFlags], a
+	ld [wBeatSpecial4Flags], a
 	ret
 	
 SilphCo11TextPointers:

@@ -81,7 +81,7 @@ VermilionGymScript_GiveTM:
 .endScript
 	ld hl, wObtainedBadges
 	set 2, [hl]
-	;ld hl, wBeatGymFlags	;joenote - redundant
+	;ld hl, wBeatSpecial4Flags	;joenote - redundant
 	;set 2, [hl]
 
 	; deactivate gym trainers
@@ -302,7 +302,7 @@ VermilionGymText_Trainer2AfterBattle:
 
 VermilionGymText_Guide:
 	TX_ASM
-	ld a, [wObtainedBadges];[wBeatGymFlags]
+	ld a, [wObtainedBadges];[wBeatSpecial4Flags]
 	bit 2, a
 	jr nz, .arenaVictory
 	ld hl, VermilionGymText_GuideTip

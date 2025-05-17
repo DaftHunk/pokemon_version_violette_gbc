@@ -13,9 +13,9 @@ LavenderHouse1ScriptAA:	;joenote - adding this function to set a flag if you bea
 	cp $ff
 	ret z
 ;set the special trainer flag
-	ld a, [wBeatGymFlags]
+	ld a, [wBeatSpecial4Flags]
 	set 1, a
-	ld [wBeatGymFlags], a
+	ld [wBeatSpecial4Flags], a
 	ret
 
 LavenderHouse1TextPointers:

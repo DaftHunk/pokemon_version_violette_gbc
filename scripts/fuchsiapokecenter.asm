@@ -62,9 +62,9 @@ FuchsiaPokecenterNurseText:
 	ld [wCurMapScript], a
 	SetEvent EVENT_BEAT_NURSE_JOY
 	;set the special trainer flag
-	ld a, [wBeatGymFlags]
+	ld a, [wBeatSpecial4Flags]
 	set 3, a
-	ld [wBeatGymFlags], a
+	ld [wBeatSpecial4Flags], a
 	; after battle
 	ld hl, NurseJoyAfterBattleText
 	call SaveEndBattleTextPointers

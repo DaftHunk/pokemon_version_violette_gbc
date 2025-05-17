@@ -62,7 +62,7 @@ CeladonGymScript_GiveTM:
 .endScript
 	ld hl, wObtainedBadges
 	set 3, [hl]
-	;ld hl, wBeatGymFlags	;joenote - redundant
+	;ld hl, wBeatSpecial4Flags	;joenote - redundant
 	;set 3, [hl]
 
 	; deactivate gym trainers

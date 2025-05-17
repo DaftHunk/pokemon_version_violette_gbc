@@ -159,7 +159,7 @@ ViridianGymScript_GiveTM:
 .endScript
 	ld hl, wObtainedBadges
 	set 7, [hl]
-	;ld hl, wBeatGymFlags	;joenote - redundant
+	;ld hl, wBeatSpecial4Flags	;joenote - redundant
 	;set 7, [hl]
 
 	; deactivate gym trainers

@@ -672,9 +672,9 @@ OaksLabScript19:	;joenote - adding this function to set a flag if you beat the s
 	cp $ff
 	ret z
 ;set the special trainer flag
-	ld a, [wBeatGymFlags]
+	ld a, [wBeatSpecial4Flags]
 	set 0, a
-	ld [wBeatGymFlags], a
+	ld [wBeatSpecial4Flags], a
 	ret
 
 

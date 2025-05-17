@@ -3204,7 +3204,7 @@ wd728:: ; d728
 wLowHealthTonePairs::	;d729			;joenote - in battle, used as a counter for low hp alarm tone pairs
 	ds 1								; bit 7 gets set if tones are actively being played
 
-wBeatGymFlags:: ; d72a
+wBeatSpecial4Flags:: ; d72a
 ; redundant because it matches wObtainedBadges
 ; used to determine whether to show name on statue and in two NPC text scripts
 ;joenote - now repurposed to track post-game special battles
