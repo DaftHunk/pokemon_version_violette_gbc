@@ -2239,20 +2239,20 @@ RodResponse:
 	ld [wMoveMissed], a
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - increase level by 0 to 7
-;	ld a, b ; level
+	CheckEvent EVENT_BEAT_MISTY ; Don't increase level before Misty
+	jr z, .skipIncrease
+
 	call Random
 	and %111
+.skipIncrease
 	add b
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld [wCurEnemyLVL], a
 	ld a, c ; species
-;	ld [wCurOpponent], a
 ;joenote - generate a random wild pokemon based on a seed value
 	ld [wcf91], a
 	predef ReplaceWildMon
 	ld a, [wcf91]
 	ld [wCurOpponent], a
-
 
 .next
 	ld hl, wWalkBikeSurfState
