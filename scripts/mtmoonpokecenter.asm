@@ -102,30 +102,16 @@ MagikarpSalesmanText_CheckEventMons:
 	ld a, [hl]
 	cp MAGIKARP
 	jp z, MagikarpSalesmanText_DragonRageKarp
+
 	cp RAPIDASH
 	jp z, MagikarpSalesmanText_PayDayRapidashOrFearow
 	cp FEAROW
 	jp z, MagikarpSalesmanText_PayDayRapidashOrFearow
+
 	cp PIKACHU
-	jr nz, .done
-	call .CheckOpenMoveSlot
 	jp z, MagikarpSalesmanText_FlyingPikachu
 .done
 	jp MagikarpSalesmanText.backFromCheckEventMons
-.CheckOpenMoveSlot	
-	push hl
-	ld hl, wPartyMon1Moves
-	ld c, NUM_MOVES
-.loop
-	ld a, [hli]
-	and a
-	jr z, .endloop
-	dec c
-	jr nz, .loop
-.endloop
-	and a
-	pop hl
-	ret
 	
 MagikarpSalesmanText_DragonRageKarp:
 	xor a
@@ -268,15 +254,19 @@ MagikarpSalesmanText_PayDayRapidashOrFearow:
 	cont "@"
 	TX_RAM wcd6d
 	text "?"
-	para "Je peux lui appr-"
-	line "endre la compét-"
-	cont "ence Jackpot"
-	cont "pour juste 1000¥!"
+	para "Je peux lui"
+	line "apprendre la"
+	cont "compétence"
+	cont "Jackpot pour"
+	cont "juste 1000¥!"
 	cont "T'en dit quoi?"
 	done
 	db "@"
 
 MagikarpSalesmanText_FlyingPikachu:
+	CheckEvent EVENT_ELITE_4_BEATEN
+	ret z
+
 	xor a
 	ld [wWhichPokemon], a
 
@@ -315,13 +305,16 @@ MagikarpSalesmanText_FlyingPikachu:
 	ld hl, MagikarpSalesmanText.NoMoneyText
 	jp MagikarpSalesmanText.printText
 .enoughMoney
-	call .GetOpenMoveSlot
-	ld a, FLY
-	ld [hl], a
-	ld bc, (wPartyMon1PP - wPartyMon1Moves)
-	add hl, bc
-	ld a, 15
-	ld [hl], a	;load 15 PP 
+	ld hl, wFlags_D733
+	set 6, [hl]
+	push hl		;make it so the move-forget list covers up sprites
+	predef LearnMove
+	pop hl
+	res 6, [hl]
+	ld a, b
+	and a
+	ret z
+
 	xor a
 	ld [wPriceTemp], a
 	ld [wPriceTemp + 2], a
@@ -355,18 +348,6 @@ MagikarpSalesmanText_FlyingPikachu:
 	done
 	db "@"
 
-.GetOpenMoveSlot	
-	ld hl, wPartyMon1Moves
-	ld c, NUM_MOVES
-.loop
-	ld a, [hl]
-	and a
-	jr z, .endloop
-	inc hl
-	dec c
-	jr nz, .loop
-.endloop
-	ret
 .Text2
 	text "Homme: Voyons"
 	line "voir...Je lui"
