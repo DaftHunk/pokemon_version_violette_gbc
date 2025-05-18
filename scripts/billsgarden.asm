@@ -94,10 +94,6 @@ BillGarden_ResetScript:
 	call DisplayTextID
 
 	SetEvent EVENT_GOT_MIST_STONE
-;reset the special trainer flags
-	ld a, [wBeatSpecial4Flags]
-	and $F0
-	ld [wBeatSpecial4Flags], a
 ;reset Mew events
 	ResetEvent EVENT_ENCOUNTERED_MEW
 	ResetEvent EVENT_FOUND_MEW

@@ -58,10 +58,6 @@ VermilionDockScriptAA:
 	ld a, [wIsInBattle]
 	cp $ff
 	ret z
-;set the special trainer flag
-	ld a, [wBeatSpecial4Flags]
-	set 3, a
-	ld [wBeatSpecial4Flags], a
 	ret
 	
 VermilionDock_1db9b:

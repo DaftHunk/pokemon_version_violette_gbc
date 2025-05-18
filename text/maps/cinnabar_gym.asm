@@ -61,7 +61,7 @@ _TM38ExplanationText::
 	text_start
 
 	para "CT38 :"
-	line "DEFLAGRATION!"
+	line "Déflagration!"
 
 	para "Elle convient à"
 	line "un #mon du"
@@ -116,7 +116,7 @@ _CinnabarGymText_RematchEndBattle::
 	cont "un, amène-le moi."
 	
 	para "Je tiens à le"
-	cont "remercier comme"
+	line "remercier comme"
 	cont "il se doit."
 	prompt
 
