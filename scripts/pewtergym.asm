@@ -287,16 +287,27 @@ FossilTutor:
 	ld a, [wPartyMon1Species]
 	cp OMASTAR
 	ld a, ROCK_SLIDE
-	jr z, .next
+	jp z, .next
 	ld a, [wPartyMon1Species]
 	cp KABUTOPS
-	ld a, MEGA_DRAIN
-	jr z, .next
+	ld a, X_SCISSOR
+	jp z, .next
 	ld a, [wPartyMon1Species]
 	cp AERODACTYL
 	ld a, EARTHQUAKE
 	jr z, .next
 	ret
+.textStart
+	text "Grâce aux progrès"
+	line "de la recherche"
+	cont "menée avec le"
+	cont "musée, je peux"
+	cont "aider ton #mon"
+	cont "à retrouver une"
+	cont "attaque venant"
+	cont "de son passé."
+	prompt
+	db "@"
 .next
 	ld [wMoveNum], a
 	ld [wPokedexNum],a
@@ -321,20 +332,12 @@ FossilTutor:
 
 	ld hl, wFlags_D733
 	set 6, [hl]
-	push hl		;make it so the move-forget list covers up sprites
+	push hl ;make it so the move-forget list covers up sprites
 	predef LearnMove
 	pop hl
 	res 6, [hl]
 	ld a, b
 	and a
 	ret z
-.textStart
-	text "Je peux aider"
-	line "ton #mon"
-	cont "à retrouver une"
-	cont "attaque venant"
-	cont "de son passé."
-	prompt
-	db "@"
 .finish
 	ret
