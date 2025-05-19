@@ -69,4 +69,8 @@ const_value = 0
 	const CRED_ZEHHUGO        ; $42
 	const CRED_NOAPRODTEST    ; $43
 	const CRED_HUDSONBUECHELE ; $44
-
+	const CRED_VIOLETTE       ; $45
+	const CRED_DAFT_HUNK      ; $46
+	const CRED_BIG_THANKS     ; $47
+	const CRED_COMMUNITY      ; $48
+	const CRED_POKERED        ; $49
