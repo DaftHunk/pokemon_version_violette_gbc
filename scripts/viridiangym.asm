@@ -269,19 +269,11 @@ ViridianGymText_Giovanni:
 	CheckEvent EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
 	jr z, .leaderFight
 	CheckEventReuseA EVENT_GOT_TM27
-	jr nz, .askForRematch
+	jr nz, .afterFight
 	call z, ViridianGymScript_GiveTM
 	call DisableWaitingAfterTextDisplay
 	jr .endScript
-.askForRematch
-;;;;;;;joenote - have a rematch with gym leader?
-	ld hl, RematchTrainerText
-	call PrintText
-	call NoYesChoice
-	ld a, [wCurrentMenuItem]
-	and a
-	jr nz, .leaderFight
-;;;;;;;
+.afterFight
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld hl, ViridianGymText_LeaderAfterBattle
@@ -309,10 +301,6 @@ ViridianGymText_Giovanni:
 	ld [wSpriteIndex], a
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
-;;;;joenote - added for rematch to skip gym leader tm
-	CheckEvent EVENT_GOT_TM27
-	jp nz, TextScriptEnd
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, $3
 	ld [wViridianGymCurScript], a
 .endScript
