@@ -61,7 +61,7 @@ AnimateHallOfFame:
 	ld b, 3
 	ld c, 14
 	call TextBoxBorder
-	coord hl, 4, 15
+	coord hl, 5, 15
 	ld de, HallOfFameText
 	call PlaceString
 	ld c, 180
@@ -92,7 +92,7 @@ AnimateHallOfFame:
 	ret
 
 HallOfFameText:
-	db "CELEBRITE@"
+	db "Célébrité@"
 
 HoFShowMonOrPlayer:
 	call ClearScreen
@@ -179,9 +179,9 @@ HoFDisplayMonInfo:
 	jp PlayCry
 
 HoFMonInfoText:
-	db   "NIVEAU/"
-	next "TYPE1/"
-	next "TYPE2/@"
+	db   "Niveau/"
+	next "Type1/"
+	next "Type2/@"
 
 HoFLoadPlayerPics:
 ;joenote - support female trainer sprites
@@ -276,10 +276,10 @@ HoFPrintTextAndDelay:
 	jp DelayFrames
 
 HoFPlayTimeText:
-	db "DUREE JEU@"
+	db "Durée jeu@"
 
 HoFMoneyText:
-	db "ARGENT@"
+	db "Argent@"
 
 DexSeenOwnedText:
 	TX_FAR _DexSeenOwnedText
