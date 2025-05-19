@@ -233,6 +233,7 @@ VermilionDock_EraseSSAnne:
 VermilionDockTextPointers:
 	dw MewText
 
+; PureRGB mew encounter
 MewTrainerHeader:
 	dbEventFlagBit EVENT_ENCOUNTERED_MEW
 	db ($0 << 4) ; trainer's view range
@@ -277,15 +278,15 @@ TruckSpriteGFX: INCBIN  "gfx/sprites/truck_sprite.2bpp"
 
 NoTruckAction:
 	ld hl, wCurrentMapScriptFlags
-	set 7, [hl]
+	res 7, [hl]
 	ret
 
 TruckCheck:
 	CheckEventHL EVENT_FOUND_MEW
 	jp nz, ChangeTruckTile
-;	ld hl, wCurrentMapScriptFlags
-;	res 5, [hl]
-;	lb bc, FLAG_TEST, HS_MEW_VERMILION_DOCK
+	ld hl, wCurrentMapScriptFlags
+	res 5, [hl]
+	lb bc, 2, HS_MEW_VERMILION_DOCK
 	ld hl, wMissableObjectFlags
 	predef FlagActionPredef
 	ld a, c
@@ -312,8 +313,8 @@ TruckCheck:
 	bit PLAYER_DIR_BIT_LEFT, a
 	jr z, NoTruckAction
 	ld hl, wCurrentMapScriptFlags
-	bit 5, [hl]
-	set 5, [hl] ; wait until the next time the player presses left
+	bit 7, [hl]
+	set 7, [hl] ; wait until the next time the player presses left
 	ret z
 	ldh a, [hJoyHeld]
 	bit BIT_D_LEFT, a ; is player pressing left
