@@ -8,24 +8,6 @@ SoftlockTeleport:
 	cp COLOSSEUM
 	ret z
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	ld a, [hJoyInput]
-	cp D_UP + B_BUTTON + SELECT
-	jp z, ResetAllOptions
-	cp D_DOWN + A_BUTTON + SELECT
-	jp z, ShowDamageValues
-	cp D_DOWN + B_BUTTON + SELECT
-	ret nz
-	CheckEvent EVENT_GOT_POKEDEX
-	ld a, [wCurrentMenuItem]
-	jr nz, .next
-	;do this stuff if pokedex has not been obtained
-	cp 5
-	ret nz
-	callba ItemUseNotTime
-	ret
-.next
-	cp 6 
-	ret nz
 	ld a, PALLET_TOWN
 	ld [wLastBlackoutMap], a
 	ld a, [wd732]
@@ -48,7 +30,6 @@ SoftlockTeleport:
 	ld a, $10
 	ld [wPlayerMoney + 1], a
 	ret
-
 
 ShowDamageValues:	;joenote - toggle damage values being shown in battle
 	call WaitForSoundToFinish
