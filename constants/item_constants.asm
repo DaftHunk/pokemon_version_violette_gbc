@@ -6,7 +6,7 @@ const_value = 1
 	const POKE_BALL     ; $04
 	const TOWN_MAP      ; $05
 	const BICYCLE       ; $06
-	const SURFBOARD     ; $07 buggy?
+	const SURFBOARD     ; $07
 	const SAFARI_BALL   ; $08
 	const POKEDEX       ; $09
 	const MOON_STONE    ; $0A

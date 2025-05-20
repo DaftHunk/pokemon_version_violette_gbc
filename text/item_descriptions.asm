@@ -31,6 +31,11 @@ _BicycleDescription::
 	cont "pour l'utiliser."
 	prompt
 
+_SurfboardDescription::
+	text "Permet de Surfer"
+	next "sans #mon."
+	prompt
+
 _MoonStoneDescription::
 _FireStoneDescription::
 _ThunderStoneDescription::
