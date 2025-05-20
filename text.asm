@@ -3158,6 +3158,11 @@ _ItemUseNotTimeText::
 	cont "faire ça!"
 	prompt
 
+_ItemUseNotAllowedText::
+	text "Utilisation"
+	line "interdite!"
+	prompt
+
 _ItemUseNotYoursToUseText::
 	text "C'est pas à toi!"
 	prompt

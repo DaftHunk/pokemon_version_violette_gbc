@@ -132,12 +132,12 @@ ItemUseBall:
 	push de
 	callba NoCatch_NuzlockeHandler
 	pop de
-	jp nz, ItemUseNotTime
+	jp nz, ItemUseNotAllowed
 
 ;joenote - Disallow balls against wild pokemon above the level cap
 	ld a, [wEnemyMonLevel]
 	cp 129
-	jp nc, ItemUseNoEffect
+	jp nc, ItemUseNotAllowed
 	
 ; Balls can't be used out of battle.
 	ld a, [wIsInBattle]
@@ -1095,8 +1095,11 @@ ItemUseMedicine:
 	or b
 	pop bc
 	bit BIT_BATTLE_HARD, a
-	jr z, .can_revive
-	call ItemUseNotTime
+	jr nz, .cannot_revive
+	CheckEvent EVENT_3_MONS_RANDOM_TRAINER
+	jr nz, .cannot_revive
+.cannot_revive
+	call ItemUseNotAllowed
 	jp .done
 .can_revive	
 	push hl
@@ -2690,6 +2693,10 @@ ItemUseNotTime:
 	ld hl, ItemUseNotTimeText
 	jr ItemUseFailed
 
+ItemUseNotAllowed:
+	ld hl, ItemUseNotAllowedText
+	jr ItemUseFailed
+
 ItemUseNotYoursToUse:
 	ld hl, ItemUseNotYoursToUseText
 	jr ItemUseFailed
@@ -2729,6 +2736,10 @@ ItemUseFailed:
 
 ItemUseNotTimeText:
 	TX_FAR _ItemUseNotTimeText
+	db "@"
+
+ItemUseNotAllowedText:
+	TX_FAR _ItemUseNotAllowedText
 	db "@"
 
 ItemUseNotYoursToUseText:
