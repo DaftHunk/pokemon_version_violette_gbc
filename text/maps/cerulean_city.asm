@@ -198,7 +198,7 @@ _CeruleanCityText9::
 _CeruleanCityText10::
 	text "Des #mon trop"
 	line "puissants vivent"
-	cont "dans la Cave"
+	cont "dans la Caverne"
 	cont "Azurée!"
 
 	para "Seul le Champion"

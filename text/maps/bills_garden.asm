@@ -103,6 +103,6 @@ _BillsGarden_SachaStoneExplain::
 
 	para "On aurait dit que"
 	line "ça venait de la"
-	cont "Grotte Azurée et"
+	cont "Caverne Azurée et"
 	cont "de la Centrale!"
 	done

@@ -102,7 +102,7 @@ PokemonMansionName:
 SafariZoneName:
 	db "Parc Safari@"
 CeruleanCaveName:
-	db "Grotte Inconnue@"
+	db "Caverne Azurée@"
 PowerPlantName:
 	db "Centrale@"
 VolcanoName:

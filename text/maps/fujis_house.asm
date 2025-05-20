@@ -116,8 +116,8 @@ _FujiText_prebattle::
 	
 	para "Tout ce travail"
 	line "jeté dans les eaux"
-	cont "d'un Donjon"
-	cont "Inconnu."
+	cont "de la Caverne"
+	cont "Azurée."
 	
 	para "Je te conseille de"
 	line "rester loin de ce"
