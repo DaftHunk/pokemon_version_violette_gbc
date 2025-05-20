@@ -121,4 +121,11 @@ _SSAnne10Text7::
 	para "Sa Force lui"
 	line "permet de bouger"
 	cont "les rochers!"
+
+	para "J'ai un ami qui"
+	line "a vu le sien"
+	cont "évoluer lors d'un"
+	cont "entrainement"
+	cont "intensif dans la"
+	cont "jungle!"
 	done

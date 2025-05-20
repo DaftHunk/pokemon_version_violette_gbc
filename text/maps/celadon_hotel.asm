@@ -25,8 +25,9 @@ _CeladonHotelText3::
 _CeladonHotelCoinGuyText_intro::
 	text "Je suis plein de"
 	line "Jetons mais voir"
-	cont "les #mon est ma"
-	cont "seule convoitise."
+	cont "les #mon est"
+	cont "ma seule"
+	cont "convoitise."
 	
 	para "Montre moi un beau"
 	line "@"
