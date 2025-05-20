@@ -117,22 +117,21 @@ _SSAnne6Text_GymGuy2::
 	para "Tes #mon seront"
 	line "soignés entre"
 	cont "chaque tour."
+
+	para "L'utilisation de"
+	line "rappel est"
+	cont "interdite!"
 	
 	para "Attention:"
 	line "Ce sont de grands"
 	cont "dresseurs venant"
 	cont "d'un peu partout."
-
-	para "Il y a un PC de"
-	line "bord en haut à"
-	cont "droite de moi si"
-	cont "besoin."
 	
 	para "Tu es prêt?"
 	done
 	
 _SSAnne6Text_GymGuy_keepgoing::
-	text "Salut champion!"
+	text "Bien joué!"
 	line "Tu continues?"
 	done
 
@@ -143,8 +142,9 @@ _SSAnne6Text_GymGuy_noroom::
 	
 _SSAnne6Text_GymGuy_party::
 	text "Tu dois avoir ex-"
-	line "actement 3 poké-"
-	cont "mon pour entrer."
+	line "exactement 3"
+	cont "#mon pour"
+	cont "entrer."
 	done
 
 _SSAnne6Text_GymGuy_bye::
@@ -161,9 +161,20 @@ _SSAnne6Text_GymGuy_battleend::
 	prompt
 
 _SSAnne6Text_GymGuy_win::
-	text "Je savais que tu"
-	line "le ferais!"
+	text "Bravo, c'était"
+	line "un tournoi"
+	cont "exceptionnel!"
+
+	para "Je savais que tu"
+	line "le ferais, c'est"
+	cont "surement grâce à"
+	cont "mes excellents"
+	cont "conseils."
 	
+	para "Tiens, voici la"
+	line "récompense."
+
 	para "<PLAYER> gagne"
-	line "une Master Ball!@@"
+	line "une Master Ball!@"
+	text_end
 	

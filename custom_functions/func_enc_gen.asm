@@ -67,15 +67,15 @@ GetRandRoster:
 	push bc
 	push de
 	ld b, 6
-	ld de, ListNonMythPkmn
+	ld de, ListNonLegendPkmn
 	CheckEvent EVENT_GOT_DEX_DIPLOMA	;check for diploma
 	jp z, GetRandRosterLoop	;no mew if no diploma
-	ld de, ListRealPkmn
+	ld de, ListNonLegendPkmn
 	jp GetRandRosterLoop
 GetRandRoster3:	;3-mon party
 	push bc
 	push de
-	ld de, ListNonMewPkmn
+	ld de, ListNonLegendPkmn
 	ld b, 3
 GetRandRosterLoop:
 	call GetHighestLevel

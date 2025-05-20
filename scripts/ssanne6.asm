@@ -4,9 +4,15 @@ SSAnne6Script:
 ;joenote - set up tournament
 	CheckEvent EVENT_3_MONS_RANDOM_TRAINER
 	jr z, .mainreturn
+	CheckEvent EVENT_WAITING_FOR_TOURNAMENT_BAG_ROOM
+	jr nz, .mainreturn
 	ld a, [wIsInBattle]
-	cp $ff	;don't continue the tournament if you lost
-	call nz, ContinueTournament
+	cp $ff
+	jp nz, ContinueTournament
+	;don't continue the tournament if you lost
+	ResetEvent EVENT_3_MONS_RANDOM_TRAINER
+	xor a
+	ld [wUnusedD5A3], a
 .mainreturn
 	ret
 
@@ -67,6 +73,8 @@ SSAnne6Text7:
 
 SSAnne6Text8: ;joenote - gym guy for post-game tournament
 	TX_ASM
+	CheckEvent EVENT_WAITING_FOR_TOURNAMENT_BAG_ROOM
+	jr nz, .giveAward
 
 	;check if your are in tournament
 	CheckEvent EVENT_3_MONS_RANDOM_TRAINER
@@ -75,42 +83,41 @@ SSAnne6Text8: ;joenote - gym guy for post-game tournament
 	
 	;check if you won tournament
 	ld a, [wUnusedD5A3]
-	cp 7	;# matches to win
+	cp 7 ;# matches to win
 	jr c, .notyet
-	push bc
-	ld bc, $0101
-	call GiveItem
-	pop bc
-	ld hl, SSAnne6Text_GymGuy_win
+.giveAward
 	SetEvent EVENT_SS_ANNE_TOURNAMENT_BEATEN
-	call PrintText	
-	jr .endtournament
-.notyet
+	lb bc, MASTER_BALL, 1
+	call GiveItem
+	jr nc, .nobagroom
 
+	ResetEvent EVENT_WAITING_FOR_TOURNAMENT_BAG_ROOM
+	ld hl, SSAnne6Text_GymGuy_win
+	call PrintText
+	jr .endtournament
+.nobagroom
+	SetEvent EVENT_WAITING_FOR_TOURNAMENT_BAG_ROOM
+	ld hl, SSAnne6Text_GymGuy_noroom
+	jr .endprint
+.notyet
 	;ask if continue
 	ld hl, SSAnne6Text_GymGuy_keepgoing
 	call PrintText
-	call YesNoChoice	;ask if you want to keep going
+	call YesNoChoice ;ask if you want to keep going
 	ld a, [wCurrentMenuItem]	
 	and a	
-	jr nz, .endtournament	;leave if NO
+	jr nz, .endtournament ;leave if NO
 	jr .startbattle
-
 .promptdefaulttext	
-	ld hl, SSAnne6Text_GymGuy	;load default text
+	ld hl, SSAnne6Text_GymGuy ;load default text
 	CheckEvent EVENT_ELITE_4_BEATEN
 	jp z, .endprint
-	ld hl, SSAnne6Text_GymGuy2	;load intro text after beating elite 4
+	ld hl, SSAnne6Text_GymGuy2 ;load intro text after beating elite 4
 	call PrintText
-	call YesNoChoice	;ask if you want to join tournament
+	call YesNoChoice ;ask if you want to join tournament
 	ld a, [wCurrentMenuItem]	
 	and a	
-	jr nz, .endtournament	;leave if NO
-	
-	;make sure the bag isn't full
-	ld a, [wNumBagItems]
-	cp 30
-	jr nc, .nobagroom
+	jr nz, .endtournament ;leave if NO
 	
 	;make sure party is 3 pkmn
 	ld a, [wPartyCount]
@@ -118,18 +125,17 @@ SSAnne6Text8: ;joenote - gym guy for post-game tournament
 	jr nz, .partynot3
 	
 	predef HealParty
-
 .startbattle
 	;if everything checks out, begin initiating battle with a random trainer
-	SetEvent EVENT_3_MONS_RANDOM_TRAINER	;used for the 3-pkmn tournament
+	SetEvent EVENT_3_MONS_RANDOM_TRAINER ;used for the 3-pkmn tournament
 	ld hl, SSAnne6Text_GymGuy_ready
 	call PrintText
-	ld hl, wd72d;set the bits for triggering battle
-	set 6, [hl]	;
-	set 7, [hl]	;
-	ld hl, SSAnne6Text_GymGuy_battleend	;load text for when you win
-	ld de, SSAnne6Text_GymGuy_battleend	;load text for when you lose
-	call SaveEndBattleTextPointers	;save the win/lose text
+	ld hl, wd72d ;set the bits for triggering battle
+	set 6, [hl]
+	set 7, [hl]
+	ld hl, SSAnne6Text_GymGuy_battleend ;load text for when you win
+	ld de, SSAnne6Text_GymGuy_battleend ;load text for when you lose
+	call SaveEndBattleTextPointers ;save the win/lose text
 	ld a, [H_SPRITEINDEX]
 	ld [wSpriteIndex], a
 	callba GetRandTrainer
@@ -143,9 +149,6 @@ SSAnne6Text8: ;joenote - gym guy for post-game tournament
 	jr .end
 .partynot3
 	ld hl, SSAnne6Text_GymGuy_party
-	jr .endprint
-.nobagroom
-	ld hl, SSAnne6Text_GymGuy_noroom
 	jr .endprint
 .endtournament
 	xor a

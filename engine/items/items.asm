@@ -1098,9 +1098,6 @@ ItemUseMedicine:
 	jr nz, .cannot_revive
 	CheckEvent EVENT_3_MONS_RANDOM_TRAINER
 	jr nz, .cannot_revive
-.cannot_revive
-	call ItemUseNotAllowed
-	jp .done
 .can_revive	
 	push hl
 	push de
@@ -1123,6 +1120,9 @@ ItemUseMedicine:
 	pop de
 	pop hl
 	jr .compareCurrentHPToMaxHP
+.cannot_revive
+	call ItemUseNotAllowed
+	jp .done
 .notFainted
 	ld a, [wcf91]
 	cp REVIVE

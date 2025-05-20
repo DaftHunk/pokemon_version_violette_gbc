@@ -1,11 +1,13 @@
 ListRealPkmn:
 	db MEW          ; $15
+	db MISSINGNO    ; 162
 ListNonMythPkmn:
 	db MEWTWO       ; $83
 ListNonMewPkmn:
 	db MOLTRES      ; $49
 	db ARTICUNO     ; $4A
 	db ZAPDOS       ; $4B
+	db HOOH         ; 161
 ListNonLegendPkmn:
 	db ABRA         ; $94
 	db BELLSPROUT   ; $BC
@@ -61,6 +63,9 @@ ListNonLegendPkmn:
 	db VULPIX       ; $52
 	db WEEDLE       ; $70
 	db ZUBAT        ; $6B
+	db LARVITAR
+	db SCYTHER      ; $1A
+	db ONIX         ; $22
 ListMidEvolvedPkmn:
 	db CHARMELEON   ; $B2
 	db DRAGONAIR    ; $59
@@ -78,6 +83,8 @@ ListMidEvolvedPkmn:
 	db POLIWHIRL    ; $6E
 	db WARTORTLE    ; $B3
 	db WEEPINBELL   ; $BD
+	db SEADRA       ; $5D
+	db PUPITAR
 ListNonEvolvingPkmn:
 	db AERODACTYL   ; $AB
 	db CHANSEY      ; $28
@@ -91,14 +98,14 @@ ListNonEvolvingPkmn:
 	db LAPRAS       ; $13
 	db LICKITUNG    ; $0B
 	db MAGMAR       ; $33
-	db MR_MIME      ; $2A
-	db ONIX         ; $22
+	db MR_MIME      ; $2A	
 	db PINSIR       ; $1D
-	db PORYGON      ; $AA
-	db SCYTHER      ; $1A
+	db PORYGON      ; $AA	
 	db SNORLAX      ; $84
 	db TANGELA      ; $1E
 	db TAUROS       ; $3C
+	db SNEASEL
+	db MISDREAVUS
 ListMostEvolvedPkmn:
 	db ALAKAZAM     ; $95
 	db ARBOK        ; $2D
@@ -143,8 +150,7 @@ ListMostEvolvedPkmn:
 	db RAPIDASH     ; $A4
 	db RATICATE     ; $A6
 	db RHYDON       ; $01
-	db SANDSLASH    ; $61
-	db SEADRA       ; $5D
+	db SANDSLASH    ; $61	
 	db SEAKING      ; $9E
 	db SLOWBRO      ; $08
 	db STARMIE      ; $98
@@ -156,6 +162,11 @@ ListMostEvolvedPkmn:
 	db VILEPLUME    ; $BB
 	db WEEZING      ; $8F
 	db WIGGLYTUFF   ; $65
+	db STEELIX
+	db SCIZOR
+	db TYRANITAR
+	db UMBREON
+	db TYRANITAR
 	db $00
 
 	
@@ -292,6 +303,15 @@ ListByGenderRatio:
 	db DRATINI      ; $58
 	db DRAGONAIR    ; $59
 	db DRAGONITE    ; $42
+	db STEELIX
+	db SCIZOR
+	db UMBREON
+	db KINGDRA
+	db SNEASEL
+	db MISDREAVUS
+	db LARVITAR
+	db PUPITAR
+	db TYRANITAR
 ;126 to 131 are 3-1 ratio --> atk dv >= 12 is male
 	db CLEFAIRY     ; $04
 	db CLEFABLE     ; $8E

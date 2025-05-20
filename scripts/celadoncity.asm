@@ -95,7 +95,7 @@ CeladonCityText7:
 	jp TextScriptEnd
 
 	
-CeladonCityText8:	;joenote - make this rocket hint about buying master balls
+CeladonCityText8:
 	TX_ASM
 	CheckEvent EVENT_ELITE_4_BEATEN
 	ld hl, CeladonCityText8_alternate
@@ -114,7 +114,7 @@ CeladonCityText8_alternate:
 	para "Ouai c'est moi"
 	line "qui fournit le"
 	cont "centre commercial"
-	cont "en Master Ball,"
+	cont "en objets rares,"
 	cont "ils sont pas re-"
 	cont "gardant sur la"
 	cont "provenance, héhé."
