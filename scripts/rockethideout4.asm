@@ -40,6 +40,8 @@ RocketHideout4Script_45473:
 	call UpdateSprites
 	call Delay3
 	call GBFadeInFromBlack
+	xor a
+	ld [wd730], a
 	ld [hJoyHeld], a
 	ld [wJoyIgnore], a
 .asm_45496

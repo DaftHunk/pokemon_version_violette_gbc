@@ -22,12 +22,6 @@ PokemonTower7ScriptPointers:
 	dw PokemonTower7Script4
 
 PokemonTower7Script2:
-;	ld a, HS_POKEMONTOWER_7F_JAMES
-;	ld [wMissableObjectIndex], a
-;	predef ShowObject
-;	call UpdateSprites
-;	call Delay3
-
 	ld hl, wFlags_0xcd60
 	res 0, [hl]
 	ld a, [wIsInBattle]
@@ -40,9 +34,14 @@ PokemonTower7Script2:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	call PokemonTower7Script_60db6
+
 	CheckEvent EVENT_BEAT_POKEMONTOWER_7F_JESSIE_JAMES
 	jr nz, .hideJessieJames
-	jr .done
+	; else
+	ld a, $3
+	ld [wPokemonTower7CurScript], a
+	ld [wCurMapScript], a
+	ret
 .hideJessieJames
 	call GBFadeOutToBlack
 	ld a, HS_POKEMONTOWER_7F_ROCKET_3
@@ -54,14 +53,9 @@ PokemonTower7Script2:
 	call UpdateSprites
 	call Delay3
 	call GBFadeInFromBlack
-	ld [hJoyHeld], a
-	ld [wJoyIgnore], a
-	jr .done
-.done
-	ld a, $3
-	ld [wPokemonTower7CurScript], a
-	ld [wCurMapScript], a
-	ret	
+	xor a
+	ld [wd730], a
+	jp PokemonTower7Script_60d18
 
 PokemonTower7Script3:
 	ld a, [wd730]

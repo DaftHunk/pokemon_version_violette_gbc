@@ -39,9 +39,14 @@ MtMoonB1FScriptJessieJames:
 	ld a, [wSpriteIndex]
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
+
 	CheckEvent EVENT_BEAT_MT_MOON_B1F_JESSIE_JAMES
-	jr nz, .hideJessieJames
-	jr .done
+	jr nz, .hideJessieJames	
+	; else
+	ld a, $0
+	ld [wMtMoon1FCurScript], a
+	ld [wCurMapScript], a
+	ret
 .hideJessieJames
 	call GBFadeOutToBlack
 	ld a, HS_MT_MOON_B1F_JESSIE
@@ -53,14 +58,9 @@ MtMoonB1FScriptJessieJames:
 	call UpdateSprites
 	call Delay3
 	call GBFadeInFromBlack
-	ld [hJoyHeld], a
-	ld [wJoyIgnore], a
-	jr .done
-.done
-	ld a, $0
-	ld [wMtMoon1FCurScript], a
-	ld [wCurMapScript], a
-	ret	
+	xor a
+	ld [wd730], a
+	jr MtMoonB1FScriptNotInBattle
 
 MtMoonB1FScriptNotInBattle:
 	xor a
