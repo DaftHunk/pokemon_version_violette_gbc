@@ -82,7 +82,7 @@ TryDoWildEncounter:
 	ld [wEnemyMonSpecies2], a
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - expand the safari zone random encounters
-	callba GetRandMonSafari
+;	callba GetRandMonSafari
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - check for shiny DV attract conditions
 	callba ShinyAttractFunction
