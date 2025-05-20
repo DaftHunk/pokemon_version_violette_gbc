@@ -159,8 +159,6 @@ CinnabarGymScript_GiveTM:
 .endScript
 	ld hl, wObtainedBadges
 	set 6, [hl]
-	;ld hl, wBeatSpecial4Flags	;joenote - redundant
-	;set 6, [hl]
 
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_CINNABAR_GYM_TRAINER_0, EVENT_BEAT_CINNABAR_GYM_TRAINER_6
@@ -302,6 +300,9 @@ CinnabarGymText_RematchPreBattle:
 CinnabarGymText_RematchEndBattle:
 	TX_ASM
 	SetEvent EVENT_BEAT_BLAINE_REMATCH
+	ld hl, wBeatGymLeadersRematch
+	set 6, [hl]
+	
 	ld hl, .cinnabarGymText_RematchEndBattle
 	call PrintText
 	jp TextScriptEnd

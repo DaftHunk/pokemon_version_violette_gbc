@@ -66,8 +66,6 @@ FuchsiaGymScript_GiveTM:
 .endScript
 	ld hl, wObtainedBadges
 	set 4, [hl]
-	;ld hl, wBeatSpecial4Flags	;joenote - redundant
-	;set 4, [hl]
 
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_FUCHSIA_GYM_TRAINER_0, EVENT_BEAT_FUCHSIA_GYM_JANINE
@@ -270,6 +268,9 @@ FuchsiaGymText_RematchPreBattle:
 FuchsiaGymText_RematchEndBattle:
 	TX_ASM
 	SetEvent EVENT_BEAT_KOGA_REMATCH
+	ld hl, wBeatGymLeadersRematch
+	set 4, [hl]
+	
 	ld hl, .fuchsiaGymText_RematchEndBattle
 	call PrintText
 	jp TextScriptEnd

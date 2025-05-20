@@ -28,52 +28,127 @@ WriterText:
 DirectorText:
 	TX_ASM
 
-	; check pokédex
-	ld hl, wPokedexOwned
-	ld b, wPokedexOwnedEnd - wPokedexOwned
-	call CountSetBits
-	ld a, [wNumSetBits]
-	cp 150
-	jr nc, .CompletedDex
-	ld hl, .GameDesigner
+	call .checkCertificate
+
+	CheckEvent EVENT_MASTER_POKEMON
+	jr nz, .giveMasterCertificate
+
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .giveChampionCertificate
+
+	ld hl, .gameDesigner
 	jr .done
-.CompletedDex
-	ld hl, .CompletedDexText
+.giveChampionCertificate
+	ld hl, .championText
+	jr .done
+.giveMasterCertificate
+	ld hl, .masterText
 .done
 	call PrintText
 	jp TextScriptEnd
 
-.GameDesigner
+.gameDesigner
 	TX_FAR _GameDesignerText
 	db "@"	
 
-.CompletedDexText
-	TX_FAR _CompletedDexText
+.championText
+	TX_FAR _ChampionText
 	TX_BLINK	
 	TX_ASM
 	callab DisplayDiploma
 	
-	SetEvent EVENT_GOT_DEX_DIPLOMA	;joenote - set event that diploma has been attained
-
+	CheckEvent EVENT_GOT_DEX_DIPLOMA
+	jr nz, .scriptEnd
+	
 	;dafthunk : Added award #53
 	lb bc, SURFBOARD, 1
 	call GiveItem
-	jr nc, .BagFull
+	jr nc, .bagFull
+
+	SetEvent EVENT_GOT_DEX_DIPLOMA
 	ld a, $9
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
+.scriptEnd
+	ld a, $1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	jp TextScriptEnd
+
+.masterText
+	TX_FAR _MasterText
+	TX_BLINK	
+	TX_ASM
+	callab DisplayDiploma
 
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	jp TextScriptEnd
 
-.BagFull
+.bagFull
 	ld a, $a
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	jp TextScriptEnd
+
+.checkCertificate
+	ld hl, wBeatGymLeadersRematch
+	ld b, $1
+	call CountSetBits
+	ld a, [wNumSetBits]
+	cp 6 ;Check bit wBeatGymLeadersRematch = %01111111
+	call nc, .checkGymLeaders
+
+	ld hl, wBeatSpecial4Flags
+	ld b, $1
+	call CountSetBits
+	ld a, [wNumSetBits]
+	cp 3 ;Check bit wBeatSpecial4Flags = %00001111
+	call nc, .checkSpecial4
+
+	ld hl, wMovedexSeen
+	ld b, wMovedexSeenEnd - wMovedexSeen
+	call CountSetBits
+	ld a, [wNumSetBits]
+	cp NUM_ATTACKS
+	call nc, .checkMovedex
+
+	ld hl, wPokedexOwned
+	ld b, wPokedexOwnedEnd - wPokedexOwned
+	call CountSetBits
+	ld a, [wNumSetBits]
+	cp NUM_POKEMON - 1
+	call nc, .checkPokedex
+
+	CheckEvent EVENT_GYM_LEADERS_REMATCH_BEATEN
+	ret z
+	CheckEvent EVENT_ELITE_4_REMATCH_BEATEN
+	ret z
+	CheckEvent EVENT_SS_ANNE_TOURNAMENT_BEATEN
+	ret z
+	CheckEvent EVENT_GOT_MIST_STONE
+	ret z
+	CheckEvent EVENT_SPECIAL_4_BEATEN
+	ret z
+	CheckEvent EVENT_MOVEDEX_COMPLETED
+	ret z
+	CheckEvent EVENT_POKEDEX_COMPLETED
+	ret z
+	SetEvent EVENT_MASTER_POKEMON
+	ret
+.checkGymLeaders
+	SetEvent EVENT_GYM_LEADERS_REMATCH_BEATEN
+	ret
+.checkSpecial4
+	SetEvent EVENT_SPECIAL_4_BEATEN
+	ret
+.checkMovedex
+	SetEvent EVENT_MOVEDEX_COMPLETED
+	ret
+.checkPokedex
+	SetEvent EVENT_POKEDEX_COMPLETED
+	ret
 
 SurfboardText:
 	TX_FAR _ReceivedSurfboard

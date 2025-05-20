@@ -62,8 +62,6 @@ CeladonGymScript_GiveTM:
 .endScript
 	ld hl, wObtainedBadges
 	set 3, [hl]
-	;ld hl, wBeatSpecial4Flags	;joenote - redundant
-	;set 3, [hl]
 
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_CELADON_GYM_TRAINER_0, EVENT_BEAT_CELADON_GYM_TRAINER_6
@@ -277,6 +275,9 @@ CeladonGymText_RematchPreBattle:
 CeladonGymText_RematchEndBattle:
 	TX_ASM
 	SetEvent EVENT_BEAT_ERIKA_REMATCH
+	ld hl, wBeatGymLeadersRematch
+	set 3, [hl]
+	
 	ld hl, .celadonGymText_RematchEndBattle
 	call PrintText
 	jp TextScriptEnd

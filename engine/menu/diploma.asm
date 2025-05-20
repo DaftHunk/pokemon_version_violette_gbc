@@ -17,14 +17,9 @@ DisplayDiploma:
 	lb bc, 16, 18
 	predef Diploma_TextBoxBorder
 	
-	;joenote - adding master text if the seafoam missingno battle is beaten
-	ld hl, DiplomaTextPointersAndCoords_master
-	ld c, $6
-	CheckEvent EVENT_DEFEATED_SEAFOAM_MISSINGNO
-	jr nz, .asm_56715
-	
 	ld hl, DiplomaTextPointersAndCoords
-	ld c, $5
+	ld c, $4
+
 .asm_56715
 	push bc
 	ld a, [hli]
@@ -41,16 +36,68 @@ DisplayDiploma:
 	pop bc
 	dec c
 	jr nz, .asm_56715
-	coord hl, 10, 4
-	ld de, wPlayerName
+
+	CheckEvent EVENT_GYM_LEADERS_REMATCH_BEATEN
+	call nz, .markGymLeaders
+	
+	CheckEvent EVENT_ELITE_4_REMATCH_BEATEN
+	call nz, .markElite4
+
+	CheckEvent EVENT_SS_ANNE_TOURNAMENT_BEATEN
+	call nz, .markSSAnneTournament
+
+	CheckEvent EVENT_GOT_MIST_STONE
+	call nz, .markMistStone
+
+	CheckEvent EVENT_SPECIAL_4_BEATEN
+	call nz, .markSpecial4
+
+	CheckEvent EVENT_MOVEDEX_COMPLETED
+	call nz, .markMovedex
+
+	CheckEvent EVENT_POKEDEX_COMPLETED
+	call nz, .markPokedex
+
+	CheckEvent EVENT_MASTER_POKEMON
+	jp z, .notMaster
+
+	coord hl, 1, 1
+	ld de, MasterText
 	call PlaceString
 
+.notMaster
 ;joenote - support female player character
 	ld a, [wUnusedD721]
 	bit 0, a	;check if girl
 	jr nz, .is_fplayer
 	callba DrawPlayerCharacter
 	jr .fplayer_end
+
+.markGymLeaders
+	coord hl, 2, 4
+	jr .addMark
+.markElite4
+	coord hl, 2, 6
+	jr .addMark
+.markSSAnneTournament
+	coord hl, 2, 8
+	jr .addMark
+.markMistStone
+	coord hl, 2, 10
+	jr .addMark
+.markSpecial4
+	coord hl, 2, 12
+	jr .addMark
+.markMovedex
+	coord hl, 2, 14
+	jr .addMark
+.markPokedex
+	coord hl, 2, 16
+	jr .addMark
+.addMark
+	ld de, DiplomaMark
+	call PlaceString
+	ret
 .is_fplayer
 	callba DrawPlayerCharacter_F
 .fplayer_end
@@ -98,38 +145,36 @@ UnusedPlayerNameLengthFunc:
 	dec c
 	jr .loop
 
-DiplomaTextPointersAndCoords_master:	;joenote - adding master text
-	dw MasterText
-	dwCoord 1, 1	
 DiplomaTextPointersAndCoords:
+	dw ChampionText
+	dwCoord 1, 1
 	dw DiplomaText
-	dwCoord 5, 2
-	dw DiplomaPlayer
-	dwCoord 3, 4
+	dwCoord 1, 2
 	dw DiplomaEmptyText
-	dwCoord 15, 4
+	dwCoord 3, 4
 	dw DiplomaCongrats
-	dwCoord 2, 6
-	dw DiplomaGameFreak
-	dwCoord 9, 16
+	dwCoord 2, 4
 
-MasterText:	;joenote - adding master text
-	db "<SHINY> #mon MASTER <SHINY>@"
+ChampionText:
+	db $70,"Diplôme Champion",$70,"@"
+
+MasterText:
+	db "<SHINY>",$70,"Diplôme Maître",$70,"<SHINY>@"
 
 DiplomaText:
-	db $70,"Diplôme",$70,"@"
+	db "Décerné à <PLAYER>@"
 
-DiplomaPlayer:
-	db "Joueur@"
+DiplomaMark:
+	db "<BALL>@"
 
 DiplomaEmptyText:
 	db "@"
 
 DiplomaCongrats:
-	db   "Fabuleux! Ce"
-	next "diplôme certifie"
-	next "la perfection de"
-	next "votre #dex.@"
-
-DiplomaGameFreak:
-	db "GAME FREAK@"
+	db   "×Revanche des 7"
+	next "×Revanche Ligue"
+	next "×Tournoi Océane"
+	next "×Pierre Brume"
+	next "×4 dresseurs"
+	next "×Capadex 100%"
+	next "×#dex 100%@"

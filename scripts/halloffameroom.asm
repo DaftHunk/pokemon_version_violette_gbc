@@ -43,7 +43,15 @@ HallofFameRoomScript2:
 	ld [wHallOfFameRoomCurScript], a
 	; Elite 4 events
 	ResetEventRange ELITE4_EVENTS_START, ELITE4_CHAMPION_EVENTS_END, 1
-	SetEvent EVENT_ELITE_4_BEATEN	;joenote - unused event. set it for signaling the e4's defeat
+
+	CheckEvent EVENT_ELITE_4_BEATEN
+	; if elite 4 already beaten set rematch instead
+	jr nz, .setRematch
+
+	SetEvent EVENT_ELITE_4_BEATEN ;if the elite 4 have been beaten, set the event flag for it
+	; After beating elite 4 level scaling is now enabled
+	SetEvent EVENT_TRAINER_LVL_SCALING
+.next
 	xor a
 	ld [wHallOfFameRoomCurScript], a
 	ld a, PALLET_TOWN
@@ -58,6 +66,10 @@ HallofFameRoomScript2:
 	call WaitForTextScrollButtonPress
 ;	jp Init
 	jp SoftReset	;joenote - fix an issue where junk tiles display for 1 frame because SoftReset whites-out the screen
+
+.setRematch
+	SetEvent EVENT_ELITE_4_REMATCH_BEATEN
+	jr .next
 
 HallofFameRoomScript0:
 	ld a, $ff

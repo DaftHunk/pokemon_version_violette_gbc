@@ -82,6 +82,7 @@ SSAnne6Text8: ;joenote - gym guy for post-game tournament
 	call GiveItem
 	pop bc
 	ld hl, SSAnne6Text_GymGuy_win
+	SetEvent EVENT_SS_ANNE_TOURNAMENT_BEATEN
 	call PrintText	
 	jr .endtournament
 .notyet

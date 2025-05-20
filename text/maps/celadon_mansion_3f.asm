@@ -27,20 +27,36 @@ _GameDesignerText::
 	para "Je suis le"
 	line "designer!"
 
-	para "Remplir ton"
-	line "#dex est"
-	cont "difficile, hein?"
-
-	para "Complète-le et"
-	line "reviens me voir!"
+	para "Si tu deviens"
+	line "Champion, je te"
+	cont "donnerai un"
+	cont "certificat et"
+	cont "un truc cool!"
 	done
 
-_CompletedDexText::
+_ChampionText::
 	text "Woah! Génial!"
-	line "Tu as complété"
-	cont "ton #dex!"
-	cont "Félicitations!"
-	cont "..."
+	line "Tu as vaincu"
+	cont "la ligue, bravo!"
+	
+	para "Il te reste"
+	line "cependant encore"
+	cont "des défis afin"
+	cont "de devenir"
+	cont "maître #mon!"
+	done
+
+_MasterText::
+	text "Incroyable!"
+	line "Tu as réussi"
+	cont "tous les défis!"
+	
+	para "Voici ton certi-"
+	line "ficat attestant"
+	cont "que tu es un"
+	cont "maître #mon!"
+
+	para "Félicitation!"
 	done
 
 _CeladonMansion3Text5::
@@ -77,9 +93,9 @@ _ReceivedSurfboard::
 _SurfboardText::
 	text_start
 
-	para "La Planche de surf"
-	line "te permet de"
-	cont "surfer sans"
+	para "La Planche de"
+	line "Surf te permet"
+	cont "de Surfer sans"
 	cont "#mon!"
 	done
 

@@ -81,8 +81,6 @@ VermilionGymScript_GiveTM:
 .endScript
 	ld hl, wObtainedBadges
 	set 2, [hl]
-	;ld hl, wBeatSpecial4Flags	;joenote - redundant
-	;set 2, [hl]
 
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_VERMILION_GYM_TRAINER_0, EVENT_BEAT_VERMILION_GYM_TRAINER_2
@@ -239,6 +237,9 @@ VermilionGymText_RematchPreBattle:
 VermilionGymText_RematchEndBattle:
 	TX_ASM
 	SetEvent EVENT_BEAT_LT_SURGE_REMATCH
+	ld hl, wBeatGymLeadersRematch
+	set 2, [hl]
+	
 	ld hl, .vermilionGymText_RematchEndBattle
 	call PrintText
 	jp TextScriptEnd
@@ -302,7 +303,7 @@ VermilionGymText_Trainer2AfterBattle:
 
 VermilionGymText_Guide:
 	TX_ASM
-	ld a, [wObtainedBadges];[wBeatSpecial4Flags]
+	ld a, [wObtainedBadges]
 	bit 2, a
 	jr nz, .arenaVictory
 	ld hl, VermilionGymText_GuideTip

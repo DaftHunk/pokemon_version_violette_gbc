@@ -62,8 +62,6 @@ PewterGymScriptGiveTM:
 .endScript
 	ld hl, wObtainedBadges
 	set 0, [hl]
-	;ld hl, wBeatSpecial4Flags	;joenote - redundant
-	;set 0, [hl]
 
 	ld a, HS_GYM_GUY
 	ld [wMissableObjectIndex], a
@@ -229,6 +227,9 @@ PewterGymText_RematchPreBattle:
 PewterGymText_RematchEndBattle:
 	TX_ASM
 	SetEvent EVENT_BEAT_BROCK_REMATCH
+	ld hl, wBeatGymLeadersRematch
+	set 0, [hl]
+
 	ld hl, .pewterGymText_RematchEndBattle
 	call PrintText
 	jp TextScriptEnd
@@ -238,7 +239,7 @@ PewterGymText_RematchEndBattle:
 
 PewterGymText_Guide:
 	TX_ASM
-	ld a, [wObtainedBadges];[wBeatSpecial4Flags]
+	ld a, [wObtainedBadges]
 	bit 0, a
 	jr nz, .arenaVictory
 	ld hl, PewterGymText_GuideAsk

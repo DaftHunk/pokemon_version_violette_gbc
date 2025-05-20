@@ -62,8 +62,6 @@ CeruleanGymScript_GiveTM:
 .endScript
 	ld hl, wObtainedBadges
 	set 1, [hl]
-	;ld hl, wBeatSpecial4Flags	;joenote - redundant
-	;set 1, [hl]
 
 	; deactivate gym trainers
 	SetEvents EVENT_BEAT_CERULEAN_GYM_TRAINER_0, EVENT_BEAT_CERULEAN_GYM_TRAINER_1
@@ -245,6 +243,9 @@ CeruleanGymText_RematchPreBattle:
 CeruleanGymText_RematchEndBattle:
 	TX_ASM
 	SetEvent EVENT_BEAT_MISTY_REMATCH
+	ld hl, wBeatGymLeadersRematch
+	set 1, [hl]
+	
 	ld hl, .ceruleanGymText_RematchEndBattle
 	call PrintText
 	jp TextScriptEnd

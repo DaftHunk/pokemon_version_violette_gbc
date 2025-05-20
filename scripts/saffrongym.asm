@@ -62,8 +62,6 @@ SaffronGymText_GiveTM:
 .endScript
 	ld hl, wObtainedBadges
 	set 5, [hl]
-	;ld hl, wBeatSpecial4Flags	;joenote - redundant
-	;set 5, [hl]
 
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_SAFFRON_GYM_TRAINER_0, EVENT_BEAT_SAFFRON_GYM_TRAINER_6
@@ -274,6 +272,9 @@ SaffronGymText_RematchPreBattle:
 SaffronGymText_RematchEndBattle:
 	TX_ASM
 	SetEvent EVENT_BEAT_SABRINA_REMATCH
+	ld hl, wBeatGymLeadersRematch
+	set 5, [hl]
+	
 	ld hl, .saffronGymText_RematchEndBattle
 	call PrintText
 	jp TextScriptEnd

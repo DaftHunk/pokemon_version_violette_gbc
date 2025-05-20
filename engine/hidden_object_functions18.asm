@@ -19,7 +19,7 @@ GymStatues:
 	jr .loop
 .match
 	ld b, [hl]
-	ld a, [wObtainedBadges];[wBeatSpecial4Flags]
+	ld a, [wObtainedBadges]
 	and b
 	cp b
 	tx_pre_id GymStatueText2

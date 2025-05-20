@@ -3214,6 +3214,7 @@ wBeatSpecial4Flags:: ; d72a
 	;bit 3 - joelle
 	ds 1
 
+wBeatGymLeadersRematch:: ; d72b
 	ds 1
 
 wd72c:: ; d72c

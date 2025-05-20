@@ -18,18 +18,28 @@ DebugNewGameParty: ; unreferenced except in _DEBUG
 	; always using this character while I was debugging the program."
 	; From https://web.archive.org/web/20000607152840/http://pocket.ign.com/news/14973.html
 	db MAGNETON, 90
-	db EXEGGUTOR, 50
-	db EEVEE, 10
-	db ONIX, 56
-	db ZAPDOS, 57
-	db MEW, 80
+	db EXEGGUTOR, 90
+	db EEVEE, 50
+	db ONIX, 90
+	db ZAPDOS, 90
+	db MEW, 90
 	; Test for gen 2
-	;db SCYTHER, 56
-	;db LARVITAR, 10
-	;db EEVEE, 56
-	;db ONIX, 56
-	;db SEADRA, 50
-	;db HOOH, 80
+;	db SCYTHER, 56
+;	db LARVITAR, 10
+;	db EEVEE, 56
+;	db ONIX, 56
+;	db SEADRA, 50
+;	db HOOH, 80
+	; Test for tutor
+;	db KABUTOPS, 90
+;	db OMASTAR, 90
+;	db AERODACTYL, 90
+;	db PIKACHU, 90
+;	db PSYDUCK, 90
+;	db ODDISH, 90
+;	db MOLTRES, 90
+;	db SCYTHER, 90
+;	db NINETALES, 90
 	db -1 ; end
 
 PrepareNewGameDebug: ; dummy except in _DEBUG
@@ -144,10 +154,60 @@ IF DEF(_DEBUG)
 	call DebugSetPokedexEntries
 
 	; Set tutorial events
-	SetEvent EVENT_GOT_POKEDEX
-	SetEvent EVENT_GOT_TOWN_MAP
-	SetEvent EVENT_GENDER_CAUGHT_INDICATOR
-	SetEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
+;	SetEvent EVENT_GOT_POKEDEX
+;	SetEvent EVENT_GOT_TOWN_MAP
+;	SetEvent EVENT_GENDER_CAUGHT_INDICATOR
+;	SetEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
+
+	; Uncomment tp start in post game
+;	SetEvent EVENT_ELITE_4_BEATEN
+;	SetEvent EVENT_TRAINER_LVL_SCALING
+;	SetEvent EVENT_ELITE_4_REMATCH_BEATEN
+;	SetEvent EVENT_SS_ANNE_TOURNAMENT_BEATEN
+;	SetEvent EVENT_GOT_MIST_STONE
+
+;	SetEvent EVENT_BEAT_BROCK
+;	SetEvent EVENT_BEAT_BROCK_REMATCH
+
+;	SetEvent EVENT_BEAT_LT_SURGE
+;	SetEvent EVENT_BEAT_LT_SURGE_REMATCH
+
+	; Set special flags
+;	ld a, [wBeatSpecial4Flags]
+;	set 0, a
+;	ld [wBeatSpecial4Flags], a
+;	ld a, [wBeatSpecial4Flags]
+;	set 1, a
+;	ld [wBeatSpecial4Flags], a
+;	ld a, [wBeatSpecial4Flags]
+;	set 3, a
+;	ld [wBeatSpecial4Flags], a
+;	ld a, [wBeatSpecial4Flags]
+;	set 4, a
+;	ld [wBeatSpecial4Flags], a
+
+	; Set Gym Rematch flags
+;	ld a, [wBeatGymLeadersRematch]
+;	set 0, a
+;	ld [wBeatGymLeadersRematch], a
+;	ld a, [wBeatGymLeadersRematch]
+;	set 1, a
+;	ld [wBeatGymLeadersRematch], a
+;	ld a, [wBeatGymLeadersRematch]
+;	set 2, a
+;	ld [wBeatGymLeadersRematch], a
+;	ld a, [wBeatGymLeadersRematch]
+;	set 3, a
+;	ld [wBeatGymLeadersRematch], a
+;	ld a, [wBeatGymLeadersRematch]
+;	set 4, a
+;	ld [wBeatGymLeadersRematch], a
+;	ld [wBeatGymLeadersRematch], a
+;	ld a, [wBeatGymLeadersRematch]
+;	set 5, a
+;	ld [wBeatGymLeadersRematch], a
+;	ld a, [wBeatGymLeadersRematch]
+;	set 6, a
 	
 	; Rival chose Squirtle,
 	; Player chose Charmander.
