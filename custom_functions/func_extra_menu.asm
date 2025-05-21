@@ -14,11 +14,11 @@ DisplayExtraOptionMenu:
 
 ;draw text box border for lite options
 	coord hl, 0, 0
-	ld b, 6
+	ld b, 4
 	ld c, 18
 	call TextBoxBorder
 ;draw text box border for master options
-	coord hl, 0, 8
+	coord hl, 0, 6
 	ld b, 2
 	ld c, 18
 	call TextBoxBorder
@@ -28,11 +28,11 @@ DisplayExtraOptionMenu:
 	call PlaceSoundSetting	;joenote - display the sound setting
 	call Show60FPSSetting	;60fps - display current setting
 	call ShowLaglessTextSetting	;joenote - display marker for lagless text or not
-	call ShowHardModeSetting	;joenote - display marker for hard mode or not
-	call ShowNoSwitchSetting	;joenote - display marker for deactivated trainer switching or not
+;	call ShowNoSwitchSetting	;joenote - display marker for deactivated trainer switching or not
 	call ShowGammaSetting
 	
-	call ShowBadgeCap	;joenote - show the level cap depending on badge
+;	call ShowBadgeCap	;joenote - show the level cap depending on badge
+	call ShowHardModeSetting	;joenote - display marker for hard mode or not
 	call ShowNuzlocke
 
 	call Delay3
@@ -60,15 +60,15 @@ DisplayExtraOptionMenu:
 	jr z, .cursorFPS
 	cp $3 ; cursor over instant text?
 	jr z, .cursorInstText
-	cp $4 ; cursor over hard mode?
-	jr z, .cursorHardMode
-	cp $5 ; cursor over ai switching?
-	jr z, .cursorAISwitch
-	cp $6 ;cursor over gamma shader?
+	cp $4 ;cursor over gamma shader?
 	jr z, .cursorGamma
-	cp $9 ; cursor over lvl cap?
-	jr z, .cursorLvlCap
-	cp $A ; cursor over nuzlocke?
+;	cp $5 ; cursor over ai switching?
+;	jr z, .cursorAISwitch
+;	cp $9 ; cursor over lvl cap?
+;	jr z, .cursorLvlCap
+	cp $7 ; cursor over hard mode?
+	jr z, .cursorHardMode
+	cp $8 ; cursor over nuzlocke?
 	jr z, .cursorNuzlocke
 	cp $10 ; is the cursor on Back?
 	jr z, .exitMenu
@@ -83,17 +83,17 @@ DisplayExtraOptionMenu:
 .cursorInstText
 	call ToggleLaglessText
 	jr .getJoypadStateLoop
-.cursorHardMode
-	call ToggleHardMode
-	jr .getJoypadStateLoop
-.cursorAISwitch
-	call ToggleNoSwitch
-	jr .getJoypadStateLoop
 .cursorGamma
 	call ToggleGammaShader
 	jr .getJoypadStateLoop
-.cursorLvlCap
-	call ToggleBadgeCap
+;.cursorAISwitch
+;	call ToggleNoSwitch
+;	jr .getJoypadStateLoop
+;.cursorLvlCap
+;	call ToggleBadgeCap
+;	jr .getJoypadStateLoop
+.cursorHardMode
+	call ToggleHardMode
 	jr .getJoypadStateLoop
 .cursorNuzlocke
 	call ToggleNuzlocke
@@ -114,11 +114,11 @@ DisplayExtraOptionMenu:
 	cp 16
 	ld b, -15
 	jr z, .updateMenuVariables
-	cp 6
+	cp 4
 	ld b, 3
 	jr z, .updateMenuVariables
-	cp 10
-	ld b, 6
+	cp 8
+	ld b, 8
 	jr z, .updateMenuVariables
 	;else
 	ld b, 1
@@ -127,11 +127,11 @@ DisplayExtraOptionMenu:
 	cp 1
 	ld b, 15
 	jr z, .updateMenuVariables
-	cp 9
+	cp 7
 	ld b, -3
 	jr z, .updateMenuVariables
 	cp 16
-	ld b, -6
+	ld b, -8
 	jr z, .updateMenuVariables
 	;else
 	ld b, -1
@@ -166,20 +166,15 @@ PlaceExtraOptionStrings:
 	ld de, TextInstant
 	call PlaceString
 
-;place hard mode text
+;place gamma shader text
 	coord hl, 1, 4
-	ld de, TextHardMode
+	ld de, TextGamma
 	call PlaceString
 
 ;place AI switching text
-	coord hl, 1, 5
-	ld de, TextAISwitch
-	call PlaceString
-
-;place gamma shader text
-	coord hl, 1, 6
-	ld de, TextGamma
-	call PlaceString
+;	coord hl, 1, 5
+;	ld de, TextAISwitch
+;	call PlaceString
 
 ;place back text
 	coord hl, 1, 16
@@ -187,12 +182,17 @@ PlaceExtraOptionStrings:
 	call PlaceString
 
 ;place lvl cap text
-	coord hl, 1, 9
-	ld de, TextAILevelCap
+;	coord hl, 1, 9
+;	ld de, TextAILevelCap
+;	call PlaceString
+
+;place hard mode text
+	coord hl, 1, 7
+	ld de, TextHardMode
 	call PlaceString
 
 ;place nuzlocke text
-	coord hl, 1, 10
+	coord hl, 1, 8
 	ld de, TextNuzlocke
 	call PlaceString
 
@@ -245,13 +245,13 @@ OptionMenuSoundText:
 	dw OptionMenuEar2
 	dw OptionMenuEar3
 OptionMenuMono:
-	db "     MONO@"
+	db "     Mono@"
 OptionMenuEar1:
-	db "ECOUTEUR1@"
+	db "Ecouteur1@"
 OptionMenuEar2:
-	db "ECOUTEUR2@"
+	db "Ecouteur2@"
 OptionMenuEar3:
-	db "ECOUTEUR3@"
+	db "Ecouteur3@"
 
 
 ;60fps - show the fps setting on the menu when activated
@@ -323,7 +323,7 @@ ShowHardModeSetting:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	coord hl, $10, $4
+	coord hl, $10, $7
 	call PlaceString
 	ret
 
@@ -352,9 +352,9 @@ OptionMenuNoSwitch:
 	dw OptionMenuNoSwitchON
 	dw OptionMenuNoSwitchOFF
 OptionMenuNoSwitchON:
-	db " ORIG.@"
+	db " Orig.@"
 OptionMenuNoSwitchOFF:
-	db "INTEL.@"
+	db "Intel.@"
 
 	
 ;joenote - for toggling the color correction
@@ -377,7 +377,7 @@ ShowGammaSetting:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	coord hl, $10, $6
+	coord hl, $10, $4
 	call PlaceString
 	ret
 
@@ -414,9 +414,9 @@ ShowBadgeCap:
 	call PrintNumber
 	ret
 OptionMenuCapLevelText:
-	db "L:@"
+	db "N:@"
 OptionMenu5SpacesOFF:
-	db "  OFF@"
+	db "  Non@"
 OptionMenu5Spaces:
 	db "     @"
 
@@ -436,7 +436,7 @@ ShowNuzlocke:
 	jr z, .print
 	ld de, OptionMenuTextON
 .print
-	coord hl, $10, $A
+	coord hl, $10, $8
 	call PlaceString
 	ret
 ;default to recommended settings when turned on
@@ -472,7 +472,7 @@ TextHardMode:
 TextAISwitch:
 	db " Chang. IA@"
 TextGamma:
-	db " Shader Y@"
+	db " Gamma@"
 TextBack:
 	db " Retour@"
 
