@@ -84,11 +84,12 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
   
 ![bgb00022](https://github.com/user-attachments/assets/b5c69975-a80c-453f-b42f-e54e7dcb5611)
 ![bgb00023](https://github.com/user-attachments/assets/a2b99045-7617-404a-807b-044af77d1f23)
+![bgb00041](https://github.com/user-attachments/assets/d3a4ab5e-3ca8-4908-9670-996a9ce0cd61)
+![bgb00042](https://github.com/user-attachments/assets/06f75e91-b23d-4901-90bc-420f921bddb5)
+
 ![bgb00024](https://github.com/user-attachments/assets/ae6b4be9-0c78-4d47-946b-379d48307466)
 ![bgb00025](https://github.com/user-attachments/assets/3952ed2b-aacd-4afa-84a3-18096d0eca5b)
 ![bgb00021](https://github.com/user-attachments/assets/cbd6a6ea-97ff-4707-8036-0876905c6c56)
-![bgb00041](https://github.com/user-attachments/assets/d3a4ab5e-3ca8-4908-9670-996a9ce0cd61)
-![bgb00042](https://github.com/user-attachments/assets/06f75e91-b23d-4901-90bc-420f921bddb5)
 
 ## Contenu après ligue des quatres
 - Réaffrontez les maîtres d'arène et la ligue au maximum de leur potentiel !
@@ -147,7 +148,7 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 - La pension donne maintenant de l'exp en fonction du nombre de badges
 
 ![bgb00028](https://github.com/user-attachments/assets/1f2c94ce-03e5-40c1-a2b4-3f294ac78cbc)
-![bgb00018](https://github.com/user-attachments/assets/bde5b2d2-23a1-49e4-a57d-d0692fb4f3f2)
+![bgb00051](https://github.com/user-attachments/assets/5a04a8d3-e2b0-4b35-941d-4857cf5f4dc0)
 ![bgb00010](https://github.com/user-attachments/assets/0261ecc5-e7af-40ac-ad38-6e731343117c)
 ![bgb00020](https://github.com/user-attachments/assets/798a0468-60f0-4f25-974f-1e5fa34c9bc4)
 ![bgb00026](https://github.com/user-attachments/assets/807fe063-9941-41fc-a56b-0f57142ca702)
@@ -184,7 +185,7 @@ Toutes les fonctionnalités de duel et d'échange ont été conservées, il suff
 Pour mettre en place une lan, il faut un logiciel le simulant sur internet. Certains d'entre vous connaissent surement **Hamachi** mais je le déconseille maintenant.
 Il existe d'autres alternatives comme :
 - [Zerotier](https://accounts.zerotier.com/realms/zerotier/protocol/openid-connect/auth?client_id=zt-central&redirect_uri=https%3A%2F%2Fmy.zerotier.com%2Fauth%2Fcallback&response_type=code&scope=openid+profile+email+offline_access&state=26feb68912d14c69828966a488a00d63&code_challenge=glrenD1zX0M-TtKJNz9BMwlw2FVcJUamJDAWi6dY9u0&code_challenge_method=S256&response_mode=query) : gratuit jusqu'à 10 utilisateurs et très stable
--  [Radmin VPN](https://www.radmin-vpn.com/) : gratuit aussi mais seulement pour Windows
+- [Radmin VPN](https://www.radmin-vpn.com/) : gratuit aussi mais seulement pour Windows
 
 ## Configuration BGB
 - En jeu sur BGB, faites **Clic-droit** -> **Link** -> **Listen** -> **OK** 
