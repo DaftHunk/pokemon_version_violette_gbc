@@ -280,7 +280,7 @@ SpecialTrainerMoves:
 	db 2,1,SLUDGE_BOMB
 	db 2,2,LEECH_SEED
 	db 2,3,SLEEP_POWDER
-	db 2,4,RAZOR_LEAF
+	db 2,4,DARK_PULSE
 	db 3,1,LEECH_LIFE
 	db 3,2,MEGA_DRAIN
 	db 3,3,X_SCISSOR
@@ -483,7 +483,7 @@ SpecialTrainerMoves:
 	db 2,2,GROWTH
 	db 2,3,FIRE_SPIN
 	db 2,4,DIG
-	db 3,1,WING_ATTACK
+	db 3,1,DRAGON_RUSH
 	db 3,2,FIRE_BLAST
 	db 3,3,EARTHQUAKE
 	db 3,4,SWORDS_DANCE

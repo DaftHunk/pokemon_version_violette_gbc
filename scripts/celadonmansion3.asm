@@ -97,14 +97,14 @@ DirectorText:
 	ld b, $1
 	call CountSetBits
 	ld a, [wNumSetBits]
-	cp 6 ;Check bit wBeatGymLeadersRematch = %01111111
+	cp 7 ;Check bit wBeatGymLeadersRematch = %01111111
 	call nc, .checkGymLeaders
 
 	ld hl, wBeatSpecial4Flags
 	ld b, $1
 	call CountSetBits
 	ld a, [wNumSetBits]
-	cp 3 ;Check bit wBeatSpecial4Flags = %00001111
+	cp 4 ;Check bit wBeatSpecial4Flags = %00001111
 	call nc, .checkSpecial4
 
 	ld hl, wMovedexSeen
