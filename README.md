@@ -151,6 +151,15 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 ![bgb00020](https://github.com/user-attachments/assets/798a0468-60f0-4f25-974f-1e5fa34c9bc4)
 ![bgb00026](https://github.com/user-attachments/assets/807fe063-9941-41fc-a56b-0f57142ca702)
 
+## Mode difficile
+- Les dresseurs sont plus difficiles, surtout après la Ligue
+- Les DVs sont plus hauts
+- Les bonus des badges sont désactivés contre les dresseurs
+- La règle des coups critiques devient celle de Pokémon Stadium 
+- L'IA est un peu plus intelligente
+- Il est impossible d'utiliser rappel en combat
+- Les objets X sont 2 fois plus efficace
+
 # Installation
 - Vous avez besoin d'une rom de **Pokemon Blue US**
 
