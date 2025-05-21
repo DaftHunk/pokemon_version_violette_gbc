@@ -93,9 +93,15 @@ _Route19EndBattleText6::
 	prompt
 
 _Route19AfterBattleText6::
-	text "Je cherche la"
-	line "paix intérieure"
-	cont "dans la mer!"
+	text "Il est écrit"
+	line "qu'Hypocéan"
+	cont "atteindra sa"
+	cont "transcendance"
+	cont "lors d'une nuit"
+	cont "de pleine lune!"
+
+	para "Bon, on attend"
+	line "toujours..."
 	done
 
 _Route19BattleText7::
