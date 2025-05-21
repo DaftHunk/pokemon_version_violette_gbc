@@ -101,6 +101,7 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 - Les dialogues du Bourg Palette changent
   
 ![bgb00030](https://github.com/user-attachments/assets/a8175fff-0303-4f19-a517-db32951ce6ca)
+![Capture d’écran 2025-05-21 152848](https://github.com/user-attachments/assets/da0d1366-c76c-4d3c-89cb-5c4d58e4494b)
 
 ## Interface améliorée
 - Le pokédex affiche maintenant les capacités apprises par niveau par Pokémon !
