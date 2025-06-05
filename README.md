@@ -15,13 +15,15 @@ L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellemen
 - Passage en mode couleur mais en gardant les palettes d'origines pour garder l'aspect nostalgique
 - Changement du sprite de nage
 - Attaque en couleur
-- Shiny animés et visibles
+- Shiny animés et visibles (1/8192, règles d'apparition de la 2ème génération)
 
 ![bgb00009](https://github.com/user-attachments/assets/42526df1-47c3-4835-857c-7a6eba2a8315)
 ![bgb00016](https://github.com/user-attachments/assets/35384b55-ec02-4bd3-a592-e0ac6be141ce)
 ![bgb00019](https://github.com/user-attachments/assets/0907483b-b058-4c26-aa4b-ffadc826e40d)
 ![bgb00027](https://github.com/user-attachments/assets/d4ad4449-e397-4da4-80f4-76525e0205dd)
 ![bgb00031](https://github.com/user-attachments/assets/f808f509-3233-460f-a631-6eb7e0a3f6c3)
+![bgb00052](https://github.com/user-attachments/assets/e82c0dba-7bbe-4819-a623-ac42c049679d)
+
 
 ## Refonte de la progression
 - Maîtres d'arène plus forts
