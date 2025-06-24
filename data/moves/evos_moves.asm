@@ -781,6 +781,7 @@ ArbokEvosMoves:
 	db 15, BITE
 	db 25, GLARE
 	db 33, SCREECH
+	db 38, CRUNCH
 	db 43, ACID
 	db 51, HAZE
 	db 0
@@ -1323,6 +1324,7 @@ KabutopsEvosMoves:
 	db 10, ABSORB
 	db 19, LEER
 	db 28, SAND_ATTACK
+	db 36, X_SCISSOR
 	db 40, SLASH
 	db 51, MEGA_DRAIN
 	db 65, HYDRO_PUMP
@@ -1753,6 +1755,7 @@ HypnoEvosMoves:
 	db 18, CONFUSION
 	db 25, HEADBUTT
 	db 33, POISON_GAS
+	db 38, DARK_PULSE
 	db 40, MEDITATE
 	db 49, PSYCHIC_M
 	db 0
@@ -2209,6 +2212,7 @@ AerodactylEvosMoves:
 	db 36, ROCK_THROW
 	db 40, CRUNCH
 	db 43, TAKE_DOWN
+	db 48, DRAGON_RUSH
 	db 50, HYPER_BEAM
 	db 0
 
