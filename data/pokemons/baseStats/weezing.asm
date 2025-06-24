@@ -24,7 +24,7 @@ db 0 ; growth rate
 	tmlearn tm25_THUNDER, tm31_MIMIC, tm32_DOUBLE_TEAM
 	tmlearn tm34_BIDE, tm36_SELFDESTRUCT, tm37_SLUDGE_BOMB, tm38_FIRE_BLAST
 	tmlearn tm44_REST, tm47_EXPLOSION
-	tmlearn tm50_SUBSTITUTE
+	tmlearn tm50_SUBSTITUTE, hm05_FLASH
 ;	db 0 ; padding
 	db BANK(WeezingPicFront)
 	assert BANK(WeezingPicFront) == BANK(WeezingPicBack)

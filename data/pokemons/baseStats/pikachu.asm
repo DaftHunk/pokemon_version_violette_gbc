@@ -24,7 +24,7 @@ db 0 ; growth rate
 	tmlearn tm25_THUNDER, tm31_MIMIC, tm32_DOUBLE_TEAM
 	tmlearn tm33_REFLECT, tm34_BIDE, tm39_SWIFT, tm40_SKULL_BASH
 	tmlearn tm44_REST, tm45_THUNDER_WAVE
-	tmlearn tm50_SUBSTITUTE, hm05_FLASH
+	tmlearn tm50_SUBSTITUTE, hm04_STRENGTH, hm05_FLASH
 ;	db 0 ; padding
 	db BANK(PikachuPicFront)
 	assert BANK(PikachuPicFront) == BANK(PikachuPicBack)

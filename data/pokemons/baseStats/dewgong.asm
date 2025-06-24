@@ -24,7 +24,7 @@ db 0 ; growth rate
 	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM
 	tmlearn tm34_BIDE, tm40_SKULL_BASH
 	tmlearn tm44_REST
-	tmlearn tm50_SUBSTITUTE, hm03_SURF, hm04_STRENGTH
+	tmlearn tm50_SUBSTITUTE, hm03_SURF
 ;	db 0 ; padding
 	db BANK(DewgongPicFront)
 	assert BANK(DewgongPicFront) == BANK(DewgongPicBack)

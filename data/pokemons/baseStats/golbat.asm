@@ -24,7 +24,7 @@ db 0 ; growth rate
 	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM
 	tmlearn tm34_BIDE, tm37_SLUDGE_BOMB, tm39_SWIFT
 	tmlearn tm44_REST
-	tmlearn tm50_SUBSTITUTE
+	tmlearn tm50_SUBSTITUTE, hm02_FLY
 ;	db 0 ; padding
 	db BANK(GolbatPicFront)
 	assert BANK(GolbatPicFront) == BANK(GolbatPicBack)

@@ -25,7 +25,7 @@ db 3 ; growth rate
 	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM, tm33_REFLECT, tm34_BIDE
 	tmlearn tm44_REST
 	tmlearn tm50_SUBSTITUTE
-	tmlearn hm01_CUT
+	tmlearn hm01_CUT, hm04_STRENGTH, hm05_FLASH
 ;	db 0 ; padding
 	db BANK(BulbasaurPicFront)
 	assert BANK(BulbasaurPicFront) == BANK(BulbasaurPicBack)

@@ -24,7 +24,7 @@ db 5 ; growth rate
 	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM
 	tmlearn tm33_REFLECT, tm34_BIDE, tm38_FIRE_BLAST, tm39_SWIFT
 	tmlearn tm43_SKY_ATTACK, tm44_REST
-	tmlearn tm50_SUBSTITUTE, hm02_FLY
+	tmlearn tm50_SUBSTITUTE, hm02_FLY, hm04_STRENGTH
 ;	db 0 ; padding
 	db BANK(AerodactylPicFront)
 	assert BANK(AerodactylPicFront) == BANK(AerodactylPicBack)

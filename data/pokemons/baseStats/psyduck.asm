@@ -24,7 +24,7 @@ db 0 ; growth rate
 	tmlearn tm28_DIG, tm31_MIMIC, tm32_DOUBLE_TEAM
 	tmlearn tm34_BIDE, tm39_SWIFT, tm40_SKULL_BASH
 	tmlearn tm44_REST
-	tmlearn tm50_SUBSTITUTE, hm03_SURF, hm04_STRENGTH
+	tmlearn tm50_SUBSTITUTE, hm03_SURF, hm04_STRENGTH, hm05_FLASH
 ;	db 0 ; padding
 	db BANK(PsyduckPicFront)
 	assert BANK(PsyduckPicFront) == BANK(PsyduckPicBack)

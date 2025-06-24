@@ -24,7 +24,7 @@ db 0 ; growth rate
 	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM
 	tmlearn tm33_REFLECT, tm34_BIDE, tm37_SLUDGE_BOMB, tm39_SWIFT, tm40_SKULL_BASH
 	tmlearn tm44_REST
-	tmlearn tm50_SUBSTITUTE, hm01_CUT
+	tmlearn tm50_SUBSTITUTE, hm01_CUT, hm05_FLASH
 ;	db 0 ; padding
 	db BANK(BeedrillPicFront)
 	assert BANK(BeedrillPicFront) == BANK(BeedrillPicBack)

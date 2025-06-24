@@ -24,7 +24,7 @@ db 3 ; growth rate
 	tmlearn tm25_THUNDER, tm31_MIMIC, tm32_DOUBLE_TEAM
 	tmlearn tm33_REFLECT, tm34_BIDE, tm37_SLUDGE_BOMB, tm40_SKULL_BASH
 	tmlearn tm44_REST
-	tmlearn tm50_SUBSTITUTE
+	tmlearn tm50_SUBSTITUTE, hm01_CUT, hm04_STRENGTH
 ;	db 0 ; padding
 	db BANK(NidoranFPicFront)
 	assert BANK(NidoranFPicFront) == BANK(NidoranFPicBack)

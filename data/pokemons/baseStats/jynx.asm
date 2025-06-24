@@ -24,7 +24,7 @@ db 0 ; growth rate
 	tmlearn tm29_PSYCHIC_M, tm30_TELEPORT, tm31_MIMIC, tm32_DOUBLE_TEAM
 	tmlearn tm33_REFLECT, tm34_BIDE, tm35_METRONOME, tm40_SKULL_BASH
 	tmlearn tm44_REST, tm46_PSYWAVE
-	tmlearn tm50_SUBSTITUTE
+	tmlearn tm50_SUBSTITUTE, hm05_FLASH
 ;	db 0 ; padding
 	db BANK(JynxPicFront)
 	assert BANK(JynxPicFront) == BANK(JynxPicBack)
