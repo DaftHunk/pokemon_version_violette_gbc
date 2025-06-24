@@ -275,7 +275,7 @@ Type1Text:
 	db "Type1/", $4e
 
 Type2Text:
-	db "Type1/", $4e
+	db "Type2/", $4e
 
 IDNoText:
 	db "№", $73, "/", $4e
@@ -390,7 +390,7 @@ PrintStat:
 	ret
 
 StatsText:
-	db   "For"
+	db   "Atq"
 	next "Déf"
 	next "Vit"
 	next "Spé@"

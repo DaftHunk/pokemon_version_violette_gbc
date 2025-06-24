@@ -132,7 +132,7 @@ _ProteinDescription::
 	prompt
 
 _IronDescription::
-	text "Augmente la For"
+	text "Augmente la Déf"
 	next "d'un #mon."
 	prompt
 

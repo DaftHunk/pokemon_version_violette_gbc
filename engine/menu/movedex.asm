@@ -1,4 +1,4 @@
-; PureRGBnote: ADDED: Entirely new menu for listing the moves a player has witnessed. This functionality is obtained in viridian city schoolhouse.
+; PureRGBnote: ADDED: Entirely new menu for listing the moves a player has witnessed.
 
 ShowMovedexMenu:
 	call GBPalWhiteOut

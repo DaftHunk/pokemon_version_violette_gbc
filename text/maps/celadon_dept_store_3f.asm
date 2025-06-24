@@ -131,15 +131,15 @@ _CeladonMart3Text15::
 	done
 
 _CeladonMart3Blocker::
-	text "Ce vendeur ouvrira"
-	line "après le"
+	text "Ce vendeur ouvri-"
+	line "ra après le"
 	cont "championat de la"
 	cont "Ligue #mon."
 	
-	para "Reviens pour"
-	line "acheter de nouveau"
-	cont "objets rare de la"
-	cont "Sylphe SARL."
+	para "Revenez plus tard"
+	line "pour avoir accès"
+	cont "à des objets ra-"
+	cont "res et exotiques!"
 	
 	para "Pfiu! Il fait"
 	line "vraiment chaud"

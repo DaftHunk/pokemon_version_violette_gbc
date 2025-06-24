@@ -847,7 +847,7 @@ PrintStatText:
 	jp CopyData
 
 StatsTextStrings:
-	db "For@"
+	db "Atq@"
 	db "Déf@"
 	db "Vit@"
 	db "Spé@"

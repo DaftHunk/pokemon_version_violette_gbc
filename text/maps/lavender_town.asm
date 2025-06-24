@@ -1,6 +1,6 @@
 _LavenderTownText_4413c::
 	text "Crois-tu aux"
-	line "SpectreS?"
+	line "Spectres?"
 	done
 
 _LavenderTownText_44141::
