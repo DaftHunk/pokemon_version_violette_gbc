@@ -116,6 +116,11 @@ InGameTrade_DoTrade:
 	predef FlagActionPredef
 	ld hl, ConnectCableText
 	call PrintText
+
+	ld c, BANK(Music_SafariZone)
+	ld a, MUSIC_SAFARI_ZONE
+	call PlayMusic
+
 	ld a, [wWhichPokemon]
 	push af
 	ld a, [wCurEnemyLVL]
@@ -140,6 +145,7 @@ InGameTrade_DoTrade:
 	callab EvolveTradeMon
 	call ClearScreen
 	call InGameTrade_RestoreScreen
+	call PlayDefaultMusic
 	callba RedrawMapView
 	and a
 	ld a, $3
