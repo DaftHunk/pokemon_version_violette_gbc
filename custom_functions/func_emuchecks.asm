@@ -56,7 +56,8 @@ EmuCheckWriteMode3:
 	ei
 	ret
 EmuFailText1:
-	db "Emulator ERROR! Mode-3 access violation.@"
+	db "[!]Cet Emulateur ne supporte pas Mode-3@"
+     ;  "Emulator ERROR! Mode-3 access violation.@"
 	
 	
 	
@@ -113,7 +114,8 @@ ENDR
 	and a
 	ret
 EmuFailText2:
-	db "Emulator ERROR! Incorrect OAMint timing.@"
+	db "[!]Cet Emulateur ne supporte pas OAMint@"
+     ;  "Emulator ERROR! Incorrect OAMint timing.@"
 	
 	
 	
@@ -187,7 +189,8 @@ MemModify_Check_main:
 	and a
 	ret
 EmuFailText3:
-	db "Emulator ERROR! Wrong Mem Access timing.@"
+	db "[!]Cet Emulateur ne supporte pas Mem.A@"
+     ;  "Emulator ERROR! Wrong Mem Access timing.@"
 
 
 Copy_MemTest_to_WRAM:
