@@ -5,7 +5,7 @@ db 69 ; base defense
 db 90 ; base speed
 db 65 ; base special
 db POISON ; species type 1
-db POISON ; species type 2
+db DARK ; species type 2
 db 90 ; catch rate
 db 147 ; base exp yield
 INCBIN "gfx/pokemon/front/arbok.pic",0,1 ; 77, sprite dimensions

@@ -4,8 +4,8 @@ db 45 ; base attack
 db 55 ; base defense
 db 45 ; base speed
 db 70 ; base special
-db WATER ; species type 1
-db WATER ; species type 2
+db ICE ; species type 1
+db ICE ; species type 2
 db 190 ; catch rate
 db 100 ; base exp yield
 INCBIN "gfx/pokemon/front/seel.pic",0,1 ; 66, sprite dimensions

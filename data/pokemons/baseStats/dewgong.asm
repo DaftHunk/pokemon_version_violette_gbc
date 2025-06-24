@@ -4,7 +4,7 @@ db 70 ; base attack
 db 80 ; base defense
 db 70 ; base speed
 db 95 ; base special
-db WATER ; species type 1
+db ICE ; species type 1
 db ICE ; species type 2
 db 75 ; catch rate
 db 176 ; base exp yield
