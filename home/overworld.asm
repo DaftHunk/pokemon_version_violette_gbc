@@ -756,19 +756,22 @@ LoadPlayerSpriteGraphics::
 	jp LoadWalkingPlayerSpriteGraphics
 
 IsBikeRidingAllowed::
-; The bike can be used on Route 23 and Indigo Plateau,
+; The bike can be used on maps within BikeRidingMaps,
 ; or maps with tilesets in BikeRidingTilesets.
 ; Return carry if biking is allowed.
-
-	ld a, [wCurMap]
-	cp ROUTE_23
-	jr z, .allowed
-	cp INDIGO_PLATEAU
-	jr z, .allowed
-
 	ld a, [wCurMapTileset]
 	ld b, a
 	ld hl, BikeRidingTilesets
+	
+	call .bikeAllowedLoop
+	ret c
+	ld a, [wCurMap]
+	ld b, a
+	ld hl, BikeRidingMaps
+	call .bikeAllowedLoop
+	ret
+
+.bikeAllowedLoop
 .loop
 	ld a, [hli]
 	cp b
@@ -1176,19 +1179,14 @@ CollisionCheckOnLand::
 CheckTilePassable::
 	predef GetTileAndCoordsInFrontOfPlayer ; get tile in front of player
 	ld a, [wTileInFrontOfPlayer] ; tile in front of player
-	ld c, a
-	ld hl, wTilesetCollisionPtr ; pointer to list of passable tiles
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a ; hl now points to passable tiles
-.loop
-	ld a, [hli]
-	cp $ff
-	jr z, .tileNotPassable
-	cp c
-	ret z
-	jr .loop
-.tileNotPassable
+;;;;;;;;;; PureRGBnote: CHANGED: unified code for checking if a tile is passable
+	ld d, a
+	callfar _CheckTilePassable
+	jr c, .notPassable
+	and a
+	ret
+.notPassable
+;;;;;;;;;;
 	scf
 	ret
 
@@ -1971,32 +1969,20 @@ CollisionCheckOnWater::
 	ld d, a
 	ld a, [wSpriteStateData1 + 12] ; the player sprite's collision data (bit field) (set in the sprite movement code)
 	and d ; check if a sprite is in the direction the player is trying to go
-	;jr nz, .checkIfNextTileIsPassable ; bug?
 	jr nz, .collision ; joenote - this fixes the aforementioned bug
 	ld hl, TilePairCollisionsWater
 	call CheckForJumpingAndTilePairCollisions
 	jr c, .collision
 	predef GetTileAndCoordsInFrontOfPlayer ; get tile in front of player (puts it in c and [wTileInFrontOfPlayer])
-	ld a, [wTileInFrontOfPlayer] ; tile in front of player
-	cp $14 ; water tile
-	jr z, .noCollision ; keep surfing if it's a water tile
-	cp $32 ; either the left tile of the S.S. Anne boarding platform or the tile on eastern coastlines (depending on the current tileset)
-	jr z, .checkIfVermilionDockTileset
-	cp $48 ; tile on right on coast lines in Safari Zone
-	jr z, .noCollision ; keep surfing
+	ld d, c ; put the tile in front of the player into d so the callfar after this doesn't affect the register
+	callfar WaterTileSetIsNextTileShoreOrWater
+	jr nc, .noCollision
 ; check if the [land] tile in front of the player is passable
 .checkIfNextTileIsPassable
-	ld hl, wTilesetCollisionPtr ; pointer to list of passable tiles
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-.loop
-	ld a, [hli]
-	cp $ff
-	jr z, .collision
-	cp c
-	jr z, .stopSurfing ; stop surfing if the tile is passable
-	jr .loop
+;;;;;;;;;; PureRGBnote: CHANGED: unified code for checking if a tile is passable
+	callfar _CheckTilePassable
+	jr nc, .stopSurfing
+;;;;;;;;;;
 .collision	;joenote - consolidated into its own function
 ;	ld a, [wChannelSoundIDs + Ch4]
 ;	cp SFX_COLLISION ; check if collision sound is already playing

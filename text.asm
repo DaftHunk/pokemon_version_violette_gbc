@@ -3017,9 +3017,8 @@ _SurfingGotOnText::
 	text "!"
 	prompt
 
-_SurfingNoPlaceToGetOffText::
-	text "Impossible de"
-	line "descendre!"
+_AlreadySurfingText::
+	text "Tu Surfes déjà!"
 	prompt
 
 _VitaminStatRoseText::

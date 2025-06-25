@@ -955,8 +955,6 @@ InterlaceMergeSpriteBuffers::
 	ld b, a
 	jp CopyVideoData
 
-
-INCLUDE "data/maps/collision_tile_ids.asm"
 INCLUDE "home/copy2.asm"
 INCLUDE "home/text.asm"
 INCLUDE "home/vcopy.asm"

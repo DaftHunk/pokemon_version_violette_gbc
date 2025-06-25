@@ -690,16 +690,15 @@ CanWalkOntoTile:
 	and a
 	ret
 .notScripted
-	ld a, [wTilesetCollisionPtr]
-	ld l, a
-	ld a, [wTilesetCollisionPtr+1]
-	ld h, a
-.tilePassableLoop
-	ld a, [hli]
-	cp $ff
-	jr z, .impassable
-	cp c
-	jr nz, .tilePassableLoop
+;;;;;;;;;; PureRGBnote: CHANGED: unified code for checking if a tile is passable
+	push bc
+	push de
+	ld d, c
+	callfar _CheckTilePassable
+	pop de
+	pop bc
+	jr c, .impassable
+;;;;;;;;;;
 	ld h, $c2
 	ld a, [H_CURRENTSPRITEOFFSET]
 	add $6

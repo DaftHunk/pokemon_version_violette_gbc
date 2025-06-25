@@ -1,3 +1,19 @@
+; PureRGBnote: MOVED: this code was moved out of home bank, and made so checking if a tile is passable uses a single function
+; input d = tile to check whether it's passable
+_CheckTilePassable::
+	hl_deref wTilesetCollisionPtr
+.tilePassableLoop
+	ld a, [hli]
+	cp $ff
+	jr z, .impassable
+	cp d
+	jr nz, .tilePassableLoop
+	and a ; passable
+	ret
+.impassable
+	scf ; impassable
+	ret
+
 MACRO coll_tiles
 	IF _NARG
 		db \# ; all args
@@ -5,6 +21,7 @@ MACRO coll_tiles
 	db -1 ; end
 ENDM
 
+; the ID of tiles that do NOT incur a collision
 Underground_Coll::
 	coll_tiles $0b, $0c, $13, $15, $18
 

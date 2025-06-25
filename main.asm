@@ -1817,6 +1817,7 @@ INCLUDE "data/moves/trainer_moves.asm"
 INCLUDE "data/battle/trainer_parties.asm"
 
 INCLUDE "engine/items/tm_prices.asm"
+INCLUDE "data/maps/collision_tile_ids.asm"
 
 SECTION "bank2E",ROMX,BANK[$2E]	
 ;gbcnote - This bank will hold the bg map attributes for the gameboy color among other stuff
