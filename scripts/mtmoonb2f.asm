@@ -11,6 +11,12 @@ MtMoonB2FScript:
 	ld hl, CoordsData_49d37
 	call ArePlayerCoordsInArray
 	jr nc, .asm_49d31
+
+	;joenote - this is fixes a bug.
+	ld hl, wd732
+	bit 3, [hl]
+	jr nz, .asm_49d31
+	;If a fly warp his happening (dig, teleport, escape rope, etc) clear the no-battle bit.
 	CheckEitherEventSet EVENT_GOT_DOME_FOSSIL, EVENT_GOT_HELIX_FOSSIL
 	jr nz, .asm_49d31	;let's keep encounters on once the big moment is over
 	ld hl, wd72e
@@ -71,10 +77,6 @@ MtMoonB2FScript0:
 	jp DisplayTextID
 
 MtMoonB2FScript_49d91:
-;joenote - Half-baked idea to make the rocket grunts turn off like trainers in a gym. Remove for dungeon consistency.
-;	CheckEitherEventSet EVENT_GOT_DOME_FOSSIL, EVENT_GOT_HELIX_FOSSIL
-;	jp z, CheckFightingMapTrainers
-;	ret
 	jp CheckFightingMapTrainers
 
 MtMoonB2FScript3:
