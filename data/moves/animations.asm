@@ -191,8 +191,8 @@ AttackAnimationPointers:
 	dw XStatItemBlackAnim
 	dw ShrinkingSquareBlackAnim
 	dw ShrinkingSquareBlackAnim
-	dw UnusedAnim	;$B6
-	dw UnusedAnim	
+	dw BurnAnim	;$B6
+	dw BurnAnim	
 	dw ParalyzeAnim
 	dw ParalyzeAnim
 	dw PoisonAnim	;BA
@@ -1227,10 +1227,10 @@ ShrinkingSquareBlackAnim:
 	db SE_RESET_SCREEN_PALETTE, $FF
 	db $FF
 
-UnusedAnim:
-	db SE_LIGHT_SCREEN_PALETTE, $FF
-	db SE_SHOOT_MANY_BALLS_UPWARD, $FF
-	db SE_RESET_SCREEN_PALETTE, $FF
+BurnAnim:
+	db $46,$33,$56
+	db $46,$33,$56
+	db $46,$33,$56
 	db $FF
 
 ParalyzeAnim:
@@ -1370,6 +1370,7 @@ SubanimationPointers:
 	dw Subanimation53
 	dw Subanimation54
 	dw Subanimation55
+	dw SubanimationBurn
 
 Subanimation04:
 	db $43
@@ -2228,6 +2229,12 @@ Subanimation54:
 	db $79,$0e,$00
 	db $79,$a9,$00
 	db $79,$34,$00
+
+SubanimationBurn:
+	db $a3
+	db $0c,$20,$00
+	db $0c,$21,$00
+	db $0c,$23,$00
 
 FrameBlockPointers:
 	dw FrameBlock00
