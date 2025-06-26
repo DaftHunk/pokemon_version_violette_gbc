@@ -1745,6 +1745,7 @@ AgathaBlocks: INCBIN "maps/agatha.blk"
 INCLUDE "engine/menu/league_pc.asm"
 
 INCLUDE "engine/overworld/hidden_items.asm"
+INCLUDE "engine/evolution.asm"
 
 
 SECTION "bank1E",ROMX,BANK[$1E]
@@ -1752,15 +1753,14 @@ SECTION "bank1E",ROMX,BANK[$1E]
 INCLUDE "engine/battle/animations.asm"
 
 INCLUDE "engine/overworld/cut2.asm"
+INCLUDE "engine/overworld/ssanne.asm"
 
 INCLUDE "data/moves/animations.asm"
 
-INCLUDE "engine/evolution.asm"
 
 SECTION "Engine Spillover", ROMX
 
 INCLUDE "engine/menu/item_descriptions.asm"
-INCLUDE "engine/overworld/ssanne.asm"
 
 ;joenote - adding female trainer sprites
 FPlayerCharacterTitleGraphics:   INCBIN "gfx/mainmenu/player_title_f.2bpp"
