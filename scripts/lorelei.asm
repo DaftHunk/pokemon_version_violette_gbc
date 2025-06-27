@@ -128,12 +128,18 @@ LoreleiScript2:
 	jr nz, .elite4Rematch
 
 	ld a, $1
-	ld [hSpriteIndexOrTextID], a
-	jp DisplayTextID
+	jp .endBattle
 .elite4Rematch
 	ld a, $2
+	; fallthrough
+.endBattle
 	ld [hSpriteIndexOrTextID], a
-	jp DisplayTextID
+	call DisplayTextID
+;;;;;;;;;; PureRGBnote: ADDED: sound effect for the doors opening
+	ld a, SFX_GO_INSIDE
+	call PlaySound
+	ret
+;;;;;;;;;;
 
 LoreleiTextPointers:
 	dw LoreleiText1

@@ -220,6 +220,11 @@ LeaveMapThroughHoleAnim:
 	ld [wOAMBuffer + 1 * 4], a
 	ld c, 2
 	call DelayFrames
+;;;;;;;;;; PureRGBnote: ADDED: sound effect when falling into a hole
+	; play a sound effect of falling in
+	ld a, SFX_TELEPORT_ENTER_1
+	call PlaySound
+;;;;;;;;;;
 	; hide upper half of player's sprite
 	ld a, $a0
 	ld [wOAMBuffer + 2 * 4], a

@@ -126,17 +126,17 @@ AgathaScript2:
 	jr nz, .elite4Rematch
 
 	ld a, $1
-	ld [hSpriteIndexOrTextID], a
-	call DisplayTextID
-
-	jp .endScript
+	jp .endBattle
 .elite4Rematch
 	ld a, $2
+	; fallthrough
+.endBattle
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
-
-	jp .endScript
-.endScript
+;;;;;;;;;; PureRGBnote: ADDED: sound effect for the doors opening
+	ld a, SFX_GO_INSIDE
+	call PlaySound
+;;;;;;;;;;
 	ld a, $1
 	ld [wRivalCurScript], a
 	ret

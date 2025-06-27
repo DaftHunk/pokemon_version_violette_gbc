@@ -2982,6 +2982,10 @@ TossItem_:
 	ld [wPokedexNum], a
 	call GetItemName
 	call CopyStringToCF4B ; copy name to wcf4b
+;;;;;;;;;; PureRGBnote: ADDED: sound effect when throwing away an item
+	ld a, SFX_TELEPORT_ENTER_2
+	call PlaySound
+;;;;;;;;;;
 	ld hl, ThrewAwayItemText
 	call PrintText
 	pop hl

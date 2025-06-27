@@ -66,6 +66,8 @@ ShowPokedexMenu:
 .selectPressed
 	pop af
 	ld [wListScrollOffset], a
+	ld a, SFX_SWITCH
+	call PlaySound
 	callfar DisplayTownMap
 	jr .exitPokedex2
 .startPressed
