@@ -469,6 +469,7 @@ GyaradosEvosMoves:
 	db 30, LEER
 	db 35, CRUNCH
 	db 40, HYDRO_PUMP
+	db 45, DRAGON_RUSH
 	db 50, HYPER_BEAM
 	db 0
 
@@ -797,6 +798,7 @@ ParasectEvosMoves:
 	db 31, SLASH
 	db 37, GROWTH
 	db 43, MEGA_DRAIN
+	db 50, SHADOW_BALL
 	db 55, X_SCISSOR
 	db 0
 
