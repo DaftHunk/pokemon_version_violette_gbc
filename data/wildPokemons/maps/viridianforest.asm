@@ -3,7 +3,7 @@ ForestMons:
 	db 4,CATERPIE
 	db 5,METAPOD
 	db 3,CATERPIE
-	db 5,CATERPIE
+	db 5,WEEDLE
 	db 4,METAPOD
 	db 6,ODDISH
 	db 4,KAKUNA
