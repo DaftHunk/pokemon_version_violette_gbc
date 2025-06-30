@@ -101,7 +101,7 @@ SSAnne2Script1:
 	;joenote - deactivate the cerulean city fight
 	SetEvent EVENT_BEAT_CERULEAN_RIVAL
 
-	ld a, OPP_SONY2
+	ld a, OPP_RIVAL2
 	ld [wCurOpponent], a
 
 	; select which team to use during the encounter

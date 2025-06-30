@@ -72,7 +72,7 @@ RivalScript2:
 	ld hl, RivalDefeatedText
 	ld de, RivalVictoryText
 	call SaveEndBattleTextPointers
-	ld a, OPP_SONY3
+	ld a, OPP_RIVAL3
 	ld [wCurOpponent], a
 	; select which team to use during the encounter
 	ld a, [wRivalStarter]
@@ -95,7 +95,7 @@ RivalScript2:
 	ld hl, RematchRivalDefeatedText
 	ld de, RivalVictoryText
 	call SaveEndBattleTextPointers
-	ld a, OPP_SONY3
+	ld a, OPP_RIVAL3
 	ld [wCurOpponent], a
 	ld a, $4
 	jr .saveTrainerId

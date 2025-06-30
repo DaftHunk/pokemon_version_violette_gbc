@@ -143,7 +143,7 @@ PokemonTower2Text1:
 	ld hl, PokemonTower2Text_60632
 	ld de, PokemonTower2Text_60637
 	call SaveEndBattleTextPointers
-	ld a, OPP_SONY2
+	ld a, OPP_RIVAL2
 	ld [wCurOpponent], a
 	
 	;joenote - deactivate skippable rival fights

@@ -1042,7 +1042,7 @@ TrainerBattleVictory:
 	ld b, MUSIC_DEFEATED_TRAINER
 .gymleader	;joenote - use a flag to determine final battle instead
 	;ld a, [wTrainerClass]
-	;cp SONY3 ; final battle against rival
+	;cp RIVAL3 ; final battle against rival
 	;jr nz, .notrival
 	ld hl, wFlags_D733
 	bit 5, [hl]
@@ -1261,11 +1261,11 @@ HandlePlayerBlackOut:
 	cp LINK_STATE_BATTLING
 	jr z, .notSony1Battle
 	ld a, [wCurOpponent]
-	cp OPP_SONY1
+	cp OPP_RIVAL1
 	jr z, .RivalBattle
-	cp OPP_SONY2
+	cp OPP_RIVAL2
 	jr z, .RivalBattle
-	cp OPP_SONY3
+	cp OPP_RIVAL3
 	jr z, .RivalBattle
 .notSony1Battle
 	ld b, SET_PAL_BATTLE_BLACK

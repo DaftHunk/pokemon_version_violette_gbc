@@ -2836,11 +2836,11 @@ TrainerEndBattleText::
 
 PlayTrainerMusic::
 	ld a, [wEngagedTrainerClass]
-	cp OPP_SONY1
+	cp OPP_RIVAL1
 	ret z
-	cp OPP_SONY2
+	cp OPP_RIVAL2
 	ret z
-	cp OPP_SONY3
+	cp OPP_RIVAL3
 	ret z
 	ld a, [wGymLeaderNo]
 	and a
