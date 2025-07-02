@@ -18,7 +18,7 @@ db SMOG
 db SELFDESTRUCT
 db 0 ; growth rate
 ; learnset
-	tmlearn tm06_TOXIC
+	tmlearn tm04_FLAMETHROWER, tm06_TOXIC
 	tmlearn tm15_HYPER_BEAM
 	tmlearn tm20_RAGE, tm24_THUNDERBOLT
 	tmlearn tm25_THUNDER, tm31_MIMIC, tm32_DOUBLE_TEAM

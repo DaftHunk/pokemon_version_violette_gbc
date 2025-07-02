@@ -20,10 +20,10 @@ db 0 ; growth rate
 ; learnset
 	tmlearn tm01_MEGA_PUNCH, tm05_MEGA_KICK, tm06_TOXIC, tm08_BODY_SLAM
 	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE
-	tmlearn tm17_SUBMISSION, tm18_COUNTER, tm19_SEISMIC_TOSS, tm20_RAGE
+	tmlearn tm17_SUBMISSION, tm18_COUNTER, tm19_SEISMIC_TOSS, tm20_RAGE, tm26_EARTHQUAKE
 	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM
 	tmlearn tm34_BIDE, tm35_METRONOME, tm39_SWIFT, tm40_SKULL_BASH
-	tmlearn tm44_REST
+	tmlearn tm44_REST, tm48_ROCK_SLIDE
 	tmlearn tm50_SUBSTITUTE, hm04_STRENGTH
 ;	db 0 ; padding
 	db BANK(HitmonchanPicFront)

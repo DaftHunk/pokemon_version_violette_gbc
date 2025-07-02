@@ -18,7 +18,7 @@ db 0
 db 0
 db 5 ; growth rate
 ; learnset
-	tmlearn tm06_TOXIC, tm07_HORN_DRILL, tm08_BODY_SLAM
+	tmlearn tm04_FLAMETHROWER, tm06_TOXIC, tm07_HORN_DRILL, tm08_BODY_SLAM
 	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE
 	tmlearn tm20_RAGE, tm24_THUNDERBOLT
 	tmlearn tm25_THUNDER, tm26_EARTHQUAKE, tm27_FISSURE, tm28_DIG, tm31_MIMIC, tm32_DOUBLE_TEAM

@@ -20,7 +20,7 @@ db 0 ; growth rate
 ; learnset	;joenote - gains CUT from Yellow moveset
 	tmlearn tm02_RAZOR_WIND, tm03_SWORDS_DANCE, tm05_MEGA_KICK, tm06_TOXIC, tm08_BODY_SLAM
 	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm11_BUBBLEBEAM, tm12_WATER_GUN, tm13_ICE_BEAM, tm14_BLIZZARD, tm15_HYPER_BEAM
-	tmlearn tm17_SUBMISSION, tm19_SEISMIC_TOSS, tm20_RAGE
+	tmlearn tm17_SUBMISSION, tm19_SEISMIC_TOSS, tm20_RAGE, tm28_DIG
 	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM
 	tmlearn tm33_REFLECT, tm34_BIDE, tm40_SKULL_BASH
 	tmlearn tm44_REST

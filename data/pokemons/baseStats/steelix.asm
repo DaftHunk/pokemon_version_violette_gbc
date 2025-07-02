@@ -24,7 +24,7 @@ db 0 ; growth rate
 	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM, tm34_BIDE, tm36_SELFDESTRUCT
 	tmlearn tm40_SKULL_BASH, tm44_REST, tm47_EXPLOSION, tm48_ROCK_SLIDE
 	tmlearn tm50_SUBSTITUTE
-	tmlearn hm04_STRENGTH
+	tmlearn HM01_CUT, hm04_STRENGTH
 ;	db 0 ; padding
 	db BANK(SteelixPicFront)
 	assert BANK(SteelixPicFront) == BANK(SteelixPicBack)

@@ -23,7 +23,7 @@ db 3 ; growth rate
 	tmlearn tm17_SUBMISSION, tm18_COUNTER, tm19_SEISMIC_TOSS, tm20_RAGE, tm23_DRAGON_RAGE
 	tmlearn tm28_DIG, tm31_MIMIC, tm32_DOUBLE_TEAM
 	tmlearn tm33_REFLECT, tm34_BIDE, tm38_FIRE_BLAST, tm39_SWIFT, tm40_SKULL_BASH
-	tmlearn tm44_REST
+	tmlearn tm44_REST, tm48_ROCK_SLIDE
 	tmlearn tm50_SUBSTITUTE, hm01_CUT, hm04_STRENGTH
 ;	db 0 ; padding
 	db BANK(CharmanderPicFront)

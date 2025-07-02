@@ -24,7 +24,7 @@ db 4 ; growth rate
 	tmlearn tm25_THUNDER, tm29_PSYCHIC_M, tm31_MIMIC, tm32_DOUBLE_TEAM
 	tmlearn tm34_BIDE, tm36_SELFDESTRUCT, tm37_SLUDGE_BOMB
 	tmlearn tm42_DREAM_EATER, tm44_REST, tm46_PSYWAVE, tm47_EXPLOSION
-	tmlearn tm50_SUBSTITUTE
+	tmlearn tm50_SUBSTITUTE, hm05_FLASH
 ;	db 0 ; padding
 	db BANK(MisdreavusPicFront)
 	assert BANK(MisdreavusPicFront) == BANK(MisdreavusPicBack)

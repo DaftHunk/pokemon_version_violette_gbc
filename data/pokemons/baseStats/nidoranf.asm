@@ -19,9 +19,9 @@ db 0
 db 3 ; growth rate
 ; learnset
 	tmlearn tm06_TOXIC, tm08_BODY_SLAM
-	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm14_BLIZZARD
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm13_ICE_BEAM, tm14_BLIZZARD, tm18_COUNTER
 	tmlearn tm20_RAGE, tm24_THUNDERBOLT
-	tmlearn tm25_THUNDER, tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm25_THUNDER, tm28_DIG, tm31_MIMIC, tm32_DOUBLE_TEAM
 	tmlearn tm33_REFLECT, tm34_BIDE, tm37_SLUDGE_BOMB, tm40_SKULL_BASH
 	tmlearn tm44_REST
 	tmlearn tm50_SUBSTITUTE, hm01_CUT, hm04_STRENGTH

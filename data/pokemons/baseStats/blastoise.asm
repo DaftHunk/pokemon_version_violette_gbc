@@ -23,7 +23,7 @@ db 3 ; growth rate
 	tmlearn tm17_SUBMISSION, tm18_COUNTER, tm19_SEISMIC_TOSS, tm20_RAGE
 	tmlearn tm26_EARTHQUAKE, tm27_FISSURE, tm28_DIG, tm31_MIMIC, tm32_DOUBLE_TEAM
 	tmlearn tm33_REFLECT, tm34_BIDE, tm40_SKULL_BASH
-	tmlearn tm44_REST
+	tmlearn tm44_REST, tm48_ROCK_SLIDE
 	tmlearn tm50_SUBSTITUTE, hm03_SURF, hm04_STRENGTH
 ;	db 0 ; padding
 	db BANK(BlastoisePicFront)

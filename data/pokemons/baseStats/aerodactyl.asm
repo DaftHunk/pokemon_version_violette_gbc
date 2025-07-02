@@ -18,12 +18,12 @@ db 0
 db 0
 db 5 ; growth rate
 ; learnset
-	tmlearn tm02_RAZOR_WIND, tm06_TOXIC
+	tmlearn tm02_RAZOR_WIND, tm04_FLAMETHROWER, tm06_TOXIC
 	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm15_HYPER_BEAM
-	tmlearn tm20_RAGE, tm23_DRAGON_RAGE
+	tmlearn tm20_RAGE, tm23_DRAGON_RAGE, tm26_EARTHQUAKE
 	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM
 	tmlearn tm33_REFLECT, tm34_BIDE, tm38_FIRE_BLAST, tm39_SWIFT
-	tmlearn tm43_SKY_ATTACK, tm44_REST
+	tmlearn tm43_SKY_ATTACK, tm44_REST, tm48_ROCK_SLIDE
 	tmlearn tm50_SUBSTITUTE, hm02_FLY, hm04_STRENGTH
 ;	db 0 ; padding
 	db BANK(AerodactylPicFront)

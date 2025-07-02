@@ -23,7 +23,7 @@ db 0 ; growth rate
 	tmlearn tm17_SUBMISSION, tm19_SEISMIC_TOSS, tm20_RAGE
 	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM
 	tmlearn tm33_REFLECT, tm34_BIDE, tm40_SKULL_BASH
-	tmlearn tm44_REST
+	tmlearn tm44_REST, tm48_ROCK_SLIDE
 	tmlearn tm50_SUBSTITUTE, hm03_SURF
 ;	db 0 ; padding
 	db BANK(OmastarPicFront)

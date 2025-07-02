@@ -21,7 +21,7 @@ db 0 ; growth rate
 	tmlearn tm06_TOXIC, tm08_BODY_SLAM
 	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm11_BUBBLEBEAM, tm12_WATER_GUN, tm15_HYPER_BEAM, tm16_PAY_DAY
 	tmlearn tm20_RAGE, tm24_THUNDERBOLT
-	tmlearn tm25_THUNDER, tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm25_THUNDER, tm28_DIG, tm31_MIMIC, tm32_DOUBLE_TEAM
 	tmlearn tm34_BIDE, tm39_SWIFT, tm40_SKULL_BASH
 	tmlearn tm44_REST
 	tmlearn tm50_SUBSTITUTE, hm01_CUT, hm05_FLASH

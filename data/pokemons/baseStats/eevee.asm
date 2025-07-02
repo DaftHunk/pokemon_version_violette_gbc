@@ -20,7 +20,7 @@ db 0 ; growth rate
 ; learnset
 	tmlearn tm06_TOXIC, tm08_BODY_SLAM
 	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE
-	tmlearn tm20_RAGE
+	tmlearn tm20_RAGE, tm28_DIG
 	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM
 	tmlearn tm33_REFLECT, tm34_BIDE, tm39_SWIFT, tm40_SKULL_BASH
 	tmlearn tm44_REST

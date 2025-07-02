@@ -20,7 +20,7 @@ db 3 ; growth rate
 ; learnset
 	tmlearn tm03_SWORDS_DANCE, tm06_TOXIC, tm08_BODY_SLAM
 	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm15_HYPER_BEAM
-	tmlearn tm20_RAGE, tm21_MEGA_DRAIN, tm22_SOLARBEAM
+	tmlearn tm20_RAGE, tm21_MEGA_DRAIN, tm22_SOLARBEAM, tm26_EARTHQUAKE
 	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM
 	tmlearn tm33_REFLECT, tm34_BIDE, tm37_SLUDGE_BOMB
 	tmlearn tm44_REST

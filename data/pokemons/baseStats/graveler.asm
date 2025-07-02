@@ -18,7 +18,7 @@ db ROCK_THROW
 db 0
 db 3 ; growth rate
 ; learnset
-	tmlearn tm01_MEGA_PUNCH, tm06_TOXIC, tm08_BODY_SLAM
+	tmlearn tm01_MEGA_PUNCH, tm04_FLAMETHROWER, tm06_TOXIC, tm08_BODY_SLAM
 	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE
 	tmlearn tm17_SUBMISSION, tm18_COUNTER, tm19_SEISMIC_TOSS, tm20_RAGE
 	tmlearn tm26_EARTHQUAKE, tm27_FISSURE, tm28_DIG, tm31_MIMIC, tm32_DOUBLE_TEAM

@@ -24,7 +24,7 @@ db 3 ; growth rate
 	tmlearn tm29_PSYCHIC_M, tm30_TELEPORT, tm31_MIMIC, tm32_DOUBLE_TEAM
 	tmlearn tm33_REFLECT, tm34_BIDE, tm35_METRONOME, tm40_SKULL_BASH
 	tmlearn tm44_REST, tm46_PSYWAVE
-	tmlearn tm50_SUBSTITUTE
+	tmlearn tm50_SUBSTITUTE, hm01_CUT, hm03_SURF, hm04_STRENGTH
 ;	db 0 ; padding
 	db BANK(SneaselPicFront)
 	assert BANK(SneaselPicFront) == BANK(SneaselPicBack)

@@ -24,7 +24,7 @@ db 5 ; growth rate
 	tmlearn tm25_THUNDER, tm26_EARTHQUAKE, tm27_FISSURE, tm28_DIG, tm31_MIMIC, tm32_DOUBLE_TEAM
 	tmlearn tm34_BIDE, tm38_FIRE_BLAST, tm40_SKULL_BASH
 	tmlearn tm44_REST, tm48_ROCK_SLIDE
-	tmlearn tm50_SUBSTITUTE, hm04_STRENGTH
+	tmlearn tm50_SUBSTITUTE, hm01_CUT, hm03_SURF, hm04_STRENGTH
 ;	db 0 ; padding
 	db BANK(TyranitarPicFront)
 	assert BANK(TyranitarPicFront) == BANK(TyranitarPicBack)
