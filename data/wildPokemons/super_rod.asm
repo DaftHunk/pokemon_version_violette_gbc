@@ -20,19 +20,8 @@ ReadSuperRodData:
 
 .ReadFishingGroup
 ; hl points to the fishing group entry in the index
-
-	;joenote - if wild pokemon are randomized, then don't do the joke dittos
 	ld a, [hl]
-	cp CERULEAN_CAVE_B1F
-	jr nz, .skipmapID
-	CheckEvent EVENT_ENABLE_RANDOMIZE_WILD
-	jr z, .skipmapID
 	inc hl
-	inc hl
-	inc hl
-	
-.skipmapID
-	inc hl ; skip map id
 
 	; read fishing group address
 	ld a, [hli]
@@ -50,8 +39,8 @@ ReadSuperRodData:
 	
 .RandomLoop
 	call Random
-	srl a
-	ret c ; 50% chance of no battle
+	cp $64
+	ret c ; 25% chance of no battle
 
 	and %11 ; 2-bit random number
 	cp b
@@ -82,14 +71,13 @@ ReadSuperRodData:
 
 ; super rod data
 ; format: map, pointer to fishing group
-;joenote - Ditto encounters set in fishing group 2 (route 22 set to group 1)
 ;		- Super Rod now randomly increases level by 0 to 7
 SuperRodData:
 	dbw PALLET_TOWN, FishingGroup1
 	dbw VIRIDIAN_CITY, FishingGroup1
 	dbw CERULEAN_CITY, FishingGroup3
 	dbw VERMILION_CITY, FishingGroup4
-	dbw CELADON_CITY, FishingGroup5
+	dbw CELADON_CITY, FishingGroup2
 	dbw FUCHSIA_CITY, FishingGroup10
 	dbw CINNABAR_ISLAND, FishingGroup8
 	dbw ROUTE_4, FishingGroup3
@@ -109,14 +97,14 @@ SuperRodData:
 	dbw ROUTE_25, FishingGroup3
 	dbw CERULEAN_GYM, FishingGroup3
 	dbw VERMILION_DOCK, FishingGroup4
-	dbw SEAFOAM_ISLANDS_B3F, FishingGroup8
-	dbw SEAFOAM_ISLANDS_B4F, FishingGroup8
-	dbw SAFARI_ZONE_EAST, FishingGroup6
-	dbw SAFARI_ZONE_NORTH, FishingGroup6
-	dbw SAFARI_ZONE_WEST, FishingGroup6
-	dbw SAFARI_ZONE_CENTER, FishingGroup6
+	dbw SEAFOAM_ISLANDS_B3F, FishingGroup5
+	dbw SEAFOAM_ISLANDS_B4F, FishingGroup6
+	dbw SAFARI_ZONE_EAST, FishingGroup8
+	dbw SAFARI_ZONE_NORTH, FishingGroup8
+	dbw SAFARI_ZONE_WEST, FishingGroup8
+	dbw SAFARI_ZONE_CENTER, FishingGroup8
 	dbw CERULEAN_CAVE_2F, FishingGroup9
-	dbw CERULEAN_CAVE_B1F, FishingGroup2
+	dbw CERULEAN_CAVE_B1F, FishingGroup9
 	dbw CERULEAN_CAVE_1F, FishingGroup9
 	db $FF
 
@@ -130,16 +118,16 @@ FishingGroup1:
 
 FishingGroup2:
 	db 4
-	db 140,DITTO
-	db 160,DITTO
-	db 200,DITTO
-	db 240,DITTO
+	db 10,GRIMER
+	db 11,GRIMER
+	db 15,GRIMER
+	db 20,MUK
 	
 FishingGroup3:
 	db 3
 	db 15,PSYDUCK
 	db 15,GOLDEEN
-	db 15,KRABBY
+	db 15,STARYU
 
 FishingGroup4:
 	db 2
@@ -147,16 +135,17 @@ FishingGroup4:
 	db 15,SHELLDER
 
 FishingGroup5:
-	db 2
+	db 3
 	db 23,POLIWHIRL
 	db 15,SLOWPOKE
+	db 15,PSYDUCK
 
 FishingGroup6:
 	db 4
-	db 15,DRATINI
-	db 15,LAPRAS
 	db 15,PSYDUCK
 	db 15,SLOWPOKE
+	db 15,DRATINI
+	db 15,LAPRAS
 
 FishingGroup7:
 	db 4
