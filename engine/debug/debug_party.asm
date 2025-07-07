@@ -209,6 +209,11 @@ IF DEF(_DEBUG)
 ;	ld a, [wBeatGymLeadersRematch]
 ;	set 6, a
 	
+	; Force Shiny apparition
+;	ld [wFontLoaded], a
+;	ld a, [wFontLoaded]
+;	set 7, a
+
 	; Rival chose Squirtle,
 	; Player chose Charmander.
 	ld hl, wRivalStarter
