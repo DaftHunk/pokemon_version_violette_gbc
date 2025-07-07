@@ -1031,9 +1031,11 @@ FarfetchdEvosMoves:
 ; Learnset
 	db 7, SAND_ATTACK
 	db 13, LEER
+	db 15, KARATE_CHOP
 	db 19, FURY_ATTACK
 	db 25, SWORDS_DANCE
 	db 31, AGILITY
+	db 34, ROLLING_KICK
 	db 37, SLASH
 	db 0
 
@@ -1801,7 +1803,7 @@ SnorlaxEvosMoves:
 
 MagikarpEvosMoves:
 ; Evolutions
-	db EV_LEVEL, 20, GYARADOS
+	db EV_LEVEL, 30, GYARADOS
 	db 0
 ; Learnset
 	db 15, TACKLE
