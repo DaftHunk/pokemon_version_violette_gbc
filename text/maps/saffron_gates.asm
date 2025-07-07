@@ -4,13 +4,12 @@ _SaffronGateText_1dfe7::
 	cont "soif!"
 
 ;joenote - add a hint on what to give the guard
-	para "Je rêverais qu'on"
-	line "ait notre propre"
-	cont "Distributeur de"
-	cont "Boissons..."
+	para "Si tu m'ramènes"
+	line "à boire, j'te"
+	cont "laisserai passer!"
 
-	para "La route est"
-	line "fermée. Dégage."
+	para "Maintenant,"
+	line "dégage."
 	done
 
 _SaffronGateText_8aaa9::

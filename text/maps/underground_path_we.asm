@@ -32,7 +32,9 @@ _RandTrainerChallenge::
 	para "Je te donnerai"
 	line "un truc que j'ai"
 	cont "trouvé là-bas si"
-	cont "tu me bas 5 fois."
+	cont "tu me bas 5 fois"
+	cont "de suite sans"
+	cont "sortir d'ici!"
 	done
 	
 _RandTrainerBye::
