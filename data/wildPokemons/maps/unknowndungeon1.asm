@@ -1,4 +1,4 @@
-DungeonMons1:;joenote - swapped sandslash/arbok
+DungeonMons1:
 	db $0A
 	db 61,GOLBAT
 	db 61,HYPNO

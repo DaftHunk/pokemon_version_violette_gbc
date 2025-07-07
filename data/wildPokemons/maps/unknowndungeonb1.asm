@@ -1,4 +1,4 @@
-DungeonMonsB1:;joenote - added mew
+DungeonMonsB1:
 	db $19
 	db 70,RHYDON
 	db 70,MAROWAK

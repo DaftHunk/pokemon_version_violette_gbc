@@ -1,4 +1,4 @@
-ZoneMonsCenter:;joenote - swapped pinser/scyther
+ZoneMonsCenter:
 	db $1E
 	db 22,NIDORAN_F
 	db 25,RHYHORN

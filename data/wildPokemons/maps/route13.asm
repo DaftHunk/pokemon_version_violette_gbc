@@ -1,4 +1,4 @@
-Route13Mons:;joenote - added farfetchd
+Route13Mons:
 	db $14
 	db 24,BELLSPROUT
 	db 25,PIDGEY

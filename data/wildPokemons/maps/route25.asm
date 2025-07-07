@@ -1,4 +1,4 @@
-Route25Mons:;joenote - added charmander
+Route25Mons:
 	db $0F
 	db 8,CATERPIE
 	db 9,METAPOD

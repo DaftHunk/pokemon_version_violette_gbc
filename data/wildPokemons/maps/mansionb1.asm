@@ -1,13 +1,13 @@
-MansionMonsB1:;joenote - magmar in both versions
+MansionMonsB1:
 	db $0A
 	db 33,GRIMER
 	db 31,GRIMER
 	db 35,VULPIX
-	db 32,PONYTA
+	db 32,GROWLITHE
 	db 31,GRIMER
 	db 40,MUK
-	db 34,PONYTA
+	db 34,GROWLITHE
 	db 35,KOFFING
-	db 38,MAGMAR
+	db 38,VULPIX
 	db 42,WEEZING
 	db $00

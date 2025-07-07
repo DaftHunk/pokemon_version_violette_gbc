@@ -1,4 +1,4 @@
-CaveMons:;joenote - added snorlax
+CaveMons:
 	db $14
 	db 18,DIGLETT
 	db 19,DIGLETT

@@ -1,4 +1,4 @@
-Route5Mons:;joenote - added meowth/mankey
+Route5Mons:
 	db $0F
 	db 13,BELLSPROUT
 	db 13,PIDGEY

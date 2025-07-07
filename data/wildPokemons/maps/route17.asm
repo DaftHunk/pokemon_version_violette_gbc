@@ -1,4 +1,4 @@
-Route17Mons:;joenote - added dodrio
+Route17Mons:
 	db $19
 	db 20,SPEAROW
 	db 22,SPEAROW

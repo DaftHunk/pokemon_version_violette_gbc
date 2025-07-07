@@ -1,4 +1,4 @@
-Route6Mons:;joenote - added squirtle
+Route6Mons:
 	db $0F
 	db 13,BELLSPROUT
 	db 13,PIDGEY

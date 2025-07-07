@@ -1,4 +1,4 @@
-Route21Mons:;joenote - added eevee and made adjustments to surfing encounters
+Route21Mons:
 	db $19
 	db 21,PIDGEY
 	db 23,RATTATA

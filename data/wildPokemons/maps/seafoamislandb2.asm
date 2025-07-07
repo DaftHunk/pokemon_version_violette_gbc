@@ -8,6 +8,6 @@ IslandMonsB2:
 	db 30,SHELLDER
 	db 30,KRABBY
 	db 28,STARYU
-	db 30,GOLBAT
+	db 30,STARMIE
 	db 37,GOLDUCK
 	db $00

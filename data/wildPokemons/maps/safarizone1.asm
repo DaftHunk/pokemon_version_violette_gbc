@@ -1,6 +1,4 @@
-ZoneMons1:	;Safari Zone East
-;joenote - added lickitung & tweaked encounter tables
-;			-added kangaskhan to bluejp
+ZoneMons1:
 	db $1E
 	db 24,NIDORAN_F
 	db 26,DODUO

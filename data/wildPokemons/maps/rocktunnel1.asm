@@ -1,4 +1,4 @@
-TunnelMonsB1:;joenote - added cubone
+TunnelMonsB1:
 	db $0F
 	db 16,ZUBAT
 	db 17,ZUBAT

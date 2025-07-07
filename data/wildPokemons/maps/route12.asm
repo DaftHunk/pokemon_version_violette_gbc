@@ -1,4 +1,4 @@
-Route12Mons:;joenote - added farfetchd
+Route12Mons:
 	db $0F
 	db 24,BELLSPROUT
 	db 25,PIDGEY

@@ -1,4 +1,4 @@
-Route24Mons:;joenote - added oddish/bellsprout
+Route24Mons:
 	db $19
 	db 7,CATERPIE
 	db 8,METAPOD

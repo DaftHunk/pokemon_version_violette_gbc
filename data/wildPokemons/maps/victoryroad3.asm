@@ -1,4 +1,4 @@
-PlateauMons3:;joenote - added hitmonchan & hitmonlee
+PlateauMons3:
 	db $0F
 	db 47,MACHOP
 	db 47,GEODUDE

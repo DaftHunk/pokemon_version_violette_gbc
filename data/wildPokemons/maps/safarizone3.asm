@@ -1,5 +1,4 @@
-ZoneMons3:	;Safari Zone West
-;joenote - added mr mime & tweaked encounter tables
+ZoneMons3:
 	db $1E
 	db 25,NIDORAN_F
 	db 26,DODUO

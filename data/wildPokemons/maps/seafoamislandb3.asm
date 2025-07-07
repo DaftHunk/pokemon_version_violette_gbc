@@ -8,6 +8,6 @@ IslandMonsB3:
 	db 35,STARYU
 	db 35,KRABBY
 	db 34,SNEASEL
-	db 41,KINGLER
+	db 41,JYNX
 	db 42,DEWGONG
 	db $00

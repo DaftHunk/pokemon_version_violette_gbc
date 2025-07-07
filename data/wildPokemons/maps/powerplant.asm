@@ -1,4 +1,4 @@
-PowerPlantMons:	;joenote - added porygon to Red
+PowerPlantMons:
 	db $0A
 	db 21,VOLTORB
 	db 21,MAGNEMITE
