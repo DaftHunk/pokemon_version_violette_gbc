@@ -12,7 +12,7 @@ INCBIN "gfx/pokemon/front/dragonite.pic",0,1 ; 77, sprite dimensions
 dw DragonitePicFront
 dw DragonitePicBack
 ; attacks known at lvl 0
-db WRAP
+db BIND
 db LEER
 db THUNDER_WAVE
 db 0

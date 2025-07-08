@@ -12,7 +12,7 @@ INCBIN "gfx/pokemon/front/dratini.pic",0,1 ; 55, sprite dimensions
 dw DratiniPicFront
 dw DratiniPicBack
 ; attacks known at lvl 0
-db WRAP
+db BIND
 db LEER
 db 0
 db 0

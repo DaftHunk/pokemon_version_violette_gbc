@@ -15,7 +15,7 @@ dw CloysterPicBack
 db WITHDRAW
 db SUPERSONIC
 db AURORA_BEAM
-db 0
+db CLAMP
 db 5 ; growth rate
 ; learnset
 	tmlearn tm06_TOXIC

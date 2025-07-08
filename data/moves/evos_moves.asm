@@ -578,7 +578,7 @@ TangelaEvosMoves:
 	db 10, ABSORB
 	db 13, POISONPOWDER
 	db 19, VINE_WHIP
-	db 25, BIND
+	db 25, WRAP
 	db 31, MEGA_DRAIN
 	db 34, STUN_SPORE
 	db 40, SLAM
@@ -1857,7 +1857,12 @@ CloysterEvosMoves:
 	db 0
 ;joenote - modified for fun
 ; Learnset
-	db 41, SPIKE_CANNON
+	db 9, SUPERSONIC
+	db 17, AURORA_BEAM
+	db 33, LEER
+	db 36, SPIKE_CANNON
+	db 41, CLAMP
+	db 49, ICE_BEAM
 	db 0
 
 MissingNo8CEvosMoves:

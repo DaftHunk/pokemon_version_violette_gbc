@@ -160,9 +160,9 @@ _FlyDexEntry::
 	dex
 
 _BindDexEntry::
-	text "Ligote l'ennemi"
-	next "avec les tentacu-"
-	next "les ou corps.@"
+	text "Ecrase l'ennemie"
+	next "comme s'il était"
+	next "sous un rocher.@"
 	; fall through
 	text_jump _GenericTrappingMoveText
 

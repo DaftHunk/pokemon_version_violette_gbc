@@ -63,12 +63,10 @@ _GenericThrashEffectText::
 
 _GenericTrappingMoveText::
 	bage "Piège pendant 2 à"
-	next "5 tours l'ennemi."
+	next "3 tours l'ennemi."
 	next "2 tours → 37.5%"
 
 	bage "3 tours → 37.5%"
-	next "4 tours → 12.5%"
-	next "5 tours → 12.5%"
 	dex
 
 _GenericAbsorbMoveText::
