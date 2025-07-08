@@ -142,7 +142,7 @@ ItemUseBall:
 ; Balls can't be used out of battle.
 	ld a, [wIsInBattle]
 	and a
-	jp z, ItemUseNotTime	
+	jp z, ItemUseInBattle ; PureRGBnote: CHANGED: text that displays when using out of battle indicates it's for use in battle	
 ; Balls can't catch trainers' Pokémon.
 	dec a
 	jp nz, ThrowBallAtTrainerMon
@@ -1770,7 +1770,7 @@ ItemUseRepelCommon:
 ItemUseXAccuracy:
 	ld a, [wIsInBattle]
 	and a
-	jp z, ItemUseNotTime
+	jp z, ItemUseInBattle ; PureRGBnote: CHANGED: text that displays when using out of battle indicates it's for use in battle
 	ld hl, wPlayerBattleStatus2
 	set USING_X_ACCURACY, [hl] ; X Accuracy bit
 	jp PrintItemUseTextAndRemoveItem
@@ -1874,7 +1874,7 @@ ItemUseCardKey:
 ItemUsePokedoll:
 	ld a, [wIsInBattle]
 	dec a
-	jp nz, ItemUseNotTime
+	jp nz, ItemUseInBattle ; PureRGBnote: CHANGED: text that displays when using out of battle indicates it's for use in battle
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	;joenote - if this is a ghost marowak battle, prevent using a pokedoll
 	CheckEvent EVENT_ACTIVATE_GHOST_MAROWAK
@@ -1887,7 +1887,7 @@ ItemUsePokedoll:
 ItemUseGuardSpec:
 	ld a, [wIsInBattle]
 	and a
-	jp z, ItemUseNotTime
+	jp z, ItemUseInBattle ; PureRGBnote: CHANGED: text that displays when using out of battle indicates it's for use in battle
 	ld hl, wPlayerBattleStatus2
 	set PROTECTED_BY_MIST, [hl] ; Mist bit
 	jp PrintItemUseTextAndRemoveItem
@@ -1903,7 +1903,7 @@ ItemUseMaxRepel:
 ItemUseDireHit:
 	ld a, [wIsInBattle]
 	and a
-	jp z, ItemUseNotTime
+	jp z, ItemUseInBattle ; PureRGBnote: CHANGED: text that displays when using out of battle indicates it's for use in battle
 	ld hl, wPlayerBattleStatus2
 	set GETTING_PUMPED, [hl] ; Focus Energy bit
 	jp PrintItemUseTextAndRemoveItem
@@ -1912,7 +1912,7 @@ ItemUseXStat:
 	ld a, [wIsInBattle]
 	and a
 	jr nz, .inBattle
-	call ItemUseNotTime
+	call ItemUseInBattle ; PureRGBnote: CHANGED: text that displays when using out of battle indicates it's for use in battle
 	ld a, 2
 	ld [wActionResultOrTookBattleTurn], a ; item not used
 	ret
@@ -2670,6 +2670,11 @@ ItemUseNotAllowed:
 	ld hl, ItemUseNotAllowedText
 	jr ItemUseFailed
 
+; PureRGBnote: ADDED: text for items that are meant for use in battle indicating that
+ItemUseInBattle:
+	ld hl, ItemUseInBattleText
+	jr ItemUseFailed
+
 ItemUseNotYoursToUse:
 	ld hl, ItemUseNotYoursToUseText
 	jr ItemUseFailed
@@ -2713,6 +2718,10 @@ ItemUseNotTimeText:
 
 ItemUseNotAllowedText:
 	TX_FAR _ItemUseNotAllowedText
+	db "@"
+
+ItemUseInBattleText:
+	TX_FAR _ItemUseInBattleText
 	db "@"
 
 ItemUseNotYoursToUseText:

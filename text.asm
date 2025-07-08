@@ -3162,6 +3162,12 @@ _ItemUseNotAllowedText::
 	line "interdite!"
 	prompt
 
+_ItemUseInBattleText::
+	text "Utilisable"
+	line "uniquement en"
+	cont "combat #mon."
+	prompt
+
 _ItemUseNotYoursToUseText::
 	text "C'est pas à toi!"
 	prompt
