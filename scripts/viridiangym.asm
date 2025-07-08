@@ -170,6 +170,12 @@ ViridianGymScript_GiveTM:
 	; predef ShowObject
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	SetEvents EVENT_2ND_ROUTE22_RIVAL_BATTLE, EVENT_ROUTE22_RIVAL_WANTS_BATTLE
+
+	; force afterbattle dialogue to ensure Giovani is gone
+	ld a, $1
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
+
 	jp ViridianGymScript_Reset
 
 ViridianGymTextPointers:
