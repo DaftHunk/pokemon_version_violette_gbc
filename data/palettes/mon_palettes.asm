@@ -57,7 +57,7 @@ MonsterPalettes:
 	db PAL_CYANMON       ; GOLDUCK
 	db PAL_BROWNMON      ; MANKEY
 	db PAL_BROWNMON      ; PRIMEAPE
-	db PAL_BROWNMON      ; GROWLITHE
+	db PAL_ORANGEMON     ; GROWLITHE
 	db PAL_ORANGEMON     ; ARCANINE
 	db PAL_BLUEMON       ; POLIWAG
 	db PAL_BLUEMON       ; POLIWHIRL
@@ -120,7 +120,7 @@ MonsterPalettes:
 	db PAL_ORANGEMON     ; GOLDEEN
 	db PAL_ORANGEMON     ; SEAKING
 	db PAL_ORANGEMON     ; STARYU
-	db PAL_GREYMON       ; STARMIE
+	db PAL_MEWMON        ; STARMIE
 	db PAL_PINKMON       ; MR_MIME
 	db PAL_GREENMON      ; SCYTHER
 	db PAL_MEWMON        ; JYNX
@@ -128,7 +128,7 @@ MonsterPalettes:
 	db PAL_ORANGEMON     ; MAGMAR
 	db PAL_BROWNMON      ; PINSIR
 	db PAL_GREYMON       ; TAUROS
-	db PAL_REDMON        ; MAGIKARP
+	db PAL_ORANGEMON     ; MAGIKARP
 	db PAL_BLUEMON       ; GYARADOS
 	db PAL_CYANMON       ; LAPRAS
 	db PAL_MEWMON        ; DITTO
