@@ -131,8 +131,8 @@ _CeladonMart3Text15::
 	done
 
 _CeladonMart3Blocker::
-	text "Ce vendeur ouvri-"
-	line "ra après le"
+	text "Ce vendeur"
+	line "ouvrira après le"
 	cont "championat de la"
 	cont "Ligue #mon."
 	

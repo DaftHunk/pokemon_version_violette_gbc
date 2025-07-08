@@ -107,7 +107,9 @@ _SSAnne6Text_GymGuy2::
 	para "Si tu peux battre"
 	line "7 dressseurs tu"
 	cont "gagneras un"
-	cont "super prix!"
+	cont "super prix grâce"
+	cont "à notre sponsor:"
+	cont "la Sylphe SARL!"
 
 	para "Par contre, tous"
 	line "le monde doit ut-"
