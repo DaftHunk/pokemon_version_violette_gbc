@@ -70,7 +70,7 @@ const_value = 0
 	const PAL_BW        ; $28	;gbc only
 	const PAL_UBALL		; $29	;gbc only
 
-	const PAL_REDMON      ; $2A
+	const PAL_VIOLETTEMON ; $2A
 	const PAL_GREYBLUEMON ; $2B
 	const PAL_REDBLUEMON  ; $2C
 	const PAL_VOLCANO     ; $2D

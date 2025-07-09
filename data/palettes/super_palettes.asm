@@ -257,10 +257,10 @@ SuperPalettes:
 	RGB  8,  8,  8
 	RGB  3,  3,  3
 	
-	; PAL_REDMON
+	; PAL_VIOLETTEMON
 	SGB_WHITE 
-	RGB 31,  8,  0
-	RGB 31,  0,  0
+	RGB 13,  7, 17
+	RGB  5,  5,  5
 	RGB  3,  3,  3
 
 	; PAL_GREYBLUEMON
@@ -271,8 +271,8 @@ SuperPalettes:
 
 	; PAL_REDBLUEMON
 	SGB_WHITE 
-	RGB 31,  8,  0
-	RGB  5,  5, 23
+	RGB  5,  5, 13
+	RGB 31,  5,  5
 	RGB  3,  3,  3
 
 	; PAL_VOLCANO
