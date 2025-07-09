@@ -266,7 +266,7 @@ SuperPalettes:
 	; PAL_GREYBLUEMON
 	SGB_WHITE 
 	RGB 15, 18, 20
-	RGB 15, 18, 20
+	RGB 10, 10, 10
 	RGB  3,  3,  3
 
 	; PAL_REDBLUEMON
