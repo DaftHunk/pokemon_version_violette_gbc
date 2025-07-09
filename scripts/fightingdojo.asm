@@ -143,14 +143,9 @@ FightingDojoText1:
 	ld hl, FightingDojoText_5ce93
 	ld de, FightingDojoText_5ce93
 	call SaveEndBattleTextPointers
-
-;joenote - play the gym leader music if the shimmer is active
-	CheckEvent EVENT_ENABLE_SHIMMER_FEATURE
-	jr z, .next
+	
 	ld a, $8
 	ld [wGymLeaderNo], a
-.next	
-
 	ld a, [hSpriteIndexOrTextID]
 	ld [wSpriteIndex], a
 	call EngageMapTrainer

@@ -1065,6 +1065,7 @@ JessieJamesPic::   INCBIN "gfx/trainer/jessiejames.pic"
 MFujiPic::         INCBIN "gfx/trainer/mfuji.pic"
 SachaPic::         INCBIN "gfx/trainer/sacha.pic"
 SoldierPic::       INCBIN "gfx/trainer/soldier.pic"
+KoichiPic::        INCBIN "gfx/trainer/koichi.pic"
 
 SECTION "bank15",ROMX,BANK[$15]
 

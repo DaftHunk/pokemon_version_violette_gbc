@@ -163,3 +163,6 @@ TrainerPicAndMoneyPointers:
 	dw SoldierPic
 	money 3000
 	
+	dw KoichiPic
+	money 3500
+	

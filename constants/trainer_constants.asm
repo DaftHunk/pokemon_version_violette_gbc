@@ -60,3 +60,4 @@ const_value = 1
 	trainer_const MFUJI         ; $34
 	trainer_const SACHA         ; $35
 	trainer_const SOLDIER       ; $36
+	trainer_const KOICHI        ; $37

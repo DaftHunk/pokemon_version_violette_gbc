@@ -53,6 +53,7 @@ TrainerDataPointers:
 	dw MFujiData
 	dw SachaData
 	dw SoldierData
+	dw KoichiData
 
 RosterLabelStart::
 ; if first byte != FF, then
@@ -435,8 +436,7 @@ BirdKeeperData:
 
 BlackbeltData:
 ; Fighting Dojo
-	db 37,HITMONLEE,HITMONCHAN,0
-	db 31,MANKEY,MANKEY,PRIMEAPE,0
+	db 34,MANKEY,POLIWRATH,0
 	db 32,MACHOP,MACHOKE,0
 	db 36,PRIMEAPE,0
 	db 31,MACHOP,MANKEY,PRIMEAPE,0
@@ -446,6 +446,10 @@ BlackbeltData:
 	db 51,HITMONLEE,HITMONCHAN,MACHOKE,0
 ; Victory Road 2F - Brice
 	db 52,POLIWRATH,DODRIO,MACHAMP,PINSIR,0
+
+KoichiData:
+; Fighting Dojo
+	db 38,HITMONLEE,HITMONCHAN,FARFETCHD,ELECTABUZZ,MACHAMP,0
 
 Rival1Data:
 	db 5,SQUIRTLE,0
@@ -743,4 +747,3 @@ SoldierData:
 ; VolcanoB1F
 	db 45,PRIMEAPE,BLASTOISE,0
 	db 42,ELECTRODE,ELECTRODE,ELECTRODE,ELECTRODE,WARTORTLE,0
-	

@@ -1402,6 +1402,7 @@ TrainerClassMoveChoiceModifications:
 	db 1,2,3,4,0; MFUJI
 	db 1,2,3,4,0; SACHA
 	db 1,3,0    ; SOLDIER
+	db 1,3,4,0  ; KOICHI
 
 INCLUDE "engine/battle/trainer_pic_money_pointers.asm"
 
@@ -1541,6 +1542,7 @@ TrainerAIPointers:
 	dbw 5,GenericAI ; MFuji
 	dbw 5,GenericAI ; Sacha
 	dbw 3,GenericAI ; Soldier
+	dbw 3,BlackbeltAI ; Koichi
 
 ;joenote - reorganizing these AI routines to jump on carry instead of returning on not-carry
 ;also adding recognition of a switch-pkmn bit

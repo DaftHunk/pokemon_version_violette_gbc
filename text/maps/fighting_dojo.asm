@@ -1,8 +1,9 @@
 _FightingDojoText_5ce8e::
 	text "P'tit faiblard!"
 
-	para "Je suis le Grand"
-	line "Maître de Karaté!"
+	para "Je suis Koichi,"
+	line "le Grand Maître"
+	cont "de Karaté!"
 	cont "Je suis le"
 	cont "Champion!"
 
@@ -58,8 +59,8 @@ _FightingDojoEndBattleText1::
 _FightingDojoAfterBattleText1::
 	text "Tu te tais, tu"
 	line "t'assois et tu"
-	cont "attends le grand"
-	cont "maître!"
+	cont "attends le Grand"
+	cont "Maître!"
 
 	para "Tu vas dérouiller"
 	line "sévère! Il est"
@@ -78,7 +79,7 @@ _FightingDojoEndBattleText2::
 	prompt
 
 _FightingDojoAfterBattleText2::
-	text "Notre maître,"
+	text "Notre Maître,"
 	line "c'est un costaud!"
 	done
 
@@ -111,7 +112,7 @@ _FightingDojoBattleText4::
 
 	para "Tu joues avec ta"
 	line "vie, p'tit!"
-	cont "Not'DOJO, c'est"
+	cont "Not'Dojo, c'est"
 	cont "pour les balèzes!"
 	done
 

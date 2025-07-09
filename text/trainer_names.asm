@@ -53,4 +53,4 @@ TrainerNames:
 	db "M.Fuji@"
 	db "Sacha@"
 	db "Soldat@"
-
+	db "Koichi@"
