@@ -429,20 +429,10 @@ GetRandMonSafari:
 	ld [wEnemyMonSpecies2], a
 	ret	
 
-GetSafariList:	
-	ld a, [wCurMap]
-	cp SAFARI_ZONE_CENTER
-	ld hl, ListNonLegendPkmn
-	ret z
-	cp SAFARI_ZONE_EAST
-	ld hl, ListMidEvolvedPkmn
-	ret z
-	cp SAFARI_ZONE_NORTH
-	ld hl, ListNonEvolvingPkmn
-	ret z
-	ld hl, ListMostEvolvedPkmn
+GetSafariList:
+	ld hl, ListSafariSpecial
 	ret
-	
+
 
 ;this will prevent an overflow of the A register
 ;typically for custom functions that increase enemy levels

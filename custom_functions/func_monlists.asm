@@ -1,3 +1,14 @@
+ListSafariSpecial:
+	db FARFETCHD    ; $40
+	db BUTTERFREE   ; $7D
+	db BEEDRILL     ; $72
+	db NIDOKING     ; $07
+	db NIDOQUEEN    ; $10
+	db VICTREEBEL   ; $BE
+	db EXEGGUTOR    ; $0A
+	db RHYDON       ; $01
+	db $00
+
 ListRealPkmn:
 	db MEW          ; $15
 	db MISSINGNO    ; 162
@@ -98,9 +109,9 @@ ListNonEvolvingPkmn:
 	db LAPRAS       ; $13
 	db LICKITUNG    ; $0B
 	db MAGMAR       ; $33
-	db MR_MIME      ; $2A	
+	db MR_MIME      ; $2A
 	db PINSIR       ; $1D
-	db PORYGON      ; $AA	
+	db PORYGON      ; $AA
 	db SNORLAX      ; $84
 	db TANGELA      ; $1E
 	db TAUROS       ; $3C
@@ -150,7 +161,7 @@ ListMostEvolvedPkmn:
 	db RAPIDASH     ; $A4
 	db RATICATE     ; $A6
 	db RHYDON       ; $01
-	db SANDSLASH    ; $61	
+	db SANDSLASH    ; $61
 	db SEAKING      ; $9E
 	db SLOWBRO      ; $08
 	db STARMIE      ; $98
