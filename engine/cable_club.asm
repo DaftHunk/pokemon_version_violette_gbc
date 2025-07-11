@@ -646,8 +646,7 @@ TradeCenter_PlaceSelectedEnemyMonMenuCursor:
 TradeCenter_DisplayStats:
 	ld a, [wCurrentMenuItem]
 	ld [wWhichPokemon], a
-	predef StatusScreen
-	predef StatusScreen2
+	predef StatusScreenOriginal
 	call Delay3
 	ld b, $9
 	call RunPaletteCommand	;gbcnote - refresh pal

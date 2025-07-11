@@ -2563,23 +2563,7 @@ PartyMenuOrRockOrRun:
 	ld hl, wPartyMon1
 	call ClearSprites
 ; display the two status screens
-	ld a, [wStatsToDisplay]
-	set 0, a
-	ld [wStatsToDisplay], a
-
-	predef StatusScreen
-	predef StatusScreen2
-
-	ld a, [wStatsToDisplay]
-	res 0, a
-	set 1, a
-	ld [wStatsToDisplay], a
-	predef StatusScreen
-
-	ld a, [wStatsToDisplay]
-	set 2, a
-	ld [wStatsToDisplay], a
-	predef StatusScreen
+	predef StatusScreenLoop
 ; now we need to reload the enemy mon pic
 	ld a, [wEnemyBattleStatus2]
 	bit HAS_SUBSTITUTE_UP, a ; does the enemy mon have a substitute?

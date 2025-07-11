@@ -252,9 +252,7 @@ StatusScreen:
 	call PlayCry ; play Pokémon cry
 .skipCry
 	ld a, [wcf91]
-	call WaitForTextScrollButtonPress ; wait for button
 	pop af
-	ld [hTilesetType], a
 	ret
 
 .GetStringPointer
@@ -326,10 +324,6 @@ DrawLineBox:
 	jr nz, .PrintHorizLine
 	ld [hl], $6f ; ← (halfarrow ending)
 	ret
-
-PTile: ; This is a single 1bpp "P" tile
-	INCBIN "gfx/tiles/p_tile.1bpp"
-PTileEnd:
 
 PrintStatsBox:
 	ld a, d
@@ -599,16 +593,11 @@ StatusScreen2:
 	ld [wLoadedMonLevel], a ; Increase temporarily if not 100
 	inc hl
 .Level100
-	;coord hl, 14, 6
-	;ld [hl], $70 ; 1-tile "to"
-	;inc hl
 	inc hl
 	call PrintLevel
 	pop af
 	ld [wLoadedMonLevel], a
 	ld de, wLoadedMonExp
-;	coord hl, 12, 4
-;	lb bc, 3, 7
 	coord hl, 11, 4	;joenote - print 8 digit exp number
 	lb bc, 3, 8 
 	call PrintNumber ; exp
@@ -629,15 +618,8 @@ StatusScreen2:
 	ld a, $1
 	ld [H_AUTOBGTRANSFERENABLED], a
 	call Delay3
-	call WaitForTextScrollButtonPress ; wait for button
 	pop af
-	ld [hTilesetType], a
-	ld hl, wd72c
-	res 1, [hl]
-	ld a, $77
-	ld [rNR50], a
-	call GBPalWhiteOut
-	jp ClearScreen
+	ret
 
 CalcExpToLevelUp:
 	ld a, [wLoadedMonLevel]
@@ -770,3 +752,154 @@ PlaceTempFieldMove:	;joenote - for field move slot
 
 FieldMoveText:
 	db "CapaTmp:@"
+
+StatsData:
+	xor a
+	ld [wStatsToDisplay], a
+
+	ld a, [wStatsToDisplay]
+	set 0, a
+	ld [wStatsToDisplay], a
+	ret
+DVData:
+	ld a, [wStatsToDisplay]
+	res 0, a
+	set 1, a
+	ld [wStatsToDisplay], a
+	ret
+EVData:
+	ld a, [wStatsToDisplay]
+	set 2, a
+	ld [wStatsToDisplay], a
+	ret
+;;;;;;;;;; PureRGBnote: ADDED: code that allows immediately backing out of the status menu with B from all status menus
+StatusScreenOriginal:
+	call StatsData
+
+	ldh a, [hTilesetType]
+	push af
+
+	call StatusScreen
+	ld b, A_BUTTON | B_BUTTON
+	call PokedexStatusWaitForButtonPressLoop
+	bit BIT_B_BUTTON, a
+	jr nz, ExitStatusScreen
+
+	call StatusScreen2
+	ld b, A_BUTTON | B_BUTTON
+	call PokedexStatusWaitForButtonPressLoop
+	bit BIT_B_BUTTON, a
+	jr nz, ExitStatusScreen
+
+	call DVData
+	call StatusScreen
+	ld b, A_BUTTON | B_BUTTON
+	call PokedexStatusWaitForButtonPressLoop
+	bit BIT_B_BUTTON, a
+	jr nz, ExitStatusScreen
+
+	call EVData
+	call StatusScreen
+	ld b, A_BUTTON | B_BUTTON
+	call PokedexStatusWaitForButtonPressLoop
+
+ExitStatusScreen:
+	pop af
+	ldh [hTilesetType], a
+	ld hl, wd72c
+	res 1, [hl]
+	ld a, $77
+	ldh [rNR50], a
+	call GBPalWhiteOut
+	jp ClearScreen
+
+.waitForInput
+;;;;;;;;;;
+
+;;;;;;;;;; PureRGBnote: ADDED: code that allows going up and down on the dpad
+;;;;;;;;;; to next and previous party pokemon while in battle or in the start POKEMON menu.
+StatusScreenLoop:
+	ldh a, [hTilesetType]
+	push af
+.displayNextMon
+	call StatsData
+	call StatusScreen
+	call PokemonStatusWaitForButtonPress
+	bit BIT_D_UP, a
+	jr nz, .prevMon
+	bit BIT_D_DOWN, a
+	jr nz, .nextMon
+	bit BIT_B_BUTTON, a
+	jr nz, .exitStatus
+
+	call StatusScreen2
+	call PokemonStatusWaitForButtonPress
+	bit BIT_D_UP, a
+	jr nz, .prevMon
+	bit BIT_D_DOWN, a
+	jr nz, .nextMon
+	bit BIT_B_BUTTON, a
+	jr nz, .exitStatus
+
+	call DVData
+	call StatusScreen
+	call PokemonStatusWaitForButtonPress
+	bit BIT_D_UP, a
+	jr nz, .prevMon
+	bit BIT_D_DOWN, a
+	jr nz, .nextMon
+	bit BIT_B_BUTTON, a
+	jr nz, .exitStatus
+
+	call EVData
+	call StatusScreen
+	call PokemonStatusWaitForButtonPress
+	bit BIT_D_UP, a
+	jr nz, .prevMon
+	bit BIT_D_DOWN, a
+	jr nz, .nextMon
+.exitStatus
+	jp ExitStatusScreen
+.nextMon
+	ld hl, wWhichPokemon
+	inc [hl]
+	ld hl, wPartyAndBillsPCSavedMenuItem
+	inc [hl]
+	jr .displayNextMon
+.prevMon
+	ld hl, wWhichPokemon
+	dec [hl]
+	ld hl, wPartyAndBillsPCSavedMenuItem
+	dec [hl]
+	jr .displayNextMon
+
+PokemonStatusWaitForButtonPress:
+.decideButtons
+	ld a, A_BUTTON | B_BUTTON
+	ld b, a
+	ld a, [wWhichPokemon]
+	and a
+	jr z, .checkRight
+	ld a, b
+	or D_UP
+	ld b, a
+.checkRight
+	ld a, [wPartyCount]
+	dec a
+	ld c, a
+	ld a, [wWhichPokemon]
+	cp c
+	jr z, PokedexStatusWaitForButtonPressLoop
+	ld a, b
+	or D_DOWN
+	ld b, a
+PokedexStatusWaitForButtonPressLoop:
+.waitForButtonPress
+	push bc
+	call JoypadLowSensitivity
+	pop bc
+	ldh a, [hJoy5]
+	and b
+	jr z, .waitForButtonPress
+	ret
+;;;;;;;;;;
