@@ -46,6 +46,7 @@ PrintBeginningBattleText:
 	callab LoadEnemyMonData
 	jr .notPokemonTower
 .noSilphScope
+	call PlayGhostSfx
 	ld hl, EnemyAppearedText
 	call PrintText
 	ld hl, GhostCantBeIDdText
@@ -55,6 +56,7 @@ PrintBeginningBattleText:
 	ld a, b
 	and a
 	jr z, .noSilphScope
+	call PlayGhostSfx
 	ld hl, EnemyAppearedText
 	call PrintText
 	ld hl, UnveiledGhostText
@@ -80,6 +82,21 @@ PrintBeginningBattleText:
 	jp WaitForSoundToFinish
 .done
 	ret
+
+;;;;;;;;;; PureRGBnote: ADDED: a sound effect for ghosts encountered
+PlayGhostSfx:
+	ld a, $50
+	ld [wFrequencyModifier], a
+	ld a, $20
+	ld [wTempoModifier], a
+	ld a, SFX_BATTLE_2F
+	call PlaySound
+	call WaitForSoundToFinish
+	xor a
+	ld [wFrequencyModifier], a
+	ld [wTempoModifier], a
+	ret
+;;;;;;;;;;
 
 WildMonAppearedText:
 	TX_FAR _WildMonAppearedText
