@@ -3936,6 +3936,10 @@ CalcStat::
 	predef _CalcStat	;joenote - moved to make space in home bank
 	ret
 
+GetSquareRoot::
+	predef _GetSquareRoot
+	ret
+
 AddEnemyMonToPlayerParty::
 	ld a, [H_LOADEDROMBANK]
 	push af
