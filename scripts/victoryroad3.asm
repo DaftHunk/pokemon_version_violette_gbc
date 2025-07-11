@@ -39,6 +39,8 @@ VictoryRoad3ScriptPointers:
 
 VictoryRoad3Script0:
 	ld hl, wFlags_0xcd60
+	bit 1, [hl]
+	ret nz ; PureRGBnote: ADDED: if a boulder animation is playing forget doing this, helps reduce lag
 	bit 7, [hl]
 	res 7, [hl]
 	jp z, .asm_449fe
@@ -51,6 +53,7 @@ VictoryRoad3Script0:
 	ld hl, wCurrentMapScriptFlags
 	set 5, [hl]
 	SetEvent EVENT_VICTORY_ROAD_3F_BOULDER_ON_SWITCH1
+	farcall BoulderOnButton
 	ret
 .asm_449dc
 	; wispnote - This event signifies that a boulder was thrown through a hole;

@@ -73,6 +73,9 @@ VictoryRoad2ScriptPointers:
 	dw EndTrainerBattle
 
 VictoryRoad2Script0:
+	ld a, [wFlags_0xcd60]
+	bit 1, a
+	ret nz ; PureRGBnote: ADDED: if a boulder animation is playing forget doing this, helps reduce lag
 	ld hl, CoordsData_51816
 	call CheckBoulderCoords
 	jp nc, CheckFightingMapTrainers
@@ -89,6 +92,7 @@ VictoryRoad2Script0:
 	SetEventReuseHL EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH2
 	ret nz
 .asm_51810
+	farcall BoulderOnButton
 	ld hl, wCurrentMapScriptFlags
 	set 5, [hl]
 	ret

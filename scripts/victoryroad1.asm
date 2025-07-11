@@ -36,6 +36,9 @@ VictoryRoad1ScriptPointers:
 	dw EndTrainerBattle
 
 VictoryRoad1Script0:
+	ld a, [wFlags_0xcd60]
+	bit 1, a
+	ret nz ; PureRGBnote: ADDED: if a boulder animation is playing forget doing this, helps reduce lag
 	CheckEvent EVENT_VICTORY_ROAD_1F_BOULDER_ON_SWITCH
 	jp nz, CheckFightingMapTrainers
 	ld hl, CoordsData_5da5c
@@ -44,7 +47,16 @@ VictoryRoad1Script0:
 	ld hl, wCurrentMapScriptFlags
 	set 5, [hl]
 	SetEvent EVENT_VICTORY_ROAD_1F_BOULDER_ON_SWITCH
+;;;;;;;;;; PureRGBnote: ADDED: sound effect when boulder presses switch
+	; fall through
+BoulderOnButton:
+	ld a, SFX_TELEPORT_ENTER_2
+	call PlaySound
+	call WaitForSoundToFinish
+	ld a, SFX_GO_INSIDE
+	call PlaySound
 	ret
+;;;;;;;;;;
 
 CoordsData_5da5c:
 	db $0D,$11,$FF
