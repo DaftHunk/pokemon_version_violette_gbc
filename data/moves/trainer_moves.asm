@@ -1023,7 +1023,7 @@ SpecialTrainerMoves:
 ;	db $FF,18,PIDGEOTTO,15,ABRA,15,RATTATA,17,SQUIRTLE,0
 	;joenote - give the abra of the cerulean rival something to do
 	;		-assume the rival got some TMs from Celadon City
-	db SONY1, $7
+	db RIVAL1, $7
 	;pidgeotto - gust, sand attack, quick attack
 	;abra - teleport, counter, tri attack
 	db 2,2,COUNTER
@@ -1033,7 +1033,7 @@ SpecialTrainerMoves:
 	db 0
 
 ;	db $FF,18,PIDGEOTTO,15,ABRA,15,RATTATA,17,BULBASAUR,0
-	db SONY1, $8
+	db RIVAL1, $8
 	;pidgeotto - gust, sand attack, quick attack
 	;abra - teleport, counter, tri attack
 	db 2,2,COUNTER
@@ -1043,7 +1043,7 @@ SpecialTrainerMoves:
 	db 0
 
 ;	db $FF,18,PIDGEOTTO,15,ABRA,15,RATTATA,17,CHARMANDER,0
-	db SONY1, $9
+	db RIVAL1, $9
 	;pidgeotto - gust, sand attack, quick attack
 	;abra - teleport, counter, tri attack
 	db 2,2,COUNTER
@@ -1054,7 +1054,7 @@ SpecialTrainerMoves:
 
 ;Rival3Data:
 ;	db $FF,63,PIDGEOT,60,ALAKAZAM,61,RHYDON,63,ARCANINE,62,EXEGGUTOR,65,BLASTOISE,0
-	db SONY3,$1
+	db RIVAL3,$1
 	; 63,PIDGEOT
 	db 1,1,SKY_ATTACK
 	db 1,3,MIMIC
@@ -1082,7 +1082,7 @@ SpecialTrainerMoves:
 	db 0
 
 ;	db $FF,62,PIDGEOT,61,ALAKAZAM,63,RHYDON,60,GYARADOS,62,ARCANINE,65,VENUSAUR,0
-	db SONY3,$2
+	db RIVAL3,$2
 	; 62,PIDGEOT
 	db 1,1,SKY_ATTACK
 	db 1,3,MIMIC
@@ -1112,7 +1112,7 @@ SpecialTrainerMoves:
 	db 0
 
 ;	db $FF,60,PIDGEOT,61,ALAKAZAM,62,RHYDON,62,EXEGGUTOR,63,GYARADOS,65,CHARIZARD,0
-	db SONY3,$3
+	db RIVAL3,$3
 	; 60,PIDGEOT
 	db 1,1,SKY_ATTACK
 	db 1,3,MIMIC
@@ -1142,7 +1142,7 @@ SpecialTrainerMoves:
 
 ; Rematch
 ;	db $FF,77,ALAKAZAM,76,TYRANITAR,75,JOLTEON,74,PIDGEOT,75,EXEGGUTOR,77,ARCANINE,0
-	db SONY3,$4
+	db RIVAL3,$4
 	; 77,ALAKAZAM
 	db 1,1,THUNDER_WAVE
 	db 1,2,RECOVER

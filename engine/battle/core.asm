@@ -1259,7 +1259,7 @@ ChooseNextMon:
 HandlePlayerBlackOut:
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
-	jr z, .notSony1Battle
+	jr z, .notRival1Battle
 	ld a, [wCurOpponent]
 	cp OPP_RIVAL1
 	jr z, .RivalBattle
@@ -1267,7 +1267,7 @@ HandlePlayerBlackOut:
 	jr z, .RivalBattle
 	cp OPP_RIVAL3
 	jr z, .RivalBattle
-.notSony1Battle
+.notRival1Battle
 	ld b, SET_PAL_BATTLE_BLACK
 	call RunPaletteCommand
 	ld hl, PlayerBlackedOutText2
@@ -1294,7 +1294,7 @@ HandlePlayerBlackOut:
 	ld a, [wCurMap]
 	cp OAKS_LAB
 	ret z            ; starter battle in oak's lab: don't black out
-	jr .notSony1Battle
+	jr .notRival1Battle
 
 PlayerBlackedOutText2:
 	TX_FAR _PlayerBlackedOutText2

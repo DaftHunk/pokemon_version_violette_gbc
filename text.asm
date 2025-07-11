@@ -1214,7 +1214,7 @@ _UseNextMonText::
 	line "#mon?"
 	done
 
-;_Sony1WinText::	;joenote - made redundant
+;_Rival1WinText::	;joenote - made redundant
 ;	text "<RIVAL>: Ouaiiis!"
 ;	line "J'suis trop bon,"
 ;	cont "ou bien?"

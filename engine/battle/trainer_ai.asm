@@ -1529,8 +1529,8 @@ TrainerAIPointers:
 	dbw 1,BlaineAI ; blaine
 	dbw 1,SabrinaAI ; sabrina
 	dbw 3,GenericAI
-	dbw 1,Sony2AI ; sony2
-	dbw 1,Sony3AI ; sony3
+	dbw 1,Rival2AI ; sony2
+	dbw 1,Rival3AI ; sony3
 	dbw 2,LoreleiAI ; lorelei
 	dbw 3,GenericAI
 	dbw 2,AgathaAI ; agatha
@@ -1668,7 +1668,7 @@ SabrinaAI:
 .sabrinareturn
 	ret
 
-Sony2AI:
+Rival2AI:
 ;	cp $20
 	cp $80 ;joenote - increased to 50% chance of healing
 	jr nc, .rival2return
@@ -1681,7 +1681,7 @@ Sony2AI:
 .rival2return
 	ret
 
-Sony3AI:
+Rival3AI:
 ;	cp $20
 	cp $80	;joenote - made this like the rest of the elite 4
 	jr nc, .rival3return
