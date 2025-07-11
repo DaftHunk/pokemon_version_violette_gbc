@@ -7,7 +7,7 @@ SetDefaultNamesBeforeTitlescreen:
 	ld hl, NintenText
 	ld de, wPlayerName
 	call CopyFixedLengthText
-	ld hl, SonyText
+	ld hl, RivalText
 	ld de, wRivalName
 	call CopyFixedLengthText
 	xor a
@@ -455,4 +455,4 @@ PrintGameVersionOnTitleScreen:
 VersionOnTitleScreenText:
 	db $60,$61,$62,$63,$64,$65,$66,$67,$68,$69,"@" ; "Blue Version"
 NintenText: db "NINTEND@"
-SonyText:   db "SONY@"
+RivalText:   db "SONY@"
