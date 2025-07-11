@@ -150,11 +150,10 @@ DEF NUM_SQUARE_ROOTS EQU 255
 
 _GetSquareRoot:
 ; Return the square root of de in b.
-
+	call GetPredefRegisters
 ; Rather than calculating the result, we take the index of the
 ; first value in a table of squares that isn't lower than de.
-
-	ld hl, .Squares
+	ld hl, .squares
 	ld b, 0
 .loop
 ; Make sure we don't go past the end of the table.
@@ -172,7 +171,7 @@ _GetSquareRoot:
 	jr c, .loop
 	ret
 
-.Squares:
+.squares:
 for x, 1, NUM_SQUARE_ROOTS + 1
 	dw x**2
 endr
