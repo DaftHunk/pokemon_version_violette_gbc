@@ -370,14 +370,87 @@ PrintStatsBox:
 	jp z, .checkstart
 	dec l	;shift alignment 2 tiles to the left
 	dec l
+
+	; ATK : load data into de
 	ld de, wLoadedMonAttackExp
+	ld a, [wLoadedMonAttackExp]
+	ld d, a
+	ld a, [wLoadedMonAttackExp + 1]
+	ld e, a
+	; calculate square root
+	call GetSquareRoot
+	srl b
+	srl b ; /4
+	; load value (big endian) into pointer, note that this may be a bad idea to use 
+	xor a
+	ld [wLoadedMonAttackExp], a
+	ld a, b
+	ld [wLoadedMonAttackExp + 1], a
+	; restore b to value from lb bc, 2, 5
+	ld de, wLoadedMonAttackExp
+	coord hl, 4, 10
 	lb bc, 2, 5
 	call PrintStat
+
+	; DEF : load data into de
+	ld a, [wLoadedMonDefenseExp]
+	ld d, a
+	ld a, [wLoadedMonDefenseExp + 1]
+	ld e, a
+	; calculate square root
+	call GetSquareRoot
+	srl b
+	srl b ; /4
+	; load value (big endian) into pointer, note that this may be a bad idea to use 
+	xor a
+	ld [wLoadedMonDefenseExp], a
+	ld a, b
+	ld [wLoadedMonDefenseExp + 1], a
+	; restore b to value from lb bc, 2, 5
 	ld de, wLoadedMonDefenseExp
+	coord hl, 4, 12
+	lb bc, 2, 5
 	call PrintStat
+
+	; SPD : load data into de
+	ld a, [wLoadedMonSpeedExp]
+	ld d, a
+	ld a, [wLoadedMonSpeedExp + 1]
+	ld e, a
+	; calculate square root
+	call GetSquareRoot
+	srl b
+	srl b ; /4
+	; load value (big endian) into pointer, note that this may be a bad idea to use 
+	xor a
+	ld [wLoadedMonSpeedExp], a
+	ld a, b
+	ld [wLoadedMonSpeedExp + 1], a
+	; restore b to value from lb bc, 2, 5
 	ld de, wLoadedMonSpeedExp
+	coord hl, 4, 14
+	lb bc, 2, 5
 	call PrintStat
+
+	; SPE : load data into de
+	ld a, [wLoadedMonSpecialExp]
+	ld d, a
+	ld a, [wLoadedMonSpecialExp + 1]
+	ld e, a
+	; calculate square root
+	call GetSquareRoot
+	srl b
+	srl b ; /4
+	; load value (big endian) into pointer, note that this may be a bad idea to use 
+	xor a
+	ld [wLoadedMonSpecialExp], a
+	ld a, b
+	ld [wLoadedMonSpecialExp + 1], a
+	; restore b to value from lb bc, 2, 5
 	ld de, wLoadedMonSpecialExp
+	coord hl, 4, 16
+	lb bc, 2, 5
+
 	jp PrintNumber
 .checkstart	;joenote - print DVs
 	bit 1, a
@@ -677,7 +750,7 @@ PlaceTempFieldMove:	;joenote - for field move slot
 	ld a, [hl]
 	and a
 	ret z
-	
+
 	ld [wd0b5], a
 	ld a, BANK(MoveNames)
 	ld [wPredefBank], a
