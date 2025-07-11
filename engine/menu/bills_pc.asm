@@ -523,7 +523,28 @@ DisplayDepositWithdrawMenu:
 	ld a, BOX_DATA
 .next2
 	ld [wMonDataLocation], a
+
+	xor a
+	ld [wStatsToDisplay], a
+
+	ld a, [wStatsToDisplay]
+	set 0, a
+	ld [wStatsToDisplay], a
+
 	predef StatusScreen
+	predef StatusScreen2
+
+	ld a, [wStatsToDisplay]
+	res 0, a
+	set 1, a
+	ld [wStatsToDisplay], a
+	predef StatusScreen
+
+	ld a, [wStatsToDisplay]
+	set 2, a
+	ld [wStatsToDisplay], a
+	predef StatusScreen
+
 	call LoadScreenTilesFromBuffer1
 	call ReloadTilesetTilePatterns
 	call RunDefaultPaletteCommand

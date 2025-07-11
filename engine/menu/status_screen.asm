@@ -122,16 +122,16 @@ StatusScreen:
 	coord hl, 11, 3
 	predef DrawHP
 	
-	;joenote - print stat exp if select is held
 	;parse dv stats here so they can be grabbed later
 	push de
 	ld bc, SCREEN_WIDTH + 1
 	add hl, bc
 	call DVParse
-	call Joypad
-	
-	ld a, [hJoyHeld]
-	and SELECT | START
+
+	ld a, [wStatsToDisplay]
+	bit 0, a
+	ld a, [wUnusedD721]
+	bit 6, a
 	jr z, .noblank
 	push hl
 	ld a, " "
@@ -144,21 +144,8 @@ StatusScreen:
 	ld [hli], a
 	pop hl
 .noblank
-	
-	ld a, [hJoyHeld]
-	bit BIT_SELECT, a
-	jr z, .checkstart
 	ld de, wLoadedMonHPExp
 	lb bc, 2, 5
-	jr .printnum
-.checkstart	;print DVs if start is held
-	bit BIT_START, a
-	jr z, .doregular
-	ld de, wUnusedD726  
-	lb bc, 1, 2
-.printnum
-	call PrintNumber
-.doregular
 	pop de
 	
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -185,11 +172,30 @@ StatusScreen:
 	call RunPaletteCommand
 	coord hl, 16, 6
 	ld de, wLoadedMonStatus
+
+	ld a, [wStatsToDisplay]
+	bit 2, a
+	jr nz, .printEV
+
+	bit 1, a
+	jr nz, .printDV
+
 	call PrintStatusCondition
 	jr nz, .StatusWritten
 	coord hl, 16, 6
+
+	; else regular
 	ld de, OKText
 	call PlaceString ; "OK"
+	jr .StatusWritten
+.printEV
+	ld de, EVText
+	call PlaceString ; "EV"
+	jr .StatusWritten
+.printDV
+	ld de, DVText
+	call PlaceString ; "DV"
+	; fallthrough
 .StatusWritten
 	coord hl, 9, 6
 	ld de, StatusText
@@ -237,8 +243,15 @@ StatusScreen:
 	call GBPalNormal
 	coord hl, 1, 0
 	call LoadFlippedFrontSpriteByMonIndex ; draw Pokémon picture
+	
+	ld a, [wStatsToDisplay]
+	bit 0, a
+	jr z, .skipCry
+
 	ld a, [wcf91]
 	call PlayCry ; play Pokémon cry
+.skipCry
+	ld a, [wcf91]
 	call WaitForTextScrollButtonPress ; wait for button
 	pop af
 	ld [hTilesetType], a
@@ -289,6 +302,12 @@ StatusText:
 
 OKText:
 	db "Ok@"
+
+DVText:
+	db "DV@"
+
+EVText:
+	db "EV@"
 
 ; Draws a line starting from hl high b and wide c
 DrawLineBox:
@@ -343,11 +362,12 @@ PrintStatsBox:
 	add hl, bc
 ;joenote - print stat exp if select is held and on the status screen
 	pop af
-	jr nz, .doregular
-	call Joypad
-	ld a, [hJoyHeld]
+	jp nz, .doregular
+
+	ld a, [wStatsToDisplay]
 	bit 2, a
-	jr z, .checkstart
+
+	jp z, .checkstart
 	dec l	;shift alignment 2 tiles to the left
 	dec l
 	ld de, wLoadedMonAttackExp
@@ -359,9 +379,10 @@ PrintStatsBox:
 	call PrintStat
 	ld de, wLoadedMonSpecialExp
 	jp PrintNumber
-.checkstart	;joenote - print DVs if start is held
-	bit 3, a
+.checkstart	;joenote - print DVs
+	bit 1, a
 	jr z, .doregular
+	
 	ld de, wUnusedD722
 	lb bc, 1, 2
 	call PrintStat
@@ -664,7 +685,15 @@ PlaceTempFieldMove:	;joenote - for field move slot
 	ld [wNameListType], a
 	call GetName
 	
-	coord hl, $09, $07
+	coord hl, $0F, $07
 	ld de, wcd6d
+
+	call PlaceString
+	
+	coord hl, $07, $07
+	ld de, FieldMoveText
 	call PlaceString
 	ret
+
+FieldMoveText:
+	db "CapaTmp:@"

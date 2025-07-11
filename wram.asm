@@ -3131,6 +3131,10 @@ wPlayerJumpingYScreenCoordsIndex:: ; d714
 wRivalStarter:: ; d715
 	ds 1
 
+wStatsToDisplay::
+	;0 = regular
+	;1 = DV
+	;2 = StatXP
 	ds 1
 
 wPlayerStarter:: ; d717
