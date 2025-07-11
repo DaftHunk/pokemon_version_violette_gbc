@@ -1373,7 +1373,7 @@ TrainerClassMoveChoiceModifications:
 	db 1,3,0    ; BIRD_KEEPER
 	db 1,3,4,0  ; BLACKBELT
 	db 1,3,4,0  ; RIVAL1
-	db 1,3,4,0  ; PROF_OAK
+	db 1,2,3,4,0; PROF_OAK
 	db 1,2,3,4,0; CHIEF
 	db 1,2,3,0  ; SCIENTIST
 	db 1,3,4,0  ; GIOVANNI
@@ -1385,19 +1385,19 @@ TrainerClassMoveChoiceModifications:
 	db 1,3,4,0  ; MISTY
 	db 1,3,4,0  ; LT_SURGE
 	db 1,3,4,0  ; ERIKA
-	db 1,3,4,0  ; KOGA
+	db 1,2,3,4,0; KOGA
 	db 1,3,4,0  ; BLAINE
 	db 1,3,4,0  ; SABRINA
 	db 1,2,3,4,0; GENTLEMAN
 	db 1,3,4,0  ; RIVAL2
-	db 1,3,4,0  ; RIVAL3
+	db 1,2,3,4,0; RIVAL3
 	db 1,2,3,4,0; LORELEI
 	db 1,4,0    ; CHANNELER
 	db 1,3,4,0  ; AGATHA
 	db 1,3,4,0  ; LANCE
 	db 1,3,4,0  ; JANINE
 	db 1,3,4,0  ; JENNY
-	db 1,3,4,0  ; JOY
+	db 1,2,3,4,0; JOY
 	db 1,3,4,0  ; JESSIE_JAMES
 	db 1,2,3,4,0; MFUJI
 	db 1,2,3,4,0; SACHA

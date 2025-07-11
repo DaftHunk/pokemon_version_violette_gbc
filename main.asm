@@ -1800,15 +1800,6 @@ INCLUDE "custom_functions/fisher_yates.asm"
 INCLUDE "engine/battle/load_pics.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-TradingAnimationGraphics:
-INCBIN "gfx/tiles/game_boy.2bpp"
-INCBIN "gfx/tiles/link_cable.2bpp"
-TradingAnimationGraphicsEnd:
-
-; Pokeball traveling through the link cable.
-TradingAnimationGraphics2: INCBIN "gfx/tiles/trade2.2bpp"
-TradingAnimationGraphics2End:
-
 ;joenote - moved this out of trainer_ai.asm in bank $E to here. 
 ;Now there is lots of space for custom trainers and rosters
 INCLUDE "engine/battle/read_trainer_party.asm"
@@ -2129,3 +2120,11 @@ MapAreasUIEnd::
 FishingWaterIcons:: INCBIN "gfx/tiles/mon_fishing_water_icons.1bpp"
 ExtraMenuBorderConnectors:: INCBIN "gfx/tiles/extra_menu_border_connectors.2bpp"
 FromToChangeBoxPrompt:: INCBIN "gfx/tiles/from_to_change_box_prompt.2bpp"
+
+TradingAnimationGraphics:
+INCBIN "gfx/tiles/game_boy.2bpp"
+INCBIN "gfx/tiles/link_cable.2bpp"
+TradingAnimationGraphicsEnd:
+; Pokeball traveling through the link cable.
+TradingAnimationGraphics2: INCBIN "gfx/tiles/trade2.2bpp"
+TradingAnimationGraphics2End:

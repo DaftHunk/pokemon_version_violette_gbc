@@ -36,8 +36,8 @@ MoveEnd:
 	move STOMP,        FLINCH_SIDE_EFFECT2,         65, NORMAL,   100, 20
 	move DOUBLE_KICK,  ATTACK_TWICE_EFFECT,         30, FIGHTING, 100, 30
 	move MEGA_KICK,    NO_ADDITIONAL_EFFECT,       120, FIGHTING,  75,  5
-	move JUMP_KICK,    JUMP_KICK_EFFECT,            70, FIGHTING,  95, 25
-	move ROLLING_KICK, FLINCH_SIDE_EFFECT2,         60, FIGHTING,  85, 15
+	move JUMP_KICK,    JUMP_KICK_EFFECT,            85, FIGHTING,  95, 25
+	move ROLLING_KICK, FLINCH_SIDE_EFFECT2,         70, FIGHTING,  95, 15
 	move SAND_ATTACK,  ACCURACY_DOWN1_EFFECT,        0, GROUND,   100, 15
 	move HEADBUTT,     FLINCH_SIDE_EFFECT2,         70, NORMAL,   100, 15
 	move HORN_ATTACK,  NO_ADDITIONAL_EFFECT,        65, NORMAL,   100, 25
@@ -146,8 +146,8 @@ MoveEnd:
 	move AMNESIA,      SPECIAL_UP2_EFFECT,           0, PSYCHIC,  100, 20
 	move KINESIS,      ACCURACY_DOWN1_EFFECT,        0, PSYCHIC,   80, 15
 	move SOFTBOILED,   HEAL_EFFECT,                  0, NORMAL,   100, 10
-	move HI_JUMP_KICK, JUMP_KICK_EFFECT,            85, FIGHTING,  90, 20
-	move GLARE,        PARALYZE_EFFECT,              0, NORMAL,    75, 30
+	move HI_JUMP_KICK, JUMP_KICK_EFFECT,           100, FIGHTING,  90, 20
+	move GLARE,        PARALYZE_EFFECT,              0, DARK,     100, 30
 	move DREAM_EATER,  DREAM_EATER_EFFECT,         100, GHOST,    100, 15
 	move POISON_GAS,   POISON_EFFECT,                0, POISON,    55, 40
 	move BARRAGE,      TWO_TO_FIVE_ATTACKS_EFFECT,  15, GRASS,     85, 20
@@ -186,5 +186,5 @@ MoveEnd:
 	move SHADOW_BALL,  SPECIAL_DOWN_SIDE_EFFECT,    80, GHOST,    100, 15 ; dafthunk #128
 	move DRAGON_RUSH,  FLINCH_SIDE_EFFECT1,         80, DRAGON,   100, 15 ; dafthunk #128
 	move FLASH_CANNON, SPECIAL_DOWN_SIDE_EFFECT,    80, STEEL,    100, 15 ; dafthunk #128
-	move STRUGGLE,     RECOIL_EFFECT,               50, BIRD,     100, 1	;joenote - changed from normal to BIRD type (acts as typless)
+	move STRUGGLE,     RECOIL_EFFECT,               50, BIRD,     100, 1  ;joenote - changed from normal to BIRD type (acts as typless)
 MovesEndOfList:
