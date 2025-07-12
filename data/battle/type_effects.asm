@@ -63,6 +63,7 @@ TypeEffects:
 	db FLYING,      BUG,          20
 	db FLYING,      GRASS,        20
 	db FLYING,      ROCK,         05
+	db FLYING,      STEEL,        05
 	db PSYCHIC,     FIGHTING,     20
 	db PSYCHIC,     POISON,       20
 	db BUG,         FIRE,         05
