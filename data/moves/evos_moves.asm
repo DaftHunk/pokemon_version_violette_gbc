@@ -218,7 +218,6 @@ KangaskhanEvosMoves:
 	db 0
 
 NidoranMEvosMoves:
-;joenote-modified the moveliest of nidoking line to be like yellow
 ; Evolutions
 	db EV_LEVEL, 16, NIDORINO
 	db 0
@@ -268,7 +267,7 @@ VoltorbEvosMoves:
 	db 33, LIGHT_SCREEN
 	db 37, SWIFT
 	db 39, EXPLOSION
-	db 41, REFLECT	;joenote - added for late-game trainers
+	db 41, REFLECT
 	db 0
 
 NidokingEvosMoves:
@@ -313,7 +312,7 @@ IvysaurEvosMoves:
 ExeggutorEvosMoves:
 ; Evolutions
 	db 0
-; Learnset:joenote-made this more interesting for Trainer Green
+; Learnset
 	db 19, EGG_BOMB
 	db 25, REFLECT
 	db 28, STOMP
@@ -373,7 +372,6 @@ GengarEvosMoves:
 	db 42, DARK_PULSE
 	db 0
 
-;joenote-modified the moveliest of nidoqueen line to be like yellow
 NidoranFEvosMoves:
 ; Evolutions
 	db EV_LEVEL, 16, NIDORINA
@@ -403,7 +401,7 @@ CuboneEvosMoves:
 ; Evolutions
 	db EV_LEVEL, 28, MAROWAK
 	db 0
-; Learnset;joenote-modified for yellow
+; Learnset
 	db 5, TAIL_WHIP
 	db 9, BONE_CLUB
 	db 13, HEADBUTT
@@ -438,7 +436,6 @@ LaprasEvosMoves:
 	db 0
 
 ArcanineEvosMoves:
-;joenote - modified for fun
 ; Evolutions
 	db 0
 ; Learnset
@@ -516,7 +513,7 @@ ScytherEvosMoves:
 ; Evolutions
 	db EV_ITEM, METAL_COAT, 1, SCIZOR
 	db 0
-; Learnsetjoenote-modified for yellow
+; Learnset
 	db 6, FOCUS_ENERGY
 	db 12, PURSUIT
 	db 24, AGILITY
@@ -559,7 +556,7 @@ BlastoiseEvosMoves:
 PinsirEvosMoves:
 ; Evolutions
 	db 0
-; Learnset;joenote-modified for yellow
+; Learnset
 	db 7, FOCUS_ENERGY
 	db 13, BIND
 	db 19, SEISMIC_TOSS
@@ -573,7 +570,7 @@ PinsirEvosMoves:
 TangelaEvosMoves:
 ; Evolutions
 	db 0
-; Learnset	joenote-modified for yellow
+; Learnset
 	db 4, SLEEP_POWDER
 	db 10, ABSORB
 	db 13, POISONPOWDER
@@ -682,7 +679,7 @@ KadabraEvosMoves:
 	db EV_TRADE, 1, ALAKAZAM
 	db EV_ITEM, MOON_STONE, 35, ALAKAZAM
 	db 0
-; Learnset	;joenote - added Kinesis to be learned upon evolving
+; Learnset
 	db 16, CONFUSION
 	db 18, DISABLE
 	db 21, PSYBEAM
@@ -702,7 +699,7 @@ GravelerEvosMoves:
 	db 11, ROCK_THROW
 	db 21, SELFDESTRUCT
 	db 27, HARDEN
-	db 34, BODY_SLAM	;joenote - added for late-game trainers
+	db 34, BODY_SLAM
 	db 41, EARTHQUAKE
 	db 48, EXPLOSION
 	db 0
@@ -710,7 +707,7 @@ GravelerEvosMoves:
 ChanseyEvosMoves:
 ; Evolutions
 	db 0
-; Learnsetjoenote-modified for yellow
+; Learnset
 	db 5, GROWL
 	db 9, TAIL_WHIP
 	db 13, SOFTBOILED
@@ -836,7 +833,7 @@ GolemEvosMoves:
 	db 11, ROCK_THROW
 	db 21, SELFDESTRUCT
 	db 27, HARDEN
-	db 34, BODY_SLAM	;joenote - added for late-game trainers
+	db 34, BODY_SLAM
 	db 41, EARTHQUAKE
 	db 48, EXPLOSION
 	db 0
@@ -910,12 +907,12 @@ KoffingEvosMoves:
 ; Learnset
 	db 9, SMOG
 	db 17, SELFDESTRUCT
-	db 21, SLUDGE	;joenote - added for late-game trainers
+	db 21, SLUDGE
 	db 25, SMOKESCREEN
 	db 33, HAZE
 	db 38, SLUDGE_BOMB
 	db 41, EXPLOSION
-	db 45, MIMIC	;joenote - added for late-game trainers
+	db 45, MIMIC
 	db 0
 
 SneaselEvosMoves:
@@ -936,7 +933,7 @@ MankeyEvosMoves:
 ; Evolutions
 	db EV_LEVEL, 28, PRIMEAPE
 	db 0
-; Learnset;joenote-modified for yellow
+; Learnset
 	db 9, LOW_KICK
 	db 12, PURSUIT
 	db 15, KARATE_CHOP
@@ -1043,7 +1040,7 @@ VenonatEvosMoves:
 ; Evolutions
 	db EV_LEVEL, 31, VENOMOTH
 	db 0
-; Learnset;joenote-modified for yellow
+; Learnset
 	db 9, SUPERSONIC
 	db 17, CONFUSION
 	db 20, POISONPOWDER
@@ -1231,7 +1228,6 @@ VulpixEvosMoves:
 	db 0
 
 NinetalesEvosMoves:
-;-joenote - modified for fun
 ; Evolutions
 	db 0
 ; Learnset
@@ -1245,7 +1241,7 @@ PikachuEvosMoves:
 ; Evolutions
 	db EV_ITEM, THUNDER_STONE, 1, RAICHU
 	db 0
-; Learnset;joenote-modified to be like yellow version
+; Learnset
 	db 6, TAIL_WHIP
 	db 8, THUNDER_WAVE
 	db 11, QUICK_ATTACK
@@ -1262,7 +1258,7 @@ PikachuEvosMoves:
 RaichuEvosMoves:
 ; Evolutions
 	db 0
-; Learnset;joenote-modified just for fun
+; Learnset
 	db 11, TAIL_WHIP
 	db 13, THUNDER_WAVE
 	db 25, SLAM
@@ -1432,7 +1428,7 @@ JigglypuffEvosMoves:
 	db 39, DOUBLE_EDGE
 	db 0
 
-WigglytuffEvosMoves:	;joenote - modified for level-up moves
+WigglytuffEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
@@ -1446,7 +1442,6 @@ WigglytuffEvosMoves:	;joenote - modified for level-up moves
 	db 0
 
 EeveeEvosMoves:
-;joenote - the eevee line has been modified to be closer to yellow version
 ; Evolutions
 	db EV_ITEM, FIRE_STONE, 1, FLAREON
 	db EV_ITEM, THUNDER_STONE, 1, JOLTEON
@@ -1571,7 +1566,6 @@ PoliwhirlEvosMoves:
 PoliwrathEvosMoves:
 ; Evolutions
 	db 0
-;joenote - modified for fun
 ; Learnset
 	db 16, WATER_GUN
 	db 19, HYPNOSIS
@@ -1587,7 +1581,7 @@ WeedleEvosMoves:
 ; Learnset
 	db 0
 
-KakunaEvosMoves:	;joenote - gave harden
+KakunaEvosMoves:
 ; Evolutions
 	db EV_LEVEL, 10, BEEDRILL
 	db 0
@@ -1629,7 +1623,7 @@ DodrioEvosMoves:
 PrimeapeEvosMoves:
 ; Evolutions
 	db 0
-; Learnset;joenote-modified for yellow
+; Learnset
 	db 9, LOW_KICK
 	db 12, PURSUIT
 	db 15, KARATE_CHOP
@@ -1656,7 +1650,7 @@ DugtrioEvosMoves:
 VenomothEvosMoves:
 ; Evolutions
 	db 0
-; Learnsetjoenote-modified for yellow
+; Learnset
 	db 9, SUPERSONIC
 	db 17, CONFUSION
 	db 20, POISONPOWDER
@@ -1699,7 +1693,7 @@ CaterpieEvosMoves:
 ; Learnset
 	db 0
 
-MetapodEvosMoves: ;joenote - gave harden
+MetapodEvosMoves:
 ; Evolutions
 	db EV_LEVEL, 10, BUTTERFREE
 	db 0
@@ -1717,7 +1711,7 @@ ButterfreeEvosMoves:
 	db 15, SLEEP_POWDER
 	db 18, SUPERSONIC
 	db 23, WHIRLWIND
-	db 28, GUST;joenote - yellow update
+	db 28, GUST
 	db 34, PSYBEAM
 	db 40, BUG_BUZZ
 	db 0
@@ -1855,7 +1849,6 @@ KinglerEvosMoves:
 CloysterEvosMoves:
 ; Evolutions
 	db 0
-;joenote - modified for fun
 ; Learnset
 	db 9, SUPERSONIC
 	db 17, AURORA_BEAM
@@ -1878,13 +1871,13 @@ ElectrodeEvosMoves:
 	db 9, SCREECH
 	db 17, SONICBOOM
 	db 23, SELFDESTRUCT
-	db 29, REFLECT	;joenote - added for late-game trainers
+	db 29, REFLECT
 	db 34, LIGHT_SCREEN
 	db 40, SWIFT
 	db 44, EXPLOSION
 	db 0
 
-ClefableEvosMoves:	;joenote - modified to gain level up moves
+ClefableEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
@@ -1896,12 +1889,12 @@ WeezingEvosMoves:
 ; Learnset
 	db 9, SMOG
 	db 17, SELFDESTRUCT
-	db 21, SLUDGE	;joenote - added for late-game trainers
+	db 21, SLUDGE
 	db 25, SMOKESCREEN
 	db 33, HAZE
 	db 38, SLUDGE_BOMB
 	db 44, EXPLOSION
-	db 51, MIMIC	;joenote - added for late-game trainers
+	db 51, MIMIC
 	db 0
 
 PersianEvosMoves:
@@ -1918,7 +1911,7 @@ PersianEvosMoves:
 MarowakEvosMoves:
 ; Evolutions
 	db 0
-; Learnset	joenote-modified for yellow
+; Learnset
 	db 5, TAIL_WHIP
 	db 9, BONE_CLUB
 	db 13, HEADBUTT
@@ -1997,7 +1990,6 @@ PidgeotEvosMoves:
 StarmieEvosMoves:
 ; Evolutions
 	db 0
-;joenote-modified for fun
 ; Learnset
 	db 21, WATER_GUN
 	db 26, HARDEN
@@ -2195,7 +2187,7 @@ GeodudeEvosMoves:
 	db 11, ROCK_THROW
 	db 21, SELFDESTRUCT
 	db 26, HARDEN
-	db 31, BODY_SLAM	;joenote - added for late-game trainers
+	db 31, BODY_SLAM
 	db 36, EARTHQUAKE
 	db 41, EXPLOSION
 	db 0
@@ -2381,7 +2373,6 @@ GloomEvosMoves:
 VileplumeEvosMoves:
 ; Evolutions
 	db 0
-;joenote - modified for fun
 ; Learnset
 	db 15, POISONPOWDER
 	db 17, STUN_SPORE
@@ -2423,7 +2414,6 @@ WeepinbellEvosMoves:
 VictreebelEvosMoves:
 ; Evolutions
 	db 0
-;joenote-modified for fun
 ; Learnset
 	db 13, WRAP
 	db 18, POISONPOWDER
