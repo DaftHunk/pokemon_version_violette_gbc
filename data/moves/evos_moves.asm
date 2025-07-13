@@ -1310,7 +1310,7 @@ KabutoEvosMoves:
 	db EV_LEVEL, 40, KABUTOPS
 	db 0
 ; Learnset
-	db 10, ABSORB
+	db 10, LEECH_LIFE
 	db 19, LEER
 	db 28, SAND_ATTACK
 	db 46, MEGA_DRAIN
@@ -1321,7 +1321,7 @@ KabutopsEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 10, ABSORB
+	db 10, LEECH_LIFE
 	db 19, LEER
 	db 28, SAND_ATTACK
 	db 36, X_SCISSOR

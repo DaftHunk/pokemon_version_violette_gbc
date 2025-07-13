@@ -429,8 +429,8 @@ _ParasectDexEntry::
 	next "et un insecte. Le"
 
 	bage "champignon a pris"
-	next "le contrôle de"
-	next "son hôte"
+	next "le contrôle total"
+	next "de son hôte"
 	dex
 
 _PsyduckDexEntry::
@@ -732,13 +732,13 @@ _KabutoDexEntry::
 	dex
 
 _KabutopsDexEntry::
-	text "Sa forme élancée"
-	next "lui permet de"
-	next "nager rapidement."
+	text "On pense que ce"
+	next "#mon est venu"
+	next "sur la terre"
 
-	bage "Il lacère sa"
-	next "proie avant d'en"
-	next "absorber la vie"
+	bage "ferme pour suivre"
+	next "l'évolution de"
+	next "ses proies"
 	dex
 
 _HorseaDexEntry::
@@ -1037,23 +1037,23 @@ _MachampDexEntry::
 	dex
 
 _GolduckDexEntry::
-	text "Il nage avec"
-	next "élégance le long"
-	next "des côtes. Il est"
+	text "Il apparaît dans"
+	next "les étendues d'eau"
+	next "au crépuscule."
 
-	bage "souvent confondu"
-	next "avec le monstre"
-	next "japonais: Kappa"
+	bage "Si son front bri-"
+	next "lle, il se sert"
+	next "de sa télékinésie"
 	dex
 
 _HypnoDexEntry::
-	text "En fixant son"
-	next "adversaire, il"
-	next "l'assaille avec"
+	text "S'il est affamé,"
+	next "il endort les"
+	next "humains qu'il"
 
-	bage "les attaques Psy"
-	next "d'Hypnose et de"
-	next "Choc mental"
+	bage "rencontre pour se"
+	next "repaître de"
+	next "leurs rêves"
 	dex
 
 _GolbatDexEntry::

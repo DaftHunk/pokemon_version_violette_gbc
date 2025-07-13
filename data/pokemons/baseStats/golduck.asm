@@ -5,7 +5,7 @@ db 78 ; base defense
 db 85 ; base speed
 db 80 ; base special
 db WATER ; species type 1
-db WATER ; species type 2
+db PSYCHIC ; species type 2
 db 75 ; catch rate
 db 174 ; base exp yield
 INCBIN "gfx/pokemon/front/golduck.pic",0,1 ; 77, sprite dimensions
