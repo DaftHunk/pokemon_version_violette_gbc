@@ -7655,9 +7655,6 @@ InitWildBattle:
 	CheckEvent EVENT_ACTIVATE_GHOST_MAROWAK
 	jr nz, .isGhost
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;	ld a, [wCurOpponent]
-;	cp MAROWAK
-;	jr z, .isGhost
 	call IsGhostBattle
 	jr nz, .isNoGhost
 .isGhost

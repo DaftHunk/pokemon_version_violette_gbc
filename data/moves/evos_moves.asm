@@ -80,7 +80,7 @@ EvosMovesPointerTable:
 	dw DittoEvosMoves
 	dw MeowthEvosMoves
 	dw KrabbyEvosMoves
-	dw MissingNo4FEvosMoves
+	dw MarowrathEvosMoves
 	dw MissingNo50EvosMoves
 	dw MissingNo51EvosMoves
 	dw VulpixEvosMoves
@@ -1197,10 +1197,20 @@ KrabbyEvosMoves:
 	db 41, CRABHAMMER
 	db 0
 
-MissingNo4FEvosMoves:
+MarowrathEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 5, TAIL_WHIP
+	db 9, BONE_CLUB
+	db 13, HEADBUTT
+	db 17, LEER
+	db 21, CONFUSE_RAY
+	db 25, BONEMERANG
+	db 32, SHADOW_BALL
+	db 37, RAGE
+	db 42, DARK_PULSE
+	db 46, THRASH
 	db 0
 
 MissingNo50EvosMoves:

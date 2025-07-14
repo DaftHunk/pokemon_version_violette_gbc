@@ -1491,6 +1491,16 @@ _VictreebelDexEntry::
 	next "vivant"
 	dex
 
+_KingdraDexEntry::
+	text "Il emmagasine de"
+	next "l'énergie en"
+	next "restant dans les"
+
+	bage "fonds marins, là"
+	next "où rien d'autre"
+	next "ne peut survivre"
+	dex
+
 _SteelixDexEntry::
 	text "Il est recouvert"
 	next "d'une infinité"
@@ -1520,16 +1530,6 @@ _UmbreonDexEntry::
 	next "de sa peau"
 	dex
 
-_KingdraDexEntry::
-	text "Il emmagasine de"
-	next "l'énergie en"
-	next "restant dans les"
-
-	bage "fonds marins, là"
-	next "où rien d'autre"
-	next "ne peut survivre"
-	dex
-
 _SneaselDexEntry::
 	text "Ce Pokémon rusé se"
 	next "cache dans l'ombre"
@@ -1547,6 +1547,16 @@ _MisdreavusDexEntry::
 	bage "ainement. Il reg-"
 	next "arde ensuite ses"
 	next "victimes et rit"
+	dex
+
+_MarowrathDexEntry::
+	text "L'esprit vengeur"
+	next "de la mère d'Oss-"
+	next "elait, tuée par"
+
+	bage "la Team Rocket."
+	next "Vous avez appaisé"
+	next "sa colère"
 	dex
 
 _LarvitarDexEntry::

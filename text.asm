@@ -1651,6 +1651,19 @@ _SafariZoneAngryText::
 	line "sauvage se fâche!"
 	prompt
 
+; link battle
+_YouWinText::
+	text "  Gagné"
+	prompt
+
+_YouLoseText::
+	text "  Perdu"
+	prompt
+
+_DrawText::
+	text "Match nul"
+	prompt
+
 ; money related
 _PickUpPayDayMoneyText::
 	text "<PLAYER> ramasse:"

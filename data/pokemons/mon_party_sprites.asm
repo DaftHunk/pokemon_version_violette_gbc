@@ -150,12 +150,13 @@ MonPartyData:
 	db ICON_DRAGONITE     ; Dragonite
 	db ICON_MEWTWO        ; Mewtwo
 	db ICON_MEW           ; Mew
+	db ICON_KINGDRA       ; Kingdra
 	db ICON_STEELIX       ; Steelix
 	db ICON_SCIZOR        ; Scizor
 	db ICON_UMBREON       ; Umbreon
-	db ICON_KINGDRA       ; Kingdra
 	db ICON_SNEASEL       ; Sneasel
 	db ICON_MISDREAVUS    ; Misdreavus
+	db ICON_MAROWRATH     ; Marowrath
 	db ICON_LARVITAR      ; Larvitar
 	db ICON_PUPITAR       ; Pupitar
 	db ICON_TYRANITAR     ; Tyranitar

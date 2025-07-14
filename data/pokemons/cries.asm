@@ -78,7 +78,7 @@ CryData:
 	db $0E, $FF, $FF; Ditto
 	db $19, $77, $10; Meowth
 	db $20, $20, $E0; Krabby
-	db $22, $FF, $40; MissingNo.
+	db $08, $4F, $60; Marowrath
 	db $00, $00, $00; MissingNo.
 	db $0E, $E0, $60; MissingNo.
 	db $24, $4F, $10; Vulpix

@@ -77,7 +77,7 @@ MonsterNames:
 	db "Métamorph@"
 	db "Miaouss@@@"
 	db "Krabby@@@@"
-	db "MissingNo."
+	db "Osavengeur"
 	db "MissingNo."
 	db "MissingNo."
 	db "Goupix@@@@"

@@ -56,6 +56,15 @@ EndOfBattle:
 	res 1, a
 	ld [wUnusedD721], a
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	ld a, [wEscapedFromBattle]
+	and a
+	jp z, .skipEscapeBit
+
+	ld a, [wHowLatestBattleEnded]
+	set 0, a
+	ld [wHowLatestBattleEnded], a
+
+.skipEscapeBit
 	xor a
 	ld [wLowHealthAlarm], a ;disable low health alarm
 	ld [wChannelSoundIDs + Ch4], a
@@ -93,13 +102,16 @@ EndOfBattle:
 	ret
 
 YouWinText:
-	db "  Gagné@"
+	TX_FAR _YouWinText
+	db "@"
 
 YouLoseText:
-	db "  Perdu@"
+	TX_FAR _YouLoseText
+	db "@"
 
 DrawText:
-	db "Match nul@"
+	TX_FAR _DrawText
+	db "@"
 
 PickUpPayDayMoneyText:
 	TX_FAR _PickUpPayDayMoneyText

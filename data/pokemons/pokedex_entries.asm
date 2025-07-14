@@ -77,7 +77,7 @@ PokedexEntryPointers:
 	dw DittoDexEntry
 	dw MeowthDexEntry
 	dw KrabbyDexEntry
-	dw MissingNoDexEntry
+	dw MarowrathDexEntry
 	dw MissingNoDexEntry
 	dw MissingNoDexEntry
 	dw VulpixDexEntry
@@ -1328,3 +1328,11 @@ HoohDexEntry:
 	dw 199
 	TX_FAR _HoohDexEntry
 	db "@"
+
+MarowrathDexEntry:	
+	db "Gard'os@"
+	db 1,00
+	dw 340
+	TX_FAR _MarowrathDexEntry
+	db "@"
+	

@@ -9,9 +9,8 @@ _PokemonTower2Text_60c24::
 	text "L'âme de la mère"
 	line "a été apaisée."
 
-	para "Elle est partie"
-	line "vers l'autre"
-	cont "monde!"
+	para "Vous pouvez"
+	line "passer!"
 	done
 
 _PokemonTower6BattleText1::

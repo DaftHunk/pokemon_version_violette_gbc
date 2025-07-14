@@ -1893,6 +1893,10 @@ wObjectToHide:: ; d079
 wObjectToShow:: ; d07a
 	ds 1
 
+wHowLatestBattleEnded::
+; bit 0: set if ended with escape (wEscapedFromBattle)
+; bit 1: set if ended with caught
+; only reset at start of battle
 	ds 1
 
 wDefaultMap:: ; d07c

@@ -36,9 +36,9 @@ PokemonTower6Script0:
 	;joenote - set a bit to indicate this is a ghost marowak battle
 	SetEvent EVENT_ACTIVATE_GHOST_MAROWAK
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	ld a, MAROWAK
+	ld a, MAROWRATH
 	ld [wCurOpponent], a
-	ld a, 30
+	ld a, 32
 	ld [wCurEnemyLVL], a
 	ld a, $4
 	ld [wPokemonTower6CurScript], a
@@ -64,20 +64,20 @@ PokemonTower6Script4:
 	call UpdateSprites
 	ld a, $f0
 	ld [wJoyIgnore], a
+
+	; if used escape item or move
+	ld hl, wHowLatestBattleEnded
+	bit 0, [hl]
+	jr nz, .fleeOrLostBattle
+	; if caught
+	bit 1, [hl]
+	jr nz, .isMarowrathAppeased
+	; if defeated
 	ld a, [wBattleResult]
 	and a
-	jr nz, .asm_60b82
-	SetEvent EVENT_BEAT_GHOST_MAROWAK
-	ld a, $7
-	ld [hSpriteIndexOrTextID], a
-	call DisplayTextID
-	xor a
-	ld [wJoyIgnore], a
-	ld a, $0
-	ld [wPokemonTower6CurScript], a
-	ld [wCurMapScript], a
-	ret
-.asm_60b82
+	jr z, .isMarowrathAppeased
+	; else fallthrough
+.fleeOrLostBattle
 	ld a, $1
 	ld [wSimulatedJoypadStatesIndex], a
 	ld a, $10
@@ -88,6 +88,17 @@ PokemonTower6Script4:
 	ld hl, wd730
 	set 7, [hl]
 	ld a, $3
+	ld [wPokemonTower6CurScript], a
+	ld [wCurMapScript], a
+	ret
+.isMarowrathAppeased
+	SetEvent EVENT_BEAT_GHOST_MAROWAK
+	ld a, $7
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	xor a
+	ld [wJoyIgnore], a
+	ld a, $0
 	ld [wPokemonTower6CurScript], a
 	ld [wCurMapScript], a
 	ret
@@ -162,7 +173,7 @@ PokemonTower6Text7:
 	TX_ASM
 	ld hl, PokemonTower2Text_60c1f
 	call PrintText
-	ld a, MAROWAK
+	ld a, MAROWRATH
 	call PlayCry
 	call WaitForSoundToFinish
 	ld c, 30

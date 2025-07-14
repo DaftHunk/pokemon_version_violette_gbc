@@ -31,10 +31,6 @@ PrintBeginningBattleText:
 .pokemonTower
 	ld b, SILPH_SCOPE
 	call IsItemInBag
-;	ld a, [wEnemyMonSpecies2]
-;	ld [wcf91], a
-;	cp MAROWAK
-;	jr z, .isMarowak
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	;joenote - use a bit to determine if this is a ghost marowak battle
 	CheckEvent EVENT_ACTIVATE_GHOST_MAROWAK
@@ -63,12 +59,6 @@ PrintBeginningBattleText:
 	call PrintText
 	callab LoadEnemyMonData
 	callab MarowakAnim
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;joenote - make the ghost marowak female by capping attack dv to < 8
-	ld a, [wEnemyMonDVs]
-	and $7F
-	ld [wEnemyMonDVs], a
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, WildMonAppearedText
 	call PrintText
 

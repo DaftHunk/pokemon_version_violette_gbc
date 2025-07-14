@@ -117,6 +117,7 @@ ListNonEvolvingPkmn:
 	db TAUROS       ; $3C
 	db SNEASEL
 	db MISDREAVUS
+	db MAROWRATH
 ListMostEvolvedPkmn:
 	db ALAKAZAM     ; $95
 	db ARBOK        ; $2D
@@ -337,6 +338,7 @@ ListByGenderRatio:
 	db CHANSEY      ; $28
 	db KANGASKHAN   ; $02
 	db JYNX         ; $48
+	db MAROWRATH
 ;otherwise a pokemon not on this list are unsexed
 	db $00
 ; db MAGNEMITE    ; $AD
