@@ -1491,6 +1491,26 @@ _VictreebelDexEntry::
 	next "vivant"
 	dex
 
+_HeracrossDexEntry::
+	text "Sa force hercu-"
+	next "léenne lui permet"
+	next "de soulever et"
+
+	bage "de jeter plus de"
+	next "100 fois son"
+	next "poids"
+	dex
+
+_CrobatDexEntry::
+	text "En volant plus"
+	next "vite et discrète-"
+	next "ment, une nouve-"
+
+	bage "lle paire d'ailes"
+	next "pousse sur ses"
+	next "pattes arrière"
+	dex
+
 _KingdraDexEntry::
 	text "Il emmagasine de"
 	next "l'énergie en"
@@ -1519,6 +1539,26 @@ _ScizorDexEntry::
 	bage "d'oeil et donne"
 	next "l'impression"
 	next "d'avoir 3 têtes"
+	dex
+
+_HoundourDexEntry::
+	text "Il hurle dès"
+	next "l'aube pour déli-"
+	next "miter son territ-"
+
+	bage "oire. On l'entend"
+	next "à des kilomètres"
+	next "à la ronde"
+	dex
+
+_HoundoomDexEntry::
+	text "Les flammes malo-"
+	next "dorantes qui éma-"
+	next "nent de sa bouche"
+
+	bage "sont le résultat"
+	next "d'une combustion"
+	next "de toxines"
 	dex
 
 _UmbreonDexEntry::

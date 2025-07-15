@@ -79,14 +79,14 @@ const_value = 1
 	const MEOWTH       ; $4D
 	const KRABBY       ; $4E
 	const MAROWRATH    ; $4F
-	const MISSINGNO_50 ; $50
-	const MISSINGNO_51 ; $51
+	const HERACROSS    ; $50
+	const CROBAT       ; $51
 	const VULPIX       ; $52
 	const NINETALES    ; $53
 	const PIKACHU      ; $54
 	const RAICHU       ; $55
-	const MISSINGNO_56 ; $56
-	const MISSINGNO_57 ; $57
+	const HOUNDOUR     ; $56
+	const HOUNDOOM     ; $57
 	const DRATINI      ; $58
 	const DRAGONAIR    ; $59
 	const KABUTO       ; $5A

@@ -153,9 +153,13 @@ const_value = 0
 	const ICON_DRAGONITE
 	const ICON_MEWTWO
 	const ICON_MEW
+	const ICON_HERACROSS
+	const ICON_CROBAT
 	const ICON_KINGDRA
 	const ICON_STEELIX
 	const ICON_SCIZOR
+	const ICON_HOUNDOUR
+	const ICON_HOUNDOOM
 	const ICON_UMBREON
 	const ICON_SNEASEL
 	const ICON_MISDREAVUS

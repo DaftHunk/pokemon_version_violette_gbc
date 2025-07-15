@@ -81,14 +81,14 @@ EvosMovesPointerTable:
 	dw MeowthEvosMoves
 	dw KrabbyEvosMoves
 	dw MarowrathEvosMoves
-	dw MissingNo50EvosMoves
-	dw MissingNo51EvosMoves
+	dw HeracrossEvosMoves
+	dw CrobatEvosMoves
 	dw VulpixEvosMoves
 	dw NinetalesEvosMoves
 	dw PikachuEvosMoves
 	dw RaichuEvosMoves
-	dw MissingNo56EvosMoves
-	dw MissingNo57EvosMoves
+	dw HoundourEvosMoves
+	dw HoundoomEvosMoves
 	dw DratiniEvosMoves
 	dw DragonairEvosMoves
 	dw KabutoEvosMoves
@@ -1213,16 +1213,29 @@ MarowrathEvosMoves:
 	db 46, THRASH
 	db 0
 
-MissingNo50EvosMoves:
+HeracrossEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 7, FOCUS_ENERGY
+	db 13, BIND
+	db 19, SEISMIC_TOSS
+	db 25, HARDEN
+	db 31, GUILLOTINE
+	db 34, X_SCISSOR
+	db 37, SUBMISSION
+	db 43, SWORDS_DANCE
 	db 0
 
-MissingNo51EvosMoves:
+CrobatEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 10, SUPERSONIC
+	db 15, BITE
+	db 21, CONFUSE_RAY
+	db 32, WING_ATTACK
+	db 43, HAZE
 	db 0
 
 VulpixEvosMoves:
@@ -1277,16 +1290,31 @@ RaichuEvosMoves:
 	db 55, LIGHT_SCREEN
 	db 0
 
-MissingNo56EvosMoves:
+HoundourEvosMoves:
 ; Evolutions
+	db EV_LEVEL, 24, HOUNDOOM
 	db 0
 ; Learnset
+	db 9, EMBER
+	db 15, BITE
+	db 18, LEER
+	db 26, TAKE_DOWN
+	db 42, AGILITY
+	db 45, CRUNCH
+	db 50, FLAMETHROWER
 	db 0
 
-MissingNo57EvosMoves:
+HoundoomEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 10, EMBER
+	db 20, BITE
+	db 30, LEER
+	db 40, TAKE_DOWN
+	db 42, AGILITY
+	db 45, CRUNCH
+	db 50, FLAMETHROWER
 	db 0
 
 DratiniEvosMoves:
@@ -1770,6 +1798,7 @@ HypnoEvosMoves:
 
 GolbatEvosMoves:
 ; Evolutions
+	db EV_LEVEL, 35, CROBAT
 	db 0
 ; Learnset
 	db 10, SUPERSONIC

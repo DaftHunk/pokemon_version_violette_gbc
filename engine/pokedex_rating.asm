@@ -84,14 +84,14 @@ DexRatingsTable:
 	dw PokedexRatingText_4423d
 	db 140
 	dw PokedexRatingText_44242
-	db 159 ; dafthunk #19 took into account added mons
+	db 165 ; Everything except Mew & Hooh
 	dw PokedexRatingText_44247
+	db 167 ; Everything
+	dw PokedexRatingText_4424c
 	; dafthunk Handle MissingNo or error
-	db 161
+	db 168
 	dw PokedexRatingText_4424c
-	db 162
-	dw PokedexRatingText_4424c
-	db 163
+	db 169
 	dw PokedexRatingText_4424c
 
 PokedexRatingText_44201:

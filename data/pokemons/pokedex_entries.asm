@@ -78,14 +78,14 @@ PokedexEntryPointers:
 	dw MeowthDexEntry
 	dw KrabbyDexEntry
 	dw MarowrathDexEntry
-	dw MissingNoDexEntry
-	dw MissingNoDexEntry
+	dw HeracrossDexEntry
+	dw CrobatDexEntry
 	dw VulpixDexEntry
 	dw NinetalesDexEntry
 	dw PikachuDexEntry
 	dw RaichuDexEntry
-	dw MissingNoDexEntry
-	dw MissingNoDexEntry
+	dw HoundourDexEntry
+	dw HoundoomDexEntry
 	dw DratiniDexEntry
 	dw DragonairDexEntry
 	dw KabutoDexEntry
@@ -1252,11 +1252,25 @@ VictreebelDexEntry:
 	TX_FAR _VictreebelDexEntry
 	db "@"
 
-MissingNoDexEntry:
-	db "???@"
-	db 1,00 ; 1.0 m
-	dw 100 ; 10.0 kg
-	TX_FAR _MissingNoDexEntry
+HeracrossDexEntry:
+	db "Unicorne@"
+	db 1,50
+	dw 540
+	TX_FAR _HeracrossDexEntry
+	db "@"
+
+CrobatDexEntry:
+	db "Chovsouris@"
+	db 1,80
+	dw 750
+	TX_FAR _CrobatDexEntry
+	db "@"
+
+KingdraDexEntry:
+	db "Dragon@"
+	db 1,80
+	dw 152
+	TX_FAR _KingdraDexEntry
 	db "@"
 
 SteelixDexEntry:
@@ -1273,18 +1287,25 @@ ScizorDexEntry:
 	TX_FAR _ScizorDexEntry
 	db "@"
 
+HoundourDexEntry:
+	db "Sombre@"
+	db 0,60
+	dw 108
+	TX_FAR _HoundourDexEntry
+	db "@"
+
+HoundoomDexEntry:
+	db "Sombre@"
+	db 1,00
+	dw 350
+	TX_FAR _HoundoomDexEntry
+	db "@"
+
 UmbreonDexEntry:
 	db "Lune@"
 	db 1,00
 	dw 27
 	TX_FAR _UmbreonDexEntry
-	db "@"
-
-KingdraDexEntry:
-	db "Dragon@"
-	db 1,80
-	dw 152
-	TX_FAR _KingdraDexEntry
 	db "@"
 
 SneaselDexEntry:
@@ -1299,6 +1320,13 @@ MisdreavusDexEntry:
 	db 0,70
 	dw 1
 	TX_FAR _MisdreavusDexEntry
+	db "@"
+
+MarowrathDexEntry:
+	db "Gard'os@"
+	db 1,00
+	dw 340
+	TX_FAR _MarowrathDexEntry
 	db "@"
 
 LarvitarDexEntry:
@@ -1329,10 +1357,10 @@ HoohDexEntry:
 	TX_FAR _HoohDexEntry
 	db "@"
 
-MarowrathDexEntry:	
-	db "Gard'os@"
-	db 1,00
-	dw 340
-	TX_FAR _MarowrathDexEntry
+MissingNoDexEntry:
+	db "???@"
+	db 1,00 ; 1.0 m
+	dw 100 ; 10.0 kg
+	TX_FAR _MissingNoDexEntry
 	db "@"
 	

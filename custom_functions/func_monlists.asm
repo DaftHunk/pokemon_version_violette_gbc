@@ -7,6 +7,7 @@ ListSafariSpecial:
 	db VICTREEBEL   ; $BE
 	db EXEGGUTOR    ; $0A
 	db RHYDON       ; $01
+	db HERACROSS
 	db $00
 
 ListRealPkmn:
@@ -76,7 +77,8 @@ ListNonLegendPkmn:
 	db ZUBAT        ; $6B
 	db LARVITAR
 	db SCYTHER      ; $1A
-	db ONIX         ; $22
+	db ONIX         ; $22	
+	db HOUNDOUR
 ListMidEvolvedPkmn:
 	db CHARMELEON   ; $B2
 	db DRAGONAIR    ; $59
@@ -118,6 +120,7 @@ ListNonEvolvingPkmn:
 	db SNEASEL
 	db MISDREAVUS
 	db MAROWRATH
+	db HERACROSS
 ListMostEvolvedPkmn:
 	db ALAKAZAM     ; $95
 	db ARBOK        ; $2D
@@ -179,6 +182,8 @@ ListMostEvolvedPkmn:
 	db TYRANITAR
 	db UMBREON
 	db TYRANITAR
+	db CROBAT
+	db HOUNDOOM
 	db $00
 
 	
@@ -324,6 +329,10 @@ ListByGenderRatio:
 	db LARVITAR
 	db PUPITAR
 	db TYRANITAR
+	db HERACROSS
+	db CROBAT
+	db HOUNDOUR
+	db HOUNDOOM
 ;126 to 131 are 3-1 ratio --> atk dv >= 12 is male
 	db CLEFAIRY     ; $04
 	db CLEFABLE     ; $8E

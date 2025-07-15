@@ -79,14 +79,14 @@ CryData:
 	db $19, $77, $10; Meowth
 	db $20, $20, $E0; Krabby
 	db $08, $4F, $60; Marowrath
-	db $00, $00, $00; MissingNo.
-	db $0E, $E0, $60; MissingNo.
+	db $14, $00, $80; Heracross
+	db $1D, $FA, $80; Crobat
 	db $24, $4F, $10; Vulpix
 	db $24, $88, $60; Ninetales
 	db $0F, $EE, $01; Pikachu
 	db $09, $EE, $08; Raichu
-	db $00, $00, $00; MissingNo.
-	db $00, $00, $00; MissingNo.
+	db $1F, $20, $40; Houndour
+	db $15, $00, $80; Houndoom
 	db $0F, $60, $40; Dratini
 	db $0F, $40, $80; Dragonair
 	db $16, $BB, $40; Kabuto
