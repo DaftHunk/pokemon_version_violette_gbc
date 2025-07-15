@@ -1,9 +1,9 @@
 db DEX_MAROWRATH ; pokedex id
-db 60 ; base hp
+db 70 ; base hp
 db 80 ; base attack
 db 110 ; base defense
-db 45 ; base speed
-db 80 ; base special
+db 50 ; base speed
+db 100 ; base special
 db FIRE ; species type 1
 db GHOST ; species type 2
 db 75 ; catch rate

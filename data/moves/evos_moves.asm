@@ -443,6 +443,7 @@ ArcanineEvosMoves:
 	db 20, BITE
 	db 30, LEER
 	db 40, TAKE_DOWN
+	db 42, AGILITY
 	db 45, CRUNCH
 	db 50, FLAMETHROWER
 	db 0

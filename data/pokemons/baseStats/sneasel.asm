@@ -1,9 +1,9 @@
 db DEX_SNEASEL ; pokedex id
-db 55 ; base hp
-db 95 ; base attack
-db 55 ; base defense
-db 35 ; base speed
-db 95 ; base special
+db 70 ; base hp
+db 90 ; base attack
+db 65 ; base defense
+db 110 ; base speed
+db 100 ; base special
 db DARK ; species type 1
 db ICE ; species type 2
 db 60 ; catch rate

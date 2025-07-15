@@ -1276,14 +1276,14 @@ KingdraDexEntry:
 SteelixDexEntry:
 	db "Serpenfer@"
 	db 9,20
-	dw 400
+	dw 4000
 	TX_FAR _SteelixDexEntry
 	db "@"
 
 ScizorDexEntry:
 	db "Pince@"
 	db 1,80
-	dw 118
+	dw 1180
 	TX_FAR _ScizorDexEntry
 	db "@"
 
@@ -1304,21 +1304,21 @@ HoundoomDexEntry:
 UmbreonDexEntry:
 	db "Lune@"
 	db 1,00
-	dw 27
+	dw 270
 	TX_FAR _UmbreonDexEntry
 	db "@"
 
 SneaselDexEntry:
 	db "Grifacérée@"
 	db 0,90
-	dw 28
+	dw 280
 	TX_FAR _SneaselDexEntry
 	db "@"
 
 MisdreavusDexEntry:
 	db "Strident@"
 	db 0,70
-	dw 1
+	dw 10
 	TX_FAR _MisdreavusDexEntry
 	db "@"
 
@@ -1332,28 +1332,28 @@ MarowrathDexEntry:
 LarvitarDexEntry:
 	db "Peaupierre@"
 	db 0,60
-	dw 72
+	dw 720
 	TX_FAR _LarvitarDexEntry
 	db "@"
 
 PupitarDexEntry:
 	db "Carapadure@"
 	db 1,20
-	dw 152
+	dw 1520
 	TX_FAR _PupitarDexEntry
 	db "@"
 
 TyranitarDexEntry:
 	db "Armure@"
 	db 2,00
-	dw 202
+	dw 2020
 	TX_FAR _TyranitarDexEntry
 	db "@"
 
 HoohDexEntry:
 	db "Arcenciel@"
 	db 3,80
-	dw 199
+	dw 1990
 	TX_FAR _HoohDexEntry
 	db "@"
 
@@ -1363,4 +1363,3 @@ MissingNoDexEntry:
 	dw 100 ; 10.0 kg
 	TX_FAR _MissingNoDexEntry
 	db "@"
-	

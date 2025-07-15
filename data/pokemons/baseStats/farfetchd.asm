@@ -4,8 +4,8 @@ db 135 ; base attack
 db 95 ; base defense
 db 65 ; base speed
 db 70 ; base special
-db FIGHTING ; species type 1
-db FLYING ; species type 2
+db FLYING ; species type 1
+db FIGHTING ; species type 2
 db 45 ; catch rate
 db 94 ; base exp yield
 INCBIN "gfx/pokemon/front/farfetchd.pic",0,1 ; 66, sprite dimensions
