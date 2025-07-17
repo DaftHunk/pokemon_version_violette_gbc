@@ -709,7 +709,7 @@ Mansion4HiddenObjects:
 	dw Mansion4Script_Switches
 	db $FF
 Route23HiddenObjects:
-	db $2c,$09,FULL_RESTORE
+	db $2c,$13,FULL_RESTORE
 	dbw BANK(HiddenItems),HiddenItems
 	db $46,$13,ULTRA_BALL
 	dbw BANK(HiddenItems),HiddenItems

@@ -11,13 +11,13 @@ Route23Object:
 	sign 3, 33, 8 ; Route23Text8
 
 	db 7 ; objects
-	object SPRITE_GUARD, 4, 35, STAY, DOWN, 1 ; person
-	object SPRITE_GUARD, 10, 56, STAY, DOWN, 2 ; person
-	object SPRITE_SWIMMER, 8, 85, STAY, DOWN, 3 ; person
-	object SPRITE_SWIMMER, 11, 96, STAY, DOWN, 4 ; person
-	object SPRITE_GUARD, 12, 105, STAY, DOWN, 5 ; person
-	object SPRITE_GUARD, 8, 119, STAY, DOWN, 6 ; person
-	object SPRITE_GUARD, 8, 136, STAY, DOWN, 7 ; person
+	object SPRITE_GUARD,  4,  35, STAY, DOWN, 1 ; Earth Badge
+	object SPRITE_GUARD, 10,  56, STAY, DOWN, 2 ; Volcano Badge
+	object SPRITE_GUARD, 10,  70, STAY, DOWN, 3 ; Marsh Badge
+	object SPRITE_GUARD,  9,  90, STAY, DOWN, 4 ; Soul Badge
+	object SPRITE_GUARD, 12, 105, STAY, DOWN, 5 ; Rainbow Badge
+	object SPRITE_GUARD,  8, 119, STAY, DOWN, 6 ; Thunder Badge
+	object SPRITE_GUARD,  8, 136, STAY, DOWN, 7 ; Cascade Badge
 
 	; warp-to
 	warp_to 7, 139, ROUTE_23_WIDTH ; ROUTE_22_GATE
