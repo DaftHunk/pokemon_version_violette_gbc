@@ -1,6 +1,6 @@
 VolcanoB1FMons:
 	db $0A
-	db 38,PONYTA
+	db 38,GROWLITHE
 	db 36,NINETALES
 	db 37,GRAVELER
 	db 36,PONYTA

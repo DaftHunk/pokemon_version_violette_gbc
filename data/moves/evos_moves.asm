@@ -1222,7 +1222,6 @@ HeracrossEvosMoves:
 	db 13, BIND
 	db 19, SEISMIC_TOSS
 	db 25, HARDEN
-	db 31, GUILLOTINE
 	db 34, X_SCISSOR
 	db 37, SUBMISSION
 	db 43, SWORDS_DANCE
