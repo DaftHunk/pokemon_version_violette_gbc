@@ -1885,8 +1885,8 @@ _WhatText::
 	done
 
 _ViewModeText::
-	text "Mode consultation"
-	line "de Box activé."
+	text "Mode"
+	line "Consultation."
 	done
 
 _DepositWhichMonText::
@@ -1933,7 +1933,11 @@ _CantTakeMonText::
 	cont "#mon."
 
 	para "Stockez d'abord"
-	line "un #mon."
+	line "un #mon ou"
+	cont "appuyez sur"
+	cont "SELECT pour"
+	cont "passer en Mode"
+	cont "Consultation."
 	prompt
 
 _ReleaseWhichMonText::

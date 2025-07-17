@@ -144,11 +144,12 @@ IF DEF(_DEBUG)
 	ld hl, wPokedexOwned
 	ld b, wPokedexOwnedEnd - wPokedexOwned - 1
 	call DebugSetPokedexEntries
-	ld [hl], %00000001
+	ld [hl], %01111111
+;	ld [hl], %00001111
 	ld hl, wPokedexSeen
 	ld b, wPokedexSeenEnd - wPokedexSeen - 1
 	call DebugSetPokedexEntries
-	ld [hl], %00000001
+	ld [hl], %01111111
 	ld hl, wMovedexSeen
 	ld b, wMovedexSeenEnd - wMovedexSeen
 	call DebugSetPokedexEntries
@@ -254,6 +255,8 @@ DebugItemsList:
 	db CARD_KEY, 1
 	db S_S_TICKET, 1
 	db LIFT_KEY, 1
+	db SILPH_SCOPE, 1
+	db POKE_DOLL, 1
 	db -1 ; end
 
 DebugUnusedList:
