@@ -2,7 +2,7 @@
 name: Question
 about: Inquire about how something works or what some code is doing
 title: 'Question: <Insert a Descriptive Title>'
-labels: question
+labels: ''
 assignees: ''
 
 ---
