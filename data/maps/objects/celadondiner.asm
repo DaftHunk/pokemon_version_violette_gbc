@@ -13,7 +13,7 @@ CeladonDinerObject:
 	object SPRITE_FAT_BALD_GUY, 1, 4, STAY, DOWN, 3 ; person
 	object SPRITE_FISHER2, 5, 3, STAY, RIGHT, 4 ; person
 	object SPRITE_GYM_HELPER, 0, 1, STAY, DOWN, 5 ; person
-	object SPRITE_OAK_AIDE, 5, 5, STAY, RIGHT, 6 ;joenote - added NPC for catch-up exp boost
+	object SPRITE_OAK_AIDE, 5, 5, STAY, RIGHT, 6 ;person
 	
 	; warp-to
 	warp_to 3, 7, CELADON_DINER_WIDTH

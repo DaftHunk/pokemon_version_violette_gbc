@@ -58,35 +58,11 @@ _CeladonDinerText_491b7::
 	text "Faut qu'j'me"
 	line "refasse..."
 	done
-;joenote - add text for catch-up exp boost
-_CeladonDiner_EXPCatchUpON::
-	text "Cette sauce Maggi"
-	line "est Maggistrale"
-	cont "pour mes études."
-	
-	para "Elle permet"
-	line "aux #mon plus"
-	cont "faibles de donner"
-	cont "plus d'exp."
-	cont "Tu veux essayer?"
-	done
-	
-_CeladonDiner_EXPCatchUpOFF::
-	text "C'est trop salé à"
-	line "ton goût?"
-	
-	para "Je peux en annuler"
-	line "les effets avec du"
-	cont "Sucre, ça te va?"
-	done
-	
-_CeladonDiner_AideQ_done::
-	text "Okay, c'est fait."
-	done
-	
-_CeladonDiner_AideQ_reject::
-	text "Non? Très bien."
-	line "Reviens me voir"
-	cont "si tu changes"
-	cont "d'avis."
+
+_CeladonDiner_Aide::
+	text "Je viens ici tous"
+	line "les jours!"
+
+	para "Leur sauce est"
+	line "MAGI-STRALE!"
 	done

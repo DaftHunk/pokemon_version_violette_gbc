@@ -51,6 +51,8 @@ HallofFameRoomScript2:
 	SetEvent EVENT_ELITE_4_BEATEN ;if the elite 4 have been beaten, set the event flag for it
 	; After beating elite 4 level scaling is now enabled
 	SetEvent EVENT_TRAINER_LVL_SCALING
+	; After beating elite 4 catch up xp boost is enabled
+	SetEvent EVENT_ENABLE_CATCH_UP_BOOST
 .next
 	xor a
 	ld [wHallOfFameRoomCurScript], a
