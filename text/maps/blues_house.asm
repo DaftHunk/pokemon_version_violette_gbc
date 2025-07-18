@@ -54,7 +54,7 @@ _BluesHouseText2AfterElite4::
 
 _BluesHouseText3::
 	text "Une carte de"
-	line "Kanto! Ca serait"
+	line "Kanto! Ça serait"
 	cont "cool de l'avoir,"
 	cont "non?"
 	done

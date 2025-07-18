@@ -6,9 +6,9 @@ _CinnabarMartText2::
 	done
 
 _CinnabarMartText3::
-	text "Ca fait pas de"
+	text "Ça fait pas de"
 	line "mal d'être plein"
-	cont "d'objets! Ca fait"
+	cont "d'objets! Ça fait"
 	cont "même plutôt du"
 	cont "bien!"
 	done

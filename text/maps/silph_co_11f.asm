@@ -162,7 +162,7 @@ _SilphCo10Text_6237b::
 
 _SilphCo11Text6::
 	text "James:..."
-	line "Ca craint..."
+	line "Ça craint..."
 	done
 
 ;;;;;;;;;;;;;;;;;;;;;;joenote - adding text for Chief battle

@@ -23,7 +23,7 @@ _RivalChampionIntroText::
 	cont "tous les types de"
 	cont "#mon!"
 
-	para "Ca t'épate, hein?"
+	para "Ça t'épate, hein?"
 
 	para "Je suis le"
 	line "champion #mon!"
@@ -87,7 +87,7 @@ _RivalText_AfterBattle::
 	cont "champion #mon!"
 
 	para "Alors ça..."
-	line "Ca me la coupe."
+	line "Ça me la coupe."
 	done
 
 _OakCallOutroText::
@@ -227,6 +227,6 @@ _RematchRivalText_AfterCombatText::
 	cont "nouveau maître"
 	cont "d'arêne."
 
-	para "Ca ça en jette,"
+	para "Ça ça en jette,"
 	line "minable!"
 	done

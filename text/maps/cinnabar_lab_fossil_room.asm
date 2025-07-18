@@ -20,7 +20,7 @@ _Lab4Text_75dcb::
 	done
 
 _Lab4Text_75dd0::
-	text "Ca va prendre du"
+	text "Ça va prendre du"
 	line "temps!"
 
 	para "Va te promener"
@@ -71,7 +71,7 @@ _Lab4Text_610b3::
 	prompt
 
 _Lab4Text_610b8::
-	text "Ca va prendre un"
+	text "Ça va prendre un"
 	line "peu de temps!"
 
 	para "Traîne pas dans"

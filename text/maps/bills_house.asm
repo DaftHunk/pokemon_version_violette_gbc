@@ -92,7 +92,7 @@ _BillsHouseText_1e8cb::
 	cont "changer de boîte"
 	cont "PC à distance!"
 
-	para "Cool, nan? Ca"
+	para "Cool, nan? Ça"
 	line "va cartonner,"
 	cont "c'est sûr!"
 	done

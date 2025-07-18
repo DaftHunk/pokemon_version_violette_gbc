@@ -31,7 +31,7 @@ _Route24Text_51526::
 	cont "#mon très"
 	cont "méchants!"
 
-	para "Ca t'intéresse?"
+	para "Ça t'intéresse?"
 
 	para "T'es sûr?"
 

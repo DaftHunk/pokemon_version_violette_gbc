@@ -96,7 +96,7 @@ _MtMoonB2FAfterBattleText3::
 	done
 
 _MtMoonB2FBattleText4::
-	text "Ca bosse dur"
+	text "Ça bosse dur"
 	line "ici!"
 	cont "Alors du balai,"
 	cont "le mouflet!"

@@ -21,7 +21,7 @@ _Route12Text14::
 	done
 
 _Route12BattleText1::
-	text "Ouais! Ca mord"
+	text "Ouais! Ça mord"
 	line "dans l'coin!"
 	done
 

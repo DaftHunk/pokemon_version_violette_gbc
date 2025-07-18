@@ -14,7 +14,7 @@ SafariZoneEntranceText_9e6e4::
 	text_end
 
 SafariZoneEntranceText_9e747::
-	text "Ca fera 500¥"
+	text "Ça fera 500¥"
 	line "siouplaît!"
 
 	para "Seul un certain"

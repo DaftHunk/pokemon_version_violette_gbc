@@ -55,7 +55,7 @@ _CeladonGameCornerText4::
 	text "Ces machines ont"
 	line "des mécanismes"
 	cont "différents... "
-	cont "Ca c'est sûr!"
+	cont "Ça c'est sûr!"
 	done
 
 _CeladonGameCornerText_48d9c::
@@ -75,7 +75,7 @@ _CeladonGameCornerText_48da7::
 
 _CeladonGameCornerText_48dac::
 	text "La chance..."
-	line "Ca craint."
+	line "Ça craint."
 	done
 
 _CeladonGameCornerText6::

@@ -344,7 +344,7 @@ MagikarpSalesmanText_FlyingPikachu:
 	cont "minuscule somme"
 	cont "de 9000¥!"
 	
-	para "Ca te tente?"
+	para "Ça te tente?"
 	done
 	db "@"
 

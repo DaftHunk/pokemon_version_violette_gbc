@@ -12,7 +12,7 @@ _CeruleanTrashedText_1d6ab::
 	cont "creuser des"
 	cont "Tunnels!"
 
-	para "Ca m'a coûté les"
+	para "Ça m'a coûté les"
 	line "yeux de la tête!"
 	done
 

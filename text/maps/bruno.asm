@@ -36,7 +36,7 @@ _RematchBrunoBeforeBattleText::
 	text "Salut Champion!"
 
 	para "T'veux t'battre?"
-	line "Ca c'est c'que"
+	line "Ça c'est c'que"
 	cont "j'aime entendre!"
 
 	para "J'te préviens, je"

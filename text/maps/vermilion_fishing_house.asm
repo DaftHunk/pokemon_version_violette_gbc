@@ -49,7 +49,7 @@ _VermilionHouse2Text_560c5::
 	text "B'jour à toi,"
 	line "<PLAYER>!"
 
-	para "Ca mord?"
+	para "Ça mord?"
 	line "Hein? Hein?"
 	done
 

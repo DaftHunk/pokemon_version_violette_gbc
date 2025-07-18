@@ -37,7 +37,7 @@ _CeruleanCityText_19677::
 	cont "montré ses"
 	cont "#mon rares!"
 
-	para "Ca m'a rajouté"
+	para "Ça m'a rajouté"
 	line "plein d'pages sur"
 	cont "mon bô #dex!"
 

@@ -491,7 +491,7 @@ _OaksLabText_44229::
 
 _OaksLabText_4422e::
 	text "Mirobolant!"
-	line "Ca n'a pas dû"
+	line "Ça n'a pas dû"
 	cont "être facile!"
 	done
 

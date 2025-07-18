@@ -37,7 +37,7 @@ _NurseJoyBattleText::
 	cont "collection"
 	cont "des badges."
 
-	para "Ca serait un imm-"
+	para "Ça serait un imm-"
     line "ense honneur de"
     cont "me tester contre"
 	cont "le nouveau"
@@ -66,7 +66,7 @@ _NurseJoyRefusedText::
 
 _NurseJoyAcceptedText::
 	text "Merci!"
-	line "Ca veux dire beau-"
+	line "Ça veux dire beau-"
 	cont "coup pour moi."
 	
 	para "Je vais me donner"

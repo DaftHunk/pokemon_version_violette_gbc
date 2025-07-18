@@ -284,7 +284,7 @@ _CinnabarGymText_GuideTip::
 
 	para "Prends donc des"
 	line "Anti-Brûle avec"
-	cont "toi! Ca peut"
+	cont "toi! Ça peut"
 	cont "toujours servir!"
 	done
 

@@ -26,7 +26,7 @@ _RandTrainerIntro::
 	done
 	
 _RandTrainerChallenge::
-	text "Ca te dit de les"
+	text "Ça te dit de les"
 	line "tester?"
 
 	para "Je te donnerai"

@@ -93,7 +93,7 @@ charmap "à", $BB
 charmap "è", $BC
 charmap "ù", $BD
 charmap "ç", $BE
-charmap "î", $BF
+charmap "Ç", $BF
 ;;;;;;;;;;;;;;;;
 ; $C0
 ; Space left empty
@@ -107,7 +107,7 @@ charmap "û", $DA
 charmap "ê", $DB
 charmap "ä", $DC
 charmap "ö", $DD
-charmap "ü", $DE
+charmap "î", $DE
 charmap "ë", $DF
 
 charmap "(", $9A

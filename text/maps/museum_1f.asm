@@ -70,7 +70,7 @@ _Museum1FText_5c28e::
 	cont "dans ce morceau"
 	cont "d'ambre."
 
-	para "Ca serait super"
+	para "Ça serait super"
 	line "cool génial de"
 	cont "régénérer un"
 	cont "#mon à partir"

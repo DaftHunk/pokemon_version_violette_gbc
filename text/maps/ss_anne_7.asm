@@ -14,7 +14,7 @@ _SSAnne7RubText::
 _ReceivingHM01Text::
 	text "Capitaine: Merci"
 	line "moussaillon!"
-	cont "Ca va beaucoup"
+	cont "Ça va beaucoup"
 	cont "mieux..."
 
 	para "Mille sabords!"

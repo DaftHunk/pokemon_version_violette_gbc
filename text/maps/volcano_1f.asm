@@ -48,7 +48,7 @@ _Volcano1FText2_Battle::
 
 _Volcano1FText2_EndBattle::
 	text "Ayah!"
-	line "Ca brûle!"
+	line "Ça brûle!"
 	prompt
 
 _Volcano1FText2_AfterBattle::

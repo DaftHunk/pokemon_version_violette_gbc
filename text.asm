@@ -53,7 +53,7 @@ _NothingHereText::
 
 _ItsABiteText::
 	text "Oh!"
-	line "Ca mord!!!"
+	line "Ça mord!!!"
 	prompt
 
 _ExclamationText::
@@ -542,7 +542,7 @@ _CeladonCityHotelText::
 	text "Je suis en"
 	line "vacances avec ma"
 	cont "soeur... "
-	cont "Ca craint à mort!"
+	cont "Ça craint à mort!"
 	done
 
 _BookcaseText::
@@ -3048,7 +3048,7 @@ _VitaminStatRoseText::
 	prompt
 
 _VitaminNoEffectText::
-	text "Ca ne marche pas."
+	text "Ça ne marche pas."
 	prompt
 
 _ThrewBaitText::
@@ -3065,7 +3065,7 @@ _PlayedFluteNoEffectText::
 	text "Vous jouez de la"
 	line "#Flute."
 
-	para "Super!!! Ca c'est"
+	para "Super!!! Ça c'est"
 	line "d'la zique!"
 	prompt
 
