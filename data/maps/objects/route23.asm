@@ -8,7 +8,7 @@ Route23Object:
 	warp 14, 31, 1, VICTORY_ROAD_2
 
 	db 1 ; signs
-	sign 3, 33, 8 ; Route23Text8
+	sign 3, 35, 8 ; Route23Text8
 
 	db 7 ; objects
 	object SPRITE_GUARD,  4,  35, STAY, DOWN, 1 ; Earth Badge
