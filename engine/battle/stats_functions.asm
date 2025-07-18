@@ -168,17 +168,23 @@ ReduceSpeed:
 ;joenote - this function puts statexp per enemy pkmn level into de
 ;requires a, b, hl, de, and wCurEnemyLVL
 CalcEnemyStatEXP:
-;	ld a, [wOptions]	;load game options
-;	bit BIT_BATTLE_HARD, a			;check for hard mode
-;	jr z, .loadzero		;load zero stat exp if not on hard mode
+	; always 100 on hard mode
+	ld a, [wOptions] ; load game options
+	bit BIT_BATTLE_HARD, a ; check for hard mode
+	jr nz, .maxStats
+
+	; no stat exp for levels 5 or lower
 	ld a, [wCurEnemyLVL]
 	cp 6
-	jr c, .loadzero	;no stat exp for levels 5 or lower
-	cp 100	;make it so lvl maxes out at lvl 100
+	jr c, .loadzero
+
+	; make it so lvl maxes out at lvl 100
+	cp 100
 	jr c, .next
+	; fallthrough lvl 100
+.maxStats
 	ld a, 100
 .next
-
 	ld b, a
 	inc b
 	ld a, 6
