@@ -74,18 +74,23 @@ SpecialTrainerMoves:
 	db 0
 
 ;BrockData:
-;	db $FF,12,GEODUDE,14,ONIX,0
+;	db $FF,12,GEODUDE,13,RHYHORN,14,ONIX,0
 	db BROCK,$1
 	; 12,GEODUDE
 	db 1,1,TACKLE
 	db 1,2,DEFENSE_CURL
 	db 1,3,ROCK_THROW
 	; db 1,4
-	; 14,ONIX
-	db 2,1,CONSTRICT
-	db 2,2,ROCK_THROW
+	; 13,RHYHORN
+	db 2,1,HORN_ATTACK
+	db 2,2,STOMP
 	db 2,3,BIDE
-	db 2,4,BIND
+	; db 2,4
+	; 14,ONIX
+	db 3,1,CONSTRICT
+	db 3,2,ROCK_THROW
+	db 3,3,BIDE
+	db 3,4,BIND
 	db 0
 
 ; Rematch
@@ -179,13 +184,23 @@ SpecialTrainerMoves:
 	db 0
 
 ;LtSurgeData:
-;	db $FF,29,RAICHU,0
+;	db $FF,24,MAGNEMITE,23,JOLTEON,29,RAICHU,0
 	db LT_SURGE,$1
+	; 24,MAGNEMITE
+	db 1,1,THUNDERSHOCK
+	db 1,2,SUPERSONIC
+	db 1,3,THUNDER_WAVE
+	db 1,4,SONICBOOM
+	; 23,JOLTEON
+	db 2,1,THUNDERSHOCK
+	db 2,2,SAND_ATTACK
+	db 2,3,QUICK_ATTACK
+	db 2,4,GROWL
 	; 29,RAICHU
-	db 1,1,THUNDERBOLT
-	db 1,2,REST
-	db 1,3,BODY_SLAM
-	db 1,4,SURF
+	db 3,1,THUNDERBOLT
+	db 3,2,REST
+	db 3,3,BODY_SLAM
+	db 3,4,SURF
 	db 0
 
 ; Rematch

@@ -33,7 +33,7 @@ MoveEnd:
 	move BIND,         TRAPPING_EFFECT,             25, ROCK,      85, 20
 	move SLAM,         NO_ADDITIONAL_EFFECT,        80, NORMAL,    75, 20
 	move VINE_WHIP,    NO_ADDITIONAL_EFFECT,        35, GRASS,    100, 10
-	move STOMP,        FLINCH_SIDE_EFFECT2,         65, NORMAL,   100, 20
+	move STOMP,        FLINCH_SIDE_EFFECT2,         65, ROCK,     100, 20
 	move DOUBLE_KICK,  ATTACK_TWICE_EFFECT,         30, FIGHTING, 100, 30
 	move MEGA_KICK,    NO_ADDITIONAL_EFFECT,       120, FIGHTING,  75,  5
 	move JUMP_KICK,    JUMP_KICK_EFFECT,            85, FIGHTING,  95, 25

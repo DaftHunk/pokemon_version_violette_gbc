@@ -1806,9 +1806,6 @@ INCLUDE "engine/battle/read_trainer_party.asm"
 INCLUDE "data/moves/trainer_moves.asm"
 INCLUDE "data/battle/trainer_parties.asm"
 
-INCLUDE "engine/items/tm_prices.asm"
-INCLUDE "data/maps/collision_tile_ids.asm"
-
 SECTION "bank2E",ROMX,BANK[$2E]	
 ;gbcnote - This bank will hold the bg map attributes for the gameboy color among other stuff
 
@@ -1863,6 +1860,8 @@ INCLUDE "engine/overworld/cut3.asm"
 INCLUDE "engine/menu/multi_choice_menu.asm"
 INCLUDE "engine/menu/text_multi_button_prompt.asm"
 INCLUDE "engine/menu/change_box_menu.asm"
+INCLUDE "engine/items/tm_prices.asm"
+INCLUDE "data/maps/collision_tile_ids.asm"
 
 Lab_GFX:           INCBIN "gfx/tilesets/lab.2bpp"
 Lab_Block:         INCBIN "gfx/blocksets/lab.bst"
