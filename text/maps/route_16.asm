@@ -126,6 +126,7 @@ _Route16Text9::
 	text "Route 16"
 	line "Céladopole -"
 	cont "Parmanie"
+	done
 
 _Route16TextUsePokeflute::
 	text "Jouer de la"

@@ -31,12 +31,11 @@ _PalletTownText_Girl::
 _PalletTownText_GirlAfterElite4::
 	text "Oh mais c'est toi"
 	line "qui vient de"
-	cont "battre le conseil"
-	cont "des 4!"
+	cont "battre la Ligue!"
 
 	para "Tu pourras me"
 	line "donner des"
-	cont "conseil à"
+	cont "conseils à"
 	cont "l'occasion?"
 	done
 
@@ -55,7 +54,7 @@ _PalletTownText_ManAfterElite4::
 	text "Il parait que le"
 	line "nouveau Champion"
 	cont "vient de notre"
-	cont "village!"
+	cont "Bourg!"
 	
 	para "C'est dingue!"
 	done
