@@ -5,7 +5,7 @@ Route22Object:
 	warp 8, 5, 0, ROUTE_22_GATE
 
 	db 1 ; signs
-	sign 7, 11, 3 ; Route22FrontGateText
+	sign 9, 9, 3 ; Route22FrontGateText
 
 	db 2 ; objects
 	object SPRITE_BLUE, 25, 5, STAY, RIGHT, 1 ; person
