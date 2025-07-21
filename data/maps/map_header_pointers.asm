@@ -36,6 +36,7 @@ MapHeaderPointers::
 	dw Route22_h
 	dw Route23_h
 	dw Route24_h
+	dw BillsGarden_h
 	dw Route25_h
 	dw RedsHouse1F_h
 	dw RedsHouse2F_h
@@ -105,7 +106,6 @@ MapHeaderPointers::
 	dw SSAnne8_h
 	dw SSAnne9_h
 	dw SSAnne10_h
-	dw BillsGarden_h
 	dw Volcano1F_h
 	dw VolcanoB1F_h
 	dw VictoryRoad1_h

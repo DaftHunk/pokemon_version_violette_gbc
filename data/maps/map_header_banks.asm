@@ -36,6 +36,7 @@ MapHeaderBanks:
 	db BANK(Route22_h) ; ROUTE_22
 	db BANK(Route23_h) ; ROUTE_23
 	db BANK(Route24_h) ; ROUTE_24
+	db BANK(BillsGarden_h)
 	db BANK(Route25_h) ; ROUTE_25
 	db BANK(RedsHouse1F_h)
 	db BANK(RedsHouse2F_h)
@@ -105,7 +106,6 @@ MapHeaderBanks:
 	db BANK(SSAnne8_h)
 	db BANK(SSAnne9_h)
 	db BANK(SSAnne10_h)
-	db BANK(BillsGarden_h)
 	db BANK(Volcano1F_h)
 	db BANK(VolcanoB1F_h)
 	db BANK(VictoryRoad1_h)

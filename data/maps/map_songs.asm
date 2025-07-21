@@ -35,6 +35,7 @@ MapSongBanks:
 	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; ROUTE_22
 	db MUSIC_INDIGO_PLATEAU,   BANK(Music_IndigoPlateau)   ; ROUTE_23
 	db MUSIC_ROUTES2,          BANK(Music_Routes2)         ; ROUTE_24
+	db MUSIC_PALLET_TOWN,      BANK(Music_PalletTown)      ; BillsGarden
 	db MUSIC_ROUTES2,          BANK(Music_Routes2)         ; ROUTE_25
 	db MUSIC_PALLET_TOWN,      BANK(Music_PalletTown)      ; RedsHouse1F
 	db MUSIC_PALLET_TOWN,      BANK(Music_PalletTown)      ; RedsHouse2F
@@ -104,7 +105,6 @@ MapSongBanks:
 	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; SSAnne8
 	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; SSAnne9
 	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; SSAnne10
-	db MUSIC_PALLET_TOWN,      BANK(Music_PalletTown)      ; BillsGarden
 	db MUSIC_DUNGEON3,         BANK(Music_Dungeon3)        ; Volcano1F_h
 	db MUSIC_DUNGEON3,         BANK(Music_Dungeon3)        ; VolcanoB1F_h
 	db MUSIC_DUNGEON3,         BANK(Music_Dungeon3)        ; VictoryRoad1

@@ -107,3 +107,5 @@ PowerPlantName:
 	db "Centrale@"
 VolcanoName:
 	db "Volcan@"
+BillsGardenName:
+	db "Jardin de Léo@"

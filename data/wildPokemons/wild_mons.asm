@@ -35,6 +35,7 @@ WildDataPointers:
 	dw Route22Mons ; ROUTE_22
 	dw Route23Mons ; ROUTE_23
 	dw Route24Mons ; ROUTE_24
+	dw BillsGardenMons 
 	dw Route25Mons ; ROUTE_25
 	dw NoMons      ; REDS_HOUSE_1F
 	dw NoMons
@@ -104,7 +105,6 @@ WildDataPointers:
 	dw NoMons
 	dw NoMons
 	dw NoMons
-	dw BillsGardenMons
 	dw Volcano1FMons
 	dw VolcanoB1FMons
 	dw PlateauMons1

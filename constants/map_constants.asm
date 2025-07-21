@@ -41,6 +41,7 @@ ENDM
 	mapconst ROUTE_22,                    9, 20 ; $21
 	mapconst ROUTE_23,                   72, 10 ; $22
 	mapconst ROUTE_24,                   18, 10 ; $23
+	mapconst BILLS_GARDEN,                7, 11 ; $69
 	mapconst ROUTE_25,                   10, 30 ; $24
 	mapconst REDS_HOUSE_1F,               4,  4 ; $25
 	mapconst REDS_HOUSE_2F,               4,  4 ; $26
@@ -110,7 +111,6 @@ ENDM
 	mapconst SS_ANNE_1F_ROOMS,            8, 12 ; $66
 	mapconst SS_ANNE_2F_ROOMS,            8, 12 ; $67
 	mapconst SS_ANNE_B1F_ROOMS,           8, 12 ; $68
-	mapconst BILLS_GARDEN,                7, 11 ; $69
 	mapconst VOLCANO_1F,                 12, 12 ; $F8
 	mapconst VOLCANO_B1F,                20,  8 ; $6B
 	mapconst VICTORY_ROAD_1F,             9, 10 ; $6C

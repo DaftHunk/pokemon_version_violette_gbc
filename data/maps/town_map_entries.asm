@@ -35,6 +35,7 @@ ExternalMapEntries:
 	EMAP $0,$8,Route22Name
 	EMAP $0,$6,Route23Name
 	EMAP $A,$1,Route24Name
+	EMAP $C,$0,BillsGardenName
 	EMAP $B,$0,Route25Name
 
 InternalMapEntries:
@@ -58,7 +59,6 @@ InternalMapEntries:
 	IMAP BILLS_HOUSE,                   $C,$0,SeaCottageName
 	IMAP VERMILION_DOCK,                $A,$9,VermilionCityName
 	IMAP SS_ANNE_B1F_ROOMS,             $9,$A,SSAnneName
-	IMAP BILLS_GARDEN,                  $C,$0,SeaCottageName
 	IMAP VOLCANO_1F,                    $3,$E,VolcanoName
 	IMAP VOLCANO_B1F,                   $3,$E,VolcanoName
 	IMAP VICTORY_ROAD_1F,               $0,$4,VictoryRoadName

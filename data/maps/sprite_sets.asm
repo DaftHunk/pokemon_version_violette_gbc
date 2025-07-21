@@ -35,6 +35,7 @@ MapSpriteSets:
 	db $01 ; ROUTE_22
 	db $06 ; ROUTE_23
 	db $02 ; ROUTE_24
+	db $02 ; BILLS_GARDEN
 	db $02 ; ROUTE_25
 
 ; Format:
