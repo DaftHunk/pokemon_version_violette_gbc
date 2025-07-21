@@ -83,7 +83,7 @@ BillGarden_ResetScript:
 	;give MIST_STONE item
 	lb bc, MIST_STONE, 1
 	call GiveItem
-	jr nc, .bagFull	;jump if not enough room in bag
+	jp nc, .bagFull	;jump if not enough room in bag
 
 	ld a, SFX_GET_ITEM_1
 	call PlaySound 
@@ -94,10 +94,9 @@ BillGarden_ResetScript:
 	call DisplayTextID
 
 	SetEvent EVENT_GOT_MIST_STONE
-;reset Mew events
-	ResetEvent EVENT_ENCOUNTERED_MEW
-	ResetEvent EVENT_FOUND_MEW
-;reset articuno's seafoam islands puzzles
+; reset Marowrath
+	ResetEvent EVENT_BEAT_GHOST_MAROWAK
+; reset Articuno's seafoam islands puzzles
 	ld a, HS_SEAFOAM_ISLANDS_B3F_BOULDER_1
 	call .showstuff
 	ld a, HS_SEAFOAM_ISLANDS_B3F_BOULDER_2
@@ -107,23 +106,33 @@ BillGarden_ResetScript:
 	ld a, HS_SEAFOAM_ISLANDS_B4F_BOULDER_2
 	call .hidestuff
 	ResetEvents EVENT_SEAFOAM4_BOULDER1_DOWN_HOLE, EVENT_SEAFOAM4_BOULDER2_DOWN_HOLE
-;reset mewtwo
-	ld a, HS_MEWTWO
-	call .showstuff
-	ResetEvent EVENT_BEAT_MEWTWO
-;reset moltres
-	ld a, HS_MOLTRES
-	call .showstuff
-	ResetEvent EVENT_BEAT_MOLTRES
-;reset zapdos
-	ld a, HS_ZAPDOS
-	call .showstuff
-	ResetEvent EVENT_BEAT_ZAPDOS
-;reset articuno and its specific puzzle
+; reset Articuno
 	ld a, HS_ARTICUNO
 	call .showstuff
 	ResetEvent EVENT_BEAT_ARTICUNO
-;return now
+; reset Volcano fights
+	ResetEvent EVENT_BEAT_VOLCANO_1F_TRAINER_0
+	ResetEvent EVENT_BEAT_VOLCANO_1F_TRAINER_1
+	ResetEvent EVENT_BEAT_VOLCANO_1F_TRAINER_2
+
+	ResetEvent EVENT_BEAT_VOLCANO_B1F_TRAINER_0
+	ResetEvent EVENT_BEAT_VOLCANO_B1F_TRAINER_1
+; reset Moltres
+	ld a, HS_MOLTRES
+	call .showstuff
+	ResetEvent EVENT_BEAT_MOLTRES
+; reset Zapdos
+	ld a, HS_ZAPDOS
+	call .showstuff
+	ResetEvent EVENT_BEAT_ZAPDOS
+; reset Mewtwo
+	ld a, HS_MEWTWO
+	call .showstuff
+	ResetEvent EVENT_BEAT_MEWTWO
+; reset Mew events
+	ResetEvent EVENT_ENCOUNTERED_MEW
+	ResetEvent EVENT_FOUND_MEW
+; return now
 	jp .end
 .bagFull
 	SetEvent EVENT_MIST_STONE_WAIT
