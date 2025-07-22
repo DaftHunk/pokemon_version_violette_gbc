@@ -1743,6 +1743,21 @@ INCLUDE "scripts/agatha.asm"
 INCLUDE "data/maps/objects/agatha.asm"
 AgathaBlocks: INCBIN "maps/agatha.blk"
 
+INCLUDE "data/maps/headers/route16west.asm"
+INCLUDE "scripts/route16west.asm"
+INCLUDE "data/maps/objects/route16west.asm"
+Route16WestBlocks: INCBIN "maps/route16west.blk"
+
+INCLUDE "data/maps/headers/route16westhouse.asm"
+INCLUDE "scripts/route16westhouse.asm"
+INCLUDE "data/maps/objects/route16westhouse.asm"
+Route16WestHouseBlocks: INCBIN "maps/route16westhouse.blk"
+
+INCLUDE "data/maps/headers/route16westgate.asm"
+INCLUDE "scripts/route16westgate.asm"
+INCLUDE "data/maps/objects/route16westgate.asm"
+Route16WestGateBlocks: INCBIN "maps/route16westgate.blk"
+
 INCLUDE "engine/menu/league_pc.asm"
 
 INCLUDE "engine/overworld/hidden_items.asm"

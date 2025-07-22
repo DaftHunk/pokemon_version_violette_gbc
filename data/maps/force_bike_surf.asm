@@ -1,7 +1,7 @@
 ForcedBikeOrSurfMaps:
 ; map id, y, x
-	db ROUTE_16,$0A,$11
-	db ROUTE_16,$0B,$11
+	db ROUTE_16,$0C,$11
+	db ROUTE_16,$0D,$11
 	db ROUTE_18,$08,$21
 	db ROUTE_18,$09,$21
 	db SEAFOAM_ISLANDS_B3F,$07,$12

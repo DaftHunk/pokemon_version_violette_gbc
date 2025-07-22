@@ -157,7 +157,7 @@ HiddenObjectPointers:
 	dw Mansion3HiddenObjects
 	dw Route23HiddenObjects
 	dw VictoryRoad2HiddenObjects
-	dw Unused6FHiddenObjects
+	dw Route16WestHouseHiddenObjects
 	dw BillsHouseHiddenObjects
 	dw ViridianCityHiddenObjects
 	dw PewterCityHiddenObjects	;joenote - added hidden items
@@ -722,8 +722,8 @@ VictoryRoad2HiddenObjects:
 	db $07,$1a,FULL_RESTORE
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
-Unused6FHiddenObjects:
-	db $0b,$0e,MAX_ELIXER
+Route16WestHouseHiddenObjects:
+	db $07,$07,MAX_ELIXER
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 BillsHouseHiddenObjects:

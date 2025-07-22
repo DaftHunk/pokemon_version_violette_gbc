@@ -27,6 +27,7 @@ MapSongBanks:
 	db MUSIC_ROUTES4,          BANK(Music_Routes4)         ; ROUTE_14
 	db MUSIC_ROUTES4,          BANK(Music_Routes4)         ; ROUTE_15
 	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; ROUTE_16
+	db MUSIC_ROUTES1,          BANK(Music_Routes1)         ; Route16West
 	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; ROUTE_17
 	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; ROUTE_18
 	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; ROUTE_19
@@ -109,9 +110,8 @@ MapSongBanks:
 	db MUSIC_DUNGEON3,         BANK(Music_Dungeon3)        ; VolcanoB1F_h
 	db MUSIC_DUNGEON3,         BANK(Music_Dungeon3)        ; VictoryRoad1
 	db MUSIC_DUNGEON3,         BANK(Music_Dungeon3)        ; VolcanoB2F_h
-	db MUSIC_DUNGEON1,         BANK(Music_Dungeon1)        ; unused
-	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)         ; unused
-	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)         ; unused
+	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)         ; Route16WestHouse
+	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; Route16WestGate
 	db MUSIC_INDIGO_PLATEAU,   BANK(Music_IndigoPlateau)   ; Lance
 	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; unused
 	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; unused

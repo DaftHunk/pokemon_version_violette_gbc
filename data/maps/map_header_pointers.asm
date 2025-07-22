@@ -28,6 +28,7 @@ MapHeaderPointers::
 	dw Route14_h
 	dw Route15_h
 	dw Route16_h
+	dw Route16West_h
 	dw Route17_h
 	dw Route18_h
 	dw Route19_h
@@ -110,9 +111,8 @@ MapHeaderPointers::
 	dw VolcanoB1F_h
 	dw VictoryRoad1_h
 	dw VolcanoB2F_h
-	dw Lance_h ; unused ;id=110
-	dw Lance_h ; unused
-	dw Lance_h ; unused
+	dw Route16WestHouse_h
+	dw Route16WestGate_h
 	dw Lance_h
 	dw Lance_h ; unused
 	dw Lance_h ; unused

@@ -28,6 +28,7 @@ MapHeaderBanks:
 	db BANK(Route14_h) ; ROUTE_14
 	db BANK(Route15_h) ; ROUTE_15
 	db BANK(Route16_h) ; ROUTE_16
+	db BANK(Route16West_h)
 	db BANK(Route17_h) ; ROUTE_17
 	db BANK(Route18_h) ; ROUTE_18
 	db BANK(Route19_h) ; ROUTE_19
@@ -110,9 +111,8 @@ MapHeaderBanks:
 	db BANK(VolcanoB1F_h)
 	db BANK(VictoryRoad1_h)
 	db BANK(VolcanoB2F_h)
-	db $1D ;unused
-	db $1D ;unused
-	db $1D ;unused
+	db BANK(Route16WestHouse_h)
+	db BANK(Route16WestGate_h)
 	db BANK(Lance_h)
 	db $1D ;unused
 	db $1D ;unused

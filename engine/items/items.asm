@@ -2072,8 +2072,8 @@ Route12SnorlaxFluteCoords:
 ; 00: Y
 ; 01: X
 Route16SnorlaxFluteCoords:
-	db 10,27 ; one space East of Snorlax
-	db 10,25 ; one space West of Snorlax
+	db 12,27 ; one space East of Snorlax
+	db 12,25 ; one space West of Snorlax
 	db $ff ; terminator
 
 PlayedFluteNoEffectText:

@@ -2,7 +2,8 @@ Route17_h:
 	db OVERWORLD ; tileset
 	db ROUTE_17_HEIGHT, ROUTE_17_WIDTH ; dimensions (y, x)
 	dw Route17Blocks, Route17TextPointers, Route17Script ; blocks, texts, scripts
-	db NORTH | SOUTH ; connections
+	db NORTH | SOUTH | WEST ; connections
 	NORTH_MAP_CONNECTION ROUTE_17, ROUTE_16, 0, 0, Route16Blocks
 	SOUTH_MAP_CONNECTION ROUTE_17, ROUTE_18, 0, 0, Route18Blocks, 1
+	WEST_MAP_CONNECTION  ROUTE_17, ROUTE_16_WEST, -11, 0, Route16WestBlocks
 	dw Route17Object ; objects

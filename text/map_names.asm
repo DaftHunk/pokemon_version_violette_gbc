@@ -109,3 +109,5 @@ VolcanoName:
 	db "Volcan@"
 BillsGardenName:
 	db "Jardin de Léo@"
+Route16WestName:
+	db "Retraite Paisible@"

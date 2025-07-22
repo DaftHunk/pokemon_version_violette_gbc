@@ -27,6 +27,7 @@ MapSpriteSets:
 	db $08 ; ROUTE_14
 	db $f5 ; ROUTE_15
 	db $f6 ; ROUTE_16
+	db $01 ; ROUTE_16_WEST
 	db $09 ; ROUTE_17
 	db $f7 ; ROUTE_18
 	db $0a ; ROUTE_19

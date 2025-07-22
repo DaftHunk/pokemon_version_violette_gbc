@@ -27,6 +27,7 @@ ExternalMapEntries:
 	EMAP $B,$C,Route14Name
 	EMAP $A,$D,Route15Name
 	EMAP $5,$5,Route16Name
+	EMAP $3,$5,Route16WestName
 	EMAP $4,$8,Route17Name
 	EMAP $6,$D,Route18Name
 	EMAP $6,$F,Route19Name
@@ -63,6 +64,8 @@ InternalMapEntries:
 	IMAP VOLCANO_B1F,                   $3,$E,VolcanoName
 	IMAP VICTORY_ROAD_1F,               $0,$4,VictoryRoadName
 	IMAP VOLCANO_B2F,                   $3,$E,VolcanoName
+	IMAP ROUTE_16_WEST_GATE,            $3,$5,Route16WestName
+	IMAP ROUTE_16_WEST_HOUSE,           $3,$5,Route16WestName
 	IMAP HALL_OF_FAME,                  $0,$2,PokemonLeagueName
 	IMAP UNDERGROUND_PATH_NS,           $A,$5,UndergroundPathName
 	IMAP CHAMPIONS_ROOM,                $0,$2,PokemonLeagueName

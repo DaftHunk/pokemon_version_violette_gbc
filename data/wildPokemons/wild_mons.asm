@@ -27,6 +27,7 @@ WildDataPointers:
 	dw Route14Mons ; ROUTE_14
 	dw Route15Mons ; ROUTE_15
 	dw Route16Mons ; ROUTE_16
+	dw Route16WestMons ; ROUTE_16_WEST
 	dw Route17Mons ; ROUTE_17
 	dw Route18Mons ; ROUTE_18
 	dw WaterMons   ; ROUTE_19
@@ -109,7 +110,6 @@ WildDataPointers:
 	dw VolcanoB1FMons
 	dw PlateauMons1
 	dw VolcanoB2FMons
-	dw NoMons
 	dw NoMons
 	dw NoMons
 	dw NoMons
@@ -321,6 +321,7 @@ INCLUDE "data/wildPokemons/maps/billsgarden.asm"
 INCLUDE "data/wildPokemons/maps/volcano1f.asm"
 INCLUDE "data/wildPokemons/maps/volcanob1f.asm"
 INCLUDE "data/wildPokemons/maps/volcanob2f.asm"
+INCLUDE "data/wildPokemons/maps/route16west.asm"
 INCLUDE "data/wildPokemons/nomons.asm"
 INCLUDE "data/wildPokemons/waterpokemon.asm"
 WildDataLabelEnd::

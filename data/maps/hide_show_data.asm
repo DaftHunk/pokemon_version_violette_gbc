@@ -38,6 +38,7 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
+	dw NoHS
 	dw Route22HS
 	dw NoHS
 	dw Route24HS
@@ -115,7 +116,6 @@ MapHSPointers:
 	dw VolcanoB1FHS
 	dw VictoryRoad1FHS
 	dw VolcanoB2FHS
-	dw NoHS
 	dw NoHS
 	dw NoHS
 	dw LanceRoomHS
