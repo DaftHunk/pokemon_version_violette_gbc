@@ -140,20 +140,20 @@ ViridianGymScriptBattle:
 	ld a, $f0
 	ld [wJoyIgnore], a
 ViridianGymScript_GiveTM:
-	ld a, $c
+	ld a, $d
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
 	lb bc, TM27_FISSURE, 1
 	call GiveItem
 	jr nc, .bagFull
-	ld a, $d
+	ld a, $e
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_GOT_TM27
 	jr .endScript
 .bagFull
-	ld a, $e
+	ld a, $f
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 .endScript
@@ -190,6 +190,7 @@ ViridianGymTextPointers:
 	dw ViridianGymText_Trainer7
 	dw ViridianGymText_Guide
 	dw PickUpItemText
+	dw ViridianGymText_Note
 	dw ViridianGymText_Badge
 	dw ViridianGymText_ReceivedTM
 	dw ViridianGymText_BagFull
@@ -504,4 +505,8 @@ ViridianGymText_GuideTip:
 
 ViridianGymText_GuideVictory:
 	TX_FAR _ViridianGymText_GuideVictory
+	db "@"
+
+ViridianGymText_Note:
+	TX_FAR _ViridianGymText_Note
 	db "@"

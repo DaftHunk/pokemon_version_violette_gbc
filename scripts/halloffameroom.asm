@@ -46,13 +46,38 @@ HallofFameRoomScript2:
 
 	CheckEvent EVENT_ELITE_4_BEATEN
 	; if elite 4 already beaten set rematch instead
-	jr nz, .setRematch
-
+	jp nz, .setRematch
+	
 	SetEvent EVENT_ELITE_4_BEATEN ;if the elite 4 have been beaten, set the event flag for it
 	; After beating elite 4 level scaling is now enabled
 	SetEvent EVENT_TRAINER_LVL_SCALING
 	; After beating elite 4 catch up xp boost is enabled
 	SetEvent EVENT_ENABLE_CATCH_UP_BOOST
+	; Reset SS_ANNE trainers for Giovanni search
+	ResetEvent EVENT_BEAT_SS_ANNE_BOW_TRAINER_0
+	ResetEvent EVENT_BEAT_SS_ANNE_BOW_TRAINER_1
+
+	ResetEvent EVENT_BEAT_SS_ANNE_1F_ROOMS_TRAINER_0
+	ResetEvent EVENT_BEAT_SS_ANNE_1F_ROOMS_TRAINER_1
+	ResetEvent EVENT_BEAT_SS_ANNE_1F_ROOMS_TRAINER_2
+	ResetEvent EVENT_BEAT_SS_ANNE_1F_ROOMS_TRAINER_3
+
+	ResetEvent EVENT_BEAT_SS_ANNE_2F_ROOMS_TRAINER_0
+	ResetEvent EVENT_BEAT_SS_ANNE_2F_ROOMS_TRAINER_1
+	ResetEvent EVENT_BEAT_SS_ANNE_2F_ROOMS_TRAINER_2
+	ResetEvent EVENT_BEAT_SS_ANNE_2F_ROOMS_TRAINER_3
+
+	ResetEvent EVENT_BEAT_SS_ANNE_B1F_ROOMS_TRAINER_0
+	ResetEvent EVENT_BEAT_SS_ANNE_B1F_ROOMS_TRAINER_1
+	ResetEvent EVENT_BEAT_SS_ANNE_B1F_ROOMS_TRAINER_2
+	ResetEvent EVENT_BEAT_SS_ANNE_B1F_ROOMS_TRAINER_3
+	ResetEvent EVENT_BEAT_SS_ANNE_B1F_ROOMS_TRAINER_4
+	ResetEvent EVENT_BEAT_SS_ANNE_B1F_ROOMS_TRAINER_5
+
+	; Display Giovanni's Note in his Gym
+	ld a, HS_VIRIDIAN_GYM_NOTE
+	ld [wMissableObjectIndex], a
+	predef ShowObject
 .next
 	xor a
 	ld [wHallOfFameRoomCurScript], a

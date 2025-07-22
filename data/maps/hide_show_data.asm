@@ -342,6 +342,7 @@ OaksLabHS:
 ViridianGymHS:
 	db VIRIDIAN_GYM,$01,Show
 	db VIRIDIAN_GYM,$0B,Show
+	db VIRIDIAN_GYM,$0C,Hide
 Museum1FHS:
 	db MUSEUM_1F,$05,Show
 CeruleanCaveHS:

@@ -9,9 +9,15 @@ _Route16WestHouseTextLetter::
 	cont "temps pour toi de"
 	cont "me rejoindre."
 
-	para "Je serai inco-"
-	line "gnito à bord"
+	para "Je voyagerai"
+	line "incognito à bord"
 	cont "de l'Océane."
+
+	para "Lorsque tu liras"
+	line "cette lettre, il"
+	cont "devrait être en"
+	cont "escale à Carmin"
+	cont "sur Mer."
 
 	para "Signé: G."
 	done

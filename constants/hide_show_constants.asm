@@ -58,6 +58,7 @@ const_value = 0
 	const HS_OAKS_LAB_OAK_2               ; 31
 	const HS_VIRIDIAN_GYM_GIOVANNI        ; 32
 	const HS_VIRIDIAN_GYM_ITEM            ; 33 X
+	const HS_VIRIDIAN_GYM_NOTE
 	const HS_OLD_AMBER                    ; 34
 	const HS_CERULEAN_CAVE_1F_ITEM_1     ; 35 X
 	const HS_CERULEAN_CAVE_1F_ITEM_2     ; 36 X

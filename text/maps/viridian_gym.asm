@@ -259,3 +259,12 @@ _ViridianGymText_GuideVictory::
 	cont "Champion?"
 	cont "Ben ça alors!"
 	done
+
+_ViridianGymText_Note::
+	text "Silver, rends-toi"
+	line "à la Retraite"
+	cont "Paisible, nous"
+	cont "devons parler."
+
+	para "Signé: G."
+	done

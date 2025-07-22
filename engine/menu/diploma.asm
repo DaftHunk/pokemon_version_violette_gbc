@@ -171,7 +171,7 @@ DiplomaEmptyText:
 	db "@"
 
 DiplomaCongrats:
-	db   "×Revanche des 7"
+	db   "×Revanche des 8"
 	next "×Revanche Ligue"
 	next "×Tournoi Océane"
 	next "×Pierre Brume"

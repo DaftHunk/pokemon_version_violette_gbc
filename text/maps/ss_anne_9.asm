@@ -120,3 +120,75 @@ _SSAnne9AfterBattleText4::
 	line "sont super forts!"
 	cont "Je les adore!"
 	done
+
+_GiovanniText_RematchPreBattle::
+	text "Salut <PLAYER>!"
+	line "J'attendais ton"
+	cont "arrivée, tu as"
+	cont "manqué de peu des"
+	cont "retrouvailles"
+	cont "père-fils"
+	cont "explosives!"
+
+	para "J'ai entendu dire"
+	line "que tu étais"
+	cont "devenu Champion,"
+
+	para "que dirais-tu"
+	line "d'un match"
+	cont "amical, que je"
+	cont "te présente"
+	cont "mon vieil ami?"
+	done
+
+_GiovanniText_RematchEndBattle::
+	text "Giovanni: Bien,"
+	line "si seulement mon"
+	cont "fils avait ton"
+	cont "sens de"
+	cont "l'honneur..."
+
+	para "J'aurais voulu"
+	line "qu'il reprenne"
+	cont "avec moi l'entre-"
+	cont "prise familiale,"
+	cont "comme mère"
+	cont "l'avait ait"
+	cont "pour moi."
+
+	para "Mais il semblerait"
+	line "qu'il soit encore"
+	cont "trop immature,"
+	cont "il a décidé de"
+	cont "partir à"
+	cont "l'aventure."
+
+	para "Je me demande d'"
+	line "ailleurs si tu ne"
+	cont "lui aurais pas"
+	cont "donné l'exemple.."
+
+	para "En tout cas,"
+	line "j'ai décidé de"
+	cont "raccrocher et"
+	cont "d'explorer le"
+	cont "monde."
+
+	para "Qui sait, peut-"
+	line "être que mon fils"
+	cont "accomplira de"
+	cont "grandes choses."
+
+	para "Je suis impatient"
+	line "de voir quelle"
+	cont "voie il"
+	cont "empruntera."
+	prompt
+
+_GiovanniText_RematchAfterBattle::
+	text "Bonne chance pour"
+	line "la suite de tes"
+	cont "aventures et"
+	cont "que l'honneur"
+	cont "soit ta boussole!"
+	done

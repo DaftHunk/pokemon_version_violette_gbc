@@ -94,6 +94,9 @@ SSAnne9Text4:
 
 SSAnne9Text5:
 	TX_ASM
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .hiddenGiovanni
+	; else
 	call SaveScreenTilesToBuffer1
 	ld hl, SSAnne9Text_61bf2
 	call PrintText
@@ -101,9 +104,68 @@ SSAnne9Text5:
 	ld a, SNORLAX
 	call DisplayPokedex
 	jp TextScriptEnd
+.hiddenGiovanni
+	CheckEvent EVENT_BEAT_GIOVANNI_REMATCH
+	; if no beaten
+	jr z, .leaderFight
+	; else
+.askForRematch
+;;;;;;;joenote - have a rematch with gym leader?
+	ld hl, RematchTrainerText
+	call PrintText
+	call NoYesChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .leaderFight
+
+	ld hl, GiovanniText_RematchAfterBattle
+	call PrintText
+	jp TextScriptEnd
+;;;;;;;
+.leaderFight
+	ld hl, GiovanniText_RematchPreBattle
+	call PrintText
+	ld hl, wd72d ; set the bits for triggering battle
+	set 6, [hl]
+	set 7, [hl]
+	ld hl, GiovanniText_RematchEndBattle ; load text for when you win
+	ld de, GiovanniText_RematchEndBattle ; load text for when you lose
+	call SaveEndBattleTextPointers ; save the win/lose text
+	ld a, $8
+	ld [wGymLeaderNo], a ; set bgm to champion music
+	ld a, OPP_GIOVANNI ; load the trainer type
+	ld [wCurOpponent], a ; set as the current opponent
+
+	ld a, 4 ;get the right roster
+	ld [wTrainerNo], a
+
+	xor a
+	ld [hJoyHeld], a
+	jp TextScriptEnd
 
 SSAnne9Text_61bf2:
 	TX_FAR _SSAnne9Text_61bf2
+	db "@"
+
+GiovanniText_RematchPreBattle:
+	TX_FAR _GiovanniText_RematchPreBattle
+	db "@"
+
+GiovanniText_RematchAfterBattle:
+	TX_FAR _GiovanniText_RematchAfterBattle
+	db "@"
+
+GiovanniText_RematchEndBattle:
+	TX_ASM
+	SetEvent EVENT_BEAT_GIOVANNI_REMATCH
+	ld hl, wBeatGymLeadersRematch
+	set 7, [hl]
+
+	ld hl, .giovanniText_RematchEndBattle
+	call PrintText
+	jp TextScriptEnd
+.giovanniText_RematchEndBattle
+	TX_FAR _GiovanniText_RematchEndBattle
 	db "@"
 
 SSAnne9Text7:
