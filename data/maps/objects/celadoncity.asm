@@ -38,7 +38,7 @@ CeladonCityObject:
 	object SPRITE_POLYWRATH, 30, 12, STAY, RIGHT, 7 ; person
 	object SPRITE_ROCKET, 32, 29, WALK, 2, 8 ; person
 ;	object SPRITE_ROCKET, 42, 14, WALK, 2, 9 ; person
-	object SPRITE_ROCKET, 4, 2, WALK, 2, 9 ; person	;joenote - moved this rocket to a barren area
+	object SPRITE_ROCKET, 15, 2, WALK, 2, 9 ; person	;joenote - moved this rocket to a barren area
 
 
 	; warp-to

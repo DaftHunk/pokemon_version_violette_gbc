@@ -1,5 +1,5 @@
 PewterCityObject:
-	db $a ; border block
+	db $f ; border block
 
 	db 7 ; warps
 	warp 14, 7, 0, MUSEUM_1F
