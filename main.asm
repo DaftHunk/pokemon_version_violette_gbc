@@ -1776,8 +1776,6 @@ INCLUDE "data/moves/animations.asm"
 
 SECTION "Engine Spillover", ROMX
 
-INCLUDE "engine/menu/item_descriptions.asm"
-
 ;joenote - adding female trainer sprites
 FPlayerCharacterTitleGraphics:   INCBIN "gfx/mainmenu/player_title_f.2bpp"
 FPlayerCharacterTitleGraphicsEnd:
@@ -1795,6 +1793,10 @@ RedFishingRodTiles:   INCBIN "gfx/tiles/red_fishingrod_tiles.2bpp"
 RedFFishingTilesFront: INCBIN "gfx/tiles/redF_fishing_tile_front.2bpp"
 RedFFishingTilesBack:  INCBIN "gfx/tiles/redF_fishing_tile_back.2bpp"
 RedFFishingTilesSide:  INCBIN "gfx/tiles/redF_fishing_tile_side.2bpp"
+
+INCLUDE "engine/menu/item_descriptions.asm"
+INCLUDE "custom_functions/func_soundtest.asm"
+
 
 SECTION "bank2D",ROMX,BANK[$2D]	;joenote - This is a known empty bank. Going to start moving stuff here
 

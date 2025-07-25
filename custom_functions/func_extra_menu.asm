@@ -48,7 +48,7 @@ DisplayExtraOptionMenu:
 	bit BIT_START, b ; Start button pressed?
 	jp nz, .exitMenu
 	bit BIT_SELECT, b ; Select button pressed?
-	jp nz, .exitMenu
+	jp nz, .displaySoundTestMenu
 	bit BIT_A_BUTTON, b ; A button pressed?
 	jr nz, .cursor_section
 	jr .checkDirectionKeys	;jump if d-pad pressed
@@ -73,6 +73,9 @@ DisplayExtraOptionMenu:
 	cp $10 ; is the cursor on Back?
 	jr z, .exitMenu
 	jr .getJoypadStateLoop
+
+.displaySoundTestMenu
+	jpab DisplaySoundTestMenu
 	
 .cursorAudio
 	call CycleSoundSetting
@@ -461,7 +464,7 @@ TextHardMode:
 TextGamma:
 	db " Gamma@"
 TextBack:
-	db " Retour@"
+	db " Retour   Select",$E3,$ED,"@"
 
 TextNuzlocke:
 	db " Nuzlocke@"
