@@ -75,7 +75,7 @@ MakeOverworldBGMapAttributes:
 	ld a, [hGBC]
 	and a
 	ret z
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 7, a
 	ret z
 
@@ -550,7 +550,7 @@ TransferGBCEnhancedBGMapAttributes_RolColByte:
 	ld a, [hGBC]
 	and a
 	ret z
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 7, a
 	ret z
 
@@ -593,7 +593,7 @@ TransferGBCEnhancedBGMapAttributes:
 	ld a, [hGBC]
 	and a
 	ret z
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 7, a
 	ret z
 
@@ -622,7 +622,7 @@ TransferGBCEnhancedOverworldPalettes:
 	ld a, [hGBC]
 	and a
 	ret z
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 7, a
 	ret z
 	

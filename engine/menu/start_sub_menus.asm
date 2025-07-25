@@ -583,7 +583,7 @@ DrawTrainerInfo:
 ;joenote - support female trainer sprite
 	ld de, RedPicFFront
 	lb bc, BANK(RedPicFFront), $01
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 0, a	;check if girl
 	jr nz, .next
 	ld de, RedPicFront

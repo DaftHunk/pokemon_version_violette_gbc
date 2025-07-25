@@ -1,24 +1,5 @@
 InitPlayerData:
 InitPlayerData2:
-
-;useless, so commenting out
-;	ld a, $ff
-;	ld [wUnusedD71B], a
-
-;joenote - check if doing NG+
-	ld a, [hJoyHeld]
-	and SELECT
-	jr nz, .newgameplus	;skip the next few things if NG+
-	
-	;generate a new player ID
-	;call Random
-	;ld a, [hRandomSub]
-	;ld [wPlayerID], a
-	;call Random
-	;ld a, [hRandomAdd]
-	;ld [wPlayerID + 1], a
-
-	;joenote - changing this to be more optimal
 	call Random
 	ld [wPlayerID], a
 	call Random
@@ -28,10 +9,8 @@ InitPlayerData2:
 	call Random
 	ld [wRandomizerSeed], a
 	
-	;write a new box terminator to empty the box list
 	ld hl, wNumInBox
 	call InitializeEmptyList
-.newgameplus
 	
 	ld a, $ff
 	ld [wUnusedD71B], a

@@ -321,7 +321,7 @@ LoadSpinnerArrowTiles:
 ;			Now there are no wasted frames when this runs, and spin movement is now at full speed.
 	push bc
 	ld b, 2
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 4, a
 	jr z, .no60fps
 	sla b

@@ -256,13 +256,13 @@ OptionMenuEar3:
 
 ;60fps - show the fps setting on the menu when activated
 Toggle60FPSSetting:
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	xor %00010000
-	ld [wUnusedD721], a
+	ld [wGameplayOptions], a
 	;fall through
 Show60FPSSetting:
 	ld hl, OptionMenuFPSText
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 4, a
 	jr nz, .done
 	inc hl
@@ -329,32 +329,32 @@ ShowHardModeSetting:
 
 
 ;joenote - for deactivating intelligent trainer switching
-ToggleNoSwitch:
-	ld a, [wUnusedD721]
-	xor BATTLE_NOSWITCH
-	ld [wUnusedD721], a
-	;fall through
-ShowNoSwitchSetting:
-	ld hl, OptionMenuNoSwitch
-	ld a, [wUnusedD721]
-	bit BIT_BATTLE_NOSWITCH, a
-	jr nz, .print
-	inc hl
-	inc hl
-.print
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	coord hl, $D, $5
-	call PlaceString
-	ret
-OptionMenuNoSwitch:
-	dw OptionMenuNoSwitchON
-	dw OptionMenuNoSwitchOFF
-OptionMenuNoSwitchON:
-	db " Orig.@"
-OptionMenuNoSwitchOFF:
-	db "Intel.@"
+;ToggleNoSwitch:
+;	ld a, [wGameplayOptions]
+;	xor BATTLE_NOSWITCH
+;	ld [wGameplayOptions], a
+;	;fall through
+;ShowNoSwitchSetting:
+;	ld hl, OptionMenuNoSwitch
+;	ld a, [wGameplayOptions]
+;	bit BIT_BATTLE_NOSWITCH, a
+;	jr nz, .print
+;	inc hl
+;	inc hl
+;.print
+;	ld e, [hl]
+;	inc hl
+;	ld d, [hl]
+;	coord hl, $D, $5
+;	call PlaceString
+;	ret
+;OptionMenuNoSwitch:
+;	dw OptionMenuNoSwitchON
+;	dw OptionMenuNoSwitchOFF
+;OptionMenuNoSwitchON:
+;	db " Orig.@"
+;OptionMenuNoSwitchOFF:
+;	db "Intel.@"
 
 	
 ;joenote - for toggling the color correction
@@ -383,55 +383,54 @@ ShowGammaSetting:
 
 	
 ;joenote - show /toggle badge cap for level
-ToggleBadgeCap:
-	ld a, [wUnusedD721]
-	xor %00100000
-	ld [wUnusedD721], a
+;ToggleBadgeCap:
+;	ld a, [wGameplayOptions]
+;	xor %00100000
+;	ld [wGameplayOptions], a
 	;fall through
-ShowBadgeCap:
-	ld de, OptionMenu5Spaces
-	coord hl, $0E, $9
-	call PlaceString
-	ld de, OptionMenu5SpacesOFF
-	ld a, [wUnusedD721]	;check if obedience level cap is active
-	bit 5, a
-	jr z, .print
-	ld de, OptionMenuCapLevelText
-.print
-	push af
-	coord hl, $0E, $9
-	call PlaceString
-	pop af
-	ret z
+;ShowBadgeCap:
+;	ld de, OptionMenu5Spaces
+;	coord hl, $0E, $9
+;	call PlaceString
+;	ld de, OptionMenu5SpacesOFF
+;	ld a, [wGameplayOptions]	;check if obedience level cap is active
+;	bit 5, a
+;	jr z, .print
+;	ld de, OptionMenuCapLevelText
+;.print
+;	push af
+;	coord hl, $0E, $9
+;	call PlaceString
+;	pop af
+;	ret z
 	
-.printnum	
-	callba GetBadgeCap
-	ld a, d
-	ld [wNumSetBits], a
-	coord hl, $10, $9
-	ld de, wNumSetBits
-	lb bc, 1, 3
-	call PrintNumber
-	ret
-OptionMenuCapLevelText:
-	db "N:@"
-OptionMenu5SpacesOFF:
-	db "  Non@"
-OptionMenu5Spaces:
-	db "     @"
+;.printnum	
+;	callba GetBadgeCap
+;	ld a, d
+;	ld [wNumSetBits], a
+;	coord hl, $10, $9
+;	ld de, wNumSetBits
+;	lb bc, 1, 3
+;	call PrintNumber
+;	ret
+;OptionMenuCapLevelText:
+;	db "N:@"
+;OptionMenu5SpacesOFF:
+;	db "  Non@"
+;OptionMenu5Spaces:
+;	db "     @"
 
 
 ;joenote - show /toggle badge cap for level
 ToggleNuzlocke:
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	xor %01000000
-	ld [wUnusedD721], a
+	ld [wGameplayOptions], a
 	bit 6, a
-;	call nz, NuzlockeSettings
 	;fall through
 ShowNuzlocke:
 	ld de, OptionMenuTextOFF
-	ld a, [wUnusedD721]	;check if nuzlocke is active
+	ld a, [wGameplayOptions]	;check if nuzlocke is active
 	bit 6, a
 	jr z, .print
 	ld de, OptionMenuTextON
@@ -442,16 +441,6 @@ ShowNuzlocke:
 ;default to recommended settings when turned on
 NuzlockeSettings:
 	push hl
-	ld hl, wUnusedD721
-	res 3, [hl]	;make sure trainers use smart switching
-;activate or deactivate level cap depending on state of trainer scaling
-	set 5, [hl]
-	CheckEvent EVENT_TRAINER_LVL_SCALING
-	jr z, .next
-	res 5, [hl]
-.next
-	call ShowBadgeCap
-	call ShowNoSwitchSetting
 	;battle mode SET and HARD
 	ld hl, wOptions
 	set BIT_BATTLE_HARD, [hl]
@@ -469,15 +458,11 @@ TextInstant:
 	db " Texte inst.@"
 TextHardMode:
 	db " Mode diffi.@"
-TextAISwitch:
-	db " Chang. IA@"
 TextGamma:
 	db " Gamma@"
 TextBack:
 	db " Retour@"
 
-TextAILevelCap:
-	db " LVL cap@"
 TextNuzlocke:
 	db " Nuzlocke@"
 	

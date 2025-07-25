@@ -51,9 +51,9 @@ ResetAllOptions: ;joenote - reset all the special options (like for patching-up)
 	set 0, a
 	ld [wOptions], a
 
-	ld a, [wUnusedD721]
-	and %10000111
-	ld [wUnusedD721], a
+	ld a, [wGameplayOptions]
+	and %00001000
+	ld [wGameplayOptions], a
 	
 	ResetEvent EVENT_ENABLE_WILD_RANDOMIZATION
 	ResetEvent EVENT_ENABLE_NORMAL_TRAINER_RANDOMIZATION
@@ -398,36 +398,36 @@ PartyMoveTest:
 
 ;Overworld female trainer sprite functions
 LoadRedSpriteToDE:
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	ld de, RedFSprite
 	bit 0, a	;check if girl
 	jr nz, .next
 	ld de, RedSprite
 .next
 	res 2, a
-	ld [wUnusedD721], a
+	ld [wGameplayOptions], a
 	ret
 	
 LoadSeelSpriteToDE:
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	ld de, SeelFSprite
 	bit 0, a	;check if girl
 	jr nz, .next
 	ld de, SeelSprite
 .next
 	res 2, a
-	ld [wUnusedD721], a
+	ld [wGameplayOptions], a
 	ret
 
 LoadRedCyclingSpriteToDE:
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	ld de, RedFCyclingSprite
 	bit 0, a	;check if girl
 	jr nz, .donefemale
 	ld de, RedCyclingSprite
 .donefemale
 	res 2, a
-	ld [wUnusedD721], a
+	ld [wGameplayOptions], a
 	ret
 
 

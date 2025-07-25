@@ -204,7 +204,7 @@ SetPal_Overworld:
 	ld a, [hGBC]
 	and a
 	jr z, .notGBC
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 7, a
 	jr nz, .enhancedGBCOverworld
 .notGBC
@@ -978,7 +978,7 @@ TransferPalColorLCDDisabled:
 	
 _UpdateGBCPal_BGP::
 ;use a different function if doing enhanced GBC overworld palettes
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 7, a
 	jr z, .notEnhancedGBC
 	ld hl, hFlagsFFFA
@@ -1052,7 +1052,7 @@ _UpdateGBCPal_BGP::
 
 _UpdateGBCPal_OBP::
 ;use a different function if doing enhanced GBC overworld palettes
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 7, a
 	jr z, .notEnhancedGBC
 	ld hl, hFlagsFFFA

@@ -692,7 +692,7 @@ GBCFadeOutToBlack:
 	jr z, .notGBC
 	
 	;personal preference - only do smooth fade in 60fps mode
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 4, a
 	jr z, .notGBC
 
@@ -761,7 +761,7 @@ GBCFadeOutToWhite:
 	jr z, .notGBC
 	
 	;personal preference - only do smooth fade in 60fps mode
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 4, a
 	jr z, .notGBC
 
@@ -828,7 +828,7 @@ GBCFadeInFromWhite:
 	jr z, .notGBC
 	
 	;personal preference - only do smooth fade in 60fps mode
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 4, a
 	jr z, .notGBC
 
@@ -894,7 +894,7 @@ GBCFadeInFromBlack:
 	jr z, .notGBC
 	
 	;personal preference - only do smooth fade in 60fps mode
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 4, a
 	jr z, .notGBC
 
@@ -952,7 +952,7 @@ GBCFadeInFromBlack:
 	ret
 	
 BufferAllPokeyellowColorsGBC_helper:
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 7, a
 	jr z, .doNormal
 	ld a, [hFlagsFFFA]

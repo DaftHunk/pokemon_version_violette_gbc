@@ -10,7 +10,7 @@ SetDefaultNames:
 	; In non-debug builds, the instructions can be removed.
 	ld a, [wd732]
 	push af
-	ld a, [wUnusedD721]	;joenote - preserve extra options
+	ld a, [wGameplayOptions]	;joenote - preserve extra options
 	push af
 	ld hl, wPlayerName
 	ld bc, wBoxDataEnd - wPlayerName
@@ -21,7 +21,7 @@ SetDefaultNames:
 	xor a
 	call FillMemory
 	pop af
-	ld [wUnusedD721], a	;joenote - restore extra options
+	ld [wGameplayOptions], a	;joenote - restore extra options
 	pop af
 	ld [wd732], a
 	pop af
@@ -50,33 +50,21 @@ OakSpeech:
 ;joenote - do a new game plus when choosing New Game from main menu
 ;must have an intact save file detected
 ;must have beaten the elite 4
-;must be holding down the select button
-;a jingle will play if successful and the select button can be released
-	ld a, [wSaveFileStatus]
-	cp 2
-	jr nz, .normalnewgame
-	CheckEvent EVENT_ELITE_4_BEATEN
+	ld a, [wGameplayOptions]
+	bit 3, a
 	jr z, .normalnewgame
-	ld a, [hJoyHeld]
-	and SELECT
-	jr z, .normalnewgame
+
 	call DoNewGamePlus
 	predef InitPlayerData2
-	ld a, $FF
-	call PlaySound ; stop music
-	ld a, SFX_GET_ITEM_1
+	ld a, SFX_GET_ITEM_2
 	call PlaySound
-	call WaitForSoundToFinish
-	ld hl, _PromptNewID
-	call PrintText
-	call YesNoChoice
-	ld a, [wCurrentMenuItem]
-	and a
-	jr nz, .newgamedone
-	call Random
-	ld [wPlayerID], a
-	call Random
-	ld [wPlayerID + 1], a
+	call DisplayNewGamePlusInfo
+
+	; Reset NG+ flag
+	ld a, [wGameplayOptions]
+	set 3, a
+	ld [wGameplayOptions], a
+
 	jr .newgamedone
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .normalnewgame
@@ -100,10 +88,10 @@ OakSpeech:
 	jr nz, .askBoyGirl
 	ld a, [wCurrentMenuItem]
 	ld b, a
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	res 0, a
 	or b
-	ld [wUnusedD721], a
+	ld [wGameplayOptions], a
 	call ClearScreen
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, $FF
@@ -172,7 +160,7 @@ OakSpeech:
 ;joenote - support female sprite
 	ld de, RedPicFFront
 	lb bc, BANK(RedPicFFront), $00
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 0, a	;check if girl
 	jr nz, .donefemale_front
 	ld de, RedPicFront
@@ -198,7 +186,7 @@ OakSpeech:
 ;joenote - support female sprite
 	ld de, RedPicFFront
 	lb bc, BANK(RedPicFFront), $00
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 0, a	;check if girl
 	jr nz, .donefemale_front2
 	ld de, RedPicFront
@@ -225,7 +213,7 @@ OakSpeech:
 	;joenote - support female trainer
 	ld de, RedFSprite
 	lb bc, BANK(RedFSprite), $0C
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 0, a	;check if girl
 	jr nz, .sprite_next
 	ld de, RedSprite
@@ -354,47 +342,47 @@ IntroDisplayPicCenteredOrUpperRight:
 
 DoNewGamePlus: ;joenote - selective wram clearing for new game plus
 
-	;preserve the player ID
-	ld a, [wPlayerID]
-	ld h, a
-	ld a, [wPlayerID + 1]
-	ld l, a
-	push hl
-
+	;skip clearing pokedex data at wMainDataStart
 	ld hl, wPlayerName
 	ld bc, wMainDataStart - wPlayerName
 	xor a
 	call FillMemory
-	
-	;skip clearing pokedex data at wMainDataStart
-		
+	; 2427 keep wPokedexOwned, wPokedexSeen
+
+	;skip clearing #of HoF teams
 	ld hl, wNumBagItems
-	ld bc, wCurrentBoxNum - wNumBagItems
+	ld bc, wNumHoFTeams - wNumBagItems
 	xor a
 	call FillMemory
+	; 2438 keep wNumHoFTeams
 
-	;skip clearing #of HoF teams as well as current box number
-
+	;skip Movedex
 	ld hl, wUnusedD5A3
-	ld bc, wPlayTimeHours - wUnusedD5A3
+	ld bc, wMovedexSeen - wUnusedD5A3
 	xor a
 	call FillMemory
+	; 2786 keep wMovedexSeen
+
+	;skip Options
+	ld hl, wTownVisitedFlag
+	ld bc, wGameplayOptions - wTownVisitedFlag
+	xor a
+	call FillMemory
+	; 3186 keep wGameplayOptions
 
 	;skip clearing the play clock
-	
-	ld hl, wSafariZoneGameOver
-	ld bc, wMainDataEnd - wSafariZoneGameOver
+	ld hl, wUnusedD722
+	ld bc, wPlayTimeHours - wUnusedD722
 	xor a
 	call FillMemory
-
-	;skip clearing box pkmn data
+	; 3412 keep wPlayTimeHours, wPlayTimeMaxed, wPlayTimeMinutes, wPlayTimeSeconds, wPlayTimeFrames
 	
-	;restore the player ID
-	pop hl
-	ld a, l
-	ld [wPlayerID + 1], a
-	ld a, h
-	ld [wPlayerID], a
+	;end skip
+	ld hl, wSafariZoneGameOver
+	ld bc, wdeed - wSafariZoneGameOver
+	xor a
+	call FillMemory
+	; 3453 end
 	
 	ret
 
@@ -410,14 +398,82 @@ BoyGirlChoice::	;joenote - added this
 	ld bc, $80c ;dafthunk : moved cursor to the left 
 	jp DisplayYesNoChoice
 
-_PromptNewID:
-	text "Regénérer l'ID"
-	line "de dresseur?"
-	done
-	db "@"
-	
 DebugNewGamePlayerName:
 	db "Nintend@"
 
 DebugNewGameRivalName:
 	db "Sony@"
+
+DisplayNewGamePlusInfo:
+	xor a
+	ld [wUpdateSpritesEnabled], a
+	ld hl, wd730
+	set 6, [hl]
+	call DisableLCD
+	ld hl, CircleTile
+	ld de, vChars2 + $700
+	ld bc, $0010
+	ld a, BANK(CircleTile)
+	call FarCopyData2
+	coord hl, 0, 0
+	lb bc, 16, 18
+	predef Diploma_TextBoxBorder
+	
+	ld hl, NewGamePlusTextPointersAndCoords
+	ld c, $4
+
+.asm_56715
+	push bc
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	ld a, [hli]
+	push hl
+	ld h, [hl]
+	ld l, a
+	call PlaceString
+	pop hl
+	inc hl
+	pop bc
+	dec c
+	jr nz, .asm_56715
+
+	call EnableLCD
+	callba LoadTrainerInfoTextBoxTiles
+	call WaitForTextScrollButtonPress
+	ld hl, wd72e
+	res 6, [hl]
+	call ClearScreen
+	call RunDefaultPaletteCommand
+	call LoadTextBoxTilePatterns
+	call LoadFontTilePatterns
+	ld hl, wd730
+	set 6, [hl]
+	ret
+
+NewGamePlusTextPointersAndCoords:
+	dw NewGamePlusTitleText
+	dwCoord 1, 1
+	dw NewGamePlusDescription
+	dwCoord 1, 4
+	dw NewGamePlusEmptyText
+	dwCoord 3, 5
+	dw NewGamePlusInfo
+	dwCoord 2, 6
+
+NewGamePlusTitleText:
+	db $70,"Nouvelle partie+",$70,"@"
+
+NewGamePlusDescription:
+	db "Sera gardé:@"
+
+NewGamePlusEmptyText:
+	db "@"
+
+NewGamePlusInfo:
+	db   "<BALL> Pokédex vu"
+	next "<BALL> Pokédex pris"
+	next "<BALL> Capadex"
+	next "<BALL> Temps jeu"
+	next "<BALL> Célébrités@"

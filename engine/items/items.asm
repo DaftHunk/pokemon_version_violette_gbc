@@ -1053,7 +1053,7 @@ ItemUseMedicine:
 	push bc
 	ld a, [wOptions]
 	ld b, a
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	or b
 	pop bc
 	bit BIT_BATTLE_HARD, a

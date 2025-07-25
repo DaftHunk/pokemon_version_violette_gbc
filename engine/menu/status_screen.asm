@@ -130,7 +130,7 @@ StatusScreen:
 
 	ld a, [wStatsToDisplay]
 	bit 0, a
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 6, a
 	jr z, .noblank
 	push hl

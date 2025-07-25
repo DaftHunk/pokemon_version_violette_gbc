@@ -52,9 +52,9 @@ EndOfBattle:
 ;handle stuff for the nuzlocke mode; anything with zero HP will be marked dead if there was no forfeit
 	predef EndOfBattle_NuzlockeHandler
 ;reset the flag used forfeiting
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	res 1, a
-	ld [wUnusedD721], a
+	ld [wGameplayOptions], a
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, [wEscapedFromBattle]
 	and a

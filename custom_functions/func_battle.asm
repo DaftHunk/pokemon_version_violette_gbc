@@ -250,9 +250,9 @@ _ForfeitTrainerMatchText::
 
 ForfeitConfirmed:
 	;set the flag for forfeiting
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	set 1, a
-	ld [wUnusedD721], a
+	ld [wGameplayOptions], a
 	call ForfeitConfirmed_NuzlockeHandler	;joenote - mark already KO'ed pokemon as dead for nuzlocke mode
 	;fall through
 FaintAllMons:
@@ -715,14 +715,6 @@ DoDisobeyLevelCheck:
 	cp LINK_STATE_BATTLING
 	jr z, .return_usemove	;never apply obedience in link battles
 
-; compare the mon's original trainer ID with the player's ID to see if it was traded
-;	CheckEvent EVENT_ELITE_4_BEATEN	;joenote Check if Elite 4 beaten, and if so then don't even bother going further
-;	jr nz, .return_usemove
-
-	ld a, [wUnusedD721]	;joenote - check if obedience level cap is active and always treat as traded if so
-	bit 5, a
-	jr nz, .monIsTraded
-	
 	CheckEvent EVENT_TRAINER_LVL_SCALING
 	jr nz, .return_usemove	;do not apply obedience if level scaling is active
 	
@@ -769,25 +761,10 @@ ObedienceLevelsTraded:
 	db 70	;marsh badge
 	db 0	;volcano badge
 	db 255	;earth badge
-ObedienceLevelCappedOption:
-	db 15	;no badges
-	db 25	;boulder badge
-	db 30	;cascade badge
-	db 35	;thunder badge
-	db 45	;rainbow badge
-	db 50	;soul badge
-	db 50	;marsh badge
-	db 55	;volcano badge
-	db 70	;earth badge
 
 ;returns the level cap based on badges back into D
 GetBadgeCap:
 	ld hl, ObedienceLevelsTraded
-	ld a, [wUnusedD721]	;joenote - check if obedience level cap is active
-	bit 5, a
-	jr z, .next
-	ld hl, ObedienceLevelCappedOption	
-.next
 
 	ld e, 8	;number of badges that exist
 	ld a, [wObtainedBadges]

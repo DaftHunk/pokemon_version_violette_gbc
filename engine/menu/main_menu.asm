@@ -32,10 +32,21 @@ MainMenu:
 	ld a, [wSaveFileStatus]
 	cp 1
 	jr z, .noSaveFile
-; there's a save file
+; there's a save file & NG+
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr z, .noNGPlus
+	coord hl, 0, 0
+	ld b, 8
+	ld c, 18
+	call TextBoxBorder
+	coord hl, 2, 2
+	ld de, NewGamePlusText
+	call PlaceString
+	jr .next2
+.noNGPlus
 	coord hl, 0, 0
 	ld b, 6
-	ld c, 13
+	ld c, 18
 	call TextBoxBorder
 	coord hl, 2, 2
 	ld de, ContinueText
@@ -44,7 +55,7 @@ MainMenu:
 .noSaveFile
 	coord hl, 0, 0
 	ld b, 4
-	ld c, 13
+	ld c, 18
 	call TextBoxBorder
 	coord hl, 2, 2
 	ld de, NewGameText
@@ -94,8 +105,6 @@ MainMenu:
 	ld [hli], a
 	ret
 .endseed
-	
-	
 	ld hl, wd730
 	res 6, [hl]
 	call UpdateSprites
@@ -125,11 +134,27 @@ MainMenu:
 ; are the same whether or not there's a save file.
 	inc b
 .skipInc
+	; 0 is continue or new game
 	ld a, b
 	and a
 	jr z, .choseContinue
+
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jp z, .chooseNormalNewGame
+
+	ld a, b
+	cp 1
+	jp z, StartNewGamePlus
+	cp 2
+	jp z, StartNewGame
+	; else
+	jr .options
+.chooseNormalNewGame
+	ld a, b
 	cp 1
 	jp z, StartNewGame
+	; fallthough
+.options
 	call DisplayOptionMenu
 	ld a, 1
 	ld [wOptionsInitialized], a
@@ -151,7 +176,6 @@ MainMenu:
 	jp nz, .mainMenuLoop ; pressed B
 	jr .inputLoop
 .pressedA
-
 ;joenote - check the rom hack version and give a choice for the pallet warp
 	ld a, [hJoyInput]
 	cp A_BUTTON + SELECT
@@ -172,7 +196,6 @@ MainMenu:
 	ld b, a
 	push bc
 .warpcheck_end
-	
 	call GBPalWhiteOutWithDelay3
 	call ClearScreen
 	ld a, PLAYER_DIR_DOWN
@@ -222,20 +245,20 @@ MainMenu:
 
 InitOptions:
 	xor a
-	ld [wUnusedD721], a	;joenote - reset any extra optioins
+	ld [wGameplayOptions], a	;joenote - reset any extra optioins
 	ld a, 1 ; no delay
 	ld [wLetterPrintingDelayFlags], a
-	ld a, TEXT_DELAY_FAST ; medium speed
-	set BIT_BATTLE_SHIFT, a ;joenote - SET battle style
+	ld a, TEXT_DELAY_FAST ; fast speed
+;	set BIT_BATTLE_SHIFT, a ;joenote - SET battle style
 ;	set BIT_BATTLE_HARD, a ;joenote - hard mode
 	ld [wOptions], a
 	ld a, [hGBC]
 	and a
 	ret z
 	;intialize 60 fps if on playing in GBC-mode
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	set 4, a
-	ld [wUnusedD721], a
+	ld [wGameplayOptions], a
 	ret
 
 LinkMenu:
@@ -464,7 +487,7 @@ ShinPokemonHandshake:
 .pass
 ;One more thing. Exchange if you are a male or female trainer with the other game.
 	ResetEvent EVENT_LINKED_FPLAYER
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	and $0F
 	ld [wSerialExchangeNybbleSendData], a	;load the digit to be sent over link
 	ld a, $ff
@@ -514,6 +537,11 @@ RomHackVersionText:
 	TX_FAR _RomHackVersionText
 	db "@"
 
+StartNewGamePlus:
+	; Set NG+ flag
+	ld a, [wGameplayOptions]
+	set 3, a
+	ld [wGameplayOptions], a
 StartNewGame:
 	ld hl, wd732
 	; Ensure debug mode is not used when starting a regular new game.
@@ -547,7 +575,13 @@ ContinueText:
 	db "Continuer", $4e
 
 NewGameText:
-	db   "Nouveau jeu"
+	db   "Nouvelle partie"
+	next "Options@"
+
+NewGamePlusText:
+	db   "Continuer"
+	next "Nouvelle partie +"
+	next "Nouvelle partie"
 	next "Options@"
 
 CableClubOptionsText:

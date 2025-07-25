@@ -1072,10 +1072,6 @@ AIMoveChoiceModification3:
 	jp .nextMove
 	
 AIMoveChoiceModification4:	;this unused routine now handles intelligent trainer switching
-	ld a, [wUnusedD721]
-	bit BIT_BATTLE_NOSWITCH, a
-	jp nz, .skipSwitchEnd	;don't do anything if intelligent switching is deactivated
-	
 	ld a, [wUnusedC000]
 	set 5, a ; sets the bit that signifies trainer has intelligent switching
 	ld [wUnusedC000], a

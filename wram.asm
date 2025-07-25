@@ -3183,14 +3183,14 @@ wDamageIntention:: ; d71f	;joenote - used as a backup address for the wDamage va
 wSpinnerTileFrameCount::	;d720	;joenote - used as a counter for the spinner tiles out of battle
 	ds 1							
 
-wUnusedD721:: ; d721	;joenote - use to set various wram flags
+wGameplayOptions:: ; d721	;joenote - use to set various wram flags
 	ds 1
 	;bit 0 - player is female trainer if set (reserved for female trainer tagged code)
 	;bit 1 - Gets set when forfeiting a battle
 	;bit 2 - override bit 0 for specific bank switching instances (usually reserved for female trainer tagged code)
-	;bit 3 - if set, the enemy trainer AI will not use intelligent switching
+	;bit 3 - new game +
 	;bit 4 - 60fps option flag
-	;bit 5 - obedience level cap
+	;bit 5 - gammma toggle
 	;bit 6 - nuzlocke mode activated
 	;bit 7 - enhanced GBC colors toggle
 ;;;;;;;;;;;;;;joenote - use these unused locations for debugging and parsing DV scores or holding temp values

@@ -42,7 +42,7 @@ PewterGuys:
 	and a
 	jr nz, .no60fps
 	push hl
-	ld hl, wUnusedD721
+	ld hl, wGameplayOptions
 	bit 4, [hl]
 	pop hl
 	jr z, .no60fps

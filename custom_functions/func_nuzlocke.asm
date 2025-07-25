@@ -5,7 +5,7 @@
 ;if alive --> return with nz
 IsPartyMonDead:
 	;treat mon as alive if nuzlocke mode is off
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 6, a
 	jr nz, .next
 	ld a, 1
@@ -32,7 +32,7 @@ EndOfBattle_NuzlockeHandler:
 	call IsNuzlocke
 	jr z, .return	;return if not in nuzlocke mode
 	
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 1, a
 	call z, SetDeadPartyMons	;only set dead mons if player has not forfeited, 
 .return
@@ -48,7 +48,7 @@ ForfeitConfirmed_NuzlockeHandler:
 	call IsNuzlocke
 	jr z, .return	;return if not in nuzlocke mode
 	
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 1, a
 	call nz, SetDeadPartyMons	;only set dead mons if player actually forfeited,
 .return	
@@ -190,7 +190,7 @@ ResetAreaFlag_NuzlockePredef:
 	
 ;is nuzlocke mode active
 IsNuzlocke:
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 6, a
 	ret
 

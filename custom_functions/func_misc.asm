@@ -113,7 +113,7 @@ SetCPUSpeed:
 	and a
 	jr z, .return	;double speed is only a GBC feature
 	
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	and %00010000
 	rlca
 	rlca

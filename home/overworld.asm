@@ -2069,7 +2069,7 @@ LoadPlayerSpriteGraphicsCommon::
 	jp CopyVideoData
 .isfemaletrainer
 	lb bc, BANK(RedFSprite), $0c
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	;load the regular sprite bank if female bit cleared or overriding female bit set
 	;otherwise load the female player sprite bank
 	and %00000101
@@ -2485,7 +2485,7 @@ ForceBikeOrSurf::
 	jp PlayDefaultMusic ; update map/player state?
 
 Check60fps:
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 4, a
 	ret
 

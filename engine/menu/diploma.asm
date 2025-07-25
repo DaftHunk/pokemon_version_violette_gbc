@@ -67,7 +67,7 @@ DisplayDiploma:
 
 .notMaster
 ;joenote - support female player character
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 0, a	;check if girl
 	jr nz, .is_fplayer
 	callba DrawPlayerCharacter

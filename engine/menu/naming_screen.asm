@@ -13,7 +13,7 @@ AskName:
 	call GetMonName
 	
 	;joenote - always ask to name if in nuzlocke mode
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 6, a
 	jr z, .notNuzlocke
 	xor a

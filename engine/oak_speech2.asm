@@ -2,7 +2,7 @@ ChoosePlayerName:
 	call OakSpeechSlidePicRight
 ;joenote - support female trainer sprite
 	ld de, DefaultNamesPlayerF
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 0, a	;check if girl
 	jr nz, .donefemale_names
 	ld de, DefaultNamesPlayer
@@ -14,7 +14,7 @@ ChoosePlayerName:
 ;joenote - support female trainer sprite
 	push af
 	ld hl, DefaultNamesPlayerListF
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 0, a	;check if girl
 	jr nz, .donefemale_names2
 	ld hl, DefaultNamesPlayerList
@@ -37,7 +37,7 @@ ChoosePlayerName:
 ;joenote - support female trainer sprite
 	ld de, RedPicFFront
 	ld b, BANK(RedPicFFront)
-	ld a, [wUnusedD721]
+	ld a, [wGameplayOptions]
 	bit 0, a	;check if girl
 	jr nz, .donefemale_front
 	ld de, RedPicFront
