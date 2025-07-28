@@ -204,6 +204,9 @@ SetPal_Overworld:
 	ld a, [hGBC]
 	and a
 	jr z, .notGBC
+	ld a, [hFlags_0xFFF6]
+	bit 4, a		;gbcnote - check bit that indicates cable club menus are being displayed
+	jr nz, .notGBC
 	ld a, [wGameplayOptions]
 	bit 7, a
 	jr nz, .enhancedGBCOverworld
@@ -263,12 +266,19 @@ SetPal_Overworld:
 	ld hl, hFlagsFFFA
 	set 4, [hl]
 
+;flag to not generate or transfer attributes
+	ld a, [hFlagsFFFA]
+	bit 5, a
+	jr nz, .done_attributes
+	
+
 	;first make the BG Map Attribute table
 	callba MakeOverworldBGMapAttributes
 
 	;now transfer the BG Map Attributes
 	callba TransferGBCEnhancedBGMapAttributes
 	
+.done_attributes
 	;now we've effectively done the same thing as TranslatePalPacketToBGMapAttributes
 	;now transfer the palette data to accomplish what InitGBCPalettes does
 	callba TransferGBCEnhancedOverworldPalettes	
@@ -927,6 +937,15 @@ TransferBGPPals::
 	ld [de], a
 	dec c
 	jr nz, .loop
+;GBCnote - the version for non-enhanced GBC colors should white out BGP 4-7 since it is not used. prevents problems.
+	ld c, 2 * PAL_SIZE
+.loop2
+	ld a, $ff
+	ld [de], a
+	ld a, $7f
+	ld [de], a
+	dec c
+	jr nz, .loop2
 	ret
 
 TransferCurOBPData:
@@ -1042,7 +1061,7 @@ _UpdateGBCPal_BGP::
 	call TransferBGPPals	;Transfer wBGPPalsBuffer contents to rBGPD
 	ld hl, hFlagsFFFA	;re-allow BGmap updates
 	res 1, [hl]
-		
+	
 ;	pop af
 ;	inc a
 ;	ret z	;return now if 2x cpu mode was already active at the start of this function

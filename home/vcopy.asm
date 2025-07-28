@@ -43,7 +43,14 @@ RedrawRowOrColumn::
 	ld a, [hRedrawRowOrColumnMode]
 	and a
 	ret z
-	ld b, a
+	ld b, a	;00, 01, or 02
+
+	;GBCnote - saving this for later in vblank
+	ld a, [hVblankBackup]
+	and %1111100
+	or b
+	ld [hVblankBackup], a	
+
 	xor a
 	ld [hRedrawRowOrColumnMode], a
 	dec b
@@ -61,7 +68,6 @@ RedrawRowOrColumn::
 	inc de
 	ld a, [hli]
 	ld [de], a
-	call .enhancedGBC	;GBCnote - for enhanced GBC pals
 	ld a, BG_MAP_WIDTH - 1
 	add e
 	ld e, a
@@ -100,7 +106,6 @@ RedrawRowOrColumn::
 	inc de
 	ld a, [hli]
 	ld [de], a
-	call .enhancedGBC	;GBCnote - for enhanced GBC pals
 	ld a, e
 	inc a
 ; the following 6 lines wrap us from the right edge to the left edge if necessary
@@ -113,18 +118,7 @@ RedrawRowOrColumn::
 	dec c
 	jr nz, .loop2
 	ret
-
-.enhancedGBC	;transfer the BG Map Attributes for the new rows or columns if applicable
-	ld a, [hFlagsFFFA]
-	bit 4, a
-	ret z
-	push hl
-	push bc
-	callba TransferGBCEnhancedBGMapAttributes_RolColByte
-	pop bc
-	pop hl
-	ret
-
+	
 ; This function automatically transfers tile number data from the tile map at
 ; wTileMap to VRAM during V-blank. Note that it only transfers one third of the
 ; background per V-blank. It cycles through which third it draws.

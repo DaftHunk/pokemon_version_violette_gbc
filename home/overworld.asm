@@ -7,8 +7,11 @@ EnterMap::
 ; Load a new map.
 	ld a, $ff
 	ld [wJoyIgnore], a
-	call LoadMapData
+;	call LoadMapData
+;	callba ClearVariablesOnEnterMap
+;GBCNote - flipping these so the enhanced gbc colors load from main menu
 	callba ClearVariablesOnEnterMap
+	call LoadMapData
 	ld hl, wd72c
 	bit 0, [hl] ; has the player already made 3 steps since the last battle?
 	jr z, .skipGivingThreeStepsOfNoRandomBattles
@@ -1415,12 +1418,10 @@ LoadCurrentMapView::
 	pop af
 	ld [H_LOADEDROMBANK], a
 	ld [MBC1RomBank], a ; restore previous ROM bank
-		
+	
 ;GBCnote - use the new Tile Map to make BGMap Attributes for enhanced GBC color
 ;	--> build the whole thing if the player is not advancing movement
 	callba MakeOverworldBGMapAttributes	
-	;now transfer the BG Map Attributes
-;	callba TransferGBCEnhancedBGMapAttributes
 	ret
 
 AdvancePlayerSprite::
@@ -1576,7 +1577,6 @@ AdvancePlayerSprite::
 	ld hl, hFlags_0xFFF6
 	res 3, [hl]
 
-	call LoadCurrentMapView
 	ld a, [wSpriteStateData1 + 3] ; delta Y
 	cp $01
 	jr nz, .checkIfMovingNorth2
@@ -2438,7 +2438,7 @@ LoadMapData::
 	pop af
 	ld [H_LOADEDROMBANK], a
 	ld [MBC1RomBank], a
-		
+	
 ;	callba TransferGBCEnhancedBGMapAttributes	;GBCnote - transfer BGMap Attributes for enhanced GBC color
 ;commenting out because this is already done during the above call of RunPaletteCommand
 	ret

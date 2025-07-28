@@ -195,6 +195,18 @@ This feature reinstitutes a speed-running trick that makes text print with zero 
 Toggle this on the extra options menu.  
 Please note that other text speed selections do nothing while this feature is active.  
 
+#### Enhanced Color  
+Colorizes the overworld even further when playing an a GBC.  
+Toggle this on the extra options menu.  
+
+#### Sound Test  
+Press SELECT on the extra options menu to get a sound test menu.
+This way you can listen to the game's musical tracks.  
+They even continue to play once you've backed out of the options menu.  
+
+#### Quick Cursor Run  
+When on the main battle menu, pressing B will automatically place the cursor over RUN.  
+
 
 #Difficulty Settings
 -----------------------------------------------
@@ -323,6 +335,7 @@ This will tell the game to get on your bike. You can also get off your bike the 
 #### Extra Bag Pocket  
 The bag now supports an additional item list for an extra 20 slots of space.  
 Press START while in the bag menu to hot-swap the item list that populates the active bag.  
+Press and hold LEFT or RIGHT then press START to send the item the cursor is over to the non-active bag space.  
 This also works in battle or when depositing items into the PC.  
 In general, the non-active item list gets recognized by the game's systems.  
 For example, you can enter the Cinnabar Gym even if the Secret Key is in the non-active bag space.  
@@ -719,6 +732,7 @@ So don't be shy about using TMs acquired from NPCs and exploration.
 - Added a hidden super potion in celadon city
 - Hidden Hyper Beam TM on the vermilion dock
 - Hidden nugget on the vermilion dock
+- Hidden Moon Stone on Route 4 past the Cerulean Cave entrance
 
 #### Changes to Mart Inventories  
 - Pewter city has ethers
@@ -767,7 +781,7 @@ Note: Not available in the Lite patches.
 
 - Toggle this mode in the extra options menu.  
 
-- This mode **DOES NOT** check if you have obtained pokeballs yet. It is in full effect when toggled to ON.  
+- This mode now checks if you have had access to pokeballs on the save file.  
   
 #### Rule 1: Pokemon Death  
 - A pokemon that faints is considered dead and can no longer be used.
@@ -787,8 +801,7 @@ Note: Not available in the Lite patches.
   - An "area" is defined by the name displayed on the town map.
   - You will be unable to throw balls in subsequent wild battles in that area.
   - Static wild battles count for this as well.
-  - Wild battles before you can get pokeballs also count.
-  - In light of this, you may want to delay activating nuzlocke mode until pokeballs are available.
+  - Wild battles do not count when early in the game and you have no access to pokeballs.
   - Story wild battles (Old Man tutorial, Ghost Marowak, and Tower Ghosts) do not apply.
   - Pokemon gained outside of battle (gifts, prizes, in-game trades, etc) do not apply.
   
@@ -925,6 +938,8 @@ Note: These are not applicable to the Lite patches.
   - Lvl 38 juggler in Fuchsia gym exchanges his hypno for two exeggute
   - Lvl 36 blackbelt in the dojo exchanges his primape for poliwrath
   - Dojo master increased to level 38
+  - Some cueball teams include pinsir
+  - Biker teams now include beedrill, magmar, an electrode, and more voltorbs
   
 #### Rival / Gym Leader / Elite 4 Guide  
 - Route 22 Rival
@@ -1225,8 +1240,8 @@ Pokemon that have had moves added to their learn-lists or changed levels at whic
   - L11, TAIL WHIP added
   - L13, THUNDER WAVE added
   - L25, SLAM added
-  - L31, THUNDERBOLT added
-  - L46, THUNDER added
+  - L31, THUNDER added
+  - L46, REFLECT added
   - L55, LIGHT SCREEN added
 - Tangela
   - L27, ABSORB
@@ -1237,9 +1252,9 @@ Pokemon that have had moves added to their learn-lists or changed levels at whic
   - L21, WATER GUN added
   - L26, HARDEN added
   - L31, RECOVER added
-  - L36, SWIFT added
-  - L46, BUBBLEBEAM added
-  - L51, REFLECT added
+  - L38, SWIFT added
+  - L47, HYDRO PUMP added
+  - L54, REFLECT added
 - Vaporeon
   - L8, SAND ATTACK added
   - L16, GROWL added
@@ -1343,5 +1358,10 @@ Here are some freshly-baked cheat codes unique to Shin Pokemon.
   - 010042DA: If your play-clock was maxed at 255 from a previous save file, this will unlock the expanded game clock.  
   - 0180C4CF: The next encounter will be a shiny pokemon.
   - 01xx21D7: Resets the options and changes the player graphics to male (xx=00) or female (xx=01).
+  - 010472D1: Erases the Nuzlocke death flag for the Pokemon in your first team slot.
 
-
+#### Force Grayscale  
+It is possible, for whatever reason, to force Shin Pokemon to play in grayscale color all the time.  
+This can be done with some hex editing directly on the rom file.  
+Change both address 0x0143 and address 0x0151 to the value of 00.  
+This will force the rom file to operate as an old DMG game with no GBC features.  

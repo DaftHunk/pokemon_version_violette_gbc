@@ -320,8 +320,8 @@ ErasePartyMenuCursors:
 	ret
 
 ItemMenuLoop:
+	call RunDefaultPaletteCommand	;GBCNote - make sure this comes first for GBC enhanced colors
 	call LoadScreenTilesFromBuffer2DisableBGTransfer ; restore saved screen
-	call RunDefaultPaletteCommand
 
 StartMenu_Item:
 	ld a, [wLinkState]
@@ -558,6 +558,7 @@ StartMenu_TrainerInfo:
 	ld a, [wOnSGB]
 	and a
 	call z, Delay3	;joenote - If on GB-DMG, wait 3 frames for the screen to redraw each third
+;	call Delay3
 	
 	call GBPalNormal
 	call WaitForTextScrollButtonPress ; wait for button press
@@ -572,6 +573,7 @@ StartMenu_TrainerInfo:
 	ld a, [wOnSGB]
 	and a
 	call z, Delay3	;joenote - If on GB-DMG, wait 3 frames for the screen to redraw each third
+;	call Delay3
 	
 	;call LoadGBPal		;joenote - moved this to RedisplayStartMenu for smoother whiteout transition
 	pop af

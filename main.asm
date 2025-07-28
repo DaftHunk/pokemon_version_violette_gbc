@@ -1796,7 +1796,7 @@ RedFFishingTilesSide:  INCBIN "gfx/tiles/redF_fishing_tile_side.2bpp"
 
 INCLUDE "engine/menu/item_descriptions.asm"
 INCLUDE "custom_functions/func_soundtest.asm"
-
+INCLUDE "custom_functions/func_enhancedcolor.asm"
 
 SECTION "bank2D",ROMX,BANK[$2D]	;joenote - This is a known empty bank. Going to start moving stuff here
 
@@ -1870,7 +1870,6 @@ tmhmNamesEnd:
 INCLUDE "data/wildPokemons/super_rod.asm"	;joenote - moving all the super rod data here
 
 SECTION "bank32",ROMX,BANK[$32]	
-INCLUDE "custom_functions/func_enhancedcolor.asm"
 INCLUDE "custom_functions/func_bag.asm"
 INCLUDE "custom_functions/func_emuchecks.asm"
 INCLUDE "engine/overworld/cut3.asm"

@@ -82,7 +82,7 @@ VermilionDock_1db9b:
 	ld a, $14 ; water tile
 	call FillMemory ;overwrite wTileMap to erase the SS Anne tiles and replace with water tiles
 	ld a, 1
-	ld [H_AUTOBGTRANSFERENABLED], a
+	ld [H_AUTOBGTRANSFERENABLED], a		;H_AUTOBGTRANSFERDEST already has $9C00 loaded, so re-copy wTileMap to vBGMap1
 	call Delay3
 	xor a
 	ld [H_AUTOBGTRANSFERENABLED], a

@@ -30,6 +30,7 @@ DisplayExtraOptionMenu:
 	call ShowLaglessTextSetting	;joenote - display marker for lagless text or not
 ;	call ShowNoSwitchSetting	;joenote - display marker for deactivated trainer switching or not
 	call ShowGammaSetting
+	call ShowEnhancedGBCSetting
 	
 ;	call ShowBadgeCap	;joenote - show the level cap depending on badge
 	call ShowHardModeSetting	;joenote - display marker for hard mode or not
@@ -62,8 +63,8 @@ DisplayExtraOptionMenu:
 	jr z, .cursorInstText
 	cp $4 ;cursor over gamma shader?
 	jr z, .cursorGamma
-;	cp $5 ; cursor over ai switching?
-;	jr z, .cursorAISwitch
+	cp $5 ;cursor over enhanced gbc?
+    jr z, .cursorEnhGBC
 ;	cp $9 ; cursor over lvl cap?
 ;	jr z, .cursorLvlCap
 	cp $7 ; cursor over hard mode?
@@ -89,8 +90,8 @@ DisplayExtraOptionMenu:
 .cursorGamma
 	call ToggleGammaShader
 	jr .getJoypadStateLoop
-;.cursorAISwitch
-;	call ToggleNoSwitch
+.cursorEnhGBC
+	call ToggleEnhancedGBCColors
 ;	jr .getJoypadStateLoop
 ;.cursorLvlCap
 ;	call ToggleBadgeCap
@@ -174,14 +175,9 @@ PlaceExtraOptionStrings:
 	ld de, TextGamma
 	call PlaceString
 
-;place AI switching text
-;	coord hl, 1, 5
-;	ld de, TextAISwitch
-;	call PlaceString
-
-;place back text
-	coord hl, 1, 16
-	ld de, TextBack
+;place enhanced GBC color text
+	coord hl, 1, 5
+	ld de, TextEnhancedGBC
 	call PlaceString
 
 ;place lvl cap text
@@ -305,6 +301,66 @@ ShowLaglessTextSetting:
 	inc hl
 	ld d, [hl]
 	coord hl, $10, $03
+	call PlaceString
+	ret
+
+;joenote - for toggling the color correction
+ToggleGammaShader:
+	ld a, [hGBC]
+	and a
+	ret z	;do nothing if on dmg or sgb
+	xor %00000011
+	ld [hGBC], a
+;GBCNote - RunDefaultPaletteCommand which messes up enhanced GBC colors
+;set a flag for prevent this from happening
+	ld hl, hFlagsFFFA
+	set 5, [hl]
+	call RunDefaultPaletteCommand
+	ld hl, hFlagsFFFA
+	res 5, [hl]
+	;fall through
+ShowGammaSetting:
+	ld hl, OptionMenuOnOffText
+	ld a, [hGBC]
+	cp 2
+	jr z, .print
+	inc hl
+	inc hl
+.print
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	coord hl, $10, $4
+	call PlaceString
+	ret
+
+
+;joenote - for enhanced GBC colors option
+ToggleEnhancedGBCColors:
+	ld a, [hGBC]
+	and a
+	ret z	;do nothing if on dmg or sgb
+	ld a, [wGameplayOptions]
+	xor ENH_GBC_COLORS
+	ld [wGameplayOptions], a
+	call RunDefaultPaletteCommand
+	;fall through
+ShowEnhancedGBCSetting:
+	ld hl, OptionMenuOnOffText
+	ld a, [hGBC]
+	and a
+	jr z, .off
+	ld a, [wGameplayOptions]
+	bit BIT_ENH_GBC_COLORS, a
+	jr nz, .print
+.off
+	inc hl
+	inc hl
+.print
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	coord hl, $10, $5
 	call PlaceString
 	ret
 
@@ -463,6 +519,8 @@ TextHardMode:
 	db " Mode diffi.@"
 TextGamma:
 	db " Gamma@"
+TextEnhancedGBC:
+	db " Palette comp.@"
 TextBack:
 	db " Retour   Select",$E3,$ED,"@"
 

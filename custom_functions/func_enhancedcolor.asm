@@ -24,20 +24,20 @@ GBCEnhancedOverworldPalettes:
 	
 	; PAL_ENH_OVW_PINK  	; $01
 	RGB 31, 31, 31
-	RGB 31, 15, 18
-	RGB 31,  0,  6
-	RGB  3,  3,  3
-
-	; PAL_ENH_OVW_PURPLE 	; $02
-	RGB 31, 31, 31
 	RGB 25, 15, 31
 	RGB 19,  0, 22
 	RGB  3,  3,  3
 
+	; PAL_ENH_OVW_PURPLE 	; $02
+	RGB 31, 31, 31
+	RGB 13,  7, 17
+	RGB  5,  5,  5
+	RGB  3,  3,  3
+
 	; PAL_ENH_OVW_GRAY   	; $03
 	RGB 31, 31, 31
-	RGB 20, 23, 10
-	RGB 11, 11,  5
+	RGB $0F, $12, $14
+	RGB $0A, $0A, $0A
 	RGB  3,  3,  3
 
 	; PAL_ENH_OVW_GREEN    	; $04
@@ -66,6 +66,382 @@ GBCEnhancedOverworldPalettes:
 
 
 	
+GBCEnhancedOverworldPalettes_ColdCavern:	;just used for seafoam islands for aesthetic
+	; PAL_ENH_OVW_RED     	; $00
+	RGB 31, 31, 31
+	RGB 31, 10,  0
+	RGB 21,  0,  0
+	RGB  3,  3,  3
+	
+	; PAL_ENH_OVW_PINK  	; $01
+	RGB 31, 31, 31
+	RGB 31, 15, 18
+	RGB 31,  0,  6
+	RGB  3,  3,  3
+
+	; PAL_ENH_OVW_PURPLE 	; $02
+	RGB 31, 31, 31
+	RGB 25, 15, 31
+	RGB 19,  0, 22
+	RGB  3,  3,  3
+
+	; PAL_ENH_OVW_GRAY   	; $03
+	RGB 31, 31, 31
+	RGB $12, $12, $18
+	RGB $A, $A,  $F
+	RGB  3,  3,  3
+
+	; PAL_ENH_OVW_GREEN    	; $04
+	RGB 31, 31, 31
+	RGB 17, 31, 11
+	RGB  1, 22,  6
+	RGB  3,  3,  3
+	
+	; PAL_ENH_OVW_YELLOW  	; $05
+	RGB 31, 31, 31
+	RGB 31, 31,  0
+	RGB 28, 14,  0
+	RGB  3,  3,  3
+
+	; PAL_ENH_OVW_BROWN    	; $06
+	RGB 31, 31, 31
+	RGB $10, $5, $16
+	RGB $7, $3,  $F
+	RGB  3,  3,  3
+
+	; PAL_ENH_OVW_BLUE  	; $07
+	RGB 31, 31, 31
+	RGB $10, $5, $16
+	RGB $7,  $3, $F
+	RGB  3,  3,  3
+
+
+	
+OverworldTilePalPointers:
+	dw PalSettings_OVERWORLD    ; 0
+	dw PalSettings_REDS_HOUSE_1 ; 1
+	dw PalSettings_MART         ; 2
+	dw PalSettings_FOREST       ; 3
+	dw PalSettings_REDS_HOUSE_2 ; 4
+	dw PalSettings_DOJO         ; 5
+	dw PalSettings_POKECENTER   ; 6
+	dw PalSettings_GYM          ; 7
+	dw PalSettings_HOUSE        ; 8
+	dw PalSettings_FOREST_GATE  ; 9
+	dw PalSettings_MUSEUM       ; 10
+	dw PalSettings_UNDERGROUND  ; 11
+	dw PalSettings_GATE         ; 12
+	dw PalSettings_SHIP         ; 13
+	dw PalSettings_SHIP_PORT    ; 14
+	dw PalSettings_CEMETERY     ; 15
+	dw PalSettings_INTERIOR     ; 16
+	dw PalSettings_CAVERN       ; 17
+	dw PalSettings_LOBBY        ; 18
+	dw PalSettings_MANSION      ; 19
+	dw PalSettings_LAB          ; 20
+	dw PalSettings_CLUB         ; 21
+	dw PalSettings_FACILITY     ; 22
+	dw PalSettings_PLATEAU      ; 23
+	dw PalSettings_REACTOR      ; 24
+	dw PalSettings_VOLCANO      ; 25
+
+;Assign a color register to be used for each tile in every tileset.
+;A value of 8 is a "wild card" to set the color register based on the current town.
+PalSettings_OVERWORLD:   	; 0		- done
+;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
+db	3,	6,	6,	1,	6,	8,	8,	8,	8,	8,	3,	6,	6,	3,	6,	3;
+;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
+db	3,	6,	8,	6,	7,	8,	8,	8,	8,	8,	3,	6,	6,	3,	6,	3;
+;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
+db	3,	3,	3,	3,	6,	8,	8,	6,	8,	8,	3,	3,	4,	4,	4,	3;
+;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
+db	4,	6,	6,	6,	6,	6,	6,	6,	8,	4,	3,	3,	6,	4,	4,	3;
+;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
+db	4,	4,	0,	0,	7,	7,	3,	3,	6,	6,	3,	6,	8,	8,	3,	3;
+;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
+db	4,	4,	4,	8,	6,	6,	3,	3,	6,	6,	8,	8,	8,	8,	3,	3;
+PalSettings_REDS_HOUSE_1:	; 1		-done
+PalSettings_REDS_HOUSE_2:	; 4
+;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
+db	4,	3,	3,	3,	0,	3,	7,	7,	4,	4,	6,	6,	6,	6,	3,	3;
+;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
+db	3,	3,	3,	3,	0,	3,	7,	7,	6,	6,	6,	6,	6,	6,	3,	3;
+;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
+db	3,	3,	6,	6,	4,	4,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6;
+;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
+db	6,	6,	6,	6,	4,	4,	6,	6,	6,	6,	6,	6,	6,	3,	3,	6;
+;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
+db	4,	4,	3,	3,	4,	4,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6;
+;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
+db	6,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6,	3,	3,	3;
+PalSettings_FOREST:      	; 3		- done
+;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
+db	4,	3,	6,	6,	4,	4,	4,	4,	6,	6,	3,	3,	6,	6,	6,	6;
+;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
+db	0,	0,	6,	6,	7,	4,	4,	4,	6,	6,	3,	3,	6,	6,	6,	6;
+;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
+db	4,	6,	6,	4,	4,	4,	4,	4,	6,	6,	6,	6,	6,	6,	6,	6;
+;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
+db	4,	6,	6,	3,	4,	6,	6,	3,	6,	4,	6,	6,	6,	6,	6,	6;
+;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
+db	3,	3,	3,	3,	6,	6,	6,	6,	6,	6,	6,	3,	3,	6,	6,	6;
+;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
+db	6,	6,	6,	6,	4,	4,	4,	4,	6,	6,	6,	6,	6,	6,	4,	4;
+PalSettings_MART:        	; 2
+PalSettings_POKECENTER:  	; 6		- done
+;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
+db	3,	4,	1,	1,	7,	7,	3,	3,	7,	3,	7,	4,	0,	3,	7,	7;
+;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
+db	7,	4,	1,	1,	7,	7,	3,	6,	7,	7,	3,	4,	0,	6,	7,	7;
+;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
+db	4,	4,	6,	6,	0,	0,	0,	0,	3,	7,	0,	0,	7,	7,	7,	7;
+;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
+db	4,	4,	6,	6,	0,	0,	3,	0,	7,	3,	3,	3,	3,	0,	7,	7;
+;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
+db	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	6,	6,	5,	5;
+;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
+db	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	7,	7,	3,	3,	3,	3;
+PalSettings_DOJO:        	; 5
+PalSettings_GYM:          	; 7		- done
+;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
+db	3,	6,	6,	1,	6,	7,	0,	6,	6,	7,	7,	6,	6,	7,	7,	3;
+;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
+db	7,	6,	6,	6,	7,	6,	0,	6,	6,	7,	7,	6,	6,	7,	7,	6;
+;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
+db	7,	7,	3,	3,	3,	3,	3,	3,	0,	3,	3,	4,	4,	4,	4,	4;
+;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
+db	7,	7,	3,	3,	7,	3,	3,	3,	6,	3,	7,	3,	2,	2,	7,	6;
+;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
+db	4,	4,	7,	7,	7,	7,	7,	7,	3,	3,	3,	3,	2,	2,	3,	3;
+;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
+db	4,	4,	7,	7,	7,	3,	7,	7,	6,	6,	6,	3,	3,	3,	3,	3;
+PalSettings_HOUSE:        	; 8		- done
+;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
+db	7,	3,	3,	3,	2,	3,	7,	7,	4,	4,	4,	4,	4,	4,	6,	6;
+;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
+db	3,	3,	3,	3,	2,	3,	7,	7,	6,	6,	6,	6,	3,	3,	6,	6;
+;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
+db	3,	3,	7,	7,	7,	6,	6,	6,	6,	6,	7,	7,	6,	7,	7,	6;
+;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
+db	6,	6,	6,	6,	7,	6,	6,	6,	6,	6,	6,	6,	6,	7,	7,	7;
+;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
+db	7,	7,	3,	3,	3,	3,	6,	6,	7,	7,	7,	7,	6,	6,	6,	6;
+;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
+db	6,	6,	6,	6,	7,	7,	6,	6,	7,	7,	7,	7,	6,	6,	3,	3;
+PalSettings_FOREST_GATE:  	; 9
+PalSettings_MUSEUM:       	; 10
+PalSettings_GATE:         	; 12	- done
+;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
+db	6,	4,	3,	3,	7,	4,	4,	4,	4,	4,	3,	3,	3,	3,	3,	3;
+;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
+db	3,	3,	3,	3,	7,	4,	4,	4,	4,	7,	3,	3,	3,	3,	3,	3;
+;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
+db	3,	3,	3,	3,	3,	6,	6,	7,	7,	6,	6,	6,	7,	7,	7,	4;
+;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
+db	7,	7,	6,	6,	3,	6,	6,	7,	7,	3,	7,	6,	7,	7,	7,	3;
+;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
+db	3,	3,	3,	3,	3,	3,	7,	7,	1,	3,	1,	3,	3,	3,	2,	2;
+;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
+db	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	7,	3;
+PalSettings_UNDERGROUND:  	; 11	- done
+;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
+db	3,	2,	7,	1,	1,	7,	7,	7,	7,	7,	7,	1,	1,	0,	0,	0;
+;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
+db	3,	7,	7,	1,	1,	1,	7,	7,	1,	0,	0,	0,	0,	0,	0,	0;
+;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
+db	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
+;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
+db	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
+;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
+db	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
+;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
+db	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
+PalSettings_SHIP:         	; 13	- done
+;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
+db	3,	3,	7,	7,	6,	3,	3,	7,	7,	3,	3,	3,	3,	7,	0,	0;
+;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
+db	3,	0,	7,	7,	7,	3,	3,	7,	7,	3,	3,	3,	3,	7,	0,	0;
+;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
+db	3,	3,	0,	6,	0,	3,	3,	3,	3,	3,	3,	0,	3,	3,	5,	5;
+;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
+db	7,	7,	0,	3,	0,	3,	0,	3,	3,	3,	3,	3,	3,	3,	5,	5;
+;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
+db	3,	3,	7,	7,	3,	3,	3,	3,	7,	7,	6,	3,	3,	3,	3,	3;
+;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
+db	3,	3,	3,	3,	7,	7,	3,	3,	7,	7,	3,	3,	3,	3,	3,	3;
+PalSettings_SHIP_PORT:    	; 14	- done
+;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
+db	7,	0,	7,	7,	7,	7,	7,	7,	7,	7,	6,	7,	7,	7,	7,	7;
+;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
+db	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,
+;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
+db	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,
+;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
+db	7,	3,	6,	7,	7,	7,	7,	7,	7,	7,	6,	6,	6,	7,	7,	7,
+;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
+db	7,	7,	7,	7,	7,	7,	7,	7,	6,	6,	6,	6,	6,	7,	7,	7,
+;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
+db	0,	7,	7,	7,	7,	7,	0,	0,	6,	6,	7,	7,	7,	7,	7,	7;
+PalSettings_CEMETERY:     	; 15	- done
+;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
+db	3,	2,	6,	3,	3,	3,	3,	6,	6,	2,	2,	3,	3,	6,	6,	4;
+;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
+db	4,	3,	6,	3,	3,	3,	3,	6,	6,	2,	2,	3,	3,	6,	6,	4;
+;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
+db	4,	4,	5,	4,	3,	3,	6,	2,	6,	6,	2,	2,	2,	2,	2,	2;
+;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
+db	4,	4,	4,	4,	3,	6,	6,	2,	6,	6,	2,	2,	2,	3,	3,	2;
+;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
+db	3,	3,	4,	3,	6,	6,	6,	3,	6,	6,	3,	3,	3,	3,	7,	6;
+;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
+db	3,	3,	4,	6,	6,	2,	3,	4,	3,	4,	3,	3,	0,	0,	0,	0;
+PalSettings_INTERIOR:     	; 16	- done
+;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
+db	3,	3,	3,	7,	7,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3;
+;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
+db	3,	6,	6,	2,	2,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	7;
+;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
+db	7,	6,	6,	2,	2,	7,	7,	3,	3,	3,	3,	3,	3,	6,	6,	3;
+;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
+db	7,	2,	2,	2,	3,	7,	7,	3,	3,	3,	3,	3,	3,	3,	3,	6;
+;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
+db	6,	2,	2,	2,	2,	7,	4,	4,	6,	6,	6,	6,	6,	6,	6,	6;
+;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
+db	3,	6,	6,	1,	1,	1,	1,	6,	6,	6,	6,	6,	6,	3,	3,	3;
+PalSettings_CAVERN:       	; 17	- done
+;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
+db	3,	3,	6,	6,	3,	6,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3;
+;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
+db	6,	6,	6,	6,	7,	6,	6,	6,	3,	3,	3,	3,	3,	3,	3,	3;
+;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
+db	3,	5,	3,	3,	3,	6,	6,	3,	6,	6,	6,	3,	3,	3,	3,	3;
+;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
+db	3,	6,	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	3,	6,	6,	6;
+;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
+db	6,	6,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
+;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
+db	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
+PalSettings_LOBBY:        	; 18	- done
+;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
+db	3,	4,	3,	3,	0,	7,	4,	2,	2,	7,	3,	3,	3,	3,	3,	3;
+;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
+db	3,	7,	3,	3,	0,	7,	4,	2,	2,	7,	3,	3,	3,	3,	3,	3;
+;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
+db	2,	4,	7,	7,	7,	7,	7,	7,	5,	7,	3,	3,	3,	3,	3,	3;
+;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
+db	7,	7,	7,	7,	7,	7,	7,	7,	5,	7,	3,	3,	3,	3,	7,	4;
+;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
+db	3,	3,	3,	3,	7,	3,	7,	7,	4,	4,	3,	7,	7,	7,	7,	7;
+;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
+db	3,	3,	3,	3,	7,	7,	3,	3,	4,	4,	3,	2,	7,	7,	3,	0;
+PalSettings_MANSION:      	; 19	- done
+;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
+db	3,	3,	6,	6,	4,	4,	1,	1,	4,	4,	3,	3,	3,	3,	3,	1;
+;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
+db	3,	4,	6,	6,	4,	5,	1,	1,	6,	6,	3,	3,	3,	3,	1,	1;
+;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
+db	7,	1,	6,	6,	3,	3,	6,	6,	5,	6,	1,	1,	3,	6,	6,	6;
+;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
+db	1,	1,	6,	6,	3,	3,	6,	6,	5,	6,	6,	6,	6,	3,	3,	6;
+;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
+db	3,	3,	3,	3,	4,	4,	6,	6,	1,	1,	1,	1,	3,	3,	1,	3;
+;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
+db	6,	1,	1,	1,	1,	6,	6,	5,	1,	1,	1,	1,	1,	1,	3,	0;
+PalSettings_LAB:          	; 20	- done
+;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
+db	3,	1,	3,	3,	3,	3,	6,	6,	6,	6,	3,	3,	3,	3,	3,	3;
+;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
+db	6,	6,	3,	3,	3,	3,	6,	6,	3,	3,	3,	3,	7,	7,	3,	3;
+;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
+db	6,	6,	6,	6,	7,	7,	3,	7,	6,	6,	6,	6,	4,	4,	6,	6;
+;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
+db	6,	6,	6,	6,	5,	5,	3,	7,	3,	3,	6,	7,	4,	4,	6,	6;
+;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
+db	6,	6,	6,	6,	6,	3,	3,	7,	6,	6,	3,	3,	5,	5,	7,	3;
+;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
+db	6,	6,	6,	6,	6,	3,	3,	7,	7,	7,	3,	3,	3,	0,	0,	0;
+PalSettings_CLUB:         	; 21	- done
+;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
+db	0,	6,	6,	6,	0,	1,	6,	1,	1,	0,	4,	0,	0,	7,	0,	3;
+;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
+db	1,	6,	6,	6,	0,	7,	7,	2,	2,	3,	4,	0,	0,	7,	3,	3;
+;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
+db	7,	7,	7,	7,	7,	7,	7,	7,	0,	0,	7,	7,	0,	0,	0,	0;
+;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
+db	1,	1,	1,	1,	5,	5,	1,	3,	3,	3,	3,	3,	3,	3,	3,	4;
+;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
+db	3,	3,	4,	4,	4,	4,	4,	3,	3,	3,	3,	3,	0,	0,	0,	0;
+;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
+db	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
+PalSettings_FACILITY:     	; 22	- done
+;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
+db	3,	3,	6,	3,	3,	4,	4,	6,	7,	6,	6,	3,	3,	6,	6,	6;
+;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
+db	3,	3,	6,	3,	7,	4,	4,	6,	7,	6,	6,	3,	3,	6,	6,	6;
+;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
+db	2,	2,	1,	5,	7,	7,	6,	2,	6,	6,	7,	7,	7,	7,	7,	2;
+;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
+db	2,	2,	1,	3,	3,	6,	6,	2,	6,	6,	7,	7,	7,	3,	3,	2;
+;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
+db	3,	3,	1,	3,	6,	6,	5,	7,	5,	5,	3,	3,	3,	3,	3,	6;
+;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
+db	3,	3,	1,	6,	6,	3,	3,	7,	3,	7,	3,	3,	7,	7,	3,	7;
+PalSettings_PLATEAU:      	; 23	- done
+;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
+db	3,	6,	6,	7,	7,	3,	3,	4,	4,	6,	6,	6,	6,	7,	7,	7;
+;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
+db	7,	6,	7,	0,	7,	3,	3,	4,	4,	6,	6,	6,	6,	6,	6,	6;
+;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
+db	7,	7,	6,	3,	6,	7,	7,	6,	7,	7,	6,	6,	4,	4,	3,	3;
+;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
+db	3,	3,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6,	8,	8,	8;
+;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
+db	8,	8,	8,	8,	8,	4,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
+;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
+db	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
+PalSettings_REACTOR:        ; 24
+;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
+db	3,	3,	3,	3,	3,	3,	3,	3,	3,	7,	7,	3,	3,	3,	3,	3;
+;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
+db	3,	3,	3,	3,	3,	3,	3,	3,	3,	7,	7,	3,	3,	3,	3,	3;
+;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
+db	7,	7,	3,	3,	3,	3,	6,	3,	3,	3,	7,	7,	7,	3,	3,	3;
+;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
+db	7,	7,	3,	3,	3,	3,	6,	3,	3,	3,	7,	7,	7,	3,	3,	4;
+;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
+db	3,	3,	5,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	4,	4;
+;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
+db	3,	3,	5,	6,	6,	5,	5,	3,	3,	5,	5,	3,	3,	3,	3,	4;
+PalSettings_VOLCANO:        ; 25
+;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
+db	0,	0,	0,	0,	0,	0,	0,	0,	6,	6,	6,	6,	0,	0,	0,	0;
+;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
+db	0,	0,	0,	0,	0,	6,	6,	0,	6,	6,	6,	6,	0,	0,	0,	0;
+;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
+db	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
+;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
+db	6,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
+;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
+db	6,	6,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
+;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
+db	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
+
+
+PalSettings_TownSpecialPal:
+	db	PAL_ENH_OVW_PINK	;	PALLET_TOWN,		; $00
+	db	PAL_ENH_OVW_GREEN	;	VIRIDIAN_CITY,		; $01
+	db	PAL_ENH_OVW_GRAY	;	PEWTER_CITY,		; $02
+	db	PAL_ENH_OVW_BLUE	;	CERULEAN_CITY,		; $03
+	db	PAL_ENH_OVW_PURPLE	;	LAVENDER_TOWN,		; $04
+	db	PAL_ENH_OVW_RED		;	VERMILION_CITY,		; $05
+	db	PAL_ENH_OVW_GREEN	;	CELADON_CITY,		; $06
+	db	PAL_ENH_OVW_YELLOW	;	SAFFRON_CITY,		; $07
+	db	PAL_ENH_OVW_PURPLE	;	FUCHSIA_CITY,		; $08
+	db	PAL_ENH_OVW_RED		;	CINNABAR_ISLAND,	; $09
+	db	PAL_ENH_OVW_BLUE	;	INDIGO_PLATEAU,		; $0A
+
+	
+
 ;This copies everything in wTileMap to w2BGMapAttributes in wram bank 2
 ;It also converts all the tile values to BG Map Attribute palettes
 ;Clobbers BC, HL, and DE
@@ -78,11 +454,17 @@ MakeOverworldBGMapAttributes:
 	ld a, [wGameplayOptions]
 	bit 7, a
 	ret z
+	
+;only do the attributes when walking around, not during a menu or text since that will mess up the settings
+	ld a, [H_AUTOBGTRANSFERENABLED]
+	and a
+	ret nz
 
 	ld a, [wMapViewVRAMPointer]
 	ld b, a
 	ld a, [wMapViewVRAMPointer+1]
 	ld c, a
+.jump_in	;label used for being called from other functions
 	ld a, [wCurMap]
 	ld d, a
 	ld a, [wCurMapTileset]
@@ -142,7 +524,7 @@ MakeOverworldBGMapAttributes:
 	cp $1f
 	jr c, .w2ramCopyLoop_X_nowrap
 	ld a, l
-	sub 32
+	sub BG_MAP_WIDTH
 	ld l, a
 	ld a, h
 	sbc 0
@@ -154,7 +536,7 @@ MakeOverworldBGMapAttributes:
 	jr nz, .w2ramCopyLoop_X
 
 	ld a, [w2MapViewHLPointer+1]
-	add 32
+	add BG_MAP_WIDTH
 	ld l, a
 	ld a, [w2MapViewHLPointer]
 	adc 0
@@ -222,6 +604,13 @@ MakeOverworldBGMapAttributes:
 
 	;point to the correct tile
 	ld a, [de]
+
+;error trap
+	cp $60
+	ld a, PAL_ENH_OVW_GRAY
+	jr nc, .copyColorAttribute
+	ld a, [de]
+	
 	add l
 	ld l, a
 	ld a, 0
@@ -240,7 +629,7 @@ MakeOverworldBGMapAttributes:
 	cp $1f
 	jr c, .w2ramCopyLoop2_X_nowrap
 	ld a, e
-	sub 32
+	sub BG_MAP_WIDTH
 	ld e, a
 	ld a, d
 	sbc 0
@@ -251,7 +640,7 @@ MakeOverworldBGMapAttributes:
 	jr nz, .w2ramCopyLoop2_X
 
 	ld a, [w2MapViewHLPointer+1]
-	add 32
+	add BG_MAP_WIDTH
 	ld e, a
 	ld a, [w2MapViewHLPointer]
 	adc 0
@@ -267,12 +656,6 @@ MakeOverworldBGMapAttributes:
 ;restore the original wram bank and return
 	ld hl, rSVBK
 	res 1, [hl]
-
-;re-enabling interrupts causes vblank to run which in turn creates a weird scanline glitch for a 1 frame
-;skip OAM in order to prevent it
-	ld a, [hFlagsFFFA]
-	set 5, a
-	ld [hFlagsFFFA], a
 	ei	;re-enable interrupts
 	ret
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
@@ -285,7 +668,7 @@ MakeOverworldBGMapAttributes:
 	ld hl, PalSettings_TownSpecialPal	
 	add hl, bc
 	ld a, c
-	cp SAFFRON_CITY+1	;set flags
+	cp INDIGO_PLATEAU + 1 ;set flags
 	ld a, [hl]	;get pal value into A
 	pop bc
 	pop hl
@@ -297,6 +680,7 @@ MakeOverworldBGMapAttributes:
 	
 ;same as above but just for updating the row/column when the player walks
 MakeOverworldBGMapAttributes_RolColUpdate:	
+	call .getTileset
 	ld a, [wSpriteStateData1 + 3]
 	cp $01
 	jr z, .south
@@ -330,7 +714,7 @@ MakeOverworldBGMapAttributes_RolColUpdate:
 	ld d, a
 	
 	;point to w2BGMapAttributes + offset + offset to the last two rows of the map view
-	ld bc, 32*(SCREEN_HEIGHT-2)
+	ld bc, BG_MAP_WIDTH*(SCREEN_HEIGHT-2)
 	ld a, c
 	add e
 	ld e, a
@@ -440,7 +824,7 @@ MakeOverworldBGMapAttributes_RolColUpdate:
 	cp $1F
 	jr c, .notRowEnd
 	ld a, e
-	sub 32
+	sub BG_MAP_WIDTH
 	ld e, a
 	ld a, d
 	sbc 0
@@ -451,7 +835,7 @@ MakeOverworldBGMapAttributes_RolColUpdate:
 	jr nz, .copyrow_loop
 	;move to next row
 	pop de
-	ld a, 32
+	ld a, BG_MAP_WIDTH
 	add e
 	ld e, a
 	ld a, 0
@@ -480,7 +864,7 @@ MakeOverworldBGMapAttributes_RolColUpdate:
 	adc h
 	ld h, a
 ;increment to the next BG Map attribute row	
-	ld a, 32
+	ld a, BG_MAP_WIDTH
 	add e
 	ld e, a
 	ld a, 0
@@ -509,20 +893,10 @@ MakeOverworldBGMapAttributes_RolColUpdate:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
 .convert
 	push hl
-	push bc
-;get the current map tileset
 ;based on the tileset, point HL to the correct list of BG map attributes for its tiles
-	ld a, [w2CurMapTileset]
-	ld c, a
-	ld b, 0
-	ld hl, OverworldTilePalPointers	
-	add hl, bc
-	add hl, bc
-	ld a, [hli]   
-	ld b, a       
-	ld a, [hl]    
+	ld a, [H_SPTEMP]   
 	ld h, a
-	ld a, b
+	ld a, [H_SPTEMP+1]   
 	ld l, a
 ;point to the correct tile
 	ld a, [de]
@@ -538,14 +912,26 @@ MakeOverworldBGMapAttributes_RolColUpdate:
 	call MakeOverworldBGMapAttributes.townColor
 .copyColorAttribute	
 	ld [de], a
-	pop bc
 	pop hl
+	ret
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
+.getTileset
+;get the current map tileset
+	ld a, [w2CurMapTileset]
+	ld c, a
+	ld b, 0
+	ld hl, OverworldTilePalPointers	
+	add hl, bc
+	add hl, bc
+	ld a, [hli]   
+	ld [H_SPTEMP+1], a
+	ld a, [hl]    
+	ld [H_SPTEMP], a
 	ret
 	
 	
 	
-;Just for being called during RedrawRowOrColumn	during VBLANK
-TransferGBCEnhancedBGMapAttributes_RolColByte:
+MakeAndTransferOverworldBGMapAttributes_OpenText:	
 ;only for GBC and only if option is active
 	ld a, [hGBC]
 	and a
@@ -553,41 +939,209 @@ TransferGBCEnhancedBGMapAttributes_RolColByte:
 	ld a, [wGameplayOptions]
 	bit 7, a
 	ret z
+;only on the overworld bgmap
+	ld a, [hFlagsFFFA]
+	bit 4, a
+	ret z
+;opening a text box
+	ld bc, $0098	;set the MapView offset to zero
+	call MakeOverworldBGMapAttributes.jump_in
+	ld a, %10 ;only do vBGMap1 space
+	ld [hDivideBCDBuffer+2], a
+	jp TransferGBCEnhancedBGMapAttributes.vBGMap_selected
+
+MakeAndTransferOverworldBGMapAttributes_CloseText:	
+;only on the overworld bgmap
+	ld a, [hFlagsFFFA]
+	bit 4, a
+	ret z
+;closing a text box
+	ld a, [wMapViewVRAMPointer]
+	ld b, a
+	ld a, [wMapViewVRAMPointer+1]
+	ld c, a
+	call MakeOverworldBGMapAttributes.jump_in	
+	ld a, %01 ;only do vBGMap0 space
+	ld [hDivideBCDBuffer+2], a
+	jp TransferGBCEnhancedBGMapAttributes.vBGMap_selected
+
+
+
+;This is called late in VBLANK and transfers the BG Map Attributes for any redrawn rows/columns after RedrawRowOrColumn
+GBCEnhancedRedrawRowOrColumn:
+	ld a, [hVblankBackup]
+	and %00000011
+	ld b, a
+	ld a, [hVblankBackup]
+	and %11111100
+	ld [hVblankBackup], a
+	
+	;only for GBC and only if option is active
+	ld a, [hGBC]
+	and a
+	ret z
+	ld a, [wGameplayOptions]
+	bit 7, a
+	ret z
+	
+	;only on the overworld bgmap
+	ld a, [hFlagsFFFA]
+	bit 4, a
+	ret z
+
+	dec b
+	jr nz, .colorRow
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.colorColumn
+	ld a, $1
+	ld [rVBK], a	;change to vram bank 1
 
 	ld hl, rSVBK
-	set 1, [hl]		;switch over to wram bank 2 (covers everything from address D700 to DFFF)
+	set 1, [hl]		;switch over to wram bank 2
 
-	ld a, 1
-	ld [rVBK], a	;switch to vram bank 1
-
-	dec de	
-	ld bc, w2BGMapAttributes - vBGMap0
-	ld h, d
-	ld l, e
+	ld a, [hRedrawRowOrColumnDest]
+	ld e, a
+	ld l, a
+	ld a, [hRedrawRowOrColumnDest + 1]
+	ld d, a
+	ld h, a
+	ld bc, (w2BGMapAttributes - vBGMap0)
 	add hl, bc
+	ld c, SCREEN_HEIGHT
+.loopCol
 
-.waitVRAM
+.waitVRAMC1
 	ldh a, [rSTAT]		
 	and %10				
-	jr nz, .waitVRAM	
-		
+	jr nz, .waitVRAMC1	
+
 	ld a, [hli]
 	ld [de], a
 	inc de
-	ld a, [hli]
+
+.waitVRAMC2
+	ldh a, [rSTAT]		
+	and %10				
+	jr nz, .waitVRAMC2	
+
+	ld a, [hl]
 	ld [de], a
-	
-	;restore the original vram bank
+	ld a, BG_MAP_WIDTH - 1
+	add e
+	ld e, a
+	ld a, BG_MAP_WIDTH - 1
+	add l
+	ld l, a
+	jr nc, .noCarryCol
+	inc d
+	inc h
+.noCarryCol
+; the following lines wrap us from bottom to top if necessary
+	ld a, h
+	cp $D5
+	jr c, .noTopWrap
+	ld a, $D1
+	ld h, a
+	ld a, $98
+	ld d, a
+.noTopWrap
+	dec c
+	jr nz, .loopCol
+.finishColumn
 	xor a
 	ld [rVBK], a
 
-	;restore the original wram bank and return
+	ld hl, rSVBK
+	res 1, [hl]
+	ret
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.colorRow
+	ld a, $1
+	ld [rVBK], a	;change to vram bank 1
+
+	ld hl, rSVBK
+	set 1, [hl]		;switch over to wram bank 2
+
+	ld a, [hRedrawRowOrColumnDest]
+	ld e, a
+	ld l, a
+	ld a, [hRedrawRowOrColumnDest + 1]
+	ld d, a
+	ld h, a
+	ld bc, (w2BGMapAttributes - vBGMap0)
+	add hl, bc
+
+; draw upper half
+	call .DrawHalf
+
+	ld a, [hRedrawRowOrColumnDest]
+	ld e, a
+	ld l, a
+	ld a, [hRedrawRowOrColumnDest + 1]
+	ld d, a
+	ld h, a
+	ld bc, (w2BGMapAttributes - vBGMap0)
+	add hl, bc
+	ld a, BG_MAP_WIDTH ; width of VRAM background map
+	add e
+	ld e, a
+	ld a, BG_MAP_WIDTH ; width of VRAM background map
+	add l
+	ld l, a
+
+; draw lower half
+	call .DrawHalf
+
+.finishRow
+	xor a
+	ld [rVBK], a
 	ld hl, rSVBK
 	res 1, [hl]
 	ret
 
+.DrawHalf
+	ld c, SCREEN_WIDTH / 2
+.loopRow
+.waitVRAMR1
+	ldh a, [rSTAT]		
+	and %10				
+	jr nz, .waitVRAMR1	
+
+	ld a, [hli]
+	ld [de], a
+	inc de
+
+.waitVRAMR2
+	ldh a, [rSTAT]		
+	and %10				
+	jr nz, .waitVRAMR2
+
+	ld a, [hli]
+	ld [de], a
+	inc de
+; the following lines wrap us from the right edge to the left edge if necessary
+	ld a, e
+	and $1f
+	jr nz, .noSideWrap
+	ld a, e
+	sub BG_MAP_WIDTH
+	ld e, a
+	ld a, d
+	sbc 0
+	ld d, a
+	ld a, l
+	sub BG_MAP_WIDTH
+	ld l, a
+	ld a, h
+	sbc 0
+	ld h, a
+.noSideWrap
+	dec c
+	jr nz, .loopRow
+	ret
 	
 	
+
 TransferGBCEnhancedBGMapAttributes:
 ;only for GBC and only if option is active
 	ld a, [hGBC]
@@ -597,14 +1151,16 @@ TransferGBCEnhancedBGMapAttributes:
 	bit 7, a
 	ret z
 
+	ld a, %11
+	ld [hDivideBCDBuffer+2], a
+
+.vBGMap_selected
 	ld de, $3F00
 	ld hl, w2BGMapAttributes
 	ld a, h
 	ld [hDivideBCDBuffer], a
 	ld a, l
 	ld [hDivideBCDBuffer+1], a
-	ld a, %11
-	ld [hDivideBCDBuffer+2], a
 	di
 	ld hl, rSVBK
 	set 1, [hl]
@@ -714,7 +1270,26 @@ BufferAllEnhancedColorsGBC:
 	add a
 	add a
 	ld e, a
+
 	ld hl, GBCEnhancedOverworldPalettes
+	ld a, [wCurMap]
+	cp LORELEIS_ROOM
+	jr z, .isColdCavern
+	cp CERULEAN_CAVE_1F
+	jr z, .isColdCavern
+	cp CERULEAN_CAVE_2F
+	jr z, .isColdCavern
+	cp CERULEAN_CAVE_B1F
+	jr z, .isColdCavern
+	cp SEAFOAM_ISLANDS_1F
+	jr z, .isColdCavern
+	cp SEAFOAM_ISLANDS_B1F
+	jr c, .notColdCavern
+	cp SEAFOAM_ISLANDS_B4F + 1
+	jr nc, .notColdCavern
+.isColdCavern
+	ld hl, GBCEnhancedOverworldPalettes_ColdCavern
+.notColdCavern
 	add hl, de
 	
 	pop de ;get the pal pattern back
@@ -804,6 +1379,13 @@ UpdateEnhancedGBCPal_BGP:
 	ld [rIE], a
 
 	ld de, wGBCFullPalBuffer
+
+;since the background is getting updates, wait until vblank starts
+;this way the scanlines don't update halfway down the screen
+.wait
+	ld a, [rLY]
+	cp $90
+	jr c, .wait
 	call GBCBufferFastTransfer_BGP
 
 	pop af		;re-enable interrupts
@@ -818,7 +1400,7 @@ UpdateEnhancedGBCPal_BGP:
 	
 
 
-UpdateEnhancedGBCPal_OBP::
+UpdateEnhancedGBCPal_OBP:
 ; d = CONVERT_OBP0 or CONVERT_OBP1
 
 	ld a, d
@@ -886,100 +1468,6 @@ UpdateEnhancedGBCPal_OBP::
 
 
 	
-OverworldTilePalPointers:
-	dw PalSettings_OVERWORLD    ; 0
-	dw PalSettings_REDS_HOUSE_1 ; 1
-	dw PalSettings_MART         ; 2
-	dw PalSettings_FOREST       ; 3
-	dw PalSettings_REDS_HOUSE_2 ; 4
-	dw PalSettings_DOJO         ; 5
-	dw PalSettings_POKECENTER   ; 6
-	dw PalSettings_GYM          ; 7
-	dw PalSettings_HOUSE        ; 8
-	dw PalSettings_FOREST_GATE  ; 9
-	dw PalSettings_MUSEUM       ; 10
-	dw PalSettings_UNDERGROUND  ; 11
-	dw PalSettings_GATE         ; 12
-	dw PalSettings_SHIP         ; 13
-	dw PalSettings_SHIP_PORT    ; 14
-	dw PalSettings_CEMETERY     ; 15
-	dw PalSettings_INTERIOR     ; 16
-	dw PalSettings_CAVERN       ; 17
-	dw PalSettings_LOBBY        ; 18
-	dw PalSettings_MANSION      ; 19
-	dw PalSettings_LAB          ; 20
-	dw PalSettings_CLUB         ; 21
-	dw PalSettings_FACILITY     ; 22
-	dw PalSettings_PLATEAU      ; 23
-
-;Assign a color register to be used for each tile in every tileset.
-;A value of 8 is a "wild card" to set the color register based on the current town.
-PalSettings_OVERWORLD:   	; 0
-;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
-db	3,	6,	6,	1,	6,	8,	8,	8,	8,	8,	3,	6,	6,	3,	6,	3;
-;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
-db	3,	6,	8,	6,	7,	8,	8,	8,	8,	8,	3,	6,	6,	3,	6,	3;
-;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
-db	3,	3,	3,	3,	6,	8,	8,	6,	8,	8,	3,	3,	4,	4,	4,	3;
-;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
-db	4,	6,	6,	6,	6,	6,	6,	6,	8,	4,	3,	3,	6,	4,	4,	3;
-;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
-db	4,	4,	0,	0,	7,	7,	6,	6,	6,	6,	3,	3,	8,	8,	3,	3;
-;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
-db	4,	4,	4,	8,	6,	6,	6,	6,	6,	6,	8,	0,	8,	8,	3,	3;
-PalSettings_REDS_HOUSE_1:	; 1
-PalSettings_MART:        	; 2
-PalSettings_FOREST:      	; 3
-PalSettings_REDS_HOUSE_2:	; 4
-PalSettings_DOJO:        	; 5
-PalSettings_POKECENTER:  	; 6
-PalSettings_GYM:          	; 7
-PalSettings_HOUSE:        	; 8
-PalSettings_FOREST_GATE:  	; 9
-PalSettings_MUSEUM:       	; 10
-PalSettings_UNDERGROUND:  	; 11
-PalSettings_GATE:         	; 12
-PalSettings_SHIP:         	; 13
-PalSettings_SHIP_PORT:    	; 14
-PalSettings_CEMETERY:     	; 15
-PalSettings_INTERIOR:     	; 16
-PalSettings_CAVERN:       	; 17
-PalSettings_LOBBY:        	; 18
-PalSettings_MANSION:      	; 19
-PalSettings_LAB:          	; 20
-PalSettings_CLUB:         	; 21
-PalSettings_FACILITY:     	; 22
-PalSettings_PLATEAU:      	; 23
-;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
-db	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
-;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
-db	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
-;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
-db	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
-;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
-db	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
-;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
-db	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
-;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
-db	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
-
-
-
-PalSettings_TownSpecialPal:
-	db	PAL_ENH_OVW_PURPLE	;	PALLET_TOWN,		; $00
-	db	PAL_ENH_OVW_GREEN	;	VIRIDIAN_CITY,		; $01
-	db	PAL_ENH_OVW_GRAY	;	PEWTER_CITY,		; $02
-	db	PAL_ENH_OVW_BLUE	;	CERULEAN_CITY,		; $03
-	db	PAL_ENH_OVW_PURPLE	;	LAVENDER_TOWN,		; $04
-	db	PAL_ENH_OVW_RED		;	VERMILION_CITY,		; $05
-	db	PAL_ENH_OVW_GREEN	;	CELADON_CITY,		; $06
-	db	PAL_ENH_OVW_PINK	;	FUCHSIA_CITY,		; $07
-	db	PAL_ENH_OVW_RED		;	CINNABAR_ISLAND,	; $08
-	db	PAL_ENH_OVW_BLUE	;	INDIGO_PLATEAU,		; $09
-	db	PAL_ENH_OVW_YELLOW	;	SAFFRON_CITY,		; $0A
-
-	
-
 ;This is an extremely fast and lightweight function for transferring an entire 128 byte buffer of colors to the GBC
 ;Takes DE which points to the address of the buffer to use
 ;Unlike the reduced versions below for BGP/OBP, this has a built-in 1 frame delay as it waits for LY=$90
@@ -989,7 +1477,7 @@ GBCBufferFastTransfer:
 	ld a, h
 	ld [H_SPTEMP], a
 	ld a, l
-	ld [H_SPTEMP + 1], a ; save stack pinter
+	ld [H_SPTEMP + 1], a ; save stack pointer
 	
 	ld h, d
 	ld l, e
@@ -1256,43 +1744,43 @@ DecrementAllColorsGBC_improved:
 ;C = number to subract from each R, G, and B value
 ;HL = pointer for the color bytes to modify
 
-;red
+;blue
 	ld a, [hl]
 	ld b, a				
 	and %00000011	
-	ld d, a				;d = red negative
+	ld d, a				;d = blue negative
 	ld a, %01111100
 	and b				;a = positive
 	ld b, c				
 	rlc b
-	rlc b				;b = amount to subtract from red
+	rlc b				;b = amount to subtract from blue
 	sub b				;a = a - b
 	
-	jr c, .makeMinRed
+	jr c, .makeMinBlue
 	cp $C
-	jr nc, .meetsMinRed
-.makeMinRed
-	ld a, $C	;minimum red value if underflow
-.meetsMinRed
+	jr nc, .meetsMinBlue
+.makeMinBlue
+	ld a, $C	;minimum blue value if underflow
+.meetsMinBlue
 	
 	or d
 	ld [hli], a
 	
-;blue
+;red
 	ld a, [hl]
 	ld b, a
 	and %11100000
-	ld e, a				;e = blue negative
+	ld e, a				;e = red negative
 	ld a, %00011111
 	and b				;a = positive
 	sub c				;a = a - c
 
-	jr c, .makeMinBlue
+	jr c, .makeMinRed
 	cp $03
-	jr nc, .meetsMinBlue
-.makeMinBlue
-	ld a, $03	;minimum blue value if underflow
-.meetsMinBlue
+	jr nc, .meetsMinRed
+.makeMinRed
+	ld a, $03	;minimum red value if underflow
+.meetsMinRed
 
 	or e
 	ld [hld], a
@@ -1315,8 +1803,8 @@ DecrementAllColorsGBC_improved:
 	ld c, a
 	;color is now in BC and number to subtract is in HL
 	
-	;e = green positive lo = blue negative from above
-	;d = green positive hi = red negative from above
+	;e = green positive lo = red negative from above
+	;d = green positive hi = blue negative from above
 	
 	;do DE = DE - HL - 3
 	ld a, e
@@ -1334,7 +1822,7 @@ DecrementAllColorsGBC_improved:
 	ld d, a
 	jr nc, .meetsMinGreen	
 .makeMinGreen
-	ld de, $0060	;minimum green value if underflow
+	ld de, $0060 - 3	;<minimum green value if underflow> - 3
 .meetsMinGreen
 	
 	inc de
@@ -1415,41 +1903,41 @@ IncrementAllColorsGBC_improved:
 ;C = number to add to each R, G, and B value
 ;HL = pointer for the color bytes to modify
 
-;red
+;blue
 	ld a, [hl]
 	ld b, a				
 	and %00000011	
-	ld d, a				;d = red negative
+	ld d, a				;d = blue negative
 	ld a, %01111100
 	and b				;a = positive
 	ld b, c				
 	rlc b
-	rlc b				;b = amount to add to red
+	rlc b				;b = amount to add to blue
 	add b				;a = a + b
 	
 	cp $7C+1
-	jr c, .meetsMaxRed
-.makeMaxRed
-	ld a, $7C	;Maximum red value if overflow
-.meetsMaxRed
+	jr c, .meetsMaxBlue
+.makeMaxBlue
+	ld a, $7C	;Maximum Blue value if overflow
+.meetsMaxBlue
 	
 	or d
 	ld [hli], a
 	
-;blue
+;red
 	ld a, [hl]
 	ld b, a
 	and %11100000
-	ld e, a				;e = blue negative
+	ld e, a				;e = Red negative
 	ld a, %00011111
 	and b				;a = positive
 	add c				;a = a + c
 
 	cp $1F+1
-	jr c, .meetsMaxBlue
-.makeMaxBlue
-	ld a, $1F	;Maximum blue value if underflow
-.meetsMaxBlue
+	jr c, .meetsMaxRed
+.makeMaxRed
+	ld a, $1F	;Maximum Red value if underflow
+.meetsMaxRed
 
 	or e
 	ld [hld], a
@@ -1472,8 +1960,8 @@ IncrementAllColorsGBC_improved:
 	ld c, a
 	;color is now in BC and number to add is in HL
 	
-	;e = green positive lo = blue negative from above
-	;d = green positive hi = red negative from above
+	;e = green positive lo = red negative from above
+	;d = green positive hi = blue negative from above
 	
 	;do HL = HL + DE then make sure it's < $03E0+1
 	add hl, de
@@ -1487,7 +1975,6 @@ IncrementAllColorsGBC_improved:
 .makeMaxGreen
 	ld de, $03E0	;Maximum green value if overflow
 .meetsMaxGreen
-	
 	
 	pop hl	
 
@@ -1530,4 +2017,3 @@ IncrementAllColorsGBC_improved:
 	ld a, 1
 	and a
 	ret
-    

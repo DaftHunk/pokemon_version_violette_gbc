@@ -326,6 +326,7 @@ hFlags_0xFFF6 EQU $FFF6	;has to do with a bunch of menu spacing and stuff
 ; bit 1: menu is double spaced
 ; bit 2: something about skipping a line when printing text
 ; bit 3: LoadCurrentMapView is being called during player movement - GBCnote--> added this
+; bit 4: Menus in the cable club are being displayed - GBCnote--> added this
 
 hFieldMoveMonMenuTopMenuItemX EQU $FFF7
 
@@ -339,5 +340,10 @@ hFlagsFFFA EQU $FFFA	;joenote - added for various uses
 ;bit 2 - This gets set to indicate that a sfx is playing while printing text
 ;bit 3 - When set, the CopyData function will only copy when safe to do so for VRAM
 ;bit 4 - When set, the enhanced GBC overworld BG Map Attributes are being used
+;bit 5 - When set, enhanced GBC overworld BG Map Attributes should not be done during RunDefaultPaletteCommand
+
+hVblankBackup EQU $FFFC	; added for more various uses involving enhanced GBC colors
+;bits 0 and 1 - backup of hRedrawRowOrColumnMode
+
 hRGB EQU $FFFB	; FFFB=Red, FFFC=Green, FFFD=BLUE	;3 bytes ;joenote - used to store color RGB color values
 hGBC EQU $FFFE ;gbcnote - 0 if DMG or SGB, != 0 if GBC, =2 for gamma shader
