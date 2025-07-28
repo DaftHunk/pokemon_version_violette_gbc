@@ -9,7 +9,18 @@ MainMenu:
 	jr nc, .mainMenuLoop
 
 	predef LoadSAV
+	; fallthrough
+.loadGamma
+	ld a, $01
+	ld [hGBC], a
 
+	ld a, [wGameplayOptions]
+	bit 5, a
+	jr z, .mainMenuLoop
+	
+	ld a, $02
+	ld [hGBC], a
+	; fallthrough
 .mainMenuLoop
 	ld c, 20
 	call DelayFrames
@@ -246,18 +257,21 @@ MainMenu:
 InitOptions:
 	xor a
 	ld [wGameplayOptions], a	;joenote - reset any extra optioins
+
 	ld a, 1 ; no delay
 	ld [wLetterPrintingDelayFlags], a
+
 	ld a, TEXT_DELAY_FAST ; fast speed
 	set BIT_BATTLE_SHIFT, a ;joenote - SET battle style
-;	set BIT_BATTLE_HARD, a ;joenote - hard mode
 	ld [wOptions], a
+
 	ld a, [hGBC]
 	and a
 	ret z
-	;intialize 60 fps if on playing in GBC-mode
+
 	ld a, [wGameplayOptions]
-	set 4, a
+	set 4, a ; 60fps
+	set 7, a ; enhanced GBC colors
 	ld [wGameplayOptions], a
 	ret
 

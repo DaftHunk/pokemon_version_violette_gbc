@@ -47,12 +47,13 @@ ResetAllOptions: ;joenote - reset all the special options (like for patching-up)
 	call PlaySound
 	
 	ld a, [wOptions]
-	and %11000000
-	set 0, a
+	ld a, TEXT_DELAY_FAST ; fast speed
+	set BIT_BATTLE_SHIFT, a ;joenote - SET battle style
 	ld [wOptions], a
 
 	ld a, [wGameplayOptions]
-	and %00001000
+	set 4, a ; 60fps
+	set 7, a ; enhanced GBC colors
 	ld [wGameplayOptions], a
 	
 	ResetEvent EVENT_ENABLE_WILD_RANDOMIZATION
