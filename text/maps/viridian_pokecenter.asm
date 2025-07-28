@@ -17,34 +17,14 @@ _ViridianPokeCenterText3::
 	cont "#mon!"
 	done
 
-;joenote - text for randomized regular trainers
-_ViridianPokeCenter_RegRandomON::
+_ViridianPokeCenter_AideRandom::
 	text "Ce n'est pas"
 	line "ton premier"
 	cont "voyage #mon?"
 	
-	para "Je peux rendre"
-	line "les dresseurs"
-	cont "classiques"
-	cont "aléatoires."
-	done
-	
-_ViridianPokeCenter_RegRandomOFF::
-	text "Tu veux revenir"
-	line "en arrière? Hmm."
-	
-	para "Je peux te rendre"
-	line "les dresseurs"
-	cont "comme avant."
-	done
-	
-_ViridianPokeCenter_AideQ_done::
-	text "Okay, c'est fait."
-	done
-	
-_ViridianPokeCenter_AideQ_reject::
-	text "Non? Très bien."
-	line "Reviens me voir"
-	cont "si tu changes"
-	cont "d'avis."
+	para "Il parait qu'il"
+	line "existe de nom-"
+	cont "breuses options"
+	cont "pour pimenter"
+	cont "ton aventure!"
 	done

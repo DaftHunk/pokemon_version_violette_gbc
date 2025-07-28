@@ -14,12 +14,12 @@ DisplayExtraOptionMenu:
 
 ;draw text box border for lite options
 	coord hl, 0, 0
-	ld b, 4
+	ld b, 5
 	ld c, 18
 	call TextBoxBorder
 ;draw text box border for master options
-	coord hl, 0, 6
-	ld b, 2
+	coord hl, 0, 7
+	ld b, 4
 	ld c, 18
 	call TextBoxBorder
 
@@ -28,13 +28,13 @@ DisplayExtraOptionMenu:
 	call PlaceSoundSetting	;joenote - display the sound setting
 	call Show60FPSSetting	;60fps - display current setting
 	call ShowLaglessTextSetting	;joenote - display marker for lagless text or not
-;	call ShowNoSwitchSetting	;joenote - display marker for deactivated trainer switching or not
 	call ShowGammaSetting
 	call ShowEnhancedGBCSetting
 	
-;	call ShowBadgeCap	;joenote - show the level cap depending on badge
 	call ShowHardModeSetting	;joenote - display marker for hard mode or not
 	call ShowNuzlocke
+	call ShowRandomTrainers
+	call ShowRandomWild
 
 	call Delay3
 .loop
@@ -65,14 +65,16 @@ DisplayExtraOptionMenu:
 	jr z, .cursorGamma
 	cp $5 ;cursor over enhanced gbc?
     jr z, .cursorEnhGBC
-;	cp $9 ; cursor over lvl cap?
-;	jr z, .cursorLvlCap
-	cp $7 ; cursor over hard mode?
+	cp $8 ; cursor over hard mode?
 	jr z, .cursorHardMode
-	cp $8 ; cursor over nuzlocke?
+	cp $9 ; cursor over nuzlocke?
 	jr z, .cursorNuzlocke
+	cp $0a ; cursor over random trainers?
+	jr z, .cursorRandomTrainers
+	cp $0b ; cursor over random wild?
+	jr z, .cursorRandomWild
 	cp $10 ; is the cursor on Back?
-	jr z, .exitMenu
+	jp z, .exitMenu
 	jr .getJoypadStateLoop
 
 .displaySoundTestMenu
@@ -92,15 +94,18 @@ DisplayExtraOptionMenu:
 	jr .getJoypadStateLoop
 .cursorEnhGBC
 	call ToggleEnhancedGBCColors
-;	jr .getJoypadStateLoop
-;.cursorLvlCap
-;	call ToggleBadgeCap
-;	jr .getJoypadStateLoop
+	jr .getJoypadStateLoop
 .cursorHardMode
 	call ToggleHardMode
 	jr .getJoypadStateLoop
 .cursorNuzlocke
 	call ToggleNuzlocke
+	jr .getJoypadStateLoop
+.cursorRandomTrainers
+	call ToggleRandomTrainers
+	jr .getJoypadStateLoop
+.cursorRandomWild
+	call ToggleRandomWild
 	jr .getJoypadStateLoop
 
 .checkDirectionKeys
@@ -118,11 +123,11 @@ DisplayExtraOptionMenu:
 	cp 16
 	ld b, -15
 	jr z, .updateMenuVariables
-	cp 4
+	cp 5
 	ld b, 3
 	jr z, .updateMenuVariables
-	cp 8
-	ld b, 8
+	cp 11
+	ld b, 5
 	jr z, .updateMenuVariables
 	;else
 	ld b, 1
@@ -131,11 +136,11 @@ DisplayExtraOptionMenu:
 	cp 1
 	ld b, 15
 	jr z, .updateMenuVariables
-	cp 7
+	cp 8
 	ld b, -3
 	jr z, .updateMenuVariables
 	cp 16
-	ld b, -8
+	ld b, -5
 	jr z, .updateMenuVariables
 	;else
 	ld b, -1
@@ -180,19 +185,29 @@ PlaceExtraOptionStrings:
 	ld de, TextEnhancedGBC
 	call PlaceString
 
-;place lvl cap text
-;	coord hl, 1, 9
-;	ld de, TextAILevelCap
-;	call PlaceString
-
 ;place hard mode text
-	coord hl, 1, 7
+	coord hl, 1, 8
 	ld de, TextHardMode
 	call PlaceString
 
 ;place nuzlocke text
-	coord hl, 1, 8
+	coord hl, 1, 9
 	ld de, TextNuzlocke
+	call PlaceString
+
+;place random trainers text
+	coord hl, 1, 10
+	ld de, TextRandomTrainer
+	call PlaceString
+
+;place random wild text
+	coord hl, 1, 11
+	ld de, TextRandomWild
+	call PlaceString
+
+;place back text
+	coord hl, 1, 16
+	ld de, TextBack
 	call PlaceString
 
 	ret
@@ -387,105 +402,12 @@ ShowHardModeSetting:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	coord hl, $10, $7
+	coord hl, $10, $8
 	call PlaceString
 	ret
 
 
-;joenote - for deactivating intelligent trainer switching
-;ToggleNoSwitch:
-;	ld a, [wGameplayOptions]
-;	xor BATTLE_NOSWITCH
-;	ld [wGameplayOptions], a
-;	;fall through
-;ShowNoSwitchSetting:
-;	ld hl, OptionMenuNoSwitch
-;	ld a, [wGameplayOptions]
-;	bit BIT_BATTLE_NOSWITCH, a
-;	jr nz, .print
-;	inc hl
-;	inc hl
-;.print
-;	ld e, [hl]
-;	inc hl
-;	ld d, [hl]
-;	coord hl, $D, $5
-;	call PlaceString
-;	ret
-;OptionMenuNoSwitch:
-;	dw OptionMenuNoSwitchON
-;	dw OptionMenuNoSwitchOFF
-;OptionMenuNoSwitchON:
-;	db " Orig.@"
-;OptionMenuNoSwitchOFF:
-;	db "Intel.@"
-
-	
-;joenote - for toggling the color correction
-ToggleGammaShader:
-	ld a, [hGBC]
-	and a
-	ret z	;do nothing if on dmg or sgb
-	xor %00000011
-	ld [hGBC], a
-	call RunDefaultPaletteCommand
-	;fall through
-ShowGammaSetting:
-	ld hl, OptionMenuOnOffText
-	ld a, [hGBC]
-	cp 2
-	jr z, .print
-	inc hl
-	inc hl
-.print
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	coord hl, $10, $4
-	call PlaceString
-	ret
-
-	
-;joenote - show /toggle badge cap for level
-;ToggleBadgeCap:
-;	ld a, [wGameplayOptions]
-;	xor %00100000
-;	ld [wGameplayOptions], a
-	;fall through
-;ShowBadgeCap:
-;	ld de, OptionMenu5Spaces
-;	coord hl, $0E, $9
-;	call PlaceString
-;	ld de, OptionMenu5SpacesOFF
-;	ld a, [wGameplayOptions]	;check if obedience level cap is active
-;	bit 5, a
-;	jr z, .print
-;	ld de, OptionMenuCapLevelText
-;.print
-;	push af
-;	coord hl, $0E, $9
-;	call PlaceString
-;	pop af
-;	ret z
-	
-;.printnum	
-;	callba GetBadgeCap
-;	ld a, d
-;	ld [wNumSetBits], a
-;	coord hl, $10, $9
-;	ld de, wNumSetBits
-;	lb bc, 1, 3
-;	call PrintNumber
-;	ret
-;OptionMenuCapLevelText:
-;	db "N:@"
-;OptionMenu5SpacesOFF:
-;	db "  Non@"
-;OptionMenu5Spaces:
-;	db "     @"
-
-
-;joenote - show /toggle badge cap for level
+;joenote - show /toggle nuzlocke mode
 ToggleNuzlocke:
 	ld a, [wGameplayOptions]
 	xor %01000000
@@ -499,19 +421,72 @@ ShowNuzlocke:
 	jr z, .print
 	ld de, OptionMenuTextON
 .print
-	coord hl, $10, $8
+	coord hl, $10, $9
 	call PlaceString
 	ret
-;default to recommended settings when turned on
-NuzlockeSettings:
-	push hl
-	;battle mode SET and HARD
-	ld hl, wOptions
-	set BIT_BATTLE_HARD, [hl]
-	set BIT_BATTLE_SHIFT, [hl]
-	call ShowHardModeSetting
-	pop hl
+
+;joenote - show /toggle random trainers
+ToggleRandomTrainers:
+	CheckEvent EVENT_ENABLE_NORMAL_TRAINER_RANDOMIZATION
+	jr nz, .setOff
+	; else fallthough
+.setOn
+	SetEvent EVENT_ENABLE_NORMAL_TRAINER_RANDOMIZATION
+	jr ShowRandomTrainers
+.setOff
+	ResetEvent EVENT_ENABLE_NORMAL_TRAINER_RANDOMIZATION
+	;fall through
+ShowRandomTrainers:
+	ld de, OptionMenuTextOFF
+	CheckEvent EVENT_ENABLE_NORMAL_TRAINER_RANDOMIZATION
+	jr z, .print
+	ld de, OptionMenuTextON
+.print
+	coord hl, $10, $0A
+	call PlaceString
 	ret
+
+;joenote - show /toggle random wilderness
+ToggleRandomWild:
+	; is wild random disabled 
+	CheckEvent EVENT_ENABLE_WILD_RANDOM
+	jr z, .setTiers ; from off to tiers
+	; else is wild random tiers disabled
+	CheckEvent EVENT_ENABLE_WILD_RANDOM_TIERS
+	jr nz, .setChaos ; from tiers to chaos
+	; else from chaos to off
+.setOff
+	ResetEvent EVENT_ENABLE_WILD_RANDOM
+	ResetEvent EVENT_ENABLE_WILD_RANDOM_TIERS
+	jr ShowRandomWild
+.setTiers
+	SetEvent EVENT_ENABLE_WILD_RANDOM
+	SetEvent EVENT_ENABLE_WILD_RANDOM_TIERS
+	jr ShowRandomWild
+.setChaos
+	SetEvent EVENT_ENABLE_WILD_RANDOM
+	ResetEvent EVENT_ENABLE_WILD_RANDOM_TIERS
+	;fall through
+ShowRandomWild:
+	ld de, OptionMenuRandomWildOff
+	CheckEvent EVENT_ENABLE_WILD_RANDOM
+	jr z, .print
+	ld de, OptionMenuRandomWillTier
+	CheckEvent EVENT_ENABLE_WILD_RANDOM_TIERS
+	jr nz, .print
+	ld de, OptionMenuRandomWildChaos
+	;fall through
+.print
+	coord hl, $0E, $0B
+	call PlaceString
+	ret
+
+OptionMenuRandomWildOff:
+	db "  Non@"
+OptionMenuRandomWillTier:
+	db "Tiers@"
+OptionMenuRandomWildChaos:
+	db "Chaos@"
 
 
 TextAudio:
@@ -531,6 +506,10 @@ TextBack:
 
 TextNuzlocke:
 	db " Nuzlocke@"
+TextRandomTrainer:
+	db " Dres. aléa.@"
+TextRandomWild:
+	db " <PK><MN> aléa.@"
 	
 OptionMenuOnOffText:
 	dw OptionMenuTextON

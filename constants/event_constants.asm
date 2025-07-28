@@ -2263,14 +2263,14 @@ const_value = 0
 	const EVENT_8D4                                  ; 8D4, (D861, bit 4)
 	const EVENT_8D5                                  ; 8D5, (D861, bit 5)
 	const EVENT_LINKED_FPLAYER                       ; 8D6, (D861, bit 6) 	;if set, the link cable partner is female trainer
-	const EVENT_ENABLE_WILD_RANDOMIZATION            ; 8D7, (D861, bit 7)
+	const EVENT_ENABLE_WILD_RANDOM_TIERS              ; 8D7, (D861, bit 7)
 	const EVENT_ENABLE_NORMAL_TRAINER_RANDOMIZATION  ; 8D8, (D862, bit 0)	;joenote
 	const EVENT_ENABLE_CATCH_UP_BOOST                ; 8D9, (D862, bit 1)
 	const EVENT_CINNABAR_SHORE_MISSINGNO             ; 8DA, (D862, bit 2)
 	const EVENT_ENABLE_ITEM_CLAUSE                   ; 8DB, (D862, bit 3)
 	const EVENT_ENABLE_SLEEP_CLAUSE                  ; 8DC, (D862, bit 4)
 	const EVENT_ENABLE_FREEZE_CLAUSE                 ; 8DD, (D862, bit 5)
-	const EVENT_ENABLE_RANDOMIZE_WILD                ; 8DE, (D862, bit 6)
+	const EVENT_ENABLE_WILD_RANDOM                   ; 8DE, (D862, bit 6)
 	const EVENT_LOAD_MIRROR_MATCH                    ; 8DF, (D862, bit 7)
 	const ELITE4_EVENTS_START                        ; 8E0, (D863, bit 0)
 	const EVENT_BEAT_LORELEIS_ROOM_TRAINER_0         ; 8E1, (D863, bit 1)

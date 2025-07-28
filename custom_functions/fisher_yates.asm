@@ -31,7 +31,7 @@ randomMonPrizes:
 ;finds the vanilla mon value that would randomize to it
 ;saves it back into wPokedexNum
 LookupWildRandomMon:
-	CheckEvent EVENT_ENABLE_RANDOMIZE_WILD
+	CheckEvent EVENT_ENABLE_WILD_RANDOM
 	jr z, .return
 	
 	ld hl, ListRealPkmn
@@ -61,7 +61,7 @@ LookupWildRandomMon:
 ;converts the value to its randomized list value
 ;stores that value back into wcf91 and wEnemyMonSpecies2
 _ReplaceMon:
-	CheckEvent EVENT_ENABLE_RANDOMIZE_WILD
+	CheckEvent EVENT_ENABLE_WILD_RANDOM
 	ret z
 	
 	CheckEvent EVENT_ACTIVATE_GHOST_MAROWAK   ;active ghost marowak?
@@ -78,7 +78,7 @@ _ReplaceMon:
 .no_update
 	ld [wUnusedD722], a
 	
-	CheckEvent EVENT_ENABLE_WILD_RANDOMIZATION
+	CheckEvent EVENT_ENABLE_WILD_RANDOM_TIERS
 	jr z, .tieredRandom
 	ld hl, MonListTrueRandom
 	CheckEvent EVENT_GOT_STARTER
@@ -354,6 +354,12 @@ MonListB:
 	db JYNX         ; $48
 	db ELECTABUZZ   ; $35
 	db MAGMAR       ; $33
+	db HOUNDOUR   ; 157
+	db SNEASEL    ; 160
+	db MISDREAVUS ; 161
+	db HERACROSS
+	db LARVITAR   ; 163
+	db PUPITAR    ; 164
 	db $FF
 MonListA:
 	db SANDSLASH    ; $61
@@ -376,6 +382,8 @@ MonListA:
 	db TAUROS       ; $3C
 	db LAPRAS       ; $13
 	db SNORLAX      ; $84
+	db HOUNDOOM   ; 158
+	db HOOH       ; 166
 	db $FF
 	
 MonListTrueRandom:
@@ -419,6 +427,9 @@ MonListTrueRandom:
 	db RHYDON       ; $01
 	db SEADRA       ; $5D
 	db SEAKING      ; $9E
+	db SNEASEL    ; 160
+	db PUPITAR    ; 164
+	db HOOH       ; 166
 	;fall through
 MonListTrueRandom_Starter:	;because not all mons should be allowed as starter pokemon
 	db BULBASAUR    ; $99
@@ -489,4 +500,8 @@ MonListTrueRandom_Starter:	;because not all mons should be allowed as starter po
 	db PORYGON      ; $AA
 	db SNORLAX      ; $84
 	db DRATINI      ; $58
+	db MISDREAVUS ; 161
+	db HOUNDOUR   ; 157
+	db HERACROSS
+	db LARVITAR   ; 163
 	db $FF
