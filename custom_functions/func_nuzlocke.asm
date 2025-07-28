@@ -502,6 +502,7 @@ NuzlockeMapList:
 	db $BC	; Route14Name
 	db $AD	; Route15Name
 	db $55	; Route16Name
+	db $35	; Route16WestName
 	db $48	; Route17Name
 	db $6D	; Route18Name
 	db $6F	; Route19Name
@@ -526,6 +527,6 @@ NuzlockeMapList:
 	db $04	; VictoryRoadName
 	db $28	; ViridianCityName
 	db $24	; ViridianForestName
-	db $2E  ; VolcanoName
+	db $3E  ; VolcanoName
 	db $C0  ; SeaCottageName
 	db $FF	; list terminator
