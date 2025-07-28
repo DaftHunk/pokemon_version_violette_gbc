@@ -1285,7 +1285,7 @@ Pokedex_PrintFlavorTextAtBC:
 	ret
 
 HeightWeightText:
-	db   "Tai ?",".","??","m"
+	db   "Tai ?",",","??","m"
 	next "Pds  ???kg@"
 
 ; horizontal line that divides the pokedex text description from the rest of the data

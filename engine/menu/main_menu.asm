@@ -249,7 +249,7 @@ InitOptions:
 	ld a, 1 ; no delay
 	ld [wLetterPrintingDelayFlags], a
 	ld a, TEXT_DELAY_FAST ; fast speed
-;	set BIT_BATTLE_SHIFT, a ;joenote - SET battle style
+	set BIT_BATTLE_SHIFT, a ;joenote - SET battle style
 ;	set BIT_BATTLE_HARD, a ;joenote - hard mode
 	ld [wOptions], a
 	ld a, [hGBC]

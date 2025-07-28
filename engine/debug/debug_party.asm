@@ -257,6 +257,7 @@ DebugItemsList:
 	db LIFT_KEY, 1
 	db SILPH_SCOPE, 1
 	db POKE_DOLL, 1
+	db POKE_FLUTE, 1
 	db -1 ; end
 
 DebugUnusedList:
