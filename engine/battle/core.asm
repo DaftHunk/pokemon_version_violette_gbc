@@ -1504,15 +1504,24 @@ EnemySendOutFirstMon:
 	ld a, [wFirstMonsNotOutYet]
 	dec a
 	jr z, .next4
+	
 	ld a, [wPartyCount]
 	dec a
 	jr z, .next4
+
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	jr z, .next4
+
+	; Hard mode now force battle set
+	ld a, [wGameplayOptions]
+	bit BIT_BATTLE_HARD, a
+	jr nz, .next4
+
 	ld a, [wOptions]
 	bit BIT_BATTLE_SHIFT, a
 	jr nz, .next4
+
 	ld hl, TrainerAboutToUseText
 	call PrintText
 	coord hl, 0, 7
