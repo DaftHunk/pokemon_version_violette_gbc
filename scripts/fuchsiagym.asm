@@ -159,8 +159,8 @@ FuchsiaGymText_Koga:
 	and a
 	jr nz, .leaderFight
 ;;;;;;;
-	CheckEvent EVENT_BEAT_KOGA_REMATCH
-	call nz, ScytherTutor
+	CheckEitherEventSet EVENT_NEW_GAME_PLUS, EVENT_BEAT_KOGA_REMATCH
+	jp nz, ScytherTutor
 
 	ld hl, FuchsiaGymText_LeaderAfterBattle
 	call PrintText
@@ -407,7 +407,7 @@ FuchsiaGymText_GuideVictory:
 ScytherTutor:
 	ld a, [wPartyMon1Species]
 	cp SCYTHER
-	ret nz
+	jr nz, .displayBring
 
 	xor a
 	ld [wWhichPokemon], a
@@ -421,24 +421,7 @@ ScytherTutor:
 	call .learnmove
 	ld a, LIGHT_SCREEN	;invisible walls
 	call .learnmove
-	ret
-.textStart
-	text "Tu as un"
-	line "Insécateur très"
-	cont "talentueux."
-	cont "Je pourrais lui"
-	cont "apprendre la voie"
-	cont "secrète du Ninja."
-
-	para "Un vrai Ninja doit"
-	line "maîtriser l'art"
-	cont "du Genjutsu, le"
-	cont "lancer de Shuri-"
-	cont "ken et bien évi-"
-	cont "demment, les murs"
-	cont "invisibles!"
-	prompt
-	db "@"
+	jr .finish
 .learnmove
 	ld [wMoveNum], a
 	ld [wPokedexNum],a
@@ -466,4 +449,38 @@ ScytherTutor:
 	and a
 	ret z
 .finish
-	ret
+	jp TextScriptEnd
+.displayBring
+	ld hl, .textBring
+	call PrintText
+	jp TextScriptEnd
+.textBring
+	text "Continue à perf-"
+	line "ectionner tes"
+	cont "talents car telle"
+	cont "est la voie"
+	cont "du ninja."
+
+	para "Si tu le souhai-"
+	line "tes, je peux app-"
+	cont "rendre cette voie"
+	cont "à ton Insécateur."
+	done
+	db "@"
+.textStart
+	text "Tu as un"
+	line "Insécateur très"
+	cont "talentueux."
+	cont "Je pourrais lui"
+	cont "apprendre la voie"
+	cont "secrète du Ninja."
+
+	para "Un vrai Ninja doit"
+	line "maîtriser l'art"
+	cont "du Genjutsu, le"
+	cont "lancer de Shuri-"
+	cont "ken et bien évi-"
+	cont "demment, les Murs"
+	cont "Invisibles!"
+	prompt
+	db "@"

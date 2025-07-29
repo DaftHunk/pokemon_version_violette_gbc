@@ -112,8 +112,8 @@ _SaffronGymText_RematchEndBattle::
 
 	para "Pour te récompen-"
 	line "ser, je tenterai"
-	cont "d'apprendre un"
-	cont "tour de magie à"
+	cont "d'apprendre ce"
+	cont "que je sais à"
 	cont "ton Feunard."
 
 	para "S'il en a les"

@@ -105,19 +105,11 @@ _CinnabarGymText_RematchEndBattle::
 	line "ment le titre"
     cont "de Champion."
 
-	para "Tu sais, j'ai été"
-	line "sauvé par un"
-	cont "Sulfura dans ma"
-	cont "jeunesse."
-	
-	para "Si, par le plus"
-	line "grand des hasards"
-	cont "tu en recontres"
-	cont "un, amène-le moi."
-	
-	para "Je tiens à le"
-	line "remercier comme"
-	cont "il se doit."
+	para "Amène-moi ton"
+	line "Dracaufeu que je"
+	cont "vois si je peux"
+	cont "rendre son nom"
+	cont "plus pertinent!"
 	prompt
 
 _CinnabarGymText_7595f::

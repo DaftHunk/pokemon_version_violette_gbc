@@ -164,8 +164,8 @@ CeladonGymText_Erika:
 	and a
 	jr nz, .leaderFight
 ;;;;;;;
-	CheckEvent EVENT_BEAT_ERIKA_REMATCH
-	call nz, OddishTutor
+	CheckEitherEventSet EVENT_NEW_GAME_PLUS, EVENT_BEAT_ERIKA_REMATCH
+	jp nz, VenusaurTutor
 
 	ld hl, CeladonGymText_LeaderAfterBattle
 	call PrintText
@@ -411,59 +411,55 @@ CeladonGymText_Trainer6AfterBattle:
 	TX_FAR _CeladonGymText_Trainer6AfterBattle
 	db "@"
 	
-OddishTutor:
+VenusaurTutor:
 	ld a, [wPartyMon1Species]
-	cp ODDISH
-	jr z, .next
-	cp GLOOM
-	jr z, .next
-	cp VILEPLUME
-	jr z, .next
-	ret
-.next
-	ld hl, .textStart
-	call PrintText
-	call YesNoChoice
-	ld a, [wCurrentMenuItem]
-	and a
-	jr nz, .finish
+	cp VENUSAUR
+	jr nz, .displayBring
+
 	xor a
 	ld [wWhichPokemon], a
-	ld a, LEECH_SEED
-	call .learnmove
-.finish
-	ret
-.textStart
-	text "Oh! Quel #mon"
-	line "feuillus!"
 
-	para "Un peu de fertili-"
-	line "sant de Céladopole"
-	cont "lui ferait le plus"
-	cont "bien."
+	ld hl, .textStart
+	call PrintText
+
+	call GBFadeOutToBlack
+	ld a, DARK
+	ld [wPartyMon1Type2], a
+
+	ld a, SFX_GET_ITEM_2
+	call PlaySound
+	call WaitForSoundToFinish
+	call GBFadeInFromBlack
+	ld hl, .textAfter
+	jr .textEnd
+.displayBring
+	ld hl, .textBring
+	; fallthrough
+.textEnd
+	call PrintText
+	jp TextScriptEnd
+.textBring
+	text "Bien joué!"
+	line "Passe me voir"
+	cont "avec ton"
+	cont "Florizarre et je"
+	cont "te révélerai sa"
+	cont "vraie person-"
+	cont "nalité!"
+	done
+	db "@"
+.textStart
+	text "Tous le monde a"
+	line "sa part d'ombre..."
+
+	para "Le tout c'est de"
+	line "savoir la"
+	cont "maîtriser!"
 	prompt
 	db "@"
-.learnmove
-	ld [wMoveNum], a
-	ld [wPokedexNum],a
-	call GetMoveName
-	call CopyStringToCF4B ; copy name to wcf4b
-
-	ld a, [wPokedexNum]
-	push af
-	ld a, [wPartyMon1Species]
-	ld [wPokedexNum], a
-	call GetMonName
-	pop af
-	ld [wPokedexNum], a
-	
-	callba CheckIfMoveIsKnown
-	ret c	;carry set of move known already
-
-	ld hl, wFlags_D733
-	set 6, [hl]
-	push hl		;make it so the move-forget list covers up sprites
-	predef LearnMove
-	pop hl
-	res 6, [hl]
-	ret
+.textAfter
+	text "Florizarre est"
+	line "maintenant"
+	cont "Plante/Ténèbres!"
+	done
+	db "@"

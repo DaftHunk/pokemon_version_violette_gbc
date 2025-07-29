@@ -60,11 +60,6 @@ OakSpeech:
 	call PlaySound
 	call DisplayNewGamePlusInfo
 
-	; Reset NG+ flag
-	ld a, [wGameplayOptions]
-	set 3, a
-	ld [wGameplayOptions], a
-
 	jr .newgamedone
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .normalnewgame
@@ -106,7 +101,17 @@ OakSpeech:
 	ld a, 1
 	ld [wItemQuantity], a
 	call AddItemToInventory  ; give one potion
-	
+
+	ld a, [wGameplayOptions]
+	bit 3, a
+	jr z, .notNewGamePlus
+
+	SetEvent EVENT_NEW_GAME_PLUS
+	; Reset NG+ flag
+	res 3, a
+	ld [wGameplayOptions], a
+
+.notNewGamePlus
 	SetEvent EVENT_AT_LEAST_ONE_CATCHED	;joenote - set a flag to indicate that a pokemon hasn't been caught yet
 	SetEvent EVENT_POKEBALL_ACCESS	;joenote - nuzlocke: set a flag to indicate there is no access to pokeballs yet
 

@@ -118,11 +118,11 @@ _CeladonGymText_RematchEndBattle::
 
 	para "Bien joué!"
 	line "Passe me voir"
-	cont "avec un Mystherbe"
-	cont "ou ses évolutions"
-	cont "et je lui ferai"
-	cont "une belle compo-"
-	cont "sition florale!"
+	cont "avec ton"
+	cont "Florizarre et je"
+	cont "te révélerai sa"
+	cont "vraie person-"
+	cont "nalité!"
 	prompt
 
 _CeladonGymText_Trainer0PreBattle::

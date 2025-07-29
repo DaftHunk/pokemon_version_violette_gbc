@@ -115,8 +115,8 @@ CeruleanGymText_Misty:
 	and a
 	jr nz, .leaderFight
 ;;;;;;;
-	CheckEvent EVENT_BEAT_MISTY_REMATCH
-	call nz, PsyduckTutor
+	CheckEitherEventSet EVENT_NEW_GAME_PLUS, EVENT_BEAT_MISTY_REMATCH
+	jp nz, BlastoiseTutor
 
 	ld hl, CeruleanGymText_LeaderAfterBattle
 	call PrintText
@@ -274,10 +274,10 @@ CeruleanGymText_GuideVictory:
 	TX_FAR _CeruleanGymText_GuideVictory
 	db "@"
 
-PsyduckTutor:
+BlastoiseTutor:
 	ld a, [wPartyMon1Species]
-	cp PSYDUCK
-	ret nz
+	cp BLASTOISE
+	jr nz, .displayBring
 
 	xor a
 	ld [wWhichPokemon], a
@@ -285,42 +285,39 @@ PsyduckTutor:
 	ld hl, .textStart
 	call PrintText
 
-	ld a, AMNESIA
-	call .learnmove
-	ld a, PSYCHIC_M
-	call .learnmove
-	ret
+	call GBFadeOutToBlack
+	ld a, STEEL
+	ld [wPartyMon1Type2], a
+
+	ld a, SFX_GET_ITEM_2
+	call PlaySound
+	call WaitForSoundToFinish
+	call GBFadeInFromBlack
+	ld hl, .textAfter
+	jr .textEnd
+.displayBring
+	ld hl, .textBring
+	; fallthrough
+.textEnd
+	call PrintText
+	jp TextScriptEnd
+.textBring
+	text "Si tu m'amènes un"
+	line "Tortank, je l'en-"
+	cont "trainerai à"
+	cont "devenir solide"
+	cont "comme l'Acier!"
+	done
+	db "@"
 .textStart
-	text "Psykokwak te fixe"
-	line "bizarrement..."
+	text "Ton Tortank va"
+	line "être blindé"
+	cont "comme jamais!"
 	prompt
 	db "@"
-.learnmove
-	ld [wMoveNum], a
-	ld [wPokedexNum],a
-	call GetMoveName
-	call CopyStringToCF4B ; copy name to wcf4b
-
-
-	ld a, [wPokedexNum]
-	push af
-	ld a, [wPartyMon1Species]
-	ld [wPokedexNum], a
-	call GetMonName
-	pop af
-	ld [wPokedexNum], a
-	
-	callba CheckIfMoveIsKnown
-	jr c, .finish
-
-	ld hl, wFlags_D733
-	set 6, [hl]
-	push hl		;make it so the move-forget list covers up sprites
-	predef LearnMove
-	pop hl
-	res 6, [hl]
-	ld a, b
-	and a
-	ret z
-.finish
-	ret
+.textAfter
+	text "Tortank est"
+	line "maintenant"
+	cont "Eau/Acier!"
+	done
+	db "@"

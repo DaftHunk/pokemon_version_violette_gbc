@@ -116,8 +116,8 @@ PewterGymText_Brock:
 	and a
 	jr nz, .leaderFight
 ;;;;;;;
-	CheckEvent EVENT_BEAT_BROCK_REMATCH
-	call nz, FossilTutor
+	CheckEitherEventSet EVENT_NEW_GAME_PLUS, EVENT_BEAT_BROCK_REMATCH
+	jp nz, FossilTutor
 
 	ld hl, PewterGymText_LeaderAfterBattle
 	call PrintText
@@ -287,28 +287,17 @@ PewterGymText_GuideEnd:
 FossilTutor:
 	ld a, [wPartyMon1Species]
 	cp OMASTAR
-	ld a, ROCK_SLIDE
+	ld a, DARK_PULSE
 	jp z, .next
 	ld a, [wPartyMon1Species]
 	cp KABUTOPS
-	ld a, X_SCISSOR
+	ld a, METAL_CLAW
 	jp z, .next
 	ld a, [wPartyMon1Species]
 	cp AERODACTYL
-	ld a, EARTHQUAKE
+	ld a, SKULL_BASH
 	jr z, .next
-	ret
-.textStart
-	text "Grâce aux progrès"
-	line "de la recherche"
-	cont "menée avec le"
-	cont "musée, je peux"
-	cont "aider ton #mon"
-	cont "à retrouver une"
-	cont "attaque venant"
-	cont "de son passé."
-	prompt
-	db "@"
+	jr .displayBring
 .next
 	ld [wMoveNum], a
 	ld [wPokedexNum],a
@@ -339,6 +328,36 @@ FossilTutor:
 	res 6, [hl]
 	ld a, b
 	and a
-	ret z
+	; fallthrough
 .finish
-	ret
+	jp TextScriptEnd
+.displayBring
+	ld hl, .textBring
+	call PrintText
+	jp TextScriptEnd
+.textBring
+	text "En récompense, je"
+	line "peux réapprendre"
+	cont "à tes #mons"
+	cont "fossiles évolués"
+	cont "des attaques qu'"
+	cont "ils avaient oub-"
+	cont "lié au cours des"
+	cont "âges!"
+
+	para "Revient me voir"
+	line "avec eux si ça"
+	cont "t'intéresse."
+	done
+	db "@"
+.textStart
+	text "Grâce aux progrès"
+	line "de la recherche"
+	cont "menée avec le"
+	cont "musée, je peux"
+	cont "aider ton #mon"
+	cont "à retrouver une"
+	cont "attaque venant"
+	cont "de son passé."
+	prompt
+	db "@"

@@ -50,11 +50,11 @@ _CeruleanGymText_RematchEndBattle::
 	cont "notre prochaine"
 	cont "rencontre."
 
-	para "Si tu as un Psy-"
-	line "kokwak à me mon-"
-	cont "trer, je lui"
-	cont "apprendrai quel-"
-	cont "que chose."
+	para "Si tu m'amènes un"
+	line "Tortank, je l'en-"
+	cont "trainerai à"
+	cont "devenir solide"
+	cont "comme l'Acier!"
 	prompt
 
 _CeruleanGymText_LeaderAfterBattle::

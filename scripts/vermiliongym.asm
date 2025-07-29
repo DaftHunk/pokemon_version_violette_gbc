@@ -144,8 +144,8 @@ VermilionGymText_MajorBob:
 	and a
 	jr nz, .leaderFight
 ;;;;;;;
-	CheckEvent EVENT_BEAT_LT_SURGE_REMATCH
-	call nz, ElectabuzzTutor
+	CheckEitherEventSet EVENT_NEW_GAME_PLUS, EVENT_BEAT_LT_SURGE_REMATCH
+	jp nz, ElectabuzzTutor
 
 	ld hl, VermilionGymText_LeaderAfterBattle
 	call PrintText
@@ -325,8 +325,8 @@ VermilionGymText_GuideVictory:
 
 ElectabuzzTutor:
 	ld a, [wPartyMon1Species]
-	cp PIKACHU
-	ret nz
+	cp ELECTABUZZ
+	jr nz, .displayBring
 
 	xor a
 	ld [wWhichPokemon], a
@@ -334,44 +334,43 @@ ElectabuzzTutor:
 	ld hl, .textStart
 	call PrintText
 
-	ld a, SURF
-	call .learnmove
-	ret
-.textStart
-	text "Ton Pikachu est"
-	line "très spécial!"
+	call GBFadeOutToBlack
+	ld a, FIGHTING
+	ld [wPartyMon1Type2], a
 
-	para "Il fait parti de"
-	line "ceux qui peuvent"
-	cont "apprendre Surf!"
+	ld a, SFX_GET_ITEM_2
+	call PlaySound
+	call WaitForSoundToFinish
+	call GBFadeInFromBlack
+	ld hl, .textAfter
+	jr .textEnd
+.displayBring
+	ld hl, .textBring
+	; fallthrough
+.textEnd
+	call PrintText
+	jp TextScriptEnd
+.textBring
+	text "Ramène-moi ton"
+	line "Elektek et je"
+	cont "lui enseignerai"
+	cont "les rudiments"
+	cont "du combat au"
+	cont "corps à corps!"
+	done
+	db "@"
+.textStart
+	text "Debout Soldat!"
+	line "C'est parti"
+	cont "pour l'entrainem-"
+	cont "ent et j'veux pas"
+	cont "entendre moufter"
+	cont "dans les rangs!"
 	prompt
 	db "@"
-.learnmove
-	ld [wMoveNum], a
-	ld [wPokedexNum],a
-	call GetMoveName
-	call CopyStringToCF4B ; copy name to wcf4b
-
-
-	ld a, [wPokedexNum]
-	push af
-	ld a, [wPartyMon1Species]
-	ld [wPokedexNum], a
-	call GetMonName
-	pop af
-	ld [wPokedexNum], a
-	
-	callba CheckIfMoveIsKnown
-	jr c, .finish
-
-	ld hl, wFlags_D733
-	set 6, [hl]
-	push hl		;make it so the move-forget list covers up sprites
-	predef LearnMove
-	pop hl
-	res 6, [hl]
-	ld a, b
-	and a
-	ret z
-.finish
-	ret
+.textAfter
+	text "Elektek est"
+	line "maintenant"
+	cont "Electrik/Combat!"
+	done
+	db "@"

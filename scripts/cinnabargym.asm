@@ -224,8 +224,8 @@ CinnabarGymText_Blaine:
 	and a
 	jr nz, .leaderFight
 ;;;;;;;
-	CheckEvent EVENT_BEAT_BLAINE_REMATCH
-	call nz, MoltresTutor
+	CheckEitherEventSet EVENT_NEW_GAME_PLUS, EVENT_BEAT_BLAINE_REMATCH
+	jp nz, CharizardTutor
 
 	ld hl, BlaineFireBlastText
 	call PrintText
@@ -610,59 +610,52 @@ CinnabarGymText_GuideVictory:
 	TX_FAR _CinnabarGymText_GuideVictory
 	db "@"
 
-MoltresTutor:
+CharizardTutor:
 	ld a, [wPartyMon1Species]
-	cp MOLTRES
-	jr z, .next
-	ret
-.next
-	ld hl, .textStart
-	call PrintText
-	call YesNoChoice
-	ld a, [wCurrentMenuItem]
-	and a
-	jr nz, .finish
+	cp CHARIZARD
+	jr nz, .displayBring
+
 	xor a
 	ld [wWhichPokemon], a
 
-	ld a, FLAMETHROWER
-	call .learnmove
-	ld a, DRAGON_RUSH
-	call .learnmove
-	ld a, RAZOR_WIND
-	call .learnmove
-.finish
-	ret
+	ld hl, .textStart
+	call PrintText
+
+	call GBFadeOutToBlack
+	ld a, DRAGON
+	ld [wPartyMon1Type2], a
+
+	ld a, SFX_GET_ITEM_2
+	call PlaySound
+	call WaitForSoundToFinish
+	call GBFadeInFromBlack
+	ld hl, .textAfter
+	jr .textEnd
+.displayBring
+	ld hl, .textBring
+	; fallthrough
+.textEnd
+	call PrintText
+	jp TextScriptEnd
+.textBring
+	text "Amène-moi ton"
+	line "Dracaufeu que je"
+	cont "vois si je peux"
+	cont "rendre son nom"
+	cont "plus pertinent!"
+	done
+	db "@"
 .textStart
 	text "Quel panache!"
-	line "Serait-ce celui"
-	cont "qui m'a sauvé?"
-	cont "Permet-moi de"
-	cont "lui rendre la "
-	cont "pareille."
+	line "Ton Dracaufeu est"
+	cont "un digne repré-"
+	cont "sentant de la"
+	cont "race Draconique!"
 	prompt
 	db "@"
-.learnmove
-	ld [wMoveNum], a
-	ld [wPokedexNum],a
-	call GetMoveName
-	call CopyStringToCF4B ; copy name to wcf4b
-
-	ld a, [wPokedexNum]
-	push af
-	ld a, [wPartyMon1Species]
-	ld [wPokedexNum], a
-	call GetMonName
-	pop af
-	ld [wPokedexNum], a
-	
-	callba CheckIfMoveIsKnown
-	ret c	;carry set of move known already
-
-	ld hl, wFlags_D733
-	set 6, [hl]
-	push hl		;make it so the move-forget list covers up sprites
-	predef LearnMove
-	pop hl
-	res 6, [hl]
-	ret
+.textAfter
+	text "Dracaufeu est"
+	line "maintenant"
+	cont "Feu/Dragon!"
+	done
+	db "@"

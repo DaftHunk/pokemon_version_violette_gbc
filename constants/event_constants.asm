@@ -2310,7 +2310,7 @@ const_value = 0
 	const EVENT_903                                  ; 903, (D867, bit 3)
 	const EVENT_904                                  ; 904, (D867, bit 4)
 	const EVENT_905                                  ; 905, (D867, bit 5)
-	const EVENT_906    					             ; 906, (D867, bit 6)
+	const EVENT_NEW_GAME_PLUS                        ; 906, (D867, bit 6)
 	const ELITE4_CHAMPION_EVENTS_END                 ; 907, (D867, bit 7)
 	const EVENT_ELITE_4_BEATEN                       ; 908, (D868, bit 0)	;joenote
 	const EVENT_REMATCH_DELAY                        ; 909, (D868, bit 1)

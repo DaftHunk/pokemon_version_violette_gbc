@@ -165,8 +165,8 @@ SaffronGymText_Sabrina:
 	and a
 	jr nz, .leaderFight
 ;;;;;;;
-	CheckEvent EVENT_BEAT_SABRINA_REMATCH
-	call nz, NinetalesTutor
+	CheckEitherEventSet EVENT_NEW_GAME_PLUS, EVENT_BEAT_SABRINA_REMATCH
+	jp nz, NinetalesTutor
 
 	ld hl, SaffronGymText_LeaderAfterBattle
 	call PrintText
@@ -432,54 +432,54 @@ SaffronGymText_Trainer6AfterBattle:
 NinetalesTutor:
 	ld a, [wPartyMon1Species]
 	cp NINETALES
-	jr z, .next
-	ret
-.next
-	ld hl, .Text1
-	call PrintText
-	call YesNoChoice
-	ld a, [wCurrentMenuItem]
-	and a
-	jr nz, .finish
+	jr nz, .displayBring
+
 	xor a
 	ld [wWhichPokemon], a
-	ld a, HYPNOSIS
-	call .learnmove
-	ld a, DARK_PULSE
-	call .learnmove
-.finish
-	ret
-.Text1
-	text "Je ressens de gr-"
-	line "andes forces my-"
-	cont "stiques avec ton"
-	cont "Feunard. Je peux"
-	cont "lui apprendre un"
-	cont "truc sympa."
+
+	ld hl, .textStart
+	call PrintText
+
+	call GBFadeOutToBlack
+	ld a, PSYCHIC
+	ld [wPartyMon1Type2], a
+
+	ld a, SFX_GET_ITEM_2
+	call PlaySound
+	call WaitForSoundToFinish
+	call GBFadeInFromBlack
+	ld hl, .textAfter
+	jr .textEnd
+.displayBring
+	ld hl, .textBring
+	; fallthrough
+.textEnd
+	call PrintText
+	jp TextScriptEnd
+.textBring
+	text "Pour te récompen-"
+	line "ser, je tenterai"
+	cont "d'apprendre ce"
+	cont "que je sais à"
+	cont "ton Feunard."
+
+	para "S'il en a les"
+	line "capacités!"
+	done
+	db "@"
+.textStart
+	text "Je ressens de"
+	line "grandes forces"
+	cont "mystiques chez"
+	cont "ton Feunard. Je"
+	cont "peux l'aider à"
+	cont "maîtriser ses"
+	cont "pouvoirs."
 	prompt
 	db "@"
-	
-.learnmove
-	ld [wMoveNum], a
-	ld [wPokedexNum],a
-	call GetMoveName
-	call CopyStringToCF4B ; copy name to wcf4b
-
-	ld a, [wPokedexNum]
-	push af
-	ld a, [wPartyMon1Species]
-	ld [wPokedexNum], a
-	call GetMonName
-	pop af
-	ld [wPokedexNum], a
-	
-	callba CheckIfMoveIsKnown
-	ret c	;carry set of move known already
-
-	ld hl, wFlags_D733
-	set 6, [hl]
-	push hl		;make it so the move-forget list covers up sprites
-	predef LearnMove
-	pop hl
-	res 6, [hl]
-	ret
+.textAfter
+	text "Feunard est"
+	line "maintenant"
+	cont "Feu/Psy!"
+	done
+	db "@"
