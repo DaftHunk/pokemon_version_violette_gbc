@@ -3457,13 +3457,13 @@ _LearnTempFieldMoveTextDenied::
 
 _RomHackVersionText::
 	text "Cette sauvegarde"
-	line "vient d'une rev"
-	cont "différente de ce"
-	cont "jeu."
+	line "provient d'une"
+	cont "version majeure"
+	cont "différente."
 	
 	para "S'envoler vers"
 	line "Bourg Palette"
-	cont "par sécurité?"
+	cont "par précaution?"
 	done
 
 _RematchTrainerText::
