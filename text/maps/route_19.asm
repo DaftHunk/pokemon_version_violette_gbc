@@ -173,3 +173,9 @@ _Route19Text11::
 	line "Parmanie -"
 	cont "Iles Ecume"
 	done
+
+_Route19BeachSign::
+	text "Bungalow"
+	line "d'Eté"
+	done
+	

@@ -27,6 +27,7 @@ Route19TextPointers:
 	dw DrinkStandText
 	dw Route19Text11
 	dw _TXTDrinkStandSign
+	dw Route19BeachSign
 
 Route19TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_ROUTE_19_TRAINER_0
@@ -308,4 +309,8 @@ _TXTDrinkStandSign:
 	text "BAR A JOE: Sirotez"
 	line "sur les rives!"
 	done
+	db "@"
+
+Route19BeachSign:
+	TX_FAR _Route19BeachSign
 	db "@"

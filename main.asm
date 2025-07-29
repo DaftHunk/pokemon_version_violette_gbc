@@ -1758,6 +1758,11 @@ INCLUDE "scripts/route16westgate.asm"
 INCLUDE "data/maps/objects/route16westgate.asm"
 Route16WestGateBlocks: INCBIN "maps/route16westgate.blk"
 
+INCLUDE "data/maps/headers/route19beachhouse.asm"
+INCLUDE "scripts/route19beachhouse.asm"
+INCLUDE "data/maps/objects/route19beachhouse.asm"
+Route19BeachHouseBlocks: INCBIN "maps/route19beachhouse.blk"
+
 INCLUDE "engine/menu/league_pc.asm"
 
 INCLUDE "engine/overworld/hidden_items.asm"

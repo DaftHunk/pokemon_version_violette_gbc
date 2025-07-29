@@ -114,7 +114,7 @@ MapHeaderPointers::
 	dw Route16WestHouse_h
 	dw Route16WestGate_h
 	dw Lance_h
-	dw Lance_h ; unused
+	dw Route19BeachHouse_h
 	dw Lance_h ; unused
 	dw Lance_h ; unused
 	dw Lance_h ; unused

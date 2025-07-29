@@ -114,7 +114,7 @@ MapHeaderBanks:
 	db BANK(Route16WestHouse_h)
 	db BANK(Route16WestGate_h)
 	db BANK(Lance_h)
-	db $1D ;unused
+	db BANK(Route19BeachHouse_h)
 	db $1D ;unused
 	db $1D ;unused
 	db $1D ;unused

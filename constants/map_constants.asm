@@ -119,7 +119,7 @@ ENDM
 	mapconst ROUTE_16_WEST_HOUSE,         4,  4 ; $6F
 	mapconst ROUTE_16_WEST_GATE,          3,  4 ; $70
 	mapconst LANCES_ROOM,                13, 13 ; $71
-	mapconst UNUSED_MAP_72,               0,  0 ; $72
+	mapconst ROUTE_19_BEACH_HOUSE,        4,  4 ; $72
 	mapconst UNUSED_MAP_73,               0,  0 ; $73
 	mapconst UNUSED_MAP_74,               0,  0 ; $74
 	mapconst UNUSED_MAP_75,               0,  0 ; $75

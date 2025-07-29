@@ -145,7 +145,7 @@ VermilionGymText_MajorBob:
 	jr nz, .leaderFight
 ;;;;;;;
 	CheckEvent EVENT_BEAT_LT_SURGE_REMATCH
-	call nz, PikachuTutor
+	call nz, ElectabuzzTutor
 
 	ld hl, VermilionGymText_LeaderAfterBattle
 	call PrintText
@@ -323,7 +323,7 @@ VermilionGymText_GuideVictory:
 	TX_FAR _VermilionGymText_GuideVictory
 	db "@"
 
-PikachuTutor:
+ElectabuzzTutor:
 	ld a, [wPartyMon1Species]
 	cp PIKACHU
 	ret nz

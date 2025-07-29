@@ -113,7 +113,7 @@ MapSongBanks:
 	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)         ; Route16WestHouse
 	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; Route16WestGate
 	db MUSIC_INDIGO_PLATEAU,   BANK(Music_IndigoPlateau)   ; Lance
-	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; unused
+	db MUSIC_GAME_CORNER,      BANK(Music_GameCorner)      ; Route19BeachHouse
 	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; unused
 	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; unused
 	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; unused
