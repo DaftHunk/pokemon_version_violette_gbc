@@ -2,7 +2,7 @@ HiddenItemCoords:
 ; map ID, y-coord, x-coord
 	db VIRIDIAN_FOREST,$12,$01
 	db VIRIDIAN_FOREST,$2a,$10
-	db MT_MOON_B2F,$0c,$12
+	db MT_MOON_B2F,$10,$11
 	db ROUTE_25,$03,$26
 	db ROUTE_9,$07,$0e
 	db SS_ANNE_KITCHEN,$09,$0d

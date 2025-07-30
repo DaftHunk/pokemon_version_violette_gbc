@@ -550,7 +550,7 @@ ViridianForestHiddenObjects:
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 MtMoonB2FHiddenObjects:
-	db $0c,$12,MOON_STONE
+	db $10,$11,MOON_STONE
 	dbw BANK(HiddenItems),HiddenItems
 	db $09,$21,ETHER
 	dbw BANK(HiddenItems),HiddenItems
