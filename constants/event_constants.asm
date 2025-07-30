@@ -2247,7 +2247,7 @@ const_value = 0
 	const EVENT_MIST_STONE_WAIT                      ; 8C4, (D85F, bit 4)
 	const EVENT_ENABLE_TRAPPING_CLAUSE               ; 8C5, (D85F, bit 5)
 	const EVENT_DEFEATED_SEAFOAM_MISSINGNO           ; 8C6, (D85F, bit 6)
-	const EVENT_ENABLE_SHIMMER_FEATURE               ; 8C7, (D85F, bit 7)
+	const EVENT_8C7                                  ; 8C7, (D85F, bit 7)
 	const EVENT_ENABLE_HYPER_BEAM_CLAUSE             ; 8C8, (D860, bit 0)
 	const EVENT_ELITE_4_REMATCH_BEATEN               ; 8C9, (D860, bit 1)
 	const EVENT_SS_ANNE_TOURNAMENT_BEATEN            ; 8CA, (D860, bit 2)
