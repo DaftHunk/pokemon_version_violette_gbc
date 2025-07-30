@@ -17,29 +17,30 @@ DebugNewGameParty: ; unreferenced except in _DEBUG
 	; "Tsunekazu Ishihara: Exeggutor is my favorite. That's because I was
 	; always using this character while I was debugging the program."
 	; From https://web.archive.org/web/20000607152840/http://pocket.ign.com/news/14973.html
-	db MAGNETON, 90
-	db EXEGGUTOR, 90
-	db EEVEE, 50
-	db ONIX, 90
-	db ZAPDOS, 90
-	db MEW, 90
-	; Test for gen 2
-;	db SCYTHER, 56
-;	db LARVITAR, 10
-;	db EEVEE, 56
-;	db ONIX, 56
-;	db SEADRA, 50
-;	db HOOH, 80
+	db MAGNETON, 100
+	db EXEGGUTOR, 100
+	db EEVEE, 100
+	db MAROWRATH, 100
+	db ZAPDOS, 100
+	db MEW, 100
+	; Test for trade
+;	db BUTTERFREE, 56
+;	db SPEAROW, 10
+;	db RAICHU, 56
+;	db NIDORAN_F, 56
+;	db ABRA, 50
+;	db NIDORINO, 80
+;	db PIKACHU, 90
 	; Test for tutor
-;	db KABUTOPS, 90
 ;	db OMASTAR, 90
 ;	db AERODACTYL, 90
-;	db PIKACHU, 90
-;	db PSYDUCK, 90
-;	db ODDISH, 90
-;	db MOLTRES, 90
 ;	db SCYTHER, 90
+;	db KABUTOPS, 90
+;	db BLASTOISE, 90
+;	db ELECTABUZZ, 90
+;	db VENUSAUR, 90
 ;	db NINETALES, 90
+;	db CHARIZARD, 90
 	db -1 ; end
 
 PrepareNewGameDebug: ; dummy except in _DEBUG
@@ -155,10 +156,15 @@ IF DEF(_DEBUG)
 	call DebugSetPokedexEntries
 
 	; Set tutorial events
-;	SetEvent EVENT_GOT_POKEDEX
-;	SetEvent EVENT_GOT_TOWN_MAP
-;	SetEvent EVENT_GENDER_CAUGHT_INDICATOR
+	SetEvent EVENT_GOT_POKEDEX
+	SetEvent EVENT_GOT_TOWN_MAP
+	SetEvent EVENT_GENDER_CAUGHT_INDICATOR
 ;	SetEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
+
+;	SetEvent EVENT_NEW_GAME_PLUS
+;	SetEvent EVENT_ENABLE_WILD_RANDOM_TIERS
+;	SetEvent EVENT_ENABLE_WILD_RANDOM
+;	SetEvent EVENT_ENABLE_NORMAL_TRAINER_RANDOMIZATION
 
 	; Uncomment tp start in post game
 ;	SetEvent EVENT_ELITE_4_BEATEN
@@ -169,9 +175,20 @@ IF DEF(_DEBUG)
 
 ;	SetEvent EVENT_BEAT_BROCK
 ;	SetEvent EVENT_BEAT_BROCK_REMATCH
-
+;	SetEvent EVENT_BEAT_MISTY
+;	SetEvent EVENT_BEAT_MISTY_REMATCH
 ;	SetEvent EVENT_BEAT_LT_SURGE
 ;	SetEvent EVENT_BEAT_LT_SURGE_REMATCH
+;	SetEvent EVENT_BEAT_SABRINA
+;	SetEvent EVENT_BEAT_SABRINA_REMATCH
+;	SetEvent EVENT_BEAT_ERIKA
+;	SetEvent EVENT_BEAT_ERIKA_REMATCH
+;	SetEvent EVENT_BEAT_KOGA
+;	SetEvent EVENT_BEAT_KOGA_REMATCH
+;	SetEvent EVENT_BEAT_BLAINE
+;	SetEvent EVENT_BEAT_BLAINE_REMATCH
+;	SetEvent EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
+;	SetEvent EVENT_BEAT_GIOVANNI_REMATCH
 
 	; Set special flags
 ;	ld a, [wBeatSpecial4Flags]

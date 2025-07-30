@@ -74,7 +74,7 @@ _HM04ExplanationText::
 
 	para "On raconte que"
 	line "cette CS est... "
-	cont "SURF!"
+	cont "Surf!"
 	done
 
 _HM04NoRoomText::

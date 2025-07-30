@@ -16,7 +16,7 @@ _FuchsiaGymText_Badge::
 
 	para "Il te permettra"
 	line "aussi d'utiliser"
-	cont "SURF!"
+	cont "Surf!"
 
 	para "Attends! Prends"
 	line "aussi ceci!"
