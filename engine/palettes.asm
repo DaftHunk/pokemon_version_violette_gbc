@@ -155,6 +155,25 @@ SetPal_Pokedex:
 	ld de, BlkPacket_Pokedex
 	ret
 
+SetPal_MiddleScreenMonBox:
+	ld hl, PalPacket_Empty
+	ld de, wPalPacket
+	ld bc, $10
+	call CopyData
+
+	call GetOverworldPalette
+	ld hl, wPalPacket + 1
+	ld [hl], a
+	
+	ld a, [wcf91]
+	; no alt palette pkmn colors in this case
+	call DeterminePaletteIDOutOfBattle
+	ld hl, wPalPacket + 3
+	ld [hl], a
+	ld hl, wPalPacket
+	ld de, BlkPacket_PokemonMiddleScreenBox
+	ret
+
 ; PureRGBnote: ADDED: new function for setting the palette including the type icon color on the movedex data page
 SetPal_Movedex:
 	ld hl, PalPacket_Movedex
@@ -209,14 +228,22 @@ SetPal_Overworld:
 	jr nz, .notGBC
 	ld a, [wGameplayOptions]
 	bit 7, a
-	jr nz, .enhancedGBCOverworld
+	jr nz, EnhancedGBCOverworld
 .notGBC
-
 	ld hl, PalPacket_Empty
 	ld de, wPalPacket
 	ld bc, $10
 	call CopyData
+	call GetOverworldPalette
+	ld hl, wPalPacket + 1
+	ld [hld], a
+	ld de, BlkPacket_WholeScreen
+	ld a, SET_PAL_OVERWORLD
+	ld [wDefaultPaletteCommand], a
+	ret
 
+; stores the palette used  for the current map in a
+GetOverworldPalette:
 	; first check if the current map has a custom palette
 	ld a, [wCurMap]
 	ld hl, MapPalettesJumpTable
@@ -245,11 +272,6 @@ SetPal_Overworld:
 	ld a, PAL_ROUTE - 1
 .town
 	inc a ; a town's palette ID is its map ID + 1
-	ld hl, wPalPacket + 1
-	ld [hld], a
-	ld de, BlkPacket_WholeScreen
-	ld a, SET_PAL_OVERWORLD
-	ld [wDefaultPaletteCommand], a
 	ret
 .foundPalette
 	inc hl
@@ -259,7 +281,7 @@ SetPal_Overworld:
 ;Note - this is a new bit of alternate code for GBC 
 ;It loads a full BG Map Attributes table directly from w2BGMapAttributes
 ;not used at the moment
-.enhancedGBCOverworld
+EnhancedGBCOverworld:
 	ld a, SET_PAL_OVERWORLD
 	ld [wDefaultPaletteCommand], a
 
@@ -398,6 +420,7 @@ SetPalFunctions:
 	dw SetPal_GameFreakIntro
 	dw SetPal_TrainerCard
 	dw SetPal_Movedex
+	dw SetPal_MiddleScreenMonBox
 	;gbctest - adding packets from yellow
 	dw SendUnknownPalPacket_7205d
 	dw SendUnknownPalPacket_72064
@@ -1207,7 +1230,7 @@ palPacketPointers:
 	dw wTrainerCardBlkPacket
 	dw BlkPacket_GameFreakIntro
 	dw wPalPacket
-	dw UnknownPacket_72751
+	dw BlkPacket_PokemonMiddleScreenBox
 palPacketPointersEnd:
 
 CopySGBBorderTiles:

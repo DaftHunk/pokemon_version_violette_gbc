@@ -95,6 +95,11 @@ BlkPacket_Pokedex:
 	db $09,$08,$11,$00,$03,$09
 	db $01,$13,$11,$00,$00
 
+BlkPacket_PokemonMiddleScreenBox:
+	ATTR_BLK 1
+	ATTR_BLK_DATA %111, 1,1,0, 06,04, 14,13 ; mon: pal 1, everything else: pal 0
+	ds 8, 0
+
 BlkPacket_Slots:
 	ATTR_BLK 5
 	ATTR_BLK_DATA %011, 1,1,0, 00,00, 19,11 ; "3" rows and top of screen: pal 1
