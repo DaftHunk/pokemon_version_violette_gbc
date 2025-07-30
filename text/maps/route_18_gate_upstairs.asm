@@ -1,17 +1,28 @@
 _Route18GateUpstairsText_49993::
 	text "Vous regardez"
 	line "dans les"
-	cont "jumelles."
+	cont "jumelles qui"
+	cont "pointent vers"
+	cont "le Ouest..."
 
-	para "Bourg Palette"
-	line "est à l'Ouest!"
+	para "Bourg Palette est"
+	line "visible d'ici,"
+	cont "vous voyez même"
+	cont "votre maison!"
 	done
 
-_Route18GateUpstairsText_4999f::
+_Route18UpstairsBinocularsMoltresText::
 	text "Vous regardez"
 	line "dans les"
-	cont "jumelles."
+	cont "jumelles qui"
+	cont "pointent vers"
+	cont "le Sud..."
 
-	para "C'est plein"
-	line "de nageurs!"
+	para "Vous voyez le"
+	line "Volcan."
+
+	para "Wouah, on dira"
+	line "qu'un oiseau"
+	cont "plonge dans la"
+	cont "lave!"
 	done

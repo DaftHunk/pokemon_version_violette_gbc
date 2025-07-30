@@ -15,11 +15,24 @@ _Route15GateUpstairsText_4968c::
 	cont "dans ton PC."
 	done
 
-_Route15GateUpstairsText_49698::
+_Route15UpstairsBinocularsText::
 	text "Vous regardez"
 	line "dans les"
-	cont "jumelles."
+	cont "jumelles qui"
+	cont "pointent vers"
+	cont "l'Ouest."
 
 	para "Vous voyez une"
 	line "petite île!"
+	done
+
+_Route15UpstairsBinocularsArticunoText::
+	text "Vous regardez"
+	line "dans les"
+	cont "pointent vers"
+	cont "l'Ouest..."
+
+	para "Un grand et bel"
+	line "oiseau vole vers"
+	cont "la mer."
 	done

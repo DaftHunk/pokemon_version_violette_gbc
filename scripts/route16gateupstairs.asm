@@ -4,8 +4,7 @@ Route16GateUpstairsScript:
 Route16GateUpstairsTextPointers:
 	dw Route16GateUpstairsText1
 	dw Route16GateUpstairsText2
-	dw Route16GateUpstairsText3
-	dw Route16GateUpstairsText4
+	dw Route16GateUpstairsText
 
 Route16GateUpstairsText1:
 	TX_ASM
@@ -27,20 +26,11 @@ Route16GateUpstairsText_4982f:
 	TX_FAR _Route16GateUpstairsText_4982f
 	db "@"
 
-Route16GateUpstairsText3:
+Route16GateUpstairsText:
 	TX_ASM
 	ld hl, Route16GateUpstairsText_4983b
 	jp GateUpstairsScript_PrintIfFacingUp
 
 Route16GateUpstairsText_4983b:
 	TX_FAR _Route16GateUpstairsText_4983b
-	db "@"
-
-Route16GateUpstairsText4:
-	TX_ASM
-	ld hl, Route16GateUpstairsText_49847
-	jp GateUpstairsScript_PrintIfFacingUp
-
-Route16GateUpstairsText_49847:
-	TX_FAR _Route16GateUpstairsText_49847
 	db "@"

@@ -889,16 +889,6 @@ _RedBedroomSNESText::
 	cont "On y va, non?"
 	done
 
-_Route15UpstairsBinocularsText::
-	text "Vous regardez"
-	line "dans les"
-	cont "jumelles..."
-
-	para "Un grand et bel"
-	line "oiseau vole vers"
-	cont "la mer."
-	done
-
 _AerodactylFossilText::
 	text "Le fossile du"
 	line "Ptéra est un"

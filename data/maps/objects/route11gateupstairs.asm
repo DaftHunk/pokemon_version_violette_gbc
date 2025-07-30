@@ -4,9 +4,8 @@ Route11GateUpstairsObject:
 	db 1 ; warps
 	warp 7, 7, 4, ROUTE_11_GATE_1F
 
-	db 2 ; signs
-	sign 1, 2, 3 ; Route11GateUpstairsText3
-	sign 6, 2, 4 ; Route11GateUpstairsText4
+	db 1 ; signs
+	sign 1, 2, 3 ; Route11GateUpstairsText
 
 	db 2 ; objects
 	object SPRITE_BUG_CATCHER, 4, 2, WALK, 2, 1 ; person

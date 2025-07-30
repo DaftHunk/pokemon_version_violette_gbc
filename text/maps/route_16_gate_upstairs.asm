@@ -12,18 +12,26 @@ _Route16GateUpstairsText_4982f::
 _Route16GateUpstairsText_4983b::
 	text "Vous regardez"
 	line "dans les"
-	cont "jumelles."
+	cont "jumelles qui"
+	cont "pointent vers"
+	cont "l'Est."
 
 	para "Vous voyez le"
 	line "centre commercial"
 	cont "de Céladopole!"
 	done
 
-_Route16GateUpstairsText_49847::
+_Route16GateUpstairsBinocularsHoohText::
 	text "Vous regardez"
 	line "dans les"
-	cont "jumelles."
+	cont "jumelles qui"
+	cont "pointent vers"
+	cont "le Nord..."
 
-	para "Vous voyez un"
-	line "grand ponton!"
+	para "Vous apercevez"
+	line "un étrange"
+	cont "arc en ciel!"
+
+	para "MAIS! Il y a un"
+	line "Pokémon au bout!"
 	done

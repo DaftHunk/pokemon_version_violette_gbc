@@ -30,19 +30,27 @@ _TM39NoRoomText::
 	line "est plein!"
 	done
 
-_Route12GateUpstairsText_495b8::
+_Route12GateUpstairsZapdosText::
 	text "Vous regardez"
 	line "dans les"
-	cont "jumelles."
+	cont "jumelles qui"
+	cont "pointent vers"
+	cont "le Nord."
 
-	para "Vous voyez un"
-	line "pêcheur!"
+	para "Vous voyez la"
+	line "Centrale!"
+
+	para "Oh! Un magnifique"
+	line "oiseau vole au"
+	cont "dessus!"
 	done
 
 _Route12GateUpstairsText_495c4::
 	text "Vous regardez"
 	line "dans les"
-	cont "jumelles."
+	cont "jumelles qui"
+	cont "pointent vers"
+	cont "le Nord."
 
 	para "Vous voyez la"
 	line "Tour #mon!"

@@ -3,7 +3,7 @@ Route15GateUpstairsScript:
 
 Route15GateUpstairsTextPointers:
 	dw Route15GateUpstairsText1
-	dw Route15GateUpstairsText2
+	dw Route15GateUpstairsText
 
 Route15GateUpstairsText1:
 	TX_ASM
@@ -34,11 +34,11 @@ Route15GateUpstairsText_4968c:
 	TX_FAR _Route15GateUpstairsText_4968c
 	db "@"
 
-Route15GateUpstairsText2:
+Route15GateUpstairsText:
 	TX_ASM
-	ld hl, Route15GateUpstairsText_49698
+	ld hl, Route15UpstairsText
 	jp GateUpstairsScript_PrintIfFacingUp
 
-Route15GateUpstairsText_49698:
-	TX_FAR _Route15GateUpstairsText_49698
+Route15UpstairsText:
+	TX_FAR _Route15UpstairsBinocularsText
 	db "@"

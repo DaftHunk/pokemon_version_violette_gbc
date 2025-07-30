@@ -13,6 +13,47 @@ OpenRedsPC:
 RedBedroomPCText:
 	TX_PLAYERS_PC
 
+Route11GateRightBinoculars:
+	ld a, [wSpriteStateData1 + 9]
+	cp SPRITE_FACING_UP
+	ret nz
+	call EnableAutoTextBoxDrawing
+
+	CheckEvent EVENT_BEAT_ROUTE12_SNORLAX
+	jr nz, .noSnorlax
+
+	tx_pre Route11UpstairsBinocularsText
+	ld a, SNORLAX
+	ld [wcf91], a
+	jp DisplayMonFrontSpriteInBox
+
+.noSnorlax
+	TX_ASM
+	ld hl, Route11UpstairsBinocularsNoSnorlaxText
+	call PrintText
+	jp TextScriptEnd
+
+Route11UpstairsBinocularsText:
+	TX_FAR _BinocularsSnorlaxText
+	db "@"
+Route11UpstairsBinocularsNoSnorlaxText:
+	TX_FAR _BinocularsNoSnorlaxText
+	db "@"
+
+Route12GateLeftBinoculars:
+	ld a, [wSpriteStateData1 + 9]
+	cp SPRITE_FACING_UP
+	ret nz
+	call EnableAutoTextBoxDrawing
+	tx_pre Route12UpstairsBinocularsText
+	ld a, ZAPDOS
+	ld [wcf91], a
+	jp DisplayMonFrontSpriteInBox
+
+Route12UpstairsBinocularsText:
+	TX_FAR _Route12GateUpstairsZapdosText
+	db "@"
+
 Route15GateLeftBinoculars:
 	ld a, [wSpriteStateData1 + 9]
 	cp SPRITE_FACING_UP
@@ -21,11 +62,38 @@ Route15GateLeftBinoculars:
 	tx_pre Route15UpstairsBinocularsText
 	ld a, ARTICUNO
 	ld [wcf91], a
-	call PlayCry
 	jp DisplayMonFrontSpriteInBox
 
 Route15UpstairsBinocularsText:
-	TX_FAR _Route15UpstairsBinocularsText
+	TX_FAR _Route15UpstairsBinocularsArticunoText
+	db "@"
+
+Route16GateLeftBinoculars:
+	ld a, [wSpriteStateData1 + 9]
+	cp SPRITE_FACING_UP
+	ret nz
+	call EnableAutoTextBoxDrawing
+	tx_pre Route16UpstairsBinocularsText
+	ld a, HOOH
+	ld [wcf91], a
+	jp DisplayMonFrontSpriteInBox
+
+Route16UpstairsBinocularsText:
+	TX_FAR _Route16GateUpstairsBinocularsHoohText
+	db "@"
+
+Route18GateRightBinoculars:
+	ld a, [wSpriteStateData1 + 9]
+	cp SPRITE_FACING_UP
+	ret nz
+	call EnableAutoTextBoxDrawing
+	tx_pre Route18UpstairsBinocularsText
+	ld a, MOLTRES
+	ld [wcf91], a
+	jp DisplayMonFrontSpriteInBox
+
+Route18UpstairsBinocularsText:
+	TX_FAR _Route18UpstairsBinocularsMoltresText
 	db "@"
 
 AerodactylFossil:
@@ -84,6 +152,14 @@ DisplayMonFrontSpriteInBox:
 	coord hl, 10, 11
 	predef AnimateSendingOutMon
 
+	ld a, [wcf91]
+	; don't play cry for fossils
+	cp FOSSIL_KABUTOPS
+	jr z, .skipCry
+	cp FOSSIL_AERODACTYL
+	jr z, .skipCry
+	call PlayCry
+.skipCry
 ;GBCNote - for enhanced GBC color
 	;The Map View tiles for the text display are now in vBGMap1
 	;This function will make new map attributes based on the current map view

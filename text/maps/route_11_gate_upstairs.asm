@@ -15,7 +15,9 @@ _Route11GateUpstairsText_494a3::
 _BinocularsSnorlaxText::
 	text "Vous regardez"
 	line "dans les"
-	cont "jumelles."
+	cont "jumelles qui"
+	cont "pointent vers"
+	cont "l'Est."
 
 	para "Un énorme"
 	line "#mon dort"
@@ -25,7 +27,9 @@ _BinocularsSnorlaxText::
 _BinocularsNoSnorlaxText::
 	text "Vous regardez"
 	line "dans les"
-	cont "jumelles."
+	cont "jumelles qui"
+	cont "pointent vers"
+	cont "l'Est."
 
 	para "C'est très beau!"
 	line "... "
@@ -35,7 +39,9 @@ _BinocularsNoSnorlaxText::
 _Route11GateUpstairsText_494d5::
 	text "Vous regardez"
 	line "dans les"
-	cont "jumelles."
+	cont "jumelles qui"
+	cont "pointent vers"
+	cont "le Nord."
 
 	para "Il n'y a qu'un"
 	line "seul chemin pour"

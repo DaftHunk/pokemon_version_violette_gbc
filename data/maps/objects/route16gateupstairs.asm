@@ -4,9 +4,8 @@ Route16GateUpstairsObject:
 	db 1 ; warps
 	warp 7, 7, 8, ROUTE_16_GATE_1F
 
-	db 2 ; signs
-	sign 1, 2, 3 ; Route16GateUpstairsText3
-	sign 6, 2, 4 ; Route16GateUpstairsText4
+	db 1 ; signs
+	sign 6, 2, 3 ; Route16GateUpstairsText
 
 	db 2 ; objects
 	object SPRITE_YOUNG_BOY, 4, 2, STAY, NONE, 1 ; person

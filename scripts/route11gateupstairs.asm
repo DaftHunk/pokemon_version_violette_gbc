@@ -4,8 +4,7 @@ Route11GateUpstairsScript:
 Route11GateUpstairsTextPointers:
 	dw Route11GateUpstairsText1
 	dw Route11GateUpstairsText2
-	dw Route11GateUpstairsText3
-	dw Route11GateUpstairsText4
+	dw Route11GateUpstairsText
 
 Route11GateUpstairsText1:
 	TX_ASM
@@ -45,28 +44,7 @@ Route11GateUpstairsText_494a3:
 	TX_FAR _Route11GateUpstairsText_494a3
 	db "@"
 
-Route11GateUpstairsText3:
-	TX_ASM
-	ld a, [wSpriteStateData1 + 9]
-	cp SPRITE_FACING_UP
-	jp nz, GateUpstairsScript_PrintIfFacingUp
-	CheckEvent EVENT_BEAT_ROUTE12_SNORLAX
-	ld hl, BinocularsSnorlaxText
-	jr z, .print
-	ld hl, BinocularsNoSnorlaxText
-.print
-	call PrintText
-	jp TextScriptEnd
-
-BinocularsSnorlaxText:
-	TX_FAR _BinocularsSnorlaxText
-	db "@"
-
-BinocularsNoSnorlaxText:
-	TX_FAR _BinocularsNoSnorlaxText
-	db "@"
-
-Route11GateUpstairsText4:
+Route11GateUpstairsText:
 	TX_ASM
 	ld hl, Route11GateUpstairsText_494d5
 	jp GateUpstairsScript_PrintIfFacingUp

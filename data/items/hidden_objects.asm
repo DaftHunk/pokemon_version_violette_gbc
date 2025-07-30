@@ -92,6 +92,10 @@ HiddenObjectMaps:
 	db VERMILION_DOCK
 	db DAYCAREM
 	db VOLCANO_B2F
+	db ROUTE_11_GATE_2F
+	db ROUTE_12_GATE_2F
+	db ROUTE_16_GATE_2F
+	db ROUTE_18_GATE_2F
 	db $FF
 
 HiddenObjectPointers:
@@ -189,6 +193,10 @@ HiddenObjectPointers:
 	dw VermilionDockHiddenObjects
 	dw DaycareHiddenObjects
 	dw VolcanoB2FHiddenObject
+	dw Route11GateUpstairsHiddenObjects
+	dw Route12GateUpstairsHiddenObjects
+	dw Route16GateUpstairsHiddenObjects
+	dw Route18GateUpstairsHiddenObjects
 	
 ; format: y-coord, x-coord, text id/item id, object routine
 TradeCenterHiddenObjects:
@@ -920,4 +928,24 @@ DaycareHiddenObjects:	;joenote - added a PC to the daycare
 VolcanoB2FHiddenObject:
 	db 13,13,PP_UP
 	dbw BANK(HiddenItems),HiddenItems
+	db $FF
+Route11GateUpstairsHiddenObjects:
+	db $02,$06,$04
+	db BANK(Route11GateRightBinoculars)
+	dw Route11GateRightBinoculars
+	db $FF
+Route12GateUpstairsHiddenObjects:
+	db $02,$01,$04
+	db BANK(Route12GateLeftBinoculars)
+	dw Route12GateLeftBinoculars
+	db $FF
+Route16GateUpstairsHiddenObjects:
+	db $02,$01,$04
+	db BANK(Route16GateLeftBinoculars)
+	dw Route16GateLeftBinoculars
+	db $FF
+Route18GateUpstairsHiddenObjects:
+	db $02,$06,$04
+	db BANK(Route18GateRightBinoculars)
+	dw Route18GateRightBinoculars
 	db $FF

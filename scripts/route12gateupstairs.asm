@@ -3,8 +3,7 @@ Route12GateUpstairsScript:
 
 Route12GateUpstairsTextPointers:
 	dw Route12GateUpstairsText1
-	dw Route12GateUpstairsText2
-	dw Route12GateUpstairsText3
+	dw Route12GateUpstairsText
 
 Route12GateUpstairsText1:
 	TX_ASM
@@ -46,16 +45,7 @@ TM39NoRoomText:
 	TX_FAR _TM39NoRoomText
 	db "@"
 
-Route12GateUpstairsText2:
-	TX_ASM
-	ld hl, Route12GateUpstairsText_495b8
-	jp GateUpstairsScript_PrintIfFacingUp
-
-Route12GateUpstairsText_495b8:
-	TX_FAR _Route12GateUpstairsText_495b8
-	db "@"
-
-Route12GateUpstairsText3:
+Route12GateUpstairsText:
 	TX_ASM
 	ld hl, Route12GateUpstairsText_495c4
 	jp GateUpstairsScript_PrintIfFacingUp
