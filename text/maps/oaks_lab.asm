@@ -60,7 +60,7 @@ _OaksLabLastMonText::
 	text "C'est le dernier"
 	line "#mon du"
 	cont "Prof. Chen!"
-	done
+	prompt
 
 _OaksLabText_1d2f0::
 	text "Chen: <PLAYER>,"

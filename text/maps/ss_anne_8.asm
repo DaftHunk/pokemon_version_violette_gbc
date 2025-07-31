@@ -1,7 +1,7 @@
 _SSAnne8Text8::
 	text "Grodoudou: Gro!"
-	line "Douuuuuuu!@"
-	text_end
+	line "Douuuuuuu!"
+	prompt
 
 _SSAnne8BattleText1::
 	text "Je voyage"

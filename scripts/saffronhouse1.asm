@@ -18,7 +18,7 @@ SaffronHouse1Text2:
 	TX_FAR _SaffronHouse1Text2
 	TX_ASM
 	ld a, PIDGEY
-	call PlayCry
+	call DisplayPokedex
 	jp TextScriptEnd
 
 SaffronHouse1Text3:

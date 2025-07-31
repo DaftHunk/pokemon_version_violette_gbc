@@ -9,7 +9,7 @@ CeladonMansion1TextPointers:
 	dw CeladonMansion1Text5
 
 CeladonMansion1_486a1:
-	call PlayCry
+	call DisplayPokedex
 	jp TextScriptEnd
 
 CeladonMansion1Text1:

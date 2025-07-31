@@ -72,14 +72,14 @@ LavenderHouse1Text3:
 	TX_FAR _LavenderHouse1Text3
 	TX_ASM
 	ld a, PSYDUCK
-	call PlayCry
+	call DisplayPokedex
 	jp TextScriptEnd
 
 LavenderHouse1Text4:
 	TX_FAR _LavenderHouse1Text4
 	TX_ASM
 	ld a, NIDORINO
-	call PlayCry
+	call DisplayPokedex
 	jp TextScriptEnd
 
 LavenderHouse1Text5:

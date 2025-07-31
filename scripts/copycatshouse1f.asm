@@ -18,5 +18,5 @@ CopycatsHouse1FText3:
 	TX_FAR _CopycatsHouse1FText3
 	TX_ASM
 	ld a, CHANSEY
-	call PlayCry
+	call DisplayPokedex
 	jp TextScriptEnd

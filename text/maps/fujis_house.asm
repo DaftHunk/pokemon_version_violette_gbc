@@ -32,12 +32,12 @@ _LavenderHouse1Text_1d8f9::
 	done
 
 _LavenderHouse1Text3::
-	text "Psykokwak: Kwak!@"
-	text_end
+	text "Psykokwak: Kwak!"
+	prompt
 
 _LavenderHouse1Text4::
-	text "Nidorino: Nido!@"
-	text_end
+	text "Nidorino: Nido!"
+	prompt
 
 _LavenderHouse1Text_1d94c::
 	text "M.Fuji: <PLAYER>."

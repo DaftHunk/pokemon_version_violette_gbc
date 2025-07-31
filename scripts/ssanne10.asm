@@ -121,7 +121,7 @@ SSAnne10Text8:
 	TX_FAR _SSAnne10Text8
 	TX_ASM
 	ld a, MACHOKE
-	call PlayCry
+	call DisplayPokedex
 	jp TextScriptEnd
 
 SSAnne10BattleText1:

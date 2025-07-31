@@ -10,8 +10,7 @@ PewterHouse1Text1:
 	TX_FAR _PewterHouse1Text1
 	TX_ASM
 	ld a, NIDORAN_M
-	call PlayCry
-	call WaitForSoundToFinish
+	call DisplayPokedex
 	jp TextScriptEnd
 
 PewterHouse1Text2:

@@ -9,8 +9,8 @@ _SaffronHouse1Text1::
 	done
 
 _SaffronHouse1Text2::
-	text "Roucool: Rourou!@"
-	text_end
+	text "Roucool: Rourou!"
+	prompt
 
 _SaffronHouse1Text3::
 	text "La Copieuse est"

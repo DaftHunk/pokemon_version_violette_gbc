@@ -15,7 +15,7 @@ _ViridianHouseText2::
 
 _ViridianHouseText_1d5b1::
 	text "Piaffy: Tetweet!"
-	done
+	prompt
 
 _ViridianHouseText4::
 	text "Piafabec"

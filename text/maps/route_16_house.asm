@@ -44,4 +44,4 @@ _Route16HouseText_1e652::
 	line "Piiiiiik!"
 	cont "Elle semble"
 	cont "s'ennuyer..."
-	done
+	prompt

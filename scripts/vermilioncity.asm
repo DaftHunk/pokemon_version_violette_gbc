@@ -287,10 +287,10 @@ VermilionCityText5:
 	TX_FAR _VermilionCityText5
 	TX_ASM
 	ld a, MACHOP
-	call PlayCry
-	call WaitForSoundToFinish
+	call DisplayPokedex
 	ld hl, VermilionCityText14
-	ret
+	call PrintText
+	jp TextScriptEnd
 
 VermilionCityText14:
 	TX_FAR _VermilionCityText14

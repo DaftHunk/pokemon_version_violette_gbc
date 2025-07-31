@@ -76,8 +76,8 @@ _CeladonCityText6::
 
 _CeladonCityText7::
 	text "Tartard: Tarta!"
-	line "Taaaar!@"
-	text_end
+	line "Taaaar!"
+	prompt
 
 _CeladonCityText8::
 	text "Kesstu mates?"

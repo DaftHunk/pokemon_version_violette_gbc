@@ -1,6 +1,6 @@
 _PewterHouse1Text1::
-	text "Nidoran: Nidoni!@"
-	text_end
+	text "Nidoran: Nidoni!"
+	prompt
 
 _PewterHouse1Text2::
 	text "Nidoran, assis!"

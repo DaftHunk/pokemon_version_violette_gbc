@@ -1,6 +1,6 @@
 _LavenderHouse2Text1::
-	text "Osselait: Lailaii!@"
-	text_end
+	text "Osselait: Lailaii!"
+	prompt
 
 _LavenderHouse2Text_1d9dc::
 	text "Je déteste ces"

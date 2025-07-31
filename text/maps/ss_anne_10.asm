@@ -1,7 +1,7 @@
 _SSAnne10Text8::
 	text "Machopeur: Chop!"
-	line "Chop! Chop!@"
-	text_end
+	line "Chop! Chop!"
+	prompt
 
 _SSAnne10BattleText1::
 	text "Tu sais ce que"

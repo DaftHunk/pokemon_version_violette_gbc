@@ -89,14 +89,13 @@ _VermilionCityText4::
 
 _VermilionCityText5::
 	text "Machoc: Maaaaa!"
-	line "Machoooo!@"
-	text_end
+	line "Machoooo!"
+	prompt
 
 _VermilionCityText14::
-	text_start
-	para "Un Machoc"
+	text "Un Machoc"
 	line "pilonne le sol."
-	done
+	prompt
 
 _VermilionCityText6::
 	text "L'Océane est"

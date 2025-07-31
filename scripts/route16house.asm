@@ -46,8 +46,7 @@ Route16HouseText2:
 	ld hl, Route16HouseText_1e652
 	call PrintText
 	ld a, FEAROW
-	call PlayCry
-	call WaitForSoundToFinish
+	call DisplayPokedex
 	call CheckFearowTutor
 	jp TextScriptEnd
 

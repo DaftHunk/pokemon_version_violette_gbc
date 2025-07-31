@@ -91,7 +91,7 @@ CeladonCityText7:
 	TX_FAR _CeladonCityText7
 	TX_ASM
 	ld a, POLIWRATH
-	call PlayCry
+	call DisplayPokedex
 	jp TextScriptEnd
 
 	

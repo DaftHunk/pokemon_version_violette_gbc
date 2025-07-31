@@ -10,7 +10,7 @@ LavenderHouse2Text1:
 	TX_FAR _LavenderHouse2Text1
 	TX_ASM
 	ld a, CUBONE
-	call PlayCry
+	call DisplayPokedex
 	jp TextScriptEnd
 
 LavenderHouse2Text2:

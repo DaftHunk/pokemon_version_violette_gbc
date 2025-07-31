@@ -15,8 +15,7 @@ VermilionHouse1Text2:
 	TX_FAR _VermilionHouse1Text2
 	TX_ASM
 	ld a, PIDGEY
-	call PlayCry
-	call WaitForSoundToFinish
+	call DisplayPokedex
 	jp TextScriptEnd
 
 VermilionHouse1Text3:

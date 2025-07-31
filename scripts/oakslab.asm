@@ -990,6 +990,28 @@ OaksLabScript_1d22d:
 	ld [hl], $0
 	ld hl, OaksLabLastMonText
 	call PrintText
+
+	CheckEvent EVENT_GOT_POKEDEX
+	jp z, TextScriptEnd
+
+	ld a, [wPlayerStarter]
+	; if player starter is BULBASAUR chen have SQUIRTLE
+	cp STARTER3
+	jr z, .chenHaveSquirtle
+	; if player starter is SQUIRTLE chen have CHARMANDER
+	cp STARTER2
+	jr z, .chenHaveCharmander
+	; else he have BULBASAUR
+	ld a, STARTER3
+	jr .displayDex
+.chenHaveCharmander
+	ld a, STARTER1
+	jr .displayDex
+.chenHaveSquirtle
+	ld a, STARTER2
+	; fallthrough
+.displayDex
+	call DisplayPokedex
 	jp TextScriptEnd
 
 OaksLabLastMonText:

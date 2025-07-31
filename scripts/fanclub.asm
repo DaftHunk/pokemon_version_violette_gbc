@@ -75,8 +75,7 @@ FanClubText3:
 	ld hl, .text
 	call PrintText
 	ld a, PIKACHU
-	call PlayCry
-	call WaitForSoundToFinish
+	call DisplayPokedex
 	jp TextScriptEnd
 
 .text
@@ -89,8 +88,7 @@ FanClubText4:
 	ld hl, .text
 	call PrintText
 	ld a, SEEL
-	call PlayCry
-	call WaitForSoundToFinish
+	call DisplayPokedex
 	jp TextScriptEnd
 
 .text

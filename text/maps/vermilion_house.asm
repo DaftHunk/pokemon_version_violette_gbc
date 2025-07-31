@@ -6,8 +6,8 @@ _VermilionHouse1Text1::
 	done
 
 _VermilionHouse1Text2::
-	text "Roucool: Rourou!@"
-	text_end
+	text "Roucool: Rourou!"
+	prompt
 
 _VermilionHouse1Text3::
 	text "Cher Julio,"

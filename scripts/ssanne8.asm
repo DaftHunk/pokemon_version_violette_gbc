@@ -91,7 +91,7 @@ SSAnne8Text8:
 	TX_FAR _SSAnne8Text8
 	TX_ASM
 	ld a, WIGGLYTUFF
-	call PlayCry
+	call DisplayPokedex
 	jp TextScriptEnd
 
 SSAnne8BattleText1:

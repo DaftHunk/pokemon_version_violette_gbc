@@ -31,11 +31,11 @@ SeelFanBetterText::
 FanClubPikachuText::
 	text "Pikachu: Chu!"
 	line "Pikachu!"
-	done
+	prompt
 
 FanClubSeelText::
 	text "Otaria: Riaaa!"
-	done
+	prompt
 
 FanClubMeetChairText::
 	text "Je suis le maître"
