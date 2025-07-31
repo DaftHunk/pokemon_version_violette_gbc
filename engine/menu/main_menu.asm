@@ -212,6 +212,8 @@ MainMenu:
 	ld a, PLAYER_DIR_DOWN
 	ld [wPlayerDirection], a
 	ld [wPlayerLastStopDirection], a	;joenote - set face down as last direction for 180 degree turn frame
+	; Set a flag to know if player used this feature (could be useful later)
+	SetEvent EVENT_UPDATED_FROM_OLDER_VERSION
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - clear saved events flags on load for safety
 	ResetEvent EVENT_ACTIVATE_GHOST_MAROWAK	;ghost marowak
@@ -242,11 +244,7 @@ MainMenu:
 	;doing the special warp to pallet town so update some save-able parameters
 	ld a, HACK_VERSION
 	ld [wRomHackVersion], a	;update the working ram with the current rom hack version
-	ld a, [wNumHoFTeams]
-	and a
-	jr z, .noHoF
-	SetEvent EVENT_ELITE_4_BEATEN ;if the elite 4 have been beaten, set the event flag for it
-.noHoF
+
 	xor a
 	ld [wDestinationMap], a
 	ld hl, wd732
