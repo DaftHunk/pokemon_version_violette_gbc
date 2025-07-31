@@ -1,5 +1,5 @@
 TunnelMonsB2:
-	db $0F
+	db $0B
 	db 16,ZUBAT
 	db 17,ZUBAT
 	db 17,GEODUDE
