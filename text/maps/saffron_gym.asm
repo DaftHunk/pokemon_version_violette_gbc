@@ -72,7 +72,7 @@ _SaffronGymText_ReceivedTM::
 _SaffronGymText_TMExplanation::
 	text_start
 
-	para "CT46 : Vague Psy!"
+	para "CT46: Vague Psy!"
 	line "Une onde"
 	cont "d'énergie psy"
 	cont "dévastatrice!"

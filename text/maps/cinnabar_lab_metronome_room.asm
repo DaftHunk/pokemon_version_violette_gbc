@@ -58,7 +58,7 @@ _Lab3Text3::
 	cont "grottes près de"
 	cont "Azuria."
 
-	para "De : L'équipe de"
+	para "De: L'équipe de"
 	line "Recherche #mon"
 
 	para "..."

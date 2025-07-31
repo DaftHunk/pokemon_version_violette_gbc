@@ -84,8 +84,13 @@ _CeladonCityText8::
 	done
 
 _CeladonCityText9::
-	text "Laisse la Team"
-	line "tranquille!"
+	text "Hey toi! J'aurai"
+	line "peut-être un bon"
+	cont "plan Jetons si"
+	cont "ça t'intéresse."
+
+	para "Reviens me voir"
+	line "plus tard!"
 	done
 
 _CeladonCityText10::
@@ -138,20 +143,20 @@ _CeladonCityText16::
 	text "Astuce"
 
 ;joenote - this description is totally wrong about guard spec
-;	para "DEFENSE SPEC"
-;	line "protège les"
-;	cont "#mon des atta-"
-;	cont "ques SPECIALES"
-;	cont "telles que le feu"
-;	cont "ou l'eau!"
-	para "Défense spéc"
+	para "Défense Spéc"
 	line "protège les"
 	cont "#mon des atta-"
-	cont "ques de réduction"
-	cont "de statistiques"
-	cont "telles que"
-	cont "Groz'yeux et"
-	cont "Rugissement!"
+	cont "ques Spéciales"
+	cont "telles que le feu"
+	cont "ou l'eau!"
+;	para "Défense spéc"
+;	line "protège les"
+;	cont "#mon des atta-"
+;	cont "ques de réduction"
+;	cont "de statistiques"
+;	cont "telles que"
+;	cont "Groz'yeux et"
+;	cont "Rugissement!"
 
 	para "Y'a tout c'qui"
 	line "t'faut au Centre"

@@ -36,7 +36,7 @@ _VermilionGymText_ReceivedTM::
 _VermilionGymText_TMExplanation::
 	text_start
 
-	para "CT24 : Tonnerre!"
+	para "CT24: Tonnerre!"
 
 	para "Enseigne-la à un"
 	line "#mon de la"
