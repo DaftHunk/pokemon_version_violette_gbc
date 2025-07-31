@@ -16,6 +16,6 @@ _Route16WestTextTomb::
 	done
 
 _Route16WestTextSign::
-	text "Retraite"
-	line "Paisible"
+	text "Maison de la"
+	line "Clairière"
 	done

@@ -262,9 +262,9 @@ _ViridianGymText_GuideVictory::
 
 _ViridianGymText_Note::
 	text "Silver, rends-toi"
-	line "à la Retraite"
-	cont "Paisible, nous"
-	cont "devons parler."
+	line "à la Maison de la"
+	cont "Clairière, il"
+	cont "faut qu'on parle."
 
 	para "Signé: G."
 	done

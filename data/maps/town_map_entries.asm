@@ -66,7 +66,7 @@ InternalMapEntries:
 	IMAP VOLCANO_B2F,                   $3,$E,VolcanoName
 	IMAP ROUTE_16_WEST_GATE,            $3,$5,Route16WestName
 	IMAP ROUTE_16_WEST_HOUSE,           $3,$5,Route16WestName
-	IMAP ROUTE_19_BEACH_HOUSE,          $6,$F,Route19BeachHouseName
+	IMAP ROUTE_19_BEACH_HOUSE,          $6,$F,Route19Name
 	IMAP HALL_OF_FAME,                  $0,$2,PokemonLeagueName
 	IMAP UNDERGROUND_PATH_NS,           $A,$5,UndergroundPathName
 	IMAP CHAMPIONS_ROOM,                $0,$2,PokemonLeagueName

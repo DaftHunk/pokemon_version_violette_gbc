@@ -110,6 +110,4 @@ VolcanoName:
 BillsGardenName:
 	db "Jardin de Léo@"
 Route16WestName:
-	db "Retraite Paisible@"
-Route19BeachHouseName:
-	db "Bungalow d'Eté@"
+	db "Clairière@"
