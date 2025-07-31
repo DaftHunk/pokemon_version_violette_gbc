@@ -696,6 +696,17 @@ LoadTownMapEntry:
 	ld l, a
 	ret
 
+GetMapName::
+	ld a, e
+	ld de, wEnemyMonNick ; LoadTownMapEntry write in [de].
+	; To avoid any issues that could arise from a random write in a random place 
+	; we point DE at an armless address that we are going to overwrite anyway.
+	call LoadTownMapEntry
+	ld de, wEnemyMonNick
+	ld bc, 20
+	call CopyData
+	ret
+
 INCLUDE "data/maps/town_map_entries.asm"
 INCLUDE "text/map_names.asm"
 

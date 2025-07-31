@@ -604,21 +604,34 @@ CableClubOptionsText:
 DisplayContinueGameInfo:
 	xor a
 	ld [H_AUTOBGTRANSFERENABLED], a
-	coord hl, 4, 7
-	ld b, 8
-	ld c, 14
+	coord hl, 2, 6
+	ld b, 10
+	ld c, 16
 	call TextBoxBorder
-	coord hl, 5, 9
+	; show map legend
+	ld a, [wCurMap]
+	ld e, a
+	farcall GetMapName
+	hlcoord 4, 8
+	ld de, wEnemyMonNick
+	call PlaceString
+
+	hlcoord 3, 8
+	ld de, BallText
+	call PlaceString
+
+	; show normal info
+	coord hl, 3, 10
 	ld de, SaveScreenInfoText
 	call PlaceString
-	coord hl, 12, 9
+	coord hl, 12, 10
 	ld de, wPlayerName
 	call PlaceString
-	coord hl, 17, 11
+	coord hl, 17, 12
 	call PrintNumBadges
-	coord hl, 16, 13
+	coord hl, 16, 14
 	call PrintNumOwnedMons
-	coord hl, 11, 15
+	coord hl, 11, 16
 	call PrintPlayTime_local
 	ld a, 1
 	ld [H_AUTOBGTRANSFERENABLED], a
@@ -628,28 +641,44 @@ DisplayContinueGameInfo:
 PrintSaveScreenText:
 	xor a
 	ld [H_AUTOBGTRANSFERENABLED], a
-	coord hl, 4, 0
-	ld b, $8
-	ld c, $e
+	coord hl, 2, 0
+	ld b, 10
+	ld c, 16
 	call TextBoxBorder
 	call LoadTextBoxTilePatterns
 	call UpdateSprites
-	coord hl, 5, 2
+	; show map legend
+	ld a, [wCurMap]
+	ld e, a
+	farcall GetMapName
+	hlcoord 4, 2
+	ld de, wEnemyMonNick
+	call PlaceString
+
+	hlcoord 3, 2
+	ld de, BallText
+	call PlaceString
+
+	; show normal info
+	coord hl, 3, 4
 	ld de, SaveScreenInfoText
 	call PlaceString
-	coord hl, 12, 2
+	coord hl, 12, 4
 	ld de, wPlayerName
 	call PlaceString
-	coord hl, 17, 4
+	coord hl, 17, 6
 	call PrintNumBadges
-	coord hl, 16, 6
+	coord hl, 16, 8
 	call PrintNumOwnedMons
-	coord hl, 11, 8
+	coord hl, 11, 10
 	call PrintPlayTime_local
 	ld a, $1
 	ld [H_AUTOBGTRANSFERENABLED], a
 	ld c, 30
 	jp DelayFrames
+
+BallText:
+	db "<BALL>@"
 
 PrintNumBadges:
 	push hl
