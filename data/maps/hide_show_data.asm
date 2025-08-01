@@ -425,6 +425,7 @@ MtMoonB1FHS:
 	db MT_MOON_B1F,$01,Show ; Jessie
 	db MT_MOON_B1F,$02,Show ; James
 MtMoonB2FHS:
+	db MT_MOON_B2F,$01,Show
 	db MT_MOON_B2F,$06,Show
 	db MT_MOON_B2F,$07,Show
 	db MT_MOON_B2F,$08,Show

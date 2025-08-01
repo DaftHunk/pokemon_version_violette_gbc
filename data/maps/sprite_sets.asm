@@ -612,6 +612,11 @@ SpriteSheetPointerTable:
 	db $c0 ; byte count
 	db BANK(ZapdosSprite)
 
+	; SPRITE_DOME
+	dw DomeSprite
+	db $c0 ; byte count
+	db BANK(DomeSprite)
+
 	; SPRITE_BALL
 	dw BallSprite
 	db $40 ; byte count

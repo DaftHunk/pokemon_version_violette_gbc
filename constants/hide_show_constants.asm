@@ -119,6 +119,7 @@ const_value = 0
 	const HS_MT_MOON_1F_ITEM_6             ; 6C X
 	const HS_MT_MOON_B1F_JESSIE
 	const HS_MT_MOON_B1F_JAMES
+	const HS_MT_MOON_B2F_FOSSIL_GUY
 	const HS_MT_MOON_B2F_FOSSIL_1           ; 6D
 	const HS_MT_MOON_B2F_FOSSIL_2           ; 6E
 	const HS_MT_MOON_B2F_ITEM_1             ; 6F X

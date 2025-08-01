@@ -84,6 +84,7 @@ OddmonOAM:
  SpecialOAMlist:
  	; see constants/sprite_constants.asm
  	; db SPRITE_CONSTANT, $OAMtable, YPixelOffest, XPixelOffset
+	db SPRITE_DOME,			$10, 0, 0
  	db SPRITE_SNORLAX,		$10, 4, 0
  	db SPRITE_BOULDER,		$10, 4, 0
  	db SPRITE_DODUO,		$20, 0, 0

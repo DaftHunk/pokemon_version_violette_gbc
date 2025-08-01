@@ -52,9 +52,16 @@ MtMoonB1FScriptJessieJames:
 	ld a, HS_MT_MOON_B1F_JESSIE
 	ld [wMissableObjectIndex], a
 	predef HideObject
+
 	ld a, HS_MT_MOON_B1F_JAMES
 	ld [wMissableObjectIndex], a
 	predef HideObject
+
+	; also hide the fossil guy to find it later in the lab
+	ld a, HS_MT_MOON_B2F_FOSSIL_GUY
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	
 	call UpdateSprites
 	call Delay3
 	call GBFadeInFromBlack

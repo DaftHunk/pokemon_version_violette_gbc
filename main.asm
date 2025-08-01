@@ -237,7 +237,7 @@ AgathaSprite:         INCBIN "gfx/sprites/agatha.2bpp"
 BrunoSprite:          INCBIN "gfx/sprites/bruno.2bpp"
 LoreleiSprite:        INCBIN "gfx/sprites/lorelei.2bpp"
 SeelSprite:           INCBIN "gfx/sprites/seel.2bpp"
-
+DomeSprite:           INCBIN "gfx/sprites/dome.2bpp"
 
 SECTION "Battle (bank 5)", ROMX, BANK[$5]
 

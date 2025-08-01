@@ -265,6 +265,7 @@ const_value = 1
  	const SPRITE_PIKACHU				 ; $57
  	const SPRITE_SEEL2					 ; $58
  	const SPRITE_ZAPDOS					 ; $59
+	const SPRITE_DOME
 	const SPRITE_BALL                      ; $3d
 	const SPRITE_OMANYTE                   ; $3e
 	const SPRITE_BOULDER                   ; $3f
