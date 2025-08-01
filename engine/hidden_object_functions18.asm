@@ -25,6 +25,7 @@ GymStatues:
 	jr z, .haveBadge
 	; else gym not beaten
 	tx_pre_id GymStatueText1
+	jr .displayText
 .haveBadge
 	; If VIRIDIAN_GYM skip post game as leader moved
 	ld a, [wCurMap]

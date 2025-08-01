@@ -267,7 +267,6 @@ DebugItemsList:
 	db MOON_STONE, 1
 	db MIST_STONE, 1
 	db METAL_COAT, 1
-	db TOWN_MAP, 1
 	db SECRET_KEY, 1
 	db CARD_KEY, 1
 	db S_S_TICKET, 1

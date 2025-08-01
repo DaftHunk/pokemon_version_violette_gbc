@@ -420,8 +420,9 @@ _GymStatueText3::
 	para "Vainqueurs:"
 	line "<RIVAL>"
 	cont "<PLAYER>"
-	cont "Suivi d'une petite"
-	cont "liste de noms."
+	cont "Suivi d'une"
+	cont "petite liste"
+	cont "d'autres noms."
 	done
 
 _ViridianCityPokecenterGuyText::

@@ -3103,7 +3103,7 @@ ds 22 ; 22 of the 42 bytes of space are alotted to movedex seen flags
 
 NEXTU
 
-wMovedexSeen:: flag_array NUM_ATTACKS ; PureRGBnote: ADDED: flags for the movedex, uses all 22 bytes
+wMovedexSeen:: flag_array NUM_ATTACKS + 1 ; PureRGBnote: ADDED: flags for the movedex, uses all 22 bytes
 wMovedexSeenEnd::
 
 ENDU

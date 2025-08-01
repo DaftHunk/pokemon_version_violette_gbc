@@ -721,8 +721,8 @@ PrintSaveScreenText:
 	ld c, 30
 	jp DelayFrames
 
-BallText:
-	db "<BALL>@"
+LocationIconText:
+	db "▷@"
 
 BadgeSeparator:
 	db "P:  R:@"
