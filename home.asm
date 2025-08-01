@@ -4716,7 +4716,7 @@ const_value = 1
 	add_tx_pre JustAMomentText                      ; 22
 	add_tx_pre OpenBillsPCText                      ; 23
 	add_tx_pre FoundHiddenItemText                  ; 24
-	add_tx_pre HiddenItemBagFullText                ; 25 XXX unused
+	add_tx_pre GymStatueText3                       ; 25
 	add_tx_pre VermilionGymTrashText                ; 26
 	add_tx_pre IndigoPlateauHQText                  ; 27
 	add_tx_pre GameCornerOutOfOrderText             ; 28

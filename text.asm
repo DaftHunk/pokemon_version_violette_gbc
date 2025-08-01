@@ -407,6 +407,23 @@ _GymStatueText2::
 	cont "<PLAYER>"
 	done
 
+_GymStatueText3::
+	text "Arène #mon"
+	line "de @"
+	text_ram wGymCityName
+	text_start
+	cont "Champion:"
+	cont "@"
+	text_ram wGymLeaderName
+	text_start
+
+	para "Vainqueurs:"
+	line "<RIVAL>"
+	cont "<PLAYER>"
+	cont "Suivi d'une petite"
+	cont "liste de noms."
+	done
+
 _ViridianCityPokecenterGuyText::
 	text "Les Centres"
 	line "#mon soignent"

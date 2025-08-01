@@ -22,10 +22,26 @@ GymStatues:
 	ld a, [wObtainedBadges]
 	and b
 	cp b
-	tx_pre_id GymStatueText2
 	jr z, .haveBadge
+	; else gym not beaten
 	tx_pre_id GymStatueText1
 .haveBadge
+	; If VIRIDIAN_GYM skip post game as leader moved
+	ld a, [wCurMap]
+	cp VIRIDIAN_GYM
+	jr z, .gymBeaten
+
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .postGame
+
+	; fallthrough
+.gymBeaten
+	tx_pre_id GymStatueText2
+	jr .displayText
+.postGame
+	tx_pre_id GymStatueText3
+	; fallthrough
+.displayText
 	jp PrintPredefTextID
 
 .BadgeFlags:
@@ -45,6 +61,10 @@ GymStatueText1:
 
 GymStatueText2:
 	TX_FAR _GymStatueText2
+	db "@"
+
+GymStatueText3:
+	TX_FAR _GymStatueText3
 	db "@"
 
 PrintBenchGuyText:
