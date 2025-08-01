@@ -617,20 +617,41 @@ DisplayContinueGameInfo:
 	call PlaceString
 
 	hlcoord 3, 8
-	ld de, BallText
+	ld de, LocationIconText
 	call PlaceString
 
 	; show normal info
 	coord hl, 3, 10
 	ld de, SaveScreenInfoText
 	call PlaceString
+
 	coord hl, 12, 10
 	ld de, wPlayerName
 	call PlaceString
+
+	; after postgame display rematch badges count
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .displayPostGameBadges
+
 	coord hl, 17, 12
 	call PrintNumBadges
+
+	jr .continue
+.displayPostGameBadges
+	coord hl, 12, 12
+	ld de, BadgeSeparator
+	call PlaceString
+
+	coord hl, 13, 12
+	call PrintNumBadges
+
+	coord hl, 17, 12
+	call PrintNumBadgesRematch
+
+.continue
 	coord hl, 16, 14
 	call PrintNumOwnedMons
+
 	coord hl, 11, 16
 	call PrintPlayTime_local
 	ld a, 1
@@ -647,6 +668,7 @@ PrintSaveScreenText:
 	call TextBoxBorder
 	call LoadTextBoxTilePatterns
 	call UpdateSprites
+
 	; show map legend
 	ld a, [wCurMap]
 	ld e, a
@@ -656,22 +678,44 @@ PrintSaveScreenText:
 	call PlaceString
 
 	hlcoord 3, 2
-	ld de, BallText
+	ld de, LocationIconText
 	call PlaceString
 
 	; show normal info
 	coord hl, 3, 4
 	ld de, SaveScreenInfoText
 	call PlaceString
+
 	coord hl, 12, 4
 	ld de, wPlayerName
 	call PlaceString
+
+	; after postgame display rematch badges count
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .displayPostGameBadges
+
 	coord hl, 17, 6
 	call PrintNumBadges
+
+	jr .continue
+.displayPostGameBadges
+	coord hl, 12, 6
+	ld de, BadgeSeparator
+	call PlaceString
+
+	coord hl, 13, 6
+	call PrintNumBadges
+
+	coord hl, 17, 6
+	call PrintNumBadgesRematch
+
+.continue
 	coord hl, 16, 8
 	call PrintNumOwnedMons
+
 	coord hl, 11, 10
 	call PrintPlayTime_local
+
 	ld a, $1
 	ld [H_AUTOBGTRANSFERENABLED], a
 	ld c, 30
@@ -680,9 +724,22 @@ PrintSaveScreenText:
 BallText:
 	db "<BALL>@"
 
+BadgeSeparator:
+	db "P:  R:@"
+
 PrintNumBadges:
 	push hl
 	ld hl, wObtainedBadges
+	ld b, $1
+	call CountSetBits
+	pop hl
+	ld de, wNumSetBits
+	lb bc, 1, 2
+	jp PrintNumber
+
+PrintNumBadgesRematch:
+	push hl
+	ld hl, wBeatGymLeadersRematch
 	ld b, $1
 	call CountSetBits
 	pop hl

@@ -27,9 +27,6 @@ INCLUDE "engine/battle/safari_zone.asm"
 INCLUDE "engine/titlescreen.asm"
 INCLUDE "engine/load_mon_data.asm"
 
-INCLUDE "data/items/item_prices.asm"
-INCLUDE "text/item_names.asm"
-
 INCLUDE "engine/overworld/oam.asm"
 INCLUDE "engine/oam_dma.asm"
 
@@ -1844,6 +1841,8 @@ INCLUDE "custom_functions/func_gamma.asm"
 INCLUDE "custom_functions/func_extra_menu.asm"
 INCLUDE "custom_functions/func_move_secrets.asm"
 INCLUDE "custom_functions/func_linkbattlecomms.asm"
+INCLUDE "data/items/item_prices.asm"
+INCLUDE "text/item_names.asm"
 
 SECTION "Pics 1", ROMX, BANK[PICS_1]
 INCLUDE "constants/pic_banks/pic1.asm"
