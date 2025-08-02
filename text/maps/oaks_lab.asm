@@ -62,19 +62,19 @@ _OaksLabLastMonText::
 	cont "Prof. Chen!"
 	prompt
 
-_OaksLabText_1d2f0::
+_OaksLabTextChenAskChooseMons::
 	text "Chen: <PLAYER>,"
 	line "quel #mon "
 	cont "choisis-tu?"
 	done
 
-_OaksLabText_1d2f5::
+_OaksLabText_MonsProtectYou::
 	text "Chen: Ton #mon"
 	line "te protègera des"
 	cont "#mon sauvages!"
 	done
 
-_OaksLabText_1d2fa::
+_OaksLabText_TrainYourMons::
 	text "Chen: <PLAYER>,"
 	line "entraîne ton"
 	cont "#mon au combat"

@@ -1058,7 +1058,7 @@ OaksLabText5:
 	call YesNoChoice	;prompt a yes/no choice
 	ld a, [wCurrentMenuItem]	;load the player choice
 	and a	;check the player choice
-	jp nz, .asm_1d2e7	;if no, jump to generic text about coming to visit and end the conversation
+	jp nz, .eventChenVisitMe	;if no, jump to generic text about coming to visit and end the conversation
 	;otherwise begin loading battle
 	ld hl, OaksLabText_prebattle	;load oak's pre battle text
 	call PrintText	;print the pre battle text
@@ -1098,48 +1098,45 @@ OaksLabText5:
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	predef DisplayDexRating
-	jp .asm_1d2ed
+	jp .endScript
 .asm_1d279
-	ld b, POKE_BALL
-	call IsItemInBag
-	jr nz, .asm_1d2e7
 	CheckEvent EVENT_BEAT_ROUTE22_RIVAL_1ST_BATTLE
-	jr nz, .asm_1d2d0
+	jr nz, .eventChenGivesBalls
 	CheckEvent EVENT_GOT_POKEDEX
-	jr nz, .asm_1d2c8
+	jr nz, .eventChenAroundWorld
 	CheckEventReuseA EVENT_BATTLED_RIVAL_IN_OAKS_LAB
-	jr nz, .asm_1d2a9
+	jr nz, .eventChenParcelDeliver
 	ld a, [wd72e]
 	bit 3, a
-	jr nz, .asm_1d2a1
-	ld hl, OaksLabText_1d2f0
+	jr nz, .eventChenMonsProtectYou
+	ld hl, OaksLabTextChenAskChooseMons
 	call PrintText
-	jr .asm_1d2ed
-.asm_1d2a1
-	ld hl, OaksLabText_1d2f5
+	jr .endScript
+.eventChenMonsProtectYou
+	ld hl, OaksLabText_MonsProtectYou
 	call PrintText
-	jr .asm_1d2ed
-.asm_1d2a9
+	jr .endScript
+.eventChenParcelDeliver
 	ld b, OAKS_PARCEL
 	call IsItemInBag
-	jr nz, .asm_1d2b8
-	ld hl, OaksLabText_1d2fa
+	jr nz, .eventChenDeliveredParcel
+	ld hl, OaksLabText_TrainYourMons
 	call PrintText
-	jr .asm_1d2ed
-.asm_1d2b8
+	jr .endScript
+.eventChenDeliveredParcel
 	ld hl, OaksLabDeliverParcelText
 	call PrintText
 	call OaksLabScript_RemoveParcel
 	ld a, $f
 	ld [wOaksLabCurScript], a
-	jr .asm_1d2ed
-.asm_1d2c8
+	jr .endScript
+.eventChenAroundWorld
 	ld hl, OaksLabAroundWorldText
 	call PrintText
-	jr .asm_1d2ed
-.asm_1d2d0
+	jr .endScript
+.eventChenGivesBalls
 	CheckAndSetEvent EVENT_GOT_POKEBALLS_FROM_OAK
-	jr nz, .asm_1d2e7
+	jr nz, .eventChenVisitMe
 	lb bc, POKE_BALL, 5
 	;joenote - check to see if beaten on hard mode and give a different gift if true
 	CheckEvent EVENT_BEATEN_ROUTE_22_RIVAL
@@ -1149,23 +1146,23 @@ OaksLabText5:
 	call GiveItem
 	ld hl, OaksLabGivePokeballsText
 	call PrintText
-	jr .asm_1d2ed
-.asm_1d2e7
+	jr .endScript
+.eventChenVisitMe
 	ld hl, OaksLabPleaseVisitText
 	call PrintText
-.asm_1d2ed
+.endScript
 	jp TextScriptEnd
 
-OaksLabText_1d2f0:
-	TX_FAR _OaksLabText_1d2f0
+OaksLabTextChenAskChooseMons:
+	TX_FAR _OaksLabTextChenAskChooseMons
 	db "@"
 
-OaksLabText_1d2f5:
-	TX_FAR _OaksLabText_1d2f5
+OaksLabText_MonsProtectYou:
+	TX_FAR _OaksLabText_MonsProtectYou
 	db "@"
 
-OaksLabText_1d2fa:
-	TX_FAR _OaksLabText_1d2fa
+OaksLabText_TrainYourMons:
+	TX_FAR _OaksLabText_TrainYourMons
 	db "@"
 
 OaksLabDeliverParcelText:
