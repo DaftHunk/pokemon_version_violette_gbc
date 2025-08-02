@@ -5,7 +5,7 @@ db 60 ; base defense
 db 110 ; base speed
 db 130 ; base special
 db GHOST ; species type 1
-db POISON ; species type 2
+db GHOST ; species type 2
 db 45 ; catch rate
 db 190 ; base exp yield
 INCBIN "gfx/pokemon/front/gengar.pic",0,1 ; 66, sprite dimensions

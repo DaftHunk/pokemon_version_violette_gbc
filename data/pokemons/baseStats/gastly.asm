@@ -5,7 +5,7 @@ db 30 ; base defense
 db 80 ; base speed
 db 100 ; base special
 db GHOST ; species type 1
-db POISON ; species type 2
+db GHOST ; species type 2
 db 190 ; catch rate
 db 95 ; base exp yield
 INCBIN "gfx/pokemon/front/gastly.pic",0,1 ; 77, sprite dimensions

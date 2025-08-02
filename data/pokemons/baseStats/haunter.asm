@@ -5,7 +5,7 @@ db 45 ; base defense
 db 95 ; base speed
 db 115 ; base special
 db GHOST ; species type 1
-db POISON ; species type 2
+db GHOST ; species type 2
 db 90 ; catch rate
 db 126 ; base exp yield
 INCBIN "gfx/pokemon/front/haunter.pic",0,1 ; 66, sprite dimensions
