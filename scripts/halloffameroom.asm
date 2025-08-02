@@ -44,15 +44,18 @@ HallofFameRoomScript2:
 	; Elite 4 events
 	ResetEventRange ELITE4_EVENTS_START, ELITE4_CHAMPION_EVENTS_END, 1
 
+;;;; Post game events setup ;;;;;;;;;;;;;;;;;;;;;;;;;
 	CheckEvent EVENT_ELITE_4_BEATEN
 	; if elite 4 already beaten set rematch instead
 	jp nz, .setRematch
-	
-	SetEvent EVENT_ELITE_4_BEATEN ;if the elite 4 have been beaten, set the event flag for it
+
+	;if the elite 4 have been beaten, set the event flag for it
+	SetEvent EVENT_ELITE_4_BEATEN 
 	; After beating elite 4 level scaling is now enabled
 	SetEvent EVENT_TRAINER_LVL_SCALING
 	; After beating elite 4 catch up xp boost is enabled
 	SetEvent EVENT_ENABLE_CATCH_UP_BOOST
+
 	; Reset SS_ANNE trainers for Giovanni search
 	ResetEvent EVENT_BEAT_SS_ANNE_BOW_TRAINER_0
 	ResetEvent EVENT_BEAT_SS_ANNE_BOW_TRAINER_1
@@ -78,6 +81,19 @@ HallofFameRoomScript2:
 	ld a, HS_VIRIDIAN_GYM_NOTE
 	ld [wMissableObjectIndex], a
 	predef ShowObject
+
+	; Hides Starter Ball in Oak Lab because Oak trained it
+	ld a, HS_STARTER_BALL_1
+	call .hideObjets
+	ld a, HS_STARTER_BALL_2
+	call .hideObjets
+	ld a, HS_STARTER_BALL_3
+	; fallthrough
+.hideObjets
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	; fallthrough
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .next
 	xor a
 	ld [wHallOfFameRoomCurScript], a
