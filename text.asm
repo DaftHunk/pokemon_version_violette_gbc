@@ -1635,6 +1635,11 @@ _ComeBackText::
 	line "Reviens!@"
 	text_end
 
+_HyperEffectiveText::
+	text "C'est hyper"
+	line "efficace!"
+	prompt
+
 _SuperEffectiveText::
 	text "C'est très"
 	line "efficace!"
@@ -1643,6 +1648,11 @@ _SuperEffectiveText::
 _NotVeryEffectiveText::
 	text "Ce n'est pas très"
 	line "efficace..."
+	prompt
+
+_ReallyNotVeryEffectiveText::
+	text "C'est vraiment pas"
+	line "très efficace..."
 	prompt
 
 _SafariZoneEatingText::

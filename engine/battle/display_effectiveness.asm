@@ -10,11 +10,23 @@ DisplayEffectiveness:
 	and $7F
 	cp $0A
 	ret z
+	cp $28
+	ld hl, HyperEffectiveText
+	jr nc, .done
+	cp $14
 	ld hl, SuperEffectiveText
 	jr nc, .done
+	cp $5
 	ld hl, NotVeryEffectiveText
+	jr nc, .done
+	ld hl, ReallyNotVeryEffectiveText
+	;fallthrough
 .done
 	jp PrintText
+
+HyperEffectiveText:
+	TX_FAR _HyperEffectiveText
+	db "@"
 
 SuperEffectiveText:
 	TX_FAR _SuperEffectiveText
@@ -22,6 +34,10 @@ SuperEffectiveText:
 
 NotVeryEffectiveText:
 	TX_FAR _NotVeryEffectiveText
+	db "@"
+
+ReallyNotVeryEffectiveText:
+	TX_FAR _ReallyNotVeryEffectiveText
 	db "@"
 
 ;joenote - consolidating this task into one function in a different bank
