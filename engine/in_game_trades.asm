@@ -102,7 +102,7 @@ InGameTrade_DoTrade:
 	ld a, [wcf91]
 	cp b
 	ld a, $2
-	jr nz, .tradeFailed ; jump if the selected mon's species is not the required one
+	jp nz, .tradeFailed ; jump if the selected mon's species is not the required one
 	ld a, [wWhichPokemon]
 	ld hl, wPartyMon1Level
 	ld bc, wPartyMon2 - wPartyMon1
@@ -127,6 +127,12 @@ InGameTrade_DoTrade:
 	push af
 	call LoadHpBarAndStatusTilePatterns
 	call InGameTrade_PrepareTradeData
+
+	ld hl, hFlags_0xFFF6
+	set 4, [hl]		;gbcnote - mark bit to signal cable club menus
+	ld b, SET_PAL_OVERWORLD
+	call RunPaletteCommand ;gbcnote - refresh pal
+
 	predef InternalClockTradeAnim
 	pop af
 	ld [wCurEnemyLVL], a
@@ -143,6 +149,13 @@ InGameTrade_DoTrade:
 	call AddPartyMon
 	call InGameTrade_CopyDataToReceivedMon
 	callab EvolveTradeMon
+	
+	ld hl, hFlags_0xFFF6
+	res 4, [hl]		;gbcnote - mark bit to signal cable club menus
+	ld b, SET_PAL_OVERWORLD
+	call RunPaletteCommand ;gbcnote - refresh pal
+	call Delay3
+
 	call ClearScreen
 	call InGameTrade_RestoreScreen
 	call PlayDefaultMusic
