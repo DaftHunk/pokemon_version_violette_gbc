@@ -93,8 +93,8 @@ CryData:
 	db $18, $EE, $01; Kabutops
 	db $19, $99, $10; Horsea
 	db $19, $3C, $01; Seadra
-	db $0F, $40, $C0; MissingNo.
-	db $0F, $20, $C0; MissingNo.
+	db $13, $00, $80; Blastoise_S
+	db $04, $00, $80; Charizard_S
 	db $00, $20, $40; Sandshrew
 	db $00, $FF, $FF; Sandslash
 	db $1F, $F0, $01; Omanyte
@@ -114,14 +114,14 @@ CryData:
 	db $15, $EE, $01; Weedle
 	db $13, $FF, $01; Kakuna
 	db $13, $60, $80; Beedrill
-	db $00, $00, $00; MissingNo.
+	db $0F, $00, $C0; Venusaur_S
 	db $0B, $99, $20; Dodrio
 	db $0A, $AF, $40; Primeape
 	db $0B, $2A, $10; Dugtrio
 	db $1A, $29, $80; Venomoth
 	db $0C, $23, $FF; Dewgong
-	db $00, $00, $00; MissingNo.
-	db $00, $00, $00; MissingNo.
+	db $06, $8F, $FF; Electabuzz_S
+	db $24, $88, $60; Ninetales_S
 	db $16, $80, $20; Caterpie
 	db $1C, $CC, $01; Metapod
 	db $16, $77, $40; Butterfree

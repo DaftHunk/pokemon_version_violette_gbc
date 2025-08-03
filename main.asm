@@ -577,7 +577,6 @@ SECTION "bankE",ROMX,BANK[$E]
 
 INCLUDE "data/moves/moves.asm"
 BaseStats: INCLUDE "data/pokemons/base_stats.asm"
-INCLUDE "data/pokemons/cries.asm"
 INCLUDE "engine/battle/scroll_draw_trainer_pic.asm"
 INCLUDE "engine/battle/trainer_ai.asm"
 INCLUDE "engine/battle/draw_hud_pokeball_gfx.asm"
@@ -600,6 +599,7 @@ INCLUDE "engine/intro.asm"
 INCLUDE "engine/trade2.asm"
 INCLUDE "engine/menu/movedex.asm"
 INCLUDE "data/moves/movedex_type_palettes.asm"
+INCLUDE "data/pokemons/cries.asm"
 
 
 SECTION "bank11",ROMX,BANK[$11]

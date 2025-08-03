@@ -165,3 +165,8 @@ INCLUDE "data/pokemons/baseStats/pupitar.asm"
 INCLUDE "data/pokemons/baseStats/tyranitar.asm"
 INCLUDE "data/pokemons/baseStats/hooh.asm"
 INCLUDE "data/pokemons/baseStats/missingno.asm"	;joenote - added basestats for missingno
+INCLUDE "data/pokemons/baseStats/blastoise_s.asm"
+INCLUDE "data/pokemons/baseStats/charizard_s.asm"
+INCLUDE "data/pokemons/baseStats/venusaur_s.asm"
+INCLUDE "data/pokemons/baseStats/electabuzz_s.asm"
+INCLUDE "data/pokemons/baseStats/ninetales_s.asm"

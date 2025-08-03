@@ -169,3 +169,10 @@ const_value = 1
 	const DEX_MISSINGNO  ; 167
 
 NUM_POKEMON    EQU 167
+
+; Special unobtainable mons
+	const DEX_BLASTOISE_S
+	const DEX_CHARIZARD_S
+	const DEX_VENUSAUR_S
+	const DEX_ELECTABUZZ_S
+	const DEX_NINETALES_S

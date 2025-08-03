@@ -95,8 +95,8 @@ EvosMovesPointerTable:
 	dw KabutopsEvosMoves
 	dw HorseaEvosMoves
 	dw SeadraEvosMoves
-	dw MissingNo5EEvosMoves
-	dw MissingNo5FEvosMoves
+	dw BlastoiseSEvosMoves
+	dw CharizardSEvosMoves
 	dw SandshrewEvosMoves
 	dw SandslashEvosMoves
 	dw OmanyteEvosMoves
@@ -116,14 +116,14 @@ EvosMovesPointerTable:
 	dw WeedleEvosMoves
 	dw KakunaEvosMoves
 	dw BeedrillEvosMoves
-	dw MissingNo73EvosMoves
+	dw VenusaurSEvosMoves
 	dw DodrioEvosMoves
 	dw PrimeapeEvosMoves
 	dw DugtrioEvosMoves
 	dw VenomothEvosMoves
 	dw DewgongEvosMoves
-	dw MissingNo79EvosMoves
-	dw MissingNo7AEvosMoves
+	dw ElectabuzzSEvosMoves
+	dw NinetalesSEvosMoves
 	dw CaterpieEvosMoves
 	dw MetapodEvosMoves
 	dw ButterfreeEvosMoves
@@ -1391,13 +1391,13 @@ SeadraEvosMoves:
 	db 52, HYDRO_PUMP
 	db 0
 
-MissingNo5EEvosMoves:
+BlastoiseSEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
 	db 0
 
-MissingNo5FEvosMoves:
+CharizardSEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
@@ -1640,7 +1640,7 @@ BeedrillEvosMoves:
 	db 40, AGILITY
 	db 0
 
-MissingNo73EvosMoves:
+VenusaurSEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
@@ -1712,13 +1712,13 @@ DewgongEvosMoves:
 	db 43, ICE_BEAM
 	db 0
 
-MissingNo79EvosMoves:
+ElectabuzzSEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
 	db 0
 
-MissingNo7AEvosMoves:
+NinetalesSEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset

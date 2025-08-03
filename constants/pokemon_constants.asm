@@ -93,8 +93,8 @@ const_value = 1
 	const KABUTOPS     ; $5B
 	const HORSEA       ; $5C
 	const SEADRA       ; $5D
-	const MISSINGNO_5E ; $5E
-	const MISSINGNO_5F ; $5F
+	const BLASTOISE_S  ; $5E
+	const CHARIZARD_S  ; $5F
 	const SANDSHREW    ; $60
 	const SANDSLASH    ; $61
 	const OMANYTE      ; $62
@@ -114,14 +114,14 @@ const_value = 1
 	const WEEDLE       ; $70
 	const KAKUNA       ; $71
 	const BEEDRILL     ; $72
-	const MISSINGNO_73 ; $73
+	const VENUSAUR_S   ; $73
 	const DODRIO       ; $74
 	const PRIMEAPE     ; $75
 	const DUGTRIO      ; $76
 	const VENOMOTH     ; $77
 	const DEWGONG      ; $78
-	const MISSINGNO_79 ; $79
-	const MISSINGNO_7A ; $7A
+	const ELECTABUZZ_S ; $79
+	const NINETALES_S  ; $7A
 	const CATERPIE     ; $7B
 	const METAPOD      ; $7C
 	const BUTTERFREE   ; $7D

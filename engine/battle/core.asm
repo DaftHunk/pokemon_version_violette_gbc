@@ -7078,6 +7078,8 @@ LoadEnemyMonData:
 	ld a, [wPokedexNum]
 	sub 1;dec a
 	jr c, .skip_seen	;joenote - check for missingno. do not mark as seen to prevent item duplication
+	cp NUM_POKEMON
+	jr nc, .skip_seen ; skip Special Mons
 	ld c, a
 	ld b, FLAG_SET
 	ld hl, wPokedexSeen
