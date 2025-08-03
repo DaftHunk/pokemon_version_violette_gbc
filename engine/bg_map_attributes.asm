@@ -123,7 +123,7 @@ BGMapAttributesPointers:
 	dw BGMapAttributes_StatusScreen
 	dw BGMapAttributes_Battle
 	dw BGMapAttributes_WholeScreen
-	dw BGMapAttributes_Unknown1
+	dw BGMapAttributes_Unknown13
 
 HandleBadgeFaceAttributes:
 ; zero out the attributes if the player doesn't have the respective badge
