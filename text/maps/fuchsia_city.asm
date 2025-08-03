@@ -16,7 +16,7 @@ _FuchsiaCityText2::
 	cont "des #mon."
 	done
 
-_FuchsiaCityText3::
+_FuchsiaCityNicoSearchText::
 	text "Nico: Mais où est"
 	line "Julia? Elle est"
 	cont "tout l'temps à la"
@@ -126,4 +126,16 @@ _FuchsiaCityKabutoText::
 
 _FuchsiaCityText_19b2a::
 	text "..."
+	done
+
+_FuchsiaCityNicoFoundText::
+	text "Nico: Elle"
+	line "m'attend dans"
+	cont "le Parc?"
+
+	para "Mais c'est pas"
+	line "c'qu'on c'était"
+	cont "dit! C'est pas"
+	cont "possible,"
+	cont "j'te jure..."
 	done

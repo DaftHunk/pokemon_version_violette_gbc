@@ -4,7 +4,7 @@ FuchsiaCityScript:
 FuchsiaCityTextPointers:
 	dw FuchsiaCityText1
 	dw FuchsiaCityText2
-	dw FuchsiaCityText3
+	dw FuchsiaCityNicoText
 	dw FuchsiaCityText4
 	dw FuchsiaCityText5
 	dw FuchsiaCityText6
@@ -35,8 +35,37 @@ FuchsiaCityText2:
 	TX_FAR _FuchsiaCityText2
 	db "@"
 
-FuchsiaCityText3:
-	TX_FAR _FuchsiaCityText3
+FuchsiaCityNicoText:
+	TX_ASM
+	ld hl, FuchsiaCityNicoSearchText
+	
+	CheckEvent EVENT_JULIA_MEET
+	jr nz, .nicoJoinJulia
+	; else
+	call PrintText
+	jr .endScript
+.nicoJoinJulia
+	ld hl, FuchsiaCityNicoFoundText
+	call PrintText
+
+	call GBFadeOutToBlack
+	ld a, HS_NICO_FUCHSIA_CITY
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_SAFARI_ZONE_CENTER_REST_NICO
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+	call UpdateSprites
+	call Delay3
+	call GBFadeInFromBlack
+
+	SetEvent EVENT_JULIA_AND_NICO_REUNITED
+	; fallthrough
+.endScript
+	jp TextScriptEnd
+
+FuchsiaCityNicoSearchText:
+	TX_FAR _FuchsiaCityNicoSearchText
 	db "@"
 
 FuchsiaCityText4:
@@ -166,4 +195,8 @@ FuchsiaCityKabutoText:
 
 FuchsiaCityText_19b2a:
 	TX_FAR _FuchsiaCityText_19b2a
+	db "@"
+
+FuchsiaCityNicoFoundText:
+	TX_FAR _FuchsiaCityNicoFoundText
 	db "@"

@@ -31,6 +31,7 @@ const_value = 0
 	const HS_SAFFRON_CITY_D               ; 16
 	const HS_SAFFRON_CITY_E               ; 17
 	const HS_SAFFRON_CITY_F               ; 18
+	const HS_NICO_FUCHSIA_CITY
 	const HS_ROUTE_2_ITEM_1               ; 19 X
 	const HS_ROUTE_2_ITEM_2               ; 1A X
 	const HS_ROUTE_4_ITEM                 ; 1B X
@@ -206,7 +207,6 @@ const_value = 0
 	const HS_SILPH_CO_11F_JESSIE          ; B9
 	const HS_SILPH_CO_11F_2               ; B8
 	const HS_SILPH_CO_11F_JAMES
-	const HS_MAP_F4_1                     ; BA XXX sprite doesn't exist
 	const HS_POKEMON_MANSION_2F_ITEM               ; BB X
 	const HS_POKEMON_MANSION_3F_ITEM_1             ; BC X
 	const HS_POKEMON_MANSION_3F_ITEM_2             ; BD X
@@ -226,6 +226,7 @@ const_value = 0
 	const HS_SAFARI_ZONE_WEST_ITEM_3      ; CB X
 	const HS_SAFARI_ZONE_WEST_ITEM_4      ; CC X
 	const HS_SAFARI_ZONE_CENTER_ITEM      ; CD X
+	const HS_SAFARI_ZONE_CENTER_REST_NICO
 	const HS_CERULEAN_CAVE_2F_ITEM_1     ; CE X
 	const HS_CERULEAN_CAVE_2F_ITEM_2     ; CF X
 	const HS_CERULEAN_CAVE_2F_ITEM_3     ; D0 X

@@ -13,7 +13,7 @@ MapHSPointers:
 	dw VermilionCityHS	;joenote - added vermilion city
 	dw NoHS
 	dw SaffronCityHS
-	dw NoHS
+	dw FuchsiaCityHS
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -226,7 +226,7 @@ MapHSPointers:
 	dw SafariZoneNorthHS
 	dw SafariZoneWestHS
 	dw SafariZoneCenterHS
-	dw NoHS
+	dw SafariZoneCenterRestHS
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -249,7 +249,7 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw UnusedMapF4HS
+	dw NoHS
 	dw LoreleiRoomHS
 	dw BrunoRoomHS
 	dw AgathaRoomHS
@@ -303,6 +303,8 @@ SaffronCityHS:
 	db SAFFRON_CITY,$0D,Hide
 	db SAFFRON_CITY,$0E,Show
 	db SAFFRON_CITY,$0F,Hide
+FuchsiaCityHS:
+	db FUCHSIA_CITY,$03,Show
 Route2HS:
 	db ROUTE_2,$01,Show
 	db ROUTE_2,$02,Show
@@ -534,8 +536,6 @@ SilphCo11FHS:
 	db SILPH_CO_11F,$04,Show ; jessie
 	db SILPH_CO_11F,$05,Show 
 	db SILPH_CO_11F,$06,Show ; james
-UnusedMapF4HS:
-	db $F4,$02,Show
 PokemonMansion2FHS:
 	db POKEMON_MANSION_2F,$02,Show
 PokemonMansion3FHS:
@@ -562,6 +562,8 @@ SafariZoneWestHS:
 	db SAFARI_ZONE_WEST,$04,Show
 SafariZoneCenterHS:
 	db SAFARI_ZONE_CENTER,$01,Show
+SafariZoneCenterRestHS:
+	db SAFARI_ZONE_CENTER_REST_HOUSE,$03,Hide
 CeruleanCave2FHS:
 	db CERULEAN_CAVE_2F,$01,Show
 	db CERULEAN_CAVE_2F,$02,Show
