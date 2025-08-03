@@ -196,11 +196,11 @@ JrTrainerFData:
 
 PokemaniacData:
 ; Rock Tunnel 1F
-	db 25,CUBONE,DRATINI,0
+	db 25,CUBONE,OMANYTE,0
 ; Rock Tunnel B1F
 	db 23,PIKACHU,LICKITUNG,SLOWPOKE,0
 	db 26,CHARMELEON,CUBONE,0
-	db 25,PIKACHU,DRATINI,0
+	db 25,PIKACHU,KABUTO,0
 ; Route 10
 	db 43,MAGMAR,JYNX,LAPRAS,0 ; this one is actually in front of the power plant
 	db 27,KANGASKHAN,0
