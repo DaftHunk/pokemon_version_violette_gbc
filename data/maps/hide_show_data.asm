@@ -477,7 +477,6 @@ RocketHideoutB4FHS:
 	db ROCKET_HIDEOUT_B4F,$08,Hide
 	db ROCKET_HIDEOUT_B4F,$09,Hide
 SilphCo2FHS:
-	db SILPH_CO_2F,$01,Show
 	db SILPH_CO_2F,$02,Show
 	db SILPH_CO_2F,$03,Show
 	db SILPH_CO_2F,$04,Show
@@ -526,7 +525,6 @@ SilphCo9FHS:
 SilphCo10FHS:
 	db SILPH_CO_10F,$01,Show
 	db SILPH_CO_10F,$02,Show
-	db SILPH_CO_10F,$03,Show
 	db SILPH_CO_10F,$04,Show
 	db SILPH_CO_10F,$05,Show
 	db SILPH_CO_10F,$06,Show

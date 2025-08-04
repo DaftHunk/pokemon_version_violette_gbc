@@ -49,7 +49,7 @@ FuchsiaCityNicoText:
 	call PrintText
 
 	call GBFadeOutToBlack
-	ld a, HS_NICO_FUCHSIA_CITY
+	ld a, HS_FUCHSIA_CITY_NICO
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	ld a, HS_SAFARI_ZONE_CENTER_REST_NICO
@@ -165,24 +165,24 @@ FuchsiaCityLaprasText:
 FuchsiaCityText24:
 	TX_ASM
 	CheckEvent EVENT_GOT_DOME_FOSSIL
-	jr nz, .asm_3b4e8
+	jr nz, .displayOmanyte
 	CheckEventReuseA EVENT_GOT_HELIX_FOSSIL
-	jr nz, .asm_667d5
+	jr nz, .displayKabuto
 	ld hl, FuchsiaCityText_19b2a
 	call PrintText
-	jr .asm_4343f
-.asm_3b4e8
+	jr .endScript
+.displayOmanyte
 	ld hl, FuchsiaCityOmanyteText
 	call PrintText
 	ld a, OMANYTE
-	jr .asm_81556
-.asm_667d5
+	jr .displayDex
+.displayKabuto
 	ld hl, FuchsiaCityKabutoText
 	call PrintText
 	ld a, KABUTO
-.asm_81556
+.displayDex
 	call DisplayPokedex
-.asm_4343f
+.endScript
 	jp TextScriptEnd
 
 FuchsiaCityOmanyteText:

@@ -109,6 +109,15 @@ _Route25AfterBattleText6::
 	cont "un Mélofée?"
 	done
 
+_Route25ShowedMonText::
+	text "Trop mignon ton"
+	line "Mélofée!"
+
+	para "Tiens, il parait"
+	line "qu'ils raffolent"
+	cont "de cette Pierre!"
+	prompt
+
 _Route25BattleText7::
 	text "J'arrive du Mont"
 	line "Sélénite, et je"

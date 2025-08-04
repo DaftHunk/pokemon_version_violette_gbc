@@ -12,8 +12,11 @@ _LavenderMartText2::
 	cont "Vitesse +, c'est"
 	cont "ça qu'je cherche."
 
-	para "Sais-tu où je"
-	line "peux en trouver?"
+	para "D'après le"
+	line "vendeur, il faut"
+	cont "se rendre à"
+	cont "Céladopole pour"
+	cont "en trouver!"
 	done
 
 _LavenderMartReviveText::

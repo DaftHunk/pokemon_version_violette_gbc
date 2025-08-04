@@ -14,7 +14,7 @@ _ReceivedHM02Text::
 	text_end
 
 _HM02ExplanationText::
-	text "CS02: VOL."
+	text "CS02: Vol."
 	line "Elle vous permet"
 	cont "de revenir dans"
 	cont "une ville."

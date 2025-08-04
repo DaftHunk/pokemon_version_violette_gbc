@@ -17,6 +17,11 @@ _Route14AfterBattleText1::
 	line "Les #mon ne"
 	cont "peuvent pas les"
 	cont "oublier."
+
+	para "Il parait qu'il"
+	line "y a quelqu'un à"
+	cont "Safrania qui"
+	cont "peut le faire..."
 	done
 
 _Route14BattleText2::
@@ -97,8 +102,9 @@ _Route14AfterBattleText5::
 	done
 
 _Route14BattleText6::
-	text "J'suis pas au"
-	line "jeu! Mais bon..."
+	text "J'suis pas trop"
+	line "d'humeur,"
+	cont "mais bon..."
 	done
 
 _Route14EndBattleText6::

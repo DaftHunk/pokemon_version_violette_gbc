@@ -1,13 +1,13 @@
 _Route15GateUpstairsText_4968c::
-	text "MULTI. EXP"
-	line "distribue l'EXP à"
+	text "Multi. Exp"
+	line "distribue l'Exp à"
 	cont "tous tes #mon,"
 	cont "même à ceux"
 	cont "qui n'ont pas"
 	cont "combattu."
 
 	para "Mais cela réduit"
-	line "l'EXP de chaque"
+	line "l'Exp de chaque"
 	cont "#mon."
 
 	para "Si tu n'en as pas"

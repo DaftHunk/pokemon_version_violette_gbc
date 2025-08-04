@@ -31,7 +31,7 @@ const_value = 0
 	const HS_SAFFRON_CITY_D               ; 16
 	const HS_SAFFRON_CITY_E               ; 17
 	const HS_SAFFRON_CITY_F               ; 18
-	const HS_NICO_FUCHSIA_CITY
+	const HS_FUCHSIA_CITY_NICO
 	const HS_ROUTE_2_ITEM_1               ; 19 X
 	const HS_ROUTE_2_ITEM_2               ; 1A X
 	const HS_ROUTE_4_ITEM                 ; 1B X
@@ -157,7 +157,6 @@ const_value = 0
 	const HS_ROCKET_HIDEOUT_B4F_ITEM_3      ; 86 X
 	const HS_ROCKET_HIDEOUT_B4F_ITEM_4      ; 87
 	const HS_ROCKET_HIDEOUT_B4F_ITEM_5      ; 88
-	const HS_SILPH_CO_2F_1                ; 89 XXX never (de)activated?
 	const HS_SILPH_CO_2F_2                ; 8A
 	const HS_SILPH_CO_2F_3                ; 8B
 	const HS_SILPH_CO_2F_4                ; 8C
@@ -198,7 +197,6 @@ const_value = 0
 	const HS_SILPH_CO_9F_3                ; B0
 	const HS_SILPH_CO_10F_1               ; B1
 	const HS_SILPH_CO_10F_2               ; B2
-	const HS_SILPH_CO_10F_3               ; B3 XXX never (de)activated?
 	const HS_SILPH_CO_10F_ITEM_1          ; B4 X
 	const HS_SILPH_CO_10F_ITEM_2          ; B5 X
 	const HS_SILPH_CO_10F_ITEM_3          ; B6 X

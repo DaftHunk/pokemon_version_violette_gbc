@@ -89,5 +89,22 @@ ViridianMartText2:
 	db "@"
 
 ViridianMartText3:
+	TX_ASM
+	ld hl, ViridianMartOutOfStockText
+	; Check if parcel not done
+	CheckEvent EVENT_OAK_GOT_PARCEL
+	jr z, .endScript
+	; Else
+	ld hl, ViridianMartAfterParcelText
+	; fallthrough
+.endScript
+	call PrintText
+	jp TextScriptEnd
+
+ViridianMartOutOfStockText:
 	TX_FAR _ViridianMartText3
+	db "@"
+
+ViridianMartAfterParcelText:
+	TX_FAR _ViridianMartAfterParcelText
 	db "@"

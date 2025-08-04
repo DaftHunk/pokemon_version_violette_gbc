@@ -144,7 +144,25 @@ ViridianForestEndBattleText4:
 	db "@"
 
 ViridianForestAfterBattleText4:
-	TX_FAR _ViridianForestAfterBattleText4
+	TX_ASM
+	ld hl, ViridianForestAskMonText
+	; Check if not right mon in first position
+	ld a, [wPartyMon1Species]
+	cp PIKACHU
+	jr nz, .endScript
+	; Else show your mon
+	ld hl, ViridianForestShowedMonText
+	; fallthrough
+.endScript
+	call PrintText
+	jp TextScriptEnd
+
+ViridianForestAskMonText:
+	TX_FAR _ViridianForestAskMonText
+	db "@"
+
+ViridianForestShowedMonText:
+	TX_FAR _ViridianForestShowedMonText
 	db "@"
 
 ViridianForestText9:

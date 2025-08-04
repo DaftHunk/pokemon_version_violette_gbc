@@ -259,7 +259,48 @@ Route25EndBattleText6:
 	db "@"
 
 Route25AfterBattleText6:
+	TX_ASM
+	ld hl,Route25AskMonText
+	; Check if already done
+	CheckEvent EVENT_ROUTE_25_SHOWED_CLEFAIRY
+	jr nz, .endScript
+	; Check if not right mon in first position
+	ld a, [wPartyMon1Species]
+	cp CLEFAIRY
+	jr nz, .endScript
+	; Else show your mon
+	ld hl, Route25ShowedMonText
+	call PrintText
+	; Give reward
+	lb bc, MOON_STONE, 1
+	call GiveItem
+	jr nc, .noSpace
+	; If reward given
+	SetEvent EVENT_ROUTE_25_SHOWED_CLEFAIRY
+	ld hl, Route25FoundItemText
+	; fallthrough
+.endScript
+	call PrintText
+	jp TextScriptEnd
+.noSpace
+	ld hl, Route25NoMoreRoomForItemText
+	jr .endScript
+
+Route25AskMonText:
 	TX_FAR _Route25AfterBattleText6
+	db "@"
+
+Route25ShowedMonText:
+	TX_FAR _Route25ShowedMonText
+	db "@"
+
+Route25FoundItemText:
+	TX_FAR _FoundItemText
+	TX_SFX_ITEM_1
+	db "@"
+
+Route25NoMoreRoomForItemText:
+	TX_FAR _NoMoreRoomForItemText
 	db "@"
 
 Route25BattleText7:

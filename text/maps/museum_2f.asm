@@ -28,7 +28,7 @@ _Museum2FText3::
 	cont "l'espace."
 	done
 
-_Museum2FText4::
+_Museum2FAskMonText::
 	text "Je veux un"
 	line "Pikachu!"
 
@@ -36,12 +36,25 @@ _Museum2FText4::
 	line "trouver un!"
 	done
 
-_Museum2FText5::
+_Museum2FPikachuGirlDadText::
 	text "Oui, oui, tu vas"
 	line "l'avoir ton"
 	cont "Pikachu..."
 	cont "C'est ça."
 	done
+
+_Museum2FShowedMonText::
+	text "Waaaaaaaah un"
+	line "Pikapika!"
+
+	para "J'ai trop trop"
+	line "hâte d'avoir le"
+	cont "miens!"
+
+	para "Tiens, donne-lui"
+	line "ce Bonbon de"
+	cont "ma part!"
+	prompt
 
 _Museum2FText6::
 	text "Navette Spaciale"

@@ -16,7 +16,7 @@ _ReceivedTM39Text::
 
 _TM39ExplanationText::
 	text "La CT39 s'appelle"
-	line "METEORES."
+	line "Météore."
 
 	para "Cette attaque est"
 	line "très précise."

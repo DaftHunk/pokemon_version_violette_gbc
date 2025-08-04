@@ -88,7 +88,7 @@ _PewterCityText6::
 	line "prenant part au"
 	cont "combat, même pen-"
 	cont "dant une seconde,"
-	cont "gagne de l'EXP!"
+	cont "gagne de l'Exp!"
 	done
 
 _PewterCityText7::

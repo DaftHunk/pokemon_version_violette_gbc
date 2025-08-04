@@ -86,7 +86,7 @@ _ViridianForestEndBattleText4::
 	line "vraiment?"
 	prompt
 
-_ViridianForestAfterBattleText4::
+_ViridianForestAskMonText::
 	text "J'ai cherché par-"
 	line "tout mais je n'ai"
 	cont "jamais trouvé de"
@@ -95,6 +95,16 @@ _ViridianForestAfterBattleText4::
 	para "Je suis tombée"
 	line "sur un Mystherbe"
 	cont "par contre!"
+	done
+
+_ViridianForestShowedMonText::
+	text "Ah! Il y a donc"
+	line "bien des Pikachu,"
+	cont "ici!"
+
+	para "Merci à toi, je"
+	line "continue de"
+	cont "chercher!"
 	done
 
 _ViridianForestText9::

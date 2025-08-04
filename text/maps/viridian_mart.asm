@@ -33,3 +33,10 @@ _ViridianMartText3::
 	line "Nous sommes en"
 	cont "rupture de stock."
 	done
+
+_ViridianMartAfterParcelText::
+	text "Les Potions sont"
+	line "de retour! Et on"
+	cont "propose même une"
+	cont "Canne maintenant!"
+	done

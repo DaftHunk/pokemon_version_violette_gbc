@@ -179,7 +179,11 @@ _Route13Text12::
 
 	para "Utilisez SELECT"
 	line "pour organiser"
-	cont "votre inventaire!"
+	cont "votre inventaire"
+	cont "et maintenez"
+	cont "SELECT et START"
+	cont "pour trier les"
+	cont "objets!"
 	done
 
 _Route13Text13::
