@@ -130,6 +130,23 @@ MainMenu:
 	ld a, A_BUTTON | B_BUTTON | START
 	ld [wMenuWatchedKeys], a
 	ld a, [wSaveFileStatus]
+	cp 1
+	jr z, .noSaveMenu
+
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr z, .saveMenu
+
+	jr .ngpMenu
+.noSaveMenu
+	ld a, 1
+	jr .continue
+.saveMenu
+	ld a, 2
+	jr .continue
+.ngpMenu
+	ld a, 3
+	; fallthrough
+.continue
 	ld [wMaxMenuItem], a
 	call HandleMenuInput
 	bit 1, a ; pressed B?
