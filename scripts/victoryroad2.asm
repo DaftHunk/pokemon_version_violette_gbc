@@ -29,11 +29,11 @@ VictoryRoad2Script_517c9:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; wispnote - If the 1st switch is activated place the boulder in switch's coordinates.
 ; Sprite11 indexes the 1st boulder, and ($01, $10) are the 1st swtich's coordinates.
-	ld hl, Sprite11MapY
+	ld hl, Sprite10MapY
 	ld a, $10
 	add 4; wispnote - We need to offset coordinates by 4
 	ld [hl], a
-	ld hl, Sprite11MapX
+	ld hl, Sprite10MapX
 	ld a, $01
 	add 4; wispnote - We need to offset coordinates by 4
 	ld [hl], a
@@ -50,11 +50,11 @@ VictoryRoad2Script_517c9:
 ; Sprite13 indexes the 2nd boulder, and ($09, $10) are the 2nd swtich's coordinates.
 ; Not it should be impossible for a boulder to arrive there if Sprite13 is hidden;
 ; therefore, there is no need to check.
-	ld hl, Sprite13MapY
+	ld hl, Sprite12MapY
 	ld a, $10
 	add 4; wispnote - We need to offset coordinates by 4
 	ld [hl], a
-	ld hl, Sprite13MapX
+	ld hl, Sprite12MapX
 	ld a, $09
 	add 4; wispnote - We need to offset coordinates by 4
 	ld [hl], a
