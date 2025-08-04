@@ -223,3 +223,4 @@ SeafoamIslands4TextPointers:
 	dw BoulderText
 	dw BoulderText
 	dw BoulderText
+	dw PickUpItemText

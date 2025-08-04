@@ -47,14 +47,14 @@ _MetalCoatDescription::
 	prompt
 
 _MistStoneDescription::
-	text "Maximise l'Exp de"
-	next "Stats."
+	text "Maximise les EVs"
+	next "d'un #mon."
 	prompt
 
 _MGeneDescription::
-    text "Améliore les VD"
-    next "d'un #mon."
-    prompt
+	text "Augmente les IVs"
+	next "d'un #mon."
+	prompt
 
 _AntidoteDescription::
 	text "Soigne un #mon"
@@ -634,7 +634,7 @@ _TM47Description::
 
 _TM48Description::
 	text "Eboulement:Roche"
-	next "Dég: 75;Pré: 90"
+	next "Dég: 80;Pré: 95"
 	prompt
 
 _TM49Description::

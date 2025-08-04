@@ -481,4 +481,5 @@ NewGamePlusInfo:
 	next "<BALL> Pokédex pris"
 	next "<BALL> Capadex"
 	next "<BALL> Temps jeu"
-	next "<BALL> Célébrités@"
+	next "<BALL> Célébrités"
+	next "<BALL> Certains bonus@"

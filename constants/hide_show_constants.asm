@@ -190,7 +190,6 @@ const_value = 0
 	const HS_SILPH_CO_7F_RIVAL            ; A7
 	const HS_SILPH_CO_7F_ITEM_1           ; A8 X
 	const HS_SILPH_CO_7F_ITEM_2           ; A9 X
-	const HS_SILPH_CO_7F_8                ; AA XXX sprite doesn't exist
 	const HS_SILPH_CO_8F_1                ; AB
 	const HS_SILPH_CO_8F_2                ; AC
 	const HS_SILPH_CO_8F_3                ; AD
@@ -246,6 +245,7 @@ const_value = 0
 	const HS_SEAFOAM_ISLANDS_B3F_BOULDER_2  ; DE
 	const HS_SEAFOAM_ISLANDS_B3F_BOULDER_3  ; DF
 	const HS_SEAFOAM_ISLANDS_B3F_BOULDER_4  ; E0
+	const HS_SEAFOAM_ISLANDS_B3F_ITEM_1
 	const HS_SEAFOAM_ISLANDS_B4F_BOULDER_1  ; E1
 	const HS_SEAFOAM_ISLANDS_B4F_BOULDER_2  ; E2
 	const HS_ARTICUNO                     ; E3 X

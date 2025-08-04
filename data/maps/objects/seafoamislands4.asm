@@ -12,13 +12,14 @@ SeafoamIslands4Object:
 
 	db 0 ; signs
 
-	db 6 ; objects
+	db 7 ; objects
 	object SPRITE_BOULDER, 5, 14, STAY, BOULDER_MOVEMENT_BYTE_2, 1 ; person
 	object SPRITE_BOULDER, 3, 15, STAY, BOULDER_MOVEMENT_BYTE_2, 2 ; person
 	object SPRITE_BOULDER, 8, 14, STAY, BOULDER_MOVEMENT_BYTE_2, 3 ; person
 	object SPRITE_BOULDER, 9, 14, STAY, BOULDER_MOVEMENT_BYTE_2, 4 ; person
 	object SPRITE_BOULDER, 18, 6, STAY, NONE, 5 ; person
 	object SPRITE_BOULDER, 19, 6, STAY, NONE, 6 ; person
+	object SPRITE_BALL,     2, 1, STAY, NONE, 7, TM14_BLIZZARD
 
 	; warp-to
 	warp_to 5, 12, SEAFOAM_ISLANDS_B3F_WIDTH ; SEAFOAM_ISLANDS_B2F

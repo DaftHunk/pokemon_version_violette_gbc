@@ -407,7 +407,7 @@ VictoryRoad2FHS:
 	db VICTORY_ROAD_2,$07,Show
 	db VICTORY_ROAD_2,$08,Show
 	db VICTORY_ROAD_2,$09,Show
-	db VICTORY_ROAD_2,$0C,Show
+	db VICTORY_ROAD_2,$0C,Show ; boulder
 BillsHouseHS:
 	db BILLS_HOUSE,$01,Show
 	db BILLS_HOUSE,$02,Hide
@@ -515,7 +515,6 @@ SilphCo7FHS:
 	db SILPH_CO_7F,$09,Show
 	db SILPH_CO_7F,$0A,Show
 	db SILPH_CO_7F,$0B,Show
-	db SILPH_CO_7F,$0C,Show
 SilphCo8FHS:
 	db SILPH_CO_8F,$02,Show
 	db SILPH_CO_8F,$03,Show
@@ -591,6 +590,7 @@ SeafoamIslandsB3FHS:
 	db SEAFOAM_ISLANDS_B3F,$03,Show
 	db SEAFOAM_ISLANDS_B3F,$05,Hide
 	db SEAFOAM_ISLANDS_B3F,$06,Hide
+	db SEAFOAM_ISLANDS_B3F,$07,Show
 SeafoamIslandsB4FHS:
 	db SEAFOAM_ISLANDS_B4F,$01,Hide
 	db SEAFOAM_ISLANDS_B4F,$02,Hide

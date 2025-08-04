@@ -14,7 +14,7 @@ Route4Object:
 	db 3 ; objects
 	object SPRITE_LASS, 9, 8, WALK, 0, 1 ; person
 	object SPRITE_LASS, 63, 2, STAY, DOWN, 2, OPP_LASS, 7	;joenote - readjusted position to protect new hidden moon stone
-	object SPRITE_BALL, 57, 3, STAY, NONE, 3, TM02_RAZOR_WIND
+	object SPRITE_BALL, 57, 3, STAY, NONE, 3, TM03_SWORDS_DANCE
 
 	; warp-to
 	warp_to 11, 5, ROUTE_4_WIDTH ; MT_MOON_POKECENTER
