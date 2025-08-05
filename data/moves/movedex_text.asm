@@ -154,8 +154,8 @@ _FlyDexEntry::
 	next "des attaques"
 	next "durant le vol."
 
-	bage "Permet aussi d'"
-	next "être porté dans"
+	bage "Permet aussi"
+	next "d'être porté dans"
 	next "une ville visitée"
 	dex
 
@@ -422,8 +422,8 @@ _DisableDexEntry::
 
 _AcidDexEntry::
 	text "Attaque l'ennemi"
-	next "avec un jet d'"
-	next "acide corrosif.@"
+	next "avec un jet"
+	next "d'acide corrosif.@"
 	; fall through
 	text_jump _Generic33PercentLowDef1Text
 
@@ -525,9 +525,9 @@ _HyperBeamDexEntry::
 	dex
 
 _PeckDexEntry::
-	text "Frappe l'ennemi d'"
-	next "un bec pointu ou"
-	next "d'une corne.@"
+	text "Frappe l'ennemi"
+	next "d'un bec pointu ou"
+	next "ou d'une corne.@"
 	; fall through
 	text_jump _GenericNoEffectText
 
@@ -888,9 +888,9 @@ _MinimizeDexEntry::
 	text_jump _GenericAddEva1Text
 
 _SmokescreenDexEntry::
-	text "Le lanceur dis-"
-	next "perse un nuage d'"
-	next "encre ou de fumée.@"
+	text "Disperse un nuage"
+	next "d'encre ou de"
+	next "fumée.@"
 	; fall through
 	text_jump _GenericLowPre1Text
 
@@ -1070,8 +1070,8 @@ _ClampDexEntry::
 
 _SwiftDexEntry::
 	text "Le lanceur envoie"
-	next "des rayons d'"
-	next "étoiles.@"
+	next "des rayons"
+	next "d'étoiles.@"
 	; fall through
 	text_jump _GenericNeverMissText
 

@@ -35,8 +35,8 @@ _Volcano1FText1_EndBattle::
 	prompt
 
 _Volcano1FText1_AfterBattle::
-	text "J'ai oublié d'"
-	line "amener mon"
+	text "J'ai oublié"
+	line "d'amener mon"
 	cont "#mon eau..."
 	done
 

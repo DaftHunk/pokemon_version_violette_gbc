@@ -178,7 +178,7 @@ StatusScreen:
 	jr nz, .printEV
 
 	bit 1, a
-	jr nz, .printDV
+	jr nz, .printIV
 
 	call PrintStatusCondition
 	jr nz, .StatusWritten
@@ -192,9 +192,9 @@ StatusScreen:
 	ld de, EVText
 	call PlaceString ; "EV"
 	jr .StatusWritten
-.printDV
-	ld de, DVText
-	call PlaceString ; "DV"
+.printIV
+	ld de, IVText
+	call PlaceString ; "IV"
 	; fallthrough
 .StatusWritten
 	coord hl, 9, 6
@@ -301,8 +301,8 @@ StatusText:
 OKText:
 	db "Ok@"
 
-DVText:
-	db "DV@"
+IVText:
+	db "IV@"
 
 EVText:
 	db "EV@"
