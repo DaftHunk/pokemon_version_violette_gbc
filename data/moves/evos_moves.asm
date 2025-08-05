@@ -608,6 +608,7 @@ ScizorEvosMoves:
 	db 40, X_SCISSOR
 	db 42, SWORDS_DANCE
 	db 48, DOUBLE_TEAM
+	db 54, FLASH_CANNON
 	db 0
 
 GrowlitheEvosMoves:

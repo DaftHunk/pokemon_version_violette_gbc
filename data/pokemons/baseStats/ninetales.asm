@@ -21,7 +21,7 @@ db 0 ; growth rate
 	tmlearn tm04_FLAMETHROWER, tm06_TOXIC, tm08_BODY_SLAM
 	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm15_HYPER_BEAM
 	tmlearn tm20_RAGE
-	tmlearn tm28_DIG, tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm28_DIG, tm29_PSYCHIC_M, tm31_MIMIC, tm32_DOUBLE_TEAM
 	tmlearn tm33_REFLECT, tm34_BIDE, tm38_FIRE_BLAST, tm39_SWIFT, tm40_SKULL_BASH
 	tmlearn tm44_REST
 	tmlearn tm50_SUBSTITUTE
