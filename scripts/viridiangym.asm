@@ -151,11 +151,7 @@ ViridianGymScript_GiveTM:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_GOT_TM27
-	jr .endScript
-.bagFull
-	ld a, $f
-	ld [hSpriteIndexOrTextID], a
-	call DisplayTextID
+	; fallthrough
 .endScript
 	ld hl, wObtainedBadges
 	set 7, [hl]
@@ -176,6 +172,11 @@ ViridianGymScript_GiveTM:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 
+	jp ViridianGymScript_Reset
+.bagFull
+	ld a, $f
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
 	jp ViridianGymScript_Reset
 
 ViridianGymTextPointers:
