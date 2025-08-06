@@ -2527,8 +2527,20 @@ TalkToTrainer::
 	and a
 	jr z, .trainerNotYetFought     ; test trainer's flag
 ;;;;;;;joenote - have a rematch with most trainers?
+	; skip ELITE 4
+	ld a, [wTrainerClass]
+	cp LORELEI
+	jr z, .skipRematch
+	cp BRUNO
+	jr z, .skipRematch
+	cp AGATHA
+	jr z, .skipRematch
+	cp LANCE
+	jr z, .skipRematch
+
 	callba TrainerRematch
 	jr nz, .trainerNotYetFought
+.skipRematch
 ;;;;;;;
 	ld a, $6
 	call ReadTrainerHeaderInfo     ; print after battle text
