@@ -21,7 +21,7 @@ _VolcanoB1FText0_AfterBattle::
 _VolcanoB1FText1_Battle::
 	text "Mais qu'est-ce"
 	line "qu'ils foutent"
-	cont "bon dieu?!"
+	cont "bon sang?!"
 
 	para "Toi là! Pour qui"
 	line "tu bosses?"

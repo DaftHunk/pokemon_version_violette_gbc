@@ -119,7 +119,7 @@ IF DEF(_DEBUG)
 	ld [hli], a
 	ld a, BUG_BUZZ
 	ld [hli], a
-	ld a, X_SCISSOR
+	ld a, ICE_BEAM
 	ld [hl], a
 	ld hl, wPartyMon5PP
 	ld a, 15
