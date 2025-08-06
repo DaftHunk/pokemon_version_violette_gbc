@@ -5,8 +5,6 @@ IndigoPlateauLobbyScript:
 	bit 6, [hl]
 	res 6, [hl]
 	ret z
-	; wispnote - This event was probably ment to be reset on Route 23.
-	; ResetEvent EVENT_VICTORY_ROAD_1F_BOULDER_ON_SWITCH
 	ld hl, wBeatLorelei
 	bit 1, [hl]
 	res 1, [hl]

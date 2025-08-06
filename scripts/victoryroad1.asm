@@ -76,7 +76,7 @@ VictoryRoad1TextPointers:
 
 VictoryRoad1TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_0
-	db ($2 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_0
 	dw VictoryRoad1BattleText1 ; TextBeforeBattle
 	dw VictoryRoad1AfterBattleText1 ; TextAfterBattle
@@ -85,7 +85,7 @@ VictoryRoad1TrainerHeader0:
 
 VictoryRoad1TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_1
-	db ($2 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_1
 	dw VictoryRoad1BattleText2 ; TextBeforeBattle
 	dw VictoryRoad1AfterBattleText2 ; TextAfterBattle
@@ -94,7 +94,7 @@ VictoryRoad1TrainerHeader1:
 
 VictoryRoad1TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_2
-	db ($2 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_2
 	dw VictoryRoad1FBugCatcherBattleText ; TextBeforeBattle
 	dw VictoryRoad1FBugCatcherAfterBattleText ; TextAfterBattle
@@ -103,7 +103,7 @@ VictoryRoad1TrainerHeader2:
 
 VictoryRoad1TrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_3
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_3
 	dw VictoryRoad1FBeautyBattleText ; TextBeforeBattle
 	dw VictoryRoad1FBeautyAfterBattleText ; TextAfterBattle
@@ -112,7 +112,7 @@ VictoryRoad1TrainerHeader3:
 
 VictoryRoad1TrainerHeader4:
 	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_4
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_4
 	dw VictoryRoad1FBurglarBattleText ; TextBeforeBattle
 	dw VictoryRoad1FBurglarAfterBattleText ; TextAfterBattle

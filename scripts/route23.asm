@@ -6,24 +6,28 @@ Route23Script:
 	jp CallFunctionInTable
 
 Route23Script_511e9:
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; wispnote - Resetting Victory Road Puzzle
-	; EVENT_VICTORY_ROAD_1F_BOULDER_ON_SWITCH was probably mentto be reset here
-	; along with the rest of the puzzle instead on Indigo Plateau Loby.
 	ld hl, wCurrentMapScriptFlags
 	bit 6, [hl]
 	res 6, [hl]
 	ret z
-	ResetEvent EVENT_VICTORY_ROAD_1F_BOULDER_ON_SWITCH
-	ResetEvents EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH1, EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH2
-	ResetEvents EVENT_VICTORY_ROAD_3F_BOULDER_ON_SWITCH1, EVENT_VICTORY_ROAD_3F_BOULDER_ON_SWITCH2
-	ld a, HS_VICTORY_ROAD_3F_BOULDER
-	ld [wMissableObjectIndex], a
-	predef ShowObject
-	ld a, HS_VICTORY_ROAD_2_BOULDER
-	ld [wMissableObjectIndex], a
-	predef_jump HideObject
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	; Victory Road trainers are now reseted everytime you go out
+	ResetEvent EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_0
+	ResetEvent EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_1
+	ResetEvent EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_2
+	ResetEvent EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_3
+	ResetEvent EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_4
+	ResetEvent EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_5
+
+	ResetEvent EVENT_BEAT_VICTORY_ROAD_2_TRAINER_0
+	ResetEvent EVENT_BEAT_VICTORY_ROAD_2_TRAINER_1
+	ResetEvent EVENT_BEAT_VICTORY_ROAD_2_TRAINER_2
+	ResetEvent EVENT_BEAT_VICTORY_ROAD_2_TRAINER_3
+	ResetEvent EVENT_BEAT_VICTORY_ROAD_2_TRAINER_4
+
+	ResetEvent EVENT_BEAT_VICTORY_ROAD_3F_TRAINER_0
+	ResetEvent EVENT_BEAT_VICTORY_ROAD_3F_TRAINER_1
+	ResetEvent EVENT_BEAT_VICTORY_ROAD_3F_TRAINER_2
+	ResetEvent EVENT_BEAT_VICTORY_ROAD_3F_TRAINER_3
 
 Route23ScriptPointers:
 	dw Route23Script0

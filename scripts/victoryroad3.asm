@@ -105,7 +105,7 @@ VictoryRoad3TextPointers:
 
 VictoryRoad3TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_3F_TRAINER_0
-	db ($1 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_3F_TRAINER_0
 	dw VictoryRoad3BattleText2 ; TextBeforeBattle
 	dw VictoryRoad3AfterBattleText2 ; TextAfterBattle

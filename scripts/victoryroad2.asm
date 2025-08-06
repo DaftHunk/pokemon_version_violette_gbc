@@ -1,12 +1,4 @@
 VictoryRoad2Script:
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; wispnote - Due to various evidence I suspect that the puzzle
-; wasn't ment to be reset and this instruction was left for debugging purposes.
-	; ld hl, wCurrentMapScriptFlags
-	; bit 6, [hl]
-	; res 6, [hl]
-	; call nz, VictoryRoad2Script_517c4
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, wCurrentMapScriptFlags
 	bit 5, [hl]
 	res 5, [hl]
@@ -18,9 +10,6 @@ VictoryRoad2Script:
 	call ExecuteCurMapScriptInTable
 	ld [wVictoryRoad2CurScript], a
 	ret
-
-VictoryRoad2Script_517c4:
-	ResetEvent EVENT_VICTORY_ROAD_1F_BOULDER_ON_SWITCH
 
 VictoryRoad2Script_517c9:
 	CheckEvent EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH1
@@ -127,7 +116,7 @@ VictoryRoad2TrainerHeader0:
 
 VictoryRoad2TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_2_TRAINER_1
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_2_TRAINER_1
 	dw VictoryRoad2BattleText2 ; TextBeforeBattle
 	dw VictoryRoad2AfterBattleText2 ; TextAfterBattle
@@ -136,7 +125,7 @@ VictoryRoad2TrainerHeader1:
 
 VictoryRoad2TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_2_TRAINER_2
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_2_TRAINER_2
 	dw VictoryRoad2BattleText3 ; TextBeforeBattle
 	dw VictoryRoad2AfterBattleText3 ; TextAfterBattle
@@ -145,7 +134,7 @@ VictoryRoad2TrainerHeader2:
 
 VictoryRoad2TrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_2_TRAINER_3
-	db ($1 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_2_TRAINER_3
 	dw VictoryRoad2BattleText4 ; TextBeforeBattle
 	dw VictoryRoad2AfterBattleText4 ; TextAfterBattle
@@ -154,7 +143,7 @@ VictoryRoad2TrainerHeader3:
 
 VictoryRoad2TrainerHeader4:
 	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_2_TRAINER_4
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_2_TRAINER_4
 	dw VictoryRoad2BattleText5 ; TextBeforeBattle
 	dw VictoryRoad2AfterBattleText5 ; TextAfterBattle
