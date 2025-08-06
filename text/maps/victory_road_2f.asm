@@ -72,18 +72,19 @@ _VictoryRoad2AfterBattleText4::
 	done
 
 _VictoryRoad2BattleText5::
-	text "La Route de la"
-	line "Victoire est une"
-	cont "étape difficile?"
+	text "Chut, j'suis en"
+	line "mission secrète!"
 	done
 
 _VictoryRoad2EndBattleText5::
-	text "Bon..."
-	line "J'ai perdu, non?"
+	text "Quoi?!"
+	line "C'pas l'Volcan,"
+	cont "ici?"
 	prompt
 
 _VictoryRoad2AfterBattleText5::
-	text "De nombreux"
-	line "dresseurs ont"
-	cont "abandonné ici!"
+	text "Arf, eul Chef"
+	line "va encore me"
+	cont "mettre d'corvée"
+	cont "d'patates!"
 	done
