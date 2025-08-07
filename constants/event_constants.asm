@@ -2338,7 +2338,7 @@ const_value = 0
 	const EVENT_91F                                  ; 91F, (D86A, bit 7)
 	const EVENT_920                                  ; 920, (D86B, bit 0)
 	const EVENT_921                                  ; 921, (D86B, bit 1)
-	const EVENT_922                                  ; 922, (D86B, bit 2)
+	const EVENT_FIRST_SHINY_APPEARED                 ; 922, (D86B, bit 2)
 	const EVENT_MUSEUM_2F_SHOWED_PIKACHU             ; 923, (D86B, bit 3)
 	const EVENT_VIRIDIAN_FOREST_ENTRANCE             ; 924, (D86B, bit 4)
 	const EVENT_ROUTE_25_SHOWED_CLEFAIRY             ; 925, (D86B, bit 5)

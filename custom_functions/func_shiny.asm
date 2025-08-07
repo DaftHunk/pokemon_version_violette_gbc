@@ -1,6 +1,8 @@
 ;joenote - Custom functions to handle shiny pokemon
 	
 ShinyAttractFunction:
+	CheckEvent EVENT_FIRST_SHINY_APPEARED
+	jr z, .skipCheck
 ;only if the party leader is lvl 100 or more
 	ld a, [wPartyMon1Level]
 	cp 100	;do wPartyMon1Level - 100. set carry if result < 0
@@ -9,9 +11,11 @@ ShinyAttractFunction:
 	ld a, [wPartyMon1Species]
 	cp CHANSEY
 	ret nz
+.skipCheck
 ;make a 1 in 255 chance to force shiny DVs on a wild pokemon 
 	call Random
 	ret nz
+	SetEvent EVENT_FIRST_SHINY_APPEARED
 	ld a, [wFontLoaded]
 	set 7, a 
 	ld [wFontLoaded], a
@@ -105,11 +109,6 @@ ShinyPlayerAnimation:
 	jr nz, .noPlayerShiny
 	call CheckPlayerShinyDVs
 	jr z, .noPlayerShiny
-	push de
-	ld d, $00
-	ld e, $B6	;select an unused power-up animation	
-	callba PlaySelectedAnimation
-	pop de
 	call SkipPlayerShinybit
 	push bc
 	ld b, SET_PAL_BATTLE
@@ -124,11 +123,19 @@ ShinyEnemyAnimation:
 	jr nz, .noEnemyShiny
 	call CheckEnemyShinyDVs
 	jr z, .noEnemyShiny
+
+	ld a, ELECTRIC
+	ld [wEnemyMoveType], a
+
 	push de
 	ld d, $01
-	ld e, $B6	;select an unused power-up animation	
+	ld e, $74
 	callba PlaySelectedAnimation
 	pop de
+
+	xor a
+	ld [wEnemyMoveType], a
+
 	call SkipEnemyShinybit
 	push bc
 	ld b, SET_PAL_BATTLE
