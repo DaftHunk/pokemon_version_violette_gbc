@@ -7709,6 +7709,55 @@ _InitBattleCommon:
 	lb bc, 4, 10
 	call ClearScreenArea
 	call ClearSprites
+
+	; Animation for Legendaries
+	ld a, [wCurOpponent]
+	cp ZAPDOS
+	jr z, .thunderAnim
+	cp MOLTRES
+	jr z, .fireAnim
+	cp ARTICUNO
+	jr z, .blizzardAnim
+	cp MEWTWO
+	jr z, .psyAnim
+	cp MEW
+	jr z, .psyAnim
+	cp HOOH
+	jr z, .fireAnim
+	; else
+	jr .continue
+.thunderAnim
+	push de
+	ld d, $00
+	ld e, $57
+	ld a, ELECTRIC
+	jr .playAnimation
+.fireAnim
+	push de
+	ld d, $00
+	ld e, $53
+	ld a, FIRE
+	jr .playAnimation
+.blizzardAnim
+	push de
+	ld d, $00
+	ld e, $3B
+	ld a, ICE
+	jr .playAnimation
+.psyAnim
+	push de
+	ld d, $00
+	ld e, $5E
+	ld a, PSYCHIC
+	; fallthrough
+.playAnimation
+	ld [wPlayerMoveType], a
+	callba PlaySelectedAnimation
+	pop de
+	xor a
+	ld [wPlayerMoveType], a
+	; fallthrough
+.continue
 	ld a, [wIsInBattle]
 	dec a ; is it a wild battle?
 	call z, DrawEnemyHUDAndHPBar ; draw enemy HUD and HP bar if it's a wild battle
