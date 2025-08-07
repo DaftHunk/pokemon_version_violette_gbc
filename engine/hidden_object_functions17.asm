@@ -26,12 +26,9 @@ Route11GateRightBinoculars:
 	ld a, SNORLAX
 	ld [wcf91], a
 	jp DisplayMonFrontSpriteInBox
-
 .noSnorlax
-	TX_ASM
-	ld hl, Route11UpstairsBinocularsNoSnorlaxText
-	call PrintText
-	jp TextScriptEnd
+	tx_pre Route11UpstairsBinocularsNoSnorlaxText
+	ret
 
 Route11UpstairsBinocularsText:
 	TX_FAR _BinocularsSnorlaxText
