@@ -128,12 +128,11 @@ InGameTrade_DoTrade:
 	call LoadHpBarAndStatusTilePatterns
 	call InGameTrade_PrepareTradeData
 
-	ld hl, hFlags_0xFFF6
-	set 4, [hl]		;gbcnote - mark bit to signal cable club menus
-	ld b, SET_PAL_OVERWORLD
-	call RunPaletteCommand ;gbcnote - refresh pal
-
+	call GBPalWhiteOut
+	ld b, SET_PAL_GENERIC
+	call RunPaletteCommand
 	predef InternalClockTradeAnim
+
 	pop af
 	ld [wCurEnemyLVL], a
 	pop af
@@ -149,18 +148,16 @@ InGameTrade_DoTrade:
 	call AddPartyMon
 	call InGameTrade_CopyDataToReceivedMon
 	callab EvolveTradeMon
-	
-	ld hl, hFlags_0xFFF6
-	res 4, [hl]		;gbcnote - mark bit to signal cable club menus
-	ld b, SET_PAL_OVERWORLD
-	call RunPaletteCommand ;gbcnote - refresh pal
-	call Delay3
-
 	call ClearScreen
 	call InGameTrade_RestoreScreen
 	call PlayDefaultMusic
-	callba RedrawMapView
-	and a
+	
+;	callba RedrawMapView
+;gbcnote - it is useful to have a version of RedrawMapView that does not mess with H_AUTOBGTRANSFERENABLED
+;used particularly for clean enhanced GBC colors during in-game trades
+	callba RedrawMapView_NoChangeAutoBGTransfer
+
+	and a	;this is so the carry flag gets reset
 	ld a, $3
 	jr .tradeSucceeded
 .tradeFailed
