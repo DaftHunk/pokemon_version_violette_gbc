@@ -186,7 +186,7 @@ VermilionCityJennyAfterBattleText:
 VermilionCityText2:
 	TX_ASM
 	CheckEvent EVENT_ELITE_4_BEATEN ;joenote - add text for SS ANNE returning
-	jr nz, .ssane_returns				;
+	jr nz, .ssane_returns
 	CheckEvent EVENT_SS_ANNE_LEFT
 	jr nz, .asm_1989e
 	ld hl, VermilionCityText_198a7

@@ -67,7 +67,7 @@ ItemNames:
 	db "Défense +@"
 	db "Vitesse +@"
 	db "Spécial +@"
-	db "Boite Jeton@"
+	db "Boîte Jeton@"
 	db "Colis Chen@"
 	db "Cherch'Objet@"
 	db "Scope Sylphe@"

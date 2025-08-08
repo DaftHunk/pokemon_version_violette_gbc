@@ -98,7 +98,7 @@ StartMenuOptionText:
 	db "Option@"
 
 StartMenuPortablePCText: ; new
-	db "Box PC@"
+	db "Bipeur@"
 
 PrintStartMenuItem:
 	push hl

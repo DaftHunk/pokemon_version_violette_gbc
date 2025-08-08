@@ -30,14 +30,12 @@ _VermilionCityText_198ac::
 	done
 
 _VermilionCityText_annereturns::	;joenote - added text
-	text "Tu as vu l'Océ-"
-	line "anne amarrée"
-	cont "au port?"
+	text "L'Océane est"
+	line "de retour!"
 
-	para "Elle a dû revenir"
-	line "à cause des"
-	cont "bancs massifs"
-	cont "de Tentacool!"
+	para "Il parait qu'il"
+	line "revient des Iles"
+	cont "Sevii!"
 	done
 
 _SSAnneWelcomeText4::

@@ -39,7 +39,7 @@ _CeladonHotelCoinGuyText_intro::
 
 _CeladonHotelCoinGuyText_needcase::
 	text "Oh, n'oublie pas"
-	line "ta Boite Jeton."
+	line "ta Boîte Jeton."
 	done
 
 _CeladonHotelCoinGuyText_recieved::

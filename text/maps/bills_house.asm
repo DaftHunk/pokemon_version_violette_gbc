@@ -87,7 +87,7 @@ _BillsHouseText_1e8cb::
 	cont "ma nouvelle"
 	cont "invention."
 
-	para "C'est un bracelet"
+	para "C'est un Bipeur"
 	line "qui te permet de"
 	cont "changer de boîte"
 	cont "PC à distance!"

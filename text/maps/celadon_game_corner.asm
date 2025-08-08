@@ -33,13 +33,13 @@ _CeladonGameCornerText_48d31::
 	done
 
 _CeladonGameCornerText_48d36::
-	text "Oups! Votre Boite"
+	text "Oups! Votre Boîte"
 	line "est pleine."
 	done
 
 _CeladonGameCornerText_48d3b::
 	text "Il vous faut une"
-	line "Boite Jeton!"
+	line "Boîte Jeton!"
 	done
 
 _CeladonGameCornerText3::
@@ -194,5 +194,5 @@ _CeladonGameCornerText_48f09::
 
 _CeladonGameCornerText_48f19::
 	text "Oups! Pas de"
-	line "Boite Jeton!"
+	line "Boîte Jeton!"
 	done

@@ -751,7 +751,7 @@ _OakLabEmailText::
 
 _GameCornerCoinCaseText::
 	text "Vous n'avez pas"
-	line "de Boite Jeton!"
+	line "de Boîte Jeton!"
 	done
 
 _GameCornerNoCoinsText::
@@ -1988,7 +1988,7 @@ _PressStartToReleaseText::
 
 _RequireCoinCaseText::
 	text "Vous n'avez pas"
-	line "de Boite Jeton!@"
+	line "de Boîte Jeton!@"
 	text_end
 
 _ExchangeCoinsForPrizesText::
@@ -2213,7 +2213,7 @@ _WhenYouChangeBoxText::
 
 _ChooseABoxText::
 	text "Choisissez une"
-	line "Boite <PKMN>.@"
+	line "Boîte <PKMN>.@"
 	text_end
 
 _SkippedForever::
@@ -2947,7 +2947,7 @@ _SetToBoxText::
 	text_ram wBoxMonNicks
 	text " est"
 	cont "transféré à la"
-	cont "Boite @"
+	cont "Boîte @"
 	text_ram wStringBuffer
 	text " du PC!"
 	done
@@ -2956,17 +2956,17 @@ _BoxIsFullText::
 	text "Plus de place"
 	line "pour un #mon!"
 
-	para "La Boite #mon"
+	para "La Boîte #mon"
 	line "est pleine!"
 
-	para "Changez de Boite"
+	para "Changez de Boîte"
 	line "dans un Centre"
 	cont "#mon ou"
 	cont "via le menu!"
 	done
 
 _BoxIsFullReminderText::
-	text "La Boite #mon"
+	text "La Boîte #mon"
 	line "est maintenant"
 	cont "pleine."
 	cont "Elle ne pourra"
@@ -2974,7 +2974,7 @@ _BoxIsFullReminderText::
 	cont "#mon"
 	cont "supplémentaire."
 	
-	para "Changez de Boite"
+	para "Changez de Boîte"
 	line "dans un Centre"
 	cont "#mon ou"
 	cont "via le menu!"
@@ -3248,7 +3248,7 @@ _NoSurfingHereText::
 	prompt
 
 _BoxFullCannotThrowBallText::
-	text "La Boite #mon"
+	text "La Boîte #mon"
 	line "est pleine! Objet"
 	cont "inutilisable!"
 	prompt
@@ -3469,7 +3469,7 @@ _LearnTempFieldMoveTextDenied::
 	cont "déjà connue!"
 	
 	para "Placer ce #mon"
-	line "dans une boite PC"
+	line "dans une boîte PC"
 	cont "la supprimera."
 	prompt
 
