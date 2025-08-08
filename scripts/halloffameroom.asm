@@ -53,8 +53,6 @@ HallofFameRoomScript2:
 	SetEvent EVENT_ELITE_4_BEATEN 
 	; After beating elite 4 level scaling is now enabled
 	SetEvent EVENT_TRAINER_LVL_SCALING
-	; After beating elite 4 catch up xp boost is enabled
-	SetEvent EVENT_ENABLE_CATCH_UP_BOOST
 
 	; Reset SS_ANNE trainers for Giovanni search
 	ResetEvent EVENT_BEAT_SS_ANNE_BOW_TRAINER_0
