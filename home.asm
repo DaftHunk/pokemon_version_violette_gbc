@@ -2978,6 +2978,10 @@ IsItemInBag::
 
 DisplayPokedex::
 	ld [wPokedexNum], a
+
+	CheckEvent EVENT_GOT_POKEDEX
+	ret z
+	
 	jpba _DisplayPokedex
 
 SetSpriteFacingDirectionAndDelay::
