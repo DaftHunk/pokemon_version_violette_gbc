@@ -213,6 +213,7 @@ AttackAnimationPointers:
 	dw ThrowRockAnim
 	dw ThrowBaitAnim	;CA
 	dw ZigZagScreenAnim
+	dw UnusedAnim
 
 ; each animation is a list of subanimations and special effects
 ; if first byte < $56
@@ -1281,6 +1282,12 @@ ThrowRockAnim:
 
 ThrowBaitAnim:
 	db $03,$8B,$54
+	db $FF
+
+UnusedAnim:
+	db SE_LIGHT_SCREEN_PALETTE, $FF
+	db SE_SHOOT_MANY_BALLS_UPWARD, $FF
+	db SE_RESET_SCREEN_PALETTE, $FF
 	db $FF
 
 SubanimationPointers:

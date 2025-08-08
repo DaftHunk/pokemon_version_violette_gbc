@@ -129,7 +129,7 @@ ShinyEnemyAnimation:
 
 	push de
 	ld d, $01
-	ld e, $74
+	ld e, $D7
 	callba PlaySelectedAnimation
 	pop de
 
