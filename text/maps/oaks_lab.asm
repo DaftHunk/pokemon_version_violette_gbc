@@ -138,6 +138,7 @@ _OaksLabGivePokeballsText1::
 
 _OaksLabGivePokeballsText2::
 	text_start
+
 	para "Quand un #mon"
 	line "sauvage apparaît,"
 	cont "il faut jouer"
@@ -145,7 +146,7 @@ _OaksLabGivePokeballsText2::
 
 	para "Lance-lui une"
 	line "# Ball pour le"
-	line "capturer!"
+	cont "capturer!"
 
 	para "Mais ça ne"
 	line "marchera pas à"

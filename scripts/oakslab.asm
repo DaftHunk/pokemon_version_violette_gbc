@@ -1034,7 +1034,7 @@ OaksLabText5:
 	jp nz, .asm_1d279
 	
 	CheckEvent EVENT_GOT_POKEDEX
-	jp z, .asm_1d279
+	jp nz, .asm_1d279
 .oakAskForDexCheck
 	CheckEvent EVENT_ELITE_4_BEATEN	;has elite 4 been beaten?
 	jr z, .dexCheckLoadText

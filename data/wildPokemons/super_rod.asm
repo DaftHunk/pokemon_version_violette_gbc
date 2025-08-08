@@ -39,7 +39,7 @@ ReadSuperRodData:
 	
 .RandomLoop
 	call Random
-	cp $64
+	cp $40
 	ret c ; 25% chance of no battle
 
 	and %11 ; 2-bit random number

@@ -2,7 +2,7 @@
 	
 ShinyAttractFunction:
 	CheckEvent EVENT_FIRST_SHINY_APPEARED
-	jr z, .skipCheck
+	jr z, .easierFirstShiny
 ;only if the party leader is lvl 100 or more
 	ld a, [wPartyMon1Level]
 	cp 100	;do wPartyMon1Level - 100. set carry if result < 0
@@ -11,16 +11,26 @@ ShinyAttractFunction:
 	ld a, [wPartyMon1Species]
 	cp CHANSEY
 	ret nz
-.skipCheck
 ;make a 1 in 255 chance to force shiny DVs on a wild pokemon 
 	call Random
 	ret nz
-	SetEvent EVENT_FIRST_SHINY_APPEARED
+.forceShiny
 	ld a, [wFontLoaded]
 	set 7, a 
 	ld [wFontLoaded], a
 	ret
 
+.easierFirstShiny
+	; first 1/256 chances
+	call Random
+	ret nz
+	; then 1/8 so its 1/2048
+	call Random
+	cp $20
+	ret nc
+
+	SetEvent EVENT_FIRST_SHINY_APPEARED
+	jr .forceShiny
 ;joenote - check if enemy mon has gen2 shiny DVs
 ;zero flag is set if not shiny	
 ;as a mercy, makes the next encounter shiny via a flag bit if this is a trainer shiny

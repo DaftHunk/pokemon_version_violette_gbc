@@ -1,5 +1,5 @@
 const_value = 0
-
+; New start D74B (or +4)
 	const EVENT_FOLLOWED_OAK_INTO_LAB                ; 000, (D747, bit 0)
 	const EVENT_001                                  ; 001, (D747, bit 1)
 	const EVENT_002                                  ; 002, (D747, bit 2)

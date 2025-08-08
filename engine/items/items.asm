@@ -2140,7 +2140,7 @@ ItemUseGoodRod:
 	jp c, ItemUseNotTime
 ;.RandomLoop
 	call Random
-	cp $64 ; 25% chance of no bite
+	cp $40 ; 25% chance of no bite
 	jr c, .SetBite
 	;and %11
 	;cp 2
