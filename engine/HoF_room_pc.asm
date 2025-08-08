@@ -239,6 +239,13 @@ Credits:
 	pop de
 	jr .nextCreditsCommand
 .showTheEnd
+	; if first victory, shows post game
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr z, .showPostGame
+	; else if not master shows nothing
+	CheckEvent EVENT_MASTER_POKEMON
+	jr z, .showNotTheEnd
+	; else shows true end
 	ld c, 16
 	call DelayFrames
 	call FillMiddleOfScreenWithWhite
@@ -254,11 +261,170 @@ Credits:
 	inc de
 	call PlaceString
 	jp FadeInCreditsText
+.showNotTheEnd
+	ld c, 16
+	call DelayFrames
+	call FillMiddleOfScreenWithWhite
+	pop de
+	ld de, TheEndGfx
+	ld hl, vChars2 + $600
+	lb bc, BANK(TheEndGfx), (TheEndGfxEnd - TheEndGfx) / $10
+	call CopyVideoData
+	coord hl, 6, 8
+	ld de, NotTheEndTextString
+	call PlaceString
+	coord hl, 6, 9
+	inc de
+	call PlaceString
+	jp FadeInCreditsText
+.showPostGame
+	call ClearScreen
+	call ClearSprites
+	predef SingleCPUSpeed
+	call EnableAutoTextBoxDrawing
+	call LoadPlayerSpriteGraphics
+	call LoadTextBoxTilePatterns
+	call LoadFontTilePatterns
+	call UpdateSprites
+
+	call .screenTransition
+	call .displayPlayer
+	call GBFadeInFromWhite
+
+	ld a, $FF
+	call PlaySound ; stop music
+	ld a, BANK(Music_MeetProfOak)
+	ld c, a
+	ld a, MUSIC_MEET_PROF_OAK
+	call PlayMusic
+
+	xor a
+	ld [hTilesetType], a
+
+	ld hl, PostCreditText1
+	call PrintText
+	call .screenTransition
+	call .displaySailor
+	call GBFadeInFromWhite
+
+	ld a, $FF
+	call PlaySound ; stop music
+	ld a, BANK(Music_SSAnne)
+	ld c, a
+	ld a, MUSIC_SS_ANNE
+	call PlayMusic
+
+	ld hl, PostCreditText2
+	call PrintText
+	call .screenTransition
+	call .displayPlayer
+	call GBFadeInFromWhite
+
+	ld a, $FF
+	call PlaySound ; stop music
+	ld a, BANK(Music_PalletTown)
+	ld c, a
+	ld a, MUSIC_PALLET_TOWN
+	call PlayMusic
+
+	ld hl, PostCreditText3
+	call PrintText
+	call .screenTransition
+	call .displayLance
+	call GBFadeInFromWhite
+
+	ld a, $FF
+	call PlaySound ; stop music
+	ld a, BANK(Music_Gym)
+	ld c, a
+	ld a, MUSIC_GYM
+	call PlayMusic
+
+	ld hl, PostCreditText4
+	call PrintText
+	call .screenTransition
+	call .displayPlayer
+	call GBFadeInFromWhite
+
+	ld a, $FF
+	call PlaySound ; stop music
+	ld a, BANK(Music_Celadon)
+	ld c, a
+	ld a, MUSIC_CELADON
+	call PlayMusic
+
+	ld hl, PostCreditText5
+	call PrintText
+	call .screenTransition
+	call .displayPlayer
+	call GBFadeInFromWhite
+
+	ld hl, PostCreditText6
+	call PrintText
+	pop de
+	inc de
+	jp FadeInCreditsText
+
+.displayPlayer
+;joenote - support female sprite
+	ld de, RedPicFFront
+	lb bc, BANK(RedPicFFront), $00
+	ld a, [wGameplayOptions]
+	bit 0, a ;check if girl
+	jr nz, .displaySprite
+	ld de, RedPicFront
+	lb bc, BANK(RedPicFront), $00
+	jr .displaySprite
+.displaySailor
+	ld de, SailorPic
+	lb bc, BANK(SailorPic), $00
+	jr .displaySprite
+.displayLance
+	ld de, LancePic
+	lb bc, BANK(LancePic), $00
+	jr .displaySprite
+.displaySprite
+	predef DisplayPicCenteredOrUpperRight
+	ret
+.screenTransition
+	call GBFadeOutToWhite
+	call Delay3
+	call ClearScreen
+	ret
+
+PostCreditText1:
+	TX_FAR _PostCreditText1
+	db "@"
+
+PostCreditText2:
+	TX_FAR _PostCreditText2
+	db "@"
+
+PostCreditText3:
+	TX_FAR _PostCreditText3
+	db "@"
+
+PostCreditText4:
+	TX_FAR _PostCreditText4
+	db "@"
+
+PostCreditText5:
+	TX_FAR _PostCreditText5
+	db "@"
+
+PostCreditText6:
+	TX_FAR _PostCreditText6
+	db "@"
 
 TheEndTextString:
 ; "T H E  E N D"
 	db $60," ",$62,$64," ",$66,"@"
 	db $61," ",$63,$65," ",$67,"@"
+
+NotTheEndTextString:
+; "T H E  E N D ?"
+	db $60," ",$62,$64," ",$66," ",$68,"@"
+	db $61," ",$63,$65," ",$67," ",$69,"@"
 
 INCLUDE "data/pokemons/credits_order.asm"
 

@@ -3489,6 +3489,130 @@ _RematchTrainerText::
 	line "revanche?"
 	done
 
+_PostCreditText1::
+	text "Après votre"
+	line "victoire, vous"
+	cont "décidez de pren-"
+	cont "dre des vacances"
+	cont "bien méritées."
+
+	para "Vous décidez de"
+	line "les passer aux"
+	cont "Iles Sevii."
+
+	para "La diversité et"
+	line "la beauté de cet"
+	cont "archipel sont"
+	cont "telles que"
+	cont "vous y passez"
+	cont "beaucoup plus de"
+	cont "temps que prévu."
+
+	para "Ce n'est que"
+	line "quelques mois"
+	cont "plus tard que"
+	cont "vous vous décidez"
+	cont "de rentrer à"
+	cont "Kanto."
+	prompt
+
+_PostCreditText2::
+	text "A votre retour"
+	line "sur l'Océane et"
+	cont "lors du trajet"
+	cont "entre Carmin sur"
+	cont "Mer et Bourg"
+	cont "Palette, vous"
+	cont "sentez que l'am-"
+	cont "biance a changé."
+
+	para "D'après ce que"
+	line "vous comprenez"
+	cont "des brides de"
+	cont "discussions ici"
+	cont "et là, c'est que"
+	cont "l'histoire des"
+	cont "jeunes rivaux du"
+	cont "Bourg Palette"
+	cont "devenant Champion"
+	cont "de la Ligue, a"
+	cont "créé un"
+	cont "engouement sans"
+	cont "précédent dans"
+	cont "la région."
+
+	para "Tous les dres-"
+	line "seurs veulent"
+	cont "maintenant tenter"
+	cont "leur chance!"
+	prompt
+
+_PostCreditText3::
+	text "En arrivant chez"
+	line "vous, votre mère"
+	cont "vous tends une"
+	cont "liasse de lettre,"
+	cont "dont certaines"
+	cont "vous semblent"
+	cont "importantes:"
+
+	para "Bonjour, <PLAYER>!"
+	line "Félicitations,"
+	cont "N'oublie pas de"
+	cont "venir chercher"
+	cont "ton Certificat au"
+	cont "Manoir Céladon!"
+
+	para "Signé G.F."
+	prompt
+
+_PostCreditText4::
+	text "Champion! Face à"
+	line "l'afflux de nouv-"
+	cont "eaux prétendants,"
+	cont "nous, Maîtres de"
+	cont "Ligue et d'Arène,"
+	cont "avons revu nos"
+	cont "équipes et nos"
+	cont "stratégies."
+
+	para "Nous te mettons"
+	line "officiellement"
+	cont "au défi!"
+	prompt
+
+_PostCreditText5::
+	text "Vous voyez divers"
+	line "prospectus dont"
+	cont "vous ne retenez"
+	cont "que le titre:"
+
+	para "Ouverture du Bar"
+	line "à Joe au sud"
+	cont "de Parmanie!"
+	cont "..."
+
+	para "La boutique"
+	line "d'objets rares du"
+	cont "Centre Commercial"
+	cont "ouvre ses portes!"
+	cont "..."
+
+	para "Invitation à"
+	line "découvrir l'évén-"
+	cont "ement spécial"
+	cont "au Parc Safari."
+	cont "..."
+	prompt
+
+_PostCreditText6::
+	text "Face à toute"
+	line "cette paperasse,"
+	cont "vous décidez"
+	cont "qu'il est temps"
+	cont "d'y aller!"
+	prompt
+
 SECTION "Pokedex Text", ROMX, BANK[POKEDEX_TEXT]
 
 INCLUDE "text/pokedex.asm"
