@@ -265,7 +265,7 @@ MagikarpSalesmanText_PayDayRapidashOrFearow:
 
 MagikarpSalesmanText_FlyingPikachu:
 	CheckEvent EVENT_ELITE_4_BEATEN
-	ret z
+	jp z, MagikarpSalesmanText.backFromCheckEventMons
 
 	xor a
 	ld [wWhichPokemon], a

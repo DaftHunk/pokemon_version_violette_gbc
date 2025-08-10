@@ -740,18 +740,18 @@ PlaceTempFieldMove:	;joenote - for field move slot
 	ld [wNameListType], a
 	call GetName
 	
-	coord hl, $0F, $07
-	ld de, wcd6d
-
-	call PlaceString
-	
 	coord hl, $07, $07
 	ld de, FieldMoveText
 	call PlaceString
+
+	coord hl, $0A, $07
+	ld de, wcd6d
+	call PlaceString
+	
 	ret
 
 FieldMoveText:
-	db "CapaTmp:@"
+	db "  →@"
 
 StatsData:
 	xor a
