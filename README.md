@@ -2,7 +2,7 @@
 Romhack entièrement en français pour remasteriser le jeu sans le dénaturer. 
 L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellement.
 
-![Version Violette](https://github.com/user-attachments/assets/7c973d0f-55a9-4af4-b191-e554f6870ff4)
+<img width="480" height="480" alt="Version Violette" src="https://github.com/user-attachments/assets/7c973d0f-55a9-4af4-b191-e554f6870ff4" />
 
 Pour plus d'info, consultez le wiki dédié : https://github.com/DaftHunk/pokemon_version_violette/wiki
 
