@@ -462,9 +462,9 @@ GyaradosEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 20, BITE
-	db 25, DRAGON_RAGE
-	db 30, LEER
+	db 20, LEER
+	db 25, BITE
+	db 30, DRAGON_RAGE
 	db 35, CRUNCH
 	db 40, HYDRO_PUMP
 	db 45, DRAGON_RUSH
