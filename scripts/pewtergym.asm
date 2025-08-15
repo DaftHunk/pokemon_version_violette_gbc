@@ -74,6 +74,9 @@ PewterGymScriptGiveTM:
 	predef HideObject
 	ResetEvents EVENT_1ST_ROUTE22_RIVAL_BATTLE, EVENT_ROUTE22_RIVAL_WANTS_BATTLE
 
+	; even if player doesn't get its balls, stop the event to avoid Oak stuck in a loop
+	SetEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
+
 	; deactivate gym trainers
 	SetEvent EVENT_BEAT_PEWTER_GYM_TRAINER_0
 

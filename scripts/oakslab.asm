@@ -1021,7 +1021,7 @@ OaksLabLastMonText:
 OaksLabText32:
 OaksLabText5:
 	TX_ASM
-	CheckEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
+	CheckEitherEventSet EVENT_PALLET_AFTER_GETTING_POKEBALLS, EVENT_ELITE_4_BEATEN
 	jr nz, .oakAskForDexCheck
 ;	ld hl, wPokedexOwned
 ;	ld b, wPokedexOwnedEnd - wPokedexOwned
