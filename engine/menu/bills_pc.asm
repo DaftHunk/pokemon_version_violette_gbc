@@ -23,6 +23,10 @@ DisplayPCMainMenu::
 	ld c, 14
 	jr .next
 .leaguePCAvailable
+	; League is available before dex in NG+
+	CheckEvent EVENT_GOT_POKEDEX
+	jr z, .noOaksPC
+
 	coord hl, 0, 0
 	ld b, 10
 	ld c, 14
