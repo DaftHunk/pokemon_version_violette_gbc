@@ -3551,7 +3551,7 @@ _PostCreditText3::
 	text "En arrivant chez"
 	line "vous, votre mère"
 	cont "vous tends une"
-	cont "liasse de lettre,"
+	cont "liasse de lettres"
 	cont "dont certaines"
 	cont "vous semblent"
 	cont "importantes:"

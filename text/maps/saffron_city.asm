@@ -72,8 +72,8 @@ _SaffronCityText11::
 	done
 
 _SaffronCityText12::
-	text "Roucarnage: Rou!@"
-	text_end
+	text "Roucarnage: Rou!"
+	prompt
 
 _SaffronCityText13::
 	text "J'ai vu le Chef"

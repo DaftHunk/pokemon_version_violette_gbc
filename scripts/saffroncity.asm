@@ -74,8 +74,10 @@ SaffronCityText11:
 
 SaffronCityText12:
 	TX_FAR _SaffronCityText12
-	TX_CRY_PIDGEOT
-	db "@"
+	TX_ASM
+	ld a, PIDGEOT
+	call DisplayPokedex
+	jp TextScriptEnd
 
 SaffronCityText13:
 	TX_FAR _SaffronCityText13

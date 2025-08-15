@@ -23,8 +23,8 @@ _CinnabarIslandText2::
 	para "Apparement ils"
 	line "auraient réussi à"
 	cont "faire évoluer un"
-	cont "Gravalanch avec le"
-	cont "Feu du volcan."
+	cont "Gravalanch avec"
+	cont "le Feu du volcan."
 	done
 
 _CinnabarIslandText3::
