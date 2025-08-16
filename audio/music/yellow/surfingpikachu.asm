@@ -1,4 +1,4 @@
-Music_SurfingPikachu_Ch1::
+Music_SurfingPikachu_Ch0::
 	tempo 117
 	volume 7, 7
 	duty 3
@@ -34,8 +34,7 @@ Music_SurfingPikachu_Ch1::
 	G# 4
 	G# 4
 	G# 2
-
-Music_SurfingPikachu_branch_82d1a::
+.mainloop:
 	notetype 12, 11, 3
 	octave 3
 	G# 4
@@ -159,10 +158,9 @@ Music_SurfingPikachu_branch_82d1a::
 	D# 1
 	E_ 8
 	duty 3
-	loopchannel 0, Music_SurfingPikachu_branch_82d1a
+	loopchannel 0, .mainloop
 
-
-Music_SurfingPikachu_Ch2::
+Music_SurfingPikachu_Ch1::
 	duty 3
 	vibrato 6, 1, 5
 	notetype 12, 12, 4
@@ -216,8 +214,7 @@ Music_SurfingPikachu_Ch2::
 	B_ 4
 	B_ 4
 	B_ 2
-
-Music_SurfingPikachu_branch_82de0::
+.mainloop:
 	notetype 12, 12, 6
 	octave 4
 	E_ 4
@@ -309,10 +306,9 @@ Music_SurfingPikachu_branch_82de0::
 	B_ 1
 	octave 4
 	C# 1
-	loopchannel 0, Music_SurfingPikachu_branch_82de0
+	loopchannel 0, .mainloop
 
-
-Music_SurfingPikachu_Ch3::
+Music_SurfingPikachu_Ch2::
 	notetype 12, 1, 0
 	octave 4
 	B_ 6
@@ -403,8 +399,7 @@ Music_SurfingPikachu_Ch3::
 	rest 1
 	D# 1
 	rest 1
-
-Music_SurfingPikachu_branch_82ea0::
+.mainloop:
 	E_ 1
 	rest 1
 	B_ 1
@@ -687,4 +682,4 @@ Music_SurfingPikachu_branch_82ea0::
 	rest 1
 	D# 1
 	rest 1
-	loopchannel 0, Music_SurfingPikachu_branch_82ea0
+	loopchannel 0, .mainloop

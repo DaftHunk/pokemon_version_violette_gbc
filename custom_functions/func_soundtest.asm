@@ -1,4 +1,4 @@
-NUM_MUSIC_TRACKS EQU 45
+NUM_MUSIC_TRACKS EQU 49
 
 DisplaySoundTestMenu:
 	ld a, SFX_PRESS_AB
@@ -178,6 +178,11 @@ SoundTestTrackList:
 	dw Title_Music_MeetEvilTrainer, (MUSIC_MEET_EVIL_TRAINER << 8) | Bank(Music_MeetEvilTrainer)
 	dw Title_Music_MeetFemaleTrainer, (MUSIC_MEET_FEMALE_TRAINER << 8) | Bank(Music_MeetFemaleTrainer)
 	dw Title_Music_MeetMaleTrainer, (MUSIC_MEET_MALE_TRAINER << 8) | Bank(Music_MeetMaleTrainer)
+	dw Title_Music_UnusedSong, (MUSIC_UNUSED_SONG << 8) | Bank(Music_UnusedSong)
+	dw Title_Music_SurfingPikachu, (MUSIC_SURFING_PIKACHU << 8) | Bank(Music_SurfingPikachu)
+	dw Title_Music_MeetJessieJames, (MUSIC_MEET_JESSIE_JAMES << 8) | Bank(Music_MeetJessieJames)
+	dw Title_Music_YellowUnusedSong, (MUSIC_YELLOW_UNUSED_SONG << 8) | Bank(Music_YellowUnusedSong)
+
 
 Title_Music_PalletTown: db "Pallet Town@"
 Title_Music_Pokecenter: db "#mon Center@"
@@ -224,3 +229,7 @@ Title_Music_SilphCo: db "Silph Co.@"
 Title_Music_MeetEvilTrainer: db "Evil Trainer@"
 Title_Music_MeetFemaleTrainer: db "Female Trainer@"
 Title_Music_MeetMaleTrainer: db "Male Trainer@"
+Title_Music_UnusedSong: db "Trade Song@"
+Title_Music_SurfingPikachu: db "Surfing Pikachu@"
+Title_Music_MeetJessieJames: db "Meet Jessie James@"
+Title_Music_YellowUnusedSong: db "Giovanni@"

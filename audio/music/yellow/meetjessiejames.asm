@@ -1,4 +1,4 @@
-Music_MeetJessieJames_Ch1::
+Music_MeetJessieJames_Ch0::
 	tempo 144
 	volume 7, 7
 	duty 3
@@ -17,8 +17,7 @@ Music_MeetJessieJames_Ch1::
 	notetype 12, 11, 6
 	D# 12
 	C_ 4
-
-Music_MeetJessieJames_branch_83187::
+.mainloop:
 	notetype 12, 11, 2
 	octave 4
 	D_ 16
@@ -74,10 +73,9 @@ Music_MeetJessieJames_branch_83187::
 	B_ 2
 	notetype 12, 11, 4
 	A# 4
-	loopchannel 0, Music_MeetJessieJames_branch_83187
+	loopchannel 0, .mainloop
 
-
-Music_MeetJessieJames_Ch2::
+Music_MeetJessieJames_Ch1::
 	duty 3
 	vibrato 6, 1, 5
 	notetype 12, 12, 2
@@ -96,8 +94,7 @@ Music_MeetJessieJames_Ch2::
 	A_ 12
 	octave 4
 	C# 4
-
-Music_MeetJessieJames_branch_831df::
+.mainloop:
 	notetype 12, 12, 2
 	octave 3
 	C# 1
@@ -161,10 +158,9 @@ Music_MeetJessieJames_branch_831df::
 	F_ 4
 	notetype 12, 12, 5
 	D# 8
-	loopchannel 0, Music_MeetJessieJames_branch_831df
+	loopchannel 0, .mainloop
 
-
-Music_MeetJessieJames_Ch3::
+Music_MeetJessieJames_Ch2::
 	notetype 12, 1, 0
 	rest 16
 	rest 8
@@ -175,8 +171,7 @@ Music_MeetJessieJames_Ch3::
 	octave 4
 	C_ 2
 	D# 2
-
-Music_MeetJessieJames_branch_83235::
+.mainloop:
 	D_ 1
 	rest 1
 	A_ 1
@@ -305,5 +300,4 @@ Music_MeetJessieJames_branch_83235::
 	rest 1
 	E_ 1
 	rest 1
-	loopchannel 0, Music_MeetJessieJames_branch_83235
-	endchannel
+	loopchannel 0, .mainloop
