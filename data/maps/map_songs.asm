@@ -33,7 +33,7 @@ MapSongBanks:
 	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; ROUTE_19
 	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; ROUTE_20
 	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; ROUTE_21
-	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; ROUTE_22
+	db MUSIC_ROUTE_3_EARLY,    BANK(Music_Route3Early)     ; ROUTE_22
 	db MUSIC_INDIGO_PLATEAU,   BANK(Music_IndigoPlateau)   ; ROUTE_23
 	db MUSIC_ROUTES2,          BANK(Music_Routes2)         ; ROUTE_24
 	db MUSIC_PALLET_TOWN,      BANK(Music_PalletTown)      ; BillsGarden
@@ -46,7 +46,7 @@ MapSongBanks:
 	db MUSIC_POKECENTER,       BANK(Music_Pokecenter)      ; ViridianMart
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; School
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; ViridianHouse
-	db MUSIC_GYM,              BANK(Music_Gym)             ; ViridianGym
+	db MUSIC_GIOVANNI_SONG,    BANK(Music_GiovanniSong)    ; ViridianGym
 	db MUSIC_DUNGEON2,         BANK(Music_Dungeon2)        ; DiglettsCaveRoute2
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; ViridianForestExit
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; Route2House
@@ -106,14 +106,14 @@ MapSongBanks:
 	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; SSAnne8
 	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; SSAnne9
 	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; SSAnne10
-	db MUSIC_DUNGEON3,         BANK(Music_Dungeon3)        ; Volcano1F_h
-	db MUSIC_DUNGEON3,         BANK(Music_Dungeon3)        ; VolcanoB1F_h
+	db MUSIC_DIGLETTS_CAVE,    BANK(Music_DiglettsCave)    ; Volcano1F_h
+	db MUSIC_DIGLETTS_CAVE,    BANK(Music_DiglettsCave)    ; VolcanoB1F_h
 	db MUSIC_DUNGEON3,         BANK(Music_Dungeon3)        ; VictoryRoad1
-	db MUSIC_DUNGEON3,         BANK(Music_Dungeon3)        ; VolcanoB2F_h
-	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)         ; Route16WestHouse
+	db MUSIC_DIGLETTS_CAVE,    BANK(Music_DiglettsCave)    ; VolcanoB2F_h
+	db MUSIC_GIOVANNI_SONG,    BANK(Music_GiovanniSong)    ; Route16WestHouse
 	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; Route16WestGate
 	db MUSIC_INDIGO_PLATEAU,   BANK(Music_IndigoPlateau)   ; Lance
-	db MUSIC_GAME_CORNER,      BANK(Music_GameCorner)      ; Route19BeachHouse
+	db MUSIC_SURFING_PIKACHU,  BANK(Music_SurfingPikachu)  ; Route19BeachHouse
 	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; unused
 	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; unused
 	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; unused
@@ -192,7 +192,7 @@ MapSongBanks:
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; Route18Gate
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; Route18GateUpstairs
 	db MUSIC_DUNGEON2,         BANK(Music_Dungeon2)        ; SeafoamIslands1
-	db MUSIC_DUNGEON2,         BANK(Music_Dungeon2)        ; Route22Gate
+	db MUSIC_ROUTE_3_EARLY,    BANK(Music_Route3Early)     ; Route22Gate
 	db MUSIC_DUNGEON3,         BANK(Music_Dungeon3)        ; VictoryRoad2
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; Route12GateUpstairs
 	db MUSIC_VERMILION,        BANK(Music_Vermilion)       ; VermilionHouse3
@@ -216,15 +216,15 @@ MapSongBanks:
 	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; Mansion2
 	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; Mansion3
 	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; Mansion4
-	db MUSIC_SAFARI_ZONE,      BANK(Music_SafariZone)      ; SafariZoneEast
-	db MUSIC_SAFARI_ZONE,      BANK(Music_SafariZone)      ; SafariZoneNorth
-	db MUSIC_SAFARI_ZONE,      BANK(Music_SafariZone)      ; SafariZoneWest
-	db MUSIC_SAFARI_ZONE,      BANK(Music_SafariZone)      ; SafariZoneCenter
-	db MUSIC_SAFARI_ZONE,      BANK(Music_SafariZone)      ; SafariZoneRestHouse1
-	db MUSIC_SAFARI_ZONE,      BANK(Music_SafariZone)      ; SafariZoneSecretHouse
-	db MUSIC_SAFARI_ZONE,      BANK(Music_SafariZone)      ; SafariZoneRestHouse2
-	db MUSIC_SAFARI_ZONE,      BANK(Music_SafariZone)      ; SafariZoneRestHouse3
-	db MUSIC_SAFARI_ZONE,      BANK(Music_SafariZone)      ; SafariZoneRestHouse4
+	db MUSIC_SURFING_PIKACHU_NO_INTRO,  BANK(Music_SurfingPikachuNoIntro)      ; SafariZoneEast
+	db MUSIC_SURFING_PIKACHU_NO_INTRO,  BANK(Music_SurfingPikachuNoIntro)      ; SafariZoneNorth
+	db MUSIC_SURFING_PIKACHU_NO_INTRO,  BANK(Music_SurfingPikachuNoIntro)      ; SafariZoneWest
+	db MUSIC_SURFING_PIKACHU_NO_INTRO,  BANK(Music_SurfingPikachuNoIntro)      ; SafariZoneCenter
+	db MUSIC_SURFING_PIKACHU_NO_INTRO,  BANK(Music_SurfingPikachuNoIntro)      ; SafariZoneRestHouse1
+	db MUSIC_SURFING_PIKACHU_NO_INTRO,  BANK(Music_SurfingPikachuNoIntro)      ; SafariZoneSecretHouse
+	db MUSIC_SURFING_PIKACHU_NO_INTRO,  BANK(Music_SurfingPikachuNoIntro)      ; SafariZoneRestHouse2
+	db MUSIC_SURFING_PIKACHU_NO_INTRO,  BANK(Music_SurfingPikachuNoIntro)      ; SafariZoneRestHouse3
+	db MUSIC_SURFING_PIKACHU_NO_INTRO,  BANK(Music_SurfingPikachuNoIntro)      ; SafariZoneRestHouse4
 	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; UnknownDungeon2
 	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; UnknownDungeon3
 	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; UnknownDungeon1

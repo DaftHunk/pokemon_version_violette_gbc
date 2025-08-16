@@ -82,6 +82,7 @@ ENDM
 	music_const MUSIC_INDIGO_PLATEAU,      Music_IndigoPlateau
 
 	; AUDIO_2
+	music_const MUSIC2_FIRST_ENTRY,        Music_Audio2Start
 	music_const MUSIC_GYM_LEADER_BATTLE,   Music_GymLeaderBattle
 	music_const MUSIC_TRAINER_BATTLE,      Music_TrainerBattle
 	music_const MUSIC_WILD_BATTLE,         Music_WildBattle
@@ -91,6 +92,7 @@ ENDM
 	music_const MUSIC_DEFEATED_GYM_LEADER, Music_DefeatedGymLeader
 
 	; AUDIO_3
+	music_const MUSIC3_FIRST_ENTRY,        Music_Audio3Start
 	music_const MUSIC_TITLE_SCREEN,        Music_TitleScreen
 	music_const MUSIC_CREDITS,             Music_Credits
 	music_const MUSIC_HALL_OF_FAME,        Music_HallOfFame
@@ -109,6 +111,20 @@ ENDM
 	music_const MUSIC_MEET_EVIL_TRAINER,   Music_MeetEvilTrainer
 	music_const MUSIC_MEET_FEMALE_TRAINER, Music_MeetFemaleTrainer
 	music_const MUSIC_MEET_MALE_TRAINER,   Music_MeetMaleTrainer
+
+;putting the unused song back into use
+	; AUDIO_4
+	music_const MUSIC4_FIRST_ENTRY,            Music_Audio4Start
+	music_const MUSIC_TRADE_SONG,              Music_TradeSong
+	music_const MUSIC_SURFING_PIKACHU,         Music_SurfingPikachu
+	music_const MUSIC_MEET_JESSIE_JAMES,       Music_MeetJessieJames
+	music_const MUSIC_GIOVANNI_SONG,           Music_GiovanniSong
+	music_const MUSIC_YELLOW_INTRO,            Music_YellowIntro
+	music_const MUSIC_BATTLE_VICTORY_GUIDE,    Music_BattleVictoryGuide
+	music_const MUSIC_DIGLETTS_CAVE,           Music_DiglettsCave
+	music_const MUSIC_REST_PALLET,             Music_RestPallet
+	music_const MUSIC_ROUTE_3_EARLY,           Music_Route3Early
+	music_const MUSIC_SURFING_PIKACHU_NO_INTRO,Music_SurfingPikachuNoIntro
 
 	; AUDIO_1 AUDIO_2 AUDIO_3
 	music_const SFX_SNARE_1,            SFX_Snare1_1
