@@ -13,7 +13,7 @@ _Volcano1FText0_EndBattle::
 _Volcano1FText0_AfterBattle::
 	text "On est ici pour"
 	line "surveiller et"
-	cont "empêcher le vol-"
+	cont "empêcher le Vol-"
 	cont "can d'entrer en"
 	cont "éruption!"
 	done
@@ -23,7 +23,7 @@ _Volcano1FText1_Battle::
 	line "s'entrainer!"
 
 	para "Faut pas prendre"
-	line "les volcans à la"
+	line "les Volcans à la"
 	cont "légère, ça"
 	cont "demande de la"
 	cont "préparation!"
@@ -52,7 +52,7 @@ _Volcano1FText2_EndBattle::
 	prompt
 
 _Volcano1FText2_AfterBattle::
-	text "Le volcan est in-"
+	text "Le Volcan est in-"
 	line "habituellement"
 	cont "actif depuis"
 	cont "quelques temps,"
