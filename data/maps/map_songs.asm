@@ -46,7 +46,7 @@ MapSongBanks:
 	db MUSIC_POKECENTER,       BANK(Music_Pokecenter)      ; ViridianMart
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; School
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; ViridianHouse
-	db MUSIC_GYM,              BANK(Music_Gym)             ; ViridianGym
+	db MUSIC_YELLOW_UNUSED_SONG,BANK(Music_YellowUnusedSong); ViridianGym
 	db MUSIC_DUNGEON2,         BANK(Music_Dungeon2)        ; DiglettsCaveRoute2
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; ViridianForestExit
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; Route2House
@@ -110,10 +110,10 @@ MapSongBanks:
 	db MUSIC_DUNGEON3,         BANK(Music_Dungeon3)        ; VolcanoB1F_h
 	db MUSIC_DUNGEON3,         BANK(Music_Dungeon3)        ; VictoryRoad1
 	db MUSIC_DUNGEON3,         BANK(Music_Dungeon3)        ; VolcanoB2F_h
-	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)         ; Route16WestHouse
+	db MUSIC_YELLOW_UNUSED_SONG,BANK(Music_YellowUnusedSong); Route16WestHouse
 	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; Route16WestGate
 	db MUSIC_INDIGO_PLATEAU,   BANK(Music_IndigoPlateau)   ; Lance
-	db MUSIC_GAME_CORNER,      BANK(Music_GameCorner)      ; Route19BeachHouse
+	db MUSIC_SURFING_PIKACHU,  BANK(Music_SurfingPikachu)  ; Route19BeachHouse
 	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; unused
 	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; unused
 	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; unused
