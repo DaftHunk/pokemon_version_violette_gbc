@@ -114,11 +114,17 @@ ENDM
 
 ;putting the unused song back into use
 	; AUDIO_4
-	music_const MUSIC4_FIRST_ENTRY,       Music_Audio4Start
-	music_const MUSIC_UNUSED_SONG,        Music_UnusedSong
-	music_const MUSIC_SURFING_PIKACHU,    Music_SurfingPikachu
-	music_const MUSIC_MEET_JESSIE_JAMES,  Music_MeetJessieJames
-	music_const MUSIC_YELLOW_UNUSED_SONG, Music_YellowUnusedSong
+	music_const MUSIC4_FIRST_ENTRY,            Music_Audio4Start
+	music_const MUSIC_TRADE_SONG,              Music_TradeSong
+	music_const MUSIC_SURFING_PIKACHU,         Music_SurfingPikachu
+	music_const MUSIC_MEET_JESSIE_JAMES,       Music_MeetJessieJames
+	music_const MUSIC_GIOVANNI_SONG,           Music_GiovanniSong
+	music_const MUSIC_YELLOW_INTRO,            Music_YellowIntro
+	music_const MUSIC_BATTLE_VICTORY_GUIDE,    Music_BattleVictoryGuide
+	music_const MUSIC_DIGLETTS_CAVE,           Music_DiglettsCave
+	music_const MUSIC_REST_PALLET,             Music_RestPallet
+	music_const MUSIC_ROUTE_3_EARLY,           Music_Route3Early
+	music_const MUSIC_SURFING_PIKACHU_NO_INTRO,Music_SurfingPikachuNoIntro
 
 	; AUDIO_1 AUDIO_2 AUDIO_3
 	music_const SFX_SNARE_1,            SFX_Snare1_1

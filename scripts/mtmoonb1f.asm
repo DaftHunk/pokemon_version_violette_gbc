@@ -41,7 +41,7 @@ MtMoonB1FScriptJessieJames:
 	call DisplayTextID
 
 	CheckEvent EVENT_BEAT_MT_MOON_B1F_JESSIE_JAMES
-	jr nz, .hideJessieJames	
+	jr nz, .hideJessieJames
 	; else
 	ld a, $0
 	ld [wMtMoon1FCurScript], a
@@ -61,6 +61,8 @@ MtMoonB1FScriptJessieJames:
 	ld a, HS_MT_MOON_B2F_FOSSIL_GUY
 	ld [wMissableObjectIndex], a
 	predef HideObject
+
+	call PlayDefaultMusic
 	
 	call UpdateSprites
 	call Delay3
@@ -78,6 +80,14 @@ MtMoonB1FScriptNotInBattle:
 
 MtMoonB1FTextJessieJames:
 	TX_ASM
+
+	ld a, $ff
+	ld [wNewSoundID], a
+	call PlaySound
+	ld c, BANK(Music_MeetJessieJames)
+	ld a, MUSIC_MEET_JESSIE_JAMES
+	call PlayMusic
+
 	ld hl, MtMoonB1FTrainerHeader0
 	call TalkToTrainer
 	jp TextScriptEnd

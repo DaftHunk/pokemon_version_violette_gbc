@@ -1,7 +1,7 @@
 ;this has been fixed up and re-implemented.
 ;Credits to SteppoBlazer for fixing all the notes
 
-Music_UnusedSong_Ch0::
+Music_TradeSong_Ch0::
     tempo 144
     volume 7, 7
     vibrato 5, 1, 6
@@ -185,7 +185,7 @@ Music_UnusedSong_Ch0::
     endchannel
 
 
-Music_UnusedSong_Ch1::
+Music_TradeSong_Ch1::
     tempo 144
     volume 7, 7
     toggleperfectpitch

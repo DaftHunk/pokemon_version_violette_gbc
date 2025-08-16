@@ -1,4 +1,4 @@
-Music_YellowUnusedSong_Ch0::
+Music_GiovanniSong_Ch0::
 	tempo 140
 	volume 7, 7
 	duty 3
@@ -73,7 +73,7 @@ Music_YellowUnusedSong_Ch0::
 	A_ 12
 	loopchannel 0, .mainloop
 
-Music_YellowUnusedSong_Ch1::
+Music_GiovanniSong_Ch1::
 	duty 2
 	notetype 8, 12, 2
 	octave 4
@@ -157,7 +157,7 @@ Music_YellowUnusedSong_Ch1::
 	A_ 12
 	loopchannel 0, .mainloop
 
-Music_YellowUnusedSong_Ch2::
+Music_GiovanniSong_Ch2::
 	notetype 12, 1, 0
 	vibrato 2, 1, 5
 	rest 16
@@ -196,7 +196,7 @@ Music_YellowUnusedSong_Ch2::
 	A# 8
 	loopchannel 0, .mainloop
 
-Music_YellowUnusedSong_Ch3::
+Music_GiovanniSong_Ch3::
 	dspeed 12
 	snare3 4
 	dspeed 8
