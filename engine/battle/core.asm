@@ -1086,8 +1086,29 @@ PlayBattleVictoryMusic:
 	ld a, $ff
 	ld [wNewSoundID], a
 	call PlaySoundWaitForCurrent
+
+	ld a, [wTrainerClass]
+	cp PROF_OAK
+	jr z, .special4Music
+	
+	cp MFUJI
+	jr z, .special4Music
+	
+	cp CHIEF
+	jr z, .special4Music
+	
+	cp JOY
+	jr z, .special4Music
+	; else
 	ld c, BANK(Music_DefeatedTrainer)
 	pop af
+	jr .playMusic
+.special4Music
+	pop af
+	ld a, MUSIC_BATTLE_VICTORY_GUIDE
+	ld c, BANK(Music_BattleVictoryGuide)
+	; fallthrough
+.playMusic
 	call PlayMusic
 	jp Delay3
 
