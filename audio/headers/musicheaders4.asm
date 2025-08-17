@@ -30,3 +30,4 @@ Music_Route3Early::
 
 Music_SurfingPikachuNoIntro::
 	audio Music_SurfingPikachuNoIntro, Ch0, Ch1, Ch2
+Music_Audio4End::
