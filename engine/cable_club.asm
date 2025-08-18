@@ -871,16 +871,16 @@ TradeCenter_Trade:
 ;	ld [wAudioSavedROMBank], a
 ;	ld a, MUSIC_SAFARI_ZONE
 
-	ld a, BANK(Music_UnusedSong)
+	ld a, BANK(Music_TradeSong)
 	ld [wAudioSavedROMBank], a
 	ld a, [hSerialConnectionStatus]
 	cp USING_INTERNAL_CLOCK
 	jr z, .playL
 .playR
-	ld a, MUSIC_UNUSED_SONG_R
+	ld a, MUSIC_TRADE_SONG_R
 	jr .donePlay
 .playL
-	ld a, MUSIC_UNUSED_SONG_L
+	ld a, MUSIC_TRADE_SONG_L
 .donePlay
 	
 	ld [wNewSoundID], a
