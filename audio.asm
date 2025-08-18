@@ -698,10 +698,11 @@ INCLUDE "audio/music/jigglypuffsong.asm"
 INCLUDE "audio/music/halloffame.asm"
 INCLUDE "audio/music/credits.asm"
 
-SECTION "General Section Audio 4", ROMX, BANK[AUDIO_4]
+SECTION "General Section Audio 4", ROMX, BANK[AUDIO_4]	;Audio_4 needs a standard suite of overworld SFX
+;headers
 INCLUDE "audio/headers/sfxheaders4.asm"
 INCLUDE "audio/headers/musicheaders4.asm"
-
+;sfx percussion
 INCLUDE "audio/sfx/snare1_4.asm"
 INCLUDE "audio/sfx/snare2_4.asm"
 INCLUDE "audio/sfx/snare3_4.asm"
@@ -721,9 +722,9 @@ INCLUDE "audio/sfx/triangle3_4.asm"
 INCLUDE "audio/sfx/muted_snare2_4.asm"
 INCLUDE "audio/sfx/muted_snare3_4.asm"
 INCLUDE "audio/sfx/muted_snare4_4.asm"
-
+;wave instruments
 Audio4_WavePointers: INCLUDE "audio/wave_instruments.asm"
-
+;sfx general 1
 INCLUDE "audio/sfx/start_menu_4.asm"
 INCLUDE "audio/sfx/cut_4.asm"
 INCLUDE "audio/sfx/go_inside_4.asm"
@@ -756,7 +757,7 @@ INCLUDE "audio/sfx/arrow_tiles_4.asm"
 INCLUDE "audio/sfx/push_boulder_4.asm"
 INCLUDE "audio/sfx/ss_anne_horn_4.asm"
 INCLUDE "audio/sfx/withdraw_deposit_4.asm"
-INCLUDE "audio/sfx/unused_4.asm"
+;sfx cries
 INCLUDE "audio/sfx/cry09_4.asm"
 INCLUDE "audio/sfx/cry23_4.asm"
 INCLUDE "audio/sfx/cry24_4.asm"
@@ -795,21 +796,23 @@ INCLUDE "audio/sfx/cry1f_4.asm"
 INCLUDE "audio/sfx/cry20_4.asm"
 INCLUDE "audio/sfx/cry21_4.asm"
 INCLUDE "audio/sfx/cry22_4.asm"
-
-INCLUDE "audio/engine_4.asm"
-INCLUDE "audio/music/tradesong.asm"
-INCLUDE "audio/music/surfingpikachu.asm"
-INCLUDE "audio/music/meetjessiejames.asm"
-INCLUDE "audio/music/giovannisong.asm"
-INCLUDE "audio/music/yellowintro.asm"
-INCLUDE "audio/music/surfingpikachunointro.asm"
-
-INCLUDE "audio/music/unused_beta_tracks/battle_victory_guide.asm"
-INCLUDE "audio/music/unused_beta_tracks/digletts_cave.asm"
-INCLUDE "audio/music/unused_beta_tracks/rest_at_house.asm"
-INCLUDE "audio/music/unused_beta_tracks/route3_early.asm"
-
+;sfx general 2
 INCLUDE "audio/sfx/get_item1_4.asm"
 INCLUDE "audio/sfx/pokedex_rating_4.asm"
 INCLUDE "audio/sfx/get_item2_4.asm"
 INCLUDE "audio/sfx/get_key_item_4.asm"
+;engine
+INCLUDE "audio/engine_4.asm"
+; yellow musics
+INCLUDE "audio/music/surfingpikachu.asm"
+INCLUDE "audio/music/meetjessiejames.asm"
+INCLUDE "audio/music/yellowintro.asm"
+INCLUDE "audio/music/surfingpikachunointro.asm"
+; unused musics
+INCLUDE "audio/music/tradesong.asm"
+INCLUDE "audio/music/giovannisong.asm"
+; beta musics
+INCLUDE "audio/music/unused_beta_tracks/battle_victory_guide.asm"
+INCLUDE "audio/music/unused_beta_tracks/digletts_cave.asm"
+INCLUDE "audio/music/unused_beta_tracks/rest_at_house.asm"
+INCLUDE "audio/music/unused_beta_tracks/route3_early.asm"
