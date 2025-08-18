@@ -4,6 +4,12 @@ Music_Audio4Start::
 Music_TradeSong::
 	audio Music_TradeSong, Ch0, Ch1
 
+Music_TradeSong_L::
+	audio Music_TradeSong, Ch0
+
+Music_TradeSong_R::
+	audio Music_TradeSong, Ch1
+
 Music_SurfingPikachu::
 	audio Music_SurfingPikachu, Ch0, Ch1, Ch2
 
