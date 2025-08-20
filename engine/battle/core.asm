@@ -3115,11 +3115,11 @@ SwapMovesInMenu:
 	ld [wMenuItemToSwap], a ; select the current menu item for swapping
 	jp MoveSelectionMenu
 
-PrintMenuItem:
+PrintMenuItem::
 	xor a
 	ld [H_AUTOBGTRANSFERENABLED], a
-	coord hl, 0, 8
-	ld b, 3
+	coord hl, 0, 7
+	ld b, 4
 	ld c, 9
 	call TextBoxBorder
 	ld a, [wPlayerDisabledMove]
@@ -3134,7 +3134,7 @@ PrintMenuItem:
 	coord hl, 1, 10
 	ld de, DisabledText
 	call PlaceString
-	jr .moveDisabled
+	jp .moveDisabled
 .notDisabled
 	ld hl, wCurrentMenuItem
 	dec [hl]
@@ -3162,25 +3162,98 @@ PrintMenuItem:
 	ld a, [hl]
 	and $3f
 	ld [wcd6d], a
-; print TYPE/<type> and <curPP>/<maxPP>
-	coord hl, 1, 9
-	ld de, TypeText
-	call PlaceString
-	coord hl, 7, 11
-	ld [hl], "/"
-	coord hl, 5, 9
-	ld [hl], "/"
+
+; Display PP
 	coord hl, 5, 11
 	ld de, wcd6d
 	lb bc, 1, 2
 	call PrintNumber
+
 	coord hl, 8, 11
 	ld de, wMaxPP
 	lb bc, 1, 2
 	call PrintNumber
+
+	hlcoord 1, 11
+	ld de, PPText
+	call PlaceString
+
+	coord hl, 7, 11
+	ld [hl], "/"
+
+; Get player move
+	ld de, wPlayerMoveNum
+	ld a, [wPlayerSelectedMove]
+	dec a
+	ld hl, Moves
+	ld bc, 6
+	call AddNTimes
+	ld a, BANK(Moves)
+	call FarCopyData
+
+; Display Type
 	call GetCurrentMove
-	coord hl, 2, 10
+	coord hl, 1, 8
 	predef PrintMoveType
+
+; Display Power
+	coord hl, 1, 9
+	ld de, PowerText
+	call PlaceString
+
+	coord hl, 7, 9
+	ld a, [wPlayerMoveEffect]
+	cp OHKO_EFFECT
+	jr z, .OHKOMove
+	cp SPECIAL_DAMAGE_EFFECT
+	jr z, .specialDamage
+	hlcoord 7, 9
+	ld de, wPlayerMovePower
+	lb bc, 1, 3
+	call PrintNumber ; prints the c-digit, b-byte value at de
+	jr .afterDamagePrinting
+.OHKOMove
+	ld de, InfinityText
+	call PlaceString
+	jr .afterDamagePrinting
+.specialDamage
+	ld de, SpecialText
+	call PlaceString
+	; fallthrough
+.afterDamagePrinting
+
+; Display Accurancy
+	coord hl, 1, 10
+	ld de, AccurancyText
+	call PlaceString
+
+	coord hl, 6, 10
+	xor a
+	ld b, a
+	ld a, [wPlayerMoveAccuracy]
+.loopAccuracy
+	sub 12
+	jr c, .accuracyFound
+	ld c, a
+	ld a, b
+	add 5
+	ld b, a
+	ld a, c
+	jr .loopAccuracy
+.accuracyFound
+	ld a, b
+	cp 76 ; fine-tuned number
+	jr c, .noSub5
+	sub 5
+.noSub5
+	ld [wPlayerMoveAccuracyPercent], a
+	ld de, wPlayerMoveAccuracyPercent
+	lb bc, 1, 3
+	call PrintNumber ; prints the c-digit, b-byte value at de
+
+	coord hl, 9, 10
+	ld [hl], "%"
+	; fallthrough
 .moveDisabled
 	ld a, $1
 	ld [H_AUTOBGTRANSFERENABLED], a
@@ -3189,8 +3262,20 @@ PrintMenuItem:
 DisabledText:
 	db "Non disp.@"
 
-TypeText:
-	db "Type@"
+PPText:
+	db "PP@"
+
+PowerText:
+	db "Dégât@"
+
+AccurancyText:
+	db "Pré.@"
+
+InfinityText:
+	db "Inf@"
+
+SpecialText:
+	db "???@"
 
 SelectEnemyMove:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -6809,7 +6894,7 @@ CheckEnemyStatusConditions:
 	and a ; clear Z flag
 	ret
 
-GetCurrentMove:
+GetCurrentMove::
 	ld a, [H_WHOSETURN]
 	and a
 	jp z, .player
