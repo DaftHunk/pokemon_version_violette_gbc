@@ -121,7 +121,7 @@ VictoryRoad1TrainerHeader4:
 
 VictoryRoad1TrainerHeader5:
 	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_5
-	db ($4 << 4) ; trainer's view range
+	db ($2 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_5
 	dw VictoryRoad1FSuperNerdBattleText ; TextBeforeBattle
 	dw VictoryRoad1FSuperNerdAfterBattleText ; TextAfterBattle
