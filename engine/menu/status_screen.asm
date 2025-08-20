@@ -97,10 +97,6 @@ StatusScreen:
 	ld hl, vChars2 + $760
 	lb bc, BANK(BattleHudTiles3), $02
 	call CopyVideoDataDouble ; ─┘
-	ld de, PTile
-	ld hl, vChars2 + $720
-	lb bc, BANK(PTile), (PTileEnd - PTile) / $8
-	call CopyVideoDataDouble ; P (for PP), inline
 	ld a, [hTilesetType]
 	push af
 	xor a
@@ -520,7 +516,7 @@ StatusScreen2:
 	ld b, a ; Number of moves ?
 	coord hl, 11, 10
 	ld de, SCREEN_WIDTH * 2
-	ld a, "P"
+	ld a, "<BOLD_P>"
 	call StatusScreen_PrintPP ; Print "PP"
 	ld a, b
 	and a

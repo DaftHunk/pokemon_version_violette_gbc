@@ -18,6 +18,9 @@ charmap "#", $54
 charmap "<TARGET>", $59
 charmap "<USER>", $5A
 charmap "<COLON>", $6D
+charmap "<BOLD_V>",  $ea
+charmap "<BOLD_S>",  $eb
+charmap "<BOLD_P>",  $72
 
 ; Actual characters (from gfx/font/font_extra.png)
 charmap "′", $71

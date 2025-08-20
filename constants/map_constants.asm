@@ -117,7 +117,7 @@ ENDM
 	mapconst VICTORY_ROAD_1F,             9, 10 ; $6D
 	mapconst VOLCANO_B2F,                 9,  9 ; $6E
 	mapconst ROUTE_16_WEST_HOUSE,         4,  4 ; $6F
-	mapconst ROUTE_16_WEST_GATE,          3,  4 ; $70
+	mapconst ROUTE_16_WEST_GATE,          9,  4 ; $70
 	mapconst LANCES_ROOM,                13, 13 ; $71
 	mapconst ROUTE_19_BEACH_HOUSE,        4,  4 ; $72
 	mapconst UNUSED_MAP_73,               0,  0 ; $73

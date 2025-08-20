@@ -375,7 +375,7 @@ _DexSeenOwnedText::
 	done
 
 _DexRatingText::
-	text "Eval. #dex<COLON>"
+	text "Eval. #dex:"
 	done
 
 _GymStatueText1::

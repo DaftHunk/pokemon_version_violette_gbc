@@ -73,7 +73,7 @@ Mansion_Coll::
 	coll_tiles $01, $05, $11, $12, $14, $1a, $1c, $2c, $53
 
 Lab_Coll::
-	coll_tiles $0c, $26, $16, $1e, $34, $37
+	coll_tiles $0c, $26, $16, $1e, $27, $34, $37, $4f
 
 Club_Coll::
 	coll_tiles $0f, $1a, $1f, $26, $28, $29, $2c, $2d, $2e, $2f, $41
