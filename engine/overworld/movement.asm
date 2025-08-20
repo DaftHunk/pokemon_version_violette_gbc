@@ -13,7 +13,7 @@ UpdatePlayerSprite:
 .checkIfTextBoxInFrontOfSprite
 	aCoord 8, 9
 	ld [hTilePlayerStandingOn], a
-	cp $60
+	cp $79
 	jr c, .lowerLeftTileIsMapTile
 .disableSprite
 	ld a, $ff
@@ -157,7 +157,7 @@ UpdateNPCSprite:
 	and a
 	jp z, InitializeSpriteStatus
 	call CheckSpriteAvailability
-	ret c             ; if sprite is invisible, on tile >=$60, in grass or player is currently walking
+	ret c             ; if sprite is invisible, on tile >=$79, in grass or player is currently walking
 	ld h, $c1
 	ld a, [H_CURRENTSPRITEOFFSET]
 	ld l, a
@@ -636,21 +636,21 @@ CheckSpriteAvailability:
 .done
 	ret
 .VisibilityTest	;clear the carry flag if invisible, or set the flag if visible
-	ld d, $60
+	ld d, $79
 	ld a, [hli]
 	cp d
-	ret nc ; standing on tile with ID >=$60 (bottom left tile)
+	ret nc ; standing on tile with ID >=$79 (bottom left tile)
 	ld a, [hld]
 	cp d
-	ret nc ; standing on tile with ID >=$60 (bottom right tile)
+	ret nc ; standing on tile with ID >=$79 (bottom right tile)
 	ld bc, -20
 	add hl, bc              ; go back one row of tiles
 	ld a, [hli]
 	cp d
-	ret nc ; standing on tile with ID >=$60 (top left tile)
+	ret nc ; standing on tile with ID >=$79 (top left tile)
 	ld a, [hl]
 	cp d
-	ret    ; nc if standing on tile with ID >=$60 (top right tile)
+	ret    ; nc if standing on tile with ID >=$79 (top right tile)
 
 
 UpdateSpriteImage:

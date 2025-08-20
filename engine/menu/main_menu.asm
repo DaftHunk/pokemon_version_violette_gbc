@@ -683,7 +683,6 @@ PrintSaveScreenText:
 	ld b, 10
 	ld c, 16
 	call TextBoxBorder
-	call LoadTextBoxTilePatterns
 	call UpdateSprites
 
 	; show map legend

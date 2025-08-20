@@ -4,6 +4,9 @@ w2CurMapTileset				EQU $d0fd
 w2MapViewVRAMPointer		EQU $d0fe	;wram bank 2 backup. 2 bytes
 w2BGMapAttributes 			EQU $d100 	;In wram bank 2 (GBC only). This is 1024 bytes (32 by 32).
 w2GBCFullPalBuffer			EQU $d500	;secondary buffer that is 128 bytes
+
+END_OF_OVERWORLD_TILES 		EQU $79		;This is 1 plus the value of the last overworld tile.
+
 const_value = 0
 
 	const PAL_ENH_OVW_RED     	; $00
@@ -159,7 +162,11 @@ db	4,	6,	6,	6,	6,	6,	6,	6,	8,	4,	3,	3,	6,	4,	4,	3;
 ;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
 db	4,	4,	0,	0,	7,	7,	3,	3,	6,	6,	3,	6,	8,	8,	3,	3;
 ;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
-db	4,	4,	4,	8,	6,	6,	3,	3,	6,	6,	8,	8,	8,	8,	3,	3;
+db	4,	4,	4,	8,	6,	6,	3,	3,	6,	6,	8,	8,	8,	8,	5,	5;
+;	60	61	62	63	64	65	66	67	68	69	6A	6B	6C	6D	6E	6F
+db	6,	6,	6,	6,	6,	3,	3,	3,	6,	6,	6,	6,	6,	6,	5,	5;
+;	70	71	72	73	74	75	76	77	78	79	7A	7B	7C	7D	7E	7F
+db	6,	6,	3,	6,	6,	6,	3,	3,	3,	6,	6,	6,	6,	6,	6,	6;
 PalSettings_REDS_HOUSE_1:	; 1		-done
 PalSettings_REDS_HOUSE_2:	; 4
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
@@ -607,7 +614,7 @@ MakeOverworldBGMapAttributes:
 	ld a, [de]
 
 ;error trap
-	cp $60
+	cp END_OF_OVERWORLD_TILES
 	ld a, PAL_ENH_OVW_GRAY
 	jr nc, .copyColorAttribute
 	ld a, [de]
