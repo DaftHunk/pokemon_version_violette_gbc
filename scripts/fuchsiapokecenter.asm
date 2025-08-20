@@ -15,6 +15,7 @@ FuchsiaPokecenterTextPointers:
 	dw FuchsiaPokecenterText2
 	dw FuchsiaPokecenterText3
 	dw FuchsiaTradeNurseText
+	dw FuchsiaChanseyText
 
 FuchsiaPokecenterScript0:
 	ret
@@ -105,3 +106,10 @@ FuchsiaPokecenterText3:
 
 FuchsiaTradeNurseText:
 	TX_CABLE_CLUB_RECEPTIONIST
+
+FuchsiaChanseyText:
+	TX_FAR _ChanseyText
+	TX_ASM
+	ld a, CHANSEY
+	call DisplayPokedex
+	jp TextScriptEnd

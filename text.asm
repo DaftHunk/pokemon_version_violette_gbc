@@ -3457,6 +3457,11 @@ _UsedCutText::
 	line "coupé! Trop fort!"
 	prompt
 
+_ChanseyText::
+	text "Leveinard:"
+	line "Vénar! Vénar!"
+	prompt
+
 ;joenote - for field move slot
 _LearnTempFieldMoveText::
 	text "Apprendre ceci en"

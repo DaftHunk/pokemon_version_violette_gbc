@@ -19,6 +19,7 @@ IndigoPlateauLobbyTextPointers:
 	dw IndigoPlateauLobbyText3
 	dw IndigoCashierText
 	dw IndigoTradeNurseText
+	dw IndigoChanseyText
 
 IndigoHealNurseText:
 	TX_POKECENTER_NURSE
@@ -62,3 +63,10 @@ IndigoPlateauLobbyText2_ALT:
 	cont "Alors vas y!"
 	done
 	db "@"
+
+IndigoChanseyText:
+	TX_FAR _ChanseyText
+	TX_ASM
+	ld a, CHANSEY
+	call DisplayPokedex
+	jp TextScriptEnd

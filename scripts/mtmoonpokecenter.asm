@@ -9,6 +9,7 @@ MtMoonPokecenterTextPointers:
 	dw MagikarpSalesmanText
 	dw MtMoonPokecenterText5
 	dw MtMoonTradeNurseText
+	dw MtMoonChanseyText
 
 MtMoonHealNurseText:
 	db $ff
@@ -363,3 +364,10 @@ MagikarpSalesmanText_Thanks:
 	text "Homme: Merci!"
 	done
 	db "@"
+
+MtMoonChanseyText:
+	TX_FAR _ChanseyText
+	TX_ASM
+	ld a, CHANSEY
+	call DisplayPokedex
+	jp TextScriptEnd

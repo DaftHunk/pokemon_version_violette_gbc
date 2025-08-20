@@ -8,6 +8,7 @@ ViridianPokecenterTextPointers:
 	dw ViridianPokeCenterText3
 	dw ViridianTradeNurseText
 	dw ViridianPokeCenter_AideRandom
+	dw ViridianChanseyText
 
 ViridianHealNurseText:
 	TX_POKECENTER_NURSE
@@ -26,3 +27,10 @@ ViridianTradeNurseText:
 ViridianPokeCenter_AideRandom:
 	TX_FAR _ViridianPokeCenter_AideRandom
 	db "@"
+
+ViridianChanseyText:
+	TX_FAR _ChanseyText
+	TX_ASM
+	ld a, CHANSEY
+	call DisplayPokedex
+	jp TextScriptEnd
