@@ -2722,8 +2722,11 @@ _LearnedMove1Text::
 	text_end
 
 _WhichMoveToForgetText::
-	text "Oublier quelle"
-	next "attaque?"
+	text "Oublier quoi pour"
+	line "@"
+	text_ram wStringBuffer
+	text "?@"
+	text_end
 	done
 
 _AbandonLearningText::
