@@ -2159,6 +2159,3 @@ TradingAnimationGraphicsEnd:
 ; Pokeball traveling through the link cable.
 TradingAnimationGraphics2: INCBIN "gfx/tiles/trade2.2bpp"
 TradingAnimationGraphics2End:
-PTile: ; This is a single 1bpp "P" tile
-	INCBIN "gfx/tiles/p_tile.1bpp"
-PTileEnd:
