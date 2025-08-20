@@ -775,18 +775,8 @@ PrintNumOwnedMons:
 	jp PrintNumber
 
 PrintPlayTime_local:
-	ld d, $6d
 	predef PrintPlayTime
 	ret
-;PrintPlayTime:	;joenote - moved this into a predef
-;	ld de, wPlayTimeHours
-;	lb bc, 1, 3
-;	call PrintNumber
-;	ld [hl], $6d
-;	inc hl
-;	ld de, wPlayTimeMinutes
-;	lb bc, LEADING_ZEROES | 1, 2
-;	jp PrintNumber
 
 SaveScreenInfoText:
 	db   "Joueur"

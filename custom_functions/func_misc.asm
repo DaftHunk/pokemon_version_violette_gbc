@@ -1,6 +1,7 @@
 ;universally prints the play clock
 PrintPlayTime:	;joenote - moved this into a predef
 	call GetPredefRegisters
+	ld d, "h"
 
 	ld a, [wPlayTimeMaxed]
 	push af
