@@ -246,15 +246,6 @@ HoFDisplayPlayerStats:
 	ld de, HoFPlayTimeText
 	call PlaceString
 	coord hl, 3, 7
-;	ld de, wPlayTimeHours
-;	lb bc, 1, 3
-;	call PrintNumber
-;	ld [hl], $6d
-;	inc hl
-;	ld de, wPlayTimeMinutes
-;	lb bc, LEADING_ZEROES | 1, 2
-;	call PrintNumber
-	ld d, $6d
 	predef PrintPlayTime
 	coord hl, 1, 9
 	ld de, HoFMoneyText

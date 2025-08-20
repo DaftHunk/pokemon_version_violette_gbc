@@ -7,6 +7,7 @@ VermilionPokecenterTextPointers:
 	dw VermilionPokecenterText2
 	dw VermilionPokecenterText3
 	dw VermilionTradeNurseText
+	dw VermilionChanseyText
 
 VermilionHealNurseText:
 	TX_POKECENTER_NURSE
@@ -21,3 +22,10 @@ VermilionPokecenterText3:
 
 VermilionTradeNurseText:
 	TX_CABLE_CLUB_RECEPTIONIST
+
+VermilionChanseyText:
+	TX_FAR _ChanseyText
+	TX_ASM
+	ld a, CHANSEY
+	call DisplayPokedex
+	jp TextScriptEnd

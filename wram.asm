@@ -504,6 +504,7 @@ wUnknownSerialCounter:: ; cc47
 wEnteringCableClub:: ; cc47
 	ds 1
 
+wPlayerMoveAccuracyPercent:: ; new, to host the accuract in [0,100] rather than [0,255]
 	ds 1
 
 wWhichTradeMonSelectionMenu:: ; cc49

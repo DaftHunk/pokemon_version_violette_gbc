@@ -8,7 +8,7 @@ DisplaySoundTestMenu:
 	ld [hJoy7], a
 	
 ;place the static strings for the screen
-	coord hl, 2, 1
+	coord hl, 6, 1
 	ld de, SoundTestTextInstructions3
 	call PlaceString
 	coord hl, 1, 14
@@ -129,7 +129,7 @@ SoundTestTextInstructions1:
 SoundTestTextInstructions2:
 	db "L/R:Changer Piste@"
 SoundTestTextInstructions3:
-	db "Lecteur Musique@"
+	db "Baladeur@"
 SoundTestTextBlankTrack:
 	db "                  @"
 SoundTestTrackList:

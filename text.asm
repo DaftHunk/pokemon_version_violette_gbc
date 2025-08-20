@@ -2722,8 +2722,11 @@ _LearnedMove1Text::
 	text_end
 
 _WhichMoveToForgetText::
-	text "Oublier quelle"
-	next "attaque?"
+	text "Oublier quoi pour"
+	line "@"
+	text_ram wStringBuffer
+	text "?@"
+	text_end
 	done
 
 _AbandonLearningText::
@@ -3455,6 +3458,11 @@ _UsedCutText::
 	text_ram wcd6d
 	text " a tout"
 	line "coupé! Trop fort!"
+	prompt
+
+_ChanseyText::
+	text "Leveinard:"
+	line "Vénar! Vénar!"
 	prompt
 
 ;joenote - for field move slot

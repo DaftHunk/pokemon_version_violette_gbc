@@ -7,6 +7,7 @@ CeruleanPokecenterTextPointers:
 	dw CeruleanPokecenterText2
 	dw CeruleanPokecenterText3
 	dw CeruleanTradeNurseText
+	dw CeruleanChanseyText
 
 CeruleanTradeNurseText:
 	TX_CABLE_CLUB_RECEPTIONIST
@@ -21,3 +22,10 @@ CeruleanPokecenterText2:
 CeruleanPokecenterText3:
 	TX_FAR _CeruleanPokecenterText3
 	db "@"
+
+CeruleanChanseyText:
+	TX_FAR _ChanseyText
+	TX_ASM
+	ld a, CHANSEY
+	call DisplayPokedex
+	jp TextScriptEnd

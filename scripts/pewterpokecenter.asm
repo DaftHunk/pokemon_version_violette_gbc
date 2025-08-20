@@ -7,6 +7,7 @@ PewterPokecenterTextPointers:
 	dw PewterPokecenterText2
 	dw PewterJigglypuffText
 	dw PewterTradeNurseText
+	dw PewterChanseyText
 
 PewterHealNurseText:
 	TX_POKECENTER_NURSE
@@ -83,3 +84,10 @@ JigglypuffFacingDirectionsEnd:
 
 PewterTradeNurseText:
 	TX_CABLE_CLUB_RECEPTIONIST
+
+PewterChanseyText:
+	TX_FAR _ChanseyText
+	TX_ASM
+	ld a, CHANSEY
+	call DisplayPokedex
+	jp TextScriptEnd
