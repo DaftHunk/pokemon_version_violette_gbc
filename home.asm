@@ -4447,7 +4447,7 @@ RestoreScreenTilesAndReloadTilePatterns::
 	ld [wUpdateSpritesEnabled], a
 	call ReloadMapSpriteTilePatterns
 	call LoadScreenTilesFromBuffer2
-	call LoadTextBoxTilePatterns
+	call ReloadTilesetTilePatterns
 	call RunDefaultPaletteCommand
 	jr Delay3
 

@@ -348,7 +348,6 @@ StartMenu_Item:
 	jr nc, .choseItem
 .exitMenu
 	call LoadScreenTilesFromBuffer2 ; restore saved screen
-	call LoadTextBoxTilePatterns
 	call UpdateSprites
 	jp RedisplayStartMenu
 .choseItem
@@ -578,6 +577,7 @@ StartMenu_TrainerInfo:
 	;call LoadGBPal		;joenote - moved this to RedisplayStartMenu for smoother whiteout transition
 	pop af
 	ld [hTilesetType], a
+	call ReloadTilesetTilePatterns
 	jp RedisplayStartMenu
 
 ; loads tile patterns and draws everything except for gym leader faces / badges
@@ -765,6 +765,7 @@ StartMenu_Option:
 	call LoadScreenTilesFromBuffer2 ; restore saved screen
 	call LoadTextBoxTilePatterns
 	call UpdateSprites
+	call ReloadTilesetTilePatterns
 	jp RedisplayStartMenu
 
 SwitchPartyMon:
@@ -965,7 +966,6 @@ StartMenu_PortablePC::
 	farcall ChangeBox
 	call LoadScreenTilesFromBuffer2 ; restore saved screen
 	call Delay3 ; allow the old screen to load before putting back the textbox tile patterns
-	call LoadTextBoxTilePatterns
 	call UpdateSprites
 	pop bc ; recover the original maptextptr in case we changed the value by changing boxes
 	ld a, b
