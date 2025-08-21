@@ -66,9 +66,7 @@ ENDM
 TX_DELAY              EQUS "db $0a"
 TX_SFX_ITEM_1         EQUS "db $0b"
 TX_SFX_LEVEL_UP       EQUS "db $0b"
-;TX_ELLIPSES          EQUS "db $0c"
 TX_WAIT               EQUS "db $0d"
-;TX_SFX_DEX_RATING    EQUS "db $0e"
 TX_JUMP               EQUS "db $0e"
 TX_CALL               EQUS "db $0f"
 TX_SFX_ITEM_2         EQUS "db $10"
@@ -77,7 +75,6 @@ TX_SFX_CAUGHT_MON     EQUS "db $12"
 TX_SFX_DEX_PAGE_ADDED EQUS "db $13"
 TX_CRY_NIDORINO       EQUS "db $14"
 TX_CRY_PIDGEOT        EQUS "db $15"
-;TX_CRY_DEWGONG       EQUS "db $16"
 
 MACRO text_jump
 	TX_JUMP

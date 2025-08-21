@@ -53,7 +53,7 @@ SwapBagData:
 	pop bc
 	ret
 .swaptext
-	db "…changement…@"
+	db " [changement]@"
 
 BackupBagSwap:
 	;swap out the items
@@ -175,7 +175,7 @@ SendToBackupBag:
 	pop bc
 	ret
 .shifttext
-	db "…déplacement…@"
+	db " [déplacement]@"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Implementing the bag sorting feature written by devolov
