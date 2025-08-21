@@ -407,7 +407,7 @@ VictoryRoad2FHS:
 	db VICTORY_ROAD_2,$07,Show
 	db VICTORY_ROAD_2,$08,Show
 	db VICTORY_ROAD_2,$09,Show
-	db VICTORY_ROAD_2,$0C,Show ; boulder
+	db VICTORY_ROAD_2,$0C,Hide ; boulder
 BillsHouseHS:
 	db BILLS_HOUSE,$01,Show
 	db BILLS_HOUSE,$02,Hide
