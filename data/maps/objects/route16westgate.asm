@@ -7,7 +7,10 @@ Route16WestGateObject:
 	warp 7, 14,  9, ROUTE_16
 	warp 7, 15, 10, ROUTE_16
 
-	db 0 ; signs
+	db 3 ; signs
+	sign 5, 3, 1 ; Route16WestGateAquariumText
+	sign 2, 8, 2 ; Route16WestGatePCText
+	sign 0, 8, 3 ; Route16WestGateLettersText
 
 	db 0 ; objects
 
