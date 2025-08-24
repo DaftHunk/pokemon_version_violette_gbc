@@ -13,7 +13,7 @@ Mansion4Object:
 	object SPRITE_BALL, 1, 22, STAY, NONE, 4, FULL_RESTORE
 	object SPRITE_BALL, 19, 25, STAY, NONE, 5, TM50_SUBSTITUTE
 	object SPRITE_BALL, 5, 4, STAY, NONE, 6, TM22_SOLARBEAM
-	object SPRITE_BOOK_MAP_DEX, 16, 20, STAY, NONE, 7 ; person
+	object SPRITE_BOOK, 16, 20, STAY, NONE, 7 ; person
 	object SPRITE_BALL, 5, 13, STAY, NONE, 8, SECRET_KEY
 
 	; warp-to

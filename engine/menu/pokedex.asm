@@ -360,7 +360,7 @@ HandlePokedexListMenu:
 	pop hl
 	ld a, " "
 	jr z, .writeTile
-	ld a, $72 ; pokeball tile
+	ld a, $E4 ; pokeball tile
 .writeTile
 	ld [hl], a ; put a pokeball next to pokemon that the player has owned
 	push hl
@@ -1351,7 +1351,7 @@ Pokedex_PrintMovesText:
 	push de
 	push bc
 	ld de, LevelUpMovesText
-	coord hl, 1, 11
+	coord hl, 1, 10
 	call PlaceString
 	pop bc
 	pop de

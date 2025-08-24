@@ -8,7 +8,7 @@ Route16WestHouseObject:
 	db 0 ; signs
 
 	db 1 ; objects
-	object SPRITE_BOOK_MAP_DEX, 3, 3, STAY, NONE, 1, 0
+	object SPRITE_BOOK, 3, 3, STAY, NONE, 1, 0
 
 	; warp-to
 	warp_to 2, 7, ROUTE_16_WEST_HOUSE_WIDTH

@@ -12,8 +12,8 @@ Mansion2Object:
 	db 4 ; objects
 	object SPRITE_BLACK_HAIR_BOY_2, 3, 17, WALK, 2, 1, OPP_BURGLAR, 1
 	object SPRITE_BALL, 28, 7, STAY, NONE, 2, CALCIUM
-	object SPRITE_BOOK_MAP_DEX, 18, 2, STAY, NONE, 3 ; person
-	object SPRITE_BOOK_MAP_DEX, 3, 22, STAY, NONE, 4 ; person
+	object SPRITE_BOOK, 18, 2, STAY, NONE, 3 ; person
+	object SPRITE_BOOK, 3, 22, STAY, NONE, 4 ; person
 
 	; warp-to
 	warp_to 5, 10, POKEMON_MANSION_2F_WIDTH ; POKEMON_MANSION_1F

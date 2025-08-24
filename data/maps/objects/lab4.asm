@@ -13,9 +13,9 @@ Lab4Object:
 	object SPRITE_OAK_AIDE, 7, 6, STAY, UP, 2 ; person
 	;joenote - new NPCs
 	object SPRITE_OAK_AIDE, 0, 5, STAY, UP, 3 ; person	
-	object SPRITE_BOOK_MAP_DEX, 6, 4, STAY, NONE, 4 ; person
-	object SPRITE_BOOK_MAP_DEX, 7, 4, STAY, NONE, 5 ; person
-	object SPRITE_BOOK_MAP_DEX, 7, 2, STAY, NONE, 6 ; person
+	object SPRITE_BOOK, 6, 4, STAY, NONE, 4 ; person
+	object SPRITE_BOOK, 7, 4, STAY, NONE, 5 ; person
+	object SPRITE_BOOK, 7, 2, STAY, NONE, 6 ; person
 
 	; warp-to
 	warp_to 2, 7, CINNABAR_LAB_FOSSIL_ROOM_WIDTH ; CINNABAR_LAB_1

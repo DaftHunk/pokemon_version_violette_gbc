@@ -637,10 +637,25 @@ SpriteSheetPointerTable:
 	db $40 ; byte count
 	db BANK(PaperSheetSprite)
 
-	; SPRITE_BOOK_MAP_DEX
+	; SPRITE_BOOK
 	dw BookMapDexSprite
 	db $40 ; byte count
 	db BANK(BookMapDexSprite)
+
+	; SPRITE_POKEDEX
+	dw PokedexSprite
+	db $c0 ; byte count
+	db BANK(PokedexSprite)
+
+	; SPRITE_POKEBALL
+	dw PokeballSprite
+	db $c0 ; byte count
+	db BANK(PokeballSprite)
+
+	; SPRITE_MAP
+	dw MapSprite
+	db $c0 ; byte count
+	db BANK(MapSprite)
 
 	; SPRITE_CLIPBOARD
 	dw ClipboardSprite

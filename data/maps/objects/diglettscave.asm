@@ -9,7 +9,7 @@ DiglettsCaveObject:
 	db 0 ; signs
 
 	db 2 ; objects	
-	object SPRITE_BOOK_MAP_DEX, 35,  5, STAY, NONE, 1 ; person
+	object SPRITE_BOOK, 35,  5, STAY, NONE, 1 ; person
 	object SPRITE_BOULDER, 21, 25, STAY, BOULDER_MOVEMENT_BYTE_2, 2 ; person
 
 	; warp-to

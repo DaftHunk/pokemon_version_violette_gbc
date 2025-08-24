@@ -13,7 +13,7 @@ Mansion3Object:
 	object SPRITE_OAK_AIDE, 20, 11, STAY, LEFT, 2, OPP_SCIENTIST, 11
 	object SPRITE_BALL, 1, 16, STAY, NONE, 3, MAX_POTION
 	object SPRITE_BALL, 25, 5, STAY, NONE, 4, IRON
-	object SPRITE_BOOK_MAP_DEX, 6, 12, STAY, NONE, 5 ; person
+	object SPRITE_BOOK, 6, 12, STAY, NONE, 5 ; person
 
 	; warp-to
 	warp_to 7, 10, POKEMON_MANSION_3F_WIDTH ; POKEMON_MANSION_2F

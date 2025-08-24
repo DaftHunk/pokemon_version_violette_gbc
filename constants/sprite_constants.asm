@@ -270,7 +270,10 @@ const_value = 1
 	const SPRITE_OMANYTE                   ; $3e
 	const SPRITE_BOULDER                   ; $3f
 	const SPRITE_PAPER_SHEET               ; $40
-	const SPRITE_BOOK_MAP_DEX              ; $41
+	const SPRITE_BOOK              ; $41
+	const SPRITE_POKEDEX
+	const SPRITE_POKEBALL
+	const SPRITE_MAP
 	const SPRITE_CLIPBOARD                 ; $42
 	const SPRITE_SNORLAX                   ; $43
 	const SPRITE_OLD_AMBER_COPY            ; $44
