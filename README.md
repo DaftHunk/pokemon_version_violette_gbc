@@ -16,6 +16,9 @@ Pour plus d'info, consultez le wiki dédié : https://github.com/DaftHunk/pokemo
 - [pureRGB](https://github.com/Vortyne/pureRGB) pour ses magnifiques tuiles de la centrale, du volcan, certains backsprites améliorés, le pc portable et le capadex !
 - [pokered-gbc-plus-fr](https://github.com/Engezerstorung/pokered-gbc-plus-fr) pour ses fantastiques sprites de pokémons dans le monde
 - [tournepivoine](https://github.com/tournepivoine/shinpokered-fr) pour sa traduction qui m'a beaucoup fait gagner de temps
+- [Red++](https://github.com/JustRegularLuna/rpp-backup/) pour les sprites de Pokéball, Pokédex et Carte
+- [Polished Crystal](https://github.com/Rangi42/polishedcrystal) pour certains sprites de génération 2
+- Alolan Marowak - Dave.K
 - Nurse Joy Battle Sprite - ZuperZACH
 - Officer Jenny Battle Sprite - Karlos
 
