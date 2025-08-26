@@ -196,7 +196,7 @@ BufferExpData:
 	jr z, .next	;skip wEnemyMonActualCatchRate
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;shinpokered-master cheat
-;If the opponent is above the level cap, max the base exp values
+;If the opponent is above the levelcap, max the base exp values
 	ld b, a
 	ld a, [wEnemyMonLevel]
 	cp MAX_LEVEL+1
@@ -557,6 +557,15 @@ CapExpAtMaxLevel:
 	ld [wd0b5], a
 	call GetMonHeader
 	ld d, MAX_LEVEL
+	
+	ld a, [wMoreGameplayOptions]
+	bit 0, a
+	jr z, .next1 ; no levelcaps
+	; else
+	call GetLevelCap
+	ld a, [wMaxLevel]
+	ld d, a
+.next1
 	callab CalcExperience ; get max exp
 ; compare max exp with current exp
 	ld a, [hExperience]
@@ -589,12 +598,16 @@ CapExpAtMaxLevel:
 ;joenote - prints the text for gaining experience
 ;preserves HL
 PrintExpGained:
+	ld a, [hl]
+	jr z, .levelCap
+
 	push hl
 	ld a, [wWhichPokemon]
 	ld hl, wPartyMonNicks
 	call GetPartyMonName
 	ld hl, GainedText
 
+.displayExpAll
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - changing exp.all text for shinpokered
 	ld a, [wBoostExpByExpAll]
@@ -613,7 +626,14 @@ PrintExpGained:
 .noexpprint
 	pop hl
 	ret
-	
+
+.levelCap
+	push hl
+	ld a, [wWhichPokemon]
+	ld hl, wPartyMonNicks
+	call GetPartyMonName
+	ld hl, LevelCappedText
+	jr .displayExpAll
 
 ;joenote - It's been determined that the pokemon pointed to by wPartyMon'X'Level has gained enough EXP to level-up
 ;The new level is in the D register and HL = wPartyMon'X'Level
@@ -827,6 +847,10 @@ GainedText:
 	ld hl, BoostedText
 	ret
 
+LevelCappedText:
+	TX_FAR _LevelCappedText
+	db "@"
+
 WithExpAllText:
 	TX_FAR _WithExpAllText
 	TX_ASM
@@ -845,4 +869,39 @@ GrewLevelText:
 	TX_SFX_LEVEL_UP
 	db "@"
 
+; function to count the set bits in wObtainedBadges
+; returns the number of badges in wNumSetBits
+GetBadgesObtained::
+	push de
+	ld hl, wObtainedBadges
+	ld b, $1
+	call CountSetBits
+	pop de
+	ret
 
+; returns the levelcap in wMaxLevel
+GetLevelCap::
+	CheckEvent EVENT_ELITE_4_BEATEN
+	ld a, 100
+	jr nz, .storeValue
+	call GetBadgesObtained
+	ld a, [wNumSetBits]
+	ld hl, BadgeLevelRestrictions
+	ld b, 0
+	ld c, a
+	add hl, bc
+	ld a, [hl]
+.storeValue
+	ld [wMaxLevel], a
+	ret
+
+BadgeLevelRestrictions:
+	db 15 ; Onix
+	db 20 ; Starmie
+	db 25 ; Raichu
+	db 35 ; Vileplume
+	db 45 ; Alakazam
+	db 50 ; Weezing
+	db 55 ; Arcanine
+	db 60 ; Rhydon
+	db 65 ; Champion's starter

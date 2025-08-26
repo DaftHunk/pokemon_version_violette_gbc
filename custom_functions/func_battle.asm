@@ -707,7 +707,7 @@ ItemPalList:
 	db PAL_BW	;surfboard
 	db PAL_GREENMON	;safari ball
 
-;Note: calls GetBadgeCap and preserves D so that this too returns the level cap based on badges back into D
+;Note: calls GetBadgeCap and preserves D so that this too returns the levelcap based on badges back into D
 DoDisobeyLevelCheck:
 	xor a
 	ld [wMonIsDisobedient], a
@@ -762,7 +762,7 @@ ObedienceLevelsTraded:
 	db 0	;volcano badge
 	db 255	;earth badge
 
-;returns the level cap based on badges back into D
+;returns the levelcap based on badges back into D
 GetBadgeCap:
 	ld hl, ObedienceLevelsTraded
 

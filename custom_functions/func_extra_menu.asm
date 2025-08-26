@@ -19,7 +19,7 @@ DisplayExtraOptionMenu:
 	call TextBoxBorder
 ;draw text box border for master options
 	coord hl, 0, 7
-	ld b, 4
+	ld b, 5
 	ld c, 18
 	call TextBoxBorder
 
@@ -31,6 +31,7 @@ DisplayExtraOptionMenu:
 	call ShowGammaSetting
 	call ShowEnhancedGBCSetting
 	
+	call ShowLevelCapSetting
 	call ShowHardModeSetting	;joenote - display marker for hard mode or not
 	call ShowNuzlocke
 	call ShowRandomTrainers
@@ -65,13 +66,15 @@ DisplayExtraOptionMenu:
 	jr z, .cursorGamma
 	cp $5 ;cursor over enhanced gbc?
     jr z, .cursorEnhGBC
-	cp $8 ; cursor over hard mode?
+	cp $8 ; cursor over levelcap?
+	jr z, .cursorLevelCap
+	cp $9 ; cursor over hard mode?
 	jr z, .cursorHardMode
-	cp $9 ; cursor over nuzlocke?
+	cp $0a ; cursor over nuzlocke?
 	jr z, .cursorNuzlocke
-	cp $0a ; cursor over random trainers?
+	cp $0b ; cursor over random trainers?
 	jr z, .cursorRandomTrainers
-	cp $0b ; cursor over random wild?
+	cp $0c ; cursor over random wild?
 	jr z, .cursorRandomWild
 	cp $10 ; is the cursor on Back?
 	jp z, .exitMenu
@@ -95,6 +98,9 @@ DisplayExtraOptionMenu:
 .cursorEnhGBC
 	call ToggleEnhancedGBCColors
 	jr .getJoypadStateLoop
+.cursorLevelCap
+	call ToggleLevelCapMode
+	jr .getJoypadStateLoop
 .cursorHardMode
 	call ToggleHardMode
 	jr .getJoypadStateLoop
@@ -103,10 +109,10 @@ DisplayExtraOptionMenu:
 	jr .getJoypadStateLoop
 .cursorRandomTrainers
 	call ToggleRandomTrainers
-	jr .getJoypadStateLoop
+	jp .getJoypadStateLoop
 .cursorRandomWild
 	call ToggleRandomWild
-	jr .getJoypadStateLoop
+	jp .getJoypadStateLoop
 
 .checkDirectionKeys
 	ld a, [wTopMenuItemY]
@@ -117,7 +123,7 @@ DisplayExtraOptionMenu:
 	bit BIT_D_LEFT, b ; Left pressed?
 	jr nz, .cursor_section
 	bit BIT_D_RIGHT, b ; Right pressed?
-	jr nz, .cursor_section
+	jp nz, .cursor_section
 	jp .getJoypadStateLoop
 .downPressed
 	cp 16
@@ -126,8 +132,8 @@ DisplayExtraOptionMenu:
 	cp 5
 	ld b, 3
 	jr z, .updateMenuVariables
-	cp 11
-	ld b, 5
+	cp 12
+	ld b, 4
 	jr z, .updateMenuVariables
 	;else
 	ld b, 1
@@ -140,7 +146,7 @@ DisplayExtraOptionMenu:
 	ld b, -3
 	jr z, .updateMenuVariables
 	cp 16
-	ld b, -5
+	ld b, -4
 	jr z, .updateMenuVariables
 	;else
 	ld b, -1
@@ -185,23 +191,28 @@ PlaceExtraOptionStrings:
 	ld de, TextEnhancedGBC
 	call PlaceString
 
-;place hard mode text
+;place levelcap text
 	coord hl, 1, 8
+	ld de, TextLevelCap
+	call PlaceString
+
+;place hard mode text
+	coord hl, 1, 9
 	ld de, TextHardMode
 	call PlaceString
 
 ;place nuzlocke text
-	coord hl, 1, 9
+	coord hl, 1, 10
 	ld de, TextNuzlocke
 	call PlaceString
 
 ;place random trainers text
-	coord hl, 1, 10
+	coord hl, 1, 11
 	ld de, TextRandomTrainer
 	call PlaceString
 
 ;place random wild text
-	coord hl, 1, 11
+	coord hl, 1, 12
 	ld de, TextRandomWild
 	call PlaceString
 
@@ -384,6 +395,23 @@ ShowEnhancedGBCSetting:
 	call PlaceString
 	ret
 
+;joenote - for levelcap mode option
+ToggleLevelCapMode:
+	ld a, [wMoreGameplayOptions]
+	xor %00000001
+	ld [wMoreGameplayOptions], a
+	bit 0, a
+	;fall through
+ShowLevelCapSetting:
+	ld de, OptionMenuTextOFF
+	ld a, [wMoreGameplayOptions]	;check if levelcap is active
+	bit 0, a
+	jr z, .print
+	ld de, OptionMenuTextON
+.print
+	coord hl, $10, $8
+	call PlaceString
+	ret
 
 ;joenote - for hard mode option
 ToggleHardMode:
@@ -402,10 +430,9 @@ ShowHardModeSetting:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	coord hl, $10, $8
+	coord hl, $10, $9
 	call PlaceString
 	ret
-
 
 ;joenote - show /toggle nuzlocke mode
 ToggleNuzlocke:
@@ -421,7 +448,7 @@ ShowNuzlocke:
 	jr z, .print
 	ld de, OptionMenuTextON
 .print
-	coord hl, $10, $9
+	coord hl, $10, $0A
 	call PlaceString
 	ret
 
@@ -442,7 +469,7 @@ ShowRandomTrainers:
 	jr z, .print
 	ld de, OptionMenuTextON
 .print
-	coord hl, $10, $0A
+	coord hl, $10, $0B
 	call PlaceString
 	ret
 
@@ -477,7 +504,7 @@ ShowRandomWild:
 	ld de, OptionMenuRandomWildChaos
 	;fall through
 .print
-	coord hl, $0E, $0B
+	coord hl, $0E, $0C
 	call PlaceString
 	ret
 
@@ -504,13 +531,15 @@ TextEnhancedGBC:
 TextBack:
 	db " Retour   Select",$E3,$ED,"@"
 
+TextLevelCap:
+	db " Niveau max@"
 TextNuzlocke:
 	db " Nuzlocke@"
 TextRandomTrainer:
 	db " Dres. aléa.@"
 TextRandomWild:
 	db " <PK><MN> aléa.@"
-	
+
 OptionMenuOnOffText:
 	dw OptionMenuTextON
 	dw OptionMenuTextOFF

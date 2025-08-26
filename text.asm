@@ -1520,6 +1520,12 @@ _HitXTimesText::
 	text " fois!"
 	prompt
 
+_LevelCappedText::
+	text_ram wcd6d
+	text " est au"
+	line "niveau max!"
+	prompt
+
 _GainedText::
 	text_ram wcd6d
 	text " gagne"

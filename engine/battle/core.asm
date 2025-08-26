@@ -4405,7 +4405,7 @@ CheckForDisobedience:
 	callba DoDisobeyLevelCheck	
 	jp z, .canUseMove
 .backfromlevelcheck
-	ld b, d	;joenote - D holds the level cap from DoDisobeyLevelCheck
+	ld b, d	;joenote - D holds the levelcap from DoDisobeyLevelCheck
 	ld c, d
 	ld a, e	;E holds the level factor from DoDisobeyLevelCheck
 	ld d, a

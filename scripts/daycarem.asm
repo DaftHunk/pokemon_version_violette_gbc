@@ -69,11 +69,25 @@ DayCareMText1:
 	ld [wMonDataLocation], a
 	call LoadMonData
 	callab CalcLevelFromExperience
+
+	ld b, MAX_LEVEL
+	ld a, [wMoreGameplayOptions]
+	and a
+	ld a, b
+	ld [wMaxLevel], a
+	jr z, .next1 ; no levelcap on normal mode
+	; else
+	callfar GetLevelCap
+	ld a, [wMaxLevel]
+	ld b, a
+.next1
 	ld a, d
-	cp MAX_LEVEL
+	cp b
 	jr c, .skipCalcExp
 
-	ld d, MAX_LEVEL
+	ld a, [wMaxLevel]
+	ld d, a
+
 	callab CalcExperience
 	ld hl, wDayCareMonExp
 	ld a, [hExperience]
@@ -82,7 +96,8 @@ DayCareMText1:
 	ld [hli], a
 	ld a, [hExperience + 2]
 	ld [hl], a
-	ld d, MAX_LEVEL
+	ld a, [wMaxLevel]
+	ld d, a
 
 .skipCalcExp
 	xor a

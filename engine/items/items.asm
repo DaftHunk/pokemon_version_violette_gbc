@@ -134,7 +134,7 @@ ItemUseBall:
 	pop de
 	jp nz, ItemUseNotAllowed
 
-;joenote - Disallow balls against wild pokemon above the level cap
+;joenote - Disallow balls against wild pokemon above the levelcap
 	ld a, [wEnemyMonLevel]
 	cp 129
 	jp nc, ItemUseNotAllowed
@@ -1548,9 +1548,21 @@ ItemUseMedicine:
 	push hl	;push wPartyMonX
 	ld bc, wPartyMon1Level - wPartyMon1
 	add hl, bc ; hl now points to level
+
+	push hl ; store mon's level
+	ld b, MAX_LEVEL
+	ld a, [wMoreGameplayOptions]
+	bit 0, a
+	jr z, .next1 ; no levelcaps
+	; else
+	callfar GetLevelCap
+	ld a, [wMaxLevel]
+	ld b, a
+.next1
+	pop hl ; retrieve mon's level
 	ld a, [hl] ; a = level
-	cp MAX_LEVEL
-	jr z, .vitaminNoEffect ; can't raise level above 100
+	cp b ; MAX_LEVEL on normal mode else levelcap
+	jr nc, .vitaminNoEffect ; can't raise level above cap ; Carry is better than zero here.
 	inc a
 	ld [hl], a ; store incremented level
 	ld [wCurEnemyLVL], a

@@ -1851,6 +1851,8 @@ wPlayerDisabledMove:: ; d06d
 ; low nibble: disable turns left
 	ds 1
 
+wMaxLevel::
+; store current max level
 	ds 1
 
 wEnemyNumAttacksLeft:: ; d06f
@@ -3196,7 +3198,18 @@ wGameplayOptions:: ; d721	;joenote - use to set various wram flags
 wUnusedD722:: 
 	ds 4
 wUnusedD726:: 
-	ds 2
+	ds 1
+
+wMoreGameplayOptions::
+	ds 1
+	;bit 0 - levelcap mode activated
+	;bit 1 -
+	;bit 2 -
+	;bit 3 - 
+	;bit 4 - 
+	;bit 5 - 
+	;bit 6 - 
+	;bit 7 - 
 ;;;;;;;;;;;;;;
 wd728:: ; d728
 ; bit 0: using Strength outside of battle
