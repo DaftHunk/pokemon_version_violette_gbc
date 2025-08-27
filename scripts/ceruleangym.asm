@@ -66,6 +66,16 @@ CeruleanGymScript_GiveTM:
 	; deactivate gym trainers
 	SetEvents EVENT_BEAT_CERULEAN_GYM_TRAINER_0, EVENT_BEAT_CERULEAN_GYM_TRAINER_1
 
+	ld a, [wMoreGameplayOptions]
+	bit 0, a
+	jr z, .next ; no levelcaps
+	; else
+	; display new level cap to the player
+	callfar GetLevelCap
+	ld a, $8
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
+.next
 	jp CeruleanGymScript_Reset
 
 CeruleanGymTextPointers:
@@ -76,6 +86,7 @@ CeruleanGymTextPointers:
 	dw CeruleanGymText_Badge
 	dw CeruleanGymText_ReceivedTM
 	dw CeruleanGymText_BagFull
+	dw CeruleanGymText_LevelCap
 
 CeruleanGymTrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_CERULEAN_GYM_TRAINER_0
@@ -177,7 +188,25 @@ CeruleanGymText_LeaderPreBattle:
 	db "@"
 
 CeruleanGymText_LeaderAfterBattle:
+	TX_ASM
+	ld a, [wMoreGameplayOptions]
+	bit 0, a
+	jr z, .next ; no levelcaps
+	; else
+	; display new level cap to the player
+	callfar GetLevelCap
+	ld hl, CeruleanGymText_LevelCap
+	call PrintText
+.next
+	ld hl, .LeaderAfterBattle
+	call PrintText
+	jp TextScriptEnd
+.LeaderAfterBattle
 	TX_FAR _CeruleanGymText_LeaderAfterBattle
+	db "@"
+
+CeruleanGymText_LevelCap:
+	TX_FAR _DisplayLevelCap
 	db "@"
 
 CeruleanGymText_Badge:

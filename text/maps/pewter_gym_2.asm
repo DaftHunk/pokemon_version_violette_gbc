@@ -125,6 +125,11 @@ _PewterGymText_Badge::
 	cont "deviennent plus"
 	cont "puissants!"
 
+	para "Tes #mon"
+	line "échangés obéiront"
+	cont "jusqu'au"
+	cont "Niveau 20!"
+
 	para "La technique"
 	line "Flash peut être"
 	cont "utilisée!"

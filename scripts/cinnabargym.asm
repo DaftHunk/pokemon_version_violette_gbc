@@ -166,6 +166,16 @@ CinnabarGymScript_GiveTM:
 	ld hl, wCurrentMapScriptFlags
 	set 5, [hl]
 
+	ld a, [wMoreGameplayOptions]
+	bit 0, a
+	jr z, .next ; no levelcaps
+	; else
+	; display new level cap to the player
+	callfar GetLevelCap
+	ld a, $d
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
+.next
 	jp CinnabarGymScript_Reset
 
 CinnabarGymTextPointers:
@@ -181,6 +191,7 @@ CinnabarGymTextPointers:
 	dw BlaineBadgeText
 	dw ReceivedTM38Text
 	dw TM38NoRoomText
+	dw CinnabarGymText_LevelCap
 
 CinnabarGymScript_758b7:
 	ld a, [hSpriteIndexOrTextID]
@@ -276,7 +287,25 @@ BlaineEndBattleText:
 	db "@"
 
 BlaineFireBlastText:
+	TX_ASM
+	ld a, [wMoreGameplayOptions]
+	bit 0, a
+	jr z, .next ; no levelcaps
+	; else
+	; display new level cap to the player
+	callfar GetLevelCap
+	ld hl, CinnabarGymText_LevelCap
+	call PrintText
+.next
+	ld hl, .LeaderAfterBattle
+	call PrintText
+	jp TextScriptEnd
+.LeaderAfterBattle
 	TX_FAR _BlaineFireBlastText
+	db "@"
+
+CinnabarGymText_LevelCap:
+	TX_FAR _DisplayLevelCap
 	db "@"
 
 BlaineBadgeText:

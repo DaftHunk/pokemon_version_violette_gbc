@@ -80,6 +80,16 @@ PewterGymScriptGiveTM:
 	; deactivate gym trainers
 	SetEvent EVENT_BEAT_PEWTER_GYM_TRAINER_0
 
+	ld a, [wMoreGameplayOptions]
+	bit 0, a
+	jr z, .next ; no levelcaps
+	; else
+	; display new level cap to the player
+	callfar GetLevelCap
+	ld a, $7
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
+.next
 	jp PewterGymScriptReset
 
 PewterGymTextPointers:
@@ -89,6 +99,7 @@ PewterGymTextPointers:
 	dw PewterGymText_Wait
 	dw PewterGymText_ReceivedTM
 	dw PewterGymText_BagFull
+	dw PewterGymText_LevelCap
 
 PewterGymTrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_PEWTER_GYM_TRAINER_0
@@ -181,7 +192,25 @@ PewterGymText_LeaderPreBattle:
 	db "@"
 
 PewterGymText_LeaderAfterBattle:
+	TX_ASM
+	ld a, [wMoreGameplayOptions]
+	bit 0, a
+	jr z, .next ; no levelcaps
+	; else
+	; display new level cap to the player
+	callfar GetLevelCap
+	ld hl, PewterGymText_LevelCap
+	call PrintText
+.next
+	ld hl, .LeaderAfterBattle
+	call PrintText
+	jp TextScriptEnd
+.LeaderAfterBattle
 	TX_FAR _PewterGymText_LeaderAfterBattle
+	db "@"
+
+PewterGymText_LevelCap:
+	TX_FAR _DisplayLevelCap
 	db "@"
 
 PewterGymText_Wait:

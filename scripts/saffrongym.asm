@@ -66,6 +66,12 @@ SaffronGymText_GiveTM:
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_SAFFRON_GYM_TRAINER_0, EVENT_BEAT_SAFFRON_GYM_TRAINER_6
 
+	; display new level cap to the player
+	callfar GetLevelCap
+	ld a, $d
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
+
 	jp SaffronGymScript_Reset
 
 SaffronGymTextPointers:
@@ -81,6 +87,7 @@ SaffronGymTextPointers:
 	dw SaffronGymText_Badge
 	dw SaffronGymText_ReceivedTM
 	dw SaffronGymText_BagFull
+	dw SaffronGymText_LevelCap
 
 SaffronGymTrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_SAFFRON_GYM_TRAINER_0
@@ -248,7 +255,25 @@ SaffronGymText_LeaderEndBattle:
 	db "@"
 
 SaffronGymText_LeaderAfterBattle:
+	TX_ASM
+	ld a, [wMoreGameplayOptions]
+	bit 0, a
+	jr z, .next ; no levelcaps
+	; else
+	; display new level cap to the player
+	callfar GetLevelCap
+	ld hl, SaffronGymText_LevelCap
+	call PrintText
+.next
+	ld hl, .LeaderAfterBattle
+	call PrintText
+	jp TextScriptEnd
+.LeaderAfterBattle
 	TX_FAR _SaffronGymText_LeaderAfterBattle
+	db "@"
+
+SaffronGymText_LevelCap:
+	TX_FAR _DisplayLevelCap
 	db "@"
 
 SaffronGymText_Badge:

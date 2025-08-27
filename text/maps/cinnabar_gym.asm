@@ -47,6 +47,11 @@ _BlaineBadgeText::
 	cont "Spécial de tes"
 	cont "#mon!"
 
+	para "Tes #mon"
+	line "échangés obéiront"
+	cont "jusqu'au"
+	cont "Niveau 70!"
+
 	para "Prends ça aussi!"
 	done
 

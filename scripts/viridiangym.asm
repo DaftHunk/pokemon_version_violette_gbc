@@ -167,6 +167,16 @@ ViridianGymScript_GiveTM:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	SetEvents EVENT_2ND_ROUTE22_RIVAL_BATTLE, EVENT_ROUTE22_RIVAL_WANTS_BATTLE
 
+	ld a, [wMoreGameplayOptions]
+	bit 0, a
+	jr z, .next ; no levelcaps
+	; else
+	; display new level cap to the player
+	callfar GetLevelCap
+	ld a, $10
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
+.next
 	; force afterbattle dialogue to ensure Giovani is gone
 	ld a, $1
 	ld [hSpriteIndexOrTextID], a
@@ -195,6 +205,7 @@ ViridianGymTextPointers:
 	dw ViridianGymText_Badge
 	dw ViridianGymText_ReceivedTM
 	dw ViridianGymText_BagFull
+	dw ViridianGymText_LevelCap
 
 ViridianGymTrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_VIRIDIAN_GYM_TRAINER_0
@@ -323,8 +334,26 @@ ViridianGymText_LeaderEndBattle:
 	db "@"
 
 ViridianGymText_LeaderAfterBattle:
+	TX_ASM
+	ld a, [wMoreGameplayOptions]
+	bit 0, a
+	jr z, .next ; no levelcaps
+	; else
+	; display new level cap to the player
+	callfar GetLevelCap
+	ld hl, ViridianGymText_LevelCap
+	call PrintText
+.next
+	ld hl, .LeaderAfterBattle
+	call PrintText
+	jp TextScriptEnd
+.LeaderAfterBattle
 	TX_FAR _ViridianGymText_LeaderAfterBattle
 	TX_WAIT
+	db "@"
+
+ViridianGymText_LevelCap:
+	TX_FAR _DisplayLevelCap
 	db "@"
 
 ViridianGymText_Badge:

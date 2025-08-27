@@ -56,8 +56,9 @@ _CeladonGymText_LeaderAfterBattle::
 _CeladonGymText_Badge::
 	text "Le Badge Prisme"
 	line "fera obéir les"
-	cont "#mon jusqu'au"
-	cont "Niveau 50."
+	cont "#mon échangés"
+	cont "jusqu'au"
+	cont "Niveau 55."
 
 	para "Il permet aussi"
 	line "aux #mon"

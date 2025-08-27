@@ -47,8 +47,9 @@ _SaffronGymText_LeaderAfterBattle::
 _SaffronGymText_Badge::
 	text "Avec le Badge"
 	line "Marais, les"
-	cont "#mon de niveau"
-	cont "70 t'obéiront!"
+	cont "#mon échangés"
+	cont "de Niveau"
+	cont "55 t'obéiront!"
 
 	para "Les #mon plus"
 	line "puissants seront"

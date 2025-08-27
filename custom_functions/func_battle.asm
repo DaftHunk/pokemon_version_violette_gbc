@@ -753,13 +753,13 @@ DoDisobeyLevelCheck:
 ; the value for no badges must be non-zero
 ObedienceLevelsTraded:
 	db 10	;no badges
-	db 0	;boulder badge
+	db 20	;boulder badge
 	db 30	;cascade badge
-	db 0	;thunder badge
-	db 50	;rainbow badge
-	db 0	;soul badge
-	db 70	;marsh badge
-	db 0	;volcano badge
+	db 40	;thunder badge
+	db 55	;rainbow badge
+	db 55	;soul badge
+	db 55	;marsh badge
+	db 70	;volcano badge
 	db 255	;earth badge
 
 ;returns the levelcap based on badges back into D

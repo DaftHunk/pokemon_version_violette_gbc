@@ -1520,6 +1520,14 @@ _HitXTimesText::
 	text " fois!"
 	prompt
 
+_DisplayLevelCap::
+	text "Tu peux entrainer"
+	line "tes #mon jus-"
+	cont "qu'au niveau @"
+	text_decimal wMaxLevel, 1, 3
+	text "!"
+	prompt
+
 _LevelCappedText::
 	text_ram wcd6d
 	text " est au"

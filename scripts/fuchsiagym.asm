@@ -70,6 +70,16 @@ FuchsiaGymScript_GiveTM:
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_FUCHSIA_GYM_TRAINER_0, EVENT_BEAT_FUCHSIA_GYM_JANINE
 
+	ld a, [wMoreGameplayOptions]
+	bit 0, a
+	jr z, .next ; no levelcaps
+	; else
+	; display new level cap to the player
+	callfar GetLevelCap
+	ld a, $c
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
+.next
 	jp FuchsiaGymScript_Reset
 
 FuchsiaGymTextPointers:
@@ -84,6 +94,7 @@ FuchsiaGymTextPointers:
 	dw FuchsiaGymText_Badge
 	dw FuchsiaGymText_ReceiveTM
 	dw FuchsiaGymText_BagFull
+	dw FuchsiaGymText_LevelCap
 
 FuchsiaGymTrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_TRAINER_0
@@ -241,7 +252,25 @@ FuchsiaGymText_LeaderEndBattle:
 	db "@"
 
 FuchsiaGymText_LeaderAfterBattle:
+	TX_ASM
+	ld a, [wMoreGameplayOptions]
+	bit 0, a
+	jr z, .next ; no levelcaps
+	; else
+	; display new level cap to the player
+	callfar GetLevelCap
+	ld hl, FuchsiaGymText_LevelCap
+	call PrintText
+.next
+	ld hl, .LeaderAfterBattle
+	call PrintText
+	jp TextScriptEnd
+.LeaderAfterBattle
 	TX_FAR _FuchsiaGymText_LeaderAfterBattle
+	db "@"
+
+FuchsiaGymText_LevelCap:
+	TX_FAR _DisplayLevelCap
 	db "@"
 
 FuchsiaGymText_Badge:

@@ -1503,6 +1503,12 @@ ItemUseMedicine:
 	call PrintText
 	jp GBPalWhiteOut
 
+.levelMax
+	pop hl	;pop wPartyMonX
+	ld hl, LevelMaxText
+	call PrintText
+	jp GBPalWhiteOut
+
 .recalculateStats
 	push hl		;push wPartyMonX
 	ld bc, wPartyMon1MaxHP - wPartyMon1
@@ -1562,7 +1568,7 @@ ItemUseMedicine:
 	pop hl ; retrieve mon's level
 	ld a, [hl] ; a = level
 	cp b ; MAX_LEVEL on normal mode else levelcap
-	jr nc, .vitaminNoEffect ; can't raise level above cap ; Carry is better than zero here.
+	jr nc, .levelMax ; can't raise level above cap ; Carry is better than zero here.
 	inc a
 	ld [hl], a ; store incremented level
 	ld [wCurEnemyLVL], a
@@ -1579,7 +1585,7 @@ ItemUseMedicine:
 	dec a
 	ld [hl], a
 	ld [wCurEnemyLVL], a
-	jr .vitaminNoEffect
+	jr .levelMax
 .candy_continue
 	ld bc, wPartyMon1Exp - wPartyMon1Level
 	add hl, bc ; hl now points to MSB of experience
@@ -1637,6 +1643,10 @@ VitaminStatRoseText:
 
 VitaminNoEffectText:
 	TX_FAR _VitaminNoEffectText
+	db "@"
+
+LevelMaxText:
+	TX_FAR _LevelCappedText
 	db "@"
 
 VitaminText:
