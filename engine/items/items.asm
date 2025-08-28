@@ -3243,6 +3243,8 @@ IsNextTileShoreOrWater:
 	; fall through
 WaterTileSetIsNextTileShoreOrWater::
 	ld a, [wCurMapTileset]
+	cp CAVERN ; PureRGBnote: ADDED: fixes an issue with the unused tiles in the cavern tileset causing surf incorrectly (they are used now)
+	jr z, .skipShoreTiles
 	cp SHIP_PORT ; Vermilion Dock tileset
 	jr z, .skipShoreTiles ; if it's the Vermilion Dock tileset
 	cp SHIP ; SS Anne tileset
