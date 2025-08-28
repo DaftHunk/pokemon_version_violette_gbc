@@ -206,8 +206,7 @@ CeladonGymText_Erika:
 	; Else only one of them is
 	CheckEitherEventSet EVENT_BEAT_KOGA, EVENT_BEAT_SABRINA
 	jr nz, .erika2
-	; Else none of them are defeated
-	jr .erika1
+	; Else none of them are defeated fallthrough
 .erika1
 	ld a, 1	;get the right roster
 	ld [wTrainerNo], a
@@ -219,7 +218,7 @@ CeladonGymText_Erika:
 .erika3
 	ld a, 3	;get the right roster
 	ld [wTrainerNo], a
-	jr .afterBattle
+	; fallthrough
 .afterBattle
 ;;;;joenote - added for rematch to skip gym leader tm
 	CheckEvent EVENT_GOT_TM21
@@ -316,6 +315,7 @@ CeladonGymText_RematchEndBattle:
 
 CeladonGymText_Trainer0:
 	TX_ASM
+	SetEvent EVENT_TRAINER_LVL_SCALING
 	ld hl, CeladonGymTrainerHeader0
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -326,14 +326,17 @@ CeladonGymText_Trainer0PreBattle:
 
 CeladonGymText_Trainer0EndBattle:
 	TX_FAR _CeladonGymText_Trainer0EndBattle
-	db "@"
+	TX_ASM
+	jp CeladonGymText_StopLevelScaling
 
 CeladonGymText_Trainer0AfterBattle:
 	TX_FAR _CeladonGymText_Trainer0AfterBattle
-	db "@"
+	TX_ASM
+	jp CeladonGymText_StopLevelScaling
 
 CeladonGymText_Trainer1:
 	TX_ASM
+	SetEvent EVENT_TRAINER_LVL_SCALING
 	ld hl, CeladonGymTrainerHeader1
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -344,14 +347,17 @@ CeladonGymText_Trainer1PreBattle:
 
 CeladonGymText_Trainer1EndBattle:
 	TX_FAR _CeladonGymText_Trainer1EndBattle
-	db "@"
+	TX_ASM
+	jp CeladonGymText_StopLevelScaling
 
 CeladonGymText_Trainer1AfterBattle:
 	TX_FAR _CeladonGymText_Trainer1AfterBattle
-	db "@"
+	TX_ASM
+	jp CeladonGymText_StopLevelScaling
 
 CeladonGymText_Trainer2:
 	TX_ASM
+	SetEvent EVENT_TRAINER_LVL_SCALING
 	ld hl, CeladonGymTrainerHeader2
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -362,14 +368,17 @@ CeladonGymText_Trainer2PreBattle:
 
 CeladonGymText_Trainer2EndBattle:
 	TX_FAR _CeladonGymText_Trainer2EndBattle
-	db "@"
+	TX_ASM
+	jp CeladonGymText_StopLevelScaling
 
 CeladonGymText_Trainer2AfterBattle:
 	TX_FAR _CeladonGymText_Trainer2AfterBattle
-	db "@"
+	TX_ASM
+	jp CeladonGymText_StopLevelScaling
 
 CeladonGymText_Trainer3:
 	TX_ASM
+	SetEvent EVENT_TRAINER_LVL_SCALING
 	ld hl, CeladonGymTrainerHeader3
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -380,14 +389,17 @@ CeladonGymText_Trainer3PreBattle:
 
 CeladonGymText_Trainer3EndBattle:
 	TX_FAR _CeladonGymText_Trainer3EndBattle
-	db "@"
+	TX_ASM
+	jr CeladonGymText_StopLevelScaling
 
 CeladonGymText_Trainer3AfterBattle:
 	TX_FAR _CeladonGymText_Trainer3AfterBattle
-	db "@"
+	TX_ASM
+	jr CeladonGymText_StopLevelScaling
 
 CeladonGymText_Trainer4:
 	TX_ASM
+	SetEvent EVENT_TRAINER_LVL_SCALING
 	ld hl, CeladonGymTrainerHeader4
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -398,14 +410,17 @@ CeladonGymText_Trainer4PreBattle:
 
 CeladonGymText_Trainer4EndBattle:
 	TX_FAR _CeladonGymText_Trainer4EndBattle
-	db "@"
+	TX_ASM
+	jr CeladonGymText_StopLevelScaling
 
 CeladonGymText_Trainer4AfterBattle:
 	TX_FAR _CeladonGymText_Trainer4AfterBattle
-	db "@"
+	TX_ASM
+	jr CeladonGymText_StopLevelScaling
 
 CeladonGymText_Trainer5:
 	TX_ASM
+	SetEvent EVENT_TRAINER_LVL_SCALING
 	ld hl, CeladonGymTrainerHeader5
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -416,14 +431,17 @@ CeladonGymText_Trainer5PreBattle:
 
 CeladonGymText_Trainer5EndBattle:
 	TX_FAR _CeladonGymText_Trainer5EndBattle
-	db "@"
+	TX_ASM
+	jr CeladonGymText_StopLevelScaling
 
 CeladonGymText_Trainer5AfterBattle:
 	TX_FAR _CeladonGymText_Trainer5AfterBattle
-	db "@"
+	TX_ASM
+	jr CeladonGymText_StopLevelScaling
 
 CeladonGymText_Trainer6:
 	TX_ASM
+	SetEvent EVENT_TRAINER_LVL_SCALING
 	ld hl, CeladonGymTrainerHeader6
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -434,11 +452,20 @@ CeladonGymText_Trainer6PreBattle:
 
 CeladonGymText_Trainer6EndBattle:
 	TX_FAR _CeladonGymText_Trainer6EndBattle
-	db "@"
+	TX_ASM
+	jr CeladonGymText_StopLevelScaling
 
 CeladonGymText_Trainer6AfterBattle:
 	TX_FAR _CeladonGymText_Trainer6AfterBattle
-	db "@"
+	TX_ASM
+	jr CeladonGymText_StopLevelScaling
+
+CeladonGymText_StopLevelScaling:
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .skip ; keep scaling after league
+	ResetEvent EVENT_TRAINER_LVL_SCALING
+.skip
+	jp TextScriptEnd
 	
 VenusaurTutor:
 	ld a, [wPartyMon1Species]

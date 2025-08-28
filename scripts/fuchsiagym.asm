@@ -195,11 +195,13 @@ FuchsiaGymText_Koga:
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
 
-	; Check if Erika is defeated
-	CheckEvent EVENT_BEAT_ERIKA
+	; Check if both Erika and Sabrina are defeated
+	CheckBothEventsSet EVENT_BEAT_ERIKA, EVENT_BEAT_SABRINA
+	jr z, .koga3
+	; Else only one of them is
+	CheckEitherEventSet EVENT_BEAT_ERIKA, EVENT_BEAT_SABRINA
 	jr nz, .koga2
-	; Else
-	jr .koga1
+	; Else none of them are defeated fallthrough
 .koga1
 	ld a, 1	;get the right roster
 	ld [wTrainerNo], a
@@ -208,6 +210,10 @@ FuchsiaGymText_Koga:
 	ld a, 2	;get the right roster
 	ld [wTrainerNo], a
 	jr .afterBattle
+.koga3
+	ld a, 3	;get the right roster
+	ld [wTrainerNo], a
+	; fallthrough
 .afterBattle
 ;;;;joenote - added for rematch to skip gym leader tm
 	CheckEvent EVENT_GOT_TM06
@@ -234,7 +240,7 @@ FuchsiaGymText_Koga:
 	ld [wSpriteIndex], a
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
-	ld a, 3	;get the right roster
+	ld a, 4	;get the right roster
 	ld [wTrainerNo], a
 	xor a
 	ld [hJoyHeld], a
@@ -309,6 +315,7 @@ FuchsiaGymText_RematchEndBattle:
 
 FuchsiaGymText_Trainer0:
 	TX_ASM
+	SetEvent EVENT_TRAINER_LVL_SCALING
 	ld hl, FuchsiaGymTrainerHeader0
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -319,14 +326,17 @@ FuchsiaGymText_Trainer0PreBattle:
 
 FuchsiaGymText_Trainer0EndBattle:
 	TX_FAR _FuchsiaGymText_Trainer0EndBattle
-	db "@"
+	TX_ASM
+	jp FuchsiaGymText_StopLevelScaling
 
 FuchsiaGymText_Trainer0AfterBattle:
 	TX_FAR _FuchsiaGymText_Trainer0AfterBattle
-	db "@"
+	TX_ASM
+	jp FuchsiaGymText_StopLevelScaling
 
 FuchsiaGymText_Trainer1:
 	TX_ASM
+	SetEvent EVENT_TRAINER_LVL_SCALING
 	ld hl, FuchsiaGymTrainerHeader1
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -337,14 +347,17 @@ FuchsiaGymText_Trainer1PreBattle:
 
 FuchsiaGymText_Trainer1EndBattle:
 	TX_FAR _FuchsiaGymText_Trainer1EndBattle
-	db "@"
+	TX_ASM
+	jp FuchsiaGymText_StopLevelScaling
 
 FuchsiaGymText_Trainer1AfterBattle:
 	TX_FAR _FuchsiaGymText_Trainer1AfterBattle
-	db "@"
+	TX_ASM
+	jp FuchsiaGymText_StopLevelScaling
 
 FuchsiaGymText_Trainer2:
 	TX_ASM
+	SetEvent EVENT_TRAINER_LVL_SCALING
 	ld hl, FuchsiaGymTrainerHeader2
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -355,14 +368,17 @@ FuchsiaGymText_Trainer2PreBattle:
 
 FuchsiaGymText_Trainer2EndBattle:
 	TX_FAR _FuchsiaGymText_Trainer2EndBattle
-	db "@"
+	TX_ASM
+	jr FuchsiaGymText_StopLevelScaling
 
 FuchsiaGymText_Trainer2AfterBattle:
 	TX_FAR _FuchsiaGymText_Trainer2AfterBattle
-	db "@"
+	TX_ASM
+	jr FuchsiaGymText_StopLevelScaling
 
 FuchsiaGymText_Trainer3:
 	TX_ASM
+	SetEvent EVENT_TRAINER_LVL_SCALING
 	ld hl, FuchsiaGymTrainerHeader3
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -373,14 +389,17 @@ FuchsiaGymText_Trainer3PreBattle:
 
 FuchsiaGymText_Trainer3EndBattle:
 	TX_FAR _FuchsiaGymText_Trainer3EndBattle
-	db "@"
+	TX_ASM
+	jr FuchsiaGymText_StopLevelScaling
 
 FuchsiaGymText_Trainer3AfterBattle:
 	TX_FAR _FuchsiaGymText_Trainer3AfterBattle
-	db "@"
+	TX_ASM
+	jr FuchsiaGymText_StopLevelScaling
 
 FuchsiaGymText_Trainer4:
 	TX_ASM
+	SetEvent EVENT_TRAINER_LVL_SCALING
 	ld hl, FuchsiaGymTrainerHeader4
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -391,14 +410,17 @@ FuchsiaGymText_Trainer4PreBattle:
 
 FuchsiaGymText_Trainer4EndBattle:
 	TX_FAR _FuchsiaGymText_Trainer4EndBattle
-	db "@"
+	TX_ASM
+	jr FuchsiaGymText_StopLevelScaling
 
 FuchsiaGymText_Trainer4AfterBattle:
 	TX_FAR _FuchsiaGymText_Trainer4AfterBattle
-	db "@"
+	TX_ASM
+	jr FuchsiaGymText_StopLevelScaling
 
 FuchsiaGymJanineText:
 	TX_ASM
+	SetEvent EVENT_TRAINER_LVL_SCALING
 	ld hl, FuchsiaGymJanineHeader
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -409,11 +431,20 @@ FuchsiaGymText_JaninePreBattle:
 
 FuchsiaGymText_JanineEndBattle:
 	TX_FAR _FuchsiaGymText_JanineEndBattle
-	db "@"
+	TX_ASM
+	jr FuchsiaGymText_StopLevelScaling
 
 FuchsiaGymText_JanineAfterBattle:
 	TX_FAR _FuchsiaGymText_JanineAfterBattle
-	db "@"
+	TX_ASM
+	jr FuchsiaGymText_StopLevelScaling
+
+FuchsiaGymText_StopLevelScaling:
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .skip ; keep scaling after league
+	ResetEvent EVENT_TRAINER_LVL_SCALING
+.skip
+	jp TextScriptEnd
 
 FuchsiaGymText_Guide:
 	TX_ASM

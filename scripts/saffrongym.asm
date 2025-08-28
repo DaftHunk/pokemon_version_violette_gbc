@@ -66,12 +66,16 @@ SaffronGymText_GiveTM:
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_SAFFRON_GYM_TRAINER_0, EVENT_BEAT_SAFFRON_GYM_TRAINER_6
 
+	ld a, [wMoreGameplayOptions]
+	bit 0, a
+	jr z, .next ; no levelcaps
+	; else
 	; display new level cap to the player
 	callfar GetLevelCap
 	ld a, $d
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
-
+.next
 	jp SaffronGymScript_Reset
 
 SaffronGymTextPointers:
@@ -197,11 +201,13 @@ SaffronGymText_Sabrina:
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
 
-	; Check if Erika is defeated
-	CheckEvent EVENT_BEAT_ERIKA
+	; Check if both Koga and Erika are defeated
+	CheckBothEventsSet EVENT_BEAT_KOGA, EVENT_BEAT_ERIKA
+	jr z, .sabrina3
+	; Else only one of them is
+	CheckEitherEventSet EVENT_BEAT_KOGA, EVENT_BEAT_ERIKA
 	jr nz, .sabrina2
-	; Else
-	jr .sabrina1
+	; Else none of them are defeated fallthrough
 .sabrina1
 	ld a, 1	;get the right roster
 	ld [wTrainerNo], a
@@ -210,6 +216,10 @@ SaffronGymText_Sabrina:
 	ld a, 2	;get the right roster
 	ld [wTrainerNo], a
 	jr .afterBattle
+.sabrina3
+	ld a, 3	;get the right roster
+	ld [wTrainerNo], a
+	; fallthrough
 .afterBattle
 	xor a
 	ld [hJoyHeld], a
@@ -235,7 +245,7 @@ SaffronGymText_Sabrina:
 	ld [wSpriteIndex], a
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
-	ld a, 3	;get the right roster
+	ld a, 4	;get the right roster
 	ld [wTrainerNo], a
 	xor a
 	ld [hJoyHeld], a
@@ -309,42 +319,49 @@ SaffronGymText_RematchEndBattle:
 
 SaffronGymText_Trainer0:
 	TX_ASM
+	SetEvent EVENT_TRAINER_LVL_SCALING
 	ld hl, SaffronGymTrainerHeader0
 	call TalkToTrainer
 	jp TextScriptEnd
 
 SaffronGymText_Trainer1:
 	TX_ASM
+	SetEvent EVENT_TRAINER_LVL_SCALING
 	ld hl, SaffronGymTrainerHeader1
 	call TalkToTrainer
 	jp TextScriptEnd
 
 SaffronGymText_Trainer2:
 	TX_ASM
+	SetEvent EVENT_TRAINER_LVL_SCALING
 	ld hl, SaffronGymTrainerHeader2
 	call TalkToTrainer
 	jp TextScriptEnd
 
 SaffronGymText_Trainer3:
 	TX_ASM
+	SetEvent EVENT_TRAINER_LVL_SCALING
 	ld hl, SaffronGymTrainerHeader3
 	call TalkToTrainer
 	jp TextScriptEnd
 
 SaffronGymText_Trainer4:
 	TX_ASM
+	SetEvent EVENT_TRAINER_LVL_SCALING
 	ld hl, SaffronGymTrainerHeader4
 	call TalkToTrainer
 	jp TextScriptEnd
 
 SaffronGymText_Trainer5:
 	TX_ASM
+	SetEvent EVENT_TRAINER_LVL_SCALING
 	ld hl, SaffronGymTrainerHeader5
 	call TalkToTrainer
 	jp TextScriptEnd
 
 SaffronGymText_Trainer6:
 	TX_ASM
+	SetEvent EVENT_TRAINER_LVL_SCALING
 	ld hl, SaffronGymTrainerHeader6
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -376,11 +393,13 @@ SaffronGymText_Trainer0PreBattle:
 
 SaffronGymText_Trainer0EndBattle:
 	TX_FAR _SaffronGymText_Trainer0EndBattle
-	db "@"
+	TX_ASM
+	jr SaffronGymText_StopLevelScaling
 
 SaffronGymText_Trainer0AfterBattle:
 	TX_FAR _SaffronGymText_Trainer0AfterBattle
-	db "@"
+	TX_ASM
+	jr SaffronGymText_StopLevelScaling
 
 SaffronGymText_Trainer1PreBattle:
 	TX_FAR _SaffronGymText_Trainer1PreBattle
@@ -388,11 +407,13 @@ SaffronGymText_Trainer1PreBattle:
 
 SaffronGymText_Trainer1EndBattle:
 	TX_FAR _SaffronGymText_Trainer1EndBattle
-	db "@"
+	TX_ASM
+	jr SaffronGymText_StopLevelScaling
 
 SaffronGymText_Trainer1AfterBattle:
 	TX_FAR _SaffronGymText_Trainer1AfterBattle
-	db "@"
+	TX_ASM
+	jr SaffronGymText_StopLevelScaling
 
 SaffronGymText_Trainer2PreBattle:
 	TX_FAR _SaffronGymText_Trainer2PreBattle
@@ -400,11 +421,13 @@ SaffronGymText_Trainer2PreBattle:
 
 SaffronGymText_Trainer2EndBattle:
 	TX_FAR _SaffronGymText_Trainer2EndBattle
-	db "@"
+	TX_ASM
+	jr SaffronGymText_StopLevelScaling
 
 SaffronGymText_Trainer2AfterBattle:
 	TX_FAR _SaffronGymText_Trainer2AfterBattle
-	db "@"
+	TX_ASM
+	jr SaffronGymText_StopLevelScaling
 
 SaffronGymText_Trainer3PreBattle:
 	TX_FAR _SaffronGymText_Trainer3PreBattle
@@ -412,11 +435,13 @@ SaffronGymText_Trainer3PreBattle:
 
 SaffronGymText_Trainer3EndBattle:
 	TX_FAR _SaffronGymText_Trainer3EndBattle
-	db "@"
+	TX_ASM
+	jr SaffronGymText_StopLevelScaling
 
 SaffronGymText_Trainer3AfterBattle:
 	TX_FAR _SaffronGymText_Trainer3AfterBattle
-	db "@"
+	TX_ASM
+	jr SaffronGymText_StopLevelScaling
 
 SaffronGymText_Trainer4PreBattle:
 	TX_FAR _SaffronGymText_Trainer4PreBattle
@@ -424,11 +449,13 @@ SaffronGymText_Trainer4PreBattle:
 
 SaffronGymText_Trainer4EndBattle:
 	TX_FAR _SaffronGymText_Trainer4EndBattle
-	db "@"
+	TX_ASM
+	jr SaffronGymText_StopLevelScaling
 
 SaffronGymText_Trainer4AfterBattle:
 	TX_FAR _SaffronGymText_Trainer4AfterBattle
-	db "@"
+	TX_ASM
+	jr SaffronGymText_StopLevelScaling
 
 SaffronGymText_Trainer5PreBattle:
 	TX_FAR _SaffronGymText_Trainer5PreBattle
@@ -436,11 +463,13 @@ SaffronGymText_Trainer5PreBattle:
 
 SaffronGymText_Trainer5EndBattle:
 	TX_FAR _SaffronGymText_Trainer5EndBattle
-	db "@"
+	TX_ASM
+	jr SaffronGymText_StopLevelScaling
 
 SaffronGymText_Trainer5AfterBattle:
 	TX_FAR _SaffronGymText_Trainer5AfterBattle
-	db "@"
+	TX_ASM
+	jr SaffronGymText_StopLevelScaling
 
 SaffronGymText_Trainer6PreBattle:
 	TX_FAR _SaffronGymText_Trainer6PreBattle
@@ -448,11 +477,20 @@ SaffronGymText_Trainer6PreBattle:
 
 SaffronGymText_Trainer6EndBattle:
 	TX_FAR _SaffronGymText_Trainer6EndBattle
-	db "@"
+	TX_ASM
+	jr SaffronGymText_StopLevelScaling
 
 SaffronGymText_Trainer6AfterBattle:
 	TX_FAR _SaffronGymText_Trainer6AfterBattle
-	db "@"
+	TX_ASM
+	jr SaffronGymText_StopLevelScaling
+
+SaffronGymText_StopLevelScaling:
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .skip ; keep scaling after league
+	ResetEvent EVENT_TRAINER_LVL_SCALING
+.skip
+	jp TextScriptEnd
 
 NinetalesTutor:
 	ld a, [wPartyMon1Species]

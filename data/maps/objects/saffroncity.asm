@@ -26,7 +26,7 @@ SaffronCityObject:
 	db 15 ; objects
 	object SPRITE_ROCKET, 7, 6, STAY, NONE, 1 ; person
 	object SPRITE_ROCKET, 20, 8, WALK, 2, 2 ; person
-	object SPRITE_ROCKET, 34, 4, STAY, NONE, 3 ; person
+	object SPRITE_ROCKET, 29, 4, WALK, 2, 3 ; person
 	object SPRITE_ROCKET, 13, 12, STAY, NONE, 4 ; person
 	object SPRITE_ROCKET, 11, 25, WALK, 2, 5 ; person
 	object SPRITE_ROCKET, 32, 13, WALK, 2, 6 ; person
