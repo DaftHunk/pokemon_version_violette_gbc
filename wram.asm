@@ -3034,7 +3034,7 @@ wVolcano1FCurScript:: ; d670
 wVolcanoB1FCurScript:: ; d670
 wVolcanoB2FCurScript:: ; d670
 	ds 1
-wTempFieldMoveSLots::	;joenote - for field move slot
+wTempFieldMoveSlots::	;joenote - for field move slot
 	ds 6
 wBagBackupSpace::	;joenote - added to expand the bag space (62 bytes long)
 wBagNumBackup::

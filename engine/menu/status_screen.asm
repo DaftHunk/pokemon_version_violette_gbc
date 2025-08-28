@@ -355,7 +355,7 @@ PrintStatsBox:
 	jp nz, .doregular
 
 	ld a, [wStatsToDisplay]
-	bit 2, a
+	bit BIT_SELECT, a
 
 	jp z, .checkstart
 	dec l	;shift alignment 2 tiles to the left
@@ -443,7 +443,7 @@ PrintStatsBox:
 
 	jp PrintNumber
 .checkstart	;joenote - print DVs
-	bit 1, a
+	bit BIT_START, a
 	jr z, .doregular
 	
 	ld de, wUnusedD722
@@ -723,7 +723,7 @@ PlaceTempFieldMove:	;joenote - for field move slot
 	ld a, [wWhichPokemon]
 	ld c, a
 	ld b,0
-	ld hl, wTempFieldMoveSLots
+	ld hl, wTempFieldMoveSlots
 	add hl, bc
 	ld a, [hl]
 	and a
