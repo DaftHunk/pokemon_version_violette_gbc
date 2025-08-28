@@ -265,7 +265,7 @@ FuchsiaGymText_LeaderAfterBattle:
 	; else
 	; display new level cap to the player
 	callfar GetLevelCap
-	ld hl, FuchsiaGymText_LevelCap
+	ld hl, FuchsiaGymText_LevelCapWait
 	call PrintText
 .next
 	ld hl, .LeaderAfterBattle
@@ -275,9 +275,15 @@ FuchsiaGymText_LeaderAfterBattle:
 	TX_FAR _FuchsiaGymText_LeaderAfterBattle
 	db "@"
 
+FuchsiaGymText_LevelCapWait:
+	TX_FAR _DisplayLevelCap
+	TX_WAIT
+	db "@"
+
 FuchsiaGymText_LevelCap:
 	TX_FAR _DisplayLevelCap
 	db "@"
+
 
 FuchsiaGymText_Badge:
 	TX_FAR _FuchsiaGymText_Badge

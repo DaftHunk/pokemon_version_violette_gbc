@@ -199,7 +199,7 @@ PewterGymText_LeaderAfterBattle:
 	; else
 	; display new level cap to the player
 	callfar GetLevelCap
-	ld hl, PewterGymText_LevelCap
+	ld hl, PewterGymText_LevelCapWait
 	call PrintText
 .next
 	ld hl, .LeaderAfterBattle
@@ -207,6 +207,11 @@ PewterGymText_LeaderAfterBattle:
 	jp TextScriptEnd
 .LeaderAfterBattle
 	TX_FAR _PewterGymText_LeaderAfterBattle
+	db "@"
+
+PewterGymText_LevelCapWait:
+	TX_FAR _DisplayLevelCap
+	TX_WAIT
 	db "@"
 
 PewterGymText_LevelCap:

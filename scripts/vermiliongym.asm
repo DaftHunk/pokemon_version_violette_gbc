@@ -225,7 +225,7 @@ VermilionGymText_LeaderAfterBattle:
 	; else
 	; display new level cap to the player
 	callfar GetLevelCap
-	ld hl, VermilionGymText_LevelCap
+	ld hl, VermilionGymText_LevelCapWait
 	call PrintText
 .next
 	ld hl, .LeaderAfterBattle
@@ -233,6 +233,11 @@ VermilionGymText_LeaderAfterBattle:
 	jp TextScriptEnd
 .LeaderAfterBattle
 	TX_FAR _VermilionGymText_LeaderAfterBattle
+	db "@"
+
+VermilionGymText_LevelCapWait:
+	TX_FAR _DisplayLevelCap
+	TX_WAIT
 	db "@"
 
 VermilionGymText_LevelCap:

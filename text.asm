@@ -1526,7 +1526,7 @@ _DisplayLevelCap::
 	cont "qu'au niveau @"
 	text_decimal wMaxLevel, 1, 3
 	text "!"
-	prompt
+	done
 
 _LevelCappedText::
 	text_ram wcd6d

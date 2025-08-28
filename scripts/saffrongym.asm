@@ -272,7 +272,7 @@ SaffronGymText_LeaderAfterBattle:
 	; else
 	; display new level cap to the player
 	callfar GetLevelCap
-	ld hl, SaffronGymText_LevelCap
+	ld hl, SaffronGymText_LevelCapWait
 	call PrintText
 .next
 	ld hl, .LeaderAfterBattle
@@ -280,6 +280,11 @@ SaffronGymText_LeaderAfterBattle:
 	jp TextScriptEnd
 .LeaderAfterBattle
 	TX_FAR _SaffronGymText_LeaderAfterBattle
+	db "@"
+
+SaffronGymText_LevelCapWait:
+	TX_FAR _DisplayLevelCap
+	TX_WAIT
 	db "@"
 
 SaffronGymText_LevelCap:

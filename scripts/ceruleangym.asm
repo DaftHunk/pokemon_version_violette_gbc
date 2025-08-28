@@ -195,7 +195,7 @@ CeruleanGymText_LeaderAfterBattle:
 	; else
 	; display new level cap to the player
 	callfar GetLevelCap
-	ld hl, CeruleanGymText_LevelCap
+	ld hl, CeruleanGymText_LevelCapWait
 	call PrintText
 .next
 	ld hl, .LeaderAfterBattle
@@ -203,6 +203,11 @@ CeruleanGymText_LeaderAfterBattle:
 	jp TextScriptEnd
 .LeaderAfterBattle
 	TX_FAR _CeruleanGymText_LeaderAfterBattle
+	db "@"
+
+CeruleanGymText_LevelCapWait:
+	TX_FAR _DisplayLevelCap
+	TX_WAIT
 	db "@"
 
 CeruleanGymText_LevelCap:

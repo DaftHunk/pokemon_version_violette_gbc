@@ -268,7 +268,7 @@ CeladonGymText_LeaderAfterBattle:
 	; else
 	; display new level cap to the player
 	callfar GetLevelCap
-	ld hl, CeladonGymText_LevelCap
+	ld hl, CeladonGymText_LevelCapWait
 	call PrintText
 .next
 	ld hl, .LeaderAfterBattle
@@ -276,6 +276,11 @@ CeladonGymText_LeaderAfterBattle:
 	jp TextScriptEnd
 .LeaderAfterBattle
 	TX_FAR _CeladonGymText_LeaderAfterBattle
+	db "@"
+
+CeladonGymText_LevelCapWait:
+	TX_FAR _DisplayLevelCap
+	TX_WAIT
 	db "@"
 
 CeladonGymText_LevelCap:

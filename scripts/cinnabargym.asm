@@ -294,7 +294,7 @@ BlaineFireBlastText:
 	; else
 	; display new level cap to the player
 	callfar GetLevelCap
-	ld hl, CinnabarGymText_LevelCap
+	ld hl, CinnabarGymText_LevelCapWait
 	call PrintText
 .next
 	ld hl, .LeaderAfterBattle
@@ -302,6 +302,11 @@ BlaineFireBlastText:
 	jp TextScriptEnd
 .LeaderAfterBattle
 	TX_FAR _BlaineFireBlastText
+	db "@"
+
+CinnabarGymText_LevelCapWait:
+	TX_FAR _DisplayLevelCap
+	TX_WAIT
 	db "@"
 
 CinnabarGymText_LevelCap:
