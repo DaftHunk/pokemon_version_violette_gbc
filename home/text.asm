@@ -109,6 +109,7 @@ ENDM
 	dict $5C, TMChar ; TM
 	dict $5D, TrainerChar ; TRAINER
 	dict $55, ContText ; cont
+	dict $56, DotsChar ; dot
 	dict $57, DoneText ; done
 	dict $58, PromptText ; prompt
 	dict $4A, PKMNChar ; PKMN
@@ -169,6 +170,11 @@ PokeChar:: ; POKé
 	ld de, PokeCharText
 	jr FinishDTE
 
+DotsChar:: ; .
+	push de
+	ld de, ThreeDotsText
+	jr FinishDTE
+
 PKMNChar:: ; PKMN
 	push de
 	ld de, PokemonText
@@ -223,6 +229,8 @@ RocketCharText::
 	db "Rocket@"
 PokeCharText::
 	db "Poké@"
+ThreeDotsText::
+	db ".@"
 OpponentText::
 	db "@ ennemi"
 PokemonText::
@@ -702,6 +710,35 @@ TextCommandSounds::
 	db $15, PIDGEOT  ; used in SaffronCityText12
 	db $16, DEWGONG  ; unused?
 
+; draw ellipses
+; 0CAA
+; AA = number of ellipses to draw
+TextCommand_DOTS::
+	pop hl
+	ld a, [hli]
+	ld d, a
+	push hl
+	ld h, b
+	ld l, c
+.loop
+	ld a, "."
+	ld [hli], a
+	push de
+	call Joypad
+	pop de
+	ld a, [hJoyHeld] ; joypad state
+	and A_BUTTON | B_BUTTON
+	jr nz, .skipDelay ; if so, skip the delay
+	ld c, 10
+	call DelayFrames
+.skipDelay
+	dec d
+	jr nz, .loop
+	ld b, h
+	ld c, l
+	pop hl
+	jp NextTextCommand
+
 ; wait for A or B to be pressed
 ; 0D
 ; (no arguments)
@@ -768,6 +805,7 @@ ENDC
 	dw TextCommand_NUM           ; TX_NUM
 	dw TextCommand_PAUSE         ; TX_DELAY
 	dw TextCommand_SOUND         ; TX_SFX_ITEM_1 (also handles other TX_SOUND_* commands)
+	dw TextCommand_DOTS          ; TX_ELLIPSES
 	dw TextCommand_WAIT_BUTTON   ; TX_WAIT
 	dw TextCommand_JUMP          ; TX_JUMP
 	dw TextCommand_CALL          ; TX_CALL

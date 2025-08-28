@@ -55,10 +55,6 @@ ResetAllOptions: ;joenote - reset all the special options (like for patching-up)
 	set 4, a ; 60fps
 	set 7, a ; enhanced GBC colors
 	ld [wGameplayOptions], a
-
-	ld a, [wMoreGameplayOptions]
-	set 0, a ; levelcap
-	ld [wMoreGameplayOptions], a
 	
 	ResetEvent EVENT_ENABLE_WILD_RANDOM_TIERS
 	ResetEvent EVENT_ENABLE_NORMAL_TRAINER_RANDOMIZATION
