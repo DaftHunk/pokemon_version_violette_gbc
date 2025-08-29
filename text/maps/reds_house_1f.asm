@@ -53,3 +53,33 @@ _TVWrongSideText::
 	text "Oups, mauvais"
 	line "côté."
 	done
+
+_RedsHouse1FText_RunningShoes::
+	text "Mère: Au fait"
+	line "<PLAYER>!"
+
+	para "N'oublie pas d'"
+	line "essayer tes nou-"
+	cont "velles Chaussures"
+	cont "de Course en"
+	cont "maintenant le"
+	cont "button B!"
+
+	para "Ah et ton nouveau"
+	line "Sac de Randonnée"
+	cont "contient un 2ème"
+	cont "compartiment!"
+	cont "Tu peux passer de"
+	cont "l'un à l'autre"
+	cont "avec START."
+
+	para "Pense bien à"
+	line "adresser la"
+	cont "parole à tous"
+	cont "les inconnus!"
+
+	para "Et surtout"
+	line "n'oublie de"
+	cont "changer de slip"
+	cont "régulièrement!"
+	done

@@ -588,6 +588,14 @@ _PushStartText::
 	line "trier les objets"
 	cont "en maintenant"
 	cont "SELECT et START!"
+
+	para "Vous pouvez tran-"
+	line "sférer un objet"
+	cont "d'un compartiment"
+	cont "à l'autre en app-"
+	cont "uyant sur START"
+	cont "tout en mainte-"
+	cont "nant GAUCHE!"
 	done
 
 _SaveOptionText::

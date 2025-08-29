@@ -184,6 +184,14 @@ _Route13Text12::
 	cont "SELECT et START"
 	cont "pour trier les"
 	cont "objets!"
+
+	para "Vous pouvez tran-"
+	line "sférer un objet"
+	cont "d'un compartiment"
+	cont "à l'autre en app-"
+	cont "uyant sur START"
+	cont "tout en mainte-"
+	cont "nant GAUCHE!"
 	done
 
 _Route13Text13::
