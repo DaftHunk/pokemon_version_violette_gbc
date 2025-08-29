@@ -844,7 +844,7 @@ GainedText:
 	ld a, [wGainBoostedExp]
 	and a
 	ret z
-	ld hl, BoostedText
+;	ld hl, BoostedText
 	ret
 
 LevelCappedText:
