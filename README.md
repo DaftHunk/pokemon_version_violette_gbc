@@ -1,6 +1,7 @@
 # Pokémon Version Violette
 Romhack entièrement en français pour remasteriser le jeu sans le dénaturer. 
 L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellement.
+Ce projet se veut aussi comme une sorte de musée intéractif en restaurant de nombreux contenus coupés issue du code du jeu ou des bêtas qui aurait été perdu et oubliés autrement.  
 
 <img width="480" height="480" alt="Version Violette" src="https://github.com/user-attachments/assets/7c973d0f-55a9-4af4-b191-e554f6870ff4" />
 
@@ -18,6 +19,7 @@ Pour plus d'info, consultez le wiki dédié : https://github.com/DaftHunk/pokemo
 - [tournepivoine](https://github.com/tournepivoine/shinpokered-fr) pour sa traduction qui m'a beaucoup fait gagner de temps
 - [Red++](https://github.com/JustRegularLuna/rpp-backup/) pour les sprites de Pokéball, Pokédex et Carte
 - [Polished Crystal](https://github.com/Rangi42/polishedcrystal) pour certains sprites de génération 2
+- [The Cryptodex](https://lostpokedex.weebly.com/) et [Pokémon Red and Blue/Unseen Graphics](https://tcrf.net/Pok%C3%A9mon_Red_and_Blue/Unseen_Graphics) pour leur magnifique travail de préservation des contenus coupés
 - Alolan Marowak - Dave.K
 - Nurse Joy Battle Sprite - ZuperZACH
 - Officer Jenny Battle Sprite - Karlos
