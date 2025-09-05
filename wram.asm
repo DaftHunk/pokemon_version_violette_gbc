@@ -3138,8 +3138,8 @@ wRivalStarter:: ; d715
 
 wStatsToDisplay::
 	;0 = regular
-	;1 = DV
-	;2 = StatXP
+	;1 = IV
+	;2 = EV
 	ds 1
 
 wPlayerStarter:: ; d717

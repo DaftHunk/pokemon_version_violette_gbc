@@ -355,7 +355,7 @@ PrintStatsBox:
 	jp nz, .doregular
 
 	ld a, [wStatsToDisplay]
-	bit BIT_SELECT, a
+	bit 2, a
 
 	jp z, .checkstart
 	dec l	;shift alignment 2 tiles to the left
@@ -443,7 +443,7 @@ PrintStatsBox:
 
 	jp PrintNumber
 .checkstart	;joenote - print DVs
-	bit BIT_START, a
+	bit 1, a
 	jr z, .doregular
 	
 	ld de, wUnusedD722
@@ -757,7 +757,7 @@ StatsData:
 	set 0, a
 	ld [wStatsToDisplay], a
 	ret
-DVData:
+IVData:
 	ld a, [wStatsToDisplay]
 	res 0, a
 	set 1, a
@@ -787,7 +787,7 @@ StatusScreenOriginal:
 	bit BIT_B_BUTTON, a
 	jr nz, ExitStatusScreen
 
-	call DVData
+	call IVData
 	call StatusScreen
 	ld b, A_BUTTON | B_BUTTON
 	call PokedexStatusWaitForButtonPressLoop
@@ -837,7 +837,7 @@ StatusScreenLoop:
 	bit BIT_B_BUTTON, a
 	jr nz, .exitStatus
 
-	call DVData
+	call IVData
 	call StatusScreen
 	call PokemonStatusWaitForButtonPress
 	bit BIT_D_UP, a
