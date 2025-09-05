@@ -339,9 +339,9 @@ ExeggcuteEvosMoves:
 	db 0
 ; Learnset
 	db 7, REFLECT
-	db 13, LEECH_SEED
+	db 13, BARRAGE
 	db 19, CONFUSION
-	db 25, STUN_SPORE
+	db 25, HYPNOSIS
 	db 31, POISONPOWDER
 	db 37, SLEEP_POWDER
 	db 43, SOLARBEAM

@@ -12,8 +12,8 @@ INCBIN "gfx/pokemon/front/exeggcute.pic",0,1 ; 77, sprite dimensions
 dw ExeggcutePicFront
 dw ExeggcutePicBack
 ; attacks known at lvl 0
-db BARRAGE
-db HYPNOSIS
+db STUN_SPORE
+db LEECH_SEED
 db 0
 db 0
 db 5 ; growth rate
