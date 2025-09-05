@@ -3245,7 +3245,7 @@ PlayApplyingAttackSound:
 	jp PlaySound
 
 ;;;;;;;;;; PureRGBnote: ADDED: code for setting moves as seen for the movedex
-SetMoveDexSeen:
+SetMoveDexSeen::
 	ld a, [wAnimationID]
 	and a
 	ret z ; NO_MOVE doesn't count

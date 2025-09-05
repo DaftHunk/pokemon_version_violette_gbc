@@ -3656,6 +3656,17 @@ MirrorMoveCheck:
 	jr nz, .metronomeCheck
 	call MirrorMoveCopyMove
 	jp z, ExecutePlayerMoveDone
+;;;;;;;;;; PureRGBnote: ADDED: set the flag that makes the animation code mark this move as seen in the movedex
+	ld a, [wAnimationID]
+	push af
+	; preserve wAnimationID
+	ld a, MIRROR_MOVE
+	ld [wAnimationID], a
+	callab SetMoveDexSeen
+	; retrieve wAnimationID
+	pop af
+	ld [wAnimationID], a
+;;;;;;;;;;
 	xor a
 	ld [wMonIsDisobedient], a
 	jp CheckIfPlayerNeedsToChargeUp ; if Mirror Move was successful go back to damage calculation for copied move
