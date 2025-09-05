@@ -130,6 +130,7 @@ DisplayDiploma:
 	res 6, [hl]
 	call GBPalWhiteOutWithDelay3
 	call RestoreScreenTilesAndReloadTilePatterns
+	call LoadTextBoxTilePatterns
 	call Delay3
 	jp GBPalNormal
 
