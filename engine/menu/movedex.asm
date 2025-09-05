@@ -954,7 +954,7 @@ GetHighestSeenMove:
 	push bc
 	push de
 	ld hl, MovedexOrder + NUM_ATTACKS - 1
-	ld b, NUM_ATTACKS + 1
+	ld b, NUM_ATTACKS + 2
 .loop
 	ld a, [hld]
 	push hl

@@ -117,13 +117,13 @@ MovedexOrder:
 	db BIDE         ; 75
 	db SPIKE_CANNON ; 83
 	db PECK         ; 40
-	db X_SCISSOR    ; aa ; dafthunk #128
 	db JUMP_KICK    ; 1a
 	db HI_JUMP_KICK ; 88
 	db BARRAGE      ; 8c
 	db CRABHAMMER   ; 98
 	db SKY_ATTACK   ; 8f
 	db WATER_GUN    ; 37
+	db X_SCISSOR    ; aa ; dafthunk #128
 	db BODY_SLAM    ; 22
 	db COMET_PUNCH  ; 04
 	db FIRE_PUNCH   ; 07
