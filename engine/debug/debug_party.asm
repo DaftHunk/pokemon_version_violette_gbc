@@ -19,13 +19,14 @@ DebugNewGameParty: ; unreferenced except in _DEBUG
 	; From https://web.archive.org/web/20000607152840/http://pocket.ign.com/news/14973.html
 	db MAGNETON, 100
 	db EXEGGUTOR, 100
-	db EEVEE, 100
+;	db EEVEE, 1
+	db SPEAROW, 10
 	db MAROWRATH, 100
 	db ZAPDOS, 100
 	db MEW, 100
 	; Test for trade
 ;	db BUTTERFREE, 56
-;	db SPEAROW, 10
+	
 ;	db RAICHU, 56
 ;	db NIDORAN_F, 56
 ;	db ABRA, 50
@@ -56,6 +57,11 @@ IF DEF(_DEBUG)
 	; Get all badges except Earth Badge.
 	ld a, $ff ^ (1 << 7)
 	ld [wObtainedBadges], a
+
+;	ld a, [wObtainedBadges]
+;	set 2, a
+;	set 3, a
+;	ld [wObtainedBadges], a
 
 	call SetDebugNewGameParty
 
@@ -156,9 +162,9 @@ IF DEF(_DEBUG)
 	call DebugSetPokedexEntries
 
 	; Set tutorial events
-	SetEvent EVENT_GOT_POKEDEX
-	SetEvent EVENT_GOT_TOWN_MAP
-	SetEvent EVENT_GENDER_CAUGHT_INDICATOR
+;	SetEvent EVENT_GOT_POKEDEX
+;	SetEvent EVENT_GOT_TOWN_MAP
+;	SetEvent EVENT_GENDER_CAUGHT_INDICATOR
 ;	SetEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
 
 ;	SetEvent EVENT_NEW_GAME_PLUS
@@ -167,7 +173,7 @@ IF DEF(_DEBUG)
 ;	SetEvent EVENT_ENABLE_NORMAL_TRAINER_RANDOMIZATION
 
 	; Uncomment tp start in post game
-;	SetEvent EVENT_ELITE_4_BEATEN
+	SetEvent EVENT_ELITE_4_BEATEN
 ;	SetEvent EVENT_TRAINER_LVL_SCALING
 ;	SetEvent EVENT_ELITE_4_REMATCH_BEATEN
 ;	SetEvent EVENT_SS_ANNE_TOURNAMENT_BEATEN
