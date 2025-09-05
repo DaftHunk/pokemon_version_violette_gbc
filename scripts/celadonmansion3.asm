@@ -111,7 +111,7 @@ DirectorText:
 	ld b, wMovedexSeenEnd - wMovedexSeen
 	call CountSetBits
 	ld a, [wNumSetBits]
-	cp NUM_ATTACKS
+	cp NUM_ATTACKS + 1
 	call nc, .checkMovedex
 
 	ld hl, wPokedexOwned
