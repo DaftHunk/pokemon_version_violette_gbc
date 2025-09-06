@@ -82,12 +82,12 @@ HallofFameRoomScript2:
 
 	; Hides Starter Ball in Oak Lab because Oak trained it
 	ld a, HS_STARTER_BALL_1
-	call .hideObjets
+	ld [wMissableObjectIndex], a
+	predef HideObject
 	ld a, HS_STARTER_BALL_2
-	call .hideObjets
+	ld [wMissableObjectIndex], a
+	predef HideObject
 	ld a, HS_STARTER_BALL_3
-	; fallthrough
-.hideObjets
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	; fallthrough
