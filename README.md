@@ -1,5 +1,5 @@
 # Pokémon Version Violette GBC
-Romhack entièrement en français pour remasteriser le jeu sans le dénaturer. 
+Romhack dérivant initialement de [Shin Pokered](https://github.com/jojobear13/shinpokered) entièrement en français pour remasteriser le jeu sans le dénaturer. 
 L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellement.
 Ce projet se veut aussi comme une sorte de musée intéractif en restaurant de nombreux contenus coupés issue du code du jeu ou des bêtas qui aurait été perdu et oubliés autrement.  
 
