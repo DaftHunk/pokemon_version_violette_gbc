@@ -2329,7 +2329,7 @@ const_value = 0
 	const EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_5       ; 916, (D869, bit 6)
 	const EVENT_VICTORY_ROAD_1F_BOULDER_ON_SWITCH    ; 917, (D869, bit 7)
 	const EVENT_WAITING_FOR_TOURNAMENT_BAG_ROOM      ; 918, (D86A, bit 0)
-	const EVENT_919                                  ; 919, (D86A, bit 1)
+	const EVENT_GYM_LVL_SCALING                      ; 919, (D86A, bit 1)
 	const EVENT_91A                                  ; 91A, (D86A, bit 2)
 	const EVENT_91B                                  ; 91B, (D86A, bit 3)
 	const EVENT_91C                                  ; 91C, (D86A, bit 4)

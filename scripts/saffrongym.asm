@@ -324,49 +324,49 @@ SaffronGymText_RematchEndBattle:
 
 SaffronGymText_Trainer0:
 	TX_ASM
-	SetEvent EVENT_TRAINER_LVL_SCALING
+	SetEvent EVENT_GYM_LVL_SCALING
 	ld hl, SaffronGymTrainerHeader0
 	call TalkToTrainer
 	jp TextScriptEnd
 
 SaffronGymText_Trainer1:
 	TX_ASM
-	SetEvent EVENT_TRAINER_LVL_SCALING
+	SetEvent EVENT_GYM_LVL_SCALING
 	ld hl, SaffronGymTrainerHeader1
 	call TalkToTrainer
 	jp TextScriptEnd
 
 SaffronGymText_Trainer2:
 	TX_ASM
-	SetEvent EVENT_TRAINER_LVL_SCALING
+	SetEvent EVENT_GYM_LVL_SCALING
 	ld hl, SaffronGymTrainerHeader2
 	call TalkToTrainer
 	jp TextScriptEnd
 
 SaffronGymText_Trainer3:
 	TX_ASM
-	SetEvent EVENT_TRAINER_LVL_SCALING
+	SetEvent EVENT_GYM_LVL_SCALING
 	ld hl, SaffronGymTrainerHeader3
 	call TalkToTrainer
 	jp TextScriptEnd
 
 SaffronGymText_Trainer4:
 	TX_ASM
-	SetEvent EVENT_TRAINER_LVL_SCALING
+	SetEvent EVENT_GYM_LVL_SCALING
 	ld hl, SaffronGymTrainerHeader4
 	call TalkToTrainer
 	jp TextScriptEnd
 
 SaffronGymText_Trainer5:
 	TX_ASM
-	SetEvent EVENT_TRAINER_LVL_SCALING
+	SetEvent EVENT_GYM_LVL_SCALING
 	ld hl, SaffronGymTrainerHeader5
 	call TalkToTrainer
 	jp TextScriptEnd
 
 SaffronGymText_Trainer6:
 	TX_ASM
-	SetEvent EVENT_TRAINER_LVL_SCALING
+	SetEvent EVENT_GYM_LVL_SCALING
 	ld hl, SaffronGymTrainerHeader6
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -491,10 +491,7 @@ SaffronGymText_Trainer6AfterBattle:
 	jr SaffronGymText_StopLevelScaling
 
 SaffronGymText_StopLevelScaling:
-	CheckEvent EVENT_ELITE_4_BEATEN
-	jr nz, .skip ; keep scaling after league
-	ResetEvent EVENT_TRAINER_LVL_SCALING
-.skip
+	ResetEvent EVENT_GYM_LVL_SCALING
 	jp TextScriptEnd
 
 NinetalesTutor:

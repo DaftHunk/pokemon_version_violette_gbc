@@ -1,9 +1,6 @@
 ResetStatusAndHalveMoneyOnBlackout::
-; Ensure level scaling is disabled before post game
-	CheckEvent EVENT_ELITE_4_BEATEN
-	jr nz, .next
-	ResetEvent EVENT_TRAINER_LVL_SCALING
-.next
+; Ensure gym level scaling is disabled
+	ResetEvent EVENT_GYM_LVL_SCALING
 ; Reset player status on blackout.
 	xor a
 	ld [wBattleResult], a

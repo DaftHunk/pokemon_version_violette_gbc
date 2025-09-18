@@ -320,7 +320,7 @@ CeladonGymText_RematchEndBattle:
 
 CeladonGymText_Trainer0:
 	TX_ASM
-	SetEvent EVENT_TRAINER_LVL_SCALING
+	SetEvent EVENT_GYM_LVL_SCALING
 	ld hl, CeladonGymTrainerHeader0
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -341,7 +341,7 @@ CeladonGymText_Trainer0AfterBattle:
 
 CeladonGymText_Trainer1:
 	TX_ASM
-	SetEvent EVENT_TRAINER_LVL_SCALING
+	SetEvent EVENT_GYM_LVL_SCALING
 	ld hl, CeladonGymTrainerHeader1
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -362,7 +362,7 @@ CeladonGymText_Trainer1AfterBattle:
 
 CeladonGymText_Trainer2:
 	TX_ASM
-	SetEvent EVENT_TRAINER_LVL_SCALING
+	SetEvent EVENT_GYM_LVL_SCALING
 	ld hl, CeladonGymTrainerHeader2
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -383,7 +383,7 @@ CeladonGymText_Trainer2AfterBattle:
 
 CeladonGymText_Trainer3:
 	TX_ASM
-	SetEvent EVENT_TRAINER_LVL_SCALING
+	SetEvent EVENT_GYM_LVL_SCALING
 	ld hl, CeladonGymTrainerHeader3
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -404,7 +404,7 @@ CeladonGymText_Trainer3AfterBattle:
 
 CeladonGymText_Trainer4:
 	TX_ASM
-	SetEvent EVENT_TRAINER_LVL_SCALING
+	SetEvent EVENT_GYM_LVL_SCALING
 	ld hl, CeladonGymTrainerHeader4
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -425,7 +425,7 @@ CeladonGymText_Trainer4AfterBattle:
 
 CeladonGymText_Trainer5:
 	TX_ASM
-	SetEvent EVENT_TRAINER_LVL_SCALING
+	SetEvent EVENT_GYM_LVL_SCALING
 	ld hl, CeladonGymTrainerHeader5
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -446,7 +446,7 @@ CeladonGymText_Trainer5AfterBattle:
 
 CeladonGymText_Trainer6:
 	TX_ASM
-	SetEvent EVENT_TRAINER_LVL_SCALING
+	SetEvent EVENT_GYM_LVL_SCALING
 	ld hl, CeladonGymTrainerHeader6
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -466,10 +466,7 @@ CeladonGymText_Trainer6AfterBattle:
 	jr CeladonGymText_StopLevelScaling
 
 CeladonGymText_StopLevelScaling:
-	CheckEvent EVENT_ELITE_4_BEATEN
-	jr nz, .skip ; keep scaling after league
-	ResetEvent EVENT_TRAINER_LVL_SCALING
-.skip
+	ResetEvent EVENT_GYM_LVL_SCALING
 	jp TextScriptEnd
 	
 VenusaurTutor:

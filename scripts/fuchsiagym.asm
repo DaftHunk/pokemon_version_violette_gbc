@@ -321,7 +321,7 @@ FuchsiaGymText_RematchEndBattle:
 
 FuchsiaGymText_Trainer0:
 	TX_ASM
-	SetEvent EVENT_TRAINER_LVL_SCALING
+	SetEvent EVENT_GYM_LVL_SCALING
 	ld hl, FuchsiaGymTrainerHeader0
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -342,7 +342,7 @@ FuchsiaGymText_Trainer0AfterBattle:
 
 FuchsiaGymText_Trainer1:
 	TX_ASM
-	SetEvent EVENT_TRAINER_LVL_SCALING
+	SetEvent EVENT_GYM_LVL_SCALING
 	ld hl, FuchsiaGymTrainerHeader1
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -363,7 +363,7 @@ FuchsiaGymText_Trainer1AfterBattle:
 
 FuchsiaGymText_Trainer2:
 	TX_ASM
-	SetEvent EVENT_TRAINER_LVL_SCALING
+	SetEvent EVENT_GYM_LVL_SCALING
 	ld hl, FuchsiaGymTrainerHeader2
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -384,7 +384,7 @@ FuchsiaGymText_Trainer2AfterBattle:
 
 FuchsiaGymText_Trainer3:
 	TX_ASM
-	SetEvent EVENT_TRAINER_LVL_SCALING
+	SetEvent EVENT_GYM_LVL_SCALING
 	ld hl, FuchsiaGymTrainerHeader3
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -405,7 +405,7 @@ FuchsiaGymText_Trainer3AfterBattle:
 
 FuchsiaGymText_Trainer4:
 	TX_ASM
-	SetEvent EVENT_TRAINER_LVL_SCALING
+	SetEvent EVENT_GYM_LVL_SCALING
 	ld hl, FuchsiaGymTrainerHeader4
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -426,7 +426,7 @@ FuchsiaGymText_Trainer4AfterBattle:
 
 FuchsiaGymJanineText:
 	TX_ASM
-	SetEvent EVENT_TRAINER_LVL_SCALING
+	SetEvent EVENT_GYM_LVL_SCALING
 	ld hl, FuchsiaGymJanineHeader
 	call TalkToTrainer
 	jp TextScriptEnd
@@ -446,10 +446,7 @@ FuchsiaGymText_JanineAfterBattle:
 	jr FuchsiaGymText_StopLevelScaling
 
 FuchsiaGymText_StopLevelScaling:
-	CheckEvent EVENT_ELITE_4_BEATEN
-	jr nz, .skip ; keep scaling after league
-	ResetEvent EVENT_TRAINER_LVL_SCALING
-.skip
+	ResetEvent EVENT_GYM_LVL_SCALING
 	jp TextScriptEnd
 
 FuchsiaGymText_Guide:

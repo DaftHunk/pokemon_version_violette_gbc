@@ -303,8 +303,12 @@ ScaleTrainer:
 	ret
 	
 ScaleTrainer_level:
+	CheckEvent EVENT_GYM_LVL_SCALING
+	jr nz, .next
+
 	CheckEvent EVENT_TRAINER_LVL_SCALING
 	ret z
+.next
 	push bc
 
 	ld a, [wGymLeaderNo]
