@@ -190,7 +190,6 @@ PredefPointers::
 	add_predef SingleCPUSpeed
 	add_predef PrintPlayTime
 	add_predef DVPunnettSquare
-	add_predef GetCriticalHitProbability
 	add_predef ReadSuperRodData
 	add_predef _CalcStat
 	add_predef _GetSquareRoot

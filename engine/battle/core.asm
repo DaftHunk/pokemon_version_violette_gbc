@@ -2614,8 +2614,11 @@ PartyMenuOrRockOrRun:
 	push af
 	call nz, LoadMonFrontSprite
 	pop af
-	call z, LoadGhostPic
+	call z, .loadFarGhost
 	jr .enemyMonPicReloaded
+.loadFarGhost
+	callfar LoadGhostPic
+	ret
 .doEnemyMonAnimation
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - fix from pokemon yellow to prevent glitched graphics when exiting status screen
@@ -2848,6 +2851,12 @@ SelectMenuItem:
 	jr z, .battleselect
 	dec a
 	jr nz, .select
+	; MIMIC-specific code only
+;;;;;;;;;; PureRGBnote: FIXED: bug with displaying the mimic menu's WHICH TECHNIQUE? text. The bottom line of text wasn't erased. It should be.
+	hlcoord 1, 14
+	lb bc, 3, 18
+	call ClearScreenArea
+;;;;;;;;;;
 	coord hl, 1, 14
 	ld de, WhichTechniqueString
 	call PlaceString
@@ -2960,7 +2969,6 @@ MoveDisabledText:
 
 WhichTechniqueString:
 	db "Quelle technique?"
-	next "                 @"
 
 SelectMenuItem_CursorUp:
 	ld a, [wCurrentMenuItem]
@@ -5069,104 +5077,87 @@ JumpToOHKOMoveEffect:
 	ret
 
 
-;UnusedHighCriticalMoves:
-;	db KARATE_CHOP
-;	db RAZOR_LEAF
-;	db CRABHAMMER
-;	db SLASH
-;	db $FF
-
 ; determines if attack is a critical hit
-; azure heights claims "the fastest pokémon (who are,not coincidentally,
-; among the most popular) tend to CH about 20 to 25% of the time."
-;joenote - re-wrote this a bit to clean it up and fix focus energy
+; updated to use gen 7 critical mechanics with stages
+; stage 0 = 1/24 ~4.17%
+; stage 1 = 1/8 12.5%
+; stage 2 = 1/2 50%
+; stage 3+ = 100% (we don't have more than 3 stages anyway in gen1)
+; since high crit moves add +2 and focus energy adds +1
 CriticalHitTest:
-	xor a
+	xor a                               ; set critical flag to 0
+	ld b, a                             ; set critical stage to 0
 	ld [wCriticalHitOrOHKO], a
-	ld a, [H_WHOSETURN]
+	ld a, [H_WHOSETURN]                 ; check whose turn is this, player or enemy
 	and a
-	ld a, [wEnemyMonSpecies]
-	jr nz, .handleEnemy
 	ld a, [wBattleMonSpecies]
-.handleEnemy
-	ld [wd0b5], a
-	call GetMonHeader
-	ld a, [wMonHBaseSpeed]
-	ld b, a
-	srl b                        ; /2 for regular move (effective (base speed / 2)) --> base crit rate
-	ld a, [H_WHOSETURN]
-	and a
 	ld hl, wPlayerMovePower
 	ld de, wPlayerBattleStatus2
-	jr z, .calcCriticalHitProbability
+	jr z, .checkIfDamageMove            ; if player's turn jump
+	ld a, [wEnemyMonSpecies]
 	ld hl, wEnemyMovePower
 	ld de, wEnemyBattleStatus2
-.calcCriticalHitProbability
-;joenote - this whole section is now moved into a predef in stats_functions.asm to give more versatility
-	predef GetCriticalHitProbability
-
-; ;normal hit is (base speed) / 2
-; ;focus energy is 2*(base speed) for a 4x crit rate
-; ;high crit move is 4*(base speed) for a 8x crit rate
-	; ld a, [hld]                  ; read base power from RAM
-; ;	and a
-; ;	ret z                        ; do nothing if zero
-; ;joenote - Also do not do a critical hit if a special damage move is being used (dragon rage, seismic toss, etc)
-; ;		- base power of 1 now signifies an expanded range to include moves like bide and counter 
-	; cp 2
-	; ret c	;do nothing if base power is 0 or 1
-	; dec hl
-	; ld c, [hl]                   ; read move id
-	; ld a, [de]
-; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	; bit GETTING_PUMPED, a        ; test for focus energy
-	; jr z, .noFocusEnergyUsed	 ;if getting pumped bit not set, then focus energy not used
-	; ;else focus energy was used
-	; sla b						 ;*2 for focus energy (effective +2x crit rate)
-	; jr c, .capcritical
-	; sla b						 ;*2 again for focus energy (effective +4x crit rate)
-	; jr c, .capcritical
-; .noFocusEnergyUsed
-; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	; ld hl, HighCriticalMoves     ; table of high critical hit moves
-; .Loop
-	; ld a, [hli]                  ; read move from move table
-	; cp c                         ; does it match the move about to be used?
-	; jr z, .HighCritical          ; if so, the move about to be used is a high critical hit ratio move
-	; inc a                        ; move on to the next move, FF terminates loop
-	; jr nz, .Loop                 ; check the next move in HighCriticalMoves
-	; jr .finishcalc         		 ; continue as a normal move
-; .HighCritical
-	; sla b                        ; *2 for high critical hit moves (effective +2x crit rate)
-	; jr c, .capcritical
-	; sla b                        ; *2 again for high critical hit moves (effective +4x crit rate)
-	; jr c, .capcritical
-	; sla b                        ; *2 again for high critical hit moves (effective +8x crit rate)
-	; jr nc, .finishcalc
-; .capcritical
-	; ld b, $ff					 ; cap at 255/256
-; .finishcalc
-
-	call BattleRandom            ; generates a random value, in "a"
-;joenote - this is redundant and seems like its messing with the statistical uniformity (somehow...)
-;	rlc a
-;	rlc a
-;	rlc a
-	cp b                         ; check a against calculated crit rate
-	ret nc                       ; no critical hit if no borrow
+.checkIfDamageMove
+	ld a, [hld]                         ; read base power from RAM
+	and a
+	ret z                               ; do nothing if zero (status moves)
+	dec hl
+	ld c, [hl]                          ; read move id
+	ld hl, HighCriticalMoves            ; table of high critical hit moves
+.checkIfHighCritMoveLoop
+	ld a, [hli]                         ; read move from move table
+	cp c                                ; does it match the move about to be used?
+	jr z, .highCriticalMove             ; if so, the move about to be used is a high critical hit ratio move
+	inc a                               ; move on to the next move, FF terminates loop
+	jr nz, .checkIfHighCritMoveLoop     ; check the next move in HighCriticalMoves
+	jr .checkForFocusEnergy             ; continue as a normal move
+.highCriticalMove
+	inc b                               ; +2 stages for high crit moves
+	inc b
+.checkForFocusEnergy
+	ld a, [de]
+	bit GETTING_PUMPED, a               ; test for focus energy
+	jr z, .noFocusEnergyUsed
+	inc b                               ; focus energy +1 stage
+.noFocusEnergyUsed
+	ld a, b
+	cp 3                                ; stage 3+ 100% chance
+	jr z, .criticalHit
+	cp 2 
+	ld b, 128                           ; stage 2 1/2 chance 50%
+	jr z, .rng
+	cp 1
+	ld b, 32                            ; stage 1 1/8 chance 12.5%
+	jr z, .rng
+	ld b, 11                            ; stage 0 1/24 chance ~4.17%
+.rng
+	call BattleRandom                   ; generates a random value, in "a"
+	cp b                                ; check a against calculated crit rate
+	ret nc                              ; no critical hit if no borrow
+; code below is a special case for stage 0 and a == 10
+; in this case only about 2/3 of the 10s are critical hits
+; doing this we get exactly 1/24 chance for stage 0
+; which is exactly how it works in gen7+
+	cp 11                               ; check if this is stage 0
+	jr nz, .criticalHit                 ; if not stage 0 skip and apply crit
+	cp 10                               ; check if rng is 10
+	jr nz, .criticalHit                 ; if rng is not 10 we skip all the code below and apply crit
+	call BattleRandom                   ; generates a random value, in "a"
+	cp 170                              ; check against 170 ~2/3 chance
+	ret nc                              ; no critical hit if borrow
+.criticalHit
 	ld a, $1
-	ld [wCriticalHitOrOHKO], a   ; set critical hit flag
+	ld [wCriticalHitOrOHKO], a          ; set critical hit flag
 	ret
 
-;joenote - moved this to go with the above predef 
 ; high critical hit moves
-; HighCriticalMoves:
-	; db KARATE_CHOP
-	; db RAZOR_LEAF
-	; db CRABHAMMER
-	; db SLASH
-	; db $FF
-
+HighCriticalMoves::
+	db KARATE_CHOP
+	db RAZOR_LEAF
+	db CRABHAMMER
+	db SLASH
+	db RAZOR_WIND
+	db $FF
 
 ;joenote
 ; function to determine if Counter hits and if so, how much damage it does
@@ -7737,41 +7728,7 @@ InitBattleCommon:
 	ld a, $2
 	ld [wIsInBattle], a
 	jp _InitBattleCommon
-	
-;joenote - make this its own function
-LoadGhostPic:
-	ld hl, wMonHSpriteDim
-	ld a, $66
-	ld [hli], a   ; write sprite dimensions
-	ld bc, GhostPic
-	ld a, c
-	ld [hli], a   ; write front sprite pointer
-	ld [hl], b
-	ld hl, wEnemyMonNick  ; set name to "GHOST"
-	ld a, "S"
-	ld [hli], a
-	ld a, "p"
-	ld [hli], a
-	ld a, "e"
-	ld [hli], a
-	ld a, "c"
-	ld [hli], a
-	ld a, "t"
-	ld [hli], a
-	ld a, "r"
-	ld [hli], a
-	ld a, "e"
-	ld [hli], a
-	ld [hl], "@"
-	ld a, [wcf91]
-	push af
-	ld a, MON_GHOST
-	ld [wcf91], a
-	ld de, vFrontPic
-	call LoadMonFrontSprite ; load ghost sprite
-	pop af
-	ld [wcf91], a
-	ret
+
 
 InitWildBattle:
 	ld a, $1
@@ -7786,7 +7743,7 @@ InitWildBattle:
 	call IsGhostBattle
 	jr nz, .isNoGhost
 .isGhost
-	call LoadGhostPic
+	callfar LoadGhostPic
 	jr .spriteLoaded
 .isNoGhost
 	ld de, vFrontPic
