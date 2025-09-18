@@ -20,6 +20,15 @@ Route11GateUpstairsText2:
 	jr c, .asm_4949b
 	ld a, 30 ; pokemon needed
 	ld [hOaksAideRequirement], a
+	; check for Nuzzlocke
+	ld a, [wGameplayOptions]
+	bit 6, a
+	jr z, .next
+	; if Nuzzlocke enabled decrease to 10 mons
+	ld a, 10 ; pokemon needed
+	ld [hOaksAideRequirement], a
+	; fallthrough
+.next	
 	ld a, ITEMFINDER ; oak's aide reward
 	ld [hOaksAideRewardItem], a
 	ld [wPokedexNum], a
