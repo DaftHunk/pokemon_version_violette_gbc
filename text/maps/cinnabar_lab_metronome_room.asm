@@ -35,7 +35,7 @@ _TM35NoRoomText::
 
 _Lab3Text2::
 	text "Evoli évolue en"
-	line "3 #mon de"
+	line "4 #mon de"
 	cont "type différent."
 	done
 

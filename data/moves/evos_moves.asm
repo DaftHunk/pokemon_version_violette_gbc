@@ -1565,7 +1565,7 @@ ZubatEvosMoves:
 
 EkansEvosMoves:
 ; Evolutions
-	db EV_LEVEL, 22, ARBOK
+	db EV_LEVEL, 20, ARBOK
 	db 0
 ; Learnset
 	db 9, POISON_STING

@@ -53,7 +53,7 @@ _SilphCo5Text11::
 	line "sur les #mon!"
 
 	para "4 #mon"
-	line "n'évoluent que"
+	line "peuvent évoluer"
 	cont "s'ils sont"
 	cont "échangés!"
 	done

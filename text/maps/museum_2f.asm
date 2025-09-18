@@ -4,12 +4,12 @@ _Museum2FText1::
 	para "Ouais? Et alors?"
 ;joenote - added text to hint at evolving kadabra
 	para "J'ai entendu dire"
-	line "qu'un maître d'ar-"
-	cont "ène a fait évoluer"
-	cont "son Kadabra en"
-	cont "méditant sous la"
-	cont "lumière de"
-	cont "la Lune."
+	line "qu'un maître"
+	cont "d'arène a fait"
+	cont "évoluer son Kada-"
+	cont "bra en méditant"
+	cont "sous la lumière"
+	cont "de la Lune."
 	done
 
 _Museum2FText2::
