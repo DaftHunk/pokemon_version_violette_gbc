@@ -80,8 +80,8 @@ The Shin Pokemon Project is open-source only in the colloquial sense, not in leg
 
 The Shin Pokemon team does not believe in granting formal permissions or licences for its original code libraries. Instead, it expects that people adhere to a few simple historical guidelines common in the fan community. Don't be uncool by:
 
-Plagiarizing code, because nobody likes a liar
-Not giving proper credit or giving ambiguous/low-information credit
-Copying original code and putting it into a closed-source project
-Selling original code in any form for money, barter, favors, or putting it behind a paywall
+- Plagiarizing code, because nobody likes a liar
+- Not giving proper credit or giving ambiguous/low-information credit
+- Copying original code and putting it into a closed-source project
+- Selling original code in any form for money, barter, favors, or putting it behind a paywall
 The team is not interested in playing Internet Police. This is all done for free as a hobby and for stress-relief. Be cool.
