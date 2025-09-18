@@ -389,6 +389,13 @@ DoNewGamePlus: ;joenote - selective wram clearing for new game plus
 	call FillMemory
 	; 3453 end
 	
+	ld a, 1 ; no delay
+	ld [wLetterPrintingDelayFlags], a
+
+	ld a, TEXT_DELAY_FAST ; fast speed
+	set BIT_BATTLE_SHIFT, a ;joenote - SET battle style
+	ld [wOptions], a
+
 	ret
 
 AskIfGirlText::	;joenote - text to ask if female trainer

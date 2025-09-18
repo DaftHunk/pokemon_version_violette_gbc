@@ -45,8 +45,10 @@ ShowDamageValues:	;joenote - toggle damage values being shown in battle
 ResetAllOptions: ;joenote - reset all the special options (like for patching-up)
 	ld a, SFX_LEVEL_UP
 	call PlaySound
-	
-	ld a, [wOptions]
+
+	ld a, 1 ; no delay
+	ld [wLetterPrintingDelayFlags], a
+
 	ld a, TEXT_DELAY_FAST ; fast speed
 	set BIT_BATTLE_SHIFT, a ;joenote - SET battle style
 	ld [wOptions], a

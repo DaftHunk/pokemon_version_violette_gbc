@@ -1206,7 +1206,7 @@ MarowrathEvosMoves:
 	db 5, TAIL_WHIP
 	db 9, BONE_CLUB
 	db 13, HEADBUTT
-	db 17, LEER
+	db 17, FIRE_SPIN
 	db 21, CONFUSE_RAY
 	db 25, BONEMERANG
 	db 32, SHADOW_BALL
@@ -1220,9 +1220,10 @@ HeracrossEvosMoves:
 	db 0
 ; Learnset
 	db 7, FOCUS_ENERGY
-	db 13, BIND
+	db 13, HORN_ATTACK
 	db 19, SEISMIC_TOSS
-	db 25, HARDEN
+	db 22, FURY_ATTACK
+	db 27, TAKE_DOWN
 	db 34, X_SCISSOR
 	db 37, SUBMISSION
 	db 43, SWORDS_DANCE

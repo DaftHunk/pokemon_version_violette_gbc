@@ -282,7 +282,8 @@ MainMenu:
 
 InitOptions:
 	xor a
-	ld [wGameplayOptions], a	;joenote - reset any extra optioins
+	ld [wGameplayOptions], a	;joenote - reset any extra options
+	ld [wLetterPrintingDelayFlags], a
 
 	ld a, 1 ; no delay
 	ld [wLetterPrintingDelayFlags], a

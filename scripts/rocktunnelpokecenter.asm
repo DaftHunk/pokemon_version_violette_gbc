@@ -7,6 +7,7 @@ RockTunnelPokecenterTextPointers:
 	dw RockTunnelPokecenterText2
 	dw RockTunnelPokecenterText3
 	dw RockTunnelTradeNurseText
+	dw MtMoonChanseyText
 
 RockTunnelHealNurseText:
 	db $ff
@@ -21,3 +22,10 @@ RockTunnelPokecenterText3:
 
 RockTunnelTradeNurseText:
 	db $f6
+
+RockTunnelChanseyText:
+	TX_FAR _ChanseyText
+	TX_ASM
+	ld a, CHANSEY
+	call DisplayPokedex
+	jp TextScriptEnd
