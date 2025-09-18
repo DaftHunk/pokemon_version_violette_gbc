@@ -16,7 +16,7 @@ RocketHideout4Script_45473:
 	CheckEvent EVENT_ROCKET_HIDEOUT_B4F_DOOR_UNLOCKED
 	jr nz, .asm_45496
 ;	CheckBothEventsSet EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_0, EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_1, 1
-	CheckEvent EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_0
+	CheckEitherEventSet EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_0, EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_1
 	jr nz, .asm_4548c
 	ld a, $2d
 	jr .asm_45498
@@ -25,10 +25,6 @@ RocketHideout4Script_45473:
 	ld a, $b
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
-	; Open the door
-	ld a, SFX_GO_INSIDE
-	call PlaySound
-	SetEvent EVENT_ROCKET_HIDEOUT_B4F_DOOR_UNLOCKED
 	; Jessie James hide
 	call GBFadeOutToBlack
 	ld a, HS_ROCKET_HIDEOUT_B4F_JESSIE
@@ -40,6 +36,10 @@ RocketHideout4Script_45473:
 	call UpdateSprites
 	call Delay3
 	call GBFadeInFromBlack
+	; Open the door
+	ld a, SFX_GO_INSIDE
+	call PlaySound
+	SetEvent EVENT_ROCKET_HIDEOUT_B4F_DOOR_UNLOCKED
 	xor a
 	ld [wd730], a
 	ld [hJoyHeld], a
@@ -118,7 +118,7 @@ RocketHideout4TrainerHeader0:
 
 RocketHideout4TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_1
-	db ($0 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROCKET_HIDEOUT_B4F_TRAINER_1
 	dw RocketHideout4BattleText3 ; TextBeforeBattle
 	dw RocketHideout4AfterBattleText3 ; TextAfterBattle
