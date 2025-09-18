@@ -84,4 +84,5 @@ The Shin Pokemon team does not believe in granting formal permissions or licence
 - Not giving proper credit or giving ambiguous/low-information credit
 - Copying original code and putting it into a closed-source project
 - Selling original code in any form for money, barter, favors, or putting it behind a paywall
+  
 The team is not interested in playing Internet Police. This is all done for free as a hobby and for stress-relief. Be cool.
