@@ -239,12 +239,14 @@ CeruleanCityTextPointers:
 	dw CeruleanCityText9
 	dw CeruleanCityText10
 	dw CeruleanCityText11
+	dw CeruleanCityTextMerchant
 	dw CeruleanCityText12
 	dw CeruleanCityText13
 	dw MartSignText
 	dw PokeCenterSignText
 	dw CeruleanCityText16
 	dw CeruleanCityText17
+	dw CeruleanCityTextEstBoard
 
 CeruleanCityText1:
 	TX_ASM
@@ -437,6 +439,10 @@ CeruleanCityText10:
 	TX_FAR _CeruleanCityText10
 	db "@"
 
+CeruleanCityTextMerchant:
+	TX_FAR _CeruleanCityTextMerchant
+	db "@"
+
 CeruleanCityText12:
 	TX_FAR _CeruleanCityText12
 	db "@"
@@ -451,4 +457,8 @@ CeruleanCityText16:
 
 CeruleanCityText17:
 	TX_FAR _CeruleanCityText17
+	db "@"
+
+CeruleanCityTextEstBoard:
+	TX_FAR _CeruleanCityTextEstBoard
 	db "@"

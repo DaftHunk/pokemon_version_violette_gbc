@@ -3466,7 +3466,7 @@ _AfterTrade3Text::
 	text_ram wInGameTradeReceiveMonName
 	text ", hein?"
 
-	para "Mon @"
+	para "Ton @"
 	text_ram wInGameTradeGiveMonName
 	text_start
 	line "est terrible!"

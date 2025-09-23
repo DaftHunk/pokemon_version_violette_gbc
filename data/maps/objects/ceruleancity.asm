@@ -14,15 +14,16 @@ CeruleanCityObject:
 	warp 9, 11, 1, CERULEAN_BADGE_HOUSE
 	warp 9, 9, 0, CERULEAN_BADGE_HOUSE
 
-	db 6 ; signs
-	sign 23, 19, 12 ; CeruleanCityText12
-	sign 17, 29, 13 ; CeruleanCityText13
-	sign 26, 25, 14 ; MartSignText
-	sign 20, 17, 15 ; PokeCenterSignText
-	sign 11, 25, 16 ; CeruleanCityText16
-	sign 27, 21, 17 ; CeruleanCityText17
+	db 7 ; signs
+	sign 23, 19, 13 ; CeruleanCityText12
+	sign 17, 29, 14 ; CeruleanCityText13
+	sign 26, 25, 15 ; MartSignText
+	sign 20, 17, 16 ; PokeCenterSignText
+	sign 11, 25, 17 ; CeruleanCityText16
+	sign 27, 21, 18 ; CeruleanCityText17
+	sign 37, 15, 19 ; CeruleanCityTextEstBoard
 
-	db 11 ; objects
+	db 12 ; objects
 	object SPRITE_BLUE, 20, 2, STAY, DOWN, 1 ; person
 	object SPRITE_ROCKET, 30, 8, STAY, NONE, 2, OPP_ROCKET, 5
 	object SPRITE_BLACK_HAIR_BOY_1, 31, 20, STAY, DOWN, 3 ; person
@@ -34,6 +35,7 @@ CeruleanCityObject:
 	object SPRITE_LASS, 9, 27, WALK, 2, 9 ; person
 	object SPRITE_BLACK_HAIR_BOY_2, 4, 12, STAY, DOWN, 10 ; person
 	object SPRITE_GUARD, 27, 12, STAY, DOWN, 11 ; person
+	object SPRITE_BLACK_HAIR_BOY_2, 34, 15, WALK, 1, 12 ; CeruleanCityTextMerchant
 
 	; warp-to
 	warp_to 27, 11, CERULEAN_CITY_WIDTH ; CERULEAN_TRASHED_HOUSE

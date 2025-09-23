@@ -74,6 +74,9 @@ _SSAnneNoTicketText::
 _SSAnneNotHereText::
 	text "L'Océane a"
 	line "levé l'ancre."
+
+	para "Il sera de retour"
+	line "l'an prochain!"
 	done
 
 _VermilionCityText4::

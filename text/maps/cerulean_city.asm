@@ -207,6 +207,22 @@ _CeruleanCityText10::
 	cont "droit d'y entrer!"
 	done
 
+_CeruleanCityTextMerchant::
+	text "Je dois faire une"
+	line "livraison à"
+	cont "Lavanville mais"
+	cont "les gardes de"
+	cont "Safrania ne me"
+	cont "laissent"
+	cont "pas passer..."
+
+	para "Je vais devoir"
+	line "faire le grand"
+	cont "détour par la"
+	cont "Grotte Sombre,"
+	cont "quelle plaie!"
+	done
+
 _CeruleanCityText12::
 	text "Azuria"
 	line "Baignée par une"
@@ -236,4 +252,10 @@ _CeruleanCityText17::
 
 	para "La petite pest..."
 	line "Heu...sirène!"
+	done
+
+_CeruleanCityTextEstBoard::
+	text "Direction"
+	line "Route 9 -"
+	cont "Grotte Sombre"
 	done
