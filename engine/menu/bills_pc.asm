@@ -534,6 +534,7 @@ DisplayDepositWithdrawMenu:
 	call ReloadTilesetTilePatterns
 	call RunDefaultPaletteCommand
 	call LoadGBPal
+	call LoadHpBarAndStatusTilePatterns
 	CheckEvent EVENT_VIEW_PC_PKMN
 	jr nz, .exit
 	jr .loop
