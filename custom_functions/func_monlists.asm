@@ -374,10 +374,10 @@ GetGenderRatioTarget:
 	cp 35
 	ld b, 4
 	ret c
-	cp 126
+	cp 139
 	ld b, 8
 	ret c
-	cp 132
+	cp 145
 	ld b, 12
 	ret c
 	ld b, 16
