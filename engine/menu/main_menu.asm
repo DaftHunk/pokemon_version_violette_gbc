@@ -213,6 +213,8 @@ MainMenu:
 	push bc
 	cp HACK_VERSION
 	jr z, .warpcheck_end
+; Updating from older version
+	SetEvent EVENT_UPDATED_FROM_OLDER_VERSION
 	ld hl, RomHackVersionText
 	call PrintText
 	call YesNoChoice
@@ -229,8 +231,6 @@ MainMenu:
 	ld a, PLAYER_DIR_DOWN
 	ld [wPlayerDirection], a
 	ld [wPlayerLastStopDirection], a	;joenote - set face down as last direction for 180 degree turn frame
-	; Set a flag to know if player used this feature (could be useful later)
-	SetEvent EVENT_UPDATED_FROM_OLDER_VERSION
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - clear saved events flags on load for safety
 	ResetEvent EVENT_ACTIVATE_GHOST_MAROWAK	;ghost marowak
