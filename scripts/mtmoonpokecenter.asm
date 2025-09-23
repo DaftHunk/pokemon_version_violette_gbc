@@ -146,7 +146,7 @@ MagikarpSalesmanText_DragonRageKarp:
 	jp nz, MagikarpSalesmanText.choseNo
 	ld [hMoney], a
 	ld [hMoney + 2], a
-	ld a, $50
+	ld a, $10
 	ld [hMoney + 1], a
 	call HasEnoughMoney
 	jr nc, .enoughMoney
@@ -165,7 +165,7 @@ MagikarpSalesmanText_DragonRageKarp:
 	xor a
 	ld [wPriceTemp], a
 	ld [wPriceTemp + 2], a
-	ld a, $50
+	ld a, $10
 	ld [wPriceTemp + 1], a
 	ld hl, wPriceTemp + 2
 	ld de, wPlayerMoney + 2
@@ -181,7 +181,7 @@ MagikarpSalesmanText_DragonRageKarp:
 	line "de son Magicarpe?"
 	para "Je peux lui"
 	line "apprendre Draco"
-	cont "Rage pour 5000¥!"
+	cont "Rage pour 1000¥!"
 	cont "Qu'en dis-tu?"
 	done
 	db "@"	

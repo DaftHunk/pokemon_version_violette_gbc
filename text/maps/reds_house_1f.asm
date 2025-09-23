@@ -63,7 +63,7 @@ _RedsHouse1FText_RunningShoes::
 	cont "velles Chaussures"
 	cont "de Course en"
 	cont "maintenant le"
-	cont "button B!"
+	cont "bouton B!"
 
 	para "Ah et ton nouveau"
 	line "Sac de Randonnée"
@@ -78,8 +78,8 @@ _RedsHouse1FText_RunningShoes::
 	cont "parole à tous"
 	cont "les inconnus!"
 
-	para "Et surtout"
-	line "n'oublie de"
+	para "Et surtout,"
+	line "n'oublie pas de"
 	cont "changer de slip"
 	cont "régulièrement!"
 	done
