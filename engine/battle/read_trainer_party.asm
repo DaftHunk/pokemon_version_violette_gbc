@@ -109,6 +109,18 @@ ReadTrainer:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;adding a custom function here
 	push hl
+	; check if special trainer only because specific level
+	ld a, [wTrainerClass]
+	ld hl, RandomSpecialTrainers
+	ld de, 1
+	call IsInArray
+	jr c, .randomizeSpecialTrainer
+	; else 
+	jp .next
+.randomizeSpecialTrainer
+	callba RandomizeRegularTrainerMons
+	; fallthrough
+.next
 	callba ScaleTrainer
 	pop hl
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -118,74 +130,7 @@ ReadTrainer:
 	call AddPartyMon
 	pop hl
 	jr .SpecialTrainer
-	
-;joenote - all this is being commented out and replaced with code for Yellow's method of doing custom trainer movesets
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;.AddLoneMove
-;; does the trainer have a single monster with a different move
-;	ld a, [wLoneAttackNo] ; Brock is 01, Misty is 02, Erika is 04, etc
-;	and a
-;	jr z, .AddTeamMove
-;	dec a
-;	add a
-;	ld c, a
-;	ld b, 0
-;	ld hl, LoneMoves
-;	add hl, bc
-;	ld a, [hli]
-;	ld d, [hl]
-;	ld hl, wEnemyMon1Moves + 2
-;	ld bc, wEnemyMon2 - wEnemyMon1
-;	call AddNTimes
-;	ld [hl], d
-;	jr .FinishUp
-;.AddTeamMove
-;; check if our trainer's team has special moves
-;
-;; get trainer class number
-;	ld a, [wCurOpponent]
-;	sub 200
-;	ld b, a
-;	ld hl, TeamMoves
-;
-;; iterate through entries in TeamMoves, checking each for our trainer class
-;.IterateTeamMoves
-;	ld a, [hli]
-;	cp b
-;	jr z, .GiveTeamMoves ; is there a match?
-;	inc hl ; if not, go to the next entry
-;	inc a
-;	jr nz, .IterateTeamMoves
-;
-;; no matches found. is this trainer champion rival?
-;	ld a, b
-;	cp RIVAL3
-;	jr z, .ChampionRival
-;	jr .FinishUp ; nope
-;.GiveTeamMoves
-;	ld a, [hl]
-;	ld [wEnemyMon5Moves + 2], a
-;	jr .FinishUp
-;.ChampionRival ; give moves to his team
-;
-;; pidgeot
-;	ld a, SKY_ATTACK
-;	ld [wEnemyMon1Moves + 2], a
-;
-;; starter
-;	ld a, [wRivalStarter]
-;	cp STARTER3
-;	ld b, MEGA_DRAIN
-;	jr z, .GiveStarterMove
-;	cp STARTER1
-;	ld b, FIRE_BLAST
-;	jr z, .GiveStarterMove
-;	ld b, BLIZZARD ; must be squirtle
-;.GiveStarterMove
-;	ld a, b
-;	ld [wEnemyMon6Moves + 2], a
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 .AddAdditionalMoveData
 ; does the trainer have additional move data?
 	ld a, [wTrainerClass]
@@ -268,3 +213,13 @@ ReadTrainer:
 	dec b
 	jr nz, .LastLoop ; repeat wCurEnemyLVL times
 	ret
+
+RandomSpecialTrainers:
+	db YOUNGSTER
+	db BUG_CATCHER
+	db HIKER
+	db BIKER
+	db FISHER
+	db GAMBLER
+	db COOLTRAINER_F
+	db $ff ; terminator

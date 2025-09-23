@@ -1805,23 +1805,6 @@ INCLUDE "custom_functions/func_enhancedcolor.asm"
 
 SECTION "bank2D",ROMX,BANK[$2D]	;joenote - This is a known empty bank. Going to start moving stuff here
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;this is a bunch of custom functions and stuff, so leave it all together in the same bank
-INCLUDE "custom_functions/func_ai.asm"
-INCLUDE "custom_functions/func_battle.asm"
-INCLUDE "custom_functions/func_enc_gen.asm"
-INCLUDE "custom_functions/func_misc.asm"
-INCLUDE "custom_functions/func_monlists.asm"
-INCLUDE "custom_functions/func_overworld.asm"
-INCLUDE "custom_functions/func_shiny.asm"
-INCLUDE "custom_functions/func_nuzlocke.asm"
-INCLUDE "custom_functions/func_stat_reset.asm"
-INCLUDE "engine/battle/stats_functions.asm"	
-INCLUDE "engine/battle/exp_bar_print.asm"	
-INCLUDE "custom_functions/fisher_yates.asm"
-INCLUDE "engine/battle/load_pics.asm"
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;joenote - moved this out of trainer_ai.asm in bank $E to here. 
 ;Now there is lots of space for custom trainers and rosters
 INCLUDE "engine/battle/read_trainer_party.asm"
@@ -2162,3 +2145,20 @@ TradingAnimationGraphicsEnd:
 ; Pokeball traveling through the link cable.
 TradingAnimationGraphics2: INCBIN "gfx/tiles/trade2.2bpp"
 TradingAnimationGraphics2End:
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;this is a bunch of custom functions and stuff, so leave it all together in the same bank
+INCLUDE "custom_functions/func_ai.asm"
+INCLUDE "custom_functions/func_battle.asm"
+INCLUDE "custom_functions/func_enc_gen.asm"
+INCLUDE "custom_functions/func_misc.asm"
+INCLUDE "custom_functions/func_monlists.asm"
+INCLUDE "custom_functions/func_overworld.asm"
+INCLUDE "custom_functions/func_shiny.asm"
+INCLUDE "custom_functions/func_nuzlocke.asm"
+INCLUDE "custom_functions/func_stat_reset.asm"
+INCLUDE "engine/battle/stats_functions.asm"	
+INCLUDE "engine/battle/exp_bar_print.asm"	
+INCLUDE "custom_functions/fisher_yates.asm"
+INCLUDE "engine/battle/load_pics.asm"
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
