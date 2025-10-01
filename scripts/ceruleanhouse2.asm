@@ -1,22 +1,24 @@
-CeruleanHouse2Script:
+CeruleanBadgeHouseScript:
 	ld a, $1
 	ld [wAutoTextBoxDrawingControl], a
 	dec a
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ret
 
-CeruleanHouse2TextPointers:
-	dw CeruleanHouse2Text1
+CeruleanBadgeHouseTextPointers:
+	dw CeruleanBadgeHouseMainText
+	dw CeruleanBadgeHouseLevelCapText
+	dw CeruleanBadgeHouseText_CurrentCap
 
-CeruleanHouse2Text1:
+CeruleanBadgeHouseMainText:
 	TX_ASM
-	ld hl, CeruleanHouse2Text_74e77
+	ld hl, CeruleanBadgeHouseText_Greet
 	call PrintText
 	xor a
 	ld [wCurrentMenuItem], a
 	ld [wListScrollOffset], a
-.asm_74e23
-	ld hl, CeruleanHouse2Text_74e7c
+.badgeLoop
+	ld hl, CeruleanBadgeHouseText_Ask
 	call PrintText
 	ld hl, BadgeItemList
 	call LoadItemList
@@ -31,8 +33,8 @@ CeruleanHouse2Text1:
 	ld a, SPECIALLISTMENU
 	ld [wListMenuID], a
 	call DisplayListMenuID
-	jr c, .asm_74e60
-	ld hl, TextPointers_74e86
+	jr c, .endScript
+	ld hl, TextPointers_Badges
 	ld a, [wcf91]
 	sub $15
 	add a
@@ -43,67 +45,117 @@ CeruleanHouse2Text1:
 	ld h, [hl]
 	ld l, a
 	call PrintText
-	jr .asm_74e23
-.asm_74e60
+	jr .badgeLoop
+.endScript
 	xor a
 	ld [wListScrollOffset], a
-	ld hl, CeruleanHouse2Text_74e81
+	ld hl, CeruleanBadgeHouseText_Later
 	call PrintText
 	jp TextScriptEnd
 
 BadgeItemList:
 	db $8,BOULDERBADGE,CASCADEBADGE,THUNDERBADGE,RAINBOWBADGE,SOULBADGE,MARSHBADGE,VOLCANOBADGE,EARTHBADGE,$FF
 
-CeruleanHouse2Text_74e77:
-	TX_FAR _CeruleanHouse2Text_74e77
+CeruleanBadgeHouseText_Greet:
+	TX_FAR _CeruleanBadgeHouseText_Greet
 	db "@"
 
-CeruleanHouse2Text_74e7c:
-	TX_FAR _CeruleanHouse2Text_74e7c
+CeruleanBadgeHouseText_Ask:
+	TX_FAR _CeruleanBadgeHouseText_Ask
 	db "@"
 
-CeruleanHouse2Text_74e81:
-	TX_FAR _CeruleanHouse2Text_74e81
+CeruleanBadgeHouseText_Later:
+	TX_FAR _CeruleanBadgeHouseText_Later
 	db "@"
 
-TextPointers_74e86:
-	dw CeruleanHouse2Text_74e96
-	dw CeruleanHouse2Text_74e9b
-	dw CeruleanHouse2Text_74ea0
-	dw CeruleanHouse2Text_74ea5
-	dw CeruleanHouse2Text_74eaa
-	dw CeruleanHouse2Text_74eaf
-	dw CeruleanHouse2Text_74eb4
-	dw CeruleanHouse2Text_74eb9
+TextPointers_Badges:
+	dw CeruleanBadgeHouseText_Boulder
+	dw CeruleanBadgeHouseText_Cascade
+	dw CeruleanBadgeHouseText_Thunder
+	dw CeruleanBadgeHouseText_Rainbow
+	dw CeruleanBadgeHouseText_Soul
+	dw CeruleanBadgeHouseText_Marsh
+	dw CeruleanBadgeHouseText_Volcano
+	dw CeruleanBadgeHouseText_Earth
 
-CeruleanHouse2Text_74e96:
-	TX_FAR _CeruleanHouse2Text_74e96
+CeruleanBadgeHouseText_Boulder:
+	TX_FAR _CeruleanBadgeHouseText_Boulder
 	db "@"
 
-CeruleanHouse2Text_74e9b:
-	TX_FAR _CeruleanHouse2Text_74e9b
+CeruleanBadgeHouseText_Cascade:
+	TX_FAR _CeruleanBadgeHouseText_Cascade
 	db "@"
 
-CeruleanHouse2Text_74ea0:
-	TX_FAR _CeruleanHouse2Text_74ea0
+CeruleanBadgeHouseText_Thunder:
+	TX_FAR _CeruleanBadgeHouseText_Thunder
 	db "@"
 
-CeruleanHouse2Text_74ea5:
-	TX_FAR _CeruleanHouse2Text_74ea5
+CeruleanBadgeHouseText_Rainbow:
+	TX_FAR _CeruleanBadgeHouseText_Rainbow
 	db "@"
 
-CeruleanHouse2Text_74eaa:
-	TX_FAR _CeruleanHouse2Text_74eaa
+CeruleanBadgeHouseText_Soul:
+	TX_FAR _CeruleanBadgeHouseText_Soul
 	db "@"
 
-CeruleanHouse2Text_74eaf:
-	TX_FAR _CeruleanHouse2Text_74eaf
+CeruleanBadgeHouseText_Marsh:
+	TX_FAR _CeruleanBadgeHouseText_Marsh
 	db "@"
 
-CeruleanHouse2Text_74eb4:
-	TX_FAR _CeruleanHouse2Text_74eb4
+CeruleanBadgeHouseText_Volcano:
+	TX_FAR _CeruleanBadgeHouseText_Volcano
 	db "@"
 
-CeruleanHouse2Text_74eb9:
-	TX_FAR _CeruleanHouse2Text_74eb9
+CeruleanBadgeHouseText_Earth:
+	TX_FAR _CeruleanBadgeHouseText_Earth
+	db "@"
+
+CeruleanBadgeHouseLevelCapText:
+	TX_ASM
+
+	ld a, [wMoreGameplayOptions]
+	bit 0, a
+	jr z, .noLevelCap ; no levelcaps
+	; else
+	ld hl, CeruleanBadgeHouseText_LevelCap
+	jr .endScript
+.noLevelCap
+	ld hl, CeruleanBadgeHouseText_Obedience
+	; fallthrough
+.endScript
+	call PrintText
+	jp TextScriptEnd
+
+CeruleanBadgeHouseText_Obedience:
+	TX_FAR _CeruleanBadgeHouseText_Obedience
+	db "@"
+
+CeruleanBadgeHouseText_LevelCap:
+	TX_FAR _CeruleanBadgeHouseText_LevelCap
+	db "@"
+
+CeruleanBadgeHouseText_CurrentCap:
+	TX_ASM
+
+	callfar GetLevelCap
+	
+	ld a, [wMoreGameplayOptions]
+	bit 0, a
+	jr z, .noLevelCap ; no levelcaps
+	; else
+	ld hl, CeruleanBadgeHouseText_CurrentLevelCap
+	jr .endScript
+.noLevelCap
+	ld hl, CeruleanBadgeHouseText_CurrentObedience
+	; fallthrough
+.endScript
+	call PrintText
+	jp TextScriptEnd
+
+CeruleanBadgeHouseText_CurrentObedience:
+	TX_FAR _DisplayObedience
+	db "@"
+
+CeruleanBadgeHouseText_CurrentLevelCap:
+	TX_FAR _DisplayLevelCap
 	db "@"

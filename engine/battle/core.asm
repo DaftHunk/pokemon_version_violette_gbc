@@ -7450,8 +7450,8 @@ ApplyBadgeStatBoosts:
 	cp LINK_STATE_BATTLING
 	jr z, .return ; return if link battle
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	ld a, [wOptions]	;load game options
-	bit BIT_BATTLE_HARD, a			;check for hard mode
+	ld a, [wOptions] ;load game options
+	bit BIT_BATTLE_HARD, a ;check for hard mode
 	jr z, .dobadgeboost	;if not hard mode, always apply badge boosts
 ;joenote - only apply badge stat boosts in wild battles to keep parity with ai trainers
 	ld a, [wIsInBattle]
@@ -7461,24 +7461,38 @@ ApplyBadgeStatBoosts:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, [wObtainedBadges]
 	ld b, a
-	call .selectiveBadgeBoost	;joenote - jump down and run new section
+	call .maskObtainedBadges ; mask badges if needed
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	; Soul Badge (bit 4) - Speed
+	ld a, b
+	and %00010000
+	jr z, .skipSoul
+	ld hl, wBattleMonSpeed
+	call .applyBoostToStat
+.skipSoul
+	; Marais Badge (bit 5) - Special
+	ld a, b
+	and %00100000
+	jr z, .skipMarsh
+	ld hl, wBattleMonSpecial
+	call .applyBoostToStat
+.skipMarsh
+	; Volcano Badge (bit 6) - Defense
+	ld a, b
+	and %01000000
+	jr z, .skipVolcano
+	ld hl, wBattleMonDefense
+	call .applyBoostToStat
+.skipVolcano
+	; Earth Badge (bit 7) - Attack
+	ld a, b
+	and %10000000
+	jr z, .skipEarth
 	ld hl, wBattleMonAttack
-	ld c, $4
-; the boost is applied for badges whose bit position is even
-; the order of boosts matches the order they are laid out in RAM
-; Boulder (bit 0) - attack
-; Thunder (bit 2) - defense
-; Soul (bit 4) - speed
-; Volcano (bit 6) - special
-.loop
-	srl b
-	call c, .applyBoostToStat
-	inc hl
-	inc hl
-	srl b
-	dec c
-	jr nz, .loop
-.return	;joenote - clear out stat mod address offset backup
+	call .applyBoostToStat
+.skipEarth
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.return	; clear out stat mod address offset backup
 	xor a
 	ld [wUnusedD71B], a
 	ret
@@ -7510,31 +7524,24 @@ ApplyBadgeStatBoosts:
 	ld a, 999 % $100
 	ld [hld], a
 	ret
-;joenote - check for backed up stat mod address offset to selectively apply badge boosts
-.selectiveBadgeBoost
-	;b holds the obtained badge bits that are used to apply boosts
-	ld a, [wUnusedD71B]	;get the backed-up offset into 'a'
-	and a
-	ret z	;kick out if zero so the function will apply all normal badge boosts
-	ld c, $5	;load a value of 5 into c
-	cp c	;set carry  flag if the offset in a is < c's value (stat being affected is neither accuracy or evasion)
-	ret nc 	;kick out if carry flag not set so the function will apply all normal badge boosts
-	ld c, b	;put the badge bits into c and push onto stack
-	push bc
-	ld c, a	;put the offset value into c. it should be 1, 2, 3, or 4. use it as a loop counter.
-	ld a, $80	;set an initial bit that gets rolled around
-.selectloop
-	rla
-	rla
-	dec c
-	jr nz, .selectloop
-	pop bc	;get the badge bits back into c
-	ld b, a	;put the selected badge boost into b
-	ld a, c ;put badge bits into 'a'
-	and b	;AND a with b to clear the badge boost if you don't have that badge
-	ld b, a	;store it back into b
+; simplified selective logic, just mask badges if needed
+.maskObtainedBadges
+	ld a, [wUnusedD71B] ; load mask
+	or a ; just to set flags if needed
+	jr z, .use_all ; if mask is zero, skip masking
+
+	ld a, [wObtainedBadges] ; load obtained badges
+	ld hl, wUnusedD71B ; load mask address into HL
+	ld c, [hl] ; now load mask into C via HL
+	and c ; mask A with C
+	ld b, a ; store result in B
 	ret
-	
+
+.use_all
+	ld a, [wObtainedBadges]
+	ld b, a
+	ret
+
 LoadHudAndHpBarAndStatusTilePatterns:
 	call LoadHpBarAndStatusTilePatterns
 

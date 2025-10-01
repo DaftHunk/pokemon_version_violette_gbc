@@ -8,8 +8,10 @@ CeruleanHouse2Object:
 
 	db 0 ; signs
 
-	db 1 ; objects
-	object SPRITE_FAT_BALD_GUY, 5, 3, STAY, RIGHT, 1 ; person
+	db 3 ; objects
+	object SPRITE_FAT_BALD_GUY, 5, 3, STAY, RIGHT, 1 ; CeruleanBadgeHouseMainText
+	object SPRITE_CLIPBOARD, 4, 0, STAY, NONE, 2 ; CeruleanBadgeHouseText_LevelCap
+	object SPRITE_CLIPBOARD, 6, 0, STAY, NONE, 3 ; CeruleanBadgeHouseText_CurrentCap
 
 	; warp-to
 	warp_to 2, 0, CERULEAN_BADGE_HOUSE_WIDTH

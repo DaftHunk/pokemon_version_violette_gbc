@@ -1536,6 +1536,15 @@ _DisplayLevelCap::
 	text "!"
 	done
 
+_DisplayObedience::
+	text "Tes #mon"
+	line "échangés obéiront"
+	cont "jusqu'au"
+	cont "Niveau @"
+	text_decimal wMaxLevel, 1, 3
+	text "!"
+	done
+
 _LevelCappedText::
 	text_ram wcd6d
 	text " est au"
