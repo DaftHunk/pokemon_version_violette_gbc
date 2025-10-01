@@ -583,6 +583,30 @@ CapExpAtMaxLevel:
 	sbc b
 	jr c, .next
 ; the mon's exp is greater than or equal to the max exp, so overwrite it with the max exp
+; Code from Thoth33
+	push hl
+	ld a, [wWhichPokemon]
+	ld hl, wPartyMon1Level ; base of party level array
+	ld bc, wPartyMon2 - wPartyMon1 ; length of struct
+	call AddNTimes
+	ld d, [hl]
+	callfar CalcExperience ; get exp of current level
+	ldh a, [hExperience]
+	ld b, a
+	ldh a, [hExperience + 1]
+	ld c, a
+	ldh a, [hExperience + 2]
+	ld d, a
+	pop hl
+
+	ld a, b
+	ld [hli], a
+	ld a, c
+	ld [hli], a
+	ld a, d
+	ld [hld], a
+	dec hl
+; resume vanilla code
 	ld a, b
 	ld [hli], a
 	ld a, c
@@ -892,6 +916,23 @@ GetLevelCap::
 	add hl, bc
 	ld a, [hl]
 .storeValue
+	push af
+	; is level cap enabled ?
+	ld a, [wMoreGameplayOptions]
+	bit 0, a
+	jr nz, .levelCap
+	; else
+.obedience
+	pop af
+	cp 65
+	jr nz, .applyMaxLevel
+	; latest stage is only for Level Cap mode
+	ld a, MAX_LEVEL
+	jr .applyMaxLevel
+.levelCap
+	pop af
+	; falltrough
+.applyMaxLevel
 	ld [wMaxLevel], a
 	ret
 

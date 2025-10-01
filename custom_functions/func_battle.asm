@@ -707,7 +707,7 @@ ItemPalList:
 	db PAL_BW			;surfboard
 	db PAL_GREENMON		;safari ball
 
-;Note: calls GetBadgeCap and preserves D so that this too returns the levelcap based on badges back into D
+;Note: calls GetLevelCap and preserves D so that this too returns the levelcap based on badges back into D
 DoDisobeyLevelCheck:
 	xor a
 	ld [wMonIsDisobedient], a
@@ -724,18 +724,26 @@ DoDisobeyLevelCheck:
 	ld bc, wPartyMon2 - wPartyMon1
 	ld a, [wPlayerMonNumber]
 	call AddNTimes
+
+	; is level cap enabled ?
+	ld a, [wMoreGameplayOptions]
+	bit 0, a
+	jr nz, .monIsTradedOrLevelCap
+	; else
 	ld a, [wPlayerID]
 	cp [hl]
-	jr nz, .monIsTraded
+	jr nz, .monIsTradedOrLevelCap
 	inc hl
 	ld a, [wPlayerID + 1]
 	cp [hl]
 	jr z, .return_usemove
 ; it was traded
 
-.monIsTraded
+.monIsTradedOrLevelCap
 ; what level might disobey?
-	call GetBadgeCap
+	callab GetLevelCap
+	ld a, [wMaxLevel]
+	ld d, a
 
 	ld a, [wBattleMonLevel]
 	ld e, a
@@ -748,48 +756,6 @@ DoDisobeyLevelCheck:
 .return_usemove
 	xor a
 	ret
-
-;a 0 value means badge has no effect on obedience
-; the value for no badges must be non-zero
-ObedienceLevelsTraded:
-	db 10	;no badges
-	db 20	;boulder badge
-	db 30	;cascade badge
-	db 40	;thunder badge
-	db 55	;rainbow badge
-	db 55	;soul badge
-	db 55	;marsh badge
-	db 70	;volcano badge
-	db 255	;earth badge
-
-;returns the levelcap based on badges back into D
-GetBadgeCap:
-	ld hl, ObedienceLevelsTraded
-
-	ld e, 8	;number of badges that exist
-	ld a, [wObtainedBadges]
-	ld d, a
-	
-	push bc
-	ld a, [hl]
-	ld b, a
-
-.loop_level
-	inc hl
-	rrc d
-	jr nc, .donthavebadge
-	ld a, [hl]
-	and a
-	jr z, .donthavebadge
-	ld b, a
-.donthavebadge
-	dec e
-	jr nz, .loop_level
-	
-	ld d, b
-	pop bc
-	ret
-	
 	
 PsywaveEnhanced:
 	;E = user's level
