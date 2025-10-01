@@ -54,14 +54,16 @@ IF DEF(_DEBUG)
 	ld [wTownVisitedFlag], a
 	ld [wTownVisitedFlag + 1], a
 
-	; Get all badges except Earth Badge.
-	ld a, $ff ^ (1 << 7)
+	ld a, [wObtainedBadges]
+;	set 0, a ; Boulder Badge
+;	set 1, a ; Cascade Badge
+	set 2, a ; Thunder Badge
+	set 3, a ; Rainbow Badge
+;	set 4, a ; Soul Badge
+;	set 5, a ; Marsh Badge
+;	set 6, a ; Volcano Badge
+;	set 7, a ; Earth Badge
 	ld [wObtainedBadges], a
-
-;	ld a, [wObtainedBadges]
-;	set 2, a
-;	set 3, a
-;	ld [wObtainedBadges], a
 
 	call SetDebugNewGameParty
 

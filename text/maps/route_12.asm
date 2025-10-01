@@ -144,6 +144,7 @@ _Route12Text11::
 
 _Route12Text12::
 	text "Zone de Pêche"
+	done
 
 _Route12TextUsePokeflute::
 	text "Jouer de la"

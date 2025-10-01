@@ -668,44 +668,44 @@ SetAttackAnimPal_otheranim:
 	pop hl
 	ret
 TypePalColorList:
-	db PAL_BW;normal
-	db PAL_ORANGEMON;fighting
-	db PAL_MEWMON;flying
-	db PAL_PURPLEMON;poison
-	db PAL_BROWNMON;ground
-	db PAL_GREYMON;rock
-	db PAL_BW;untyped/bird
-	db PAL_GREENMON;bug
-	db PAL_REDBLUEMON;dragon
-	db PAL_GREYBLUEMON;steel
-	db PAL_BW;unused
-	db PAL_BW;unused
-	db PAL_BW;unused
-	db PAL_BW;unused
-	db PAL_BW;unused
-	db PAL_BW;unused
-	db PAL_BW;unused
-	db PAL_BW;unused
-	db PAL_BW;unused
-	db PAL_BW;unused
-	db PAL_ORANGEMON;fire
-	db PAL_BLUEMON;water
-	db PAL_GREENMON;grass
-	db PAL_YELLOWMON;electric
-	db PAL_PINKMON;psychic
-	db PAL_CYANMON;ice
-	db PAL_PURPLEMON;ghost
-	db PAL_LIGHTDARK;dark
+	db PAL_BW			;normal
+	db PAL_ORANGEMON	;fighting
+	db PAL_MEWMON		;flying
+	db PAL_PURPLEMON	;poison
+	db PAL_BROWNMON		;ground
+	db PAL_GREYMON		;rock
+	db PAL_BW			;untyped/bird
+	db PAL_GREENMON		;bug
+	db PAL_REDBLUEMON	;dragon
+	db PAL_GREYBLUEMON	;steel
+	db PAL_BW			;unused
+	db PAL_BW			;unused
+	db PAL_BW			;unused
+	db PAL_BW			;unused
+	db PAL_BW			;unused
+	db PAL_BW			;unused
+	db PAL_BW			;unused
+	db PAL_BW			;unused
+	db PAL_BW			;unused
+	db PAL_BW			;unused
+	db PAL_ORANGEMON	;fire
+	db PAL_BLUEMON		;water
+	db PAL_GREENMON		;grass
+	db PAL_YELLOWMON	;electric
+	db PAL_PINKMON		;psychic
+	db PAL_CYANMON		;ice
+	db PAL_PURPLEMON	;ghost
+	db PAL_LIGHTDARK	;dark
 ItemPalList:
-	db PAL_BW	;null item
+	db PAL_BW			;null item
 	db PAL_PURPLEMON	;master ball
-	db PAL_UBALL	;ultra ball
-	db PAL_BLUEMON	;great ball
+	db PAL_UBALL		;ultra ball
+	db PAL_BLUEMON		;great ball
 	db PAL_ORANGEMON	;pokeball
-	db PAL_BW	;town map
-	db PAL_BW	;bike
-	db PAL_BW	;surfboard
-	db PAL_GREENMON	;safari ball
+	db PAL_BW			;town map
+	db PAL_BW			;bike
+	db PAL_BW			;surfboard
+	db PAL_GREENMON		;safari ball
 
 ;Note: calls GetBadgeCap and preserves D so that this too returns the levelcap based on badges back into D
 DoDisobeyLevelCheck:
