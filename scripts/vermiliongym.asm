@@ -85,12 +85,6 @@ VermilionGymScript_GiveTM:
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_VERMILION_GYM_TRAINER_0, EVENT_BEAT_VERMILION_GYM_TRAINER_2
 
-	ld a, [wMoreGameplayOptions]
-	bit 0, a
-	jr z, .next ; no levelcaps
-	; else
-	; display new level cap to the player
-	callfar GetLevelCap
 	ld a, $9
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
@@ -219,15 +213,8 @@ VermilionGymText_LeaderPreBattle:
 
 VermilionGymText_LeaderAfterBattle:
 	TX_ASM
-	ld a, [wMoreGameplayOptions]
-	bit 0, a
-	jr z, .next ; no levelcaps
-	; else
-	; display new level cap to the player
-	callfar GetLevelCap
-	ld hl, VermilionGymText_LevelCapWait
-	call PrintText
-.next
+	callfar DisplayCurrentCap
+	
 	ld hl, .LeaderAfterBattle
 	call PrintText
 	jp TextScriptEnd
@@ -235,13 +222,8 @@ VermilionGymText_LeaderAfterBattle:
 	TX_FAR _VermilionGymText_LeaderAfterBattle
 	db "@"
 
-VermilionGymText_LevelCapWait:
-	TX_FAR _DisplayLevelCap
-	TX_WAIT
-	db "@"
-
 VermilionGymText_LevelCap:
-	TX_FAR _DisplayLevelCap
+	TX_FAR DisplayCurrentCapScript
 	db "@"
 
 VermilionGymText_Badge:

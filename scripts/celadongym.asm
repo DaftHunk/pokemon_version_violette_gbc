@@ -66,12 +66,6 @@ CeladonGymScript_GiveTM:
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_CELADON_GYM_TRAINER_0, EVENT_BEAT_CELADON_GYM_TRAINER_6
 
-	ld a, [wMoreGameplayOptions]
-	bit 0, a
-	jr z, .next ; no levelcaps
-	; else
-	; display new level cap to the player
-	callfar GetLevelCap
 	ld a, $c
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
@@ -262,15 +256,8 @@ CeladonGymText_LeaderEndBattle:
 
 CeladonGymText_LeaderAfterBattle:
 	TX_ASM
-	ld a, [wMoreGameplayOptions]
-	bit 0, a
-	jr z, .next ; no levelcaps
-	; else
-	; display new level cap to the player
-	callfar GetLevelCap
-	ld hl, CeladonGymText_LevelCapWait
-	call PrintText
-.next
+	callfar DisplayCurrentCap
+	
 	ld hl, .LeaderAfterBattle
 	call PrintText
 	jp TextScriptEnd
@@ -278,13 +265,8 @@ CeladonGymText_LeaderAfterBattle:
 	TX_FAR _CeladonGymText_LeaderAfterBattle
 	db "@"
 
-CeladonGymText_LevelCapWait:
-	TX_FAR _DisplayLevelCap
-	TX_WAIT
-	db "@"
-
 CeladonGymText_LevelCap:
-	TX_FAR _DisplayLevelCap
+	TX_FAR DisplayCurrentCapScript
 	db "@"
 
 CeladonGymText_Badge:

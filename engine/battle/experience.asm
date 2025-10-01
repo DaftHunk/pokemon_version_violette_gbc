@@ -893,6 +893,36 @@ GrewLevelText:
 	TX_SFX_LEVEL_UP
 	db "@"
 
+DisplayCurrentCapScript:
+	TX_ASM
+	call DisplayCurrentCap
+	jp TextScriptEnd
+
+DisplayCurrentCap::
+	call GetLevelCap
+	; is level cap enabled ?
+	ld a, [wMoreGameplayOptions]
+	bit 0, a
+	jr nz, .levelCap
+	; else
+	ld hl, .obedienceText
+	jr .print
+.levelCap
+	ld hl, .levelCapText
+	; fallthrough
+.print
+	call PrintText
+	ret
+
+.obedienceText
+	TX_FAR _DisplayObedience
+	TX_WAIT
+	db "@"
+.levelCapText
+	TX_FAR _DisplayLevelCap
+	TX_WAIT
+	db "@"
+
 ; function to count the set bits in wObtainedBadges
 ; returns the number of badges in wNumSetBits
 GetBadgesObtained::

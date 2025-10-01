@@ -46,20 +46,10 @@ _SaffronGymText_LeaderAfterBattle::
 
 _SaffronGymText_Badge::
 	text "Avec le Badge"
-	line "Marais, les"
-	cont "#mon échangés"
-	cont "de Niveau"
-	cont "55 t'obéiront!"
-
-	para "Les #mon plus"
-	line "puissants seront"
-	cont "incontrôlables"
-	cont "lors des combats!"
-
-	para "Fais en sorte que"
-	line "tes #mon ne"
-	cont "dépassent pas"
-	cont "cette limite!"
+	line "Marais, le"
+	cont "Spécial de tes"
+	cont "#mon est"
+	cont "augmenté!"
 
 	para "Tiens! Prends ça"
 	line "aussi!"

@@ -13,18 +13,9 @@ _VermilionGymText_LeaderAfterBattle::
 
 _VermilionGymText_Badge::
 	text "Le BadgeFoudre"
-	line "augmente la"
-	cont "Défense de tes"	;joenote - changed SPEED to DEFENSE in order to fix a typo
-	cont "#mon!"
-
-	para "Tes #mon"
-	line "échangés obéiront"
-	cont "jusqu'au"
-	cont "Niveau 40!"
-
-	para "Il permet aussi"
-	line "à tes #mon"
-	cont "de Voler!"
+	line "permet à tes"
+	cont "#mon de"
+	cont "Voler!"
 
 	para "Tu es un bon, mon"
 	line "p'tit gars!"

@@ -18,11 +18,6 @@ _FuchsiaGymText_Badge::
 	line "aussi d'utiliser"
 	cont "Surf!"
 
-	para "Tes #mon"
-	line "échangés obéiront"
-	cont "jusqu'au"
-	cont "Niveau 55!"
-
 	para "Attends! Prends"
 	line "aussi ceci!"
 	done

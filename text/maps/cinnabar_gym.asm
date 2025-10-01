@@ -43,14 +43,9 @@ _BlaineBadgeText::
 	text "Haha!"
 
 	para "Le Badge Volcan"
-	line "augmente le"
-	cont "Spécial de tes"
+	line "augmente la"
+	cont "Défense de tes"	;joenote - changed SPEED to DEFENSE in order to fix a typo
 	cont "#mon!"
-
-	para "Tes #mon"
-	line "échangés obéiront"
-	cont "jusqu'au"
-	cont "Niveau 70!"
 
 	para "Prends ça aussi!"
 	done

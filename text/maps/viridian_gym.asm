@@ -53,10 +53,11 @@ _ViridianGymText_LeaderAfterBattle::
 	text_end
 
 _ViridianGymText_Badge::
-	text "Grâce au Badge"
-	line "Terre tous les"
-	cont "#mon obéiront"
-	cont "à tes ordres!"
+	text "Les #mon du"
+	line "détenteur du"
+	cont "Badge Terre"
+	cont "deviennent plus"
+	cont "puissants!"
 
 	para "Il est le"
 	line "témoignage de ta"

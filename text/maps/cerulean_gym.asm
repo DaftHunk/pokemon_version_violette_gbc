@@ -67,17 +67,8 @@ _CeruleanGymText_LeaderAfterBattle::
 
 _CeruleanGymText_Badge::
 	text "Le BadgeCascade"
-	line "oblige tous les"
-	cont "#mon d'un"
-	cont "niveau inférieur"
-	cont "à 30 à t'obéir!"
-
-	para "Les échangés"
-	line "aussi!"
-
-	para "En plus, tu peux"
-	line "maintenant"
-	cont "utiliser la CS"
+	line "te permet"
+	cont "d'utiliser la CS"
 	cont "Coupe!"
 
 	para "Tu peux Couper"

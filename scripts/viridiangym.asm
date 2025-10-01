@@ -167,12 +167,6 @@ ViridianGymScript_GiveTM:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	SetEvents EVENT_2ND_ROUTE22_RIVAL_BATTLE, EVENT_ROUTE22_RIVAL_WANTS_BATTLE
 
-	ld a, [wMoreGameplayOptions]
-	bit 0, a
-	jr z, .next ; no levelcaps
-	; else
-	; display new level cap to the player
-	callfar GetLevelCap
 	ld a, $10
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
@@ -335,15 +329,8 @@ ViridianGymText_LeaderEndBattle:
 
 ViridianGymText_LeaderAfterBattle:
 	TX_ASM
-	ld a, [wMoreGameplayOptions]
-	bit 0, a
-	jr z, .next ; no levelcaps
-	; else
-	; display new level cap to the player
-	callfar GetLevelCap
-	ld hl, ViridianGymText_LevelCapWait
-	call PrintText
-.next
+	callfar DisplayCurrentCap
+	
 	ld hl, .LeaderAfterBattle
 	call PrintText
 	jp TextScriptEnd
@@ -352,13 +339,8 @@ ViridianGymText_LeaderAfterBattle:
 	TX_WAIT
 	db "@"
 
-ViridianGymText_LevelCapWait:
-	TX_FAR _DisplayLevelCap
-	TX_WAIT
-	db "@"
-
 ViridianGymText_LevelCap:
-	TX_FAR _DisplayLevelCap
+	TX_FAR DisplayCurrentCapScript
 	db "@"
 
 ViridianGymText_Badge:
