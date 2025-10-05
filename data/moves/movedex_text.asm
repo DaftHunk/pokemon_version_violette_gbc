@@ -137,12 +137,11 @@ _WingAttackDexEntry::
 	dex
 
 _WhirlwindDexEntry::
-	text "Ejecte le Pokémon"
-	next "ennemi et le remp-"
-	next "lace par un autre."
+	text "Dans la nature,"
+	next "met fin au combat."
 
-	bage "Dans la nature,"
-	next "met fin au combat@"
+	bage "Ne fait rien en"
+	next "duel de dresseurs.@"
 	; fall through
 	text_jump _GenericImproveCatchRate
 
@@ -380,12 +379,11 @@ _GrowlDexEntry::
 	text_jump _GenericLowAtk1Text
 
 _RoarDexEntry::
-	text "Effraie le #mon"
-	next "ennemi et le remp-"
-	next "lace par un autre."
+	text "Dans la nature,"
+	next "met fin au combat."
 
-	bage "Dans la nature,"
-	next "met fin au combat@"
+	bage "Ne fait rien en"
+	next "duel de dresseurs.@"
 	; fall through
 	text_jump _GenericImproveCatchRate
 
