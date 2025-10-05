@@ -98,8 +98,6 @@ INCLUDE "engine/overworld/wild_mons.asm"
 
 INCLUDE "engine/items/items.asm"
 
-INCLUDE "engine/menu/draw_badges.asm"
-
 INCLUDE "engine/overworld/update_map.asm"
 INCLUDE "engine/overworld/cut.asm"
 INCLUDE "engine/overworld/missable_objects.asm"
@@ -2162,3 +2160,5 @@ INCLUDE "engine/battle/exp_bar_print.asm"
 INCLUDE "custom_functions/fisher_yates.asm"
 INCLUDE "engine/battle/load_pics.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+INCLUDE "engine/menu/draw_badges.asm"

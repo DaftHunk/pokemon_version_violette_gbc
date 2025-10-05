@@ -301,3 +301,13 @@ _GenericLevelDamageText::
 	next "équivalents au"
 	next "niveau du lanceur"
 	dex
+
+_GenericImproveCatchRate::
+	bage "Si votre #mon"
+	next "possède cette"
+	next "capacité,"
+
+	bage "les chances de"
+	next "capturer l'ennemi"
+	next "augmenteront"
+	dex

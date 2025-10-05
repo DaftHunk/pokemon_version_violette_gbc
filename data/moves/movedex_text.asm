@@ -142,8 +142,9 @@ _WhirlwindDexEntry::
 	next "lace par un autre."
 
 	bage "Dans la nature,"
-	next "met fin au combat"
-	dex
+	next "met fin au combat@"
+	; fall through
+	text_jump _GenericImproveCatchRate
 
 _FlyDexEntry::
 	text "Le lanceur s'envo-"
@@ -384,8 +385,9 @@ _RoarDexEntry::
 	next "lace par un autre."
 
 	bage "Dans la nature,"
-	next "met fin au combat"
-	dex
+	next "met fin au combat@"
+	; fall through
+	text_jump _GenericImproveCatchRate
 
 _SingDexEntry::
 	text "Une berceuse qui"
@@ -1154,7 +1156,9 @@ _GlareDexEntry::
 	bage "Attaque signature"
 	next "d'Arbo et Arbok.@"
 	; fall through
-	text_jump _GenericParalizeText
+	text_call _GenericParalizeText
+	text_end
+	text_jump _GenericImproveCatchRate
 
 _DreamEaterDexEntry::
 	text "Le lanceur mange"
@@ -1241,7 +1245,9 @@ _SporeDexEntry::
 	next "de Paras et"
 	next "Parasect.@"
 	; fall through
-	text_jump _GenericSleepText
+	text_call _GenericSleepText
+	text_end
+	text_jump _GenericImproveCatchRate
 
 _FlashDexEntry::
 	text "Le lanceur produit"

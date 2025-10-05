@@ -3034,8 +3034,8 @@ _ItemUseBallText00::
 	prompt
 
 _ItemUseBallText01::
-	text "Vous manquez le"
-	line "#mon!"
+	text "Mince, il a"
+	line "esquivé la Ball!"
 	prompt
 
 _ItemUseBallText02::

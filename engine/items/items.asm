@@ -199,176 +199,184 @@ ItemUseBall:
 	jp .captured
 
 .notOldManBattle
-; Get the first random number. Let it be called Rand1.
-; Rand1 must be within a certain range according the kind of ball being thrown.
-; The ranges are as follows.
-; Poké Ball:         [0, 255]
-; Great Ball:        [0, 200]
-; Ultra/Safari Ball: [0, 150]
-; Loop until an acceptable number is found.
-
+; #######################################
+; # Gen 3 Style Catching by ZetaPhoenix #
+; #######################################
+; The formula that this code will apply is the following:
+; Catch Rate * HP Modifier * Ball Modifier * Status Modifier = Catch Threshold
 .loop
-	call Random
-	ld b, a
-	
-; Get the item ID.
-	ld hl, wcf91
-	ld a, [hl]
-
-; The Master Ball always succeeds.
-;joenote - Adding an exception for Mewtwo! This is now the ultimate test of the player's catching skills.
-;		It will play its cry and keep the ball from having any effect.
-;		The ball is not wasted. Mewtwo's mental might prevents you from throwing it.
-	cp MASTER_BALL
-	jr nz, .not_mball
-	ld a, [wEnemyMon]
-	cp MEWTWO
-	jp nz, .captured ;works as normal if not mewtwo
-	call PlayCry	
-	jp ThrowBallAtMewtwo
-.not_mball
-
-; Anything will do for the basic Poké Ball.
-	cp POKE_BALL
-	jr z, .checkForAilments
-
-; If it's a Great/Ultra/Safari Ball and Rand1 is greater than 200, try again.
-	ld a, 200
-	cp b
-	jr c, .loop
-
-; Less than or equal to 200 is good enough for a Great Ball.
-	ld a, [hl]
-	cp GREAT_BALL
-	jr z, .checkForAilments
-
-; If it's an Ultra/Safari Ball and Rand1 is greater than 150, try again.
-	ld a, 150
-	cp b
-	jr c, .loop
-	
-;joenote - pump up those safari balls
-
-; Less than or equal to 150 is good enough for an Ultra Ball.
-	ld a, [hl]
-	cp ULTRA_BALL
-	jr z, .checkForAilments
-	
-; If it's a Safari Ball and Rand1 is greater than 'a', try again.
-	ld a, 125
-	cp b
-	jr c, .loop
-
-.checkForAilments
-
-	call .ballcheat
-
-; Pokémon can be caught more easily with a status ailment.
-; Depending on the status ailment, a certain value will be subtracted from
-; Rand1. Let this value be called Status.
-; The larger Status is, the more easily the Pokémon can be caught.
-; no status ailment:     Status = 0
-; Burn/Paralysis/Poison: Status = 12
-; Freeze/Sleep:          Status = 25
-; If Status is greater than Rand1, the Pokémon will be caught for sure.
-	ld a, [wEnemyMonStatus]
-	and a
-	jr z, .skipAilmentValueSubtraction ; no ailments
-	and 1 << FRZ | SLP
-	ld c, 12
-	jr z, .notFrozenOrAsleep
-	ld c, 25
-.notFrozenOrAsleep
-	ld a, b
-	sub c
-	jp c, .captured
-	ld b, a
-
-.skipAilmentValueSubtraction
-	push bc ; save (Rand1 - Status)
-
-; Calculate MaxHP * 255.
+; # HP Modifier:
+; A formula approximates the value based on the percentage of HP the enemy Pokémon has left.
+; 100% would be 1/3, 0% would be 1. The rest fall between those values.
 	xor a
-	ld [H_MULTIPLICAND], a
-	ld hl, wEnemyMonMaxHP
+	ldh [H_MULTIPLICAND], a
+	ld hl, wEnemyMonHP
 	ld a, [hli]
-	ld [H_MULTIPLICAND + 1], a
+	ldh [H_MULTIPLICAND + 1], a
 	ld a, [hl]
-	ld [H_MULTIPLICAND + 2], a
-	ld a, 255
-	ld [H_MULTIPLIER], a
+	ldh [H_MULTIPLICAND + 2], a
+	ld a, 85
+	ldh [H_MULTIPLIER], a
 	call Multiply
-
-; Determine BallFactor. It's 8 for Great Balls and 12 for the others.
-	ld a, [wcf91]
-	;cp GREAT_BALL
-	cp SAFARI_BALL ;joenote - great balls now have factor of 12 and safari balls now have factor of 8
-	ld a, 12		; This is because a lower ball factor helps catch pokemon that have fuller HP
-	jr nz, .skip1	; So this was probably intended for the safari zone since pokemon there can't be weakened
-	ld a, 8
-
-.skip1
-; Note that the results of all division operations are floored.
-
-; Calculate (MaxHP * 255) / BallFactor.
-	ld [H_DIVISOR], a
-	callba ImproveBallFactor	;joenote - for secret move effects
+	ld a, [wEnemyMonMaxHP]
+	ld b, a
+	ld a, [wEnemyMonMaxHP + 1]
+	ld c, 1
+.divisionLoop
+	srl b
+	jr c, .lastRotate
+	jr z, .foundEnd
+.lastRotate
+	rra
+	sla c
+	jr nc, .noOverflow
+	ld c, $FF
+.noOverflow
+	jr .divisionLoop
+.foundEnd
+	and a
+	jr nz, .notDividingBy0
+	inc a
+.notDividingBy0
+	ldh [H_DIVISOR], a
+	ld b, 4 ; number of bytes in dividend
+	call Divide
+	ld a, c
+	ldh [H_DIVISOR], a
+	call Divide
+	ldh a, [H_QUOTIENT + 1]
+	and a
+	jr z, .curHPLowerOrEqualThanMaxHP1
+	ld a, 85
+	ldh [H_QUOTIENT + 3], a
+.curHPLowerOrEqualThanMaxHP1
+	ldh a, [H_QUOTIENT + 2]
+	and a
+	jr z, .curHPLowerOrEqualThanMaxHP2
+	ld a, 85
+	ldh [H_QUOTIENT + 3], a
+.curHPLowerOrEqualThanMaxHP2
+	ldh a, [H_QUOTIENT + 3]
+	cp 86
+	jr c, .curHPLowerOrEqualThanMaxHP3
+	ld a, 85
+.curHPLowerOrEqualThanMaxHP3
+	ld b, a
+	sla b
+	ld a, 255
+	sub b
+	ld b, a		; multiplier
+	ld c, 255	; divisor	
+	xor a
+	ldh [H_MULTIPLICAND], a
+	ldh [H_MULTIPLICAND + 1], a
+	ld a, [wEnemyMonActualCatchRate]
+	ldh [H_MULTIPLICAND + 2], a
+	ld a, b
+	ldh [H_MULTIPLIER], a
+	call Multiply
+	ld a, c
+	ldh [H_DIVISOR], a
 	ld b, 4 ; number of bytes in dividend
 	call Divide
 
-; Divide the enemy's current HP by 4. HP is not supposed to exceed 999 so
-; the result should fit in a. If the division results in a quotient of 0,
-; change it to 1.
-	ld hl, wEnemyMonHP
-	ld a, [hli]
-	ld b, a
+; # Ball Modifier:
+; Determined in BallMultipliers
+; Poké Ball = 1
+; Great Ball = 3/2
+; Safari Ball = 3/2
+; Ultra Ball = 2
+; The Master Ball will always succeed and doesn't need to have a Ball Modifier.
+	ld hl, wcf91
 	ld a, [hl]
-	srl b
-	rr a
-	srl b
-	rr a
-	and a
-	jr nz, .skip2
-	inc a
-
-.skip2
-; Let W = ((MaxHP * 255) / BallFactor) / max(HP / 4, 1). Calculate W.
-	ld [H_DIVISOR], a
-	ld b, 4
+	cp MASTER_BALL
+	jr nz, .notMasterBall
+	; if Master Ball, check if Memtwo
+	ld a, [wEnemyMon]
+	cp MEWTWO
+	jp nz, .captured ;works as normal if not mewtwo
+	; else if it's Mewtwo
+	call PlayCry
+	jp ThrowBallAtMewtwo
+.notMasterBall
+	ld b, a
+	ld hl, BallMultipliers
+.checkLoop
+	ld a, [hli]
+	cp b
+	jr z, .ballFound
+	cp -1
+	jr z, .failedToCapture
+	inc hl
+	inc hl
+	jr .checkLoop
+.ballFound
+	ld b, [hl]
+	inc hl
+	ld c, [hl]
+	ld a, b
+	ldh [H_MULTIPLIER], a
+	call Multiply
+	ld a, c
+	ldh [H_DIVISOR], a
+	ld b, 4 ; number of bytes in dividend
 	call Divide
 
-; If W > 255, store 255 in [H_QUOTIENT + 3].
-; Let X = min(W, 255) = [H_QUOTIENT + 3].
-	ld a, [H_QUOTIENT + 2]
+	call .ballcheat
+
+; # Status Modifier:
+; SLP = 2
+; FRZ = 2
+; PAR = 3/2
+; PSN = 3/2
+; BRN = 3/2
+; No status = 1
+	ld b, 1
+	ld c, 1
+	ld a, [wEnemyMonStatus]
 	and a
-	jr z, .skip3
-	ld a, 255
-	ld [H_QUOTIENT + 3], a
+	jr z, .ailmentMultiplierFound
+	ld b, 3
+	ld c, 2
+	and (1 << FRZ) | SLP
+	jr z, .ailmentMultiplierFound
+	ld b, 2
+	ld c, 1
+.ailmentMultiplierFound
+	ld a, b
+	ldh [H_MULTIPLIER], a
+	call Multiply
+	ld a, c
+	ldh [H_DIVISOR], a
+	ld b, 4 ; number of bytes in dividend
+	call Divide
 
-.skip3
-	callba ImproveCatchRate		;joenote - for secret move effects
-	pop bc ; b = Rand1 - Status
-
-; If Rand1 - Status > CatchRate, the ball fails to capture the Pokémon.
-	ld a, [wEnemyMonActualCatchRate]
-	cp b
-	jr c, .failedToCapture
-
-; If W > 255, the ball captures the Pokémon.
-	ld a, [H_QUOTIENT + 2]
+	callba ImproveCatchRate
+	
+; # Catch Threshold:
+; If the result of the formula is 255 (dec) or greater the catch will succeed.
+; If it's a number from 0 to 254 a random number will be generated and
+; if this random number is lower than the catch threshold the catch will succeed,
+; otherwise it will fail.
+	ldh a, [H_QUOTIENT]
+	and a
+	jr nz, .captured
+	ldh a, [H_QUOTIENT + 1]
+	and a
+	jr nz, .captured
+	ldh a, [H_QUOTIENT + 2]
 	and a
 	jr nz, .captured
 
-	call Random ; Let this random number be called Rand2.
-
-; If Rand2 > X, the ball fails to capture the Pokémon.
-	ld b, a
-	
 	call .ballcheat
-	
-	ld a, [H_QUOTIENT + 3]
+
+	ldh a, [H_QUOTIENT + 3]
+	cp 255
+	jr z, .captured
+	ld b, a
+	call Random
 	cp b
-	jr c, .failedToCapture
+	jr nc, .failedToCapture
 
 .captured
 	predef BallCaught_NuzlockeHandler	;joenote - set map flags for nuzlocke mode
@@ -394,7 +402,7 @@ ItemUseBall:
 	ld [H_MULTIPLIER], a
 	call Multiply
 
-; Determine BallFactor2.
+; # Determine BallFactor2.
 ; Poké Ball:         BallFactor2 = 255
 ; Great Ball:        BallFactor2 = 200
 ; Ultra/Safari Ball: BallFactor2 = 150
@@ -407,10 +415,6 @@ ItemUseBall:
 	jr z, .skip4
 	ld b, 150
 	cp ULTRA_BALL
-	jr z, .skip4
-;joenote - pump up those safari balls
-	ld b, 125
-	cp SAFARI_BALL
 	jr z, .skip4
 
 .skip4
@@ -687,7 +691,15 @@ ItemUseBall:
 	and B_BUTTON + D_DOWN
 	cp B_BUTTON + D_DOWN
 	ret nz
-	srl b	;halve the randomly generated number in order to double the ball's effectiveness
+	ld b, 2
+	ld c, 1
+	ld a, b
+	ldh [H_MULTIPLIER], a
+	call Multiply
+	ld a, c
+	ldh [H_DIVISOR], a
+	ld b, 4 ; number of bytes in dividend
+	call Divide
 	ret
 
 
@@ -3540,4 +3552,22 @@ CheckMaxStatExp:
 	pop de
 	ret		;carry bit is set if there is an overflow
 
+; registers de and hl comparison by Vortiene
+; sets carry flag if DE is greater than HL. Sets zero flag if they're equal.
+CompareDEHL:
+	ld a, h
+	sub d
+	ret nz ; if carry, DE is greater, if no carry, HL is greater
+; 2nd byte comparison
+	ld a, l
+	sub e
+	ret ; if carry, DE is greater, if no carry, HL is greater, if z, they're equal
 
+BallMultipliers:
+;	db ITEM_ID, Numerator, Denominator
+	db POKE_BALL   , 1, 1	; x1
+	db GREAT_BALL  , 3, 2	; x1.5
+	db SAFARI_BALL , 3, 2   ; x1.5
+	db ULTRA_BALL  , 2, 1	; x2
+	db -1 ; end
+; The Master Ball will always succeed and doesn't need to have a Ball Modifier.
