@@ -12,6 +12,7 @@ BillsHouseScriptPointers:
 	dw BillsHouseScript4
 	dw BillsHouseScript5
 	dw BillsGarden	;joenote - adding this as an easter egg
+	dw BillsHouseText_Umbreon
 
 BillsHouseScript0:
 	ret
@@ -206,16 +207,26 @@ BillsHouseText_1e8cb:
 
 BillsHouseText3:
 	TX_ASM
-
+	; is player shows Mew ?
 	ld a, [wPartyMon1Species]
 	cp MEW
-	jr nz, .next
+	jr nz, .noMew
+	; is showing Mew
 	ld a, 6
-	ld [wBillsHouseCurScript], a	;joenote - warp to bill's garden
+	ld [wBillsHouseCurScript], a ;joenote - warp to bill's garden
 	ld hl, BillGardenText
 	jr .done
-	
-.next
+
+.noMew
+	; else is player shows Umbreon ?
+	ld a, [wPartyMon1Species]
+	cp UMBREON
+	jr nz, .noUmbreon
+	; is showing Umbreon
+	ld hl, BillsHouseText_Umbreon
+	jr .done
+
+.noUmbreon
 	ld hl, BillsHouseText_1e8da
 .done
 	call PrintText
@@ -238,4 +249,8 @@ BillsHouseText_1e8da:
 
 BillGardenText:
 	TX_FAR _BillGardenText
+	db "@"
+
+BillsHouseText_Umbreon:
+	TX_FAR _BillsHouseText_Umbreon
 	db "@"

@@ -129,6 +129,30 @@ _BillGardenText::
 	cont "c'est littéral-"
 	cont "ement mon jardin!"
 	cont "J'y reproduis des"
-	cont "espèces rares."
+	cont "espèces rares..."
 	done
-	
+
+_BillsHouseText_Umbreon::
+	text "Léo: Truc de ouf!"
+	line "Il existe donc"
+	cont "bel et bien"
+	cont "d'autres évo-"
+	cont "lutions d'Evoli!"
+
+	para "Il faudra que"
+	line "j'étudie ça de"
+	cont "plus près mais"
+	cont "cette rumeur"
+	cont "d'un #mon"
+	cont "nouveau m'obsède"
+	cont "tellement..."
+
+	para "Ça vaut ce que"
+	line "ça vaut mais"
+	cont "d'après les"
+	cont "rumeurs, il se"
+	cont "cacherait sous"
+	cont "un camion!"
+
+	para "Zarbi non?"
+	done
