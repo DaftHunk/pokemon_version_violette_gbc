@@ -36,5 +36,5 @@ _VolcanoB1FText1_EndBattle::
 
 _VolcanoB1FText1_AfterBattle::
 	text "C'était pas ma"
-	line "pas ma guerre!"
+	line "guerre!"
 	done
