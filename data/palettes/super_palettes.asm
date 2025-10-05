@@ -253,8 +253,8 @@ SuperPalettes:
 
 	; PAL_UBALL	;joenote - adding a pal just for ultra balls on GBC
 	SGB_WHITE
-	RGB 24, 24, 24
 	RGB  8,  8,  8
+	RGB 31, 31,  0
 	RGB  3,  3,  3
 	
 	; PAL_VIOLETTEMON
