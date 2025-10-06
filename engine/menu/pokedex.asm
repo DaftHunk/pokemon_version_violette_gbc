@@ -766,10 +766,10 @@ ShowNextPokemonData:
 	CheckEvent EVENT_GOT_POKEDEX
 	jr z, .printHeightWeight ; don't track the select button if we're showing the starter dex entries before getting the pokedex
 
-	ld a, [wMenuWatchedKeys]
-	ld b, SELECT
-	or b
-	ld [wMenuWatchedKeys], a ; watch the select button too if the pokemon is owned (allows the player to see the back sprite on pressing select)
+;	ld a, [wMenuWatchedKeys]
+;	ld b, SELECT
+;	or b
+;	ld [wMenuWatchedKeys], a ; watch the select button too if the pokemon is owned (allows the player to see the back sprite on pressing select)
 
 
 .printHeightWeight
@@ -850,8 +850,8 @@ ShowNextPokemonData:
 	jp nz, .prevMon
 	bit BIT_D_RIGHT, b
 	jp nz, .nextMon
-	bit BIT_SELECT, b
-	jp nz, .switchMonSprite
+;	bit BIT_SELECT, b
+;	jp nz, .switchMonSprite
 ;;;;;;;;;; PureRGBnote: ADDED: pokedex will display the pokemon's types and their base stats on a new third page.
 .printBaseStats
 	coord hl, 1, 10
