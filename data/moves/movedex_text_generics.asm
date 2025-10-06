@@ -193,7 +193,7 @@ _Generic33PercentLowAtk1Text::
 _GenericAddDef2Text::
     bage "Augmente considér-"
 	next "ablement la"
-	next "Défence (Déf. +2)"
+	next "Défense (Déf. +2)"
 	dex
 
 _GenericAddDef1Text::
