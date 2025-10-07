@@ -277,7 +277,38 @@ Credits:
 	inc de
 	call PlaceString
 	jp FadeInCreditsText
+
 .showPostGame
+	call ShowPostGame
+	pop de
+	inc de
+	jp FadeInCreditsText
+
+ReplayPostGameVideo::
+	xor a
+	ld [wUpdateSpritesEnabled], a
+	ld b, SET_PAL_POKEMON_WHOLE_SCREEN
+	ld c, 0
+	call RunPaletteCommand
+	ld a, %11100100
+	ld [rBGP], a
+	call UpdateGBCPal_BGP
+
+	call ShowPostGame
+
+	ld a, 1
+	ld [wUpdateSpritesEnabled], a
+	call GBPalNormal
+	call GBPalWhiteOut
+	call LoadFontTilePatterns
+	call LoadScreenTilesFromBuffer2 ; restore saved screen
+	call RunDefaultPaletteCommand
+	call ReloadMapData
+	call UpdateSprites
+	call PlayDefaultMusic
+	jp TextScriptEnd
+
+ShowPostGame:
 	call ClearScreen
 	call ClearSprites
 	predef SingleCPUSpeed
@@ -361,9 +392,7 @@ Credits:
 
 	ld hl, PostCreditText6
 	call PrintText
-	pop de
-	inc de
-	jp FadeInCreditsText
+	ret
 
 .displayPlayer
 ;joenote - support female sprite

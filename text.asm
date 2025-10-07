@@ -3627,21 +3627,22 @@ _PostCreditText5::
 	cont "vous ne retenez"
 	cont "que le titre:"
 
-	para "Ouverture du Bar"
-	line "à Joe au sud"
-	cont "de Parmanie!"
+	para "Bar à Joe"
+	line "Venez siroter au"
+	cont "sud de Parmanie!"
 	cont "..."
 
-	para "La boutique"
-	line "d'objets rares du"
-	cont "Centre Commercial"
+	para "Centre Commercial"
+	line "Céladopole"
+	cont "La boutique"
+	cont "d'objets rares"
 	cont "ouvre ses portes!"
 	cont "..."
 
-	para "Invitation à"
-	line "découvrir l'évén-"
-	cont "ement spécial"
-	cont "au Parc Safari."
+	para "Parc Safari"
+	line "Invitation à"
+	cont "découvrir l'évén-"
+	cont "ement spécial!"
 	cont "..."
 	prompt
 
