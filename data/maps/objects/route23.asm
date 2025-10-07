@@ -2,8 +2,8 @@ Route23Object:
 	db $f ; border block
 
 	db 4 ; warps
-	warp 7, 139, 2, ROUTE_22_GATE
-	warp 8, 139, 3, ROUTE_22_GATE
+	warp 8, 139, 2, ROUTE_22_GATE
+	warp 9, 139, 3, ROUTE_22_GATE
 	warp 4, 31, 0, VICTORY_ROAD_1F
 	warp 14, 31, 1, VICTORY_ROAD_2
 
@@ -20,7 +20,7 @@ Route23Object:
 	object SPRITE_GUARD,  8, 136, STAY, DOWN, 7 ; Cascade Badge
 
 	; warp-to
-	warp_to 7, 139, ROUTE_23_WIDTH ; ROUTE_22_GATE
 	warp_to 8, 139, ROUTE_23_WIDTH ; ROUTE_22_GATE
+	warp_to 9, 139, ROUTE_23_WIDTH ; ROUTE_22_GATE
 	warp_to 4, 31, ROUTE_23_WIDTH ; VICTORY_ROAD_1F
 	warp_to 14, 31, ROUTE_23_WIDTH ; VICTORY_ROAD_2

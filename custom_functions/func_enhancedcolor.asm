@@ -53,8 +53,8 @@ GBCEnhancedOverworldPalettes:
 
 	; PAL_ENH_OVW_GRAY   	; $03
 	GBCEnh_White
-	RGB $0F, $12, $14
-	RGB $0A, $0A, $0A
+	RGB 15, 18, 20
+	RGB 10, 10, 10
 	GBCEnh_Black
 
 	; PAL_ENH_OVW_GREEN    	; $04
@@ -102,8 +102,8 @@ GBCEnhancedOverworldPalettes_ColdCavern:	;just used for seafoam islands for aest
 
 	; PAL_ENH_OVW_GRAY   	; $03
 	GBCEnh_White
-	RGB $12, $12, $18
-	RGB $A, $A,  $F
+	RGB 18, 18, 24
+	RGB 10, 10, 15
 	GBCEnh_Black
 
 	; PAL_ENH_OVW_GREEN    	; $04
@@ -120,14 +120,14 @@ GBCEnhancedOverworldPalettes_ColdCavern:	;just used for seafoam islands for aest
 
 	; PAL_ENH_OVW_BROWN    	; $06
 	GBCEnh_White
-	RGB $10, $5, $16
-	RGB $7, $3,  $F
+	RGB 16, 5, 22
+	RGB  7, 3, 15
 	GBCEnh_Black
 
 	; PAL_ENH_OVW_BLUE  	; $07
 	GBCEnh_White
-	RGB $10, $5, $16
-	RGB $7,  $3, $F
+	RGB 16,  5, 22
+	RGB  7,  3, 15
 	GBCEnh_Black
 	
 GBCEnhancedOverworldPalettes_DarkCavern:	;palette set used for darkened areas like Rock Tunnel
@@ -339,13 +339,13 @@ PalSettings_SHIP_PORT:    	; 14	- done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	7,	0,	7,	7,	7,	7,	7,	7,	7,	7,	3,	7,	7,	7,	7,	7;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
-db	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	3,	7,	7,	7,	7,	7,
+db	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	3,	7,	7,	7,	7,	7;
 ;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
-db	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,
+db	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	7;
 ;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
-db	7,	3,	6,	7,	7,	7,	7,	7,	7,	7,	3,	6,	3,	7,	7,	7,
+db	7,	3,	6,	7,	7,	7,	7,	7,	7,	7,	3,	6,	3,	7,	7,	7;
 ;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
-db	7,	7,	7,	7,	7,	7,	7,	7,	3,	3,	3,	3,	3,	7,	7,	7,
+db	7,	7,	7,	7,	7,	7,	7,	7,	3,	3,	3,	3,	3,	7,	7,	7;
 ;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
 db	0,	7,	7,	7,	7,	7,	0,	0,	3,	3,	7,	7,	7,	7,	7,	7;
 PalSettings_CEMETERY:     	; 15	- done
@@ -460,9 +460,9 @@ db	7,	6,	7,	0,	7,	3,	3,	4,	4,	6,	6,	6,	6,	6,	6,	6;
 ;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
 db	7,	7,	6,	3,	6,	7,	7,	6,	7,	7,	6,	6,	4,	4,	3,	3;
 ;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
-db	3,	3,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6,	8,	8,	8;
+db	3,	3,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6;
 ;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
-db	8,	8,	8,	8,	8,	4,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
+db	8,	8,	8,	8,	8,	4,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6;
 ;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
 db	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
 PalSettings_REACTOR:        ; 24
