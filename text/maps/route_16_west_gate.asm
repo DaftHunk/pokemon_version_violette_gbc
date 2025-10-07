@@ -22,4 +22,8 @@ _Route16WestGateLettersText::
 	cont "vaguement le mot"
 	cont "Laboratoire ici"
 	cont "et là..."
+
+	para "Oh et la mention"
+	line "d'un certain"
+	cont "Docteur Fuji..."
 	done

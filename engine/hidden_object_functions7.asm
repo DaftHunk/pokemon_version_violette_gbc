@@ -433,6 +433,8 @@ BillsHousePokemonList:
 .displayPokedex
 	call DisplayPokedex
 	call LoadScreenTilesFromBuffer2
+	ld a, A_BUTTON | B_BUTTON
+	ld [wMenuWatchedKeys], a
 	jr .billsPokemonLoop
 .cancel
 	ld hl, wd730
