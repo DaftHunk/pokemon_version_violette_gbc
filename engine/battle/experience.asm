@@ -560,12 +560,12 @@ CapExpAtMaxLevel:
 	
 	ld a, [wMoreGameplayOptions]
 	bit 0, a
-	jr z, .next1 ; no levelcaps
+	jr z, .skipLevelCap ; no levelcaps
 	; else
 	call GetLevelCap
 	ld a, [wMaxLevel]
 	ld d, a
-.next1
+.skipLevelCap
 	callab CalcExperience ; get max exp
 ; compare max exp with current exp
 	ld a, [hExperience]
@@ -589,7 +589,24 @@ CapExpAtMaxLevel:
 	ld hl, wPartyMon1Level ; base of party level array
 	ld bc, wPartyMon2 - wPartyMon1 ; length of struct
 	call AddNTimes
+	; get current level cap
+	ld d, MAX_LEVEL
+	ld a, [wMoreGameplayOptions]
+	bit 0, a
+	jr z, .skipLevelCapGreater ; no levelcaps
+	; else
+	ld a, [wMaxLevel]
+	ld d, a
+.skipLevelCapGreater
+	ld a, d
+	dec a
+
 	ld d, [hl]
+	cp d
+	; handle case where mon is one level below cap
+	jr c, .notLevelingToCap
+	inc d
+.notLevelingToCap
 	callfar CalcExperience ; get exp of current level
 	ldh a, [hExperience]
 	ld b, a
