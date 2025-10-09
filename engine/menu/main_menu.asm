@@ -300,6 +300,10 @@ InitOptions:
 	set 4, a ; 60fps
 	set 7, a ; enhanced GBC colors
 	ld [wGameplayOptions], a
+
+	ld a, [wMoreGameplayOptions]
+	set 0, a ; level cap mode
+	ld [wMoreGameplayOptions], a
 	ret
 
 LinkMenu:
