@@ -10,12 +10,13 @@ _Route15EndBattleText1::
 	prompt
 
 _Route15AfterBattleText1::
-	text "Tu ne peux pas"
+	text "Tu peux"
 	line "renommer un"
-	cont "#mon échangé."
+	cont "#mon échangé!"
 
-	para "Seul son dresseur"
-	line "peut le faire."
+	para "Y'a pas que son"
+	line "ancien dresseur"
+	cont "qui le peut."
 	done
 
 _Route15BattleText2::

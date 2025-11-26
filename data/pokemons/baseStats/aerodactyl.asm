@@ -18,14 +18,21 @@ db 0
 db 0
 db 5 ; growth rate
 ; learnset
+; 1 -> 8
 	tmlearn tm02_RAZOR_WIND, tm04_FLAMETHROWER, tm06_TOXIC
+; 9 -> 16
 	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm15_HYPER_BEAM
-	tmlearn tm20_RAGE, tm23_DRAGON_RAGE, tm26_EARTHQUAKE
-	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM
+; 17 -> 24
+	tmlearn tm20_RAGE, tm23_DRAGON_RAGE
+; 25 -> 32
+	tmlearn tm26_EARTHQUAKE, tm31_MIMIC, tm32_DOUBLE_TEAM
+; 33 -> 40
 	tmlearn tm33_REFLECT, tm34_BIDE, tm38_FIRE_BLAST, tm39_SWIFT
+; 41 -> 48
 	tmlearn tm43_SKY_ATTACK, tm44_REST, tm48_ROCK_SLIDE
+; 49 -> 56
 	tmlearn tm50_SUBSTITUTE, hm02_FLY, hm04_STRENGTH
-;	db 0 ; padding
+;   db 0 ; padding
 	db BANK(AerodactylPicFront)
 	assert BANK(AerodactylPicFront) == BANK(AerodactylPicBack)
 

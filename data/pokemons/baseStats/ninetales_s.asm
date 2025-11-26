@@ -18,14 +18,21 @@ db 0
 db 0
 db 3 ; growth rate
 ; learnset
+; 1 -> 8
 	tmlearn 0
+; 9 -> 16
 	tmlearn 0
+; 17 -> 24
 	tmlearn 0
+; 25 -> 32
 	tmlearn 0
+; 33 -> 40
 	tmlearn 0
+; 41 -> 48
 	tmlearn 0
+; 49 -> 56
 	tmlearn 0
-;	db 0 ; padding
+;   db 0 ; padding
 	db BANK(NinetalesPicFront)
 	assert BANK(NinetalesPicFront) == BANK(NinetalesPicBack)
 

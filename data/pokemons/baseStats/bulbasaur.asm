@@ -19,14 +19,21 @@ db 0
 db 0
 db 3 ; growth rate
 ; learnset
-	tmlearn tm03_SWORDS_DANCE, tm06_TOXIC, tm08_BODY_SLAM, tm09_TAKE_DOWN
-	tmlearn tm10_DOUBLE_EDGE
+; 1 -> 8
+	tmlearn tm03_SWORDS_DANCE, tm06_TOXIC, tm08_BODY_SLAM
+; 9 -> 16
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE
+; 17 -> 24
 	tmlearn tm20_RAGE, tm21_MEGA_DRAIN, tm22_SOLARBEAM
-	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM, tm33_REFLECT, tm34_BIDE
+; 25 -> 32
+	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM
+; 33 -> 40
+	tmlearn tm33_REFLECT, tm34_BIDE
+; 41 -> 48
 	tmlearn tm44_REST
-	tmlearn tm50_SUBSTITUTE
-	tmlearn hm01_CUT, hm04_STRENGTH, hm05_FLASH
-;	db 0 ; padding
+; 49 -> 56
+	tmlearn tm50_SUBSTITUTE, hm01_CUT, hm04_STRENGTH, hm05_FLASH
+;   db 0 ; padding
 	db BANK(BulbasaurPicFront)
 	assert BANK(BulbasaurPicFront) == BANK(BulbasaurPicBack)
 

@@ -18,14 +18,21 @@ db 0
 db 0
 db 0 ; growth rate
 ; learnset
+; 1 -> 8
 	tmlearn tm02_RAZOR_WIND, tm06_TOXIC
+; 9 -> 16
 	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm15_HYPER_BEAM
+; 17 -> 24
 	tmlearn tm20_RAGE, tm21_MEGA_DRAIN, tm22_SOLARBEAM
+; 25 -> 32
 	tmlearn tm29_PSYCHIC_M, tm30_TELEPORT, tm31_MIMIC, tm32_DOUBLE_TEAM
+; 33 -> 40
 	tmlearn tm33_REFLECT, tm34_BIDE, tm39_SWIFT
+; 41 -> 48
 	tmlearn tm44_REST, tm46_PSYWAVE
+; 49 -> 56
 	tmlearn tm50_SUBSTITUTE, hm05_FLASH;joenote - learns flash in yellow
-;	db 0 ; padding
+;   db 0 ; padding
 	db BANK(ButterfreePicFront)
 	assert BANK(ButterfreePicFront) == BANK(ButterfreePicBack)
 

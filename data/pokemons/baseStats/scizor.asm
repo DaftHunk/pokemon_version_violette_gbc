@@ -18,14 +18,21 @@ db 0
 db 0
 db 0 ; growth rate
 ; learnset
-	tmlearn tm03_SWORDS_DANCE, tm06_TOXIC, tm09_TAKE_DOWN
-	tmlearn tm10_DOUBLE_EDGE, tm15_HYPER_BEAM
+; 1 -> 8
+	tmlearn tm03_SWORDS_DANCE, tm06_TOXIC
+; 9 -> 16
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm15_HYPER_BEAM
+; 17 -> 24
 	tmlearn tm20_RAGE
-	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM, tm34_BIDE, tm39_SWIFT
-	tmlearn tm40_SKULL_BASH, tm44_REST
-	tmlearn tm50_SUBSTITUTE
-	tmlearn hm01_CUT, hm02_FLY, hm04_STRENGTH
-;	db 0 ; padding
+; 25 -> 32
+	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM
+; 33 -> 40
+	tmlearn tm34_BIDE, tm39_SWIFT, tm40_SKULL_BASH
+; 41 -> 48
+	tmlearn tm44_REST
+; 49 -> 56
+	tmlearn tm50_SUBSTITUTE, hm01_CUT, hm02_FLY, hm04_STRENGTH
+;   db 0 ; padding
 	db BANK(ScizorPicFront)
 	assert BANK(ScizorPicFront) == BANK(ScizorPicBack)
 
