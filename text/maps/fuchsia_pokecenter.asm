@@ -24,57 +24,56 @@ _FuchsiaPokecenterText3::
 
 _NurseJoyBattleText::
 	text "Au fait..."
-    line "Avant de partir,"
+	line "Avant de partir,"
 
-    para "J'ai toujours"
-    line "rêvé de devenir"
-    cont "un maître #mon."
+	para "J'ai toujours"
+	line "rêvé de devenir"
+	cont "un maître #mon."
 
-    para "Mais mes obligat-"
-    line "ions ici rendent"
+	para "Mais mes obligat-"
+	line "ions ici rendent"
 	cont "difficile le"
-	cont "voyage et la "
+	cont "voyage et la"
 	cont "collection"
 	cont "des badges."
 
-	para "Ça serait un imm-"
-    line "ense honneur de"
-    cont "me tester contre"
-	cont "le nouveau"
-	cont "Champion."
+	para "Ça serait un"
+	line "immense honneur"
+	cont "de me mesurer au"
+	cont "nouveau Champion."
 
-    para "Pourrais-je te"
-    line "demander un duel?"
+	para "Pourrais-je te"
+	line "demander un duel?"
 	done
 
 _NurseJoyBattleText2::
 	text "Au fait..."
-    line "Avant de partir,"
+	line "Avant de partir,"
 
-    para "Tu voudrais une"
-    line "revanche?"
+	para "Tu voudrais une"
+	line "revanche?"
 	done
 
 _NurseJoyRefusedText::
 	text "Je comprends."
-	line "Le devoir t'appe-"
-	cont "lle, alors vas-y."
+	line "Tu dois être très"
+	cont "demandé..."
 
 	para "Peut-être une"
 	line "autre fois."
 	done
 
 _NurseJoyAcceptedText::
-	text "Merci!"
-	line "Ça veux dire beau-"
-	cont "coup pour moi."
+	text "Merci! Ça veux"
+	line "dire beaucoup"
+	cont "pour moi."
 	
 	para "Je vais me donner"
-    line "à fond!"
+	line "à fond!"
 	done
 
 _NurseJoyAfterBattleText::
-    text "C'est"
+	text "C'est"
 	line "génial! Ta force"
 	cont "et ton lien avec"
 	cont "tes #mon sont"
@@ -91,5 +90,4 @@ _NurseJoyAfterBattleText::
 	line "pourrons nous"
 	cont "affronter à"
 	cont "nouveau."
-
-    done
+	done

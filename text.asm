@@ -2828,13 +2828,13 @@ _PokemonCenterWelcomeText::
 	text "Bienvenue dans"
 	line "notre Centre"
 	cont "#mon!"
-
-	para "Nous soignons les"
-	line "#mon!"
 	prompt
 
 _ShallWeHealYourPokemonText::
-	text "Voulez-vous"
+	text "Nous soignons les"
+	line "#mon!"
+
+	para "Voulez-vous"
 	line "soigner vos"
 	cont "#mon?"
 	done
