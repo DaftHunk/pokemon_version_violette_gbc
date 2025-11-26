@@ -209,7 +209,7 @@ _Lab4Text_Book2B::
 
 	para "Ils affectent re-"
 	line "spectivement:" 
-	cont "Attack, Défense,"
+	cont "Attaque, Défense,"
 	cont "Vitesse et Spé-"
 	cont "cial."
 	done

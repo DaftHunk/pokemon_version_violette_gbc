@@ -1,5 +1,5 @@
 _CeladonMart2Text3::
-	text "Le SuperRepousse"
+	text "Le Superepousse"
 	line "tient les faibles"
 	cont "#mon à"
 	cont "l'écart..."

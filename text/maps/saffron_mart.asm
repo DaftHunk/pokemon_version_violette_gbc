@@ -2,7 +2,7 @@ _SaffronMartText2::
 	text "Le Max Repousse"
 	line "fonctionne plus"
 	cont "longtemps que le"
-	cont "SuperRepousse!"
+	cont "Superepousse!"
 	done
 
 _SaffronMartText3::

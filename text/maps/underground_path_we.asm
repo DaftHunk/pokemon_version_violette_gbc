@@ -2,11 +2,11 @@
 _RandTrainerNotReady::
 	text "J'vais me faufiler"
 	line "dans la Caverne"
-	cont "Azurée pendant que"
-	cont "tous le monde est"
-	cont "occupé avec la"
-	cont "finale de la Ligue"
-	cont "#mon."
+	cont "Azurée pendant"
+	cont "qu'tous le monde"
+	cont "est occupé avec"
+	cont "la finale de la"
+	cont "Ligue #mon."
 	
 	para "Doit y'avoir un"
 	line "bon magot là-"

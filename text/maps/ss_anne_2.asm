@@ -29,7 +29,7 @@ _SSAnneRivalBeforeBattleText::
 
 	para "Y'en a partout!"
 
-	para "Tu n'as qu'à ramper"
+	para "Suffit d'aller"
 	line "dans les hautes"
 	cont "herbes!"
 	done
