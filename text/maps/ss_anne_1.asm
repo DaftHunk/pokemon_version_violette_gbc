@@ -1,15 +1,13 @@
-_SSAnne1Text1::
+_SSAnne1Text_BeforeHeal::
 	text "Bonjour! Je suis"
 	line "le serveur de ce"
 	cont "bateau!"
 
-	para "Je me ferai une"
-	line "joie de vous"
-	cont "servir!"
-
-	para "Ha! L'air du"
-	line "grand large!"
-	done
+	para "Laissez-moi vous"
+	line "offrir une petite"
+	cont "collation ainsi"
+	cont "qu'à vos #mon!"
+	prompt
 
 _SSAnne1Text2::
 	text "Les passagers"
@@ -20,4 +18,11 @@ _SSAnne1Text2::
 	line "certainement vous"
 	cont "provoquer en"
 	cont "duel!"
+	done
+
+_SSAnne1Text_AfterHeal::
+	text "Je me ferai une"
+	line "joie de vous"
+	cont "reservir,"
+	cont "n'hésitez pas!"
 	done
