@@ -86,7 +86,7 @@ PikachuTutor:
 	ld [wPokedexNum], a
 	
 	callba CheckIfMoveIsKnown
-	jr c, .finish
+	jr c, .moveKnown
 
 	ld hl, wFlags_D733
 	set 6, [hl]
@@ -99,3 +99,5 @@ PikachuTutor:
 	ret z
 .finish
 	ret
+.moveKnown
+	jp TextScriptEnd
