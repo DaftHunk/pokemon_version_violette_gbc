@@ -2997,7 +2997,7 @@ _BoxIsFullText::
 	para "Changez de Boîte"
 	line "dans un Centre"
 	cont "#mon ou"
-	cont "via le Bipper!"
+	cont "via le Bipeur!"
 	done
 
 _BoxIsFullReminderText::
@@ -3012,7 +3012,7 @@ _BoxIsFullReminderText::
 	para "Changez de Boîte"
 	line "dans un Centre"
 	cont "#mon ou"
-	cont "via le Bipper!"
+	cont "via le Bipeur!"
 	prompt
 
 INCLUDE "text/maps/pallet_town.asm"

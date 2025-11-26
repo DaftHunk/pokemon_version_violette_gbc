@@ -1,39 +1,39 @@
 NameRaterScript:
 	jp EnableAutoTextBoxDrawing
 
-NameRaterScript_1da15:
+NameRaterScript_YesNoChoice:
 	call PrintText
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
 	ret
 
-NameRaterScript_1da20:
+NameRaterScript_Rename:
 	ld hl, wPartyMonOT
 	ld bc, NAME_LENGTH
 	ld a, [wWhichPokemon]
 	call AddNTimes
 	ld de, wPlayerName
 	ld c, NAME_LENGTH
-	call .asm_1da47
-	jr c, .asm_1da52
+	call .nameLoop
+	jr c, .endScript
 	ld hl, wPartyMon1OTID
 	ld bc, wPartyMon2 - wPartyMon1
 	ld a, [wWhichPokemon]
 	call AddNTimes
 	ld de, wPlayerID
 	ld c, $2
-.asm_1da47
+.nameLoop
 	ld a, [de]
 	cp [hl]
-	jr nz, .asm_1da52
+	jr nz, .endScript
 	inc hl
 	inc de
 	dec c
-	jr nz, .asm_1da47
+	jr nz, .nameLoop
 	and a
 	ret
-.asm_1da52
+.endScript
 	scf
 	ret
 
@@ -43,10 +43,10 @@ NameRaterTextPointers:
 NameRaterText1:
 	TX_ASM
 	call SaveScreenTilesToBuffer2
-	ld hl, NameRaterText_1dab3
-	call NameRaterScript_1da15
-	jr nz, .asm_1daae
-	ld hl, NameRaterText_1dab8
+	ld hl, NameRaterText_Hello
+	call NameRaterScript_YesNoChoice
+	jr nz, .comeLaterScript
+	ld hl, NameRaterText_RenameWho
 	call PrintText
 	xor a
 	ld [wPartyMenuTypeOrMessageID], a
@@ -58,50 +58,50 @@ NameRaterText1:
 	call RestoreScreenTilesAndReloadTilePatterns
 	call LoadGBPal
 	pop af
-	jr c, .asm_1daae
+	jr c, .comeLaterScript
 	call GetPartyMonName2
-	call NameRaterScript_1da20
-	ld hl, NameRaterText_1dad1
-	jr c, .asm_1daa8
-	ld hl, NameRaterText_1dabd
-	call NameRaterScript_1da15
-	jr nz, .asm_1daae
-	ld hl, NameRaterText_1dac2
+	call NameRaterScript_Rename
+;	ld hl, NameRaterText_Trade
+;	jr c, .endScript
+	ld hl, NameRaterText_NameRate
+	call NameRaterScript_YesNoChoice
+	jr nz, .comeLaterScript
+	ld hl, NameRaterText_AskRename
 	call PrintText
 	callba DisplayNameRaterScreen
-	jr c, .asm_1daae
-	ld hl, NameRaterText_1dac7
-.asm_1daa8
+	jr c, .comeLaterScript
+	ld hl, NameRaterText_Renamed
+.endScript
 	call PrintText
 	jp TextScriptEnd
-.asm_1daae
-	ld hl, NameRaterText_1dacc
-	jr .asm_1daa8
+.comeLaterScript
+	ld hl, NameRaterText_ComeBackLater
+	jr .endScript
 
-NameRaterText_1dab3:
-	TX_FAR _NameRaterText_1dab3
+NameRaterText_Hello:
+	TX_FAR _NameRaterText_Hello
 	db "@"
 
-NameRaterText_1dab8:
-	TX_FAR _NameRaterText_1dab8
+NameRaterText_RenameWho:
+	TX_FAR _NameRaterText_RenameWho
 	db "@"
 
-NameRaterText_1dabd:
-	TX_FAR _NameRaterText_1dabd
+NameRaterText_NameRate:
+	TX_FAR _NameRaterText_NameRate
 	db "@"
 
-NameRaterText_1dac2:
-	TX_FAR _NameRaterText_1dac2
+NameRaterText_AskRename:
+	TX_FAR _NameRaterText_AskRename
 	db "@"
 
-NameRaterText_1dac7:
-	TX_FAR _NameRaterText_1dac7
+NameRaterText_Renamed:
+	TX_FAR _NameRaterText_Renamed
 	db "@"
 
-NameRaterText_1dacc:
-	TX_FAR _NameRaterText_1dacc
+NameRaterText_ComeBackLater:
+	TX_FAR _NameRaterText_ComeBackLater
 	db "@"
 
-NameRaterText_1dad1:
-	TX_FAR _NameRaterText_1dad1
+NameRaterText_Trade:
+	TX_FAR _NameRaterText_Trade
 	db "@"

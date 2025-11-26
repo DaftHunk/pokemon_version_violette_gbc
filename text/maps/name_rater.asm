@@ -1,4 +1,4 @@
-_NameRaterText_1dab3::
+_NameRaterText_Hello::
 	text "Salut tout le"
 	line "monde! Je suis le"
 	cont "Grand Donneur de"
@@ -12,12 +12,12 @@ _NameRaterText_1dab3::
 	cont "#mon?"
 	done
 
-_NameRaterText_1dab8::
+_NameRaterText_RenameWho::
 	text "Quel #mon"
 	line "veux-tu renommer?"
 	prompt
 
-_NameRaterText_1dabd::
+_NameRaterText_NameRate::
 	text_ram wcd6d
 	text "?"
 	line "Mouais, c'est pas"
@@ -33,14 +33,14 @@ _NameRaterText_1dabd::
 	para "Bon, alors?"
 	done
 
-_NameRaterText_1dac2::
+_NameRaterText_AskRename::
 	text "Et alors, c'est"
 	line "quoi qu'on va lui"
 	cont "donner comme nom"
 	cont "à celui-là?"
 	prompt
 
-_NameRaterText_1dac7::
+_NameRaterText_Renamed::
 	text "OK! Ce #mon"
 	line "a été renommé"
 	cont "@"
@@ -52,14 +52,14 @@ _NameRaterText_1dac7::
 	cont "qu'avant!"
 	done
 
-_NameRaterText_1dacc::
+_NameRaterText_ComeBackLater::
 	text "Alors petit, t'es"
 	line "content? Hmm..."
 	cont "Reviens me voir"
 	cont "quand tu veux!"
 	done
 
-_NameRaterText_1dad1::
+_NameRaterText_Trade::
 	text_ram wcd6d
 	text "?"
 	line "C'est un nom"

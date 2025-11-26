@@ -94,7 +94,7 @@ KeyItemBitfield:
 	TRUE,  \ ; POKE_FLUTE
 	TRUE,  \ ; LIFT_KEY
 	FALSE, \ ; EXP_ALL
-	TRUE,  \ ; OLD_ROD
+	FALSE, \ ; OLD_ROD
 	TRUE,  \ ; GOOD_ROD
 	TRUE,  \ ; SUPER_ROD
 	FALSE, \ ; PP_UP
