@@ -23,6 +23,6 @@ _SSAnne1Text2::
 _SSAnne1Text_AfterHeal::
 	text "Je me ferai une"
 	line "joie de vous"
-	cont "reservir,"
+	cont "resservir,"
 	cont "n'hésitez pas!"
 	done

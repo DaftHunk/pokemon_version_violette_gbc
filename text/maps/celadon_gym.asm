@@ -205,8 +205,8 @@ _CeladonGymText_Trainer3AfterBattle::
 
 _CeladonGymText_Trainer4PreBattle::
 	text "C'est interdit"
-	line "aux #mon"
-	cont "vol ou du"
+	line "aux #mon de"
+	cont "type vol ou"
 	cont "feu, ici!"
 	done
 

@@ -248,6 +248,7 @@ CheckForSmartHMuse:
 	;restore the map pal offset to brighten it up
 	xor a
 	ld [wMapPalOffset], a
+	call GBPalWhiteOutWithDelay3
 	jp .return
 .noflash
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -84,7 +84,7 @@ _NurseJoyAfterBattleText::
 	cont "appris."
 
 	para "Merci pour cette"
-	line "opportunitée."
+	line "opportunité."
 
 	para "J'espère que nous"
 	line "pourrons nous"
