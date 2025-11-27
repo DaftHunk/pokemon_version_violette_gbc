@@ -247,6 +247,7 @@ CeruleanCityTextPointers:
 	dw CeruleanCityText16
 	dw CeruleanCityText17
 	dw CeruleanCityTextEstBoard
+	dw CeruleanCityTextRhyhornMerchant
 
 CeruleanCityText1:
 	TX_ASM
@@ -462,3 +463,10 @@ CeruleanCityText17:
 CeruleanCityTextEstBoard:
 	TX_FAR _CeruleanCityTextEstBoard
 	db "@"
+
+CeruleanCityTextRhyhornMerchant:
+	TX_FAR _CeruleanCityTextRhyhornMerchant
+	TX_ASM
+	ld a, RHYHORN
+	call DisplayPokedex
+	jp TextScriptEnd

@@ -259,3 +259,11 @@ _CeruleanCityTextEstBoard::
 	line "Route 9 -"
 	cont "Grotte Sombre"
 	done
+
+_CeruleanCityTextRhyhornMerchant::
+	text "Le Rhinocorne"
+	line "du marchand"
+	cont "transporte"
+	cont "divers sacs de"
+	cont "marchandises."
+	prompt
