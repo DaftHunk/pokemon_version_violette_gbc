@@ -207,7 +207,7 @@ _CeruleanCityText10::
 	cont "droit d'y entrer!"
 	done
 
-_CeruleanCityTextMerchant::
+_CeruleanCityText_Merchant::
 	text "Je dois faire une"
 	line "livraison à"
 	cont "Lavanville mais"
@@ -254,13 +254,13 @@ _CeruleanCityText17::
 	line "Heu...sirène!"
 	done
 
-_CeruleanCityTextEstBoard::
+_CeruleanCityText_EstBoard::
 	text "Direction"
 	line "Route 9 -"
 	cont "Grotte Sombre"
 	done
 
-_CeruleanCityTextRhyhornMerchant::
+_CeruleanCityText_RhyhornMerchant::
 	text "Le Rhinocorne"
 	line "du marchand"
 	cont "transporte"

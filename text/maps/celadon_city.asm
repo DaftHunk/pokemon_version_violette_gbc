@@ -93,6 +93,15 @@ _CeladonCityText9::
 	line "plus tard!"
 	done
 
+_CeladonCityText_Merchant::
+	text "Bien le bonjour!"
+	line "J'attends que mon"
+	cont "Rhinocorne se"
+	cont "repose avant de"
+	cont "repartir faire"
+	cont "des livraisons."
+	done
+
 _CeladonCityText10::
 	text "Astuce"
 
@@ -180,3 +189,11 @@ _CeladonCityText_School::
 	text "Ecole de"
 	line "Céladopole"
 	done
+
+_CeladonCityText_RhyhornMerchant::
+	text "Le Rhinocorne"
+	line "du marchand"
+	cont "transporte"
+	cont "divers sacs de"
+	cont "marchandises."
+	prompt

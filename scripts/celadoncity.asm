@@ -17,6 +17,7 @@ CeladonCityTextPointers:
 	dw CeladonCityText7
 	dw CeladonCityText8
 	dw CeladonCityText9
+	dw CeladonCityText_Merchant
 	dw CeladonCityText10
 	dw CeladonCityText11
 	dw PokeCenterSignText
@@ -27,6 +28,7 @@ CeladonCityTextPointers:
 	dw CeladonCityText17
 	dw CeladonCityText18
 	dw CeladonCityText_School
+	dw CeladonCityText_RhyhornMerchant
 
 CeladonCityText1:
 	TX_FAR _CeladonCityText1
@@ -137,6 +139,10 @@ CeladonCityText9_continue:
 	TX_FAR _CeladonCityText9
 	db "@"
 
+CeladonCityText_Merchant:
+	TX_FAR _CeladonCityText_Merchant
+	db "@"
+
 CeladonCityText10:
 	TX_FAR _CeladonCityText10
 	db "@"
@@ -173,6 +179,12 @@ CeladonCityText_School:
 	TX_FAR _CeladonCityText_School
 	db "@"
 
+CeladonCityText_RhyhornMerchant:
+	TX_FAR _CeladonCityText_RhyhornMerchant
+	TX_ASM
+	ld a, RHYHORN
+	call DisplayPokedex
+	jp TextScriptEnd
 	
 BuyCoinsFromRocket:
 	callba CeladonGameCornerScript_48f1e

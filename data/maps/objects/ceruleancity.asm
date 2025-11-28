@@ -22,7 +22,7 @@ CeruleanCityObject:
 	sign 11, 25, 17 ; CeruleanCityText16
 	sign 27, 21, 18 ; CeruleanCityText17
 	sign 37, 15, 19 ; CeruleanCityTextEstBoard
-	sign 35, 18, 20 ; CeruleanCityTextRhyhornMerchant
+	sign 35, 18, 20 ; CeruleanCityText_RhyhornMerchant
 
 	db 12 ; objects
 	object SPRITE_BLUE, 20, 2, STAY, DOWN, 1 ; person
@@ -36,7 +36,7 @@ CeruleanCityObject:
 	object SPRITE_LASS, 9, 27, WALK, 2, 9 ; person
 	object SPRITE_BLACK_HAIR_BOY_2, 4, 12, STAY, DOWN, 10 ; person
 	object SPRITE_GUARD, 27, 12, STAY, DOWN, 11 ; person
-	object SPRITE_BLACK_HAIR_BOY_2, 34, 15, WALK, 1, 12 ; CeruleanCityTextMerchant
+	object SPRITE_BLACK_HAIR_BOY_2, 34, 15, WALK, 1, 12 ; CeruleanCity_TextMerchant
 
 	; warp-to
 	warp_to 27, 11, CERULEAN_CITY_WIDTH ; CERULEAN_TRASHED_HOUSE

@@ -239,15 +239,15 @@ CeruleanCityTextPointers:
 	dw CeruleanCityText9
 	dw CeruleanCityText10
 	dw CeruleanCityText11
-	dw CeruleanCityTextMerchant
+	dw CeruleanCityText_Merchant
 	dw CeruleanCityText12
 	dw CeruleanCityText13
 	dw MartSignText
 	dw PokeCenterSignText
 	dw CeruleanCityText16
 	dw CeruleanCityText17
-	dw CeruleanCityTextEstBoard
-	dw CeruleanCityTextRhyhornMerchant
+	dw CeruleanCityText_EstBoard
+	dw CeruleanCityText_RhyhornMerchant
 
 CeruleanCityText1:
 	TX_ASM
@@ -440,8 +440,8 @@ CeruleanCityText10:
 	TX_FAR _CeruleanCityText10
 	db "@"
 
-CeruleanCityTextMerchant:
-	TX_FAR _CeruleanCityTextMerchant
+CeruleanCityText_Merchant:
+	TX_FAR _CeruleanCityText_Merchant
 	db "@"
 
 CeruleanCityText12:
@@ -460,12 +460,12 @@ CeruleanCityText17:
 	TX_FAR _CeruleanCityText17
 	db "@"
 
-CeruleanCityTextEstBoard:
-	TX_FAR _CeruleanCityTextEstBoard
+CeruleanCityText_EstBoard:
+	TX_FAR _CeruleanCityText_EstBoard
 	db "@"
 
-CeruleanCityTextRhyhornMerchant:
-	TX_FAR _CeruleanCityTextRhyhornMerchant
+CeruleanCityText_RhyhornMerchant:
+	TX_FAR _CeruleanCityText_RhyhornMerchant
 	TX_ASM
 	ld a, RHYHORN
 	call DisplayPokedex

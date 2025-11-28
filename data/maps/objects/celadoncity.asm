@@ -17,23 +17,24 @@ CeladonCityObject:
 	warp 43, 27, 0, CELADON_HOTEL
 	warp 23, 29, 0, CELADON_SCHOOL
 
-	db 10 ; signs
-	sign 27, 15, 10 ; CeladonCityText10
-	sign 19, 15, 11 ; CeladonCityText11
-	sign 42, 9, 12 ; PokeCenterSignText
-	sign 13, 29, 13 ; CeladonCityText13
-	sign 21, 9, 14 ; CeladonCityText14
-	sign 12, 13, 15 ; CeladonCityText15
-	sign 39, 21, 16 ; CeladonCityText16
-	sign 33, 21, 17 ; CeladonCityText17
-	sign 27, 21, 18 ; CeladonCityText18
-	sign 25, 31, 19 ; CeladonCityText_School
+	db 11 ; signs
+	sign 27, 15, 11 ; CeladonCityText10
+	sign 19, 15, 12 ; CeladonCityText11
+	sign 42, 9, 13 ; PokeCenterSignText
+	sign 13, 29, 14 ; CeladonCityText13
+	sign 21, 9, 15 ; CeladonCityText14
+	sign 12, 13, 16 ; CeladonCityText15
+	sign 39, 21, 17 ; CeladonCityText16
+	sign 33, 21, 18 ; CeladonCityText17
+	sign 27, 21, 19 ; CeladonCityText18
+	sign 25, 31, 20 ; CeladonCityText_School
+	sign 9, 20, 21 ; CeladonCityText_RhyhornMerchant
 
-	db 9 ; objects
+	db 10 ; objects
 ;joenote - add some items to encourage exploration of the dead areas
-	object SPRITE_LITTLE_GIRL, 8, 17, WALK, 0, 1 ; person
+	object SPRITE_LITTLE_GIRL, 5, 15, WALK, 0, 1 ; person
 	object SPRITE_OLD_PERSON, 11, 28, STAY, UP, 2 ; person
-	object SPRITE_GIRL, 14, 19, WALK, 1, 3 ; person
+	object SPRITE_GIRL, 16, 18, WALK, 1, 3 ; person
 	object SPRITE_OLD_PERSON, 25, 22, STAY, DOWN, 4 ; person
 	object SPRITE_OLD_PERSON, 22, 16, STAY, DOWN, 5 ; person
 	object SPRITE_FISHER2, 32, 12, STAY, LEFT, 6 ; person
@@ -41,6 +42,7 @@ CeladonCityObject:
 	object SPRITE_ROCKET, 32, 29, WALK, 2, 8 ; person
 ;	object SPRITE_ROCKET, 42, 14, WALK, 2, 9 ; person
 	object SPRITE_ROCKET, 15, 2, WALK, 2, 9 ; person	;joenote - moved this rocket to a barren area
+	object SPRITE_FAT_BALD_GUY, 10, 20, WALK, 1, 10 ; CeladonCityText_Merchant
 
 
 	; warp-to
