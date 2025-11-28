@@ -353,6 +353,7 @@ PewterHouse2Blocks:
 ViridianHouseBlocks: INCBIN "maps/viridianhouse.blk"
 
 CeladonMansion5Blocks:
+CeladonSchoolBlocks:
 SchoolBlocks: INCBIN "maps/school.blk"
 
 CeruleanHouseTrashedBlocks: INCBIN "maps/ceruleanhousetrashed.blk"
@@ -382,6 +383,10 @@ ViridianMartBlocks: INCBIN "maps/viridianmart.blk"
 INCLUDE "data/maps/headers/school.asm"
 INCLUDE "scripts/school.asm"
 INCLUDE "data/maps/objects/school.asm"
+
+INCLUDE "data/maps/headers/celadonschool.asm"
+INCLUDE "scripts/celadonschool.asm"
+INCLUDE "data/maps/objects/celadonschool.asm"
 
 INCLUDE "data/maps/headers/viridianhouse.asm"
 INCLUDE "scripts/viridianhouse.asm"

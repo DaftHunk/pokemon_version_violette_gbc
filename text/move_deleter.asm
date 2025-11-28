@@ -1,12 +1,13 @@
 _MoveDeleterGreetingText::
-	text "Maman dit que j'"
-	line "oublie tellement"
-	cont "tout que c'en est"
-	cont "contagieux."
+	text "Maman dit que"
+	line "j'oublie"
+	cont "tellement tout"
+	cont "que c'en est"
+	cont "contagieux..."
 	
 	para "Tu veux qu'un"
-	line "#mon oublie une"
-	cont "technique?"
+	line "#mon oublie"
+	cont "une technique?"
 
 	done
 

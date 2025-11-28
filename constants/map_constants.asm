@@ -209,7 +209,7 @@ ENDM
 	mapconst ROCKET_HIDEOUT_B3F,         14, 15 ; $C9
 	mapconst ROCKET_HIDEOUT_B4F,         12, 15 ; $CA
 	mapconst ROCKET_HIDEOUT_ELEVATOR,     4,  3 ; $CB
-	mapconst UNUSED_MAP_CC,               0,  0 ; $CC
+	mapconst CELADON_SCHOOL,              4,  4 ; $CC
 	mapconst UNUSED_MAP_CD,               0,  0 ; $CD
 	mapconst UNUSED_MAP_CE,               0,  0 ; $CE
 	mapconst SILPH_CO_2F,                 9, 15 ; $CF

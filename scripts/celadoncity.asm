@@ -26,6 +26,7 @@ CeladonCityTextPointers:
 	dw CeladonCityText16
 	dw CeladonCityText17
 	dw CeladonCityText18
+	dw CeladonCityText_School
 
 CeladonCityText1:
 	TX_FAR _CeladonCityText1
@@ -168,7 +169,10 @@ CeladonCityText18:
 	TX_FAR _CeladonCityText18
 	db "@"
 
-	
+CeladonCityText_School:
+	TX_FAR _CeladonCityText_School
+	db "@"
+
 	
 BuyCoinsFromRocket:
 	callba CeladonGameCornerScript_48f1e

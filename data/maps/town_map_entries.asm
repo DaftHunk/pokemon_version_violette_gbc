@@ -66,6 +66,7 @@ InternalMapEntries:
 	IMAP VOLCANO_B2F,                   $3,$E,VolcanoName
 	IMAP ROUTE_16_WEST_GATE,            $3,$5,Route16WestName
 	IMAP ROUTE_16_WEST_HOUSE,           $3,$5,Route16WestName
+	IMAP LANCES_ROOM,                   $0,$2,PokemonLeagueName
 	IMAP ROUTE_19_BEACH_HOUSE,          $6,$F,Route19Name
 	IMAP HALL_OF_FAME,                  $0,$2,PokemonLeagueName
 	IMAP UNDERGROUND_PATH_NS,           $A,$5,UndergroundPathName
@@ -96,6 +97,8 @@ InternalMapEntries:
 	IMAP VERMILION_TRADE_HOUSE,         $A,$9,VermilionCityName
 	IMAP DIGLETTS_CAVE,                 $3,$4,DiglettsCaveName
 	IMAP VICTORY_ROAD_3F,               $0,$4,VictoryRoadName
+	IMAP ROCKET_HIDEOUT_ELEVATOR,       $7,$5,RocketHQName
+	IMAP CELADON_SCHOOL,                $7,$5,CeladonCityName
 	IMAP UNUSED_MAP_CE,                 $7,$5,RocketHQName
 	IMAP SILPH_CO_8F,                   $A,$5,SilphCoName
 	IMAP POKEMON_MANSION_B1F,           $2,$F,PokemonMansionName

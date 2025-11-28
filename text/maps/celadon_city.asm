@@ -175,3 +175,8 @@ _CeladonCityText18::
 	line "Club de jeu"
 	cont "pour adultes!"
 	done
+
+_CeladonCityText_School::
+	text "Ecole de"
+	line "Céladopole"
+	done

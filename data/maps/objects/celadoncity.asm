@@ -1,7 +1,7 @@
 CeladonCityObject:
 	db $f ; border block
 
-	db 13 ; warps
+	db 14 ; warps
 	warp 8, 13, 0, CELADON_MART_1F
 	warp 10, 13, 2, CELADON_MART_1F
 	warp 24, 9, 0, CELADON_POKEMON_MANSION_1F
@@ -15,8 +15,9 @@ CeladonCityObject:
 	warp 31, 27, 0, CELADON_DINER
 	warp 35, 27, 0, CELADON_CHIEF_HOUSE
 	warp 43, 27, 0, CELADON_HOTEL
+	warp 23, 29, 0, CELADON_SCHOOL
 
-	db 9 ; signs
+	db 10 ; signs
 	sign 27, 15, 10 ; CeladonCityText10
 	sign 19, 15, 11 ; CeladonCityText11
 	sign 42, 9, 12 ; PokeCenterSignText
@@ -26,6 +27,7 @@ CeladonCityObject:
 	sign 39, 21, 16 ; CeladonCityText16
 	sign 33, 21, 17 ; CeladonCityText17
 	sign 27, 21, 18 ; CeladonCityText18
+	sign 25, 31, 19 ; CeladonCityText_School
 
 	db 9 ; objects
 ;joenote - add some items to encourage exploration of the dead areas
@@ -55,3 +57,4 @@ CeladonCityObject:
 	warp_to 31, 27, CELADON_CITY_WIDTH ; CELADON_DINER
 	warp_to 35, 27, CELADON_CITY_WIDTH ; CELADON_CHIEF_HOUSE
 	warp_to 43, 27, CELADON_CITY_WIDTH ; CELADON_HOTEL
+	warp_to 23, 29, CELADON_CITY_WIDTH ; CELADON_SCHOOL
