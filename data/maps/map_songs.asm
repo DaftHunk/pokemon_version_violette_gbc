@@ -111,7 +111,7 @@ MapSongBanks:
 	db MUSIC_DUNGEON3,         BANK(Music_Dungeon3)        ; VictoryRoad1
 	db MUSIC_DIGLETTS_CAVE,    BANK(Music_DiglettsCave)    ; VolcanoB2F_h
 	db MUSIC_GIOVANNI_SONG,    BANK(Music_GiovanniSong)    ; Route16WestHouse
-	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; Route16WestGate
+	db MUSIC_GIOVANNI_SONG,    BANK(Music_GiovanniSong)    ; Route16WestGate
 	db MUSIC_INDIGO_PLATEAU,   BANK(Music_IndigoPlateau)   ; Lance
 	db MUSIC_SURFING_PIKACHU,  BANK(Music_SurfingPikachu)  ; Route19BeachHouse
 	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; unused

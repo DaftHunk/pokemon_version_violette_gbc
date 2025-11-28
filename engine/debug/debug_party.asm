@@ -153,12 +153,11 @@ IF DEF(_DEBUG)
 	ld hl, wPokedexOwned
 	ld b, wPokedexOwnedEnd - wPokedexOwned - 1
 	call DebugSetPokedexEntries
-	ld [hl], %01111111
-;	ld [hl], %00001111
+	ld [hl], %11111111
 	ld hl, wPokedexSeen
 	ld b, wPokedexSeenEnd - wPokedexSeen - 1
 	call DebugSetPokedexEntries
-	ld [hl], %01111111
+	ld [hl], %11111111
 	ld hl, wMovedexSeen
 	ld b, wMovedexSeenEnd - wMovedexSeen
 	call DebugSetPokedexEntries
@@ -183,12 +182,14 @@ IF DEF(_DEBUG)
 ;	SetEvent EVENT_ENABLE_NORMAL_TRAINER_RANDOMIZATION
 
 	; Uncomment tp start in post game
-;	SetEvent EVENT_ELITE_4_BEATEN
+	SetEvent EVENT_ELITE_4_BEATEN
 ;	SetEvent EVENT_TRAINER_LVL_SCALING
 ;	SetEvent EVENT_ELITE_4_REMATCH_BEATEN
 ;	SetEvent EVENT_SS_ANNE_TOURNAMENT_BEATEN
 ;	SetEvent EVENT_GOT_MIST_STONE
 ;	SetEvent EVENT_MASTER_POKEMON
+;	SetEvent EVENT_GOT_DEX_DIPLOMA
+;	SetEvent EVENT_ARMORED_MEWTWO_KNOWLEDGE
 
 ;	SetEvent EVENT_BEAT_BROCK
 ;	SetEvent EVENT_BEAT_BROCK_REMATCH

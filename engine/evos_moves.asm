@@ -107,11 +107,27 @@ Evolution_PartyMonLoop: ; loop over party mons
 	cp b ; is the mon's level greater than the evolution requirement?
 	jp c, Evolution_PartyMonLoop ; if so, go the next mon
 	jr .doEvolution
+.armoredMewtwoNotKnown
+	pop af
+	jp Evolution_PartyMonLoop
 .checkItemEvo	;joenote - .checkItemEvo updated to match pokemon yellow. this prevents erroneos stone evolutions
 	ld a, [wIsInBattle] ; are we in battle?
 	and a
 	ld a, [hli]
 	jp nz, .nextEvoEntry1 ; don't evolve if we're in a battle as wcf91 could be holding the last mon sent out
+
+	; Check for Armored Mewtwo special case
+	push af
+	ld a, [wEvoOldSpecies]
+	cp MEWTWO
+	jr nz, .notArmoredMewtwo
+	; if ArmoredMewtwo ensure event is meet
+	CheckEvent EVENT_ARMORED_MEWTWO_KNOWLEDGE
+	; if not break
+	jp z, .armoredMewtwoNotKnown
+	; else continue
+.notArmoredMewtwo
+	pop af
 	ld b, a ; evolution item
 	ld a, [wcf91] ; *fixed above* this is supposed to be the last item used, but it is also used to hold species numbers
 	cp b ; was the evolution item in this entry used?

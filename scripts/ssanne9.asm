@@ -120,6 +120,9 @@ SSAnne9Text5:
 
 	ld hl, GiovanniText_RematchAfterBattle
 	call PrintText
+
+	SetEvent EVENT_GIOVANNI_SAFE_CODE
+
 	jp TextScriptEnd
 ;;;;;;;
 .leaderFight

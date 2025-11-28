@@ -118,7 +118,7 @@ DirectorText:
 	ld b, wPokedexOwnedEnd - wPokedexOwned
 	call CountSetBits
 	ld a, [wNumSetBits]
-	cp NUM_POKEMON - 1
+	cp NUM_POKEMON - 2
 	call nc, .checkPokedex
 
 	CheckEvent EVENT_GYM_LEADERS_REMATCH_BEATEN

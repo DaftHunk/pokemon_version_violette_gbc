@@ -93,7 +93,7 @@ const_value = 1
 	const KABUTOPS     ; $5B
 	const HORSEA       ; $5C
 	const SEADRA       ; $5D
-	const BLASTOISE_S  ; $5E
+	const ARMORED_MEWTWO  ; $5E
 	const CHARIZARD_S  ; $5F
 	const SANDSHREW    ; $60
 	const SANDSLASH    ; $61
@@ -126,7 +126,7 @@ const_value = 1
 	const METAPOD      ; $7C
 	const BUTTERFREE   ; $7D
 	const MACHAMP      ; $7E
-	const MISSINGNO_7F ; $7F
+	const BLASTOISE_S  ; $7F
 	const GOLDUCK      ; $80
 	const HYPNO        ; $81
 	const GOLBAT       ; $82

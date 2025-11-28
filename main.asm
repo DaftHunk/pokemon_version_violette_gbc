@@ -2057,6 +2057,7 @@ INCBIN "gfx/pokemon/icons/pupitar.2bpp"
 INCBIN "gfx/pokemon/icons/tyranitar.2bpp"
 INCBIN "gfx/pokemon/icons/hooh.2bpp"
 INCBIN "gfx/pokemon/icons/missingno.2bpp"
+INCBIN "gfx/pokemon/icons/armored_mewtwo.2bpp"
 
 SECTION "Other Sprites", ROMX
 FossilKabutopsPic::    INCBIN "gfx/pokemon/other/fossilkabutops.pic"
@@ -2064,6 +2065,8 @@ FossilAerodactylPic::  INCBIN "gfx/pokemon/other/fossilaerodactyl.pic"
 GhostPic::             INCBIN "gfx/pokemon/other/ghost.pic"
 MissingnoPicFront::    INCBIN "gfx/pokemon/other/missingno.pic"
 MissingnoPicBack::     INCBIN "gfx/pokemon/other/missingnob.pic"
+ArmoredMewtwoPicFront::    INCBIN "gfx/pokemon/front/armored_mewtwo.pic"
+ArmoredMewtwoPicBack::     INCBIN "gfx/pokemon/back/armored_mewtwob.pic"
 
 SECTION "NPC Sprites 3", ROMX
 JennySprite:          INCBIN "gfx/sprites/jenny.2bpp"

@@ -92,7 +92,7 @@ PokedexEntryPointers:
 	dw KabutopsDexEntry
 	dw HorseaDexEntry
 	dw SeadraDexEntry
-	dw MissingNoDexEntry
+	dw ArmoredMewtwoDexEntry
 	dw MissingNoDexEntry
 	dw SandshrewDexEntry
 	dw SandslashDexEntry
@@ -1362,4 +1362,11 @@ MissingNoDexEntry:
 	db 1,00 ; 1.0 m
 	dw 100 ; 10.0 kg
 	TX_FAR _MissingNoDexEntry
+	db "@"
+
+ArmoredMewtwoDexEntry:	
+	db "Genetique@"
+	db 2,00
+	dw 1520
+	TX_FAR _ArmoredMewtwoDexEntry
 	db "@"

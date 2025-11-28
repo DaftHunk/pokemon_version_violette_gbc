@@ -95,7 +95,7 @@ EvosMovesPointerTable:
 	dw KabutopsEvosMoves
 	dw HorseaEvosMoves
 	dw SeadraEvosMoves
-	dw BlastoiseSEvosMoves
+	dw ArmoredMewtwoEvosMoves
 	dw CharizardSEvosMoves
 	dw SandshrewEvosMoves
 	dw SandslashEvosMoves
@@ -128,7 +128,7 @@ EvosMovesPointerTable:
 	dw MetapodEvosMoves
 	dw ButterfreeEvosMoves
 	dw MachampEvosMoves
-	dw MissingNo7FEvosMoves
+	dw BlastoiseSEvosMoves
 	dw GolduckEvosMoves
 	dw HypnoEvosMoves
 	dw GolbatEvosMoves
@@ -1393,10 +1393,18 @@ SeadraEvosMoves:
 	db 52, HYDRO_PUMP
 	db 0
 
-BlastoiseSEvosMoves:
+ArmoredMewtwoEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 11, BARRIER
+	db 22, SWIFT
+	db 33, IRON_TAIL
+	db 44, FLASH_CANNON
+	db 55, MIST
+	db 66, PSYCHIC_M
+	db 77, AMNESIA
+	db 88, RECOVER
 	db 0
 
 CharizardSEvosMoves:
@@ -1767,7 +1775,7 @@ MachampEvosMoves:
 	db 61, SUBMISSION
 	db 0
 
-MissingNo7FEvosMoves:
+BlastoiseSEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
@@ -1812,6 +1820,7 @@ GolbatEvosMoves:
 
 MewtwoEvosMoves:
 ; Evolutions
+	db EV_ITEM, METAL_COAT, 1, ARMORED_MEWTWO
 	db 0
 ; Learnset
 	db 11, BARRIER

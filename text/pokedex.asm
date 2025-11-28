@@ -1646,3 +1646,12 @@ _MissingNoDexEntry::
 	bage "ガギグゲゴ"
 	next "ザジズょゅ"
 	dex
+
+_ArmoredMewtwoDexEntry::
+	text "Mewtwo portant"
+	next "l'armure déve-"
+	next "loppée en secret"
+
+	bage "par le Dr Fuji"
+	next "et Giovanni"
+	dex

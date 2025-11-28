@@ -167,12 +167,13 @@ const_value = 1
 	const DEX_TYRANITAR  ; 165
 	const DEX_HOOH       ; 166
 	const DEX_MISSINGNO  ; 167
+	const DEX_ARMORED_MEWTWO ; 168
 
-NUM_POKEMON    EQU 167
+NUM_POKEMON    EQU 168
 
 ; Special unobtainable mons
-	const DEX_BLASTOISE_S
 	const DEX_CHARIZARD_S
 	const DEX_VENUSAUR_S
 	const DEX_ELECTABUZZ_S
 	const DEX_NINETALES_S
+	const DEX_BLASTOISE_S

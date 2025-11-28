@@ -186,9 +186,32 @@ _GiovanniText_RematchEndBattle::
 	prompt
 
 _GiovanniText_RematchAfterBattle::
-	text "Bonne chance pour"
-	line "la suite de tes"
-	cont "aventures et"
-	cont "que l'honneur"
-	cont "soit ta boussole!"
+	text "Comment ça une"
+	line "récompense, tu"
+	cont "te rappelles à"
+	cont "qui tu parles?"
+
+	para "Allez, c'est mon"
+	line "jour de bonté."
+
+	para "Va dans notre"
+	line "ancien labo"
+	cont "clandestin et"
+	cont "ouvre le coffre"
+	cont "avec ce code:"
+
+	para "Projet Jungle X"
+	
+	para "Tu y trouveras un"
+	line "prototype conçu"
+	cont "avec le Dr Fuji."
+
+	para "On a dû abandonner"
+	line "cette planque"
+	cont "précipitamment"
+	cont "avant de pouvoir"
+	cont "le tester..."
+
+	para "Ahh... C'était le"
+	line "bon temps..."
 	done

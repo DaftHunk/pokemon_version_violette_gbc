@@ -93,7 +93,7 @@ CryData:
 	db $18, $EE, $01; Kabutops
 	db $19, $99, $10; Horsea
 	db $19, $3C, $01; Seadra
-	db $13, $00, $80; Blastoise_S
+	db $1E, $99, $FF; ArmoredMewtwo
 	db $04, $00, $80; Charizard_S
 	db $00, $20, $40; Sandshrew
 	db $00, $FF, $FF; Sandslash
@@ -126,7 +126,7 @@ CryData:
 	db $1C, $CC, $01; Metapod
 	db $16, $77, $40; Butterfree
 	db $1F, $08, $C0; Machamp
-	db $11, $20, $10; MissingNo.
+	db $13, $00, $80; Blastoise_S
 	db $21, $FF, $40; Golduck
 	db $0D, $EE, $40; Hypno
 	db $1D, $FA, $80; Golbat

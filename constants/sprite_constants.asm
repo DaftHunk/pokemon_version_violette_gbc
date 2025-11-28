@@ -169,6 +169,7 @@ const_value = 0
 	const ICON_TYRANITAR
 	const ICON_HOOH
 	const ICON_MISSINGNO
+	const ICON_ARMORED_MEWTWO
 
 ; overworld sprites
 const_value = 1

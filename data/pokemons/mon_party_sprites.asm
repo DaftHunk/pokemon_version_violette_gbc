@@ -166,4 +166,5 @@ MonPartyData:
 	db ICON_TYRANITAR     ; Tyranitar
 	db ICON_HOOH          ; Hooh
 	db ICON_MISSINGNO     ; MissingNo
+	db ICON_ARMORED_MEWTWO; ArmoredMewtwo
 	
