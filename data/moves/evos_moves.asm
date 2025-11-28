@@ -463,7 +463,7 @@ GyaradosEvosMoves:
 	db 0
 ; Learnset
 	db 20, LEER
-	db 25, BITE
+	db 30, BITE
 	db 30, DRAGON_RAGE
 	db 35, CRUNCH
 	db 40, HYDRO_PUMP

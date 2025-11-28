@@ -164,10 +164,18 @@ IF DEF(_DEBUG)
 	call DebugSetPokedexEntries
 
 	; Set tutorial events
-;	SetEvent EVENT_GOT_POKEDEX
-;	SetEvent EVENT_GOT_TOWN_MAP
-;	SetEvent EVENT_GENDER_CAUGHT_INDICATOR
-;	SetEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
+	SetEvent EVENT_GOT_POKEDEX
+	SetEvent EVENT_GOT_TOWN_MAP
+	SetEvent EVENT_GENDER_CAUGHT_INDICATOR
+	SetEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
+
+	; Unlock OldMan
+	ld a, HS_LYING_OLD_MAN
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_OLD_MAN
+	ld [wMissableObjectIndex], a
+	predef ShowObject
 
 ;	SetEvent EVENT_NEW_GAME_PLUS
 ;	SetEvent EVENT_ENABLE_WILD_RANDOM_TIERS
