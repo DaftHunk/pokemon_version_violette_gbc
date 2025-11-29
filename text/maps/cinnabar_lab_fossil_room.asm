@@ -172,11 +172,12 @@ _Lab4Text_Book1B::
 
 	para "Une analyse du"
 	line "carré de Punnet"
-	cont "sur chaque gène et"
-	cont "permet de prédire"
-	cont "et d'approuver la"
-	cont "séquence avant la"
-	cont "gestation."
+	cont "sur chaque gène"
+	cont "et permet de"
+	cont "prédire et"
+	cont "d'approuver la"
+	cont "séquence avant"
+	cont "la gestation."
 	done
  
 _Lab4Text_Book2A::
