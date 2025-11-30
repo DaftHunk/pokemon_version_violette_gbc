@@ -1,7 +1,17 @@
 # Pokémon Version Violette GBC
-Romhack dérivant initialement de [Shin Pokered](https://github.com/jojobear13/shinpokered) entièrement en français pour remasteriser le jeu sans le dénaturer. 
-L'idée est d'avoir le jeu comme on s'en rappelle et non comme il est réellement.
-Ce projet se veut aussi comme une sorte de musée intéractif en restaurant de nombreux contenus coupés issue du code du jeu ou des bêtas qui aurait été perdu et oubliés autrement.  
+Revivez vos souvenirs en redécouvrant la première génération avec cette version exclusivement française et remasterisée sur GameBoy Color ! 
+
+Cette version restaure de nombreux contenus qui n'ont jamais atteint le public occidental ou qui ont été coupés par manque de temps ou d'espace. Certains viennent de la démo du Space World 97 (prémices de ce qu'allait être Or et Argent), c'est donc du contenu officiel jamais utilisé auparavant !
+
+- 166 Pokémons à capturer sans triche ! 
+- Tous les Pokémons sont disponibles sans échange
+- Ajout des rumeurs de récré les plus connus de l'époque autour du jeu
+- Nombreux contenus après le Conseil des 4
+- Refonte de l'IA et de la progression
+- Refonte des capacités et types sur la base de la 2ème génération
+- De nombreuses qualités de vie (sprint, 2ème sac, CS temporaires, changement de boîte PC à distance, 60 fps, etc)
+- Nombreux modes de jeu activables (Nuzzlocke, Level Cap, Randomizer)
+- Et bien d'autres ! 
 
 <img width="480" height="480" alt="Version Violette" src="https://github.com/user-attachments/assets/7c973d0f-55a9-4af4-b191-e554f6870ff4" />
 
