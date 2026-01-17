@@ -57,8 +57,8 @@ IF DEF(_DEBUG)
 	ld a, [wObtainedBadges]
 ;	set 0, a ; Boulder Badge
 ;	set 1, a ; Cascade Badge
-	set 2, a ; Thunder Badge
-	set 3, a ; Rainbow Badge
+;	set 2, a ; Thunder Badge
+;	set 3, a ; Rainbow Badge
 ;	set 4, a ; Soul Badge
 ;	set 5, a ; Marsh Badge
 ;	set 6, a ; Volcano Badge
@@ -150,31 +150,31 @@ IF DEF(_DEBUG)
 .items_end
 
 	; Complete the Pokédex and Movedex
-	ld hl, wPokedexOwned
-	ld b, wPokedexOwnedEnd - wPokedexOwned - 1
-	call DebugSetPokedexEntries
-	ld [hl], %11111111
-	ld hl, wPokedexSeen
-	ld b, wPokedexSeenEnd - wPokedexSeen - 1
-	call DebugSetPokedexEntries
-	ld [hl], %11111111
-	ld hl, wMovedexSeen
-	ld b, wMovedexSeenEnd - wMovedexSeen
-	call DebugSetPokedexEntries
+;	ld hl, wPokedexOwned
+;	ld b, wPokedexOwnedEnd - wPokedexOwned - 1
+;	call DebugSetPokedexEntries
+;	ld [hl], %11111111
+;	ld hl, wPokedexSeen
+;	ld b, wPokedexSeenEnd - wPokedexSeen - 1
+;	call DebugSetPokedexEntries
+;	ld [hl], %11111111
+;	ld hl, wMovedexSeen
+;	ld b, wMovedexSeenEnd - wMovedexSeen
+;	call DebugSetPokedexEntries
 
 	; Set tutorial events
-	SetEvent EVENT_GOT_POKEDEX
-	SetEvent EVENT_GOT_TOWN_MAP
-	SetEvent EVENT_GENDER_CAUGHT_INDICATOR
-	SetEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
+;	SetEvent EVENT_GOT_POKEDEX
+;	SetEvent EVENT_GOT_TOWN_MAP
+;	SetEvent EVENT_GENDER_CAUGHT_INDICATOR
+;	SetEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
 
 	; Unlock OldMan
-	ld a, HS_LYING_OLD_MAN
-	ld [wMissableObjectIndex], a
-	predef HideObject
-	ld a, HS_OLD_MAN
-	ld [wMissableObjectIndex], a
-	predef ShowObject
+;	ld a, HS_LYING_OLD_MAN
+;	ld [wMissableObjectIndex], a
+;	predef HideObject
+;	ld a, HS_OLD_MAN
+;	ld [wMissableObjectIndex], a
+;	predef ShowObject
 
 ;	SetEvent EVENT_NEW_GAME_PLUS
 ;	SetEvent EVENT_ENABLE_WILD_RANDOM_TIERS
@@ -182,7 +182,7 @@ IF DEF(_DEBUG)
 ;	SetEvent EVENT_ENABLE_NORMAL_TRAINER_RANDOMIZATION
 
 	; Uncomment tp start in post game
-	SetEvent EVENT_ELITE_4_BEATEN
+;	SetEvent EVENT_ELITE_4_BEATEN
 ;	SetEvent EVENT_TRAINER_LVL_SCALING
 ;	SetEvent EVENT_ELITE_4_REMATCH_BEATEN
 ;	SetEvent EVENT_SS_ANNE_TOURNAMENT_BEATEN
