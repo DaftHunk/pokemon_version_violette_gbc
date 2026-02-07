@@ -128,8 +128,8 @@ _Lab4Text_Clone4::
 
 _Lab4Text_MachineUsed::
 	text "Nos machines sont"
-	line "complètement"
-	cont "opérationnelles."
+	line "déjà en cours"
+	cont "d'opération."
 	done
 
 _Lab4Text_Bye::
@@ -142,19 +142,22 @@ _Lab4Text_NoMoney::
 	done	
 
 _Lab4Text_Party::
-	text "Reviens quand ton"
+	text "Tu es intéressé"
+	line "par le clonage?"
+
+	para "Reviens quand ton"
 	line "équipe contiendra"
 	cont "2 à 5 #mon."
 	done	
 
 _Lab4Text_Legend::
 	text "Nos ordinateurs"
-	line "ne peuvent anal-"
-	cont "yser ton premier"
-	cont "#mon."
+	line "ne peuvent"
+	cont "analyser ton"
+	cont "premier #mon."
 	
 	para "C'est au-delà de"
-	line "nos capacités."
+	line "leurs capacités."
 	done	
 
 _Lab4Text_Book0::
