@@ -26,7 +26,7 @@ ViridianForestObject:
 	object SPRITE_BALL, 12, 29, STAY, NONE, 6, POTION
 	object SPRITE_BALL, 1, 31, STAY, NONE, 7, POKE_BALL
 	object SPRITE_BUG_CATCHER, 27, 40, STAY, NONE, 8 ; person
-	object SPRITE_LASS, 2, 41, STAY, NONE, 9, OPP_LASS, 1
+	object SPRITE_LASS, 3, 41, STAY, RIGHT, 9, OPP_LASS, 1
 
 	; warp-to
 	warp_to 1, 0, VIRIDIAN_FOREST_WIDTH ; VIRIDIAN_FOREST_EXIT

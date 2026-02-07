@@ -8,6 +8,9 @@ ListSafariSpecial:
 	db EXEGGUTOR    ; $0A
 	db RHYDON       ; $01
 	db HERACROSS
+	db KABUTO
+	db OMANYTE
+	db AERODACTYL
 	db $00
 
 ListRealPkmn:
