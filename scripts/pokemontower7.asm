@@ -53,6 +53,9 @@ PokemonTower7Script2:
 	call UpdateSprites
 	call Delay3
 	call GBFadeInFromBlack
+
+	call PlayDefaultMusic
+
 	xor a
 	ld [wd730], a
 	jp PokemonTower7Script_60d18
@@ -267,6 +270,17 @@ PokemonTower7Text2:
 
 PokemonTower7TextJessieJames:
 	TX_ASM
+
+	CheckEvent EVENT_BEAT_POKEMONTOWER_7F_JESSIE_JAMES
+	jr z, .skipMusic
+
+	ld a, $ff
+	ld [wNewSoundID], a
+	call PlaySound
+	ld c, BANK(Music_MeetJessieJames)
+	ld a, MUSIC_MEET_JESSIE_JAMES
+	call PlayMusic
+.skipMusic
 	ld hl, PokemonTower7TrainerHeaderJessieJames
 	call TalkToTrainer
 	jp TextScriptEnd

@@ -21,6 +21,13 @@ RocketHideout4Script_45473:
 	ld a, $2d
 	jr .asm_45498
 .asm_4548c
+	ld a, $ff
+	ld [wNewSoundID], a
+	call PlaySound
+	ld c, BANK(Music_MeetJessieJames)
+	ld a, MUSIC_MEET_JESSIE_JAMES
+	call PlayMusic
+
 	; Display RocketHideout4AfterBattleText2
 	ld a, $b
 	ld [hSpriteIndexOrTextID], a
@@ -44,6 +51,8 @@ RocketHideout4Script_45473:
 	ld [wd730], a
 	ld [hJoyHeld], a
 	ld [wJoyIgnore], a
+
+	call PlayDefaultMusic
 .asm_45496
 	ld a, $e
 .asm_45498

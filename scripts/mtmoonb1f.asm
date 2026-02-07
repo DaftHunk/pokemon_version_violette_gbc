@@ -34,6 +34,14 @@ MtMoonB1FScriptJessieJames:
 	cp $ff
 	jp z, MtMoonB1FScriptNotInBattle
 	call EndTrainerBattle
+
+	ld a, $ff
+	ld [wNewSoundID], a
+	call PlaySound
+	ld c, BANK(Music_MeetJessieJames)
+	ld a, MUSIC_MEET_JESSIE_JAMES
+	call PlayMusic
+
 	ld a, $f0
 	ld [wJoyIgnore], a
 	ld a, [wSpriteIndex]
@@ -80,14 +88,6 @@ MtMoonB1FScriptNotInBattle:
 
 MtMoonB1FTextJessieJames:
 	TX_ASM
-
-	ld a, $ff
-	ld [wNewSoundID], a
-	call PlaySound
-	ld c, BANK(Music_MeetJessieJames)
-	ld a, MUSIC_MEET_JESSIE_JAMES
-	call PlayMusic
-
 	ld hl, MtMoonB1FTrainerHeader0
 	call TalkToTrainer
 	jp TextScriptEnd

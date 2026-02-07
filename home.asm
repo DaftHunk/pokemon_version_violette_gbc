@@ -2876,6 +2876,8 @@ PlayTrainerMusic::
 	ld [wAudioROMBank], a
 	ld [wAudioSavedROMBank], a
 	ld a, [wEngagedTrainerClass]
+	cp OPP_JESSIE_JAMES
+	jr z, .jessieJames
 	ld b, a
 	ld hl, EvilTrainerList
 .evilTrainerListLoop
@@ -2901,6 +2903,12 @@ PlayTrainerMusic::
 .PlaySound
 	ld [wNewSoundID], a
 	jp PlaySound
+.jessieJames
+	ld a, BANK(Music_MeetJessieJames)
+	ld [wAudioROMBank], a
+	ld [wAudioSavedROMBank], a
+	ld a, MUSIC_MEET_JESSIE_JAMES
+	jr .PlaySound
 
 INCLUDE "data/battle/trainer_types.asm"
 
