@@ -44,10 +44,10 @@ Lab2Text1:
 	and a
 	jr nz, .textNo	;if no, jump
 	;otherwise charge 10000 money
-	ld [hMoney], a	
 	ld [hMoney + 2], a
-	ld a, $A0
 	ld [hMoney + 1], a
+	ld a, $01
+	ld [hMoney], a
 	call HasEnoughMoney
 	jr nc, .enoughMoney
 	; not enough money
@@ -77,10 +77,10 @@ Lab2Text1:
 .takeMoneyAndThanks
 	; Charge 10000 money
 	xor a
+	ld [wPriceTemp + 2], a
+	ld [wPriceTemp + 1], a
+	ld a, $01
 	ld [wPriceTemp], a
-	ld [wPriceTemp + 2], a	
-	ld a, $A0
-	ld [wPriceTemp + 1], a	
 	ld hl, wPriceTemp + 2
 	ld de, wPlayerMoney + 2
 	ld c, $3
