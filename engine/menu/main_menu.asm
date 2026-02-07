@@ -559,12 +559,12 @@ HandshakeList:
 ;FF is used as an end-of-list marker.
 	db $1
 	db $2
-	db $4
-	db $7
+	db $6
+	db $0
 	db $a
 	db $ff
 VersionText:
-	db "v1.2.5@"
+	db "v1.2.6@"
 
 WhereWouldYouLikeText:
 	TX_FAR _WhereWouldYouLikeText
@@ -658,6 +658,15 @@ DisplayContinueGameInfo:
 	ld de, SaveScreenInfoText
 	call PlaceString
 
+	CheckEvent EVENT_NEW_GAME_PLUS
+	jr z, .skipNGP
+
+	; Add New Game + info
+	coord hl, 8, 16
+	ld de, NewGamePlusSaveText
+	call PlaceString
+
+.skipNGP
 	coord hl, 12, 10
 	ld de, wPlayerName
 	call PlaceString
@@ -718,6 +727,15 @@ PrintSaveScreenText:
 	ld de, SaveScreenInfoText
 	call PlaceString
 
+	CheckEvent EVENT_NEW_GAME_PLUS
+	jr z, .skipNGP
+
+	; Add New Game + info
+	coord hl, 8, 10
+	ld de, NewGamePlusSaveText
+	call PlaceString
+
+.skipNGP
 	coord hl, 12, 4
 	ld de, wPlayerName
 	call PlaceString
@@ -752,6 +770,9 @@ PrintSaveScreenText:
 	ld [H_AUTOBGTRANSFERENABLED], a
 	ld c, 30
 	jp DelayFrames
+
+NewGamePlusSaveText:
+	db "(NP+)@"
 
 LocationIconText:
 	db "▷@"

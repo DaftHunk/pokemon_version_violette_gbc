@@ -7,7 +7,7 @@ _VolcanoB1FText0_Battle::
 _VolcanoB1FText0_EndBattle::
 	text "Euh..."
 	line "J'ai peur de"
-	cont "sauter par dessus"
+	cont "sauter par d'sus"
 	cont "la lave..."
 	prompt
 
@@ -15,7 +15,7 @@ _VolcanoB1FText0_AfterBattle::
 	text "Va pas l'répéter"
 	line "au chef! Y va"
 	cont "encore me crier"
-	cont "d'su!"
+	cont "d'sus!"
 	done
 
 _VolcanoB1FText1_Battle::

@@ -1364,8 +1364,8 @@ KabutopsEvosMoves:
 	db 10, LEECH_LIFE
 	db 19, LEER
 	db 28, SAND_ATTACK
-	db 36, X_SCISSOR
-	db 40, SLASH
+	db 40, X_SCISSOR
+	db 45, SLASH
 	db 51, MEGA_DRAIN
 	db 65, HYDRO_PUMP
 	db 0

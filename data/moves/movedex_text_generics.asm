@@ -70,7 +70,7 @@ _GenericTrappingMoveText::
 	dex
 
 _GenericAbsorbMoveText::
-	bage "Restore 50% des"
+	bage "Restaure 50% des"
 	next "dégâts infligés"
 	next "à l'utilisateur"
 	dex

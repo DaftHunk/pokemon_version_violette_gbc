@@ -564,9 +564,15 @@ _CounterDexEntry::
 _SeismicTossDexEntry::
 	text "L'ennemi est proj-"
 	next "eté grâce au pouv-"
-	next "oir de la gravité.@"
-	; fall through
-	text_jump _GenericAbsorbMoveText
+	next "oir de la gravité."
+
+	bage "Les dégâts corres-"
+	next "pondent au niveau"
+	next "du lanceur."
+	
+	bage "Ne prends pas en"
+	next "compte les types"
+	dex
 
 _StrengthDexEntry::
 	text "Le lanceur cogne"
