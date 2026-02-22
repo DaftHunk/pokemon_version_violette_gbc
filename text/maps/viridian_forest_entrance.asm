@@ -12,6 +12,11 @@ _ViridianForestEntranceAskMonText::
 	line "petit mais il est"
 	cont "vicieux! En as-tu"
 	cont "capturé un?"
+
+	para "Tu peux montrer"
+	line "un #mon en le"
+	cont "plaçant en 1er"
+	cont "de ton équipe!"
 	done
 
 _ViridianForestEntranceShowedMonText::

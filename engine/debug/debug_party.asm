@@ -55,14 +55,14 @@ IF DEF(_DEBUG)
 	ld [wTownVisitedFlag + 1], a
 
 	ld a, [wObtainedBadges]
-;	set 0, a ; Boulder Badge
-;	set 1, a ; Cascade Badge
-;	set 2, a ; Thunder Badge
-;	set 3, a ; Rainbow Badge
-;	set 4, a ; Soul Badge
-;	set 5, a ; Marsh Badge
-;	set 6, a ; Volcano Badge
-;	set 7, a ; Earth Badge
+	set 0, a ; Boulder Badge
+	set 1, a ; Cascade Badge
+	set 2, a ; Thunder Badge
+	set 3, a ; Rainbow Badge
+	set 4, a ; Soul Badge
+	set 5, a ; Marsh Badge
+	set 6, a ; Volcano Badge
+	set 7, a ; Earth Badge
 	ld [wObtainedBadges], a
 
 	call SetDebugNewGameParty
@@ -163,18 +163,18 @@ IF DEF(_DEBUG)
 ;	call DebugSetPokedexEntries
 
 	; Set tutorial events
-;	SetEvent EVENT_GOT_POKEDEX
-;	SetEvent EVENT_GOT_TOWN_MAP
-;	SetEvent EVENT_GENDER_CAUGHT_INDICATOR
-;	SetEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
+	SetEvent EVENT_GOT_POKEDEX
+	SetEvent EVENT_GOT_TOWN_MAP
+	SetEvent EVENT_GENDER_CAUGHT_INDICATOR
+	SetEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
 
 	; Unlock OldMan
-;	ld a, HS_LYING_OLD_MAN
-;	ld [wMissableObjectIndex], a
-;	predef HideObject
-;	ld a, HS_OLD_MAN
-;	ld [wMissableObjectIndex], a
-;	predef ShowObject
+	ld a, HS_LYING_OLD_MAN
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_OLD_MAN
+	ld [wMissableObjectIndex], a
+	predef ShowObject
 
 ;	SetEvent EVENT_NEW_GAME_PLUS
 ;	SetEvent EVENT_ENABLE_WILD_RANDOM_TIERS
@@ -191,21 +191,21 @@ IF DEF(_DEBUG)
 ;	SetEvent EVENT_GOT_DEX_DIPLOMA
 ;	SetEvent EVENT_ARMORED_MEWTWO_KNOWLEDGE
 
-;	SetEvent EVENT_BEAT_BROCK
+	SetEvent EVENT_BEAT_BROCK
 ;	SetEvent EVENT_BEAT_BROCK_REMATCH
-;	SetEvent EVENT_BEAT_MISTY
+	SetEvent EVENT_BEAT_MISTY
 ;	SetEvent EVENT_BEAT_MISTY_REMATCH
-;	SetEvent EVENT_BEAT_LT_SURGE
+	SetEvent EVENT_BEAT_LT_SURGE
 ;	SetEvent EVENT_BEAT_LT_SURGE_REMATCH
-;	SetEvent EVENT_BEAT_SABRINA
+	SetEvent EVENT_BEAT_SABRINA
 ;	SetEvent EVENT_BEAT_SABRINA_REMATCH
-;	SetEvent EVENT_BEAT_ERIKA
+	SetEvent EVENT_BEAT_ERIKA
 ;	SetEvent EVENT_BEAT_ERIKA_REMATCH
-;	SetEvent EVENT_BEAT_KOGA
+	SetEvent EVENT_BEAT_KOGA
 ;	SetEvent EVENT_BEAT_KOGA_REMATCH
-;	SetEvent EVENT_BEAT_BLAINE
+	SetEvent EVENT_BEAT_BLAINE
 ;	SetEvent EVENT_BEAT_BLAINE_REMATCH
-;	SetEvent EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
+	SetEvent EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
 ;	SetEvent EVENT_BEAT_GIOVANNI_REMATCH
 
 	; Set special flags
