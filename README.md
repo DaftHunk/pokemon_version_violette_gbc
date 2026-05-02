@@ -1,3 +1,5 @@
+<img width="480" height="480" alt="Version Violette" src="https://github.com/user-attachments/assets/7c973d0f-55a9-4af4-b191-e554f6870ff4" />
+
 # Pokémon Version Violette GBC
 Revivez vos souvenirs en redécouvrant la première génération avec cette version exclusivement française et remasterisée sur GameBoy Color ! 
 
@@ -12,8 +14,6 @@ Cette version restaure de nombreux contenus qui n'ont jamais atteint le public o
 - De nombreuses qualités de vie (sprint, 2ème sac, CS temporaires, changement de boîte PC à distance, 60 fps, etc)
 - Nombreux modes de jeu activables (Nuzzlocke, Level Cap, Randomizer)
 - Et bien d'autres ! 
-
-<img width="480" height="480" alt="Version Violette" src="https://github.com/user-attachments/assets/7c973d0f-55a9-4af4-b191-e554f6870ff4" />
 
 Pour plus d'info, consultez le wiki dédié : https://github.com/DaftHunk/pokemon_version_violette/wiki
 
