@@ -18,10 +18,10 @@ DebugNewGameParty: ; unreferenced except in _DEBUG
 	; always using this character while I was debugging the program."
 	; From https://web.archive.org/web/20000607152840/http://pocket.ign.com/news/14973.html
 	db MAGNETON, 100
+	db ARMORED_MEWTWO, 100
 	db EXEGGUTOR, 100
 ;	db EEVEE, 1
 	db SPEAROW, 10
-	db MAROWRATH, 100
 	db ZAPDOS, 100
 	db MEW, 100
 	; Test for trade
@@ -67,42 +67,12 @@ IF DEF(_DEBUG)
 
 	call SetDebugNewGameParty
 
-	; MEW gets four HM moves.
-	ld hl, wPartyMon6Moves
-	ld a, PSYCHIC_M
-	ld [hli], a
-	ld a, CUT
-	ld [hli], a
-	ld a, SURF
-	ld [hli], a
-	ld a, STRENGTH
-	ld [hl], a
-	ld hl, wPartyMon1PP
-	ld a, 15
-	ld [hli], a
-	ld a, 30
-	ld [hli], a
-	ld a, 15
-	ld [hli], a
-	ld [hl], a
-
-	; MAGNTETON gets Thunderbolt.
+	; MAGNETON gets Thunderbolt.
 	ld hl, wPartyMon1Moves
 	ld a, THUNDERBOLT
 	ld [hl], a
 	ld hl, wPartyMon1PP
 	ld a, 15
-	ld [hl], a
-
-	; ONIX new attack test
-	ld hl, wPartyMon4Moves
-	ld a, SLUDGE_BOMB
-	ld [hli], a
-	ld a, METAL_CLAW
-	ld [hli], a
-	ld a, CRUNCH
-	ld [hli], a
-	ld a, IRON_TAIL
 	ld [hl], a
 
 	; EEVEE gets PURSUIT.
@@ -119,6 +89,17 @@ IF DEF(_DEBUG)
 	ld a, 30
 	ld [hl], a
 
+	; ONIX new attack test
+;	ld hl, wPartyMon4Moves
+;	ld a, SLUDGE_BOMB
+;	ld [hli], a
+;	ld a, METAL_CLAW
+;	ld [hli], a
+;	ld a, CRUNCH
+;	ld [hli], a
+;	ld a, IRON_TAIL
+;	ld [hl], a
+
 	; ZAPDOS gets Fly.
 	ld hl, wPartyMon5Moves
 	ld a, FLY
@@ -131,6 +112,25 @@ IF DEF(_DEBUG)
 	ld [hl], a
 	ld hl, wPartyMon5PP
 	ld a, 15
+	ld [hl], a
+
+	; MEW gets four HM moves.
+	ld hl, wPartyMon6Moves
+	ld a, MIMIC
+	ld [hli], a
+	ld a, CUT
+	ld [hli], a
+	ld a, SURF
+	ld [hli], a
+	ld a, STRENGTH
+	ld [hl], a
+	ld hl, wPartyMon1PP
+	ld a, 15
+	ld [hli], a
+	ld a, 30
+	ld [hli], a
+	ld a, 15
+	ld [hli], a
 	ld [hl], a
 
 	; Get some debug items.
@@ -190,6 +190,8 @@ IF DEF(_DEBUG)
 ;	SetEvent EVENT_MASTER_POKEMON
 ;	SetEvent EVENT_GOT_DEX_DIPLOMA
 ;	SetEvent EVENT_ARMORED_MEWTWO_KNOWLEDGE
+	SetEvent EVENT_GOT_HELIX_FOSSIL
+	SetEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 
 	SetEvent EVENT_BEAT_BROCK
 ;	SetEvent EVENT_BEAT_BROCK_REMATCH
