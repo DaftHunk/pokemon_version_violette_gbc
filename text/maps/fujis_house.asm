@@ -95,8 +95,8 @@ _LavenderHouse1Text6::
 	done
 ;;;;;;;;;;;;;;;;;;;;;;joenote - adding text for fuji battle
 _FujiText_challenge::
-	text "M.Fuji: Tu veux me"
-	line "défier dans un"
+	text "M.Fuji: Tu veux"
+	line "me défier dans un"
 	cont "duel #mon?"
 	done
 
@@ -110,14 +110,14 @@ _FujiText_prebattle::
 	cont "suis parti."
 	
 	para "Les données sur le"
-	line "génome, les échan-"
-	cont "tillons, les su-"
-	cont "jets de tests..."
+	line "génome, les"
+	cont "échantillons, les"
+	cont "sujets de tests..."
 	
 	para "Tout ce travail"
-	line "jeté dans les eaux"
-	cont "de la Caverne"
-	cont "Azurée."
+	line "jeté dans les"
+	cont "eaux de la"
+	cont "Caverne Azurée."
 	
 	para "Je te conseille de"
 	line "rester loin de ce"
@@ -135,22 +135,22 @@ _FujiTextVictorySpeech::
 	cont "toujours se"
 	cont "répliquer."
 	
-	para "Qui sait en quel"
-	line "type de #mon"
+	para "Qui sait en quels"
+	line "types de #mon"
 	cont "ils ont fini par"
 	cont "se cloner?"
 
 	para "Vas-y si tu le"
 	line "dois. Peut-être"
 	cont "que tu pourras"
-	cont "arranger mes err-"
-	cont "eurs du passé."
+	cont "arranger mes"
+	cont "erreurs passées."
 
-	para "Le PDG de la Syl-"
-	line "phe est un vieil"
-	cont "ami, tu devrais"
-	cont "aussi lui rendre"
-	cont "visite."
+	para "Le PDG de la"
+	line "Sylphe est un"
+	cont "vieil ami, tu"
+	cont "devrais aussi lui"
+	cont "rendre visite."
 	prompt
 	
 _FujiTextMewtwo::
@@ -168,7 +168,8 @@ _FujiTextMewtwo::
 	cont "envers tes"
 	cont "#mon."
 	
-	para "Prends ça. Je n'"
-	line "ai aucune raison"
-	cont "de le garder."
+	para "Prends ça. Je"
+	line "n'ai aucune"
+	cont "raison de le"
+	cont "garder."
 	prompt

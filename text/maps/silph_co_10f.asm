@@ -13,7 +13,7 @@ _SilphCo10BattleText1::
 	text "Bienvenue au"
 	line "9ème étage!"
 	cont "J'adore les"
-	cont "visites !"
+	cont "visites!"
 	done
 
 _SilphCo10EndBattleText1::

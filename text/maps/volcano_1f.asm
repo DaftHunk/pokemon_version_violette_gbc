@@ -57,6 +57,6 @@ _Volcano1FText2_AfterBattle::
 	cont "actif depuis"
 	cont "quelques temps,"
 	cont "comme si quelque"
-	cont "chose l'alimen-"
-	cont "tait..."
+	cont "chose"
+	cont "l'alimentait..."
 	done

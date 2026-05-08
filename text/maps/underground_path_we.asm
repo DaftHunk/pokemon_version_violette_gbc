@@ -10,7 +10,7 @@ _RandTrainerNotReady::
 	
 	para "Doit y'avoir un"
 	line "bon magot là-"
-	cont "dessous."
+	cont "d'ssous."
 	done
 
 _RandTrainerIntro::
@@ -20,9 +20,9 @@ _RandTrainerIntro::
 	cont "un seul morceau."
 	
 	para "J'y ai choppé ces"
-	line "étranges Méta-"
-	cont "morph qui copient"
-	cont "tout."
+	line "étranges"
+	cont "Métamorph qui"
+	cont "copient tout."
 	done
 	
 _RandTrainerChallenge::

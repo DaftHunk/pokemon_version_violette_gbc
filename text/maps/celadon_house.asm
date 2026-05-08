@@ -22,10 +22,11 @@ _CeladonHouseText3::
 	done
 
 _CeladonHouseTextChiefIntro::	;joenote - adding text for selling pokemon
-	text "Héhé! Les mach-"
-	line "ines à sous sont"
-	cont "de vrais aspirat-"
-	cont "eurs à pognons."
+	text "Héhé! Les"
+	line "machines à sous"
+	cont "sont de vrais"
+	cont "aspirateurs à"
+	cont "pognons."
 	
 	para "Mais j'vais vite"
 	line "manquer d'lots"
@@ -41,7 +42,7 @@ _CeladonHouseTextChiefIntro::	;joenote - adding text for selling pokemon
 	para "J't'en donne"
 	line "¥@"
 	TX_BCD hItemPrice, 3 | LEADING_ZEROES | LEFT_ALIGN
-	text " !"
+	text "!"
 	done
 	
 _CeladonHouseTextChiefDone::

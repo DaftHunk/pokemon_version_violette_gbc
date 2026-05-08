@@ -64,11 +64,11 @@ _RedsHouse1FText_RunningShoes::
 	text "Mère: Au fait"
 	line "<PLAYER>!"
 
-	para "N'oublie pas d'"
-	line "essayer tes nou-"
-	cont "velles Chaussures"
-	cont "de Course en"
-	cont "maintenant le"
+	para "N'oublie pas"
+	line "d'essayer tes"
+	cont "nouvelles Chau-"
+	cont "ssures de Course"
+	cont "en maintenant le"
 	cont "bouton B!"
 
 	para "Ah et ton nouveau"

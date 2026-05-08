@@ -127,7 +127,7 @@ DisplaySoundTestMenu:
 SoundTestTextInstructions1:
 	db "A:Jouer   B:Retour@"
 SoundTestTextInstructions2:
-	db "L/R:Changer Piste@"
+	db "→:Changer Piste@"
 SoundTestTextInstructions3:
 	db "Baladeur@"
 SoundTestTextBlankTrack:

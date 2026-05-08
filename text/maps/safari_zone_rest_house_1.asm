@@ -30,9 +30,9 @@ _SafariZoneRestHouse1JuliaFoundText::
 	prompt
 
 _SafariZoneRestHouse1JuliaFound2Text::
-	text "Selon nos recher-"
-	line "ches on ne pour-"
-	cont "rait en trouver"
+	text "D'après nos"
+	line "recherches on ne"
+	cont "pourrait en avoir"
 	cont "qu'avec une Méga"
 	cont "Canne au plus"
 	cont "profonds des Iles"

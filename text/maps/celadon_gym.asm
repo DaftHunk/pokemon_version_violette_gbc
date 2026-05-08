@@ -117,8 +117,8 @@ _CeladonGymText_RematchEndBattle::
 	cont "avec ton"
 	cont "Florizarre et je"
 	cont "te révélerai sa"
-	cont "vraie person-"
-	cont "nalité!"
+	cont "vraie"
+	cont "personnalité!"
 	prompt
 
 _CeladonGymText_Trainer0PreBattle::

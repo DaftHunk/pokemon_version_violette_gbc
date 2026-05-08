@@ -116,10 +116,10 @@ CeladonCityText8_alternate:
 
 	para "Ouai c'est moi"
 	line "qui fournit le"
-	cont "centre commercial"
+	cont "Centre commercial"
 	cont "en objets rares,"
-	cont "ils sont pas re-"
-	cont "gardant sur la"
+	cont "ils sont pas"
+	cont "regardant sur la"
 	cont "provenance, héhé."
 	
 	para "Pas besoin de la"
@@ -263,8 +263,8 @@ _TXTRefuseCoins:
 	para "C'est déjà galère"
 	line "de se faire de la"
 	cont "tune maintenant"
-	cont "que la Team Rock-"
-	cont "et est partie..."
+	cont "que la Team"
+	cont "Rocket est partie."
 	done
 	db "@"
 _TXTNeedCoinCase:

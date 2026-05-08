@@ -10,7 +10,7 @@ _SilphCo8Text_565c3::
 	done
 
 _SilphCo8BattleText1::
-	text "Hop hop hop !"
+	text "Hop hop hop!"
 	line "On ne bouge plus!"
 	done
 

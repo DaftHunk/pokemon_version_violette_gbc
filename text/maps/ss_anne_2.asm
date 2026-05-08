@@ -43,8 +43,9 @@ _SSAnneRivalDefeatedText::
 	prompt
 
 _SSAnneRivalWonText::
-	text "<PLAYER>! Tu as"
-	line "le mal de mer?"
+	text "<PLAYER>!"
+	line "Tu as le mal"
+	cont "de mer?"
 
 	para "Tu devrais te"
 	line "mettre au frais!"

@@ -39,8 +39,8 @@ _RematchLoreleiBeforeBattleText::
 	text "Du es de retour?"
 
 	para "Zedde fois zi,"
-	line "je vais de ré-"
-	cont "frigérer!"
+	line "je vais de"
+	cont "réfrigérer!"
 
 	para "J'ai pazzé mes"
 	line "vacanzes dans les"

@@ -1,7 +1,7 @@
 _VolcanoB1FText0_Battle::
 	text "Eh gamin! Les"
-	line "vrais gars s'en-"
-	cont "trainent ici!"
+	line "vrais gars"
+	cont "s'entrainent ici!"
 	done
 
 _VolcanoB1FText0_EndBattle::

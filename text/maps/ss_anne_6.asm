@@ -112,9 +112,9 @@ _SSAnne6Text_GymGuy2::
 	cont "la Sylphe SARL!"
 
 	para "Par contre, tous"
-	line "le monde doit ut-"
-	cont "iliser exactement"
-	cont "3 #mon."
+	line "le monde doit"
+	cont "utiliser exact-"
+	cont "ement 3 #mon."
 
 	para "Tes #mon seront"
 	line "soignés entre"
@@ -143,7 +143,7 @@ _SSAnne6Text_GymGuy_noroom::
 	done
 	
 _SSAnne6Text_GymGuy_party::
-	text "Tu dois avoir ex-"
+	text "Tu dois avoir"
 	line "exactement 3"
 	cont "#mon pour"
 	cont "entrer."

@@ -77,15 +77,15 @@ _FuchsiaGymText_RematchEndBattle::
 	para "Alors là ça me"
 	line "la coupe..."
 
-	para "Continue à perf-"
-	line "ectionner tes"
+	para "Continue à"
+	line "perfectionner tes"
 	cont "talents car telle"
 	cont "est la voie"
 	cont "du ninja."
 
-	para "Si tu le souhai-"
-	line "tes, je peux app-"
-	cont "rendre cette voie"
+	para "Si tu le veux,"
+	line "je peux apprendre"
+	cont "cette voie"
 	cont "à ton Insécateur."
 
 	para "Disparition!"

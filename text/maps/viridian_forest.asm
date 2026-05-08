@@ -87,9 +87,10 @@ _ViridianForestEndBattleText4::
 	prompt
 
 _ViridianForestAskMonText::
-	text "J'ai cherché par-"
-	line "tout mais je n'ai"
-	cont "jamais trouvé de"
+	text "J'ai cherché"
+	line "partout mais je"
+	cont "n'arrive pas à"
+	cont "trouver un"
 	cont "Pikachu ici!"
 
 	para "Je suis tombée"

@@ -169,8 +169,8 @@ _OakFollowOutroText::
 
 _RematchOakRivalOutroText::
 	text "Chen: <RIVAL>,"
-	line "tu n'as pas re-"
-	cont "tenu la leçon à"
+	line "tu n'as pas"
+	cont "retenu la leçon à"
 	cont "ce que je vois..."
 	done
 
@@ -189,9 +189,9 @@ _RematchRivalChampionIntroText::
 	cont "et plus fort!"
 
 	para "Et tout ça, rien"
-	line "que pour te cass-"
-	cont "ta p'tite tête de"
-	cont "minable!"
+	line "que pour te"
+	cont "casser ta p'tite"
+	cont "tête de minable!"
 
 	para "J'ai ainsi créé"
 	line "l'équipe ultime,"

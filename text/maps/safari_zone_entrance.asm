@@ -112,16 +112,18 @@ _SafariZoneEntranceTextSpecial_NotReady::
 	done
 _SafariZoneEntranceTextSpecial_Ready::
 	text "Salut Champion!"
-	line "Veux-tu partici-"
-	cont "per à un évene-"
-	cont "ment spécial?"
+	line "Veux-tu"
+	cont "participer à"
+	cont "un évenement"
+	cont "spécial?"
 
 	para "Les #mon seront"
-	line "meilleurs et il y"
-	cont "a même de rares"
-	cont "chances de ren-"
-	cont "contrer de nou-"
-	cont "velles espèces!"
+	line "plus puissant et"
+	cont "il y a même de"
+	cont "rares chances de"
+	cont "rencontrer de"
+	cont "nouvelles"
+	cont "espèces!"
 	done
 _SafariZoneEntranceTextSpecial_Active::
 	text "Veux-tu mettre"

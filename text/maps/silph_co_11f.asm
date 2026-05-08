@@ -173,12 +173,13 @@ _ChiefText_challenge::
 
 _ChiefText_prebattle::
 	text "Eh bien! Qui t'as"
-	line "dit que j'entraî-"
-	cont "nais des #mon?"
+	line "dit que"
+	cont "j'entraînais"
+	cont "des #mon?"
 	
 	para "C'est vrai. Je"
-	line "suis accro au Parc"
-	cont "Safari."
+	line "suis accro au"
+	cont "Parc Safari."
 	
 	para "J'y vais depuis"
 	line "que j'ai à peu"
@@ -189,8 +190,8 @@ _ChiefText_prebattle::
 	cont "occupé par"
 	cont "l'entreprise."
 
-	para "Mais ça ne m'em-"
-	line "pèche pas de"
+	para "Mais ça ne"
+	line "m'empèche pas de"
 	cont "trouver le temps"
 	cont "pour m'amuser!"
 	done
@@ -205,14 +206,16 @@ _ChiefTextVictorySpeech::
 	cont "n'est-ce pas?"
 	
 	para "Durant mes safaris"
-	line "j'ai rencontré une"
-	cont "autre Championne"
-	cont "en devenir qui"
+	line "j'ai rencontré"
+	cont "une autre"
+	cont "Championne en"
+	cont "devenir qui"
 	cont "travaille à"
 	cont "Parmanie."
 	
 	para "Elle serait peut-"
-	line "être aussi intér-"
-	cont "ssée par un duel."
+	line "être aussi"
+	cont "intéressée par"
+	cont "un duel."
 	prompt
 	

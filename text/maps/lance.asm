@@ -70,18 +70,21 @@ _LanceAfterBattleText::
 	text_end
 
 _RematchLanceBeforeBattleText::
-	text "Depuis notre der-"
-	line "nière rencontre,"
-	cont "je suis parti m'"
-	cont "entrainer à Johto."
+	text "Depuis notre"
+	line "dernière"
+	cont "rencontre, je"
+	cont "suis parti"
+	cont "m'entrainer à"
+	cont "Johto."
 
 	para "Il parait qu'un"
-	line "Léviator rouge au-"
-	cont "rait été aperçu!"
+	line "Léviator rouge"
+	cont "aurait été"
+	cont "aperçu!"
 
 	para "C'est une nouvelle"
-	line "aussi exitante qu'"
-	cont "inquiètante..."
+	line "aussi exitante"
+	cont "qu'inquiètante..."
 
 	para "Bref, trêve de"
 	line "grivoiserie, tu"
@@ -103,8 +106,9 @@ _RematchLanceAfterBattleText::
 	line "Tu vas rire mais"
 	cont "<RIVAL> a"
 	cont "profité de ton"
-	cont "absence pour pr-"
-	cont "endre sa revanche."
+	cont "absence pour"
+	cont "prendre sa"
+	cont "revanche."
 
 	para "Il t'attend à"
 	line "côté <PLAYER>.@"

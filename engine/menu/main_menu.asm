@@ -558,13 +558,13 @@ HandshakeList:
 ;Each digit of the passcode is one nybble.
 ;FF is used as an end-of-list marker.
 	db $1
-	db $2
-	db $6
+	db $3
 	db $0
-	db $a
+	db $0
+	db $b
 	db $ff
 VersionText:
-	db "v1.2.6@"
+	db "v1.3.0@"
 
 WhereWouldYouLikeText:
 	TX_FAR _WhereWouldYouLikeText
@@ -1003,7 +1003,7 @@ OptionMenuCancelText:
 	db "Retour@"
 
 OptionMenuSelectText:	;joenote - text for getting to extra options screen
-	db "Select",$E3,$ED,"@"
+	db "SELECT",$E3,$ED,"@"
 
 ; sets the options variable according to the current placement of the menu cursors in the options menu
 SetOptionsFromCursorPositions:

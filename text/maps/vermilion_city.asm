@@ -25,8 +25,8 @@ _VermilionCityText_198ac::
 	text "L'Océane a"
 	line "levé l'ancre!"
 
-	para "Il reviendra l'an"
-	line "prochain."
+	para "Il reviendra"
+	line "après la Ligue."
 	done
 
 _VermilionCityText_annereturns::	;joenote - added text
@@ -76,7 +76,7 @@ _SSAnneNotHereText::
 	line "levé l'ancre."
 
 	para "Il sera de retour"
-	line "l'an prochain!"
+	line "aprés la Ligue!"
 	done
 
 _VermilionCityText4::
@@ -153,11 +153,13 @@ _VermilionCityText13::
 	done
 
 _VermilionPKMNText::
-	text "Un #mon se pré-"
-	line "lasse au soleil."
+	text "Un #mon se"
+	line "prélasse au"
+	cont "soleil."
 	
-	para "Son regard se perd"
-	line "vers un bateau"
-	cont "mouillant au port."
+	para "Son regard se"
+	line "perd vers un"
+	cont "bateau mouillant"
+	cont "au port."
 	done
 	

@@ -35,8 +35,8 @@ _ViridianForestEntranceItemText::
 _ViridianForestEntranceAfterMonText::
 	text "Moi aussi je vais"
 	line "être un grand"
-	cont "dresseur et cap-"
-	cont "turer tout plein"
-	cont "de #mon!"
+	cont "dresseur et"
+	cont "capturer tout"
+	cont "plein de #mon!"
 	done
 

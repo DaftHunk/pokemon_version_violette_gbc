@@ -21,17 +21,19 @@ _HM02ExplanationText::
 
 	para "Pas un mot! J'ai"
 	line "enfin trouvé un"
-	cont "endroit où pers-"
-	cont "onne ne vient"
+	cont "endroit où"
+	cont "personne ne vient"
 	cont "nous déranger."
 
 	para "Je suis juste un"
 	line "peu triste pour"
 	cont "Vrivri."
 	
-	para "Elle avait un co-"
-	line "pain Roucoups où"
-	cont "on était avant..."
+	para "Elle avait un"
+	line "copain Roucoups"
+	cont "avant mais il n'a"
+	cont "pas pu nous"
+	cont "suivre..."
 	done
 
 _HM02NoRoomText::

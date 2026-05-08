@@ -59,9 +59,9 @@ MirrorTrainerNotReady:
 	
 	para "Je serai prêt"
 	line "quand la finale"
-	cont "de la Ligue #-"
-	cont "mon sera ter-"
-	cont "minée."
+	cont "de la Ligue"
+	cont "#mon sera"
+	cont "terminée."
 	done
 	db "@"
 MirrorTrainerChallenge:

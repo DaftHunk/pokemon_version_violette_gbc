@@ -110,8 +110,8 @@ _Lab4Text_Clone1::
 _Lab4Text_Clone2::
 	text "C'est 10000¥ pour"
 	line "cloner ces gènes."
-	cont "Toujours inté-"
-	cont "ressé?"
+	cont "Toujours"
+	cont "intéressé?"
 	done
 
 _Lab4Text_Clone3::
@@ -211,11 +211,11 @@ _Lab4Text_Book2B::
 	cont "Gène-B Hi allèle,"
 	cont "Gène-B Lo allèle."
 
-	para "Ils affectent re-"
-	line "spectivement:" 
+	para "Ils affectent"
+	line "respectivement:" 
 	cont "Attaque, Défense,"
-	cont "Vitesse et Spé-"
-	cont "cial."
+	cont "Vitesse et"
+	cont "Spécial."
 	done
 
 _Lab4Text_Book3A::

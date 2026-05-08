@@ -499,16 +499,17 @@ ScytherTutor:
 	call PrintText
 	jp TextScriptEnd
 .textBring
-	text "Continue à perf-"
-	line "ectionner tes"
+	text "Continue à"
+	line "perfectionner tes"
 	cont "talents car telle"
 	cont "est la voie"
 	cont "du ninja."
 
-	para "Si tu le souhai-"
-	line "tes, je peux app-"
-	cont "rendre cette voie"
-	cont "à ton Insécateur."
+	para "Si tu le"
+	line "souhaites, je"
+	cont "peux apprendre"
+	cont "cette voie à ton"
+	cont "Insécateur."
 	done
 	db "@"
 .textStart

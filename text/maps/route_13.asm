@@ -185,13 +185,14 @@ _Route13Text12::
 	cont "pour trier les"
 	cont "objets!"
 
-	para "Vous pouvez tran-"
-	line "sférer un objet"
-	cont "d'un compartiment"
-	cont "à l'autre en app-"
-	cont "uyant sur START"
-	cont "tout en mainte-"
-	cont "nant GAUCHE!"
+	para "Vous pouvez"
+	line "transférer un"
+	cont "objet d'un"
+	cont "compartiment à"
+	cont "l'autre en"
+	cont "appuyant sur"
+	cont "START tout en"
+	cont "maintenant GAUCHE"
 	done
 
 _Route13Text13::

@@ -14,7 +14,7 @@ _VictoryRoad1AfterBattleText1::
 
 _VictoryRoad1BattleText2::
 	text "Mmm..."
-	line "T'as l'air fort! "
+	line "T'as l'air fort!"
 	cont "Mais l'es-tu"
 	cont "vraiment?"
 	done
@@ -25,12 +25,12 @@ _VictoryRoad1EndBattleText2::
 	prompt
 
 _VictoryRoad1AfterBattleText2::
-	text "T'es fort, "
+	text "T'es fort,"
 	line "on a compris!"
 	done
 
 _VictoryRoad1FBugCatcherBattleText::
-	text "C'est pas juste "
+	text "C'est pas juste"
 	line "des petits"
 	cont "insectes!"
 
@@ -51,17 +51,17 @@ _VictoryRoad1FBugCatcherAfterBattleText::
 
 _VictoryRoad1FBeautyBattleText::
 	text "J'ai toujours"
-	line "adoré Evoli!"
+	line "adoré les Evoli!"
 
-	para "Laisse-moi te mon-"
-	line "trer comme ils"
+	para "Laisse-moi te"
+	line "montrer comme ils"
 	cont "sont cool!"
 	done
 
 _VictoryRoad1FBeautyEndBattleText::
 	text "Oh,"
-	line "ma famille d'Evo-"
-	cont "li a perdu..."
+	line "mes évolitions"
+	cont "ont perdu..."
 	prompt
 
 _VictoryRoad1FBeautyAfterBattleText::
@@ -82,9 +82,9 @@ _VictoryRoad1FBurglarEndBattleText::
 	prompt
 
 _VictoryRoad1FBurglarAfterBattleText::
-	text "Va-t'en, Je cher-"
-	line "che ma prochaine"
-	cont "victime!"
+	text "Va-t'en, Je"
+	line "cherche ma pro-"
+	cont "chaine victime!"
 
 	para "La vie de Pillard"
 	line "pour moi,"

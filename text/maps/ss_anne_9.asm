@@ -153,7 +153,7 @@ _GiovanniText_RematchEndBattle::
 	cont "avec moi l'entre-"
 	cont "prise familiale,"
 	cont "comme mère"
-	cont "l'avait ait"
+	cont "l'avait fait"
 	cont "pour moi."
 
 	para "Mais il semblerait"

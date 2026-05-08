@@ -79,9 +79,9 @@ _SaffronGymText_RematchPreBattle::
     line "ressentent"
 	cont "ta force."
 
-    para "Depuis notre der-"
-    line "nier combat, je"
-    cont "suis devenue"
+    para "Depuis notre"
+    line "dernier combat,"
+    cont "je suis devenue"
 	cont "plus forte."
 
     para "Prêt pour un vrai"

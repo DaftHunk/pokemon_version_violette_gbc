@@ -50,9 +50,9 @@ _CeruleanGymText_RematchEndBattle::
 	cont "notre prochaine"
 	cont "rencontre."
 
-	para "Si tu m'amènes un"
-	line "Tortank, je l'en-"
-	cont "trainerai à"
+	para "Si tu m'amènes"
+	line "ton Tortank, je"
+	cont "l'entrainerai à"
 	cont "devenir solide"
 	cont "comme l'Acier!"
 	prompt
