@@ -9,17 +9,8 @@ Lab2TextPointers:
 Lab2Text1:
 	TX_ASM
 	CheckBothEventsSet EVENT_GOT_DOME_FOSSIL, EVENT_GOT_HELIX_FOSSIL
-	jr z, .showAlreadyBoughtText;already bought fossils
-	CheckEvent EVENT_ELITE_4_BEATEN	;has elite 4 been beaten?
-	jr nz, .recognizeChampion
-	ld hl, Lab2TextFossile
-	call PrintText
-	jp .textEnd
-.showAlreadyBoughtText
-	ld hl, Lab2TextFossile2
-	call PrintText
-	jp .textEnd
-.recognizeChampion
+	jr z, .showAlreadyBoughtText ;already bought fossils
+	;else
 	ld hl, Lab2TextFossileChampion
 	call PrintText
 	call ManualTextScroll
@@ -31,6 +22,10 @@ Lab2Text1:
 	call PrintText
 	call ManualTextScroll
 	jr .askForBuyingFossile
+.showAlreadyBoughtText
+	ld hl, Lab2TextFossile2
+	call PrintText
+	jp .textEnd
 .displayHelixText
 	ld hl, Lab2TextFossileHelix
 	call PrintText
@@ -95,9 +90,6 @@ Lab2Text1:
 .textEnd
 	jp TextScriptEnd
 
-Lab2TextFossile:
-	TX_FAR _Lab2TextFossile
-	db "@"
 Lab2TextFossile2:
 	TX_FAR _Lab2TextFossile2
 	db "@"

@@ -1,13 +1,13 @@
-_Lab2TextFossile::
-	text "J'ai trouvé cet"
-	line "étrange fossile"
-	cont "sur le Mont"
-	cont "Sélénite!"
+;_Lab2TextFossile::
+;	text "J'ai trouvé cet"
+;	line "étrange fossile"
+;	cont "sur le Mont"
+;	cont "Sélénite!"
 
-	para "On dirait un"
-	line "#mon"
-	cont "préhistorique!"
-	done
+;	para "On dirait un"
+;	line "#mon"
+;	cont "préhistorique!"
+;	done
 
 _Lab2TextFossile2::
 	text "Bon j'ai pas mal"
@@ -16,12 +16,22 @@ _Lab2TextFossile2::
 	done
 
 _Lab2TextFossileChampion::
-	text "Hé mais tu ne"
-	line "serais pas le"
-	cont "nouveau champion?"
+	text "J'ai trouvé cet"
+	line "étrange fossile"
+	cont "sur le Mont"
+	cont "Sélénite!"
 
-	para "J'ai toujours rê-"
-	line "vé de devenir un"
+	para "Hé mais on ne se"
+	line "serait pas déjà"
+	cont "vu quelque part?"
+
+	para "Ah mais oui tu"
+	line "es le fameux"
+	cont "Champion en"
+	cont "devenir!"
+
+	para "J'ai toujours rêvé"
+	line "de devenir un"
 	cont "grand dresseur."
 
 	para "Mais pour partir"
@@ -62,7 +72,7 @@ _Lab2TextFossileYes::
 	done
 
 _Lab2TextFossileNo::
-	text "Ravie de t'avoir"
+	text "Ravi de t'avoir"
 	line "rencontré!"
 	done
 
