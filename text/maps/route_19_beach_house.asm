@@ -22,7 +22,8 @@ _Route19BeachHouseFisherAfterText::
 	cont "Surfeur!"
 
 	para "Ramène moi ton"
-	line "Pikachu et le"
+	line "Pikachu ou ton"
+	cont "Raichu et le"
 	cont "Dave lui montrera"
 	cont "la voie du Surf!"
 	done

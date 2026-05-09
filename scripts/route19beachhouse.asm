@@ -22,6 +22,8 @@ Route19BeachHouseFisherText:
 	ld a, [wPartyMon1Species]
 	cp PIKACHU
 	jr z, PikachuTutor
+	cp RAICHU
+	jr z, PikachuTutor
 	; fallthrough
 .displayText
 	call PrintText
