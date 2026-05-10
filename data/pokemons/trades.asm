@@ -12,13 +12,13 @@ TradeMons:
 ;	JENNY
 ;	SHANE
 ;	WAGSTER
-	db NIDORINO,  HERACROSS, 0,"Bibiche@@@@"
+	db MANKEY,    HERACROSS, 0,"Bibiche@@@@"
 	db ABRA,      MR_MIME,   0,"Marcel@@@@@"
-	db BUTTERFREE,TANGELA,   2,"Bigoudi@@@@"
+	db KAKUNA,    TANGELA,   2,"Bigoudi@@@@"
 	db PONYTA,    SNEASEL,   0,"Bibi@@@@@@@"
 	db SPEAROW,   FARFETCHD, 2,"Julio@@@@@@"
-	db SLOWBRO,   LICKITUNG, 0,"Glavioteur@"
-	db POLIWHIRL, JYNX,      1,"Nini@@@@@@@"
-	db RAICHU,    ELECTABUZZ,1,"Kourjus@@@@"
+	db EXEGGCUTE, LICKITUNG, 0,"Glavioteur@"
+	db SEAKING,   JYNX,      1,"Nini@@@@@@@"
+	db SEEL,      ELECTABUZZ,1,"Kourjus@@@@"
 	db VENONAT,   SCYTHER,   2,"Gratouille@"
 	db NIDORAN_F, HOUNDOUR,  2,"Fabi@@@@@@@"
