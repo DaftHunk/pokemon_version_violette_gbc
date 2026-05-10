@@ -32,34 +32,39 @@ _CeladonCityText4::
 	cont "claquer!"
 	done
 
-_TM41PreText::
+_TM37PreText::
 	text "Bonjour!"
 
-	para "Enfin tu viens"
-	line "me parler!"
+	para "Enfin quelqu'un"
+	line "vient me parler!"
 
-	para "Allez, tiens!"
-	line "C'est pour toi!"
+	para "Cette rivière est"
+	line "poluée et se"
+	cont "remplit de"
+	cont "Tadmorv mais tous"
+	cont "le monde s'en"
+	cont "fou!"
+
+	para "Regarde ce qu'ils"
+	line "ont fait..."
 	prompt
 
-_ReceivedTM41Text::
+_ReceivedTM37Text::
 	text "<PLAYER> reçoit:"
 	line "@"
 	text_ram wStringBuffer
 	text "!@"
 	text_end
 
-_TM41ExplanationText::
-	text "La CT41 contient"
-	line "E-Coque!"
+_TM37ExplanationText::
+	text "La CT37 contient"
+	line "Bomb-Beurk!"
 
-	para "Un seul #mon"
-	line "peut l'utiliser:"
-
-	para "Leveinard!"
+	para "Il faut prévenir"
+	line "le monde!"
 	done
 
-_TM41NoRoomText::
+_TM37NoRoomText::
 	text "Oh! Ton sac est"
 	line "plein!"
 	done

@@ -5,7 +5,7 @@ db 115 ; base defense
 db 75 ; base speed
 db 50 ; base special
 db WATER ; species type 1
-db WATER ; species type 2
+db GROUND ; species type 2
 db 60 ; catch rate
 db 206 ; base exp yield
 INCBIN "gfx/pokemon/front/kingler.pic",0,1 ; 77, sprite dimensions
@@ -25,7 +25,7 @@ db 0 ; growth rate
 ; 17 -> 24
 	tmlearn tm20_RAGE, tm28_DIG
 ; 25 -> 32
-	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm26_EARTHQUAKE, tm31_MIMIC, tm32_DOUBLE_TEAM
 ; 33 -> 40
 	tmlearn tm34_BIDE
 ; 41 -> 48

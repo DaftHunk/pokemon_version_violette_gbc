@@ -824,6 +824,7 @@ DrowzeeEvosMoves:
 	db 25, HEADBUTT
 	db 31, POISON_GAS
 	db 36, MEDITATE
+	db 38, DREAM_EATER
 	db 40, PSYCHIC_M
 	db 0
 
@@ -1803,6 +1804,7 @@ HypnoEvosMoves:
 	db 33, POISON_GAS
 	db 38, DARK_PULSE
 	db 40, MEDITATE
+	db 45, DREAM_EATER
 	db 49, PSYCHIC_M
 	db 0
 

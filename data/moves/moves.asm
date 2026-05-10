@@ -23,7 +23,7 @@ MoveEnd:
 	move SCRATCH,      NO_ADDITIONAL_EFFECT,        40, NORMAL,   100, 35
 	move VICEGRIP,     NO_ADDITIONAL_EFFECT,        55, NORMAL,   100, 30
 	move GUILLOTINE,   OHKO_EFFECT,                  1, NORMAL,    30,  5
-	move RAZOR_WIND,   CHARGE_EFFECT,               80, NORMAL,   100, 10
+	move RAZOR_WIND,   CHARGE_EFFECT,               80, FLYING,   100, 10
 	move SWORDS_DANCE, ATTACK_UP2_EFFECT,            0, NORMAL,   100, 30
 	move CUT,          NO_ADDITIONAL_EFFECT,        55, BUG,      100, 30
 	move GUST,         NO_ADDITIONAL_EFFECT,        40, FLYING,   100, 35
@@ -32,7 +32,7 @@ MoveEnd:
 	move FLY,          FLY_EFFECT,                  70, FLYING,   100, 15
 	move BIND,         TRAPPING_EFFECT,             25, ROCK,      85, 20
 	move SLAM,         NO_ADDITIONAL_EFFECT,        80, NORMAL,    75, 20
-	move VINE_WHIP,    NO_ADDITIONAL_EFFECT,        35, GRASS,    100, 10
+	move VINE_WHIP,    NO_ADDITIONAL_EFFECT,        45, GRASS,    100, 20
 	move STOMP,        FLINCH_SIDE_EFFECT2,         65, ROCK,     100, 20
 	move DOUBLE_KICK,  ATTACK_TWICE_EFFECT,         30, FIGHTING, 100, 30
 	move MEGA_KICK,    NO_ADDITIONAL_EFFECT,       120, FIGHTING,  75,  5

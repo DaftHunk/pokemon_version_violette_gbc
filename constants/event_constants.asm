@@ -384,7 +384,7 @@ const_value = 0
 	const EVENT_17D                                  ; 17D, (D776, bit 5)
 	const EVENT_17E                                  ; 17E, (D776, bit 6)
 	const EVENT_17F                                  ; 17F, (D776, bit 7)
-	const EVENT_GOT_TM41                             ; 180, (D777, bit 0)
+	const EVENT_GOT_TM37                             ; 180, (D777, bit 0)
 	const EVENT_181                                  ; 181, (D777, bit 1)
 	const EVENT_182                                  ; 182, (D777, bit 2)
 	const EVENT_183                                  ; 183, (D777, bit 3)
