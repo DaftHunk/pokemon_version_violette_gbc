@@ -127,7 +127,7 @@ MoveEnd:
 	move HAZE,         HAZE_EFFECT,                  0, ICE,      100, 30
 	move REFLECT,      REFLECT_EFFECT,               0, PSYCHIC,  100, 20
 	move FOCUS_ENERGY, FOCUS_ENERGY_EFFECT,          0, NORMAL,   100, 30
-	move BIDE,         BIDE_EFFECT,                  0, BIRD,     100, 10
+	move BIDE,         BIDE_EFFECT,                  0, ROCK,     100, 10
 	move METRONOME,    METRONOME_EFFECT,             0, BIRD,     100, 10
 	move MIRROR_MOVE,  MIRROR_MOVE_EFFECT,           0, FLYING,   100, 20
 	move SELFDESTRUCT, EXPLODE_EFFECT,             200, NORMAL,   100,  5

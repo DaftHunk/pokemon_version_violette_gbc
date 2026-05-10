@@ -876,11 +876,11 @@ BideEffect:
 	ld [de], a
 	ld [wPlayerMoveEffect], a
 	ld [wEnemyMoveEffect], a
-	call BattleRandom
-	and $1
+	xor a
 	inc a
 	inc a
-	ld [bc], a ; set Bide counter to 2 or 3 at random
+	ld [bc], a ; set Bide counter to 2
+
 	ld a, [H_WHOSETURN]
 	add XSTATITEM_ANIM
 	jp PlayBattleAnimation2
