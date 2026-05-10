@@ -51,8 +51,8 @@ _VictoryRoad3AfterBattleText4::
 _VictoryRoad3BattleText5::
 	text "Un dresseur est"
 	line "toujours en quête"
-	cont "d'adversaires plus"
-	cont "puissants!"
+	cont "d'adversaires"
+	cont "plus puissants!"
 	done
 
 _VictoryRoad3EndBattleText5::

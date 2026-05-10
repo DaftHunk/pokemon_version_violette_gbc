@@ -1230,7 +1230,7 @@ ConfusionSideEffectSuccess:
 	ld [bc], a ; confusion status will last 2-5 turns
 	pop af
 	cp CONFUSION_SIDE_EFFECT
-	call PlayCurrentMoveAnimation2
+	call nz, PlayCurrentMoveAnimation2
 	ld hl, BecameConfusedText
 	jp PrintText
 
