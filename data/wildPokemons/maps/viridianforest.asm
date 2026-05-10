@@ -9,5 +9,5 @@ ForestMons:
 	db 4,KAKUNA
 	db 3,METAPOD
 	db 3,PIKACHU
-	db 5,PIKACHU
+	db 5,PINSIR
 	db $00
