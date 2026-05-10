@@ -1,27 +1,27 @@
-_TM29PreReceiveText::
+_TM46PreReceiveText::
 	text "...Chut! Pas un"
 	line "mot!"
 
 	para "Tu veux ça?"
 	prompt
 
-_ReceivedTM29Text::
+_ReceivedTM46Text::
 	text "<PLAYER> obtient:"
 	line "@"
 	text_ram wStringBuffer
 	text "!@"
 	text_end
 
-_TM29ExplanationText::
-	text "CT29: Psyko!"
+_TM46ExplanationText::
+	text "CT46: Vibrobscur!"
 
 	para "Cette attaque"
-	line "diminue le"
-	cont "Spécial de la"
-	cont "cible."
+	line "peut foutre la"
+	cont "pétoche à sa"
+	cont "cible!"
 	done
 
-_TM29NoRoomText::
+_TM46NoRoomText::
 	text "Ton inventaire"
 	line "est plein!"
 	done

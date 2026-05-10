@@ -23,7 +23,7 @@ db 5 ; growth rate
 ; 9 -> 16
 	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE
 ; 17 -> 24
-	tmlearn tm20_RAGE, tm24_THUNDERBOLT
+	tmlearn tm24_THUNDERBOLT
 ; 25 -> 32
 	tmlearn tm25_THUNDER, tm26_EARTHQUAKE, tm27_FISSURE, tm28_DIG, tm31_MIMIC, tm32_DOUBLE_TEAM
 ; 33 -> 40

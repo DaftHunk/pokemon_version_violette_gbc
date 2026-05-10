@@ -23,7 +23,7 @@ db 0 ; growth rate
 ; 9 -> 16
 	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm15_HYPER_BEAM
 ; 17 -> 24
-	tmlearn tm20_RAGE
+	tmlearn tm20_X_SCISSOR
 ; 25 -> 32
 	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM
 ; 33 -> 40

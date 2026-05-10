@@ -23,7 +23,7 @@ db 3 ; growth rate
 ; 9 -> 16
 	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm13_ICE_BEAM, tm14_BLIZZARD
 ; 17 -> 24
-	tmlearn tm18_COUNTER, tm20_RAGE, tm24_THUNDERBOLT
+	tmlearn tm18_COUNTER, tm24_THUNDERBOLT
 ; 25 -> 32
 	tmlearn tm25_THUNDER, tm28_DIG, tm31_MIMIC, tm32_DOUBLE_TEAM
 ; 33 -> 40

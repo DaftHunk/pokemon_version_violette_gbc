@@ -6,40 +6,40 @@ SaffronHouse2TextPointers:
 
 SaffronHouse2Text1:
 	TX_ASM
-	CheckEvent EVENT_GOT_TM29
+	CheckEvent EVENT_GOT_TM46
 	jr nz, .asm_9e72b
-	ld hl, TM29PreReceiveText
+	ld hl, TM46PreReceiveText
 	call PrintText
-	lb bc, TM29_PSYCHIC_M, 1
+	lb bc, TM46_DARK_PULSE, 1
 	call GiveItem
 	jr nc, .BagFull
-	ld hl, ReceivedTM29Text
+	ld hl, ReceivedTM46Text
 	call PrintText
-	SetEvent EVENT_GOT_TM29
+	SetEvent EVENT_GOT_TM46
 	jr .asm_fe4e1
 .BagFull
-	ld hl, TM29NoRoomText
+	ld hl, TM46NoRoomText
 	call PrintText
 	jr .asm_fe4e1
 .asm_9e72b	
-	ld hl, TM29ExplanationText
+	ld hl, TM46ExplanationText
 	call PrintText
 .asm_fe4e1
 	jp TextScriptEnd
 
-TM29PreReceiveText:
-	TX_FAR _TM29PreReceiveText
+TM46PreReceiveText:
+	TX_FAR _TM46PreReceiveText
 	db "@"
 
-ReceivedTM29Text:
-	TX_FAR _ReceivedTM29Text
+ReceivedTM46Text:
+	TX_FAR _ReceivedTM46Text
 	TX_SFX_ITEM_1
 	db "@"
 
-TM29ExplanationText:
-	TX_FAR _TM29ExplanationText
+TM46ExplanationText:
+	TX_FAR _TM46ExplanationText
 	db "@"
 
-TM29NoRoomText:
-	TX_FAR _TM29NoRoomText
+TM46NoRoomText:
+	TX_FAR _TM46NoRoomText
 	db "@"

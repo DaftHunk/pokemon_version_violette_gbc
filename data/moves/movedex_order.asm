@@ -17,7 +17,6 @@ MovedexOrder:
 	db SLUDGE_BOMB  ; a5 ; dafthunk #46
 	db EGG_BOMB     ; 79
 	db BARRIER      ; 70
-	db BUG_BUZZ     ; ab ; dafthunk #128
 	db DEFENSE_CURL ; 6f
 	db SMOKESCREEN  ; 6c
 	db HAZE         ; 72
@@ -75,7 +74,8 @@ MovedexOrder:
 	db RAGE         ; 63
 	db FURY_ATTACK  ; 1f
 	db POISON_GAS   ; 8b
-	db SCRATCH      ; 0a	
+	db GIGA_DRAIN   ; ab ; dafthunk #128
+	db SCRATCH      ; 0a
 	db METAL_CLAW   ; a8 ; dafthunk #20
 	db SCREECH      ; 67
 	db LOVELY_KISS  ; 8e

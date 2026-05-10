@@ -172,7 +172,7 @@ MovedexEntryPointers:
 	dw MetalClawDexEntry   ; a8 ; dafthunk #20
 	dw IronTailDexEntry    ; a9 ; dafthunk #20
 	dw XScissorDexEntry    ; a5 ; dafthunk #128
-	dw BugBuzzDexEntry     ; a6 ; dafthunk #128
+	dw GigaDrainDexEntry   ; a6 ; dafthunk #128
 	dw DarkPulseDexEntry   ; a7 ; dafthunk #128
 	dw ShadowBallDexEntry  ; a8 ; dafthunk #128
 	dw DragonRushDexEntry  ; a9 ; dafthunk #128
@@ -860,8 +860,8 @@ XScissorDexEntry:
 	TX_FAR _XScissorDexEntry
 	text_end
 
-BugBuzzDexEntry:
-	TX_FAR _BugBuzzDexEntry
+GigaDrainDexEntry:
+	TX_FAR _GigaDrainDexEntry
 	text_end
 
 DarkPulseDexEntry:

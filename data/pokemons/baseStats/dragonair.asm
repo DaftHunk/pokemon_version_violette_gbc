@@ -23,7 +23,7 @@ db 5 ; growth rate
 ; 9 -> 16
 	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm11_BUBBLEBEAM, tm12_WATER_GUN, tm13_ICE_BEAM, tm14_BLIZZARD
 ; 17 -> 24
-	tmlearn tm20_RAGE, tm23_DRAGON_RAGE, tm24_THUNDERBOLT
+	tmlearn tm23_DRAGON_RAGE, tm24_THUNDERBOLT
 ; 25 -> 32
 	tmlearn tm25_THUNDER, tm31_MIMIC, tm32_DOUBLE_TEAM
 ; 33 -> 40

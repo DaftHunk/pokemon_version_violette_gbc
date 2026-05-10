@@ -2690,7 +2690,7 @@ MoveSoundTable:
 	db SFX_BATTLE_36,         $f0,$20 ; METAL_CLAW
 	db SFX_BATTLE_36,         $f0,$20 ; IRON_TAIL
 	db SFX_BATTLE_0F,         $00,$80 ; X_SCISSOR
-	db SFX_BATTLE_27,         $00,$80 ; BUG_BUZZ
+	db SFX_BATTLE_24,         $40,$c0 ; GIGA_DRAIN
 	db SFX_BATTLE_13,         $f1,$ff ; DARK_PULSE
 	db SFX_BATTLE_34,         $00,$40 ; SHADOW_BALL
 	db SFX_BATTLE_23,         $01,$c0 ; DRAGON_RUSH

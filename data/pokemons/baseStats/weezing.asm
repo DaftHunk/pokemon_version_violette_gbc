@@ -23,13 +23,13 @@ db 0 ; growth rate
 ; 9 -> 16
 	tmlearn tm15_HYPER_BEAM
 ; 17 -> 24
-	tmlearn tm20_RAGE, tm24_THUNDERBOLT
+	tmlearn tm24_THUNDERBOLT
 ; 25 -> 32
 	tmlearn tm25_THUNDER, tm31_MIMIC, tm32_DOUBLE_TEAM
 ; 33 -> 40
 	tmlearn tm34_BIDE, tm36_SELFDESTRUCT, tm37_SLUDGE_BOMB, tm38_FIRE_BLAST
 ; 41 -> 48
-	tmlearn tm44_REST, tm47_EXPLOSION
+	tmlearn tm42_SHADOW_BALL, tm44_REST, tm46_DARK_PULSE, tm47_EXPLOSION
 ; 49 -> 56
 	tmlearn tm50_SUBSTITUTE, hm05_FLASH
 ;   db 0 ; padding

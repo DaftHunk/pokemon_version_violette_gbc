@@ -23,13 +23,13 @@ db 3 ; growth rate
 ; 9 -> 16
 	tmlearn 0
 ; 17 -> 24
-	tmlearn tm20_RAGE, tm21_MEGA_DRAIN, tm24_THUNDERBOLT
+	tmlearn tm21_MEGA_DRAIN, tm24_THUNDERBOLT
 ; 25 -> 32
 	tmlearn tm25_THUNDER, tm29_PSYCHIC_M, tm31_MIMIC, tm32_DOUBLE_TEAM
 ; 33 -> 40
 	tmlearn tm34_BIDE, tm36_SELFDESTRUCT, tm37_SLUDGE_BOMB
 ; 41 -> 48
-	tmlearn tm42_DREAM_EATER, tm44_REST, tm46_PSYWAVE, tm47_EXPLOSION
+	tmlearn tm41_GIGA_DRAIN, tm42_SHADOW_BALL, tm44_REST, tm46_DARK_PULSE, tm47_EXPLOSION
 ; 49 -> 56
 	tmlearn tm50_SUBSTITUTE
 ;   db 0 ; padding

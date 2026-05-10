@@ -493,8 +493,8 @@ _TM19Description::
 	prompt
 
 _TM20Description::
-	text "Frénésie:Normal"
-	next "Dég: 20;Pré: 100"
+	text "PlaieCroix:Insecte"
+	next "Dég: 80;Pré: 100"
 	prompt
 
 _TM21Description::
@@ -598,13 +598,13 @@ _TM40Description::
 	prompt
 
 _TM41Description::
-	text "E-Coque:Normal"
-	next "Dég: -;Pré: -"
+	text "GigaSangsue:Plante"
+	next "Dég: 75;Pré: 100"
 	prompt
 
 _TM42Description::
-	text "Dévorêve:Spectre"
-	next "Dég: 100;Pré: 100"
+	text "Ball'Ombre:Spectre"
+	next "Dég: 80;Pré: 100"
 	prompt
 
 _TM43Description::
@@ -623,8 +623,8 @@ _TM45Description::
 	prompt
 
 _TM46Description::
-	text "Vague Psy:Psy"
-	next "Dég: -;Pré: 80"
+	text "Vibrobscur:Ténèbre"
+	next "Dég: 80;Pré: 100"
 	prompt
 
 _TM47Description::

@@ -57,13 +57,13 @@ _SaffronGymText_Badge::
 
 _SaffronGymText_ReceivedTM::
 	text "<PLAYER> obtient:"
-	line "CT46!@"
+	line "CT29!@"
 	text_end
 
 _SaffronGymText_TMExplanation::
 	text_start
 
-	para "CT46: Vague Psy!"
+	para "CT29: Psycho!"
 	line "Une onde"
 	cont "d'énergie psy"
 	cont "dévastatrice!"

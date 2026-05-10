@@ -169,7 +169,7 @@ MoveNames::
 	db "Griffe Acier@" ; dafthunk #20
 	db "Queue de Fer@" ; dafthunk #20
 	db "Plaie Croix@"  ; dafthunk #128
-	db "Bourdon@"      ; dafthunk #128
+	db "Giga-Sangsue@" ; dafthunk #128
 	db "Vibrobscur@"   ; dafthunk #128
 	db "Ball'Ombre@"   ; dafthunk #128
 	db "Draco-Charge@" ; dafthunk #128

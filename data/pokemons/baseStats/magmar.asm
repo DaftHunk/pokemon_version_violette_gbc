@@ -23,13 +23,13 @@ db 0 ; growth rate
 ; 9 -> 16
 	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm15_HYPER_BEAM
 ; 17 -> 24
-	tmlearn tm17_SUBMISSION, tm18_COUNTER, tm19_SEISMIC_TOSS, tm20_RAGE
+	tmlearn tm17_SUBMISSION, tm18_COUNTER, tm19_SEISMIC_TOSS
 ; 25 -> 32
 	tmlearn tm29_PSYCHIC_M, tm30_TELEPORT, tm31_MIMIC, tm32_DOUBLE_TEAM
 ; 33 -> 40
 	tmlearn tm34_BIDE, tm35_METRONOME, tm38_FIRE_BLAST, tm40_SKULL_BASH
 ; 41 -> 48
-	tmlearn tm44_REST, tm46_PSYWAVE
+	tmlearn tm44_REST
 ; 49 -> 56
 	tmlearn tm50_SUBSTITUTE, hm04_STRENGTH
 ;   db 0 ; padding

@@ -129,7 +129,7 @@ const_value = $C4
 	const TM17_SUBMISSION   ; $D9
 	const TM18_COUNTER      ; $DA
 	const TM19_SEISMIC_TOSS ; $DB
-	const TM20_RAGE         ; $DC
+	const TM20_X_SCISSOR    ; $DC
 	const TM21_MEGA_DRAIN   ; $DD
 	const TM22_SOLARBEAM    ; $DE
 	const TM23_DRAGON_RAGE  ; $DF
@@ -150,12 +150,12 @@ const_value = $C4
 	const TM38_FIRE_BLAST   ; $EE
 	const TM39_SWIFT        ; $EF
 	const TM40_SKULL_BASH   ; $F0
-	const TM41_SOFTBOILED   ; $F1
-	const TM42_DREAM_EATER  ; $F2
+	const TM41_GIGA_DRAIN   ; $F1
+	const TM42_SHADOW_BALL  ; $F2
 	const TM43_SKY_ATTACK   ; $F3
 	const TM44_REST         ; $F4
 	const TM45_THUNDER_WAVE ; $F5
-	const TM46_PSYWAVE      ; $F6
+	const TM46_DARK_PULSE   ; $F6
 	const TM47_EXPLOSION    ; $F7
 	const TM48_ROCK_SLIDE   ; $F8
 	const TM49_TRI_ATTACK   ; $F9
@@ -181,7 +181,7 @@ tm16_PAY_DAY      EQU 16 ; $D8
 tm17_SUBMISSION   EQU 17 ; $D9
 tm18_COUNTER      EQU 18 ; $DA
 tm19_SEISMIC_TOSS EQU 19 ; $DB
-tm20_RAGE         EQU 20 ; $DC
+tm20_X_SCISSOR    EQU 20 ; $DC
 tm21_MEGA_DRAIN   EQU 21 ; $DD
 tm22_SOLARBEAM    EQU 22 ; $DE
 tm23_DRAGON_RAGE  EQU 23 ; $DF
@@ -202,12 +202,12 @@ tm37_SLUDGE_BOMB  EQU 37 ; $ED
 tm38_FIRE_BLAST   EQU 38 ; $EE
 tm39_SWIFT        EQU 39 ; $EF
 tm40_SKULL_BASH   EQU 40 ; $F0
-tm41_SOFTBOILED   EQU 41 ; $F1
-tm42_DREAM_EATER  EQU 42 ; $F2
+tm41_GIGA_DRAIN   EQU 41 ; $F1
+tm42_SHADOW_BALL  EQU 42 ; $F2
 tm43_SKY_ATTACK   EQU 43 ; $F3
 tm44_REST         EQU 44 ; $F4
 tm45_THUNDER_WAVE EQU 45 ; $F5
-tm46_PSYWAVE      EQU 46 ; $F6
+tm46_DARK_PULSE   EQU 46 ; $F6
 tm47_EXPLOSION    EQU 47 ; $F7
 tm48_ROCK_SLIDE   EQU 48 ; $F8
 tm49_TRI_ATTACK   EQU 49 ; $F9

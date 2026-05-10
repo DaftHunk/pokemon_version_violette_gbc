@@ -181,7 +181,7 @@ MoveEnd:
 	move METAL_CLAW,   NO_ADDITIONAL_EFFECT,        50, STEEL,    100, 35 ; dafthunk #20
 	move IRON_TAIL,    DEFENSE_DOWN_SIDE_EFFECT,    95, STEEL,    100, 15 ; dafthunk #20
 	move X_SCISSOR,    NO_ADDITIONAL_EFFECT,        80, BUG,      100, 15 ; dafthunk #128
-	move BUG_BUZZ,     DEFENSE_DOWN_SIDE_EFFECT,    90, BUG,      100, 10 ; dafthunk #128
+	move GIGA_DRAIN,   DRAIN_HP_EFFECT,             75, GRASS,    100, 10 ; dafthunk #128
 	move DARK_PULSE,   FLINCH_SIDE_EFFECT1,         80, DARK,     100, 15 ; dafthunk #128
 	move SHADOW_BALL,  SPECIAL_DOWN_SIDE_EFFECT,    80, GHOST,    100, 15 ; dafthunk #128
 	move DRAGON_RUSH,  FLINCH_SIDE_EFFECT1,         80, DRAGON,   100, 15 ; dafthunk #128

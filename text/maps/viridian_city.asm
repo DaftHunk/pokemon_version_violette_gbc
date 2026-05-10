@@ -94,7 +94,7 @@ _ReceivedTM42Text::
 
 _TM42Explanation::
 	text "CT42 contient"
-	line "Dévorêve..."
+	line "Ball'Ombre..."
 	cont "...(pionce)..."
 	done
 

@@ -23,13 +23,13 @@ db 0 ; growth rate
 ; 9 -> 16
 	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm11_BUBBLEBEAM, tm12_WATER_GUN, tm13_ICE_BEAM, tm14_BLIZZARD
 ; 17 -> 24
-	tmlearn tm18_COUNTER, tm20_RAGE, tm24_THUNDERBOLT
+	tmlearn tm18_COUNTER, tm24_THUNDERBOLT
 ; 25 -> 32
 	tmlearn tm25_THUNDER, tm28_DIG, tm31_MIMIC, tm32_DOUBLE_TEAM
 ; 33 -> 40
 	tmlearn tm34_BIDE, tm39_SWIFT, tm40_SKULL_BASH
 ; 41 -> 48
-	tmlearn tm44_REST
+	tmlearn tm42_SHADOW_BALL, tm44_REST
 ; 49 -> 56
 	tmlearn tm50_SUBSTITUTE, hm01_CUT
 ;   db 0 ; padding

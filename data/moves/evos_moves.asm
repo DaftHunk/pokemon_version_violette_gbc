@@ -579,6 +579,7 @@ TangelaEvosMoves:
 	db 25, WRAP
 	db 31, MEGA_DRAIN
 	db 34, STUN_SPORE
+	db 38, GIGA_DRAIN
 	db 40, SLAM
 	db 46, GROWTH
 	db 0
@@ -795,8 +796,9 @@ ParasectEvosMoves:
 	db 19, LEECH_LIFE
 	db 25, SPORE
 	db 31, SLASH
-	db 37, GROWTH
-	db 43, MEGA_DRAIN
+	db 35, GROWTH
+	db 40, MEGA_DRAIN
+	db 45, GIGA_DRAIN
 	db 50, SHADOW_BALL
 	db 55, X_SCISSOR
 	db 0
@@ -1595,6 +1597,7 @@ ParasEvosMoves:
 	db 20, LEECH_LIFE
 	db 27, SPORE
 	db 34, SLASH
+	db 38, GIGA_DRAIN
 	db 41, GROWTH
 	db 45, X_SCISSOR
 	db 0
@@ -1648,7 +1651,8 @@ BeedrillEvosMoves:
 	db 20, TWINEEDLE
 	db 25, RAGE
 	db 35, PIN_MISSILE
-	db 40, AGILITY
+	db 40, X_SCISSOR
+	db 45, AGILITY
 	db 0
 
 VenusaurSEvosMoves:
@@ -1709,7 +1713,7 @@ VenomothEvosMoves:
 	db 36, PSYBEAM
 	db 42, SLEEP_POWDER
 	db 52, PSYCHIC_M
-	db 59, BUG_BUZZ
+	db 59, GIGA_DRAIN
 	db 0
 
 DewgongEvosMoves:
@@ -1762,7 +1766,7 @@ ButterfreeEvosMoves:
 	db 23, WHIRLWIND
 	db 28, GUST
 	db 34, PSYBEAM
-	db 40, BUG_BUZZ
+	db 40, GIGA_DRAIN
 	db 0
 
 MachampEvosMoves:
@@ -2405,6 +2409,7 @@ OddishEvosMoves:
 	db 16, STUN_SPORE
 	db 18, SLEEP_POWDER
 	db 23, ACID
+	db 35, GIGA_DRAIN
 	db 39, PETAL_DANCE
 	db 46, SOLARBEAM
 	db 0
@@ -2418,6 +2423,7 @@ GloomEvosMoves:
 	db 16, STUN_SPORE
 	db 18, SLEEP_POWDER
 	db 24, ACID
+	db 35, GIGA_DRAIN
 	db 44, PETAL_DANCE
 	db 52, SOLARBEAM
 	db 0
@@ -2430,6 +2436,7 @@ VileplumeEvosMoves:
 	db 17, STUN_SPORE
 	db 19, SLEEP_POWDER
 	db 30, ACID
+	db 35, GIGA_DRAIN
 	db 40, PETAL_DANCE
 	db 0
 

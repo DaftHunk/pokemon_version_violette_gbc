@@ -169,7 +169,7 @@ AttackAnimationPointers:
 	dw MetalClawAnim    ; dafthunk #20
 	dw IronTailAnim     ; dafthunk #20
 	dw XScissorAnim     ; dafthunk #128
-	dw BugBuzzAnim      ; dafthunk #128
+	dw GigaDrainAnim    ; dafthunk #128
 	dw DarkPulseAnim    ; dafthunk #128
 	dw ShadowBallAnim   ; dafthunk #128
 	dw DragonRushAnim   ; dafthunk #128
@@ -470,7 +470,6 @@ SupersonicAnim:
 	db $06,$2F,$31
 	db $FF
 
-BugBuzzAnim:
 SonicBoomAnim:
 	db $46,$2D,$15
 	db $46,$2D,$15
@@ -610,6 +609,7 @@ AbsorbAnim:
 	db SE_RESET_SCREEN_PALETTE, $FF
 	db $FF
 
+GigaDrainAnim:
 MegaDrainAnim:
 	db SE_LIGHT_SCREEN_PALETTE, $47
 	db SE_DARK_SCREEN_FLASH, $FF

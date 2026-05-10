@@ -47,13 +47,13 @@ SaffronGymText_GiveTM:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_SABRINA
-	lb bc, TM46_PSYWAVE, 1
+	lb bc, TM29_PSYCHIC_M, 1
 	call GiveItem
 	jr nc, .bagFull
 	ld a, $b
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
-	SetEvent EVENT_GOT_TM46
+	SetEvent EVENT_GOT_TM29
 	jr .endScript
 .bagFull
 	ld a, $c
@@ -156,7 +156,7 @@ SaffronGymText_Sabrina:
 	TX_ASM
 	CheckEvent EVENT_BEAT_SABRINA
 	jr z, .leaderFight
-	CheckEventReuseA EVENT_GOT_TM46
+	CheckEventReuseA EVENT_GOT_TM29
 	jr nz, .askForRematch
 	call z, SaffronGymText_GiveTM
 	call DisableWaitingAfterTextDisplay
@@ -218,7 +218,7 @@ SaffronGymText_Sabrina:
 	xor a
 	ld [hJoyHeld], a
 ;;;;joenote - added for rematch to skip gym leader tm
-	CheckEvent EVENT_GOT_TM46
+	CheckEvent EVENT_GOT_TM29
 	jp nz, TextScriptEnd
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, $3

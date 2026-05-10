@@ -1458,14 +1458,12 @@ _XScissorDexEntry::
 	next "ciseaux"
 	dex
 
-_BugBuzzDexEntry::
-	text "Le lanceur fait"
-	next "vibrer son corps"
-	next "pour lancer une"
-
-	bage "vague sonique.@"
+_GigaDrainDexEntry::
+	text "Draine rapidement"
+	next "les nutriments de"
+	next "la cible.@"
 	; fall through
-	text_jump _Generic33PercentLowDef1Text
+	text_jump _GenericAbsorbMoveText
 
 _DarkPulseDexEntry::
 	text "Le lanceur dégage"

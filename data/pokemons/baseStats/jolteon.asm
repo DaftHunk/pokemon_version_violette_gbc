@@ -23,13 +23,13 @@ db 0 ; growth rate
 ; 9 -> 16
 	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm15_HYPER_BEAM
 ; 17 -> 24
-	tmlearn tm20_RAGE, tm24_THUNDERBOLT, tm28_DIG
+	tmlearn tm24_THUNDERBOLT, tm28_DIG
 ; 25 -> 32
 	tmlearn tm25_THUNDER, tm31_MIMIC, tm32_DOUBLE_TEAM
 ; 33 -> 40
 	tmlearn tm33_REFLECT, tm34_BIDE, tm39_SWIFT, tm40_SKULL_BASH
 ; 41 -> 48
-	tmlearn tm44_REST, tm45_THUNDER_WAVE
+	tmlearn tm42_SHADOW_BALL, tm44_REST, tm45_THUNDER_WAVE
 ; 49 -> 56
 	tmlearn tm50_SUBSTITUTE, hm04_STRENGTH, hm05_FLASH
 ;   db 0 ; padding
