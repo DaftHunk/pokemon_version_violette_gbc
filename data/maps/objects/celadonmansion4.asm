@@ -6,8 +6,9 @@ CeladonMansion4Object:
 	warp 2, 1, 2, CELADON_POKEMON_MANSION_3F
 	warp 2, 7, 0, CELADON_MANSION_ROOF_HOUSE
 
-	db 1 ; signs
+	db 2 ; signs
 	sign 3, 7, 1 ; CeladonMansion4Text1
+	sign 0, 10, 2 ; CeladonMansion4Text_Graphiti
 
 	db 0 ; objects
 
