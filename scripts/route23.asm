@@ -10,7 +10,13 @@ Route23Script_511e9:
 	bit 6, [hl]
 	res 6, [hl]
 	ret z
-	; Victory Road trainers are now reseted everytime you go out
+
+	CheckEvent EVENT_DISABLED_VICTORY_ROAD_RESET
+	ret nz
+	; falltrough
+
+Route23Script_TrainerReset:
+; Victory Road trainers are now reseted everytime you go out
 	ResetEvent EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_0
 	ResetEvent EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_1
 	ResetEvent EVENT_BEAT_VICTORY_ROAD_1F_TRAINER_2
@@ -28,6 +34,7 @@ Route23Script_511e9:
 	ResetEvent EVENT_BEAT_VICTORY_ROAD_3F_TRAINER_1
 	ResetEvent EVENT_BEAT_VICTORY_ROAD_3F_TRAINER_2
 	ResetEvent EVENT_BEAT_VICTORY_ROAD_3F_TRAINER_3
+	ret
 
 Route23ScriptPointers:
 	dw Route23Script0
@@ -149,6 +156,11 @@ Route23TextPointers:
 	dw Route23Text5
 	dw Route23Text6
 	dw Route23Text7
+	dw Route23Text_VictoryRoadGuide
+	dw PickUpItemText
+	dw PickUpItemText
+	dw PickUpItemText
+	dw PickUpItemText
 	dw Route23Text8
 
 Route23Text1:
@@ -240,6 +252,88 @@ VictoryRoadGuardText2:
 	TX_SFX_ITEM_1
 	TX_FAR _VictoryRoadGuardText_513a3
 	db "@"
+
+Route23Text_VictoryRoadGuide:
+	TX_ASM
+
+	ld hl, .victoryRoadGuideText
+	call PrintText
+
+	call NoYesChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jp nz, .answerNo
+
+	ResetEvent EVENT_DISABLED_VICTORY_ROAD_RESET
+	ld hl, .victoryRoadGuideTextEnabled
+	jp .endScript
+
+.answerNo
+	SetEvent EVENT_DISABLED_VICTORY_ROAD_RESET
+	call Route23Script_TrainerReset
+	ld hl, .victoryRoadGuideTextDisabled
+	jp .endScript
+
+.victoryRoadGuideText
+	text "Futur Champion!"
+	line "Voici le dernier"
+	cont "défi avant la"
+	cont "Ligue!"
+
+	para "Te voici devant"
+	line "la légendaire"
+	cont "Route Victoire!"
+
+	para "Tu y trouveras"
+	line "l'élite des"
+	cont "dresseurs et en"
+	cont "cas de sortie ils"
+	cont "t'affronteront"
+	cont "à nouveau!"
+
+	para "Il te faudra"
+	line "trouver le chemin"
+	cont "le plus efficace"
+	cont "pour en affronter"
+	cont "le moins possible"
+	cont "et surmonter"
+	cont "l'épreuve en"
+	cont "un passage!"
+
+	para "Un conseil?"
+
+	para "Les rochers posés"
+	line "sur les plaques"
+	cont "de pression ne"
+	cont "seront pas remis"
+	cont "à leur places."
+
+	para "Ce défi n'est pas"
+	line "à ton goût?"
+	cont "Je peux dire aux"
+	cont "de ne pas te"
+	cont "réaffronter si tu"
+	cont "le souhaites."
+	done
+	db "@"
+
+.victoryRoadGuideTextEnabled
+	text "Parfait! Fais le"
+	line "plein de soins"
+	cont "et bonne chance!"
+	done
+	db "@"
+
+.victoryRoadGuideTextDisabled
+	text "Comme tu voudras,"
+	line "tu n'auras pas à"
+	cont "battre à nouveau."
+	done
+	db "@"
+
+.endScript
+	call PrintText
+	jp TextScriptEnd
 
 Route23Text8:
 	TX_FAR _Route23Text8

@@ -40,7 +40,7 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw Route22HS
-	dw NoHS
+	dw Route23HS
 	dw Route24HS
 	dw NoHS
 	dw Route25HS
@@ -323,6 +323,11 @@ Route16HS:
 Route22HS:
 	db ROUTE_22,$01,Hide
 	db ROUTE_22,$02,Hide
+Route23HS:
+	db ROUTE_23,$09,Show
+	db ROUTE_23,$0A,Show
+	db ROUTE_23,$0B,Show
+	db ROUTE_23,$0C,Show
 Route24HS:
 	db ROUTE_24,$01,Show
 	db ROUTE_24,$08,Show
