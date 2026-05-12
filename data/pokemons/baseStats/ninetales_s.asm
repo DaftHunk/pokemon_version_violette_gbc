@@ -1,5 +1,5 @@
 db DEX_NINETALES_S ; pokedex id
-db 73 ; base hp
+db 100 ; base hp
 db 76 ; base attack
 db 75 ; base defense
 db 100 ; base speed

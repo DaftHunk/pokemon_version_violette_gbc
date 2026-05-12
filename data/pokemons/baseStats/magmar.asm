@@ -29,7 +29,7 @@ db 0 ; growth rate
 ; 33 -> 40
 	tmlearn tm34_BIDE, tm35_METRONOME, tm38_FIRE_BLAST, tm40_SKULL_BASH
 ; 41 -> 48
-	tmlearn tm44_REST
+	tmlearn tm44_REST, tm48_ROCK_SLIDE
 ; 49 -> 56
 	tmlearn tm50_SUBSTITUTE, hm04_STRENGTH
 ;   db 0 ; padding

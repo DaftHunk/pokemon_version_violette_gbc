@@ -133,8 +133,8 @@ const_value = 1
 	const MEWTWO       ; $83
 	const SNORLAX      ; $84
 	const MAGIKARP     ; $85
-	const MISSINGNO_86 ; $86
-	const MISSINGNO_87 ; $87
+	const SCIZOR_S     ; $86
+	const MAGMAR_S     ; $87
 	const MUK          ; $88
 	const MISSINGNO_89 ; $89
 	const KINGLER      ; $8A

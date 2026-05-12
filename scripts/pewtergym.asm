@@ -125,7 +125,7 @@ PewterGymText_Brock:
 	jr nz, .leaderFight
 ;;;;;;;
 	CheckEitherEventSet EVENT_NEW_GAME_PLUS, EVENT_BEAT_BROCK_REMATCH
-	jp nz, FossilTutor
+	jp nz, MagmarTutor
 
 	ld hl, PewterGymText_LeaderAfterBattle
 	call PrintText
@@ -303,80 +303,56 @@ PewterGymText_GuideEnd:
 	TX_FAR _PewterGymText_GuideEnd
 	db "@"
 
-FossilTutor:
+MagmarTutor:
 	ld a, [wPartyMon1Species]
-	cp OMASTAR
-	ld a, DARK_PULSE
-	jp z, .next
-	ld a, [wPartyMon1Species]
-	cp KABUTOPS
-	ld a, METAL_CLAW
-	jp z, .next
-	ld a, [wPartyMon1Species]
-	cp AERODACTYL
-	ld a, SKULL_BASH
-	jr z, .next
-	jr .displayBring
-.next
-	ld [wMoveNum], a
-	ld [wPokedexNum],a
+	cp MAGMAR
+	jr nz, .displayBring
+
 	xor a
 	ld [wWhichPokemon], a
-	call GetMoveName
-	call CopyStringToCF4B ; copy name to wcf4b
 
 	ld hl, .textStart
 	call PrintText
 
-	ld a, [wPokedexNum]
-	push af
-	ld a, [wPartyMon1Species]
-	ld [wPokedexNum], a
-	call GetMonName
-	pop af
-	ld [wPokedexNum], a
-	
-	callba CheckIfMoveIsKnown
-	jr c, .finish
+	call GBFadeOutToBlack
+	ld a, ROCK
+	ld [wPartyMon1Type2], a
 
-	ld hl, wFlags_D733
-	set 6, [hl]
-	push hl ;make it so the move-forget list covers up sprites
-	predef LearnMove
-	pop hl
-	res 6, [hl]
-	ld a, b
-	and a
-	; fallthrough
-.finish
-	jp TextScriptEnd
+	ld a, SFX_GET_ITEM_2
+	call PlaySound
+	call WaitForSoundToFinish
+	call GBFadeInFromBlack
+	ld hl, .textAfter
+	jr .textEnd
 .displayBring
 	ld hl, .textBring
+	; fallthrough
+.textEnd
 	call PrintText
 	jp TextScriptEnd
 .textBring
 	text "En récompense, je"
-	line "peux réapprendre"
-	cont "à tes #mons"
-	cont "fossiles évolués"
-	cont "des attaques qu'"
-	cont "ils avaient oub-"
-	cont "lié au cours des"
-	cont "âges!"
+	line "peux aider ton"
+	cont "Magmar à devenir"
+	cont "solide comme un"
+	cont "rock!"
 
 	para "Revient me voir"
-	line "avec eux si ça"
+	line "avec lui si ça"
 	cont "t'intéresse."
 	done
 	db "@"
 .textStart
-	text "Grâce aux progrès"
-	line "de la recherche"
-	cont "menée avec le"
-	cont "musée, je peux"
-	cont "aider ton #mon"
-	cont "à retrouver une"
-	cont "attaque venant"
-	cont "de son passé."
+	text "Le magma n'a"
+	line "besoin que d'être"
+	cont "stabilisé pour"
+	cont "libérer son plein"
+	cont "potentiel."
 	prompt
+	db "@"
+.textAfter
+	text "Magmar est"
+	line "maintenant"
+	cont "Feu/Roche!"
+	done
 	db "@"

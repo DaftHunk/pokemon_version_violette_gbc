@@ -165,7 +165,7 @@ FuchsiaGymText_Koga:
 	jr nz, .leaderFight
 ;;;;;;;
 	CheckEitherEventSet EVENT_NEW_GAME_PLUS, EVENT_BEAT_KOGA_REMATCH
-	jp nz, ScytherTutor
+	jp nz, ScizorTutor
 
 	ld hl, FuchsiaGymText_LeaderAfterBattle
 	call PrintText
@@ -448,9 +448,9 @@ FuchsiaGymText_GuideVictory:
 	TX_FAR _FuchsiaGymText_GuideVictory
 	db "@"
 	
-ScytherTutor:
+ScizorTutor:
 	ld a, [wPartyMon1Species]
-	cp SCYTHER
+	cp SCIZOR
 	jr nz, .displayBring
 
 	xor a
@@ -459,43 +459,20 @@ ScytherTutor:
 	ld hl, .textStart
 	call PrintText
 
-	ld a, HYPNOSIS		;genjutsu
-	call .learnmove
-	ld a, PIN_MISSILE	;shuriken
-	call .learnmove
-	ld a, LIGHT_SCREEN	;invisible walls
-	call .learnmove
-	jr .finish
-.learnmove
-	ld [wMoveNum], a
-	ld [wPokedexNum],a
-	call GetMoveName
-	call CopyStringToCF4B ; copy name to wcf4b
+	call GBFadeOutToBlack
+	ld a, GHOST
+	ld [wPartyMon1Type1], a
 
-	ld a, [wPokedexNum]
-	push af
-	ld a, [wPartyMon1Species]
-	ld [wPokedexNum], a
-	call GetMonName
-	pop af
-	ld [wPokedexNum], a
-	
-	callba CheckIfMoveIsKnown
-	jr c, .finish
-
-	ld hl, wFlags_D733
-	set 6, [hl]
-	push hl		;make it so the move-forget list covers up sprites
-	predef LearnMove
-	pop hl
-	res 6, [hl]
-	ld a, b
-	and a
-	ret z
-.finish
-	jp TextScriptEnd
+	ld a, SFX_GET_ITEM_2
+	call PlaySound
+	call WaitForSoundToFinish
+	call GBFadeInFromBlack
+	ld hl, .textAfter
+	jr .textEnd
 .displayBring
 	ld hl, .textBring
+	; fallthrough
+.textEnd
 	call PrintText
 	jp TextScriptEnd
 .textBring
@@ -509,23 +486,21 @@ ScytherTutor:
 	line "souhaites, je"
 	cont "peux apprendre"
 	cont "cette voie à ton"
-	cont "Insécateur."
+	cont "Cizayox."
 	done
 	db "@"
 .textStart
 	text "Tu as un"
-	line "Insécateur très"
+	line "Cizayox très"
 	cont "talentueux."
 	cont "Je pourrais lui"
 	cont "apprendre la voie"
-	cont "secrète du Ninja."
-
-	para "Un vrai Ninja doit"
-	line "maîtriser l'art"
-	cont "du Genjutsu, le"
-	cont "lancer de Shuri-"
-	cont "ken et bien évi-"
-	cont "demment, les Murs"
-	cont "Invisibles!"
+	cont "secrète du Ninja!"
 	prompt
+	db "@"
+.textAfter
+	text "Cizayox est"
+	line "maintenant"
+	cont "Spectre/Acier!"
+	done
 	db "@"

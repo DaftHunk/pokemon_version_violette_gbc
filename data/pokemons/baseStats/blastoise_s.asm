@@ -1,5 +1,5 @@
 db DEX_BLASTOISE_S ; pokedex id
-db 79 ; base hp
+db 100 ; base hp
 db 83 ; base attack
 db 100 ; base defense
 db 78 ; base speed

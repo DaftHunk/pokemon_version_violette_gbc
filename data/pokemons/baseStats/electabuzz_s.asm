@@ -1,5 +1,5 @@
 db DEX_ELECTABUZZ_S ; pokedex id
-db 65 ; base hp
+db 100 ; base hp
 db 83 ; base attack
 db 57 ; base defense
 db 105 ; base speed

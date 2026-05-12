@@ -44,16 +44,13 @@ _PewterGymText_RematchEndBattle::
 	cont "courage!"
 
 	para "En récompense, je"
-	line "peux réapprendre"
-	cont "à tes #mons"
-	cont "fossiles évolués"
-	cont "des attaques"
-	cont "qu'ils avaient"
-	cont "oublié au cours"
-	cont "des âges!"
+	line "peux aider ton"
+	cont "Magmar à devenir"
+	cont "solide comme un"
+	cont "rock!"
 
 	para "Revient me voir"
-	line "avec eux si ça"
+	line "avec lui si ça"
 	cont "t'intéresse."
 
 	para "Va! De nouveaux"

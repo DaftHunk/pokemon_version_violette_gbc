@@ -1,5 +1,5 @@
 db DEX_VENUSAUR_S ; pokedex id
-db 80 ; base hp
+db 100 ; base hp
 db 82 ; base attack
 db 83 ; base defense
 db 80 ; base speed

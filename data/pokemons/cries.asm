@@ -133,8 +133,8 @@ CryData:
 	db $1E, $99, $FF; Mewtwo
 	db $05, $55, $01; Snorlax
 	db $17, $80, $00; Magikarp
-	db $00, $00, $00; MissingNo.
-	db $00, $00, $00; MissingNo.
+	db $23, $03, $8F; Scizor_S
+	db $04, $FF, $30; Magmar_S
 	db $07, $EF, $FF; Muk
 	db $0F, $40, $80; MissingNo.
 	db $20, $EE, $E0; Kingler
