@@ -8,10 +8,10 @@ Route23Object:
 	warp 14, 31, 1, VICTORY_ROAD_2
 
 	db 1 ; signs
-	sign 3, 35, 13 ; Route23Text8
+	sign 3, 37, 13 ; Route23Text8
 
 	db 12 ; objects
-	object SPRITE_GUARD,      4,  35, STAY, DOWN, 1 ; Earth Badge
+	object SPRITE_GUARD,      4,  37, STAY, DOWN, 1 ; Earth Badge
 	object SPRITE_GUARD,     10,  56, STAY, DOWN, 2 ; Volcano Badge
 	object SPRITE_GUARD,     10,  70, STAY, DOWN, 3 ; Marsh Badge
 	object SPRITE_GUARD,      9,  90, STAY, DOWN, 4 ; Soul Badge
