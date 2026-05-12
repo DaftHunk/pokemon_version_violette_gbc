@@ -135,8 +135,14 @@ CinnabarGymQuiz:
 	and $f0
 	swap a
 	ld [$ffdc], a
+	; Show intro only once
+	CheckEvent EVENT_CINNABAR_GYM_SEEN_QUIZ_INTRO
+	jr nz, .skipIntro
+	; Else play intro
 	ld hl, CinnabarGymQuizIntroText
 	call PrintText
+	SetEvent EVENT_CINNABAR_GYM_SEEN_QUIZ_INTRO
+.skipIntro
 	ld a, [hGymGateIndex]
 	dec a
 	add a
@@ -304,7 +310,7 @@ UpdateCinnabarGymGateTileBlocks_:
 CinnabarGymGateCoords:
 	; format: x-coord, y-coord, direction, padding
 	; direction: $54 = horizontal gate, $5f = vertical gate
-	db $09,$03,$54,$00
+	db $09,$02,$54,$00
 	db $06,$03,$54,$00
 	db $06,$06,$54,$00
 	db $03,$08,$5f,$00

@@ -1600,8 +1600,6 @@ Cemetery_GFX:      INCBIN "gfx/tilesets/cemetery.2bpp"
 Cemetery_Block:    INCBIN "gfx/blocksets/cemetery.bst"
 Cavern_GFX:        INCBIN "gfx/tilesets/cavern.2bpp"
 Cavern_Block:      INCBIN "gfx/blocksets/cavern.bst"
-Lobby_GFX:         INCBIN "gfx/tilesets/lobby.2bpp"
-Lobby_Block:       INCBIN "gfx/blocksets/lobby.bst"
 Ship_GFX:          INCBIN "gfx/tilesets/ship.2bpp"
 Ship_Block:        INCBIN "gfx/blocksets/ship.bst"
 
@@ -2170,3 +2168,6 @@ INCLUDE "engine/battle/load_pics.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 INCLUDE "engine/menu/draw_badges.asm"
+
+Lobby_GFX:         INCBIN "gfx/tilesets/lobby.2bpp"
+Lobby_Block:       INCBIN "gfx/blocksets/lobby.bst"

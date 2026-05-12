@@ -504,22 +504,22 @@ FuchsiaGymHiddenObjects:
 CinnabarGymHiddenObjects:
 	db $0d,$11,$04
 	dbw BANK(GymStatues),GymStatues
-	db $07,$0f,$01
+	db $05,$11,$01
 	db Bank(PrintCinnabarQuiz)
 	dw PrintCinnabarQuiz
-	db $01,$0a,$12
+	db $01,$0b,$12
 	db Bank(PrintCinnabarQuiz)
 	dw PrintCinnabarQuiz
-	db $07,$09,$13
+	db $07,$0b,$13
 	db Bank(PrintCinnabarQuiz)
 	dw PrintCinnabarQuiz
-	db $0d,$09,$14
+	db $0d,$0b,$14
 	db Bank(PrintCinnabarQuiz)
 	dw PrintCinnabarQuiz
-	db $0d,$01,$05
+	db $0d,$03,$05
 	db Bank(PrintCinnabarQuiz)
 	dw PrintCinnabarQuiz
-	db $07,$01,$16
+	db $07,$03,$16
 	db Bank(PrintCinnabarQuiz)
 	dw PrintCinnabarQuiz
 	db $FF

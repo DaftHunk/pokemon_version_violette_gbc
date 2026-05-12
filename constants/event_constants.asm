@@ -687,7 +687,7 @@ const_value = 0
 	const EVENT_CINNABAR_GYM_GATE4_UNLOCKED          ; 2AC, (D79C, bit 4)
 	const EVENT_CINNABAR_GYM_GATE5_UNLOCKED          ; 2AD, (D79C, bit 5)
 	const EVENT_CINNABAR_GYM_GATE6_UNLOCKED          ; 2AE, (D79C, bit 6)
-	const EVENT_2AF                                  ; 2AF, (D79C, bit 7)
+	const EVENT_CINNABAR_GYM_SEEN_QUIZ_INTRO         ; 2AF, (D79C, bit 7)
 	const EVENT_2B0                                  ; 2B0, (D79D, bit 0)
 	const EVENT_2B1                                  ; 2B1, (D79D, bit 1)
 	const EVENT_2B2                                  ; 2B2, (D79D, bit 2)

@@ -59,7 +59,7 @@ CinnabarGymScript_MapTrainers:
 	jr .asm_757cb
 .asm_757c3
 	ld de, MovementData_757da
-	ld a, PLAYER_DIR_RIGHT
+	ld a, PLAYER_DIR_DOWN
 	ld [wPlayerMovingDirection], a
 .asm_757cb
 	call MoveSprite
@@ -69,12 +69,11 @@ CinnabarGymScript_MapTrainers:
 	ret
 
 MovementData_757d7:
-	db NPC_MOVEMENT_LEFT
 	db NPC_MOVEMENT_UP
 	db $FF
 
 MovementData_757da:
-	db NPC_MOVEMENT_LEFT
+	db NPC_MOVEMENT_UP
 	db $FF
 
 CinnabarGymScript_DisplayText:
