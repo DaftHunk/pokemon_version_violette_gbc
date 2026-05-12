@@ -28,6 +28,6 @@ _CeladonMart1Text2::
 	done
 
 _CeladonMart1Text3::
-	text "Rdc: "
+	text "Rdc:"
 	line "Renseignements"
 	done
