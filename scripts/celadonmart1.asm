@@ -31,8 +31,7 @@ CeladonMart1Text_Phone:
 	jp nz, .answerNo
 	; else
 
-	ld a, $FF
-	call PlaySound
+	call StopAllMusic
 
 	ld hl, .startCall
 	call PrintText
@@ -43,8 +42,7 @@ CeladonMart1Text_Phone:
 	call PlaySoundWaitForCurrent
 	ld c, 5
 	call DelayFrames
-	ld a, $FF
-	call PlaySound
+	call StopAllMusic
 	ld a, SFX_SNARE_8
 	call PlaySound
 
@@ -59,8 +57,7 @@ CeladonMart1Text_Phone:
 	call PlaySoundWaitForCurrent
 	ld c, 5
 	call DelayFrames
-	ld a, $FF
-	call PlaySound
+	call StopAllMusic
 	ld a, SFX_SNARE_8
 	call PlaySound
 	ld hl, .stopCall
@@ -99,7 +96,8 @@ CeladonMart1Text_Phone:
 	cont "m'appeler!"
 
 	para "Ils ont parlé de"
-	line "toi à la télé!"
+	line "toi et <RIVAL>"
+	cont "à la télé!"
 	cont "Je suis si fière"
 	cont "de toi <PLAYER>!"
 
@@ -161,23 +159,20 @@ DialPhone:
 	pop bc
 	dec b
 	jr z, .doneOutgoing
-	ld a, $FF
-	call PlaySound
+	call StopAllMusic
 	ld c, 120
 	call DelayFrames
 	jr .loop
 .doneOutgoing
 	; phone gets picked up
-	ld a, $FF
-	call PlaySound
+	call StopAllMusic
 	ld c, 10
 	call DelayFrames
 	ld a, SFX_SNARE_1
 	call PlaySound
 	ld c, 5
 	call DelayFrames
-	ld a, $FF
-	call PlaySound
+	call StopAllMusic
 	ld a, SFX_TRIANGLE_1
 	call PlaySound
 	ld c, 10

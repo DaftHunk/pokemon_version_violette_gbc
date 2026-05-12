@@ -111,12 +111,8 @@ BillGarden_ResetScript:
 	call .showstuff
 	ResetEvent EVENT_BEAT_ARTICUNO
 ; reset Volcano fights
-	ResetEvent EVENT_BEAT_VOLCANO_1F_TRAINER_0
-	ResetEvent EVENT_BEAT_VOLCANO_1F_TRAINER_1
-	ResetEvent EVENT_BEAT_VOLCANO_1F_TRAINER_2
-
-	ResetEvent EVENT_BEAT_VOLCANO_B1F_TRAINER_0
-	ResetEvent EVENT_BEAT_VOLCANO_B1F_TRAINER_1
+	ResetEventRange EVENT_BEAT_VOLCANO_1F_TRAINER_0, EVENT_BEAT_VOLCANO_1F_TRAINER_2
+	ResetEvents EVENT_BEAT_VOLCANO_B1F_TRAINER_0, EVENT_BEAT_VOLCANO_B1F_TRAINER_1
 ; reset Moltres
 	ld a, HS_MOLTRES
 	call .showstuff
@@ -130,8 +126,7 @@ BillGarden_ResetScript:
 	call .showstuff
 	ResetEvent EVENT_BEAT_MEWTWO
 ; reset Mew events
-	ResetEvent EVENT_ENCOUNTERED_MEW
-	ResetEvent EVENT_FOUND_MEW
+	ResetEvents EVENT_ENCOUNTERED_MEW, EVENT_FOUND_MEW
 ; return now
 	jp .end
 .bagFull
