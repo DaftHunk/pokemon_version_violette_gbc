@@ -2,6 +2,7 @@ CeladonMansion4Script:
 	jp EnableAutoTextBoxDrawing
 
 CeladonMansion4TextPointers:
+	dw PickUpItemText
 	dw CeladonMansion4Text1
 	dw CeladonMansion4Text_Graffiti
 
