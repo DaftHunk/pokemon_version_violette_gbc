@@ -1250,8 +1250,8 @@ SECTION "bank17",ROMX,BANK[$17]
 
 SaffronMartBlocks:
 LavenderMartBlocks:
-CeruleanMartBlocks:
 VermilionMartBlocks: INCBIN "maps/vermilionmart.blk"
+CeruleanMartBlocks: INCBIN "maps/ceruleanmart.blk"
 
 CopycatsHouse2FBlocks:
 RedsHouse2FBlocks: INCBIN "maps/redshouse2f.blk"
@@ -1621,7 +1621,7 @@ SECTION "bank1D",ROMX,BANK[$1D]
 
 CopycatsHouse1FBlocks: INCBIN "maps/copycatshouse1f.blk"
 
-CinnabarMartBlocks:
+CinnabarMartBlocks: INCBIN "maps/cinnabarmart.blk"
 PewterMartBlocks: INCBIN "maps/pewtermart.blk"
 
 FuchsiaHouse1Blocks: INCBIN "maps/fuchsiahouse1.blk"
