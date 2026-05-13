@@ -143,10 +143,6 @@ Route23TextPointers:
 	dw Route23Text6
 	dw Route23Text7
 	dw Route23Text_VictoryRoadGuide
-	dw PickUpItemText
-	dw PickUpItemText
-	dw PickUpItemText
-	dw PickUpItemText
 	dw Route23Text8
 
 Route23Text1:

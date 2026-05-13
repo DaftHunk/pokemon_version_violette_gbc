@@ -717,11 +717,19 @@ Mansion4HiddenObjects:
 	dw Mansion4Script_Switches
 	db $FF
 Route23HiddenObjects:
+	db $20,$00,TM26_EARTHQUAKE
+	dbw BANK(HiddenItems),HiddenItems
 	db $2c,$13,FULL_RESTORE
 	dbw BANK(HiddenItems),HiddenItems
-	db $46,$13,ULTRA_BALL
+	db $32,$00,MAX_REVIVE
+	dbw BANK(HiddenItems),HiddenItems
+	db $3b,$08,TM04_FLAMETHROWER
+	dbw BANK(HiddenItems),HiddenItems
+	db $46,$13,TM13_ICE_BEAM
 	dbw BANK(HiddenItems),HiddenItems
 	db $5a,$08,MAX_ETHER
+	dbw BANK(HiddenItems),HiddenItems
+	db $74,$13,TM25_THUNDER
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 VictoryRoad2HiddenObjects:

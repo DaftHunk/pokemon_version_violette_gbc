@@ -69,7 +69,9 @@ IF DEF(_DEBUG)
 
 	; MAGNETON gets Thunderbolt.
 	ld hl, wPartyMon1Moves
-	ld a, THUNDERBOLT
+	ld a, BIDE
+	ld [hli], a
+	ld a, PSYBEAM
 	ld [hl], a
 	ld hl, wPartyMon1PP
 	ld a, 15
@@ -77,13 +79,13 @@ IF DEF(_DEBUG)
 
 	; EEVEE gets PURSUIT.
 	ld hl, wPartyMon3Moves
-	ld a, PURSUIT
+	ld a, HYPNOSIS
 	ld [hli], a
-	ld a, FLASH_CANNON
+	ld a, FISSURE
 	ld [hli], a
-	ld a, SHADOW_BALL
+	ld a, SLAM
 	ld [hli], a
-	ld a, DARK_PULSE
+	ld a, SLEEP_POWDER
 	ld [hl], a
 	ld hl, wPartyMon5PP
 	ld a, 30
@@ -104,9 +106,9 @@ IF DEF(_DEBUG)
 	ld hl, wPartyMon5Moves
 	ld a, FLY
 	ld [hli], a
-	ld a, DRAGON_RUSH
+	ld a, BIDE
 	ld [hli], a
-	ld a, BUG_BUZZ
+	ld a, PSYCHIC_M
 	ld [hli], a
 	ld a, ICE_BEAM
 	ld [hl], a
@@ -150,17 +152,17 @@ IF DEF(_DEBUG)
 .items_end
 
 	; Complete the Pokédex and Movedex
-;	ld hl, wPokedexOwned
-;	ld b, wPokedexOwnedEnd - wPokedexOwned - 1
-;	call DebugSetPokedexEntries
-;	ld [hl], %11111111
-;	ld hl, wPokedexSeen
-;	ld b, wPokedexSeenEnd - wPokedexSeen - 1
-;	call DebugSetPokedexEntries
-;	ld [hl], %11111111
-;	ld hl, wMovedexSeen
-;	ld b, wMovedexSeenEnd - wMovedexSeen
-;	call DebugSetPokedexEntries
+	ld hl, wPokedexOwned
+	ld b, wPokedexOwnedEnd - wPokedexOwned - 1
+	call DebugSetPokedexEntries
+	ld [hl], %11111111
+	ld hl, wPokedexSeen
+	ld b, wPokedexSeenEnd - wPokedexSeen - 1
+	call DebugSetPokedexEntries
+	ld [hl], %11111111
+	ld hl, wMovedexSeen
+	ld b, wMovedexSeenEnd - wMovedexSeen
+	call DebugSetPokedexEntries
 
 	; Set tutorial events
 	SetEvent EVENT_GOT_POKEDEX
@@ -251,6 +253,11 @@ IF DEF(_DEBUG)
 ;	ld [wFontLoaded], a
 ;	ld a, [wFontLoaded]
 ;	set 7, a
+
+	; Disable Level Cap by default
+	ld a, [wMoreGameplayOptions]
+	res 0, a ; level cap mode
+	ld [wMoreGameplayOptions], a
 
 	; Rival chose Squirtle,
 	; Player chose Charmander.

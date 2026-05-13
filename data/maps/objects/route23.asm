@@ -8,9 +8,9 @@ Route23Object:
 	warp 14, 31, 1, VICTORY_ROAD_2
 
 	db 1 ; signs
-	sign 3, 37, 13 ; Route23Text8
+	sign 3, 37, 9 ; Route23Text8
 
-	db 12 ; objects
+	db 8 ; objects
 	object SPRITE_GUARD,      4,  37, STAY, DOWN, 1 ; Earth Badge
 	object SPRITE_GUARD,     10,  56, STAY, DOWN, 2 ; Volcano Badge
 	object SPRITE_GUARD,     10,  70, STAY, DOWN, 3 ; Marsh Badge
@@ -19,10 +19,6 @@ Route23Object:
 	object SPRITE_GUARD,      8, 119, STAY, DOWN, 6 ; Thunder Badge
 	object SPRITE_GUARD,      8, 136, STAY, DOWN, 7 ; Cascade Badge
 	object SPRITE_GYM_HELPER, 5,  32, STAY, DOWN, 8 ; Route23Text_VictoryRoadGuide
-	object SPRITE_BALL,       0,  32, STAY, NONE, 9,  TM26_EARTHQUAKE
-	object SPRITE_BALL,      16,  44, STAY, NONE, 10, TM04_FLAMETHROWER
-	object SPRITE_BALL,       8,  61, STAY, NONE, 11, TM13_ICE_BEAM
-	object SPRITE_BALL,      19, 117, STAY, NONE, 12, TM25_THUNDER
 
 	; warp-to
 	warp_to 8, 139, ROUTE_23_WIDTH ; ROUTE_22_GATE
