@@ -472,8 +472,8 @@ VermilionDockText:
 
 .truckHint
 	text "Vous sentez comme"
-	line "une envie irrési-"
-	cont "stible de pousser"
+	line "une irrépressible"
+	cont "envie de pousser"
 	cont "ce camion..."
 	done
 	db "@"
