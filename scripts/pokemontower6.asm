@@ -38,7 +38,7 @@ PokemonTower6Script0:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, MAROWRATH
 	ld [wCurOpponent], a
-	ld a, 32
+	ld a, 35
 	ld [wCurEnemyLVL], a
 	ld a, $4
 	ld [wPokemonTower6CurScript], a

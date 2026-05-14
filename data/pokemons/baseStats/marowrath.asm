@@ -1,5 +1,5 @@
 db DEX_MAROWRATH ; pokedex id
-db 70 ; base hp
+db 85 ; base hp
 db 80 ; base attack
 db 110 ; base defense
 db 50 ; base speed
