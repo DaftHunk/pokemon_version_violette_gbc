@@ -1,15 +1,14 @@
-CeladonMansion4Script:
+CeladonMansionRoofScript:
 	jp EnableAutoTextBoxDrawing
 
-CeladonMansion4TextPointers:
-	dw PickUpItemText
-	dw CeladonMansion4Text1
-	dw CeladonMansion4Text_Graffiti
+CeladonMansionRoofTextPointers:
+	dw CeladonMansionRoofText1
+	dw CeladonMansionRoofText_Graffiti
 
-CeladonMansion4Text1:
-	TX_FAR _CeladonMansion4Text1
+CeladonMansionRoofText1:
+	TX_FAR _CeladonMansionRoofText1
 	db "@"
 
-CeladonMansion4Text_Graffiti:
-	TX_FAR _CeladonMansion4Text_Graffiti
+CeladonMansionRoofText_Graffiti:
+	TX_FAR _CeladonMansionRoofText_Graffiti
 	db "@"

@@ -820,7 +820,7 @@ CeladonMansion3Blocks: INCBIN "maps/celadonmansion3.blk"
 INCLUDE "data/maps/headers/celadonmansion4.asm"
 INCLUDE "scripts/celadonmansion4.asm"
 INCLUDE "data/maps/objects/celadonmansion4.asm"
-CeladonMansion4Blocks: INCBIN "maps/celadonmansion4.blk"
+CeladonMansionRoofBlocks: INCBIN "maps/celadonmansion4.blk"
 
 INCLUDE "data/maps/headers/celadonpokecenter.asm"
 INCLUDE "scripts/celadonpokecenter.asm"

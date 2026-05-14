@@ -131,7 +131,7 @@ MapHeaderPointers::
 	dw CeladonMansion1_h
 	dw CeladonMansion2_h
 	dw CeladonMansion3_h ;id=130
-	dw CeladonMansion4_h
+	dw CeladonMansionRoof_h
 	dw CeladonMansion5_h
 	dw CeladonPokecenter_h
 	dw CeladonGym_h

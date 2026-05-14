@@ -136,7 +136,7 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw CeladonMansionB1FHS
+	dw NoHS
 	dw CeladonMansionRoofHouseHS
 	dw NoHS
 	dw NoHS
@@ -270,6 +270,7 @@ MapHSPointers:
 ; These constants come from the bytes for Predef functions:
 Hide equ $11
 Show equ $15
+; Only one space left
 
 NoHS:
 	db $FF,$FF,$FF
@@ -372,8 +373,6 @@ PokemonTower7FHS:
 	db POKEMONTOWER_7F,$05,Show ; James
 MrFujisHouseHS:
 	db MR_FUJIS_HOUSE,$05,Hide
-CeladonMansionB1FHS:
-	db CELADON_POKEMON_MANSION_B1F,$01,Show
 CeladonMansionRoofHouseHS:
 	db CELADON_MANSION_ROOF_HOUSE,$02,Show
 GameCornerHS:

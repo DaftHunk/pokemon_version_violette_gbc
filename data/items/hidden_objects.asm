@@ -16,7 +16,7 @@ HiddenObjectMaps:
 	db LAVENDER_POKECENTER
 	db VERMILION_POKECENTER
 	db VERMILION_GYM
-	db CELADON_POKEMON_MANSION_2F
+	db CELADON_MANSION_2F
 	db CELADON_POKECENTER
 	db CELADON_GYM
 	db GAME_CORNER
@@ -69,6 +69,7 @@ HiddenObjectMaps:
 	db SAFARI_ZONE_NORTH_REST_HOUSE
 	db ROUTE_15_GATE_2F
 	db MR_FUJIS_HOUSE
+	db CELADON_MANSION_ROOF
 	db CELADON_MANSION_ROOF_HOUSE
 	db FIGHTING_DOJO
 	db ROUTE_10
@@ -170,6 +171,7 @@ HiddenObjectPointers:
 	dw SafariZoneRestHouse4HiddenObjects
 	dw Route15GateUpstairsHiddenObjects
 	dw LavenderHouse1HiddenObjects
+	dw CeladonMansionRoofHiddenObjects
 	dw CeladonMansion5HiddenObjects
 	dw FightingDojoHiddenObjects
 	dw Route10HiddenObjects
@@ -797,6 +799,10 @@ LavenderHouse1HiddenObjects:
 	db $01,$07,$00
 	db BANK(PrintMagazinesText)
 	dw PrintMagazinesText
+	db $FF
+CeladonMansionRoofHiddenObjects:
+	db $0a,$00,RARE_CANDY
+	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 CeladonMansion5HiddenObjects:
 	db $00,$03,(LinkCableHelp_id - TextPredefs) / 2 + 1

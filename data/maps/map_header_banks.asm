@@ -131,7 +131,7 @@ MapHeaderBanks:
 	db BANK(CeladonMansion1_h)
 	db BANK(CeladonMansion2_h)
 	db BANK(CeladonMansion3_h)
-	db BANK(CeladonMansion4_h)
+	db BANK(CeladonMansionRoof_h)
 	db BANK(CeladonMansion5_h)
 	db BANK(CeladonPokecenter_h)
 	db BANK(CeladonGym_h)

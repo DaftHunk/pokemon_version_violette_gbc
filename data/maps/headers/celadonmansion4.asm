@@ -1,6 +1,6 @@
-CeladonMansion4_h:
+CeladonMansionRoof_h:
 	db MANSION ; tileset
-	db CELADON_POKEMON_MANSION_B1F_HEIGHT, CELADON_POKEMON_MANSION_B1F_WIDTH ; dimensions (y, x)
-	dw CeladonMansion4Blocks, CeladonMansion4TextPointers, CeladonMansion4Script ; blocks, texts, scripts
+	db CELADON_MANSION_ROOF_HEIGHT, CELADON_MANSION_ROOF_WIDTH ; dimensions (y, x)
+	dw CeladonMansionRoofBlocks, CeladonMansionRoofTextPointers, CeladonMansionRoofScript ; blocks, texts, scripts
 	db 0 ; connections
-	dw CeladonMansion4Object ; objects
+	dw CeladonMansionRoofObject ; objects

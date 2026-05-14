@@ -133,10 +133,10 @@ ENDM
 	mapconst CELADON_MART_4F,             4, 10 ; $7D
 	mapconst CELADON_MART_ROOF,           6, 10 ; $7E
 	mapconst CELADON_MART_ELEVATOR,       2,  2 ; $7F
-	mapconst CELADON_POKEMON_MANSION_1F,  6,  4 ; $80
-	mapconst CELADON_POKEMON_MANSION_2F,  6,  4 ; $81
-	mapconst CELADON_POKEMON_MANSION_3F,  6,  4 ; $82
-	mapconst CELADON_POKEMON_MANSION_B1F, 8,  4 ; $83
+	mapconst CELADON_MANSION_1F,          6,  4 ; $80
+	mapconst CELADON_MANSION_2F,          6,  4 ; $81
+	mapconst CELADON_MANSION_3F,          6,  4 ; $82
+	mapconst CELADON_MANSION_ROOF,        8,  4 ; $83
 	mapconst CELADON_MANSION_ROOF_HOUSE,  4,  4 ; $84
 	mapconst CELADON_POKECENTER,          4,  7 ; $85
 	mapconst CELADON_GYM,                 9,  5 ; $86

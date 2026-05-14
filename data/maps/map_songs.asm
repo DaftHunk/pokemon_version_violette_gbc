@@ -130,7 +130,7 @@ MapSongBanks:
 	db MUSIC_CELADON,          BANK(Music_Celadon)         ; CeladonMansion1
 	db MUSIC_CELADON,          BANK(Music_Celadon)         ; CeladonMansion2
 	db MUSIC_CELADON,          BANK(Music_Celadon)         ; CeladonMansion3
-	db MUSIC_CELADON,          BANK(Music_Celadon)         ; CeladonMansion4
+	db MUSIC_CELADON,          BANK(Music_Celadon)         ; CeladonMansionRoof
 	db MUSIC_CELADON,          BANK(Music_Celadon)         ; CeladonMansion5
 	db MUSIC_POKECENTER,       BANK(Music_Pokecenter)      ; CeladonPokecenter
 	db MUSIC_GYM,              BANK(Music_Gym)             ; CeladonGym

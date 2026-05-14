@@ -1,8 +1,8 @@
-_CeladonMansion4Text1::
+_CeladonMansionRoofText1::
 	text "JE SAIS TOUT!"
 	done
 
-_CeladonMansion4Text_Graffiti::
+_CeladonMansionRoofText_Graffiti::
 	text "Un dessin sur le"
 	line "mur..."
 
