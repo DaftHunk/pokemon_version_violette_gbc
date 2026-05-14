@@ -7,7 +7,7 @@ FightingDojoScript:
 	ld [wFightingDojoCurScript], a
 	ret
 
-FightingDojoScript_5cd70:
+FightingDojoScript_Reset:
 	xor a
 	ld [wJoyIgnore], a
 	ld [wFightingDojoCurScript], a
@@ -15,19 +15,19 @@ FightingDojoScript_5cd70:
 	ret
 
 FightingDojoScriptPointers:
-	dw FightingDojoScript1
+	dw FightingDojoScript_Main
 	dw DisplayEnemyTrainerTextAndStartBattle
 	dw EndTrainerBattle
-	dw FightingDojoScript3
+	dw FightingDojoScript_AfterBattle
 
-FightingDojoScript1:
+FightingDojoScript_Main:
 	CheckEvent EVENT_DEFEATED_FIGHTING_DOJO
 	ret nz
 	call CheckFightingMapTrainers
 	ld a, [wTrainerHeaderFlagBit]
 	and a
 	ret nz
-	CheckEvent EVENT_BEAT_KARATE_MASTER
+	CheckEvent EVENT_BEAT_KOICHI
 	ret nz
 	xor a
 	ld [hJoyHeld], a
@@ -52,13 +52,17 @@ FightingDojoScript1:
 	call DisplayTextID
 	ret
 
-FightingDojoScript3:
+FightingDojoScript_AfterBattle:
 	ld a, [wIsInBattle]
 	cp $ff
-	jp z, FightingDojoScript_5cd70
+	jp z, FightingDojoScript_Reset
 	ld a, [wcf0d]
 	and a
-	jr z, .asm_5cde4
+	jr z, .choosePokemon
+	; are we in rematch ?
+	CheckEvent EVENT_BEAT_KOICHI
+	jr nz, .chooseRematchPokemon
+	; else
 	ld a, PLAYER_DIR_RIGHT
 	ld [wPlayerMovingDirection], a
 	ld a, $1
@@ -66,12 +70,21 @@ FightingDojoScript3:
 	ld a, SPRITE_FACING_LEFT
 	ld [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
-
-.asm_5cde4
+; fallthrough
+.choosePokemon
 	ld a, $f0
 	ld [wJoyIgnore], a
-	SetEventRange EVENT_BEAT_KARATE_MASTER, EVENT_BEAT_FIGHTING_DOJO_TRAINER_3
+	SetEventRange EVENT_BEAT_KOICHI, EVENT_BEAT_FIGHTING_DOJO_TRAINER_3
 	ld a, $8
+	jr .endScript
+
+.chooseRematchPokemon
+	ld a, $f0
+	ld [wJoyIgnore], a
+	SetEvent EVENT_BEAT_KOICHI_REMATCH
+	ld a, $9
+; fallthrough
+.endScript
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	xor a
@@ -86,9 +99,10 @@ FightingDojoTextPointers:
 	dw FightingDojoText3
 	dw FightingDojoText4
 	dw FightingDojoText5
-	dw FightingDojoText6
-	dw FightingDojoText7
-	dw FightingDojoText8
+	dw FightingDojoText_Hitmonlee
+	dw FightingDojoText_Hitmonchan
+	dw FightingDojoText_KoichiChoosePokemon
+	dw FightingDojoText_RematchKoichiChoosePokemon
 
 FightingDojoTrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_FIGHTING_DOJO_TRAINER_0
@@ -132,16 +146,16 @@ FightingDojoText1:
 	TX_ASM
 	CheckEvent EVENT_DEFEATED_FIGHTING_DOJO
 	jp nz, .continue1
-	CheckEventReuseA EVENT_BEAT_KARATE_MASTER
+	CheckEventReuseA EVENT_BEAT_KOICHI
 	jp nz, .continue2
-.fightkaratemaster	;joenote - added marker
-	ld hl, FightingDojoText_5ce8e
+
+	ld hl, FightingDojoText_KoichiBattle
 	call PrintText
 	ld hl, wd72d
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, FightingDojoText_5ce93
-	ld de, FightingDojoText_5ce93
+	ld hl, FightingDojoText_KoichiEndBattle
+	ld de, FightingDojoText_KoichiEndBattle
 	call SaveEndBattleTextPointers
 	
 	ld a, $8
@@ -157,7 +171,7 @@ FightingDojoText1:
 	ld a, $3
 	ld [wFightingDojoCurScript], a
 	ld [wCurMapScript], a
-	jr .asm_9dba4
+	jr .endScript
 .continue1
 ;;;;;;;joenote - have a rematch with karate master?
 	ld hl, RematchTrainerText
@@ -165,30 +179,67 @@ FightingDojoText1:
 	call NoYesChoice
 	ld a, [wCurrentMenuItem]
 	and a
-	jr nz, .fightkaratemaster
-	ld hl, FightingDojoText_5ce9d
+	jr nz, .rematch
+	ld hl, FightingDojoText_KoichiAfterBattle
 	call PrintText
-	jr .asm_9dba4
+	jr .endScript
 .continue2
-	ld hl, FightingDojoText8
+	ld hl, FightingDojoText_KoichiChoosePokemon
 	call PrintText
-.asm_9dba4
+.endScript
 	jp TextScriptEnd
+.rematch
+	ld hl, FightingDojoText_RematchKoichiBattle
+	call PrintText
+	ld hl, wd72d
+	set 6, [hl]
+	set 7, [hl]
+	ld hl, FightingDojoText_RematchKoichiEndBattle
+	ld de, FightingDojoText_RematchKoichiEndBattle
+	call SaveEndBattleTextPointers
+	
+	ld a, $8
+	ld [wGymLeaderNo], a
+	ld a, [hSpriteIndexOrTextID]
+	ld [wSpriteIndex], a
+	call EngageMapTrainer
+	call InitBattleEnemyParameters
 
-FightingDojoText_5ce8e:
-	TX_FAR _FightingDojoText_5ce8e
+	ld a, 2	;get the right roster
+	ld [wTrainerNo], a
+	
+	ld a, $3
+	ld [wFightingDojoCurScript], a
+	ld [wCurMapScript], a
+	jr .endScript
+
+
+FightingDojoText_KoichiBattle:
+	TX_FAR _FightingDojoText_KoichiBattle
 	db "@"
 
-FightingDojoText_5ce93:
-	TX_FAR _FightingDojoText_5ce93
+FightingDojoText_KoichiEndBattle:
+	TX_FAR _FightingDojoText_KoichiEndBattle
 	db "@"
 
-FightingDojoText8:
-	TX_FAR _FightingDojoText_5ce98
+FightingDojoText_KoichiChoosePokemon:
+	TX_FAR _FightingDojoText_KoichiChoosePokemon
 	db "@"
 
-FightingDojoText_5ce9d:
-	TX_FAR _FightingDojoText_5ce9d
+FightingDojoText_RematchKoichiBattle:
+	TX_FAR _FightingDojoText_RematchKoichiBattle
+	db "@"
+
+FightingDojoText_RematchKoichiEndBattle:
+	TX_FAR _FightingDojoText_RematchKoichiEndBattle
+	db "@"
+
+FightingDojoText_RematchKoichiChoosePokemon:
+	TX_FAR _FightingDojoText_RematchKoichiChoosePokemon
+	db "@"
+
+FightingDojoText_KoichiAfterBattle:
+	TX_FAR _FightingDojoText_KoichiAfterBattle
 	db "@"
 
 FightingDojoText2:
@@ -263,11 +314,15 @@ FightingDojoAfterBattleText4:
 	TX_FAR _FightingDojoAfterBattleText4
 	db "@"
 
-FightingDojoText6:
+FightingDojoText_Hitmonlee:
 ; Hitmonlee Poké Ball
 	TX_ASM
 	CheckEitherEventSet EVENT_GOT_HITMONLEE, EVENT_GOT_HITMONCHAN
 	jr z, .GetMon
+	; If rematch is done, offer the second one
+	CheckEvent EVENT_BEAT_KOICHI_REMATCH
+	jr nz, .GetMon
+	; else
 	ld hl, OtherHitmonText
 	call PrintText
 	jr .done
@@ -298,11 +353,15 @@ WantHitmonleeText:
 	TX_FAR _WantHitmonleeText
 	db "@"
 
-FightingDojoText7:
+FightingDojoText_Hitmonchan:
 ; Hitmonchan Poké Ball
 	TX_ASM
 	CheckEitherEventSet EVENT_GOT_HITMONLEE, EVENT_GOT_HITMONCHAN
 	jr z, .GetMon
+	; If rematch is done, offer the second one
+	CheckEvent EVENT_BEAT_KOICHI_REMATCH
+	jr nz, .GetMon
+	; else
 	ld hl, OtherHitmonText
 	call PrintText
 	jr .done

@@ -1,4 +1,4 @@
-_FightingDojoText_5ce8e::
+_FightingDojoText_KoichiBattle::
 	text "P'tit faiblard!"
 
 	para "Je suis Koichi,"
@@ -15,13 +15,13 @@ _FightingDojoText_5ce8e::
 	para "Ayaaaaa!"
 	done
 
-_FightingDojoText_5ce93::
+_FightingDojoText_KoichiEndBattle::
 	text "STOP!"
 	line "Tu m'as battu!"
 	cont "J'ai honte!"
 	prompt
 
-_FightingDojoText_5ce98::
+_FightingDojoText_KoichiChoosePokemon::
 	text "OK, tu as gagné!"
 
 	para "Mais ne va pas"
@@ -38,7 +38,34 @@ _FightingDojoText_5ce98::
 	line "tu veux!"
 	done
 
-_FightingDojoText_5ce9d::
+_FightingDojoText_RematchKoichiBattle::
+	text "Quoi tu veux"
+	line "encore te battre?"
+
+	para "Je te préviens,"
+	line "cette fois, je ne"
+	cont "te ferai pas de"
+	cont "cadeaux!"
+
+	para "Ayaaaaa!"
+	done
+
+
+_FightingDojoText_RematchKoichiEndBattle::
+	text "Arrête!"
+	line "Je m'incline!"
+	prompt
+
+_FightingDojoText_RematchKoichiChoosePokemon::
+	text "OK, t'as encore"
+	para "gagné!"
+
+	para "Okay j'ai compris"
+	para "tu peux prendre"
+	line "l'autre #mon!"
+	done
+
+_FightingDojoText_KoichiAfterBattle::
 	text "Oh!"
 
 	para "Reste avec nous"
