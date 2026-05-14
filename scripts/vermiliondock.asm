@@ -270,6 +270,7 @@ VermilionDock_EraseSSAnne:
 
 VermilionDockTextPointers:
 	dw MewText
+	dw VermilionDockText
 
 ; PureRGB mew encounter
 MewTrainerHeader:
@@ -453,3 +454,32 @@ GetOWCoord:
 	dec c
 	jr nz, .cloop
 	ret
+
+VermilionDockText:
+	TX_ASM
+	CheckEvent EVENT_FOUND_MEW
+	jp nz, .truckMoved
+	; else show hint
+	ld hl, .truckHint
+	jr .endScript
+
+.truckMoved
+	ld hl, .truckNothing
+; fallthrough
+.endScript
+	call PrintText
+	jp TextScriptEnd
+
+.truckHint
+	text "Vous sentez comme"
+	line "une envie irrési-"
+	cont "stible de pousser"
+	cont "ce camion..."
+	done
+	db "@"
+
+.truckNothing
+	text "Il n'y a rien"
+	line "d'autre à voir."
+	done
+	db "@"
