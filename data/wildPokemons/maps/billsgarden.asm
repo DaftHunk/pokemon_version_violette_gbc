@@ -9,5 +9,5 @@ BillsGardenMons:
 	db 10,EEVEE
 	db 11,EEVEE
 	db 15,PORYGON
-	db 80,HOOH
+	db 15,EEVEE
 	db $00

@@ -214,7 +214,7 @@ BillsHouseText3:
 	; is showing Mew
 	ld a, 6
 	ld [wBillsHouseCurScript], a ;joenote - warp to bill's garden
-	ld hl, BillGardenText
+	ld hl, BillsGardenText
 	jr .done
 
 .noMew
@@ -247,8 +247,8 @@ BillsHouseText_1e8da:
 	TX_FAR _BillsHouseText_1e8da
 	db "@"
 
-BillGardenText:
-	TX_FAR _BillGardenText
+BillsGardenText:
+	TX_FAR _BillsGardenText
 	db "@"
 
 BillsHouseText_Umbreon:

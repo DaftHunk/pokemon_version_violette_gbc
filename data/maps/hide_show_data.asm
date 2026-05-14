@@ -42,7 +42,7 @@ MapHSPointers:
 	dw Route22HS
 	dw NoHS
 	dw Route24HS
-	dw NoHS
+	dw BillsGardenHS
 	dw Route25HS
 	dw NoHS
 	dw NoHS
@@ -327,6 +327,8 @@ Route22HS:
 Route24HS:
 	db ROUTE_24,$01,Show
 	db ROUTE_24,$08,Show
+BillsGardenHS:
+	db BILLS_GARDEN,$01,Hide
 Route25HS:
 	db ROUTE_25,$0A,Show
 BluesHouseHS:

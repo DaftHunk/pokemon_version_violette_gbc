@@ -1087,13 +1087,13 @@ HoohEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 22, GUST
-	db 33, RECOVER
-	db 44, FIRE_BLAST
-	db 55, AGILITY
-	db 66, FLAMETHROWER
-	db 77, WHIRLWIND
-	db 88, SWIFT
+	db 11, GUST
+	db 22, WHIRLWIND
+	db 33, FIRE_BLAST
+	db 44, AGILITY
+	db 55, FLAMETHROWER
+	db 66, RECOVER
+	db 77, SWIFT
 	db 0
 
 MissingNoEvosMoves:

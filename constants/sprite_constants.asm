@@ -254,6 +254,7 @@ const_value = 1
  	const SPRITE_SPEAROW				 ; $4c
  	const SPRITE_WIGGLYTUFF				 ; $4e
 	const SPRITE_MEW
+	const SPRITE_HOOH
  	; Pokémons with odd pixel number
  	const SPRITE_DODUO					 ; $4f
  	const SPRITE_FEAROW					 ; $50

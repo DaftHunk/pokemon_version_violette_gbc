@@ -1,5 +1,9 @@
 ;Joenote - setting up the Red battle
 ; dafthunk : Replaced with Sacha
+_BillsGarden_HoohText::
+	text "Shaoooh!"
+	done
+
 _BillsGarden_SachaGreet::
 	text "Salut! Je suis"
 	line "Sacha du Bourg"
@@ -66,9 +70,7 @@ _BillsGarden_SachaCongrat::
 
 	para "Je te laisse"
 	line "l'honneur de"
-	cont "chasser l'oiseau,"
-	cont "il se cache dans"
-	cont "ce jardin."
+	cont "défier l'oiseau."
 
 	para "En attendant,"
 	line "voilà pour toi."
@@ -94,8 +96,10 @@ _BillsGarden_SachaStoneExplain::
 	para "Peut-être que tu"
 	line "auras plus d'idées"
 	cont "que moi..."
+	done
 
-	para "Wow! C'était quoi"
+_BillsGarden_SachaRespawnLegendaries::
+	text "Wow! C'était quoi"
 	line "ça? On aurait"
 	cont "dit le cri de"
 	cont "pleins de"

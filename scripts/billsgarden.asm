@@ -1,27 +1,66 @@
 BillsGardenScript:
 	call EnableAutoTextBoxDrawing
+	ld hl, BillsGardenTrainerHeader
+	ld de, BillsGardenScriptPointers
 	ld a, [wBillsGardenCurScript]
-	ld hl, BillsGardenScriptPointers
-	jp CallFunctionInTable
+	call ExecuteCurMapScriptInTable
+	ld [wBillsGardenCurScript], a
+	ret
 
 BillsGardenScriptPointers:
 	dw CheckFightingMapTrainers
 	dw DisplayEnemyTrainerTextAndStartBattle
 	dw EndTrainerBattle
-	dw BillGarden_ResetLegendaries
+	dw BillsGarden_ResetLegendaries
 
 BillsGardenTextPointers:
-    dw BillGardenText_Sacha
+	dw BillsGarden_HoohText
+	dw BillsGardenText_Sacha
 	dw BillsGarden_SachaCongrat
 	dw BillsGarden_SachaBagFull
+	dw BillsGarden_SachaGiveStone
 	dw BillsGarden_SachaStoneExplain
+	dw BillsGarden_SachaRespawnLegendaries
+
+BillsGardenTrainerHeader:
+	dbEventFlagBit EVENT_BEAT_HOOH
+	db ($0 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_HOOH
+	dw BillsGarden_HoohBattleText ; TextBeforeBattle
+	dw BillsGarden_HoohBattleText ; TextAfterBattle
+	dw BillsGarden_HoohBattleText ; TextEndBattle
+	dw BillsGarden_HoohBattleText ; TextEndBattle
+
+db $ff
+
+BillsGarden_HoohText:
+	TX_ASM
+	ld hl, BillsGardenTrainerHeader
+	;make the shiny attract cheat work on static wild encounters
+	push hl
+	push bc
+	callba ShinyAttractFunction
+	pop bc
+	pop hl
+	call TalkToTrainer
+	jp TextScriptEnd
+
+BillsGarden_HoohBattleText:
+	TX_FAR _BillsGarden_HoohText
+	TX_ASM
+	ld a, HOOH
+	call PlayCry
+	call WaitForSoundToFinish
+	ld a, 8
+	ld [wGymLeaderNo], a ;joenote - use gym leader music
+	jp TextScriptEnd
 
 ;joenote - text for red battle
-BillGardenText_Sacha:
+BillsGardenText_Sacha:
 	TX_ASM
 
 	CheckEvent EVENT_MIST_STONE_WAIT
-	jr nz, BillGarden_ResetScript
+	jr nz, BillsGarden_ResetScript
 
 	ld hl, BillsGarden_SachaGreet
 	call PrintText
@@ -49,23 +88,27 @@ BillGardenText_Sacha:
 	ld [wTrainerNo], a
 
 	CheckEvent EVENT_GOT_MIST_STONE
-	jr z, .next ; if Sacha never beaten
+	jr z, BillsGarden_ResetScripts ; if Sacha never beaten
 	; else
 	ld a, 2 ;get the right roster
 	ld [wTrainerNo], a
-.next
+	jr BillsGarden_ResetScripts
+	
+.noThanks
+	ld hl, BillsGarden_SachaDecline
+	call PrintText
+	jp TextScriptEnd
+
+BillsGarden_ResetScripts:
 	xor a
 	ld [hJoyHeld], a
 	ld a, $3
 	ld [wBillsGardenCurScript], a
 	ld [wCurMapScript], a
 	jp TextScriptEnd
-.noThanks
-	ld hl, BillsGarden_SachaDecline
-	call PrintText
-	jp TextScriptEnd
 
-BillGarden_ResetLegendaries:	;joenote - adding this function to respawn the legendaries if future red is beaten
+;joenote - adding this function to respawn the legendaries if future red is beaten
+BillsGarden_ResetLegendaries: 
 	xor a
 	ld [wJoyIgnore], a
 	ld [wBillsGardenCurScript], a
@@ -74,9 +117,9 @@ BillGarden_ResetLegendaries:	;joenote - adding this function to respawn the lege
 	cp $ff
 	ret z
 	; else fallthrough
-BillGarden_ResetScript:
+BillsGarden_ResetScript:
 	ResetEvent EVENT_MIST_STONE_WAIT
-	ld a, $2
+	ld a, $3
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 
@@ -85,15 +128,29 @@ BillGarden_ResetScript:
 	call GiveItem
 	jp nc, .bagFull	;jump if not enough room in bag
 
-	ld a, SFX_GET_ITEM_1
-	call PlaySound 
-	call WaitForSoundToFinish
+	ld a, $5
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
 
-	ld a, $4
+	ld a, $6
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 
 	SetEvent EVENT_GOT_MIST_STONE
+
+	call GBFadeOutToBlack
+	ld a, HOOH
+	call PlayCry
+	ld a, MEWTWO
+	call PlayCry
+	ld a, ZAPDOS
+	call PlayCry
+	call WaitForSoundToFinish
+
+; show Hooh
+	ld a, HS_HOOH
+	call .showstuff
+	ResetEvent EVENT_BEAT_HOOH
 ; reset Marowrath
 	ResetEvent EVENT_BEAT_GHOST_MAROWAK
 ; reset Articuno's seafoam islands puzzles
@@ -128,10 +185,18 @@ BillGarden_ResetScript:
 ; reset Mew events
 	ResetEvents EVENT_ENCOUNTERED_MEW, EVENT_FOUND_MEW
 ; return now
+	call UpdateSprites
+	call Delay3
+	call GBFadeInFromBlack
+
+	ld a, $7
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
+
 	jp .end
 .bagFull
 	SetEvent EVENT_MIST_STONE_WAIT
-	ld a, $3
+	ld a, $4
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 .end
@@ -164,9 +229,16 @@ BillsGarden_SachaDecline:
 BillsGarden_SachaCongrat:
 	TX_FAR _BillsGarden_SachaCongrat
 	db "@"
+BillsGarden_SachaGiveStone:
+	TX_FAR _BillsGarden_SachaGiveStone
+	TX_SFX_KEY_ITEM ; actually plays the second channel of SFX_BALL_POOF due to the wrong music bank being loaded
+	db "@"
 BillsGarden_SachaBagFull:
 	TX_FAR _BillsGarden_SachaBagFull
 	db "@"
 BillsGarden_SachaStoneExplain:
 	TX_FAR _BillsGarden_SachaStoneExplain
+	db "@"
+BillsGarden_SachaRespawnLegendaries:
+	TX_FAR _BillsGarden_SachaRespawnLegendaries
 	db "@"

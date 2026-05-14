@@ -36,8 +36,8 @@ MapSpriteSets:
 	db $01 ; ROUTE_22
 	db $06 ; ROUTE_23
 	db $02 ; ROUTE_24
-	db $02 ; BILLS_GARDEN
-	db $02 ; ROUTE_25
+	db $03 ; BILLS_GARDEN
+	db $fd ; ROUTE_25
 
 ; Format:
 ; 00: determines whether the map is split East/West or North/South
@@ -59,6 +59,7 @@ SplitMapSpriteSets:
 	db $02,$02,$07,$04 ; $fa
 	db $01,$11,$05,$07 ; $fb
 	db $01,$03,$07,$03 ; $fc
+	db $02,$03,$03,$02 ; $fd
 
 SpriteSets:
 ; SPRITESET_PALLET_VIRIDIAN
@@ -85,7 +86,7 @@ SpriteSets:
 	db SPRITE_LASS
 	db SPRITE_BLACK_HAIR_BOY_1
 	db SPRITE_BALL
-	db SPRITE_RED
+	db SPRITE_LYING_OLD_MAN_UNUSED_2
 
 ; SPRITESET_LAVENDER
 	db SPRITE_LITTLE_GIRL
@@ -96,9 +97,9 @@ SpriteSets:
 	db SPRITE_SLOWBRO
 	db SPRITE_LASS
 	db SPRITE_BLACK_HAIR_BOY_1
-	db SPRITE_GUARD
+	db SPRITE_HOOH
 	db SPRITE_BALL
-	db SPRITE_LYING_OLD_MAN_UNUSED_2
+	db SPRITE_RED
 
 ; SPRITESET_VERMILION
 	db SPRITE_FOULARD_WOMAN
@@ -567,6 +568,10 @@ SpriteSheetPointerTable:
 	dw MewSprite
 	db $c0 ; byte count
 	db BANK(MewSprite)
+
+	dw HoohSprite
+	db $c0 ; byte count
+	db BANK(HoohSprite)
 
 	dw DoduoSprite
 	db $c0 ; byte count

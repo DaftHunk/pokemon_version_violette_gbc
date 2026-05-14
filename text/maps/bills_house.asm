@@ -110,7 +110,7 @@ _BillsHouseText_1e8da::
 	done
 
 ;joenote - textfor bill letting you into his garden	
-_BillGardenText::
+_BillsGardenText::
 	text "Léo: Hey, mec!"
 	line "C'est vraiment le"
 	cont "fabuleux Mew?"
