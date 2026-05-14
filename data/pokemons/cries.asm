@@ -30,7 +30,7 @@ CryData:
 	db $13, $00, $80; Blastoise
 	db $14, $00, $80; Pinsir
 	db $12, $00, $80; Tangela
-	db $1C, $CF, $FF; Steelix
+	db $1C, $FC, $FF; Steelix
 	db $23, $03, $8F; Scizor
 	db $1F, $20, $40; Growlithe
 	db $17, $FF, $C0; Onix
@@ -51,7 +51,7 @@ CryData:
 	db $12, $E0, $40; Golem
 	db $1b, $ed, $c0; Umbreon
 	db $04, $FF, $30; Magmar
-	db $19, $3C, $01; Kingdra
+	db $0F, $0b, $ff; Kingdra
 	db $06, $8F, $FF; Electabuzz
 	db $1C, $20, $C0; Magneton
 	db $12, $E6, $DD; Koffing
@@ -78,9 +78,9 @@ CryData:
 	db $0E, $82, $FF; Ditto
 	db $19, $77, $10; Meowth
 	db $20, $20, $E0; Krabby
-	db $08, $4F, $60; Marowrath
-	db $16, $1F, $AF; Heracross
-	db $1D, $FA, $80; Crobat
+	db $03, $FF, $FF; Marowrath
+	db $16, $2f, $AF; Heracross
+	db $23, $1d, $60; Crobat
 	db $24, $4F, $10; Vulpix
 	db $24, $88, $60; Ninetales
 	db $0F, $EE, $01; Pikachu
