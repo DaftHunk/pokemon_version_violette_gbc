@@ -46,6 +46,7 @@ HiddenObjectMaps:
 	db SAFFRON_POKECENTER
 	db POKEMONTOWER_5F
 	db ROUTE_13
+	db SAFARI_ZONE_NORTH
 	db SAFARI_ZONE_ENTRANCE
 	db SAFARI_ZONE_WEST
 	db SILPH_CO_5F
@@ -88,6 +89,7 @@ HiddenObjectMaps:
 	db SEAFOAM_ISLANDS_B3F
 	db VERMILION_CITY
 	db CERULEAN_CITY
+	db ROUTE_2
 	db ROUTE_4
 	db ROUTE_6	;joenote - added some hidden items
 	db VERMILION_DOCK
@@ -148,6 +150,7 @@ HiddenObjectPointers:
 	dw SaffronPokecenterHiddenObjects
 	dw PokemonTower5HiddenObjects
 	dw Route13HiddenObjects
+	dw SafariZoneNorthHiddenObjects
 	dw SafariZoneEntranceHiddenObjects
 	dw SafariZoneWestHiddenObjects
 	dw SilphCo5FHiddenObjects
@@ -190,6 +193,7 @@ HiddenObjectPointers:
 	dw SeafoamIslands4HiddenObjects
 	dw VermilionCityHiddenObjects
 	dw CeruleanCityHiddenObjects
+	dw Route2HiddenObjects
 	dw Route4HiddenObjects
 	dw Route6HiddenObjects	;joenote - added hidden items
 	dw VermilionDockHiddenObjects
@@ -647,6 +651,10 @@ Route13HiddenObjects:
 	db $0d,$10,CALCIUM
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
+SafariZoneNorthHiddenObjects:
+	db $0d,$13,NUGGET
+	dbw BANK(HiddenItems),HiddenItems
+	db $FF
 SafariZoneEntranceHiddenObjects:
 	db $05,$05,NUGGET	;joenote - moved to within map bounds
 	dbw BANK(HiddenItems),HiddenItems
@@ -672,7 +680,9 @@ UnknownDungeon1HiddenObjects:
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 UnknownDungeon3HiddenObjects:
-	db $03,$1b,ULTRA_BALL
+	db $0b,$01,CALCIUM
+	dbw BANK(HiddenItems),HiddenItems
+	db $11,$1d,M_GENE
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 PowerPlantHiddenObjects:
@@ -914,6 +924,12 @@ VermilionCityHiddenObjects:
 	db $FF
 CeruleanCityHiddenObjects:
 	db $08,$0f,RARE_CANDY
+	dbw BANK(HiddenItems),HiddenItems
+	db $1f,$06,MAX_REVIVE
+	dbw BANK(HiddenItems),HiddenItems
+	db $FF
+Route2HiddenObjects:
+	db $03,$11,NUGGET
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 Route4HiddenObjects:
