@@ -3628,9 +3628,11 @@ _PostCreditText5::
 	cont "vous ne retenez"
 	cont "que le titre:"
 
-	para "Bar à Joe"
-	line "Venez siroter au"
-	cont "sud de Parmanie!"
+	para "Besoin d'argent?"
+	line "Le Casino manque"
+	cont "de lots et achète"
+	cont "vos #mon à"
+	cont "prix d'or!"
 	cont "..."
 
 	para "Centre Commercial"
@@ -3642,8 +3644,8 @@ _PostCreditText5::
 
 	para "Parc Safari"
 	line "Invitation à"
-	cont "découvrir l'évén-"
-	cont "ement spécial!"
+	cont "découvrir le"
+	cont "Safari Primal!"
 	cont "..."
 	prompt
 

@@ -103,30 +103,28 @@ _SafariZoneEntranceText_753f0::
 ;joenote - adding text for safari zone special event
 _SafariZoneEntranceTextSpecial_NotReady::
 	text "Nous travaillons"
-	line "sur un évenement"
-	cont "spécial mais il"
-	cont "ne sera pas prêt"
-	cont "avant la finale"
-	cont "de la Ligue"
-	cont "#mon."
+	line "sur un évènement:"
+	cont "Le Safari Primal!"
+	cont "Il ne sera pas"
+	cont "prêt avant la"
+	cont "finale de la"
+	cont "Ligue #mon."
 	done
 _SafariZoneEntranceTextSpecial_Ready::
-	text "Salut Champion!"
-	line "Veux-tu"
-	cont "participer à"
-	cont "un évenement"
-	cont "spécial?"
+	text "Bonjour!"
+	line "Voulez-vous"
+	cont "participer au"
+	cont "Safari Primal?"
 
 	para "Les #mon seront"
 	line "plus puissant et"
-	cont "il y a même de"
-	cont "rares chances de"
+	cont "vous pourrez même"
 	cont "rencontrer de"
 	cont "nouvelles"
 	cont "espèces!"
 	done
 _SafariZoneEntranceTextSpecial_Active::
-	text "Veux-tu mettre"
-	line "fin à l'évene-"
-	cont "ment spécial?"
+	text "Voulez-vous"
+	line "mettre fin au"
+	cont "Safari Primal?"
 	done

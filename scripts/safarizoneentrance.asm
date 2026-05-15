@@ -314,7 +314,7 @@ SafariZoneEntranceTextPointers:
 ;Available after the elite 4
 .SafariZoneSpecialEventText
 	TX_ASM
-	CheckEvent EVENT_ELITE_4_BEATEN
+	CheckEitherEventSet EVENT_ELITE_4_BEATEN, EVENT_NEW_GAME_PLUS
 	ld hl, .NotReady
 	jr z, .end
 	
