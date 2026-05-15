@@ -114,9 +114,16 @@ PokemonTower2Script2:
 	ld a, HS_POKEMONTOWER_2F_RIVAL
 	ld [wMissableObjectIndex], a
 	predef HideObject
+;;;;; PureRGBnote: ADDED: play a sound effect when he goes downstairs
+	call UpdateSprites
+	call Delay3
 	xor a
 	ld [wJoyIgnore], a
 	call PlayDefaultMusic
+	ld a, SFX_GO_OUTSIDE
+	call PlaySound
+	call WaitForSoundToFinish
+;;;;;
 	ld a, $0
 	ld [wPokemonTower2CurScript], a
 	ld [wCurMapScript], a

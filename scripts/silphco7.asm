@@ -263,6 +263,9 @@ SilphCo7Script5:
 	ld a, [wd730]
 	bit 0, a
 	ret nz
+	; PureRGBnote: ADDED: make rival teleport away
+	ld a, SFX_TELEPORT_EXIT_1
+	call PlaySound
 	ld a, HS_SILPH_CO_7F_RIVAL
 	ld [wMissableObjectIndex], a
 	predef HideObject
