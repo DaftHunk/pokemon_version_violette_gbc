@@ -14,7 +14,7 @@ SilphCo11Object:
 	object SPRITE_FOULARD_WOMAN, 10, 5, STAY, DOWN, 2 ; person
 	object SPRITE_GIOVANNI, 6, 9, STAY, DOWN, 3, OPP_GIOVANNI, 2
 	object SPRITE_JESSIE, 4, 14, STAY, DOWN, 4, OPP_JESSIE_JAMES, 4 ; Jessie
-	object SPRITE_ROCKET, 15, 9, STAY, UP, 5, OPP_ROCKET, 36
+	object SPRITE_ROCKET, 15, 2, STAY, LEFT, 5, OPP_ROCKET, 36
 	object SPRITE_JAMES, 5, 15, STAY, LEFT, 6 ; James
 
 	; warp-to

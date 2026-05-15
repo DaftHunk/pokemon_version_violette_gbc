@@ -17,10 +17,16 @@ SilphCo11Script_62110:
 	call SilphCo11Script_62137
 	call SilphCo11Script_62163
 	CheckEvent EVENT_SILPH_CO_11_UNLOCKED_DOOR
-	ret nz
+	jr nz, .unlockShortcut
 	ld a, $20
 	ld [wNewTileBlockID], a
 	lb bc, 6, 3
+	predef_jump ReplaceTileBlock
+
+.unlockShortcut
+	ld a, $0E
+	ld [wNewTileBlockID], a
+	lb bc, 4, 7
 	predef_jump ReplaceTileBlock
 
 SilphCo11GateCoords:
