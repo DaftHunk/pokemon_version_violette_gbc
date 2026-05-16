@@ -69,9 +69,9 @@ IF DEF(_DEBUG)
 
 	; MAGNETON gets Thunderbolt.
 	ld hl, wPartyMon1Moves
-	ld a, BIDE
+	ld a, THUNDER
 	ld [hli], a
-	ld a, PSYBEAM
+	ld a, TRI_ATTACK
 	ld [hl], a
 	ld hl, wPartyMon1PP
 	ld a, 15

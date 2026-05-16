@@ -158,8 +158,8 @@ PrintPrizePrice:
 	ld de, .CoinString
 	call PlaceString
 	coord hl, 13, 1
-	ld de, .SixSpacesString
-	call PlaceString
+	lb bc,1, 6
+	call ClearScreenArea
 	coord hl, 13, 1
 	ld de, wPlayerCoins
 	ld c, %10000010
@@ -168,9 +168,6 @@ PrintPrizePrice:
 
 .CoinString:
 	db "Jetons@"
-
-.SixSpacesString:
-	db "      @"
 
 LoadCoinsToSubtract:
 	ld a, [wWhichPrize]

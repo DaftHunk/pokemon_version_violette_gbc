@@ -676,7 +676,7 @@ PidgeyEvosMoves:
 
 SlowpokeEvosMoves:
 ; Evolutions
-	db EV_LEVEL, 37, SLOWBRO
+	db EV_LEVEL, 30, SLOWBRO
 	db 0
 ; Learnset
 	db 6, GROWL
@@ -2191,7 +2191,7 @@ MissingNoA2EvosMoves:
 
 PonytaEvosMoves:
 ; Evolutions
-	db EV_LEVEL, 40, RAPIDASH
+	db EV_LEVEL, 34, RAPIDASH
 	db 0
 ; Learnset
 	db 4, GROWL

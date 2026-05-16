@@ -877,7 +877,7 @@ Route12HiddenObjects:
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 SilphCo11FHiddenObjects:
-	db $0c,$0a,$04
+	db $0e,$0a,$04
 	db BANK(OpenPokemonCenterPC)
 	dw OpenPokemonCenterPC
 	db $FF

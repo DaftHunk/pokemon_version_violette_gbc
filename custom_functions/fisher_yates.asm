@@ -354,12 +354,12 @@ MonListB:
 	db JYNX         ; $48
 	db ELECTABUZZ   ; $35
 	db MAGMAR       ; $33
-	db HOUNDOUR   ; 157
-	db SNEASEL    ; 160
-	db MISDREAVUS ; 161
+	db HOUNDOUR     ; 157
+	db SNEASEL      ; 160
+	db MISDREAVUS   ; 161
 	db HERACROSS
-	db LARVITAR   ; 163
-	db PUPITAR    ; 164
+	db LARVITAR     ; 163
+	db PUPITAR      ; 164
 	db $FF
 MonListA:
 	db SANDSLASH    ; $61
@@ -382,8 +382,7 @@ MonListA:
 	db TAUROS       ; $3C
 	db LAPRAS       ; $13
 	db SNORLAX      ; $84
-	db HOUNDOOM   ; 158
-	db HOOH       ; 166
+	db HOUNDOOM     ; 158
 	db $FF
 	
 MonListTrueRandom:
@@ -427,9 +426,8 @@ MonListTrueRandom:
 	db RHYDON       ; $01
 	db SEADRA       ; $5D
 	db SEAKING      ; $9E
-	db SNEASEL    ; 160
-	db PUPITAR    ; 164
-	db HOOH       ; 166
+	db SNEASEL      ; 160
+	db PUPITAR      ; 164
 	;fall through
 MonListTrueRandom_Starter:	;because not all mons should be allowed as starter pokemon
 	db BULBASAUR    ; $99
@@ -500,8 +498,8 @@ MonListTrueRandom_Starter:	;because not all mons should be allowed as starter po
 	db PORYGON      ; $AA
 	db SNORLAX      ; $84
 	db DRATINI      ; $58
-	db MISDREAVUS ; 161
-	db HOUNDOUR   ; 157
+	db MISDREAVUS   ; 161
+	db HOUNDOUR     ; 157
 	db HERACROSS
-	db LARVITAR   ; 163
+	db LARVITAR     ; 163
 	db $FF
