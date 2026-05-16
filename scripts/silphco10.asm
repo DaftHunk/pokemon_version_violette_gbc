@@ -46,6 +46,7 @@ SilphCo10TextPointers:
 	dw PickUpItemText
 	dw PickUpItemText
 	dw PickUpItemText
+	dw SilphCo10Text_Porygon
 
 SilphCo10TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_10F_TRAINER_0
@@ -119,4 +120,16 @@ SilphCo10EndBattleText2:
 
 SilphCo10AfterBattleText2:
 	TX_FAR _SilphCo10AfterBattleText2
+	db "@"
+
+SilphCo10Text_Porygon:
+	TX_ASM
+	ld hl, SilphCo10Text_PorygonText
+	call PrintText
+	ld a, PORYGON
+	call DisplayPokedex
+	jp TextScriptEnd
+
+SilphCo10Text_PorygonText:
+	TX_FAR _SilphCo10Text_PorygonText
 	db "@"

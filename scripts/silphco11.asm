@@ -452,18 +452,6 @@ SilphCo11AfterBattleText2:
 	TX_FAR _SilphCo11AfterBattleText2
 	db "@"
 
-SilphCo10Text_6236c:
-	TX_ASM
-	ld hl, SilphCo10Text_6237b
-	call PrintText
-	ld a, PORYGON
-	call DisplayPokedex
-	jp TextScriptEnd
-
-SilphCo10Text_6237b:
-	TX_FAR _SilphCo10Text_6237b
-	db "@"
-
 ChiefText_challenge:
 	TX_FAR _ChiefText_challenge
 	db "@"

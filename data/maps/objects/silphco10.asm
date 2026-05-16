@@ -9,7 +9,8 @@ SilphCo10Object:
 	warp 13, 15, 5, SILPH_CO_4F
 	warp 13, 7, 6, SILPH_CO_4F
 
-	db 0 ; signs
+	db 1 ; signs
+	sign 9, 5, 7 ; SilphCo10Text_Porygon
 
 	db 6 ; objects
 	object SPRITE_ROCKET, 1, 9, STAY, RIGHT, 1, OPP_ROCKET, 35
