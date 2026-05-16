@@ -3092,7 +3092,7 @@ _SurfingGotOnText::
 	prompt
 
 _AlreadySurfingText::
-	text "Tu Surfes déjà!"
+	text "Vous Surfez déjà!"
 	prompt
 
 _VitaminStatRoseText::
