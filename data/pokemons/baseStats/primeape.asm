@@ -1,6 +1,6 @@
 db DEX_PRIMEAPE ; pokedex id
-db 65 ; base hp
-db 105 ; base attack
+db 70 ; base hp
+db 115 ; base attack
 db 60 ; base defense
 db 95 ; base speed
 db 60 ; base special

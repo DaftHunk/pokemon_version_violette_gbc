@@ -1,9 +1,9 @@
 db DEX_ELECTABUZZ ; pokedex id
 db 65 ; base hp
-db 83 ; base attack
+db 93 ; base attack
 db 57 ; base defense
 db 105 ; base speed
-db 85 ; base special
+db 95 ; base special
 db ELECTRIC ; species type 1
 db ELECTRIC ; species type 2
 db 45 ; catch rate

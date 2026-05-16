@@ -1,5 +1,5 @@
 db DEX_MAGNETON ; pokedex id
-db 50 ; base hp
+db 65 ; base hp
 db 60 ; base attack
 db 95 ; base defense
 db 70 ; base speed

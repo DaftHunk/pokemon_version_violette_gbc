@@ -278,6 +278,9 @@ NidokingEvosMoves:
 	db 12, DOUBLE_KICK
 	db 19, POISON_STING
 	db 23, THRASH
+	db 27, FOCUS_ENERGY
+	db 36, FURY_ATTACK
+	db 46, HORN_DRILL
 	db 0
 
 SlowbroEvosMoves:
@@ -313,9 +316,13 @@ ExeggutorEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 13, BARRAGE
 	db 19, EGG_BOMB
 	db 25, REFLECT
 	db 28, STOMP
+	db 31, POISONPOWDER
+	db 34, CONFUSION
+	db 37, SLEEP_POWDER
 	db 42, SOLARBEAM
 	db 48, HYPNOSIS
 	db 0
@@ -394,6 +401,9 @@ NidoqueenEvosMoves:
 	db 12, DOUBLE_KICK
 	db 19, POISON_STING
 	db 23, BODY_SLAM
+	db 27, TAIL_WHIP
+	db 36, BITE
+	db 46, FURY_SWIPES
 	db 50, CRUNCH
 	db 0
 
@@ -605,6 +615,7 @@ ScizorEvosMoves:
 	db 12, PURSUIT
 	db 24, AGILITY
 	db 30, METAL_CLAW
+	db 32, WING_ATTACK
 	db 36, SLASH
 	db 40, X_SCISSOR
 	db 42, SWORDS_DANCE
@@ -853,6 +864,7 @@ UmbreonEvosMoves:
 	db 30, CONFUSE_RAY
 	db 40, DARK_PULSE
 	db 47, SCREECH
+	db 50, TAKE_DOWN
 	db 0
 
 MagmarEvosMoves:
@@ -1259,6 +1271,7 @@ NinetalesEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 13, ROAR
 	db 20, QUICK_ATTACK
 	db 28, CONFUSE_RAY
 	db 36, FLAMETHROWER
@@ -1289,8 +1302,13 @@ RaichuEvosMoves:
 ; Learnset
 	db 11, TAIL_WHIP
 	db 13, THUNDER_WAVE
+	db 15, QUICK_ATTACK
+	db 17, THUNDERSHOCK
+	db 22, DOUBLE_TEAM
 	db 25, SLAM
+	db 29, SWIFT
 	db 31, THUNDERBOLT
+	db 38, AGILITY
 	db 46, THUNDER
 	db 55, LIGHT_SCREEN
 	db 0
@@ -1490,6 +1508,8 @@ WigglytuffEvosMoves:
 	db 29, DOUBLESLAP
 	db 34, DISABLE
 	db 39, BODY_SLAM
+	db 42, REST
+	db 45, DOUBLE_EDGE
 	db 0
 
 EeveeEvosMoves:
@@ -1520,6 +1540,7 @@ FlareonEvosMoves:
 	db 36, FIRE_SPIN
 	db 42, SMOG
 	db 47, LEER
+	db 50, TAKE_DOWN
 	db 52, FLAMETHROWER
 	db 0
 
@@ -1534,6 +1555,7 @@ JolteonEvosMoves:
 	db 36, PIN_MISSILE
 	db 42, THUNDER_WAVE
 	db 47, AGILITY
+	db 50, TAKE_DOWN
 	db 52, THUNDER
 	db 0
 
@@ -1548,6 +1570,7 @@ VaporeonEvosMoves:
 	db 36, AURORA_BEAM
 	db 42, HAZE
 	db 47, ACID_ARMOR
+	db 50, TAKE_DOWN
 	db 52, HYDRO_PUMP
 	db 0
 
@@ -1621,9 +1644,12 @@ PoliwrathEvosMoves:
 ; Learnset
 	db 16, WATER_GUN
 	db 19, HYPNOSIS
+	db 25, BUBBLEBEAM
 	db 27, DOUBLESLAP
-	db 35, SUBMISSION
-	db 44, BUBBLEBEAM
+	db 32, SUBMISSION
+	db 35, BODY_SLAM
+	db 41, AMNESIA
+	db 51, HYDRO_PUMP
 	db 0
 
 WeedleEvosMoves:
@@ -1937,6 +1963,12 @@ ClefableEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 8, SING
+	db 13, DOUBLESLAP
+	db 19, MINIMIZE
+	db 26, DEFENSE_CURL
+	db 34, METRONOME
+	db 53, LIGHT_SCREEN
 	db 0
 
 WeezingEvosMoves:
@@ -2048,13 +2080,16 @@ StarmieEvosMoves:
 	db 0
 ; Learnset
 	db 21, WATER_GUN
+	db 24, SWIFT
 	db 26, HARDEN
 	db 31, RECOVER
+	db 35, BUBBLEBEAM
 	db 37, CONFUSE_RAY
-	db 46, BUBBLEBEAM
+	db 39, MINIMIZE
+	db 43, LIGHT_SCREEN
+	db 50, HYDRO_PUMP
 	db 51, REFLECT
 	db 0
-
 BulbasaurEvosMoves:
 ; Evolutions
 	db EV_LEVEL, 16, IVYSAUR
@@ -2438,6 +2473,7 @@ VileplumeEvosMoves:
 	db 30, ACID
 	db 35, GIGA_DRAIN
 	db 40, PETAL_DANCE
+	db 52, SOLARBEAM
 	db 0
 
 BellsproutEvosMoves:

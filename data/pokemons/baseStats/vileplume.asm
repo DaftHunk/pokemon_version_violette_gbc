@@ -1,5 +1,5 @@
 db DEX_VILEPLUME ; pokedex id
-db 75 ; base hp
+db 95 ; base hp
 db 80 ; base attack
 db 85 ; base defense
 db 50 ; base speed

@@ -1,5 +1,5 @@
 db DEX_OMASTAR ; pokedex id
-db 70 ; base hp
+db 75 ; base hp
 db 60 ; base attack
 db 125 ; base defense
 db 55 ; base speed

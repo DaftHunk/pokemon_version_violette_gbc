@@ -1,6 +1,6 @@
 db DEX_PERSIAN ; pokedex id
-db 65 ; base hp
-db 70 ; base attack
+db 75 ; base hp
+db 90 ; base attack
 db 60 ; base defense
 db 115 ; base speed
 db 65 ; base special
