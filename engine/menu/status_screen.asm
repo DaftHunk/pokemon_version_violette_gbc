@@ -97,6 +97,10 @@ StatusScreen:
 	ld hl, vChars2 + $760
 	lb bc, BANK(BattleHudTiles3), $02
 	call CopyVideoDataDouble ; ─┘
+	ld de, StatsGraphics
+	ld hl, vChars1 + $490
+	lb bc, BANK(StatsGraphics), (StatsGraphicsEnd - StatsGraphics) / $10
+	call CopyVideoData
 	ld a, [hTilesetType]
 	push af
 	xor a
@@ -169,29 +173,12 @@ StatusScreen:
 	coord hl, 16, 6
 	ld de, wLoadedMonStatus
 
-	ld a, [wStatsToDisplay]
-	bit 2, a
-	jr nz, .printEV
-
-	bit 1, a
-	jr nz, .printIV
-
 	call PrintStatusCondition
 	jr nz, .StatusWritten
 	coord hl, 16, 6
 
-	; else regular
 	ld de, OKText
 	call PlaceString ; "OK"
-	jr .StatusWritten
-.printEV
-	ld de, EVText
-	call PlaceString ; "EV"
-	jr .StatusWritten
-.printIV
-	ld de, IVText
-	call PlaceString ; "IV"
-	; fallthrough
 .StatusWritten
 	coord hl, 9, 6
 	ld de, StatusText
@@ -235,11 +222,34 @@ StatusScreen:
 	call PrintNumber ; ID Number
 	ld d, $0
 	call PrintStatsBox
+
+; Print stats type
+	coord hl, 0, 17
+	ld a, [wStatsToDisplay]
+	bit 2, a
+	jr nz, .printEV
+
+	bit 1, a
+	jr nz, .printIV
+
+	; else regular
+	ld de, StatText
+	call PlaceString ; "Stats"
+	jr .display
+.printEV
+	ld de, EVText
+	call PlaceString ; "EV"
+	jr .display
+.printIV
+	ld de, IVText
+	call PlaceString ; "IV"
+; fallthrough
+.display
 	call Delay3
 	call GBPalNormal
 	coord hl, 1, 0
 	call LoadFlippedFrontSpriteByMonIndex ; draw Pokémon picture
-	
+
 	ld a, [wStatsToDisplay]
 	bit 0, a
 	jr z, .skipCry
@@ -297,11 +307,14 @@ StatusText:
 OKText:
 	db "Ok@"
 
+StatText:
+	db $C9, $CA, "@"
+
 IVText:
-	db "IV@"
+	db $CB, $CC, "@"
 
 EVText:
-	db "EV@"
+	db $CD, $CE, "@"
 
 ; Draws a line starting from hl high b and wide c
 DrawLineBox:
@@ -494,8 +507,6 @@ StatusScreen2:
 	call CopyData
 	callab FormatMovesString
 	
-	call PlaceTempFieldMove	;joenote - for field move slot
-	
 	coord hl, 9, 2
 	lb bc, 5, 10
 	call ClearScreenArea ; Clear under name
@@ -505,6 +516,7 @@ StatusScreen2:
 	ld b, 8
 	ld c, 18
 	call TextBoxBorder ; Draw move container
+	call PlaceTempFieldMove	;joenote - for field move slot
 	coord hl, 2, 9
 	ld de, wMovesString
 	call PlaceString ; Print moves
@@ -735,19 +747,23 @@ PlaceTempFieldMove:	;joenote - for field move slot
 	ld a, MOVE_NAME
 	ld [wNameListType], a
 	call GetName
-	
-	coord hl, $07, $07
+
+	coord hl, 2, 17
+	lb bc, 1, 9
+	call ClearScreenArea
+
+	coord hl, 0, 17
 	ld de, FieldMoveText
 	call PlaceString
 
-	coord hl, $0A, $07
+	coord hl, 2, 17
 	ld de, wcd6d
 	call PlaceString
 	
 	ret
 
 FieldMoveText:
-	db "  →@"
+	db $CF, $D0, "@"
 
 StatsData:
 	xor a

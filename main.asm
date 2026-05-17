@@ -175,10 +175,6 @@ INCLUDE "engine/overworld/is_player_just_outside_map.asm"
 INCLUDE "engine/menu/status_screen.asm"
 INCLUDE "engine/menu/party_menu.asm"
 
-RedPicFront:: INCBIN "gfx/trainer/red.pic"
-ShrinkPic1::  INCBIN "gfx/trainer/shrink1.pic"
-ShrinkPic2::  INCBIN "gfx/trainer/shrink2.pic"
-
 INCLUDE "engine/turn_sprite.asm"
 INCLUDE "engine/menu/start_sub_menus.asm"
 INCLUDE "engine/items/tms.asm"
@@ -195,6 +191,9 @@ INCLUDE "engine/random.asm"
 ;joenote - adding exp bar
 EXPBarGraphics:  INCBIN "gfx/tiles/exp_bar.2bpp"
 EXPBarGraphicsEnd:
+
+StatsGraphics:: INCBIN "gfx/tiles/font_status_screen.2bpp"
+StatsGraphicsEnd::
 
 SECTION "NPC Sprites 2", ROMX, BANK[NPC_SPRITES_2]
 
@@ -2169,6 +2168,11 @@ INCLUDE "engine/battle/load_pics.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 INCLUDE "engine/menu/draw_badges.asm"
+RedPicFront:: INCBIN "gfx/trainer/red.pic"
+ShrinkPic1::  INCBIN "gfx/trainer/shrink1.pic"
+ShrinkPic2::  INCBIN "gfx/trainer/shrink2.pic"
+
+SECTION "Expanded Tilesets", ROMX
 
 Lobby_GFX:         INCBIN "gfx/tilesets/lobby.2bpp"
 Lobby_Block:       INCBIN "gfx/blocksets/lobby.bst"
