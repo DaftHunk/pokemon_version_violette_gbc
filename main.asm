@@ -1587,9 +1587,6 @@ ForestGate_Block:
 Museum_Block:
 Gate_Block:        INCBIN "gfx/blocksets/gate.bst"
 
-Forest_GFX:        INCBIN "gfx/tilesets/forest.2bpp"
-Forest_Block:      INCBIN "gfx/blocksets/forest.bst"
-
 
 SECTION "bank1B",ROMX,BANK[$1B]
 
@@ -2176,3 +2173,5 @@ SECTION "Expanded Tilesets", ROMX
 
 Lobby_GFX:         INCBIN "gfx/tilesets/lobby.2bpp"
 Lobby_Block:       INCBIN "gfx/blocksets/lobby.bst"
+Forest_GFX:        INCBIN "gfx/tilesets/forest.2bpp"
+Forest_Block:      INCBIN "gfx/blocksets/forest.bst"

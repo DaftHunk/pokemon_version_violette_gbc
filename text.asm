@@ -1080,10 +1080,7 @@ _VermilionGymTrashSuccessText3::
 
 _VermilionGymTrashFailText::
 	text "Une poubelle bien"
-	line "dégueulasse!"
-	cont "Oups... Les"
-	cont "verrouillages"
-	cont "sont en place!@"
+	line "dégueulasse!@"
 	text_end
 
 _FoundHiddenItemText::

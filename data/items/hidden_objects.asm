@@ -335,8 +335,6 @@ VermilionGymHiddenObjects:
 	dbw BANK(GymStatues), GymStatues
 	db $0e,$06,$04
 	dbw BANK(GymStatues), GymStatues
-	db $01,$06,$00
-	dbw BANK(PrintTrashText), PrintTrashText
 	db $07,$01,$00
 	dbw BANK(GymTrashScript), GymTrashScript
 	db $09,$01,$01

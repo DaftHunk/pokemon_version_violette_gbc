@@ -3,6 +3,12 @@ PrintBookshelfText:
 	ld a, [wSpriteStateData1 + 9] ; player's sprite facing direction
 	cp SPRITE_FACING_UP
 	jr nz, .noMatch
+;;;;;;;;;; PureRGBnote: ADDED: some houses have unique text for bookcases instead of "crammed full of books!"
+	ld a, [wCurMap]
+	ld hl, NoBookCaseTextMaps
+	call IsInSingleByteArray
+	jr c, .noMatch
+;;;;;;;;;;
 ; facing up
 	ld a, [wCurMapTileset]
 	ld b, a
@@ -35,6 +41,10 @@ PrintBookshelfText:
 	ld a, $ff
 	ld [$ffdb], a
 	jpba PrintCardKeyText
+
+NoBookCaseTextMaps:
+	db VERMILION_GYM
+	db $FF
 
 ; format: db tileset id, bookshelf tile id, text id
 BookshelfTileIDs:

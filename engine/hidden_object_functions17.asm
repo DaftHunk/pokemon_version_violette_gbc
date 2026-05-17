@@ -516,7 +516,7 @@ GymTrashScript:
 	jr z, .openSecondLock
 
 ; Reset the cans.
-	ResetEvent EVENT_1ST_LOCK_OPENED
+;	ResetEvent EVENT_1ST_LOCK_OPENED
 
 ;	call Random
 ;	and $e

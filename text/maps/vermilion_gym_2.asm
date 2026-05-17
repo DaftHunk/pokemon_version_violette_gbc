@@ -194,3 +194,35 @@ _VermilionGymText_GuideVictory::
 	text "Wouh! Ce match"
 	line "était survolté!"
 	done
+
+; Adapted from PureRGB
+_VermilionGymText_SurgeTrash::
+	text "Une conserve vide"
+	line "a été jetée dans"
+	cont "la poubelle."
+
+	para "Il y est écrit:"
+	line "Ration militaire"
+	cont "Fromage fondant"
+	cont "au bon lait"
+	cont "d'Ecrémeuh."
+
+	para "Ça semble venir"
+	line "Johto!"
+	done
+; Adapted from PureRGB
+_VermilionGymText_SurgeBookshelf::
+	text "Des revues"
+	line "militaires..."
+
+	para "Brève histoire"
+	line "des #mon en"
+	cont "service,"
+
+	para "La reco en"
+	line "Rapasdepic,"
+
+	para "Les dangers des"
+	line "Métamorph espions"
+	cont "..."
+	done

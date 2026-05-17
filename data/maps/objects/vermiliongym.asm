@@ -5,7 +5,9 @@ VermilionGymObject:
 	warp 4, 17, 3, -1
 	warp 5, 17, 3, -1
 
-	db 0 ; signs
+	db 2 ; signs
+	sign 6, 1, 10 ; VermilionGymText_SurgeTrash
+	sign 7, 1, 11 ; VermilionGymText_SurgeBookshelf
 
 	db 5 ; objects
 	object SPRITE_ROCKER,           5,  1, STAY, DOWN,  1, OPP_LT_SURGE, 1

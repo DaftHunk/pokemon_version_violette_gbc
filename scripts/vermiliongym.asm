@@ -101,6 +101,8 @@ VermilionGymTextPointers:
 	dw VermilionGymText_ReceivedTM
 	dw VermilionGymText_BagFull
 	dw VermilionGymText_LevelCap
+	dw VermilionGymText_SurgeTrash
+	dw VermilionGymText_SurgeBookshelf
 
 VermilionGymTrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_VERMILION_GYM_TRAINER_0
@@ -337,6 +339,14 @@ VermilionGymText_GuideTip:
 
 VermilionGymText_GuideVictory:
 	TX_FAR _VermilionGymText_GuideVictory
+	db "@"
+
+VermilionGymText_SurgeTrash:
+	TX_FAR _VermilionGymText_SurgeTrash
+	db "@"
+
+VermilionGymText_SurgeBookshelf:
+	TX_FAR _VermilionGymText_SurgeBookshelf
 	db "@"
 
 ElectabuzzTutor:
