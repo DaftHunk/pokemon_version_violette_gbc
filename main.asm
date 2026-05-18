@@ -1800,6 +1800,7 @@ INCLUDE "engine/menu/item_descriptions.asm"
 INCLUDE "custom_functions/func_soundtest.asm"
 INCLUDE "custom_functions/func_enhancedcolor.asm"
 
+
 SECTION "bank2D",ROMX,BANK[$2D]	;joenote - This is a known empty bank. Going to start moving stuff here
 
 ;joenote - moved this out of trainer_ai.asm in bank $E to here. 
@@ -1807,6 +1808,7 @@ SECTION "bank2D",ROMX,BANK[$2D]	;joenote - This is a known empty bank. Going to 
 INCLUDE "engine/battle/read_trainer_party.asm"
 INCLUDE "data/moves/trainer_moves.asm"
 INCLUDE "data/battle/trainer_parties.asm"
+
 
 SECTION "bank2E",ROMX,BANK[$2E]	
 ;gbcnote - This bank will hold the bg map attributes for the gameboy color among other stuff
@@ -1827,25 +1829,39 @@ INCLUDE "custom_functions/func_linkbattlecomms.asm"
 INCLUDE "data/items/item_prices.asm"
 INCLUDE "text/item_names.asm"
 
+
 SECTION "Pics 1", ROMX, BANK[PICS_1]
+
 INCLUDE "constants/pic_banks/pic1.asm"
 
+
 SECTION "Pics 2", ROMX, BANK[PICS_2]
+
 INCLUDE "constants/pic_banks/pic2.asm"
 
+
 SECTION "Pics 3", ROMX, BANK[PICS_3]
+
 INCLUDE "constants/pic_banks/pic3.asm"
 
+
 SECTION "Pics 4", ROMX, BANK[PICS_4]
+
 INCLUDE "constants/pic_banks/pic4.asm"
 
+
 SECTION "Pics 5", ROMX, BANK[PICS_5]
+
 INCLUDE "constants/pic_banks/pic5.asm"
 
+
 SECTION "Pics 6", ROMX, BANK[PICS_6]
+
 INCLUDE "constants/pic_banks/pic6.asm"
 
+
 SECTION "Pics 7", ROMX, BANK[PICS_7]
+
 INCLUDE "constants/pic_banks/pic7.asm"
 
 RedPicBack::           INCBIN "gfx/trainerback/redb.pic"
@@ -1856,7 +1872,9 @@ tmhmNamesEnd:
 
 INCLUDE "data/wildPokemons/super_rod.asm"	;joenote - moving all the super rod data here
 
-SECTION "bank32",ROMX,BANK[$32]	
+
+SECTION "bank32",ROMX,BANK[$32]
+
 INCLUDE "custom_functions/func_bag.asm"
 INCLUDE "custom_functions/func_emuchecks.asm"
 INCLUDE "engine/overworld/cut3.asm"
@@ -1877,7 +1895,9 @@ Reactor_Block:     INCBIN "gfx/blocksets/reactor.bst"
 Volcano_GFX:       INCBIN "gfx/tilesets/volcano.2bpp"
 Volcano_Block:     INCBIN "gfx/blocksets/volcano.bst"
 
+
 SECTION "PARTY ICONS 1", ROMX
+
 MonIcons::
 INCBIN "gfx/pokemon/icons/null.2bpp"
 INCBIN "gfx/pokemon/icons/bulbasaur.2bpp"
@@ -2010,6 +2030,7 @@ INCBIN "gfx/pokemon/icons/pinsir.2bpp"
 
 
 SECTION "PARTY ICONS 2", ROMX
+
 MonIcons2::
 INCBIN "gfx/pokemon/icons/tauros.2bpp"
 INCBIN "gfx/pokemon/icons/magikarp.2bpp"
@@ -2053,7 +2074,9 @@ INCBIN "gfx/pokemon/icons/hooh.2bpp"
 INCBIN "gfx/pokemon/icons/missingno.2bpp"
 INCBIN "gfx/pokemon/icons/armored_mewtwo.2bpp"
 
+
 SECTION "Other Sprites", ROMX
+
 FossilKabutopsPic::    INCBIN "gfx/pokemon/other/fossilkabutops.pic"
 FossilAerodactylPic::  INCBIN "gfx/pokemon/other/fossilaerodactyl.pic"
 GhostPic::             INCBIN "gfx/pokemon/other/ghost.pic"
@@ -2062,7 +2085,9 @@ MissingnoPicBack::     INCBIN "gfx/pokemon/other/missingnob.pic"
 ArmoredMewtwoPicFront::    INCBIN "gfx/pokemon/front/armored_mewtwo.pic"
 ArmoredMewtwoPicBack::     INCBIN "gfx/pokemon/back/armored_mewtwob.pic"
 
+
 SECTION "NPC Sprites 3", ROMX
+
 JennySprite:          INCBIN "gfx/sprites/jenny.2bpp"
 JessieSprite:         INCBIN "gfx/sprites/jessie.2bpp"
 JamesSprite:          INCBIN "gfx/sprites/james.2bpp"
@@ -2102,6 +2127,7 @@ ZapdosSprite:         INCBIN "gfx/sprites/pokemons/zapdos.2bpp"
 MewSprite:            INCBIN "gfx/sprites/pokemons/mew.2bpp"
 HoohSprite:           INCBIN "gfx/sprites/pokemons/hooh.2bpp"
 
+
 SECTION "Type Icons", ROMX
 
 NormalTypeIcon::     INCBIN "gfx/tiles/type_icons/normal.2bpp"
@@ -2122,6 +2148,7 @@ IceTypeIcon::        INCBIN "gfx/tiles/type_icons/ice.2bpp"
 DragonTypeIcon::     INCBIN "gfx/tiles/type_icons/dragon.2bpp"
 SteelTypeIcon::      INCBIN "gfx/tiles/type_icons/steel.2bpp"
 DarkTypeIcon::       INCBIN "gfx/tiles/type_icons/dark.2bpp"
+
 
 SECTION "Menu Prompt Graphics", ROMX
 
@@ -2168,6 +2195,7 @@ INCLUDE "engine/menu/draw_badges.asm"
 RedPicFront:: INCBIN "gfx/trainer/red.pic"
 ShrinkPic1::  INCBIN "gfx/trainer/shrink1.pic"
 ShrinkPic2::  INCBIN "gfx/trainer/shrink2.pic"
+
 
 SECTION "Expanded Tilesets", ROMX
 
