@@ -29,6 +29,9 @@ CeladonCityTextPointers:
 	dw CeladonCityText18
 	dw CeladonCityText_School
 	dw CeladonCityText_RhyhornMerchant
+	dw CeladonCityText_CasinoPrizes
+	dw CeladonCityText_Dinner
+	dw CeladonCityText_Hotel
 
 CeladonCityText1:
 	TX_FAR _CeladonCityText1
@@ -292,4 +295,14 @@ _TXTBoughtCoins:
 	done
 	db "@"
 
+CeladonCityText_CasinoPrizes:
+	TX_FAR _CeladonCityText_CasinoPrizes
+	db "@"
 
+CeladonCityText_Dinner:
+	TX_FAR _CeladonCityText_Dinner
+	db "@"
+
+CeladonCityText_Hotel:
+	TX_FAR _CeladonCityText_Hotel
+	db "@"

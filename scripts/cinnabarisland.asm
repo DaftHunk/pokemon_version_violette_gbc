@@ -66,6 +66,7 @@ CinnabarIslandTextPointers:
 	dw CinnabarIslandText6
 	dw CinnabarIslandText7
 	dw CinnabarIslandText8
+	dw CinnabarIslandText_Manor
 
 CinnabarIslandText8:
 	TX_FAR _CinnabarIslandText8
@@ -89,4 +90,8 @@ CinnabarIslandText6:
 
 CinnabarIslandText7:
 	TX_FAR _CinnabarIslandText7
+	db "@"
+
+CinnabarIslandText_Manor:
+	TX_FAR _CinnabarIslandText_Manor
 	db "@"

@@ -202,3 +202,18 @@ _CeladonCityText_RhyhornMerchant::
 	cont "divers sacs de"
 	cont "marchandises."
 	prompt
+
+_CeladonCityText_CasinoPrizes::
+	text "Casino Rocket"
+	line "Echanges de lots"
+	done
+
+_CeladonCityText_Dinner::
+	text "Au Caninos"
+	line "mal léché"
+	done
+
+_CeladonCityText_Hotel::
+	text "Hotel de"
+	line "Céladopole"
+	done

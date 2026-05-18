@@ -267,3 +267,12 @@ _CeruleanCityText_RhyhornMerchant::
 	cont "divers sacs de"
 	cont "marchandises."
 	prompt
+
+_CeruleanCityText_BikeShop::
+	text "Cycles à Gogo"
+	line "Le roi du Vélo!"
+	done
+
+_CeruleanCityText_BadgeHouse::
+	text "Maître des Badges"
+	done

@@ -248,6 +248,8 @@ CeruleanCityTextPointers:
 	dw CeruleanCityText17
 	dw CeruleanCityText_EstBoard
 	dw CeruleanCityText_RhyhornMerchant
+	dw CeruleanCityText_BikeShop
+	dw CeruleanCityText_BadgeHouse
 
 CeruleanCityText1:
 	TX_ASM
@@ -470,3 +472,11 @@ CeruleanCityText_RhyhornMerchant:
 	ld a, RHYHORN
 	call DisplayPokedex
 	jp TextScriptEnd
+
+CeruleanCityText_BikeShop:
+	TX_FAR _CeruleanCityText_BikeShop
+	db "@"
+
+CeruleanCityText_BadgeHouse:
+	TX_FAR _CeruleanCityText_BadgeHouse
+	db "@"

@@ -8,12 +8,13 @@ CinnabarIslandObject:
 	warp 11, 11, 0, CINNABAR_POKECENTER
 	warp 15, 11, 0, CINNABAR_MART
 
-	db 5 ; signs
-	sign 9, 5, 3 ; CinnabarIslandText3
+	db 6 ; signs
+	sign 13,  3, 3 ; CinnabarIslandText3
 	sign 16, 11, 4 ; MartSignText
 	sign 12, 11, 5 ; PokeCenterSignText
-	sign 9, 11, 6 ; CinnabarIslandText6
-	sign 13, 3, 7 ; CinnabarIslandText7
+	sign  5,  9, 6 ; CinnabarIslandText6
+	sign 19,  5, 7 ; CinnabarIslandText7
+	sign  8,  3, 9 ; CinnabarIslandText_Manor
 
 	db 2 ; objects
 	object SPRITE_GIRL, 12, 5, WALK, 2, 1 ; person

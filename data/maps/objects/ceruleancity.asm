@@ -14,7 +14,7 @@ CeruleanCityObject:
 	warp 9, 11, 1, CERULEAN_BADGE_HOUSE
 	warp 9, 9, 0, CERULEAN_BADGE_HOUSE
 
-	db 8 ; signs
+	db 10 ; signs
 	sign 23, 19, 13 ; CeruleanCityText12
 	sign 17, 29, 14 ; CeruleanCityText13
 	sign 26, 25, 15 ; MartSignText
@@ -23,6 +23,8 @@ CeruleanCityObject:
 	sign 27, 21, 18 ; CeruleanCityText17
 	sign 37, 15, 19 ; CeruleanCityTextEstBoard
 	sign 35, 18, 20 ; CeruleanCityText_RhyhornMerchant
+	sign 14, 25, 21 ; CeruleanCityText_BikeShop
+	sign 10, 11, 22 ; CeruleanCityText_BadgeHouse
 
 	db 12 ; objects
 	object SPRITE_BLUE, 20, 2, STAY, DOWN, 1 ; person

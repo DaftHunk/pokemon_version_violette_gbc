@@ -45,3 +45,7 @@ _CinnabarIslandText7::
 	para "Le cerveau!"
 	line "Chaud! Chaud!"
 	done
+
+_CinnabarIslandText_Manor::
+	text "Manoir #mon"
+	done

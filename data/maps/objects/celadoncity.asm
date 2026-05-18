@@ -12,23 +12,26 @@ CeladonCityObject:
 	warp 28, 19, 0, GAME_CORNER
 	warp 39, 19, 0, CELADON_MART_5F ; beta warp! no longer used
 	warp 33, 19, 0, CELADON_PRIZE_ROOM
-	warp 31, 27, 0, CELADON_DINER
-	warp 35, 27, 0, CELADON_CHIEF_HOUSE
-	warp 43, 27, 0, CELADON_HOTEL
+	warp 29, 27, 0, CELADON_DINER
+	warp 33, 27, 0, CELADON_CHIEF_HOUSE
+	warp 41, 27, 0, CELADON_HOTEL
 	warp 23, 29, 0, CELADON_SCHOOL
 
-	db 11 ; signs
+	db 14 ; signs
 	sign 27, 15, 11 ; CeladonCityText10
 	sign 19, 15, 12 ; CeladonCityText11
 	sign 42, 9, 13 ; PokeCenterSignText
 	sign 13, 29, 14 ; CeladonCityText13
-	sign 21, 9, 15 ; CeladonCityText14
+	sign 23,  9, 15 ; CeladonCityText14
 	sign 12, 13, 16 ; CeladonCityText15
 	sign 39, 21, 17 ; CeladonCityText16
 	sign 33, 21, 18 ; CeladonCityText17
-	sign 27, 21, 19 ; CeladonCityText18
-	sign 25, 31, 20 ; CeladonCityText_School
+	sign 27, 19, 19 ; CeladonCityText18
+	sign 24, 29, 20 ; CeladonCityText_School
 	sign 9, 20, 21 ; CeladonCityText_RhyhornMerchant
+	sign 34, 19, 22 ; CeladonCityText_CasinoPrizes
+	sign 30, 27, 23 ; CeladonCityText_Dinner
+	sign 42, 27, 24 ; CeladonCityText_Hotel
 
 	db 10 ; objects
 ;joenote - add some items to encourage exploration of the dead areas
@@ -56,7 +59,7 @@ CeladonCityObject:
 	warp_to 28, 19, CELADON_CITY_WIDTH ; GAME_CORNER
 	warp_to 39, 19, CELADON_CITY_WIDTH ; CELADON_MART_5F
 	warp_to 33, 19, CELADON_CITY_WIDTH ; CELADON_PRIZE_ROOM
-	warp_to 31, 27, CELADON_CITY_WIDTH ; CELADON_DINER
-	warp_to 35, 27, CELADON_CITY_WIDTH ; CELADON_CHIEF_HOUSE
-	warp_to 43, 27, CELADON_CITY_WIDTH ; CELADON_HOTEL
+	warp_to 29, 27, CELADON_CITY_WIDTH ; CELADON_DINER
+	warp_to 33, 27, CELADON_CITY_WIDTH ; CELADON_CHIEF_HOUSE
+	warp_to 41, 27, CELADON_CITY_WIDTH ; CELADON_HOTEL
 	warp_to 23, 29, CELADON_CITY_WIDTH ; CELADON_SCHOOL
