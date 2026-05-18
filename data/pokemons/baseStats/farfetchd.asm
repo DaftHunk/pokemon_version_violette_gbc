@@ -1,8 +1,8 @@
 db DEX_FARFETCHD ; pokedex id
 db 62 ; base hp
-db 135 ; base attack
+db 115 ; base attack
 db 95 ; base defense
-db 65 ; base speed
+db 85 ; base speed
 db 70 ; base special
 db FLYING ; species type 1
 db FIGHTING ; species type 2

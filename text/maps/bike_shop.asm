@@ -4,12 +4,12 @@ _BikeShopText_1d810::
 
 	para "Nous avons"
 	line "justement une"
-	cont "belle bicyclette!"
+	cont "belle Bicyclette!"
 	prompt
 
 _BikeShopText_1d815::
 	text "C'est un super"
-	line "vélo, le veux-tu?"
+	line "Vélo, le veux-tu?"
 	done
 
 _BikeShopCantAffordText::
@@ -80,7 +80,7 @@ _BikeShopText_1d861::
 
 _BikeShopText_BasketBike::
 	text "Cette Bicyclette"
-	line "posséde un"
+	line "possède un"
 	cont "porte-bagages."
 
 	para "Très cossu!"
@@ -88,11 +88,11 @@ _BikeShopText_BasketBike::
 
 _BikeShopText_Toolbox::
 	text "Un kit de répa-"
-	line "ration de vélo!"
+	line "ration de Vélo!"
 	done
 
 _BikeShopText_Gatcha::
-	text "Un pachinko!"
+	text "Un Pachinko!"
 	line "On joue?"
 
 	para "Oulah, le vendeur"

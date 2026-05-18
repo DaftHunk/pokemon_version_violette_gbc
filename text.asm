@@ -73,13 +73,13 @@ _BoulderText::
 _MartSignText::
 	text "Faites le plein"
 	line "d'objets!"
-	para "Boutique PKMN"
+	para "Boutique #mon"
 	done
 
 _PokeCenterSignText::
 	text "Soignez vos"
 	line "#mon!"
-	para "Centre PKMN"
+	para "Centre #mon"
 	done
 
 _FoundItemText::
