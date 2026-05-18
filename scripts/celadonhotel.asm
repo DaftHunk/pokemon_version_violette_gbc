@@ -17,7 +17,8 @@ CeladonHotelTextPointers:
 	dw CeladonHotelText1
 	dw CeladonHotelText2
 	dw CeladonHotelText3
-	dw CeladonHotelCoinGuy	
+	dw CeladonHotelCoinGuy
+	dw CeladonHotelText_Full
 
 CeladonHotelCoinGuy:
 	TX_ASM
@@ -122,4 +123,8 @@ CeladonHotelCoinGuyText_recieved:
 	
 CeladonHotelCoinGuyText_PC:
 	TX_FAR _CeladonHotelCoinGuyText_PC
+	db "@"
+
+CeladonHotelText_Full:
+	TX_FAR _CeladonHotelText_Full
 	db "@"

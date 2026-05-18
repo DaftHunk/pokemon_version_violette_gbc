@@ -34,7 +34,7 @@ RedsHouse2_Coll::
 
 Mart_Coll::
 Pokecenter_Coll::
-	coll_tiles $11, $1a, $1c, $3c, $5e
+	coll_tiles $11, $1a, $1c, $3c, $5e, $69
 
 Dojo_Coll::
 Gym_Coll::

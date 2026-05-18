@@ -57,3 +57,7 @@ _CeladonHotelCoinGuyText_PC::
 	line "ce coin si tu en"
 	cont "as besoin."
 	done
+
+_CeladonHotelText_Full::
+	text "COMPLET"
+	done
