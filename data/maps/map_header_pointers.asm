@@ -45,7 +45,7 @@ MapHeaderPointers::
 	dw OaksLab_h ;id=40
 	dw ViridianPokecenter_h
 	dw ViridianMart_h
-	dw School_h
+	dw ViridianSchool_h
 	dw ViridianHouse_h
 	dw ViridianGym_h
 	dw DiglettsCaveRoute2_h

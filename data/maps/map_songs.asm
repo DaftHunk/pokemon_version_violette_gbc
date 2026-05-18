@@ -44,7 +44,7 @@ MapSongBanks:
 	db MUSIC_OAKS_LAB,         BANK(Music_OaksLab)         ; OaksLab
 	db MUSIC_POKECENTER,       BANK(Music_Pokecenter)      ; ViridianPokecenter
 	db MUSIC_POKECENTER,       BANK(Music_Pokecenter)      ; ViridianMart
-	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; School
+	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; ViridianSchool
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; ViridianHouse
 	db MUSIC_GIOVANNI_SONG,    BANK(Music_GiovanniSong)    ; ViridianGym
 	db MUSIC_DUNGEON2,         BANK(Music_Dungeon2)        ; DiglettsCaveRoute2

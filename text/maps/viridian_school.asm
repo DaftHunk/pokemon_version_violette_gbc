@@ -1,10 +1,10 @@
-_SchoolText1::
+_ViridianSchoolText1::
 	text "Pfouh! J'essaie"
 	line "d'apprendre mes"
 	cont "leçons."
 	done
 
-_SchoolText2::
+_ViridianSchoolText2::
 	text "OK!"
 
 	para "Lis attentivement"
@@ -13,7 +13,7 @@ _SchoolText2::
 	done
 
 ;joenote - added more explanation
-_SchoolText3::
+_ViridianSchoolText3::
 	text "Abîme."
 	para "Empal'Korne."
 	para "Guillotine."

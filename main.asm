@@ -353,7 +353,7 @@ ViridianHouseBlocks: INCBIN "maps/viridianhouse.blk"
 
 CeladonMansion5Blocks:
 CeladonSchoolBlocks:
-SchoolBlocks: INCBIN "maps/school.blk"
+ViridianSchoolBlocks: INCBIN "maps/viridianschool.blk"
 
 CeruleanHouseTrashedBlocks: INCBIN "maps/ceruleanhousetrashed.blk"
 
@@ -379,9 +379,9 @@ INCLUDE "scripts/viridianmart.asm"
 INCLUDE "data/maps/objects/viridianmart.asm"
 ViridianMartBlocks: INCBIN "maps/viridianmart.blk"
 
-INCLUDE "data/maps/headers/school.asm"
-INCLUDE "scripts/school.asm"
-INCLUDE "data/maps/objects/school.asm"
+INCLUDE "data/maps/headers/viridianschool.asm"
+INCLUDE "scripts/viridianschool.asm"
+INCLUDE "data/maps/objects/viridianschool.asm"
 
 INCLUDE "data/maps/headers/celadonschool.asm"
 INCLUDE "scripts/celadonschool.asm"
