@@ -5,6 +5,9 @@ BikeShopTextPointers:
 	dw BikeShopText1
 	dw BikeShopText2
 	dw BikeShopText3
+	dw BikeShopText_BasketBike
+	dw BikeShopText_Toolbox
+	dw BikeShopText_Gatcha
 
 BikeShopText1:
 	TX_ASM
@@ -148,4 +151,16 @@ BikeShopText_1d85c:
 
 BikeShopText_1d861:
 	TX_FAR _BikeShopText_1d861
+	db "@"
+
+BikeShopText_BasketBike:
+	TX_FAR _BikeShopText_BasketBike
+	db "@"
+
+BikeShopText_Toolbox:
+	TX_FAR _BikeShopText_Toolbox
+	db "@"
+
+BikeShopText_Gatcha:
+	TX_FAR _BikeShopText_Gatcha
 	db "@"

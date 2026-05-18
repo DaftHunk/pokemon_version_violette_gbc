@@ -73,7 +73,29 @@ _BikeShopText_1d85c::
 	done
 
 _BikeShopText_1d861::
-	text "Waou! "
+	text "Waou!"
 	line "Ta Bicyclette est"
 	cont "super cool!"
+	done
+
+_BikeShopText_BasketBike::
+	text "Cette Bicyclette"
+	line "posséde un"
+	cont "porte-bagages."
+
+	para "Très cossu!"
+	done
+
+_BikeShopText_Toolbox::
+	text "Un kit de répa-"
+	line "ration de vélo!"
+	done
+
+_BikeShopText_Gatcha::
+	text "Un pachinko!"
+	line "On joue?"
+
+	para "Oulah, le vendeur"
+	line "n'a pas l'air de"
+	cont "cet avis..."
 	done
