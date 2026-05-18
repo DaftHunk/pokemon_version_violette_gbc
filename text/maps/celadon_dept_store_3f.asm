@@ -145,4 +145,26 @@ _CeladonMart3Blocker::
 	line "vraiment chaud"
 	cont "dans ce costume."
 	done
-	
+
+_CeladonMart3Text_TV1::
+	text "Ces télés passent"
+	line "une émission de"
+	cont "jeu-vidéo!"
+
+	para "Oh une bande"
+	line "annonce d'un jeu"
+	cont "de course de"
+	cont "vaisseaux!"
+	done
+
+_CeladonMart3Text_TV2::
+	text "Ces télés passent"
+	line "une émission de"
+	cont "jeu-vidéo!"
+
+	para "Oh une bande"
+	line "annonce d'un jeu"
+	cont "de rôle avec un"
+	cont "héro en costume"
+	cont "vert!"
+	done

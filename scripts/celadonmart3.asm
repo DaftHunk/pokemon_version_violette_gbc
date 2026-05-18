@@ -35,7 +35,8 @@ CeladonMart3TextPointers:
 	dw CeladonMart3Text17
 	dw CeladonMart3Text6	;joenote - these two moved to position 18 and 19
 	dw CeladonMart3Text7
-
+	dw CeladonMart3Text_TV1
+	dw CeladonMart3Text_TV2
 
 CeladonMart3Text1:
 	TX_ASM
@@ -125,4 +126,12 @@ CeladonMart3Text15:
 	db "@"
 CeladonMart3BlockerText:
 	TX_FAR _CeladonMart3Blocker
+	db "@"
+
+CeladonMart3Text_TV1:
+	TX_FAR _CeladonMart3Text_TV1
+	db "@"
+
+CeladonMart3Text_TV2:
+	TX_FAR _CeladonMart3Text_TV2
 	db "@"

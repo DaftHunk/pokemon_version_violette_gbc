@@ -6,7 +6,7 @@ CeladonMart3Object:
 	warp 16, 1, 1, CELADON_MART_2F
 	warp 1, 1, 0, CELADON_MART_ELEVATOR
 
-	db 12 ; signs
+	db 14 ; signs
 	sign 2, 4, 18 ; CeladonMart3Text6	;joenote - reassign to position 18
 	sign 3, 4, 19 ; CeladonMart3Text7	;joenote - reassign to position 19
 	sign 5, 4, 8 ; CeladonMart3Text8
@@ -19,6 +19,8 @@ CeladonMart3Object:
 	sign 4, 1, 15 ; CeladonMart3Text15
 	sign 6, 1, 16 ; CeladonMart3Text16
 	sign 10, 1, 17 ; CeladonMart3Text17
+	sign 18, 2, 20 ; CeladonMart3Text_TV1
+	sign 19, 2, 21 ; CeladonMart3Text_TV2
 
 	db 7 ; objects	;joenote - added a new mart guy & blocker sprite for him
 	object SPRITE_MART_GUY, 16, 5, STAY, NONE, 1 ; person
