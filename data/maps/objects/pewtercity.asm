@@ -11,13 +11,13 @@ PewterCityObject:
 	warp 13, 25, 0, PEWTER_POKECENTER
 
 	db 7 ; signs
-	sign 19, 29, 6 ; PewterCityText6
-	sign 33, 19, 7 ; PewterCityText7
+	sign 17, 31, 6 ; PewterCityText6
+	sign 34, 16, 7 ; PewterCityText7
 	sign 24, 17, 8 ; MartSignText
 	sign 14, 25, 9 ; PokeCenterSignText
-	sign 15, 9, 10 ; PewterCityText10
+	sign 12,  7, 10 ; PewterCityText10
 	sign 11, 17, 11 ; PewterCityText11
-	sign 25, 23, 12 ; PewterCityText12
+	sign 18, 22, 12 ; PewterCityText12
 
 	db 5 ; objects
 	object SPRITE_LASS, 8, 15, STAY, NONE, 1 ; person
