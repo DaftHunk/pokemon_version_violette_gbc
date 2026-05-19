@@ -16,12 +16,12 @@ _VermilionJennyAfterBattleText1::
 	cont "d'autre."
 	done
 
-_VermilionCityText_198a7::
+_VermilionCityText_SSAnneSeen::
 	text "As-tu vu"
 	line "l'Océane au port?"
 	done
 
-_VermilionCityText_198ac::	
+_VermilionCityText_SSAnneGone::
 	text "L'Océane a"
 	line "levé l'ancre!"
 
@@ -29,7 +29,7 @@ _VermilionCityText_198ac::
 	line "après la Ligue."
 	done
 
-_VermilionCityText_annereturns::	;joenote - added text
+_VermilionCityText_SSAnneReturn:: ;joenote - added text
 	text "L'Océane est"
 	line "de retour!"
 
@@ -38,12 +38,12 @@ _VermilionCityText_annereturns::	;joenote - added text
 	cont "Sevii!"
 	done
 
-_SSAnneWelcomeText4::
+_VermilionCityText_SSAnneWelcome::
 	text "Bienvenue à bord"
 	line "de l'Océane!"
 	done
 
-_SSAnneWelcomeText9::
+_VermilionCityText_SSAnneWelcomeTicket::
 	text "Bienvenue à bord"
 	line "de l'Océane!"
 
@@ -51,7 +51,7 @@ _SSAnneWelcomeText9::
 	line "votre passe?"
 	prompt
 
-_SSAnneFlashedTicketText::
+_VermilionCityText_SSAnneFlashedTicket::
 	text "<PLAYER> montre"
 	line "le passe et crâne"
 	cont "à mort!"
@@ -60,7 +60,7 @@ _SSAnneFlashedTicketText::
 	line "Bienvenue à bord!"
 	done
 
-_SSAnneNoTicketText::
+_VermilionCityText_SSAnneNoTicket::
 	text "<PLAYER> n'a pas"
 	line "de passe!"
 
@@ -71,7 +71,7 @@ _SSAnneNoTicketText::
 	cont "à bord."
 	done
 
-_SSAnneNotHereText::
+_VermilionCityText_SSAnneNotHere::
 	text "L'Océane a"
 	line "levé l'ancre."
 
@@ -79,7 +79,7 @@ _SSAnneNotHereText::
 	line "aprés la Ligue!"
 	done
 
-_VermilionCityText4::
+_VermilionCityText_NPCMachoc::
 	text "Je construis un"
 	line "immeuble sur ce"
 	cont "terrain."
@@ -88,17 +88,17 @@ _VermilionCityText4::
 	line "dament le sol."
 	done
 
-_VermilionCityText5::
+_VermilionCityText_MachocCry::
 	text "Machoc: Maaaaa!"
 	line "Machoooo!"
 	prompt
 
-_VermilionCityText14::
+_VermilionCityText_Machoc::
 	text "Un Machoc"
 	line "pilonne le sol."
 	prompt
 
-_VermilionCityText6::
+_VermilionCityText_NPCSSAnne::
 	text "L'Océane est"
 	line "un paquebot de"
 	cont "luxe."
@@ -108,14 +108,14 @@ _VermilionCityText6::
 	cont "une fois par an."
 	done
 
-_VermilionCityText7::
+_VermilionCityText_Town::
 	text "Carmin sur mer"
 	line "Le port aux"
 	cont "crépuscules"
 	cont "flamboyants"
 	done
 
-_VermilionCityText8::
+_VermilionCityText_PoliceAlert::
 	text "AVIS!"
 
 	para "La Route 12 peut"
@@ -131,14 +131,14 @@ _VermilionCityText8::
 	line "Sur Mer"
 	done
 
-_VermilionCityText11::
+_VermilionCityText_FanClub::
 	text "Fan Club #mon"
 	line "Tous les dingues"
 	cont "de #mon sont"
 	cont "bienvenus!"
 	done
 
-_VermilionCityText12::
+_VermilionCityText_Gym::
 	text "Carmin sur mer"
 	line "Arène #mon"
 	cont "Champion:"
@@ -148,11 +148,11 @@ _VermilionCityText12::
 	line "Survolté!"
 	done
 
-_VermilionCityText13::
+_VermilionCityText_Docks::
 	text "Port de Carmin"
 	done
 
-_VermilionPKMNText::
+_VermilionCityText_PokemonBlock::
 	text "Un #mon se"
 	line "prélasse au"
 	cont "soleil."

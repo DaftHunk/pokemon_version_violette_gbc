@@ -63,10 +63,10 @@ VermilionCityScript0:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	CheckEvent EVENT_ELITE_4_BEATEN ;joenote - override the blocking guy if you beat the elite 4
-	jr nz, .ssane_returns3	;joenote - jump...
+	jr nz, .displayReturn3	;joenote - jump...
 	CheckEvent EVENT_SS_ANNE_LEFT
 	jr nz, .asm_19810
-.ssane_returns3	;joenote - ...to here
+.displayReturn3	;joenote - ...to here
 	ld b, S_S_TICKET
 	predef GetQuantityOfItemInBag
 	ld a, b
@@ -128,21 +128,21 @@ VermilionCityScript1:
 	ld [wVermilionCityCurScript], a
 	ret
 
-VermilionCityTextPointers:	
+VermilionCityTextPointers:
 	dw VermilionCityJennyText
-	dw VermilionCityText2
-	dw VermilionCityText3
-	dw VermilionCityText4
-	dw VermilionCityText5
-	dw VermilionCityText6
-	dw VermilionPKMNText
-	dw VermilionCityText8
+	dw VermilionCityText_SSAnneStatusHint
+	dw VermilionCityText_Main
+	dw VermilionCityText_NPCMachoc
+	dw VermilionCityText_MachocCry
+	dw VermilionCityText_NPCSSAnne
+	dw VermilionCityText_PokemonBlock
+	dw VermilionCityText_PoliceAlert
 	dw MartSignText
 	dw PokeCenterSignText
-	dw VermilionCityText11
-	dw VermilionCityText12
-	dw VermilionCityText13
-	dw VermilionCityText7;joenote - moved this to position 14
+	dw VermilionCityText_FanClub
+	dw VermilionCityText_Gym
+	dw VermilionCityText_Docks
+	dw VermilionCityText_Town;joenote - moved this to position 14
 
 VermilionCityJennyText:
 	TX_ASM
@@ -183,44 +183,44 @@ VermilionCityJennyAfterBattleText:
 	TX_FAR _VermilionJennyAfterBattleText1
 	db "@"
 
-VermilionCityText2:
+VermilionCityText_SSAnneStatusHint:
 	TX_ASM
 	CheckEvent EVENT_ELITE_4_BEATEN ;joenote - add text for SS ANNE returning
-	jr nz, .ssane_returns
+	jr nz, .displayReturn
 	CheckEvent EVENT_SS_ANNE_LEFT
-	jr nz, .asm_1989e
-	ld hl, VermilionCityText_198a7
+	jr nz, .displayGone
+	ld hl, VermilionCityText_SSAnneSeen
 	call PrintText
-	jr .asm_198a4
-.ssane_returns	;joenote - add text for SS ANNE returning
-	ld hl, VermilionCityText_annereturns
+	jr .endScript
+.displayReturn	;joenote - add text for SS ANNE returning
+	ld hl, VermilionCityText_SSAnneReturn
 	call PrintText
-	jr .asm_198a4
-.asm_1989e
-	ld hl, VermilionCityText_198ac
+	jr .endScript
+.displayGone
+	ld hl, VermilionCityText_SSAnneGone
 	call PrintText
-.asm_198a4
+.endScript
 	jp TextScriptEnd
 
-VermilionCityText_198a7:
-	TX_FAR _VermilionCityText_198a7
+VermilionCityText_SSAnneSeen:
+	TX_FAR _VermilionCityText_SSAnneSeen
 	db "@"
 
-VermilionCityText_198ac:
-	TX_FAR _VermilionCityText_198ac
+VermilionCityText_SSAnneGone:
+	TX_FAR _VermilionCityText_SSAnneGone
 	db "@"
 
-VermilionCityText_annereturns:	;joenote - add text for SS ANNE returning
-	TX_FAR _VermilionCityText_annereturns
+VermilionCityText_SSAnneReturn:	;joenote - add text for SS ANNE returning
+	TX_FAR _VermilionCityText_SSAnneReturn
 	db "@"
 
-VermilionCityText3:
+VermilionCityText_Main:
 	TX_ASM
 	CheckEvent EVENT_ELITE_4_BEATEN ;joenote - override the blocking guy if you beat the elite 4
-	jr nz, .ssane_returns2	;joenote - jump...
+	jr nz, .displayReturn2	;joenote - jump...
 	CheckEvent EVENT_SS_ANNE_LEFT
 	jr nz, .asm_198f6
-.ssane_returns2	;joenote - ... to here 
+.displayReturn2	;joenote - ... to here 
 	ld a, [wSpriteStateData1 + 9]
 	cp SPRITE_FACING_RIGHT
 	jr z, .asm_198c8
@@ -228,28 +228,28 @@ VermilionCityText3:
 	call ArePlayerCoordsInArray
 	jr nc, .asm_198d0
 .asm_198c8
-	ld hl, SSAnneWelcomeText4
+	ld hl, VermilionCityText_SSAnneWelcome
 	call PrintText
 	jr .asm_198fc
 .asm_198d0
-	ld hl, SSAnneWelcomeText9
+	ld hl, VermilionCityText_SSAnneWelcomeTicket
 	call PrintText
 	ld b, S_S_TICKET
 	predef GetQuantityOfItemInBag
 	ld a, b
 	and a
 	jr nz, .asm_198e9
-	ld hl, SSAnneNoTicketText
+	ld hl, VermilionCityText_SSAnneNoTicket
 	call PrintText
 	jr .asm_198fc
 .asm_198e9
-	ld hl, SSAnneFlashedTicketText
+	ld hl, VermilionCityText_SSAnneFlashedTicket
 	call PrintText
 	ld a, $4
 	ld [wVermilionCityCurScript], a
 	jr .asm_198fc
 .asm_198f6
-	ld hl, SSAnneNotHereText
+	ld hl, VermilionCityText_SSAnneNotHere
 	call PrintText
 .asm_198fc
 	jp TextScriptEnd
@@ -259,67 +259,67 @@ VermilionCityCoords1:
 	db $1f,$13
 	db $ff
 
-SSAnneWelcomeText4:
-	TX_FAR _SSAnneWelcomeText4
+VermilionCityText_SSAnneWelcome:
+	TX_FAR _VermilionCityText_SSAnneWelcome
 	db "@"
 
-SSAnneWelcomeText9:
-	TX_FAR _SSAnneWelcomeText9
+VermilionCityText_SSAnneWelcomeTicket:
+	TX_FAR _VermilionCityText_SSAnneWelcomeTicket
 	db "@"
 
-SSAnneFlashedTicketText:
-	TX_FAR _SSAnneFlashedTicketText
+VermilionCityText_SSAnneFlashedTicket:
+	TX_FAR _VermilionCityText_SSAnneFlashedTicket
 	db "@"
 
-SSAnneNoTicketText:
-	TX_FAR _SSAnneNoTicketText
+VermilionCityText_SSAnneNoTicket:
+	TX_FAR _VermilionCityText_SSAnneNoTicket
 	db "@"
 
-SSAnneNotHereText:
-	TX_FAR _SSAnneNotHereText
+VermilionCityText_SSAnneNotHere:
+	TX_FAR _VermilionCityText_SSAnneNotHere
 	db "@"
 
-VermilionCityText4:
-	TX_FAR _VermilionCityText4
+VermilionCityText_NPCMachoc:
+	TX_FAR _VermilionCityText_NPCMachoc
 	db "@"
 
-VermilionCityText5:
-	TX_FAR _VermilionCityText5
+VermilionCityText_MachocCry:
+	TX_FAR _VermilionCityText_MachocCry
 	TX_ASM
 	ld a, MACHOP
 	call DisplayPokedex
-	ld hl, VermilionCityText14
+	ld hl, VermilionCityText_Machoc
 	call PrintText
 	jp TextScriptEnd
 
-VermilionCityText14:
-	TX_FAR _VermilionCityText14
+VermilionCityText_Machoc:
+	TX_FAR _VermilionCityText_Machoc
 	db "@"
 
-VermilionCityText6:
-	TX_FAR _VermilionCityText6
+VermilionCityText_NPCSSAnne:
+	TX_FAR _VermilionCityText_NPCSSAnne
 	db "@"
 
-VermilionCityText7:
-	TX_FAR _VermilionCityText7
+VermilionCityText_Town:
+	TX_FAR _VermilionCityText_Town
 	db "@"
 
-VermilionCityText8:
-	TX_FAR _VermilionCityText8
+VermilionCityText_PoliceAlert:
+	TX_FAR _VermilionCityText_PoliceAlert
 	db "@"
 
-VermilionCityText11:
-	TX_FAR _VermilionCityText11
+VermilionCityText_FanClub:
+	TX_FAR _VermilionCityText_FanClub
 	db "@"
 
-VermilionCityText12:
-	TX_FAR _VermilionCityText12
+VermilionCityText_Gym:
+	TX_FAR _VermilionCityText_Gym
 	db "@"
 
-VermilionCityText13:
-	TX_FAR _VermilionCityText13
+VermilionCityText_Docks:
+	TX_FAR _VermilionCityText_Docks
 	db "@"
 
-VermilionPKMNText:
-	TX_FAR _VermilionPKMNText
+VermilionCityText_PokemonBlock:
+	TX_FAR _VermilionCityText_PokemonBlock
 	db "@"
