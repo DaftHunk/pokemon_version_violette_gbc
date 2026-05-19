@@ -13,7 +13,7 @@ FuchsiaCityObject:
 	warp 31, 24, 0, FUCHSIA_GOOD_ROD_HOUSE
 
 	db 14 ; signs
-	sign 20, 20, 11 ; FuchsiaCityText_Town
+	sign 20, 19, 11 ; FuchsiaCityText_Town
 	sign 21, 13, 12 ; FuchsiaCityText_Museum
 	sign 17,  3, 13 ; FuchsiaCityText_Safari
 	sign  6, 13, 14 ; MartSignText
