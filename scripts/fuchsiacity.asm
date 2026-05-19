@@ -2,42 +2,42 @@ FuchsiaCityScript:
 	jp EnableAutoTextBoxDrawing
 
 FuchsiaCityTextPointers:
-	dw FuchsiaCityText1
-	dw FuchsiaCityText2
+	dw FuchsiaCityText_DidYouKnow
+	dw FuchsiaCityText_SafariExplain
 	dw FuchsiaCityNicoText
-	dw FuchsiaCityText4
-	dw FuchsiaCityText5
-	dw FuchsiaCityText6
-	dw FuchsiaCityText7
-	dw FuchsiaCityText8
-	dw FuchsiaCityText9
-	dw FuchsiaCityText10
-	dw FuchsiaCityText11
-	dw FuchsiaCityText12
-	dw FuchsiaCityText13
+	dw FuchsiaCityText_FakeVoltorb
+	dw FuchsiaCityText_Pokemon
+	dw FuchsiaCityText_Pokemon
+	dw FuchsiaCityText_Pokemon
+	dw FuchsiaCityText_Pokemon
+	dw FuchsiaCityText_Pokemon
+	dw FuchsiaCityText_Pokemon
+	dw FuchsiaCityText_Town
+	dw FuchsiaCityText_Museum
+	dw FuchsiaCityText_Safari
 	dw MartSignText
 	dw PokeCenterSignText
-	dw FuchsiaCityText16
-	dw FuchsiaCityText17
-	dw FuchsiaCityText18
-	dw FuchsiaCityText19
-	dw FuchsiaCityText20
-	dw FuchsiaCityText21
-	dw FuchsiaCityText22
-	dw FuchsiaCityText23
-	dw FuchsiaCityText24
+	dw FuchsiaCityText_Warden
+	dw FuchsiaCityText_Zoo
+	dw FuchsiaCityText_Gym
+	dw FuchsiaCityText_DisplayChansey
+	dw FuchsiaCityText_DisplayVoltorb
+	dw FuchsiaCityText_DisplayKangaskhan
+	dw FuchsiaCityText_DisplaySlowpoke
+	dw FuchsiaCityText_DisplayLapras
+	dw FuchsiaCityText_DisplayFossile
 
-FuchsiaCityText1:
-	TX_FAR _FuchsiaCityText1
+FuchsiaCityText_DidYouKnow:
+	TX_FAR _FuchsiaCityText_DidYouKnow
 	db "@"
 
-FuchsiaCityText2:
-	TX_FAR _FuchsiaCityText2
+FuchsiaCityText_SafariExplain:
+	TX_FAR _FuchsiaCityText_SafariExplain
 	db "@"
 
 FuchsiaCityNicoText:
 	TX_ASM
-	ld hl, FuchsiaCityNicoSearchText
+	ld hl, FuchsiaCityText_NicoSearch
 	
 	CheckEvent EVENT_JULIA_MEET
 	jr nz, .nicoJoinJulia
@@ -45,7 +45,7 @@ FuchsiaCityNicoText:
 	call PrintText
 	jr .endScript
 .nicoJoinJulia
-	ld hl, FuchsiaCityNicoFoundText
+	ld hl, FuchsiaCityText_NicoFound
 	call PrintText
 
 	call GBFadeOutToBlack
@@ -64,139 +64,130 @@ FuchsiaCityNicoText:
 .endScript
 	jp TextScriptEnd
 
-FuchsiaCityNicoSearchText:
-	TX_FAR _FuchsiaCityNicoSearchText
+FuchsiaCityText_NicoSearch:
+	TX_FAR _FuchsiaCityText_NicoSearch
 	db "@"
 
-FuchsiaCityText4:
-	TX_FAR _FuchsiaCityText4
+FuchsiaCityText_FakeVoltorb:
+	TX_FAR _FuchsiaCityText_FakeVoltorb
 	db "@"
 
-FuchsiaCityText5:
-FuchsiaCityText6:
-FuchsiaCityText7:
-FuchsiaCityText8:
-FuchsiaCityText9:
-FuchsiaCityText10:
-	TX_FAR _FuchsiaCityText5
+FuchsiaCityText_Pokemon:
+	TX_FAR _FuchsiaCityText_Pokemon
 	db "@"
 
-FuchsiaCityText12:
-FuchsiaCityText11:
-	TX_FAR _FuchsiaCityText11
+FuchsiaCityText_Town:
+	TX_FAR _FuchsiaCityText_Town
 	db "@"
 
-FuchsiaCityText13:
-	TX_FAR _FuchsiaCityText13
+FuchsiaCityText_Museum:
+	TX_FAR _FuchsiaCityText_Museum
 	db "@"
 
-FuchsiaCityText16:
-	TX_FAR _FuchsiaCityText16
+FuchsiaCityText_Safari:
+	TX_FAR _FuchsiaCityText_Safari
 	db "@"
 
-FuchsiaCityText17:
-	TX_FAR _FuchsiaCityText17
+FuchsiaCityText_Warden:
+	TX_FAR _FuchsiaCityText_Warden
 	db "@"
 
-FuchsiaCityText18:
-	TX_FAR _FuchsiaCityText18
+FuchsiaCityText_Zoo:
+	TX_FAR _FuchsiaCityText_Zoo
 	db "@"
 
-FuchsiaCityText19:
+FuchsiaCityText_Gym:
+	TX_FAR _FuchsiaCityText_Gym
+	db "@"
+
+FuchsiaCityText_DisplayChansey:
 	TX_ASM
-	ld hl, FuchsiaCityChanseyText
+	ld hl, .fuchsiaCityText_ZooChansey
 	call PrintText
 	ld a, CHANSEY
 	call DisplayPokedex
 	jp TextScriptEnd
 
-FuchsiaCityChanseyText:
-	TX_FAR _FuchsiaCityChanseyText
+.fuchsiaCityText_ZooChansey
+	TX_FAR _FuchsiaCityText_ZooChansey
 	db "@"
 
-FuchsiaCityText20:
+FuchsiaCityText_DisplayVoltorb:
 	TX_ASM
-	ld hl, FuchsiaCityVoltorbText
+	ld hl, .fuchsiaCityText_ZooVoltorb
 	call PrintText
 	ld a, VOLTORB
 	call DisplayPokedex
 	jp TextScriptEnd
 
-FuchsiaCityVoltorbText:
-	TX_FAR _FuchsiaCityVoltorbText
+.fuchsiaCityText_ZooVoltorb
+	TX_FAR FuchsiaCityText_ZooVoltorb
 	db "@"
 
-FuchsiaCityText21:
+FuchsiaCityText_DisplayKangaskhan:
 	TX_ASM
-	ld hl, FuchsiaCityKangaskhanText
+	ld hl, .fuchsiaCityText_ZooKangaskhan
 	call PrintText
 	ld a, KANGASKHAN
 	call DisplayPokedex
 	jp TextScriptEnd
 
-FuchsiaCityKangaskhanText:
-	TX_FAR _FuchsiaCityKangaskhanText
+.fuchsiaCityText_ZooKangaskhan
+	TX_FAR _FuchsiaCityText_ZooKangaskhan
 	db "@"
 
-FuchsiaCityText22:
+FuchsiaCityText_DisplaySlowpoke:
 	TX_ASM
-	ld hl, FuchsiaCitySlowpokeText
+	ld hl, .fuchsiaCityText_ZooSlowpoke
 	call PrintText
 	ld a, SLOWPOKE
 	call DisplayPokedex
 	jp TextScriptEnd
 
-FuchsiaCitySlowpokeText:
-	TX_FAR _FuchsiaCitySlowpokeText
+.fuchsiaCityText_ZooSlowpoke
+	TX_FAR _FuchsiaCityText_ZooSlowpoke
 	db "@"
 
-FuchsiaCityText23:
+FuchsiaCityText_DisplayLapras:
 	TX_ASM
-	ld hl, FuchsiaCityLaprasText
+	ld hl, .fuchsiaCityText_ZooLapras
 	call PrintText
 	ld a, LAPRAS
 	call DisplayPokedex
 	jp TextScriptEnd
 
-FuchsiaCityLaprasText:
-	TX_FAR _FuchsiaCityLaprasText
+.fuchsiaCityText_ZooLapras
+	TX_FAR _FuchsiaCityText_ZooLapras
 	db "@"
 
-FuchsiaCityText24:
+FuchsiaCityText_DisplayFossile:
 	TX_ASM
-	CheckEvent EVENT_GOT_DOME_FOSSIL
-	jr nz, .displayOmanyte
+	; If player get Omanyte show Kabuto
 	CheckEventReuseA EVENT_GOT_HELIX_FOSSIL
 	jr nz, .displayKabuto
-	ld hl, FuchsiaCityText_19b2a
-	call PrintText
-	jr .endScript
-.displayOmanyte
-	ld hl, FuchsiaCityOmanyteText
+	; Else show Omanyte
+	ld hl, .fuchsiaCityText_ZooOmanyte
 	call PrintText
 	ld a, OMANYTE
 	jr .displayDex
 .displayKabuto
-	ld hl, FuchsiaCityKabutoText
+	ld hl, .fuchsiaCityText_ZooKabuto
 	call PrintText
 	ld a, KABUTO
+; fallthough
 .displayDex
 	call DisplayPokedex
 .endScript
 	jp TextScriptEnd
 
-FuchsiaCityOmanyteText:
-	TX_FAR _FuchsiaCityOmanyteText
+.fuchsiaCityText_ZooOmanyte
+	TX_FAR _FuchsiaCityText_ZooOmanyte
 	db "@"
 
-FuchsiaCityKabutoText:
-	TX_FAR _FuchsiaCityKabutoText
+.fuchsiaCityText_ZooKabuto
+	TX_FAR _FuchsiaCityText_ZooKabuto
 	db "@"
 
-FuchsiaCityText_19b2a:
-	TX_FAR _FuchsiaCityText_19b2a
-	db "@"
-
-FuchsiaCityNicoFoundText:
-	TX_FAR _FuchsiaCityNicoFoundText
+FuchsiaCityText_NicoFound:
+	TX_FAR _FuchsiaCityText_NicoFound
 	db "@"

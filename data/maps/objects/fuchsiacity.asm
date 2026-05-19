@@ -2,31 +2,31 @@ FuchsiaCityObject:
 	db $f ; border block
 
 	db 9 ; warps
-	warp 5, 13, 0, FUCHSIA_MART
+	warp  5, 13, 0, FUCHSIA_MART
 	warp 11, 27, 0, FUCHSIA_BILLS_GRANDPAS_HOUSE
 	warp 19, 27, 0, FUCHSIA_POKECENTER
 	warp 27, 27, 0, WARDENS_HOUSE
-	warp 18, 3, 0, SAFARI_ZONE_ENTRANCE
-	warp 5, 27, 0, FUCHSIA_GYM
+	warp 18,  3, 0, SAFARI_ZONE_ENTRANCE
+	warp  5, 27, 0, FUCHSIA_GYM
 	warp 22, 13, 0, FUCHSIA_MEETING_ROOM
 	warp 31, 27, 1, FUCHSIA_GOOD_ROD_HOUSE
 	warp 31, 24, 0, FUCHSIA_GOOD_ROD_HOUSE
 
 	db 14 ; signs
-	sign 15, 23, 11 ; FuchsiaCityText11
-	sign 25, 15, 12 ; FuchsiaCityText12
-	sign 17, 5, 13 ; FuchsiaCityText13
-	sign 6, 13, 14 ; MartSignText
+	sign 20, 20, 11 ; FuchsiaCityText_Town
+	sign 21, 13, 12 ; FuchsiaCityText_Museum
+	sign 17,  3, 13 ; FuchsiaCityText_Safari
+	sign  6, 13, 14 ; MartSignText
 	sign 20, 27, 15 ; PokeCenterSignText
-	sign 27, 29, 16 ; FuchsiaCityText16
-	sign 21, 15, 17 ; FuchsiaCityText17
-	sign 5, 29, 18 ; FuchsiaCityText18
-	sign 33, 7, 19 ; FuchsiaCityText19
-	sign 27, 7, 20 ; FuchsiaCityText20
-	sign 13, 7, 21 ; FuchsiaCityText21
-	sign 31, 13, 22 ; FuchsiaCityText22
-	sign 13, 15, 23 ; FuchsiaCityText23
-	sign 7, 7, 24 ; FuchsiaCityText24
+	sign 27, 29, 16 ; FuchsiaCityText_Warden
+	sign 21, 16, 17 ; FuchsiaCityText_Zoo
+	sign  5, 29, 18 ; FuchsiaCityText_Gym
+	sign 33,  7, 19 ; FuchsiaCityText_DisplayChansey
+	sign 27,  7, 20 ; FuchsiaCityText_DisplayVoltorb
+	sign 13,  7, 21 ; FuchsiaCityText_DisplayKangaskhan
+	sign 31, 13, 22 ; FuchsiaCityText_DisplaySlowpoke
+	sign 13, 15, 23 ; FuchsiaCityText_DisplayLapras
+	sign  7,  7, 24 ; FuchsiaCityText_DisplayFossile
 
 	db 10 ; objects
 	object SPRITE_BUG_CATCHER, 10, 12, WALK, 2, 1 ; person
