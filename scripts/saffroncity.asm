@@ -2,123 +2,123 @@ SaffronCityScript:
 	jp EnableAutoTextBoxDrawing
 
 SaffronCityTextPointers:
-	dw SaffronCityText1
-	dw SaffronCityText2
-	dw SaffronCityText3
-	dw SaffronCityText4
-	dw SaffronCityText5
-	dw SaffronCityText6
-	dw SaffronCityText7
-	dw SaffronCityText8
-	dw SaffronCityText9
-	dw SaffronCityText10
-	dw SaffronCityText11
-	dw SaffronCityText12
-	dw SaffronCityText13
-	dw SaffronCityText14
-	dw SaffronCityText15
-	dw SaffronCityText16
-	dw SaffronCityText17
-	dw SaffronCityText18
+	dw SaffronCityText_NPCRocket1
+	dw SaffronCityText_NPCRocket2
+	dw SaffronCityText_NPCRocket3
+	dw SaffronCityText_NPCRocket4
+	dw SaffronCityText_NPCRocket5
+	dw SaffronCityText_NPCRocket6
+	dw SaffronCityText_NPCRocket7
+	dw SaffronCityText_NPCRocketCongrat
+	dw SaffronCityText_NPCRocketGone
+	dw SaffronCityText_NPCPeopleComeBack
+	dw SaffronCityText_BirdGuy
+	dw SaffronCityText_Bird
+	dw SaffronCityText_GiovanniFlee
+	dw SaffronCityText_RocketGuard
+	dw SaffronCityText_RocketGuardSleep
+	dw SaffronCityText_Town
+	dw SaffronCityText_Dojo
+	dw SaffronCityText_Gym
 	dw MartSignText
-	dw SaffronCityText20
-	dw SaffronCityText21
-	dw SaffronCityText22
+	dw SaffronCityText_TipTotalHeal
+	dw SaffronCityText_TipCatch
+	dw SaffronCityText_SylphSarl
 	dw PokeCenterSignText
-	dw SaffronCityText24
-	dw SaffronCityText25
+	dw SaffronCityText_MrPsyHouse
+	dw SaffronCityText_SylphPromo
 
-SaffronCityText1:
-	TX_FAR _SaffronCityText1
+SaffronCityText_NPCRocket1:
+	TX_FAR _SaffronCityText_NPCRocket1
 	db "@"
 
-SaffronCityText2:
-	TX_FAR _SaffronCityText2
+SaffronCityText_NPCRocket2:
+	TX_FAR _SaffronCityText_NPCRocket2
 	db "@"
 
-SaffronCityText3:
-	TX_FAR _SaffronCityText3
+SaffronCityText_NPCRocket3:
+	TX_FAR _SaffronCityText_NPCRocket3
 	db "@"
 
-SaffronCityText4:
-	TX_FAR _SaffronCityText4
+SaffronCityText_NPCRocket4:
+	TX_FAR _SaffronCityText_NPCRocket4
 	db "@"
 
-SaffronCityText5:
-	TX_FAR _SaffronCityText5
+SaffronCityText_NPCRocket5:
+	TX_FAR _SaffronCityText_NPCRocket5
 	db "@"
 
-SaffronCityText6:
-	TX_FAR _SaffronCityText6
+SaffronCityText_NPCRocket6:
+	TX_FAR _SaffronCityText_NPCRocket6
 	db "@"
 
-SaffronCityText7:
-	TX_FAR _SaffronCityText7
+SaffronCityText_NPCRocket7:
+	TX_FAR _SaffronCityText_NPCRocket7
 	db "@"
 
-SaffronCityText8:
-	TX_FAR _SaffronCityText8
+SaffronCityText_NPCRocketCongrat:
+	TX_FAR _SaffronCityText_NPCRocketCongrat
 	db "@"
 
-SaffronCityText9:
-	TX_FAR _SaffronCityText9
+SaffronCityText_NPCRocketGone:
+	TX_FAR _SaffronCityText_NPCRocketGone
 	db "@"
 
-SaffronCityText10:
-	TX_FAR _SaffronCityText10
+SaffronCityText_NPCPeopleComeBack:
+	TX_FAR _SaffronCityText_NPCPeopleComeBack
 	db "@"
 
-SaffronCityText11:
-	TX_FAR _SaffronCityText11
+SaffronCityText_BirdGuy:
+	TX_FAR _SaffronCityText_BirdGuy
 	db "@"
 
-SaffronCityText12:
-	TX_FAR _SaffronCityText12
+SaffronCityText_Bird:
+	TX_FAR _SaffronCityText_Bird
 	TX_ASM
 	ld a, PIDGEOT
 	call DisplayPokedex
 	jp TextScriptEnd
 
-SaffronCityText13:
-	TX_FAR _SaffronCityText13
+SaffronCityText_GiovanniFlee:
+	TX_FAR _SaffronCityText_GiovanniFlee
 	db "@"
 
-SaffronCityText14:
-	TX_FAR _SaffronCityText14
+SaffronCityText_RocketGuard:
+	TX_FAR _SaffronCityText_RocketGuard
 	db "@"
 
-SaffronCityText15:
-	TX_FAR _SaffronCityText15
+SaffronCityText_RocketGuardSleep:
+	TX_FAR _SaffronCityText_RocketGuardSleep
 	db "@"
 
-SaffronCityText16:
-	TX_FAR _SaffronCityText16
+SaffronCityText_Town:
+	TX_FAR _SaffronCityText_Town
 	db "@"
 
-SaffronCityText17:
-	TX_FAR _SaffronCityText17
+SaffronCityText_Dojo:
+	TX_FAR _SaffronCityText_Dojo
 	db "@"
 
-SaffronCityText18:
-	TX_FAR _SaffronCityText18
+SaffronCityText_Gym:
+	TX_FAR _SaffronCityText_Gym
 	db "@"
 
-SaffronCityText20:
-	TX_FAR _SaffronCityText20
+SaffronCityText_TipTotalHeal:
+	TX_FAR _SaffronCityText_TipTotalHeal
 	db "@"
 
-SaffronCityText21:
-	TX_FAR _SaffronCityText21
+SaffronCityText_TipCatch:
+	TX_FAR _SaffronCityText_TipCatch
 	db "@"
 
-SaffronCityText22:
-	TX_FAR _SaffronCityText22
+SaffronCityText_SylphSarl:
+	TX_FAR _SaffronCityText_SylphSarl
 	db "@"
 
-SaffronCityText24:
-	TX_FAR _SaffronCityText24
+SaffronCityText_MrPsyHouse:
+	TX_FAR _SaffronCityText_MrPsyHouse
 	db "@"
 
-SaffronCityText25:
-	TX_FAR _SaffronCityText25
+SaffronCityText_SylphPromo:
+	TX_FAR _SaffronCityText_SylphPromo
 	db "@"

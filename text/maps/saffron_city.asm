@@ -1,36 +1,36 @@
-_SaffronCityText1::
+_SaffronCityText_NPCRocket1::
 	text "Kesstu veux?"
 	line "Du vent!"
 	done
 
-_SaffronCityText2::
+_SaffronCityText_NPCRocket2::
 	text "Eul' Chef dit"
 	line "qu'il contrôlera"
 	cont "c'te ville!"
 	done
 
-_SaffronCityText3::
+_SaffronCityText_NPCRocket3::
 	text "Bouge eud' là!"
 	done
 
-_SaffronCityText4::
+_SaffronCityText_NPCRocket4::
 	text "Safrania est à"
 	line "la Team Rocket!"
 	done
 
-_SaffronCityText5::
+_SaffronCityText_NPCRocket5::
 	text "Etre méchant,"
 	line "c'est mieux que"
 	cont "d'se laver les"
 	cont "dents!"
 	done
 
-_SaffronCityText6::
+_SaffronCityText_NPCRocket6::
 	text "Tu m'as marché"
 	line "sul'pied, non?"
 	done
 
-_SaffronCityText7::
+_SaffronCityText_NPCRocket7::
 	text "Avec la Sylphe"
 	line "dans not' poche,"
 	cont "les #mon du"
@@ -39,26 +39,26 @@ _SaffronCityText7::
 	cont "bizness!"
 	done
 
-_SaffronCityText8::
+_SaffronCityText_NPCRocketCongrat::
 	text "T'as tout cassé"
 	line "la Rocket tout"
 	cont "seul? Dingue!"
 	done
 
-_SaffronCityText9::
+_SaffronCityText_NPCRocketGone::
 	text "Ouais! La Team"
 	line "est partie!"
 	cont "On peut enfin"
 	cont "respirer!"
 	done
 
-_SaffronCityText10::
+_SaffronCityText_NPCPeopleComeBack::
 	text "Tout le monde va"
 	line "vite revenir à"
 	cont "Safrania."
 	done
 
-_SaffronCityText11::
+_SaffronCityText_BirdGuy::
 	text "Je suis venu ici"
 	line "en volant sur mon"
 	cont "Roucarnage après"
@@ -71,18 +71,18 @@ _SaffronCityText11::
 	cont "loupé?"
 	done
 
-_SaffronCityText12::
+_SaffronCityText_Bird::
 	text "Roucarnage: Rou!"
 	prompt
 
-_SaffronCityText13::
+_SaffronCityText_GiovanniFlee::
 	text "J'ai vu le Chef"
 	line "de la Team Rocket"
 	cont "s'enfuir de la"
 	cont "Sylphe."
 	done
 
-_SaffronCityText14::
+_SaffronCityText_RocketGuard::
 	text "Moi...."
 	line "Chuis un garde."
 
@@ -92,25 +92,25 @@ _SaffronCityText14::
 	cont "passer!"
 	done
 
-_SaffronCityText15::
+_SaffronCityText_RocketGuardSleep::
 	text "..."
 	line "(pionce)..."
 
 	para "Ha! Il dort!"
 	done
 
-_SaffronCityText16::
+_SaffronCityText_Town::
 	text "Safrania"
 	line "Belle et dorée,"
 	cont "le commerce est"
 	cont "ici prospère"
 	done
 
-_SaffronCityText17::
+_SaffronCityText_Dojo::
 	text "Dojo"
 	done
 
-_SaffronCityText18::
+_SaffronCityText_Gym::
 	text "Safrania"
 	line "Arène #mon"
 	cont "Champion: Morgane"
@@ -119,7 +119,7 @@ _SaffronCityText18::
 	line "forces psychiques"
 	done
 
-_SaffronCityText20::
+_SaffronCityText_TipTotalHeal::
 	text "Astuce"
 
 	para "Total Soin fait"
@@ -134,7 +134,7 @@ _SaffronCityText20::
 	cont "coup."
 	done
 
-_SaffronCityText21::
+_SaffronCityText_TipCatch::
 	text "Astuce"
 
 	para "La Super Ball"
@@ -147,17 +147,17 @@ _SaffronCityText21::
 	cont "très vivaces."
 	done
 
-_SaffronCityText22::
+_SaffronCityText_SylphSarl::
 	text "Sylphe SARL"
 	line "Siège Social"
 	done
 
-_SaffronCityText24::
+_SaffronCityText_MrPsyHouse::
 	text "Maison de"
 	line "Mr. Psy"
 	done
 
-_SaffronCityText25::
+_SaffronCityText_SylphPromo::
 	text "Dernier produit"
 	line "de la Sylphe!"
 

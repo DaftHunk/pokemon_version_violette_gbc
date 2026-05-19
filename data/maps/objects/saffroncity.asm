@@ -11,17 +11,18 @@ SaffronCityObject:
 	warp 9, 29, 0, SAFFRON_POKECENTER
 	warp 29, 29, 0, MR_PSYCHICS_HOUSE
 
-	db 10 ; signs
-	sign 17, 5, 16 ; SaffronCityText16
-	sign 27, 5, 17 ; SaffronCityText17
-	sign 35, 5, 18 ; SaffronCityText18
+	db 11 ; signs
+	sign 17, 5, 16 ; SaffronCityText_Town
+	sign 27, 5, 17 ; SaffronCityText_Dojo
+	sign 35, 5, 18 ; SaffronCityText_Gym
 	sign 26, 11, 19 ; MartSignText
-	sign 39, 19, 20 ; SaffronCityText20
-	sign 5, 21, 21 ; SaffronCityText21
-	sign 15, 21, 22 ; SaffronCityText22
+	sign 39, 19, 20 ; SaffronCityText_TipTotalHeal
+	sign 5, 21, 21 ; SaffronCityText_TipCatch
+	sign 17, 21, 22 ; SaffronCityText_SylphSarl
 	sign 10, 29, 23 ; PokeCenterSignText
-	sign 27, 29, 24 ; SaffronCityText24
-	sign 1, 19, 25 ; SaffronCityText25
+	sign 30, 29, 24 ; SaffronCityText_MrPsyHouse
+	sign 1, 19, 25 ; SaffronCityText_SylphPromo
+	sign 22, 21, 22 ; SaffronCityText_SylphSarl
 
 	db 15 ; objects
 	object SPRITE_ROCKET, 7, 6, STAY, NONE, 1 ; person
