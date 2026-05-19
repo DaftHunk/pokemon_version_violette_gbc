@@ -8,13 +8,14 @@ ViridianCityObject:
 	warp 21, 9, 0, VIRIDIAN_NICKNAME_HOUSE
 	warp 32, 7, 0, VIRIDIAN_GYM
 
-	db 6 ; signs
-	sign 17, 17, 8 ; ViridianCityText8
-	sign 19, 1, 9 ; ViridianCityText9
-	sign 21, 29, 10 ; ViridianCityText10
+	db 7 ; signs
+	sign 16, 16,  8 ; ViridianCityText8
+	sign 16,  2,  9 ; ViridianCityText9
+	sign 19, 31, 10 ; ViridianCityText10
 	sign 30, 19, 11 ; MartSignText
 	sign 24, 25, 12 ; PokeCenterSignText
-	sign 27, 7, 13 ; ViridianCityText13
+	sign 27,  7, 13 ; ViridianCityText13
+	sign 22, 15, 16 ; ViridianCityText_School
 
 	db 7 ; objects
 	object SPRITE_BUG_CATCHER, 13, 20, WALK, 0, 1 ; person

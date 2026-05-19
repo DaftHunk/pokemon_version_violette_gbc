@@ -168,6 +168,7 @@ ViridianCityTextPointers:
 	dw ViridianCityText13
 	dw ViridianCityText14
 	dw ViridianCityText15
+	dw ViridianCityText_School
 
 ViridianCityText1:
 	TX_FAR _ViridianCityText1
@@ -352,4 +353,8 @@ ViridianCityText13:
 
 ViridianCityText14:
 	TX_FAR _ViridianCityText14
+	db "@"
+
+ViridianCityText_School:
+	TX_FAR _ViridianCityText_School
 	db "@"

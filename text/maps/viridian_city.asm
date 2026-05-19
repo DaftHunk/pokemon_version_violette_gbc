@@ -191,3 +191,8 @@ _ViridianCityText14::
 	line "l'Arène sont"
 	cont "fermées..."
 	done
+
+_ViridianCityText_School::
+	text "Ecole de"
+	line "Jadielle"
+	done
