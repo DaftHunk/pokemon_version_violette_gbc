@@ -2186,6 +2186,8 @@ INCLUDE "engine/battle/load_pics.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 INCLUDE "engine/menu/draw_badges.asm"
+INCLUDE "engine/overworld/animated_tiles.asm"
+
 RedPicFront:: INCBIN "gfx/trainer/red.pic"
 ShrinkPic1::  INCBIN "gfx/trainer/shrink1.pic"
 ShrinkPic2::  INCBIN "gfx/trainer/shrink2.pic"
