@@ -26,3 +26,4 @@ const_value = 0
 	const PLATEAU      ; 23
 	const REACTOR      ; 24
 	const VOLCANO      ; 25
+	const ALPHA        ; 26

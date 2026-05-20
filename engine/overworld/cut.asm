@@ -96,6 +96,8 @@ CheckCutTile:	;joenote - consolidate this into its own function
 	ld a, [wCurMapTileset]
 	cp OVERWORLD
 	jr z, .overworld
+	cp ALPHA
+	jr z, .overworld
 	cp GYM
 	jr z, .gym
 	cp PLATEAU	;added plateau

@@ -25,6 +25,7 @@ WarpTileIDPointers:
 	dw PlateauWarpTileIDs
 	dw ReactorWarpTileIDs
 	dw VolcanoWarpTileIDs
+	dw AlphaWarpTileIDs
 
 OverworldWarpTileIDs:
 	db $1B,$58,$FF
@@ -83,9 +84,12 @@ UndergroundWarpTileIDs:
 PlateauWarpTileIDs:
 	db $1B,$3B
 
+VolcanoWarpTileIDs:
+	db $01, $18, $1A, $1F, $4A, $FF
+
+AlphaWarpTileIDs:
+	db $1B,$58,$FF
+
 ShipPortWarpTileIDs:
 ClubWarpTileIDs:
 	db $FF
-
-VolcanoWarpTileIDs:
-	db $01, $18, $1A, $1F, $4A, $FF

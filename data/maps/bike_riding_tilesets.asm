@@ -1,5 +1,5 @@
 BikeRidingTilesets::
-	db OVERWORLD, FOREST, UNDERGROUND, SHIP_PORT, CAVERN, $FF
+	db OVERWORLD, FOREST, UNDERGROUND, SHIP_PORT, CAVERN, ALPHA, $FF
 	
 ;;;;;;;;;; PureRGBnote: ADDED: Allow bike riding in specific maps that dont have any of the above tilesets
 BikeRidingMaps::

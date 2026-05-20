@@ -24,4 +24,5 @@ Tilesets:
 	tileset Facility_Block,    Facility_GFX,    Facility_Coll,    $12,$FF,$FF, $FF, CAVE
 	tileset Plateau_Block,     Plateau_GFX,     Plateau_Coll,     $FF,$FF,$FF, $45, CAVE
 	tileset Reactor_Block,     Reactor_GFX,     Reactor_Coll,     $FF,$FF,$FF, $FF, CAVE
-	tileset Volcano_Block,     Volcano_GFX,     Volcano_Coll,     $FF,$FF,$FF, $FF, CAVE
+	tileset Volcano_Block,     Volcano_GFX,     Volcano_Coll,     $FF,$FF,$FF, $52, CAVE
+	tileset Alpha_Block,       Alpha_GFX,       Alpha_Coll,       $FF,$FF,$FF, $52, OUTDOOR

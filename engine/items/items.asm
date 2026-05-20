@@ -3279,7 +3279,7 @@ WaterTileSetIsNextTileShoreOrWater::
 
 ; tilesets with water
 WaterTilesets:
-	db OVERWORLD, FOREST, DOJO, GYM, SHIP, SHIP_PORT, CAVERN, FACILITY, PLATEAU
+	db OVERWORLD, FOREST, DOJO, GYM, SHIP, SHIP_PORT, CAVERN, FACILITY, PLATEAU, ALPHA
 	db $ff ; terminator
 
 ; reloads map view and processes sprite data
