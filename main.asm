@@ -1195,8 +1195,6 @@ INCLUDE "data/maps/headers/route18.asm"
 INCLUDE "data/maps/objects/route18.asm"
 Route18Blocks: INCBIN "maps/route18.blk"
 
-	INCBIN "maps/unusedblocks58d7d.blk"
-
 INCLUDE "engine/battle/common_text.asm"
 
 INCLUDE "engine/experience.asm"
@@ -1407,8 +1405,6 @@ ViridianForestBlocks:    INCBIN "maps/viridianforest.blk"
 UndergroundPathNSBlocks: INCBIN "maps/undergroundpathns.blk"
 UndergroundPathWEBlocks: INCBIN "maps/undergroundpathwe.blk"
 
-INCBIN "maps/unusedblocks60258.blk"
-
 SSAnne10Blocks:
 SSAnne9Blocks: INCBIN "maps/ssanne9.blk"
 
@@ -1441,8 +1437,6 @@ INCLUDE "data/maps/headers/pokemontower6.asm"
 INCLUDE "scripts/pokemontower6.asm"
 INCLUDE "data/maps/objects/pokemontower6.asm"
 PokemonTower6Blocks: INCBIN "maps/pokemontower6.blk"
-
-INCBIN "maps/unusedblocks60cef.blk"
 
 INCLUDE "data/maps/headers/pokemontower7.asm"
 INCLUDE "scripts/pokemontower7.asm"
@@ -2203,3 +2197,5 @@ Lobby_GFX:         INCBIN "gfx/tilesets/lobby.2bpp"
 Lobby_Block:       INCBIN "gfx/blocksets/lobby.bst"
 Forest_GFX:        INCBIN "gfx/tilesets/forest.2bpp"
 Forest_Block:      INCBIN "gfx/blocksets/forest.bst"
+Alpha_GFX:         INCBIN "gfx/tilesets/alpha.2bpp"
+Alpha_Block:       INCBIN "gfx/blocksets/alpha.bst"

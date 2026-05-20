@@ -4450,6 +4450,18 @@ IsInRestOfArray::
 	scf
 	ret
 
+; Credit PureRGB
+; navigates to index a in an array of bytes in hl and gets the pointer from that index into hl
+GetAddressFromPointerArray::
+	ld d, 0
+	ld e, a
+	add hl, de
+	add hl, de ; 2 bytes per pointer
+GetAddressFromPointer::
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ret
 
 RestoreScreenTilesAndReloadTilePatterns::
 	call ClearSprites
@@ -4684,6 +4696,26 @@ Random_DV::
 	pop de
 	pop hl
 	ret
+
+; Credit Engezerstorung
+GoodCopyVideoData:
+	ldh a, [rLCDC]
+	bit 7, a ; is the LCD enabled?
+	jp nz, CopyVideoData ; if LCD is on, transfer during V-blank
+	ld a, b
+	push hl
+	push de
+	ld h, 0
+	ld l, c
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld b, h
+	ld c, l
+	pop hl
+	pop de
+	jp FarCopyData2 ; if LCD is off, transfer all at once
 
 StatModifierRatios:
 ; first byte is numerator, second byte is denominator
