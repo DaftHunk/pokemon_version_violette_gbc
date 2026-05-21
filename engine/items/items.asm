@@ -3256,7 +3256,7 @@ IsNextTileShoreOrWater:
 WaterTileSetIsNextTileShoreOrWater::
 	ld a, [wCurMapTileset]
 	cp CAVERN ; PureRGBnote: ADDED: fixes an issue with the unused tiles in the cavern tileset causing surf incorrectly (they are used now)
-	jr z, .skipShoreTiles
+	jr z, .cavern
 	cp SHIP_PORT ; Vermilion Dock tileset
 	jr z, .skipShoreTiles ; if it's the Vermilion Dock tileset
 	cp SHIP ; SS Anne tileset
@@ -3276,6 +3276,25 @@ WaterTileSetIsNextTileShoreOrWater::
 .shoreOrWater
 	and a
 	ret
+.cavern
+	ld a, [wCurMap]
+	cp SEAFOAM_ISLANDS_B3F
+	jr z, .currentTiles
+	cp SEAFOAM_ISLANDS_B4F
+	jr z, .currentTiles
+	jr .skipShoreTiles
+.currentTiles
+	; seafoam islands has water current tiles
+	ld a, [wTileInFrontOfPlayer]
+	cp $30
+	jr z, .shoreOrWater
+	cp $3B
+	jr z, .shoreOrWater
+	cp $42
+	jr z, .shoreOrWater
+	cp $43
+	jr z, .shoreOrWater
+	jr .skipShoreTiles
 
 ; tilesets with water
 WaterTilesets:

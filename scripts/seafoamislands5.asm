@@ -1,5 +1,6 @@
 SeafoamIslands5Script:
 	call EnableAutoTextBoxDrawing
+	call SeafoamIslands5OnMapLoad
 	ld a, [wSeafoamIslands5CurScript]
 	ld hl, SeafoamIslands5ScriptPointers
 	jp CallFunctionInTable
@@ -9,6 +10,28 @@ SeafoamIslands5Script_467a5:
 	ld [wSeafoamIslands5CurScript], a
 	ld [wJoyIgnore], a
 	ret
+
+SeafoamIslands5OnMapLoad::
+	ld hl, wCurrentMapScriptFlags
+	bit 5, [hl]
+	res 5, [hl]
+	ret z
+
+	CheckBothEventsSet EVENT_SEAFOAM3_BOULDER1_DOWN_HOLE, EVENT_SEAFOAM3_BOULDER2_DOWN_HOLE
+	call z, Seafoam5ReplaceEastCurrentBlock
+	CheckBothEventsSet EVENT_SEAFOAM4_BOULDER1_DOWN_HOLE, EVENT_SEAFOAM4_BOULDER2_DOWN_HOLE
+	ret nz
+	ld de, Seafoam5CurrentWestHorizontalReplacements
+	ld a, $76
+	ld [wNewTileBlockID], a
+	jpab ReplaceMultipleTileBlockLineHorizontalWithOneBlock
+
+Seafoam5ReplaceEastCurrentBlock:
+	ld a, $76
+	lb bc, 8, 10
+SeafoamReplaceTileBlockEntry:
+	ld [wNewTileBlockID], a
+	jpab ReplaceTileBlockCommon
 
 SeafoamIslands5ScriptPointers:
 	dw SeafoamIslands5Script0

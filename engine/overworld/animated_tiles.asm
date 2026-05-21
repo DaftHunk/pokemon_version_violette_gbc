@@ -12,6 +12,8 @@ AnimateTiles::
 	ret c
 
 	ld a, [wCurMapTileset]
+	cp CAVERN
+	jr z, .seafoamCurrents
 	cp VOLCANO
 	jr nz, .normal
 
@@ -36,7 +38,21 @@ AnimateTiles::
 	cp 21
 	jr nz, AnimateWaterTile
 	jp AnimateFlowerTile
-
+.seafoamCurrents
+	ldh a, [hMovingBGTilesCounter1]
+	inc a
+	ldh [hMovingBGTilesCounter1], a
+	; for whatever reason if we have fast currents on map load it gets visually glitched out
+	; so we'll set it once the map loads in the script file
+	ld hl, wCurrentMapScriptFlags
+	bit 5, [hl]
+	jr nz, .skipQuickCurrent
+	call CheckAnimateSeafoamCurrents
+	ldh a, [hMovingBGTilesCounter1]
+.skipQuickCurrent
+	cp 20
+	ret c
+	; fall through
 ; moves water tile sometimes left and and sometimes right to look like waves
 AnimateWaterTile::
 	ld hl, vTileset + $14 * $10
@@ -155,6 +171,61 @@ LavaBubbleJumpTable:
 	dw LavaBubble2
 	dw LavaBubble3
 	dw LavaBubble4
+
+CheckAnimateSeafoamCurrents:
+	ldh a, [hGBC]
+	and a
+	ldh a, [hMovingBGTilesCounter1]
+	jr z, .slowerCurrents
+	rrca ; every other frame update all the currents on GBC
+	ret c
+	jr AnimateSeafoamCurrents
+.slowerCurrents
+	; when not on GBC we have to animate the currents slower on different frames or vblank goes too long and the tiles get corrupted
+	and %11
+	cp 1
+	jr z, AnimateSeafoamCurrentsDown
+	cp 2
+	jr z, AnimateSeafoamCurrentsRight
+	cp 3
+	jr z, AnimateSeafoamCurrentsUp
+	cp 4
+	jr z, AnimateSeafoamCurrentsLeft
+	ret
+
+AnimateSeafoamCurrents:
+	ld hl, vTileset + $3B * $10 ; right flowing water
+	ld c, $10
+	call ScrollTileRight
+	ld hl, vTileset + $42 * $10 ; down flowing water
+	ld c, $10
+	call ScrollTileDown
+	ld hl, vTileset + $43 * $10 ; left flowing water
+	ld c, $10
+	call ScrollTileLeft
+	ld hl, vTileset + $30 * $10 ; up flowing water
+	ld c, $10
+	jr ScrollTileUp
+
+AnimateSeafoamCurrentsRight:
+	ld hl, vTileset + $3B * $10 ; right flowing water
+	ld c, $10
+	jr ScrollTileRight
+
+AnimateSeafoamCurrentsLeft:
+	ld hl, vTileset + $43 * $10 ; left flowing water
+	ld c, $10
+	jr ScrollTileRight
+
+AnimateSeafoamCurrentsDown:
+	ld hl, vTileset + $42 * $10 ; down flowing water
+	ld c, $10
+	jr ScrollTileDown
+
+AnimateSeafoamCurrentsUp:
+	ld hl, vTileset + $30 * $10 ; up flowing water
+	ld c, $10
+	jr ScrollTileUp
 
 ScrollTileRight:
 	ld c, 16

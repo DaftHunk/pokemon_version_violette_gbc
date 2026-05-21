@@ -1,5 +1,6 @@
 SeafoamIslands4Script:
 	call EnableAutoTextBoxDrawing
+	call SeafoamIslands4OnMapLoad
 	ld hl, wFlags_0xcd60
 	bit 7, [hl]
 	res 7, [hl]
@@ -43,6 +44,20 @@ SeafoamIslands4Script:
 	ld hl, SeafoamIslands4ScriptPointers
 	ld a, [wSeafoamIslands4CurScript]
 	jp CallFunctionInTable
+
+SeafoamIslands4OnMapLoad::
+	ld hl, wCurrentMapScriptFlags
+	bit 5, [hl]
+	res 5, [hl]
+	ret z
+
+	CheckBothEventsSet EVENT_SEAFOAM3_BOULDER1_DOWN_HOLE, EVENT_SEAFOAM3_BOULDER2_DOWN_HOLE
+	ret nz
+	ld de, Seafoam4CurrentWestVerticalReplacements
+	ld a, $76
+	ld [wNewTileBlockID], a
+	jpab ReplaceMultipleTileBlockLineVerticalWithOneBlock
+	ret
 
 Seafoam4HolesCoords:
 	db $10,$03

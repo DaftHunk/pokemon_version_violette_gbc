@@ -1296,6 +1296,10 @@ TilePairCollisionsWater::
 	db FOREST, $48, $2E
 	db CAVERN, $14, $05
 	db CAVERN, $14, $38 ; PureRGBnote: ADDED: collision tiles added for cut content seafoam islands ice ridges that were reintroduced
+	db CAVERN, $3B, $38
+	db CAVERN, $30, $38
+	db CAVERN, $42, $38
+	db CAVERN, $43, $38
 	db GYM	 , $14, $32	;joenote - can't surf into statue base
 	db GYM	 , $14, $33 ;joenote - can't surf into statue base
 	db $FF
