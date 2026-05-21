@@ -865,6 +865,11 @@ DisplayOptionMenu:
 	ld a, $01
 	ld [H_AUTOBGTRANSFERENABLED], a ; enable auto background transfer
 	call Delay3
+
+	ld de, SelectStartGraphics
+	ld hl, vChars1 + $400
+	lb bc, BANK(SelectStartGraphics), (SelectStartGraphicsEnd - SelectStartGraphics) / $10
+	call CopyVideoData
 .loop
 	call PlaceMenuCursor
 	call SetOptionsFromCursorPositions
@@ -1002,8 +1007,9 @@ BattleStyleOptionText:
 OptionMenuCancelText:
 	db "Retour@"
 
-OptionMenuSelectText:	;joenote - text for getting to extra options screen
-	db "SELECT",$E3,$ED,"@"
+OptionMenuSelectText: ;joenote - text for getting to extra options screen
+	db "     ",$C0,$C1,$C2,$ED,"@"
+;	db $C3,$C4,$C5,$E6," ",$C0,$C1,$C2,$ED,"@"
 
 ; sets the options variable according to the current placement of the menu cursors in the options menu
 SetOptionsFromCursorPositions:

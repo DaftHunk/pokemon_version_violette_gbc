@@ -8,14 +8,17 @@ DisplaySoundTestMenu:
 	ld [hJoy7], a
 	
 ;place the static strings for the screen
-	coord hl, 6, 1
-	ld de, SoundTestTextInstructions3
+	coord hl, 4, 1
+	ld de, SoundTitleText
+	call PlaceString
+	coord hl, 1, 12
+	ld de, SoundChangeText
 	call PlaceString
 	coord hl, 1, 14
-	ld de, SoundTestTextInstructions2
+	ld de, SoundPlayText
 	call PlaceString
 	coord hl, 1, 16
-	ld de, SoundTestTextInstructions1
+	ld de, SoundBackNextText
 	call PlaceString
 ;draw text box for the audio track
 	coord hl, 0, 6
@@ -124,12 +127,14 @@ DisplaySoundTestMenu:
 	call PlaceString
 	ret
 	
-SoundTestTextInstructions1:
-	db "A:Jouer   B:Retour@"
-SoundTestTextInstructions2:
+SoundTitleText:
+	db $E4, " Baladeur ", $E4, "@"
+SoundChangeText:
 	db "→:Changer Piste@"
-SoundTestTextInstructions3:
-	db "Baladeur@"
+SoundPlayText:
+	db "A:Jouer@"
+SoundBackNextText:
+	db "B:Retour       ",$C0,$C1,$C2,$ED,"@"
 SoundTestTextBlankTrack:
 	db "                  @"
 SoundTestTrackList:

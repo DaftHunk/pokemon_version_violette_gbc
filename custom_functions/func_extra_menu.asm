@@ -529,7 +529,8 @@ TextGamma:
 TextEnhancedGBC:
 	db " Palette comp.@"
 TextBack:
-	db " Retour   SELECT",$E3,$ED,"@"
+	db " Retour        ",$C0,$C1,$C2,$ED,"@"
+;	db " Retour   ",$C3,$C4,$C5,$E6," ",$C0,$C1,$C2,$ED,"@"
 
 TextLevelCap:
 	db " Niveau max@"

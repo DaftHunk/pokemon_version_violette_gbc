@@ -195,6 +195,9 @@ EXPBarGraphicsEnd:
 StatsGraphics:: INCBIN "gfx/tiles/font_status_screen.2bpp"
 StatsGraphicsEnd::
 
+SelectStartGraphics:: INCBIN "gfx/tiles/select_start.2bpp"
+SelectStartGraphicsEnd::
+
 SECTION "NPC Sprites 2", ROMX, BANK[NPC_SPRITES_2]
 
 RedCyclingSprite:     INCBIN "gfx/sprites/cycling.2bpp"

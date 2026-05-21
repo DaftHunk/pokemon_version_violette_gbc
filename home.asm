@@ -1506,7 +1506,7 @@ DisplayListMenuID::
 	;ld c, 10
 	;call DelayFrames
 
-DisplayListMenuIDLoop::	
+DisplayListMenuIDLoop::
 	xor a
 	ld [H_AUTOBGTRANSFERENABLED], a ; disable transfer
 	call PrintListMenuEntries
@@ -1659,7 +1659,7 @@ DisplayListMenuIDLoop::
 	jp z, DisplayListMenuIDLoop
 	dec [hl]
 	jp DisplayListMenuIDLoop
-.startPressed	
+.startPressed
 	homecall HandleBagData	;joenote - adding swappable bag space and organization
 	jp DisplayListMenuIDLoop
 
@@ -1831,8 +1831,24 @@ ExitListMenu::
 	scf
 	ret
 
+BagSelectText:
+	db $C3,$C4,$C5,"Changer sac@"
+
 PrintListMenuEntries::
-	coord hl, 5, 3
+	ld de, SelectStartGraphics
+	ld hl, vChars1 + $400
+	lb bc, BANK(SelectStartGraphics), (SelectStartGraphicsEnd - SelectStartGraphics) / $10
+	call CopyVideoData
+
+	hlcoord 4, 0
+	lb bc, 1, 14
+	call TextBoxBorder
+
+	hlcoord 5, 1
+	ld de, BagSelectText
+	call PlaceString
+
+	hlcoord 5, 3
 	ld b, 9
 	ld c, 14
 	call ClearScreenArea
