@@ -153,16 +153,6 @@ BillsGarden_ResetScript:
 	ResetEvent EVENT_BEAT_HOOH
 ; reset Marowrath
 	ResetEvent EVENT_BEAT_GHOST_MAROWAK
-; reset Articuno's seafoam islands puzzles
-	ld a, HS_SEAFOAM_ISLANDS_B3F_BOULDER_1
-	call .showstuff
-	ld a, HS_SEAFOAM_ISLANDS_B3F_BOULDER_2
-	call .showstuff
-	ld a, HS_SEAFOAM_ISLANDS_B4F_BOULDER_1
-	call .hidestuff
-	ld a, HS_SEAFOAM_ISLANDS_B4F_BOULDER_2
-	call .hidestuff
-	ResetEvents EVENT_SEAFOAM4_BOULDER1_DOWN_HOLE, EVENT_SEAFOAM4_BOULDER2_DOWN_HOLE
 ; reset Articuno
 	ld a, HS_ARTICUNO
 	call .showstuff
