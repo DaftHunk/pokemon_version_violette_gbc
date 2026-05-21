@@ -821,6 +821,7 @@ SaveScreenInfoText:
 	next "Temps@"
 
 DisplayOptionMenu:
+	call ClearScreen
 	call GBPalNormal	;joenote - fixes rock tunnel darkness affecting option menu
 	coord hl, 0, 0
 	ld b, 3
@@ -883,7 +884,7 @@ DisplayOptionMenu:
 	bit 1, b ; B button pressed?
 	jr nz, .exitMenu
 	bit 3, b ; Start button pressed?
-	jr nz, .exitMenu
+	jr nz, .checkForStart
 	bit 0, b ; A button pressed?
 	jr z, .checkDirectionKeys
 	ld a, [wTopMenuItemY]
@@ -913,6 +914,16 @@ DisplayOptionMenu:
 	bit 5, b ; Left pressed?
 	jp nz, .pressedLeftInTextSpeed
 	jp .pressedRightInTextSpeed
+.checkForStart
+	ld a, [wTopMenuItemY]
+	cp 3 ; cursor in Text Speed section?
+	jp z, .displayTextSpeedInfo
+	cp 8 ; cursor in Battle Animation section?
+	jp z, .displayBattleAnimationInfo
+	cp 13 ; cursor in Battle Style section?
+	jp z, .displayBattleStyleInfo
+	cp 16 ; cursor on Cancel?
+	jp .loop
 .downPressed
 	cp 16
 	ld b, -13
@@ -991,6 +1002,28 @@ DisplayOptionMenu:
 	call ClearScreen
 	callba DisplayExtraOptionMenu
 	jp DisplayOptionMenu
+.displayTextSpeedInfo
+	ld hl, DisplayTextSpeedInfoText
+	jr .endScript
+.displayBattleAnimationInfo
+	ld hl, DisplayBattleAnimationInfoText
+	jr .endScript
+.displayBattleStyleInfo
+	ld hl, DisplayBattleStyleInfoText
+; fallthrough
+.endScript
+	call PrintText
+	jp DisplayOptionMenu
+
+DisplayTextSpeedInfoText:
+	TX_FAR _DisplayTextSpeedInfoText
+	db "@"
+DisplayBattleAnimationInfoText:
+	TX_FAR _DisplayBattleAnimationInfoText
+	db "@"
+DisplayBattleStyleInfoText:
+	TX_FAR _DisplayBattleStyleInfoText
+	db "@"
 
 TextSpeedOptionText:
 	db   "Vit. texte"
@@ -1008,8 +1041,7 @@ OptionMenuCancelText:
 	db "Retour@"
 
 OptionMenuSelectText: ;joenote - text for getting to extra options screen
-	db "     ",$C0,$C1,$C2,$ED,"@"
-;	db $C3,$C4,$C5,$E6," ",$C0,$C1,$C2,$ED,"@"
+	db $C3,$C4,$C5,$E6," ",$C0,$C1,$C2,$ED,"@"
 
 ; sets the options variable according to the current placement of the menu cursors in the options menu
 SetOptionsFromCursorPositions:
