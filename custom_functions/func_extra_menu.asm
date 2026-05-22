@@ -12,6 +12,7 @@ DisplayExtraOptionMenu:
 	ld a, $01
 	ld [H_AUTOBGTRANSFERENABLED], a ; enable auto background transfer
 
+.skipInit
 ;draw text box border for lite options
 	coord hl, 0, 0
 	ld b, 5
@@ -48,7 +49,7 @@ DisplayExtraOptionMenu:
 	bit BIT_B_BUTTON, b ; B button pressed?
 	jp nz, .exitMenu
 	bit BIT_START, b ; Start button pressed?
-	jp nz, .exitMenu
+	jp nz, .checkForStart
 	bit BIT_SELECT, b ; Select button pressed?
 	jp nz, .displaySoundTestMenu
 	bit BIT_A_BUTTON, b ; A button pressed?
@@ -164,6 +165,96 @@ DisplayExtraOptionMenu:
 	call ClearScreen
 	ret
 
+.checkForStart
+	ld a, [wTopMenuItemY]
+	cp $1 ; cursor over audio?
+	jr z, .displayAudioInfo
+	cp $2 ; cursor over FPS?
+	jr z, .displayFPSInfo
+	cp $3 ; cursor over instant text?
+	jr z, .displayInstantTextInfo
+	cp $4 ;cursor over gamma shader?
+	jr z, .displayGammaInfo
+	cp $5 ;cursor over enhanced gbc?
+    jr z, .displayEnhancedGBCInfo
+	cp $8 ; cursor over levelcap?
+	jr z, .displayLevelCapInfo
+	cp $9 ; cursor over hard mode?
+	jr z, .displayHardModeInfo
+	cp $0a ; cursor over nuzlocke?
+	jr z, .displayNuzlockeInfo
+	cp $0b ; cursor over random trainers?
+	jr z, .displayRandomTrainersInfo
+	cp $0c ; cursor over random wild?
+	jr z, .displayRandomWildInfo
+	cp $10 ; is the cursor on Back?
+	jp z, .exitMenu
+	jp .getJoypadStateLoop
+.displayAudioInfo
+	ld hl, DisplayAudioInfoText
+	jr .endScript
+.displayFPSInfo
+	ld hl, DisplayFPSInfoText
+	jr .endScript
+.displayInstantTextInfo
+	ld hl, DisplayInstantTextText
+	jr .endScript
+.displayGammaInfo
+	ld hl, DisplayGammaInfoText
+	jr .endScript
+.displayEnhancedGBCInfo
+	ld hl, DisplayEnhancedGBCInfoText
+	jr .endScript
+.displayLevelCapInfo
+	ld hl, DisplayLevelCapInfoText
+	jr .endScript
+.displayHardModeInfo
+	ld hl, DisplayHardModeInfoText
+	jr .endScript
+.displayNuzlockeInfo
+	ld hl, DisplayNuzlockeInfoText
+	jr .endScript
+.displayRandomTrainersInfo
+	ld hl, DisplayRandomTrainersInfoText
+	jr .endScript
+.displayRandomWildInfo
+	ld hl, DisplayRandomWildInfoText
+; fallthrough
+.endScript
+	call PrintText
+	call ClearScreen
+	jp DisplayExtraOptionMenu.skipInit
+
+DisplayAudioInfoText:
+	TX_FAR _DisplayAudioInfoText
+	db "@"
+DisplayFPSInfoText:
+	TX_FAR _DisplayFPSInfoText
+	db "@"
+DisplayInstantTextText:
+	TX_FAR _DisplayInstantTextText
+	db "@"
+DisplayGammaInfoText:
+	TX_FAR _DisplayGammaInfoText
+	db "@"
+DisplayEnhancedGBCInfoText:
+	TX_FAR _DisplayEnhancedGBCInfoText
+	db "@"
+DisplayLevelCapInfoText:
+	TX_FAR _DisplayLevelCapInfoText
+	db "@"
+DisplayHardModeInfoText:
+	TX_FAR _DisplayHardModeInfoText
+	db "@"
+DisplayNuzlockeInfoText:
+	TX_FAR _DisplayNuzlockeInfoText
+	db "@"
+DisplayRandomTrainersInfoText:
+	TX_FAR _DisplayRandomTrainersInfoText
+	db "@"
+DisplayRandomWildInfoText:
+	TX_FAR _DisplayRandomWildInfoText
+	db "@"
 
 PlaceExtraOptionStrings:
 ;place audio text
@@ -529,8 +620,7 @@ TextGamma:
 TextEnhancedGBC:
 	db " Palette comp.@"
 TextBack:
-	db " Retour        ",$C0,$C1,$C2,$ED,"@"
-;	db " Retour   ",$C3,$C4,$C5,$E6," ",$C0,$C1,$C2,$ED,"@"
+	db " Retour   ",$C3,$C4,$C5,$E6," ",$C0,$C1,$C2,$ED,"@"
 
 TextLevelCap:
 	db " Niveau max@"

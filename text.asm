@@ -2256,32 +2256,6 @@ _ChooseABoxDataWillSaveText::
  	line "Sauvegarde auto.@"
  	text_end
 
-_DisplayTextSpeedInfoText::
-	text "Détermine la"
- 	line "vitesse du texte,"
-	cont "3 étant le plus"
-	cont "rapide."
- 	prompt
-	
-_DisplayBattleAnimationInfoText::
-	text "Afficher les"
- 	line "animations en"
-	cont "combat?"
- 	prompt
-
-_DisplayBattleStyleInfoText::
-	text "Choix: demande de"
- 	line "changer de #-"
-	cont "mon après les KO."
-	cont "Rend le jeu plus"
-	cont "facile."
-
-	para "Défini: vous êtes"
-	line "soumis aux mêmes"
-	cont "règles que votre"
-	cont "adversaire."
- 	prompt
-
 _EvolvedText::
 	text_ram wStringBuffer
 	text " évolue"
