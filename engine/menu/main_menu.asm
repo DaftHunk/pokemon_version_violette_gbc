@@ -844,11 +844,11 @@ DisplayOptionMenu:
 	coord hl, 1, 11
 	ld de, BattleStyleOptionText
 	call PlaceString
-	coord hl, 2, 16
+	coord hl, 0, 16
 	ld de, OptionMenuCancelText
 	call PlaceString
 	
-	coord hl, $B, $10
+	coord hl, 11, 16
 	ld de, OptionMenuSelectText	;joenote - text for getting to extra options screen
 	call PlaceString
 		
@@ -867,9 +867,9 @@ DisplayOptionMenu:
 	ld [H_AUTOBGTRANSFERENABLED], a ; enable auto background transfer
 	call Delay3
 
-	ld de, SelectStartGraphics
+	ld de, KeysLogoGraphics
 	ld hl, vChars1 + $400
-	lb bc, BANK(SelectStartGraphics), (SelectStartGraphicsEnd - SelectStartGraphics) / $10
+	lb bc, BANK(KeysLogoGraphics), (KeysLogoGraphicsEnd - KeysLogoGraphics) / $10
 	call CopyVideoData
 .loop
 	call PlaceMenuCursor
@@ -880,7 +880,6 @@ DisplayOptionMenu:
 	ld b, a
 	and A_BUTTON | B_BUTTON | START | D_RIGHT | D_LEFT | D_UP | D_DOWN ; any key besides select pressed?
 	jp z, .checkSelectPressed
-;	jr z, .getJoypadStateLoop
 	bit 1, b ; B button pressed?
 	jr nz, .exitMenu
 	bit 3, b ; Start button pressed?
@@ -888,8 +887,7 @@ DisplayOptionMenu:
 	bit 0, b ; A button pressed?
 	jr z, .checkDirectionKeys
 	ld a, [wTopMenuItemY]
-	cp 16 ; is the cursor on Cancel?
-	jr nz, .loop
+	jr .loop
 .exitMenu
 	ld a, SFX_PRESS_AB
 	call PlaySound
@@ -908,8 +906,7 @@ DisplayOptionMenu:
 	jr z, .cursorInBattleAnimation
 	cp 13 ; cursor in Battle Style section?
 	jr z, .cursorInBattleStyle
-	cp 16 ; cursor on Cancel?
-	jr z, .loop
+	jr .loop
 .cursorInTextSpeed
 	bit 5, b ; Left pressed?
 	jp nz, .pressedLeftInTextSpeed
@@ -922,11 +919,10 @@ DisplayOptionMenu:
 	jp z, .displayBattleAnimationInfo
 	cp 13 ; cursor in Battle Style section?
 	jp z, .displayBattleStyleInfo
-	cp 16 ; cursor on Cancel?
 	jp .loop
 .downPressed
-	cp 16
-	ld b, -13
+	cp 13
+	ld b, -10
 	ld hl, wOptionsTextSpeedCursorX
 	jr z, .updateMenuVariables
 	ld b, 5
@@ -934,9 +930,6 @@ DisplayOptionMenu:
 	inc hl
 	jr z, .updateMenuVariables
 	cp 8
-	inc hl
-	jr z, .updateMenuVariables
-	ld b, 3
 	inc hl
 	jr .updateMenuVariables
 .upPressed
@@ -947,11 +940,7 @@ DisplayOptionMenu:
 	cp 13
 	inc hl
 	jr z, .updateMenuVariables
-	cp 16
-	ld b, -3
-	inc hl
-	jr z, .updateMenuVariables
-	ld b, 13
+	ld b, 10
 	inc hl
 .updateMenuVariables
 	add b
@@ -1038,7 +1027,7 @@ BattleStyleOptionText:
 	next " Choix    Défini@"
 
 OptionMenuCancelText:
-	db "Retour@"
+	db $C6, $C7, "Retour@"
 
 OptionMenuSelectText: ;joenote - text for getting to extra options screen
 	db $C3,$C4,$C5,$E6," ",$C0,$C1,$C2,$ED,"@"
@@ -1129,10 +1118,6 @@ SetCursorPositionsFromOptions:
 .storeBattleStyleCursorX
 	ld [wOptionsBattleStyleCursorX], a ; battle style cursor X coordinate
 	coord hl, 0, 13
-	call .placeUnfilledRightArrow
-; cursor in front of Cancel
-	coord hl, 0, 16
-	ld a, 1
 .placeUnfilledRightArrow
 	ld e, a
 	ld d, 0

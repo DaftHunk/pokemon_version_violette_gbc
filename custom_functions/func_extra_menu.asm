@@ -77,8 +77,6 @@ DisplayExtraOptionMenu:
 	jr z, .cursorRandomTrainers
 	cp $0c ; cursor over random wild?
 	jr z, .cursorRandomWild
-	cp $10 ; is the cursor on Back?
-	jp z, .exitMenu
 	jr .getJoypadStateLoop
 
 .displaySoundTestMenu
@@ -127,27 +125,21 @@ DisplayExtraOptionMenu:
 	jp nz, .cursor_section
 	jp .getJoypadStateLoop
 .downPressed
-	cp 16
-	ld b, -15
-	jr z, .updateMenuVariables
 	cp 5
 	ld b, 3
 	jr z, .updateMenuVariables
 	cp 12
-	ld b, 4
+	ld b, -11
 	jr z, .updateMenuVariables
 	;else
 	ld b, 1
 	jr .updateMenuVariables
 .upPressed
 	cp 1
-	ld b, 15
+	ld b, 11
 	jr z, .updateMenuVariables
 	cp 8
 	ld b, -3
-	jr z, .updateMenuVariables
-	cp 16
-	ld b, -4
 	jr z, .updateMenuVariables
 	;else
 	ld b, -1
@@ -187,8 +179,6 @@ DisplayExtraOptionMenu:
 	jr z, .displayRandomTrainersInfo
 	cp $0c ; cursor over random wild?
 	jr z, .displayRandomWildInfo
-	cp $10 ; is the cursor on Back?
-	jp z, .exitMenu
 	jp .getJoypadStateLoop
 .displayAudioInfo
 	ld hl, DisplayAudioInfoText
@@ -308,7 +298,7 @@ PlaceExtraOptionStrings:
 	call PlaceString
 
 ;place back text
-	coord hl, 1, 16
+	coord hl, 0, 16
 	ld de, TextBack
 	call PlaceString
 
@@ -620,7 +610,7 @@ TextGamma:
 TextEnhancedGBC:
 	db " Palette comp.@"
 TextBack:
-	db " Retour   ",$C3,$C4,$C5,$E6," ",$C0,$C1,$C2,$ED,"@"
+	db $C6, $C7, "Retour   ",$C3,$C4,$C5,$E6," ",$C0,$C1,$C2,$ED,"@"
 
 TextLevelCap:
 	db " Niveau max@"

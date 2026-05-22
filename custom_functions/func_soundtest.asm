@@ -11,14 +11,17 @@ DisplaySoundTestMenu:
 	coord hl, 4, 1
 	ld de, SoundTitleText
 	call PlaceString
-	coord hl, 1, 12
+	coord hl, 0, 12
 	ld de, SoundChangeText
 	call PlaceString
-	coord hl, 1, 14
+	coord hl, 0, 14
 	ld de, SoundPlayText
 	call PlaceString
-	coord hl, 1, 16
+	coord hl, 0, 16
 	ld de, SoundBackNextText
+	call PlaceString
+	coord hl, 16, 16
+	ld de, SoundMenuSelect
 	call PlaceString
 ;draw text box for the audio track
 	coord hl, 0, 6
@@ -30,12 +33,10 @@ DisplaySoundTestMenu:
 	xor a
 	ld [wWhichPokemon], a
 	call .updatetrackname
-
-
+; fallthrough
 .loop
-
 	call Delay3
-
+; fallthrough
 .getJoypadStateLoop
 	call JoypadLowSensitivity
 	ld a, [hJoy5]
@@ -130,11 +131,13 @@ DisplaySoundTestMenu:
 SoundTitleText:
 	db $E4, " Baladeur ", $E4, "@"
 SoundChangeText:
-	db "→:Changer Piste@"
+	db $CA, $CB, "Changer Piste@"
 SoundPlayText:
-	db "A:Jouer@"
+	db $C8, $C9, "Jouer@"
 SoundBackNextText:
-	db "B:Retour       ",$C0,$C1,$C2,$ED,"@"
+	db $C6, $C7, "Retour@"
+SoundMenuSelect:
+	db $C0,$C1,$C2,$ED,"@"
 SoundTestTextBlankTrack:
 	db "                  @"
 SoundTestTrackList:

@@ -195,8 +195,8 @@ EXPBarGraphicsEnd:
 StatsGraphics:: INCBIN "gfx/tiles/font_status_screen.2bpp"
 StatsGraphicsEnd::
 
-SelectStartGraphics:: INCBIN "gfx/tiles/select_start.2bpp"
-SelectStartGraphicsEnd::
+KeysLogoGraphics:: INCBIN "gfx/tiles/keys_logo.2bpp"
+KeysLogoGraphicsEnd::
 
 SECTION "NPC Sprites 2", ROMX, BANK[NPC_SPRITES_2]
 

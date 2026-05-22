@@ -1835,9 +1835,9 @@ BagSelectText:
 	db $C3,$C4,$C5,"Changer sac@"
 
 PrintListMenuEntries::
-	ld de, SelectStartGraphics
+	ld de, KeysLogoGraphics
 	ld hl, vChars1 + $400
-	lb bc, BANK(SelectStartGraphics), (SelectStartGraphicsEnd - SelectStartGraphics) / $10
+	lb bc, BANK(KeysLogoGraphics), (KeysLogoGraphicsEnd - KeysLogoGraphics) / $10
 	call CopyVideoData
 
 	hlcoord 4, 0
