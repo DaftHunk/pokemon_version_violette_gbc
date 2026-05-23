@@ -23,15 +23,15 @@ db 5 ; growth rate
 ; 9 -> 16
 	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm15_HYPER_BEAM
 ; 17 -> 24
-	tmlearn 0
+	tmlearn tm22_SOLARBEAM
 ; 25 -> 32
-	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm25_THUNDER, tm26_EARTHQUAKE, tm29_PSYCHIC_M, tm31_MIMIC, tm32_DOUBLE_TEAM
 ; 33 -> 40
 	tmlearn tm33_REFLECT, tm34_BIDE, tm38_FIRE_BLAST, tm39_SWIFT
 ; 41 -> 48
 	tmlearn tm41_GIGA_DRAIN, tm42_SHADOW_BALL, tm43_SKY_ATTACK, tm44_REST
 ; 49 -> 56
-	tmlearn tm50_SUBSTITUTE, hm02_FLY
+	tmlearn tm50_SUBSTITUTE, hm02_FLY, hm04_STRENGTH, hm05_FLASH
 ;   db 0 ; padding
 	db BANK(HoohPicFront)
 	assert BANK(HoohPicFront) == BANK(HoohPicBack)

@@ -21,13 +21,13 @@ db 5 ; growth rate
 ; 1 -> 8
 	tmlearn tm04_FLAMETHROWER, tm06_TOXIC, tm08_BODY_SLAM
 ; 9 -> 16
-	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm15_HYPER_BEAM
 ; 17 -> 24
-	tmlearn tm23_DRAGON_RAGE
+	tmlearn tm22_SOLARBEAM, tm23_DRAGON_RAGE
 ; 25 -> 32
 	tmlearn tm28_DIG, tm31_MIMIC, tm32_DOUBLE_TEAM
 ; 33 -> 40
-	tmlearn tm33_REFLECT, tm34_BIDE, tm38_FIRE_BLAST, tm39_SWIFT, tm40_SKULL_BASH
+	tmlearn tm33_REFLECT, tm34_BIDE, tm37_SLUDGE_BOMB, tm38_FIRE_BLAST, tm39_SWIFT, tm40_SKULL_BASH
 ; 41 -> 48
 	tmlearn tm42_SHADOW_BALL, tm44_REST, tm46_DARK_PULSE
 ; 49 -> 56
