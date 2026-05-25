@@ -143,18 +143,6 @@ RockTunnelPokecenterBenchGuyText:
 	TX_FAR _RockTunnelPokecenterGuyText
 	db "@"
 
-UnusedBenchGuyText1:
-	TX_FAR _UnusedBenchGuyText1
-	db "@"
-
-UnusedBenchGuyText2:
-	TX_FAR _UnusedBenchGuyText2
-	db "@"
-
-UnusedBenchGuyText3:
-	TX_FAR _UnusedBenchGuyText3
-	db "@"
-
 VermilionCityPokecenterBenchGuyText:
 	TX_FAR _VermilionPokecenterGuyText
 	db "@"

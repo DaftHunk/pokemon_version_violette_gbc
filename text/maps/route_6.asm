@@ -1,32 +1,37 @@
 _Route6BattleText1::
-	text "Qui est là?"
-	line "Arrête de nous"
-	cont "espionner!"
+	text "Je fais ça par"
+	line "amour! Laisse-moi"
+	cont "tranquille!"
 	done
 
 _Route6EndBattleText1::
 	text "..."
-	line "J'suis nul!"
+	line "Impossible!"
 	prompt
 
 _Route6AfterBattleText1::
-	text "Soupirs..."
-	line "Gros soupirs..."
+	text "L'amour..."
+	line "C'est cruel!"
 	done
 
 _Route6BattleText2::
-	text "Heu, c'est une"
-	line "conversation"
-	cont "privée, DEGAGE!"
+	text "Je suis dresseur"
+	line "par amour!"
 	done
 
 _Route6EndBattleText2::
-	text "Non!"
-	line "Pas bon perdre!"
+	text "..."
+	line "Pourquoi?"
 	prompt
 
+_Route6AfterBattleText2::
+	text "Il faut aimer les"
+	line "#mon. C'est la"
+	cont "seule solution!"
+	done
+
 _Route6BattleText3::
-	text "C'est plein"
+	text "Y'a pas trop"
 	line "d'insectes, ici."
 	done
 
