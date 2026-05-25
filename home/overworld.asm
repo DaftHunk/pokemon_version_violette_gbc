@@ -589,6 +589,15 @@ CheckMapConnections::	;joenote - these routines moved to func_overworld.asm to s
 ; $C2XE without loading any tile patterns.
 	callba InitMapSprites
 	call LoadTileBlockMap
+
+; Reload tileset if previous one is different
+	ld a, [wCurMapTileset]
+	ld b, a
+	ld a, [wPreviousMapTileset]
+	cp b
+	; Reload tileset (Credit Engezerstorung)
+	call nz, LoadTilesetTilePatternData
+.doNotReload
 	jp OverworldLoopLessDelay
 
 .didNotEnterConnectedMap
@@ -622,7 +631,10 @@ PlayMapChangeSound::
 CheckIfInOutsideMap::
 ; If the player is in an outside map (a town or route), set the z flag
 	ld a, [wCurMapTileset]
+CheckIfInOutsideMap_UseA::
 	and a ; most towns/routes have tileset 0 (OVERWORLD)
+	ret z
+	cp ALPHA ; Overworld Map
 	ret z
 	cp PLATEAU ; Route 23 / Indigo Plateau
 	ret
@@ -646,13 +658,11 @@ ExtraWarpCheck::
 	cp ROCK_TUNNEL_1F
 	jr z, .useFunction2
 	ld a, [wCurMapTileset]
-	and a ; outside tileset (OVERWORLD)
+	call CheckIfInOutsideMap_UseA
 	jr z, .useFunction2
 	cp SHIP ; S.S. Anne tileset
 	jr z, .useFunction2
 	cp SHIP_PORT ; Vermilion Port tileset
-	jr z, .useFunction2
-	cp PLATEAU ; Indigo Plateau tileset
 	jr z, .useFunction2
 .useFunction1
 	ld hl, IsPlayerFacingEdgeOfMap
@@ -803,13 +813,14 @@ INCLUDE "data/maps/bike_riding_tilesets.asm"
 ; load the tile pattern data of the current tileset into VRAM
 LoadTilesetTilePatternData::
 	ld a, [wTilesetGfxPtr]
-	ld l, a
+	ld e, a
 	ld a, [wTilesetGfxPtr + 1]
-	ld h, a
-	ld de, vTileset
-	ld bc, $790
+	ld d, a
+	ld hl, vTileset
+	ld c, $79
 	ld a, [wTilesetBank]
-	jp FarCopyData2
+	ld b, a
+	jp GoodCopyVideoData
 
 ; this loads the current maps complete tile map (which references blocks, not individual tiles) to C6E8
 ; it can also load partial tile maps of connected maps into a border of length 3 around the current map
@@ -2107,6 +2118,7 @@ LoadMapHeader::
 	res 7, a
 	ld [wCurMapTileset], a
 	ld [hPreviousTileset], a
+	ld [wPreviousMapTileset], a
 	bit 7, b
 	ret nz
 	ld hl, MapHeaderPointers
@@ -2396,7 +2408,7 @@ LoadMapData::
 	ld [hSCY], a
 	ld [hSCX], a
 	ld [wWalkCounter], a
-	;ld [wUnusedD119], a
+	ld [wPreviousMapTileset], a
 	ld [wWalkBikeSurfStateCopy], a
 	ld [wSpriteSetID], a
 	call LoadTextBoxTilePatterns

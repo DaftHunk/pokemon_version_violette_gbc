@@ -2359,6 +2359,7 @@ wPrize2:: ; d13e
 wPrize3:: ; d13f
 	ds 1
 
+wPreviousMapTileset::
 	ds 1
 
 wSerialRandomNumberListBlock:: ; d141

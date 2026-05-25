@@ -21,8 +21,8 @@ Tilesets:
 	tileset Mansion_Block,     Mansion_GFX,     Mansion_Coll,     $FF,$FF,$FF, $FF, INDOOR
 	tileset Lab_Block,         Lab_GFX,         Lab_Coll,         $FF,$FF,$FF, $FF, INDOOR
 	tileset Club_Block,        Club_GFX,        Club_Coll,        $07,$17,$FF, $FF, INDOOR
-	tileset Facility_Block,    Facility_GFX,    Facility_Coll,    $12,$FF,$FF, $FF, CAVE
-	tileset Plateau_Block,     Plateau_GFX,     Plateau_Coll,     $FF,$FF,$FF, $45, CAVE
+	tileset Facility_Block,    Facility_GFX,    Facility_Coll,    $12,$FF,$FF, $FF, CAVE	
 	tileset Reactor_Block,     Reactor_GFX,     Reactor_Coll,     $FF,$FF,$FF, $FF, CAVE
 	tileset Volcano_Block,     Volcano_GFX,     Volcano_Coll,     $FF,$FF,$FF, $52, CAVE
+	tileset Plateau_Block,     Plateau_GFX,     Plateau_Coll,     $FF,$FF,$FF, $45, CAVE
 	tileset Alpha_Block,       Alpha_GFX,       Alpha_Coll,       $FF,$FF,$FF, $52, OUTDOOR
