@@ -35,13 +35,21 @@ LoadTilesetHeader:
 	call IsInArray
 	pop de
 	pop hl
-	jr c, .asm_c797
+	jr c, .dungeon
 	ld a, [wCurMapTileset]
 	ld b, a
 	ld a, [hPreviousTileset]
 	cp b
 	jr z, .done
-.asm_c797
+
+	; Credit Engezerstorung
+	call CheckIfInOutsideMap_UseA
+	jr nz, .dungeon
+	ld a, b
+	call CheckIfInOutsideMap_UseA
+	jr z, .done
+
+.dungeon
 	ld a, [wDestinationWarpID]
 	cp $ff
 	jr z, .done
