@@ -1,6 +1,7 @@
 const_value = 0
-
+; Outdoor
 	const OVERWORLD    ; 0
+; Indoor
 	const REDS_HOUSE_1 ; 1
 	const MART         ; 2
 	const FOREST       ; 3
@@ -23,7 +24,8 @@ const_value = 0
 	const LAB          ; 20
 	const CLUB         ; 21
 	const FACILITY     ; 22
-	const PLATEAU      ; 23
-	const REACTOR      ; 24
-	const VOLCANO      ; 25
+	const REACTOR      ; 23
+	const VOLCANO      ; 24
+	const PLATEAU      ; 25
+; Outdoor (to add in CheckIfInOutsideMap)
 	const ALPHA        ; 26
