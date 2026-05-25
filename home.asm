@@ -1840,14 +1840,6 @@ PrintListMenuEntries::
 	lb bc, BANK(KeysLogoGraphics), (KeysLogoGraphicsEnd - KeysLogoGraphics) / $10
 	call CopyVideoData
 
-	hlcoord 4, 0
-	lb bc, 1, 14
-	call TextBoxBorder
-
-	hlcoord 5, 1
-	ld de, BagSelectText
-	call PlaceString
-
 	hlcoord 5, 3
 	ld b, 9
 	ld c, 14
@@ -2001,6 +1993,15 @@ PrintListMenuEntries::
 	ld [de], a
 	lb bc, 1, 2
 	call PrintNumber
+
+	hlcoord 4, 0
+	lb bc, 1, 14
+	call TextBoxBorder
+
+	hlcoord 5, 1
+	ld de, BagSelectText
+	call PlaceString
+
 	pop de
 	pop af
 	ld [wPokedexNum], a

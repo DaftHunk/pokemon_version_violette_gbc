@@ -475,25 +475,6 @@ _RockTunnelPokecenterGuyText::
 	cont "à Lavanville!"
 	done
 
-_UnusedBenchGuyText1::
-	text "Moi aussi j'veux"
-	line "capturer un"
-	cont "#mon."
-	done
-
-_UnusedBenchGuyText2::
-	text "La fatigue..."
-	cont "Doucement..."
-	cont "Me gagne..."
-	done
-
-_UnusedBenchGuyText3::
-	text "Le patron de la"
-	line "Sylphe se cache"
-	cont "dans le Parc"
-	cont "Safari."
-	done
-
 _VermilionPokecenterGuyText::
 	text "C'est vrai qu'un"
 	line "#mon de haut"
@@ -1556,7 +1537,7 @@ _GainedText::
 	text_end
 
 _WithExpAllText::
-	text "L'équipe à gagné"
+	text "L'équipe a gagné"
 	line "@"
 	text_end
 
