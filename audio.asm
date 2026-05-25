@@ -377,6 +377,8 @@ PlayBattleMusic::
 	;joenote - use gym leader dummy value 9 to initial final battle music
 	cp $09
 	jr z, .finalBattle
+	cp $a
+	jp z, Music_MissingNo
 	ld a, MUSIC_GYM_LEADER_BATTLE
 	jr .playSong
 .notGymLeaderBattle
@@ -403,6 +405,18 @@ PlayBattleMusic::
 
 INCLUDE "audio/engine_1.asm"
 
+Music_MissingNo:
+	xor a
+	ld [wAudioFadeOutControl], a
+	ld [wLowHealthAlarm], a
+	call StopAllMusic
+	call DelayFrame
+	ld c, BANK(Music_Cinnabar)
+	ld a, MUSIC_CINNABAR
+	call PlayMusic
+	ld hl, wChannelCommandPointers
+	ld de, Music_Cities1_branch_aa6f
+	jp Audio1_OverwriteChannelPointer
 
 ; an alternate start for MeetRival which has a different first measure
 Music_RivalAlternateStart::
