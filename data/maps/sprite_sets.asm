@@ -10,7 +10,7 @@ MapSpriteSets:
 	db $0a ; FUCHSIA_CITY
 	db $01 ; CINNABAR_ISLAND
 	db $06 ; INDIGO_PLATEAU
-	db $01 ; unused map ID
+	db $03 ; FORGOTTEN_TOWN
 	db $01 ; ROUTE_1
 	db $f1 ; ROUTE_2
 	db $02 ; ROUTE_3

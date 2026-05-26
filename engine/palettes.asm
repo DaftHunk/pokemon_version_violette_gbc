@@ -267,7 +267,7 @@ GetOverworldPalette:
 .normalDungeonOrBuilding
 	ld a, [wLastMap] ; town or route that current dungeon or building is located
 .townOrRoute
-	cp INDIGO_PLATEAU + 1
+	cp FORGOTTEN_TOWN + 1
 	jr c, .town
 	ld a, PAL_ROUTE - 1
 .town

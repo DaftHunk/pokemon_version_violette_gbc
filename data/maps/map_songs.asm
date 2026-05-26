@@ -10,7 +10,7 @@ MapSongBanks:
 	db MUSIC_CITIES2,          BANK(Music_Cities2)         ; FUCHSIA_CITY
 	db MUSIC_CINNABAR,         BANK(Music_Cinnabar)        ; CINNABAR_ISLAND
 	db MUSIC_INDIGO_PLATEAU,   BANK(Music_IndigoPlateau)   ; INDIGO_PLATEAU
-	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; unused
+	db MUSIC_LAVENDER,         BANK(Music_Lavender)        ; FORGOTTEN_TOWN
 	db MUSIC_ROUTES1,          BANK(Music_Routes1)         ; ROUTE_1
 	db MUSIC_ROUTES1,          BANK(Music_Routes1)         ; ROUTE_2
 	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; ROUTE_3

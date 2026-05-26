@@ -11,7 +11,7 @@ MapHeaderBanks:
 	db BANK(FuchsiaCity_h) ; FUCHSIA_CITY
 	db BANK(CinnabarIsland_h) ; CINNABAR_ISLAND
 	db BANK(IndigoPlateau_h) ; INDIGO_PLATEAU
-	db $1 ; unused
+	db BANK(ForgottenTown_h) ; FORGOTTEN_TOWN
 	db BANK(Route1_h) ; ROUTE_1
 	db BANK(Route2_h) ; ROUTE_2
 	db BANK(Route3_h) ; ROUTE_3

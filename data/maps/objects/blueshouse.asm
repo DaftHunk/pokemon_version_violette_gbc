@@ -2,8 +2,8 @@ BluesHouseObject:
 	db $a ; border block
 
 	db 2 ; warps
-	warp 2, 7, 1, -1
-	warp 3, 7, 1, -1
+	warp 2, 7, 0, FORGOTTEN_TOWN
+	warp 3, 7, 1, FORGOTTEN_TOWN
 
 	db 0 ; signs
 

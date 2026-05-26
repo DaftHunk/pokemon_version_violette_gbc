@@ -11,7 +11,7 @@ MapHeaderPointers::
 	dw FuchsiaCity_h
 	dw CinnabarIsland_h
 	dw IndigoPlateau_h
-	dw SaffronCity_h
+	dw ForgottenTown_h
 	dw Route1_h
 	dw Route2_h
 	dw Route3_h

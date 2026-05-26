@@ -280,7 +280,7 @@ BuildFlyLocationsList:
 	ld e, a
 	ld a, [wTownVisitedFlag + 1]
 	ld d, a
-	ld bc, INDIGO_PLATEAU + 1
+	ld bc, FORGOTTEN_TOWN + 1
 .loop
 	srl d
 	rr e

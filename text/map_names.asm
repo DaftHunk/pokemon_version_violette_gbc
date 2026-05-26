@@ -13,14 +13,16 @@ VermilionCityName:
 	db "Carmin sur mer@"
 CeladonCityName:
 	db "Céladopole@"
+SaffronCityName:
+	db "Safrania@"
 FuchsiaCityName:
 	db "Parmanie@"
 CinnabarIslandName:
 	db "Cramois'Ile@"
 IndigoPlateauName:
 	db "Plateau Indigo@"
-SaffronCityName:
-	db "Safrania@"
+ForgottenTownName:
+	db "Ville oubliée@"
 Route1Name:
 	db "Route 1@"
 Route2Name:

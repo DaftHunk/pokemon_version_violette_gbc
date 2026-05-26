@@ -547,7 +547,7 @@ PalSettings_TownSpecialPal:
 	db	PAL_ENH_OVW_PURPLE	;	FUCHSIA_CITY,		; $08
 	db	PAL_ENH_OVW_RED		;	CINNABAR_ISLAND,	; $09
 	db	PAL_ENH_OVW_BLUE	;	INDIGO_PLATEAU,		; $0A
-
+	db	PAL_ENH_OVW_PURPLE  ;	FORGOTTEN_TOWN,		; $0B
 	
 
 ;This copies everything in wTileMap to w2BGMapAttributes in wram bank 2
@@ -777,7 +777,7 @@ MakeOverworldBGMapAttributes:
 	ld hl, PalSettings_TownSpecialPal	
 	add hl, bc
 	ld a, c
-	cp INDIGO_PLATEAU + 1 ;set flags
+	cp FORGOTTEN_TOWN + 1 ;set flags
 	ld a, [hl]	;get pal value into A
 	pop bc
 	pop hl
