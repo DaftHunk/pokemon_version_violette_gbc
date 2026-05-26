@@ -1832,14 +1832,30 @@ ExitListMenu::
 	ret
 
 BagSelectText:
-	db $C3,$C4,$C5,"Changer sac@"
+	db $CC,$CD,$CE,"Changer sac@"
 
 PrintListMenuEntries::
 	ld de, KeysLogoGraphics
-	ld hl, vChars1 + $400
+	ld hl, vChars1 + $490
 	lb bc, BANK(KeysLogoGraphics), (KeysLogoGraphicsEnd - KeysLogoGraphics) / $10
 	call CopyVideoData
 
+	; Ensure it's an item menu
+	ld a, [wListMenuID]
+	cp ITEMLISTMENU
+	ld a, c
+	jr nz, .skipBagHint
+
+	; Print Bag key hint
+	hlcoord 4, 0
+	lb bc, 1, 14
+	call TextBoxBorder
+
+	hlcoord 5, 1
+	ld de, BagSelectText
+	call PlaceString
+
+.skipBagHint
 	hlcoord 5, 3
 	ld b, 9
 	ld c, 14
@@ -1993,15 +2009,6 @@ PrintListMenuEntries::
 	ld [de], a
 	lb bc, 1, 2
 	call PrintNumber
-
-	hlcoord 4, 0
-	lb bc, 1, 14
-	call TextBoxBorder
-
-	hlcoord 5, 1
-	ld de, BagSelectText
-	call PlaceString
-
 	pop de
 	pop af
 	ld [wPokedexNum], a
