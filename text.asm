@@ -961,6 +961,11 @@ _ViridianBlackboardSleepText::
 	line "peut attaquer"
 	cont "s'il est endormi!"
 
+	para "Un seul membre"
+	line "d'une équipe peut"
+	cont "être endormi à la"
+	cont "fois."
+
 	para "Un #mon reste"
 	line "endormi même"
 	cont "après un combat."
@@ -988,6 +993,9 @@ _ViridianBlackboardPrlzText::
 	line "annuler certaines"
 	cont "attaques!"
 
+	para "Elle divise aussi"
+	line "la Vitesse par 2!"
+
 	para "La paralysie ne"
 	line "disparaît pas"
 	cont "après un combat."
@@ -999,8 +1007,8 @@ _ViridianBlackboardPrlzText::
 
 _ViridianBlackboardBurnText::
 	text "La brûlure réduit"
-	line "la puissance et"
-	cont "la vitesse. Elle"
+	line "la puissance"
+	cont "physique. Elle"
 	cont "inflige aussi des"
 	cont "dégâts continus."
 
@@ -1018,6 +1026,11 @@ _ViridianBlackboardFrozenText::
 	line "prisonnier des"
 	cont "glaces reste"
 	cont "immobile!"
+	
+	para "Un seul membre"
+	line "d'une équipe peut"
+	cont "être gelé à la"
+	cont "fois."
 
 	para "Il reste gelé"
 	line "même après la"
