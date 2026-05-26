@@ -73,7 +73,7 @@ BillsGardenText_Sacha:
 	;otherwise begin loading battle
 	ld hl, BillsGarden_SachaPrebattle	;load pre battle text
 	call PrintText	;print the pre battle text
-	ld hl, wd72d;set the bits for triggering battle
+	ld hl, wStatusFlags3;set the bits for triggering battle
 	set 6, [hl]	;
 	set 7, [hl]	;
 	ld hl, BillsGarden_SachaAfterBattle	;load text for when you win

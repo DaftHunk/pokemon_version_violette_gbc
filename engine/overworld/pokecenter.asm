@@ -2,7 +2,7 @@ DisplayPokemonCenterDialogue_:
 	call SaveScreenTilesToBuffer1 ; save screen
 	ld hl, PokemonCenterWelcomeText
 	call PrintText
-	ld hl, wd72e
+	ld hl, wStatusFlags4
 	bit 2, [hl]
 	set 1, [hl]
 	set 2, [hl]

@@ -39,9 +39,9 @@ GainExperience:
 	ld a, [wBoostExpByExpAll]
 	and a
 	jr z, .skipexpallmsg
-	ld a, [wd728]
+	ld a, [wStatusFlags1]
 	set 7, a
-	ld [wd728], a	
+	ld [wStatusFlags1], a	
 .skipexpallmsg
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -231,7 +231,7 @@ BufferExpData:
 
 	
 ;joenote - This function counts the number of pokemon that get a share of exp
-;stores this value in wUnusedD155
+;stores this value in wTempExpFlags
 GetNumMonsGainingExp:
 	ld a, [wPartyGainExpFlags]
 	ld b, a
@@ -242,19 +242,19 @@ GetNumMonsGainingExp:
 	adc 0
 	dec c
 	jr nz, .countSetBitsLoop
-	ld [wUnusedD155], a
+	ld [wTempExpFlags], a
 	ret
 
 ;Divide enemy base stats and base exp by the number of mons gaining exp
 ;joenote - given a rewrite
 ;assumes that pokemon with zero hp are already cleared in wPartyGainExpFlags
-;assumes that wUnusedD155 already contains the number to divide by from GetNumMonsGainingExp
+;assumes that wTempExpFlags already contains the number to divide by from GetNumMonsGainingExp
 ;assumes BufferExpData was already run
 DivideExpDataByNumMonsGainingExp:
 	ld hl, wBuffer
 	ld c, wEnemyMonBaseExp + 1 - wEnemyMonBaseStats - 1
 .loop
-	ld a, [wUnusedD155]
+	ld a, [wTempExpFlags]
 	cp 2
 	ret c	;do nothing if dividing by 1	
 	jr z, .div2
@@ -654,11 +654,11 @@ PrintExpGained:
 	ld a, [wBoostExpByExpAll]
 	and a
 	jr z, .noexpall
-	ld a, [wd728]
+	ld a, [wStatusFlags1]
 	bit 7, a
 	jr z, .noexpprint	;print the exp.all amount only once (for the first party member)
 	res 7, a
-	ld [wd728], a
+	ld [wStatusFlags1], a
 	ld hl, WithExpAllText
 .noexpall
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

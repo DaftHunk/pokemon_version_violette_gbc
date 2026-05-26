@@ -805,7 +805,7 @@ ItemUseSurfboard:
 	jp nz, SurfingAttemptFailed
 .surf
 	call .makePlayerMoveForward
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 7, [hl]
 	ld a, 2
 	ld [wWalkBikeSurfState], a ; change player state to surfing
@@ -1752,10 +1752,10 @@ ItemUseEscapeRope:
 	jr z, .notUsable
 	cp b
 	jr nz, .loop
-	ld hl, wd732
+	ld hl, wStatusFlags6
 	set 3, [hl]
 	set 6, [hl]
-	ld hl, wd72e
+	ld hl, wStatusFlags4
 	res 4, [hl]
 	ResetEvent EVENT_IN_SAFARI_ZONE
 	xor a
@@ -1849,7 +1849,7 @@ ItemUseCardKey:
 ;.done
 ;	ld hl, ItemUseText00
 ;	call PrintText
-;	ld hl, wd728
+;	ld hl, wStatusFlags1
 ;	set 7, [hl]
 ;	ret
 

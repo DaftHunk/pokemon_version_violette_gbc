@@ -169,7 +169,7 @@ PrepareOAMData:
 	ld h, wOAMBuffer / $100
 	ld de, $4
 	ld b, $a0
-	ld a, [wd736]
+	ld a, [wMovementFlags]
 	bit 6, a ; jumping down ledge or fishing animation?
 	ld a, $a0
 	jr z, .clear

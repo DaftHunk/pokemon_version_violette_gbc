@@ -181,7 +181,7 @@ CeladonGymText_Erika:
 
 	ld hl, CeladonGymText_LeaderPreBattle
 	call PrintText
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, CeladonGymText_LeaderEndBattle
@@ -225,7 +225,7 @@ CeladonGymText_Erika:
 .leaderFightAfterElite4
 	ld hl, CeladonGymText_RematchPreBattle
 	call PrintText
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, CeladonGymText_RematchEndBattle

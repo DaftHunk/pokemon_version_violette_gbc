@@ -45,10 +45,10 @@ EndOfBattle:
 	predef EvolutionAfterBattle
 .resetVariables
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;joenote - set the 7th bit of wUnusedD5A3 so it signifies coming out of a battle
-	ld a, [wUnusedD5A3]
+;joenote - set the 7th bit of wTempBattleFlag so it signifies coming out of a battle
+	ld a, [wTempBattleFlag]
 	set 7, a
-	ld [wUnusedD5A3], a
+	ld [wTempBattleFlag], a
 ;handle stuff for the nuzlocke mode; anything with zero HP will be marked dead if there was no forfeit
 	predef EndOfBattle_NuzlockeHandler
 ;reset the flag used forfeiting
@@ -93,7 +93,7 @@ EndOfBattle:
 	ld [hli], a
 	dec b
 	jr nz, .loop
-	ld hl, wd72c
+	ld hl, wStatusFlags2
 	set 0, [hl]
 	call WaitForSoundToFinish
 	call GBPalWhiteOut

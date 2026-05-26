@@ -335,10 +335,10 @@ MainInBattleLoop:
 	call ZeroLastDamage	;joenote - prevent counter shenanigans of all sorts
 .no_trapping_moves
 ;joenote - clear custom battle flags
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	res 7, a	;reset the bit that causes counter to miss
 	res 6, a	;reset the bit that specifies a leech seed effect
-	ld [wUnusedC000], a 
+	ld [wBattleAISettingFlags], a 
 ;joenote - back to default flow
 	call ReadPlayerMonCurHPAndStatus
 	ld hl, wBattleMonHP
@@ -617,9 +617,9 @@ HandlePoisonBurnLeechSeed:
 	jr nc, .notLeechSeeded
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - set the bit that indicates leech seed is being handled
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	set 6, a
-	ld [wUnusedC000], a 
+	ld [wBattleAISettingFlags], a 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	push hl
 	ld a, [H_WHOSETURN]
@@ -700,10 +700,10 @@ HandlePoisonBurnLeechSeed_DecreaseOwnHP:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - If this bit is set, this function is being called for leech seed.
 ;			Do not do Toxic routines
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	bit 6, a	;check if this is for leech seed
 	res 6, a 	;(reset the bit without affecting flags)
-	ld [wUnusedC000], a
+	ld [wBattleAISettingFlags], a
 	jr nz, .noToxic	;if so, then do not increment the toxic counter or multiply the damage for toxic
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	bit BADLY_POISONED, [hl]
@@ -1044,11 +1044,11 @@ TrainerBattleVictory:
 	;ld a, [wTrainerClass]
 	;cp RIVAL3 ; final battle against rival
 	;jr nz, .notrival
-	ld hl, wFlags_D733
+	ld hl, wStatusFlags7
 	bit 5, [hl]
 	jr z, .notrival
 	ld b, MUSIC_DEFEATED_GYM_LEADER
-	;ld hl, wFlags_D733
+	;ld hl, wStatusFlags7
 	set 1, [hl]
 	res 5, [hl]
 .notrival
@@ -1298,9 +1298,9 @@ HandlePlayerBlackOut:
 	ld hl, LinkBattleLostText
 .noLinkBattle
 	call PrintText
-	ld a, [wd732]
+	ld a, [wStatusFlags6]
 	res 5, a
-	ld [wd732], a
+	ld [wStatusFlags6], a
 	call ClearScreen
 	scf
 	ret
@@ -1328,10 +1328,10 @@ LinkBattleLostText:
 ; slides pic of fainted mon downwards until it disappears
 ; bug: when this is called, [H_AUTOBGTRANSFERENABLED] is non-zero, so there is screen tearing
 SlideDownFaintedMonPic:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	push af
 	set 6, a
-	ld [wd730], a
+	ld [wStatusFlags5], a
 	ld b, 7 ; number of times to slide
 .slideStepLoop ; each iteration, the mon is slid down one row
 	push bc
@@ -1378,7 +1378,7 @@ SlideDownFaintedMonPic:
 	dec b
 	jr nz, .slideStepLoop
 	pop af
-	ld [wd730], a
+	ld [wStatusFlags5], a
 	ret
 
 SevenSpacesText:
@@ -1913,9 +1913,9 @@ LoadEnemyMonFromParty:	;function for link battles
 
 SendOutMon:
 	;joenote - reset AI switching tracker since the player is sending out a new pokemon
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	and %10000001
-	ld [wUnusedD366], a
+	ld [wTempAIBattleFlags], a
 
 	callab PrintSendOutMonMessage
 	ld hl, wEnemyMonHP
@@ -2667,9 +2667,9 @@ SwitchPlayerMon:	;joedebug - this is where the player switches
 	ld a, $FF	; FF is a Do Nothing move
 	ld [wEnemySelectedMove], a
 	;don't let enemy change the selected move during the next picking function
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	set 2, a
-	ld [wUnusedC000], a
+	ld [wBattleAISettingFlags], a
 .preparewithdraw
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	callab RetreatMon
@@ -2828,7 +2828,7 @@ MoveSelectionMenu:
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	jr z, .matchedkeyspicked
-	ld a, [wFlags_D733]
+	ld a, [wStatusFlags7]
 	bit BIT_TEST_BATTLE, a
 	ld b, D_UP | D_DOWN | A_BUTTON | B_BUTTON | SELECT
 	jr z, .matchedkeyspicked
@@ -2862,7 +2862,7 @@ SelectMenuItem:
 	call PlaceString
 	jr .select
 .battleselect
-	ld a, [wFlags_D733]
+	ld a, [wStatusFlags7]
 	bit BIT_TEST_BATTLE, a
 	jr nz, .select
 	call PrintMenuItem
@@ -3322,7 +3322,7 @@ SelectEnemyMove:
 	jr z, .unableToSelectMove_general
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - check and reset flag for being unable to select a move
-	ld hl, wUnusedC000
+	ld hl, wBattleAISettingFlags
 	bit 2, [hl]
 	res 2, [hl]
 	jr nz, .unableToSelectMove_general
@@ -3357,7 +3357,7 @@ SelectEnemyMove:
 	ret nz
 
 ;joenote - check and reset flag for being unable to select a move
-	ld hl, wUnusedC000
+	ld hl, wBattleAISettingFlags
 	bit 2, [hl]
 	res 2, [hl]
 	jr nz, .unableToSelectMove_AI
@@ -3420,13 +3420,13 @@ SelectEnemyMove:
 ;joenote - moved elsewhere to do PP tracking
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, h
-	ld [wUnusedCF8D], a
+	ld [wTrainerPPTracker], a
 	ld a, l
-	ld [wUnusedCF8D + 1], a
+	ld [wTrainerPPTracker + 1], a
 	callba ChooseMovePPTrack
-	ld a, [wUnusedCF8D]
+	ld a, [wTrainerPPTracker]
 	ld h, a
-	ld a, [wUnusedCF8D + 1]
+	ld a, [wTrainerPPTracker + 1]
 	ld l, a
 	ld a, e
 	and a
@@ -3452,15 +3452,15 @@ NoAttackAICall:
 	dec a
 	jr z, .NoAttackAICall_exit ; exit if this is a wild encounter
 	;set the no-attack bit
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	set 2, a 
-	ld [wUnusedC000], a
+	ld [wBattleAISettingFlags], a
 	;call ai routines
 	callab AIEnemyTrainerChooseMoves
 	;joenote - reset the no-attack bit
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	res 2, a 
-	ld [wUnusedC000], a
+	ld [wBattleAISettingFlags], a
 .NoAttackAICall_exit
 	pop af ;get flags from stack
 	ret
@@ -3581,11 +3581,11 @@ PlayerCalcMoveDamage:
 	call IsInArray
 ;;;;;;;;;;;;;;;;;;;;
 ;joenote - if there is a static damage effect like superfang or seismic toss, make it obey type immunities
-	ld a, [wUnusedC000] ; get ready to set or clear static damage flag
+	ld a, [wBattleAISettingFlags] ; get ready to set or clear static damage flag
 	;jp c, .moveHitTest ; SetDamageEffects moves (e.g. Seismic Toss and Super Fang) skip damage calculation	;joenote - not needed anymore
 	jp nc, .not_static	;skip all this if not a static damage move
 	set 4, a
-	ld [wUnusedC000], a	;a static move, so set the flag
+	ld [wBattleAISettingFlags], a	;a static move, so set the flag
 	ld a, $1	;set wDamage to 1 point. just need a non-zero value otherwise it counts as a miss later on.
 	ld [wDamage+1], a
 	xor a
@@ -3593,7 +3593,7 @@ PlayerCalcMoveDamage:
 	jr .static_skiphere		;skip the normal calculations for static damage moves
 .not_static
 	res 4, a
-	ld [wUnusedC000], a	;not a static move, so clear the flag
+	ld [wBattleAISettingFlags], a	;not a static move, so clear the flag
 ;;;;;;;;;;;;;;;;;;;;
 	call CriticalHitTest
 	call HandleCounterMove
@@ -3733,7 +3733,7 @@ MirrorMoveCheck:
 	push bc
 	push de
 	push hl
-	ld hl, wUnusedD155 
+	ld hl, wTempExpFlags 
 	set 0, [hl]	;don't display that the substitute took damage for subsequent attacks
 	call CriticalHitTest
 	call GetDamageVarsForPlayerAttack
@@ -3749,7 +3749,7 @@ MirrorMoveCheck:
 	                             ; damage calculation and accuracy tests only happen for the first hit
 	res ATTACKING_MULTIPLE_TIMES, [hl] ; clear attacking multiple times status when all attacks are over
 	callba MultiAttackHitXTimesTXT_player 	;joenote - don't print the redundant hits message if attacking only twice
-	ld hl, wUnusedD155 
+	ld hl, wTempExpFlags 
 	res 0, [hl]	
 	
 	xor a
@@ -3802,9 +3802,9 @@ GetOutText:
 	db "@"
 
 IsGhostBattle:	;sets z flag if this is a ghost battle
-	ld a, [wFlags_D733]
+	ld a, [wStatusFlags7]
 	res 6, a
-	ld [wFlags_D733], a
+	ld [wStatusFlags7], a
 	ld a, [wIsInBattle]
 	dec a
 	ret nz
@@ -3816,9 +3816,9 @@ IsGhostBattle:	;sets z flag if this is a ghost battle
 	ld b, SILPH_SCOPE
 	call IsItemInBag
 	ret nz
-	ld a, [wFlags_D733]
+	ld a, [wStatusFlags7]
 	set 6, a
-	ld [wFlags_D733], a
+	ld [wStatusFlags7], a
 	ret
 .next
 	ld a, 1
@@ -4184,9 +4184,9 @@ MoveIsDisabledText:
 HandleSelfConfusionDamage:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - set the bit that indicates a pkmn hurt itself in confusion or took crash damage
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	set 7, a	;setting this bit causes counter to miss
-	ld [wUnusedC000], a 
+	ld [wBattleAISettingFlags], a 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, HurtItselfText
 	call PrintText
@@ -4226,7 +4226,7 @@ HandleSelfConfusionDamage:
 	
 	dec a
 	;joenote - signal that this animation is for self-damage
-	ld [wUnusedD119], a
+	ld [wMiscsFlags2], a
 	inc a
 	
 	inc a
@@ -4236,7 +4236,7 @@ HandleSelfConfusionDamage:
 	xor a
 	ld [H_WHOSETURN], a
 	
-	ld [wUnusedD119], a
+	ld [wMiscsFlags2], a
 	
 	jp ApplyDamageToPlayerPokemon
 
@@ -4332,9 +4332,9 @@ PrintMoveFailureText:
 	; if you get here, the mon used jump kick or hi jump kick and missed
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - set the bit that indicates a pkmn hurt itself in confusion or took crash damage
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	set 7, a	;setting this bit causes counter to miss
-	ld [wUnusedC000], a 
+	ld [wBattleAISettingFlags], a 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	;ld hl, wDamage ; since the move missed, wDamage will always contain 0 at this point.
 	                ; Thus, recoil damage will always be equal to 1
@@ -4870,9 +4870,9 @@ GetEnemyMonStat:
 	jr nz, .nottrainer
 
 	;point hl to the saved position for HPStatExp - 1
-	ld a, [wUnusedD153]
+	ld a, [wTrainerEV]
 	ld h, a
-	ld a, [wUnusedD153 + 1]
+	ld a, [wTrainerEV + 1]
 	ld l, a
 	
 	ld b, $01	;take stat exp into account
@@ -5190,10 +5190,10 @@ HandleCounterMove:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - If this bit is set, the opponent either hurt itself in confusion or took crash damage.
 ;			Make Counter miss and reset the bit.
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	bit 7, a	;check a for Counter miss bit
 	res 7, a ; resets the bit (does not affect flags)
-	ld [wUnusedC000], a
+	ld [wBattleAISettingFlags], a
 	ret nz	;return if bit is set causing Counter to miss.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, [de]
@@ -5485,12 +5485,12 @@ AttackSubstitute:
 	;joenote - do the turn switch
 	push af
 	ld a, [H_WHOSETURN]
-	ld [wUnusedD119], a	;backup the real turn
+	ld [wMiscsFlags2], a	;backup the real turn
 	pop af
 	ld [H_WHOSETURN], a
 	callba _AttackSubstitute ;joenote - moved to substitute_effect.asm
 	;joenote - get original turn back
-	ld a, [wUnusedD119]
+	ld a, [wMiscsFlags2]
 	ld [H_WHOSETURN], a
 	jp DrawHUDsAndHPBars
 
@@ -5752,7 +5752,7 @@ AdjustDamageForMoveType:
 	
 	;There is no type immunity at this line, so make any static moves return neutral
 	push af
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	ld b, a
 	pop af
 	bit 4, b
@@ -5996,7 +5996,7 @@ AIGetTypeEffectiveness:
 ;joenote - if type-effectiveness bit is set, then do wPlayerMoveType and wEnemyMonType
 ;		-also changed neutral value from $10 to $0A since it makes more sense
 ;		-and modifying this to take into account both types
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	bit 3, a
 	jr z, .enemyMove	
 	ld a, [wPlayerMoveType]
@@ -6401,10 +6401,10 @@ EnemyCalcMoveDamage:
 ;;;;;;;;;;;;;;;;;;;;
 ;joenote - if there is a static damage effect like superfang or seismic toss, make it obey type immunities
 ;	jp c, EnemyMoveHitTest	;joenote - don't need this anymore
-	ld a, [wUnusedC000]	;get ready to set or reset static move flag
+	ld a, [wBattleAISettingFlags]	;get ready to set or reset static move flag
 	jp nc, .not_static	;skip all this if not a static damage move
 	set 4, a
-	ld [wUnusedC000], a	;static move so set the flag
+	ld [wBattleAISettingFlags], a	;static move so set the flag
 	ld a, $1	;set wDamage to 1 point. just need a non-zero value otherwise it counts as a miss later on.
 	ld [wDamage+1], a
 	xor a
@@ -6412,7 +6412,7 @@ EnemyCalcMoveDamage:
 	jr .static_skiphere		;skip the normal calculations for static damage moves
 .not_static
 	res 4, a
-	ld [wUnusedC000], a	;not a static move so reset the flag
+	ld [wBattleAISettingFlags], a	;not a static move so reset the flag
 ;;;;;;;;;;;;;;;;;;;;
 	call CriticalHitTest
 	call HandleCounterMove
@@ -6549,7 +6549,7 @@ EnemyCheckIfMirrorMoveEffect:
 	push bc
 	push de
 	push hl
-	ld hl, wUnusedD155 
+	ld hl, wTempExpFlags 
 	set 0, [hl]	;don't display that the substitute took damage for subsequent attacks
 	call CriticalHitTest
 	call SwapPlayerAndEnemyLevels
@@ -6567,7 +6567,7 @@ EnemyCheckIfMirrorMoveEffect:
 
 	res ATTACKING_MULTIPLE_TIMES, [hl] ; mon is no longer hitting multiple times
 	callba MultiAttackHitXTimesTXT_enemy	;joenote - don't print the redundant hits message if attacking only twice
-	ld hl, wUnusedD155 
+	ld hl, wTempExpFlags 
 	res 0, [hl]
 
 
@@ -6690,9 +6690,9 @@ CheckEnemyStatusConditions:
 	jr c, .checkIfTriedToUseDisabledMove
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - set the bit that indicates a pkmn hurt itself in confusion or took crash damage
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	set 7, a	;setting this bit causes counter to miss
-	ld [wUnusedC000], a 
+	ld [wBattleAISettingFlags], a 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, wEnemyBattleStatus1
 	ld a, [hl]
@@ -6736,14 +6736,14 @@ CheckEnemyStatusConditions:
 	
 	dec a
 	;joenote - signal that this animation is for self-damage
-	ld [wUnusedD119], a
+	ld [wMiscsFlags2], a
 
 	ld a, POUND
 	call PlayMoveAnimation
 	ld a, $1
 	ld [H_WHOSETURN], a
 	
-	ld [wUnusedD119], a
+	ld [wMiscsFlags2], a
 	
 	call ApplyDamageToEnemyPokemon
 	jr .monHurtItselfOrFullyParalysed
@@ -6905,7 +6905,7 @@ GetCurrentMove::
 	jr .selected
 .player
 	ld de, wPlayerMoveNum
-	ld a, [wFlags_D733]
+	ld a, [wStatusFlags7]
 	bit BIT_TEST_BATTLE, a
 	ld a, [wTestBattlePlayerSelectedMove]
 	jr nz, .selected
@@ -7025,9 +7025,9 @@ LoadEnemyMonData:
 	dec hl	;move the pointer back one position so it points at party data wEnemyMon<x>HPExp - 1
 	;save this position to recall it later
 	ld a, h
-	ld [wUnusedD153], a
+	ld [wTrainerEV], a
 	ld a, l
-	ld [wUnusedD153 + 1], a
+	ld [wTrainerEV + 1], a
 	
 ;has this pkmn been sent out before? If so, then it already has statExp values
 	push hl
@@ -7494,7 +7494,7 @@ ApplyBadgeStatBoosts:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .return	; clear out stat mod address offset backup
 	xor a
-	ld [wUnusedD71B], a
+	ld [wTempCombatStats], a
 	ret
 ; multiply stat at hl by 1.125
 ; cap stat at 999
@@ -7526,12 +7526,12 @@ ApplyBadgeStatBoosts:
 	ret
 ; simplified selective logic, just mask badges if needed
 .maskObtainedBadges
-	ld a, [wUnusedD71B] ; load mask
+	ld a, [wTempCombatStats] ; load mask
 	or a ; just to set flags if needed
 	jr z, .use_all ; if mask is zero, skip masking
 
 	ld a, [wObtainedBadges] ; load obtained badges
-	ld hl, wUnusedD71B ; load mask address into HL
+	ld hl, wTempCombatStats ; load mask address into HL
 	ld c, [hl] ; now load mask into C via HL
 	and c ; mask A with C
 	ld b, a ; store result in B
@@ -7670,10 +7670,10 @@ PlayMoveAnimation:
 InitBattle:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	xor a
-	ld [wUnusedC000], a	;joenote - clear custom ai bits and battle flags at battle start
-	ld [wUnusedD155], a	;joenote - clear backup location for how many pkmn recieve exp
-	ld [wUnusedD366], a ;joenote - clear ai switch tracker bits
-	ld [wUnusedD119], a ;joenote - clear this for use as a backup location
+	ld [wBattleAISettingFlags], a	;joenote - clear custom ai bits and battle flags at battle start
+	ld [wTempExpFlags], a	;joenote - clear backup location for how many pkmn recieve exp
+	ld [wTempAIBattleFlags], a ;joenote - clear ai switch tracker bits
+	ld [wMiscsFlags2], a ;joenote - clear this for use as a backup location
 	;clear AI_Trainer switching bits
 	ld a, [wFontLoaded]
 	and $81	;clear bits 1 to 6 only by ANDing with 1000 0001
@@ -7691,7 +7691,7 @@ InitOpponent:
 	jr InitBattleCommon
 
 DetermineWildOpponent:
-	ld a, [wd732]
+	ld a, [wStatusFlags6]
 	bit 1, a
 	jr z, .asm_3ef2f
 	ld a, [hJoyHeld]

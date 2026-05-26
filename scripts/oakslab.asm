@@ -40,7 +40,7 @@ OaksLabScript0:
 	ld a, HS_OAKS_LAB_OAK_2
 	ld [wMissableObjectIndex], a
 	predef ShowObject2
-	ld hl, wd72e
+	ld hl, wStatusFlags4
 	res 4, [hl]
 
 	ld a, $1
@@ -64,7 +64,7 @@ OakEntryMovement:
 	db $FF
 
 OaksLabScript2:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	ld a, HS_OAKS_LAB_OAK_2
@@ -117,7 +117,7 @@ OaksLabScript4:
 	ld [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
 	call UpdateSprites
-	ld hl, wFlags_D733
+	ld hl, wStatusFlags7
 	res 1, [hl]
 	call DelayFrame	;joenote - Added protection against oak's lab music cutting a channel off
 	call PlayDefaultMusic
@@ -297,7 +297,7 @@ OaksLabScript8:
 	ret
 
 OaksLabScript9:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	ld a, $fc
@@ -384,7 +384,7 @@ OaksLabScript10:
 	ret
 
 OaksLabScript11:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 
@@ -411,7 +411,7 @@ OaksLabScript11:
 	ld hl, OaksLabText_1d3be
 	ld de, OaksLabText_1d3c3
 	call SaveEndBattleTextPointers
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	xor a
@@ -479,7 +479,7 @@ OaksLabScript13:
 	db $FF
 
 OaksLabScript14:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	jr nz, .asm_1ce8c
 	ld a, HS_OAKS_LAB_RIVAL
@@ -559,7 +559,7 @@ OaksLabScript_1cefd:
 	jp SetSpriteFacingDirectionAndDelay
 
 OaksLabScript16:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	call EnableAutoTextBoxDrawing
@@ -634,7 +634,7 @@ OaksLabScript16:
 	ret
 
 OaksLabScript17:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	call PlayDefaultMusic
@@ -894,10 +894,10 @@ OaksLabScript_1d157:
 	ld [H_SPRITEDATAOFFSET], a
 	call GetPointerWithinSpriteStateData1
 	ld [hl], SPRITE_FACING_RIGHT
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl]
 	predef StarterDex
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl]
 	call ReloadMapData
 	ld c, 10
@@ -970,7 +970,7 @@ OaksLabMonChoiceMenu:
 	ld a, [wcf91]
 	ld [wPokedexNum], a
 	call AddPartyMon
-	ld hl, wd72e
+	ld hl, wStatusFlags4
 	set 3, [hl]
 	ld a, $fc
 	ld [wJoyIgnore], a
@@ -1069,7 +1069,7 @@ OaksLabText5:
 	;otherwise begin loading battle
 	ld hl, OaksLabText_prebattle	;load oak's pre battle text
 	call PrintText	;print the pre battle text
-	ld hl, wd72d;set the bits for triggering battle
+	ld hl, wStatusFlags3;set the bits for triggering battle
 	set 6, [hl]	;
 	set 7, [hl]	;
 	ld hl, OakVictorySpeech	;load text for when you win
@@ -1113,7 +1113,7 @@ OaksLabText5:
 	jr nz, .eventChenAroundWorld
 	CheckEventReuseA EVENT_BATTLED_RIVAL_IN_OAKS_LAB
 	jr nz, .eventChenParcelDeliver
-	ld a, [wd72e]
+	ld a, [wStatusFlags4]
 	bit 3, a
 	jr nz, .eventChenMonsProtectYou
 	ld hl, OaksLabTextChenAskChooseMons

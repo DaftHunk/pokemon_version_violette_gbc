@@ -54,7 +54,7 @@ CheckEnemyShinyDVs:
 	ld a, [wBattleType]
 	dec a
 	jr z, .next_enc_shiny	;grant mercy if this is the old man battle
-	ld a, [wFlags_D733]
+	ld a, [wStatusFlags7]
 	bit 6, a
 	jr nz, .next_enc_shiny	;grant mercy if this is a tower ghost battle
 	CheckEvent EVENT_ACTIVATE_GHOST_MAROWAK
@@ -114,7 +114,7 @@ ShinyDVsChecker:	;return z flag set if not shiny or cleared z flag if shiny
 	ret
 
 ShinyPlayerAnimation:
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	bit 0, a
 	jr nz, .noPlayerShiny
 	call CheckPlayerShinyDVs
@@ -128,7 +128,7 @@ ShinyPlayerAnimation:
 	ret
 	
 ShinyEnemyAnimation:
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	bit 7, a
 	jr nz, .noEnemyShiny
 	call CheckEnemyShinyDVs
@@ -155,24 +155,24 @@ ShinyEnemyAnimation:
 	ret
 	
 DoPlayerShinybit:
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	res 0, a
-	ld [wUnusedD366], a
+	ld [wTempAIBattleFlags], a
 	ret
 SkipPlayerShinybit:
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	set 0, a
-	ld [wUnusedD366], a
+	ld [wTempAIBattleFlags], a
 	ret
 DoEnemyShinybit:
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	res 7, a
-	ld [wUnusedD366], a
+	ld [wTempAIBattleFlags], a
 	ret
 SkipEnemyShinybit:
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	set 7, a
-	ld [wUnusedD366], a
+	ld [wTempAIBattleFlags], a
 	ret
 
 ShinyStatusScreen:

@@ -94,7 +94,7 @@ DisplayNameRaterScreen:
 
 DisplayNamingScreen:
 	push hl
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl]
 	call GBPalWhiteOutWithDelay3
 	call ClearScreen
@@ -178,7 +178,7 @@ DisplayNamingScreen:
 	call GBPalNormal
 	xor a
 	ld [wAnimCounter], a
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl]
 	ld a, [wIsInBattle]
 	and a

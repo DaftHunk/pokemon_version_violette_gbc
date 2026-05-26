@@ -148,14 +148,14 @@ StartMenu_Pokemon:
 	jp .loop
 .canFly
 	call ChooseFlyDestination
-	ld a, [wd732]
+	ld a, [wStatusFlags6]
 	bit 3, a ; did the player decide to fly?
 	push af
 	call nz, .reset_safari ;make sure to reset the safari zone
 	pop af
 	jp nz, .goBackToMap
 	call LoadFontTilePatterns
-	ld hl, wd72e
+	ld hl, wStatusFlags4
 	set 1, [hl]
 	jp StartMenu_Pokemon
 .cut
@@ -170,7 +170,7 @@ StartMenu_Pokemon:
 	bit 4, a ; does the player have the Soul Badge?
 	jp z, .newBadgeRequired
 	callba IsSurfingAllowed
-	ld hl, wd728
+	ld hl, wStatusFlags1
 	bit 1, [hl]
 	res 1, [hl]
 	jp z, .loop
@@ -226,10 +226,10 @@ StartMenu_Pokemon:
 	ld hl, .warpToLastPokemonCenterText
 	call PrintText
 	call .reset_safari	;make sure to reset the safari zone
-	ld hl, wd732
+	ld hl, wStatusFlags6
 	set 3, [hl]
 	set 6, [hl]
-	ld hl, wd72e
+	ld hl, wStatusFlags4
 	set 1, [hl]
 	res 4, [hl]
 	ld c, 60
@@ -407,7 +407,7 @@ StartMenu_Item:
 ;	jr nz, .notBicycle2
 	jr nz, .notBicycle ; dafthunk #4
 .is_surfboard
-	ld a, [wd732]
+	ld a, [wStatusFlags6]
 	bit 5, a
 	jr z, .useItem_closeMenu
 	ld hl, CannotGetOffHereText
@@ -747,7 +747,7 @@ TrainerInfo_DrawVerticalLine:
 	ret
 
 StartMenu_SaveReset:
-	ld a, [wd72e]
+	ld a, [wStatusFlags4]
 	bit 6, a ; is the player using the link feature?
 	jp nz, Init
 	predef SaveSAV ; save the game

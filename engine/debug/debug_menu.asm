@@ -53,7 +53,7 @@ IF DEF(_DEBUG)
 	jp nz, TestBattle
 
 	; DEBUG
-	ld hl, wd732
+	ld hl, wStatusFlags6
 	set 1, [hl]
 	jpab StartNewGameDebug
 
@@ -81,7 +81,7 @@ TestBattle: ; unreferenced except in _DEBUG
 	;ld a, 1 << 7
 	ld [wObtainedBadges], a
     bit 7, a ; does the player have the Earth Badge?
-	ld hl, wFlags_D733
+	ld hl, wStatusFlags7
 	set BIT_TEST_BATTLE, [hl]
 
 	; wNumBagItems and wBagItems are not initialized here,

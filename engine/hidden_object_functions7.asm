@@ -410,7 +410,7 @@ BillsHousePokemonList:
 	ld a, 1
 	ld [wTopMenuItemX], a
 .billsPokemonLoop
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl]
 	coord hl, 0, 0
 	ld b, 10
@@ -443,7 +443,7 @@ BillsHousePokemonList:
 	ld [wMenuWatchedKeys], a
 	jr .billsPokemonLoop
 .cancel
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl]
 	call LoadScreenTilesFromBuffer2
 	jp TextScriptEnd

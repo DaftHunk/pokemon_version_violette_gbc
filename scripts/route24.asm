@@ -156,7 +156,7 @@ Route24Text1:
 	call PrintText
 	ld hl, Route24Text_51526
 	call PrintText
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, Route24Text_5152b

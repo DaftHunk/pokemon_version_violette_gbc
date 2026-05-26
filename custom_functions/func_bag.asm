@@ -19,7 +19,7 @@ HandleBagData:
 ;joenote - This function swaps the primary bag data with a second set of stored bag data
 SwapBagData:
 	;do not swap bag data if the current list shown is the PC item box
-	ld a, [wFlags_0xcd60]
+	ld a, [wMiscFlags]
 	bit 4, a
 	ret nz
 	
@@ -108,7 +108,7 @@ UpdateMenuInfo:
 SendToBackupBag:
 
 	;do not do anything if the current list shown is the PC item box
-	ld a, [wFlags_0xcd60]
+	ld a, [wMiscFlags]
 	bit 4, a
 	ret nz
 
@@ -284,7 +284,7 @@ SortItems:
 .ldHLbagorbox
 	ld hl, wBagItems
 	push af
-	ld a, [wFlags_0xcd60]
+	ld a, [wMiscFlags]
 	bit 4, a
 	jr z, .ldHLbagorbox_next
 	ld hl, wBoxItems

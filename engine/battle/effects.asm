@@ -388,7 +388,7 @@ StatModifierUpEffect:
 	ld c, a
 	ld b, $0
 	inc a ;joenote - backup the address offset for the stat mod 
-	ld [wUnusedD71B], a	;joenote - backup the address offset for the stat mod
+	ld [wTempCombatStats], a	;joenote - backup the address offset for the stat mod
 	add hl, bc
 	ld b, [hl]
 	inc b ; increment corresponding stat mod
@@ -648,7 +648,7 @@ StatModifierDownEffect:
 	ld c, a
 	ld b, $0
 	inc a ;joenote - backup the address offset for the stat mod 
-	ld [wUnusedD71B], a	;joenote - backup the address offset for the stat mod
+	ld [wTempCombatStats], a	;joenote - backup the address offset for the stat mod
 	add hl, bc
 	ld b, [hl]
 	dec b ; dec corresponding stat mod
@@ -1618,17 +1618,17 @@ PlayBattleAnimationGotID:
 
 ;joenote - function for checking and reseting the AI's already-acted bit
 CheckandResetEnemyActedBit:
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	bit 1, a	;check a for already-acted bit (sets or clears zero flag)
 	res 1, a ; resets the already-acted bit (does not affect flags)
-	ld [wUnusedC000], a
+	ld [wBattleAISettingFlags], a
 	ret 
 
 ;joenote - function for setting the AI's already-acted bit
 SetEnemyActedBit:
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	set 1, a ; sets the already-acted bit
-	ld [wUnusedC000], a
+	ld [wBattleAISettingFlags], a
 	ret
 
 ;joenote - this sets the last damage dealt to zero

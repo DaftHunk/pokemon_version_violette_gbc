@@ -243,7 +243,7 @@ SilphCo11Script5:
 	jp SilphCo11Script_621c8
 
 SilphCo11Script3:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	ld a, $3
@@ -265,7 +265,7 @@ SilphCo11Script3:
 	jp SilphCo11Script_621c8
 
 SilphCo11Script4:
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, SilphCo10Text_62330
@@ -354,7 +354,7 @@ SilphCo11Text1:
 	;otherwise begin loading battle
 	ld hl, ChiefText_prebattle	;load pre battle text
 	call PrintText	;print the pre battle text
-	ld hl, wd72d;set the bits for triggering battle
+	ld hl, wStatusFlags3;set the bits for triggering battle
 	set 6, [hl]	;
 	set 7, [hl]	;
 	ld hl, ChiefTextVictorySpeech	;load text for when you win

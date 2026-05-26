@@ -77,7 +77,7 @@ MovementData_757da:
 	db $FF
 
 CinnabarGymScript_DisplayText:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	xor a
@@ -191,7 +191,7 @@ CinnabarGymScript_758b7:
 	ld [wSpriteIndex], a
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 ;;;;joenote - rematches should not advance map script pointer
@@ -250,7 +250,7 @@ CinnabarGymText_Blaine:
 	ld hl, CinnabarGymText_RematchPreBattle
 	call PrintText
 
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, CinnabarGymText_RematchEndBattle

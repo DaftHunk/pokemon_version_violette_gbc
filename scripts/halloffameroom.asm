@@ -30,7 +30,7 @@ HallofFameRoomScript2:
 	predef HallOfFamePC
 	pop af
 	ld [wLetterPrintingDelayFlags], a
-	ld hl, wFlags_D733
+	ld hl, wStatusFlags7
 	res 1, [hl]
 	inc hl
 	set 0, [hl]

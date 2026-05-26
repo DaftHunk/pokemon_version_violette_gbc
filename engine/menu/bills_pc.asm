@@ -100,7 +100,7 @@ PKMNLeaguePCText: db "Ligue <pkmn>@"
 LogOffPCText:     db "Déconnexion@"
 
 BillsPC_::
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl]
 	xor a
 	ld [wParentMenuItem], a
@@ -109,7 +109,7 @@ BillsPC_::
 	call LoadHpBarAndStatusTilePatterns
 	ld a, [wListScrollOffset]
 	push af
-	ld a, [wFlags_0xcd60]
+	ld a, [wMiscFlags]
 	bit 3, a ; accessing Bill's PC through another PC?
 	jr nz, BillsPCMenu
 ; accessing it directly
@@ -182,7 +182,7 @@ BillsPCMenu:
 	jp z, BillsPCChangeBox ; change box
 
 ExitBillsPC:
-	ld a, [wFlags_0xcd60]
+	ld a, [wMiscFlags]
 	bit 3, a ; accessing Bill's PC through another PC?
 	jr nz, .next
 ; accessing it directly
@@ -191,12 +191,12 @@ ExitBillsPC:
 	call PlaySound
 	call WaitForSoundToFinish
 .next
-	ld hl, wFlags_0xcd60
+	ld hl, wMiscFlags
 	res 5, [hl]
 	call LoadScreenTilesFromBuffer2
 	pop af
 	ld [wListScrollOffset], a
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl]
 	ret
 
@@ -204,7 +204,7 @@ BillsPCDeposit:
 	ld a, [wPartyCount]
 	dec a
 	jr nz, .partyLargeEnough
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl] ; turn on letter printing delay so we don't get instant text
 	ld hl, CantDepositLastMonText
 	call PrintText
@@ -213,7 +213,7 @@ BillsPCDeposit:
 	ld a, [wNumInBox]
 	cp MONS_PER_BOX
 	jr nz, .boxNotFull
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl] ; turn on letter printing delay so we don't get instant text
 	ld hl, BoxFullText
 	call PrintText
@@ -261,7 +261,7 @@ BillsPCDeposit:
 	ld a, [wPartyCount]
 	dec a
 	jp z, BillsPCMenu ; if 1 pokemon left in party, exit the menu automatically
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl] ; turn off letter printing delay so we get instant text
 	ld hl, WhatText
 	call PrintText
@@ -273,7 +273,7 @@ BillsPCWithdraw:
 	ld a, [wNumInBox]
 	and a
 	jr nz, .boxNotEmpty
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl] ; turn on letter printing delay so we don't get instant text
 	ld hl, NoMonText
 	call PrintText
@@ -284,7 +284,7 @@ BillsPCWithdraw:
 	ld a, [wPartyCount]
 	cp PARTY_LENGTH
 	jr nz, .partyNotFull
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl] ; turn on letter printing delay so we don't get instant text
 	ld hl, CantTakeMonText
 	call PrintText
@@ -330,7 +330,7 @@ BillsPCWithdraw:
 	jp BillsPCWithdraw ; otherwise go back to the menu
 .redrawTextBoxAndCurrentBox
 	push hl
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl] ; turn off letter printing delay so we get instant text
 	pop hl
 	call PrintText
@@ -347,13 +347,13 @@ BillsPCRelease:
 	ld a, [wNumInBox]
 	and a
 	jr nz, .loop
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl] ; turn on letter printing delay so we don't get instant text
 	ld hl, NoMonText
 	call PrintText
 	jp BillsPCMenu
 .loop
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl] ; turn off letter printing delay so we get instant text
 	ld hl, ReleaseWhichMonText
 	call PrintText
@@ -361,7 +361,7 @@ BillsPCRelease:
 	call DisplayMonListMenu
 	jp c, BillsPCMenu
 	call BillsPCBackupListIndex
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl] ; turn on letter printing delay so we don't get instant text
 	ld hl, OnceReleasedText
 	call PrintText

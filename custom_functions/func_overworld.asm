@@ -10,11 +10,11 @@ SoftlockTeleport:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, PALLET_TOWN
 	ld [wLastBlackoutMap], a
-	ld a, [wd732]
+	ld a, [wStatusFlags6]
 	set 3, a 
 	res 4, a 
 	set 6, a 
-	ld [wd732], a
+	ld [wStatusFlags6], a
 	;reset safari zone
 	ResetEvent EVENT_IN_SAFARI_ZONE
 	xor a
@@ -98,33 +98,33 @@ TrainerRematch:
 ;running by holding B ORs with $1
 TrackRunBikeSpeed:
 	xor a
-	ld[wUnusedD119], a
+	ld[wMiscsFlags2], a
 	ld a, [wWalkBikeSurfState]
 	dec a ; riding a bike? (0 value = TRUE)
 	call z, IsRidingBike
 	ld a, [hJoyHeld]
 	and B_BUTTON	;holding B to speed up? (non-zero value = TRUE)
 	call nz, IsRunning	;joenote - make holding B do double-speed while walking/surfing/biking
-	ld a, [wd736]
+	ld a, [wMovementFlags]
 	bit 7, a
 	call nz, IsSpinArrow	;player sprite spinning due to spin tiles (Rocket hideout / Viridian Gym)
-	ld a, [wUnusedD119]
+	ld a, [wMiscsFlags2]
 	cp 2	;is biking without speedup being done?
 	jr z, .skip	;if not make the states a value from 1 to 4 (excluding biking without speedup, which needs to be 2)
 	inc a	
 .skip
-	ld[wUnusedD119], a
+	ld[wMiscsFlags2], a
 	ret
 IsRidingBike:
-	ld a, [wUnusedD119]
+	ld a, [wMiscsFlags2]
 	or $2
-	ld[wUnusedD119], a
+	ld[wMiscsFlags2], a
 	ret
 IsRunning:
 IsSpinArrow:
-	ld a, [wUnusedD119]
+	ld a, [wMiscsFlags2]
 	or $1
-	ld[wUnusedD119], a
+	ld[wMiscsFlags2], a
 	ret
 
 	
@@ -170,7 +170,7 @@ CheckForSmartHMuse:
 	cp 2 ; is the player already surfing?
 	jp z, .nosurf	
 	;surfing not allowed if forced to ride bike
-	ld a, [wd732]
+	ld a, [wStatusFlags6]
 	bit 5, a
 	jr nz, .nosurf
 	;load a 1 into wActionResultOrTookBattleTurn as a marker that we are checking surf from this function
@@ -180,7 +180,7 @@ CheckForSmartHMuse:
 	xor a
 	ld [wActionResultOrTookBattleTurn], a
 	;now check bit to see of surfing allowed
-	ld hl, wd728
+	ld hl, wStatusFlags1
 	bit 1, [hl]
 	res 1, [hl]
 	jp z, .nosurf
@@ -206,7 +206,7 @@ CheckForSmartHMuse:
 	jp z, .nosurf
 .beginsurfing
 	;we can now initiate surfing
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 7, [hl]
 	ld a, 2
 	ld [wWalkBikeSurfState], a ; change player state to surfing
@@ -253,7 +253,7 @@ CheckForSmartHMuse:
 .noflash
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;else check for strength and enable it
-	ld a, [wd728]
+	ld a, [wStatusFlags1]
 	bit 0, a ;check the usingStrength bit
 	jr nz, .nostrength	;do nothing if already active
 
@@ -313,9 +313,9 @@ CheckForSmartHMuse:
 	pop hl
 	
 	;set the usingStrength bit
-	ld a, [wd728]
+	ld a, [wStatusFlags1]
 	set 0, a
-	ld [wd728], a
+	ld [wStatusFlags1], a
 	jp .return
 .nostrength
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -450,7 +450,7 @@ CheckForRodBike:
 
 .nofishing
 	;do nothing if forced to ride bike
-	ld a, [wd732]
+	ld a, [wStatusFlags6]
 	bit 5, a
 	ret nz
 	;else check if bike is in bag
@@ -490,7 +490,7 @@ CheckForRodBike:
 ;This is to free up space in rom bank 0
 
 Determine180degreeMove:	
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 7, a ; are we simulating button presses?
 	jr nz, .noDirectionChange ; ignore direction changes if we are
 	ld a, [wCheckFor180DegreeTurn]
@@ -536,7 +536,7 @@ Determine180degreeMove:
 .holdIntermediateDirectionLoop
 	call UpdateSprites	;joenote - make the transitional frames viewable
 	call DelayFrame
-	ld hl, wFlags_0xcd60
+	ld hl, wMiscFlags
 	set 2, [hl]
 	ld hl, wCheckFor180DegreeTurn
 	dec [hl]

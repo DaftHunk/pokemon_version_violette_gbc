@@ -62,7 +62,7 @@ VictoryRoad2ScriptPointers:
 	dw EndTrainerBattle
 
 VictoryRoad2Script0:
-	ld a, [wFlags_0xcd60]
+	ld a, [wMiscFlags]
 	bit 1, a
 	ret nz ; PureRGBnote: ADDED: if a boulder animation is playing forget doing this, helps reduce lag
 	ld hl, CoordsData_51816

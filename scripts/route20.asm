@@ -31,10 +31,10 @@ MissingnoShore:
 	jr nz, .return
 	ResetEvent EVENT_CINNABAR_SHORE_MISSINGNO	;clear cinnabar shore activation
 
-	ld hl, wFlags_D733
+	ld hl, wStatusFlags7
 	set 4, [hl]
 
-	ld hl, wd72d;set the bits for triggering battle
+	ld hl, wStatusFlags3;set the bits for triggering battle
 	set 6, [hl]	;
 	set 7, [hl]	;
 	ld hl, ExclamationText	;load text for when you win

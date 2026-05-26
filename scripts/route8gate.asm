@@ -9,7 +9,7 @@ Route8GateScriptPointers:
 	dw Route8GateScript1
 
 Route8GateScript_1e1d7:
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 7, [hl]
 	ld a, $10
 	ld [wSimulatedJoypadStatesEnd], a
@@ -21,7 +21,7 @@ Route8GateScript_1e1d7:
 	ret
 
 Route8GateScript0:
-	ld a, [wd728]
+	ld a, [wStatusFlags1]
 	bit 6, a
 	ret nz
 	ld hl, CoordsData_1e22c
@@ -44,7 +44,7 @@ Route8GateScript0:
 	ld [wRoute8GateCurScript], a
 	ret
 .asm_1e220
-	ld hl, wd728
+	ld hl, wStatusFlags1
 	set 6, [hl]
 	ld a, $3
 	ld [hSpriteIndexOrTextID], a

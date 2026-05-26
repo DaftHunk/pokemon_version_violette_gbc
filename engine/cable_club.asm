@@ -263,9 +263,9 @@ CableClub_DoBattleOrTradeAgain:
 	dec c
 	jr nz, .unpatchEnemyMonsLoop
 	ld a, wEnemyMonOT % $100
-	ld [wUnusedCF8D], a
+	ld [wTrainerPPTracker], a
 	ld a, wEnemyMonOT / $100
-	ld [wUnusedCF8D + 1], a
+	ld [wTrainerPPTracker + 1], a
 	xor a
 	ld [wTradeCenterPointerTableIndex], a
 	ld a, $ff
@@ -615,7 +615,7 @@ ReturnToCableClubRoom:
 	push hl
 	res 0, [hl]
 	xor a
-	ld [wd72d], a
+	ld [wStatusFlags3], a
 	dec a
 	ld [wDestinationWarpID], a
 	call LoadMapData

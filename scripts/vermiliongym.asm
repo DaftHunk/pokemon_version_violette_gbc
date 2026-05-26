@@ -163,7 +163,7 @@ VermilionGymText_MajorBob:
 
 	ld hl, VermilionGymText_LeaderPreBattle
 	call PrintText
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, VermilionGymText_LeaderEndBattle
@@ -189,7 +189,7 @@ VermilionGymText_MajorBob:
 	ld hl, VermilionGymText_RematchPreBattle
 	call PrintText
 
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, VermilionGymText_RematchEndBattle

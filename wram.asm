@@ -66,7 +66,7 @@ ENDM
 
 SECTION "WRAM Bank 0", WRAM0
 
-wUnusedC000:: ; c000
+wBattleAISettingFlags:: ; c000
 ;joenote - use this for battle ai bit settings and handling other battle flags
 ;bit 0 - if set, ai should switch pokemon
 ;bit 1 - if set, ai already acted by switching or using an item this turn
@@ -1232,7 +1232,7 @@ wRightGBMonSpecies:: ; cd5f
 ; in the trade animation, the mon that leaves the right gameboy
 	ds 1
 
-wFlags_0xcd60:: ; cd60
+wMiscFlags:: ; cd60
 ; bit 0: is player engaged by trainer (to avoid being engaged by multiple trainers simultaneously)
 ; bit 1: boulder dust animation (from using Strength) pending
 ; bit 2: used for unknown stuff
@@ -1522,7 +1522,7 @@ ENDU
 wListPointer:: ; cf8b
 	ds 2
 
-wUnusedCF8D:: ; cf8d
+wTrainerPPTracker:: ; cf8d
 ; 2 bytes
 ; used to store pointers, but never read
 ;joenote - used as a temp location for storing pointers for PP tracking
@@ -2209,7 +2209,7 @@ wMovesString:: ; d0e1
 ;joenote - use this to backup which turn it is
 ;		- if $FF in battle, signals that the animation to be played is for self-inflicted damage
 ;		- used out of battle for tracking speed of walking & bike
-wUnusedD119:: ; d119	
+wMiscsFlags2:: ; d119	
 	ds 1
 
 wWalkBikeSurfStateCopy:: ; d11a
@@ -2341,7 +2341,7 @@ wWhichPrize:: ; d139
 
 wIgnoreInputCounter:: ; d13a
 ; counts downward each frame
-; when it hits 0, bit 5 (ignore input bit) of wd730 is reset
+; when it hits 0, bit 5 (ignore input bit) of wStatusFlags5 is reset
 	ds 1
 
 wStepCounter:: ; d13b
@@ -2390,10 +2390,10 @@ wPseudoItemID:: ; d152
 ; that case, this would be ESCAPE_ROPE.
 	ds 1
 
-wUnusedD153:: ; d153	;joenote - use this to hold the pointer for trainerAI statexp
+wTrainerEV:: ; d153	;joenote - use this to hold the pointer for trainerAI statexp
 	ds 2
 
-wUnusedD155:: ; d155	;joenote - use this to as a backup for how many pokemon to split exp between (fixing exp all)
+wTempExpFlags:: ; d155	;joenote - use this to as a backup for how many pokemon to split exp between (fixing exp all)
 	ds 1				;		-this is a base-1-indexed number (so between 1 and 6 pkmn)
 						;While in active combat:
 						;	bit 0 - setting this skips the text for a substitute taking damage
@@ -2487,7 +2487,7 @@ wObtainedBadges:: ; d356
 wLetterPrintingDelayFlags:: ; d358
 ; bit 0: If 0, limit the delay to 1 frame. Note that this has no effect if
 ;        the delay has been disabled entirely through bit 1 of this variable
-;        or bit 6 of wd730.
+;        or bit 6 of wStatusFlags5.
 ; bit 1: If 0, no delay.
 	ds 1
 
@@ -2534,7 +2534,7 @@ wItemFinderAttributes:: ; d366	;joenote - also use this byte for improved itemfi
 ;bit 1 - below
 ;bit 2 - left
 ;bit 3 - right
-wUnusedD366:: ; d366	;joenote - use this to track which ai pokemon have switched & shiny state
+wTempAIBattleFlags:: ; d366	;joenote - use this to track which ai pokemon have switched & shiny state
 	ds 1
 ;bit 0: set if player mon shiny
 ;bit 1: 1st pkmn (position 0)
@@ -2799,7 +2799,7 @@ wNumHoFTeams:: ; d5a2
 ;this gets zeroed out when entering a map
 ;stays preserved if exiting a battle
 ;bit 7 is set if coming out of a battle
-wUnusedD5A3:: ; d5a3	;joenote - use for the random npc win streak 
+wTempBattleFlag:: ; d5a3	;joenote - use for the random npc win streak 
 	ds 1
 
 wPlayerCoins:: ; d5a4
@@ -3157,7 +3157,7 @@ wDestinationMap:: ; d71a
 ; destination map (for certain types of special warps, not ordinary walking)
 	ds 1
 
-wUnusedD71B:: ; d71b	;joenote - used as a backup address for a stat being raised/lowered via stat mods
+wTempCombatStats:: ; d71b	;joenote - used as a backup address for a stat being raised/lowered via stat mods
 	;0 = none
 	;1 = attack
 	;2 = defense
@@ -3196,7 +3196,7 @@ wGameplayOptions:: ; d721	;joenote - use to set various wram flags
 	;bit 6 - nuzlocke mode activated
 	;bit 7 - enhanced GBC colors toggle
 ;;;;;;;;;;;;;;joenote - use these unused locations for debugging and parsing DV scores or holding temp values
-wUnusedD722:: 
+wTempIVFlags:: 
 	ds 4
 wUnusedD726:: 
 	ds 1
@@ -3212,7 +3212,7 @@ wMoreGameplayOptions::
 	;bit 6 - 
 	;bit 7 - 
 ;;;;;;;;;;;;;;
-wd728:: ; d728
+wStatusFlags1:: ; d728
 ; bit 0: using Strength outside of battle
 ; bit 1: set by IsSurfingAllowed when surfing's allowed, but the caller resets it after checking the result
 ; bit 3: received Old Rod
@@ -3238,12 +3238,12 @@ wBeatSpecial4Flags:: ; d72a
 wBeatGymLeadersRematch:: ; d72b
 	ds 1
 
-wd72c:: ; d72c
+wStatusFlags2:: ; d72c
 ; bit 0: if not set, the 3 minimum steps between random battles have passed
 ; bit 1: prevent audio fade out
 	ds 1
 
-wd72d:: ; d72d
+wStatusFlags3:: ; d72d
 ; This variable is used for temporary flags and as the destination map when
 ; warping to the Trade Center or Colosseum.
 ; bit 0: sprite facing directions have been initialised in the Trade Center
@@ -3256,7 +3256,7 @@ wd72d:: ; d72d
 ; battles anyway).
 	ds 1
 
-wd72e:: ; d72e
+wStatusFlags4:: ; d72e
 ; bit 0: the player has received Lapras in the Silph Co. building
 ; bit 1: set in various places, but doesn't appear to have an effect
 ; bit 2: the player has healed pokemon at a pokemon center at least once
@@ -3269,7 +3269,7 @@ wd72e:: ; d72e
 
 	ds 1
 
-wd730:: ; d730
+wStatusFlags5:: ; d730
 ; bit 0: NPC sprite being moved by script
 ; bit 2: Input is being ignored for half a second
 ; bit 5: ignore joypad input
@@ -3279,7 +3279,7 @@ wd730:: ; d730
 
 	ds 1
 
-wd732:: ; d732
+wStatusFlags6:: ; d732
 ; bit 0: play time being counted
 ; bit 1: remnant of debug mode; only set by the debug build.
 ; if it is set:
@@ -3299,7 +3299,7 @@ wd732:: ; d732
 ; bit 6: map destination is [wLastBlackoutMap] (usually the last used pokemon center, but could be the player's house)
 	ds 1
 
-wFlags_D733:: ; d733
+wStatusFlags7:: ; d733
 ; bit 0: running a test battle
 ; bit 1: prevent music from changing when entering new map
 ; bit 2: skip the joypad check in CheckWarpsNoCollision (used for the forced warp down the waterfall in the Seafoam Islands)
@@ -3317,7 +3317,7 @@ wBeatLorelei:: ; d734
 ; the game uses this to tell when Elite 4 events need to be reset
 	ds 2
 
-wd736:: ; d736
+wMovementFlags:: ; d736
 ; bit 0: check if the player is standing on a door and make him walk down a step if so
 ; bit 1: the player is currently stepping down from a door
 ; bit 2: standing on a warp

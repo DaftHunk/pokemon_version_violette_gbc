@@ -10,7 +10,7 @@ TradeCenterScript:
 	ld a, $1
 	ld [H_SPRITEINDEX], a
 	call SetSpriteFacingDirection
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	bit 0, [hl]
 	set 0, [hl]
 	ret nz
