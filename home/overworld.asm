@@ -597,7 +597,6 @@ CheckMapConnections::	;joenote - these routines moved to func_overworld.asm to s
 	cp b
 	; Reload tileset (Credit Engezerstorung)
 	call nz, LoadTilesetTilePatternData
-.doNotReload
 	jp OverworldLoopLessDelay
 
 .didNotEnterConnectedMap
