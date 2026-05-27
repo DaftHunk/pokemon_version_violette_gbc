@@ -166,3 +166,9 @@ _Route20Text12::
 _Route20Text11::
 	text "Iles Ecume"
 	done
+
+_Route20Text_Lighthouse::
+	text "Phare"
+	
+	para "-Hors service-"
+	done

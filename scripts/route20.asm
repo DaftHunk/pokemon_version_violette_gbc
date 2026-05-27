@@ -169,6 +169,7 @@ Route20TextPointers:
 	dw Route20Text10
 	dw Route20Text11
 	dw Route20Text12
+	dw Route20Text_Lighthouse
 
 Route20TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_ROUTE_20_TRAINER_0
@@ -445,4 +446,8 @@ Route20AfterBattleText10:
 Route20Text12:
 Route20Text11:
 	TX_FAR _Route20Text11
+	db "@"
+
+Route20Text_Lighthouse:
+	TX_FAR _Route20Text_Lighthouse
 	db "@"
