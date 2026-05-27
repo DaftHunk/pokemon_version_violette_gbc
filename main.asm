@@ -354,7 +354,8 @@ PewterHouse1Blocks:
 PewterHouse2Blocks:
 ViridianHouseBlocks: INCBIN "maps/viridianhouse.blk"
 
-CeladonMansion5Blocks:
+CeladonMansion5Blocks: INCBIN "maps/celadonmansion5.blk"
+
 CeladonSchoolBlocks:
 ViridianSchoolBlocks: INCBIN "maps/viridianschool.blk"
 
