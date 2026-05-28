@@ -5,7 +5,7 @@ CeladonPrizeMenu:
 	ld hl, RequireCoinCaseTextPtr
 	jp PrintText
 .havingCoinCase
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl] ; disable letter-printing delay
 	ld hl, ExchangeCoinsForPrizesTextPtr
 	call PrintText
@@ -38,7 +38,7 @@ CeladonPrizeMenu:
 	jr z, .noChoice
 	call HandlePrizeChoice
 .noChoice
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl]
 	ret
 

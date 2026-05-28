@@ -1,5 +1,5 @@
 Route18GateScript:
-	ld hl, wd732
+	ld hl, wStatusFlags6
 	res 5, [hl]
 	call EnableAutoTextBoxDrawing
 	ld a, [wRoute18GateCurScript]
@@ -77,7 +77,7 @@ Route18GateScript3:
 	ret nz
 	xor a
 	ld [wJoyIgnore], a
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 7, [hl]
 	ld a, $0
 	ld [wRoute18GateCurScript], a

@@ -2,14 +2,14 @@
 ;joenote - adding new NPC to give coins for showing him pokemon
 
 CeladonHotelScript:
-	ld a, [wUnusedD5A3]	;this location gets cleared between area transistions.
+	ld a, [wTempBattleFlag]	;this location gets cleared between area transistions.
 	and a
 	jr nz, .jump
 	push hl
 	callba GetRandMonAny	;get random pkmn in wcf91
 	pop hl
 	ld a, [wcf91]
-	ld [wUnusedD5A3], a
+	ld [wTempBattleFlag], a
 .jump
 	jp EnableAutoTextBoxDrawing
 
@@ -23,7 +23,7 @@ CeladonHotelTextPointers:
 CeladonHotelCoinGuy:
 	TX_ASM
 	ld hl, CeladonHotelCoinGuyText_intro	
-	ld a, [wUnusedD5A3]
+	ld a, [wTempBattleFlag]
 	ld [wPokedexNum], a
 	call GetMonName
 	call PrintText
@@ -33,7 +33,7 @@ CeladonHotelCoinGuy:
 	
 	ld a, [wPartyMon1Species]
 	ld b, a
-	ld a, [wUnusedD5A3]
+	ld a, [wTempBattleFlag]
 	cp b
 	ld hl, CeladonHotelCoinGuyText_PC
 	jr nz, .endscript_print
@@ -80,7 +80,7 @@ CeladonHotelCoinGuy:
 	call PlaySoundWaitForCurrent
 	call WaitForSoundToFinish
 	xor a
-	ld [wUnusedD5A3], a
+	ld [wTempBattleFlag], a
 	jr .endscript
 .need_coincase
 	ld hl, CeladonHotelCoinGuyText_needcase	

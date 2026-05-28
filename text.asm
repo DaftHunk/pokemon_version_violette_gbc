@@ -475,25 +475,6 @@ _RockTunnelPokecenterGuyText::
 	cont "à Lavanville!"
 	done
 
-_UnusedBenchGuyText1::
-	text "Moi aussi j'veux"
-	line "capturer un"
-	cont "#mon."
-	done
-
-_UnusedBenchGuyText2::
-	text "La fatigue..."
-	cont "Doucement..."
-	cont "Me gagne..."
-	done
-
-_UnusedBenchGuyText3::
-	text "Le patron de la"
-	line "Sylphe se cache"
-	cont "dans le Parc"
-	cont "Safari."
-	done
-
 _VermilionPokecenterGuyText::
 	text "C'est vrai qu'un"
 	line "#mon de haut"
@@ -980,6 +961,11 @@ _ViridianBlackboardSleepText::
 	line "peut attaquer"
 	cont "s'il est endormi!"
 
+	para "Un seul membre"
+	line "d'une équipe peut"
+	cont "être endormi à la"
+	cont "fois."
+
 	para "Un #mon reste"
 	line "endormi même"
 	cont "après un combat."
@@ -1007,6 +993,9 @@ _ViridianBlackboardPrlzText::
 	line "annuler certaines"
 	cont "attaques!"
 
+	para "Elle divise aussi"
+	line "la Vitesse par 2!"
+
 	para "La paralysie ne"
 	line "disparaît pas"
 	cont "après un combat."
@@ -1018,8 +1007,8 @@ _ViridianBlackboardPrlzText::
 
 _ViridianBlackboardBurnText::
 	text "La brûlure réduit"
-	line "la puissance et"
-	cont "la vitesse. Elle"
+	line "la puissance"
+	cont "physique. Elle"
 	cont "inflige aussi des"
 	cont "dégâts continus."
 
@@ -1037,6 +1026,11 @@ _ViridianBlackboardFrozenText::
 	line "prisonnier des"
 	cont "glaces reste"
 	cont "immobile!"
+	
+	para "Un seul membre"
+	line "d'une équipe peut"
+	cont "être gelé à la"
+	cont "fois."
 
 	para "Il reste gelé"
 	line "même après la"
@@ -1556,7 +1550,7 @@ _GainedText::
 	text_end
 
 _WithExpAllText::
-	text "L'équipe à gagné"
+	text "L'équipe a gagné"
 	line "@"
 	text_end
 

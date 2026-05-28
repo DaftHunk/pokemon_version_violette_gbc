@@ -1,5 +1,5 @@
 ApplyOutOfBattlePoisonDamage:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	add a
 	jp c, .noBlackOut ; no black out if joypad states are being simulated
 	ld a, [wPartyCount]
@@ -123,7 +123,7 @@ ApplyOutOfBattlePoisonDamage:
 	ld a, TEXT_BLACKED_OUT
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
-	ld hl, wd72e
+	ld hl, wStatusFlags4
 	set 5, [hl]
 	ld a, $ff
 	jr .done

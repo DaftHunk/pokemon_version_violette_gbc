@@ -132,7 +132,7 @@ CeruleanGymText_Misty:
 
 	ld hl, CeruleanGymText_LeaderPreBattle
 	call PrintText
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, CeruleanGymText_LeaderEndBattle
@@ -157,7 +157,7 @@ CeruleanGymText_Misty:
 	ld hl, CeruleanGymText_RematchPreBattle
 	call PrintText
 
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, CeruleanGymText_RematchEndBattle

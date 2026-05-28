@@ -77,7 +77,7 @@ StatusScreen:
 	ld b, $1
 	call CalcStats ; Recalculate stats
 .DontRecalculate
-	ld hl, wd72c
+	ld hl, wStatusFlags2
 	set 1, [hl]
 	ld a, $33
 	ld [rNR50], a ; Reduce the volume
@@ -155,7 +155,7 @@ StatusScreen:
 	push de
 	ld a, [wLoadedMonSpecies]
 	ld d, a
-	ld a, [wUnusedD722]
+	ld a, [wTempIVFlags]
 	ld e, a
 	callba DetermineMonGender
 	ld a, d
@@ -459,14 +459,14 @@ PrintStatsBox:
 	bit 1, a
 	jr z, .doregular
 	
-	ld de, wUnusedD722
+	ld de, wTempIVFlags
 	lb bc, 1, 2
 	call PrintStat
-	ld de, wUnusedD722 + 1
+	ld de, wTempIVFlags + 1
 	call PrintStat
-	ld de, wUnusedD722 + 2
+	ld de, wTempIVFlags + 2
 	call PrintStat
-	ld de, wUnusedD722 + 3
+	ld de, wTempIVFlags + 3
 	jp PrintNumber
 .doregular
 	ld de, wLoadedMonAttack
@@ -677,7 +677,7 @@ StatusScreen_PrintPP:
 DVParse:
 	push hl
 	push bc
-	ld hl, wUnusedD722
+	ld hl, wTempIVFlags
 	ld b, $00
 
 	ld a, [wLoadedMonDVs]	;get attack dv
@@ -818,7 +818,7 @@ StatusScreenOriginal:
 ExitStatusScreen:
 	pop af
 	ldh [hTilesetType], a
-	ld hl, wd72c
+	ld hl, wStatusFlags2
 	res 1, [hl]
 	ld a, $77
 	ldh [rNR50], a

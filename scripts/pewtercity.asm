@@ -54,7 +54,7 @@ PewterCityScript1:
 	ld [hSpriteImageIndex], a
 	call SetSpriteImageIndexAfterSettingFacingDirection
 	call PlayDefaultMusic
-	ld hl, wFlags_0xcd60
+	ld hl, wMiscFlags
 	set 4, [hl]
 	ld a, $d
 	ld [hSpriteIndexOrTextID], a
@@ -87,7 +87,7 @@ MovementData_PewterMuseumGuyExit:
 	db $FF
 
 PewterCityScript2:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	ld a, HS_MUSEUM_GUY
@@ -123,7 +123,7 @@ PewterCityScript4:
 	ld [hSpriteImageIndex], a
 	call SetSpriteImageIndexAfterSettingFacingDirection
 	call PlayDefaultMusic
-	ld hl, wFlags_0xcd60
+	ld hl, wMiscFlags
 	set 4, [hl]
 	ld a, $e
 	ld [hSpriteIndexOrTextID], a
@@ -156,7 +156,7 @@ MovementData_PewterGymGuyExit:
 	db $FF
 
 PewterCityScript5:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	ld a, HS_GYM_GUY

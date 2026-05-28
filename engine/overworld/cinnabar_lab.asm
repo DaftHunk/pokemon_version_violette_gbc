@@ -1,5 +1,5 @@
 GiveFossilToCinnabarLab:
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl]
 	xor a
 	ld [wCurrentMenuItem], a
@@ -24,7 +24,7 @@ GiveFossilToCinnabarLab:
 	call TextBoxBorder
 	call UpdateSprites
 	call PrintFossilsInBag
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl]
 	call HandleMenuInput
 	bit 1, a ; pressed B?
@@ -35,7 +35,7 @@ GiveFossilToCinnabarLab:
 	ld e, a
 	add hl, de
 	ld a, [hl]
-	ld [$ffdb], a
+	ld [hItemToRemoveID], a
 	cp DOME_FOSSIL
 	jr z, .choseDomeFossil
 	cp HELIX_FOSSIL

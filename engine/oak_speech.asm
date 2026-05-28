@@ -8,7 +8,7 @@ SetDefaultNames:
 	; which causes CheckForceBikeOrSurf to not return.
 	; To fix this in debug builds, reset BIT_ALWAYS_ON_BIKE here or in StartNewGame.
 	; In non-debug builds, the instructions can be removed.
-	ld a, [wd732]
+	ld a, [wStatusFlags6]
 	push af
 	ld a, [wGameplayOptions]	;joenote - preserve extra options
 	push af
@@ -23,7 +23,7 @@ SetDefaultNames:
 	pop af
 	ld [wGameplayOptions], a	;joenote - restore extra options
 	pop af
-	ld [wd732], a
+	ld [wStatusFlags6], a
 	pop af
 	ld [wOptions], a
 	pop af
@@ -120,7 +120,7 @@ OakSpeech:
 	call SpecialWarpIn
 	xor a
 	ld [hTilesetType], a
-	ld a, [wd732]
+	ld a, [wStatusFlags6]
 	bit 1, a ; possibly a debug mode bit
 	jp nz, .skipChoosingNames
 	ld de, ProfOakPic
@@ -199,7 +199,7 @@ OakSpeech:
 .donefemale_front2	
 	call IntroDisplayPicCenteredOrUpperRight
 	call GBFadeInFromWhite
-	ld a, [wd72d]
+	ld a, [wStatusFlags3]
 	and a
 	jr nz, .next
 	ld hl, OakSpeechText3
@@ -362,8 +362,8 @@ DoNewGamePlus: ;joenote - selective wram clearing for new game plus
 	; 2438 keep wNumHoFTeams
 
 	;skip Movedex
-	ld hl, wUnusedD5A3
-	ld bc, wMovedexSeen - wUnusedD5A3
+	ld hl, wTempBattleFlag
+	ld bc, wMovedexSeen - wTempBattleFlag
 	xor a
 	call FillMemory
 	; 2786 keep wMovedexSeen
@@ -376,8 +376,8 @@ DoNewGamePlus: ;joenote - selective wram clearing for new game plus
 	; 3186 keep wGameplayOptions
 
 	;skip clearing the play clock
-	ld hl, wUnusedD722
-	ld bc, wPlayTimeHours - wUnusedD722
+	ld hl, wTempIVFlags
+	ld bc, wPlayTimeHours - wTempIVFlags
 	xor a
 	call FillMemory
 	; 3412 keep wPlayTimeHours, wPlayTimeMaxed, wPlayTimeMinutes, wPlayTimeSeconds, wPlayTimeFrames
@@ -419,7 +419,7 @@ DebugNewGameRivalName:
 DisplayNewGamePlusInfo:
 	xor a
 	ld [wUpdateSpritesEnabled], a
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl]
 	call DisableLCD
 	ld hl, CircleTile
@@ -454,13 +454,13 @@ DisplayNewGamePlusInfo:
 	call EnableLCD
 	callba LoadTrainerInfoTextBoxTiles
 	call WaitForTextScrollButtonPress
-	ld hl, wd72e
+	ld hl, wStatusFlags4
 	res 6, [hl]
 	call ClearScreen
 	call RunDefaultPaletteCommand
 	call LoadTextBoxTilePatterns
 	call LoadFontTilePatterns
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl]
 	ret
 

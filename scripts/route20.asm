@@ -31,10 +31,10 @@ MissingnoShore:
 	jr nz, .return
 	ResetEvent EVENT_CINNABAR_SHORE_MISSINGNO	;clear cinnabar shore activation
 
-	ld hl, wFlags_D733
+	ld hl, wStatusFlags7
 	set 4, [hl]
 
-	ld hl, wd72d;set the bits for triggering battle
+	ld hl, wStatusFlags3;set the bits for triggering battle
 	set 6, [hl]	;
 	set 7, [hl]	;
 	ld hl, ExclamationText	;load text for when you win
@@ -169,6 +169,7 @@ Route20TextPointers:
 	dw Route20Text10
 	dw Route20Text11
 	dw Route20Text12
+	dw Route20Text_Lighthouse
 
 Route20TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_ROUTE_20_TRAINER_0
@@ -445,4 +446,8 @@ Route20AfterBattleText10:
 Route20Text12:
 Route20Text11:
 	TX_FAR _Route20Text11
+	db "@"
+
+Route20Text_Lighthouse:
+	TX_FAR _Route20Text_Lighthouse
 	db "@"

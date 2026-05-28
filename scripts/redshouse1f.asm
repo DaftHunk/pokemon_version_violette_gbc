@@ -52,7 +52,7 @@ RedsHouse1FTextPointers:
 
 RedsHouse1FText1: ; Mom
 	TX_ASM
-	ld a, [wd72e]
+	ld a, [wStatusFlags4]
 	bit 3, a
 	jr nz, .heal ; if player has received a Pokémon from Oak, heal team
 	ld hl, MomWakeUpText

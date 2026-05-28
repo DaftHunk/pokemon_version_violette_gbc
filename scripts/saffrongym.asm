@@ -182,7 +182,7 @@ SaffronGymText_Sabrina:
 
 	ld hl, SaffronGymText_LeaderPreBattle
 	call PrintText
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, SaffronGymText_LeaderEndBattle
@@ -227,7 +227,7 @@ SaffronGymText_Sabrina:
 .leaderFightAfterElite4
 	ld hl, SaffronGymText_RematchPreBattle
 	call PrintText	
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, SaffronGymText_RematchEndBattle

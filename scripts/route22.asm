@@ -110,7 +110,7 @@ Route22Script0:
 	ret
 
 Route22Script1:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	ld a, [wcf0d]
@@ -132,7 +132,7 @@ Route22Script1:
 	ld a, $1
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, Route22RivalDefeatedText1
@@ -233,7 +233,7 @@ Route22RivalExitMovementData2:
 	db $FF
 
 Route22Script3:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	xor a
@@ -279,7 +279,7 @@ Route22Script_5104e:
 	ret
 
 Route22Script4:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	ld a, $2
@@ -303,7 +303,7 @@ Route22Script4:
 	ld a, $2
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, Route22RivalDefeatedText2
@@ -385,7 +385,7 @@ MovementData_5114d:
 	db $FF
 
 Route22Script6:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	xor a

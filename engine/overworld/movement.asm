@@ -58,7 +58,7 @@ UpdatePlayerSprite:
 	bit 0, a
 	jr nz, .notMoving
 .moving
-	ld a, [wd736]
+	ld a, [wMovementFlags]
 	bit 7, a ; is the player sprite spinning due to a spin tile?
 	jr nz, .skipSpriteAnim
 	ld a, [H_CURRENTSPRITEOFFSET]
@@ -203,7 +203,7 @@ UpdateNPCSprite:
 	jr nz, .next
 ; reached end of wNPCMovementDirections list
 	ld [hl], a ; store $ff in movement byte 1, disabling scripted movement
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 0, [hl]
 	xor a
 	ld [wSimulatedJoypadStatesIndex], a
@@ -492,7 +492,7 @@ MakeNPCFacePlayer:
 
 ; Check if the behaviour of the NPC facing the player when spoken to is
 ; disabled. This is only done when rubbing the S.S. Anne captain's back.
-	ld a, [wd72d]
+	ld a, [wStatusFlags3]
 	bit 5, a
 	jr nz, notYetMoving
 	res 7, [hl]
@@ -874,7 +874,7 @@ DoScriptedNPCMovement:
 ; a few times in the game. It is used when the NPC and player must walk together
 ; in sync, such as when the player is following the NPC somewhere. An NPC can't
 ; be moved in sync with the player using the other method.
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 7, a
 	ret z
 	
@@ -890,7 +890,7 @@ DoScriptedNPCMovement:
 .not60fps
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	
-	ld hl, wd72e
+	ld hl, wStatusFlags4
 	bit 7, [hl]
 	set 7, [hl]
 	jp z, InitScriptedNPCMovement

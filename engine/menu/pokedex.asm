@@ -575,7 +575,7 @@ ShowPokedexData:
 
 ; function to display pokedex data from inside the pokedex
 ShowPokedexDataCommon:
-	ld hl, wd72c
+	ld hl, wStatusFlags2
 	set 1, [hl]
 	ld a, $33 ; 3/7 volume
 	ldh [rNR50], a
@@ -981,7 +981,7 @@ ShowNextPokemonData:
 	call RunDefaultPaletteCommand
 	call LoadTextBoxTilePatterns
 	call GBPalNormal
-	ld hl, wd72c
+	ld hl, wStatusFlags2
 	res 1, [hl]
 	ld a, $77 ; max volume
 	ldh [rNR50], a
@@ -1072,7 +1072,7 @@ ShowNextPokemonData:
 
 ; function to display pokedex capa from inside the pokedex
 ShowPokedexCapa:
-	ld hl, wd72c
+	ld hl, wStatusFlags2
 	set 1, [hl]
 	ld a, $33 ; 3/7 volume
 	ld [rNR50], a
@@ -1112,7 +1112,7 @@ ShowPokedexCapa:
 	call RunDefaultPaletteCommand
 	call LoadTextBoxTilePatterns
 	call GBPalNormal
-	ld hl, wd72c
+	ld hl, wStatusFlags2
 	res 1, [hl]
 	ld a, $77 ; max volume
 	ld [rNR50], a

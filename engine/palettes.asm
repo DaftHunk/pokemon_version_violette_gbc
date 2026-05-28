@@ -69,14 +69,14 @@ SetPal_Battle:
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;load shiny palette in battle
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	bit 7, a
 	jr z, .noshinyenemy
 	callba CheckEnemyShinyDVs
 	jr z, .noshinyenemy
 	callba ShinyEnemyMon
 .noshinyenemy
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	bit 0, a
 	jr z, .noshinyplayer
 	callba CheckPlayerShinyDVs

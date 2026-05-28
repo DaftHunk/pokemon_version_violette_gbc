@@ -16,18 +16,23 @@ _Route9AfterBattleText1::
 	done
 
 _Route9BattleText2::
-	text "Mais qui voilà,"
-	line "les bras chargés"
-	cont "de #mon?"
+	text "Je serai le plus"
+	line "grand dresseur du"
+	cont "moooooonde!"
 	done
 
 _Route9EndBattleText2::
-	text "Paf!"
-	line "J'suis fini!"
+	text "???"
+	line "Mon Sabelette a"
+	cont "perdu?"
 	prompt
 
 _Route9AfterBattleText2::
-	text "Passe ton chemin!"
+	text "Nooon! Je dois"
+	line "recommencer mes"
+	cont "100 victoires"
+	cont "d'affilé avec"
+	cont "Sabelette!"
 	done
 
 _Route9BattleText3::

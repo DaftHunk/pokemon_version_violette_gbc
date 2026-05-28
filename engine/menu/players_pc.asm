@@ -1,5 +1,5 @@
 PlayerPC:
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl]
 	ld a, ITEM_NAME
 	ld [wNameListType], a
@@ -7,7 +7,7 @@ PlayerPC:
 	xor a
 	ld [wBagSavedMenuItem], a
 	ld [wParentMenuItem], a
-	ld a, [wFlags_0xcd60]
+	ld a, [wMiscFlags]
 	bit 3, a ; accessing player's PC through another PC?
 	jr nz, PlayerPCMenu
 ; accessing it directly
@@ -19,7 +19,7 @@ PlayerPC:
 PlayerPCMenu:
 	ld a, [wParentMenuItem]
 	ld [wCurrentMenuItem], a
-	ld hl, wFlags_0xcd60
+	ld hl, wMiscFlags
 	set 5, [hl]
 	res 4, [hl]	;joenote - assigned this bit to track if withdrawing items
 	call LoadScreenTilesFromBuffer2
@@ -64,7 +64,7 @@ PlayerPCMenu:
 	jp z, PlayerPCToss
 
 ExitPlayerPC:
-	ld a, [wFlags_0xcd60]
+	ld a, [wMiscFlags]
 	bit 3, a ; accessing player's PC through another PC?
 	jr nz, .next
 ; accessing it directly
@@ -72,13 +72,13 @@ ExitPlayerPC:
 	call PlaySound
 	call WaitForSoundToFinish
 .next
-	ld hl, wFlags_0xcd60
+	ld hl, wMiscFlags
 	res 5, [hl]
 	call LoadScreenTilesFromBuffer2
 	xor a
 	ld [wListScrollOffset], a
 	ld [wBagSavedMenuItem], a
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl]
 	xor a
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
@@ -139,7 +139,7 @@ PlayerPCWithdraw:
 	ld [wCurrentMenuItem], a
 	ld [wListScrollOffset], a
 	
-	ld hl, wFlags_0xcd60
+	ld hl, wMiscFlags
 	set 4, [hl]	;joenote - assigned this bit to track if withdrawing items
 	
 	ld a, [wNumBoxItems]

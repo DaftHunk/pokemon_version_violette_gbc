@@ -91,7 +91,7 @@ DetermineWildMonDVs:
 	ld a, [wBattleType]
 	dec a
 	jr z, .do_random
-	ld a, [wFlags_D733]
+	ld a, [wStatusFlags7]
 	bit 6, a
 	jr nz, .do_random 
 	CheckEvent EVENT_ACTIVATE_GHOST_MAROWAK
@@ -539,9 +539,9 @@ SetAttackAnimPal:
 	ld b, a
 
 	;check if this animation is being played when hurting self from confusion
-	ld a, [wUnusedD119]
+	ld a, [wMiscsFlags2]
 	inc a
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	jr nz, .noselfdamage
 	;if hurting self, load default palette
 	ld b, PAL_BW

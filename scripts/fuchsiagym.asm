@@ -176,7 +176,7 @@ FuchsiaGymText_Koga:
 
 	ld hl, FuchsiaGymText_LeaderPreBattle
 	call PrintText
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, FuchsiaGymText_LeaderEndBattle
@@ -222,7 +222,7 @@ FuchsiaGymText_Koga:
 	ld hl, FuchsiaGymText_RematchPreBattle
 	call PrintText
 
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, FuchsiaGymText_RematchEndBattle

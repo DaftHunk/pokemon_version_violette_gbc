@@ -7,9 +7,11 @@ _SafariZoneRestHouse2Text1::
 	done
 
 _SafariZoneRestHouse2Text2::
-	text "Un Appât peut"
-	line "faciliter vos"
-	cont "captures."
+	text "Un Appât rend"
+	line "les #mon plus"
+	cont "dociles mais"
+	cont "complique"
+	cont "la capture."
 	done
 
 _SafariZoneRestHouse2Text3::
@@ -17,4 +19,12 @@ _SafariZoneRestHouse2Text3::
 	line "toute la sainte"
 	cont "journée mais j'ai"
 	cont "rien capturé."
+	done
+
+_SafariZoneRestHouse2Text4::
+	text "La fatigue..."
+
+	para "Doucement..."
+
+	para "Me gagne..."
 	done

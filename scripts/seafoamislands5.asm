@@ -51,7 +51,7 @@ SeafoamIslands5Script4:
 
 SeafoamIslands5Script0:
 ;joenote - check if player entering via water warps, and allow the scripted movement if so
-	ld hl, wFlags_D733
+	ld hl, wStatusFlags7
 	bit 2, [hl]
 	jr nz, .waterwarp_entering
 	;next behavior is different depending on if events are set
@@ -62,7 +62,7 @@ SeafoamIslands5Script0:
 	call ArePlayerCoordsInArray
 	jr nc, .donewaterwarpcheck
 	;do a scripted movement for exiting
-	ld hl, wFlags_D733
+	ld hl, wStatusFlags7
 	set 2, [hl]
 	ld de, Seafoam5RLEMovementExitFromWater
 	ld hl, wSimulatedJoypadStatesEnd
@@ -95,7 +95,7 @@ SeafoamIslands5Script0:
 	ld a, D_UP
 	ld [wSimulatedJoypadStatesEnd], a
 	call StartSimulatingJoypadStates
-	ld hl, wFlags_D733
+	ld hl, wStatusFlags7
 	res 2, [hl]
 	ld a, $1
 	ld [wSeafoamIslands5CurScript], a

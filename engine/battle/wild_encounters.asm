@@ -4,7 +4,7 @@ TryDoWildEncounter:
 	ld a, [wNPCMovementScriptPointerTableNum]
 	and a
 	ret nz
-	ld a, [wd736]
+	ld a, [wMovementFlags]
 	and a
 	ret nz
 	callab IsPlayerStandingOnDoorTileOrWarpTile

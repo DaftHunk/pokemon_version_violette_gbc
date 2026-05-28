@@ -36,7 +36,9 @@ AnimateTiles::
 	cp 20
 	ret c
 	cp 21
-	jr nz, AnimateWaterTile
+	jr z, AnimateWaterTile
+	cp 40
+	jr c, AnimateWaterfallTiles
 	jp AnimateFlowerTile
 .seafoamCurrents
 	ldh a, [hMovingBGTilesCounter1]
@@ -105,6 +107,14 @@ AnimateCopyTile:
 	dec c
 	jr nz, .loop
 	ret
+
+AnimateWaterfallTiles:
+	cp 36
+	ret c
+	ret nz
+	ld hl, vTileset + $73 * $10
+    ld c, $10
+	jp ScrollTileDown
 
 AnimateLavaFlowTiles:
 	cp 36

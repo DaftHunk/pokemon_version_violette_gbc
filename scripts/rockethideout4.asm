@@ -48,7 +48,7 @@ RocketHideout4Script_45473:
 	call PlaySound
 	SetEvent EVENT_ROCKET_HIDEOUT_B4F_DOOR_UNLOCKED
 	xor a
-	ld [wd730], a
+	ld [wStatusFlags5], a
 	ld [hJoyHeld], a
 	ld [wJoyIgnore], a
 
@@ -151,7 +151,7 @@ RocketHideout4Text1:
 	jp nz, .asm_545571
 	ld hl, RocketHideout4Text_4557a
 	call PrintText
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, RocketHideout4Text_4557f

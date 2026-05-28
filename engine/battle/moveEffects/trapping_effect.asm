@@ -1,13 +1,13 @@
 TrappingEffect_:
 ;joenote - make it so the effect won't take hold if target has type immunity
-	ld hl, wUnusedC000
+	ld hl, wBattleAISettingFlags
 	set 3, [hl]
 	ld hl, wPlayerBattleStatus1
 	ld de, wPlayerNumAttacksLeft
 	ld a, [H_WHOSETURN]
 	and a
 	jr z, .trappingEffect
-	ld hl, wUnusedC000
+	ld hl, wBattleAISettingFlags
 	res 3, [hl]
 	ld hl, wEnemyBattleStatus1
 	ld de, wEnemyNumAttacksLeft

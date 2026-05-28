@@ -38,7 +38,7 @@ VictoryRoad3ScriptPointers:
 	dw EndTrainerBattle
 
 VictoryRoad3Script0:
-	ld hl, wFlags_0xcd60
+	ld hl, wMiscFlags
 	bit 1, [hl]
 	ret nz ; PureRGBnote: ADDED: if a boulder animation is playing forget doing this, helps reduce lag
 	bit 7, [hl]
@@ -80,13 +80,13 @@ VictoryRoad3Script0:
 	ld a, [wCoordIndex]
 	cp $1
 	jr nz, .asm_44a1b
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	res 4, [hl]
-	ld hl, wd732
+	ld hl, wStatusFlags6
 	res 4, [hl]
 	ret
 .asm_44a1b
-	ld a, [wd72d]
+	ld a, [wStatusFlags3]
 	bit 4, a
 	jp z, CheckFightingMapTrainers
 	ret

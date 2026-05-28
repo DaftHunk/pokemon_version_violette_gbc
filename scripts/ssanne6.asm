@@ -12,7 +12,7 @@ SSAnne6Script:
 	;don't continue the tournament if you lost
 	ResetEvent EVENT_3_MONS_RANDOM_TRAINER
 	xor a
-	ld [wUnusedD5A3], a
+	ld [wTempBattleFlag], a
 .mainreturn
 	ret
 
@@ -82,7 +82,7 @@ SSAnne6Text8: ;joenote - gym guy for post-game tournament
 	predef HealParty
 	
 	;check if you won tournament
-	ld a, [wUnusedD5A3]
+	ld a, [wTempBattleFlag]
 	cp 7 ;# matches to win
 	jr c, .notyet
 .giveAward
@@ -130,7 +130,7 @@ SSAnne6Text8: ;joenote - gym guy for post-game tournament
 	SetEvent EVENT_3_MONS_RANDOM_TRAINER ;used for the 3-pkmn tournament
 	ld hl, SSAnne6Text_GymGuy_ready
 	call PrintText
-	ld hl, wd72d ;set the bits for triggering battle
+	ld hl, wStatusFlags3 ;set the bits for triggering battle
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, SSAnne6Text_GymGuy_battleend ;load text for when you win
@@ -141,9 +141,9 @@ SSAnne6Text8: ;joenote - gym guy for post-game tournament
 	callba GetRandTrainer
 	call InitBattleEnemyParameters
 	;increment victory counter for the random trainer
-	ld a, [wUnusedD5A3]
+	ld a, [wTempBattleFlag]
 	inc a
-	ld [wUnusedD5A3], a
+	ld [wTempBattleFlag], a
 	xor a
 	ld [hJoyHeld], a
 	jr .end
@@ -152,7 +152,7 @@ SSAnne6Text8: ;joenote - gym guy for post-game tournament
 	jr .endprint
 .endtournament
 	xor a
-	ld [wUnusedD5A3], a
+	ld [wTempBattleFlag], a
 	ResetEvent EVENT_3_MONS_RANDOM_TRAINER
 	ld hl, SSAnne6Text_GymGuy_bye
 .endprint

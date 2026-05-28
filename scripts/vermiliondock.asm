@@ -15,7 +15,7 @@ VermilionDockScript:
 	jp z, VermilionDock_1db9b
 	SetEventReuseHL EVENT_STARTED_WALKING_OUT_OF_DOCK
 	call Delay3
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 7, [hl]
 	ld hl, wSimulatedJoypadStatesEnd
 	ld a, D_UP
@@ -335,7 +335,7 @@ TruckCheck:
 	ld [wMissableObjectIndex], a
 	predef HideObject
 .skiphidingmew
-	ld a, [wd728]
+	ld a, [wStatusFlags1]
 	bit 0, a ; using Strength?
 	ret z
 	jr z, NoTruckAction

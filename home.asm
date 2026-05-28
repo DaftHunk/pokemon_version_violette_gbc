@@ -376,7 +376,7 @@ PartyMenuInit::
 	ld a, 1 ; hardcoded bank
 	call BankswitchHome
 	call LoadHpBarAndStatusTilePatterns
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl] ; turn off letter printing delay
 	xor a ; PLAYER_PARTY_DATA
 	ld [wMonDataLocation], a
@@ -423,7 +423,7 @@ HandlePartyMenuInput::
 	ld [wPartyMenuAnimMonEnabled], a
 	ld a, [wCurrentMenuItem]
 	ld [wPartyAndBillsPCSavedMenuItem], a
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl] ; turn on letter printing delay
 	ld a, [wMenuItemToSwap]
 	and a
@@ -1052,7 +1052,7 @@ FadeOutAudio::
 	ld a, [wAudioFadeOutControl]
 	and a ; currently fading out audio?
 	jr nz, .fadingOut
-	ld a, [wd72c]
+	ld a, [wStatusFlags2]
 	bit 1, a
 	ret nz
 	ld a, $77
@@ -1259,7 +1259,7 @@ CloseTextDisplay::
 	call InitMapSprites ; reload sprite tile pattern data (since it was partially overwritten by text tile patterns)
 	ld hl, wFontLoaded
 	res 0, [hl]
-	ld a, [wd732]
+	ld a, [wStatusFlags6]
 	bit 3, a ; used fly warp
 	call z, LoadPlayerSpriteGraphics
 ;	call LoadCurrentMapView
@@ -1347,9 +1347,9 @@ PokemonFaintedText::
 DisplayPlayerBlackedOutText::
 	ld hl, PlayerBlackedOutText
 	call PrintText
-	ld a, [wd732]
+	ld a, [wStatusFlags6]
 	res 5, a ; reset forced to use bike bit
-	ld [wd732], a
+	ld [wStatusFlags6], a
 	jp HoldTextDisplayOpen
 
 PlayerBlackedOutText::
@@ -1465,7 +1465,7 @@ DisplayListMenuID::
 	ld a, BANK(DisplayBattleMenu)
 .bankswitch
 	call BankswitchHome
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl] ; turn off letter printing delay
 	xor a
 	ld [wMenuItemToSwap], a ; 0 means no item is currently being swapped
@@ -1630,7 +1630,7 @@ DisplayListMenuIDLoop::
 	ld [wChosenMenuItem], a
 	xor a
 	ld [hJoy7], a ; joypad state update flag
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl] ; turn on letter printing delay
 	jp BankswitchBack
 .checkOtherKeys ; check B, SELECT, Up, and Down keys, and START key
@@ -1823,7 +1823,7 @@ ExitListMenu::
 	ld [wMenuWatchMovingOutOfBounds], a
 	xor a
 	ld [hJoy7], a
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl]
 	call BankswitchBack
 	xor a
@@ -1832,14 +1832,21 @@ ExitListMenu::
 	ret
 
 BagSelectText:
-	db $C3,$C4,$C5,"Changer sac@"
+	db $CC,$CD,$CE,"Changer sac@"
 
 PrintListMenuEntries::
 	ld de, KeysLogoGraphics
-	ld hl, vChars1 + $400
+	ld hl, vChars1 + $490
 	lb bc, BANK(KeysLogoGraphics), (KeysLogoGraphicsEnd - KeysLogoGraphics) / $10
 	call CopyVideoData
 
+	; Ensure it's an item menu
+	ld a, [wListMenuID]
+	cp ITEMLISTMENU
+	ld a, c
+	jr nz, .skipBagHint
+
+	; Print Bag key hint
 	hlcoord 4, 0
 	lb bc, 1, 14
 	call TextBoxBorder
@@ -1848,6 +1855,7 @@ PrintListMenuEntries::
 	ld de, BagSelectText
 	call PlaceString
 
+.skipBagHint
 	hlcoord 5, 3
 	ld b, 9
 	ld c, 14
@@ -2232,7 +2240,7 @@ ReloadTilesetTilePatterns::
 
 ; shows the town map and lets the player choose a destination to fly to
 ChooseFlyDestination::
-	ld hl, wd72e
+	ld hl, wStatusFlags4
 	res 4, [hl]
 	jpba LoadTownMap_Fly
 
@@ -2394,15 +2402,15 @@ IsPlayerCharacterBeingControlledByGame::
 	ld a, [wNPCMovementScriptPointerTableNum]
 	and a
 	ret nz
-	ld a, [wd736]
+	ld a, [wMovementFlags]
 	bit 1, a ; currently stepping down from door bit
 	ret nz
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	and $80
 	ret
 
 RunNPCMovementScript::
-	ld hl, wd736
+	ld hl, wMovementFlags
 	bit 0, [hl]
 	res 0, [hl]
 	jr nz, .playerStepOutFromDoor
@@ -2457,7 +2465,7 @@ ExecuteCurMapScriptInTable::
 	pop hl
 	pop af
 	push hl
-	ld hl, wFlags_D733
+	ld hl, wStatusFlags7
 	bit 4, [hl]
 	res 4, [hl]
 	jr z, .useProvidedIndex   ; test if map script index was overridden manually
@@ -2574,9 +2582,9 @@ TalkToTrainer::
 	call ReadTrainerHeaderInfo     ; read end battle text
 	pop de
 	call SaveEndBattleTextPointers
-	ld hl, wFlags_D733
+	ld hl, wStatusFlags7
 	set 4, [hl]                    ; activate map script index override (index is set below)
-	ld hl, wFlags_0xcd60
+	ld hl, wMiscFlags
 	bit 0, [hl]                    ; test if player is already engaging the trainer (because the trainer saw the player)
 	ret nz
 ; if the player talked to the trainer of his own volition
@@ -2607,7 +2615,7 @@ CheckFightingMapTrainers::
 	ld [wTrainerHeaderFlagBit], a
 	ret
 .trainerEngaging
-	ld hl, wFlags_D733
+	ld hl, wStatusFlags7
 	set 3, [hl]
 	ld [wEmotionBubbleSpriteIndex], a
 	xor a ; EXCLAMATION_BUBBLE
@@ -2624,7 +2632,7 @@ CheckFightingMapTrainers::
 
 ; display the before battle text after the enemy trainer has walked up to the player's sprite
 DisplayEnemyTrainerTextAndStartBattle::
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	and $1
 	ret nz ; return if the enemy trainer hasn't finished walking to the player's sprite
 	farcall FaceEnemyTrainer
@@ -2639,10 +2647,10 @@ StartTrainerBattle::
 	xor a
 	ld [wJoyIgnore], a
 	call InitBattleEnemyParameters
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
-	ld hl, wd72e
+	ld hl, wStatusFlags4
 	set 1, [hl]
 	ld hl, wCurMapScript
 	inc [hl]        ; increment map script index (next script function is usually EndTrainerBattle)
@@ -2652,9 +2660,9 @@ EndTrainerBattle::
 	ld hl, wCurrentMapScriptFlags
 	set 5, [hl]
 	set 6, [hl]
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	res 7, [hl]
-	ld hl, wFlags_0xcd60
+	ld hl, wMiscFlags
 	res 0, [hl]                  ; player is no longer engaged by any trainer
 	ld a, [wIsInBattle]
 	cp $ff
@@ -2677,7 +2685,7 @@ EndTrainerBattle::
 	ld [wMissableObjectIndex], a               ; load corresponding missable object index and remove it
 	predef HideObject
 .skipRemoveSprite
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	bit 4, [hl]
 	res 4, [hl]
 	ret nz
@@ -2806,7 +2814,7 @@ EngageMapTrainer::
 
 PrintEndBattleText::
 	push hl
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	bit 7, [hl]
 	res 7, [hl]
 	pop hl
@@ -2866,7 +2874,7 @@ TrainerEndBattleText::
 ; engaged with another trainer
 ; XXX unused?
 ;CheckIfAlreadyEngaged::
-;	ld a, [wFlags_0xcd60]
+;	ld a, [wMiscFlags]
 ;	bit 0, a
 ;	ret nz
 ;	call EngageMapTrainer
@@ -2986,7 +2994,7 @@ StartSimulatingJoypadStates::
 	xor a
 	ld [wOverrideSimulatedJoypadStatesMask], a
 	ld [wSpriteStateData2 + $06], a ; player's sprite movement byte 1
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 7, [hl]
 	ret
 
@@ -3370,7 +3378,7 @@ MoveSprite_::
 	ld [wNPCNumScriptedSteps], a ; number of steps taken
 
 	pop bc
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 0, [hl]
 	pop hl
 	xor a
@@ -3690,9 +3698,9 @@ GetName::
 	call CopyData
 .gotPtr
 ;	ld a, e
-;	ld [wUnusedCF8D], a
+;	ld [wTrainerPPTracker], a
 ;	ld a, d
-;	ld [wUnusedCF8D + 1], a
+;	ld [wTrainerPPTracker + 1], a
 
 	ld a, [wPokedexNum]
 	cp HM01_CUT
@@ -3909,9 +3917,9 @@ Divide::
 
 ; This function is used to wait a short period after printing a letter to the
 ; screen unless the player presses the A/B button or the delay is turned off
-; through the [wd730] or [wLetterPrintingDelayFlags] flags.
+; through the [wStatusFlags5] or [wLetterPrintingDelayFlags] flags.
 PrintLetterDelay::
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 6, a
 	ret nz
 	ld a, [wLetterPrintingDelayFlags]
@@ -4194,7 +4202,7 @@ HandleMenuInput_::
 	and A_BUTTON | B_BUTTON
 	jr z, .skipPlayingSound
 .AButtonOrBButtonPressed
-	ld a, [wFlags_0xcd60]	;joenote - remove push/pop with hl to save 2 bytes
+	ld a, [wMiscFlags]	;joenote - remove push/pop with hl to save 2 bytes
 	bit 5, a
 	jr nz, .skipPlayingSound
 	ld a, SFX_PRESS_AB

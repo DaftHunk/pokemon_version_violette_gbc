@@ -32,13 +32,13 @@ MainMenu:
 	ld [hli], a
 	ld [hl], a
 	ld [wDefaultMap], a
-	ld hl, wd72e
+	ld hl, wStatusFlags4
 	res 6, [hl]
 	call ClearScreen
 	call RunDefaultPaletteCommand
 	call LoadTextBoxTilePatterns
 	call LoadFontTilePatterns
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl]
 	ld a, [wSaveFileStatus]
 	cp 1
@@ -116,7 +116,7 @@ MainMenu:
 	ld [hli], a
 	ret
 .endseed
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl]
 	call UpdateSprites
 	xor a
@@ -237,7 +237,7 @@ MainMenu:
 	ResetEvent EVENT_CINNABAR_SHORE_MISSINGNO	;cinnabar shore missingno
 	ResetEvent EVENT_RANDOM_TRAINER	;random trainer flag
 	ResetEvent EVENT_3_MONS_RANDOM_TRAINER	;random 3-mon trainer for tournament
-	ld hl, wFlags_D733
+	ld hl, wStatusFlags7
 	res 1, [hl]
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld c, 10
@@ -275,7 +275,7 @@ MainMenu:
 
 	xor a
 	ld [wDestinationMap], a
-	ld hl, wd732
+	ld hl, wStatusFlags6
 	set 2, [hl] ; fly warp or dungeon warp
 	call SpecialWarpIn
 	jp SpecialEnterMap
@@ -309,7 +309,7 @@ InitOptions:
 LinkMenu:
 	xor a
 	ld [wLetterPrintingDelayFlags], a
-	ld hl, wd72e
+	ld hl, wStatusFlags4
 	set 6, [hl]
 	ld hl, TextTerminator_6b20
 	call PrintText
@@ -326,7 +326,7 @@ LinkMenu:
 	call PlaceString
 	xor a
 	ld [wUnusedCD37], a
-	ld [wd72d], a
+	ld [wStatusFlags3], a
 	ld hl, wTopMenuItemY
 	ld a, $7
 	ld [hli], a
@@ -438,12 +438,12 @@ LinkMenu:
 	jp nz, ShinPokemonHandshake	;joenote - do a version control check before going to the colosseum
 	ld a, TRADE_CENTER
 .next
-	ld [wd72d], a
+	ld [wStatusFlags3], a
 	ld hl, PleaseWaitText
 	call PrintText
 	ld c, 50
 	call DelayFrames
-	ld hl, wd732
+	ld hl, wStatusFlags6
 	res 1, [hl]
 	ld a, [wDefaultMap]
 	ld [wDestinationMap], a
@@ -464,7 +464,7 @@ LinkMenu:
 	call CloseLinkConnection
 	ld hl, LinkCanceledText
 	call PrintText
-	ld hl, wd72e
+	ld hl, wStatusFlags4
 	res 6, [hl]
 	ret
 
@@ -588,7 +588,7 @@ StartNewGamePlus:
 	set 3, a
 	ld [wGameplayOptions], a
 StartNewGame:
-	ld hl, wd732
+	ld hl, wStatusFlags6
 	; Ensure debug mode is not used when starting a regular new game.
 	; Debug mode persists in saved games for both debug and non-debug builds, and is
 	; only reset here by the main menu.
@@ -605,8 +605,8 @@ SpecialEnterMap::
 	ldh [hJoyPressed], a
 	ldh [hJoyHeld], a
 	ldh [hJoy5], a
-	ld [wd72d], a
-	ld hl, wd732
+	ld [wStatusFlags3], a
+	ld hl, wStatusFlags6
 	set 0, [hl] ; count play time
 	call ResetPlayerSpriteData
 	ld c, 20

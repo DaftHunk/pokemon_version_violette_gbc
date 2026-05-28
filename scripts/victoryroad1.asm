@@ -36,7 +36,7 @@ VictoryRoad1ScriptPointers:
 	dw EndTrainerBattle
 
 VictoryRoad1Script0:
-	ld a, [wFlags_0xcd60]
+	ld a, [wMiscFlags]
 	bit 1, a
 	ret nz ; PureRGBnote: ADDED: if a boulder animation is playing forget doing this, helps reduce lag
 	CheckEvent EVENT_VICTORY_ROAD_1F_BOULDER_ON_SWITCH

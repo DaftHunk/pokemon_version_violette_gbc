@@ -13,17 +13,17 @@ MtMoonB2FScript:
 	jr nc, .asm_49d31
 
 	;joenote - this is fixes a bug.
-	ld hl, wd732
+	ld hl, wStatusFlags6
 	bit 3, [hl]
 	jr nz, .asm_49d31
 	;If a fly warp his happening (dig, teleport, escape rope, etc) clear the no-battle bit.
 	CheckEitherEventSet EVENT_GOT_DOME_FOSSIL, EVENT_GOT_HELIX_FOSSIL
 	jr nz, .asm_49d31	;let's keep encounters on once the big moment is over
-	ld hl, wd72e
+	ld hl, wStatusFlags4
 	set 4, [hl]
 	ret
 .asm_49d31
-	ld hl, wd72e
+	ld hl, wStatusFlags4
 	res 4, [hl]
 	ret
 
@@ -135,7 +135,7 @@ MovementData_49df9:
 	db NPC_MOVEMENT_UP,$FF
 
 MtMoonB2FScript5:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	ld a, $f0
@@ -223,7 +223,7 @@ MtMoonB2FText1:
 .asm_49e8d
 	ld hl, MtMoonB2FText_49f85
 	call PrintText
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, MtMoonB2FText_49f8a
@@ -245,7 +245,7 @@ MtMoonB2FText1:
 	ld a, [wCurrentMenuItem]
 	and a
 	jr z, .norematch
-	ld hl, wd72e
+	ld hl, wStatusFlags4
 	res 4, [hl]
 	jr .asm_49e8d
 .norematch

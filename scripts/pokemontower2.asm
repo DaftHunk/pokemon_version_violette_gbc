@@ -108,7 +108,7 @@ MovementData_605b2:
 	db $FF
 
 PokemonTower2Script2:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	ld a, HS_POKEMONTOWER_2F_RIVAL
@@ -144,7 +144,7 @@ PokemonTower2Text1:
 .asm_16f24
 	ld hl, PokemonTower2Text_6062d
 	call PrintText
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, PokemonTower2Text_60632

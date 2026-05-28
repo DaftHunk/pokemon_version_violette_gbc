@@ -138,7 +138,7 @@ EncounterLoad_NuzlockeHandler:
 	ret
 
 .handleShiny
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	bit 7, a
 	ret z
 	ResetEvent EVENT_NUZZLOCK_DISALLOW_CATCH

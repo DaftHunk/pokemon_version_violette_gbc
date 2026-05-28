@@ -127,7 +127,7 @@ PlacePlayerHUDTiles:
 	call CopyData
 
 ;joenote - let's draw a shiny symbol if applicable
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	bit 0, a
 	jr z, .noshiny
 	coord hl, 9, 7
@@ -152,12 +152,12 @@ PlaceEnemyHUDTiles:
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - don't draw any special symbols for ghost battles
-	ld a, [wFlags_D733]
+	ld a, [wStatusFlags7]
 	bit 6, a
 	jr nz, .noDraw
 
 ;joenote - let's draw a shiny symbol if applicable
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	bit 7, a
 	jr z, .noshiny
 	coord hl, 0, 0

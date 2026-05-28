@@ -137,7 +137,7 @@ TryingToLearn:
 	ld c, 14
 	call TextBoxBorder
 
-	ld a, [wFlags_D733]
+	ld a, [wStatusFlags7]
 	bit 6, a
 	call nz, UpdateSprites ; joenote - disable sprites behind the text box
 

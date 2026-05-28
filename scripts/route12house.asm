@@ -6,7 +6,7 @@ Route12HouseTextPointers:
 
 Route12HouseText1:
 	TX_ASM
-	ld a, [wd728]
+	ld a, [wStatusFlags1]
 	bit 5, a
 	jr nz, .asm_b4cad
 	ld hl, Route12HouseText_564c0
@@ -19,7 +19,7 @@ Route12HouseText1:
 	lb bc, SUPER_ROD, 1
 	call GiveItem
 	jr nc, .BagFull
-	ld hl, wd728
+	ld hl, wStatusFlags1
 	set 5, [hl]
 	ld hl, Route12HouseText_564c5
 	jr .asm_df984

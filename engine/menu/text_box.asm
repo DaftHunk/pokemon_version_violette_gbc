@@ -37,14 +37,14 @@ DisplayTextBoxID_:
 	call TextBoxBorder
 	pop hl
 	call GetTextBoxIDText
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	push af
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	set 6, a ; no pauses between printing each letter
-	ld [wd730], a
+	ld [wStatusFlags5], a
 	call PlaceString
 	pop af
-	ld [wd730], a
+	ld [wStatusFlags5], a
 	call UpdateSprites
 	ret
 
@@ -277,7 +277,7 @@ JapanesePokedexMenu:
 	next "キャンセル@"
 
 DisplayMoneyBox:
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl]
 	ld a, MONEY_BOX_TEMPLATE
 	ld [wTextBoxID], a
@@ -293,7 +293,7 @@ DisplayMoneyBox:
 	ld de, wPlayerMoney
 	ld c, LEADING_ZEROES | 3
 	call PrintBCDNumber
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl]
 	ret
 
@@ -301,9 +301,9 @@ CurrencyString:
 	db "      ¥@"
 
 DoBuySellQuitMenu:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	set 6, a ; no printing delay
-	ld [wd730], a
+	ld [wStatusFlags5], a
 	xor a
 	ld [wChosenMenuItem], a
 	ld a, BUY_SELL_QUIT_MENU_TEMPLATE
@@ -321,9 +321,9 @@ DoBuySellQuitMenu:
 	ld [wCurrentMenuItem], a
 	ld [wLastMenuItem], a
 	ld [wMenuWatchMovingOutOfBounds], a
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	res 6, a ; turn on the printing delay
-	ld [wd730], a
+	ld [wStatusFlags5], a
 	call HandleMenuInput
 	call PlaceUnfilledArrowMenuCursor
 	bit 0, a ; was A pressed?
@@ -357,9 +357,9 @@ DoBuySellQuitMenu:
 ; hl = address where the text box border should be drawn
 DisplayTwoOptionMenu:
 	push hl
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	set 6, a ; no printing delay
-	ld [wd730], a
+	ld [wStatusFlags5], a
 
 ; pointless because both values are overwritten before they are read
 	xor a
@@ -429,7 +429,7 @@ DisplayTwoOptionMenu:
 	pop hl
 	add hl, bc
 	call PlaceString
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl] ; turn on the printing delay
 	ld a, [wTwoOptionMenuID]
 	cp NO_YES_MENU
@@ -439,11 +439,11 @@ DisplayTwoOptionMenu:
 ; it only seems to be used when confirming the deletion of a save file
 	xor a
 	ld [wTwoOptionMenuID], a
-	ld a, [wFlags_0xcd60]
+	ld a, [wMiscFlags]
 	push af
 ;joenote - play sound on NoYes menu
 ;	push hl
-;	ld hl, wFlags_0xcd60
+;	ld hl, wMiscFlags
 ;	bit 5, [hl]
 ;	set 5, [hl] ; don't play sound when A or B is pressed in menu
 ;	pop hl
@@ -458,7 +458,7 @@ DisplayTwoOptionMenu:
 .noYesAPressed
 	pop af
 	pop hl
-	ld [wFlags_0xcd60], a
+	ld [wMiscFlags], a
 	ld a, SFX_PRESS_AB
 	call PlaySound
 	jr .pressedAButton

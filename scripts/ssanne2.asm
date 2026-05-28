@@ -87,7 +87,7 @@ SSAnne2Script_61416:
 	jp SetSpriteFacingDirectionAndDelay
 
 SSAnne2Script1:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	call SSAnne2Script_61416
@@ -169,7 +169,7 @@ MovementData_614b9:
 	db $FF
 
 SSAnne2Script3:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	xor a
@@ -195,7 +195,7 @@ SSAnne2Text2:
 	TX_ASM
 	ld hl, SSAnneRivalBeforeBattleText
 	call PrintText
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, SSAnneRivalDefeatedText

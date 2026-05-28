@@ -136,7 +136,7 @@ PewterGymText_Brock:
 
 	ld hl, PewterGymText_LeaderPreBattle
 	call PrintText
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, PewterGymText_LeaderEndBattle
@@ -161,7 +161,7 @@ PewterGymText_Brock:
 .leaderFightAfterElite4
 	ld hl, PewterGymText_RematchPreBattle
 	call PrintText
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, PewterGymText_RematchEndBattle

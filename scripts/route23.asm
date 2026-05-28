@@ -64,7 +64,7 @@ Route23Script0:
 	ret
 
 YCoordsData_51255:
-	db $25,$38,$46,$5A,$69,$77,$88,$FF
+	db $25,$35,$46,$5A,$69,$79,$81,$FF
 
 Route23Script_5125d:
 	ld hl, BadgeTextPointers
