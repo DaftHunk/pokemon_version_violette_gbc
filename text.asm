@@ -60,6 +60,11 @@ _ExclamationText::
 	text "!"
 	done
 
+_VolcanoBattleBurnText::
+	text "Le Volcan est"
+	line "trop chaud!"
+	prompt
+
 _GroundRoseText::
 	text "Le sol s'est levé"
 	line "dans le coin!"

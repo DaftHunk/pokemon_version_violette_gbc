@@ -2191,6 +2191,7 @@ INCLUDE "engine/battle/load_pics.asm"
 INCLUDE "engine/menu/draw_badges.asm"
 INCLUDE "engine/overworld/animated_tiles.asm"
 INCLUDE "text/options_info.asm"
+INCLUDE "custom_functions/func_special_battle_effet.asm"
 
 RedPicFront:: INCBIN "gfx/trainer/red.pic"
 ShrinkPic1::  INCBIN "gfx/trainer/shrink1.pic"

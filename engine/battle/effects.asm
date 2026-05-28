@@ -244,7 +244,7 @@ FreezeBurnParalyzeEffect:
 	ret nc ; do nothing if random value is >= 1A or 4D [no status applied]
 	ld a, b ; what type of effect is this?
 	cp BURN_SIDE_EFFECT1
-	jr z, .burn
+	jp z, BurnEnemyMon
 	cp FREEZE_SIDE_EFFECT
 	jr z, .freeze
 ; .paralyze
@@ -254,14 +254,6 @@ FreezeBurnParalyzeEffect:
 	ld a, ENEMY_HUD_SHAKE_ANIM
 	call PlayBattleAnimation
 	jp PrintMayNotAttackText ; print paralysis text
-.burn
-	ld a, 1 << BRN
-	ld [wEnemyMonStatus], a
-	call HalveAttackDueToBurn ; halve attack of affected mon
-	ld a, ENEMY_HUD_SHAKE_ANIM
-	call PlayBattleAnimation
-	ld hl, BurnedText
-	jp PrintText
 .freeze
 	;joenote - check for freeze clause
 	call HandleSlpFrzClause
@@ -299,19 +291,13 @@ opponentAttacker:
 	ret nc
 	ld a, b
 	cp BURN_SIDE_EFFECT1
-	jr z, .burn
+	jr z, BurnPokemon
 	cp FREEZE_SIDE_EFFECT
 	jr z, .freeze
 	ld a, 1 << PAR
 	ld [wBattleMonStatus], a
 	call QuarterSpeedDueToParalysis
 	jp PrintMayNotAttackText
-.burn
-	ld a, 1 << BRN
-	ld [wBattleMonStatus], a
-	call HalveAttackDueToBurn
-	ld hl, BurnedText
-	jp PrintText
 .freeze
 	;joenote - check for freeze clause
 	call HandleSlpFrzClause
@@ -321,6 +307,22 @@ opponentAttacker:
 	ld a, 1 << FRZ
 	ld [wBattleMonStatus], a
 	ld hl, FrozenText
+	jp PrintText
+
+BurnPokemon::
+	ld a, 1 << BRN
+	ld [wBattleMonStatus], a
+	call HalveAttackDueToBurn
+	ld hl, BurnedText
+	jp PrintText
+
+BurnEnemyMon::
+	ld a, 1 << BRN
+	ld [wEnemyMonStatus], a
+	call HalveAttackDueToBurn ; halve attack of affected mon
+	ld a, ENEMY_HUD_SHAKE_ANIM
+	call PlayBattleAnimation
+	ld hl, BurnedText
 	jp PrintText
 
 BurnedText:
