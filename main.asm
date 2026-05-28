@@ -163,7 +163,7 @@ TextBoxGraphics:                INCBIN "gfx/tiles/text_box.2bpp"
 TextBoxGraphicsEnd:
 PokedexTileGraphics:            INCBIN "gfx/tiles/pokedex.2bpp"
 PokedexTileGraphicsEnd:
-WorldMapTileGraphics:           INCBIN "gfx/tiles/town_map.2bpp"
+WorldMapTileGraphics:           INCBIN "gfx/tilemaps/town_map.2bpp"
 WorldMapTileGraphicsEnd:
 PlayerCharacterTitleGraphics:   INCBIN "gfx/mainmenu/player_title.2bpp"
 PlayerCharacterTitleGraphicsEnd:
@@ -1607,7 +1607,6 @@ INCLUDE "engine/battle/ghost_marowak_anim.asm"
 INCLUDE "engine/battle/battle_transitions.asm"
 INCLUDE "engine/town_map.asm"
 INCLUDE "engine/mon_party_sprites.asm"
-INCLUDE "engine/palettes.asm"
 INCLUDE "engine/save.asm"
 
 
@@ -2206,3 +2205,9 @@ Forest_GFX:        INCBIN "gfx/tilesets/forest.2bpp"
 Forest_Block:      INCBIN "gfx/blocksets/forest.bst"
 Alpha_GFX:         INCBIN "gfx/tilesets/alpha.2bpp"
 Alpha_Block:       INCBIN "gfx/blocksets/alpha.bst"
+
+
+
+SECTION "SGB Border", ROMX
+
+INCLUDE "engine/palettes.asm"

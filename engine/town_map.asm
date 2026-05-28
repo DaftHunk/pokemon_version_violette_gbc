@@ -352,7 +352,7 @@ LoadTownMap:
 
 CompressedMap:
 ; you can decompress this file with the redrle program in the extras/ dir
-	INCBIN "gfx/tiles/town_map.rle"
+	INCBIN "gfx/tilemaps/town_map.rle"
 
 ExitTownMap:
 ; clear town map graphics data and load usual graphics data

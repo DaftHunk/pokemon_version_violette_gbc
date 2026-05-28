@@ -398,7 +398,7 @@ AnimationTileset2:
 	INCBIN "gfx/tiles/attack_anim_2.2bpp"
 
 SlotMachineTiles2:
-	INCBIN "gfx/tiles/slotmachine2.2bpp"
+	INCBIN "gfx/tilemaps/slotmachine2.2bpp"
 
 SlotMachineTiles2END:
 
