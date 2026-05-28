@@ -5,7 +5,7 @@ db 100 ; base defense
 db 20 ; base speed
 db 30 ; base special
 db ROCK ; species type 1
-db GROUND ; species type 2
+db ROCK ; species type 2
 db 255 ; catch rate
 db 86 ; base exp yield
 INCBIN "gfx/pokemon/front/geodude.pic",0,1 ; 55, sprite dimensions
