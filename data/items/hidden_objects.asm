@@ -482,7 +482,7 @@ GameCornerHiddenObjects:
 	dbw BANK(HiddenCoins),HiddenCoins
 	db $08,$0f,COIN+100
 	dbw BANK(HiddenCoins),HiddenCoins
-	db $0f,$0c,COIN+10
+	db $10,$0c,COIN+10
 	dbw BANK(HiddenCoins),HiddenCoins
 	db $FF
 CeladonHotelHiddenObjects:
