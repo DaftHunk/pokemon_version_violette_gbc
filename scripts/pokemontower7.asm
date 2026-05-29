@@ -23,7 +23,7 @@ PokemonTower7ScriptPointers:
 
 PokemonTower7Script2:
 	ld hl, wMiscFlags
-	res 0, [hl]
+	res BIT_SEEN_BY_TRAINER, [hl]
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, PokemonTower7Script_60d18

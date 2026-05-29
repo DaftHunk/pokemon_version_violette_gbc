@@ -444,8 +444,8 @@ DisplayTwoOptionMenu:
 ;joenote - play sound on NoYes menu
 ;	push hl
 ;	ld hl, wMiscFlags
-;	bit 5, [hl]
-;	set 5, [hl] ; don't play sound when A or B is pressed in menu
+;	bit BIT_NO_MENU_BUTTON_SOUND, [hl]
+;	set BIT_NO_MENU_BUTTON_SOUND, [hl] ; don't play sound when A or B is pressed in menu
 ;	pop hl
 .noYesMenuInputLoop
 	call HandleMenuInput

@@ -33,8 +33,8 @@ DisplayTextIDInit:
 	ld hl, wFontLoaded
 	set 0, [hl]
 	ld hl, wMiscFlags
-	bit 4, [hl]
-	res 4, [hl]
+	bit BIT_NO_SPRITE_UPDATES, [hl]
+	res BIT_NO_SPRITE_UPDATES, [hl]
 	jr nz, .skipMovingSprites
 	call UpdateSprites
 .skipMovingSprites

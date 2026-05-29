@@ -20,7 +20,7 @@ HandleBagData:
 SwapBagData:
 	;do not swap bag data if the current list shown is the PC item box
 	ld a, [wMiscFlags]
-	bit 4, a
+	bit BIT_NO_SPRITE_UPDATES, a
 	ret nz
 	
 	push bc
@@ -109,7 +109,7 @@ SendToBackupBag:
 
 	;do not do anything if the current list shown is the PC item box
 	ld a, [wMiscFlags]
-	bit 4, a
+	bit BIT_NO_SPRITE_UPDATES, a
 	ret nz
 
 	push bc
@@ -285,7 +285,7 @@ SortItems:
 	ld hl, wBagItems
 	push af
 	ld a, [wMiscFlags]
-	bit 4, a
+	bit BIT_NO_SPRITE_UPDATES, a
 	jr z, .ldHLbagorbox_next
 	ld hl, wBoxItems
 .ldHLbagorbox_next

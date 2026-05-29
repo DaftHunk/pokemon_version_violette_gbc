@@ -8,7 +8,7 @@ PlayerPC:
 	ld [wBagSavedMenuItem], a
 	ld [wParentMenuItem], a
 	ld a, [wMiscFlags]
-	bit 3, a ; accessing player's PC through another PC?
+	bit BIT_USING_GENERIC_PC, a ; accessing player's PC through another PC?
 	jr nz, PlayerPCMenu
 ; accessing it directly
 	ld a, SFX_TURN_ON_PC
@@ -20,8 +20,8 @@ PlayerPCMenu:
 	ld a, [wParentMenuItem]
 	ld [wCurrentMenuItem], a
 	ld hl, wMiscFlags
-	set 5, [hl]
-	res 4, [hl]	;joenote - assigned this bit to track if withdrawing items
+	set BIT_NO_MENU_BUTTON_SOUND, [hl]
+	res BIT_NO_SPRITE_UPDATES, [hl]	;joenote - assigned this bit to track if withdrawing items
 	call LoadScreenTilesFromBuffer2
 	coord hl, 0, 0
 	ld b, $8
@@ -65,7 +65,7 @@ PlayerPCMenu:
 
 ExitPlayerPC:
 	ld a, [wMiscFlags]
-	bit 3, a ; accessing player's PC through another PC?
+	bit BIT_USING_GENERIC_PC, a ; accessing player's PC through another PC?
 	jr nz, .next
 ; accessing it directly
 	ld a, SFX_TURN_OFF_PC
@@ -73,7 +73,7 @@ ExitPlayerPC:
 	call WaitForSoundToFinish
 .next
 	ld hl, wMiscFlags
-	res 5, [hl]
+	res BIT_NO_MENU_BUTTON_SOUND, [hl]
 	call LoadScreenTilesFromBuffer2
 	xor a
 	ld [wListScrollOffset], a
@@ -140,7 +140,7 @@ PlayerPCWithdraw:
 	ld [wListScrollOffset], a
 	
 	ld hl, wMiscFlags
-	set 4, [hl]	;joenote - assigned this bit to track if withdrawing items
+	set BIT_NO_SPRITE_UPDATES, [hl]	;joenote - assigned this bit to track if withdrawing items
 	
 	ld a, [wNumBoxItems]
 	and a

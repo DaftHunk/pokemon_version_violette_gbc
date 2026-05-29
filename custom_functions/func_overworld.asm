@@ -537,7 +537,7 @@ Determine180degreeMove:
 	call UpdateSprites	;joenote - make the transitional frames viewable
 	call DelayFrame
 	ld hl, wMiscFlags
-	set 2, [hl]
+	set BIT_TURNING, [hl]
 	ld hl, wCheckFor180DegreeTurn
 	dec [hl]
 	jr nz, .holdIntermediateDirectionLoop

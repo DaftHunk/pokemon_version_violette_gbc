@@ -133,9 +133,9 @@ OverworldLoopLessDelay::
 	predef GetTileAndCoordsInFrontOfPlayer
 	call UpdateSprites
 	ld a, [wMiscFlags]
-	bit 2, a
+	bit BIT_TURNING, a
 	jr nz, .checkForOpponent
-	bit 0, a
+	bit BIT_SEEN_BY_TRAINER, a
 	jr nz, .checkForOpponent
 	aCoord 8, 9
 	ld [wTilePlayerStandingOn], a 
@@ -166,7 +166,7 @@ OverworldLoopLessDelay::
 	jp OverworldLoop
 .noDirectionButtonsPressed
 	ld hl, wMiscFlags
-	res 2, [hl]
+	res BIT_TURNING, [hl]
 	call UpdateSprites
 	ld a, 1
 	ld [wCheckFor180DegreeTurn], a
@@ -273,7 +273,7 @@ OverworldLoopLessDelay::
 
 .moveAhead2		;joenote - rewriting this to implement running functionality
 	ld hl, wMiscFlags
-	res 2, [hl]
+	res BIT_TURNING, [hl]
 	;ld a, [wWalkBikeSurfState]
 	;dec a ; riding a bike?
 	;jr nz, .normalPlayerSpriteAdvancement
@@ -2041,7 +2041,7 @@ RunMapScript::
 	push bc
 	callba TryPushingBoulder
 	ld a, [wMiscFlags]
-	bit 1, a ; play boulder dust animation
+	bit BIT_BOULDER_DUST, a ; play boulder dust animation
 	jr z, .afterBoulderEffect
 	callba DoBoulderDustAnimation
 .afterBoulderEffect

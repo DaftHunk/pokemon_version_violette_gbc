@@ -2663,7 +2663,7 @@ EndTrainerBattle::
 	ld hl, wStatusFlags3
 	res 7, [hl]
 	ld hl, wMiscFlags
-	res 0, [hl]                  ; player is no longer engaged by any trainer
+	res BIT_SEEN_BY_TRAINER, [hl]                  ; player is no longer engaged by any trainer
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, ResetButtonPressedAndMapScript
@@ -2875,7 +2875,7 @@ TrainerEndBattleText::
 ; XXX unused?
 ;CheckIfAlreadyEngaged::
 ;	ld a, [wMiscFlags]
-;	bit 0, a
+;	bit BIT_SEEN_BY_TRAINER, a
 ;	ret nz
 ;	call EngageMapTrainer
 ;	xor a
@@ -4203,7 +4203,7 @@ HandleMenuInput_::
 	jr z, .skipPlayingSound
 .AButtonOrBButtonPressed
 	ld a, [wMiscFlags]	;joenote - remove push/pop with hl to save 2 bytes
-	bit 5, a
+	bit BIT_NO_MENU_BUTTON_SOUND, a
 	jr nz, .skipPlayingSound
 	ld a, SFX_PRESS_AB
 	call PlaySound

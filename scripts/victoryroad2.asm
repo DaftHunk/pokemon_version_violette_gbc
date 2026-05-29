@@ -63,7 +63,7 @@ VictoryRoad2ScriptPointers:
 
 VictoryRoad2Script0:
 	ld a, [wMiscFlags]
-	bit 1, a
+	bit BIT_BOULDER_DUST, a
 	ret nz ; PureRGBnote: ADDED: if a boulder animation is playing forget doing this, helps reduce lag
 	ld hl, CoordsData_51816
 	call CheckBoulderCoords

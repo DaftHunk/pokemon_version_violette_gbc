@@ -55,7 +55,7 @@ PewterCityScript1:
 	call SetSpriteImageIndexAfterSettingFacingDirection
 	call PlayDefaultMusic
 	ld hl, wMiscFlags
-	set 4, [hl]
+	set BIT_NO_SPRITE_UPDATES, [hl]
 	ld a, $d
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
@@ -124,7 +124,7 @@ PewterCityScript4:
 	call SetSpriteImageIndexAfterSettingFacingDirection
 	call PlayDefaultMusic
 	ld hl, wMiscFlags
-	set 4, [hl]
+	set BIT_NO_SPRITE_UPDATES, [hl]
 	ld a, $e
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
