@@ -402,7 +402,7 @@ FishingAnim:
 	ld de, RedFSprite
 	lb bc, BANK(RedFSprite), $c
 	ld a, [wGameplayOptions]
-	bit 0, a	;check if girl
+	bit BIT_GAMEPLAY_FEMALE, a	;check if girl
 	jr nz, .donefemale
 	ld de, RedSprite
 	lb bc, BANK(RedSprite), $c
@@ -415,7 +415,7 @@ FishingAnim:
 	push af
 	ld hl, RedFFishingTiles
 	ld a, [wGameplayOptions]
-	bit 0, a	;check if girl
+	bit BIT_GAMEPLAY_FEMALE, a	;check if girl
 	jr nz, .donefemale2
 	ld hl, RedFishingTiles
 .donefemale2
@@ -590,7 +590,7 @@ Ledge60fps:
 	ld h, $c2
 	ld l, $0a
 	ld a, [wGameplayOptions]
-	bit 4, a
+	bit BIT_GAMEPLAY_60_FPS, a
 	ld a, [hl]
 	jr nz, .is60fps
 	xor a

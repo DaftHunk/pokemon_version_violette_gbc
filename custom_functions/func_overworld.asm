@@ -54,8 +54,8 @@ ResetAllOptions: ;joenote - reset all the special options (like for patching-up)
 	ld [wOptions], a
 
 	ld a, [wGameplayOptions]
-	set 4, a ; 60fps
-	set 7, a ; enhanced GBC colors
+	set BIT_GAMEPLAY_60_FPS, a ; 60fps
+	set BIT_GAMEPLAY_ENHANCED_GBC, a ; enhanced GBC colors
 	ld [wGameplayOptions], a
 
 	ld a, [wMoreGameplayOptions]
@@ -393,33 +393,33 @@ PartyMoveTest:
 LoadRedSpriteToDE:
 	ld a, [wGameplayOptions]
 	ld de, RedFSprite
-	bit 0, a	;check if girl
+	bit BIT_GAMEPLAY_FEMALE, a	;check if girl
 	jr nz, .next
 	ld de, RedSprite
 .next
-	res 2, a
+	res BIT_GAMEPLAY_FEMALE_BANK, a
 	ld [wGameplayOptions], a
 	ret
 	
 LoadSeelSpriteToDE:
 	ld a, [wGameplayOptions]
 	ld de, SeelFSprite
-	bit 0, a	;check if girl
+	bit BIT_GAMEPLAY_FEMALE, a	;check if girl
 	jr nz, .next
 	ld de, SeelSprite
 .next
-	res 2, a
+	res BIT_GAMEPLAY_FEMALE_BANK, a
 	ld [wGameplayOptions], a
 	ret
 
 LoadRedCyclingSpriteToDE:
 	ld a, [wGameplayOptions]
 	ld de, RedFCyclingSprite
-	bit 0, a	;check if girl
+	bit BIT_GAMEPLAY_FEMALE, a	;check if girl
 	jr nz, .donefemale
 	ld de, RedCyclingSprite
 .donefemale
-	res 2, a
+	res BIT_GAMEPLAY_FEMALE_BANK, a
 	ld [wGameplayOptions], a
 	ret
 

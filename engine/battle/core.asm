@@ -7280,7 +7280,7 @@ LoadPlayerBackPic:
 	jr .bankred
 .redback
 	ld a, [wGameplayOptions]
-	bit 0, a	;check if girl
+	bit BIT_GAMEPLAY_FEMALE, a	;check if girl
 	jr z, .bankred	;go to the normal red sprite bank if boy
 	;else load girl sprites
 	ld de, RedPicFBack

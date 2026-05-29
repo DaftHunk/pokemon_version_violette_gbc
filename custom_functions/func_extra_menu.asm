@@ -369,7 +369,7 @@ Toggle60FPSSetting:
 Show60FPSSetting:
 	ld hl, OptionMenuFPSText
 	ld a, [wGameplayOptions]
-	bit 4, a
+	bit BIT_GAMEPLAY_60_FPS, a
 	jr nz, .done
 	inc hl
 	inc hl
@@ -422,7 +422,7 @@ ToggleGammaShader:
 	ld a, [wGameplayOptions]
 	xor %00100000
 	ld [wGameplayOptions], a
-	bit 5, a
+	bit BIT_GAMEPLAY_GAMMA, a
 ;GBCNote - RunDefaultPaletteCommand which messes up enhanced GBC colors
 ;set a flag for prevent this from happening
 	ld hl, hFlagsFFFA
@@ -453,7 +453,7 @@ ToggleEnhancedGBCColors:
 	and a
 	ret z	;do nothing if on dmg or sgb
 	ld a, [wGameplayOptions]
-	xor ENH_GBC_COLORS
+	xor %10000000
 	ld [wGameplayOptions], a
 	call RunDefaultPaletteCommand
 	;fall through
@@ -463,7 +463,7 @@ ShowEnhancedGBCSetting:
 	and a
 	jr z, .off
 	ld a, [wGameplayOptions]
-	bit BIT_ENH_GBC_COLORS, a
+	bit BIT_GAMEPLAY_ENHANCED_GBC, a
 	jr nz, .print
 .off
 	inc hl
@@ -520,12 +520,12 @@ ToggleNuzlocke:
 	ld a, [wGameplayOptions]
 	xor %01000000
 	ld [wGameplayOptions], a
-	bit 6, a
+	bit BIT_GAMEPLAY_NUZLOCKE, a
 	;fall through
 ShowNuzlocke:
 	ld de, OptionMenuTextOFF
 	ld a, [wGameplayOptions]	;check if nuzlocke is active
-	bit 6, a
+	bit BIT_GAMEPLAY_NUZLOCKE, a
 	jr z, .print
 	ld de, OptionMenuTextON
 .print

@@ -392,7 +392,7 @@ GBCFadeOutToBlack:
 	
 	;personal preference - only do smooth fade in 60fps mode
 	ld a, [wGameplayOptions]
-	bit 4, a
+	bit BIT_GAMEPLAY_60_FPS, a
 	jr z, .notGBC
 
 ;	if 60fps option enabled but in 1x cpu mode, then enable 2x cpu mode just for this fade
@@ -461,7 +461,7 @@ GBCFadeOutToWhite:
 	
 	;personal preference - only do smooth fade in 60fps mode
 	ld a, [wGameplayOptions]
-	bit 4, a
+	bit BIT_GAMEPLAY_60_FPS, a
 	jr z, .notGBC
 
 ;	if 60fps option enabled but in 1x cpu mode, then enable 2x cpu mode just for this fade
@@ -528,7 +528,7 @@ GBCFadeInFromWhite:
 	
 	;personal preference - only do smooth fade in 60fps mode
 	ld a, [wGameplayOptions]
-	bit 4, a
+	bit BIT_GAMEPLAY_60_FPS, a
 	jr z, .notGBC
 
 ;	if 60fps option enabled but in 1x cpu mode, then enable 2x cpu mode just for this fade
@@ -594,7 +594,7 @@ GBCFadeInFromBlack:
 	
 	;personal preference - only do smooth fade in 60fps mode
 	ld a, [wGameplayOptions]
-	bit 4, a
+	bit BIT_GAMEPLAY_60_FPS, a
 	jr z, .notGBC
 
 ;	if 60fps option enabled but in 1x cpu mode, then enable 2x cpu mode just for this fade
@@ -652,7 +652,7 @@ GBCFadeInFromBlack:
 	
 BufferAllPokeyellowColorsGBC_helper:
 	ld a, [wGameplayOptions]
-	bit 7, a
+	bit BIT_GAMEPLAY_ENHANCED_GBC, a
 	jr z, .doNormal
 	ld a, [hFlagsFFFA]
 	bit 4, a

@@ -15,7 +15,7 @@ MainMenu:
 	ld [hGBC], a
 
 	ld a, [wGameplayOptions]
-	bit 5, a
+	bit BIT_GAMEPLAY_GAMMA, a
 	jr z, .mainMenuLoop
 	
 	ld a, $02
@@ -297,8 +297,8 @@ InitOptions:
 	ret z
 
 	ld a, [wGameplayOptions]
-	set 4, a ; 60fps
-	set 7, a ; enhanced GBC colors
+	set BIT_GAMEPLAY_60_FPS, a ; 60fps
+	set BIT_GAMEPLAY_ENHANCED_GBC, a ; enhanced GBC colors
 	ld [wGameplayOptions], a
 
 	ld a, [wMoreGameplayOptions]
@@ -585,7 +585,7 @@ RomHackVersionText:
 StartNewGamePlus:
 	; Set NG+ flag
 	ld a, [wGameplayOptions]
-	set 3, a
+	set BIT_GAMEPLAY_NEW_GAME_PLUS, a
 	ld [wGameplayOptions], a
 StartNewGame:
 	ld hl, wStatusFlags6

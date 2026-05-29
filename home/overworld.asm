@@ -2513,7 +2513,7 @@ ForceBikeOrSurf::
 
 Check60fps:
 	ld a, [wGameplayOptions]
-	bit 4, a
+	bit BIT_GAMEPLAY_60_FPS, a
 	ret
 
 ;joenote - This functions checks if the spin frame is going to update for the spinning arrow tile state.

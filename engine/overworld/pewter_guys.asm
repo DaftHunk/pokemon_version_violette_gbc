@@ -43,7 +43,7 @@ PewterGuys:
 	jr nz, .no60fps
 	push hl
 	ld hl, wGameplayOptions
-	bit 4, [hl]
+	bit BIT_GAMEPLAY_60_FPS, [hl]
 	pop hl
 	jr z, .no60fps
 	ld [de], a

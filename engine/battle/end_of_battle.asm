@@ -53,7 +53,7 @@ EndOfBattle:
 	predef EndOfBattle_NuzlockeHandler
 ;reset the flag used forfeiting
 	ld a, [wGameplayOptions]
-	res 1, a
+	res BIT_GAMEPLAY_FORFAIT, a
 	ld [wGameplayOptions], a
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, [wEscapedFromBattle]

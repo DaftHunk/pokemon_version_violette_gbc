@@ -251,7 +251,7 @@ _ForfeitTrainerMatchText::
 ForfeitConfirmed:
 	;set the flag for forfeiting
 	ld a, [wGameplayOptions]
-	set 1, a
+	set BIT_GAMEPLAY_FORFAIT, a
 	ld [wGameplayOptions], a
 	call ForfeitConfirmed_NuzlockeHandler	;joenote - mark already KO'ed pokemon as dead for nuzlocke mode
 	;fall through

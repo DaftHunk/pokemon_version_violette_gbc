@@ -51,7 +51,7 @@ OakSpeech:
 ;must have an intact save file detected
 ;must have beaten the elite 4
 	ld a, [wGameplayOptions]
-	bit 3, a
+	bit BIT_GAMEPLAY_NEW_GAME_PLUS, a
 	jr z, .normalnewgame
 
 	call DoNewGamePlus
@@ -84,7 +84,7 @@ OakSpeech:
 	ld a, [wCurrentMenuItem]
 	ld b, a
 	ld a, [wGameplayOptions]
-	res 0, a
+	res BIT_GAMEPLAY_FEMALE, a
 	or b
 	ld [wGameplayOptions], a
 	call ClearScreen
@@ -103,12 +103,12 @@ OakSpeech:
 	call AddItemToInventory  ; give one potion
 
 	ld a, [wGameplayOptions]
-	bit 3, a
+	bit BIT_GAMEPLAY_NEW_GAME_PLUS, a
 	jr z, .notNewGamePlus
 
 	SetEvent EVENT_NEW_GAME_PLUS
 	; Reset NG+ flag
-	res 3, a
+	res BIT_GAMEPLAY_NEW_GAME_PLUS, a
 	ld [wGameplayOptions], a
 
 .notNewGamePlus
@@ -166,7 +166,7 @@ OakSpeech:
 	ld de, RedPicFFront
 	lb bc, BANK(RedPicFFront), $00
 	ld a, [wGameplayOptions]
-	bit 0, a	;check if girl
+	bit BIT_GAMEPLAY_FEMALE, a	;check if girl
 	jr nz, .donefemale_front
 	ld de, RedPicFront
 	lb bc, BANK(RedPicFront), $00
@@ -192,7 +192,7 @@ OakSpeech:
 	ld de, RedPicFFront
 	lb bc, BANK(RedPicFFront), $00
 	ld a, [wGameplayOptions]
-	bit 0, a	;check if girl
+	bit BIT_GAMEPLAY_FEMALE, a	;check if girl
 	jr nz, .donefemale_front2
 	ld de, RedPicFront
 	lb bc, BANK(RedPicFront), $00
@@ -219,7 +219,7 @@ OakSpeech:
 	ld de, RedFSprite
 	lb bc, BANK(RedFSprite), $0C
 	ld a, [wGameplayOptions]
-	bit 0, a	;check if girl
+	bit BIT_GAMEPLAY_FEMALE, a	;check if girl
 	jr nz, .sprite_next
 	ld de, RedSprite
 	lb bc, BANK(RedSprite), $0C

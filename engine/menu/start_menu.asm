@@ -13,7 +13,7 @@ RedisplayStartMenu::
 
 	;GBCNote - if using enhanced GBC color, add some extra delay
 	ld a, [wGameplayOptions]
-	bit 7, a
+	bit BIT_GAMEPLAY_ENHANCED_GBC, a
 	call nz, Delay3
 
 	call LoadGBPal	;joenote - moved this here for smoother whiteout transition

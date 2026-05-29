@@ -586,7 +586,7 @@ DrawTrainerInfo:
 	ld de, RedPicFFront
 	lb bc, BANK(RedPicFFront), $01
 	ld a, [wGameplayOptions]
-	bit 0, a	;check if girl
+	bit BIT_GAMEPLAY_FEMALE, a	;check if girl
 	jr nz, .next
 	ld de, RedPicFront
 	lb bc, BANK(RedPicFront), $01

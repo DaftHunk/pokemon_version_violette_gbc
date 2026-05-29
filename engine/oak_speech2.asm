@@ -3,7 +3,7 @@ ChoosePlayerName:
 ;joenote - support female trainer sprite
 	ld de, DefaultNamesPlayerF
 	ld a, [wGameplayOptions]
-	bit 0, a	;check if girl
+	bit BIT_GAMEPLAY_FEMALE, a	;check if girl
 	jr nz, .donefemale_names
 	ld de, DefaultNamesPlayer
 .donefemale_names
@@ -15,7 +15,7 @@ ChoosePlayerName:
 	push af
 	ld hl, DefaultNamesPlayerListF
 	ld a, [wGameplayOptions]
-	bit 0, a	;check if girl
+	bit BIT_GAMEPLAY_FEMALE, a	;check if girl
 	jr nz, .donefemale_names2
 	ld hl, DefaultNamesPlayerList
 .donefemale_names2
@@ -38,7 +38,7 @@ ChoosePlayerName:
 	ld de, RedPicFFront
 	ld b, BANK(RedPicFFront)
 	ld a, [wGameplayOptions]
-	bit 0, a	;check if girl
+	bit BIT_GAMEPLAY_FEMALE, a	;check if girl
 	jr nz, .donefemale_front
 	ld de, RedPicFront
 	ld b, BANK(RedPicFront)

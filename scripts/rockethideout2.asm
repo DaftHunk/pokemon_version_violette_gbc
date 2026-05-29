@@ -322,7 +322,7 @@ LoadSpinnerArrowTiles:
 	push bc
 	ld b, 2
 	ld a, [wGameplayOptions]
-	bit 4, a
+	bit BIT_GAMEPLAY_60_FPS, a
 	jr z, .no60fps
 	sla b
 .no60fps
