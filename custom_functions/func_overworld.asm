@@ -140,7 +140,7 @@ CheckForSmartHMuse:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;check for cut
 	ld a, [wObtainedBadges]
-	bit 1, a ; does the player have the Cascade Badge?
+	bit BIT_CASCADEBADGE, a ; does the player have the Cascade Badge?
 	jr z, .nocut
 	;does a party 'mon have CUT?
 	ld c, CUT
@@ -163,7 +163,7 @@ CheckForSmartHMuse:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
 ;check for surfing
 	ld a, [wObtainedBadges]
-	bit 4, a ; does the player have the Soul Badge?
+	bit BIT_SOULBADGE, a ; does the player have the Soul Badge?
 	jp z, .nosurf
 	ld a, [wWalkBikeSurfState]
 	ld [wWalkBikeSurfStateCopy], a
@@ -235,7 +235,7 @@ CheckForSmartHMuse:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;check for flash
 	ld a, [wObtainedBadges]
-	bit 0, a ; does the player have the Boulder Badge?
+	bit BIT_BOULDERBADGE, a ; does the player have the Boulder Badge?
 	jr z, .noflash
 	;check if the map pal offset is not zero
 	ld a, [wMapPalOffset]
@@ -258,7 +258,7 @@ CheckForSmartHMuse:
 	jr nz, .nostrength	;do nothing if already active
 
 	ld a, [wObtainedBadges]
-	bit 3, a ; does the player have the Rainbow Badge?
+	bit BIT_RAINBOWBADGE, a ; does the player have the Rainbow Badge?
 	jr z, .nostrength
 
 	;must be facing a boulder to use strength

@@ -80,7 +80,7 @@ TestBattle: ; unreferenced except in _DEBUG
 	; Don't mess around with obedience.
 	;ld a, 1 << 7
 	ld [wObtainedBadges], a
-    bit 7, a ; does the player have the Earth Badge?
+    bit BIT_EARTHBADGE, a ; does the player have the Earth Badge?
 	ld hl, wStatusFlags7
 	set BIT_TEST_BATTLE, [hl]
 

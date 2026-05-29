@@ -55,14 +55,14 @@ IF DEF(_DEBUG)
 	ld [wTownVisitedFlag + 1], a
 
 	ld a, [wObtainedBadges]
-	set 0, a ; Boulder Badge
-	set 1, a ; Cascade Badge
-	set 2, a ; Thunder Badge
-	set 3, a ; Rainbow Badge
-	set 4, a ; Soul Badge
-	set 5, a ; Marsh Badge
-	set 6, a ; Volcano Badge
-	set 7, a ; Earth Badge
+	set BIT_BOULDERBADGE, a ; Boulder Badge
+	set BIT_CASCADEBADGE, a ; Cascade Badge
+	set BIT_THUNDERBADGE, a ; Thunder Badge
+	set BIT_RAINBOWBADGE, a ; Rainbow Badge
+	set BIT_SOULBADGE, a ; Soul Badge
+	set BIT_MARSHBADGE, a ; Marsh Badge
+	set BIT_VOLCANOBADGE, a ; Volcano Badge
+	set BIT_EARTHBADGE, a ; Earth Badge
 	ld [wObtainedBadges], a
 
 	call SetDebugNewGameParty

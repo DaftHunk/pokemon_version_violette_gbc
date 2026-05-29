@@ -68,3 +68,13 @@ DEF BIT_TEXT_PREDEF EQU 0
 	const BIT_FAST_TEXT_DELAY ; 0
 	const BIT_TEXT_NO_DELAY   ; 1
 
+; wObtainedBadges
+	const_def
+	const BIT_BOULDERBADGE ; 0
+	const BIT_CASCADEBADGE ; 1
+	const BIT_THUNDERBADGE ; 2
+	const BIT_RAINBOWBADGE ; 3
+	const BIT_SOULBADGE    ; 4
+	const BIT_MARSHBADGE   ; 5
+	const BIT_VOLCANOBADGE ; 6
+	const BIT_EARTHBADGE   ; 7

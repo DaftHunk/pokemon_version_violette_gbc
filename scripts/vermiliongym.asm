@@ -80,7 +80,7 @@ VermilionGymScript_GiveTM:
 	call DisplayTextID
 .endScript
 	ld hl, wObtainedBadges
-	set 2, [hl]
+	set BIT_THUNDERBADGE, [hl]
 
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_VERMILION_GYM_TRAINER_0, EVENT_BEAT_VERMILION_GYM_TRAINER_2
@@ -322,7 +322,7 @@ VermilionGymText_Trainer2AfterBattle:
 VermilionGymText_Guide:
 	TX_ASM
 	ld a, [wObtainedBadges]
-	bit 2, a
+	bit BIT_THUNDERBADGE, a
 	jr nz, .arenaVictory
 	ld hl, VermilionGymText_GuideTip
 	call PrintText
