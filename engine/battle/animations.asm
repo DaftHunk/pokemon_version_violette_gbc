@@ -429,7 +429,7 @@ MoveAnimationContent:
 .moveAnimation
 	; check if battle animations are disabled in the options
 	ld a, [wOptions]
-	bit BIT_BATTLE_ANIMATION, a
+	bit BIT_OPTIONS_BATTLE_ANIMATION, a
 	jr nz, .animationsDisabled
 	call ShareMoveAnimations
 	call PlayAnimation

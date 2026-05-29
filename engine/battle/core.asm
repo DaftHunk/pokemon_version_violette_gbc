@@ -1542,7 +1542,7 @@ EnemySendOutFirstMon:
 	jr nz, .next4
 
 	ld a, [wOptions]
-	bit BIT_BATTLE_SHIFT, a
+	bit BIT_OPTIONS_BATTLE_SHIFT, a
 	jr nz, .next4
 
 	ld hl, TrainerAboutToUseText

@@ -49,8 +49,8 @@ ResetAllOptions: ;joenote - reset all the special options (like for patching-up)
 	ld a, BIT_TEXT_NO_DELAY ; no delay
 	ld [wLetterPrintingDelayFlags], a
 
-	ld a, TEXT_DELAY_FAST ; fast speed
-	set BIT_BATTLE_SHIFT, a ;joenote - SET battle style
+	ld a, BITS_OPTIONS_TEXT_DELAY_FAST ; fast speed
+	set BIT_OPTIONS_BATTLE_SHIFT, a ;joenote - SET battle style
 	ld [wOptions], a
 
 	ld a, [wGraphicOptions]

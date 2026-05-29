@@ -312,16 +312,16 @@ CycleSoundSetting:	;joenote - cycle through mono, earphone 1, 2, and 3
 	ld b, a
 	ld c, a
 	
-	ld a, (SOUND_STEREO_BITS ^ $FF)
+	ld a, (BITS_OPTIONS_SOUND_STEREO ^ $FF)
 	and b
 	ld b, a
 	
 	ld a, c
-	and SOUND_STEREO_BITS
+	and BITS_OPTIONS_SOUND_STEREO
 	swap a
 	inc a
 	swap a
-	and SOUND_STEREO_BITS
+	and BITS_OPTIONS_SOUND_STEREO
 	or b
 	pop bc
 	ld [wOptions], a
@@ -329,7 +329,7 @@ CycleSoundSetting:	;joenote - cycle through mono, earphone 1, 2, and 3
 PlaceSoundSetting:
 	ld hl, OptionMenuSoundText
 	ld a, [wOptions]
-	and SOUND_STEREO_BITS
+	and BITS_OPTIONS_SOUND_STEREO
 	swap a
 .loop
 	and a
@@ -393,13 +393,13 @@ OptionMenu30FPS:
 ToggleLaglessText:
 	ld a, [wOptions]
 	and %11111001
-	xor TEXT_DELAY_FAST
+	xor BITS_OPTIONS_TEXT_DELAY_FAST
 	ld [wOptions], a
 	;fall through
 ShowLaglessTextSetting:
 	ld hl, OptionMenuOnOffText
 	ld a, [wOptions]
-	and TEXT_DELAY_BITS
+	and BITS_OPTIONS_TEXT_DELAY
 	jr z, .print
 	inc hl
 	inc hl

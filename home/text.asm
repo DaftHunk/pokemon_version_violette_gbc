@@ -665,7 +665,7 @@ TextCommand_SOUND::	;joenote - modified to make SFX_GET_KEY_ITEM play a previous
 	jr z, .keyitem
 .playnormally
 	ld a, [wOptions]
-	and TEXT_DELAY_BITS
+	and BITS_OPTIONS_TEXT_DELAY
 	ld a, [hl]
 	call PlaySound
 	call WaitForSoundToFinish

@@ -26,7 +26,7 @@ IF DEF(_DEBUG)
 	coord hl, 7, 7
 	ld de, DebugMenuOptions
 	call PlaceString
-	ld a, 3 ; medium speed
+	ld a, BITS_OPTIONS_TEXT_DELAY_FAST
 	ld [wOptions], a
 
 	ld a, A_BUTTON | B_BUTTON | START

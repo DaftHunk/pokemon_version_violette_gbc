@@ -20,7 +20,7 @@ ExternalClockTradeAnim:
 TradeAnimCommon:
 	ld a, [wOptions]
 	push af
-	and SOUND_STEREO_BITS ; preserve speaker options
+	and BITS_OPTIONS_SOUND_STEREO ; preserve speaker options
 	ld [wOptions], a
 	ld a, [hSCY]
 	push af

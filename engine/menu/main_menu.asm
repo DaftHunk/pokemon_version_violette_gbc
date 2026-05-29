@@ -288,8 +288,8 @@ InitOptions:
 	ld a, BIT_TEXT_NO_DELAY ; no delay
 	ld [wLetterPrintingDelayFlags], a
 
-	ld a, TEXT_DELAY_FAST ; fast speed
-	set BIT_BATTLE_SHIFT, a ;joenote - SET battle style
+	ld a, BITS_OPTIONS_TEXT_DELAY_FAST ; fast speed
+	set BIT_OPTIONS_BATTLE_SHIFT, a ;joenote - SET battle style
 	ld [wOptions], a
 
 	ld a, [hGBC]
@@ -1046,7 +1046,7 @@ SetOptionsFromCursorPositions:
 
 	;joenote - set cursor position for lagless text
 	ld a, [wOptions]
-	and TEXT_DELAY_BITS
+	and BITS_OPTIONS_TEXT_DELAY
 	ld a, [hl]
 	jr nz, .settextspeed
 	xor a
@@ -1057,22 +1057,22 @@ SetOptionsFromCursorPositions:
 	dec a
 	jr z, .battleAnimationOn
 .battleAnimationOff
-	set BIT_BATTLE_ANIMATION, d
+	set BIT_OPTIONS_BATTLE_ANIMATION, d
 	jr .checkBattleStyle
 .battleAnimationOn
-	res BIT_BATTLE_ANIMATION, d
+	res BIT_OPTIONS_BATTLE_ANIMATION, d
 .checkBattleStyle
 	ld a, [wOptionsBattleStyleCursorX] ; battle style cursor X coordinate
 	dec a
 	jr z, .battleStyleShift
 .battleStyleSet
-	set BIT_BATTLE_SHIFT, d
+	set BIT_OPTIONS_BATTLE_SHIFT, d
 	jr .storeOptions
 .battleStyleShift
-	res BIT_BATTLE_SHIFT, d
+	res BIT_OPTIONS_BATTLE_SHIFT, d
 .storeOptions
 	ld a, [wOptions]	;joenote - preserve sound and hard mode settings
-	and (SOUND_STEREO_BITS | BATTLE_HARD_MODE)
+	and (BITS_OPTIONS_SOUND_STEREO | %00001000)
 	or d
 	;ld a, d
 	ld [wOptions], a
@@ -1082,9 +1082,9 @@ SetOptionsFromCursorPositions:
 SetCursorPositionsFromOptions:
 	ld hl, TextSpeedOptionData + 1
 	ld a, [wOptions]
-	and (SOUND_STEREO_BITS ^ $FF)	;joenote - bypass sound settings
+	and (BITS_OPTIONS_SOUND_STEREO ^ $FF)	;joenote - bypass sound settings
 	ld c, a
-	and TEXT_DELAY_BITS
+	and BITS_OPTIONS_TEXT_DELAY
 	push bc
 	ld de, 2
 	call IsInArray
@@ -1093,7 +1093,7 @@ SetCursorPositionsFromOptions:
 	
 	;joenote - set cursor position for lagless text
 	ld a, [wOptions]
-	and TEXT_DELAY_BITS
+	and BITS_OPTIONS_TEXT_DELAY
 	ld a, [hl]
 	jr nz, .settextspeed
 	ld a, 1
@@ -1102,7 +1102,7 @@ SetCursorPositionsFromOptions:
 	ld [wOptionsTextSpeedCursorX], a ; text speed cursor X coordinate
 	coord hl, 0, 3
 	call .placeUnfilledRightArrow
-	bit BIT_BATTLE_ANIMATION, c
+	bit BIT_OPTIONS_BATTLE_ANIMATION, c
 	ld a, 1 ; On
 	jr z, .storeBattleAnimationCursorX
 	ld a, 10 ; Off
@@ -1110,7 +1110,7 @@ SetCursorPositionsFromOptions:
 	ld [wOptionsBattleAnimCursorX], a ; battle animation cursor X coordinate
 	coord hl, 0, 8
 	call .placeUnfilledRightArrow
-	bit BIT_BATTLE_SHIFT, c
+	bit BIT_OPTIONS_BATTLE_SHIFT, c
 	ld a, 1
 	jr z, .storeBattleStyleCursorX
 	ld a, 10

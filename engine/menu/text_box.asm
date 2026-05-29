@@ -828,7 +828,7 @@ PrintLetterDelay_:
 	bit BIT_FAST_TEXT_DELAY, a
 	jr z, .waitOneFrame
 	ld a, [wOptions]
-	and TEXT_DELAY_BITS
+	and BITS_OPTIONS_TEXT_DELAY
 	ld [H_FRAMECOUNTER], a
 	
 	;	joenote - set a flag to indicate if a sfx is playing while printing text
@@ -862,7 +862,7 @@ PrintLetterDelay_:
 	and (A_BUTTON | B_BUTTON)
 	jr z, .buttonsNotPressed
 	ld a, [wOptions]
-	and TEXT_DELAY_BITS
+	and BITS_OPTIONS_TEXT_DELAY
 	call nz, DelayFrame
 ;.endWait
 ;	call DelayFrame
