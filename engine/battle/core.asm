@@ -1537,7 +1537,7 @@ EnemySendOutFirstMon:
 	jr z, .next4
 
 	; Hard mode now force battle set
-	ld a, [wGameplayOptions]
+	ld a, [wOptions]
 	bit BIT_BATTLE_HARD, a
 	jr nz, .next4
 

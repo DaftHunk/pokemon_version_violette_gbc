@@ -1062,14 +1062,14 @@ ItemUseMedicine:
 	jr z, .compareCurrentHPToMaxHP
 ;joenote - at this point, trying to revive a fainted 'mon in battle
 ;disallow this in hard mode or in nuzlock mode
-	push bc
 	ld a, [wOptions]
-	ld b, a
-	ld a, [wGameplayOptions]
-	or b
-	pop bc
 	bit BIT_BATTLE_HARD, a
-	jr nz, .cannot_revive
+	jr z, .cannot_revive
+
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_NUZLOCKE, a
+	jr z, .cannot_revive
+
 	CheckEvent EVENT_3_MONS_RANDOM_TRAINER
 	jr nz, .cannot_revive
 .can_revive	
