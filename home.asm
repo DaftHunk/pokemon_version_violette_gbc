@@ -3923,7 +3923,7 @@ PrintLetterDelay::
 	bit 6, a
 	ret nz
 	ld a, [wLetterPrintingDelayFlags]
-	bit 1, a
+	bit BIT_TEXT_NO_DELAY, a
 	ret z
 	push hl
 	push de

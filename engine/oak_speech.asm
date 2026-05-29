@@ -389,7 +389,7 @@ DoNewGamePlus: ;joenote - selective wram clearing for new game plus
 	call FillMemory
 	; 3453 end
 	
-	ld a, 1 ; no delay
+	ld a, BIT_TEXT_NO_DELAY ; no delay
 	ld [wLetterPrintingDelayFlags], a
 
 	ld a, TEXT_DELAY_FAST ; fast speed

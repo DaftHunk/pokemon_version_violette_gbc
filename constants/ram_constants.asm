@@ -63,3 +63,8 @@ DEF BIT_TEXT_PREDEF EQU 0
 	const BIT_CUR_MAP_LOADED_2 ; 6
 	const BIT_CUR_MAP_USED_ELEVATOR ; 7
 
+; wLetterPrintingDelayFlags
+	const_def
+	const BIT_FAST_TEXT_DELAY ; 0
+	const BIT_TEXT_NO_DELAY   ; 1
+

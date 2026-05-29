@@ -285,7 +285,7 @@ InitOptions:
 	ld [wGameplayOptions], a	;joenote - reset any extra options
 	ld [wLetterPrintingDelayFlags], a
 
-	ld a, 1 ; no delay
+	ld a, BIT_TEXT_NO_DELAY ; no delay
 	ld [wLetterPrintingDelayFlags], a
 
 	ld a, TEXT_DELAY_FAST ; fast speed

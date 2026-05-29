@@ -7,7 +7,7 @@ DisplayExtraOptionMenu:
 	ld a, 1 ;cursor X coordinate
 	ld [wTopMenuItemX], a
 
-	ld a, 1
+	ld a, BIT_TEXT_NO_DELAY
 	ld [wLetterPrintingDelayFlags], a	;no delay
 	ld a, $01
 	ld [H_AUTOBGTRANSFERENABLED], a ; enable auto background transfer

@@ -46,7 +46,7 @@ ResetAllOptions: ;joenote - reset all the special options (like for patching-up)
 	ld a, SFX_LEVEL_UP
 	call PlaySound
 
-	ld a, 1 ; no delay
+	ld a, BIT_TEXT_NO_DELAY ; no delay
 	ld [wLetterPrintingDelayFlags], a
 
 	ld a, TEXT_DELAY_FAST ; fast speed

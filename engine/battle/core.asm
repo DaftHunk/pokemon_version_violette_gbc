@@ -7715,7 +7715,7 @@ InitBattleCommon:
 	ld hl, wLetterPrintingDelayFlags
 	ld a, [hl]
 	push af
-	res 1, [hl]
+	res BIT_TEXT_NO_DELAY, [hl]
 	callab InitBattleVariables
 	ld a, [wEnemyMonSpecies2]
 	sub 200

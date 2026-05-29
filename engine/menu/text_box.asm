@@ -825,7 +825,7 @@ FieldMoveDisplayData:
 	
 PrintLetterDelay_:
 	ld a, [wLetterPrintingDelayFlags]
-	bit 0, a
+	bit BIT_FAST_TEXT_DELAY, a
 	jr z, .waitOneFrame
 	ld a, [wOptions]
 	and TEXT_DELAY_BITS
