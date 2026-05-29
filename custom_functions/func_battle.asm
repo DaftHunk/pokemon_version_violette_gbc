@@ -84,7 +84,7 @@ SwapTurn:	;a simple custom function for swapping whose turn it is in the battle 
 ;custom function to determin the DVs of wild pokemon with an option for forcing shiny DVs
 DetermineWildMonDVs:
 	ld a, [wFontLoaded]
-	bit 7, a
+	bit BIT_FORCE_SHINY, a
 	jr z, .do_random
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;exclude tower ghosts and old man tutorial
@@ -120,7 +120,7 @@ DetermineWildMonDVs:
 	ld [hl], b
 	pop hl
 	ld a, [wFontLoaded]
-	res 7, a 
+	res BIT_FORCE_SHINY, a 
 	ld [wFontLoaded], a
 	ret
 

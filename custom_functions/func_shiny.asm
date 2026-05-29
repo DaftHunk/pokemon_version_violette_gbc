@@ -16,7 +16,7 @@ ShinyAttractFunction:
 	ret nz
 .forceShiny
 	ld a, [wFontLoaded]
-	set 7, a 
+	set BIT_FORCE_SHINY, a 
 	ld [wFontLoaded], a
 	ret
 
@@ -66,7 +66,7 @@ CheckEnemyShinyDVs:
 	;at this point, player is facing an AI trainer's shiny pokemon or some kind of uncatchable wild pokemon
 	;so make the next wild encounter shiny
 	ld a, [wFontLoaded]
-	set 7, a 
+	set BIT_FORCE_SHINY, a 
 	ld [wFontLoaded], a
 	ret
 

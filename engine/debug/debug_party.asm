@@ -252,7 +252,7 @@ IF DEF(_DEBUG)
 	; Force Shiny apparition
 ;	ld [wFontLoaded], a
 ;	ld a, [wFontLoaded]
-;	set 7, a
+;	set BIT_FORCE_SHINY, a
 
 	; Disable Level Cap by default
 	ld a, [wMoreGameplayOptions]

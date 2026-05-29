@@ -15,27 +15,27 @@ CheckAISentOut:
 	jr .party0
 .party5
 	ld a, [wFontLoaded]
-	bit 6, a
+	bit BIT_AI_SENT_POKEMON_6, a
 	jr .partyret
 .party4
 	ld a, [wFontLoaded]
-	bit 5, a
+	bit BIT_AI_SENT_POKEMON_5, a
 	jr .partyret
 .party3
 	ld a, [wFontLoaded]
-	bit 4, a
+	bit BIT_AI_SENT_POKEMON_4, a
 	jr .partyret
 .party2
 	ld a, [wFontLoaded]
-	bit 3, a
+	bit BIT_AI_SENT_POKEMON_3, a
 	jr .partyret
 .party1
 	ld a, [wFontLoaded]
-	bit 2, a
+	bit BIT_AI_SENT_POKEMON_2, a
 	jr .partyret
 .party0
 	ld a, [wFontLoaded]
-	bit 1, a
+	bit BIT_AI_SENT_POKEMON_1, a
 .partyret
 	ret
 	
@@ -54,32 +54,32 @@ SetAISentOut:
 	jr .party0
 .party5
 	ld a, [wFontLoaded]
-	set 6, a
+	set BIT_AI_SENT_POKEMON_6, a
 	ld [wFontLoaded], a
 	jr .partyret
 .party4
 	ld a, [wFontLoaded]
-	set 5, a
+	set BIT_AI_SENT_POKEMON_5, a
 	ld [wFontLoaded], a
 	jr .partyret
 .party3
 	ld a, [wFontLoaded]
-	set 4, a
+	set BIT_AI_SENT_POKEMON_4, a
 	ld [wFontLoaded], a
 	jr .partyret
 .party2
 	ld a, [wFontLoaded]
-	set 3, a
+	set BIT_AI_SENT_POKEMON_3, a
 	ld [wFontLoaded], a
 	jr .partyret
 .party1
 	ld a, [wFontLoaded]
-	set 2, a
+	set BIT_AI_SENT_POKEMON_2, a
 	ld [wFontLoaded], a
 	jr .partyret
 .party0
 	ld a, [wFontLoaded]
-	set 1, a
+	set BIT_AI_SENT_POKEMON_1, a
 	ld [wFontLoaded], a
 .partyret
 	ret

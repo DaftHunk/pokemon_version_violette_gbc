@@ -1102,8 +1102,8 @@ DisplayTextID::
 	push af
 	callba DisplayTextIDInit ; initialization
 	ld hl, wTextPredefFlag
-	bit 0, [hl]
-	res 0, [hl]
+	bit BIT_TEXT_PREDEF, [hl]
+	res BIT_TEXT_PREDEF, [hl]
 	jr nz, .skipSwitchToMapBank
 	ld a, [wCurMap]
 	call SwitchToMapRomBank
@@ -1258,7 +1258,7 @@ CloseTextDisplay::
 	ld [MBC1RomBank], a
 	call InitMapSprites ; reload sprite tile pattern data (since it was partially overwritten by text tile patterns)
 	ld hl, wFontLoaded
-	res 0, [hl]
+	res BIT_DISABLE_NPC_MOVEMENT, [hl]
 	ld a, [wStatusFlags6]
 	bit 3, a ; used fly warp
 	call z, LoadPlayerSpriteGraphics
@@ -4559,7 +4559,7 @@ ReloadMapSpriteTilePatterns::
 	ld hl, wFontLoaded
 	ld a, [hl]
 	push af
-	res 0, [hl]
+	res BIT_DISABLE_NPC_MOVEMENT, [hl]
 	push hl
 	xor a
 	ld [wSpriteSetID], a
@@ -4664,7 +4664,7 @@ PrintPredefTextID::
 	ld hl, TextPredefs
 	call SetMapTextPointer
 	ld hl, wTextPredefFlag
-	set 0, [hl]
+	set BIT_TEXT_PREDEF, [hl]
 	call DisplayTextID
 
 RestoreMapTextPointer::

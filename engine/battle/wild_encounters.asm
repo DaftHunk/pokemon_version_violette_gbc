@@ -116,7 +116,7 @@ TryDoWildEncounter:
 .shinycheck_repel
 ;joenote - initiate encounter if shiny (overrides repel)
 	ld a, [wFontLoaded]
-	bit 7, a
+	bit BIT_FORCE_SHINY, a
 	jr nz, .willEncounter
 	jr .CantEncounter2
 	

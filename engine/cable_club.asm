@@ -613,7 +613,7 @@ ReturnToCableClubRoom:
 	ld a, [hl]
 	push af
 	push hl
-	res 0, [hl]
+	res BIT_DISABLE_NPC_MOVEMENT, [hl]
 	xor a
 	ld [wStatusFlags3], a
 	dec a

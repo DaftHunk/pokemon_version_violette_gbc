@@ -55,7 +55,7 @@ UpdatePlayerSprite:
 .next
 	ld [wSpriteStateData1 + 9], a ; facing direction
 	ld a, [wFontLoaded]
-	bit 0, a
+	bit BIT_DISABLE_NPC_MOVEMENT, a
 	jr nz, .notMoving
 .moving
 	ld a, [wMovementFlags]
@@ -167,7 +167,7 @@ UpdateNPCSprite:
 	jp nz, MakeNPCFacePlayer
 	ld b, a
 	ld a, [wFontLoaded]
-	bit 0, a
+	bit BIT_DISABLE_NPC_MOVEMENT, a
 	jp nz, notYetMoving
 	ld a, b
 	cp $2

@@ -37,3 +37,21 @@ DEF LEN_2BPP_TILE EQU 2 * TILE_WIDTH ; bytes
 	const BIT_NO_MENU_BUTTON_SOUND ; 5
 	const BIT_TRIED_PUSH_BOULDER   ; 6
 	const BIT_PUSHED_BOULDER       ; 7
+
+; wAutoTextBoxDrawingControl
+DEF BIT_NO_AUTO_TEXT_BOX EQU 0
+
+; wTextPredefFlag
+DEF BIT_TEXT_PREDEF EQU 0
+
+; wFontLoaded
+    const_def
+	const BIT_DISABLE_NPC_MOVEMENT ; 0
+	const BIT_AI_SENT_POKEMON_1    ; 1
+	const BIT_AI_SENT_POKEMON_2    ; 2
+	const BIT_AI_SENT_POKEMON_3    ; 3
+	const BIT_AI_SENT_POKEMON_4    ; 4
+	const BIT_AI_SENT_POKEMON_5    ; 5
+	const BIT_AI_SENT_POKEMON_6    ; 6
+	const BIT_FORCE_SHINY          ; 7
+
