@@ -16,7 +16,10 @@ ENDM
 	mapconst FUCHSIA_CITY,               18, 20 ; $08
 	mapconst CINNABAR_ISLAND,             9, 10 ; $09
 	mapconst INDIGO_PLATEAU,              9, 10 ; $0A
+DEF NUM_CITY_MAPS EQU const_value
+
 	mapconst UNUSED_MAP_0B,               0,  0 ; $0B
+
 	mapconst ROUTE_1,                    18, 10 ; $0C
 	mapconst ROUTE_2,                    36, 12 ; $0D
 	mapconst ROUTE_3,                     9, 35 ; $0E
@@ -44,6 +47,7 @@ ENDM
 	mapconst ROUTE_24,                   18, 10 ; $24
 	mapconst BILLS_GARDEN,                7, 11 ; $25
 	mapconst ROUTE_25,                   10, 30 ; $26
+
 	mapconst REDS_HOUSE_1F,               4,  4 ; $27
 	mapconst REDS_HOUSE_2F,               4,  4 ; $28
 	mapconst BLUES_HOUSE,                 4,  4 ; $29

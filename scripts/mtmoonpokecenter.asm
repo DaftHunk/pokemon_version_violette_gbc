@@ -1,6 +1,17 @@
 MtMoonPokecenterScript:
+	call .markAsVisited
 	call Serial_TryEstablishingExternallyClockedConnection
 	jp EnableAutoTextBoxDrawing
+
+.markAsVisited
+	ld hl, wCurrentMapScriptFlags
+	bit 5, [hl]
+	res 5, [hl]
+	ret z
+	ld c, ROUTE_4_FLY
+	ld b, FLAG_SET
+	ld hl, wTownVisitedFlag   ; mark town as visited (for flying)
+	predef_jump FlagActionPredef
 
 MtMoonPokecenterTextPointers:
 	dw MtMoonHealNurseText
