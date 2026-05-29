@@ -11,14 +11,23 @@ DEF BIT_BATTLE_ANIMATION 	EQU 7		 	; bit 7
 
 ; wGameplayOptions
     const_def
-	const BIT_GAMEPLAY_FEMALE        ; 0
+    const BIT_GAMEPLAY_LEVEL_CAP     ; 0
 	const BIT_GAMEPLAY_FORFAIT       ; 1
-	const BIT_GAMEPLAY_FEMALE_BANK   ; 2
-	const BIT_GAMEPLAY_NEW_GAME_PLUS ; 3
-	const BIT_GAMEPLAY_60_FPS        ; 4
-	const BIT_GAMEPLAY_GAMMA         ; 5
-	const BIT_GAMEPLAY_NUZLOCKE      ; 6
-	const BIT_GAMEPLAY_ENHANCED_GBC  ; 7
+    const BIT_GAMEPLAY_LEVEL_SCALING ; 2
+    const BIT_GAMEPLAY_HARDMODE      ; 3
+	const BIT_GAMEPLAY_NEW_GAME_PLUS ; 4
+	const BIT_GAMEPLAY_NUZLOCKE      ; 5
+
+; wGraphicOptions
+    const_def
+	const BIT_GRAPHIC_FEMALE           ; 0
+    const_skip                         ; 1
+	const BIT_GRAPHIC_FEMALE_BANK      ; 2
+    const_skip                         ; 3
+	const BIT_GRAPHIC_60_FPS           ; 4
+	const BIT_GRAPHIC_GAMMA            ; 5
+    const_skip                         ; 6
+	const BIT_GRAPHIC_ENHANCED_GBC     ; 7
 
 DEF TILE_WIDTH EQU 8 ; pixels
 DEF LEN_1BPP_TILE EQU 1 * TILE_WIDTH ; bytes

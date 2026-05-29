@@ -255,9 +255,9 @@ IF DEF(_DEBUG)
 ;	set BIT_FORCE_SHINY, a
 
 	; Disable Level Cap by default
-	ld a, [wMoreGameplayOptions]
-	res 0, a ; level cap mode
-	ld [wMoreGameplayOptions], a
+	ld a, [wGameplayOptions]
+	res BIT_GAMEPLAY_LEVEL_CAP, a ; level cap mode
+	ld [wGameplayOptions], a
 
 	; Rival chose Squirtle,
 	; Player chose Charmander.

@@ -564,8 +564,8 @@ MakeOverworldBGMapAttributes:
 	ld a, [hGBC]
 	and a
 	ret z
-	ld a, [wGameplayOptions]
-	bit BIT_GAMEPLAY_ENHANCED_GBC, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_ENHANCED_GBC, a
 	ret z
 	
 
@@ -1045,8 +1045,8 @@ MakeAndTransferOverworldBGMapAttributes_OpenText:
 	ld a, [hGBC]
 	and a
 	ret z
-	ld a, [wGameplayOptions]
-	bit BIT_GAMEPLAY_ENHANCED_GBC, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_ENHANCED_GBC, a
 	ret z
 ;only on the overworld bgmap
 	ld a, [hFlagsFFFA]
@@ -1089,8 +1089,8 @@ GBCEnhancedRedrawRowOrColumn:
 	ld a, [hGBC]
 	and a
 	ret z
-	ld a, [wGameplayOptions]
-	bit BIT_GAMEPLAY_ENHANCED_GBC, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_ENHANCED_GBC, a
 	ret z
 	
 	;only on the overworld bgmap
@@ -1256,8 +1256,8 @@ TransferGBCEnhancedBGMapAttributes:
 	ld a, [hGBC]
 	and a
 	ret z
-	ld a, [wGameplayOptions]
-	bit BIT_GAMEPLAY_ENHANCED_GBC, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_ENHANCED_GBC, a
 	ret z
 
 	ld a, %11
@@ -1287,8 +1287,8 @@ TransferGBCEnhancedOverworldPalettes:
 	ld a, [hGBC]
 	and a
 	ret z
-	ld a, [wGameplayOptions]
-	bit BIT_GAMEPLAY_ENHANCED_GBC, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_ENHANCED_GBC, a
 	ret z
 	
 	call UpdateEnhancedGBCPal_BGP.skipHardwareUpdate

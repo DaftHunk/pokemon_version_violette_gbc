@@ -362,14 +362,14 @@ OptionMenuEar3:
 
 ;60fps - show the fps setting on the menu when activated
 Toggle60FPSSetting:
-	ld a, [wGameplayOptions]
-	xor %00010000
-	ld [wGameplayOptions], a
+	ld a, [wGraphicOptions]
+	xor 1 << BIT_GRAPHIC_60_FPS
+	ld [wGraphicOptions], a
 	;fall through
 Show60FPSSetting:
 	ld hl, OptionMenuFPSText
-	ld a, [wGameplayOptions]
-	bit BIT_GAMEPLAY_60_FPS, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_60_FPS, a
 	jr nz, .done
 	inc hl
 	inc hl
@@ -419,10 +419,10 @@ ToggleGammaShader:
 	xor %00000011
 	ld [hGBC], a
 
-	ld a, [wGameplayOptions]
-	xor %00100000
-	ld [wGameplayOptions], a
-	bit BIT_GAMEPLAY_GAMMA, a
+	ld a, [wGraphicOptions]
+	xor 1 << BIT_GRAPHIC_GAMMA
+	ld [wGraphicOptions], a
+	bit BIT_GRAPHIC_GAMMA, a
 ;GBCNote - RunDefaultPaletteCommand which messes up enhanced GBC colors
 ;set a flag for prevent this from happening
 	ld hl, hFlagsFFFA
@@ -452,9 +452,9 @@ ToggleEnhancedGBCColors:
 	ld a, [hGBC]
 	and a
 	ret z	;do nothing if on dmg or sgb
-	ld a, [wGameplayOptions]
-	xor %10000000
-	ld [wGameplayOptions], a
+	ld a, [wGraphicOptions]
+	xor 1 << BIT_GRAPHIC_ENHANCED_GBC
+	ld [wGraphicOptions], a
 	call RunDefaultPaletteCommand
 	;fall through
 ShowEnhancedGBCSetting:
@@ -462,8 +462,8 @@ ShowEnhancedGBCSetting:
 	ld a, [hGBC]
 	and a
 	jr z, .off
-	ld a, [wGameplayOptions]
-	bit BIT_GAMEPLAY_ENHANCED_GBC, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_ENHANCED_GBC, a
 	jr nz, .print
 .off
 	inc hl
@@ -478,15 +478,15 @@ ShowEnhancedGBCSetting:
 
 ;joenote - for levelcap mode option
 ToggleLevelCapMode:
-	ld a, [wMoreGameplayOptions]
-	xor %00000001
-	ld [wMoreGameplayOptions], a
-	bit 0, a
+	ld a, [wGameplayOptions]
+	xor 1 << BIT_GAMEPLAY_LEVEL_CAP
+	ld [wGameplayOptions], a
+	bit BIT_GAMEPLAY_LEVEL_CAP, a
 	;fall through
 ShowLevelCapSetting:
 	ld de, OptionMenuTextOFF
-	ld a, [wMoreGameplayOptions]	;check if levelcap is active
-	bit 0, a
+	ld a, [wGameplayOptions]	;check if levelcap is active
+	bit BIT_GAMEPLAY_LEVEL_CAP, a
 	jr z, .print
 	ld de, OptionMenuTextON
 .print
@@ -496,14 +496,14 @@ ShowLevelCapSetting:
 
 ;joenote - for hard mode option
 ToggleHardMode:
-	ld a, [wOptions]
-	xor BATTLE_HARD_MODE
-	ld [wOptions], a
+	ld a, [wGameplayOptions]
+	xor 1 << BIT_GAMEPLAY_HARDMODE
+	ld [wGameplayOptions], a
 	;fall through
 ShowHardModeSetting:
 	ld hl, OptionMenuOnOffText
-	ld a, [wOptions]
-	bit BIT_BATTLE_HARD, a
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_HARDMODE, a
 	jr nz, .print
 	inc hl
 	inc hl
@@ -518,7 +518,7 @@ ShowHardModeSetting:
 ;joenote - show /toggle nuzlocke mode
 ToggleNuzlocke:
 	ld a, [wGameplayOptions]
-	xor %01000000
+	xor 1 << BIT_GAMEPLAY_NUZLOCKE
 	ld [wGameplayOptions], a
 	bit BIT_GAMEPLAY_NUZLOCKE, a
 	;fall through

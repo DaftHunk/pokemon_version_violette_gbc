@@ -53,14 +53,14 @@ ResetAllOptions: ;joenote - reset all the special options (like for patching-up)
 	set BIT_BATTLE_SHIFT, a ;joenote - SET battle style
 	ld [wOptions], a
 
-	ld a, [wGameplayOptions]
-	set BIT_GAMEPLAY_60_FPS, a ; 60fps
-	set BIT_GAMEPLAY_ENHANCED_GBC, a ; enhanced GBC colors
-	ld [wGameplayOptions], a
+	ld a, [wGraphicOptions]
+	set BIT_GRAPHIC_60_FPS, a ; 60fps
+	set BIT_GRAPHIC_ENHANCED_GBC, a ; enhanced GBC colors
+	ld [wGraphicOptions], a
 
-	ld a, [wMoreGameplayOptions]
-	set 0, a ; level cap mode
-	ld [wMoreGameplayOptions], a
+	ld a, [wGameplayOptions]
+	set BIT_GAMEPLAY_LEVEL_CAP, a ; level cap mode
+	ld [wGameplayOptions], a
 	
 	ResetEvent EVENT_ENABLE_WILD_RANDOM_TIERS
 	ResetEvent EVENT_ENABLE_NORMAL_TRAINER_RANDOMIZATION
@@ -391,36 +391,36 @@ PartyMoveTest:
 
 ;Overworld female trainer sprite functions
 LoadRedSpriteToDE:
-	ld a, [wGameplayOptions]
+	ld a, [wGraphicOptions]
 	ld de, RedFSprite
-	bit BIT_GAMEPLAY_FEMALE, a	;check if girl
+	bit BIT_GRAPHIC_FEMALE, a	;check if girl
 	jr nz, .next
 	ld de, RedSprite
 .next
-	res BIT_GAMEPLAY_FEMALE_BANK, a
-	ld [wGameplayOptions], a
+	res BIT_GRAPHIC_FEMALE_BANK, a
+	ld [wGraphicOptions], a
 	ret
 	
 LoadSeelSpriteToDE:
-	ld a, [wGameplayOptions]
+	ld a, [wGraphicOptions]
 	ld de, SeelFSprite
-	bit BIT_GAMEPLAY_FEMALE, a	;check if girl
+	bit BIT_GRAPHIC_FEMALE, a	;check if girl
 	jr nz, .next
 	ld de, SeelSprite
 .next
-	res BIT_GAMEPLAY_FEMALE_BANK, a
-	ld [wGameplayOptions], a
+	res BIT_GRAPHIC_FEMALE_BANK, a
+	ld [wGraphicOptions], a
 	ret
 
 LoadRedCyclingSpriteToDE:
-	ld a, [wGameplayOptions]
+	ld a, [wGraphicOptions]
 	ld de, RedFCyclingSprite
-	bit BIT_GAMEPLAY_FEMALE, a	;check if girl
+	bit BIT_GRAPHIC_FEMALE, a	;check if girl
 	jr nz, .donefemale
 	ld de, RedCyclingSprite
 .donefemale
-	res BIT_GAMEPLAY_FEMALE_BANK, a
-	ld [wGameplayOptions], a
+	res BIT_GRAPHIC_FEMALE_BANK, a
+	ld [wGraphicOptions], a
 	ret
 
 

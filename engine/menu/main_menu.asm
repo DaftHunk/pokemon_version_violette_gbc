@@ -14,8 +14,8 @@ MainMenu:
 	ld a, $01
 	ld [hGBC], a
 
-	ld a, [wGameplayOptions]
-	bit BIT_GAMEPLAY_GAMMA, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_GAMMA, a
 	jr z, .mainMenuLoop
 	
 	ld a, $02
@@ -282,7 +282,7 @@ MainMenu:
 
 InitOptions:
 	xor a
-	ld [wGameplayOptions], a	;joenote - reset any extra options
+	ld [wGraphicOptions], a	;joenote - reset any extra options
 	ld [wLetterPrintingDelayFlags], a
 
 	ld a, BIT_TEXT_NO_DELAY ; no delay
@@ -296,14 +296,14 @@ InitOptions:
 	and a
 	ret z
 
-	ld a, [wGameplayOptions]
-	set BIT_GAMEPLAY_60_FPS, a ; 60fps
-	set BIT_GAMEPLAY_ENHANCED_GBC, a ; enhanced GBC colors
-	ld [wGameplayOptions], a
+	ld a, [wGraphicOptions]
+	set BIT_GRAPHIC_60_FPS, a ; 60fps
+	set BIT_GRAPHIC_ENHANCED_GBC, a ; enhanced GBC colors
+	ld [wGraphicOptions], a
 
-	ld a, [wMoreGameplayOptions]
-	set 0, a ; level cap mode
-	ld [wMoreGameplayOptions], a
+	ld a, [wGameplayOptions]
+	set BIT_GAMEPLAY_LEVEL_CAP, a ; level cap mode
+	ld [wGameplayOptions], a
 	ret
 
 LinkMenu:
@@ -532,7 +532,7 @@ ShinPokemonHandshake:
 .pass
 ;One more thing. Exchange if you are a male or female trainer with the other game.
 	ResetEvent EVENT_LINKED_FPLAYER
-	ld a, [wGameplayOptions]
+	ld a, [wGraphicOptions]
 	and $0F
 	ld [wSerialExchangeNybbleSendData], a	;load the digit to be sent over link
 	ld a, $ff

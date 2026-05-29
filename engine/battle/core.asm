@@ -1537,8 +1537,8 @@ EnemySendOutFirstMon:
 	jr z, .next4
 
 	; Hard mode now force battle set
-	ld a, [wOptions]
-	bit BIT_BATTLE_HARD, a
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_HARDMODE, a
 	jr nz, .next4
 
 	ld a, [wOptions]
@@ -6947,8 +6947,8 @@ LoadEnemyMonData:
 	cp $2 ; is it a trainer battle?
 	jr nz, .nottrainer	;if not a trainer then skip this part
 ;joenote - load default DVs if using "hard" battle style
-	ld a, [wOptions]	;load game options
-	bit BIT_BATTLE_HARD, a			;check battle style
+	ld a, [wGameplayOptions]	;load game options
+	bit BIT_GAMEPLAY_HARDMODE, a			;check battle style
 ; fixed DVs for trainer mon
 	ld a, $98
 	ld b, $88
@@ -7279,8 +7279,8 @@ LoadPlayerBackPic:
 	ld de, OldManPic
 	jr .bankred
 .redback
-	ld a, [wGameplayOptions]
-	bit BIT_GAMEPLAY_FEMALE, a	;check if girl
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_FEMALE, a	;check if girl
 	jr z, .bankred	;go to the normal red sprite bank if boy
 	;else load girl sprites
 	ld de, RedPicFBack
@@ -7452,8 +7452,8 @@ ApplyBadgeStatBoosts:
 	cp LINK_STATE_BATTLING
 	jr z, .return ; return if link battle
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	ld a, [wOptions] ;load game options
-	bit BIT_BATTLE_HARD, a ;check for hard mode
+	ld a, [wGameplayOptions] ;load game options
+	bit BIT_GAMEPLAY_HARDMODE, a ;check for hard mode
 	jr z, .dobadgeboost	;if not hard mode, always apply badge boosts
 ;joenote - only apply badge stat boosts in wild battles to keep parity with ai trainers
 	ld a, [wIsInBattle]

@@ -173,8 +173,8 @@ Route22Script2:
 	SetEvent EVENT_BEAT_ROUTE22_RIVAL_1ST_BATTLE
 	
 	;joenote - set event flag to indicate battle was won on hard mode
-	ld a, [wOptions]
-	bit BIT_BATTLE_HARD, a
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_HARDMODE, a
 	jr z, .next1
 	SetEvent EVENT_BEATEN_ROUTE_22_RIVAL
 .next1	

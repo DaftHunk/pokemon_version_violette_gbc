@@ -435,8 +435,8 @@ sprite60fps:
 	ld a, [H_CURRENTSPRITEOFFSET]
 	add l
 	ld l, a
-	ld a, [wGameplayOptions]
-	bit BIT_GAMEPLAY_60_FPS, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_60_FPS, a
 	ld a, [hl]
 	jr nz, .is60fps
 	xor a
@@ -881,8 +881,8 @@ DoScriptedNPCMovement:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;60fps - update animations every other frame and halve movement
 	ld de, $00
-	ld a, [wGameplayOptions]
-	bit BIT_GAMEPLAY_60_FPS, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_60_FPS, a
 	jr z, .not60fps
 	call sprite60fps
 	ld e, b

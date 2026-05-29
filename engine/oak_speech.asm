@@ -10,7 +10,7 @@ SetDefaultNames:
 	; In non-debug builds, the instructions can be removed.
 	ld a, [wStatusFlags6]
 	push af
-	ld a, [wGameplayOptions]	;joenote - preserve extra options
+	ld a, [wGraphicOptions]	;joenote - preserve extra options
 	push af
 	ld hl, wPlayerName
 	ld bc, wBoxDataEnd - wPlayerName
@@ -21,7 +21,7 @@ SetDefaultNames:
 	xor a
 	call FillMemory
 	pop af
-	ld [wGameplayOptions], a	;joenote - restore extra options
+	ld [wGraphicOptions], a	;joenote - restore extra options
 	pop af
 	ld [wStatusFlags6], a
 	pop af
@@ -83,10 +83,10 @@ OakSpeech:
 	jr nz, .askBoyGirl
 	ld a, [wCurrentMenuItem]
 	ld b, a
-	ld a, [wGameplayOptions]
-	res BIT_GAMEPLAY_FEMALE, a
+	ld a, [wGraphicOptions]
+	res BIT_GRAPHIC_FEMALE, a
 	or b
-	ld [wGameplayOptions], a
+	ld [wGraphicOptions], a
 	call ClearScreen
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, $FF
@@ -165,8 +165,8 @@ OakSpeech:
 ;joenote - support female sprite
 	ld de, RedPicFFront
 	lb bc, BANK(RedPicFFront), $00
-	ld a, [wGameplayOptions]
-	bit BIT_GAMEPLAY_FEMALE, a	;check if girl
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_FEMALE, a	;check if girl
 	jr nz, .donefemale_front
 	ld de, RedPicFront
 	lb bc, BANK(RedPicFront), $00
@@ -191,8 +191,8 @@ OakSpeech:
 ;joenote - support female sprite
 	ld de, RedPicFFront
 	lb bc, BANK(RedPicFFront), $00
-	ld a, [wGameplayOptions]
-	bit BIT_GAMEPLAY_FEMALE, a	;check if girl
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_FEMALE, a	;check if girl
 	jr nz, .donefemale_front2
 	ld de, RedPicFront
 	lb bc, BANK(RedPicFront), $00
@@ -218,8 +218,8 @@ OakSpeech:
 	;joenote - support female trainer
 	ld de, RedFSprite
 	lb bc, BANK(RedFSprite), $0C
-	ld a, [wGameplayOptions]
-	bit BIT_GAMEPLAY_FEMALE, a	;check if girl
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_FEMALE, a	;check if girl
 	jr nz, .sprite_next
 	ld de, RedSprite
 	lb bc, BANK(RedSprite), $0C
@@ -370,10 +370,10 @@ DoNewGamePlus: ;joenote - selective wram clearing for new game plus
 
 	;skip Options
 	ld hl, wTownVisitedFlag
-	ld bc, wGameplayOptions - wTownVisitedFlag
+	ld bc, wGraphicOptions - wTownVisitedFlag
 	xor a
 	call FillMemory
-	; 3186 keep wGameplayOptions
+	; 3186 keep wGraphicOptions
 
 	;skip clearing the play clock
 	ld hl, wTempIVFlags

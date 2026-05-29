@@ -2095,7 +2095,7 @@ LoadPlayerSpriteGraphicsCommon::
 	jp CopyVideoData
 .isfemaletrainer
 	lb bc, BANK(RedFSprite), $0c
-	ld a, [wGameplayOptions]
+	ld a, [wGraphicOptions]
 	;load the regular sprite bank if female bit cleared or overriding female bit set
 	;otherwise load the female player sprite bank
 	and %00000101
@@ -2512,8 +2512,8 @@ ForceBikeOrSurf::
 	jp PlayDefaultMusic ; update map/player state?
 
 Check60fps:
-	ld a, [wGameplayOptions]
-	bit BIT_GAMEPLAY_60_FPS, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_60_FPS, a
 	ret
 
 ;joenote - This functions checks if the spin frame is going to update for the spinning arrow tile state.

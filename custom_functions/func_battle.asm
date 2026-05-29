@@ -726,8 +726,8 @@ DoDisobeyLevelCheck:
 	call AddNTimes
 
 	; is level cap enabled ?
-	ld a, [wMoreGameplayOptions]
-	bit 0, a
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_LEVEL_CAP, a
 	jr nz, .monIsTradedOrLevelCap
 	; else
 	ld a, [wPlayerID]

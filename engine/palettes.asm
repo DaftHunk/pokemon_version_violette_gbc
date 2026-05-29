@@ -226,8 +226,8 @@ SetPal_Overworld:
 	ld a, [hFlags_0xFFF6]
 	bit 4, a		;gbcnote - check bit that indicates cable club menus are being displayed
 	jr nz, .notGBC
-	ld a, [wGameplayOptions]
-	bit BIT_GAMEPLAY_ENHANCED_GBC, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_ENHANCED_GBC, a
 	jr nz, EnhancedGBCOverworld
 .notGBC
 	ld hl, PalPacket_Empty
@@ -1026,8 +1026,8 @@ TransferPalColorLCDDisabled:
 	
 _UpdateGBCPal_BGP::
 ;use a different function if doing enhanced GBC overworld palettes
-	ld a, [wGameplayOptions]
-	bit BIT_GAMEPLAY_ENHANCED_GBC, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_ENHANCED_GBC, a
 	jr z, .notEnhancedGBC
 	ld hl, hFlagsFFFA
 	bit 4, [hl]
@@ -1100,8 +1100,8 @@ _UpdateGBCPal_BGP::
 
 _UpdateGBCPal_OBP::
 ;use a different function if doing enhanced GBC overworld palettes
-	ld a, [wGameplayOptions]
-	bit BIT_GAMEPLAY_ENHANCED_GBC, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_ENHANCED_GBC, a
 	jr z, .notEnhancedGBC
 	ld hl, hFlagsFFFA
 	bit 4, [hl]
