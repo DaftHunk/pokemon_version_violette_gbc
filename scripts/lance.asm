@@ -10,8 +10,8 @@ LanceScript:
 
 LanceShowOrHideEntranceBlocks:
 	ld hl, wCurrentMapScriptFlags
-	bit 5, [hl]
-	res 5, [hl]
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
 	CheckEvent EVENT_LANCES_ROOM_LOCK_DOOR
 	jr nz, .closeEntrance
@@ -94,7 +94,7 @@ LanceScript0:
 	CheckAndSetEvent EVENT_LANCES_ROOM_LOCK_DOOR
 	ret nz
 	ld hl, wCurrentMapScriptFlags
-	set 5, [hl]
+	set BIT_CUR_MAP_LOADED_1, [hl]
 	ld a, SFX_GO_INSIDE
 	call PlaySound
 	jp LanceShowOrHideEntranceBlocks

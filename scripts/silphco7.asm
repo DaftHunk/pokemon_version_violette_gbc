@@ -10,8 +10,8 @@ SilphCo7Script:
 
 SilphCo7Script_51b77:
 	ld hl, wCurrentMapScriptFlags
-	bit 5, [hl]
-	res 5, [hl]
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
 	ld hl, SilphCo7GateCoords
 	call SilphCo7Text_51bc8

@@ -1,7 +1,7 @@
 SaffronGymScript:
 	ld hl, wCurrentMapScriptFlags
-	bit 6, [hl]
-	res 6, [hl]
+	bit BIT_CUR_MAP_LOADED_2, [hl]
+	res BIT_CUR_MAP_LOADED_2, [hl]
 	call nz, .extra
 	call EnableAutoTextBoxDrawing
 	ld hl, SaffronGymTrainerHeader0

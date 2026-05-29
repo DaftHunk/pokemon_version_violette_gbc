@@ -7,8 +7,8 @@ Route23Script:
 
 Route23Script_511e9:
 	ld hl, wCurrentMapScriptFlags
-	bit 6, [hl]
-	res 6, [hl]
+	bit BIT_CUR_MAP_LOADED_2, [hl]
+	res BIT_CUR_MAP_LOADED_2, [hl]
 	ret z
 
 	CheckEvent EVENT_DISABLED_VICTORY_ROAD_RESET

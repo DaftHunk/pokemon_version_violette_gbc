@@ -55,3 +55,11 @@ DEF BIT_TEXT_PREDEF EQU 0
 	const BIT_AI_SENT_POKEMON_6    ; 6
 	const BIT_FORCE_SHINY          ; 7
 
+; wCurrentMapScriptFlags
+	const_def 3
+	const BIT_MAP_LOADED_AFTER_BATTLE ; 3
+	const BIT_CROSSED_MAP_CONNECTION ; 4
+	const BIT_CUR_MAP_LOADED_1 ; 5
+	const BIT_CUR_MAP_LOADED_2 ; 6
+	const BIT_CUR_MAP_USED_ELEVATOR ; 7
+

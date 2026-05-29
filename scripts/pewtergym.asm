@@ -1,7 +1,7 @@
 PewterGymScript:
 	ld hl, wCurrentMapScriptFlags
-	bit 6, [hl]
-	res 6, [hl]
+	bit BIT_CUR_MAP_LOADED_2, [hl]
+	res BIT_CUR_MAP_LOADED_2, [hl]
 	call nz, PewterGymScript_Header
 	call EnableAutoTextBoxDrawing
 	ld hl, PewterGymTrainerHeader0

@@ -36,8 +36,8 @@ EnterMap::
 	res 5, [hl]
 	call UpdateSprites
 	ld hl, wCurrentMapScriptFlags
-	set 5, [hl]
-	set 6, [hl]
+	set BIT_CUR_MAP_LOADED_1, [hl]
+	set BIT_CUR_MAP_LOADED_2, [hl]
 	xor a
 	ld [wJoyIgnore], a
 
@@ -337,8 +337,8 @@ OverworldLoopLessDelay::
 	ld hl, wStatusFlags7
 	res 3, [hl]
 	ld hl, wCurrentMapScriptFlags
-	set 5, [hl]
-	set 6, [hl]
+	set BIT_CUR_MAP_LOADED_1, [hl]
+	set BIT_CUR_MAP_LOADED_2, [hl]
 	xor a
 	ld [hJoyHeld], a
 	ld a, [wCurMap]

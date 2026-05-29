@@ -1,7 +1,7 @@
 VictoryRoad2Script:
 	ld hl, wCurrentMapScriptFlags
-	bit 5, [hl]
-	res 5, [hl]
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	call nz, VictoryRoad2Script_517c9
 	call EnableAutoTextBoxDrawing
 	ld hl, VictoryRoad2TrainerHeader0
@@ -83,7 +83,7 @@ VictoryRoad2Script0:
 .asm_51810
 	farcall BoulderOnButton
 	ld hl, wCurrentMapScriptFlags
-	set 5, [hl]
+	set BIT_CUR_MAP_LOADED_1, [hl]
 	ret
 
 CoordsData_51816:
