@@ -906,7 +906,6 @@ DisplayOptionMenu:
 	jr z, .cursorInBattleAnimation
 	cp 13 ; cursor in Battle Style section?
 	jr z, .cursorInBattleStyle
-	jr .loop
 .cursorInTextSpeed
 	bit 5, b ; Left pressed?
 	jp nz, .pressedLeftInTextSpeed
