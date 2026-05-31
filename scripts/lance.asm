@@ -55,18 +55,7 @@ LanceScript4:
 LanceScript0:
 	CheckEvent EVENT_BEAT_LANCE
 	ret nz
-	CheckEvent EVENT_ELITE_4_BEATEN
-	jr nz, .elite4Rematch
-	jr .continueScript
-.elite4Rematch
-	ld a, HS_LANCE_1
-	ld [wMissableObjectIndex], a
-	predef HideObject
-	ld a, HS_LANCE_2
-	ld [wMissableObjectIndex], a
-	predef ShowObject2
-	jr .continueScript
-.continueScript
+
 	ld hl, LanceTriggerMovementCoords
 	call ArePlayerCoordsInArray
 	jp nc, CheckFightingMapTrainers
@@ -77,17 +66,11 @@ LanceScript0:
 	jr nc, .notStandingNextToLance
 	
 	call .DoFacings	;joenote - correct the facing
-	
-	CheckEvent EVENT_ELITE_4_BEATEN
-	jr nz, .startRematch
 
 	ld a, $1
 	ld [hSpriteIndexOrTextID], a
 	jp DisplayTextID
-.startRematch
-	ld a, $2
-	ld [hSpriteIndexOrTextID], a
-	jp DisplayTextID
+
 .notStandingNextToLance
 	cp $5  ; Is player standing on the entrance staircase?
 	jr z, WalkToLance
@@ -135,14 +118,7 @@ LanceScript2:
 	cp $ff
 	jp z, ResetLanceScript
 
-	CheckEvent EVENT_ELITE_4_BEATEN
-	jr nz, .elite4Rematch
-
 	ld a, $1
-	ld [hSpriteIndexOrTextID], a
-	jp DisplayTextID
-.elite4Rematch
-	ld a, $2
 	ld [hSpriteIndexOrTextID], a
 	jp DisplayTextID
 
@@ -181,7 +157,6 @@ LanceScript3:
 
 LanceTextPointers:
 	dw LanceText1
-	dw LanceText2
 
 LanceTrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_LANCES_ROOM_TRAINER_0
@@ -204,18 +179,23 @@ LanceTrainerHeader1:
 
 LanceText1:
 	TX_ASM
-	ld hl, LanceTrainerHeader0
+
 	ld a, 8
 	ld [wGymLeaderNo], a	;joenote - use gym leader music
+
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .elite4Rematch
+
+	ld hl, LanceTrainerHeader0
 	call TalkToTrainer
 	jp TextScriptEnd
 
-LanceText2:
-	TX_ASM
+.elite4Rematch
 	ld hl, LanceTrainerHeader1
-	ld a, 8
-	ld [wGymLeaderNo], a	;joenote - use gym leader music
 	call TalkToTrainer
+	; set the right roster
+	ld a, 2
+	ld [wTrainerNo], a
 	jp TextScriptEnd
 
 LanceBeforeBattleText:

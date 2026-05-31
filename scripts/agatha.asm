@@ -59,18 +59,6 @@ AgathaScriptWalkIntoRoom:
 	ret
 
 AgathaScript0:
-	CheckEvent EVENT_ELITE_4_BEATEN
-	jr nz, .elite4Rematch
-	jr .continueScript
-.elite4Rematch
-	ld a, HS_AGATHA_1
-	ld [wMissableObjectIndex], a
-	predef HideObject
-	ld a, HS_AGATHA_2
-	ld [wMissableObjectIndex], a
-	predef ShowObject2
-	jr .continueScript
-.continueScript
 	ld hl, AgathaEntranceCoords
 	call ArePlayerCoordsInArray
 	jp nc, CheckFightingMapTrainers
@@ -85,7 +73,7 @@ AgathaScript0:
 	CheckAndSetEvent EVENT_AUTOWALKED_INTO_AGATHAS_ROOM
 	jr z, AgathaScriptWalkIntoRoom
 .stopPlayerFromLeaving
-	ld a, $3
+	ld a, $2
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID  ; "Don't run away!"
 	ld a, D_UP
@@ -122,15 +110,7 @@ AgathaScript2:
 	cp $ff
 	jp z, ResetAgathaScript
 
-	CheckEvent EVENT_ELITE_4_BEATEN
-	jr nz, .elite4Rematch
-
 	ld a, $1
-	jp .endBattle
-.elite4Rematch
-	ld a, $2
-	; fallthrough
-.endBattle
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 ;;;;;;;;;; PureRGBnote: ADDED: sound effect for the doors opening
@@ -143,7 +123,6 @@ AgathaScript2:
 
 AgathaTextPointers:
 	dw AgathaText1
-	dw AgathaText2
 	dw AgathaDontRunAwayText
 
 AgathaTrainerHeader0:
@@ -167,18 +146,23 @@ AgathaTrainerHeader1:
 
 AgathaText1:
 	TX_ASM
-	ld hl, AgathaTrainerHeader0
+
 	ld a, 8
 	ld [wGymLeaderNo], a	;joenote - use gym leader music
+
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .elite4Rematch
+
+	ld hl, AgathaTrainerHeader0
 	call TalkToTrainer
 	jp TextScriptEnd
 
-AgathaText2:
-	TX_ASM
+.elite4Rematch
 	ld hl, AgathaTrainerHeader1
-	ld a, 8
-	ld [wGymLeaderNo], a	;joenote - use gym leader music
 	call TalkToTrainer
+	; set the right roster
+	ld a, 2
+	ld [wTrainerNo], a
 	jp TextScriptEnd
 
 AgathaBeforeBattleText:
