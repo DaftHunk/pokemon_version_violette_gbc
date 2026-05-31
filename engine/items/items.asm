@@ -1064,10 +1064,10 @@ ItemUseMedicine:
 ;disallow this in hard mode or in nuzlock mode
 	ld a, [wGameplayOptions]
 	bit BIT_GAMEPLAY_HARDMODE, a
-	jr z, .cannot_revive
+	jr nz, .cannot_revive
 
 	bit BIT_GAMEPLAY_NUZLOCKE, a
-	jr z, .cannot_revive
+	jr nz, .cannot_revive
 
 	CheckEvent EVENT_3_MONS_RANDOM_TRAINER
 	jr nz, .cannot_revive

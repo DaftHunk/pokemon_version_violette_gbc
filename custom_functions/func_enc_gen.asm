@@ -311,9 +311,9 @@ ScaleTrainer_level:
 .next
 	push bc
 
-	ld a, [wGymLeaderNo]
-	and a
-	jr nz, .hard	;if fighting a boss like a gym leader, use the harder level scaling
+;	ld a, [wGymLeaderNo]
+;	and a
+;	jr nz, .hard	;if fighting a boss like a gym leader, use the harder level scaling
 	ld a, [wGameplayOptions]
 	bit BIT_GAMEPLAY_HARDMODE, a
 	jr z, .normal	;if it's a regular trainer but playing on hard mode, use the harder level scaling
