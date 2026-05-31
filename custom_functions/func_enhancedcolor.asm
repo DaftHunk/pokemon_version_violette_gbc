@@ -1990,7 +1990,7 @@ DecrementAllColorsGBC_improved:
 	call nz, DelayFrame	;Delay a frame in 60 fps mode to get the timing down right for any fades
 	pop af
 	jr nz, .return
-	callba Audio1_UpdateMusic	
+;	callba Audio1_UpdateMusic	
 .return
 	ld a, 1
 	and a
@@ -2138,7 +2138,7 @@ IncrementAllColorsGBC_improved:
 	call nz, DelayFrame	;Delay a frame in 60 fps mode to get the timing down right for any fades
 	pop af
 	jr nz, .return
-	callba Audio1_UpdateMusic	
+;	callba Audio1_UpdateMusic	
 .return
 	ld a, 1
 	and a

@@ -117,8 +117,9 @@ InGameTrade_DoTrade:
 	ld hl, ConnectCableText
 	call PrintText
 
-	ld c, BANK(Music_TradeSong)
-	ld a, MUSIC_TRADE_SONG
+	ld c, 0 ; BANK(Music_TradeSong)
+	; TODO
+;	ld a, MUSIC_TRADE_SONG
 	call PlayMusic
 
 	ld a, [wWhichPokemon]

@@ -708,12 +708,11 @@ HandleBlackOut::
 	jp SpecialEnterMap
 
 StopMusic::
-	ld [wAudioFadeOutControl], a
-	ld a, $ff
-	ld [wNewSoundID], a
-	call PlaySound
+	ld [wMusicFade], a
+	xor a
+	ld [wMusicFadeID], a
 .wait
-	ld a, [wAudioFadeOutControl]
+	ld a, [wMusicFade]
 	and a
 	jr nz, .wait
 	jp StopAllSounds
@@ -2378,6 +2377,10 @@ LoadMapHeader::
 	ld a, [hli]
 	ld [wMapMusicSoundID], a ; music 1
 	ld a, [hl]
+
+; give vanilla red a fair shot at running our savs
+	ld a, BANK("Audio Engine 1")
+
 	ld [wMapMusicROMBank], a ; music 2
 	pop af
 	ld [H_LOADEDROMBANK], a
@@ -2531,9 +2534,14 @@ CheckForSpinAndDelay:
 
 ;joenote - consolidate the collision thud to its own place
 PlayThudAndLoop:
-	ld a, [wChannelSoundIDs + Ch4]
-	cp SFX_COLLISION ; check if collision sound is already playing
-	jr z, .jump
+;	ld a, [wChannelSoundIDs + Ch4]
+;	cp SFX_COLLISION ; check if collision sound is already playing
+;	jr z, .jump
+	; ch5 on?
+	ld hl, wChannel5 + wChannel1Flags1 - wChannel1 ; + CHANNEL_FLAGS1
+	bit 0, [hl]
+	jr nz, .jump
+
 	ld a, SFX_COLLISION
 	call PlaySound ; play collision sound (if it's not already playing)
 .jump

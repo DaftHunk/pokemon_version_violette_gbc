@@ -67,7 +67,7 @@ EndOfBattle:
 .skipEscapeBit
 	xor a
 	ld [wLowHealthAlarm], a ;disable low health alarm
-	ld [wChannelSoundIDs + Ch4], a
+;	ld [wChannelSoundIDs + Ch4], a
 	ld [wIsInBattle], a
 	ld [wBattleType], a
 	ld [wMoveMissed], a

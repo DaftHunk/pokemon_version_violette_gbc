@@ -2212,3 +2212,4 @@ Alpha_Block:       INCBIN "gfx/blocksets/alpha.bst"
 SECTION "SGB Border", ROMX
 
 INCLUDE "engine/palettes.asm"
+INCLUDE "engine/menu/bills_pc.asm"

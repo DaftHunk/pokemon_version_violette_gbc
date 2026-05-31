@@ -63,8 +63,51 @@ MACRO battle_struct
 \1PP::         ds NUM_MOVES
 ENDM
 
+MACRO channel_struct
+\1MusicID::           dw
+\1MusicBank::         db
+\1Flags1::            db ; 0:on/off 1:subroutine 2:looping 3:sfx 4:noise 5:rest
+\1Flags2::            db ; 0:vibrato on/off 1:pitch slide 2:duty cycle pattern 4:pitch offset
+\1Flags3::            db ; 0:vibrato up/down 1:pitch slide direction
+\1MusicAddress::      dw
+\1LastMusicAddress::  dw
+                      dw
+\1NoteFlags::         db ; 5:rest
+\1Condition::         db ; conditional jumps
+\1DutyCycle::         db ; bits 6-7 (0:12.5% 1:25% 2:50% 3:75%)
+\1VolumeEnvelope::    db ; hi:volume lo:fade
+\1Frequency::         dw ; 11 bits
+\1Pitch::             db ; 0:rest 1-c:note
+\1Octave::            db ; 7-0 (0 is highest)
+\1Transposition::     db ; raises existing octaves (to repeat phrases)
+\1NoteDuration::      db ; frames remaining for the current note
+\1Field16::           ds 1
+                      ds 1
+\1LoopCount::         db
+\1Tempo::             dw
+\1Tracks::            db ; hi:left lo:right
+\1DutyCyclePattern::  db
+\1VibratoDelayCount:: db ; initialized by \1VibratoDelay
+\1VibratoDelay::      db ; number of frames a note plays until vibrato starts
+\1VibratoExtent::     db
+\1VibratoRate::       db ; hi:frames for each alt lo:frames to the next alt
+\1PitchSlideTarget::  dw ; frequency endpoint for pitch slide
+\1PitchSlideAmount::  db
+\1PitchSlideAmountFraction::   db
+\1Field25::           db
+                      ds 1
+\1PitchOffset::       dw
+\1Field29::           ds 1
+\1Field2a::           ds 2
+\1Field2c::           ds 1
+\1NoteLength::        db ; frames per 16th note
+\1Field2e::           ds 1
+\1Field2f::           ds 1
+\1Field30::           ds 1
+                      ds 1
+ENDM
 
-SECTION "WRAM Bank 0", WRAM0
+SECTION "Audio RAM", WRAM0
 
 wBattleAISettingFlags:: ; c000
 ;joenote - use this for battle ai bit settings and handling other battle flags
@@ -78,143 +121,107 @@ wBattleAISettingFlags:: ; c000
 ;bit 7 - if set, force Counter to miss (for an opponent hurting itself or its jump kick missing)
 	ds 1
 
-wSoundID:: ; c001
+; crysaudio start
+
+; nonzero if playing
+wMusicPlaying:: db
+
+wAudio::
+wChannel1:: channel_struct wChannel1
+wChannel2:: channel_struct wChannel2
+wChannel3:: channel_struct wChannel3
+wChannel4:: channel_struct wChannel4
+
 	ds 1
 
-wMuteAudioAndPauseMusic:: ; c002
-; bit 7: whether sound has been muted
-; all bits: whether the effective is active
-; Store 1 to activate effect (any value in the range [1, 127] works).
-; All audio is muted and music is paused. Sfx continues playing until it
-; ends normally.
-; Store 0 to resume music.
+wCurTrackDuty:: db
+wCurTrackVolumeEnvelope:: db
+wCurTrackFrequency:: dw
+wUnusedBCDNumber:: db ; BCD value, dummied out
+wCurNoteDuration:: db ; used in MusicE0 and LoadNote
+
+wCurMusicByte:: db
+wCurChannel:: db
+wVolume::
+; corresponds to rNR50
+; Channel control / ON-OFF / Volume (R/W)
+;   bit 7 - Vin->SO2 ON/OFF
+;   bit 6-4 - SO2 output level (volume) (# 0-7)
+;   bit 3 - Vin->SO1 ON/OFF
+;   bit 2-0 - SO1 output level (volume) (# 0-7)
+	db
+wSoundOutput::
+; corresponds to rNR51
+; bit 4-7: ch1-4 so2 on/off
+; bit 0-3: ch1-4 so1 on/off
+	db
+wPitchSweep::
+; corresponds to rNR10
+; bit 7:   unused
+; bit 4-6: sweep time
+; bit 3:   sweep direction
+; but 0-2: sweep shift
+	db
+
+wMusicID:: dw
+wMusicBank:: db
+wNoiseSampleAddress:: dw
+wNoiseSampleDelay:: db
+	ds 1
+wMusicNoiseSampleSet:: db
+wSFXNoiseSampleSet:: db
+
+wLowHealthAlarmOrig::
+; bit 7: on/off
+; bit 4: pitch
+; bit 0-3: counter
+	db
+
+wMusicFade::
+; fades volume over x frames
+; bit 7: fade in/out
+; bit 0-5: number of frames for each volume level
+; $00 = none (default)
+	db
+wMusicFadeCount:: db
+wMusicFadeID:: dw
+
+	ds 5
+
+wCryPitch:: dw
+wCryLength:: dw
+
+wLastVolume:: db
+wUnusedMusicF9Flag:: db
+
+wSFXPriority::
+; if nonzero, turn off music when playing sfx
+	db
+
 	ds 1
 
-wDisableChannelOutputWhenSfxEnds:: ; c003
-	ds 1
+wChannel1JumpCondition:: db
+wChannel2JumpCondition:: db
+wChannel3JumpCondition:: db
+wChannel4JumpCondition:: db
 
-wStereoPanning:: ; c004
-	ds 1
+wStereoPanningMask:: db
 
-wSavedVolume:: ; c005
-	ds 1
+wCryTracks::
+; plays only in left or right track depending on what side the monster is on
+; both tracks active outside of battle
+	db
 
-wChannelCommandPointers:: ; c006
-	ds 16
+wSFXDuration:: db
+wCurSFX::
+; id of sfx currently playing
+	db
 
-wChannelReturnAddresses:: ; c016
-	ds 16
+wSFXDontWait:: ds 1
 
-wChannelSoundIDs:: ; c026
-	ds 8
+wAudioEnd::
 
-wChannelFlags1:: ; c02e
-	ds 8
-
-wChannelFlags2:: ; c036
-	ds 8
-
-wChannelDuties:: ; c03e
-	ds 8
-
-wChannelDutyCycles:: ; c046
-	ds 8
-
-wChannelVibratoDelayCounters:: ; c04e
-; reloaded at the beginning of a note. counts down until the vibrato begins.
-	ds 8
-
-wChannelVibratoExtents:: ; c056
-	ds 8
-
-wChannelVibratoRates:: ; c05e
-; high nybble is rate (counter reload value) and low nybble is counter.
-; time between applications of vibrato.
-	ds 8
-
-wChannelFrequencyLowBytes:: ; c066
-	ds 8
-
-wChannelVibratoDelayCounterReloadValues:: ; c06e
-; delay of the beginning of the vibrato from the start of the note
-	ds 8
-
-wChannelPitchBendLengthModifiers:: ; c076
-	ds 8
-
-wChannelPitchBendFrequencySteps:: ; c07e
-	ds 8
-
-wChannelPitchBendFrequencyStepsFractionalPart:: ; c086
-	ds 8
-
-wChannelPitchBendCurrentFrequencyFractionalPart:: ; c08e
-	ds 8
-
-wChannelPitchBendCurrentFrequencyHighBytes:: ; c096
-	ds 8
-
-wChannelPitchBendCurrentFrequencyLowBytes:: ; c09e
-	ds 8
-
-wChannelPitchBendTargetFrequencyHighBytes:: ; c0a6
-	ds 8
-
-wChannelPitchBendTargetFrequencyLowBytes:: ; c0ae
-	ds 8
-
-wChannelNoteDelayCounters:: ; c0b6
-; Note delays are stored as 16-bit fixed-point numbers where the integer part
-; is 8 bits and the fractional part is 8 bits.
-	ds 8
-
-wChannelLoopCounters:: ; c0be
-	ds 8
-
-wChannelNoteSpeeds:: ; c0c6
-	ds 8
-
-wChannelNoteDelayCountersFractionalPart:: ; c0ce
-	ds 8
-
-wChannelOctaves:: ; c0d6
-	ds 8
-
-wChannelVolumes:: ; c0de
-; also includes fade for hardware channels that support it
-	ds 8
-
-wMusicWaveInstrument::
-	ds 1
-
-wSfxWaveInstrument::
-	ds 1
-
-wMusicTempo:: ; c0e8
-	ds 2
-
-wSfxTempo:: ; c0ea
-	ds 2
-
-wSfxHeaderPointer:: ; c0ec
-	ds 2
-
-wNewSoundID:: ; c0ee
-	ds 1
-
-wAudioROMBank:: ; c0ef
-	ds 1
-
-wAudioSavedROMBank:: ; c0f0
-	ds 1
-
-wFrequencyModifier:: ; c0f1
-	ds 1
-
-wTempoModifier:: ; c0f2
-	ds 1
-
-	ds 13
+; crysaudio end
 
 
 SECTION "Sprite State Data", WRAM0[$c100]

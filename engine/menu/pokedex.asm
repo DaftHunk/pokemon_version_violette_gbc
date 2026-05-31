@@ -178,7 +178,12 @@ HandlePokedexSideMenu:
 ; play pokemon cry
 .choseCry
 	ld a, [wPokedexNum]
+	push af
 	call PlayCry
+	pop af
+	ld [wPokedexNum], a
+;	call GetCryData
+;	call PlaySound
 	jr .handleMenuInput
 
 .choseArea
@@ -750,8 +755,13 @@ ShowNextPokemonData:
 	call GetMonHeader ; load pokemon picture location
 	coord hl, 1, 1
 	call LoadFlippedFrontSpriteByMonIndex ; draw pokemon picture
+
+	ld a, [wPokedexNum]
+	push af
 	ld a, [wcf91]
-	call PlayCry
+	call PlayCry ; play pokemon cry
+	pop af
+	ld [wPokedexNum], a
 
 	pop hl
 	pop de
