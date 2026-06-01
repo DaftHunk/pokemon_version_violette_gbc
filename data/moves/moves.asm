@@ -29,7 +29,7 @@ MoveEnd:
 	move GUST,         NO_ADDITIONAL_EFFECT,        40, FLYING,   100, 35
 	move WING_ATTACK,  NO_ADDITIONAL_EFFECT,        60, FLYING,   100, 35
 	move WHIRLWIND,    SWITCH_AND_TELEPORT_EFFECT,   0, FLYING,   100, 20
-	move FLY,          FLY_EFFECT,                  70, FLYING,   100, 15
+	move FLY,          FLY_EFFECT,                  90, FLYING,   100, 15
 	move BIND,         TRAPPING_EFFECT,             25, ROCK,      85, 20
 	move SLAM,         NO_ADDITIONAL_EFFECT,        80, NORMAL,    75, 20
 	move VINE_WHIP,    NO_ADDITIONAL_EFFECT,        45, GRASS,    100, 20
@@ -90,7 +90,7 @@ MoveEnd:
 	move POISONPOWDER, POISON_EFFECT,                0, POISON,    75, 35
 	move STUN_SPORE,   PARALYZE_EFFECT,              0, GRASS,     75, 30
 	move SLEEP_POWDER, SLEEP_EFFECT,                 0, GRASS,     75, 15
-	move PETAL_DANCE,  THRASH_PETAL_DANCE_EFFECT,   70, GRASS,    100, 20
+	move PETAL_DANCE,  THRASH_PETAL_DANCE_EFFECT,   90, GRASS,    100, 20
 	move STRING_SHOT,  SPEED_DOWN1_EFFECT,           0, BUG,       95, 40
 	move DRAGON_RAGE,  SPECIAL_DAMAGE_EFFECT,        1, DRAGON,   100, 10
 	move FIRE_SPIN,    TRAPPING_EFFECT,             25, FIRE,      85, 15
