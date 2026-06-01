@@ -6,7 +6,8 @@ RedsHouse2FObject:
 
 	db 0 ; signs
 
-	db 0 ; objects
+	db 1 ; objects
+	object SPRITE_CUP,  2, 1, STAY, NONE, 1
 
 	; warp-to
 	warp_to 7, 1, REDS_HOUSE_2F_WIDTH

@@ -34,7 +34,7 @@ RedsHouse1FMomAskForShoes:
 	ld [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
 	; display text
-	ld a, $4
+	ld a, $3
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	; Reset current input
@@ -46,7 +46,6 @@ RedsHouse1FMomAskForShoes:
 
 RedsHouse1FTextPointers:
 	dw RedsHouse1FText1
-	dw RedsHouse1FTextOutro
 	dw RedsHouse1FText2
 	dw RedsHouse1FText_RunningShoes
 
@@ -122,21 +121,6 @@ StandByMeText:
 
 TVWrongSideText:
 	TX_FAR _TVWrongSideText
-	db "@"
-
-RedsHouse1FTextOutro:
-	TX_ASM
-	CheckEvent EVENT_ELITE_4_BEATEN
-	jr z, .leagueNotBeaten
-	; else
-	jpab ReplayPostGameVideo
-.leagueNotBeaten
-	ld hl, RedsHouse1FTextLeague
-	call PrintText
-	jp TextScriptEnd
-
-RedsHouse1FTextLeague:
-	TX_FAR _RedsHouse1FTextLeague
 	db "@"
 
 RedsHouse1FText_RunningShoes:

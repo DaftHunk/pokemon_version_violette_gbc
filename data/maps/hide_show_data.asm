@@ -45,7 +45,7 @@ MapHSPointers:
 	dw BillsGardenHS
 	dw Route25HS
 	dw NoHS
-	dw NoHS
+	dw RedsHouse2FHS
 	dw BluesHouseHS
 	dw OaksLabHS
 	dw NoHS
@@ -331,6 +331,8 @@ BillsGardenHS:
 	db BILLS_GARDEN,$01,Hide
 Route25HS:
 	db ROUTE_25,$0A,Show
+RedsHouse2FHS:
+	db REDS_HOUSE_2F,$01,Hide
 BluesHouseHS:
 	db BLUES_HOUSE,$01,Show
 	db BLUES_HOUSE,$02,Hide

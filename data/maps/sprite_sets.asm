@@ -649,17 +649,22 @@ SpriteSheetPointerTable:
 
 	; SPRITE_POKEDEX
 	dw PokedexSprite
-	db $c0 ; byte count
+	db $40 ; byte count
 	db BANK(PokedexSprite)
 
 	; SPRITE_POKEBALL
 	dw PokeballSprite
-	db $c0 ; byte count
+	db $40 ; byte count
 	db BANK(PokeballSprite)
 
 	; SPRITE_MAP
 	dw MapSprite
-	db $c0 ; byte count
+	db $40 ; byte count
+	db BANK(MapSprite)
+
+	; SPRITE_CUP
+	dw CupSprite
+	db $40 ; byte count
 	db BANK(MapSprite)
 
 	; SPRITE_CLIPBOARD
