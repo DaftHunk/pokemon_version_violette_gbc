@@ -276,6 +276,7 @@ const_value = 1
 	const SPRITE_POKEDEX
 	const SPRITE_POKEBALL
 	const SPRITE_MAP
+	const SPRITE_CUP
 	const SPRITE_CLIPBOARD                 ; $42
 	const SPRITE_SNORLAX                   ; $43
 	const SPRITE_OLD_AMBER_COPY            ; $44

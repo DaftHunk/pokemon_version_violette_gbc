@@ -306,7 +306,7 @@ CableClub_DoBattleOrTradeAgain:
 	ld b, SET_PAL_OVERWORLD
 	call RunPaletteCommand ;gbcnote - refresh pal
 	ld hl, wOptions
-	res BIT_BATTLE_ANIMATION, [hl]
+	res BIT_OPTIONS_BATTLE_ANIMATION, [hl]
 	predef InitOpponent
 	predef HealParty
 .back2room
@@ -613,7 +613,7 @@ ReturnToCableClubRoom:
 	ld a, [hl]
 	push af
 	push hl
-	res 0, [hl]
+	res BIT_DISABLE_NPC_MOVEMENT, [hl]
 	xor a
 	ld [wStatusFlags3], a
 	dec a

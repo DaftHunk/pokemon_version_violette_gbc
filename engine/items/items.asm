@@ -1062,14 +1062,13 @@ ItemUseMedicine:
 	jr z, .compareCurrentHPToMaxHP
 ;joenote - at this point, trying to revive a fainted 'mon in battle
 ;disallow this in hard mode or in nuzlock mode
-	push bc
-	ld a, [wOptions]
-	ld b, a
 	ld a, [wGameplayOptions]
-	or b
-	pop bc
-	bit BIT_BATTLE_HARD, a
+	bit BIT_GAMEPLAY_HARDMODE, a
 	jr nz, .cannot_revive
+
+	bit BIT_GAMEPLAY_NUZLOCKE, a
+	jr nz, .cannot_revive
+
 	CheckEvent EVENT_3_MONS_RANDOM_TRAINER
 	jr nz, .cannot_revive
 .can_revive	
@@ -1569,8 +1568,8 @@ ItemUseMedicine:
 
 	push hl ; store mon's level
 	ld b, MAX_LEVEL
-	ld a, [wMoreGameplayOptions]
-	bit 0, a
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_LEVEL_CAP, a
 	jr z, .next1 ; no levelcaps
 	; else
 	callfar GetLevelCap
@@ -1943,8 +1942,8 @@ ItemUseXStat:
 	push hl
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - ;double the effect if using hard mode
-	ld a, [wOptions]	;load game options
-	bit BIT_BATTLE_HARD, a			;check battle style (bit set if hard mode)
+	ld a, [wGameplayOptions]	;load game options
+	bit BIT_GAMEPLAY_HARDMODE, a			;check battle style (bit set if hard mode)
 	ld a, [wcf91]	;load item#
 	jr nz, .double_effect
 	

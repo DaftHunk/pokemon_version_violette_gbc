@@ -110,7 +110,7 @@ BillsPC_::
 	ld a, [wListScrollOffset]
 	push af
 	ld a, [wMiscFlags]
-	bit 3, a ; accessing Bill's PC through another PC?
+	bit BIT_USING_GENERIC_PC, a ; accessing Bill's PC through another PC?
 	jr nz, BillsPCMenu
 ; accessing it directly
 	ld a, SFX_TURN_ON_PC
@@ -183,7 +183,7 @@ BillsPCMenu:
 
 ExitBillsPC:
 	ld a, [wMiscFlags]
-	bit 3, a ; accessing Bill's PC through another PC?
+	bit BIT_USING_GENERIC_PC, a ; accessing Bill's PC through another PC?
 	jr nz, .next
 ; accessing it directly
 	call LoadTextBoxTilePatterns
@@ -192,7 +192,7 @@ ExitBillsPC:
 	call WaitForSoundToFinish
 .next
 	ld hl, wMiscFlags
-	res 5, [hl]
+	res BIT_NO_MENU_BUTTON_SOUND, [hl]
 	call LoadScreenTilesFromBuffer2
 	pop af
 	ld [wListScrollOffset], a

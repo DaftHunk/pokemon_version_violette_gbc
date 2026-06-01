@@ -54,7 +54,7 @@ SplitMapSpriteSets:
 	db $01,$08,$0A,$08 ; $f5
 	db $01,$18,$09,$05 ; $f6
 	db $01,$22,$09,$0A ; $f7
-	db $01,$35,$01,$0A ; $f8
+	db $01,$36,$01,$0A ; $f8
 	db $02,$21,$02,$07 ; $f9
 	db $02,$02,$07,$04 ; $fa
 	db $01,$11,$05,$07 ; $fb
@@ -649,17 +649,22 @@ SpriteSheetPointerTable:
 
 	; SPRITE_POKEDEX
 	dw PokedexSprite
-	db $c0 ; byte count
+	db $40 ; byte count
 	db BANK(PokedexSprite)
 
 	; SPRITE_POKEBALL
 	dw PokeballSprite
-	db $c0 ; byte count
+	db $40 ; byte count
 	db BANK(PokeballSprite)
 
 	; SPRITE_MAP
 	dw MapSprite
-	db $c0 ; byte count
+	db $40 ; byte count
+	db BANK(MapSprite)
+
+	; SPRITE_CUP
+	dw CupSprite
+	db $40 ; byte count
 	db BANK(MapSprite)
 
 	; SPRITE_CLIPBOARD

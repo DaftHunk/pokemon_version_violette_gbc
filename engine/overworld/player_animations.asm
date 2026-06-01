@@ -401,8 +401,8 @@ FishingAnim:
 	push af
 	ld de, RedFSprite
 	lb bc, BANK(RedFSprite), $c
-	ld a, [wGameplayOptions]
-	bit 0, a	;check if girl
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_FEMALE, a	;check if girl
 	jr nz, .donefemale
 	ld de, RedSprite
 	lb bc, BANK(RedSprite), $c
@@ -414,8 +414,8 @@ FishingAnim:
 ;joenote - support female trainer sprite when fishing
 	push af
 	ld hl, RedFFishingTiles
-	ld a, [wGameplayOptions]
-	bit 0, a	;check if girl
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_FEMALE, a	;check if girl
 	jr nz, .donefemale2
 	ld hl, RedFishingTiles
 .donefemale2
@@ -589,8 +589,8 @@ Ledge60fps:
 	push af
 	ld h, $c2
 	ld l, $0a
-	ld a, [wGameplayOptions]
-	bit 4, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_60_FPS, a
 	ld a, [hl]
 	jr nz, .is60fps
 	xor a

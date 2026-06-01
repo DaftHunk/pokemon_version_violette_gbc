@@ -36,8 +36,8 @@ EnterMap::
 	res 5, [hl]
 	call UpdateSprites
 	ld hl, wCurrentMapScriptFlags
-	set 5, [hl]
-	set 6, [hl]
+	set BIT_CUR_MAP_LOADED_1, [hl]
+	set BIT_CUR_MAP_LOADED_2, [hl]
 	xor a
 	ld [wJoyIgnore], a
 
@@ -133,9 +133,9 @@ OverworldLoopLessDelay::
 	predef GetTileAndCoordsInFrontOfPlayer
 	call UpdateSprites
 	ld a, [wMiscFlags]
-	bit 2, a
+	bit BIT_TURNING, a
 	jr nz, .checkForOpponent
-	bit 0, a
+	bit BIT_SEEN_BY_TRAINER, a
 	jr nz, .checkForOpponent
 	aCoord 8, 9
 	ld [wTilePlayerStandingOn], a 
@@ -166,7 +166,7 @@ OverworldLoopLessDelay::
 	jp OverworldLoop
 .noDirectionButtonsPressed
 	ld hl, wMiscFlags
-	res 2, [hl]
+	res BIT_TURNING, [hl]
 	call UpdateSprites
 	ld a, 1
 	ld [wCheckFor180DegreeTurn], a
@@ -273,7 +273,7 @@ OverworldLoopLessDelay::
 
 .moveAhead2		;joenote - rewriting this to implement running functionality
 	ld hl, wMiscFlags
-	res 2, [hl]
+	res BIT_TURNING, [hl]
 	;ld a, [wWalkBikeSurfState]
 	;dec a ; riding a bike?
 	;jr nz, .normalPlayerSpriteAdvancement
@@ -337,8 +337,8 @@ OverworldLoopLessDelay::
 	ld hl, wStatusFlags7
 	res 3, [hl]
 	ld hl, wCurrentMapScriptFlags
-	set 5, [hl]
-	set 6, [hl]
+	set BIT_CUR_MAP_LOADED_1, [hl]
+	set BIT_CUR_MAP_LOADED_2, [hl]
 	xor a
 	ld [hJoyHeld], a
 	ld a, [wCurMap]
@@ -2041,7 +2041,7 @@ RunMapScript::
 	push bc
 	callba TryPushingBoulder
 	ld a, [wMiscFlags]
-	bit 1, a ; play boulder dust animation
+	bit BIT_BOULDER_DUST, a ; play boulder dust animation
 	jr z, .afterBoulderEffect
 	callba DoBoulderDustAnimation
 .afterBoulderEffect
@@ -2095,7 +2095,7 @@ LoadPlayerSpriteGraphicsCommon::
 	jp CopyVideoData
 .isfemaletrainer
 	lb bc, BANK(RedFSprite), $0c
-	ld a, [wGameplayOptions]
+	ld a, [wGraphicOptions]
 	;load the regular sprite bank if female bit cleared or overriding female bit set
 	;otherwise load the female player sprite bank
 	and %00000101
@@ -2512,8 +2512,8 @@ ForceBikeOrSurf::
 	jp PlayDefaultMusic ; update map/player state?
 
 Check60fps:
-	ld a, [wGameplayOptions]
-	bit 4, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_60_FPS, a
 	ret
 
 ;joenote - This functions checks if the spin frame is going to update for the spinning arrow tile state.

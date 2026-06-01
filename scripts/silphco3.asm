@@ -10,8 +10,8 @@ SilphCo3Script:
 
 SilphCo3Script_59f71:
 	ld hl, wCurrentMapScriptFlags
-	bit 5, [hl]
-	res 5, [hl]
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
 	ld hl, SilphCo3GateCoords
 	call SilphCo2Script_59d43

@@ -1102,8 +1102,8 @@ DisplayTextID::
 	push af
 	callba DisplayTextIDInit ; initialization
 	ld hl, wTextPredefFlag
-	bit 0, [hl]
-	res 0, [hl]
+	bit BIT_TEXT_PREDEF, [hl]
+	res BIT_TEXT_PREDEF, [hl]
 	jr nz, .skipSwitchToMapBank
 	ld a, [wCurMap]
 	call SwitchToMapRomBank
@@ -1258,7 +1258,7 @@ CloseTextDisplay::
 	ld [MBC1RomBank], a
 	call InitMapSprites ; reload sprite tile pattern data (since it was partially overwritten by text tile patterns)
 	ld hl, wFontLoaded
-	res 0, [hl]
+	res BIT_DISABLE_NPC_MOVEMENT, [hl]
 	ld a, [wStatusFlags6]
 	bit 3, a ; used fly warp
 	call z, LoadPlayerSpriteGraphics
@@ -2658,12 +2658,12 @@ StartTrainerBattle::
 
 EndTrainerBattle::
 	ld hl, wCurrentMapScriptFlags
-	set 5, [hl]
-	set 6, [hl]
+	set BIT_CUR_MAP_LOADED_1, [hl]
+	set BIT_CUR_MAP_LOADED_2, [hl]
 	ld hl, wStatusFlags3
 	res 7, [hl]
 	ld hl, wMiscFlags
-	res 0, [hl]                  ; player is no longer engaged by any trainer
+	res BIT_SEEN_BY_TRAINER, [hl]                  ; player is no longer engaged by any trainer
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, ResetButtonPressedAndMapScript
@@ -2875,7 +2875,7 @@ TrainerEndBattleText::
 ; XXX unused?
 ;CheckIfAlreadyEngaged::
 ;	ld a, [wMiscFlags]
-;	bit 0, a
+;	bit BIT_SEEN_BY_TRAINER, a
 ;	ret nz
 ;	call EngageMapTrainer
 ;	xor a
@@ -3923,7 +3923,7 @@ PrintLetterDelay::
 	bit 6, a
 	ret nz
 	ld a, [wLetterPrintingDelayFlags]
-	bit 1, a
+	bit BIT_TEXT_NO_DELAY, a
 	ret z
 	push hl
 	push de
@@ -4203,7 +4203,7 @@ HandleMenuInput_::
 	jr z, .skipPlayingSound
 .AButtonOrBButtonPressed
 	ld a, [wMiscFlags]	;joenote - remove push/pop with hl to save 2 bytes
-	bit 5, a
+	bit BIT_NO_MENU_BUTTON_SOUND, a
 	jr nz, .skipPlayingSound
 	ld a, SFX_PRESS_AB
 	call PlaySound
@@ -4559,7 +4559,7 @@ ReloadMapSpriteTilePatterns::
 	ld hl, wFontLoaded
 	ld a, [hl]
 	push af
-	res 0, [hl]
+	res BIT_DISABLE_NPC_MOVEMENT, [hl]
 	push hl
 	xor a
 	ld [wSpriteSetID], a
@@ -4664,7 +4664,7 @@ PrintPredefTextID::
 	ld hl, TextPredefs
 	call SetMapTextPointer
 	ld hl, wTextPredefFlag
-	set 0, [hl]
+	set BIT_TEXT_PREDEF, [hl]
 	call DisplayTextID
 
 RestoreMapTextPointer::

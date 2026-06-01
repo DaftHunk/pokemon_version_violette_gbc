@@ -1,7 +1,7 @@
 VictoryRoad1Script:
 	ld hl, wCurrentMapScriptFlags
-	bit 5, [hl]
-	res 5, [hl]
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	call nz, .next
 	call EnableAutoTextBoxDrawing
 	ld hl, VictoryRoad1TrainerHeader0
@@ -37,7 +37,7 @@ VictoryRoad1ScriptPointers:
 
 VictoryRoad1Script0:
 	ld a, [wMiscFlags]
-	bit 1, a
+	bit BIT_BOULDER_DUST, a
 	ret nz ; PureRGBnote: ADDED: if a boulder animation is playing forget doing this, helps reduce lag
 	CheckEvent EVENT_VICTORY_ROAD_1F_BOULDER_ON_SWITCH
 	jp nz, CheckFightingMapTrainers
@@ -45,7 +45,7 @@ VictoryRoad1Script0:
 	call CheckBoulderCoords
 	jp nc, CheckFightingMapTrainers
 	ld hl, wCurrentMapScriptFlags
-	set 5, [hl]
+	set BIT_CUR_MAP_LOADED_1, [hl]
 	SetEvent EVENT_VICTORY_ROAD_1F_BOULDER_ON_SWITCH
 ;;;;;;;;;; PureRGBnote: ADDED: sound effect when boulder presses switch
 	; fall through

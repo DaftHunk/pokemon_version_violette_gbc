@@ -2,8 +2,8 @@ SeafoamIslands4Script:
 	call EnableAutoTextBoxDrawing
 	call SeafoamIslands4OnMapLoad
 	ld hl, wMiscFlags
-	bit 7, [hl]
-	res 7, [hl]
+	bit BIT_PUSHED_BOULDER, [hl]
+	res BIT_PUSHED_BOULDER, [hl]
 	jr z, .asm_465dc
 	ld hl, Seafoam4HolesCoords
 	call CheckBoulderCoords
@@ -47,8 +47,8 @@ SeafoamIslands4Script:
 
 SeafoamIslands4OnMapLoad::
 	ld hl, wCurrentMapScriptFlags
-	bit 5, [hl]
-	res 5, [hl]
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
 
 	CheckBothEventsSet EVENT_SEAFOAM3_BOULDER1_DOWN_HOLE, EVENT_SEAFOAM3_BOULDER2_DOWN_HOLE

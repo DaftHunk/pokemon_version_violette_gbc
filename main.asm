@@ -163,7 +163,7 @@ TextBoxGraphics:                INCBIN "gfx/tiles/text_box.2bpp"
 TextBoxGraphicsEnd:
 PokedexTileGraphics:            INCBIN "gfx/tiles/pokedex.2bpp"
 PokedexTileGraphicsEnd:
-WorldMapTileGraphics:           INCBIN "gfx/tiles/town_map.2bpp"
+WorldMapTileGraphics:           INCBIN "gfx/tilemaps/town_map.2bpp"
 WorldMapTileGraphicsEnd:
 PlayerCharacterTitleGraphics:   INCBIN "gfx/mainmenu/player_title.2bpp"
 PlayerCharacterTitleGraphicsEnd:
@@ -241,6 +241,7 @@ DomeSprite:           INCBIN "gfx/sprites/dome.2bpp"
 PokedexSprite:        INCBIN "gfx/sprites/pokedex.2bpp"
 PokeballSprite:       INCBIN "gfx/sprites/pokeball.2bpp"
 MapSprite:            INCBIN "gfx/sprites/map_ow.2bpp"
+CupSprite:            INCBIN "gfx/sprites/cup.2bpp"
 
 SECTION "Battle (bank 5)", ROMX, BANK[$5]
 
@@ -354,7 +355,8 @@ PewterHouse1Blocks:
 PewterHouse2Blocks:
 ViridianHouseBlocks: INCBIN "maps/viridianhouse.blk"
 
-CeladonMansion5Blocks:
+CeladonMansion5Blocks: INCBIN "maps/celadonmansion5.blk"
+
 CeladonSchoolBlocks:
 ViridianSchoolBlocks: INCBIN "maps/viridianschool.blk"
 
@@ -1606,7 +1608,6 @@ INCLUDE "engine/battle/ghost_marowak_anim.asm"
 INCLUDE "engine/battle/battle_transitions.asm"
 INCLUDE "engine/town_map.asm"
 INCLUDE "engine/mon_party_sprites.asm"
-INCLUDE "engine/palettes.asm"
 INCLUDE "engine/save.asm"
 
 
@@ -2191,6 +2192,7 @@ INCLUDE "engine/battle/load_pics.asm"
 INCLUDE "engine/menu/draw_badges.asm"
 INCLUDE "engine/overworld/animated_tiles.asm"
 INCLUDE "text/options_info.asm"
+INCLUDE "custom_functions/func_special_battle_effet.asm"
 
 RedPicFront:: INCBIN "gfx/trainer/red.pic"
 ShrinkPic1::  INCBIN "gfx/trainer/shrink1.pic"
@@ -2205,3 +2207,9 @@ Forest_GFX:        INCBIN "gfx/tilesets/forest.2bpp"
 Forest_Block:      INCBIN "gfx/blocksets/forest.bst"
 Alpha_GFX:         INCBIN "gfx/tilesets/alpha.2bpp"
 Alpha_Block:       INCBIN "gfx/blocksets/alpha.bst"
+
+
+
+SECTION "SGB Border", ROMX
+
+INCLUDE "engine/palettes.asm"

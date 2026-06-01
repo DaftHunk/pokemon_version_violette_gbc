@@ -398,8 +398,8 @@ ShowPostGame:
 ;joenote - support female sprite
 	ld de, RedPicFFront
 	lb bc, BANK(RedPicFFront), $00
-	ld a, [wGameplayOptions]
-	bit 0, a ;check if girl
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_FEMALE, a ;check if girl
 	jr nz, .displaySprite
 	ld de, RedPicFront
 	lb bc, BANK(RedPicFront), $00

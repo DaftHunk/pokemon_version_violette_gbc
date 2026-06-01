@@ -7,8 +7,8 @@ Route23Script:
 
 Route23Script_511e9:
 	ld hl, wCurrentMapScriptFlags
-	bit 6, [hl]
-	res 6, [hl]
+	bit BIT_CUR_MAP_LOADED_2, [hl]
+	res BIT_CUR_MAP_LOADED_2, [hl]
 	ret z
 
 	CheckEvent EVENT_DISABLED_VICTORY_ROAD_RESET
@@ -64,7 +64,7 @@ Route23Script0:
 	ret
 
 YCoordsData_51255:
-	db $25,$38,$46,$5A,$69,$77,$88,$FF
+	db $25,$35,$46,$5A,$69,$79,$81,$FF
 
 Route23Script_5125d:
 	ld hl, BadgeTextPointers

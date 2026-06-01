@@ -11,8 +11,8 @@ BrunoScript:
 BrunoShowOrHideExitBlock:
 ; Blocks or clears the exit to the next room.
 	ld hl, wCurrentMapScriptFlags
-	bit 5, [hl]
-	res 5, [hl]
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
 	CheckEvent EVENT_BEAT_BRUNOS_ROOM_TRAINER_0
 	jr z, .blockExitToNextRoom
@@ -59,18 +59,6 @@ BrunoScriptWalkIntoRoom:
 	ret
 
 BrunoScript0:
-	CheckEvent EVENT_ELITE_4_BEATEN
-	jr nz, .elite4Rematch
-	jr .continueScript
-.elite4Rematch
-	ld a, HS_BRUNO_1
-	ld [wMissableObjectIndex], a
-	predef HideObject
-	ld a, HS_BRUNO_2
-	ld [wMissableObjectIndex], a
-	predef ShowObject2
-	jr .continueScript
-.continueScript
 	ld hl, BrunoEntranceCoords
 	call ArePlayerCoordsInArray
 	jp nc, CheckFightingMapTrainers
@@ -85,7 +73,7 @@ BrunoScript0:
 	CheckAndSetEvent EVENT_AUTOWALKED_INTO_BRUNOS_ROOM
 	jr z, BrunoScriptWalkIntoRoom
 .stopPlayerFromLeaving
-	ld a, $3
+	ld a, $2
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID  ; "Don't run away!"
 	ld a, D_UP
@@ -122,15 +110,7 @@ BrunoScript2:
 	cp $ff
 	jp z, ResetBrunoScript
 	
-	CheckEvent EVENT_ELITE_4_BEATEN
-	jr nz, .elite4Rematch
-	
 	ld a, $1
-	jp .endBattle
-.elite4Rematch
-	ld a, $2
-	; fallthrough
-.endBattle
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 ;;;;;;;;;; PureRGBnote: ADDED: sound effect for the doors opening
@@ -141,7 +121,6 @@ BrunoScript2:
 
 BrunoTextPointers:
 	dw BrunoText1
-	dw BrunoText2
 	dw BrunoDontRunAwayText
 
 BrunoTrainerHeader0:
@@ -165,18 +144,23 @@ BrunoTrainerHeader1:
 
 BrunoText1:
 	TX_ASM
-	ld hl, BrunoTrainerHeader0
+
 	ld a, 8
 	ld [wGymLeaderNo], a	;joenote - use gym leader music
+
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .elite4Rematch
+
+	ld hl, BrunoTrainerHeader0
 	call TalkToTrainer
 	jp TextScriptEnd
 
-BrunoText2:
-	TX_ASM
+.elite4Rematch
 	ld hl, BrunoTrainerHeader1
-	ld a, 8
-	ld [wGymLeaderNo], a	;joenote - use gym leader music
 	call TalkToTrainer
+	; set the right roster
+	ld a, 2
+	ld [wTrainerNo], a
 	jp TextScriptEnd
 
 BrunoBeforeBattleText:

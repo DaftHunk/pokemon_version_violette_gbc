@@ -55,7 +55,7 @@ UpdatePlayerSprite:
 .next
 	ld [wSpriteStateData1 + 9], a ; facing direction
 	ld a, [wFontLoaded]
-	bit 0, a
+	bit BIT_DISABLE_NPC_MOVEMENT, a
 	jr nz, .notMoving
 .moving
 	ld a, [wMovementFlags]
@@ -167,7 +167,7 @@ UpdateNPCSprite:
 	jp nz, MakeNPCFacePlayer
 	ld b, a
 	ld a, [wFontLoaded]
-	bit 0, a
+	bit BIT_DISABLE_NPC_MOVEMENT, a
 	jp nz, notYetMoving
 	ld a, b
 	cp $2
@@ -435,8 +435,8 @@ sprite60fps:
 	ld a, [H_CURRENTSPRITEOFFSET]
 	add l
 	ld l, a
-	ld a, [wGameplayOptions]
-	bit 4, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_60_FPS, a
 	ld a, [hl]
 	jr nz, .is60fps
 	xor a
@@ -881,8 +881,8 @@ DoScriptedNPCMovement:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;60fps - update animations every other frame and halve movement
 	ld de, $00
-	ld a, [wGameplayOptions]
-	bit 4, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_60_FPS, a
 	jr z, .not60fps
 	call sprite60fps
 	ld e, b

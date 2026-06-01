@@ -226,8 +226,8 @@ SetPal_Overworld:
 	ld a, [hFlags_0xFFF6]
 	bit 4, a		;gbcnote - check bit that indicates cable club menus are being displayed
 	jr nz, .notGBC
-	ld a, [wGameplayOptions]
-	bit 7, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_ENHANCED_GBC, a
 	jr nz, EnhancedGBCOverworld
 .notGBC
 	ld hl, PalPacket_Empty
@@ -586,6 +586,12 @@ LoadSGB:	;gbcnote - adjust for GBC
 	ld [wCopyingSGBTileData], a
 	ld de, ChrTrnPacket
 	ld hl, SGBBorderGraphics
+	call CopyGfxToSuperNintendoVRAM
+	ld a, 1
+	ld [wCopyingSGBTileData], a
+	ld de, ChrTrn1Packet
+	ld hl, SGBBorderGraphics + 256 * $10
+	ld c, $10
 	call CopyGfxToSuperNintendoVRAM
 	xor a
 	ld [wCopyingSGBTileData], a
@@ -1020,8 +1026,8 @@ TransferPalColorLCDDisabled:
 	
 _UpdateGBCPal_BGP::
 ;use a different function if doing enhanced GBC overworld palettes
-	ld a, [wGameplayOptions]
-	bit 7, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_ENHANCED_GBC, a
 	jr z, .notEnhancedGBC
 	ld hl, hFlagsFFFA
 	bit 4, [hl]
@@ -1094,8 +1100,8 @@ _UpdateGBCPal_BGP::
 
 _UpdateGBCPal_OBP::
 ;use a different function if doing enhanced GBC overworld palettes
-	ld a, [wGameplayOptions]
-	bit 7, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_ENHANCED_GBC, a
 	jr z, .notEnhancedGBC
 	ld hl, hFlagsFFFA
 	bit 4, [hl]
@@ -1244,22 +1250,13 @@ CopySGBBorderTiles:
 .tileLoop
 
 ; Copy bit planes 1 and 2 of the tile data.
-	ld c, 16
+	ld c, 16 * 2
 .copyLoop
 	ld a, [hli]
 	ld [de], a
 	inc de
 	dec c
 	jr nz, .copyLoop
-
-; Zero bit planes 3 and 4.
-	ld c, 16
-	xor a
-.zeroLoop
-	ld [de], a
-	inc de
-	dec c
-	jr nz, .zeroLoop
 
 	dec b
 	jr nz, .tileLoop

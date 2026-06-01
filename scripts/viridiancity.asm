@@ -39,11 +39,11 @@ ViridianCityScript_1900b:
 	CheckEvent EVENT_VIRIDIAN_GYM_OPEN
 	ret nz
 	ld a, [wObtainedBadges]
-	cp %01111111
-	jr nz, .asm_1901e
+	cp $ff ^ (1 << BIT_EARTHBADGE)
+	jr nz, .gym_closed
 	SetEvent EVENT_VIRIDIAN_GYM_OPEN
 	ret
-.asm_1901e
+.gym_closed
 	ld a, [wYCoord]
 	cp $8
 	ret nz
@@ -177,22 +177,22 @@ ViridianCityText1:
 ViridianCityText2:
 	TX_ASM
 	ld a, [wObtainedBadges]
-	cp %01111111
-	ld hl, ViridianCityText_19127
-	jr z, .asm_ae9fe
+	cp $ff ^ (1 << BIT_EARTHBADGE)
+	ld hl, GymLeaderReturnedText
+	jr z, .print_text
 	CheckEvent EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
-	jr nz, .asm_ae9fe
-	ld hl, ViridianCityText_19122
-.asm_ae9fe
+	jr nz, .print_text
+	ld hl, GymAlwaysClosedText
+.print_text
 	call PrintText
 	jp TextScriptEnd
 
-ViridianCityText_19122:
-	TX_FAR _ViridianCityText_19122
+GymAlwaysClosedText:
+	TX_FAR _GymAlwaysClosedText
 	db "@"
 
-ViridianCityText_19127:
-	TX_FAR _ViridianCityText_19127
+GymLeaderReturnedText:
+	TX_FAR _GymLeaderReturnedText
 	db "@"
 
 ViridianCityText3:

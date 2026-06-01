@@ -14,7 +14,7 @@ Route15GateUpstairsText1:
 	ld [hOaksAideRequirement], a
 	; check for Nuzzlocke
 	ld a, [wGameplayOptions]
-	bit 6, a
+	bit BIT_GAMEPLAY_NUZLOCKE, a
 	jr z, .next
 	; if Nuzzlocke enabled decrease to 10 mons
 	ld a, 10 ; pokemon needed

@@ -10,8 +10,8 @@ FuchsiaGymScript:
 
 FuchsiaGymScript_Header:
 	ld hl, wCurrentMapScriptFlags
-	bit 6, [hl]
-	res 6, [hl]
+	bit BIT_CUR_MAP_LOADED_2, [hl]
+	res BIT_CUR_MAP_LOADED_2, [hl]
 	ret z
 	ld hl, Gym5CityName
 	ld de, Gym5LeaderName
@@ -65,7 +65,7 @@ FuchsiaGymScript_GiveTM:
 	call DisplayTextID
 .endScript
 	ld hl, wObtainedBadges
-	set 4, [hl]
+	set BIT_SOULBADGE, [hl]
 
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_FUCHSIA_GYM_TRAINER_0, EVENT_BEAT_FUCHSIA_GYM_JANINE

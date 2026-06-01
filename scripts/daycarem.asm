@@ -71,7 +71,7 @@ DayCareMText1:
 	callab CalcLevelFromExperience
 
 	ld b, MAX_LEVEL
-	ld a, [wMoreGameplayOptions]
+	ld a, [wGameplayOptions]
 	and a
 	ld a, b
 	ld [wMaxLevel], a

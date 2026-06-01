@@ -46,21 +46,21 @@ ResetAllOptions: ;joenote - reset all the special options (like for patching-up)
 	ld a, SFX_LEVEL_UP
 	call PlaySound
 
-	ld a, 1 ; no delay
+	ld a, BIT_TEXT_NO_DELAY ; no delay
 	ld [wLetterPrintingDelayFlags], a
 
-	ld a, TEXT_DELAY_FAST ; fast speed
-	set BIT_BATTLE_SHIFT, a ;joenote - SET battle style
+	ld a, BITS_OPTIONS_TEXT_DELAY_FAST ; fast speed
+	set BIT_OPTIONS_BATTLE_SHIFT, a ;joenote - SET battle style
 	ld [wOptions], a
 
-	ld a, [wGameplayOptions]
-	set 4, a ; 60fps
-	set 7, a ; enhanced GBC colors
-	ld [wGameplayOptions], a
+	ld a, [wGraphicOptions]
+	set BIT_GRAPHIC_60_FPS, a ; 60fps
+	set BIT_GRAPHIC_ENHANCED_GBC, a ; enhanced GBC colors
+	ld [wGraphicOptions], a
 
-	ld a, [wMoreGameplayOptions]
-	set 0, a ; level cap mode
-	ld [wMoreGameplayOptions], a
+	ld a, [wGameplayOptions]
+	set BIT_GAMEPLAY_LEVEL_CAP, a ; level cap mode
+	ld [wGameplayOptions], a
 	
 	ResetEvent EVENT_ENABLE_WILD_RANDOM_TIERS
 	ResetEvent EVENT_ENABLE_NORMAL_TRAINER_RANDOMIZATION
@@ -140,7 +140,7 @@ CheckForSmartHMuse:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;check for cut
 	ld a, [wObtainedBadges]
-	bit 1, a ; does the player have the Cascade Badge?
+	bit BIT_CASCADEBADGE, a ; does the player have the Cascade Badge?
 	jr z, .nocut
 	;does a party 'mon have CUT?
 	ld c, CUT
@@ -163,7 +163,7 @@ CheckForSmartHMuse:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
 ;check for surfing
 	ld a, [wObtainedBadges]
-	bit 4, a ; does the player have the Soul Badge?
+	bit BIT_SOULBADGE, a ; does the player have the Soul Badge?
 	jp z, .nosurf
 	ld a, [wWalkBikeSurfState]
 	ld [wWalkBikeSurfStateCopy], a
@@ -235,7 +235,7 @@ CheckForSmartHMuse:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;check for flash
 	ld a, [wObtainedBadges]
-	bit 0, a ; does the player have the Boulder Badge?
+	bit BIT_BOULDERBADGE, a ; does the player have the Boulder Badge?
 	jr z, .noflash
 	;check if the map pal offset is not zero
 	ld a, [wMapPalOffset]
@@ -258,7 +258,7 @@ CheckForSmartHMuse:
 	jr nz, .nostrength	;do nothing if already active
 
 	ld a, [wObtainedBadges]
-	bit 3, a ; does the player have the Rainbow Badge?
+	bit BIT_RAINBOWBADGE, a ; does the player have the Rainbow Badge?
 	jr z, .nostrength
 
 	;must be facing a boulder to use strength
@@ -391,36 +391,36 @@ PartyMoveTest:
 
 ;Overworld female trainer sprite functions
 LoadRedSpriteToDE:
-	ld a, [wGameplayOptions]
+	ld a, [wGraphicOptions]
 	ld de, RedFSprite
-	bit 0, a	;check if girl
+	bit BIT_GRAPHIC_FEMALE, a	;check if girl
 	jr nz, .next
 	ld de, RedSprite
 .next
-	res 2, a
-	ld [wGameplayOptions], a
+	res BIT_GRAPHIC_FEMALE_BANK, a
+	ld [wGraphicOptions], a
 	ret
 	
 LoadSeelSpriteToDE:
-	ld a, [wGameplayOptions]
+	ld a, [wGraphicOptions]
 	ld de, SeelFSprite
-	bit 0, a	;check if girl
+	bit BIT_GRAPHIC_FEMALE, a	;check if girl
 	jr nz, .next
 	ld de, SeelSprite
 .next
-	res 2, a
-	ld [wGameplayOptions], a
+	res BIT_GRAPHIC_FEMALE_BANK, a
+	ld [wGraphicOptions], a
 	ret
 
 LoadRedCyclingSpriteToDE:
-	ld a, [wGameplayOptions]
+	ld a, [wGraphicOptions]
 	ld de, RedFCyclingSprite
-	bit 0, a	;check if girl
+	bit BIT_GRAPHIC_FEMALE, a	;check if girl
 	jr nz, .donefemale
 	ld de, RedCyclingSprite
 .donefemale
-	res 2, a
-	ld [wGameplayOptions], a
+	res BIT_GRAPHIC_FEMALE_BANK, a
+	ld [wGraphicOptions], a
 	ret
 
 
@@ -537,7 +537,7 @@ Determine180degreeMove:
 	call UpdateSprites	;joenote - make the transitional frames viewable
 	call DelayFrame
 	ld hl, wMiscFlags
-	set 2, [hl]
+	set BIT_TURNING, [hl]
 	ld hl, wCheckFor180DegreeTurn
 	dec [hl]
 	jr nz, .holdIntermediateDirectionLoop

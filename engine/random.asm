@@ -160,8 +160,8 @@ _Random_BiasDV::
 _Random_DV::	;generates four 0 to 15 DVs in DE, and rerolls 1 time for each DV below the value placed in L
 	ld l, 0
 	
-	ld a, [wOptions]	;load game options
-	bit BIT_BATTLE_HARD, a			;check for hard mode
+	ld a, [wGameplayOptions]	;load game options
+	bit BIT_GAMEPLAY_HARDMODE, a			;check for hard mode
 	jr z, .begin	;if in hard mode, bias the DV upwards a little bit
 	ld l, 4
 	

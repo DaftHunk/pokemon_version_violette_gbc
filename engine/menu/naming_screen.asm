@@ -14,7 +14,7 @@ AskName:
 	
 	;joenote - always ask to name if in nuzlocke mode
 	ld a, [wGameplayOptions]
-	bit 6, a
+	bit BIT_GAMEPLAY_NUZLOCKE, a
 	jr z, .notNuzlocke
 	xor a
 	ld [wCurrentMenuItem], a

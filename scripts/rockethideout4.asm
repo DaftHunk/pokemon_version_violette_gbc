@@ -10,8 +10,8 @@ RocketHideout4Script:
 
 RocketHideout4Script_45473:
 	ld hl, wCurrentMapScriptFlags
-	bit 5, [hl]
-	res 5, [hl]
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
 	CheckEvent EVENT_ROCKET_HIDEOUT_B4F_DOOR_UNLOCKED
 	jr nz, .asm_45496
@@ -97,7 +97,7 @@ RocketHideout4Script3:
 	xor a
 	ld [wJoyIgnore], a
 	ld hl, wCurrentMapScriptFlags
-	set 5, [hl]
+	set BIT_CUR_MAP_LOADED_1, [hl]
 	ld a, $0
 	ld [wRocketHideout4CurScript], a
 	ld [wCurMapScript], a

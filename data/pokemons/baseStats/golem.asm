@@ -5,7 +5,7 @@ db 130 ; base defense
 db 45 ; base speed
 db 55 ; base special
 db ROCK ; species type 1
-db GROUND ; species type 2
+db ROCK ; species type 2
 db 45 ; catch rate
 db 177 ; base exp yield
 INCBIN "gfx/pokemon/front/golem.pic",0,1 ; 66, sprite dimensions

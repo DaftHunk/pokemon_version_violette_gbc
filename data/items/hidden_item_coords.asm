@@ -80,4 +80,5 @@ HiddenItemCoords:
 	db ROUTE_4,3,62
 	db VOLCANO_B2F,13,13
 	db CELADON_MANSION_ROOF,$0a,$00
+	db ROUTE_20,$12,$35
 	db $ff

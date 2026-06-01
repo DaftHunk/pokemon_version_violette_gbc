@@ -444,8 +444,8 @@ DisplayTwoOptionMenu:
 ;joenote - play sound on NoYes menu
 ;	push hl
 ;	ld hl, wMiscFlags
-;	bit 5, [hl]
-;	set 5, [hl] ; don't play sound when A or B is pressed in menu
+;	bit BIT_NO_MENU_BUTTON_SOUND, [hl]
+;	set BIT_NO_MENU_BUTTON_SOUND, [hl] ; don't play sound when A or B is pressed in menu
 ;	pop hl
 .noYesMenuInputLoop
 	call HandleMenuInput
@@ -825,10 +825,10 @@ FieldMoveDisplayData:
 	
 PrintLetterDelay_:
 	ld a, [wLetterPrintingDelayFlags]
-	bit 0, a
+	bit BIT_FAST_TEXT_DELAY, a
 	jr z, .waitOneFrame
 	ld a, [wOptions]
-	and TEXT_DELAY_BITS
+	and BITS_OPTIONS_TEXT_DELAY
 	ld [H_FRAMECOUNTER], a
 	
 	;	joenote - set a flag to indicate if a sfx is playing while printing text
@@ -862,7 +862,7 @@ PrintLetterDelay_:
 	and (A_BUTTON | B_BUTTON)
 	jr z, .buttonsNotPressed
 	ld a, [wOptions]
-	and TEXT_DELAY_BITS
+	and BITS_OPTIONS_TEXT_DELAY
 	call nz, DelayFrame
 ;.endWait
 ;	call DelayFrame

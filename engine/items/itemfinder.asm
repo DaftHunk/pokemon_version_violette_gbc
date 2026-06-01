@@ -70,7 +70,12 @@ Sub5ClampTo0:
 ;Lines will point in the direction of the item and flash with the chimes.
 ;If the player is right on top of the item, no lines will show and the chime till play four times.
 HiddenItemNear_Improved:
+	call CheckIfLookingForCoins
 	ld hl, HiddenItemCoords
+	jr nc, .gotCoordList
+	; PureRGBnote: ADDED: detect hidden coins in game corner.
+	ld hl, HiddenCoinCoords
+.gotCoordList
 	ld b, 0
 .loop
 	ld de, 3
@@ -79,7 +84,12 @@ HiddenItemNear_Improved:
 	ret nc ; return if current map has no hidden items
 	push bc
 	push hl
+	; PureRGBnote: ADDED: detect hidden coins in game corner.
+	call CheckIfLookingForCoins
 	ld hl, wObtainedHiddenItemsFlags
+	jr nc, .gotFlagArray
+	ld hl, wObtainedHiddenCoinsFlags
+.gotFlagArray
 	ld c, b
 	ld b, FLAG_TEST
 	predef FlagActionPredef
@@ -227,7 +237,7 @@ HiddenItemNear_Improved:
 .return_carry
 	scf
 	ret
-	
+
 .printabove
 	coord de, 9, 7
 	ld a, "l"
@@ -248,14 +258,15 @@ HiddenItemNear_Improved:
 	ld a, "-"
 	ld [de], a
 	ret
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+CheckIfLookingForCoins:
+	CheckEvent EVENT_GOT_COIN_CASE
+	jr z, .no
+	ld a, [wCurMap]
+	cp GAME_CORNER
+	jr nz, .no
+	scf
+	ret
+.no
+	and a
+	ret

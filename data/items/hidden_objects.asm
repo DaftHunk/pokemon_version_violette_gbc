@@ -99,6 +99,7 @@ HiddenObjectMaps:
 	db ROUTE_12_GATE_2F
 	db ROUTE_16_GATE_2F
 	db ROUTE_18_GATE_2F
+	db ROUTE_20
 	db $FF
 
 HiddenObjectPointers:
@@ -203,6 +204,7 @@ HiddenObjectPointers:
 	dw Route12GateUpstairsHiddenObjects
 	dw Route16GateUpstairsHiddenObjects
 	dw Route18GateUpstairsHiddenObjects
+	dw Route20HiddenObjects
 	
 ; format: y-coord, x-coord, text id/item id, object routine
 TradeCenterHiddenObjects:
@@ -480,7 +482,7 @@ GameCornerHiddenObjects:
 	dbw BANK(HiddenCoins),HiddenCoins
 	db $08,$0f,COIN+100
 	dbw BANK(HiddenCoins),HiddenCoins
-	db $0f,$0c,COIN+10
+	db $10,$0c,COIN+10
 	dbw BANK(HiddenCoins),HiddenCoins
 	db $FF
 CeladonHotelHiddenObjects:
@@ -976,4 +978,8 @@ Route18GateUpstairsHiddenObjects:
 	db $02,$06,$04
 	db BANK(Route18GateRightBinoculars)
 	dw Route18GateRightBinoculars
+	db $FF
+Route20HiddenObjects:
+	db $12,$35,WATER_STONE
+	dbw BANK(HiddenItems),HiddenItems
 	db $FF

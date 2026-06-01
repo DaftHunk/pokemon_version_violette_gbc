@@ -57,7 +57,7 @@ RivalScript2:
 	ld hl, wStatusFlags7
 	set 5, [hl]	;joenote - set a flag to tell the battle engine that this is the final boss
 	ld hl, wOptions
-	res 7, [hl]  ; Turn on battle animations to make the battle feel more epic.
+	res BIT_OPTIONS_BATTLE_ANIMATION, [hl]  ; Turn on battle animations to make the battle feel more epic.
 	ld a, $1
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID

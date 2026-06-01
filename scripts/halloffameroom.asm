@@ -66,6 +66,11 @@ HallofFameRoomScript2:
 	ld [wMissableObjectIndex], a
 	predef ShowObject
 
+	; Display cup in Red House
+	ld a, HS_RED_HOUSE_CUP
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+
 	; Hides Starter Ball in Oak Lab because Oak trained it
 	ld a, HS_STARTER_BALL_1
 	ld [wMissableObjectIndex], a

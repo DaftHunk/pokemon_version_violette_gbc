@@ -242,7 +242,7 @@ TrainerEngage:
 	and a
 	jr z, .noEngage
 	ld hl, wMiscFlags
-	set 0, [hl]
+	set BIT_SEEN_BY_TRAINER, [hl]
 	call EngageMapTrainer
 	ld a, $ff
 .noEngage

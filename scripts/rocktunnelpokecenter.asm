@@ -1,6 +1,17 @@
 RockTunnelPokecenterScript:
+	call .markAsVisited
 	call Serial_TryEstablishingExternallyClockedConnection
 	jp EnableAutoTextBoxDrawing
+
+.markAsVisited
+	ld hl, wCurrentMapScriptFlags
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
+	ret z
+	ld c, ROUTE_10_FLY
+	ld b, FLAG_SET
+	ld hl, wTownVisitedFlag   ; mark town as visited (for flying)
+	predef_jump FlagActionPredef
 
 RockTunnelPokecenterTextPointers:
 	dw RockTunnelHealNurseText

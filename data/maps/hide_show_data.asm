@@ -45,7 +45,7 @@ MapHSPointers:
 	dw BillsGardenHS
 	dw Route25HS
 	dw NoHS
-	dw NoHS
+	dw RedsHouse2FHS
 	dw BluesHouseHS
 	dw OaksLabHS
 	dw NoHS
@@ -118,7 +118,7 @@ MapHSPointers:
 	dw VolcanoB2FHS
 	dw NoHS
 	dw NoHS
-	dw LanceRoomHS
+	dw NoHS
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -250,9 +250,9 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw LoreleiRoomHS
-	dw BrunoRoomHS
-	dw AgathaRoomHS
+	dw NoHS
+	dw NoHS
+	dw NoHS
 	dw $FFFF
 
 ; Structure:
@@ -331,6 +331,8 @@ BillsGardenHS:
 	db BILLS_GARDEN,$01,Hide
 Route25HS:
 	db ROUTE_25,$0A,Show
+RedsHouse2FHS:
+	db REDS_HOUSE_2F,$01,Hide
 BluesHouseHS:
 	db BLUES_HOUSE,$01,Show
 	db BLUES_HOUSE,$02,Hide
@@ -606,17 +608,5 @@ Museum2FHS:
 	db MUSEUM_2F,$06,Show	;joenote - added water gun tm to museum 2f
 VermilionDockHS:
 	db VERMILION_DOCK, $01, Hide
-LoreleiRoomHS:
-	db LORELEIS_ROOM, $01, Show
-	db LORELEIS_ROOM, $02, Hide
-BrunoRoomHS:
-	db BRUNOS_ROOM, $01, Show
-	db BRUNOS_ROOM, $02, Hide
-AgathaRoomHS:
-	db AGATHAS_ROOM, $01, Show
-	db AGATHAS_ROOM, $02, Hide
-LanceRoomHS:
-	db LANCES_ROOM, $01, Show
-	db LANCES_ROOM, $02, Hide
 
 	db $FF,$01,Show

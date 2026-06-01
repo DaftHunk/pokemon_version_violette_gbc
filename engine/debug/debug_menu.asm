@@ -26,7 +26,7 @@ IF DEF(_DEBUG)
 	coord hl, 7, 7
 	ld de, DebugMenuOptions
 	call PlaceString
-	ld a, 3 ; medium speed
+	ld a, BITS_OPTIONS_TEXT_DELAY_FAST
 	ld [wOptions], a
 
 	ld a, A_BUTTON | B_BUTTON | START
@@ -80,7 +80,7 @@ TestBattle: ; unreferenced except in _DEBUG
 	; Don't mess around with obedience.
 	;ld a, 1 << 7
 	ld [wObtainedBadges], a
-    bit 7, a ; does the player have the Earth Badge?
+    bit BIT_EARTHBADGE, a ; does the player have the Earth Badge?
 	ld hl, wStatusFlags7
 	set BIT_TEST_BATTLE, [hl]
 

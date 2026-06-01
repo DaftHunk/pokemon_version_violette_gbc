@@ -29,7 +29,7 @@ MtMoonB1FTrainerHeader0:
 
 MtMoonB1FScriptJessieJames:
 	ld hl, wMiscFlags
-	res 0, [hl]
+	res BIT_SEEN_BY_TRAINER, [hl]
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, MtMoonB1FScriptNotInBattle

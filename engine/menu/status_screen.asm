@@ -131,7 +131,7 @@ StatusScreen:
 	ld a, [wStatsToDisplay]
 	bit 0, a
 	ld a, [wGameplayOptions]
-	bit 6, a
+	bit BIT_GAMEPLAY_NUZLOCKE, a
 	jr z, .noblank
 	push hl
 	ld a, " "

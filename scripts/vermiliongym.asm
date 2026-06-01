@@ -1,12 +1,12 @@
 VermilionGymScript:
 	ld hl, wCurrentMapScriptFlags
-	bit 5, [hl]
-	res 5, [hl]
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	push hl
 	call nz, VermilionGymScript_Header
 	pop hl
-	bit 6, [hl]
-	res 6, [hl]
+	bit BIT_CUR_MAP_LOADED_2, [hl]
+	res BIT_CUR_MAP_LOADED_2, [hl]
 	call nz, VermilionGymScript_DoorPuzzle
 	call EnableAutoTextBoxDrawing
 	ld hl, VermilionGymTrainerHeader0
@@ -80,7 +80,7 @@ VermilionGymScript_GiveTM:
 	call DisplayTextID
 .endScript
 	ld hl, wObtainedBadges
-	set 2, [hl]
+	set BIT_THUNDERBADGE, [hl]
 
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_VERMILION_GYM_TRAINER_0, EVENT_BEAT_VERMILION_GYM_TRAINER_2
@@ -322,7 +322,7 @@ VermilionGymText_Trainer2AfterBattle:
 VermilionGymText_Guide:
 	TX_ASM
 	ld a, [wObtainedBadges]
-	bit 2, a
+	bit BIT_THUNDERBADGE, a
 	jr nz, .arenaVictory
 	ld hl, VermilionGymText_GuideTip
 	call PrintText

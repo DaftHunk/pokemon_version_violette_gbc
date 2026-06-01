@@ -1,7 +1,7 @@
 CeruleanGymScript:
 	ld hl, wCurrentMapScriptFlags
-	bit 6, [hl]
-	res 6, [hl]
+	bit BIT_CUR_MAP_LOADED_2, [hl]
+	res BIT_CUR_MAP_LOADED_2, [hl]
 	call nz, CeruleanGymScript_Header
 	call EnableAutoTextBoxDrawing
 	ld hl, CeruleanGymTrainerHeader0
@@ -61,7 +61,7 @@ CeruleanGymScript_GiveTM:
 	call DisplayTextID
 .endScript
 	ld hl, wObtainedBadges
-	set 1, [hl]
+	set BIT_CASCADEBADGE, [hl]
 
 	; deactivate gym trainers
 	SetEvents EVENT_BEAT_CERULEAN_GYM_TRAINER_0, EVENT_BEAT_CERULEAN_GYM_TRAINER_1

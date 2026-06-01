@@ -2465,7 +2465,6 @@ wOptions:: ; d355
 ; 1: earphone 1
 ; 2: earphone 2
 ; 3: earphone 3
-; bit 3: = hard mode
 ; bits 0-2 = text speed (number of frames to delay after printing a letter)
 ; 1: Fast
 ; 3: Medium
@@ -3185,15 +3184,15 @@ wDamageIntention:: ; d71f	;joenote - used as a backup address for the wDamage va
 wSpinnerTileFrameCount::	;d720	;joenote - used as a counter for the spinner tiles out of battle
 	ds 1							
 
-wGameplayOptions:: ; d721	;joenote - use to set various wram flags
+wGraphicOptions:: ; d721	;joenote - use to set various wram flags
 	ds 1
 	;bit 0 - player is female trainer if set (reserved for female trainer tagged code)
-	;bit 1 - Gets set when forfeiting a battle
+	;bit 1 - 
 	;bit 2 - override bit 0 for specific bank switching instances (usually reserved for female trainer tagged code)
-	;bit 3 - new game +
+	;bit 3 - 
 	;bit 4 - 60fps option flag
 	;bit 5 - gammma toggle
-	;bit 6 - nuzlocke mode activated
+	;bit 6 - 
 	;bit 7 - enhanced GBC colors toggle
 ;;;;;;;;;;;;;;joenote - use these unused locations for debugging and parsing DV scores or holding temp values
 wTempIVFlags:: 
@@ -3201,14 +3200,14 @@ wTempIVFlags::
 wUnusedD726:: 
 	ds 1
 
-wMoreGameplayOptions::
+wGameplayOptions::
 	ds 1
 	;bit 0 - levelcap mode activated
-	;bit 1 -
-	;bit 2 -
-	;bit 3 - 
-	;bit 4 - 
-	;bit 5 - 
+	;bit 1 - Gets set when forfeiting a battle
+	;bit 2 - level scaling
+	;bit 3 - hardmode
+	;bit 4 - new game +
+	;bit 5 - nuzlocke mode activated
 	;bit 6 - 
 	;bit 7 - 
 ;;;;;;;;;;;;;;

@@ -558,8 +558,8 @@ CapExpAtMaxLevel:
 	call GetMonHeader
 	ld d, MAX_LEVEL
 	
-	ld a, [wMoreGameplayOptions]
-	bit 0, a
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_LEVEL_CAP, a
 	jr z, .skipLevelCap ; no levelcaps
 	; else
 	call GetLevelCap
@@ -591,8 +591,8 @@ CapExpAtMaxLevel:
 	call AddNTimes
 	; get current level cap
 	ld d, MAX_LEVEL
-	ld a, [wMoreGameplayOptions]
-	bit 0, a
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_LEVEL_CAP, a
 	jr z, .skipLevelCapGreater ; no levelcaps
 	; else
 	ld a, [wMaxLevel]
@@ -918,8 +918,8 @@ DisplayCurrentCapScript:
 DisplayCurrentCap::
 	call GetLevelCap
 	; is level cap enabled ?
-	ld a, [wMoreGameplayOptions]
-	bit 0, a
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_LEVEL_CAP, a
 	jr nz, .levelCap
 	; else
 	ld hl, .obedienceText
@@ -965,8 +965,8 @@ GetLevelCap::
 .storeValue
 	push af
 	; is level cap enabled ?
-	ld a, [wMoreGameplayOptions]
-	bit 0, a
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_LEVEL_CAP, a
 	jr nz, .levelCap
 	; else
 .obedience

@@ -29,7 +29,7 @@ MoveEnd:
 	move GUST,         NO_ADDITIONAL_EFFECT,        40, FLYING,   100, 35
 	move WING_ATTACK,  NO_ADDITIONAL_EFFECT,        60, FLYING,   100, 35
 	move WHIRLWIND,    SWITCH_AND_TELEPORT_EFFECT,   0, FLYING,   100, 20
-	move FLY,          FLY_EFFECT,                  70, FLYING,   100, 15
+	move FLY,          FLY_EFFECT,                  90, FLYING,   100, 15
 	move BIND,         TRAPPING_EFFECT,             25, ROCK,      85, 20
 	move SLAM,         NO_ADDITIONAL_EFFECT,        80, NORMAL,    75, 20
 	move VINE_WHIP,    NO_ADDITIONAL_EFFECT,        45, GRASS,    100, 20

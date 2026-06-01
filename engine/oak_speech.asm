@@ -10,7 +10,7 @@ SetDefaultNames:
 	; In non-debug builds, the instructions can be removed.
 	ld a, [wStatusFlags6]
 	push af
-	ld a, [wGameplayOptions]	;joenote - preserve extra options
+	ld a, [wGraphicOptions]	;joenote - preserve extra options
 	push af
 	ld hl, wPlayerName
 	ld bc, wBoxDataEnd - wPlayerName
@@ -21,7 +21,7 @@ SetDefaultNames:
 	xor a
 	call FillMemory
 	pop af
-	ld [wGameplayOptions], a	;joenote - restore extra options
+	ld [wGraphicOptions], a	;joenote - restore extra options
 	pop af
 	ld [wStatusFlags6], a
 	pop af
@@ -51,7 +51,7 @@ OakSpeech:
 ;must have an intact save file detected
 ;must have beaten the elite 4
 	ld a, [wGameplayOptions]
-	bit 3, a
+	bit BIT_GAMEPLAY_NEW_GAME_PLUS, a
 	jr z, .normalnewgame
 
 	call DoNewGamePlus
@@ -83,10 +83,10 @@ OakSpeech:
 	jr nz, .askBoyGirl
 	ld a, [wCurrentMenuItem]
 	ld b, a
-	ld a, [wGameplayOptions]
-	res 0, a
+	ld a, [wGraphicOptions]
+	res BIT_GRAPHIC_FEMALE, a
 	or b
-	ld [wGameplayOptions], a
+	ld [wGraphicOptions], a
 	call ClearScreen
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, $FF
@@ -103,12 +103,12 @@ OakSpeech:
 	call AddItemToInventory  ; give one potion
 
 	ld a, [wGameplayOptions]
-	bit 3, a
+	bit BIT_GAMEPLAY_NEW_GAME_PLUS, a
 	jr z, .notNewGamePlus
 
 	SetEvent EVENT_NEW_GAME_PLUS
 	; Reset NG+ flag
-	res 3, a
+	res BIT_GAMEPLAY_NEW_GAME_PLUS, a
 	ld [wGameplayOptions], a
 
 .notNewGamePlus
@@ -165,8 +165,8 @@ OakSpeech:
 ;joenote - support female sprite
 	ld de, RedPicFFront
 	lb bc, BANK(RedPicFFront), $00
-	ld a, [wGameplayOptions]
-	bit 0, a	;check if girl
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_FEMALE, a	;check if girl
 	jr nz, .donefemale_front
 	ld de, RedPicFront
 	lb bc, BANK(RedPicFront), $00
@@ -191,8 +191,8 @@ OakSpeech:
 ;joenote - support female sprite
 	ld de, RedPicFFront
 	lb bc, BANK(RedPicFFront), $00
-	ld a, [wGameplayOptions]
-	bit 0, a	;check if girl
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_FEMALE, a	;check if girl
 	jr nz, .donefemale_front2
 	ld de, RedPicFront
 	lb bc, BANK(RedPicFront), $00
@@ -218,8 +218,8 @@ OakSpeech:
 	;joenote - support female trainer
 	ld de, RedFSprite
 	lb bc, BANK(RedFSprite), $0C
-	ld a, [wGameplayOptions]
-	bit 0, a	;check if girl
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_FEMALE, a	;check if girl
 	jr nz, .sprite_next
 	ld de, RedSprite
 	lb bc, BANK(RedSprite), $0C
@@ -370,10 +370,10 @@ DoNewGamePlus: ;joenote - selective wram clearing for new game plus
 
 	;skip Options
 	ld hl, wTownVisitedFlag
-	ld bc, wGameplayOptions - wTownVisitedFlag
+	ld bc, wGraphicOptions - wTownVisitedFlag
 	xor a
 	call FillMemory
-	; 3186 keep wGameplayOptions
+	; 3186 keep wGraphicOptions
 
 	;skip clearing the play clock
 	ld hl, wTempIVFlags
@@ -389,13 +389,12 @@ DoNewGamePlus: ;joenote - selective wram clearing for new game plus
 	call FillMemory
 	; 3453 end
 	
-	ld a, 1 ; no delay
+	ld a, BIT_TEXT_NO_DELAY ; no delay
 	ld [wLetterPrintingDelayFlags], a
 
-	ld a, TEXT_DELAY_FAST ; fast speed
-	set BIT_BATTLE_SHIFT, a ;joenote - SET battle style
+	ld a, BITS_OPTIONS_TEXT_DELAY_FAST ; fast speed
+	set BIT_OPTIONS_BATTLE_SHIFT, a ;joenote - SET battle style
 	ld [wOptions], a
-
 	ret
 
 AskIfGirlText::	;joenote - text to ask if female trainer

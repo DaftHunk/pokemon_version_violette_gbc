@@ -47,6 +47,7 @@ const_value = 0
 	const HS_ROUTE_24_ITEM                ; 25 X
 	const HS_HOOH
 	const HS_ROUTE_25_ITEM                ; 26 X
+	const HS_RED_HOUSE_CUP
 	const HS_DAISY_SITTING                ; 27
 	const HS_DAISY_WALKING                ; 28
 	const HS_TOWN_MAP                     ; 29
@@ -253,11 +254,3 @@ const_value = 0
 	const HS_UNDPATHWE_MGENE			  ; E6 ;joenote - mgene pickup item
 	const HS_MUSEUM_TM12				  ; E7 ;joenote - moving water gun here
 	const HS_MEW_VERMILION_DOCK
-	const HS_LORELEI_1
-	const HS_LORELEI_2
-	const HS_BRUNO_1
-	const HS_BRUNO_2
-	const HS_AGATHA_1
-	const HS_AGATHA_2
-	const HS_LANCE_1
-	const HS_LANCE_2

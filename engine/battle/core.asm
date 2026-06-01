@@ -345,10 +345,12 @@ MainInBattleLoop:
 	ld a, [hli]
 	or [hl] ; is battle mon HP 0?
 	jp z, HandlePlayerMonFainted  ; if battle mon HP is 0, jump
+	callfar CheckPerTurnSpecialBattleEffect
 	ld hl, wEnemyMonHP
 	ld a, [hli]
 	or [hl] ; is enemy mon HP 0?
 	jp z, HandleEnemyMonFainted ; if enemy mon HP is 0, jump
+	callfar CheckPerTurnSpecialEnemyEffect
 	call SaveScreenTilesToBuffer1
 	xor a
 	ld [wFirstMonsNotOutYet], a
@@ -1536,11 +1538,11 @@ EnemySendOutFirstMon:
 
 	; Hard mode now force battle set
 	ld a, [wGameplayOptions]
-	bit BIT_BATTLE_HARD, a
+	bit BIT_GAMEPLAY_HARDMODE, a
 	jr nz, .next4
 
 	ld a, [wOptions]
-	bit BIT_BATTLE_SHIFT, a
+	bit BIT_OPTIONS_BATTLE_SHIFT, a
 	jr nz, .next4
 
 	ld hl, TrainerAboutToUseText
@@ -6945,8 +6947,8 @@ LoadEnemyMonData:
 	cp $2 ; is it a trainer battle?
 	jr nz, .nottrainer	;if not a trainer then skip this part
 ;joenote - load default DVs if using "hard" battle style
-	ld a, [wOptions]	;load game options
-	bit BIT_BATTLE_HARD, a			;check battle style
+	ld a, [wGameplayOptions]	;load game options
+	bit BIT_GAMEPLAY_HARDMODE, a			;check battle style
 ; fixed DVs for trainer mon
 	ld a, $98
 	ld b, $88
@@ -7277,8 +7279,8 @@ LoadPlayerBackPic:
 	ld de, OldManPic
 	jr .bankred
 .redback
-	ld a, [wGameplayOptions]
-	bit 0, a	;check if girl
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_FEMALE, a	;check if girl
 	jr z, .bankred	;go to the normal red sprite bank if boy
 	;else load girl sprites
 	ld de, RedPicFBack
@@ -7450,8 +7452,8 @@ ApplyBadgeStatBoosts:
 	cp LINK_STATE_BATTLING
 	jr z, .return ; return if link battle
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	ld a, [wOptions] ;load game options
-	bit BIT_BATTLE_HARD, a ;check for hard mode
+	ld a, [wGameplayOptions] ;load game options
+	bit BIT_GAMEPLAY_HARDMODE, a ;check for hard mode
 	jr z, .dobadgeboost	;if not hard mode, always apply badge boosts
 ;joenote - only apply badge stat boosts in wild battles to keep parity with ai trainers
 	ld a, [wIsInBattle]
@@ -7713,7 +7715,7 @@ InitBattleCommon:
 	ld hl, wLetterPrintingDelayFlags
 	ld a, [hl]
 	push af
-	res 1, [hl]
+	res BIT_TEXT_NO_DELAY, [hl]
 	callab InitBattleVariables
 	ld a, [wEnemyMonSpecies2]
 	sub 200

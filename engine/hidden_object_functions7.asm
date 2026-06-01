@@ -207,7 +207,7 @@ CinnabarGymQuiz_1ea92:
 	cp c
 	jr nz, .wrongAnswer
 	ld hl, wCurrentMapScriptFlags
-	set 5, [hl]
+	set BIT_CUR_MAP_LOADED_1, [hl]
 	ld a, [hGymGateIndex]
 	ld [$ffe0], a
 	ld hl, CinnabarGymQuizCorrectText
