@@ -30,23 +30,18 @@ TrappingEffect_:
                         ; the target won't need to recharge even if the trapping move missed
 						;joenote - will do this later under ApplyAttackToEnemy/Player functions
 	set USING_TRAPPING_MOVE, [hl] ; mon is now using a trapping move
-
-;;;;;;;;;;;;;;;;; PureRGB - NEW: trapping moves do 2-3 turns maximum but a bit more damage to compensate.	
-.reroll
+	callab BattleRandom ; 3/8 chance for 2 and 3 attacks, and 1/8 chance for 4 and 5 attacks
+	and $3
+	cp $2
+	jr c, .setTrappingCounter
+	
 	callab BattleRandom
-	and %11
-	cp %11
-	jr z, .reroll ; only want 3 possible results, not 4
-	and a ; 2/3 chance for 2 attacks (results 01 and 11), 1/3 chance for 3 (result 0)
-	ld a, 2
-	jr nz, .setTrappingCounter
-	ld a, 3
+	and $3
 .setTrappingCounter
-	dec a
-;;;;;;;;;;;;;;;;;
+	inc a
 	ld [de], a
 ;joenote - have the trapping effect user get its speed temporarily reduced until stats get recalculated
-	callba ReduceSpeed
+;	callba ReduceSpeed
 ;joenote - increment a trapping spam counter that checks for consecutive usage of trapping moves
 	inc hl
 	inc hl	;now points to xBattleStatus3
