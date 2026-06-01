@@ -46,7 +46,7 @@ TrappingEffect_:
 ;;;;;;;;;;;;;;;;;
 	ld [de], a
 ;joenote - have the trapping effect user get its speed temporarily reduced until stats get recalculated
-;	callba ReduceSpeed
+	callba ReduceSpeed
 ;joenote - increment a trapping spam counter that checks for consecutive usage of trapping moves
 	inc hl
 	inc hl	;now points to xBattleStatus3

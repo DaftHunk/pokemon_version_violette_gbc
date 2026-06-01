@@ -367,7 +367,7 @@ _HM01Description::
 
 _HM02Description::
 	text "Vol:Vol"
-	next "Dég: 70; Pré: 100"
+	next "Dég: 90; Pré: 100"
 	prompt
 
 _HM03Description::
@@ -403,7 +403,7 @@ _TM01Description::
 	prompt
 
 _TM02Description::
-	text "Coupe-Vent:Normal"
+	text "Coupe-Vent:Vol"
 	next "Dég: 80;Pré: 100"
 	prompt
 
@@ -504,7 +504,7 @@ _TM21Description::
 
 _TM22Description::
 	text "LanceSoleil:Plante"
-	next "Dég: 120;Pré: 100"
+	next "Dég: 140;Pré: 100"
 	prompt
 
 _TM23Description::
@@ -563,7 +563,7 @@ _TM33Description::
 	prompt
 
 _TM34Description::
-	text "Patience:Normal"
+	text "Patience:Roche"
 	next "Dég: -;Pré: -"
 	prompt
 
