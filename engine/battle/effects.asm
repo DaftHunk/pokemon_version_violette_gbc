@@ -955,6 +955,17 @@ SwitchAndTeleportEffect:
 	ld a, [wIsInBattle]
 	dec a
 	jr nz, .notWildBattle2
+
+	ld a, [wPlayerMoveNum]
+	cp TELEPORT
+	jr z, .notTeleport
+
+	ld a, [wPlayerBattleStatus1]
+	; is the player using a multi-turn move like wrap?
+	bit USING_TRAPPING_MOVE, a
+	jr nz, .cantEscape
+
+.notTeleport
 	ld a, [wBattleMonLevel]
 	ld b, a
 	ld a, [wCurEnemyLVL]
@@ -1011,6 +1022,11 @@ SwitchAndTeleportEffect:
 	jr z, .printText
 	ld hl, WasBlownAwayText
 .printText
+	jp PrintText
+.cantEscape
+	ld c, 50
+	call DelayFrames
+	ld hl, CantEscapeText
 	jp PrintText
 
 RanFromBattleText:

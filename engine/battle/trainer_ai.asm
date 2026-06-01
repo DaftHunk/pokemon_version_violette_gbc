@@ -1428,15 +1428,6 @@ TrainerAI:
 	cp LINK_STATE_BATTLING
 	ret z
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	ld a, [wPlayerBattleStatus1]
-	bit USING_TRAPPING_MOVE, a ; caught in player's trapping move (e.g. wrap)
-	jr z, .notbeingtrapped
-	call CheckandResetSwitchBit	
-	jp nz, AISwitchIfEnoughMons	;switch if switch bit is set and stuck in the player's trapping move
-.notbeingtrapped
-;	...otherwise
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - AI should not use actions if the null move has been selected
 	ld a, [wEnemySelectedMove]
 	cp $FF
@@ -1885,6 +1876,12 @@ AIPrintItemUseAndUpdateHPBar:
 	jp DecrementAICount
 
 AISwitchIfEnoughMons:
+; Cannot switch if Trapped
+	ld a, [wPlayerBattleStatus1]
+	bit USING_TRAPPING_MOVE, a ; is the player using a multi-turn move like wrap?
+	ret nz
+
+.notTrapped
 ; enemy trainer switches if there are 2 or more unfainted mons in party
 	ld a, [wEnemyPartyCount]
 	ld c, a

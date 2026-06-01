@@ -1403,8 +1403,8 @@ _AttackContinuesText::
 	done
 
 _CantMoveText::
-	text "<USER>"
-	line "est immobilisé!"
+	text "<USER> vous"
+	line "en empêche!"
 	prompt
 
 _MoveIsDisabledText::
