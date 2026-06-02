@@ -539,6 +539,26 @@ SpriteSheetPointerTable:
 	dw BlaineSprite
 	db $c0 ; byte count
 	db BANK(BlaineSprite)
+	
+	; SPRITE_BURGLAR
+	dw BurglarSprite
+	db $c0 ; byte count
+	db BANK(BurglarSprite)
+	
+	; SPRITE_NERD
+	dw NerdSprite
+	db $c0 ; byte count
+	db BANK(NerdSprite)
+	
+	; SPRITE_JUGGLER
+	dw JugglerSprite
+	db $c0 ; byte count
+	db BANK(JugglerSprite)
+
+	; SPRITE_TAMER
+	dw TamerSprite
+	db $c0 ; byte count
+	db BANK(TamerSprite)
 
 	; SPRITE_SLOWBRO
 	dw SlowbroSprite

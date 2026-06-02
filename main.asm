@@ -2141,6 +2141,10 @@ ErikaSprite:          INCBIN "gfx/sprites/erika.2bpp"
 SabrinaSprite:        INCBIN "gfx/sprites/sabrina.2bpp"
 KogaSprite:           INCBIN "gfx/sprites/koga.2bpp"
 BlaineSprite:         INCBIN "gfx/sprites/blaine.2bpp"
+BurglarSprite:        INCBIN "gfx/sprites/burglar.2bpp"
+NerdSprite:           INCBIN "gfx/sprites/nerd.2bpp"
+JugglerSprite:        INCBIN "gfx/sprites/juggler.2bpp"
+TamerSprite:          INCBIN "gfx/sprites/tamer.2bpp"
 
 
 SECTION "Type Icons", ROMX

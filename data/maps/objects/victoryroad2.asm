@@ -13,9 +13,9 @@ VictoryRoad2Object:
 	db 0 ; signs
 
 	db 12 ; objects
-	object SPRITE_HIKER,            14,  9, STAY, LEFT,  1, OPP_BLACKBELT, 8
-	object SPRITE_BLACK_HAIR_BOY_2, 23, 12, STAY, DOWN,  2, OPP_JUGGLER, 5
-	object SPRITE_BLACK_HAIR_BOY_1, 15,  4, STAY, RIGHT, 3, OPP_TAMER, 5
+	object SPRITE_BLACKBELT,        14,  9, STAY, LEFT,  1, OPP_BLACKBELT, 8
+	object SPRITE_JUGGLER,          23, 12, STAY, DOWN,  2, OPP_JUGGLER, 5
+	object SPRITE_TAMER,            15,  4, STAY, RIGHT, 3, OPP_TAMER, 5
 	object SPRITE_BLACK_HAIR_BOY_2,  8,  0, STAY, DOWN,  4, OPP_POKEMANIAC, 7
 	object SPRITE_SOLDIER,          24,  0, STAY, DOWN,  5, OPP_SOLDIER, 6 
 	object SPRITE_BALL,             27,  5, STAY, NONE,  6, TM02_RAZOR_WIND

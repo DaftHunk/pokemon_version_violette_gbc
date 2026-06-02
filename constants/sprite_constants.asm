@@ -244,6 +244,10 @@ const_value = 1
 	const SPRITE_SABRINA
 	const SPRITE_KOGA
 	const SPRITE_BLAINE
+	const SPRITE_BURGLAR
+	const SPRITE_NERD
+	const SPRITE_JUGGLER
+	const SPRITE_TAMER
 	; Pokemons
 	const SPRITE_SLOWBRO                   ; $05
 	const SPRITE_BIRD                      ; $09
