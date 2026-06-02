@@ -1717,7 +1717,7 @@ wPartyGainExpFlags:: ; d058
 
 wCurOpponent:: ; d059
 ; in a wild battle, this is the species of pokemon
-; in a trainer battle, this is the trainer class + 200
+; in a trainer battle, this is the trainer class + OPP_ID_OFFSET
 	ds 1
 
 wBattleType:: ; d05a
@@ -3127,7 +3127,7 @@ wFossilMonDVs::	;d711 (2 bytes)	;joenote - added to store some values
 	ds 2
 
 wEnemyMonOrTrainerClass:: ; d713
-; trainer classes start at 200
+; trainer classes start at OPP_ID_OFFSET
 	ds 1
 
 wPlayerJumpingYScreenCoordsIndex:: ; d714

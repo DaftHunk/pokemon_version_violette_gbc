@@ -7701,7 +7701,7 @@ InitBattleCommon:
 	res BIT_TEXT_NO_DELAY, [hl]
 	callab InitBattleVariables
 	ld a, [wEnemyMonSpecies2]
-	sub 200
+	sub OPP_ID_OFFSET
 	jp c, InitWildBattle
 	ld [wTrainerClass], a
 	call GetTrainerInformation
