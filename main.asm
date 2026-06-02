@@ -242,6 +242,8 @@ PokedexSprite:        INCBIN "gfx/sprites/pokedex.2bpp"
 PokeballSprite:       INCBIN "gfx/sprites/pokeball.2bpp"
 MapSprite:            INCBIN "gfx/sprites/map_ow.2bpp"
 CupSprite:            INCBIN "gfx/sprites/cup.2bpp"
+KoichiSprite:         INCBIN "gfx/sprites/koichi.2bpp"
+
 
 SECTION "Battle (bank 5)", ROMX, BANK[$5]
 

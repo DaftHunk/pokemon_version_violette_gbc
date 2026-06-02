@@ -8,7 +8,7 @@ FightingDojoObject:
 	db 0 ; signs
 
 	db 7 ; objects
-	object SPRITE_BRUNO, 5, 3, STAY, DOWN, 1, OPP_KOICHI, 1
+	object SPRITE_KOICHI, 5, 3, STAY, DOWN, 1, OPP_KOICHI, 1
 	object SPRITE_HIKER, 3, 4, STAY, RIGHT, 2, OPP_BLACKBELT, 1
 	object SPRITE_HIKER, 3, 6, STAY, RIGHT, 3, OPP_BLACKBELT, 2
 	object SPRITE_HIKER, 6, 5, STAY, LEFT, 4, OPP_BLACKBELT, 3
