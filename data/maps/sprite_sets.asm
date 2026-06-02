@@ -144,7 +144,7 @@ SpriteSets:
 	db SPRITE_ROCKET
 	db SPRITE_OAK_AIDE
 	db SPRITE_LAPRAS_GIVER
-	db SPRITE_ERIKA
+	db SPRITE_KIMONO_WOMAN
 	db SPRITE_GENTLEMAN
 	db SPRITE_PIDGEOT
 	db SPRITE_ROCKER
@@ -313,10 +313,10 @@ SpriteSheetPointerTable:
 	db $c0 ; byte count
 	db BANK(WaiterSprite)
 
-	; SPRITE_ERIKA
-	dw ErikaSprite
+	; SPRITE_KIMONO_WOMAN
+	dw KimonoWomanSprite
 	db $c0 ; byte count
-	db BANK(ErikaSprite)
+	db BANK(KimonoWomanSprite)
 
 	; SPRITE_MOM_GEISHA
 	dw MomGeishaSprite
@@ -505,6 +505,40 @@ SpriteSheetPointerTable:
 	db $c0 ; byte count
 	db BANK(SoldierSprite)
 
+	; SPRITE_BROCK
+	dw BrockSprite
+	db $c0 ; byte count
+	db BANK(BrockSprite)
+
+	; SPRITE_MISTY
+	dw MistySprite
+	db $c0 ; byte count
+	db BANK(MistySprite)
+
+	; SPRITE_SURGE
+	dw SurgeSprite
+	db $c0 ; byte count
+	db BANK(SurgeSprite)
+
+	; SPRITE_ERIKA
+	dw ErikaSprite
+	db $c0 ; byte count
+	db BANK(ErikaSprite)
+
+	; SPRITE_SABRINA
+	dw SabrinaSprite
+	db $c0 ; byte count
+	db BANK(SabrinaSprite)
+
+	; SPRITE_KOGA
+	dw KogaSprite
+	db $c0 ; byte count
+	db BANK(KogaSprite)
+	
+	; SPRITE_BLAINE
+	dw BlaineSprite
+	db $c0 ; byte count
+	db BANK(BlaineSprite)
 
 	; SPRITE_SLOWBRO
 	dw SlowbroSprite

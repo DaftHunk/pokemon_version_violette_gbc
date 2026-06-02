@@ -10,7 +10,7 @@ VermilionGymObject:
 	sign 7, 1, 11 ; VermilionGymText_SurgeBookshelf
 
 	db 5 ; objects
-	object SPRITE_ROCKER,           5,  1, STAY, DOWN,  1, OPP_LT_SURGE, 1
+	object SPRITE_SURGE,            5,  1, STAY, DOWN,  1, OPP_LT_SURGE, 1
 	object SPRITE_SOLDIER,          9,  6, STAY, LEFT,  2, OPP_SOLDIER, 1
 	object SPRITE_ROCKER,           3,  8, STAY, LEFT,  3, OPP_ROCKER, 1
 	object SPRITE_SOLDIER,          0, 10, STAY, RIGHT, 4, OPP_SOLDIER, 2

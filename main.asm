@@ -225,7 +225,6 @@ GiovanniSprite:       INCBIN "gfx/sprites/giovanni.2bpp"
 RocketSprite:         INCBIN "gfx/sprites/rocket.2bpp"
 MediumSprite:         INCBIN "gfx/sprites/medium.2bpp"
 WaiterSprite:         INCBIN "gfx/sprites/waiter.2bpp"
-ErikaSprite:          INCBIN "gfx/sprites/erika.2bpp"
 MomGeishaSprite:      INCBIN "gfx/sprites/mom_geisha.2bpp"
 BrunetteGirlSprite:   INCBIN "gfx/sprites/brunette_girl.2bpp"
 LanceSprite:          INCBIN "gfx/sprites/lance.2bpp"
@@ -2132,7 +2131,16 @@ HoohSprite:           INCBIN "gfx/sprites/pokemons/hooh.2bpp"
 
 
 SECTION "NPC Sprites 4", ROMX
+
 SoldierSprite:        INCBIN "gfx/sprites/soldier.2bpp"
+KimonoWomanSprite:    INCBIN "gfx/sprites/kimonowoman.2bpp"
+BrockSprite:          INCBIN "gfx/sprites/brock.2bpp"
+MistySprite:          INCBIN "gfx/sprites/misty.2bpp"
+SurgeSprite:          INCBIN "gfx/sprites/surge.2bpp"
+ErikaSprite:          INCBIN "gfx/sprites/erika.2bpp"
+SabrinaSprite:        INCBIN "gfx/sprites/sabrina.2bpp"
+KogaSprite:           INCBIN "gfx/sprites/koga.2bpp"
+BlaineSprite:         INCBIN "gfx/sprites/blaine.2bpp"
 
 
 SECTION "Type Icons", ROMX

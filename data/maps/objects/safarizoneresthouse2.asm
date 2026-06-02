@@ -10,7 +10,7 @@ SafariZoneRestHouse2Object:
 	db 4 ; objects
 	object SPRITE_OAK_AIDE,         4, 4, WALK, 0,     1 ; person
 	object SPRITE_BLACK_HAIR_BOY_1, 0, 2, STAY, RIGHT, 2 ; person
-	object SPRITE_ERIKA,            6, 2, STAY, DOWN,  3 ; person
+	object SPRITE_KIMONO_WOMAN,            6, 2, STAY, DOWN,  3 ; person
 	object SPRITE_BUG_CATCHER,      3, 2, STAY, DOWN,  4
 
 	; warp-to
