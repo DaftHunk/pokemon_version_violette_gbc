@@ -234,6 +234,9 @@ const_value = 1
 	const SPRITE_JENNY
 	const SPRITE_JESSIE
 	const SPRITE_JAMES
+	const SPRITE_KOICHI
+	const SPRITE_FIREFIGHTER
+	const SPRITE_SOLDIER
 	; Pokemons
 	const SPRITE_SLOWBRO                   ; $05
 	const SPRITE_BIRD                      ; $09

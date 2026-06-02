@@ -2131,6 +2131,10 @@ MewSprite:            INCBIN "gfx/sprites/pokemons/mew.2bpp"
 HoohSprite:           INCBIN "gfx/sprites/pokemons/hooh.2bpp"
 
 
+SECTION "NPC Sprites 4", ROMX
+SoldierSprite:        INCBIN "gfx/sprites/soldier.2bpp"
+
+
 SECTION "Type Icons", ROMX
 
 NormalTypeIcon::     INCBIN "gfx/tiles/type_icons/normal.2bpp"

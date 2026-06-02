@@ -63,3 +63,4 @@ const_value = 1
 	trainer_const SACHA         ; $35
 	trainer_const SOLDIER       ; $36
 	trainer_const KOICHI        ; $37
+	trainer_const FIREFIGHTER   ; $38
