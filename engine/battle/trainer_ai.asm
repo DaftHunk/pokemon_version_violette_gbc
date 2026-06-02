@@ -1543,6 +1543,7 @@ TrainerAIPointers:
 	dbw 5,GenericAI ; Sacha
 	dbw 3,GenericAI ; Soldier
 	dbw 3,BlackbeltAI ; Koichi
+	dbw 3,GenericAI   ; Firefighter
 
 ;joenote - reorganizing these AI routines to jump on carry instead of returning on not-carry
 ;also adding recognition of a switch-pkmn bit

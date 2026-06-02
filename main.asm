@@ -243,6 +243,7 @@ PokeballSprite:       INCBIN "gfx/sprites/pokeball.2bpp"
 MapSprite:            INCBIN "gfx/sprites/map_ow.2bpp"
 CupSprite:            INCBIN "gfx/sprites/cup.2bpp"
 KoichiSprite:         INCBIN "gfx/sprites/koichi.2bpp"
+FireFighterSprite:    INCBIN "gfx/sprites/firefighter.2bpp"
 
 
 SECTION "Battle (bank 5)", ROMX, BANK[$5]
@@ -1075,6 +1076,8 @@ MFujiPic::         INCBIN "gfx/trainer/mfuji.pic"
 SachaPic::         INCBIN "gfx/trainer/sacha.pic"
 SoldierPic::       INCBIN "gfx/trainer/soldier.pic"
 KoichiPic::        INCBIN "gfx/trainer/koichi.pic"
+FireFighterPic::   INCBIN "gfx/trainer/firefighter.pic"
+
 
 SECTION "bank15",ROMX,BANK[$15]
 
@@ -2209,7 +2212,6 @@ Forest_GFX:        INCBIN "gfx/tilesets/forest.2bpp"
 Forest_Block:      INCBIN "gfx/blocksets/forest.bst"
 Alpha_GFX:         INCBIN "gfx/tilesets/alpha.2bpp"
 Alpha_Block:       INCBIN "gfx/blocksets/alpha.bst"
-
 
 
 SECTION "SGB Border", ROMX

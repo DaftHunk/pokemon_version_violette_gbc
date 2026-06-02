@@ -166,3 +166,6 @@ TrainerPicAndMoneyPointers:
 	dw KoichiPic
 	money 3500
 	
+	dw FireFighterPic
+	money 5000
+	

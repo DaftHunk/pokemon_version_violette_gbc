@@ -494,6 +494,11 @@ SpriteSheetPointerTable:
 	dw KoichiSprite
 	db $c0 ; byte count
 	db BANK(KoichiSprite)
+	
+	; SPRITE_FIREFIGHTER
+	dw FireFighterSprite
+	db $c0 ; byte count
+	db BANK(FireFighterSprite)
 
 	; SPRITE_SLOWBRO
 	dw SlowbroSprite

@@ -54,6 +54,7 @@ TrainerDataPointers:
 	dw SachaData
 	dw SoldierData
 	dw KoichiData
+	dw FireFighterData
 
 RosterLabelStart::
 ; if first byte != FF, then
@@ -77,9 +78,7 @@ YoungsterData:
 ; SS Anne 1F Rooms
 	db 21,NIDORINO,0
 ; Route 11
-	db 21,EKANS,0
-	db 19,SANDSHREW,ZUBAT,0
-	db $FF,17,RATTATA,17,RATTATA,20,RATICATE,0
+	db 19,SANDSHREW,EKANS,0
 	db 18,NIDORAN_M,NIDORINO,0
 
 BugCatcherData:
@@ -286,9 +285,8 @@ EngineerData:
 ; Route 11
 	db 21,MAGNEMITE,0
 	db 18,MAGNEMITE,MACHOP,MAGNEMITE,0
-; Volcano1F
-	db 43,POLIWRATH,DITTO,0
-	db 40,STARMIE,MACHOKE,0
+	db 21,DITTO,0
+	db 20,ELECTABUZZ,0
 ; Victory Road 3F
 	db 54,MAGNETON,DITTO,MACHAMP,POLIWRATH,0
 
@@ -756,3 +754,8 @@ SoldierData:
 	db 42,ELECTRODE,ELECTRODE,ELECTRODE,ELECTRODE,WARTORTLE,0
 ; VictoryRoad2F
 	db 51,PRIMEAPE,BLASTOISE,SCYTHER,RAICHU,0
+
+FireFighterData::
+; Volcano1F
+	db 43,POLIWRATH,BLASTOISE,0
+	db 40,STARMIE,GOLDUCK,0
