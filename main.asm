@@ -2145,6 +2145,7 @@ BurglarSprite:        INCBIN "gfx/sprites/burglar.2bpp"
 NerdSprite:           INCBIN "gfx/sprites/nerd.2bpp"
 JugglerSprite:        INCBIN "gfx/sprites/juggler.2bpp"
 TamerSprite:          INCBIN "gfx/sprites/tamer.2bpp"
+SachaSprite:          INCBIN "gfx/sprites/sacha.2bpp"
 
 
 SECTION "Type Icons", ROMX

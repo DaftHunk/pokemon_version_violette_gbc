@@ -36,7 +36,7 @@ MapSpriteSets:
 	db $01 ; ROUTE_22
 	db $06 ; ROUTE_23
 	db $02 ; ROUTE_24
-	db $03 ; BILLS_GARDEN
+	db $0b ; BILLS_GARDEN
 	db $fd ; ROUTE_25
 
 ; Format:
@@ -59,7 +59,7 @@ SplitMapSpriteSets:
 	db $02,$02,$07,$04 ; $fa
 	db $01,$11,$05,$07 ; $fb
 	db $01,$03,$07,$03 ; $fc
-	db $02,$03,$03,$02 ; $fd
+	db $02,$03,$0b,$02 ; $fd
 
 SpriteSets:
 ; SPRITESET_PALLET_VIRIDIAN
@@ -99,7 +99,7 @@ SpriteSets:
 	db SPRITE_BLACK_HAIR_BOY_1
 	db SPRITE_HOOH
 	db SPRITE_BALL
-	db SPRITE_RED
+	db SPRITE_SACHA
 
 ; SPRITESET_VERMILION
 	db SPRITE_FOULARD_WOMAN
@@ -191,6 +191,19 @@ SpriteSets:
 	db SPRITE_BUG_CATCHER
 	db SPRITE_BALL
 	db SPRITE_OMANYTE
+
+; SPRITESET_SPECIAL
+	db SPRITE_SACHA
+	db SPRITE_HOOH
+	db SPRITE_PIKACHU
+	db SPRITE_HIKER
+	db SPRITE_GAMBLER
+	db SPRITE_SLOWBRO
+	db SPRITE_LASS
+	db SPRITE_BLACK_HAIR_BOY_2
+	db SPRITE_GIRL
+	db SPRITE_BALL
+	db SPRITE_LITTLE_GIRL
 
 SpriteSheetPointerTable:
 	; SPRITE_RED
@@ -559,6 +572,11 @@ SpriteSheetPointerTable:
 	dw TamerSprite
 	db $c0 ; byte count
 	db BANK(TamerSprite)
+
+	; SPRITE_SACHA
+	dw SachaSprite
+	db $c0 ; byte count
+	db BANK(SachaSprite)
 
 	; SPRITE_SLOWBRO
 	dw SlowbroSprite

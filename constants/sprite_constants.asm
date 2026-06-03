@@ -248,6 +248,7 @@ const_value = 1
 	const SPRITE_NERD
 	const SPRITE_JUGGLER
 	const SPRITE_TAMER
+	const SPRITE_SACHA
 	; Pokemons
 	const SPRITE_SLOWBRO                   ; $05
 	const SPRITE_BIRD                      ; $09

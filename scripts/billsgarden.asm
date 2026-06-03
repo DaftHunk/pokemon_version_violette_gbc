@@ -16,6 +16,7 @@ BillsGardenScriptPointers:
 BillsGardenTextPointers:
 	dw BillsGarden_HoohText
 	dw BillsGardenText_Sacha
+	dw BillsGardenText_Pikachu
 	dw BillsGarden_SachaCongrat
 	dw BillsGarden_SachaBagFull
 	dw BillsGarden_SachaGiveStone
@@ -133,7 +134,7 @@ BillsGarden_ResetLegendaries:
 	; else fallthrough
 BillsGarden_ResetScript:
 	ResetEvent EVENT_MIST_STONE_WAIT
-	ld a, $3
+	ld a, $4
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 
@@ -142,11 +143,11 @@ BillsGarden_ResetScript:
 	call GiveItem
 	jp nc, .bagFull	;jump if not enough room in bag
 
-	ld a, $5
+	ld a, $6
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 
-	ld a, $6
+	ld a, $7
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 
@@ -193,14 +194,14 @@ BillsGarden_ResetScript:
 	call Delay3
 	call GBFadeInFromBlack
 
-	ld a, $7
+	ld a, $8
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 
 	jp .end
 .bagFull
 	SetEvent EVENT_MIST_STONE_WAIT
-	ld a, $4
+	ld a, $5
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 .end
@@ -246,3 +247,10 @@ BillsGarden_SachaStoneExplain:
 BillsGarden_SachaRespawnLegendaries:
 	TX_FAR _BillsGarden_SachaRespawnLegendaries
 	db "@"
+
+BillsGardenText_Pikachu:
+	TX_FAR _BillsGardenText_Pikachu
+	TX_ASM
+	ld a, PIKACHU
+	call DisplayPokedex
+	jp TextScriptEnd

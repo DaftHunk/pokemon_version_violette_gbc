@@ -110,3 +110,7 @@ _BillsGarden_SachaRespawnLegendaries::
 	cont "Caverne Azurée et"
 	cont "de la Centrale!"
 	done
+
+_BillsGardenText_Pikachu::
+	text "Chuuu!!!"
+	prompt
