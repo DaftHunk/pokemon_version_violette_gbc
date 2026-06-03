@@ -85,7 +85,7 @@ SilphCo5TextPointers:
 
 SilphCo5TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_5F_TRAINER_0
-	db ($1 << 4) ; trainer's view range
+	db ($2 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SILPH_CO_5F_TRAINER_0
 	dw SilphCo5BattleText2 ; TextBeforeBattle
 	dw SilphCo5AfterBattleText2 ; TextAfterBattle

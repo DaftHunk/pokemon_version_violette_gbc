@@ -155,15 +155,6 @@ _SilphCo11AfterBattleText2::
 	cont "terribles!"
 	done
 
-_SilphCo10Text_PorygonText::
-	text "Des #mon sur"
-	line "le moniteur!"
-
-	para "Oulah c'est un"
-	line "à faire une crise"
-	cont "d'épilepsie!"
-	prompt
-
 _SilphCo11Text6::
 	text "James:..."
 	line "Ça craint..."

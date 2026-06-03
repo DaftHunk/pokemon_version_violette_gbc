@@ -42,3 +42,13 @@ _SilphCo10AfterBattleText2::
 	text "T'as gagné!"
 	line "T'es content?"
 	done
+
+_SilphCo10Text_PorygonText::
+	text "Des #mon sur"
+	line "le moniteur!"
+
+	para "Oulah!"
+	line "C'est un coup à"
+	cont "faire une crise"
+	cont "d'épilepsie!"
+	prompt

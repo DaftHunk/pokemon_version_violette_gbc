@@ -54,16 +54,7 @@ IF DEF(_DEBUG)
 	ld [wTownVisitedFlag], a
 	ld [wTownVisitedFlag + 1], a
 
-	ld a, [wObtainedBadges]
-	set BIT_BOULDERBADGE, a ; Boulder Badge
-	set BIT_CASCADEBADGE, a ; Cascade Badge
-	set BIT_THUNDERBADGE, a ; Thunder Badge
-	set BIT_RAINBOWBADGE, a ; Rainbow Badge
-	set BIT_SOULBADGE, a ; Soul Badge
-	set BIT_MARSHBADGE, a ; Marsh Badge
-	set BIT_VOLCANOBADGE, a ; Volcano Badge
-	set BIT_EARTHBADGE, a ; Earth Badge
-	ld [wObtainedBadges], a
+;	call .unlockBadges
 
 	call SetDebugNewGameParty
 
@@ -149,110 +140,25 @@ IF DEF(_DEBUG)
 	ld [wItemQuantity], a
 	call AddItemToInventory
 	jr .items_loop
+
 .items_end
-
-	; Complete the Pokédex and Movedex
-	ld hl, wPokedexOwned
-	ld b, wPokedexOwnedEnd - wPokedexOwned - 1
-	call DebugSetPokedexEntries
-	ld [hl], %11111111
-	ld hl, wPokedexSeen
-	ld b, wPokedexSeenEnd - wPokedexSeen - 1
-	call DebugSetPokedexEntries
-	ld [hl], %11111111
-	ld hl, wMovedexSeen
-	ld b, wMovedexSeenEnd - wMovedexSeen
-	call DebugSetPokedexEntries
-
-	; Set tutorial events
-	SetEvent EVENT_GOT_POKEDEX
-	SetEvent EVENT_GOT_TOWN_MAP
-	SetEvent EVENT_GENDER_CAUGHT_INDICATOR
-	SetEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
-
-	; Unlock OldMan
-	ld a, HS_LYING_OLD_MAN
-	ld [wMissableObjectIndex], a
-	predef HideObject
-	ld a, HS_OLD_MAN
-	ld [wMissableObjectIndex], a
-	predef ShowObject
-
-;	SetEvent EVENT_NEW_GAME_PLUS
-;	SetEvent EVENT_ENABLE_WILD_RANDOM_TIERS
-;	SetEvent EVENT_ENABLE_WILD_RANDOM
-;	SetEvent EVENT_ENABLE_NORMAL_TRAINER_RANDOMIZATION
-
-	; Uncomment tp start in post game
-;	SetEvent EVENT_ELITE_4_BEATEN
-;	SetEvent EVENT_TRAINER_LVL_SCALING
-;	SetEvent EVENT_ELITE_4_REMATCH_BEATEN
-;	SetEvent EVENT_SS_ANNE_TOURNAMENT_BEATEN
-;	SetEvent EVENT_GOT_MIST_STONE
-;	SetEvent EVENT_MASTER_POKEMON
-;	SetEvent EVENT_GOT_DEX_DIPLOMA
-;	SetEvent EVENT_ARMORED_MEWTWO_KNOWLEDGE
-	SetEvent EVENT_GOT_HELIX_FOSSIL
-	SetEvent EVENT_BEAT_SILPH_CO_GIOVANNI
-
-	SetEvent EVENT_BEAT_BROCK
-;	SetEvent EVENT_BEAT_BROCK_REMATCH
-	SetEvent EVENT_BEAT_MISTY
-;	SetEvent EVENT_BEAT_MISTY_REMATCH
-	SetEvent EVENT_BEAT_LT_SURGE
-;	SetEvent EVENT_BEAT_LT_SURGE_REMATCH
-	SetEvent EVENT_BEAT_SABRINA
-;	SetEvent EVENT_BEAT_SABRINA_REMATCH
-	SetEvent EVENT_BEAT_ERIKA
-;	SetEvent EVENT_BEAT_ERIKA_REMATCH
-	SetEvent EVENT_BEAT_KOGA
-;	SetEvent EVENT_BEAT_KOGA_REMATCH
-	SetEvent EVENT_BEAT_BLAINE
-;	SetEvent EVENT_BEAT_BLAINE_REMATCH
-	SetEvent EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
-;	SetEvent EVENT_BEAT_GIOVANNI_REMATCH
-
-	; Set special flags
-;	ld a, [wBeatSpecial4Flags]
-;	set 0, a
-;	ld [wBeatSpecial4Flags], a
-;	ld a, [wBeatSpecial4Flags]
-;	set 1, a
-;	ld [wBeatSpecial4Flags], a
-;	ld a, [wBeatSpecial4Flags]
-;	set 3, a
-;	ld [wBeatSpecial4Flags], a
-;	ld a, [wBeatSpecial4Flags]
-;	set 4, a
-;	ld [wBeatSpecial4Flags], a
-
-	; Set Gym Rematch flags
-;	ld a, [wBeatGymLeadersRematch]
-;	set 0, a
-;	ld [wBeatGymLeadersRematch], a
-;	ld a, [wBeatGymLeadersRematch]
-;	set 1, a
-;	ld [wBeatGymLeadersRematch], a
-;	ld a, [wBeatGymLeadersRematch]
-;	set 2, a
-;	ld [wBeatGymLeadersRematch], a
-;	ld a, [wBeatGymLeadersRematch]
-;	set 3, a
-;	ld [wBeatGymLeadersRematch], a
-;	ld a, [wBeatGymLeadersRematch]
-;	set 4, a
-;	ld [wBeatGymLeadersRematch], a
-;	ld [wBeatGymLeadersRematch], a
-;	ld a, [wBeatGymLeadersRematch]
-;	set 5, a
-;	ld [wBeatGymLeadersRematch], a
-;	ld a, [wBeatGymLeadersRematch]
-;	set 6, a
+;	call .unlockPokedex
+;	call .unlockTutoBlocks
+;	call .unlockPostGameEvents
+;	call .unlockGymEvents
+;	call .unlockGymRematchEvents
+;	call .unlockSpecial4
+;	call .unlockRematchGym
 	
 	; Force Shiny apparition
 ;	ld [wFontLoaded], a
 ;	ld a, [wFontLoaded]
 ;	set BIT_FORCE_SHINY, a
+
+;	SetEvent EVENT_NEW_GAME_PLUS
+;	SetEvent EVENT_ENABLE_WILD_RANDOM_TIERS
+;	SetEvent EVENT_ENABLE_WILD_RANDOM
+;	SetEvent EVENT_ENABLE_NORMAL_TRAINER_RANDOMIZATION
 
 	; Disable Level Cap by default
 	ld a, [wGameplayOptions]
@@ -268,6 +174,128 @@ IF DEF(_DEBUG)
 	ld a, STARTER1
 	ld [hl], a
 
+	ret
+
+.unlockBadges
+	ld a, [wObtainedBadges]
+	set BIT_BOULDERBADGE, a ; Boulder Badge
+	set BIT_CASCADEBADGE, a ; Cascade Badge
+	set BIT_THUNDERBADGE, a ; Thunder Badge
+	set BIT_RAINBOWBADGE, a ; Rainbow Badge
+	set BIT_SOULBADGE, a ; Soul Badge
+	set BIT_MARSHBADGE, a ; Marsh Badge
+	set BIT_VOLCANOBADGE, a ; Volcano Badge
+	set BIT_EARTHBADGE, a ; Earth Badge
+	ld [wObtainedBadges], a
+	ret
+
+.unlockPokedex
+	; Complete the Pokédex and Movedex
+	ld hl, wPokedexOwned
+	ld b, wPokedexOwnedEnd - wPokedexOwned - 1
+	call DebugSetPokedexEntries
+	ld [hl], %11111111
+	ld hl, wPokedexSeen
+	ld b, wPokedexSeenEnd - wPokedexSeen - 1
+	call DebugSetPokedexEntries
+	ld [hl], %11111111
+	ld hl, wMovedexSeen
+	ld b, wMovedexSeenEnd - wMovedexSeen
+	call DebugSetPokedexEntries
+	ret
+
+.unlockTutoBlocks
+	; Set tutorial events
+	SetEvent EVENT_GOT_POKEDEX
+	SetEvent EVENT_GOT_TOWN_MAP
+	SetEvent EVENT_GENDER_CAUGHT_INDICATOR
+	SetEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS
+
+	; Unlock OldMan
+	ld a, HS_LYING_OLD_MAN
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_OLD_MAN
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+	ret
+
+.unlockPostGameEvents
+	; Uncomment tp start in post game
+;	SetEvent EVENT_ELITE_4_BEATEN
+;	SetEvent EVENT_TRAINER_LVL_SCALING
+;	SetEvent EVENT_ELITE_4_REMATCH_BEATEN
+;	SetEvent EVENT_SS_ANNE_TOURNAMENT_BEATEN
+;	SetEvent EVENT_GOT_MIST_STONE
+;	SetEvent EVENT_MASTER_POKEMON
+;	SetEvent EVENT_GOT_DEX_DIPLOMA
+;	SetEvent EVENT_ARMORED_MEWTWO_KNOWLEDGE
+;	SetEvent EVENT_GOT_HELIX_FOSSIL
+;	SetEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+;	SetEvent EVENT_SILPH_CO_11_UNLOCKED_DOOR
+	ret
+
+.unlockGymEvents
+	SetEvent EVENT_BEAT_BROCK
+	SetEvent EVENT_BEAT_MISTY
+	SetEvent EVENT_BEAT_LT_SURGE
+	SetEvent EVENT_BEAT_SABRINA
+	SetEvent EVENT_BEAT_ERIKA
+	SetEvent EVENT_BEAT_KOGA
+	SetEvent EVENT_BEAT_BLAINE
+	SetEvent EVENT_BEAT_VIRIDIAN_GYM_GIOVANNI
+	ret
+
+.unlockGymRematchEvents
+	SetEvent EVENT_BEAT_BROCK_REMATCH
+	SetEvent EVENT_BEAT_MISTY_REMATCH
+	SetEvent EVENT_BEAT_LT_SURGE_REMATCH
+	SetEvent EVENT_BEAT_SABRINA_REMATCH
+	SetEvent EVENT_BEAT_ERIKA_REMATCH
+	SetEvent EVENT_BEAT_KOGA_REMATCH
+	SetEvent EVENT_BEAT_BLAINE_REMATCH
+	SetEvent EVENT_BEAT_GIOVANNI_REMATCH
+	ret
+
+.unlockSpecial4
+	; Set special flags
+	ld a, [wBeatSpecial4Flags]
+	set 0, a
+	ld [wBeatSpecial4Flags], a
+	ld a, [wBeatSpecial4Flags]
+	set 1, a
+	ld [wBeatSpecial4Flags], a
+	ld a, [wBeatSpecial4Flags]
+	set 3, a
+	ld [wBeatSpecial4Flags], a
+	ld a, [wBeatSpecial4Flags]
+	set 4, a
+	ld [wBeatSpecial4Flags], a
+	ret
+
+.unlockRematchGym
+	; Set Gym Rematch flags
+	ld a, [wBeatGymLeadersRematch]
+	set 0, a
+	ld [wBeatGymLeadersRematch], a
+	ld a, [wBeatGymLeadersRematch]
+	set 1, a
+	ld [wBeatGymLeadersRematch], a
+	ld a, [wBeatGymLeadersRematch]
+	set 2, a
+	ld [wBeatGymLeadersRematch], a
+	ld a, [wBeatGymLeadersRematch]
+	set 3, a
+	ld [wBeatGymLeadersRematch], a
+	ld a, [wBeatGymLeadersRematch]
+	set 4, a
+	ld [wBeatGymLeadersRematch], a
+	ld [wBeatGymLeadersRematch], a
+	ld a, [wBeatGymLeadersRematch]
+	set 5, a
+	ld [wBeatGymLeadersRematch], a
+	ld a, [wBeatGymLeadersRematch]
+	set 6, a
 	ret
 
 DebugSetPokedexEntries:
