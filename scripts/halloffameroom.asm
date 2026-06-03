@@ -71,6 +71,15 @@ HallofFameRoomScript2:
 	ld [wMissableObjectIndex], a
 	predef ShowObject
 
+	; Move Chief in Safari Lab
+	ld a, HS_SILPH_CO_11F_CHIEF
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	
+	ld a, HS_SAFARI_LAB_CHIEF
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+
 	; Hides Starter Ball in Oak Lab because Oak trained it
 	ld a, HS_STARTER_BALL_1
 	ld [wMissableObjectIndex], a

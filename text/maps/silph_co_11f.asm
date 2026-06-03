@@ -35,8 +35,9 @@ _SilphCo10Text_6231c::
 	cont "la Master Ball!"
 
 	para "Elle pourra"
-	line "attraper n'importe"
-	cont "quel #mon!"
+	line "attraper"
+	cont "n'importe quel"
+	cont "#mon!"
 
 	para "Alors utilise-la"
 	line "avec sagesse."
@@ -47,7 +48,7 @@ _SilphCoMasterBallNoRoomText::
 	line "de place sur toi."
 	done
 
-_SilphCo11Text2::
+_SilphCo11Text_Secretary::
 	text "Secrétaire: Merci"
 	line "de nous avoir"
 	cont "tous sauvés!"
@@ -160,57 +161,13 @@ _SilphCo11Text6::
 	line "Ça craint..."
 	done
 
-;;;;;;;;;;;;;;;;;;;;;;joenote - adding text for Chief battle
-_ChiefText_challenge::
-	text "Tu veux me défier"
-	line "en duel #mon?"
+_SilphCo11Text_SecretaryPostLeague::
+	text "Secrétaire: Le"
+	line "Président est"
+	cont "absent."
+
+	para "Si c'est très"
+	line "important, tu"
+	cont "le trouveras"
+	cont "au Parc Safari."
 	done
-
-_ChiefText_prebattle::
-	text "Eh bien! Qui t'as"
-	line "dit que"
-	cont "j'entraînais"
-	cont "des #mon?"
-	
-	para "C'est vrai. Je"
-	line "suis accro au"
-	cont "Parc Safari."
-	
-	para "J'y vais depuis"
-	line "que j'ai à peu"
-	cont "prêt ton âge."
-	
-	para "Cependant je suis"
-	line "de plus en plus"
-	cont "occupé par"
-	cont "l'entreprise."
-
-	para "Mais ça ne"
-	line "m'empèche pas de"
-	cont "trouver le temps"
-	cont "pour m'amuser!"
-	done
-
-_ChiefTextVictorySpeech::
-	text "Ah!"
-	line "Le bon temps!"
-
-	para "Rien ne vaut un"
-	line "bon duel #mon"
-	cont "pour décompresser,"
-	cont "n'est-ce pas?"
-	
-	para "Durant mes safaris"
-	line "j'ai rencontré"
-	cont "une autre"
-	cont "Championne en"
-	cont "devenir qui"
-	cont "travaille à"
-	cont "Parmanie."
-	
-	para "Elle serait peut-"
-	line "être aussi"
-	cont "intéressée par"
-	cont "un duel."
-	prompt
-	

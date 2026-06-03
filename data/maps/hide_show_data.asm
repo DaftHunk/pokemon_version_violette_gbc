@@ -227,7 +227,7 @@ MapHSPointers:
 	dw SafariZoneWestHS
 	dw SafariZoneCenterHS
 	dw SafariZoneCenterRestHS
-	dw NoHS
+	dw SafariZoneSecretHouseHS
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -534,6 +534,7 @@ SilphCo10FHS:
 	db SILPH_CO_10F,$05,Show
 	db SILPH_CO_10F,$06,Show
 SilphCo11FHS:
+	db SILPH_CO_11F,$01,Show ; Chief
 	db SILPH_CO_11F,$03,Show ; GIOVANNI
 	db SILPH_CO_11F,$04,Show ; jessie
 	db SILPH_CO_11F,$05,Show 
@@ -566,6 +567,8 @@ SafariZoneCenterHS:
 	db SAFARI_ZONE_CENTER,$01,Show
 SafariZoneCenterRestHS:
 	db SAFARI_ZONE_CENTER_REST_HOUSE,$03,Hide
+SafariZoneSecretHouseHS:
+	db SAFARI_ZONE_SECRET_HOUSE,$02,Hide  ; Chief
 CeruleanCave2FHS:
 	db CERULEAN_CAVE_2F,$01,Show
 	db CERULEAN_CAVE_2F,$02,Show

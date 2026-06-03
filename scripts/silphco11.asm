@@ -296,7 +296,7 @@ SilphCo11Script6:	;joenote - adding this function to set a flag if you beat the 
 	
 SilphCo11TextPointers:
 	dw SilphCo11Text1
-	dw SilphCo11Text2
+	dw SilphCo11Text_Secretary
 	dw SilphCo11Text3
 	dw SilphCo11Text4
 	dw SilphCo11Text5
@@ -335,48 +335,15 @@ SilphCo11Text1:
 	ld hl, ReceivedSilphCoMasterBallText
 	call PrintText
 	SetEvent EVENT_GOT_MASTER_BALL
-	jr .asm_6230e
+	jr .endScript
 .BagFull
 	ld hl, SilphCoMasterBallNoRoomText
 	call PrintText
-	jr .asm_6230e
+	jr .endScript
 .asm_62308
-;;;;;;;;;;;;;;;;;;;;;;;;
-;joenote - chief battle
-	CheckEvent EVENT_ELITE_4_BEATEN	;has elite 4 been beaten?
-	jr z, .no_e4_beaten		;kick out if e4 not beaten
-	ld hl, ChiefText_challenge	;else ask if you want to challenge
-	call PrintText	;print the challenge text
-	call YesNoChoice	;prompt a yes/no choice
-	ld a, [wCurrentMenuItem]	;load the player choice
-	and a	;check the player choice
-	jr nz, .no_e4_beaten	;kick out if no chosen
-	;otherwise begin loading battle
-	ld hl, ChiefText_prebattle	;load pre battle text
-	call PrintText	;print the pre battle text
-	ld hl, wStatusFlags3;set the bits for triggering battle
-	set 6, [hl]	;
-	set 7, [hl]	;
-	ld hl, ChiefTextVictorySpeech	;load text for when you win
-	ld de, ChiefTextVictorySpeech	;load text for when you lose
-	call SaveEndBattleTextPointers	;save the win/lose text
-	ld a, $8
-	ld [wGymLeaderNo], a	;set bgm to gym leader music
-	ld a, OPP_CHIEF	;load the trainer type
-	ld [wCurOpponent], a	;set as the current opponent
-	ld a, 1	;get the right roster
-	ld [wTrainerNo], a
-	xor a
-	ld [hJoyHeld], a
-	ld a, $6
-	ld [wSilphCo11CurScript], a
-	ld [wCurMapScript], a
-	jp TextScriptEnd
-.no_e4_beaten
-;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, SilphCo10Text_6231c
 	call PrintText
-.asm_6230e
+.endScript
 	jp TextScriptEnd
 
 SilphCoPresidentText:
@@ -396,8 +363,23 @@ SilphCoMasterBallNoRoomText:
 	TX_FAR _SilphCoMasterBallNoRoomText
 	db "@"
 
-SilphCo11Text2:
-	TX_FAR _SilphCo11Text2
+SilphCo11Text_Secretary:
+	TX_ASM
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .postLeague
+	; Before League
+	ld hl, SilphCo11Text_SecretaryText
+	jr .endScript
+
+.postLeague
+	ld hl, SilphCo11Text_SecretaryPostLeague
+	; fallthrough
+.endScript
+	call PrintText
+	jp TextScriptEnd
+
+SilphCo11Text_SecretaryText:
+	TX_FAR _SilphCo11Text_Secretary
 	db "@"
 
 SilphCo11Text3:
@@ -452,12 +434,6 @@ SilphCo11AfterBattleText2:
 	TX_FAR _SilphCo11AfterBattleText2
 	db "@"
 
-ChiefText_challenge:
-	TX_FAR _ChiefText_challenge
+SilphCo11Text_SecretaryPostLeague:
+	TX_FAR _SilphCo11Text_SecretaryPostLeague
 	db "@"
-ChiefText_prebattle:
-	TX_FAR _ChiefText_prebattle
-	db "@"
-ChiefTextVictorySpeech:
-	TX_FAR _ChiefTextVictorySpeech
-	db "@"	

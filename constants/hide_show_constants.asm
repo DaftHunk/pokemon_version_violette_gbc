@@ -202,6 +202,7 @@ const_value = 0
 	const HS_SILPH_CO_10F_ITEM_1          ; B4 X
 	const HS_SILPH_CO_10F_ITEM_2          ; B5 X
 	const HS_SILPH_CO_10F_ITEM_3          ; B6 X
+	const HS_SILPH_CO_11F_CHIEF
 	const HS_SILPH_CO_11F_1               ; B7
 	const HS_SILPH_CO_11F_JESSIE          ; B9
 	const HS_SILPH_CO_11F_2               ; B8
@@ -226,6 +227,7 @@ const_value = 0
 	const HS_SAFARI_ZONE_WEST_ITEM_4      ; CC X
 	const HS_SAFARI_ZONE_CENTER_ITEM      ; CD X
 	const HS_SAFARI_ZONE_CENTER_REST_NICO
+	const HS_SAFARI_LAB_CHIEF
 	const HS_CERULEAN_CAVE_2F_ITEM_1     ; CE X
 	const HS_CERULEAN_CAVE_2F_ITEM_2     ; CF X
 	const HS_CERULEAN_CAVE_2F_ITEM_3     ; D0 X
