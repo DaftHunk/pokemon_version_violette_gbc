@@ -1,7 +1,8 @@
 _FuchsiaMeetingRoomText1::
 	text "Nous avons"
 	line "surnommé le"
-	cont "Gardien, Ramoloss."
+	cont "Gardien Baoba,"
+	cont "Ramoloss."
 
 	para "Ben, oui! Il"
 	line "ressemble à un"

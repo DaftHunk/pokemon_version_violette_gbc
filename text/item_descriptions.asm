@@ -242,8 +242,8 @@ _SSTicketDescription::
 	prompt
 
 _GoldTeethDescription::
-	text "Dent en or du"
-	next "Gardien."
+	text "Dent en or de"
+	next "Baoba le Gardien."
 	prompt
 
 _XAttackDescription::
