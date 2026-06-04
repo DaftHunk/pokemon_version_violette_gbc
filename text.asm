@@ -62,7 +62,7 @@ _ExclamationText::
 
 _VolcanoBattleBurnText::
 	text "Le Volcan est"
-	line "trop chaud!"
+	line "brûlant!"
 	prompt
 
 _GroundRoseText::

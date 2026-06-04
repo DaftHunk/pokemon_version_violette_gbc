@@ -106,7 +106,7 @@ CeruleanCaveName:
 PowerPlantName:
 	db "Centrale@"
 VolcanoName:
-	db "Volcan@"
+	db "Volcan Cramoisi@"
 BillsGardenName:
 	db "Jardin de Léo@"
 Route16WestName:
