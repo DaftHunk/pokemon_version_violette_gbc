@@ -3013,6 +3013,7 @@ wBillsHouseCurScript:: ; d661
 wRoute5GateCurScript:: ; d662
 	ds 1
 wPowerPlantCurScript:: ; d663
+wPowerPlant1FCurScript::
 ; overload
 	ds 0
 wRoute7GateCurScript:: ; d663

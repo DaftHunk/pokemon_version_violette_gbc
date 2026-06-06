@@ -94,13 +94,13 @@ const_value = 0
 	const HS_ELECTRODE_1                  ; 50 X
 	const HS_VOLTORB_4                    ; 51 X
 	const HS_VOLTORB_5                    ; 52 X
-	const HS_ELECTRODE_2                  ; 53 X
 	const HS_VOLTORB_6                    ; 54 X
-	const HS_ZAPDOS                       ; 55 X
 	const HS_POWER_PLANT_ITEM_1           ; 56 X
 	const HS_POWER_PLANT_ITEM_2           ; 57 X
 	const HS_POWER_PLANT_ITEM_3           ; 58 X
 	const HS_POWER_PLANT_ITEM_4           ; 59 X
+	const HS_ELECTRODE_2                  ; 53 X
+	const HS_ZAPDOS                       ; 55 X
 	const HS_POWER_PLANT_ITEM_5           ; 5A X
 	const HS_POWER_PLANT_ITEM_6           ; 5A X
 	const HS_VICTORY_ROAD_2_ITEM_1        ; 5C X

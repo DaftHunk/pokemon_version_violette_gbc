@@ -55,6 +55,7 @@ HiddenObjectMaps:
 	db CERULEAN_CAVE_1F
 	db CERULEAN_CAVE_B1F
 	db POWER_PLANT
+	db POWER_PLANT_1F
 	db SEAFOAM_ISLANDS_B2F
 	db SEAFOAM_ISLANDS_B4F
 	db POKEMON_MANSION_1F
@@ -160,6 +161,7 @@ HiddenObjectPointers:
 	dw UnknownDungeon1HiddenObjects
 	dw UnknownDungeon3HiddenObjects
 	dw PowerPlantHiddenObjects
+	dw PowerPlant1FHiddenObjects
 	dw SeafoamIslands3HiddenObjects
 	dw SeafoamIslands5HiddenObjects
 	dw Mansion1HiddenObjects
@@ -686,9 +688,11 @@ UnknownDungeon3HiddenObjects:
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 PowerPlantHiddenObjects:
-	db $10,$11,MAX_ELIXER
+	db $01,$26,MAX_ELIXER
 	dbw BANK(HiddenItems),HiddenItems
-	db $01,$0c,PP_UP
+	db $FF
+PowerPlant1FHiddenObjects:
+	db $01,$01,PP_UP
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 SeafoamIslands3HiddenObjects:

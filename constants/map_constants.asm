@@ -94,7 +94,8 @@ DEF NUM_CITY_MAPS EQU const_value
 	mapconst PATH_ENTRANCE_ROUTE_8,       4,  4 ; $52
 	mapconst ROCK_TUNNEL_POKECENTER,      4,  7 ; $53
 	mapconst ROCK_TUNNEL_1F,              18, 20 ; $54
-	mapconst POWER_PLANT,                 18, 20 ; $55
+	mapconst POWER_PLANT,                 12, 20 ; $55
+	mapconst POWER_PLANT_1F,              8, 20 ; $73
 	mapconst ROUTE_11_GATE_1F,            5,  4 ; $56
 	mapconst DIGLETTS_CAVE_ENTRANCE,      4,  4 ; $57
 	mapconst ROUTE_11_GATE_2F,            4,  4 ; $58
@@ -124,7 +125,6 @@ DEF NUM_CITY_MAPS EQU const_value
 	mapconst ROUTE_16_WEST_GATE,          9,  4 ; $70
 	mapconst LANCES_ROOM,                13, 13 ; $71
 	mapconst ROUTE_19_BEACH_HOUSE,        4,  4 ; $72
-	mapconst UNUSED_MAP_73,               0,  0 ; $73
 	mapconst UNUSED_MAP_74,               0,  0 ; $74
 	mapconst UNUSED_MAP_75,               0,  0 ; $75
 	mapconst HALL_OF_FAME,                4,  5 ; $76

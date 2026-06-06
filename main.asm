@@ -498,6 +498,11 @@ INCLUDE "scripts/powerplant.asm"
 INCLUDE "data/maps/objects/powerplant.asm"
 PowerPlantBlocks: INCBIN "maps/powerplant.blk"
 
+INCLUDE "data/maps/headers/powerplant1f.asm"
+INCLUDE "scripts/powerplant1f.asm"
+INCLUDE "data/maps/objects/powerplant1f.asm"
+PowerPlant1FBlocks: INCBIN "maps/powerplant1f.blk"
+
 INCLUDE "data/maps/headers/diglettscaveroute11.asm"
 INCLUDE "scripts/diglettscaveroute11.asm"
 INCLUDE "data/maps/objects/diglettscaveroute11.asm"

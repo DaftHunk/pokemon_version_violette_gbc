@@ -85,6 +85,7 @@ MapSongBanks:
 	db MUSIC_POKECENTER,       BANK(Music_Pokecenter)      ; RockTunnelPokecenter
 	db MUSIC_DUNGEON3,         BANK(Music_Dungeon3)        ; RockTunnel1
 	db MUSIC_DUNGEON1,         BANK(Music_Dungeon1)        ; PowerPlant
+	db MUSIC_DUNGEON1,         BANK(Music_Dungeon1)        ; PowerPlant1F
 	db MUSIC_VERMILION,        BANK(Music_Vermilion)       ; Route11Gate
 	db MUSIC_DUNGEON2,         BANK(Music_Dungeon2)        ; DiglettsCaveEntranceRoute11
 	db MUSIC_VERMILION,        BANK(Music_Vermilion)       ; Route11GateUpstairs
@@ -114,7 +115,6 @@ MapSongBanks:
 	db MUSIC_GIOVANNI_SONG,    BANK(Music_GiovanniSong)    ; Route16WestGate
 	db MUSIC_INDIGO_PLATEAU,   BANK(Music_IndigoPlateau)   ; Lance
 	db MUSIC_SURFING_PIKACHU,  BANK(Music_SurfingPikachu)  ; Route19BeachHouse
-	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; unused
 	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; unused
 	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; unused
 	db MUSIC_PALLET_TOWN,      BANK(Music_PalletTown)      ; HallofFameRoom

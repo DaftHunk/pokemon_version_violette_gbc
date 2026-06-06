@@ -91,6 +91,7 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw PowerPlantHS
+	dw PowerPlant1FHS
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -116,7 +117,6 @@ MapHSPointers:
 	dw VolcanoB1FHS
 	dw VictoryRoad1FHS
 	dw VolcanoB2FHS
-	dw NoHS
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -392,21 +392,22 @@ FightingDojoHS:
 SilphCo1FHS:
 	db SILPH_CO_1F,$01,Hide
 PowerPlantHS:
-	db POWER_PLANT,$01,Show
-	db POWER_PLANT,$02,Show
-	db POWER_PLANT,$03,Show
-	db POWER_PLANT,$04,Show
-	db POWER_PLANT,$05,Show
-	db POWER_PLANT,$06,Show
-	db POWER_PLANT,$07,Show
-	db POWER_PLANT,$08,Show
-	db POWER_PLANT,$09,Show
-	db POWER_PLANT,$0A,Show
-	db POWER_PLANT,$0B,Show
-	db POWER_PLANT,$0C,Show
-	db POWER_PLANT,$0D,Show
-	db POWER_PLANT,$0E,Show
-	db POWER_PLANT,$0F,Show
+	db POWER_PLANT,$01,Show ; Voltorb0
+	db POWER_PLANT,$02,Show ; Voltorb1
+	db POWER_PLANT,$03,Show ; Voltorb2
+	db POWER_PLANT,$04,Show ; Electrode1
+	db POWER_PLANT,$05,Show ; Voltorb4
+	db POWER_PLANT,$06,Show ; Voltorb5
+	db POWER_PLANT,$07,Show ; Voltorb6
+	db POWER_PLANT,$08,Show ; Item0
+	db POWER_PLANT,$09,Show ; Item1
+	db POWER_PLANT,$0A,Show ; Item2
+	db POWER_PLANT,$0B,Show ; Item3
+PowerPlant1FHS:
+	db POWER_PLANT_1F,$01,Show ; Electrode2
+	db POWER_PLANT_1F,$02,Show ; Zapdos
+	db POWER_PLANT_1F,$03,Show ; Item0
+	db POWER_PLANT_1F,$04,Show ; Item1
 VictoryRoad2FHS:
 	db VICTORY_ROAD_2,$06,Show
 	db VICTORY_ROAD_2,$07,Show

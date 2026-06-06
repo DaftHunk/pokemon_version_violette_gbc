@@ -86,6 +86,7 @@ MapHeaderPointers::
 	dw RockTunnelPokecenter_h
 	dw RockTunnel1_h
 	dw PowerPlant_h
+	dw PowerPlant1F_h
 	dw Route11Gate_h
 	dw DiglettsCaveEntranceRoute11_h
 	dw Route11GateUpstairs_h
@@ -115,7 +116,6 @@ MapHeaderPointers::
 	dw Route16WestGate_h
 	dw Lance_h
 	dw Route19BeachHouse_h
-	dw Lance_h ; unused
 	dw Lance_h ; unused
 	dw Lance_h ; unused
 	dw HallofFameRoom_h

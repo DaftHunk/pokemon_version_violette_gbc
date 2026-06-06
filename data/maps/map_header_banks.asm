@@ -86,6 +86,7 @@ MapHeaderBanks:
 	db BANK(RockTunnelPokecenter_h)
 	db BANK(RockTunnel1_h)
 	db BANK(PowerPlant_h)
+	db BANK(PowerPlant1F_h)
 	db BANK(Route11Gate_h)
 	db BANK(DiglettsCaveEntranceRoute11_h)
 	db BANK(Route11GateUpstairs_h)
@@ -115,7 +116,6 @@ MapHeaderBanks:
 	db BANK(Route16WestGate_h)
 	db BANK(Lance_h)
 	db BANK(Route19BeachHouse_h)
-	db $1D ;unused
 	db $1D ;unused
 	db $1D ;unused
 	db BANK(HallofFameRoom_h)
