@@ -112,6 +112,7 @@ LedgeTiles:
 	db SPRITE_FACING_RIGHT,$2C,$0D,D_RIGHT
 	db SPRITE_FACING_RIGHT,$2C,$1D,D_RIGHT
 	db SPRITE_FACING_RIGHT,$39,$0D,D_RIGHT
+	db SPRITE_FACING_RIGHT,$2C,$35,D_RIGHT
 	db $FF
 
 ; PureRGBnote: ADDED: in the volcano you can jump over specific new tiles like ledges.

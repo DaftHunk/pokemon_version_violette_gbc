@@ -29,7 +29,7 @@ DEF NUM_CITY_MAPS EQU const_value
 	mapconst ROUTE_7,                     9, 10 ; $12
 	mapconst ROUTE_8,                     9, 30 ; $13
 	mapconst ROUTE_9,                     9, 30 ; $14
-	mapconst ROUTE_10,                   36, 10 ; $15
+	mapconst ROUTE_10,                   39, 10 ; $15
 	mapconst ROUTE_11,                    9, 30 ; $16
 	mapconst ROUTE_12,                   54, 10 ; $17
 	mapconst ROUTE_13,                    9, 30 ; $18
