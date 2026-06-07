@@ -85,6 +85,7 @@ WildDataPointers:
 	dw NoMons
 	dw TunnelMonsB1
 	dw PowerPlantMons
+	dw PowerPlantMons
 	dw NoMons
 	dw NoMons
 	dw NoMons
@@ -110,7 +111,6 @@ WildDataPointers:
 	dw VolcanoB1FMons
 	dw PlateauMons1
 	dw VolcanoB2FMons
-	dw NoMons
 	dw NoMons
 	dw NoMons
 	dw NoMons
