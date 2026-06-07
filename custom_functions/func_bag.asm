@@ -369,6 +369,7 @@ ItemSortList::	;only for items that are bag-accessed
 	db NUGGET
 	; Gift Passives
 	db EXP_ALL
+	db EXP_CATCH_UP
 	db DOME_FOSSIL
 	db HELIX_FOSSIL
 	db OLD_AMBER

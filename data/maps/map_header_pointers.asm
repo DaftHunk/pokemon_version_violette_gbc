@@ -117,7 +117,6 @@ MapHeaderPointers::
 	dw Lance_h
 	dw Route19BeachHouse_h
 	dw Lance_h ; unused
-	dw Lance_h ; unused
 	dw HallofFameRoom_h
 	dw UndergroundPathNS_h
 	dw Rival_h ;id=120
@@ -194,6 +193,7 @@ MapHeaderPointers::
 	dw Route18GateUpstairs_h
 	dw SeafoamIslands1_h
 	dw Route22Gate_h
+	dw Route22GateUpstairs_h
 	dw VictoryRoad2_h
 	dw Route12GateUpstairs_h
 	dw VermilionHouse3_h

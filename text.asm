@@ -2194,6 +2194,7 @@ INCLUDE "text/maps/route_19_beach_house.asm"
 INCLUDE "text/maps/route_20.asm"
 INCLUDE "text/maps/route_21.asm"
 INCLUDE "text/maps/route_22.asm"
+INCLUDE "text/maps/route_22_gate_upstairs.asm"
 INCLUDE "text/maps/route_23.asm"
 INCLUDE "text/maps/route_24_1.asm"
 

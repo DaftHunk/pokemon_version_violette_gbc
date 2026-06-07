@@ -116,7 +116,6 @@ MapSongBanks:
 	db MUSIC_INDIGO_PLATEAU,   BANK(Music_IndigoPlateau)   ; Lance
 	db MUSIC_SURFING_PIKACHU,  BANK(Music_SurfingPikachu)  ; Route19BeachHouse
 	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; unused
-	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; unused
 	db MUSIC_PALLET_TOWN,      BANK(Music_PalletTown)      ; HallofFameRoom
 	db MUSIC_ROUTES1,          BANK(Music_Routes1)         ; UndergroundPathNS
 	db MUSIC_INDIGO_PLATEAU,   BANK(Music_IndigoPlateau)   ; Rival
@@ -193,6 +192,7 @@ MapSongBanks:
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; Route18GateUpstairs
 	db MUSIC_DUNGEON2,         BANK(Music_Dungeon2)        ; SeafoamIslands1
 	db MUSIC_ROUTE_3_EARLY,    BANK(Music_Route3Early)     ; Route22Gate
+	db MUSIC_ROUTE_3_EARLY,    BANK(Music_Route3Early)     ; Route22GateUpstairs
 	db MUSIC_DUNGEON3,         BANK(Music_Dungeon3)        ; VictoryRoad2
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; Route12GateUpstairs
 	db MUSIC_VERMILION,        BANK(Music_Vermilion)       ; VermilionHouse3

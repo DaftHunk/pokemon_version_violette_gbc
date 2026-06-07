@@ -140,7 +140,6 @@ WildDataPointers:
 	dw NoMons
 	dw NoMons
 	dw NoMons
-	dw NoMons
 	dw TowerMons1
 	dw TowerMons2
 	dw TowerMons3
@@ -192,6 +191,7 @@ WildDataPointers:
 	dw NoMons
 	dw NoMons
 	dw IslandMons1
+	dw NoMons
 	dw NoMons
 	dw PlateauMons2
 	dw NoMons

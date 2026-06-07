@@ -124,7 +124,8 @@ ItemUsePtrTable:
 	dw UnusableItem      ; FLOOR_10F
 	dw UnusableItem      ; FLOOR_11F
 	dw UnusableItem      ; FLOOR_B4F
-	dw ItemUseEvoStone   ; METAL_COAT ;dafthunk #19 
+	dw ItemUseEvoStone   ; METAL_COAT ;dafthunk #19
+	dw UnusableItem      ; EXP_CATCH_UP
 
 ItemUseBall:
 

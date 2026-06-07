@@ -125,7 +125,6 @@ DEF NUM_CITY_MAPS EQU const_value
 	mapconst ROUTE_16_WEST_GATE,          9,  4 ; $70
 	mapconst LANCES_ROOM,                13, 13 ; $71
 	mapconst ROUTE_19_BEACH_HOUSE,        4,  4 ; $72
-	mapconst UNUSED_MAP_74,               0,  0 ; $74
 	mapconst UNUSED_MAP_75,               0,  0 ; $75
 	mapconst HALL_OF_FAME,                4,  5 ; $76
 	mapconst UNDERGROUND_PATH_NS,        24,  4 ; $77
@@ -203,6 +202,7 @@ DEF NUM_CITY_MAPS EQU const_value
 	mapconst ROUTE_18_GATE_2F,            4,  4 ; $BF
 	mapconst SEAFOAM_ISLANDS_1F,          9, 15 ; $C0
 	mapconst ROUTE_22_GATE,               4,  5 ; $C1
+	mapconst ROUTE_22_GATE_UPSTAIRS,      4,  5 
 	mapconst VICTORY_ROAD_2,              9, 15 ; $C2
 	mapconst ROUTE_12_GATE_2F,            4,  4 ; $C3
 	mapconst VERMILION_TRADE_HOUSE,       4,  4 ; $C4

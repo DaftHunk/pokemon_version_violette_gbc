@@ -516,6 +516,11 @@ INCLUDE "scripts/route22gate.asm"
 INCLUDE "data/maps/objects/route22gate.asm"
 Route22GateBlocks: INCBIN "maps/route22gate.blk"
 
+INCLUDE "data/maps/headers/route22gateupstairs.asm"
+INCLUDE "scripts/route22gateupstairs.asm"
+INCLUDE "data/maps/objects/route22gateupstairs.asm"
+Route22GateUpstairsBlocks: INCBIN "maps/route22gateupstairs.blk"
+
 INCLUDE "data/maps/headers/billshouse.asm"
 INCLUDE "scripts/billshouse.asm"
 INCLUDE "data/maps/objects/billshouse.asm"

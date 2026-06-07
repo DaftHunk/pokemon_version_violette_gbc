@@ -123,7 +123,6 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw NoHS
 	dw NoHS	
 	dw ChampionsRoomHS	
 	dw UndergroundPathWEHS	;joenote - pointer added for underground path w_e
@@ -198,6 +197,7 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw SeafoamIslands1FHS
+	dw NoHS
 	dw NoHS
 	dw VictoryRoad2FHS
 	dw NoHS

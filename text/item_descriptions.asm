@@ -301,6 +301,13 @@ _ExpAllDescription::
 	next "d'exp de combat."
 	prompt
 
+_ExpCatchUpDescription::
+	text "Boost l'Exp des"
+	next "#mon en retard"
+	cont "de niveau dans"
+	cont "l'équipe."
+	prompt
+
 _OldRodDescription::
 	text "Utilise sur l'eau"
 	line "pour pêcher."

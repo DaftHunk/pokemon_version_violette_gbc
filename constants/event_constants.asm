@@ -1320,7 +1320,7 @@ const_value = 0
 	const EVENT_BEAT_ROUTE22_RIVAL_1ST_BATTLE        ; 525, (D7EB, bit 5)
 	const EVENT_BEAT_ROUTE22_RIVAL_2ND_BATTLE        ; 526, (D7EB, bit 6)
 	const EVENT_ROUTE22_RIVAL_WANTS_BATTLE           ; 527, (D7EB, bit 7)
-	const EVENT_528                                  ; 528, (D7EC, bit 0)
+	const EVENT_GOT_EXP_CATCH_UP                     ; 528, (D7EC, bit 0)
 	const EVENT_529                                  ; 529, (D7EC, bit 1)
 	const EVENT_52A                                  ; 52A, (D7EC, bit 2)
 	const EVENT_52B                                  ; 52B, (D7EC, bit 3)

@@ -117,7 +117,6 @@ MapHeaderBanks:
 	db BANK(Lance_h)
 	db BANK(Route19BeachHouse_h)
 	db $1D ;unused
-	db $1D ;unused
 	db BANK(HallofFameRoom_h)
 	db BANK(UndergroundPathNS_h)
 	db BANK(Rival_h)
@@ -194,6 +193,7 @@ MapHeaderBanks:
 	db BANK(Route18GateUpstairs_h)
 	db BANK(SeafoamIslands1_h)
 	db BANK(Route22Gate_h)
+	db BANK(Route22GateUpstairs_h)
 	db BANK(VictoryRoad2_h)
 	db BANK(Route12GateUpstairs_h)
 	db BANK(VermilionHouse3_h)
