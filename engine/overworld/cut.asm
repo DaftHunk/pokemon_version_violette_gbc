@@ -332,5 +332,5 @@ CutTreeBlockSwaps:
 	db $3D, $36
 	db $40, $0A	;joenote - plateau grass
 	db $9B, $A9
-	db $A8, $4C
+	db $A7, $A8
 	db $FF ; list terminator

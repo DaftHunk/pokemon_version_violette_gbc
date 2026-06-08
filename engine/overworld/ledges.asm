@@ -6,6 +6,8 @@ HandleLedges:
 	and a ; OVERWORLD
 	;ret nz
 	jr z, .overworld
+	cp ALPHA
+	jr z, .overworld
  	cp VOLCANO
  	jr z, .volcano
  	ret
