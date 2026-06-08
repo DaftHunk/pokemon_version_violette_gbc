@@ -49,6 +49,7 @@ GainExperience:
 	call GetNumMonsGainingExp
 	call DivideExpDataByNumMonsGainingExp
 	call GiveStatExp
+	call CalcPartyAvgLevel	;compute party average level before CalculateLevelExp overwrites H_QUOTIENT
 	call CalculateLevelExp
 	
 	xor a
@@ -426,8 +427,6 @@ CalculateLevelExp:
 	ld a, [wIsInBattle]
 	dec a
 	call nz, BoostExp
-	
-	call CatchUpBoost	;shinpokered-master feature
 
 	ret
 
@@ -453,29 +452,70 @@ BoostExp:
 	ld [H_QUOTIENT + 3], a
 	ret
 
-	
-;joenote - apply a big exp boost if an underleveled active pokemon scored the K.O.
-;shinpokered-master feature
-CatchUpBoost:	
-	CheckEvent EVENT_ENABLE_CATCH_UP_BOOST
-	ret z
-	ld a, [wBattleMonLevel]
-	ld b, a
-	ld a, [wEnemyMonLevel]	
-	sub b
-	ret z	;return if enemy lvl = player level
-	ret c	;return if enemy lvl < player level
-.loop
-	;A is currently wEnemyMonLevel - wBattleMonLevel > 0
+
+;joenote - computes the average level of all party members (including fainted)
+;and stores the result in wPartyAvgLevel.
+;Must be called BEFORE CalculateLevelExp because it uses H_MULTIPLICAND/H_QUOTIENT/Divide.
+;Result is at most 100, fits in one byte.
+CalcPartyAvgLevel:
 	push af
-	call BoostExp
+	push bc
+	push de
+	push hl
+
+	xor a
+	ld [wPartyAvgLevel], a	; default to 0: no boost if item absent or party empty
+
+	ld b, EXP_CATCH_UP
+	call IsItemInBag
+	jr z, .avgDone		; EXP_CATCH_UP not in bag: leave wPartyAvgLevel = 0 and return
+
+	ld a, [wPartyCount]
+	and a
+	jr z, .avgDone		; safety: empty party (should never happen mid-battle)
+
+	ld d, a			; D = number of party mons remaining in loop
+	ld b, 0			; B:C = 16-bit running sum of levels (max 6*100=600)
+	ld c, 0
+
+	ld hl, wPartyMon1Level
+.avgLoop
+	ld a, [hl]		; A = this party member's level
+	add c			; add to low byte of sum
+	ld c, a
+	jr nc, .avgNoCarry
+	inc b			; carry into high byte
+.avgNoCarry
+	push bc			; save sum while we advance HL
+	ld bc, wPartyMon2 - wPartyMon1
+	add hl, bc		; HL = next party mon's Level field
+	pop bc			; restore sum
+	dec d
+	jr nz, .avgLoop
+
+	; Divide B:C (level sum) by wPartyCount using the system Divide routine
+	ld a, [wPartyCount]
+	ld [H_DIVISOR], a
+	xor a
+	ld [H_MULTIPLICAND], a
+	ld [H_MULTIPLICAND + 1], a
+	ld a, b
+	ld [H_MULTIPLICAND + 2], a
+	ld a, c
+	ld [H_MULTIPLICAND + 3], a
+	ld b, 4
+	call Divide
+	ld a, [H_QUOTIENT + 3]	; quotient fits in one byte (max 100)
+	ld [wPartyAvgLevel], a
+
+.avgDone
+	pop hl
+	pop de
+	pop bc
 	pop af
-	sub 3	;additional boost every 3 levels of difference
-	jr nc, .loop	;keep boosting until A underflows
 	ret
 
 
-;joenote - adds the exp in H_QUOTIENT + 2 and H_QUOTIENT + 3 to the pokemon pointed to by HL
 ;Assumes HL = wPartyMon'X'OTID
 ;Returns with HL = wPartyMon'X'Exp
 ;Also applies any boosts unique to the pointed pokemon
@@ -504,7 +544,32 @@ AddExpToPokemon:
 	ld [wGainBoostedExp], a
 .next
 	pop hl
-	
+
+	; Check if this pokemon is below the party average level.
+	; If so, apply a proportional catch-up boost: x1.5 per 3 levels below average
+	; (same scale as CatchUpBoost). Stacks with the traded-pokemon boost above.
+	push hl
+	ld bc, wPartyMon1Level - wPartyMon1OTID
+	add hl, bc		; HL = wPartyMon'X'Level
+	ld a, [hl]		; A = this pokemon's current level
+	pop hl			; HL = wPartyMon'X'OTID (restored)
+	ld b, a			; B = this pokemon's level
+	ld a, [wPartyAvgLevel]
+	cp b			; compare avg (A) vs level (B)
+	jr z, .noAvgLevelBoost	; equal: no boost
+	jr c, .noAvgLevelBoost	; avg < level: this mon is above average, no boost
+	; avg > level: apply proportional boost
+	sub b			; A = avg - level (positive)
+.avgLevelBoostLoop
+	push af
+	call BoostExp
+	pop af
+	sub 5			; one BoostExp call per 5 levels below average
+	jr nc, .avgLevelBoostLoop
+	ld a, 1
+	ld [wGainBoostedExp], a
+.noAvgLevelBoost
+
 	ld bc, (wPartyMon1Exp + 2) - wPartyMon1OTID
 	add hl, bc
 	;hl now points to wPartyMon'X'Exp + 2

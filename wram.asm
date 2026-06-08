@@ -2374,6 +2374,7 @@ wPrize2Price:: ; d143
 wPrize3Price:: ; d145
 	ds 2
 
+wPartyAvgLevel::
 	ds 1
 
 wLinkBattleRandomNumberList:: ; d148

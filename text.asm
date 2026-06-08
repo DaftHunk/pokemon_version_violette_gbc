@@ -1566,7 +1566,7 @@ _BoostedText::
 
 _ExpPointsText::
 	text_decimal wExpAmountGained, 2, 5	;joenote - increased to 5 digits
-	text " points d'exp!"
+	text " pts d'exp!"
 	prompt
 
 _GrewLevelText::

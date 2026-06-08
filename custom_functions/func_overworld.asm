@@ -64,7 +64,6 @@ ResetAllOptions: ;joenote - reset all the special options (like for patching-up)
 	
 	ResetEvent EVENT_ENABLE_WILD_RANDOM_TIERS
 	ResetEvent EVENT_ENABLE_NORMAL_TRAINER_RANDOMIZATION
-	ResetEvent EVENT_ENABLE_CATCH_UP_BOOST
 	ResetEvent EVENT_CINNABAR_SHORE_MISSINGNO
 	ResetEvent EVENT_ENABLE_ITEM_CLAUSE
 	ResetEvent EVENT_ENABLE_WILD_RANDOM
