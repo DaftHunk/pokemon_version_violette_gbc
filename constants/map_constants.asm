@@ -46,6 +46,7 @@ DEF NUM_CITY_MAPS EQU const_value
 	mapconst ROUTE_23,                   72, 10 ; $23
 	mapconst ROUTE_24,                   18, 10 ; $24
 	mapconst BILLS_GARDEN,                7, 11 ; $25
+	mapconst MT_MOON_SQUARE,              9, 15 ; $75
 	mapconst ROUTE_25,                   10, 30 ; $26
 
 	mapconst REDS_HOUSE_1F,               4,  4 ; $27
@@ -125,7 +126,6 @@ DEF NUM_CITY_MAPS EQU const_value
 	mapconst ROUTE_16_WEST_GATE,          9,  4 ; $70
 	mapconst LANCES_ROOM,                13, 13 ; $71
 	mapconst ROUTE_19_BEACH_HOUSE,        4,  4 ; $72
-	mapconst UNUSED_MAP_75,               0,  0 ; $75
 	mapconst HALL_OF_FAME,                4,  5 ; $76
 	mapconst UNDERGROUND_PATH_NS,        24,  4 ; $77
 	mapconst CHAMPIONS_ROOM,              4,  4 ; $78

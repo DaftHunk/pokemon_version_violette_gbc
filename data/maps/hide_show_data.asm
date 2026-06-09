@@ -43,6 +43,7 @@ MapHSPointers:
 	dw NoHS
 	dw Route24HS
 	dw BillsGardenHS
+	dw NoHS
 	dw Route25HS
 	dw NoHS
 	dw RedsHouse2FHS
@@ -117,7 +118,6 @@ MapHSPointers:
 	dw VolcanoB1FHS
 	dw VictoryRoad1FHS
 	dw VolcanoB2FHS
-	dw NoHS
 	dw NoHS
 	dw NoHS
 	dw NoHS

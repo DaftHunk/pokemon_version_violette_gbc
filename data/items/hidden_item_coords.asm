@@ -7,6 +7,7 @@ HiddenItemCoords:
 	db ROUTE_9,$07,$0e
 	db SS_ANNE_KITCHEN,$09,$0d
 	db SS_ANNE_B1F_ROOMS,$01,$03
+	db ROUTE_10,$03,$08
 	db ROUTE_10,$11,$09
 	db ROUTE_10,$35,$10
 	db ROCKET_HIDEOUT_B1F,$0f,$15
@@ -61,7 +62,7 @@ HiddenItemCoords:
 	db CERULEAN_CITY,$08,$0f
 	db CERULEAN_CITY,$1f,$06
 	db ROUTE_2,$03,$11
-	db ROUTE_4,$03,$28
+	db ROUTE_4,$0f,$3d
 	db VERMILION_DOCK,$01,$01
 	db VERMILION_DOCK,$0A,$1B
 ;joenote - added some additional hidden items
@@ -81,4 +82,5 @@ HiddenItemCoords:
 	db VOLCANO_B2F,13,13
 	db CELADON_MANSION_ROOF,$0a,$00
 	db ROUTE_20,$12,$35
+	db MT_MOON_SQUARE,$08,$08
 	db $ff

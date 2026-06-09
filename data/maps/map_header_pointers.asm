@@ -38,6 +38,7 @@ MapHeaderPointers::
 	dw Route23_h
 	dw Route24_h
 	dw BillsGarden_h
+	dw MtMoonSquare_h
 	dw Route25_h
 	dw RedsHouse1F_h
 	dw RedsHouse2F_h
@@ -116,7 +117,6 @@ MapHeaderPointers::
 	dw Route16WestGate_h
 	dw Lance_h
 	dw Route19BeachHouse_h
-	dw Lance_h ; unused
 	dw HallofFameRoom_h
 	dw UndergroundPathNS_h
 	dw Rival_h ;id=120

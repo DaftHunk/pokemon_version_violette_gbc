@@ -937,6 +937,11 @@ INCLUDE "scripts/mtmoonb2f.asm"
 INCLUDE "data/maps/objects/mtmoonb2f.asm"
 MtMoonB2FBlocks: INCBIN "maps/mtmoonb2f.blk"
 
+INCLUDE "data/maps/headers/mtmoonsquare.asm"
+INCLUDE "scripts/mtmoonsquare.asm"
+INCLUDE "data/maps/objects/mtmoonsquare.asm"
+MtMoonSquareBlocks: INCBIN "maps/mtmoonsquare.blk"
+
 INCLUDE "data/maps/headers/safarizonewest.asm"
 INCLUDE "scripts/safarizonewest.asm"
 INCLUDE "data/maps/objects/safarizonewest.asm"

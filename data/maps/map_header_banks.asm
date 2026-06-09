@@ -38,6 +38,7 @@ MapHeaderBanks:
 	db BANK(Route23_h) ; ROUTE_23
 	db BANK(Route24_h) ; ROUTE_24
 	db BANK(BillsGarden_h)
+	db BANK(MtMoonSquare_h)
 	db BANK(Route25_h) ; ROUTE_25
 	db BANK(RedsHouse1F_h)
 	db BANK(RedsHouse2F_h)
@@ -116,7 +117,6 @@ MapHeaderBanks:
 	db BANK(Route16WestGate_h)
 	db BANK(Lance_h)
 	db BANK(Route19BeachHouse_h)
-	db $1D ;unused
 	db BANK(HallofFameRoom_h)
 	db BANK(UndergroundPathNS_h)
 	db BANK(Rival_h)

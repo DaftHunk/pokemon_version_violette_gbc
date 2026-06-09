@@ -37,6 +37,7 @@ MapSongBanks:
 	db MUSIC_INDIGO_PLATEAU,   BANK(Music_IndigoPlateau)   ; ROUTE_23
 	db MUSIC_ROUTES2,          BANK(Music_Routes2)         ; ROUTE_24
 	db MUSIC_PALLET_TOWN,      BANK(Music_PalletTown)      ; BillsGarden
+	db MUSIC_MUSEUM_GUY,       BANK(Music_MuseumGuy)       ; MtMoonSquare
 	db MUSIC_ROUTES2,          BANK(Music_Routes2)         ; ROUTE_25
 	db MUSIC_PALLET_TOWN,      BANK(Music_PalletTown)      ; RedsHouse1F
 	db MUSIC_PALLET_TOWN,      BANK(Music_PalletTown)      ; RedsHouse2F
@@ -115,7 +116,6 @@ MapSongBanks:
 	db MUSIC_GIOVANNI_SONG,    BANK(Music_GiovanniSong)    ; Route16WestGate
 	db MUSIC_INDIGO_PLATEAU,   BANK(Music_IndigoPlateau)   ; Lance
 	db MUSIC_SURFING_PIKACHU,  BANK(Music_SurfingPikachu)  ; Route19BeachHouse
-	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; unused
 	db MUSIC_PALLET_TOWN,      BANK(Music_PalletTown)      ; HallofFameRoom
 	db MUSIC_ROUTES1,          BANK(Music_Routes1)         ; UndergroundPathNS
 	db MUSIC_INDIGO_PLATEAU,   BANK(Music_IndigoPlateau)   ; Rival

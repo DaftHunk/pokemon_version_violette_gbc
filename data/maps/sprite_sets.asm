@@ -37,6 +37,7 @@ MapSpriteSets:
 	db $06 ; ROUTE_23
 	db $02 ; ROUTE_24
 	db $0b ; BILLS_GARDEN
+	db $0b ; MT_MOON_SQUARE
 	db $fd ; ROUTE_25
 
 ; Format:
@@ -196,7 +197,7 @@ SpriteSets:
 	db SPRITE_SACHA
 	db SPRITE_HOOH
 	db SPRITE_PIKACHU
-	db SPRITE_HIKER
+	db SPRITE_CLEFAIRY
 	db SPRITE_GAMBLER
 	db SPRITE_SLOWBRO
 	db SPRITE_LASS

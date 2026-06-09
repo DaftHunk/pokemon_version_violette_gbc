@@ -101,6 +101,7 @@ HiddenObjectMaps:
 	db ROUTE_16_GATE_2F
 	db ROUTE_18_GATE_2F
 	db ROUTE_20
+	db MT_MOON_SQUARE
 	db $FF
 
 HiddenObjectPointers:
@@ -207,6 +208,7 @@ HiddenObjectPointers:
 	dw Route16GateUpstairsHiddenObjects
 	dw Route18GateUpstairsHiddenObjects
 	dw Route20HiddenObjects
+	dw MtMoonSquareHiddenObjects
 	
 ; format: y-coord, x-coord, text id/item id, object routine
 TradeCenterHiddenObjects:
@@ -612,6 +614,8 @@ SSAnne10HiddenObjects:
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 Route10HiddenObjects:
+	db $03,$08,WATER_STONE
+	dbw BANK(HiddenItems),HiddenItems
 	db $11,$09,SUPER_POTION
 	dbw BANK(HiddenItems),HiddenItems
 	db $35,$10,MAX_ETHER
@@ -937,7 +941,7 @@ Route2HiddenObjects:
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 Route4HiddenObjects:
-	db $03,$28,GREAT_BALL
+	db $0f,$3d,GREAT_BALL
 	dbw BANK(HiddenItems),HiddenItems
 	db 3,62,MOON_STONE
 	dbw BANK(HiddenItems),HiddenItems	;joenote - added an extra moon stone
@@ -985,5 +989,9 @@ Route18GateUpstairsHiddenObjects:
 	db $FF
 Route20HiddenObjects:
 	db $12,$35,WATER_STONE
+	dbw BANK(HiddenItems),HiddenItems
+	db $FF
+MtMoonSquareHiddenObjects:
+	db $08,$08,MOON_STONE
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF

@@ -37,6 +37,7 @@ WildDataPointers:
 	dw Route23Mons ; ROUTE_23
 	dw Route24Mons ; ROUTE_24
 	dw BillsGardenMons 
+	dw MoonSquareMons
 	dw Route25Mons ; ROUTE_25
 	dw NoMons      ; REDS_HOUSE_1F
 	dw NoMons
@@ -111,7 +112,6 @@ WildDataPointers:
 	dw VolcanoB1FMons
 	dw PlateauMons1
 	dw VolcanoB2FMons
-	dw NoMons
 	dw NoMons
 	dw NoMons
 	dw NoMons
@@ -268,6 +268,7 @@ INCLUDE "data/wildPokemons/maps/route3.asm"
 INCLUDE "data/wildPokemons/maps/mtmoon1f.asm"
 INCLUDE "data/wildPokemons/maps/mtmoonb1f.asm"
 INCLUDE "data/wildPokemons/maps/mtmoonb2f.asm"
+INCLUDE "data/wildPokemons/maps/mtmoonsquare.asm"
 INCLUDE "data/wildPokemons/maps/route4.asm"
 INCLUDE "data/wildPokemons/maps/route24.asm"
 INCLUDE "data/wildPokemons/maps/route25.asm"

@@ -37,6 +37,7 @@ ExternalMapEntries:
 	EMAP $0,$6,Route23Name
 	EMAP $A,$1,Route24Name
 	EMAP $C,$0,BillsGardenName
+	EMAP $6,$2,MountMoonName
 	EMAP $B,$0,Route25Name
 
 InternalMapEntries:
