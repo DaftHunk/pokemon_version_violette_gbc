@@ -43,11 +43,11 @@ LoadTilesetHeader:
 	jr z, .done
 
 	; Credit Engezerstorung
-	call CheckIfInOutsideMap_UseA
-	jr nz, .dungeon
-	ld a, b
-	call CheckIfInOutsideMap_UseA
-	jr z, .done
+;	call CheckIfInOutsideMap_UseA
+;	jr nz, .dungeon
+;	ld a, b
+;	call CheckIfInOutsideMap_UseA
+;	jr z, .done
 
 .dungeon
 	ld a, [wDestinationWarpID]
