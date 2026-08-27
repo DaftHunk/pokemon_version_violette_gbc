@@ -3,7 +3,7 @@ Route22GateObject:
 
 	db 6 ; warps
 	warp 4, 7, 0, -1
-	warp 5, 7, 0, -1
+	warp 5, 7, 1, -1
 	warp 4, 0, 0, -1
 	warp 5, 0, 1, -1
 	warp 0, 7, 0, ROUTE_22_GATE_UPSTAIRS

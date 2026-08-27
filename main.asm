@@ -1572,8 +1572,6 @@ House_GFX:         INCBIN "gfx/tilesets/house.2bpp"
 House_Block:       INCBIN "gfx/blocksets/house.bst"
 Mansion_GFX:       INCBIN "gfx/tilesets/mansion.2bpp"
 Mansion_Block:     INCBIN "gfx/blocksets/mansion.bst"
-ShipPort_GFX:      INCBIN "gfx/tilesets/ship_port.2bpp"
-ShipPort_Block:    INCBIN "gfx/blocksets/ship_port.bst"
 Interior_GFX:      INCBIN "gfx/tilesets/interior.2bpp"
 Interior_Block:    INCBIN "gfx/blocksets/interior.bst"
 
@@ -2244,6 +2242,8 @@ Forest_GFX:        INCBIN "gfx/tilesets/forest.2bpp"
 Forest_Block:      INCBIN "gfx/blocksets/forest.bst"
 Alpha_GFX:         INCBIN "gfx/tilesets/alpha.2bpp"
 Alpha_Block:       INCBIN "gfx/blocksets/alpha.bst"
+ShipPort_GFX:      INCBIN "gfx/tilesets/ship_port.2bpp"
+ShipPort_Block:    INCBIN "gfx/blocksets/ship_port.bst"
 
 
 SECTION "SGB Border", ROMX
