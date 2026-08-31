@@ -19,8 +19,9 @@ ExternalMapEntries:
 	EMAP $A,$8,Route6Name
 	EMAP $8,$5,Route7Name
 	EMAP $D,$5,Route8Name
-	EMAP $D,$2,Route9Name
-	EMAP $E,$4,Route10Name
+	EMAP $C,$2,Route9Name
+	EMAP $E,$2,Route10Name
+	EMAP $E,$4,Route10SouthName
 	EMAP $C,$9,Route11Name
 	EMAP $E,$9,Route12Name
 	EMAP $D,$B,Route13Name

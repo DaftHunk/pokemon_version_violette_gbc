@@ -22,6 +22,7 @@ MapHeaderPointers::
 	dw Route8_h
 	dw Route9_h
 	dw Route10_h
+	dw Route10South_h
 	dw Route11_h
 	dw Route12_h
 	dw Route13_h
@@ -205,7 +206,6 @@ MapHeaderPointers::
 	dw RocketHideout4_h
 	dw RocketHideoutElevator_h
 	dw CeladonSchool_h
-	dw RocketHideoutElevator_h ; unused
 	dw RocketHideoutElevator_h ; unused
 	dw SilphCo2_h
 	dw SilphCo3_h

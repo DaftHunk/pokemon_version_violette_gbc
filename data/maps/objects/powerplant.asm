@@ -2,8 +2,8 @@ PowerPlantObject:
 	db $2e ; border block
 
 	db 3 ; warps
-	warp  4, 23, 3, -1
-	warp  5, 23, 3, -1
+	warp  4, 23, 2, -1
+	warp  5, 23, 2, -1
 	warp  23, 1, 1, POWER_PLANT_1F
 
 	db 0 ; signs

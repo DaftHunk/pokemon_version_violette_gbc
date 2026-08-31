@@ -791,6 +791,15 @@ MakeOverworldBGMapAttributes:
 	pop hl
 	
 	ret c
+
+	ld a, [w2CurMap]
+	cp ROUTE_10_SOUTH ; load Lavender palette for the top of lavender roof
+	jr nz, .notRoute10South
+	; if Route 10 South
+	ld a, PAL_ENH_OVW_PURPLE
+	ret
+	; else
+.notRoute10South
 	ld a, PAL_ENH_OVW_BROWN	;for routes and other such maps
 	ret
 	

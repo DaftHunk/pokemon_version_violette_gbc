@@ -2,7 +2,7 @@ PowerPlant1FObject:
 	db $2e ; border block
 
 	db 2 ; warps
-	warp 0, 11, 4, ROUTE_10
+	warp 0, 11, 3, ROUTE_10
 	warp 16, 1, 2, POWER_PLANT
 
 	db 0 ; signs

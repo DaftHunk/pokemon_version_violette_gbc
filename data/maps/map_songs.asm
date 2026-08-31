@@ -21,6 +21,7 @@ MapSongBanks:
 	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; ROUTE_8
 	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; ROUTE_9
 	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; ROUTE_10
+	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; ROUTE_10_SOUTH
 	db MUSIC_ROUTES4,          BANK(Music_Routes4)         ; ROUTE_11
 	db MUSIC_ROUTES4,          BANK(Music_Routes4)         ; ROUTE_12
 	db MUSIC_ROUTES4,          BANK(Music_Routes4)         ; ROUTE_13
@@ -204,7 +205,6 @@ MapSongBanks:
 	db MUSIC_DUNGEON1,         BANK(Music_Dungeon1)        ; RocketHideout4
 	db MUSIC_DUNGEON1,         BANK(Music_Dungeon1)        ; RocketHideoutElevator
 	db MUSIC_CELADON,          BANK(Music_Celadon)         ; CeladonSchool
-	db MUSIC_DUNGEON1,         BANK(Music_Dungeon1)
 	db MUSIC_DUNGEON1,         BANK(Music_Dungeon1)
 	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)         ; SilphCo2
 	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)         ; SilphCo3

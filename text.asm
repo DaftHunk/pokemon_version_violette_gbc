@@ -2174,6 +2174,7 @@ INCLUDE "text/maps/route_7.asm"
 INCLUDE "text/maps/route_8.asm"
 INCLUDE "text/maps/route_9.asm"
 INCLUDE "text/maps/route_10.asm"
+INCLUDE "text/maps/route_10_south.asm"
 INCLUDE "text/maps/route_11_1.asm"
 
 

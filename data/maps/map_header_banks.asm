@@ -22,6 +22,7 @@ MapHeaderBanks:
 	db BANK(Route8_h) ; ROUTE_8
 	db BANK(Route9_h) ; ROUTE_9
 	db BANK(Route10_h) ; ROUTE_10
+	db BANK(Route10South_h)
 	db BANK(Route11_h) ; ROUTE_11
 	db BANK(Route12_h) ; ROUTE_12
 	db BANK(Route13_h) ; ROUTE_13
@@ -205,7 +206,6 @@ MapHeaderBanks:
 	db BANK(RocketHideout4_h)
 	db BANK(RocketHideoutElevator_h)
 	db BANK(CeladonSchool_h)
-	db $01
 	db $01
 	db BANK(SilphCo2_h)
 	db BANK(SilphCo3_h)

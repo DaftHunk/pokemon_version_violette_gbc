@@ -75,6 +75,7 @@ HiddenObjectMaps:
 	db CELADON_MANSION_ROOF_HOUSE
 	db FIGHTING_DOJO
 	db ROUTE_10
+	db ROUTE_10_SOUTH
 	db INDIGO_PLATEAU_LOBBY
 	db CINNABAR_LAB_FOSSIL_ROOM
 	db BIKE_SHOP
@@ -182,6 +183,7 @@ HiddenObjectPointers:
 	dw CeladonMansion5HiddenObjects
 	dw FightingDojoHiddenObjects
 	dw Route10HiddenObjects
+	dw Route10SouthHiddenObjects
 	dw IndigoPlateauLobbyHiddenObjects
 	dw CinnabarLab4HiddenObjects
 	dw BikeShopHiddenObjects
@@ -614,11 +616,13 @@ SSAnne10HiddenObjects:
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 Route10HiddenObjects:
-	db $03,$08,WATER_STONE
+	db $06,$0A,WATER_STONE
 	dbw BANK(HiddenItems),HiddenItems
-	db $11,$09,SUPER_POTION
+	db $19,$0B,CALCIUM
 	dbw BANK(HiddenItems),HiddenItems
-	db $35,$10,MAX_ETHER
+	db $FF
+Route10SouthHiddenObjects:
+	db $04,$12,MAX_ETHER
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 DiglettsCaveHiddenObjects:			;joenote - added some hidden items

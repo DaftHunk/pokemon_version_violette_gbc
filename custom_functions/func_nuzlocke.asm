@@ -495,7 +495,7 @@ NuzlockeMapList:
 	db $F5	; PokemonTowerName
 	db $F4	; PowerPlantName
 	db $E3	; RockTunnelName
-	db $E4	; Route10Name
+	db $E2	; Route10Name
 	db $C9	; Route11Name
 	db $E9	; Route12Name
 	db $DB	; Route13Name

@@ -2839,6 +2839,7 @@ wRoute3CurScript:: ; d5f8
 	ds 1
 wRoute4CurScript:: ; d5f9
 	ds 1
+wRoute10SouthCurScript::
 	ds 1
 wViridianGymCurScript:: ; d5fb
 	ds 1

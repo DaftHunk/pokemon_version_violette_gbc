@@ -9,7 +9,7 @@ ENDM
 	mapconst VIRIDIAN_CITY,              18, 20 ; $01
 	mapconst PEWTER_CITY,                18, 20 ; $02
 	mapconst CERULEAN_CITY,              18, 20 ; $03
-	mapconst LAVENDER_TOWN,               9, 10 ; $04
+	mapconst LAVENDER_TOWN,               9, 11 ; $04
 	mapconst VERMILION_CITY,             18, 20 ; $05
 	mapconst CELADON_CITY,               18, 25 ; $06
 	mapconst SAFFRON_CITY,               18, 20 ; $07
@@ -28,8 +28,9 @@ DEF NUM_CITY_MAPS EQU const_value
 	mapconst ROUTE_6,                    18, 10 ; $11
 	mapconst ROUTE_7,                     9, 10 ; $12
 	mapconst ROUTE_8,                     9, 30 ; $13
-	mapconst ROUTE_9,                     9, 30 ; $14
-	mapconst ROUTE_10,                   39, 10 ; $15
+	mapconst ROUTE_9,                     9, 29 ; $14
+	mapconst ROUTE_10,                   27, 12 ; $15
+	mapconst ROUTE_10_SOUTH,             12, 12 ; $CD
 	mapconst ROUTE_11,                    9, 30 ; $16
 	mapconst ROUTE_12,                   54, 10 ; $17
 	mapconst ROUTE_13,                    9, 30 ; $18
@@ -214,7 +215,6 @@ DEF NUM_CITY_MAPS EQU const_value
 	mapconst ROCKET_HIDEOUT_B4F,         12, 15 ; $CA
 	mapconst ROCKET_HIDEOUT_ELEVATOR,     4,  3 ; $CB
 	mapconst CELADON_SCHOOL,              4,  4 ; $CC
-	mapconst UNUSED_MAP_CD,               0,  0 ; $CD
 	mapconst UNUSED_MAP_CE,               0,  0 ; $CE
 	mapconst SILPH_CO_2F,                 9, 15 ; $CF
 	mapconst SILPH_CO_3F,                 9, 15 ; $D0

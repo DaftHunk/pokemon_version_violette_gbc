@@ -20,7 +20,8 @@ MapSpriteSets:
 	db $fb ; ROUTE_7
 	db $fc ; ROUTE_8
 	db $02 ; ROUTE_9
-	db $f2 ; ROUTE_10
+	db $02 ; ROUTE_10
+	db $f2 ; ROUTE_10_SOUTH
 	db $f3 ; ROUTE_11
 	db $f4 ; ROUTE_12
 	db $08 ; ROUTE_13
@@ -49,7 +50,7 @@ MapSpriteSets:
 ; 03: sprite set ID if in the East or South side
 SplitMapSpriteSets:
 	db $02,$25,$02,$01 ; $f1
-	db $02,$32,$02,$03 ; $f2
+	db $02,$01,$02,$03 ; $f2
 	db $01,$39,$04,$08 ; $f3
 	db $02,$15,$03,$08 ; $f4
 	db $01,$08,$0A,$08 ; $f5
