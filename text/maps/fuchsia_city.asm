@@ -76,9 +76,8 @@ _FuchsiaCityText_ZooChansey::
 	cont "capturer un."
 
 	para "La légende"
-	line "raconte que le"
-	cont "plus puissant"
-	cont "des Leveinard"
+	line "raconte que"
+	cont "Leveinard"
 	cont "attirerait des"
 	cont "#mon à la robe"
 	cont "étrange..."

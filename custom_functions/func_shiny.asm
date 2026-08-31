@@ -3,11 +3,7 @@
 ShinyAttractFunction:
 	CheckEvent EVENT_FIRST_SHINY_APPEARED
 	jr z, .easierFirstShiny
-;only if the party leader is lvl 100 or more
-	ld a, [wPartyMon1Level]
-	cp 100	;do wPartyMon1Level - 100. set carry if result < 0
-	ret c	;return if wPartyMon1Level < 100
-;and only if it's a chansey
+;only if the party leader is chansey
 	ld a, [wPartyMon1Species]
 	cp CHANSEY
 	ret nz
