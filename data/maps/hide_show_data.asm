@@ -28,6 +28,7 @@ MapHSPointers:
 	dw Route9HS
 	dw NoHS
 	dw NoHS
+	dw NoHS
 	dw Route12HS
 	dw NoHS
 	dw NoHS
@@ -208,7 +209,6 @@ MapHSPointers:
 	dw RocketHideoutB2FHS
 	dw RocketHideoutB3FHS
 	dw RocketHideoutB4FHS
-	dw NoHS
 	dw NoHS
 	dw NoHS
 	dw NoHS

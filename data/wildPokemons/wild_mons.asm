@@ -21,6 +21,7 @@ WildDataPointers:
 	dw Route8Mons  ; ROUTE_8
 	dw Route9Mons  ; ROUTE_9
 	dw Route10Mons ; ROUTE_10
+	dw NoMons
 	dw Route11Mons ; ROUTE_11
 	dw Route12Mons ; ROUTE_12
 	dw Route13Mons ; ROUTE_13
@@ -198,7 +199,6 @@ WildDataPointers:
 	dw NoMons
 	dw CaveMons
 	dw PlateauMons3
-	dw NoMons
 	dw NoMons
 	dw NoMons
 	dw NoMons
