@@ -17,7 +17,7 @@ PewterCityObject:
 	sign 14, 25, 9 ; PokeCenterSignText
 	sign 12,  7, 10 ; PewterCityText10
 	sign 11, 17, 11 ; PewterCityText11
-	sign 18, 22, 12 ; PewterCityText12
+	sign 17, 23, 12 ; PewterCityText12
 
 	db 5 ; objects
 	object SPRITE_LASS, 8, 15, STAY, NONE, 1 ; person
