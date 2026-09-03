@@ -3,7 +3,7 @@ PewterCityObject:
 
 	db 7 ; warps
 	warp 14, 7, 0, MUSEUM_1F
-	warp 19, 5, 2, MUSEUM_1F
+	warp 20,  5, 2, MUSEUM_1F
 	warp 16, 17, 0, PEWTER_GYM
 	warp 29, 13, 0, PEWTER_NIDORAN_HOUSE
 	warp 23, 17, 0, PEWTER_MART
@@ -28,7 +28,7 @@ PewterCityObject:
 
 	; warp-to
 	warp_to 14, 7, PEWTER_CITY_WIDTH ; MUSEUM_1F
-	warp_to 19, 5, PEWTER_CITY_WIDTH ; MUSEUM_1F
+	warp_to 20,  5, PEWTER_CITY_WIDTH ; MUSEUM_1F
 	warp_to 16, 17, PEWTER_CITY_WIDTH ; PEWTER_GYM
 	warp_to 29, 13, PEWTER_CITY_WIDTH ; PEWTER_NIDORAN_HOUSE
 	warp_to 23, 17, PEWTER_CITY_WIDTH ; PEWTER_MART

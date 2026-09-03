@@ -20,7 +20,7 @@ DEF NUM_CITY_MAPS EQU const_value
 
 	mapconst UNUSED_MAP_0B,               0,  0 ; $0B
 
-	mapconst ROUTE_1,                    18, 10 ; $0C
+	mapconst ROUTE_1,                    18, 12 ; $0C
 	mapconst ROUTE_2,                    36, 12 ; $0D
 	mapconst ROUTE_3,                     9, 35 ; $0E
 	mapconst ROUTE_4,                     9, 45 ; $0F
