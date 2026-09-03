@@ -139,6 +139,8 @@ PaperSheetSprite:      INCBIN "gfx/sprites/paper_sheet.2bpp"
 BookMapDexSprite:      INCBIN "gfx/sprites/book_map_dex.2bpp"
 ClipboardSprite:       INCBIN "gfx/sprites/clipboard.2bpp"
 LyingOldManSprite:     INCBIN "gfx/sprites/lying_old_man.2bpp"
+RhyhornSprite:         INCBIN "gfx/sprites/rhyhorn.2bpp"
+
 
 SECTION "Graphics", ROMX, BANK[GFX]
 PokemonLogoGraphics:            INCBIN "gfx/mainmenu/pokemon_logo.2bpp"

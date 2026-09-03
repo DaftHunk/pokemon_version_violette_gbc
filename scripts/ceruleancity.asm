@@ -240,6 +240,7 @@ CeruleanCityTextPointers:
 	dw CeruleanCityText10
 	dw CeruleanCityText11
 	dw CeruleanCityText_Merchant
+	dw CeruleanCityText_RhyhornMerchant
 	dw CeruleanCityText12
 	dw CeruleanCityText13
 	dw MartSignText
@@ -247,7 +248,6 @@ CeruleanCityTextPointers:
 	dw CeruleanCityText16
 	dw CeruleanCityText17
 	dw CeruleanCityText_EstBoard
-	dw CeruleanCityText_RhyhornMerchant
 	dw CeruleanCityText_BikeShop
 	dw CeruleanCityText_BadgeHouse
 

@@ -627,11 +627,10 @@ CheckSpriteAvailability:
 	ld l, a
 	ld a, [wGrassTile]
 	cp c
-	ld a, $0
+	res 7, [hl]
 	jr nz, .notInGrass
-	ld a, $80
+	set 7, [hl]
 .notInGrass
-	ld [hl], a       ; c2x7
 	and a
 .done
 	ret

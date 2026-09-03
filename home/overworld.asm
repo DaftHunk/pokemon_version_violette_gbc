@@ -2274,6 +2274,10 @@ LoadMapHeader::
 	ld a, [hli]
 	ld [de], a ; store picture ID at C1X0
 	inc d
+
+	cp SPRITE_RHYHORN
+	push af
+
 	ld a, $04
 	add e
 	ld e, a
@@ -2289,8 +2293,17 @@ LoadMapHeader::
 	ld [hLoadSpriteTemp1], a ; save movement byte 2
 	ld a, [hli]
 	ld [hLoadSpriteTemp2], a ; save text ID and flags byte
+	pop af
 	push bc
 	push hl
+	jr nz, .notRhyhorn
+
+	ld h, d
+	ld l, e
+	inc l
+	ld [hl], $03
+
+.notRhyhorn
 	ld b, $00
 	ld hl, wMapSpriteData
 	add hl, bc

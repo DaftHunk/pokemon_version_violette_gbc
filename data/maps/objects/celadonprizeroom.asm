@@ -2,8 +2,8 @@ CeladonPrizeRoomObject:
 	db $f ; border block
 
 	db 2 ; warps
-	warp 4, 7, 9, -1
-	warp 5, 7, 9, -1
+	warp 4, 7, 8, -1
+	warp 5, 7, 8, -1
 
 	db 3 ; signs
 	sign 2, 2, 3 ; CeladonPrizeRoomText3

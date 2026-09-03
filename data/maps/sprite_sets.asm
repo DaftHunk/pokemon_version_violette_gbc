@@ -88,7 +88,7 @@ SpriteSets:
 	db SPRITE_LASS
 	db SPRITE_BLACK_HAIR_BOY_1
 	db SPRITE_BALL
-	db SPRITE_LYING_OLD_MAN_UNUSED_2
+	db SPRITE_RHYHORN
 
 ; SPRITESET_LAVENDER
 	db SPRITE_LITTLE_GIRL
@@ -126,7 +126,7 @@ SpriteSets:
 	db SPRITE_POLYWRATH
 	db SPRITE_GUARD
 	db SPRITE_ROCKET
-	db SPRITE_BALL
+	db SPRITE_RHYHORN
 	db SPRITE_SNORLAX
 
 ; SPRITESET_INDIGO
@@ -791,3 +791,8 @@ SpriteSheetPointerTable:
 	dw LyingOldManSprite
 	db $40 ; byte count
 	db BANK(LyingOldManSprite)
+
+	; SPRITE_RHYHORN
+	dw RhyhornSprite
+	db $40 ; byte count
+	db BANK(RhyhornSprite)
