@@ -10,7 +10,7 @@ Route6GateScriptPointers:
 	dw Route6GateScript1
 
 Route6GateScript0:
-	ld a, [wd728]
+	ld a, [wStatusFlags1]
 	bit 6, a
 	ret nz
 	ld hl, CoordsData_1e08c
@@ -21,7 +21,7 @@ Route6GateScript0:
 	xor a
 	ld [hJoyHeld], a
 	callba RemoveGuardDrink
-	ld a, [$ffdb]
+	ld a, [hItemToRemoveID]
 	and a
 	jr nz, .asm_1e080
 	ld a, $2
@@ -32,7 +32,7 @@ Route6GateScript0:
 	ld [wRoute6GateCurScript], a
 	ret
 .asm_1e080
-	ld hl, wd728
+	ld hl, wStatusFlags1
 	set 6, [hl]
 	ld a, $3
 	ld [hSpriteIndexOrTextID], a
@@ -53,7 +53,7 @@ Route6GateScript1:
 	ret
 
 Route6GateScript_1e0a1:
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 7, [hl]
 	ld a, $80
 	ld [wSimulatedJoypadStatesEnd], a

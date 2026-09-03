@@ -7,7 +7,7 @@ DisplayExtraOptionMenu:
 	ld a, 1 ;cursor X coordinate
 	ld [wTopMenuItemX], a
 
-	ld a, 1
+	ld a, BIT_TEXT_NO_DELAY
 	ld [wLetterPrintingDelayFlags], a	;no delay
 	ld a, $01
 	ld [H_AUTOBGTRANSFERENABLED], a ; enable auto background transfer
@@ -312,16 +312,16 @@ CycleSoundSetting:	;joenote - cycle through mono, earphone 1, 2, and 3
 	ld b, a
 	ld c, a
 	
-	ld a, (SOUND_STEREO_BITS ^ $FF)
+	ld a, (BITS_OPTIONS_SOUND_STEREO ^ $FF)
 	and b
 	ld b, a
 	
 	ld a, c
-	and SOUND_STEREO_BITS
+	and BITS_OPTIONS_SOUND_STEREO
 	swap a
 	inc a
 	swap a
-	and SOUND_STEREO_BITS
+	and BITS_OPTIONS_SOUND_STEREO
 	or b
 	pop bc
 	ld [wOptions], a
@@ -329,7 +329,7 @@ CycleSoundSetting:	;joenote - cycle through mono, earphone 1, 2, and 3
 PlaceSoundSetting:
 	ld hl, OptionMenuSoundText
 	ld a, [wOptions]
-	and SOUND_STEREO_BITS
+	and BITS_OPTIONS_SOUND_STEREO
 	swap a
 .loop
 	and a
@@ -362,14 +362,14 @@ OptionMenuEar3:
 
 ;60fps - show the fps setting on the menu when activated
 Toggle60FPSSetting:
-	ld a, [wGameplayOptions]
-	xor %00010000
-	ld [wGameplayOptions], a
+	ld a, [wGraphicOptions]
+	xor 1 << BIT_GRAPHIC_60_FPS
+	ld [wGraphicOptions], a
 	;fall through
 Show60FPSSetting:
 	ld hl, OptionMenuFPSText
-	ld a, [wGameplayOptions]
-	bit 4, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_60_FPS, a
 	jr nz, .done
 	inc hl
 	inc hl
@@ -393,13 +393,13 @@ OptionMenu30FPS:
 ToggleLaglessText:
 	ld a, [wOptions]
 	and %11111001
-	xor TEXT_DELAY_FAST
+	xor BITS_OPTIONS_TEXT_DELAY_FAST
 	ld [wOptions], a
 	;fall through
 ShowLaglessTextSetting:
 	ld hl, OptionMenuOnOffText
 	ld a, [wOptions]
-	and TEXT_DELAY_BITS
+	and BITS_OPTIONS_TEXT_DELAY
 	jr z, .print
 	inc hl
 	inc hl
@@ -419,10 +419,10 @@ ToggleGammaShader:
 	xor %00000011
 	ld [hGBC], a
 
-	ld a, [wGameplayOptions]
-	xor %00100000
-	ld [wGameplayOptions], a
-	bit 5, a
+	ld a, [wGraphicOptions]
+	xor 1 << BIT_GRAPHIC_GAMMA
+	ld [wGraphicOptions], a
+	bit BIT_GRAPHIC_GAMMA, a
 ;GBCNote - RunDefaultPaletteCommand which messes up enhanced GBC colors
 ;set a flag for prevent this from happening
 	ld hl, hFlagsFFFA
@@ -452,9 +452,9 @@ ToggleEnhancedGBCColors:
 	ld a, [hGBC]
 	and a
 	ret z	;do nothing if on dmg or sgb
-	ld a, [wGameplayOptions]
-	xor ENH_GBC_COLORS
-	ld [wGameplayOptions], a
+	ld a, [wGraphicOptions]
+	xor 1 << BIT_GRAPHIC_ENHANCED_GBC
+	ld [wGraphicOptions], a
 	call RunDefaultPaletteCommand
 	;fall through
 ShowEnhancedGBCSetting:
@@ -462,8 +462,8 @@ ShowEnhancedGBCSetting:
 	ld a, [hGBC]
 	and a
 	jr z, .off
-	ld a, [wGameplayOptions]
-	bit BIT_ENH_GBC_COLORS, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_ENHANCED_GBC, a
 	jr nz, .print
 .off
 	inc hl
@@ -478,15 +478,15 @@ ShowEnhancedGBCSetting:
 
 ;joenote - for levelcap mode option
 ToggleLevelCapMode:
-	ld a, [wMoreGameplayOptions]
-	xor %00000001
-	ld [wMoreGameplayOptions], a
-	bit 0, a
+	ld a, [wGameplayOptions]
+	xor 1 << BIT_GAMEPLAY_LEVEL_CAP
+	ld [wGameplayOptions], a
+	bit BIT_GAMEPLAY_LEVEL_CAP, a
 	;fall through
 ShowLevelCapSetting:
 	ld de, OptionMenuTextOFF
-	ld a, [wMoreGameplayOptions]	;check if levelcap is active
-	bit 0, a
+	ld a, [wGameplayOptions]	;check if levelcap is active
+	bit BIT_GAMEPLAY_LEVEL_CAP, a
 	jr z, .print
 	ld de, OptionMenuTextON
 .print
@@ -496,14 +496,14 @@ ShowLevelCapSetting:
 
 ;joenote - for hard mode option
 ToggleHardMode:
-	ld a, [wOptions]
-	xor BATTLE_HARD_MODE
-	ld [wOptions], a
+	ld a, [wGameplayOptions]
+	xor 1 << BIT_GAMEPLAY_HARDMODE
+	ld [wGameplayOptions], a
 	;fall through
 ShowHardModeSetting:
 	ld hl, OptionMenuOnOffText
-	ld a, [wOptions]
-	bit BIT_BATTLE_HARD, a
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_HARDMODE, a
 	jr nz, .print
 	inc hl
 	inc hl
@@ -518,14 +518,14 @@ ShowHardModeSetting:
 ;joenote - show /toggle nuzlocke mode
 ToggleNuzlocke:
 	ld a, [wGameplayOptions]
-	xor %01000000
+	xor 1 << BIT_GAMEPLAY_NUZLOCKE
 	ld [wGameplayOptions], a
-	bit 6, a
+	bit BIT_GAMEPLAY_NUZLOCKE, a
 	;fall through
 ShowNuzlocke:
 	ld de, OptionMenuTextOFF
 	ld a, [wGameplayOptions]	;check if nuzlocke is active
-	bit 6, a
+	bit BIT_GAMEPLAY_NUZLOCKE, a
 	jr z, .print
 	ld de, OptionMenuTextON
 .print

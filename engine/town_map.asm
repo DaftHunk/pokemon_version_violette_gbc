@@ -232,7 +232,7 @@ LoadTownMap_Fly:
 	call PlaySound
 	ld a, [hl]
 	ld [wDestinationMap], a
-	ld hl, wd732
+	ld hl, wStatusFlags6
 	set 3, [hl]
 	inc hl
 	set 7, [hl]
@@ -266,27 +266,38 @@ LoadTownMap_Fly:
 	jr z, .pressedDown ; skip past unvisited towns
 	jp .townMapFlyLoop
 .wrapToEndOfList
-	ld hl, wFlyLocationsList + 11
+	ld hl, wFlyLocationsList + NUM_CITY_MAPS + EXTRA_FLYING_MAPS
 	jr .pressedDown
 
 ToText:
 	db " →@"
 
 BuildFlyLocationsList:
-	ld hl, wFlyLocationsList - 1
+	ld hl, wFlyAnimUsingCoordList
 	ld [hl], $ff
-	inc hl
+	inc hl ; it's wFlyLocationsList
 	ld a, [wTownVisitedFlag]
 	ld e, a
 	ld a, [wTownVisitedFlag + 1]
 	ld d, a
-	ld bc, FORGOTTEN_TOWN + 1
+	ld b, 0
+	ld c, NUM_CITY_MAPS + EXTRA_FLYING_MAPS
 .loop
 	srl d
 	rr e
 	ld a, $fe ; store $fe if the town hasn't been visited
 	jr nc, .notVisited
 	ld a, b ; store the map number of the town if it has been visited
+; new for Route 4 and Route 10
+	cp ROUTE_4_FLY
+	jr nz, .notRoute4
+	ld a, ROUTE_4
+.notRoute4
+	cp ROUTE_10_FLY
+	jr nz, .notRoute10
+	ld a, ROUTE_10
+; back to vanilla
+.notRoute10
 .notVisited
 	ld [hl], a
 	inc hl
@@ -352,7 +363,7 @@ LoadTownMap:
 
 CompressedMap:
 ; you can decompress this file with the redrle program in the extras/ dir
-	INCBIN "gfx/tiles/town_map.rle"
+	INCBIN "gfx/tilemaps/town_map.rle"
 
 ExitTownMap:
 ; clear town map graphics data and load usual graphics data

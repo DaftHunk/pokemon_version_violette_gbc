@@ -151,10 +151,10 @@ _Route8EndBattleText9::
 	prompt
 
 _Route8AfterBattleText9::
-	text "Il paraît que"
-	line "Mélofée peut"
+	text "Tu savais que"
+	line "Mélofée pouvait"
 	cont "évoluer grâce à "
-	cont "une Pierre Lune."
+	cont "une Pierre Lune?"
 	done
 
 _Route8Text10::

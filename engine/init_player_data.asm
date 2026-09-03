@@ -13,7 +13,7 @@ InitPlayerData2:
 	call InitializeEmptyList
 	
 	ld a, $ff
-	ld [wUnusedD71B], a
+	ld [wTempCombatStats], a
 
 	ld hl, wPartyCount
 	call InitializeEmptyList

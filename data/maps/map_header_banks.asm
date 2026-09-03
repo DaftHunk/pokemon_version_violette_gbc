@@ -22,6 +22,7 @@ MapHeaderBanks:
 	db BANK(Route8_h) ; ROUTE_8
 	db BANK(Route9_h) ; ROUTE_9
 	db BANK(Route10_h) ; ROUTE_10
+	db BANK(Route10South_h)
 	db BANK(Route11_h) ; ROUTE_11
 	db BANK(Route12_h) ; ROUTE_12
 	db BANK(Route13_h) ; ROUTE_13
@@ -38,6 +39,7 @@ MapHeaderBanks:
 	db BANK(Route23_h) ; ROUTE_23
 	db BANK(Route24_h) ; ROUTE_24
 	db BANK(BillsGarden_h)
+	db BANK(MtMoonSquare_h)
 	db BANK(Route25_h) ; ROUTE_25
 	db BANK(RedsHouse1F_h)
 	db BANK(RedsHouse2F_h)
@@ -86,6 +88,7 @@ MapHeaderBanks:
 	db BANK(RockTunnelPokecenter_h)
 	db BANK(RockTunnel1_h)
 	db BANK(PowerPlant_h)
+	db BANK(PowerPlant1F_h)
 	db BANK(Route11Gate_h)
 	db BANK(DiglettsCaveEntranceRoute11_h)
 	db BANK(Route11GateUpstairs_h)
@@ -115,9 +118,6 @@ MapHeaderBanks:
 	db BANK(Route16WestGate_h)
 	db BANK(Lance_h)
 	db BANK(Route19BeachHouse_h)
-	db $1D ;unused
-	db $1D ;unused
-	db $1D ;unused
 	db BANK(HallofFameRoom_h)
 	db BANK(UndergroundPathNS_h)
 	db BANK(Rival_h)
@@ -194,6 +194,7 @@ MapHeaderBanks:
 	db BANK(Route18GateUpstairs_h)
 	db BANK(SeafoamIslands1_h)
 	db BANK(Route22Gate_h)
+	db BANK(Route22GateUpstairs_h)
 	db BANK(VictoryRoad2_h)
 	db BANK(Route12GateUpstairs_h)
 	db BANK(VermilionHouse3_h)
@@ -205,7 +206,6 @@ MapHeaderBanks:
 	db BANK(RocketHideout4_h)
 	db BANK(RocketHideoutElevator_h)
 	db BANK(CeladonSchool_h)
-	db $01
 	db $01
 	db BANK(SilphCo2_h)
 	db BANK(SilphCo3_h)

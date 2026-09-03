@@ -22,8 +22,8 @@ PokemonTower7ScriptPointers:
 	dw PokemonTower7Script4
 
 PokemonTower7Script2:
-	ld hl, wFlags_0xcd60
-	res 0, [hl]
+	ld hl, wMiscFlags
+	res BIT_SEEN_BY_TRAINER, [hl]
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, PokemonTower7Script_60d18
@@ -57,11 +57,11 @@ PokemonTower7Script2:
 	call PlayDefaultMusic
 
 	xor a
-	ld [wd730], a
+	ld [wStatusFlags5], a
 	jp PokemonTower7Script_60d18
 
 PokemonTower7Script3:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	ld hl, wMissableObjectList
@@ -98,9 +98,9 @@ PokemonTower7Script4:
 	ld [wDestinationWarpID], a
 	ld a, LAVENDER_TOWN
 	ld [wLastMap], a
-	ld hl, wd736
+	ld hl, wMovementFlags
 	set 2, [hl] ; joenote - set standing on warp flag for when Fuji's house is entered to prevent being blocked from leaving
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 3, [hl]
 	ld a, $0
 	ld [wPokemonTower7CurScript], a

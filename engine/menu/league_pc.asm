@@ -1,7 +1,7 @@
 PKMNLeaguePC:
 	ld hl, AccessedHoFPCText
 	call PrintText
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl]
 	push hl
 	ld a, [wUpdateSpritesEnabled]

@@ -7,6 +7,7 @@ FuchsiaHouse2TextPointers:
 	dw BoulderText
 	dw FuchsiaHouse2Text4
 	dw FuchsiaHouse2Text5
+	dw WardenHouseText_SecretHouse
 
 FuchsiaHouse2Text1:
 	TX_ASM
@@ -27,12 +28,12 @@ FuchsiaHouse2Text1:
 	ld hl, WardenGibberishText2
 .asm_61238
 	call PrintText
-	jr .asm_52039
+	jr .endScript
 .asm_3f30f
 	ld hl, WardenTeethText1
 	call PrintText
 	ld a, GOLD_TEETH
-	ld [$ffdb], a
+	ld [hItemToRemoveID], a
 	callba RemoveItemByID
 	SetEvent EVENT_GAVE_GOLD_TEETH
 .asm_60cba
@@ -44,15 +45,22 @@ FuchsiaHouse2Text1:
 	ld hl, ReceivedHM04Text
 	call PrintText
 	SetEvent EVENT_GOT_HM04
-	jr .asm_52039
+	jr .endScript
 .subtract
 	ld hl, HM04ExplanationText
 	call PrintText
-	jr .asm_52039
+
+	CheckEvent EVENT_GOT_HM03
+	jr nz, .endScript
+	; If doesn't found secret house give a reminder
+	ld hl, WardenHouseText_SecretHouse
+	call PrintText
+
+	jr .endScript
 .BagFull
 	ld hl, HM04NoRoomText
 	call PrintText
-.asm_52039
+.endScript
 	jp TextScriptEnd
 
 WardenGibberishText1:
@@ -86,6 +94,10 @@ ReceivedHM04Text:
 
 HM04ExplanationText:
 	TX_FAR _HM04ExplanationText
+	db "@"
+
+WardenHouseText_SecretHouse:
+	TX_FAR _WardenHouseText_SecretHouse
 	db "@"
 
 HM04NoRoomText:

@@ -139,6 +139,8 @@ PaperSheetSprite:      INCBIN "gfx/sprites/paper_sheet.2bpp"
 BookMapDexSprite:      INCBIN "gfx/sprites/book_map_dex.2bpp"
 ClipboardSprite:       INCBIN "gfx/sprites/clipboard.2bpp"
 LyingOldManSprite:     INCBIN "gfx/sprites/lying_old_man.2bpp"
+RhyhornSprite:         INCBIN "gfx/sprites/rhyhorn.2bpp"
+
 
 SECTION "Graphics", ROMX, BANK[GFX]
 PokemonLogoGraphics:            INCBIN "gfx/mainmenu/pokemon_logo.2bpp"
@@ -163,7 +165,7 @@ TextBoxGraphics:                INCBIN "gfx/tiles/text_box.2bpp"
 TextBoxGraphicsEnd:
 PokedexTileGraphics:            INCBIN "gfx/tiles/pokedex.2bpp"
 PokedexTileGraphicsEnd:
-WorldMapTileGraphics:           INCBIN "gfx/tiles/town_map.2bpp"
+WorldMapTileGraphics:           INCBIN "gfx/tilemaps/town_map.2bpp"
 WorldMapTileGraphicsEnd:
 PlayerCharacterTitleGraphics:   INCBIN "gfx/mainmenu/player_title.2bpp"
 PlayerCharacterTitleGraphicsEnd:
@@ -225,7 +227,6 @@ GiovanniSprite:       INCBIN "gfx/sprites/giovanni.2bpp"
 RocketSprite:         INCBIN "gfx/sprites/rocket.2bpp"
 MediumSprite:         INCBIN "gfx/sprites/medium.2bpp"
 WaiterSprite:         INCBIN "gfx/sprites/waiter.2bpp"
-ErikaSprite:          INCBIN "gfx/sprites/erika.2bpp"
 MomGeishaSprite:      INCBIN "gfx/sprites/mom_geisha.2bpp"
 BrunetteGirlSprite:   INCBIN "gfx/sprites/brunette_girl.2bpp"
 LanceSprite:          INCBIN "gfx/sprites/lance.2bpp"
@@ -241,6 +242,10 @@ DomeSprite:           INCBIN "gfx/sprites/dome.2bpp"
 PokedexSprite:        INCBIN "gfx/sprites/pokedex.2bpp"
 PokeballSprite:       INCBIN "gfx/sprites/pokeball.2bpp"
 MapSprite:            INCBIN "gfx/sprites/map_ow.2bpp"
+CupSprite:            INCBIN "gfx/sprites/cup.2bpp"
+KoichiSprite:         INCBIN "gfx/sprites/koichi.2bpp"
+FireFighterSprite:    INCBIN "gfx/sprites/firefighter.2bpp"
+
 
 SECTION "Battle (bank 5)", ROMX, BANK[$5]
 
@@ -355,7 +360,8 @@ PewterHouse1Blocks:
 PewterHouse2Blocks:
 ViridianHouseBlocks: INCBIN "maps/viridianhouse.blk"
 
-CeladonMansion5Blocks:
+CeladonMansion5Blocks: INCBIN "maps/celadonmansion5.blk"
+
 CeladonSchoolBlocks:
 ViridianSchoolBlocks: INCBIN "maps/viridianschool.blk"
 
@@ -495,6 +501,11 @@ INCLUDE "scripts/powerplant.asm"
 INCLUDE "data/maps/objects/powerplant.asm"
 PowerPlantBlocks: INCBIN "maps/powerplant.blk"
 
+INCLUDE "data/maps/headers/powerplant1f.asm"
+INCLUDE "scripts/powerplant1f.asm"
+INCLUDE "data/maps/objects/powerplant1f.asm"
+PowerPlant1FBlocks: INCBIN "maps/powerplant1f.blk"
+
 INCLUDE "data/maps/headers/diglettscaveroute11.asm"
 INCLUDE "scripts/diglettscaveroute11.asm"
 INCLUDE "data/maps/objects/diglettscaveroute11.asm"
@@ -507,6 +518,11 @@ INCLUDE "data/maps/headers/route22gate.asm"
 INCLUDE "scripts/route22gate.asm"
 INCLUDE "data/maps/objects/route22gate.asm"
 Route22GateBlocks: INCBIN "maps/route22gate.blk"
+
+INCLUDE "data/maps/headers/route22gateupstairs.asm"
+INCLUDE "scripts/route22gateupstairs.asm"
+INCLUDE "data/maps/objects/route22gateupstairs.asm"
+Route22GateUpstairsBlocks: INCBIN "maps/route22gateupstairs.blk"
 
 INCLUDE "data/maps/headers/billshouse.asm"
 INCLUDE "scripts/billshouse.asm"
@@ -928,6 +944,11 @@ INCLUDE "scripts/mtmoonb2f.asm"
 INCLUDE "data/maps/objects/mtmoonb2f.asm"
 MtMoonB2FBlocks: INCBIN "maps/mtmoonb2f.blk"
 
+INCLUDE "data/maps/headers/mtmoonsquare.asm"
+INCLUDE "scripts/mtmoonsquare.asm"
+INCLUDE "data/maps/objects/mtmoonsquare.asm"
+MtMoonSquareBlocks: INCBIN "maps/mtmoonsquare.blk"
+
 INCLUDE "data/maps/headers/safarizonewest.asm"
 INCLUDE "scripts/safarizonewest.asm"
 INCLUDE "data/maps/objects/safarizonewest.asm"
@@ -1076,6 +1097,8 @@ MFujiPic::         INCBIN "gfx/trainer/mfuji.pic"
 SachaPic::         INCBIN "gfx/trainer/sacha.pic"
 SoldierPic::       INCBIN "gfx/trainer/soldier.pic"
 KoichiPic::        INCBIN "gfx/trainer/koichi.pic"
+FireFighterPic::   INCBIN "gfx/trainer/firefighter.pic"
+
 
 SECTION "bank15",ROMX,BANK[$15]
 
@@ -1183,6 +1206,10 @@ INCLUDE "data/maps/headers/route10.asm"
 INCLUDE "data/maps/objects/route10.asm"
 Route10Blocks: INCBIN "maps/route10.blk"
 
+INCLUDE "data/maps/headers/route10south.asm"
+INCLUDE "data/maps/objects/route10south.asm"
+Route10SouthBlocks: INCBIN "maps/route10south.blk"
+
 INCLUDE "data/maps/headers/route11.asm"
 INCLUDE "data/maps/objects/route11.asm"
 Route11Blocks: INCBIN "maps/route11.blk"
@@ -1212,6 +1239,7 @@ INCLUDE "engine/overworld/oaks_aide.asm"
 INCLUDE "scripts/route6.asm"
 INCLUDE "scripts/route8.asm"
 INCLUDE "scripts/route10.asm"
+INCLUDE "scripts/route10south.asm"
 INCLUDE "scripts/route11.asm"
 INCLUDE "scripts/route12.asm"
 INCLUDE "scripts/route15.asm"
@@ -1556,8 +1584,6 @@ House_GFX:         INCBIN "gfx/tilesets/house.2bpp"
 House_Block:       INCBIN "gfx/blocksets/house.bst"
 Mansion_GFX:       INCBIN "gfx/tilesets/mansion.2bpp"
 Mansion_Block:     INCBIN "gfx/blocksets/mansion.bst"
-ShipPort_GFX:      INCBIN "gfx/tilesets/ship_port.2bpp"
-ShipPort_Block:    INCBIN "gfx/blocksets/ship_port.bst"
 Interior_GFX:      INCBIN "gfx/tilesets/interior.2bpp"
 Interior_Block:    INCBIN "gfx/blocksets/interior.bst"
 
@@ -1611,7 +1637,6 @@ INCLUDE "engine/battle/ghost_marowak_anim.asm"
 INCLUDE "engine/battle/battle_transitions.asm"
 INCLUDE "engine/town_map.asm"
 INCLUDE "engine/mon_party_sprites.asm"
-INCLUDE "engine/palettes.asm"
 INCLUDE "engine/save.asm"
 
 
@@ -2130,6 +2155,24 @@ MewSprite:            INCBIN "gfx/sprites/pokemons/mew.2bpp"
 HoohSprite:           INCBIN "gfx/sprites/pokemons/hooh.2bpp"
 
 
+SECTION "NPC Sprites 4", ROMX
+
+SoldierSprite:        INCBIN "gfx/sprites/soldier.2bpp"
+KimonoWomanSprite:    INCBIN "gfx/sprites/kimonowoman.2bpp"
+BrockSprite:          INCBIN "gfx/sprites/brock.2bpp"
+MistySprite:          INCBIN "gfx/sprites/misty.2bpp"
+SurgeSprite:          INCBIN "gfx/sprites/surge.2bpp"
+ErikaSprite:          INCBIN "gfx/sprites/erika.2bpp"
+SabrinaSprite:        INCBIN "gfx/sprites/sabrina.2bpp"
+KogaSprite:           INCBIN "gfx/sprites/koga.2bpp"
+BlaineSprite:         INCBIN "gfx/sprites/blaine.2bpp"
+BurglarSprite:        INCBIN "gfx/sprites/burglar.2bpp"
+NerdSprite:           INCBIN "gfx/sprites/nerd.2bpp"
+JugglerSprite:        INCBIN "gfx/sprites/juggler.2bpp"
+TamerSprite:          INCBIN "gfx/sprites/tamer.2bpp"
+SachaSprite:          INCBIN "gfx/sprites/sacha.2bpp"
+
+
 SECTION "Type Icons", ROMX
 
 NormalTypeIcon::     INCBIN "gfx/tiles/type_icons/normal.2bpp"
@@ -2196,6 +2239,7 @@ INCLUDE "engine/battle/load_pics.asm"
 INCLUDE "engine/menu/draw_badges.asm"
 INCLUDE "engine/overworld/animated_tiles.asm"
 INCLUDE "text/options_info.asm"
+INCLUDE "custom_functions/func_special_battle_effet.asm"
 
 RedPicFront:: INCBIN "gfx/trainer/red.pic"
 ShrinkPic1::  INCBIN "gfx/trainer/shrink1.pic"
@@ -2210,3 +2254,10 @@ Forest_GFX:        INCBIN "gfx/tilesets/forest.2bpp"
 Forest_Block:      INCBIN "gfx/blocksets/forest.bst"
 Alpha_GFX:         INCBIN "gfx/tilesets/alpha.2bpp"
 Alpha_Block:       INCBIN "gfx/blocksets/alpha.bst"
+ShipPort_GFX:      INCBIN "gfx/tilesets/ship_port.2bpp"
+ShipPort_Block:    INCBIN "gfx/blocksets/ship_port.bst"
+
+
+SECTION "SGB Border", ROMX
+
+INCLUDE "engine/palettes.asm"

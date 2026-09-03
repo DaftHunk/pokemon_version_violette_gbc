@@ -10,8 +10,8 @@ Mansion3Script:
 
 Mansion3Script_52204:
 	ld hl, wCurrentMapScriptFlags
-	bit 5, [hl]
-	res 5, [hl]
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
 	CheckEvent EVENT_MANSION_SWITCH_ON
 	jr nz, .asm_52224
@@ -59,16 +59,16 @@ CoordsData_52254:
 Mansion3Script_5225b:
 	xor a
 	ld [wWhichDungeonWarp], a
-	ld a, [wd72d]
+	ld a, [wStatusFlags3]
 	bit 4, a
 	ret nz
 	call ArePlayerCoordsInArray
 	ret nc
 	ld a, [wCoordIndex]
 	ld [wWhichDungeonWarp], a
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 4, [hl]
-	ld hl, wd732
+	ld hl, wStatusFlags6
 	set 4, [hl]
 	ret
 

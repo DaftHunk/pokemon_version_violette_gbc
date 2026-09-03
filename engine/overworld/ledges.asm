@@ -1,10 +1,12 @@
 HandleLedges:
-	ld a, [wd736]
+	ld a, [wMovementFlags]
 	bit 6, a ; already jumping down ledge
 	ret nz
 	ld a, [wCurMapTileset]
 	and a ; OVERWORLD
 	;ret nz
+	jr z, .overworld
+	cp ALPHA
 	jr z, .overworld
  	cp VOLCANO
  	jr z, .volcano
@@ -59,7 +61,7 @@ HandleLedges:
 
 	ld a, $ff
 	ld [wJoyIgnore], a
-	ld hl, wd736
+	ld hl, wMovementFlags
 	set 6, [hl] ; jumping down ledge
 	call StartSimulatingJoypadStates
 	ld a, e
@@ -112,6 +114,7 @@ LedgeTiles:
 	db SPRITE_FACING_RIGHT,$2C,$0D,D_RIGHT
 	db SPRITE_FACING_RIGHT,$2C,$1D,D_RIGHT
 	db SPRITE_FACING_RIGHT,$39,$0D,D_RIGHT
+	db SPRITE_FACING_RIGHT,$2C,$35,D_RIGHT
 	db $FF
 
 ; PureRGBnote: ADDED: in the volcano you can jump over specific new tiles like ledges.

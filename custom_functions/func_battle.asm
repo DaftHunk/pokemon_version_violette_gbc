@@ -84,14 +84,14 @@ SwapTurn:	;a simple custom function for swapping whose turn it is in the battle 
 ;custom function to determin the DVs of wild pokemon with an option for forcing shiny DVs
 DetermineWildMonDVs:
 	ld a, [wFontLoaded]
-	bit 7, a
+	bit BIT_FORCE_SHINY, a
 	jr z, .do_random
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;exclude tower ghosts and old man tutorial
 	ld a, [wBattleType]
 	dec a
 	jr z, .do_random
-	ld a, [wFlags_D733]
+	ld a, [wStatusFlags7]
 	bit 6, a
 	jr nz, .do_random 
 	CheckEvent EVENT_ACTIVATE_GHOST_MAROWAK
@@ -120,7 +120,7 @@ DetermineWildMonDVs:
 	ld [hl], b
 	pop hl
 	ld a, [wFontLoaded]
-	res 7, a 
+	res BIT_FORCE_SHINY, a 
 	ld [wFontLoaded], a
 	ret
 
@@ -251,7 +251,7 @@ _ForfeitTrainerMatchText::
 ForfeitConfirmed:
 	;set the flag for forfeiting
 	ld a, [wGameplayOptions]
-	set 1, a
+	set BIT_GAMEPLAY_FORFAIT, a
 	ld [wGameplayOptions], a
 	call ForfeitConfirmed_NuzlockeHandler	;joenote - mark already KO'ed pokemon as dead for nuzlocke mode
 	;fall through
@@ -539,9 +539,9 @@ SetAttackAnimPal:
 	ld b, a
 
 	;check if this animation is being played when hurting self from confusion
-	ld a, [wUnusedD119]
+	ld a, [wMiscsFlags2]
 	inc a
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	jr nz, .noselfdamage
 	;if hurting self, load default palette
 	ld b, PAL_BW
@@ -726,8 +726,8 @@ DoDisobeyLevelCheck:
 	call AddNTimes
 
 	; is level cap enabled ?
-	ld a, [wMoreGameplayOptions]
-	bit 0, a
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_LEVEL_CAP, a
 	jr nz, .monIsTradedOrLevelCap
 	; else
 	ld a, [wPlayerID]

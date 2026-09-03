@@ -198,7 +198,7 @@ const_value = 1
 	const SPRITE_ROCKET                    ; $18
 	const SPRITE_MEDIUM                    ; $19
 	const SPRITE_WAITER                    ; $1a
-	const SPRITE_ERIKA                     ; $1b
+	const SPRITE_KIMONO_WOMAN              ; $1b
 	const SPRITE_MOM_GEISHA                ; $1c
 	const SPRITE_BRUNETTE_GIRL             ; $1d
 	const SPRITE_LANCE                     ; $1e
@@ -234,6 +234,21 @@ const_value = 1
 	const SPRITE_JENNY
 	const SPRITE_JESSIE
 	const SPRITE_JAMES
+	const SPRITE_KOICHI
+	const SPRITE_FIREFIGHTER
+	const SPRITE_SOLDIER
+	const SPRITE_BROCK
+	const SPRITE_MISTY
+	const SPRITE_SURGE
+	const SPRITE_ERIKA
+	const SPRITE_SABRINA
+	const SPRITE_KOGA
+	const SPRITE_BLAINE
+	const SPRITE_BURGLAR
+	const SPRITE_NERD
+	const SPRITE_JUGGLER
+	const SPRITE_TAMER
+	const SPRITE_SACHA
 	; Pokemons
 	const SPRITE_SLOWBRO                   ; $05
 	const SPRITE_BIRD                      ; $09
@@ -276,6 +291,7 @@ const_value = 1
 	const SPRITE_POKEDEX
 	const SPRITE_POKEBALL
 	const SPRITE_MAP
+	const SPRITE_CUP
 	const SPRITE_CLIPBOARD                 ; $42
 	const SPRITE_SNORLAX                   ; $43
 	const SPRITE_OLD_AMBER_COPY            ; $44
@@ -283,6 +299,7 @@ const_value = 1
 	const SPRITE_LYING_OLD_MAN_UNUSED_1    ; $46
 	const SPRITE_LYING_OLD_MAN_UNUSED_2    ; $47
 	const SPRITE_LYING_OLD_MAN             ; $48
+	const SPRITE_RHYHORN
 
 ; different kinds of people events
 ITEM    EQU $80

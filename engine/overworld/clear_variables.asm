@@ -4,14 +4,14 @@ ClearVariablesOnEnterMap:
 	ld [rWY], a
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;joenote - if bit 7 of wUnusedD5A3 is set, then just got done winning a battle. do not zero out wUnusedD5A3.
-	ld a, [wUnusedD5A3]
+;joenote - if bit 7 of wTempBattleFlag is set, then just got done winning a battle. do not zero out wTempBattleFlag.
+	ld a, [wTempBattleFlag]
 	bit 7, a
 	res 7, a
 	jr nz, .skip_clear
 	xor a
 .skip_clear
-	ld [wUnusedD5A3], a
+	ld [wTempBattleFlag], a
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 	xor a
@@ -22,7 +22,7 @@ ClearVariablesOnEnterMap:
 	ld [hJoyReleased], a
 	ld [hJoyHeld], a
 	ld [wActionResultOrTookBattleTurn], a
-	;ld [wUnusedD5A3], a
+	;ld [wTempBattleFlag], a
 	ld hl, wCardKeyDoorY
 	ld [hli], a
 	ld [hl], a

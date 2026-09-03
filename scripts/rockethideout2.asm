@@ -22,7 +22,7 @@ RocketHideout2Script0:
 	call DecodeArrowMovementRLE
 	cp $ff
 	jp z, CheckFightingMapTrainers
-	ld hl, wd736
+	ld hl, wMovementFlags
 	set 7, [hl]
 	call StartSimulatingJoypadStates
 	ld a, SFX_ARROW_TILES
@@ -307,7 +307,7 @@ RocketHideout2Script3:
 	jr nz, LoadSpinnerArrowTiles
 	xor a
 	ld [wJoyIgnore], a
-	ld hl, wd736
+	ld hl, wMovementFlags
 	res 7, [hl]
 	ld a, $0
 	ld [wCurMapScript], a
@@ -321,8 +321,8 @@ LoadSpinnerArrowTiles:
 ;			Now there are no wasted frames when this runs, and spin movement is now at full speed.
 	push bc
 	ld b, 2
-	ld a, [wGameplayOptions]
-	bit 4, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_60_FPS, a
 	jr z, .no60fps
 	sla b
 .no60fps

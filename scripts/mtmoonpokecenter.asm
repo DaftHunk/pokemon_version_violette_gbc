@@ -1,6 +1,17 @@
 MtMoonPokecenterScript:
+	call .markAsVisited
 	call Serial_TryEstablishingExternallyClockedConnection
 	jp EnableAutoTextBoxDrawing
+
+.markAsVisited
+	ld hl, wCurrentMapScriptFlags
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
+	ret z
+	ld c, ROUTE_4_FLY
+	ld b, FLAG_SET
+	ld hl, wTownVisitedFlag   ; mark town as visited (for flying)
+	predef_jump FlagActionPredef
 
 MtMoonPokecenterTextPointers:
 	dw MtMoonHealNurseText
@@ -153,7 +164,7 @@ MagikarpSalesmanText_DragonRageKarp:
 	ld hl, MagikarpSalesmanText.NoMoneyText
 	jp MagikarpSalesmanText.printText
 .enoughMoney
-	ld hl, wFlags_D733
+	ld hl, wStatusFlags7
 	set 6, [hl]
 	push hl		;make it so the move-forget list covers up sprites
 	predef LearnMove
@@ -225,7 +236,7 @@ MagikarpSalesmanText_PayDayRapidashOrFearow:
 	ld hl, MagikarpSalesmanText.NoMoneyText
 	jp MagikarpSalesmanText.printText
 .enoughMoney
-	ld hl, wFlags_D733
+	ld hl, wStatusFlags7
 	set 6, [hl]
 	push hl		;make it so the move-forget list covers up sprites
 	predef LearnMove
@@ -306,7 +317,7 @@ MagikarpSalesmanText_FlyingPikachu:
 	ld hl, MagikarpSalesmanText.NoMoneyText
 	jp MagikarpSalesmanText.printText
 .enoughMoney
-	ld hl, wFlags_D733
+	ld hl, wStatusFlags7
 	set 6, [hl]
 	push hl		;make it so the move-forget list covers up sprites
 	predef LearnMove

@@ -1,6 +1,8 @@
+DEF OPP_ID_OFFSET EQU 190
+
 MACRO trainer_const
 \1     EQU const_value
-OPP_\1 EQU const_value + 200
+OPP_\1 EQU const_value + OPP_ID_OFFSET
 const_value = const_value + 1
 ENDM
 
@@ -61,3 +63,4 @@ const_value = 1
 	trainer_const SACHA         ; $35
 	trainer_const SOLDIER       ; $36
 	trainer_const KOICHI        ; $37
+	trainer_const FIREFIGHTER   ; $38

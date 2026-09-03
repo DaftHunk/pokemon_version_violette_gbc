@@ -47,6 +47,7 @@ const_value = 0
 	const HS_ROUTE_24_ITEM                ; 25 X
 	const HS_HOOH
 	const HS_ROUTE_25_ITEM                ; 26 X
+	const HS_RED_HOUSE_CUP
 	const HS_DAISY_SITTING                ; 27
 	const HS_DAISY_WALKING                ; 28
 	const HS_TOWN_MAP                     ; 29
@@ -93,13 +94,13 @@ const_value = 0
 	const HS_ELECTRODE_1                  ; 50 X
 	const HS_VOLTORB_4                    ; 51 X
 	const HS_VOLTORB_5                    ; 52 X
-	const HS_ELECTRODE_2                  ; 53 X
 	const HS_VOLTORB_6                    ; 54 X
-	const HS_ZAPDOS                       ; 55 X
 	const HS_POWER_PLANT_ITEM_1           ; 56 X
 	const HS_POWER_PLANT_ITEM_2           ; 57 X
 	const HS_POWER_PLANT_ITEM_3           ; 58 X
 	const HS_POWER_PLANT_ITEM_4           ; 59 X
+	const HS_ELECTRODE_2                  ; 53 X
+	const HS_ZAPDOS                       ; 55 X
 	const HS_POWER_PLANT_ITEM_5           ; 5A X
 	const HS_POWER_PLANT_ITEM_6           ; 5A X
 	const HS_VICTORY_ROAD_2_ITEM_1        ; 5C X
@@ -201,6 +202,7 @@ const_value = 0
 	const HS_SILPH_CO_10F_ITEM_1          ; B4 X
 	const HS_SILPH_CO_10F_ITEM_2          ; B5 X
 	const HS_SILPH_CO_10F_ITEM_3          ; B6 X
+	const HS_SILPH_CO_11F_CHIEF
 	const HS_SILPH_CO_11F_1               ; B7
 	const HS_SILPH_CO_11F_JESSIE          ; B9
 	const HS_SILPH_CO_11F_2               ; B8
@@ -225,6 +227,7 @@ const_value = 0
 	const HS_SAFARI_ZONE_WEST_ITEM_4      ; CC X
 	const HS_SAFARI_ZONE_CENTER_ITEM      ; CD X
 	const HS_SAFARI_ZONE_CENTER_REST_NICO
+	const HS_SAFARI_LAB_CHIEF
 	const HS_CERULEAN_CAVE_2F_ITEM_1     ; CE X
 	const HS_CERULEAN_CAVE_2F_ITEM_2     ; CF X
 	const HS_CERULEAN_CAVE_2F_ITEM_3     ; D0 X
@@ -253,11 +256,3 @@ const_value = 0
 	const HS_UNDPATHWE_MGENE			  ; E6 ;joenote - mgene pickup item
 	const HS_MUSEUM_TM12				  ; E7 ;joenote - moving water gun here
 	const HS_MEW_VERMILION_DOCK
-	const HS_LORELEI_1
-	const HS_LORELEI_2
-	const HS_BRUNO_1
-	const HS_BRUNO_2
-	const HS_AGATHA_1
-	const HS_AGATHA_2
-	const HS_LANCE_1
-	const HS_LANCE_2

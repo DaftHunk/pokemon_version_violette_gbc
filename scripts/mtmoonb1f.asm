@@ -28,8 +28,8 @@ MtMoonB1FTrainerHeader0:
 	db $ff
 
 MtMoonB1FScriptJessieJames:
-	ld hl, wFlags_0xcd60
-	res 0, [hl]
+	ld hl, wMiscFlags
+	res BIT_SEEN_BY_TRAINER, [hl]
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, MtMoonB1FScriptNotInBattle
@@ -76,7 +76,7 @@ MtMoonB1FScriptJessieJames:
 	call Delay3
 	call GBFadeInFromBlack
 	xor a
-	ld [wd730], a
+	ld [wStatusFlags5], a
 	jr MtMoonB1FScriptNotInBattle
 
 MtMoonB1FScriptNotInBattle:

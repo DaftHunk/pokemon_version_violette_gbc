@@ -18,6 +18,7 @@ CeladonCityTextPointers:
 	dw CeladonCityText8
 	dw CeladonCityText9
 	dw CeladonCityText_Merchant
+	dw CeladonCityText_RhyhornMerchant
 	dw CeladonCityText10
 	dw CeladonCityText11
 	dw PokeCenterSignText
@@ -28,7 +29,6 @@ CeladonCityTextPointers:
 	dw CeladonCityText17
 	dw CeladonCityText18
 	dw CeladonCityText_School
-	dw CeladonCityText_RhyhornMerchant
 	dw CeladonCityText_CasinoPrizes
 	dw CeladonCityText_Dinner
 	dw CeladonCityText_Hotel

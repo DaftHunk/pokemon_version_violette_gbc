@@ -10,8 +10,8 @@ VictoryRoad3Script:
 
 VictoryRoad3Script_44996:
 	ld hl, wCurrentMapScriptFlags
-	bit 5, [hl]
-	res 5, [hl]
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
 	CheckEventHL EVENT_VICTORY_ROAD_3F_BOULDER_ON_SWITCH1
 	ret z
@@ -38,11 +38,11 @@ VictoryRoad3ScriptPointers:
 	dw EndTrainerBattle
 
 VictoryRoad3Script0:
-	ld hl, wFlags_0xcd60
-	bit 1, [hl]
+	ld hl, wMiscFlags
+	bit BIT_BOULDER_DUST, [hl]
 	ret nz ; PureRGBnote: ADDED: if a boulder animation is playing forget doing this, helps reduce lag
-	bit 7, [hl]
-	res 7, [hl]
+	bit BIT_PUSHED_BOULDER, [hl]
+	res BIT_PUSHED_BOULDER, [hl]
 	jp z, .asm_449fe
 	ld hl, .coordsData_449f9
 	call CheckBoulderCoords
@@ -51,7 +51,7 @@ VictoryRoad3Script0:
 	cp $1
 	jr nz, .asm_449dc
 	ld hl, wCurrentMapScriptFlags
-	set 5, [hl]
+	set BIT_CUR_MAP_LOADED_1, [hl]
 	SetEvent EVENT_VICTORY_ROAD_3F_BOULDER_ON_SWITCH1
 	farcall BoulderOnButton
 	ret
@@ -80,13 +80,13 @@ VictoryRoad3Script0:
 	ld a, [wCoordIndex]
 	cp $1
 	jr nz, .asm_44a1b
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	res 4, [hl]
-	ld hl, wd732
+	ld hl, wStatusFlags6
 	res 4, [hl]
 	ret
 .asm_44a1b
-	ld a, [wd72d]
+	ld a, [wStatusFlags3]
 	bit 4, a
 	jp z, CheckFightingMapTrainers
 	ret

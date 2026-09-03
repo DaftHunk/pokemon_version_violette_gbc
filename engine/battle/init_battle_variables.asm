@@ -4,7 +4,7 @@ InitBattleVariables:
 
 ;joenote - make the trainer pokeballs red
 	ld a, [wCurOpponent]
-	cp 201	;is this a trainer battle?
+	cp OPP_ID_OFFSET + 1	;is this a trainer battle?
 	ld hl, wPlayerHPBarColor
 	ld a, HP_BAR_RED
 	ld [hli], a ; wPlayerHPBarColor

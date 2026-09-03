@@ -28,6 +28,7 @@ MapHSPointers:
 	dw Route9HS
 	dw NoHS
 	dw NoHS
+	dw NoHS
 	dw Route12HS
 	dw NoHS
 	dw NoHS
@@ -43,9 +44,10 @@ MapHSPointers:
 	dw NoHS
 	dw Route24HS
 	dw BillsGardenHS
+	dw NoHS
 	dw Route25HS
 	dw NoHS
-	dw NoHS
+	dw RedsHouse2FHS
 	dw BluesHouseHS
 	dw OaksLabHS
 	dw NoHS
@@ -91,6 +93,7 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw PowerPlantHS
+	dw PowerPlant1FHS
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -116,9 +119,6 @@ MapHSPointers:
 	dw VolcanoB1FHS
 	dw VictoryRoad1FHS
 	dw VolcanoB2FHS
-	dw NoHS
-	dw NoHS
-	dw LanceRoomHS
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -199,6 +199,7 @@ MapHSPointers:
 	dw NoHS
 	dw SeafoamIslands1FHS
 	dw NoHS
+	dw NoHS
 	dw VictoryRoad2FHS
 	dw NoHS
 	dw NoHS
@@ -208,7 +209,6 @@ MapHSPointers:
 	dw RocketHideoutB2FHS
 	dw RocketHideoutB3FHS
 	dw RocketHideoutB4FHS
-	dw NoHS
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -227,7 +227,7 @@ MapHSPointers:
 	dw SafariZoneWestHS
 	dw SafariZoneCenterHS
 	dw SafariZoneCenterRestHS
-	dw NoHS
+	dw SafariZoneSecretHouseHS
 	dw NoHS
 	dw NoHS
 	dw NoHS
@@ -250,9 +250,9 @@ MapHSPointers:
 	dw NoHS
 	dw NoHS
 	dw NoHS
-	dw LoreleiRoomHS
-	dw BrunoRoomHS
-	dw AgathaRoomHS
+	dw NoHS
+	dw NoHS
+	dw NoHS
 	dw $FFFF
 
 ; Structure:
@@ -331,6 +331,8 @@ BillsGardenHS:
 	db BILLS_GARDEN,$01,Hide
 Route25HS:
 	db ROUTE_25,$0A,Show
+RedsHouse2FHS:
+	db REDS_HOUSE_2F,$01,Hide
 BluesHouseHS:
 	db BLUES_HOUSE,$01,Show
 	db BLUES_HOUSE,$02,Hide
@@ -390,21 +392,22 @@ FightingDojoHS:
 SilphCo1FHS:
 	db SILPH_CO_1F,$01,Hide
 PowerPlantHS:
-	db POWER_PLANT,$01,Show
-	db POWER_PLANT,$02,Show
-	db POWER_PLANT,$03,Show
-	db POWER_PLANT,$04,Show
-	db POWER_PLANT,$05,Show
-	db POWER_PLANT,$06,Show
-	db POWER_PLANT,$07,Show
-	db POWER_PLANT,$08,Show
-	db POWER_PLANT,$09,Show
-	db POWER_PLANT,$0A,Show
-	db POWER_PLANT,$0B,Show
-	db POWER_PLANT,$0C,Show
-	db POWER_PLANT,$0D,Show
-	db POWER_PLANT,$0E,Show
-	db POWER_PLANT,$0F,Show
+	db POWER_PLANT,$01,Show ; Voltorb0
+	db POWER_PLANT,$02,Show ; Voltorb1
+	db POWER_PLANT,$03,Show ; Voltorb2
+	db POWER_PLANT,$04,Show ; Electrode1
+	db POWER_PLANT,$05,Show ; Voltorb4
+	db POWER_PLANT,$06,Show ; Voltorb5
+	db POWER_PLANT,$07,Show ; Voltorb6
+	db POWER_PLANT,$08,Show ; Item0
+	db POWER_PLANT,$09,Show ; Item1
+	db POWER_PLANT,$0A,Show ; Item2
+	db POWER_PLANT,$0B,Show ; Item3
+PowerPlant1FHS:
+	db POWER_PLANT_1F,$01,Show ; Electrode2
+	db POWER_PLANT_1F,$02,Show ; Zapdos
+	db POWER_PLANT_1F,$03,Show ; Item0
+	db POWER_PLANT_1F,$04,Show ; Item1
 VictoryRoad2FHS:
 	db VICTORY_ROAD_2,$06,Show
 	db VICTORY_ROAD_2,$07,Show
@@ -532,6 +535,7 @@ SilphCo10FHS:
 	db SILPH_CO_10F,$05,Show
 	db SILPH_CO_10F,$06,Show
 SilphCo11FHS:
+	db SILPH_CO_11F,$01,Show ; Chief
 	db SILPH_CO_11F,$03,Show ; GIOVANNI
 	db SILPH_CO_11F,$04,Show ; jessie
 	db SILPH_CO_11F,$05,Show 
@@ -564,6 +568,8 @@ SafariZoneCenterHS:
 	db SAFARI_ZONE_CENTER,$01,Show
 SafariZoneCenterRestHS:
 	db SAFARI_ZONE_CENTER_REST_HOUSE,$03,Hide
+SafariZoneSecretHouseHS:
+	db SAFARI_ZONE_SECRET_HOUSE,$02,Hide  ; Chief
 CeruleanCave2FHS:
 	db CERULEAN_CAVE_2F,$01,Show
 	db CERULEAN_CAVE_2F,$02,Show
@@ -606,17 +612,5 @@ Museum2FHS:
 	db MUSEUM_2F,$06,Show	;joenote - added water gun tm to museum 2f
 VermilionDockHS:
 	db VERMILION_DOCK, $01, Hide
-LoreleiRoomHS:
-	db LORELEIS_ROOM, $01, Show
-	db LORELEIS_ROOM, $02, Hide
-BrunoRoomHS:
-	db BRUNOS_ROOM, $01, Show
-	db BRUNOS_ROOM, $02, Hide
-AgathaRoomHS:
-	db AGATHAS_ROOM, $01, Show
-	db AGATHAS_ROOM, $02, Hide
-LanceRoomHS:
-	db LANCES_ROOM, $01, Show
-	db LANCES_ROOM, $02, Hide
 
 	db $FF,$01,Show

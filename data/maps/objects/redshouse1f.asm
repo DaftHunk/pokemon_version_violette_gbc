@@ -7,11 +7,10 @@ RedsHouse1FObject:
 	warp 7, 1, 0, REDS_HOUSE_2F ; staircase
 
 	db 1 ; signs
-	sign 3, 1, 3 ; TV
+	sign 3, 1, 2 ; TV
 
-	db 2 ; objects
+	db 1 ; objects
 	object SPRITE_MOM, 5, 4, STAY, LEFT, 1 ; Mom
-	object SPRITE_PAPER_SHEET, 3, 4, STAY, NONE, 2
 
 	; warp-to
 	warp_to 2, 7, REDS_HOUSE_1F_WIDTH

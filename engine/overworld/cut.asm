@@ -38,7 +38,7 @@ UsedCut:
 	ld a, [wWhichPokemon]
 	ld hl, wPartyMonNicks
 	call GetPartyMonName
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl]
 	call GBPalWhiteOutWithDelay3
 	call ClearSprites
@@ -63,7 +63,7 @@ UsedCut:
 	ld hl, UsedCutText
 	call PrintText
 	call LoadScreenTilesFromBuffer2
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl]
 	ld a, $ff
 	ld [wUpdateSpritesEnabled], a
@@ -331,5 +331,6 @@ CutTreeBlockSwaps:
 	db $3F, $35
 	db $3D, $36
 	db $40, $0A	;joenote - plateau grass
-	db $9B, $0A
+	db $9B, $A9
+	db $A7, $A8
 	db $FF ; list terminator

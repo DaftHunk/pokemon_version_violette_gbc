@@ -55,6 +55,7 @@ HiddenObjectMaps:
 	db CERULEAN_CAVE_1F
 	db CERULEAN_CAVE_B1F
 	db POWER_PLANT
+	db POWER_PLANT_1F
 	db SEAFOAM_ISLANDS_B2F
 	db SEAFOAM_ISLANDS_B4F
 	db POKEMON_MANSION_1F
@@ -74,6 +75,7 @@ HiddenObjectMaps:
 	db CELADON_MANSION_ROOF_HOUSE
 	db FIGHTING_DOJO
 	db ROUTE_10
+	db ROUTE_10_SOUTH
 	db INDIGO_PLATEAU_LOBBY
 	db CINNABAR_LAB_FOSSIL_ROOM
 	db BIKE_SHOP
@@ -99,6 +101,8 @@ HiddenObjectMaps:
 	db ROUTE_12_GATE_2F
 	db ROUTE_16_GATE_2F
 	db ROUTE_18_GATE_2F
+	db ROUTE_20
+	db MT_MOON_SQUARE
 	db $FF
 
 HiddenObjectPointers:
@@ -159,6 +163,7 @@ HiddenObjectPointers:
 	dw UnknownDungeon1HiddenObjects
 	dw UnknownDungeon3HiddenObjects
 	dw PowerPlantHiddenObjects
+	dw PowerPlant1FHiddenObjects
 	dw SeafoamIslands3HiddenObjects
 	dw SeafoamIslands5HiddenObjects
 	dw Mansion1HiddenObjects
@@ -178,6 +183,7 @@ HiddenObjectPointers:
 	dw CeladonMansion5HiddenObjects
 	dw FightingDojoHiddenObjects
 	dw Route10HiddenObjects
+	dw Route10SouthHiddenObjects
 	dw IndigoPlateauLobbyHiddenObjects
 	dw CinnabarLab4HiddenObjects
 	dw BikeShopHiddenObjects
@@ -203,6 +209,8 @@ HiddenObjectPointers:
 	dw Route12GateUpstairsHiddenObjects
 	dw Route16GateUpstairsHiddenObjects
 	dw Route18GateUpstairsHiddenObjects
+	dw Route20HiddenObjects
+	dw MtMoonSquareHiddenObjects
 	
 ; format: y-coord, x-coord, text id/item id, object routine
 TradeCenterHiddenObjects:
@@ -480,7 +488,7 @@ GameCornerHiddenObjects:
 	dbw BANK(HiddenCoins),HiddenCoins
 	db $08,$0f,COIN+100
 	dbw BANK(HiddenCoins),HiddenCoins
-	db $0f,$0c,COIN+10
+	db $10,$0c,COIN+10
 	dbw BANK(HiddenCoins),HiddenCoins
 	db $FF
 CeladonHotelHiddenObjects:
@@ -608,9 +616,13 @@ SSAnne10HiddenObjects:
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 Route10HiddenObjects:
-	db $11,$09,SUPER_POTION
+	db $06,$0A,WATER_STONE
 	dbw BANK(HiddenItems),HiddenItems
-	db $35,$10,MAX_ETHER
+	db $19,$0B,CALCIUM
+	dbw BANK(HiddenItems),HiddenItems
+	db $FF
+Route10SouthHiddenObjects:
+	db $04,$12,MAX_ETHER
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 DiglettsCaveHiddenObjects:			;joenote - added some hidden items
@@ -684,9 +696,11 @@ UnknownDungeon3HiddenObjects:
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 PowerPlantHiddenObjects:
-	db $10,$11,MAX_ELIXER
+	db $01,$26,MAX_ELIXER
 	dbw BANK(HiddenItems),HiddenItems
-	db $01,$0c,PP_UP
+	db $FF
+PowerPlant1FHiddenObjects:
+	db $01,$01,PP_UP
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 SeafoamIslands3HiddenObjects:
@@ -931,7 +945,7 @@ Route2HiddenObjects:
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 Route4HiddenObjects:
-	db $03,$28,GREAT_BALL
+	db $0f,$3d,GREAT_BALL
 	dbw BANK(HiddenItems),HiddenItems
 	db 3,62,MOON_STONE
 	dbw BANK(HiddenItems),HiddenItems	;joenote - added an extra moon stone
@@ -976,4 +990,12 @@ Route18GateUpstairsHiddenObjects:
 	db $02,$06,$04
 	db BANK(Route18GateRightBinoculars)
 	dw Route18GateRightBinoculars
+	db $FF
+Route20HiddenObjects:
+	db $12,$35,WATER_STONE
+	dbw BANK(HiddenItems),HiddenItems
+	db $FF
+MtMoonSquareHiddenObjects:
+	db $08,$08,MOON_STONE
+	dbw BANK(HiddenItems),HiddenItems
 	db $FF

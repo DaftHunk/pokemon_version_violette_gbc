@@ -87,7 +87,7 @@ CheckFearowTutor:
 	callba CheckIfMoveIsKnown
 	jr c, .printTextEnd
 
-	ld hl, wFlags_D733
+	ld hl, wStatusFlags7
 	set 6, [hl]
 	push hl		;make it so the move-forget list covers up sprites
 	predef LearnMove

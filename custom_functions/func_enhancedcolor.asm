@@ -224,9 +224,9 @@ db	4,	4,	0,	0,	7,	7,	3,	3,	6,	6,	3,	6,	8,	8,	3,	3;
 ;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
 db	4,	4,	4,	8,	6,	6,	3,	3,	6,	6,	8,	8,	8,	8,	5,	5;
 ;	60	61	62	63	64	65	66	67	68	69	6A	6B	6C	6D	6E	6F
-db	6,	6,	6,	6,	6,	3,	3,	3,	6,	6,	6,	6,	6,	6,	5,	5;
+db	6,	6,	6,	6,	6,	3,	3,	3,	8,	8,	8,	8,	8,	8,	5,	5;
 ;	70	71	72	73	74	75	76	77	78	79	7A	7B	7C	7D	7E	7F
-db	6,	6,	3,	6,	6,	3,	3,	3,	3,	6,	6,	6,	6,	6,	6,	6;
+db	6,	6,	3,	7,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6;
 PalSettings_REDS_HOUSE_1:	; 1		-done
 PalSettings_REDS_HOUSE_2:	; 4
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
@@ -287,7 +287,7 @@ db	4,	4,	7,	7,	7,	7,	7,	7,	3,	3,	3,	3,	2,	2,	3,	3;
 ;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
 db	4,	4,	7,	7,	7,	3,	7,	7,	6,	6,	6,	3,	3,	3,	3,	3;
 ;	60	61	62	63	64	65	66	67	68	69	6A	6B	6C	6D	6E	6F
-db	5,	5,	5,	5,	6,	3,	3,	3,	6,	6,	6,	6,	6,	6,	5,	5;
+db	5,	5,	5,	5,	5,	3,	3,	3,	6,	6,	6,	6,	6,	6,	5,	5;
 ;	70	71	72	73	74	75	76	77	78	79	7A	7B	7C	7D	7E	7F
 db	5,	5,	5,	5,	6,	3,	3,	3,	3,	6,	6,	6,	6,	6,	6,	6;
 PalSettings_HOUSE:        	; 8		- done
@@ -300,9 +300,9 @@ db	3,	3,	7,	7,	7,	6,	6,	6,	6,	6,	4,	4,	6,	7,	7,	6;
 ;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
 db	6,	6,	6,	6,	7,	6,	6,	6,	6,	6,	6,	6,	6,	7,	7,	7;
 ;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
-db	7,	7,	3,	3,	3,	3,	6,	6,	7,	7,	7,	7,	6,	6,	6,	6;
+db	7,	7,	3,	3,	3,	3,	6,	6,	4,	4,	7,	4,	6,	6,	6,	6;
 ;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
-db	6,	6,	6,	6,	7,	7,	6,	6,	7,	7,	7,	7,	6,	6,	3,	3;
+db	6,	6,	6,	6,	7,	7,	6,	6,	4,	4,	4,	4,	6,	6,	3,	3;
 ;	60	61	62	63	64	65	66	67	68	69	6A	6B	6C	6D	6E	6F
 db	6,	6,	6,	6,	6,	6,	3,	3,	6,	6,	6,	6,	6,	6,	5,	5;
 ;	70	71	72	73	74	75	76	77	78	79	7A	7B	7C	7D	7E	7F
@@ -322,6 +322,10 @@ db	7,	7,	6,	6,	3,	6,	6,	7,	7,	3,	7,	6,	7,	7,	7,	3;
 db	3,	3,	3,	3,	3,	3,	7,	7,	1,	3,	1,	3,	3,	3,	2,	2;
 ;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
 db	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	7,	3;
+;	60	61	62	63	64	65	66	67	68	69	6A	6B	6C	6D	6E	6F
+db	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5;
+;	70	71	72	73	74	75	76	77	78	79	7A	7B	7C	7D	7E	7F
+db	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5;
 PalSettings_UNDERGROUND:  	; 11	- done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	3,	2,	7,	1,	1,	7,	7,	7,	7,	7,	7,	1,	1,	0,	0,	0;
@@ -443,6 +447,10 @@ db	3,	3,	4,	4,	5,	5,	3,	7,	3,	3,	6,	7,	4,	4,	6,	6;
 db	6,	6,	6,	4,	4,	3,	3,	7,	6,	6,	3,	3,	5,	5,	3,	7;
 ;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
 db	6,	6,	6,	6,	6,	3,	3,	7,	7,	7,	3,	3,	7,	3,	3,	3;
+;	60	61	62	63	64	65	66	67	68	69	6A	6B	6C	6D	6E	6F
+db	4,	4,	4,	4,	4,	4,	4,	3,	3,	3,	3,	1,	3,	3,	1,	1;
+;	70	71	72	73	74	75	76	77	78	79	7A	7B	7C	7D	7E	7F
+db	3,	3,	3,	1,	1,	1,	1,	3,	3,	1,	1,	1,	1,	1,	1,	1;
 PalSettings_CLUB:         	; 21	- done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	0,	6,	6,	6,	7,	2,	6,	2,	2,	7,	4,	7,	7,	3,	7,	7;
@@ -475,17 +483,17 @@ db	3,	3,	3,	3,	7,	7,	3,	3,	6,	6,	6,	6,	6,	6,	5,	5;
 db	5,	5,	5,	5,	3,	3,	3,	3,	3,	6,	6,	6,	6,	6,	6,	6;
 PalSettings_REACTOR:        ; 24
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
-db	3,	3,	3,	3,	3,	3,	3,	3,	3,	7,	7,	3,	3,	3,	3,	3;
+db	3,	3,	3,	3,	3,	3,	3,	3,	3,	4,	4,	3,	3,	3,	3,	3;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
-db	3,	3,	3,	3,	3,	3,	3,	3,	3,	7,	7,	3,	3,	3,	3,	3;
+db	3,	3,	3,	3,	3,	3,	3,	3,	3,	4,	4,	3,	3,	3,	3,	3;
 ;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
-db	7,	7,	3,	3,	3,	3,	6,	3,	3,	3,	7,	7,	7,	3,	3,	3;
+db	5,	5,	3,	3,	3,	3,	3,	3,	3,	3,	7,	7,	7,	3,	3,	3;
 ;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
-db	7,	7,	3,	3,	3,	3,	6,	3,	3,	3,	7,	7,	7,	3,	3,	4;
+db	5,	5,	3,	3,	3,	3,	3,	3,	3,	3,	5,	5,	5,	3,	3,	4;
 ;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
 db	3,	3,	5,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	4,	4;
 ;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
-db	3,	3,	5,	6,	6,	5,	5,	3,	3,	5,	5,	3,	3,	3,	3,	4;
+db	3,	3,	5,	3,	3,	6,	6,	3,	3,	6,	6,	3,	3,	3,	3,	4;
 PalSettings_VOLCANO:        ; 25
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	0,	0,	0,	0,	0,	0,	0,	0,	6,	6,	6,	6,	0,	0,	0,	0;
@@ -564,8 +572,8 @@ MakeOverworldBGMapAttributes:
 	ld a, [hGBC]
 	and a
 	ret z
-	ld a, [wGameplayOptions]
-	bit 7, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_ENHANCED_GBC, a
 	ret z
 	
 
@@ -783,6 +791,15 @@ MakeOverworldBGMapAttributes:
 	pop hl
 	
 	ret c
+
+	ld a, [w2CurMap]
+	cp ROUTE_10_SOUTH ; load Lavender palette for the top of lavender roof
+	jr nz, .notRoute10South
+	; if Route 10 South
+	ld a, PAL_ENH_OVW_PURPLE
+	ret
+	; else
+.notRoute10South
 	ld a, PAL_ENH_OVW_BROWN	;for routes and other such maps
 	ret
 	
@@ -1045,8 +1062,8 @@ MakeAndTransferOverworldBGMapAttributes_OpenText:
 	ld a, [hGBC]
 	and a
 	ret z
-	ld a, [wGameplayOptions]
-	bit 7, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_ENHANCED_GBC, a
 	ret z
 ;only on the overworld bgmap
 	ld a, [hFlagsFFFA]
@@ -1089,8 +1106,8 @@ GBCEnhancedRedrawRowOrColumn:
 	ld a, [hGBC]
 	and a
 	ret z
-	ld a, [wGameplayOptions]
-	bit 7, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_ENHANCED_GBC, a
 	ret z
 	
 	;only on the overworld bgmap
@@ -1256,8 +1273,8 @@ TransferGBCEnhancedBGMapAttributes:
 	ld a, [hGBC]
 	and a
 	ret z
-	ld a, [wGameplayOptions]
-	bit 7, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_ENHANCED_GBC, a
 	ret z
 
 	ld a, %11
@@ -1287,8 +1304,8 @@ TransferGBCEnhancedOverworldPalettes:
 	ld a, [hGBC]
 	and a
 	ret z
-	ld a, [wGameplayOptions]
-	bit 7, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_ENHANCED_GBC, a
 	ret z
 	
 	call UpdateEnhancedGBCPal_BGP.skipHardwareUpdate

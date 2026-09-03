@@ -207,7 +207,7 @@ CinnabarGymQuiz_1ea92:
 	cp c
 	jr nz, .wrongAnswer
 	ld hl, wCurrentMapScriptFlags
-	set 5, [hl]
+	set BIT_CUR_MAP_LOADED_1, [hl]
 	ld a, [hGymGateIndex]
 	ld [$ffe0], a
 	ld hl, CinnabarGymQuizCorrectText
@@ -410,7 +410,7 @@ BillsHousePokemonList:
 	ld a, 1
 	ld [wTopMenuItemX], a
 .billsPokemonLoop
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl]
 	coord hl, 0, 0
 	ld b, 10
@@ -443,7 +443,7 @@ BillsHousePokemonList:
 	ld [wMenuWatchedKeys], a
 	jr .billsPokemonLoop
 .cancel
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl]
 	call LoadScreenTilesFromBuffer2
 	jp TextScriptEnd

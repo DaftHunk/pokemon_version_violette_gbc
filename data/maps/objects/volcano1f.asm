@@ -10,9 +10,9 @@ Volcano1FObject:
 	db 0 ; signs
 
 	db 5 ; objects
-	object SPRITE_BLACK_HAIR_BOY_2,  8, 14, STAY, DOWN, 1, OPP_ENGINEER, 3
-	object SPRITE_HIKER,            21, 16, STAY, LEFT, 2, OPP_SOLDIER,  3
-	object SPRITE_BLACK_HAIR_BOY_1, 14,  6, STAY, UP,   3, OPP_ENGINEER, 4
+	object SPRITE_FIREFIGHTER,       8, 14, STAY, DOWN, 1, OPP_FIREFIGHTER, 1
+	object SPRITE_SOLDIER,          21, 16, STAY, LEFT, 2, OPP_SOLDIER,     3
+	object SPRITE_FIREFIGHTER,      14,  6, STAY, UP,   3, OPP_FIREFIGHTER, 2
 	object SPRITE_BALL,              6, 10, STAY, NONE, 4, FULL_RESTORE
 	object SPRITE_BALL,              6,  5, STAY, NONE, 5, CARBOS
 

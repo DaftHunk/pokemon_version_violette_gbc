@@ -5,13 +5,13 @@ EnterMapAnim:
 	call Delay3
 	push hl
 	call GBFadeInFromWhite
-	ld hl, wFlags_D733
+	ld hl, wStatusFlags7
 	bit 7, [hl] ; used fly out of battle?
 	res 7, [hl]
 	jr nz, .flyAnimation
 	ld a, SFX_TELEPORT_ENTER_1
 	call PlaySound
-	ld hl, wd732
+	ld hl, wStatusFlags6
 	bit 4, [hl] ; used dungeon warp?
 	res 4, [hl]
 	pop hl
@@ -124,7 +124,7 @@ _LeaveMapAnim:
 .playerNotStandingOnWarpPadOrHole
 	ld a, $4
 	call StopMusic
-	ld a, [wd732]
+	ld a, [wStatusFlags6]
 	bit 6, a ; is the last used pokemon center the destination?
 	jr z, .flyAnimation
 ; if going to the last used pokemon center
@@ -395,14 +395,14 @@ IsPlayerStandingOnWarpPadOrHole:
 FishingAnim:
 	ld c, 10
 	call DelayFrames
-	ld hl, wd736
+	ld hl, wMovementFlags
 	set 6, [hl] ; reserve the last 4 OAM entries
 ;joenote - support female trainer sprite
 	push af
 	ld de, RedFSprite
 	lb bc, BANK(RedFSprite), $c
-	ld a, [wGameplayOptions]
-	bit 0, a	;check if girl
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_FEMALE, a	;check if girl
 	jr nz, .donefemale
 	ld de, RedSprite
 	lb bc, BANK(RedSprite), $c
@@ -414,8 +414,8 @@ FishingAnim:
 ;joenote - support female trainer sprite when fishing
 	push af
 	ld hl, RedFFishingTiles
-	ld a, [wGameplayOptions]
-	bit 0, a	;check if girl
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_FEMALE, a	;check if girl
 	jr nz, .donefemale2
 	ld hl, RedFishingTiles
 .donefemale2
@@ -479,7 +479,7 @@ FishingAnim:
 
 .done
 	call PrintText
-	ld hl, wd736
+	ld hl, wMovementFlags
 	res 6, [hl] ; unreserve the last 4 OAM entries
 	call LoadFontTilePatterns
 	ret
@@ -576,9 +576,9 @@ _HandleMidJump:
 	ld [hJoyPressed], a
 	ld [hJoyReleased], a
 	ld [wPlayerJumpingYScreenCoordsIndex], a
-	ld hl, wd736
+	ld hl, wMovementFlags
 	res 6, [hl] ; not jumping down a ledge any more
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 7, [hl] ; not simulating joypad states any more
 	xor a
 	ld [wJoyIgnore], a
@@ -589,8 +589,8 @@ Ledge60fps:
 	push af
 	ld h, $c2
 	ld l, $0a
-	ld a, [wGameplayOptions]
-	bit 4, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_60_FPS, a
 	ld a, [hl]
 	jr nz, .is60fps
 	xor a

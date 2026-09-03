@@ -59,6 +59,11 @@ ColosseumSpec2:
 	FLYWARP_DATA COLOSSEUM_WIDTH,4,6
 	db CLUB
 
+; Define extra flying maps
+DEF ROUTE_4_FLY  EQU 11
+DEF ROUTE_10_FLY EQU 12
+DEF EXTRA_FLYING_MAPS EQU 2
+
 FlyWarpDataPtr:
 	db PALLET_TOWN, 0
 	dw PalletTownFlyWarp
@@ -120,4 +125,4 @@ ForgottenTownFlyWarp:
 Route4FlyWarp:
 	FLYWARP_DATA ROUTE_4_WIDTH,          6, 11
 Route10FlyWarp:
-	FLYWARP_DATA ROUTE_10_WIDTH,        20, 11
+	FLYWARP_DATA ROUTE_10_WIDTH,        26, 13

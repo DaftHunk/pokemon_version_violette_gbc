@@ -234,31 +234,3 @@ NUM_ACTIVE_PALS EQU 4
 
 ;joenote - catch rate given to pokemon marked as dead for nuzlocke mode
 DEAD EQU $05
-
-; wOptions
-DEF TEXT_DELAY_FAST   		EQU %00000001	; 1
-DEF TEXT_DELAY_MEDIUM 		EQU %00000011	; 3
-DEF TEXT_DELAY_SLOW   		EQU %00000101 	; 5
-DEF TEXT_DELAY_BITS	  		EQU %00000111 	; bits 0 to 2
-DEF BIT_BATTLE_HARD  		EQU 3		  	; bit 3
-DEF BATTLE_HARD_MODE  		EQU %00001000	; bit 3
-DEF SOUND_STEREO_BITS		EQU %00110000 	; bits 4 to 5
-DEF BIT_BATTLE_SHIFT  		EQU 6		 	; bit 6
-DEF BIT_BATTLE_ANIMATION 	EQU 7		 	; bit 7
-; wGameplayOptions
-DEF BIT_BATTLE_NOSWITCH		EQU 3		  	; bit 3
-DEF BATTLE_NOSWITCH  		EQU %00001000	; bit 3
-DEF BIT_ENH_GBC_COLORS		EQU 7		  	; bit 7
-DEF ENH_GBC_COLORS  		EQU %10000000	; bit 7
-
-DEF TILE_WIDTH EQU 8 ; pixels
-DEF LEN_1BPP_TILE EQU 1 * TILE_WIDTH ; bytes
-DEF LEN_2BPP_TILE EQU 2 * TILE_WIDTH ; bytes
-
-;;;;;;;;;; PureRGBnote: ADDED: pokedex flags
-
-	const_def
-	const BIT_POKEDEX_DATA_DISPLAY_TYPE    ; 0
-	const BIT_POKEDEX_WHICH_SPRITE_SHOWING ; 1 
-	const BIT_VIEWING_POKEDEX              ; 2
-;;;;;;;;;;

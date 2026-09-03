@@ -11,8 +11,8 @@ LoreleiScript:
 LoreleiShowOrHideExitBlock:
 ; Blocks or clears the exit to the next room.
 	ld hl, wCurrentMapScriptFlags
-	bit 5, [hl]
-	res 5, [hl]
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
 	ld hl, wBeatLorelei
 	set 1, [hl]
@@ -61,18 +61,6 @@ LoreleiScriptWalkIntoRoom:
 	ret
 
 LoreleiScript0:
-	CheckEvent EVENT_ELITE_4_BEATEN
-	jr nz, .elite4Rematch
-	jr .continueScript
-.elite4Rematch
-	ld a, HS_LORELEI_1
-	ld [wMissableObjectIndex], a
-	predef HideObject
-	ld a, HS_LORELEI_2
-	ld [wMissableObjectIndex], a
-	predef ShowObject2
-	jr .continueScript
-.continueScript
 	ld hl, LoreleiEntranceCoords
 	call ArePlayerCoordsInArray
 	jp nc, CheckFightingMapTrainers
@@ -87,7 +75,7 @@ LoreleiScript0:
 	CheckAndSetEvent EVENT_AUTOWALKED_INTO_LORELEIS_ROOM
 	jr z, LoreleiScriptWalkIntoRoom
 .stopPlayerFromLeaving
-	ld a, $3
+	ld a, $2
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID  ; "Don't run away!"
 	ld a, D_UP
@@ -124,15 +112,7 @@ LoreleiScript2:
 	cp $ff
 	jp z, ResetLoreleiScript
 
-	CheckEvent EVENT_ELITE_4_BEATEN
-	jr nz, .elite4Rematch
-
 	ld a, $1
-	jp .endBattle
-.elite4Rematch
-	ld a, $2
-	; fallthrough
-.endBattle
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 ;;;;;;;;;; PureRGBnote: ADDED: sound effect for the doors opening
@@ -143,7 +123,6 @@ LoreleiScript2:
 
 LoreleiTextPointers:
 	dw LoreleiText1
-	dw LoreleiText2
 	dw LoreleiDontRunAwayText
 
 LoreleiTrainerHeader0:
@@ -167,18 +146,23 @@ LoreleiTrainerHeader1:
 
 LoreleiText1:
 	TX_ASM
-	ld hl, LoreleiTrainerHeader0
+
 	ld a, 8
 	ld [wGymLeaderNo], a	;joenote - use gym leader music
+
+	CheckEvent EVENT_ELITE_4_BEATEN
+	jr nz, .elite4Rematch
+
+	ld hl, LoreleiTrainerHeader0
 	call TalkToTrainer
 	jp TextScriptEnd
 
-LoreleiText2:
-	TX_ASM
+.elite4Rematch
 	ld hl, LoreleiTrainerHeader1
-	ld a, 8
-	ld [wGymLeaderNo], a	;joenote - use gym leader music
 	call TalkToTrainer
+	; set the right roster
+	ld a, 2
+	ld [wTrainerNo], a
 	jp TextScriptEnd
 
 LoreleiBeforeBattleText:

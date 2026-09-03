@@ -244,7 +244,7 @@ FreezeBurnParalyzeEffect:
 	ret nc ; do nothing if random value is >= 1A or 4D [no status applied]
 	ld a, b ; what type of effect is this?
 	cp BURN_SIDE_EFFECT1
-	jr z, .burn
+	jp z, BurnEnemyMon
 	cp FREEZE_SIDE_EFFECT
 	jr z, .freeze
 ; .paralyze
@@ -254,14 +254,6 @@ FreezeBurnParalyzeEffect:
 	ld a, ENEMY_HUD_SHAKE_ANIM
 	call PlayBattleAnimation
 	jp PrintMayNotAttackText ; print paralysis text
-.burn
-	ld a, 1 << BRN
-	ld [wEnemyMonStatus], a
-	call HalveAttackDueToBurn ; halve attack of affected mon
-	ld a, ENEMY_HUD_SHAKE_ANIM
-	call PlayBattleAnimation
-	ld hl, BurnedText
-	jp PrintText
 .freeze
 	;joenote - check for freeze clause
 	call HandleSlpFrzClause
@@ -299,19 +291,13 @@ opponentAttacker:
 	ret nc
 	ld a, b
 	cp BURN_SIDE_EFFECT1
-	jr z, .burn
+	jr z, BurnPokemon
 	cp FREEZE_SIDE_EFFECT
 	jr z, .freeze
 	ld a, 1 << PAR
 	ld [wBattleMonStatus], a
 	call QuarterSpeedDueToParalysis
 	jp PrintMayNotAttackText
-.burn
-	ld a, 1 << BRN
-	ld [wBattleMonStatus], a
-	call HalveAttackDueToBurn
-	ld hl, BurnedText
-	jp PrintText
 .freeze
 	;joenote - check for freeze clause
 	call HandleSlpFrzClause
@@ -321,6 +307,22 @@ opponentAttacker:
 	ld a, 1 << FRZ
 	ld [wBattleMonStatus], a
 	ld hl, FrozenText
+	jp PrintText
+
+BurnPokemon::
+	ld a, 1 << BRN
+	ld [wBattleMonStatus], a
+	call HalveAttackDueToBurn
+	ld hl, BurnedText
+	jp PrintText
+
+BurnEnemyMon::
+	ld a, 1 << BRN
+	ld [wEnemyMonStatus], a
+	call HalveAttackDueToBurn ; halve attack of affected mon
+	ld a, ENEMY_HUD_SHAKE_ANIM
+	call PlayBattleAnimation
+	ld hl, BurnedText
 	jp PrintText
 
 BurnedText:
@@ -388,7 +390,7 @@ StatModifierUpEffect:
 	ld c, a
 	ld b, $0
 	inc a ;joenote - backup the address offset for the stat mod 
-	ld [wUnusedD71B], a	;joenote - backup the address offset for the stat mod
+	ld [wTempCombatStats], a	;joenote - backup the address offset for the stat mod
 	add hl, bc
 	ld b, [hl]
 	inc b ; increment corresponding stat mod
@@ -648,7 +650,7 @@ StatModifierDownEffect:
 	ld c, a
 	ld b, $0
 	inc a ;joenote - backup the address offset for the stat mod 
-	ld [wUnusedD71B], a	;joenote - backup the address offset for the stat mod
+	ld [wTempCombatStats], a	;joenote - backup the address offset for the stat mod
 	add hl, bc
 	ld b, [hl]
 	dec b ; dec corresponding stat mod
@@ -953,6 +955,17 @@ SwitchAndTeleportEffect:
 	ld a, [wIsInBattle]
 	dec a
 	jr nz, .notWildBattle2
+
+	ld a, [wPlayerMoveNum]
+	cp TELEPORT
+	jr z, .notTeleport
+
+	ld a, [wPlayerBattleStatus1]
+	; is the player using a multi-turn move like wrap?
+	bit USING_TRAPPING_MOVE, a
+	jr nz, .cantEscape
+
+.notTeleport
 	ld a, [wBattleMonLevel]
 	ld b, a
 	ld a, [wCurEnemyLVL]
@@ -1009,6 +1022,11 @@ SwitchAndTeleportEffect:
 	jr z, .printText
 	ld hl, WasBlownAwayText
 .printText
+	jp PrintText
+.cantEscape
+	ld c, 50
+	call DelayFrames
+	ld hl, CantEscapeText
 	jp PrintText
 
 RanFromBattleText:
@@ -1618,17 +1636,17 @@ PlayBattleAnimationGotID:
 
 ;joenote - function for checking and reseting the AI's already-acted bit
 CheckandResetEnemyActedBit:
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	bit 1, a	;check a for already-acted bit (sets or clears zero flag)
 	res 1, a ; resets the already-acted bit (does not affect flags)
-	ld [wUnusedC000], a
+	ld [wBattleAISettingFlags], a
 	ret 
 
 ;joenote - function for setting the AI's already-acted bit
 SetEnemyActedBit:
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	set 1, a ; sets the already-acted bit
-	ld [wUnusedC000], a
+	ld [wBattleAISettingFlags], a
 	ret
 
 ;joenote - this sets the last damage dealt to zero

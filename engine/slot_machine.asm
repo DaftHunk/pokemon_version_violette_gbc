@@ -27,7 +27,7 @@ PromptUserToPlaySlots:
 	ld a, $e4
 	ld [rOBP0], a
 	call UpdateGBCPal_OBP0
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl]
 	xor a
 	ld [wSlotMachineAllowMatchesCounter], a
@@ -35,7 +35,7 @@ PromptUserToPlaySlots:
 	ld bc, $0014
 	call FillMemory
 	call MainSlotMachineLoop
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl]
 	xor a
 	ld [wSlotMachineAllowMatchesCounter], a
@@ -932,4 +932,4 @@ SlotMachineMapEnd:
 INCLUDE "data/items/slot_machine_wheels.asm"
 
 SlotMachineTiles1:
-	INCBIN "gfx/tiles/slotmachine1.2bpp"
+	INCBIN "gfx/tilemaps/slotmachine1.2bpp"

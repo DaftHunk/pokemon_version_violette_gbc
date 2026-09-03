@@ -32,7 +32,7 @@ TransformEffect_:
 	call nz, Bankswitch
 	ld a, [wOptions]
 ;	add a
-	bit BIT_BATTLE_ANIMATION, a
+	bit BIT_OPTIONS_BATTLE_ANIMATION, a
 	ld hl, PlayCurrentMoveAnimation
 	ld b, BANK(PlayCurrentMoveAnimation)
 ;	jr nc, .gotAnimToPlay

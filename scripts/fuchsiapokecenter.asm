@@ -47,7 +47,7 @@ FuchsiaPokecenterNurseText:
 	ld hl, NurseJoyAcceptedText
 	call PrintText
 	; set battle flags
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	; set battle opponent

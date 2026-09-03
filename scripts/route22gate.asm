@@ -67,7 +67,7 @@ Route22GateText2:
 Route22GateText1:
 	TX_ASM
 	ld a, [wObtainedBadges]
-	bit 0, a
+	bit BIT_BOULDERBADGE, a
 	jr nz, .asm_1e6f6
 	ld hl, Route22GateText_1e704
 	call PrintText

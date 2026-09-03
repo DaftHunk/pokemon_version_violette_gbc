@@ -6,7 +6,7 @@ FuchsiaHouse3TextPointers:
 
 FuchsiaHouse3Text1:
 	TX_ASM
-	ld a, [wd728]
+	ld a, [wStatusFlags1]
 	bit 5, a
 	jr nz, .after
 
@@ -23,7 +23,7 @@ FuchsiaHouse3Text1:
 	call GiveItem
 	jr nc, .full
 
-	ld hl, wd728
+	ld hl, wStatusFlags1
 	set 5, [hl]
 
 	ld hl, FuchsiaHouse3Text_561c2

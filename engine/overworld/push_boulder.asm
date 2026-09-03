@@ -1,8 +1,8 @@
 TryPushingBoulder:
-	ld a, [wd728]
+	ld a, [wStatusFlags1]
 	bit 0, a ; using Strength?
 	ret z
-	ld a, [wFlags_0xcd60]
+	ld a, [wMiscFlags]
 	bit 1, a ; has boulder dust animation from previous push played yet?
 	ret nz
 	xor a
@@ -23,9 +23,9 @@ TryPushingBoulder:
 	ld a, [hl]
 	cp BOULDER_MOVEMENT_BYTE_2
 	jp nz, ResetBoulderPushFlags
-	ld hl, wFlags_0xcd60
-	bit 6, [hl]
-	set 6, [hl] ; indicate that the player has tried pushing
+	ld hl, wMiscFlags
+	bit BIT_TRIED_PUSH_BOULDER, [hl]
+	set BIT_TRIED_PUSH_BOULDER, [hl] ; indicate that the player has tried pushing
 	ret z ; the player must try pushing twice before the boulder will move
 	ld a, [hJoyHeld]
 	and D_RIGHT | D_LEFT | D_UP | D_DOWN
@@ -75,8 +75,8 @@ TryPushingBoulder:
 	call MoveSprite
 	ld a, SFX_PUSH_BOULDER
 	call PlaySound
-	ld hl, wFlags_0xcd60
-	set 1, [hl]
+	ld hl, wMiscFlags
+	set BIT_BOULDER_DUST, [hl]
 	ret
 
 PushBoulderUpMovementData:
@@ -92,14 +92,14 @@ PushBoulderRightMovementData:
 	db NPC_MOVEMENT_RIGHT,$FF
 
 DoBoulderDustAnimation:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	callab AnimateBoulderDust
 	call DiscardButtonPresses
 	ld [wJoyIgnore], a
 	call ResetBoulderPushFlags
-	set 7, [hl]
+	set BIT_PUSHED_BOULDER, [hl]
 	ld a, [wBoulderSpriteIndex]
 	ld [H_SPRITEINDEX], a
 	call GetSpriteMovementByte2Pointer
@@ -108,7 +108,7 @@ DoBoulderDustAnimation:
 	jp PlaySound
 
 ResetBoulderPushFlags:
-	ld hl, wFlags_0xcd60
-	res 1, [hl]
-	res 6, [hl]
+	ld hl, wMiscFlags
+	res BIT_BOULDER_DUST, [hl]
+	res BIT_TRIED_PUSH_BOULDER, [hl]
 	ret

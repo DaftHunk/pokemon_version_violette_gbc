@@ -10,7 +10,7 @@ ResetStatusAndHalveMoneyOnBlackout::
 	ld [wNPCMovementScriptFunctionNum], a
 	ld [hJoyHeld], a
 	ld [wNPCMovementScriptPointerTableNum], a
-	ld [wFlags_0xcd60], a
+	ld [wMiscFlags], a
 
 	ld [hMoney], a
 	ld [hMoney + 1], a
@@ -39,7 +39,7 @@ ResetStatusAndHalveMoneyOnBlackout::
 	ld [wPlayerMoney + 2], a
 
 .lostmoney
-	ld hl, wd732
+	ld hl, wStatusFlags6
 	set 2, [hl]
 	res 3, [hl]
 	set 6, [hl]

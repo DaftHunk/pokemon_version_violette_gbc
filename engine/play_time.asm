@@ -1,6 +1,6 @@
 TrackPlayTime:
 	call CountDownIgnoreInputBitReset
-	ld a, [wd732]
+	ld a, [wStatusFlags6]
 	bit 0, a
 	ret z
 	ld a, [wPlayTimeMaxed]
@@ -48,12 +48,12 @@ CountDownIgnoreInputBitReset:
 	ld [wIgnoreInputCounter], a
 	and a
 	ret nz
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	res 1, a
 	res 2, a
 	bit 5, a
 	res 5, a
-	ld [wd730], a
+	ld [wStatusFlags5], a
 	ret z
 	xor a
 	ld [hJoyPressed], a

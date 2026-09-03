@@ -60,6 +60,11 @@ _ExclamationText::
 	text "!"
 	done
 
+_VolcanoBattleBurnText::
+	text "Le Volcan est"
+	line "brûlant!"
+	prompt
+
 _GroundRoseText::
 	text "Le sol s'est levé"
 	line "dans le coin!"
@@ -961,6 +966,11 @@ _ViridianBlackboardSleepText::
 	line "peut attaquer"
 	cont "s'il est endormi!"
 
+	para "Un seul membre"
+	line "d'une équipe peut"
+	cont "être endormi à la"
+	cont "fois."
+
 	para "Un #mon reste"
 	line "endormi même"
 	cont "après un combat."
@@ -988,6 +998,9 @@ _ViridianBlackboardPrlzText::
 	line "annuler certaines"
 	cont "attaques!"
 
+	para "Elle divise aussi"
+	line "la Vitesse par 2!"
+
 	para "La paralysie ne"
 	line "disparaît pas"
 	cont "après un combat."
@@ -999,8 +1012,8 @@ _ViridianBlackboardPrlzText::
 
 _ViridianBlackboardBurnText::
 	text "La brûlure réduit"
-	line "la puissance et"
-	cont "la vitesse. Elle"
+	line "la puissance"
+	cont "physique. Elle"
 	cont "inflige aussi des"
 	cont "dégâts continus."
 
@@ -1018,6 +1031,11 @@ _ViridianBlackboardFrozenText::
 	line "prisonnier des"
 	cont "glaces reste"
 	cont "immobile!"
+	
+	para "Un seul membre"
+	line "d'une équipe peut"
+	cont "être gelé à la"
+	cont "fois."
 
 	para "Il reste gelé"
 	line "même après la"
@@ -1385,8 +1403,8 @@ _AttackContinuesText::
 	done
 
 _CantMoveText::
-	text "<USER>"
-	line "est immobilisé!"
+	text "<USER> vous"
+	line "en empêche!"
 	prompt
 
 _MoveIsDisabledText::
@@ -1548,7 +1566,7 @@ _BoostedText::
 
 _ExpPointsText::
 	text_decimal wExpAmountGained, 2, 5	;joenote - increased to 5 digits
-	text " points d'exp!"
+	text " pts d'exp!"
 	prompt
 
 _GrewLevelText::
@@ -2116,6 +2134,7 @@ INCLUDE "text/maps/viridian_forest_entrance.asm"
 INCLUDE "text/maps/mt_moon_pokecenter.asm"
 INCLUDE "text/maps/saffron_gates.asm"
 INCLUDE "text/maps/daycare_1.asm"
+INCLUDE "text/maps/mt_moon_square.asm"
 
 
 SECTION "Text 4", ROMX, BANK[TEXT_4]
@@ -2155,6 +2174,7 @@ INCLUDE "text/maps/route_7.asm"
 INCLUDE "text/maps/route_8.asm"
 INCLUDE "text/maps/route_9.asm"
 INCLUDE "text/maps/route_10.asm"
+INCLUDE "text/maps/route_10_south.asm"
 INCLUDE "text/maps/route_11_1.asm"
 
 
@@ -2176,6 +2196,7 @@ INCLUDE "text/maps/route_19_beach_house.asm"
 INCLUDE "text/maps/route_20.asm"
 INCLUDE "text/maps/route_21.asm"
 INCLUDE "text/maps/route_22.asm"
+INCLUDE "text/maps/route_22_gate_upstairs.asm"
 INCLUDE "text/maps/route_23.asm"
 INCLUDE "text/maps/route_24_1.asm"
 

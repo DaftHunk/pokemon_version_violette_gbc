@@ -20,7 +20,8 @@ MapSpriteSets:
 	db $fb ; ROUTE_7
 	db $fc ; ROUTE_8
 	db $02 ; ROUTE_9
-	db $f2 ; ROUTE_10
+	db $02 ; ROUTE_10
+	db $f2 ; ROUTE_10_SOUTH
 	db $f3 ; ROUTE_11
 	db $f4 ; ROUTE_12
 	db $08 ; ROUTE_13
@@ -36,7 +37,8 @@ MapSpriteSets:
 	db $01 ; ROUTE_22
 	db $06 ; ROUTE_23
 	db $02 ; ROUTE_24
-	db $03 ; BILLS_GARDEN
+	db $0b ; BILLS_GARDEN
+	db $0b ; MT_MOON_SQUARE
 	db $fd ; ROUTE_25
 
 ; Format:
@@ -48,18 +50,18 @@ MapSpriteSets:
 ; 03: sprite set ID if in the East or South side
 SplitMapSpriteSets:
 	db $02,$25,$02,$01 ; $f1
-	db $02,$32,$02,$03 ; $f2
+	db $02,$01,$02,$03 ; $f2
 	db $01,$39,$04,$08 ; $f3
 	db $02,$15,$03,$08 ; $f4
 	db $01,$08,$0A,$08 ; $f5
 	db $01,$18,$09,$05 ; $f6
 	db $01,$22,$09,$0A ; $f7
-	db $01,$35,$01,$0A ; $f8
+	db $01,$36,$01,$0A ; $f8
 	db $02,$21,$02,$07 ; $f9
 	db $02,$02,$07,$04 ; $fa
 	db $01,$11,$05,$07 ; $fb
 	db $01,$03,$07,$03 ; $fc
-	db $02,$03,$03,$02 ; $fd
+	db $02,$03,$0b,$02 ; $fd
 
 SpriteSets:
 ; SPRITESET_PALLET_VIRIDIAN
@@ -86,7 +88,7 @@ SpriteSets:
 	db SPRITE_LASS
 	db SPRITE_BLACK_HAIR_BOY_1
 	db SPRITE_BALL
-	db SPRITE_LYING_OLD_MAN_UNUSED_2
+	db SPRITE_RHYHORN
 
 ; SPRITESET_LAVENDER
 	db SPRITE_LITTLE_GIRL
@@ -99,7 +101,7 @@ SpriteSets:
 	db SPRITE_BLACK_HAIR_BOY_1
 	db SPRITE_HOOH
 	db SPRITE_BALL
-	db SPRITE_RED
+	db SPRITE_SACHA
 
 ; SPRITESET_VERMILION
 	db SPRITE_FOULARD_WOMAN
@@ -124,7 +126,7 @@ SpriteSets:
 	db SPRITE_POLYWRATH
 	db SPRITE_GUARD
 	db SPRITE_ROCKET
-	db SPRITE_BALL
+	db SPRITE_RHYHORN
 	db SPRITE_SNORLAX
 
 ; SPRITESET_INDIGO
@@ -144,7 +146,7 @@ SpriteSets:
 	db SPRITE_ROCKET
 	db SPRITE_OAK_AIDE
 	db SPRITE_LAPRAS_GIVER
-	db SPRITE_ERIKA
+	db SPRITE_KIMONO_WOMAN
 	db SPRITE_GENTLEMAN
 	db SPRITE_PIDGEOT
 	db SPRITE_ROCKER
@@ -191,6 +193,19 @@ SpriteSets:
 	db SPRITE_BUG_CATCHER
 	db SPRITE_BALL
 	db SPRITE_OMANYTE
+
+; SPRITESET_SPECIAL
+	db SPRITE_SACHA
+	db SPRITE_HOOH
+	db SPRITE_PIKACHU
+	db SPRITE_CLEFAIRY
+	db SPRITE_GAMBLER
+	db SPRITE_SLOWBRO
+	db SPRITE_LASS
+	db SPRITE_BLACK_HAIR_BOY_2
+	db SPRITE_GIRL
+	db SPRITE_BALL
+	db SPRITE_LITTLE_GIRL
 
 SpriteSheetPointerTable:
 	; SPRITE_RED
@@ -313,10 +328,10 @@ SpriteSheetPointerTable:
 	db $c0 ; byte count
 	db BANK(WaiterSprite)
 
-	; SPRITE_ERIKA
-	dw ErikaSprite
+	; SPRITE_KIMONO_WOMAN
+	dw KimonoWomanSprite
 	db $c0 ; byte count
-	db BANK(ErikaSprite)
+	db BANK(KimonoWomanSprite)
 
 	; SPRITE_MOM_GEISHA
 	dw MomGeishaSprite
@@ -490,6 +505,81 @@ SpriteSheetPointerTable:
 	db $c0 ; byte count
 	db BANK(JamesSprite)
 
+	; SPRITE_KOICHI
+	dw KoichiSprite
+	db $c0 ; byte count
+	db BANK(KoichiSprite)
+	
+	; SPRITE_FIREFIGHTER
+	dw FireFighterSprite
+	db $c0 ; byte count
+	db BANK(FireFighterSprite)
+
+	; SPRITE_SOLDIER
+	dw SoldierSprite
+	db $c0 ; byte count
+	db BANK(SoldierSprite)
+
+	; SPRITE_BROCK
+	dw BrockSprite
+	db $c0 ; byte count
+	db BANK(BrockSprite)
+
+	; SPRITE_MISTY
+	dw MistySprite
+	db $c0 ; byte count
+	db BANK(MistySprite)
+
+	; SPRITE_SURGE
+	dw SurgeSprite
+	db $c0 ; byte count
+	db BANK(SurgeSprite)
+
+	; SPRITE_ERIKA
+	dw ErikaSprite
+	db $c0 ; byte count
+	db BANK(ErikaSprite)
+
+	; SPRITE_SABRINA
+	dw SabrinaSprite
+	db $c0 ; byte count
+	db BANK(SabrinaSprite)
+
+	; SPRITE_KOGA
+	dw KogaSprite
+	db $c0 ; byte count
+	db BANK(KogaSprite)
+	
+	; SPRITE_BLAINE
+	dw BlaineSprite
+	db $c0 ; byte count
+	db BANK(BlaineSprite)
+	
+	; SPRITE_BURGLAR
+	dw BurglarSprite
+	db $c0 ; byte count
+	db BANK(BurglarSprite)
+	
+	; SPRITE_NERD
+	dw NerdSprite
+	db $c0 ; byte count
+	db BANK(NerdSprite)
+	
+	; SPRITE_JUGGLER
+	dw JugglerSprite
+	db $c0 ; byte count
+	db BANK(JugglerSprite)
+
+	; SPRITE_TAMER
+	dw TamerSprite
+	db $c0 ; byte count
+	db BANK(TamerSprite)
+
+	; SPRITE_SACHA
+	dw SachaSprite
+	db $c0 ; byte count
+	db BANK(SachaSprite)
+
 	; SPRITE_SLOWBRO
 	dw SlowbroSprite
 	db $c0 ; byte count
@@ -649,17 +739,22 @@ SpriteSheetPointerTable:
 
 	; SPRITE_POKEDEX
 	dw PokedexSprite
-	db $c0 ; byte count
+	db $40 ; byte count
 	db BANK(PokedexSprite)
 
 	; SPRITE_POKEBALL
 	dw PokeballSprite
-	db $c0 ; byte count
+	db $40 ; byte count
 	db BANK(PokeballSprite)
 
 	; SPRITE_MAP
 	dw MapSprite
-	db $c0 ; byte count
+	db $40 ; byte count
+	db BANK(MapSprite)
+
+	; SPRITE_CUP
+	dw CupSprite
+	db $40 ; byte count
 	db BANK(MapSprite)
 
 	; SPRITE_CLIPBOARD
@@ -696,3 +791,8 @@ SpriteSheetPointerTable:
 	dw LyingOldManSprite
 	db $40 ; byte count
 	db BANK(LyingOldManSprite)
+
+	; SPRITE_RHYHORN
+	dw RhyhornSprite
+	db $40 ; byte count
+	db BANK(RhyhornSprite)

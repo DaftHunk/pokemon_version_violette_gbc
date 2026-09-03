@@ -43,6 +43,8 @@ Route9Name:
 	db "Route 9@"
 Route10Name:
 	db "Route 10@"
+Route10SouthName:
+	db "Route 10 - Sud@"
 Route11Name:
 	db "Route 11@"
 Route12Name:
@@ -78,7 +80,7 @@ ViridianForestName:
 MountMoonName:
 	db "Mont Sélénite@"
 RockTunnelName:
-	db "Grotte@"
+	db "Grotte Sombre@"
 SeaCottageName:
 	db "Villa@"
 SSAnneName:
@@ -108,7 +110,7 @@ CeruleanCaveName:
 PowerPlantName:
 	db "Centrale@"
 VolcanoName:
-	db "Volcan@"
+	db "Volcan Cramoisi@"
 BillsGardenName:
 	db "Jardin de Léo@"
 Route16WestName:

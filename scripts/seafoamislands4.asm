@@ -1,9 +1,9 @@
 SeafoamIslands4Script:
 	call EnableAutoTextBoxDrawing
 	call SeafoamIslands4OnMapLoad
-	ld hl, wFlags_0xcd60
-	bit 7, [hl]
-	res 7, [hl]
+	ld hl, wMiscFlags
+	bit BIT_PUSHED_BOULDER, [hl]
+	res BIT_PUSHED_BOULDER, [hl]
 	jr z, .asm_465dc
 	ld hl, Seafoam4HolesCoords
 	call CheckBoulderCoords
@@ -37,7 +37,7 @@ SeafoamIslands4Script:
 	ld [wDungeonWarpDestinationMap], a
 	ld hl, Seafoam4HolesCoords
 	call IsPlayerOnDungeonWarp
-	ld a, [wd732]
+	ld a, [wStatusFlags6]
 	bit 4, a
 	ret nz
 .asm_465ed
@@ -47,8 +47,8 @@ SeafoamIslands4Script:
 
 SeafoamIslands4OnMapLoad::
 	ld hl, wCurrentMapScriptFlags
-	bit 5, [hl]
-	res 5, [hl]
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
 
 	CheckBothEventsSet EVENT_SEAFOAM3_BOULDER1_DOWN_HOLE, EVENT_SEAFOAM3_BOULDER2_DOWN_HOLE
@@ -93,7 +93,7 @@ SeafoamIslands4Script2:
 .waterwarp_entering
 	;do a scripted movement for entering
 	ld de, Seafoam4RLEMovementEnterFromWater
-	ld hl, wFlags_D733
+	ld hl, wStatusFlags7
 	res 2, [hl]
 	jr .simJoyPadFromBanksSeafoamIslands4_noset
 .donewaterwarpcheck
@@ -127,7 +127,7 @@ SeafoamIslands4Script2:
 .isEntryFromLeftBank
 	ld de, RLEMovement46632
 .simJoyPadFromBanksSeafoamIslands4
-	ld hl, wFlags_D733
+	ld hl, wStatusFlags7
 	set 2, [hl]
 .simJoyPadFromBanksSeafoamIslands4_noset
 	ld hl, wSimulatedJoypadStatesEnd
@@ -201,9 +201,9 @@ SeafoamIslands4Script2_stuff:
 	ld [wSimulatedJoypadStatesIndex], a
 	xor a
 	ld [wSpriteStateData2 + $06], a
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 7, [hl]
-	ld hl, wFlags_D733
+	ld hl, wStatusFlags7
 	set 2, [hl]
 	ld a, $3
 .asm_4667b

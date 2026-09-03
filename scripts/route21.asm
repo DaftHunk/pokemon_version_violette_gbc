@@ -22,6 +22,7 @@ Route21TextPointers:
 	dw Route21Text7
 	dw Route21Text8
 	dw Route21Text9
+	dw Route21TextSign_Volcano
 
 Route21TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_ROUTE_21_TRAINER_0
@@ -266,4 +267,8 @@ Route21EndBattleText9:
 
 Route21AfterBattleText9:
 	TX_FAR _Route21AfterBattleText9
+	db "@"
+
+Route21TextSign_Volcano:
+	TX_FAR _Route21TextSign_Volcano
 	db "@"

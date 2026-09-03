@@ -113,8 +113,8 @@ CeruleanBadgeHouseText_Earth:
 CeruleanBadgeHouseLevelCapText:
 	TX_ASM
 
-	ld a, [wMoreGameplayOptions]
-	bit 0, a
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_LEVEL_CAP, a
 	jr z, .noLevelCap ; no levelcaps
 	; else
 	ld hl, CeruleanBadgeHouseText_LevelCap
@@ -139,8 +139,8 @@ CeruleanBadgeHouseText_CurrentCap:
 
 	callfar GetLevelCap
 	
-	ld a, [wMoreGameplayOptions]
-	bit 0, a
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_LEVEL_CAP, a
 	jr z, .noLevelCap ; no levelcaps
 	; else
 	ld hl, CeruleanBadgeHouseText_CurrentLevelCap

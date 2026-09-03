@@ -22,6 +22,7 @@ MapHeaderPointers::
 	dw Route8_h
 	dw Route9_h
 	dw Route10_h
+	dw Route10South_h
 	dw Route11_h
 	dw Route12_h
 	dw Route13_h
@@ -38,6 +39,7 @@ MapHeaderPointers::
 	dw Route23_h
 	dw Route24_h
 	dw BillsGarden_h
+	dw MtMoonSquare_h
 	dw Route25_h
 	dw RedsHouse1F_h
 	dw RedsHouse2F_h
@@ -86,6 +88,7 @@ MapHeaderPointers::
 	dw RockTunnelPokecenter_h
 	dw RockTunnel1_h
 	dw PowerPlant_h
+	dw PowerPlant1F_h
 	dw Route11Gate_h
 	dw DiglettsCaveEntranceRoute11_h
 	dw Route11GateUpstairs_h
@@ -115,9 +118,6 @@ MapHeaderPointers::
 	dw Route16WestGate_h
 	dw Lance_h
 	dw Route19BeachHouse_h
-	dw Lance_h ; unused
-	dw Lance_h ; unused
-	dw Lance_h ; unused
 	dw HallofFameRoom_h
 	dw UndergroundPathNS_h
 	dw Rival_h ;id=120
@@ -194,6 +194,7 @@ MapHeaderPointers::
 	dw Route18GateUpstairs_h
 	dw SeafoamIslands1_h
 	dw Route22Gate_h
+	dw Route22GateUpstairs_h
 	dw VictoryRoad2_h
 	dw Route12GateUpstairs_h
 	dw VermilionHouse3_h
@@ -205,7 +206,6 @@ MapHeaderPointers::
 	dw RocketHideout4_h
 	dw RocketHideoutElevator_h
 	dw CeladonSchool_h
-	dw RocketHideoutElevator_h ; unused
 	dw RocketHideoutElevator_h ; unused
 	dw SilphCo2_h
 	dw SilphCo3_h

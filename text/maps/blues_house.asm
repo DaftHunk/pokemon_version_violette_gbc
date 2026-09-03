@@ -26,6 +26,10 @@ _DaisyUseMapText::
 	text "Utilise la Carte"
 	line "pour connaître ta"
 	cont "position."
+
+	para "Elle s'ouvre en"
+	line "faisant SELECT"
+	cont "dans le #dex."
 	done
 
 _BluesHouseText2::

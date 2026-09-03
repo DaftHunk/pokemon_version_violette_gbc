@@ -6,10 +6,6 @@ _Route15GateUpstairsText_4968c::
 	cont "qui n'ont pas"
 	cont "combattu."
 
-	para "Mais cela réduit"
-	line "l'Exp de chaque"
-	cont "#mon."
-
 	para "Si tu n'en as pas"
 	line "besoin, laisse-le"
 	cont "dans ton PC."

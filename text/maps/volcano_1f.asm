@@ -11,11 +11,10 @@ _Volcano1FText0_EndBattle::
 	prompt
 
 _Volcano1FText0_AfterBattle::
-	text "On est ici pour"
-	line "surveiller et"
-	cont "empêcher le"
-	cont "Volcan d'entrer"
-	cont "en éruption!"
+	text "Seuls les #mon"
+	line "Eau, Feu et Roche"
+	cont "supportent une"
+	cont "telle chaleur!"
 	done
 
 _Volcano1FText1_Battle::
