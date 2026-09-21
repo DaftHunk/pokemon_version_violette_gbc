@@ -296,7 +296,6 @@ INCLUDE "scripts/ceruleancity.asm"
 INCLUDE "scripts/vermilioncity.asm"
 INCLUDE "scripts/celadoncity.asm"
 INCLUDE "scripts/fuchsiacity.asm"
-INCLUDE "scripts/forgottentown.asm"
 
 INCLUDE "data/maps/headers/blueshouse.asm"
 INCLUDE "scripts/blueshouse.asm"
@@ -634,6 +633,7 @@ INCLUDE "data/maps/objects/lavendertown.asm"
 LavenderTownBlocks: INCBIN "maps/lavendertown.blk"
 
 INCLUDE "data/maps/headers/forgottentown.asm"
+INCLUDE "scripts/forgottentown.asm"
 INCLUDE "data/maps/objects/forgottentown.asm"
 ForgottenTownBlocks: INCBIN "maps/forgottentown.blk"
 
