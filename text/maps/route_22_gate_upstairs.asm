@@ -33,6 +33,7 @@ _Route22GateUpstairsText_Champion::
 _Route22GateUpstairsText_Binoculars::
 	text "Vous regardez"
 	line "dans les"
+	cont "jumelles qui"
 	cont "pointent vers"
 	cont "le Nord..."
 

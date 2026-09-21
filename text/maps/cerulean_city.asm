@@ -276,3 +276,10 @@ _CeruleanCityText_BikeShop::
 _CeruleanCityText_BadgeHouse::
 	text "Maître des Badges"
 	done
+
+_CeruleanCityText_Bridge::
+	text "Pont Pépite"
+	
+	para "Direction"
+	line "Route 24"
+	done

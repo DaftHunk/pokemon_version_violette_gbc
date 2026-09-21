@@ -250,6 +250,7 @@ CeruleanCityTextPointers:
 	dw CeruleanCityText_EstBoard
 	dw CeruleanCityText_BikeShop
 	dw CeruleanCityText_BadgeHouse
+	dw CeruleanCityText_Bridge
 
 CeruleanCityText1:
 	TX_ASM
@@ -479,4 +480,8 @@ CeruleanCityText_BikeShop:
 
 CeruleanCityText_BadgeHouse:
 	TX_FAR _CeruleanCityText_BadgeHouse
+	db "@"
+
+CeruleanCityText_Bridge:
+	TX_FAR _CeruleanCityText_Bridge
 	db "@"
