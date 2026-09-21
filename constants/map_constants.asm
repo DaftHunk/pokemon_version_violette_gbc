@@ -82,16 +82,16 @@ DEF NUM_CITY_MAPS EQU const_value
 	mapconst BIKE_SHOP,                   4,  4 ; $44
 	mapconst CERULEAN_MART,               4,  4 ; $45
 	mapconst MT_MOON_POKECENTER,          4,  7 ; $46
-	mapconst CERULEAN_TRASHED_HOUSE_COPY, 4,  4 ; $47
+	mapconst UNUSED_MAP_47,               0,  0 ; $47
 	mapconst ROUTE_5_GATE,                3,  4 ; $48
 	mapconst PATH_ENTRANCE_ROUTE_5,       4,  4 ; $49
 	mapconst DAYCAREM,                    4,  4 ; $4A
 	mapconst ROUTE_6_GATE,                3,  4 ; $4B
 	mapconst PATH_ENTRANCE_ROUTE_6,       4,  4 ; $4C
-	mapconst PATH_ENTRANCE_ROUTE_6_COPY,  4,  4 ; $4D
+	mapconst UNUSED_MAP_4D,               0,  0 ; $4D
 	mapconst ROUTE_7_GATE,                4,  3 ; $4E
 	mapconst PATH_ENTRANCE_ROUTE_7,       4,  4 ; $4F
-	mapconst PATH_ENTRANCE_ROUTE_7_COPY,  4,  4 ; $50
+	mapconst UNUSED_MAP_50,               0,  0 ; $50
 	mapconst ROUTE_8_GATE,                4,  3 ; $51
 	mapconst PATH_ENTRANCE_ROUTE_8,       4,  4 ; $52
 	mapconst ROCK_TUNNEL_POKECENTER,      4,  7 ; $53
@@ -182,7 +182,7 @@ DEF NUM_CITY_MAPS EQU const_value
 	mapconst CINNABAR_LAB_FOSSIL_ROOM,    4,  4 ; $AA
 	mapconst CINNABAR_POKECENTER,         4,  7 ; $AB
 	mapconst CINNABAR_MART,               4,  4 ; $AC
-	mapconst CINNABAR_MART_COPY,          4,  4 ; $AD
+	mapconst UNUSED_MAP_AD,               0,  0 ; $AD
 	mapconst INDIGO_PLATEAU_LOBBY,        6,  8 ; $AE
 	mapconst COPYCATS_HOUSE_1F,           4,  4 ; $AF
 	mapconst COPYCATS_HOUSE_2F,           4,  4 ; $B0
