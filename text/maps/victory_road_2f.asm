@@ -78,7 +78,7 @@ _VictoryRoad2BattleText5::
 
 _VictoryRoad2EndBattleText5::
 	text "Quoi?!"
-	line "C'pas l'Volcan,"
+	line "C'pas l'Volcan"
 	cont "Cramoisi ici?"
 	prompt
 
