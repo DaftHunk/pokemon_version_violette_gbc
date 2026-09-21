@@ -73,7 +73,7 @@ MapHeaderPointers::
 	dw BikeShop_h
 	dw CeruleanMart_h
 	dw MtMoonPokecenter_h
-	dw CeruleanHouseTrashed_h ; copy
+	dw CeruleanHouseTrashed_h ; unused
 	dw Route5Gate_h
 	dw UndergroundPathEntranceRoute5_h
 	dw DayCareM_h
@@ -82,7 +82,7 @@ MapHeaderPointers::
 	dw UndergroundPathEntranceRoute6_h ; unused
 	dw Route7Gate_h
 	dw UndergroundPathEntranceRoute7_h
-	dw UndergroundPathEntranceRoute7Copy_h
+	dw UndergroundPathEntranceRoute7_h ; unused
 	dw Route8Gate_h
 	dw UndergroundPathEntranceRoute8_h ;id=80
 	dw RockTunnelPokecenter_h

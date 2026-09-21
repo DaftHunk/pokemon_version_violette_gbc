@@ -1416,10 +1416,6 @@ INCLUDE "data/maps/headers/undergroundpathentranceroute7.asm"
 INCLUDE "scripts/undergroundpathentranceroute7.asm"
 INCLUDE "data/maps/objects/undergroundpathentranceroute7.asm"
 
-INCLUDE "data/maps/headers/undergroundpathentranceroute7copy.asm"
-INCLUDE "scripts/undergroundpathentranceroute7copy.asm"
-INCLUDE "data/maps/objects/undergroundpathentranceroute7copy.asm"
-
 INCLUDE "data/maps/headers/silphco9.asm"
 INCLUDE "scripts/silphco9.asm"
 INCLUDE "data/maps/objects/silphco9.asm"
