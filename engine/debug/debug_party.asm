@@ -54,7 +54,7 @@ IF DEF(_DEBUG)
 	ld [wTownVisitedFlag], a
 	ld [wTownVisitedFlag + 1], a
 
-;	call .unlockBadges
+	call .unlockBadges
 
 	call SetDebugNewGameParty
 
@@ -142,13 +142,13 @@ IF DEF(_DEBUG)
 	jr .items_loop
 
 .items_end
-;	call .unlockPokedex
-;	call .unlockTutoBlocks
-;	call .unlockPostGameEvents
-;	call .unlockGymEvents
-;	call .unlockGymRematchEvents
-;	call .unlockSpecial4
-;	call .unlockRematchGym
+	call .unlockPokedex
+	call .unlockTutoBlocks
+	call .unlockPostGameEvents
+	call .unlockGymEvents
+	call .unlockGymRematchEvents
+	call .unlockSpecial4
+	call .unlockRematchGym
 	
 	; Force Shiny apparition
 ;	ld [wFontLoaded], a
@@ -307,6 +307,7 @@ DebugSetPokedexEntries:
 	ret
 
 DebugItemsList:
+	db ITEMFINDER, 1
 	db MAX_REVIVE, 99
 	db MAX_ELIXER, 99
 	db BICYCLE, 1
