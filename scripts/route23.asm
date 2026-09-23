@@ -293,9 +293,10 @@ Route23Text_VictoryRoadGuide:
 	para "Ce défi n'est pas"
 	line "à ton goût?"
 	cont "Je peux dire aux"
-	cont "de ne pas te"
-	cont "réaffronter si tu"
-	cont "le souhaites."
+	cont "dresseurs de"
+	cont "ne pas te"
+	cont "réaffronter si"
+	cont "tu le souhaites."
 	done
 	db "@"
 
@@ -308,8 +309,9 @@ Route23Text_VictoryRoadGuide:
 
 .victoryRoadGuideTextDisabled
 	text "Comme tu voudras,"
-	line "tu n'auras pas à"
-	cont "battre à nouveau."
+	line "tu n'auras pas"
+	cont "à les combattre"
+	cont "à nouveau."
 	done
 	db "@"
 
