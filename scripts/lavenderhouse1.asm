@@ -131,7 +131,7 @@ LavenderHouse1Text5:
 	;otherwise begin loading battle
 	ld hl, FujiText_prebattle	;load pre battle text
 	call PrintText	;print the pre battle text
-	ld hl, wd72d;set the bits for triggering battle
+	ld hl, wStatusFlags3;set the bits for triggering battle
 	set 6, [hl]	;
 	set 7, [hl]	;
 	ld hl, FujiTextVictorySpeech	;load text for when you win

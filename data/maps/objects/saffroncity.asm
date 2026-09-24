@@ -34,7 +34,7 @@ SaffronCityObject:
 	object SPRITE_ROCKET, 18, 30, WALK, 2, 7 ; person
 	object SPRITE_OAK_AIDE, 8, 14, WALK, 0, 8 ; person
 	object SPRITE_LAPRAS_GIVER, 23, 23, STAY, NONE, 9 ; person
-	object SPRITE_ERIKA, 17, 30, WALK, 2, 10 ; person
+	object SPRITE_KIMONO_WOMAN, 17, 30, WALK, 2, 10 ; person
 	object SPRITE_GENTLEMAN, 30, 12, STAY, DOWN, 11 ; person
 	object SPRITE_PIDGEOT, 31, 12, STAY, DOWN, 12 ; person
 	object SPRITE_ROCKER, 18, 8, STAY, UP, 13 ; person

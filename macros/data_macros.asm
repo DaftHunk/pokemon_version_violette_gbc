@@ -1,7 +1,24 @@
 
 ; Constant enumeration is useful for monsters, items, moves, etc.
 MACRO const_def
-const_value = 0
+	IF _NARG >= 1
+		DEF const_value = \1
+	ELSE
+		DEF const_value = 0
+	ENDC
+	IF _NARG >= 2
+		DEF const_inc = \2
+	ELSE
+		DEF const_inc = 1
+	ENDC
+ENDM
+
+MACRO const_skip
+	if _NARG >= 1
+		DEF const_value += const_inc * (\1)
+	else
+		DEF const_value += const_inc
+	endc
 ENDM
 
 MACRO const

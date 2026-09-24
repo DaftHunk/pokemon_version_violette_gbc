@@ -15,27 +15,27 @@ CheckAISentOut:
 	jr .party0
 .party5
 	ld a, [wFontLoaded]
-	bit 6, a
+	bit BIT_AI_SENT_POKEMON_6, a
 	jr .partyret
 .party4
 	ld a, [wFontLoaded]
-	bit 5, a
+	bit BIT_AI_SENT_POKEMON_5, a
 	jr .partyret
 .party3
 	ld a, [wFontLoaded]
-	bit 4, a
+	bit BIT_AI_SENT_POKEMON_4, a
 	jr .partyret
 .party2
 	ld a, [wFontLoaded]
-	bit 3, a
+	bit BIT_AI_SENT_POKEMON_3, a
 	jr .partyret
 .party1
 	ld a, [wFontLoaded]
-	bit 2, a
+	bit BIT_AI_SENT_POKEMON_2, a
 	jr .partyret
 .party0
 	ld a, [wFontLoaded]
-	bit 1, a
+	bit BIT_AI_SENT_POKEMON_1, a
 .partyret
 	ret
 	
@@ -54,32 +54,32 @@ SetAISentOut:
 	jr .party0
 .party5
 	ld a, [wFontLoaded]
-	set 6, a
+	set BIT_AI_SENT_POKEMON_6, a
 	ld [wFontLoaded], a
 	jr .partyret
 .party4
 	ld a, [wFontLoaded]
-	set 5, a
+	set BIT_AI_SENT_POKEMON_5, a
 	ld [wFontLoaded], a
 	jr .partyret
 .party3
 	ld a, [wFontLoaded]
-	set 4, a
+	set BIT_AI_SENT_POKEMON_4, a
 	ld [wFontLoaded], a
 	jr .partyret
 .party2
 	ld a, [wFontLoaded]
-	set 3, a
+	set BIT_AI_SENT_POKEMON_3, a
 	ld [wFontLoaded], a
 	jr .partyret
 .party1
 	ld a, [wFontLoaded]
-	set 2, a
+	set BIT_AI_SENT_POKEMON_2, a
 	ld [wFontLoaded], a
 	jr .partyret
 .party0
 	ld a, [wFontLoaded]
-	set 1, a
+	set BIT_AI_SENT_POKEMON_1, a
 	ld [wFontLoaded], a
 .partyret
 	ret
@@ -102,27 +102,27 @@ CheckAISwitched:
 	jr z, .party1
 	jr .party0
 .party5
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	bit 6, a
 	jr .partyret
 .party4
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	bit 5, a
 	jr .partyret
 .party3
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	bit 4, a
 	jr .partyret
 .party2
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	bit 3, a
 	jr .partyret
 .party1
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	bit 2, a
 	jr .partyret
 .party0
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	bit 1, a
 .partyret
 	ret
@@ -141,33 +141,33 @@ ClearAISwitched:
 	jr z, .party1
 	jr .party0
 .party5
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	res 6, a
 	jr .partyret
 .party4
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	res 5, a
 	jr .partyret
 .party3
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	res 4, a
 	jr .partyret
 .party2
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	res 3, a
 	jr .partyret
 .party1
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	res 2, a
 	jr .partyret
 .party0
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	res 1, a
 .partyret
 	ret
 
 SetAISwitched:
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	bit 5, a
 	ret z	;no point to this function if AIMoveChoiceModification4 is not active
 	ld a, [de]	
@@ -183,34 +183,34 @@ SetAISwitched:
 	jr z, .party1
 	jr .party0
 .party5
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	set 6, a
-	ld [wUnusedD366], a
+	ld [wTempAIBattleFlags], a
 	jr .partyret
 .party4
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	set 5, a
-	ld [wUnusedD366], a
+	ld [wTempAIBattleFlags], a
 	jr .partyret
 .party3
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	set 4, a
-	ld [wUnusedD366], a
+	ld [wTempAIBattleFlags], a
 	jr .partyret
 .party2
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	set 3, a
-	ld [wUnusedD366], a
+	ld [wTempAIBattleFlags], a
 	jr .partyret
 .party1
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	set 2, a
-	ld [wUnusedD366], a
+	ld [wTempAIBattleFlags], a
 	jr .partyret
 .party0
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	set 1, a
-	ld [wUnusedD366], a
+	ld [wTempAIBattleFlags], a
 .partyret
 	ret
 	
@@ -244,7 +244,7 @@ AISelectWhichMonSendOut:
 	ld a, b
 	ld [wWhichPokemon], a	;else save the new mon's position
 	
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	bit 5, a
 	jp z, .sendOutNewMon	;skip all this if AI routine 4 has not run and done all the scoring
 	ld a, [wAIPartyMonScores + 6]	;get the best score
@@ -530,9 +530,9 @@ ScoreAIParty:
 	;adjust score based on having any regular damaging moves
 	ld a, $00
 	ld [wAIPartyMonScores + 6], a	;set a default score tracker: (bits 0 to 6--> 0-5=-5, 0A = 0, 14 or more=+2)(bit 7 set for 60+ power) 
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	res 3, a ;get effectiveness of enemy moves
-	ld [wUnusedC000], a
+	ld [wBattleAISettingFlags], a
 	ld bc, $08	;set offest to point to first move of current mon
 .enemymoveloop
 	ld a, $0C
@@ -683,9 +683,9 @@ ScoreAIParty:
 	ld a, $00
 	ret
 .get_effectiveness_to_enemy
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	set 3, a 
-	ld [wUnusedC000], a
+	ld [wBattleAISettingFlags], a
 	;preserve the current enemy mon typing
 	ld a, [wEnemyMonType]
 	ld [wAIPartyMonScores + 6], a
@@ -947,9 +947,9 @@ GetRosterStructData:
 ;let's get some PP tracking for enemies both trainer and wild
 ChooseMovePPTrack:
 	;retrieve hl pointer
-	ld a, [wUnusedCF8D]
+	ld a, [wTrainerPPTracker]
 	ld h, a
-	ld a, [wUnusedCF8D + 1]
+	ld a, [wTrainerPPTracker + 1]
 	ld l, a	
 	ld b, e	;retrieve move number
 ;b holds the move slot (1 to 4)
@@ -1016,9 +1016,9 @@ ChooseMovePPTrack:
 	set 3, d
 .back
 	ld a, h
-	ld [wUnusedCF8D], a
+	ld [wTrainerPPTracker], a
 	ld a, l
-	ld [wUnusedCF8D + 1], a
+	ld [wTrainerPPTracker + 1], a
 	ret
 
 

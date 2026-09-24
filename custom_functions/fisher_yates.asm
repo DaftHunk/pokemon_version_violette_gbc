@@ -76,7 +76,7 @@ _ReplaceMon:
 	jr z, .callRand
 	ld [wRandomizerSeed], a
 .no_update
-	ld [wUnusedD722], a
+	ld [wTempIVFlags], a
 	
 	CheckEvent EVENT_ENABLE_WILD_RANDOM_TIERS
 	jr z, .tieredRandom
@@ -124,7 +124,7 @@ _ReplaceMon:
 .listfound
 	;B now holds the offset of the selected mon
 	ld a, b
-	ld [wUnusedD722 + 1], a
+	ld [wTempIVFlags + 1], a
 	
 	ld d, h
 	ld e, l
@@ -169,8 +169,8 @@ _ReplaceMon:
 ;The list of all mons to be randomized with each other is copied into sram at address A000.
 ;HL and DE will be used as pointers to this list.
 ;C holds the size of this list.
-;[wUnusedD722 + 1] holds the offset within that list at which our mon in question is located.
-;wUnusedD722 is the working address for a random number between 1 and 255.
+;[wTempIVFlags + 1] holds the offset within that list at which our mon in question is located.
+;wTempIVFlags is the working address for a random number between 1 and 255.
 	
 	ld hl, sSpriteBuffer0
 .loop3
@@ -186,7 +186,7 @@ _ReplaceMon:
 ;Now to update the random number with some deterministic variation. There's multiple ways to do this.
 ;One way is to do a basic [1,1,3] Marsaglia XOR Shift.
 ;Note that this never produces a zero.
-	ld a, [wUnusedD722]
+	ld a, [wTempIVFlags]
 	ld b, a
 	sla a
 	xor b
@@ -198,7 +198,7 @@ _ReplaceMon:
 	sla a
 	sla a
 	xor b
-	ld [wUnusedD722], a
+	ld [wTempIVFlags], a
 ;A is now a random number from 1 to 255.
 
 ;The plan is to use the value of A as an offset for pointing to a later section of the mon list.
@@ -235,7 +235,7 @@ _ReplaceMon:
 	ld [de], a
 	
 ;consequently, if our mon's offset position in the list is equal to the origin position, then we can stop looping.
-	ld a, [wUnusedD722 + 1]
+	ld a, [wTempIVFlags + 1]
 	cp e
 	jr z, .next3
 	

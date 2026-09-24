@@ -336,7 +336,7 @@ ShowMoveData:
 	ld hl, wMovedexSeen
 	call IsMoveBitSet
 	ret z
-	ld hl, wd72c
+	ld hl, wStatusFlags2
 	set 1, [hl]
 	ld a, $33 ; 3/7 volume
 	ldh [rNR50], a
@@ -587,7 +587,7 @@ ShowNextMoveData:
 	call RunDefaultPaletteCommand
 	call LoadTextBoxTilePatterns
 	call GBPalNormal
-	ld hl, wd72c
+	ld hl, wStatusFlags2
 	res 1, [hl]
 	ld a, $77 ; max volume
 	ldh [rNR50], a

@@ -25,7 +25,7 @@ MirrorTrainerText1:
 	SetEvent EVENT_LOAD_MIRROR_MATCH
 	ld hl, MirrorTrainerPre
 	call PrintText
-	ld hl, wd72d;set the bits for triggering battle
+	ld hl, wStatusFlags3;set the bits for triggering battle
 	set 6, [hl]	;
 	set 7, [hl]	;
 	ld hl, MirrorTrainerPost	;load text for when you win

@@ -41,7 +41,7 @@ CeladonMartRoofDrinkList:
 	db $00
 
 CeladonMartRoofScript_GiveDrinkToGirl:
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl]
 	ld hl, CeladonMartRoofText_484ee
 	call PrintText
@@ -68,7 +68,7 @@ CeladonMartRoofScript_GiveDrinkToGirl:
 	call TextBoxBorder
 	call UpdateSprites
 	call CeladonMartRoofScript_PrintDrinksInBag
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl]
 	call HandleMenuInput
 	bit 1, a ; pressed b

@@ -8,8 +8,8 @@ CeladonGameCornerScript:
 
 CeladonGameCornerScript_48bcf:
 	ld hl, wCurrentMapScriptFlags
-	bit 6, [hl]
-	res 6, [hl]
+	bit BIT_CUR_MAP_LOADED_2, [hl]
+	res BIT_CUR_MAP_LOADED_2, [hl]
 	ret z
 	call Random
 	ld a, [hRandomAdd]
@@ -26,8 +26,8 @@ CeladonGameCornerScript_48bcf:
 
 CeladonGameCornerScript_48bec:
 	ld hl, wCurrentMapScriptFlags
-	bit 5, [hl]
-	res 5, [hl]
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
 	CheckEvent EVENT_FOUND_ROCKET_HIDEOUT
 	ret nz
@@ -102,7 +102,7 @@ MovementData_48c63:
 	db $FF
 
 CeladonGameCornerScript2:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	xor a
@@ -111,8 +111,8 @@ CeladonGameCornerScript2:
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	ld hl, wCurrentMapScriptFlags
-	set 5, [hl]
-	set 6, [hl]
+	set BIT_CUR_MAP_LOADED_1, [hl]
+	set BIT_CUR_MAP_LOADED_2, [hl]
 	ld a, $0
 	ld [wCeladonGameCornerCurScript], a
 	ret
@@ -413,7 +413,7 @@ CeladonGameCornerText11:
 	TX_ASM
 	ld hl, CeladonGameCornerText_48ece
 	call PrintText
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, CeladonGameCornerText_48ed3
@@ -473,7 +473,7 @@ CeladonGameCornerText_48f19:
 	db "@"
 
 CeladonGameCornerScript_48f1e:
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl]
 	coord hl, 11, 0
 	ld b, $5
@@ -504,13 +504,13 @@ CeladonGameCornerScript_48f1e:
 	ld de, wPlayerCoins
 	ld c, LEADING_ZEROES | 2
 	call PrintBCDNumber
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl]
 	ret
 
 ;joenote - copying and making a few modifications in order to create a general-use money display function
 GenericMoneyDisplayScript:
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl]
 	coord hl, 11, 0
 	ld b, $2
@@ -531,7 +531,7 @@ GenericMoneyDisplayScript:
 	ld de, wPlayerMoney
 	ld c, $a3
 	call PrintBCDNumber
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl]
 	ret
 

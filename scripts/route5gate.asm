@@ -16,7 +16,7 @@ Route5GateScript_1df43:
 	jp StartSimulatingJoypadStates
 
 Route5GateScript0:
-	ld a, [wd728]
+	ld a, [wStatusFlags1]
 	bit 6, a
 	ret nz
 	ld hl, CoordsData_1df8f
@@ -27,7 +27,7 @@ Route5GateScript0:
 	xor a
 	ld [hJoyHeld], a
 	callba RemoveGuardDrink
-	ld a, [$ffdb]
+	ld a, [hItemToRemoveID]
 	and a
 	jr nz, .asm_1df82
 	ld a, $2
@@ -41,7 +41,7 @@ Route5GateScript0:
 	ld a, $3
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
-	ld hl, wd728
+	ld hl, wStatusFlags1
 	set 6, [hl]
 	ret
 
@@ -70,11 +70,11 @@ Route7GateText1:
 Route6GateText1:
 Route5GateText1:
 	TX_ASM
-	ld a, [wd728]
+	ld a, [wStatusFlags1]
 	bit 6, a
 	jr nz, .asm_88856
 	callba RemoveGuardDrink
-	ld a, [$ffdb]
+	ld a, [hItemToRemoveID]
 	and a
 	jr nz, .asm_768a2
 	ld hl, Route5GateText2
@@ -86,7 +86,7 @@ Route5GateText1:
 .asm_768a2
 	ld hl, Route5GateText3
 	call PrintText
-	ld hl, wd728
+	ld hl, wStatusFlags1
 	set 6, [hl]
 	jp TextScriptEnd
 .asm_88856

@@ -19,7 +19,7 @@ _Route18UpstairsBinocularsMoltresText::
 	cont "le Sud..."
 
 	para "Vous voyez le"
-	line "Volcan."
+	line "Volcan Cramoisi."
 
 	para "Wouah, on dira"
 	line "qu'un oiseau"

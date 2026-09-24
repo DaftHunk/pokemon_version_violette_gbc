@@ -10,11 +10,11 @@ SoftlockTeleport:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, PALLET_TOWN
 	ld [wLastBlackoutMap], a
-	ld a, [wd732]
+	ld a, [wStatusFlags6]
 	set 3, a 
 	res 4, a 
 	set 6, a 
-	ld [wd732], a
+	ld [wStatusFlags6], a
 	;reset safari zone
 	ResetEvent EVENT_IN_SAFARI_ZONE
 	xor a
@@ -46,25 +46,24 @@ ResetAllOptions: ;joenote - reset all the special options (like for patching-up)
 	ld a, SFX_LEVEL_UP
 	call PlaySound
 
-	ld a, 1 ; no delay
+	ld a, BIT_TEXT_NO_DELAY ; no delay
 	ld [wLetterPrintingDelayFlags], a
 
-	ld a, TEXT_DELAY_FAST ; fast speed
-	set BIT_BATTLE_SHIFT, a ;joenote - SET battle style
+	ld a, BITS_OPTIONS_TEXT_DELAY_FAST ; fast speed
+	set BIT_OPTIONS_BATTLE_SHIFT, a ;joenote - SET battle style
 	ld [wOptions], a
 
-	ld a, [wGameplayOptions]
-	set 4, a ; 60fps
-	set 7, a ; enhanced GBC colors
-	ld [wGameplayOptions], a
+	ld a, [wGraphicOptions]
+	set BIT_GRAPHIC_60_FPS, a ; 60fps
+	set BIT_GRAPHIC_ENHANCED_GBC, a ; enhanced GBC colors
+	ld [wGraphicOptions], a
 
-	ld a, [wMoreGameplayOptions]
-	set 0, a ; level cap mode
-	ld [wMoreGameplayOptions], a
+	ld a, [wGameplayOptions]
+	set BIT_GAMEPLAY_LEVEL_CAP, a ; level cap mode
+	ld [wGameplayOptions], a
 	
 	ResetEvent EVENT_ENABLE_WILD_RANDOM_TIERS
 	ResetEvent EVENT_ENABLE_NORMAL_TRAINER_RANDOMIZATION
-	ResetEvent EVENT_ENABLE_CATCH_UP_BOOST
 	ResetEvent EVENT_CINNABAR_SHORE_MISSINGNO
 	ResetEvent EVENT_ENABLE_ITEM_CLAUSE
 	ResetEvent EVENT_ENABLE_WILD_RANDOM
@@ -98,33 +97,33 @@ TrainerRematch:
 ;running by holding B ORs with $1
 TrackRunBikeSpeed:
 	xor a
-	ld[wUnusedD119], a
+	ld[wMiscsFlags2], a
 	ld a, [wWalkBikeSurfState]
 	dec a ; riding a bike? (0 value = TRUE)
 	call z, IsRidingBike
 	ld a, [hJoyHeld]
 	and B_BUTTON	;holding B to speed up? (non-zero value = TRUE)
 	call nz, IsRunning	;joenote - make holding B do double-speed while walking/surfing/biking
-	ld a, [wd736]
+	ld a, [wMovementFlags]
 	bit 7, a
 	call nz, IsSpinArrow	;player sprite spinning due to spin tiles (Rocket hideout / Viridian Gym)
-	ld a, [wUnusedD119]
+	ld a, [wMiscsFlags2]
 	cp 2	;is biking without speedup being done?
 	jr z, .skip	;if not make the states a value from 1 to 4 (excluding biking without speedup, which needs to be 2)
 	inc a	
 .skip
-	ld[wUnusedD119], a
+	ld[wMiscsFlags2], a
 	ret
 IsRidingBike:
-	ld a, [wUnusedD119]
+	ld a, [wMiscsFlags2]
 	or $2
-	ld[wUnusedD119], a
+	ld[wMiscsFlags2], a
 	ret
 IsRunning:
 IsSpinArrow:
-	ld a, [wUnusedD119]
+	ld a, [wMiscsFlags2]
 	or $1
-	ld[wUnusedD119], a
+	ld[wMiscsFlags2], a
 	ret
 
 	
@@ -140,7 +139,7 @@ CheckForSmartHMuse:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;check for cut
 	ld a, [wObtainedBadges]
-	bit 1, a ; does the player have the Cascade Badge?
+	bit BIT_CASCADEBADGE, a ; does the player have the Cascade Badge?
 	jr z, .nocut
 	;does a party 'mon have CUT?
 	ld c, CUT
@@ -163,14 +162,14 @@ CheckForSmartHMuse:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
 ;check for surfing
 	ld a, [wObtainedBadges]
-	bit 4, a ; does the player have the Soul Badge?
+	bit BIT_SOULBADGE, a ; does the player have the Soul Badge?
 	jp z, .nosurf
 	ld a, [wWalkBikeSurfState]
 	ld [wWalkBikeSurfStateCopy], a
 	cp 2 ; is the player already surfing?
 	jp z, .nosurf	
 	;surfing not allowed if forced to ride bike
-	ld a, [wd732]
+	ld a, [wStatusFlags6]
 	bit 5, a
 	jr nz, .nosurf
 	;load a 1 into wActionResultOrTookBattleTurn as a marker that we are checking surf from this function
@@ -180,7 +179,7 @@ CheckForSmartHMuse:
 	xor a
 	ld [wActionResultOrTookBattleTurn], a
 	;now check bit to see of surfing allowed
-	ld hl, wd728
+	ld hl, wStatusFlags1
 	bit 1, [hl]
 	res 1, [hl]
 	jp z, .nosurf
@@ -206,7 +205,7 @@ CheckForSmartHMuse:
 	jp z, .nosurf
 .beginsurfing
 	;we can now initiate surfing
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 7, [hl]
 	ld a, 2
 	ld [wWalkBikeSurfState], a ; change player state to surfing
@@ -235,7 +234,7 @@ CheckForSmartHMuse:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;check for flash
 	ld a, [wObtainedBadges]
-	bit 0, a ; does the player have the Boulder Badge?
+	bit BIT_BOULDERBADGE, a ; does the player have the Boulder Badge?
 	jr z, .noflash
 	;check if the map pal offset is not zero
 	ld a, [wMapPalOffset]
@@ -253,12 +252,12 @@ CheckForSmartHMuse:
 .noflash
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;else check for strength and enable it
-	ld a, [wd728]
+	ld a, [wStatusFlags1]
 	bit 0, a ;check the usingStrength bit
 	jr nz, .nostrength	;do nothing if already active
 
 	ld a, [wObtainedBadges]
-	bit 3, a ; does the player have the Rainbow Badge?
+	bit BIT_RAINBOWBADGE, a ; does the player have the Rainbow Badge?
 	jr z, .nostrength
 
 	;must be facing a boulder to use strength
@@ -313,9 +312,9 @@ CheckForSmartHMuse:
 	pop hl
 	
 	;set the usingStrength bit
-	ld a, [wd728]
+	ld a, [wStatusFlags1]
 	set 0, a
-	ld [wd728], a
+	ld [wStatusFlags1], a
 	jp .return
 .nostrength
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -391,36 +390,36 @@ PartyMoveTest:
 
 ;Overworld female trainer sprite functions
 LoadRedSpriteToDE:
-	ld a, [wGameplayOptions]
+	ld a, [wGraphicOptions]
 	ld de, RedFSprite
-	bit 0, a	;check if girl
+	bit BIT_GRAPHIC_FEMALE, a	;check if girl
 	jr nz, .next
 	ld de, RedSprite
 .next
-	res 2, a
-	ld [wGameplayOptions], a
+	res BIT_GRAPHIC_FEMALE_BANK, a
+	ld [wGraphicOptions], a
 	ret
 	
 LoadSeelSpriteToDE:
-	ld a, [wGameplayOptions]
+	ld a, [wGraphicOptions]
 	ld de, SeelFSprite
-	bit 0, a	;check if girl
+	bit BIT_GRAPHIC_FEMALE, a	;check if girl
 	jr nz, .next
 	ld de, SeelSprite
 .next
-	res 2, a
-	ld [wGameplayOptions], a
+	res BIT_GRAPHIC_FEMALE_BANK, a
+	ld [wGraphicOptions], a
 	ret
 
 LoadRedCyclingSpriteToDE:
-	ld a, [wGameplayOptions]
+	ld a, [wGraphicOptions]
 	ld de, RedFCyclingSprite
-	bit 0, a	;check if girl
+	bit BIT_GRAPHIC_FEMALE, a	;check if girl
 	jr nz, .donefemale
 	ld de, RedCyclingSprite
 .donefemale
-	res 2, a
-	ld [wGameplayOptions], a
+	res BIT_GRAPHIC_FEMALE_BANK, a
+	ld [wGraphicOptions], a
 	ret
 
 
@@ -450,7 +449,7 @@ CheckForRodBike:
 
 .nofishing
 	;do nothing if forced to ride bike
-	ld a, [wd732]
+	ld a, [wStatusFlags6]
 	bit 5, a
 	ret nz
 	;else check if bike is in bag
@@ -490,7 +489,7 @@ CheckForRodBike:
 ;This is to free up space in rom bank 0
 
 Determine180degreeMove:	
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 7, a ; are we simulating button presses?
 	jr nz, .noDirectionChange ; ignore direction changes if we are
 	ld a, [wCheckFor180DegreeTurn]
@@ -536,8 +535,8 @@ Determine180degreeMove:
 .holdIntermediateDirectionLoop
 	call UpdateSprites	;joenote - make the transitional frames viewable
 	call DelayFrame
-	ld hl, wFlags_0xcd60
-	set 2, [hl]
+	ld hl, wMiscFlags
+	set BIT_TURNING, [hl]
 	ld hl, wCheckFor180DegreeTurn
 	dec [hl]
 	jr nz, .holdIntermediateDirectionLoop

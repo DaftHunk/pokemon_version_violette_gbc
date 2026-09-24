@@ -10,10 +10,10 @@ DisplayMultiChoiceMenu::
 	ldh [H_AUTOBGTRANSFERENABLED], a ; disable auto-transfer
 	ld a, 1
 	ldh [hJoy7], a ; joypad state update flag
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	push af
 	set 6, a ; turn off letter printing delay
-	ld [wd730], a
+	ld [wStatusFlags5], a
 	hl_deref wListPointer ; hl = address of the list
 	ld a, [hli]
 	ld e, a
@@ -41,7 +41,7 @@ DoneDrawFunc:
 	xor a
 	ldh [hJoy7], a ; joypad state update flag
 	pop af
-	ld [wd730], a ; reset letter printing delay to what it was before calling this function
+	ld [wStatusFlags5], a ; reset letter printing delay to what it was before calling this function
 	ret
 
 ; multi-option menus can have 2-6 options, visually set up by the below functions

@@ -21,6 +21,7 @@ MapSongBanks:
 	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; ROUTE_8
 	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; ROUTE_9
 	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; ROUTE_10
+	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; ROUTE_10_SOUTH
 	db MUSIC_ROUTES4,          BANK(Music_Routes4)         ; ROUTE_11
 	db MUSIC_ROUTES4,          BANK(Music_Routes4)         ; ROUTE_12
 	db MUSIC_ROUTES4,          BANK(Music_Routes4)         ; ROUTE_13
@@ -37,6 +38,7 @@ MapSongBanks:
 	db MUSIC_INDIGO_PLATEAU,   BANK(Music_IndigoPlateau)   ; ROUTE_23
 	db MUSIC_ROUTES2,          BANK(Music_Routes2)         ; ROUTE_24
 	db MUSIC_PALLET_TOWN,      BANK(Music_PalletTown)      ; BillsGarden
+	db MUSIC_MUSEUM_GUY,       BANK(Music_MuseumGuy)       ; MtMoonSquare
 	db MUSIC_ROUTES2,          BANK(Music_Routes2)         ; ROUTE_25
 	db MUSIC_PALLET_TOWN,      BANK(Music_PalletTown)      ; RedsHouse1F
 	db MUSIC_PALLET_TOWN,      BANK(Music_PalletTown)      ; RedsHouse2F
@@ -85,6 +87,7 @@ MapSongBanks:
 	db MUSIC_POKECENTER,       BANK(Music_Pokecenter)      ; RockTunnelPokecenter
 	db MUSIC_DUNGEON3,         BANK(Music_Dungeon3)        ; RockTunnel1
 	db MUSIC_DUNGEON1,         BANK(Music_Dungeon1)        ; PowerPlant
+	db MUSIC_DUNGEON1,         BANK(Music_Dungeon1)        ; PowerPlant1F
 	db MUSIC_VERMILION,        BANK(Music_Vermilion)       ; Route11Gate
 	db MUSIC_DUNGEON2,         BANK(Music_Dungeon2)        ; DiglettsCaveEntranceRoute11
 	db MUSIC_VERMILION,        BANK(Music_Vermilion)       ; Route11GateUpstairs
@@ -114,9 +117,6 @@ MapSongBanks:
 	db MUSIC_GIOVANNI_SONG,    BANK(Music_GiovanniSong)    ; Route16WestGate
 	db MUSIC_INDIGO_PLATEAU,   BANK(Music_IndigoPlateau)   ; Lance
 	db MUSIC_SURFING_PIKACHU,  BANK(Music_SurfingPikachu)  ; Route19BeachHouse
-	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; unused
-	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; unused
-	db MUSIC_SS_ANNE,          BANK(Music_SSAnne)          ; unused
 	db MUSIC_PALLET_TOWN,      BANK(Music_PalletTown)      ; HallofFameRoom
 	db MUSIC_ROUTES1,          BANK(Music_Routes1)         ; UndergroundPathNS
 	db MUSIC_INDIGO_PLATEAU,   BANK(Music_IndigoPlateau)   ; Rival
@@ -193,6 +193,7 @@ MapSongBanks:
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; Route18GateUpstairs
 	db MUSIC_DUNGEON2,         BANK(Music_Dungeon2)        ; SeafoamIslands1
 	db MUSIC_ROUTE_3_EARLY,    BANK(Music_Route3Early)     ; Route22Gate
+	db MUSIC_ROUTE_3_EARLY,    BANK(Music_Route3Early)     ; Route22GateUpstairs
 	db MUSIC_DUNGEON3,         BANK(Music_Dungeon3)        ; VictoryRoad2
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; Route12GateUpstairs
 	db MUSIC_VERMILION,        BANK(Music_Vermilion)       ; VermilionHouse3
@@ -204,7 +205,6 @@ MapSongBanks:
 	db MUSIC_DUNGEON1,         BANK(Music_Dungeon1)        ; RocketHideout4
 	db MUSIC_DUNGEON1,         BANK(Music_Dungeon1)        ; RocketHideoutElevator
 	db MUSIC_CELADON,          BANK(Music_Celadon)         ; CeladonSchool
-	db MUSIC_DUNGEON1,         BANK(Music_Dungeon1)
 	db MUSIC_DUNGEON1,         BANK(Music_Dungeon1)
 	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)         ; SilphCo2
 	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)         ; SilphCo3

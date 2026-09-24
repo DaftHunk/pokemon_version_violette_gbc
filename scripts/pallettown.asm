@@ -90,7 +90,7 @@ PalletTownScript2:
 	ret
 
 PalletTownScript3:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	xor a ; ld a, SPRITE_FACING_DOWN

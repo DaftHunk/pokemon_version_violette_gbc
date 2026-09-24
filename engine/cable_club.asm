@@ -263,9 +263,9 @@ CableClub_DoBattleOrTradeAgain:
 	dec c
 	jr nz, .unpatchEnemyMonsLoop
 	ld a, wEnemyMonOT % $100
-	ld [wUnusedCF8D], a
+	ld [wTrainerPPTracker], a
 	ld a, wEnemyMonOT / $100
-	ld [wUnusedCF8D + 1], a
+	ld [wTrainerPPTracker + 1], a
 	xor a
 	ld [wTradeCenterPointerTableIndex], a
 	ld a, $ff
@@ -306,7 +306,7 @@ CableClub_DoBattleOrTradeAgain:
 	ld b, SET_PAL_OVERWORLD
 	call RunPaletteCommand ;gbcnote - refresh pal
 	ld hl, wOptions
-	res BIT_BATTLE_ANIMATION, [hl]
+	res BIT_OPTIONS_BATTLE_ANIMATION, [hl]
 	predef InitOpponent
 	predef HealParty
 .back2room
@@ -613,9 +613,9 @@ ReturnToCableClubRoom:
 	ld a, [hl]
 	push af
 	push hl
-	res 0, [hl]
+	res BIT_DISABLE_NPC_MOVEMENT, [hl]
 	xor a
-	ld [wd72d], a
+	ld [wStatusFlags3], a
 	dec a
 	ld [wDestinationWarpID], a
 	call LoadMapData
@@ -958,6 +958,11 @@ CableClub_Run:
 	predef EmptyFunc
 	jp Init
 .doBattleOrTrade
+; 60fps / GBCnote - There is an issue with data corruption when trading with the Gen 2 time capsule.
+; This data corruption only happens when the GBC cpu is in double-speed mode.
+; To prevent this, enforce normal CPU speed while doing cable club functions.
+; The OverworldLoop will call the predef that sets it back
+	predef SingleCPUSpeed
 	call CableClub_DoBattleOrTrade
 	ld hl, Club_GFX
 	ld a, h

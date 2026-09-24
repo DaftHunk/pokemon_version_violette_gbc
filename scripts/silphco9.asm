@@ -10,8 +10,8 @@ SilphCo9Script:
 
 SilphCo9Script_5d7d1:
 	ld hl, wCurrentMapScriptFlags
-	bit 5, [hl]
-	res 5, [hl]
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
 	ld hl, SilphCo9GateCoords
 	call SilphCo9Script_5d837

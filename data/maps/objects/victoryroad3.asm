@@ -10,7 +10,7 @@ VictoryRoad3Object:
 	db 0 ; signs
 
 	db 10 ; objects
-	object SPRITE_BLACK_HAIR_BOY_1, 28,  5, STAY, LEFT, 1, OPP_ENGINEER, 5
+	object SPRITE_BLACK_HAIR_BOY_1, 28,  5, STAY, LEFT, 1, OPP_ENGINEER, 3
 	object SPRITE_LASS,              9, 12, STAY, DOWN, 2, OPP_COOLTRAINER_F, 4
 	object SPRITE_BLACK_HAIR_BOY_1,  6, 16, STAY, UP,   3, OPP_COOLTRAINER_M, 8
 	object SPRITE_BLACK_HAIR_BOY_1, 12,  2, STAY, DOWN, 4, OPP_ROCKER, 3

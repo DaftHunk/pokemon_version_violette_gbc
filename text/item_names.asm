@@ -97,3 +97,4 @@ ItemNames:
 	db "10ème étage@"
 	db "4ème ss@"
 	db "Peau Métal@" ;dafthunk #19
+	db "Exp Booster@"

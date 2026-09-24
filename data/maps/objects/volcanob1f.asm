@@ -9,11 +9,11 @@ VolcanoB1FObject:
 	db 0 ; signs
 
 	db 5 ; objects
-	object SPRITE_HIKER,  2,  5, STAY, RIGHT, 1, OPP_SOLDIER, 4
-	object SPRITE_HIKER, 10, 37, STAY,    UP, 2, OPP_SOLDIER, 5
-	object SPRITE_BALL,   2, 30, STAY,  NONE, 3, FIRE_STONE
-	object SPRITE_BALL,  13, 30, STAY,  NONE, 4, TM23_DRAGON_RAGE
-	object SPRITE_BALL,   4, 35, STAY,  NONE, 5, MAX_ELIXER
+	object SPRITE_SOLDIER,  2,  5, STAY, RIGHT, 1, OPP_SOLDIER, 4
+	object SPRITE_SOLDIER, 10, 37, STAY,    UP, 2, OPP_SOLDIER, 5
+	object SPRITE_BALL,     2, 30, STAY,  NONE, 3, FIRE_STONE
+	object SPRITE_BALL,    13, 30, STAY,  NONE, 4, TM23_DRAGON_RAGE
+	object SPRITE_BALL,     4, 35, STAY,  NONE, 5, MAX_ELIXER
 
 	; warp-to
 	warp_to  5,  1, VOLCANO_B1F_WIDTH ; VOLCANO_1F

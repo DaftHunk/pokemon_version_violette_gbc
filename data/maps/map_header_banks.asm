@@ -11,7 +11,7 @@ MapHeaderBanks:
 	db BANK(FuchsiaCity_h) ; FUCHSIA_CITY
 	db BANK(CinnabarIsland_h) ; CINNABAR_ISLAND
 	db BANK(IndigoPlateau_h) ; INDIGO_PLATEAU
-	db $1 ; unused
+	db $01 ; unused
 	db BANK(Route1_h) ; ROUTE_1
 	db BANK(Route2_h) ; ROUTE_2
 	db BANK(Route3_h) ; ROUTE_3
@@ -22,6 +22,7 @@ MapHeaderBanks:
 	db BANK(Route8_h) ; ROUTE_8
 	db BANK(Route9_h) ; ROUTE_9
 	db BANK(Route10_h) ; ROUTE_10
+	db BANK(Route10South_h)
 	db BANK(Route11_h) ; ROUTE_11
 	db BANK(Route12_h) ; ROUTE_12
 	db BANK(Route13_h) ; ROUTE_13
@@ -38,6 +39,7 @@ MapHeaderBanks:
 	db BANK(Route23_h) ; ROUTE_23
 	db BANK(Route24_h) ; ROUTE_24
 	db BANK(BillsGarden_h)
+	db BANK(MtMoonSquare_h)
 	db BANK(Route25_h) ; ROUTE_25
 	db BANK(RedsHouse1F_h)
 	db BANK(RedsHouse2F_h)
@@ -71,21 +73,22 @@ MapHeaderBanks:
 	db BANK(BikeShop_h)
 	db BANK(CeruleanMart_h)
 	db BANK(MtMoonPokecenter_h)
-	db BANK(CeruleanHouseTrashed_h)
+	db $01 ; unused
 	db BANK(Route5Gate_h)
 	db BANK(UndergroundPathEntranceRoute5_h)
 	db BANK(DayCareM_h)
 	db BANK(Route6Gate_h)
 	db BANK(UndergroundPathEntranceRoute6_h)
-	db BANK(UndergroundPathEntranceRoute6_h) ;FREEZE
+	db $01 ; unused
 	db BANK(Route7Gate_h)
 	db BANK(UndergroundPathEntranceRoute7_h)
-	db BANK(UndergroundPathEntranceRoute7Copy_h) ;FREEZE
+	db $01 ; unused
 	db BANK(Route8Gate_h)
 	db BANK(UndergroundPathEntranceRoute8_h)
 	db BANK(RockTunnelPokecenter_h)
 	db BANK(RockTunnel1_h)
 	db BANK(PowerPlant_h)
+	db BANK(PowerPlant1F_h)
 	db BANK(Route11Gate_h)
 	db BANK(DiglettsCaveEntranceRoute11_h)
 	db BANK(Route11GateUpstairs_h)
@@ -115,9 +118,6 @@ MapHeaderBanks:
 	db BANK(Route16WestGate_h)
 	db BANK(Lance_h)
 	db BANK(Route19BeachHouse_h)
-	db $1D ;unused
-	db $1D ;unused
-	db $1D ;unused
 	db BANK(HallofFameRoom_h)
 	db BANK(UndergroundPathNS_h)
 	db BANK(Rival_h)
@@ -194,6 +194,7 @@ MapHeaderBanks:
 	db BANK(Route18GateUpstairs_h)
 	db BANK(SeafoamIslands1_h)
 	db BANK(Route22Gate_h)
+	db BANK(Route22GateUpstairs_h)
 	db BANK(VictoryRoad2_h)
 	db BANK(Route12GateUpstairs_h)
 	db BANK(VermilionHouse3_h)
@@ -205,8 +206,7 @@ MapHeaderBanks:
 	db BANK(RocketHideout4_h)
 	db BANK(RocketHideoutElevator_h)
 	db BANK(CeladonSchool_h)
-	db $01
-	db $01
+	db $01 ; unused
 	db BANK(SilphCo2_h)
 	db BANK(SilphCo3_h)
 	db BANK(SilphCo4_h)
@@ -231,20 +231,20 @@ MapHeaderBanks:
 	db BANK(UnknownDungeon1_h)
 	db BANK(NameRater_h)
 	db BANK(CeruleanHouse2_h)
-	db $01
+	db $01 ; unused
 	db BANK(RockTunnel2_h)
 	db BANK(SilphCo9_h)
 	db BANK(SilphCo10_h)
 	db BANK(SilphCo11_h)
 	db BANK(SilphCoElevator_h)
-	db $11
-	db $11
+	db $11 ; unused
+	db $11 ; unused
 	db BANK(TradeCenter_h)
 	db BANK(Colosseum_h)
-	db $11
-	db $11
-	db $11
-	db $11
+	db $11 ; unused
+	db $11 ; unused
+	db $11 ; unused
+	db $11 ; unused
 	db BANK(Lorelei_h)
 	db BANK(Bruno_h)
 	db BANK(Agatha_h)

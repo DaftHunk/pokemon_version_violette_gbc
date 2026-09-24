@@ -46,14 +46,14 @@ GymStatues:
 	jp PrintPredefTextID
 
 .BadgeFlags:
-	db PEWTER_GYM,    %00000001
-	db CERULEAN_GYM,  %00000010
-	db VERMILION_GYM, %00000100
-	db CELADON_GYM,   %00001000
-	db FUCHSIA_GYM,   %00010000
-	db SAFFRON_GYM,   %00100000
-	db CINNABAR_GYM,  %01000000
-	db VIRIDIAN_GYM,  %10000000
+	db PEWTER_GYM,    1 << BIT_BOULDERBADGE
+	db CERULEAN_GYM,  1 << BIT_CASCADEBADGE
+	db VERMILION_GYM, 1 << BIT_THUNDERBADGE
+	db CELADON_GYM,   1 << BIT_RAINBOWBADGE
+	db FUCHSIA_GYM,   1 << BIT_SOULBADGE
+	db SAFFRON_GYM,   1 << BIT_MARSHBADGE
+	db CINNABAR_GYM,  1 << BIT_VOLCANOBADGE
+	db VIRIDIAN_GYM,  1 << BIT_EARTHBADGE
 	db $ff
 
 GymStatueText1:
@@ -141,18 +141,6 @@ MtMoonPokecenterBenchGuyText:
 
 RockTunnelPokecenterBenchGuyText:
 	TX_FAR _RockTunnelPokecenterGuyText
-	db "@"
-
-UnusedBenchGuyText1:
-	TX_FAR _UnusedBenchGuyText1
-	db "@"
-
-UnusedBenchGuyText2:
-	TX_FAR _UnusedBenchGuyText2
-	db "@"
-
-UnusedBenchGuyText3:
-	TX_FAR _UnusedBenchGuyText3
 	db "@"
 
 VermilionCityPokecenterBenchGuyText:

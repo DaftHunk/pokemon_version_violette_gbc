@@ -11,6 +11,7 @@ _SafariZoneEastText6::
 	done
 
 _SafariZoneEastText7::
-	text "Parc 1"
-	line "Ouest:Parc central"
+	text "Parc Est"
+	line "Direction ouest:"
+	cont "Parc central"
 	done

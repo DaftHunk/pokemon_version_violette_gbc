@@ -2,8 +2,8 @@ CeladonHotelObject:
 	db $0 ; border block
 
 	db 2 ; warps
-	warp 3, 7, 12, -1
-	warp 4, 7, 12, -1
+	warp 3, 7, 11, -1
+	warp 4, 7, 11, -1
 
 	db 1 ; signs
 	sign 10, 2, 5 ; CeladonHotelText_Full

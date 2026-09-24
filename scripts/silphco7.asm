@@ -10,8 +10,8 @@ SilphCo7Script:
 
 SilphCo7Script_51b77:
 	ld hl, wCurrentMapScriptFlags
-	bit 5, [hl]
-	res 5, [hl]
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
 	ld hl, SilphCo7GateCoords
 	call SilphCo7Text_51bc8
@@ -168,7 +168,7 @@ MovementData_51c7d:
 	db $FF
 
 SilphCo7Script3:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	xor a
@@ -177,7 +177,7 @@ SilphCo7Script3:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	call Delay3
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, SilphCo7Text14
@@ -260,7 +260,7 @@ MovementData_51d1d:
 	db $FF
 
 SilphCo7Script5:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	; PureRGBnote: ADDED: make rival teleport away
@@ -332,7 +332,7 @@ SilphCo7TrainerHeader3:
 SilphCo7Text1:
 ; lapras guy
 	TX_ASM
-	ld a, [wd72e]
+	ld a, [wStatusFlags4]
 	bit 0, a ; got lapras?
 	jr z, .givelapras
 	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
@@ -352,7 +352,7 @@ SilphCo7Text1:
 	call EnableAutoTextBoxDrawing
 	ld hl, .HeresYourLaprasText
 	call PrintText
-	ld hl, wd72e
+	ld hl, wStatusFlags4
 	set 0, [hl]
 	jr .done
 .savedsilph

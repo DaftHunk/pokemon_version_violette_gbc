@@ -9,7 +9,7 @@ _ViridianCityText1::
 	cont "veut, hein?"
 	done
 
-_ViridianCityText_19122::
+_GymAlwaysClosedText::
 	text "Cette Arène"
 	line "#mon est"
 	cont "toujours fermée."
@@ -18,7 +18,7 @@ _ViridianCityText_19122::
 	line "le Champion?"
 	done
 
-_ViridianCityText_19127::
+_GymLeaderReturnedText::
 	text "Le Champion de"
 	line "l'Arène de"
 	cont "Jadielle est de"

@@ -10,8 +10,8 @@ RocketHideout4Script:
 
 RocketHideout4Script_45473:
 	ld hl, wCurrentMapScriptFlags
-	bit 5, [hl]
-	res 5, [hl]
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
 	CheckEvent EVENT_ROCKET_HIDEOUT_B4F_DOOR_UNLOCKED
 	jr nz, .asm_45496
@@ -48,7 +48,7 @@ RocketHideout4Script_45473:
 	call PlaySound
 	SetEvent EVENT_ROCKET_HIDEOUT_B4F_DOOR_UNLOCKED
 	xor a
-	ld [wd730], a
+	ld [wStatusFlags5], a
 	ld [hJoyHeld], a
 	ld [wJoyIgnore], a
 
@@ -97,7 +97,7 @@ RocketHideout4Script3:
 	xor a
 	ld [wJoyIgnore], a
 	ld hl, wCurrentMapScriptFlags
-	set 5, [hl]
+	set BIT_CUR_MAP_LOADED_1, [hl]
 	ld a, $0
 	ld [wRocketHideout4CurScript], a
 	ld [wCurMapScript], a
@@ -151,7 +151,7 @@ RocketHideout4Text1:
 	jp nz, .asm_545571
 	ld hl, RocketHideout4Text_4557a
 	call PrintText
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, RocketHideout4Text_4557f

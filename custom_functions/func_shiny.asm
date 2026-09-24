@@ -3,11 +3,7 @@
 ShinyAttractFunction:
 	CheckEvent EVENT_FIRST_SHINY_APPEARED
 	jr z, .easierFirstShiny
-;only if the party leader is lvl 100 or more
-	ld a, [wPartyMon1Level]
-	cp 100	;do wPartyMon1Level - 100. set carry if result < 0
-	ret c	;return if wPartyMon1Level < 100
-;and only if it's a chansey
+;only if the party leader is chansey
 	ld a, [wPartyMon1Species]
 	cp CHANSEY
 	ret nz
@@ -16,7 +12,7 @@ ShinyAttractFunction:
 	ret nz
 .forceShiny
 	ld a, [wFontLoaded]
-	set 7, a 
+	set BIT_FORCE_SHINY, a 
 	ld [wFontLoaded], a
 	ret
 
@@ -37,6 +33,11 @@ ShinyAttractFunction:
 CheckEnemyShinyDVs:
 	push hl
 	ld hl, wEnemyMonDVs
+	ld a, [wEnemyBattleStatus3]
+	bit TRANSFORMED, a
+	jr z, .next
+	ld hl, wTransformedEnemyMonOriginalDVs
+.next
 	call ShinyDVsChecker
 	jr z, .end
 	ld a, $01
@@ -54,7 +55,7 @@ CheckEnemyShinyDVs:
 	ld a, [wBattleType]
 	dec a
 	jr z, .next_enc_shiny	;grant mercy if this is the old man battle
-	ld a, [wFlags_D733]
+	ld a, [wStatusFlags7]
 	bit 6, a
 	jr nz, .next_enc_shiny	;grant mercy if this is a tower ghost battle
 	CheckEvent EVENT_ACTIVATE_GHOST_MAROWAK
@@ -66,13 +67,23 @@ CheckEnemyShinyDVs:
 	;at this point, player is facing an AI trainer's shiny pokemon or some kind of uncatchable wild pokemon
 	;so make the next wild encounter shiny
 	ld a, [wFontLoaded]
-	set 7, a 
+	set BIT_FORCE_SHINY, a 
 	ld [wFontLoaded], a
 	ret
 
 CheckPlayerShinyDVs:
 	push hl
 	ld hl, wBattleMonDVs
+	ld a, [wPlayerBattleStatus3]
+	bit TRANSFORMED, a
+	jr z, .next
+	push bc
+	ld hl, wPartyMon1DVs
+	ld a, [wPlayerMonNumber]
+	ld bc, (wPartyMon2 - wPartyMon1)
+	call AddNTimes
+	pop bc
+.next
 	call ShinyDVsChecker
 	jr z, .end
 	ld a, $01
@@ -114,7 +125,7 @@ ShinyDVsChecker:	;return z flag set if not shiny or cleared z flag if shiny
 	ret
 
 ShinyPlayerAnimation:
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	bit 0, a
 	jr nz, .noPlayerShiny
 	call CheckPlayerShinyDVs
@@ -128,7 +139,7 @@ ShinyPlayerAnimation:
 	ret
 	
 ShinyEnemyAnimation:
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	bit 7, a
 	jr nz, .noEnemyShiny
 	call CheckEnemyShinyDVs
@@ -155,24 +166,24 @@ ShinyEnemyAnimation:
 	ret
 	
 DoPlayerShinybit:
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	res 0, a
-	ld [wUnusedD366], a
+	ld [wTempAIBattleFlags], a
 	ret
 SkipPlayerShinybit:
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	set 0, a
-	ld [wUnusedD366], a
+	ld [wTempAIBattleFlags], a
 	ret
 DoEnemyShinybit:
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	res 7, a
-	ld [wUnusedD366], a
+	ld [wTempAIBattleFlags], a
 	ret
 SkipEnemyShinybit:
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	set 7, a
-	ld [wUnusedD366], a
+	ld [wTempAIBattleFlags], a
 	ret
 
 ShinyStatusScreen:

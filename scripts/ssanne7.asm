@@ -5,7 +5,7 @@ SSAnne7Script:
 SSAnne7Script_6189b:
 	CheckEvent EVENT_RUBBED_CAPTAINS_BACK
 	ret nz
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 5, [hl]
 	ret
 
@@ -32,7 +32,7 @@ SSAnne7Text1:
 .BagFull
 	ld hl, HM01NoRoomText
 	call PrintText
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 5, [hl]
 	jr .asm_0faf5
 .asm_797c4
@@ -67,7 +67,7 @@ SSAnne7RubText:
 	jr z, .asm_61910
 	call PlayDefaultMusic
 	SetEvent EVENT_RUBBED_CAPTAINS_BACK
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	res 5, [hl]
 	jp TextScriptEnd
 

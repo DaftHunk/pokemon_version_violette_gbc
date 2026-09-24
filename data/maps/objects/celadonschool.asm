@@ -2,8 +2,8 @@ CeladonSchoolObject:
 	db $a ; border block
 
 	db 2 ; warps
-	warp 2, 7, 13, -1
-	warp 3, 7, 13, -1
+	warp 2, 7, 12, -1
+	warp 3, 7, 12, -1
 
 	db 0 ; signs
 

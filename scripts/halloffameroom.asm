@@ -30,7 +30,7 @@ HallofFameRoomScript2:
 	predef HallOfFamePC
 	pop af
 	ld [wLetterPrintingDelayFlags], a
-	ld hl, wFlags_D733
+	ld hl, wStatusFlags7
 	res 1, [hl]
 	inc hl
 	set 0, [hl]
@@ -63,6 +63,20 @@ HallofFameRoomScript2:
 
 	; Display Giovanni's Note in his Gym
 	ld a, HS_VIRIDIAN_GYM_NOTE
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+
+	; Display cup in Red House
+	ld a, HS_RED_HOUSE_CUP
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+
+	; Move Chief in Safari Lab
+	ld a, HS_SILPH_CO_11F_CHIEF
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	
+	ld a, HS_SAFARI_LAB_CHIEF
 	ld [wMissableObjectIndex], a
 	predef ShowObject
 

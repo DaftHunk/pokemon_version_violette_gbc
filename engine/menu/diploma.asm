@@ -4,7 +4,7 @@ DisplayDiploma:
 	call ClearScreen
 	xor a
 	ld [wUpdateSpritesEnabled], a
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl]
 	call DisableLCD
 	call DelayFrame	;joenote - the overworld sprite wobble fix makes the player sprites hidden unless a delay is added
@@ -67,8 +67,8 @@ DisplayDiploma:
 
 .notMaster
 ;joenote - support female player character
-	ld a, [wGameplayOptions]
-	bit 0, a	;check if girl
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_FEMALE, a	;check if girl
 	jr nz, .is_fplayer
 	callba DrawPlayerCharacter
 	jr .fplayer_end
@@ -126,7 +126,7 @@ DisplayDiploma:
 	ld [rOBP0], a
 	call UpdateGBCPal_OBP0
 	call WaitForTextScrollButtonPress
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl]
 	call GBPalWhiteOutWithDelay3
 	call RestoreScreenTilesAndReloadTilePatterns

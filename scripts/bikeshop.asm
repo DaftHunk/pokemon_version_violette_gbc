@@ -26,7 +26,7 @@ BikeShopText1:
 	call GiveItem
 	jr nc, .BagFull
 	ld a, BIKE_VOUCHER
-	ld [$ffdb], a
+	ld [hItemToRemoveID], a
 	callba RemoveItemByID
 	SetEvent EVENT_GOT_BICYCLE
 	ld hl, BikeShopText_1d824
@@ -50,7 +50,7 @@ BikeShopText1:
 	ld [wTopMenuItemY], a
 	ld a, $1
 	ld [wTopMenuItemX], a
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl]
 	coord hl, 0, 0
 	ld b, $4
@@ -67,12 +67,12 @@ BikeShopText1:
 	call PrintText
 ;joenote - from pokeyellow: This fixes the bike shop insta-text glitch.
 ;just need to move it up a few lines.
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl]
 	call HandleMenuInput
 	bit 1, a
 	jr nz, .cancel
-;	ld hl, wd730
+;	ld hl, wStatusFlags5
 ;	res 6, [hl]
 	ld a, [wCurrentMenuItem]
 	and a

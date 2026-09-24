@@ -228,6 +228,7 @@ MltReq1Packet: MLT_REQ 1
 MltReq2Packet: MLT_REQ 2
 ChrTrnPacket:  CHR_TRN 0, 0
 PctTrnPacket:  PCT_TRN
+ChrTrn1Packet: CHR_TRN 1, 0
 
 MaskEnFreezePacket: MASK_EN 1
 MaskEnCancelPacket: MASK_EN 0

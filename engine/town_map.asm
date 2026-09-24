@@ -232,7 +232,7 @@ LoadTownMap_Fly:
 	call PlaySound
 	ld a, [hl]
 	ld [wDestinationMap], a
-	ld hl, wd732
+	ld hl, wStatusFlags6
 	set 3, [hl]
 	inc hl
 	set 7, [hl]
@@ -266,27 +266,38 @@ LoadTownMap_Fly:
 	jr z, .pressedDown ; skip past unvisited towns
 	jp .townMapFlyLoop
 .wrapToEndOfList
-	ld hl, wFlyLocationsList + 11
+	ld hl, wFlyLocationsList + NUM_CITY_MAPS + EXTRA_FLYING_MAPS
 	jr .pressedDown
 
 ToText:
 	db " →@"
 
 BuildFlyLocationsList:
-	ld hl, wFlyLocationsList - 1
+	ld hl, wFlyAnimUsingCoordList
 	ld [hl], $ff
-	inc hl
+	inc hl ; it's wFlyLocationsList
 	ld a, [wTownVisitedFlag]
 	ld e, a
 	ld a, [wTownVisitedFlag + 1]
 	ld d, a
-	ld bc, INDIGO_PLATEAU + 1
+	ld b, 0
+	ld c, NUM_CITY_MAPS + EXTRA_FLYING_MAPS
 .loop
 	srl d
 	rr e
 	ld a, $fe ; store $fe if the town hasn't been visited
 	jr nc, .notVisited
 	ld a, b ; store the map number of the town if it has been visited
+; new for Route 4 and Route 10
+	cp ROUTE_4_FLY
+	jr nz, .notRoute4
+	ld a, ROUTE_4
+.notRoute4
+	cp ROUTE_10_FLY
+	jr nz, .notRoute10
+	ld a, ROUTE_10
+; back to vanilla
+.notRoute10
 .notVisited
 	ld [hl], a
 	inc hl
@@ -352,7 +363,7 @@ LoadTownMap:
 
 CompressedMap:
 ; you can decompress this file with the redrle program in the extras/ dir
-	INCBIN "gfx/tiles/town_map.rle"
+	INCBIN "gfx/tilemaps/town_map.rle"
 
 ExitTownMap:
 ; clear town map graphics data and load usual graphics data
@@ -460,6 +471,13 @@ DisplayWildLocations:
 	cp $19 ; Cerulean Cave's coordinates
 	jr z, .nextEntry ; skip Cerulean Cave
 	call TownMapCoordsToOAMCoords
+
+;joenote - modified the above function, so have to write to ShadowOAM here.
+	ld a, b
+	ld [hli], a
+	ld a, c
+	ld [hli], a
+
 	ld a, $4 ; nest icon tile no.
 	ld [hli], a
 	xor a
@@ -496,19 +514,20 @@ AreaUnknownText:
 TownMapCoordsToOAMCoords:
 ; in: lower nybble of a = x, upper nybble of a = y
 ; out: b and [hl] = (y * 8) + 24, c and [hl+1] = (x * 8) + 24
+;joenote - revising output to not write to [hl] & [hl+1] since this causes a write to ROM under certain calls
 	push af
 	and $f0
 	srl a
 	add 24
 	ld b, a
-	ld [hli], a
+;	ld [hli], a
 	pop af
 	and $f
 	swap a
 	srl a
 	add 24
 	ld c, a
-	ld [hli], a
+;	ld [hli], a
 	ret
 
 WritePlayerOrBirdSpriteOAM:

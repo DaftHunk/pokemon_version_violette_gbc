@@ -1,13 +1,13 @@
 VermilionCityScript:
 	call EnableAutoTextBoxDrawing
 	ld hl, wCurrentMapScriptFlags
-	bit 6, [hl]
-	res 6, [hl]
+	bit BIT_CUR_MAP_LOADED_2, [hl]
+	res BIT_CUR_MAP_LOADED_2, [hl]
 	push hl
 	call nz, VermilionCityScript_197cb
 	pop hl
-	bit 5, [hl]
-	res 5, [hl]
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	call nz, VermilionCityScript_197c0
 	ld hl, VermilionCityScriptPointers
 	ld a, [wVermilionCityCurScript]
@@ -149,7 +149,7 @@ VermilionCityJennyText:
 	ld hl, VermilionCityJennyBattleText
 	call PrintText
 	; set battle flags
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	; set battle opponent

@@ -5,7 +5,7 @@ db 115 ; base defense
 db 35 ; base speed
 db 45 ; base special
 db ROCK ; species type 1
-db GROUND ; species type 2
+db ROCK ; species type 2
 db 120 ; catch rate
 db 134 ; base exp yield
 INCBIN "gfx/pokemon/front/graveler.pic",0,1 ; 66, sprite dimensions

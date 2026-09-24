@@ -6,7 +6,7 @@
 IsPartyMonDead:
 	;treat mon as alive if nuzlocke mode is off
 	ld a, [wGameplayOptions]
-	bit 6, a
+	bit BIT_GAMEPLAY_NUZLOCKE, a
 	jr nz, .next
 	ld a, 1
 	and a
@@ -33,7 +33,7 @@ EndOfBattle_NuzlockeHandler:
 	jr z, .return	;return if not in nuzlocke mode
 	
 	ld a, [wGameplayOptions]
-	bit 1, a
+	bit BIT_GAMEPLAY_FORFAIT, a
 	call z, SetDeadPartyMons	;only set dead mons if player has not forfeited, 
 .return
 	call GetPredefRegisters
@@ -49,7 +49,7 @@ ForfeitConfirmed_NuzlockeHandler:
 	jr z, .return	;return if not in nuzlocke mode
 	
 	ld a, [wGameplayOptions]
-	bit 1, a
+	bit BIT_GAMEPLAY_FORFAIT, a
 	call nz, SetDeadPartyMons	;only set dead mons if player actually forfeited,
 .return	
 	ret
@@ -138,7 +138,7 @@ EncounterLoad_NuzlockeHandler:
 	ret
 
 .handleShiny
-	ld a, [wUnusedD366]
+	ld a, [wTempAIBattleFlags]
 	bit 7, a
 	ret z
 	ResetEvent EVENT_NUZZLOCK_DISALLOW_CATCH
@@ -191,7 +191,7 @@ ResetAreaFlag_NuzlockePredef:
 ;is nuzlocke mode active
 IsNuzlocke:
 	ld a, [wGameplayOptions]
-	bit 6, a
+	bit BIT_GAMEPLAY_NUZLOCKE, a
 	ret
 
 
@@ -495,7 +495,7 @@ NuzlockeMapList:
 	db $F5	; PokemonTowerName
 	db $F4	; PowerPlantName
 	db $E3	; RockTunnelName
-	db $E4	; Route10Name
+	db $E2	; Route10Name
 	db $C9	; Route11Name
 	db $E9	; Route12Name
 	db $DB	; Route13Name

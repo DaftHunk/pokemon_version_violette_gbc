@@ -47,5 +47,5 @@ _Route11GateUpstairsText_494d5::
 	line "seul chemin pour"
 	cont "aller de Azuria"
 	cont "à Lavanville:"
-	cont "la Grotte!"
+	cont "la Grotte Sombre!"
 	done

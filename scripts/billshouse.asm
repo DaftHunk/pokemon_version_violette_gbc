@@ -47,7 +47,7 @@ MovementData_1e7a0:
 	db $FF
 
 BillsHouseScript2:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	ld a, HS_BILL_POKEMON
@@ -98,7 +98,7 @@ MovementData_1e807:
 	db $FF
 
 BillsHouseScript4:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	xor a
@@ -239,7 +239,7 @@ BillsGarden:	;joenote - adding this as an easter egg
 	ld [wDestinationWarpID], a
 	ld a, -1
 	ld [hWarpDestinationMap], a
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 3, [hl]	;set bit for a scripted warp
 	ret
 

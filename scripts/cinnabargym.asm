@@ -7,13 +7,13 @@ CinnabarGymScript:
 
 CinnabarGymScript_75759:
 	ld hl, wCurrentMapScriptFlags
-	bit 6, [hl]
-	res 6, [hl]
+	bit BIT_CUR_MAP_LOADED_2, [hl]
+	res BIT_CUR_MAP_LOADED_2, [hl]
 	push hl
 	call nz, CinnabarGymScript_Header
 	pop hl
-	bit 5, [hl]
-	res 5, [hl]
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	call nz, UpdateCinnabarGymGateTileBlocks
 	ResetEvent EVENT_2A7
 	ret
@@ -77,7 +77,7 @@ MovementData_757da:
 	db $FF
 
 CinnabarGymScript_DisplayText:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	xor a
@@ -157,13 +157,13 @@ CinnabarGymScript_GiveTM:
 	call DisplayTextID
 .endScript
 	ld hl, wObtainedBadges
-	set 6, [hl]
+	set BIT_VOLCANOBADGE, [hl]
 
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_CINNABAR_GYM_TRAINER_0, EVENT_BEAT_CINNABAR_GYM_TRAINER_6
 
 	ld hl, wCurrentMapScriptFlags
-	set 5, [hl]
+	set BIT_CUR_MAP_LOADED_1, [hl]
 
 	ld a, $d
 	ld [hSpriteIndexOrTextID], a
@@ -191,7 +191,7 @@ CinnabarGymScript_758b7:
 	ld [wSpriteIndex], a
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 ;;;;joenote - rematches should not advance map script pointer
@@ -250,7 +250,7 @@ CinnabarGymText_Blaine:
 	ld hl, CinnabarGymText_RematchPreBattle
 	call PrintText
 
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, CinnabarGymText_RematchEndBattle

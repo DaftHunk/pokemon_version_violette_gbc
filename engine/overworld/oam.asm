@@ -33,7 +33,7 @@ PrepareOAMData:
 	jr nz, .visible
 
 	call GetSpriteScreenXY
-	jr .nextSprite
+	jp .nextSprite
 
 .visible
 	cp $a0 ; is the sprite unchanging like an item ball or boulder?
@@ -57,7 +57,7 @@ PrepareOAMData:
 	add $5
 	ld e, a
 	ld a, [de] ; c2x7
-	and $80
+	and $87 ; we keep bits of grass prio and palette ; or can comment out the line totally
 	ld [hSpritePriority], a ; temp store sprite priority
 	pop de
 
@@ -123,22 +123,24 @@ PrepareOAMData:
 	ld [de], a ; tile id
 	inc hl
 	inc e
-	ld a, [hl]
-	bit 1, a ; is the tile allowed to set the sprite priority bit?
-	jr z, .skipPriority
 	ld a, [hSpritePriority]
-	or [hl]
+	xor [hl]
+	and $87
+	xor [hl] ; those 3 lines merged the flip, vbank, and obp bits of  [hl] with the grass and palettes bits of hSpritePriority
+	bit 1, [hl] ; is the tile allowed to set the sprite priority bit?
+	jr nz, .skipPriority
+	res 7, a
 .skipPriority
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;gbcnote - handling GBC bits for object table attributes
 
 	;Let's do this bit check now instead of later.
 	;Then we'll push AF to preserve the flag register
-	bit 0, a ; OAMFLAG_ENDOFDATA
+	bit 0, [hl] ; OAMFLAG_ENDOFDATA
 	push af
 	
 	res 3, a ;0=vram0 & 1=vram1
-	and %11111100	;if on GBC, default to OBJ pal 0 or 4
+;	and %11111100	;if on GBC, default to OBJ pal 0 or 4
 	res 2, a; default of OBP0 uses palette 0
 	bit 4, a ; 0=OBP0 or 1=OBP1
 	jr z, .spriteusesOBP0
@@ -169,7 +171,7 @@ PrepareOAMData:
 	ld h, wOAMBuffer / $100
 	ld de, $4
 	ld b, $a0
-	ld a, [wd736]
+	ld a, [wMovementFlags]
 	bit 6, a ; jumping down ledge or fishing animation?
 	ld a, $a0
 	jr z, .clear

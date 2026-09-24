@@ -26,7 +26,7 @@ IF DEF(_DEBUG)
 	coord hl, 7, 7
 	ld de, DebugMenuOptions
 	call PlaceString
-	ld a, 3 ; medium speed
+	ld a, BITS_OPTIONS_TEXT_DELAY_FAST
 	ld [wOptions], a
 
 	ld a, A_BUTTON | B_BUTTON | START
@@ -53,7 +53,7 @@ IF DEF(_DEBUG)
 	jp nz, TestBattle
 
 	; DEBUG
-	ld hl, wd732
+	ld hl, wStatusFlags6
 	set 1, [hl]
 	jpab StartNewGameDebug
 
@@ -80,8 +80,8 @@ TestBattle: ; unreferenced except in _DEBUG
 	; Don't mess around with obedience.
 	;ld a, 1 << 7
 	ld [wObtainedBadges], a
-    bit 7, a ; does the player have the Earth Badge?
-	ld hl, wFlags_D733
+    bit BIT_EARTHBADGE, a ; does the player have the Earth Badge?
+	ld hl, wStatusFlags7
 	set BIT_TEST_BATTLE, [hl]
 
 	; wNumBagItems and wBagItems are not initialized here,

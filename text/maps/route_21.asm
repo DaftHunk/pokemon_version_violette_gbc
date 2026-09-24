@@ -150,3 +150,7 @@ _Route21AfterBattleText9::
 	text "Attends! J'ai une"
 	line "touche!"
 	done
+
+_Route21TextSign_Volcano::
+	text "Volcan Cramoisi"
+	done

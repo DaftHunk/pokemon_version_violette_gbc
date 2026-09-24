@@ -220,7 +220,7 @@ Audio2_OverwriteChannelPointer:
 
 Audio2_InitMusicVariables::
 	xor a
-	;ld [wUnusedC000], a
+	;ld [wBattleAISettingFlags], a
 	ld [wDisableChannelOutputWhenSfxEnds], a
 	ld [wMusicTempo + 1], a
 	ld [wMusicWaveInstrument], a
@@ -398,7 +398,7 @@ Audio2_StopAllAudio::
 	ld a, $77
 	ld [rNR50], a
 	xor a
-	;ld [wUnusedC000], a
+	;ld [wBattleAISettingFlags], a
 	ld [wDisableChannelOutputWhenSfxEnds], a
 	ld [wMuteAudioAndPauseMusic], a
 	ld [wMusicTempo + 1], a

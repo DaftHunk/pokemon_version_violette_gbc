@@ -19,18 +19,18 @@ CheckLostRandBattle:
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	xor a
-	ld [wUnusedD5A3], a
+	ld [wTempBattleFlag], a
 	ret
 
 CheckWinstreak:
-	ld a, [wUnusedD5A3]
+	ld a, [wTempBattleFlag]
 	cp $5
 	ret c
 	ld a, HS_UNDPATHWE_MGENE
 	ld [wMissableObjectIndex], a
 	predef ShowObject
 	xor a
-	ld [wUnusedD5A3], a
+	ld [wTempBattleFlag], a
 	
 	ld a, $3
 	ld [hSpriteIndexOrTextID], a
@@ -58,7 +58,7 @@ RandTrainerText1:
 	SetEvent EVENT_RANDOM_TRAINER
 	ld hl, RandTrainerPre
 	call PrintText
-	ld hl, wd72d;set the bits for triggering battle
+	ld hl, wStatusFlags3;set the bits for triggering battle
 	set 6, [hl]	;
 	set 7, [hl]	;
 	ld hl, RandTrainerPost	;load text for when you win
@@ -77,9 +77,9 @@ RandTrainerText1:
 	;ld [wGymLeaderNo], a
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	;increment victory counter for the random trainer
-	ld a, [wUnusedD5A3]
+	ld a, [wTempBattleFlag]
 	inc a
-	ld [wUnusedD5A3], a
+	ld [wTempBattleFlag], a
 	;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	xor a
 	ld [hJoyHeld], a

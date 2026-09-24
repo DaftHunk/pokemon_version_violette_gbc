@@ -10,7 +10,7 @@ _SafariZoneNorthText4::
 	done
 
 _SafariZoneNorthText5::
-	text "Parc 2"
+	text "Parc Nord"
 	done
 
 _SafariZoneNorthText6::

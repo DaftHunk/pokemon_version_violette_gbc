@@ -48,7 +48,7 @@ _BikeShopText_1d82f::
 	para "Tu peux aller sur"
 	line "la Piste Cyclable"
 	cont "et dans les"
-	cont "Grottes!"
+	cont "grottes!"
 	done
 
 _BikeShopText_1d834::

@@ -15,7 +15,7 @@ VendingMachineMenu:
 	ld [wTopMenuItemY], a
 	ld a, 1
 	ld [wTopMenuItemX], a
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl]
 	coord hl, 0, 3
 	ld b, 8
@@ -28,7 +28,7 @@ VendingMachineMenu:
 	coord hl, 9, 6
 	ld de, DrinkPriceText
 	call PlaceString
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl]
 	call HandleMenuInput
 	bit 1, a ; pressed B?

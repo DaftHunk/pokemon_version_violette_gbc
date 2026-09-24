@@ -1,7 +1,7 @@
 PewterGymScript:
 	ld hl, wCurrentMapScriptFlags
-	bit 6, [hl]
-	res 6, [hl]
+	bit BIT_CUR_MAP_LOADED_2, [hl]
+	res BIT_CUR_MAP_LOADED_2, [hl]
 	call nz, PewterGymScript_Header
 	call EnableAutoTextBoxDrawing
 	ld hl, PewterGymTrainerHeader0
@@ -61,7 +61,7 @@ PewterGymScriptGiveTM:
 	call DisplayTextID
 .endScript
 	ld hl, wObtainedBadges
-	set 0, [hl]
+	set BIT_BOULDERBADGE, [hl]
 
 	ld a, HS_GYM_GUY
 	ld [wMissableObjectIndex], a
@@ -136,7 +136,7 @@ PewterGymText_Brock:
 
 	ld hl, PewterGymText_LeaderPreBattle
 	call PrintText
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, PewterGymText_LeaderEndBattle
@@ -161,7 +161,7 @@ PewterGymText_Brock:
 .leaderFightAfterElite4
 	ld hl, PewterGymText_RematchPreBattle
 	call PrintText
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, PewterGymText_RematchEndBattle
@@ -259,7 +259,7 @@ PewterGymText_RematchEndBattle:
 PewterGymText_Guide:
 	TX_ASM
 	ld a, [wObtainedBadges]
-	bit 0, a
+	bit BIT_BOULDERBADGE, a
 	jr nz, .arenaVictory
 	ld hl, PewterGymText_GuideAsk
 	call PrintText

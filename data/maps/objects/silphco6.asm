@@ -13,8 +13,8 @@ SilphCo6Object:
 	db 10 ; objects
 	object SPRITE_LAPRAS_GIVER, 10, 6, STAY, NONE, 1 ; person
 	object SPRITE_LAPRAS_GIVER, 20, 6, STAY, NONE, 2 ; person
-	object SPRITE_ERIKA, 21, 6, STAY, DOWN, 3 ; person
-	object SPRITE_ERIKA, 11, 10, STAY, RIGHT, 4 ; person
+	object SPRITE_KIMONO_WOMAN, 21, 6, STAY, DOWN, 3 ; person
+	object SPRITE_KIMONO_WOMAN, 11, 10, STAY, RIGHT, 4 ; person
 	object SPRITE_LAPRAS_GIVER, 18, 13, STAY, UP, 5 ; person
 	object SPRITE_ROCKET, 17, 3, STAY, RIGHT, 6, OPP_ROCKET, 26
 	object SPRITE_OAK_AIDE, 7, 8, STAY, DOWN, 7, OPP_SCIENTIST, 6

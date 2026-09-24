@@ -124,7 +124,8 @@ ItemUsePtrTable:
 	dw UnusableItem      ; FLOOR_10F
 	dw UnusableItem      ; FLOOR_11F
 	dw UnusableItem      ; FLOOR_B4F
-	dw ItemUseEvoStone   ; METAL_COAT ;dafthunk #19 
+	dw ItemUseEvoStone   ; METAL_COAT ;dafthunk #19
+	dw UnusableItem      ; EXP_CATCH_UP
 
 ItemUseBall:
 
@@ -805,7 +806,7 @@ ItemUseSurfboard:
 	jp nz, SurfingAttemptFailed
 .surf
 	call .makePlayerMoveForward
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 7, [hl]
 	ld a, 2
 	ld [wWalkBikeSurfState], a ; change player state to surfing
@@ -1062,14 +1063,13 @@ ItemUseMedicine:
 	jr z, .compareCurrentHPToMaxHP
 ;joenote - at this point, trying to revive a fainted 'mon in battle
 ;disallow this in hard mode or in nuzlock mode
-	push bc
-	ld a, [wOptions]
-	ld b, a
 	ld a, [wGameplayOptions]
-	or b
-	pop bc
-	bit BIT_BATTLE_HARD, a
+	bit BIT_GAMEPLAY_HARDMODE, a
 	jr nz, .cannot_revive
+
+	bit BIT_GAMEPLAY_NUZLOCKE, a
+	jr nz, .cannot_revive
+
 	CheckEvent EVENT_3_MONS_RANDOM_TRAINER
 	jr nz, .cannot_revive
 .can_revive	
@@ -1569,8 +1569,8 @@ ItemUseMedicine:
 
 	push hl ; store mon's level
 	ld b, MAX_LEVEL
-	ld a, [wMoreGameplayOptions]
-	bit 0, a
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_LEVEL_CAP, a
 	jr z, .next1 ; no levelcaps
 	; else
 	callfar GetLevelCap
@@ -1752,10 +1752,10 @@ ItemUseEscapeRope:
 	jr z, .notUsable
 	cp b
 	jr nz, .loop
-	ld hl, wd732
+	ld hl, wStatusFlags6
 	set 3, [hl]
 	set 6, [hl]
-	ld hl, wd72e
+	ld hl, wStatusFlags4
 	res 4, [hl]
 	ResetEvent EVENT_IN_SAFARI_ZONE
 	xor a
@@ -1849,7 +1849,7 @@ ItemUseCardKey:
 ;.done
 ;	ld hl, ItemUseText00
 ;	call PrintText
-;	ld hl, wd728
+;	ld hl, wStatusFlags1
 ;	set 7, [hl]
 ;	ret
 
@@ -1943,8 +1943,8 @@ ItemUseXStat:
 	push hl
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - ;double the effect if using hard mode
-	ld a, [wOptions]	;load game options
-	bit BIT_BATTLE_HARD, a			;check battle style (bit set if hard mode)
+	ld a, [wGameplayOptions]	;load game options
+	bit BIT_GAMEPLAY_HARDMODE, a			;check battle style (bit set if hard mode)
 	ld a, [wcf91]	;load item#
 	jr nz, .double_effect
 	
@@ -2415,8 +2415,10 @@ ItemUsePPRestore:
 	jr nz, .skipUpdatingInBattleData
 	
 	;joenote - do not update active mon if it is transformed
+	;A = B at this line
 	ld a, [wPlayerBattleStatus3]
 	bit 3, a ; is the mon transformed?
+	ld a, b	;restore the original value of A
 	jp nz, .skipUpdatingInBattleData
 	
 	ld hl, wPartyMon1PP
@@ -2896,6 +2898,7 @@ AddBonusPP:
 GetMaxPP:
 	ld a, [wMonDataLocation]
 	and a
+.readFromPartyData
 	ld hl, wPartyMon1Moves
 	ld bc, wPartyMon2 - wPartyMon1
 	jr z, .sourceWithMultipleMon
@@ -2909,7 +2912,16 @@ GetMaxPP:
 	ld hl, wDayCareMonMoves
 	dec a
 	jr z, .sourceWithOneMon
-	ld hl, wBattleMonMoves ; player's in-battle pokemon
+;joenote - going to do some fixes to how the battle hud displays max PP for transformed and mimic'd moves
+;If active mon is transformed, set the max PP to 5
+	ld a, [wPlayerBattleStatus3]
+	bit TRANSFORMED, a
+	ld a, 5
+	jr nz, .transformed	
+;joenote - otherwise use party data for the battle 'mon to account for mimic's max pp
+	xor a	;sets the z flag and zeros A
+	jr .readFromPartyData
+;	ld hl, wBattleMonMoves ; player's in-battle pokemon
 .sourceWithOneMon
 	call GetSelectedMoveOffset2
 	jr .next
@@ -2931,10 +2943,11 @@ GetMaxPP:
 	pop hl
 	push bc
 	ld bc, wPartyMon1PP - wPartyMon1Moves ; PP offset if not player's in-battle pokemon data
-	ld a, [wMonDataLocation]
-	cp 4 ; player's in-battle pokemon?
-	jr nz, .addPPOffset
-	ld bc, wBattleMonPP - wBattleMonMoves ; PP offset if player's in-battle pokemon data
+;joenote - not needed since battle mon is pulling from its party data now
+;	ld a, [wMonDataLocation]
+;	cp 4 ; player's in-battle pokemon?
+;	jr nz, .addPPOffset
+;	ld bc, wBattleMonPP - wBattleMonMoves ; PP offset if player's in-battle pokemon data
 .addPPOffset
 	add hl, bc
 	ld a, [hl] ; a = current PP
@@ -2950,6 +2963,7 @@ GetMaxPP:
 	call AddBonusPP ; add bonus PP from PP Ups
 	ld a, [hl]
 	and %00111111 ; mask out the PP Up count
+.transformed
 	ld [wMaxPP], a ; store max PP
 	ret
 

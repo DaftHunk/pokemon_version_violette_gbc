@@ -14,8 +14,8 @@ MainMenu:
 	ld a, $01
 	ld [hGBC], a
 
-	ld a, [wGameplayOptions]
-	bit 5, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_GAMMA, a
 	jr z, .mainMenuLoop
 	
 	ld a, $02
@@ -32,13 +32,13 @@ MainMenu:
 	ld [hli], a
 	ld [hl], a
 	ld [wDefaultMap], a
-	ld hl, wd72e
+	ld hl, wStatusFlags4
 	res 6, [hl]
 	call ClearScreen
 	call RunDefaultPaletteCommand
 	call LoadTextBoxTilePatterns
 	call LoadFontTilePatterns
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl]
 	ld a, [wSaveFileStatus]
 	cp 1
@@ -116,7 +116,7 @@ MainMenu:
 	ld [hli], a
 	ret
 .endseed
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl]
 	call UpdateSprites
 	xor a
@@ -190,7 +190,7 @@ MainMenu:
 .choseContinue
 	call DisplayContinueGameInfo
 	ld hl, wCurrentMapScriptFlags
-	set 5, [hl]
+	set BIT_CUR_MAP_LOADED_1, [hl]
 .inputLoop
 	xor a
 	ld [hJoyPressed], a
@@ -237,7 +237,7 @@ MainMenu:
 	ResetEvent EVENT_CINNABAR_SHORE_MISSINGNO	;cinnabar shore missingno
 	ResetEvent EVENT_RANDOM_TRAINER	;random trainer flag
 	ResetEvent EVENT_3_MONS_RANDOM_TRAINER	;random 3-mon trainer for tournament
-	ld hl, wFlags_D733
+	ld hl, wStatusFlags7
 	res 1, [hl]
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld c, 10
@@ -275,41 +275,41 @@ MainMenu:
 
 	xor a
 	ld [wDestinationMap], a
-	ld hl, wd732
+	ld hl, wStatusFlags6
 	set 2, [hl] ; fly warp or dungeon warp
 	call SpecialWarpIn
 	jp SpecialEnterMap
 
 InitOptions:
 	xor a
-	ld [wGameplayOptions], a	;joenote - reset any extra options
+	ld [wGraphicOptions], a	;joenote - reset any extra options
 	ld [wLetterPrintingDelayFlags], a
 
-	ld a, 1 ; no delay
+	ld a, BIT_TEXT_NO_DELAY ; no delay
 	ld [wLetterPrintingDelayFlags], a
 
-	ld a, TEXT_DELAY_FAST ; fast speed
-	set BIT_BATTLE_SHIFT, a ;joenote - SET battle style
+	ld a, BITS_OPTIONS_TEXT_DELAY_FAST ; fast speed
+	set BIT_OPTIONS_BATTLE_SHIFT, a ;joenote - SET battle style
 	ld [wOptions], a
 
 	ld a, [hGBC]
 	and a
 	ret z
 
-	ld a, [wGameplayOptions]
-	set 4, a ; 60fps
-	set 7, a ; enhanced GBC colors
-	ld [wGameplayOptions], a
+	ld a, [wGraphicOptions]
+	set BIT_GRAPHIC_60_FPS, a ; 60fps
+	set BIT_GRAPHIC_ENHANCED_GBC, a ; enhanced GBC colors
+	ld [wGraphicOptions], a
 
-	ld a, [wMoreGameplayOptions]
-	set 0, a ; level cap mode
-	ld [wMoreGameplayOptions], a
+	ld a, [wGameplayOptions]
+	set BIT_GAMEPLAY_LEVEL_CAP, a ; level cap mode
+	ld [wGameplayOptions], a
 	ret
 
 LinkMenu:
 	xor a
 	ld [wLetterPrintingDelayFlags], a
-	ld hl, wd72e
+	ld hl, wStatusFlags4
 	set 6, [hl]
 	ld hl, TextTerminator_6b20
 	call PrintText
@@ -326,7 +326,7 @@ LinkMenu:
 	call PlaceString
 	xor a
 	ld [wUnusedCD37], a
-	ld [wd72d], a
+	ld [wStatusFlags3], a
 	ld hl, wTopMenuItemY
 	ld a, $7
 	ld [hli], a
@@ -438,12 +438,12 @@ LinkMenu:
 	jp nz, ShinPokemonHandshake	;joenote - do a version control check before going to the colosseum
 	ld a, TRADE_CENTER
 .next
-	ld [wd72d], a
+	ld [wStatusFlags3], a
 	ld hl, PleaseWaitText
 	call PrintText
 	ld c, 50
 	call DelayFrames
-	ld hl, wd732
+	ld hl, wStatusFlags6
 	res 1, [hl]
 	ld a, [wDefaultMap]
 	ld [wDestinationMap], a
@@ -464,7 +464,7 @@ LinkMenu:
 	call CloseLinkConnection
 	ld hl, LinkCanceledText
 	call PrintText
-	ld hl, wd72e
+	ld hl, wStatusFlags4
 	res 6, [hl]
 	ret
 
@@ -532,7 +532,7 @@ ShinPokemonHandshake:
 .pass
 ;One more thing. Exchange if you are a male or female trainer with the other game.
 	ResetEvent EVENT_LINKED_FPLAYER
-	ld a, [wGameplayOptions]
+	ld a, [wGraphicOptions]
 	and $0F
 	ld [wSerialExchangeNybbleSendData], a	;load the digit to be sent over link
 	ld a, $ff
@@ -585,10 +585,10 @@ RomHackVersionText:
 StartNewGamePlus:
 	; Set NG+ flag
 	ld a, [wGameplayOptions]
-	set 3, a
+	set BIT_GAMEPLAY_NEW_GAME_PLUS, a
 	ld [wGameplayOptions], a
 StartNewGame:
-	ld hl, wd732
+	ld hl, wStatusFlags6
 	; Ensure debug mode is not used when starting a regular new game.
 	; Debug mode persists in saved games for both debug and non-debug builds, and is
 	; only reset here by the main menu.
@@ -605,8 +605,8 @@ SpecialEnterMap::
 	ldh [hJoyPressed], a
 	ldh [hJoyHeld], a
 	ldh [hJoy5], a
-	ld [wd72d], a
-	ld hl, wd732
+	ld [wStatusFlags3], a
+	ld hl, wStatusFlags6
 	set 0, [hl] ; count play time
 	call ResetPlayerSpriteData
 	ld c, 20
@@ -906,7 +906,6 @@ DisplayOptionMenu:
 	jr z, .cursorInBattleAnimation
 	cp 13 ; cursor in Battle Style section?
 	jr z, .cursorInBattleStyle
-	jr .loop
 .cursorInTextSpeed
 	bit 5, b ; Left pressed?
 	jp nz, .pressedLeftInTextSpeed
@@ -1047,7 +1046,7 @@ SetOptionsFromCursorPositions:
 
 	;joenote - set cursor position for lagless text
 	ld a, [wOptions]
-	and TEXT_DELAY_BITS
+	and BITS_OPTIONS_TEXT_DELAY
 	ld a, [hl]
 	jr nz, .settextspeed
 	xor a
@@ -1058,22 +1057,22 @@ SetOptionsFromCursorPositions:
 	dec a
 	jr z, .battleAnimationOn
 .battleAnimationOff
-	set BIT_BATTLE_ANIMATION, d
+	set BIT_OPTIONS_BATTLE_ANIMATION, d
 	jr .checkBattleStyle
 .battleAnimationOn
-	res BIT_BATTLE_ANIMATION, d
+	res BIT_OPTIONS_BATTLE_ANIMATION, d
 .checkBattleStyle
 	ld a, [wOptionsBattleStyleCursorX] ; battle style cursor X coordinate
 	dec a
 	jr z, .battleStyleShift
 .battleStyleSet
-	set BIT_BATTLE_SHIFT, d
+	set BIT_OPTIONS_BATTLE_SHIFT, d
 	jr .storeOptions
 .battleStyleShift
-	res BIT_BATTLE_SHIFT, d
+	res BIT_OPTIONS_BATTLE_SHIFT, d
 .storeOptions
 	ld a, [wOptions]	;joenote - preserve sound and hard mode settings
-	and (SOUND_STEREO_BITS | BATTLE_HARD_MODE)
+	and (BITS_OPTIONS_SOUND_STEREO | %00001000)
 	or d
 	;ld a, d
 	ld [wOptions], a
@@ -1083,9 +1082,9 @@ SetOptionsFromCursorPositions:
 SetCursorPositionsFromOptions:
 	ld hl, TextSpeedOptionData + 1
 	ld a, [wOptions]
-	and (SOUND_STEREO_BITS ^ $FF)	;joenote - bypass sound settings
+	and (BITS_OPTIONS_SOUND_STEREO ^ $FF)	;joenote - bypass sound settings
 	ld c, a
-	and TEXT_DELAY_BITS
+	and BITS_OPTIONS_TEXT_DELAY
 	push bc
 	ld de, 2
 	call IsInArray
@@ -1094,7 +1093,7 @@ SetCursorPositionsFromOptions:
 	
 	;joenote - set cursor position for lagless text
 	ld a, [wOptions]
-	and TEXT_DELAY_BITS
+	and BITS_OPTIONS_TEXT_DELAY
 	ld a, [hl]
 	jr nz, .settextspeed
 	ld a, 1
@@ -1103,7 +1102,7 @@ SetCursorPositionsFromOptions:
 	ld [wOptionsTextSpeedCursorX], a ; text speed cursor X coordinate
 	coord hl, 0, 3
 	call .placeUnfilledRightArrow
-	bit BIT_BATTLE_ANIMATION, c
+	bit BIT_OPTIONS_BATTLE_ANIMATION, c
 	ld a, 1 ; On
 	jr z, .storeBattleAnimationCursorX
 	ld a, 10 ; Off
@@ -1111,7 +1110,7 @@ SetCursorPositionsFromOptions:
 	ld [wOptionsBattleAnimCursorX], a ; battle animation cursor X coordinate
 	coord hl, 0, 8
 	call .placeUnfilledRightArrow
-	bit BIT_BATTLE_SHIFT, c
+	bit BIT_OPTIONS_BATTLE_SHIFT, c
 	ld a, 1
 	jr z, .storeBattleStyleCursorX
 	ld a, 10

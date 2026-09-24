@@ -1,5 +1,5 @@
 Route16West_h:
-	db OVERWORLD ; tileset
+	db ALPHA ; tileset
 	db ROUTE_16_WEST_HEIGHT, ROUTE_16_WEST_WIDTH ; dimensions (y, x)
 	dw Route16WestBlocks, Route16WestTextPointers, Route16WestScript ; blocks, texts, scripts
 	db WEST | EAST ; connections

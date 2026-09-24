@@ -13,7 +13,7 @@ SilphCo2Object:
 	db 0 ; signs
 
 	db 5 ; objects
-	object SPRITE_ERIKA, 10, 1, STAY, UP, 1 ; person
+	object SPRITE_KIMONO_WOMAN, 10, 1, STAY, UP, 1 ; person
 	object SPRITE_OAK_AIDE, 5, 12, STAY, DOWN, 2, OPP_SCIENTIST, 1
 	object SPRITE_OAK_AIDE, 24, 13, STAY, LEFT, 3, OPP_SCIENTIST, 2
 	object SPRITE_ROCKET, 16, 11, STAY, UP, 4, OPP_ROCKET, 19

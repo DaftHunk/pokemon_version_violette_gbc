@@ -55,10 +55,10 @@ UpdatePlayerSprite:
 .next
 	ld [wSpriteStateData1 + 9], a ; facing direction
 	ld a, [wFontLoaded]
-	bit 0, a
+	bit BIT_DISABLE_NPC_MOVEMENT, a
 	jr nz, .notMoving
 .moving
-	ld a, [wd736]
+	ld a, [wMovementFlags]
 	bit 7, a ; is the player sprite spinning due to a spin tile?
 	jr nz, .skipSpriteAnim
 	ld a, [H_CURRENTSPRITEOFFSET]
@@ -167,7 +167,7 @@ UpdateNPCSprite:
 	jp nz, MakeNPCFacePlayer
 	ld b, a
 	ld a, [wFontLoaded]
-	bit 0, a
+	bit BIT_DISABLE_NPC_MOVEMENT, a
 	jp nz, notYetMoving
 	ld a, b
 	cp $2
@@ -203,7 +203,7 @@ UpdateNPCSprite:
 	jr nz, .next
 ; reached end of wNPCMovementDirections list
 	ld [hl], a ; store $ff in movement byte 1, disabling scripted movement
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 0, [hl]
 	xor a
 	ld [wSimulatedJoypadStatesIndex], a
@@ -435,8 +435,8 @@ sprite60fps:
 	ld a, [H_CURRENTSPRITEOFFSET]
 	add l
 	ld l, a
-	ld a, [wGameplayOptions]
-	bit 4, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_60_FPS, a
 	ld a, [hl]
 	jr nz, .is60fps
 	xor a
@@ -492,7 +492,7 @@ MakeNPCFacePlayer:
 
 ; Check if the behaviour of the NPC facing the player when spoken to is
 ; disabled. This is only done when rubbing the S.S. Anne captain's back.
-	ld a, [wd72d]
+	ld a, [wStatusFlags3]
 	bit 5, a
 	jr nz, notYetMoving
 	res 7, [hl]
@@ -627,11 +627,10 @@ CheckSpriteAvailability:
 	ld l, a
 	ld a, [wGrassTile]
 	cp c
-	ld a, $0
+	res 7, [hl]
 	jr nz, .notInGrass
-	ld a, $80
+	set 7, [hl]
 .notInGrass
-	ld [hl], a       ; c2x7
 	and a
 .done
 	ret
@@ -874,15 +873,15 @@ DoScriptedNPCMovement:
 ; a few times in the game. It is used when the NPC and player must walk together
 ; in sync, such as when the player is following the NPC somewhere. An NPC can't
 ; be moved in sync with the player using the other method.
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 7, a
 	ret z
 	
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;60fps - update animations every other frame and halve movement
 	ld de, $00
-	ld a, [wGameplayOptions]
-	bit 4, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_60_FPS, a
 	jr z, .not60fps
 	call sprite60fps
 	ld e, b
@@ -890,7 +889,7 @@ DoScriptedNPCMovement:
 .not60fps
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	
-	ld hl, wd72e
+	ld hl, wStatusFlags4
 	bit 7, [hl]
 	set 7, [hl]
 	jp z, InitScriptedNPCMovement

@@ -276,7 +276,7 @@ Evolution_PartyMonLoop: ; loop over party mons
 	ld [wMonDataLocation], a
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	;joenote - fixing skip move-learn on level-up evolution
-	ld a, [wFlags_D733]
+	ld a, [wStatusFlags7]
 	bit 6, a
 	jr nz, .learn_missed_moves
 	

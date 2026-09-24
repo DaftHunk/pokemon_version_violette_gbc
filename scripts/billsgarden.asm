@@ -16,6 +16,7 @@ BillsGardenScriptPointers:
 BillsGardenTextPointers:
 	dw BillsGarden_HoohText
 	dw BillsGardenText_Sacha
+	dw BillsGardenText_Pikachu
 	dw BillsGarden_SachaCongrat
 	dw BillsGarden_SachaBagFull
 	dw BillsGarden_SachaGiveStone
@@ -65,32 +66,46 @@ BillsGardenText_Sacha:
 	ld hl, BillsGarden_SachaGreet
 	call PrintText
 	ld hl, BillsGarden_SachaBattle
-	call PrintText	;print the challenge text
-	call YesNoChoice	;prompt a yes/no choice
-	ld a, [wCurrentMenuItem]	;load the player choice
-	and a	;check the player choice
-	jr nz, .noThanks	;kick out if no chosen
+	; print the challenge text
+	call PrintText
+	; prompt a yes/no choice
+	call YesNoChoice
+	; load the player choice
+	ld a, [wCurrentMenuItem]
+	; check the player choice
+	and a
+	; kick out if no chosen
+	jr nz, .noThanks
 	;otherwise begin loading battle
-	ld hl, BillsGarden_SachaPrebattle	;load pre battle text
-	call PrintText	;print the pre battle text
-	ld hl, wd72d;set the bits for triggering battle
-	set 6, [hl]	;
-	set 7, [hl]	;
-	ld hl, BillsGarden_SachaAfterBattle	;load text for when you win
-	ld de, BillsGarden_SachaAfterBattle	;load text for when you lose
-	call SaveEndBattleTextPointers	;save the win/lose text
-	ld a, $9
-	ld [wGymLeaderNo], a ;set bgm to champion music
-	ld a, OPP_SACHA	;load the trainer type
-	ld [wCurOpponent], a ;set as the current opponent
 
-	ld a, 1 ;get the right roster
+	; load pre battle text
+	ld hl, BillsGarden_SachaPrebattle
+	call PrintText
+	; set the bits for triggering battle
+	ld hl, wStatusFlags3
+	set 6, [hl]
+	set 7, [hl]
+	; load texts for when you win and lose
+	ld hl, BillsGarden_SachaAfterBattle
+	ld de, BillsGarden_SachaAfterBattle
+	; save the win/lose text
+	call SaveEndBattleTextPointers
+	; set bgm to champion music
+	ld a, $9
+	ld [wGymLeaderNo], a
+	; load the trainer type
+	ld a, OPP_SACHA
+	ld [wCurOpponent], a
+	;get the right roster
+	ld a, 1
 	ld [wTrainerNo], a
 
+	; if Sacha never beaten
 	CheckEvent EVENT_GOT_MIST_STONE
-	jr z, BillsGarden_ResetScripts ; if Sacha never beaten
+	jr z, BillsGarden_ResetScripts
 	; else
-	ld a, 2 ;get the right roster
+	; get the right roster
+	ld a, 2
 	ld [wTrainerNo], a
 	jr BillsGarden_ResetScripts
 	
@@ -119,7 +134,7 @@ BillsGarden_ResetLegendaries:
 	; else fallthrough
 BillsGarden_ResetScript:
 	ResetEvent EVENT_MIST_STONE_WAIT
-	ld a, $3
+	ld a, $4
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 
@@ -128,11 +143,11 @@ BillsGarden_ResetScript:
 	call GiveItem
 	jp nc, .bagFull	;jump if not enough room in bag
 
-	ld a, $5
+	ld a, $6
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 
-	ld a, $6
+	ld a, $7
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 
@@ -179,14 +194,14 @@ BillsGarden_ResetScript:
 	call Delay3
 	call GBFadeInFromBlack
 
-	ld a, $7
+	ld a, $8
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 
 	jp .end
 .bagFull
 	SetEvent EVENT_MIST_STONE_WAIT
-	ld a, $4
+	ld a, $5
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 .end
@@ -232,3 +247,10 @@ BillsGarden_SachaStoneExplain:
 BillsGarden_SachaRespawnLegendaries:
 	TX_FAR _BillsGarden_SachaRespawnLegendaries
 	db "@"
+
+BillsGardenText_Pikachu:
+	TX_FAR _BillsGardenText_Pikachu
+	TX_ASM
+	ld a, PIKACHU
+	call DisplayPokedex
+	jp TextScriptEnd

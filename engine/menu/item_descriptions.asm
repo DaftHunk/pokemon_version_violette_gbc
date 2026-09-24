@@ -3,7 +3,7 @@ DisplayItemDescription::
 	dec a
 	cp a, HM01_CUT - 1
 	jr c, .ok
-	sub HM01_CUT - METAL_COAT - 1 ;dafthunk Always put last item here
+	sub HM01_CUT - NUM_ITEMS - 1 ;dafthunk Always put last item here
 .ok
 	ld hl, ItemDescriptionPointers
 	ld bc, 5
@@ -206,6 +206,8 @@ ItemDescriptionPointers:
     TX_FAR _UnusedItemDescription
 	text_end
     TX_FAR _MetalCoatDescription
+	text_end
+	TX_FAR _ExpCatchUpDescription
 	text_end
 	TX_FAR _HM01Description
 	text_end

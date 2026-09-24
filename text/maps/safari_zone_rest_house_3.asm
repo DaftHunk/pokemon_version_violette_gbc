@@ -17,3 +17,9 @@ _SafariZoneRestHouse3Text3::
 	text "Pffff!"
 	line "J'en ai marre!"
 	done
+
+_SafariZoneRestHouse3Text4::
+	text "Moi aussi j'veux"
+	line "capturer un"
+	cont "#mon!"
+	done

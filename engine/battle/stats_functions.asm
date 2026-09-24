@@ -169,8 +169,8 @@ ReduceSpeed:
 ;requires a, b, hl, de, and wCurEnemyLVL
 CalcEnemyStatEXP:
 	; always 100 on hard mode
-	ld a, [wOptions] ; load game options
-	bit BIT_BATTLE_HARD, a ; check for hard mode
+	ld a, [wGameplayOptions] ; load game options
+	bit BIT_GAMEPLAY_HARDMODE, a ; check for hard mode
 	jr nz, .maxStats
 
 	; no stat exp for levels 5 or lower
@@ -219,8 +219,8 @@ CalcEnemyStatEXP:
 
 ;the old formula
 ;CalcEnemyStatEXP2:
-;	ld a, [wOptions]	;load game options
-;	bit BIT_BATTLE_HARD, a			;check for hard mode
+;	ld a, [wGameplayOptions]	;load game options
+;	bit BIT_GAMEPLAY_HARDMODE, a			;check for hard mode
 ;	jr z, .loadzero		;load zero stat exp if not on hard mode
 ;	;This loads 648 stat exp per level. Note that 648 in hex is the two-byte $0288
 ;	ld a, $02

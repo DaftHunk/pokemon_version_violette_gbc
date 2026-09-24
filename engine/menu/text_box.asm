@@ -37,14 +37,14 @@ DisplayTextBoxID_:
 	call TextBoxBorder
 	pop hl
 	call GetTextBoxIDText
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	push af
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	set 6, a ; no pauses between printing each letter
-	ld [wd730], a
+	ld [wStatusFlags5], a
 	call PlaceString
 	pop af
-	ld [wd730], a
+	ld [wStatusFlags5], a
 	call UpdateSprites
 	ret
 
@@ -186,9 +186,9 @@ TextBoxTextAndCoordTable:
 	db 2,7   ; text coordinates
 
 	db BATTLE_MENU_TEMPLATE
-	db 4,12,19,17  ; text box coordinates
+	db 0,12,19,17  ; text box coordinates
 	dw BattleMenuText
-	db 6,14 ; text coordinates
+	db 2,14 ; text coordinates
 
 	db SAFARI_BATTLE_MENU_TEMPLATE
 	db 0,12,19,17  ; text box coordinates
@@ -255,8 +255,8 @@ JapaneseMainMenuText:
 	next "さいしょから@"
 
 BattleMenuText:
-	db   "Attaque ",$E1,$E2
-	next "Objets  Fuite@"
+	db   "Attaque   Equipe"
+	next "Objets    Fuite@"
 
 SafariZoneBattleMenuText:
 	db   "Ball×      Appât"
@@ -277,7 +277,7 @@ JapanesePokedexMenu:
 	next "キャンセル@"
 
 DisplayMoneyBox:
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl]
 	ld a, MONEY_BOX_TEMPLATE
 	ld [wTextBoxID], a
@@ -293,7 +293,7 @@ DisplayMoneyBox:
 	ld de, wPlayerMoney
 	ld c, LEADING_ZEROES | 3
 	call PrintBCDNumber
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl]
 	ret
 
@@ -301,9 +301,9 @@ CurrencyString:
 	db "      ¥@"
 
 DoBuySellQuitMenu:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	set 6, a ; no printing delay
-	ld [wd730], a
+	ld [wStatusFlags5], a
 	xor a
 	ld [wChosenMenuItem], a
 	ld a, BUY_SELL_QUIT_MENU_TEMPLATE
@@ -321,9 +321,9 @@ DoBuySellQuitMenu:
 	ld [wCurrentMenuItem], a
 	ld [wLastMenuItem], a
 	ld [wMenuWatchMovingOutOfBounds], a
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	res 6, a ; turn on the printing delay
-	ld [wd730], a
+	ld [wStatusFlags5], a
 	call HandleMenuInput
 	call PlaceUnfilledArrowMenuCursor
 	bit 0, a ; was A pressed?
@@ -357,9 +357,9 @@ DoBuySellQuitMenu:
 ; hl = address where the text box border should be drawn
 DisplayTwoOptionMenu:
 	push hl
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	set 6, a ; no printing delay
-	ld [wd730], a
+	ld [wStatusFlags5], a
 
 ; pointless because both values are overwritten before they are read
 	xor a
@@ -429,7 +429,7 @@ DisplayTwoOptionMenu:
 	pop hl
 	add hl, bc
 	call PlaceString
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl] ; turn on the printing delay
 	ld a, [wTwoOptionMenuID]
 	cp NO_YES_MENU
@@ -439,13 +439,13 @@ DisplayTwoOptionMenu:
 ; it only seems to be used when confirming the deletion of a save file
 	xor a
 	ld [wTwoOptionMenuID], a
-	ld a, [wFlags_0xcd60]
+	ld a, [wMiscFlags]
 	push af
 ;joenote - play sound on NoYes menu
 ;	push hl
-;	ld hl, wFlags_0xcd60
-;	bit 5, [hl]
-;	set 5, [hl] ; don't play sound when A or B is pressed in menu
+;	ld hl, wMiscFlags
+;	bit BIT_NO_MENU_BUTTON_SOUND, [hl]
+;	set BIT_NO_MENU_BUTTON_SOUND, [hl] ; don't play sound when A or B is pressed in menu
 ;	pop hl
 .noYesMenuInputLoop
 	call HandleMenuInput
@@ -458,7 +458,7 @@ DisplayTwoOptionMenu:
 .noYesAPressed
 	pop af
 	pop hl
-	ld [wFlags_0xcd60], a
+	ld [wMiscFlags], a
 	ld a, SFX_PRESS_AB
 	call PlaySound
 	jr .pressedAButton
@@ -825,10 +825,10 @@ FieldMoveDisplayData:
 	
 PrintLetterDelay_:
 	ld a, [wLetterPrintingDelayFlags]
-	bit 0, a
+	bit BIT_FAST_TEXT_DELAY, a
 	jr z, .waitOneFrame
 	ld a, [wOptions]
-	and TEXT_DELAY_BITS
+	and BITS_OPTIONS_TEXT_DELAY
 	ld [H_FRAMECOUNTER], a
 	
 	;	joenote - set a flag to indicate if a sfx is playing while printing text
@@ -862,7 +862,7 @@ PrintLetterDelay_:
 	and (A_BUTTON | B_BUTTON)
 	jr z, .buttonsNotPressed
 	ld a, [wOptions]
-	and TEXT_DELAY_BITS
+	and BITS_OPTIONS_TEXT_DELAY
 	call nz, DelayFrame
 ;.endWait
 ;	call DelayFrame

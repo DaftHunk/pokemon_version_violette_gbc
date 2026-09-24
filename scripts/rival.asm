@@ -54,10 +54,10 @@ RivalScript2:
 	ld [wJoyIgnore], a
 	ld a, 9
 	ld [wGymLeaderNo], a	;joenote - manually set final battle music
-	ld hl, wFlags_D733
+	ld hl, wStatusFlags7
 	set 5, [hl]	;joenote - set a flag to tell the battle engine that this is the final boss
 	ld hl, wOptions
-	res 7, [hl]  ; Turn on battle animations to make the battle feel more epic.
+	res BIT_OPTIONS_BATTLE_ANIMATION, [hl]  ; Turn on battle animations to make the battle feel more epic.
 	ld a, $1
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
@@ -66,7 +66,7 @@ RivalScript2:
 	CheckEvent EVENT_ELITE_4_BEATEN
 	jr nz, .leaderFightAfterElite4
 
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, RivalDefeatedText
@@ -89,7 +89,7 @@ RivalScript2:
 	ld a, $3
 	jr .saveTrainerId
 .leaderFightAfterElite4
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, RematchRivalDefeatedText
@@ -154,7 +154,7 @@ OakEntranceAfterVictoryMovement:
 	db $FF
 
 RivalScript5:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	ld a, PLAYER_DIR_LEFT
@@ -212,7 +212,7 @@ OakExitRivalRoomMovement:
 	db $FF
 
 RivalScript8:
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
 	ld a, HS_CHAMPIONS_ROOM_OAK

@@ -1,11 +1,9 @@
 RockTunnel1Object:
 	db $3 ; border block
 
-	db 8 ; warps
+	db 6 ; warps
 	warp 15, 3, 1, -1
-	warp 15, 0, 1, -1
-	warp 15, 33, 2, -1
-	warp 15, 35, 2, -1
+	warp 15, 33, 0, -1
 	warp 37, 3, 0, ROCK_TUNNEL_B1F
 	warp 5, 3, 1, ROCK_TUNNEL_B1F
 	warp 17, 11, 2, ROCK_TUNNEL_B1F
@@ -25,9 +23,7 @@ RockTunnel1Object:
 
 	; warp-to
 	warp_to 15, 3, ROCK_TUNNEL_1F_WIDTH
-	warp_to 15, 0, ROCK_TUNNEL_1F_WIDTH
 	warp_to 15, 33, ROCK_TUNNEL_1F_WIDTH
-	warp_to 15, 35, ROCK_TUNNEL_1F_WIDTH
 	warp_to 37, 3, ROCK_TUNNEL_1F_WIDTH ; ROCK_TUNNEL_B1F
 	warp_to 5, 3, ROCK_TUNNEL_1F_WIDTH ; ROCK_TUNNEL_B1F
 	warp_to 17, 11, ROCK_TUNNEL_1F_WIDTH ; ROCK_TUNNEL_B1F

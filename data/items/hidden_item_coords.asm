@@ -7,8 +7,9 @@ HiddenItemCoords:
 	db ROUTE_9,$07,$0e
 	db SS_ANNE_KITCHEN,$09,$0d
 	db SS_ANNE_B1F_ROOMS,$01,$03
-	db ROUTE_10,$11,$09
-	db ROUTE_10,$35,$10
+	db ROUTE_10,$06,$0A
+	db ROUTE_10,$19,$0B
+	db ROUTE_10_SOUTH,$04,$12
 	db ROCKET_HIDEOUT_B1F,$0f,$15
 	db ROCKET_HIDEOUT_B3F,$11,$1b
 	db ROCKET_HIDEOUT_B4F,$01,$19
@@ -25,8 +26,8 @@ HiddenItemCoords:
 	db CERULEAN_CAVE_1F,$0b,$0e
 	db CERULEAN_CAVE_B1F,$0b,$01
 	db CERULEAN_CAVE_B1F,$11,$1d
-	db POWER_PLANT,$10,$11
-	db POWER_PLANT,$01,$0c
+	db POWER_PLANT,$01,$26
+	db POWER_PLANT_1F,$01,$01
 	db SEAFOAM_ISLANDS_B2F,$0f,$0f
 	db SEAFOAM_ISLANDS_B4F,$11,$19
 	db POKEMON_MANSION_1F,$10,$08
@@ -61,7 +62,7 @@ HiddenItemCoords:
 	db CERULEAN_CITY,$08,$0f
 	db CERULEAN_CITY,$1f,$06
 	db ROUTE_2,$03,$11
-	db ROUTE_4,$03,$28
+	db ROUTE_4,$0f,$3d
 	db VERMILION_DOCK,$01,$01
 	db VERMILION_DOCK,$0A,$1B
 ;joenote - added some additional hidden items
@@ -80,4 +81,6 @@ HiddenItemCoords:
 	db ROUTE_4,3,62
 	db VOLCANO_B2F,13,13
 	db CELADON_MANSION_ROOF,$0a,$00
+	db ROUTE_20,$12,$35
+	db MT_MOON_SQUARE,$08,$08
 	db $ff

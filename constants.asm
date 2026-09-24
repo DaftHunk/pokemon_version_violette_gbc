@@ -7,6 +7,7 @@ INCLUDE "vram.asm"
 INCLUDE "constants/hardware_constants.asm"
 INCLUDE "constants/oam_constants.asm"
 INCLUDE "constants/misc_constants.asm"
+INCLUDE "constants/ram_constants.asm"
 
 INCLUDE "constants/pokemon_constants.asm"
 INCLUDE "constants/pokedex_constants.asm"

@@ -10,8 +10,8 @@ SilphCo5Script:
 
 SilphCo5Script_19f4d:
 	ld hl, wCurrentMapScriptFlags
-	bit 5, [hl]
-	res 5, [hl]
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
 	ld hl, SilphCo5GateCoords
 	call SilphCo4Script_19d5d
@@ -85,7 +85,7 @@ SilphCo5TextPointers:
 
 SilphCo5TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_5F_TRAINER_0
-	db ($1 << 4) ; trainer's view range
+	db ($2 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SILPH_CO_5F_TRAINER_0
 	dw SilphCo5BattleText2 ; TextBeforeBattle
 	dw SilphCo5AfterBattleText2 ; TextAfterBattle

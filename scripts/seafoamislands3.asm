@@ -1,8 +1,8 @@
 SeafoamIslands3Script:
 	call EnableAutoTextBoxDrawing
-	ld hl, wFlags_0xcd60
-	bit 7, [hl]
-	res 7, [hl]
+	ld hl, wMiscFlags
+	bit BIT_PUSHED_BOULDER, [hl]
+	res BIT_PUSHED_BOULDER, [hl]
 	jr z, .asm_4649e
 	ld hl, Seafoam3HolesCoords
 	call CheckBoulderCoords

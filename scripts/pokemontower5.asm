@@ -16,7 +16,7 @@ PokemonTower5Script0:
 	ld hl, CoordsData_60992
 	call ArePlayerCoordsInArray
 	jr c, .asm_60960
-	ld hl, wd72e
+	ld hl, wStatusFlags4
 	res 4, [hl]
 	ResetEvent EVENT_IN_PURIFIED_ZONE
 	jp CheckFightingMapTrainers
@@ -27,7 +27,7 @@ PokemonTower5Script0:
 	ld [hJoyHeld], a
 	ld a, $f0
 	ld [wJoyIgnore], a
-	ld hl, wd72e
+	ld hl, wStatusFlags4
 	set 4, [hl]
 	predef HealParty
 	call GBFadeOutToWhite

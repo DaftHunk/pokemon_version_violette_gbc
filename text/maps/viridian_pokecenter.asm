@@ -27,4 +27,11 @@ _ViridianPokeCenter_AideRandom::
 	cont "breuses options"
 	cont "pour pimenter"
 	cont "ton aventure!"
+
+	para "Fait SELECT dans"
+	line "les Options pour"
+	cont "les afficher."
+
+	para "Quoi qu'ça"
+	line "veuille dire!"
 	done

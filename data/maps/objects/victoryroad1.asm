@@ -13,8 +13,8 @@ VictoryRoad1Object:
 	object SPRITE_GAMBLER,           1,  4, STAY, RIGHT, 2, OPP_GAMBLER, 7
 	object SPRITE_BUG_CATCHER,       6,  9, STAY, DOWN,  3, OPP_BUG_CATCHER, 14
 	object SPRITE_FOULARD_WOMAN,     8,  4, STAY, DOWN,  4, OPP_BEAUTY, 15
-	object SPRITE_BLACK_HAIR_BOY_2, 14,  4, STAY, DOWN,  5, OPP_BURGLAR, 7
-	object SPRITE_BLACK_HAIR_BOY_2, 16,  1, STAY, DOWN,  6, OPP_SUPER_NERD, 10
+	object SPRITE_BURGLAR,          14,  4, STAY, DOWN,  5, OPP_BURGLAR, 7
+	object SPRITE_NERD,             16,  1, STAY, DOWN,  6, OPP_SUPER_NERD, 10
 	object SPRITE_BALL,             11,  0, STAY, NONE,  7, TM43_SKY_ATTACK
 	object SPRITE_BALL,              9,  2, STAY, NONE,  8, METAL_COAT
 	object SPRITE_BOULDER,           5, 15, STAY, BOULDER_MOVEMENT_BYTE_2, 9 ; person

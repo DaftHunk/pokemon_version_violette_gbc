@@ -43,4 +43,10 @@ _SafariZoneRestHouse1NicoText::
 	text "Nico: On aurait"
 	line "pu s'attendre"
 	cont "longtemps!"
+
+	para "Enfin bref, tu"
+	line "savais qu'avant"
+	cont "le Safari était"
+	cont "connu pour son"
+	cont "Minidraco?"
 	done

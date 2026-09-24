@@ -20,7 +20,7 @@ ExternalClockTradeAnim:
 TradeAnimCommon:
 	ld a, [wOptions]
 	push af
-	and SOUND_STEREO_BITS ; preserve speaker options
+	and BITS_OPTIONS_SOUND_STEREO ; preserve speaker options
 	ld [wOptions], a
 	ld a, [hSCY]
 	push af
@@ -175,7 +175,7 @@ LoadTradingGFXAndMonNames:
 	call ClearSprites
 	ld a, $ff
 	ld [wUpdateSpritesEnabled], a
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 6, [hl] ; turn on instant text printing
 	ld a, [wOnSGB]
 	and a
@@ -222,7 +222,7 @@ Trade_SwapNames:
 Trade_Cleanup:
 	xor a
 	call LoadGBPal
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	res 6, [hl] ; turn off instant text printing
 	ret
 

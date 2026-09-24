@@ -116,4 +116,5 @@ KeyItemBitfield:
 	TRUE,  \ ; FLOOR_10F
 	TRUE,  \ ; FLOOR_11F
 	TRUE,  \ ; FLOOR_B4F
-	FALSE    ; METAL_COAT
+	FALSE, \ ; METAL_COAT
+	TRUE     ; EXP_CATCH_UP

@@ -1,7 +1,7 @@
 CeladonGymScript:
 	ld hl, wCurrentMapScriptFlags
-	bit 6, [hl]
-	res 6, [hl]
+	bit BIT_CUR_MAP_LOADED_2, [hl]
+	res BIT_CUR_MAP_LOADED_2, [hl]
 	call nz, CeladonGymScript_Header
 	call EnableAutoTextBoxDrawing
 	ld hl, CeladonGymTrainerHeader0
@@ -61,7 +61,7 @@ CeladonGymScript_GiveTM:
 	call DisplayTextID
 .endScript
 	ld hl, wObtainedBadges
-	set 3, [hl]
+	set BIT_RAINBOWBADGE, [hl]
 
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_CELADON_GYM_TRAINER_0, EVENT_BEAT_CELADON_GYM_TRAINER_6
@@ -181,7 +181,7 @@ CeladonGymText_Erika:
 
 	ld hl, CeladonGymText_LeaderPreBattle
 	call PrintText
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, CeladonGymText_LeaderEndBattle
@@ -225,7 +225,7 @@ CeladonGymText_Erika:
 .leaderFightAfterElite4
 	ld hl, CeladonGymText_RematchPreBattle
 	call PrintText
-	ld hl, wd72d
+	ld hl, wStatusFlags3
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, CeladonGymText_RematchEndBattle

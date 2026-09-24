@@ -42,8 +42,11 @@
 ; moveset = partymon location,partymon's move,moveid
 SpecialTrainerMoves:
 ; Route 9
-;	db 28, SANDSHREW, 0
+;	db 28, SANDSHREW, 0 ; Albert
 	db JR_TRAINER_M,$5
+	db 1,1,FISSURE
+	db 1,2,FISSURE
+	db 1,3,FISSURE
 	db 1,4,FISSURE
 	db 0
 

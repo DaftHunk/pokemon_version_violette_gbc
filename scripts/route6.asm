@@ -35,7 +35,7 @@ Route6TrainerHeader1:
 	db ($0 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_6_TRAINER_1
 	dw Route6BattleText2 ; TextBeforeBattle
-	dw Route6AfterBattleText1 ; TextAfterBattle
+	dw Route6AfterBattleText2 ; TextAfterBattle
 	dw Route6EndBattleText2 ; TextEndBattle
 	dw Route6EndBattleText2 ; TextEndBattle
 
@@ -107,6 +107,10 @@ Route6BattleText2:
 
 Route6EndBattleText2:
 	TX_FAR _Route6EndBattleText2
+	db "@"
+
+Route6AfterBattleText2:
+	TX_FAR _Route6AfterBattleText2
 	db "@"
 
 Route6Text3:

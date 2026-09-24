@@ -25,3 +25,10 @@ _SafariZoneRestHouse4Text3::
 	cont "en Aquali!"
 	cont "Bah pourquoi?"
 	done
+
+_SafariZoneRestHouse4Text4::
+	text "Le patron de la"
+	line "Sylphe passe son"
+	cont "temps dans le"
+	cont "Parc Safari."
+	done

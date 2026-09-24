@@ -1,5 +1,5 @@
 _WardenGibberishText1::
-	text "Gardien: Hif fuff"
+	text "Baoba: Hif fuff"
 	line "hefifou!"
 
 	para "Ha fof ha fif eu"
@@ -19,29 +19,36 @@ _WardenGibberishText3::
 
 _WardenTeethText1::
 	text "<PLAYER> donne la"
-	line "Dent d'or au"
-	cont "Gardien!@"
+	line "Dent d'or à"
+	cont "Baoba!@"
 	text_end
 
 _WardenTeethText2::
 	text_start
 
-	para "Le Gardien peut"
+	para "Baoba peut"
 	line "remettre son"
 	cont "dentier!"
 	prompt
 
 _WardenThankYouText::
-	text "Gardien: Merci,"
-	line "gamin! C'est un"
-	cont "peu dur de me"
-	cont "faire comprendre."
+	text "Baoba: Merci,"
+	line "gamin!"
+
+	para "J'm'appelle Baoba"
+	line "et je suis le"
+	cont "Gardien du Parc!"
+	
+	para "C'est un peu dur"
+	line "dur de me faire"
+	cont "comprendre."
 
 	para "J'pouvais plus"
-	line "travailler!"
+	line "travailler!"	
 	cont "Quelle horreur!"
-	cont "Tiens, voilà pour"
-	cont "te remercier."
+
+	para "Tiens, voilà pour"
+	line "te remercier."
 
 ;joenote - add hotkey info
 	para "Appuie sur SELECT"
@@ -57,14 +64,20 @@ _ReceivedHM04Text::
 	text_end
 
 _HM04ExplanationText::
-	text "Gardien: CS04..."
+	text "Baoba: CS04..."
 	line "Force!"
 
 	para "Tes #mon"
 	line "pourront déplacer"
 	cont "des rochers."
 
-	para "Au fait, as-tu"
+	para "Appuie sur SELECT"
+	line "face à un rocher"
+	cont "pour l'activer."	
+	prompt
+
+_WardenHouseText_SecretHouse::
+	text "Au fait, as-tu"
 	line "trouvé la Cabane"
 	cont "Secrète dans le"
 	cont "Parc Safari?"

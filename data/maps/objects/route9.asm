@@ -9,7 +9,7 @@ Route9Object:
 	db 11 ; objects
 	;joenote - added a construction worker to replace the blocking cut shrub
 	object SPRITE_LASS, 13, 10, STAY, LEFT, 1, OPP_JR_TRAINER_F, 4
-	object SPRITE_BLACK_HAIR_BOY_1, 24, 7, STAY, LEFT, 2, OPP_JR_TRAINER_M, 5
+	object SPRITE_BLACK_HAIR_BOY_1, 24, 7, STAY, LEFT, 2, OPP_JR_TRAINER_M, 5 ; Albert
 	object SPRITE_BLACK_HAIR_BOY_1, 31, 7, STAY, RIGHT, 3, OPP_JR_TRAINER_M, 6
 	object SPRITE_LASS, 48, 8, STAY, RIGHT, 4, OPP_JR_TRAINER_F, 5
 	object SPRITE_HIKER, 16, 15, STAY, LEFT, 5, OPP_HIKER, 5

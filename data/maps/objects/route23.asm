@@ -12,12 +12,12 @@ Route23Object:
 
 	db 8 ; objects
 	object SPRITE_GUARD,      4,  37, STAY, DOWN, 1 ; Earth Badge
-	object SPRITE_GUARD,     10,  56, STAY, DOWN, 2 ; Volcano Badge
+	object SPRITE_GUARD, 13, 53, STAY, DOWN, 2 ; Volcano Badge
 	object SPRITE_GUARD,     10,  70, STAY, DOWN, 3 ; Marsh Badge
 	object SPRITE_GUARD,      9,  90, STAY, DOWN, 4 ; Soul Badge
 	object SPRITE_GUARD,     12, 105, STAY, DOWN, 5 ; Rainbow Badge
-	object SPRITE_GUARD,      8, 119, STAY, DOWN, 6 ; Thunder Badge
-	object SPRITE_GUARD,      8, 136, STAY, DOWN, 7 ; Cascade Badge
+	object SPRITE_GUARD,  8, 121, STAY, DOWN, 6 ; Thunder Badge
+	object SPRITE_GUARD, 15, 129, STAY, DOWN, 7 ; Cascade Badge
 	object SPRITE_GYM_HELPER, 5,  32, STAY, DOWN, 8 ; Route23Text_VictoryRoadGuide
 
 	; warp-to

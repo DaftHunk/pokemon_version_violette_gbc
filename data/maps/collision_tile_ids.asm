@@ -81,14 +81,14 @@ Club_Coll::
 Facility_Coll::
 	coll_tiles $01, $10, $11, $13, $1b, $20, $21, $22, $30, $31, $32, $42, $43, $48, $52, $55, $58, $5e
 
-Plateau_Coll::
-	coll_tiles $1b, $23, $2c, $2d, $3b, $45
-
 Reactor_Coll::
 	coll_tiles $01, $10, $13, $2F, $30, $3D, $42, $43, $52, $55, $56, $59, $5A
 
 Volcano_Coll::
 	coll_tiles $01, $0D, $15, $18, $1A, $1C, $1F, $20, $27, $2A, $4A
+
+Plateau_Coll::
+	coll_tiles $1b, $23, $2c, $2d, $3b, $45
 
 Alpha_Coll::
 	coll_tiles $00, $03, $10, $1b, $20, $21, $23, $2c, $2d, $2e, $30, $31, $33, $39, $3c, $3e, $4b, $52, $54, $58, $5b, $66, $67

@@ -7,8 +7,8 @@ Route23Script:
 
 Route23Script_511e9:
 	ld hl, wCurrentMapScriptFlags
-	bit 6, [hl]
-	res 6, [hl]
+	bit BIT_CUR_MAP_LOADED_2, [hl]
+	res BIT_CUR_MAP_LOADED_2, [hl]
 	ret z
 
 	CheckEvent EVENT_DISABLED_VICTORY_ROAD_RESET
@@ -64,7 +64,7 @@ Route23Script0:
 	ret
 
 YCoordsData_51255:
-	db $25,$38,$46,$5A,$69,$77,$88,$FF
+	db $25,$35,$46,$5A,$69,$79,$81,$FF
 
 Route23Script_5125d:
 	ld hl, BadgeTextPointers
@@ -293,9 +293,10 @@ Route23Text_VictoryRoadGuide:
 	para "Ce défi n'est pas"
 	line "à ton goût?"
 	cont "Je peux dire aux"
-	cont "de ne pas te"
-	cont "réaffronter si tu"
-	cont "le souhaites."
+	cont "dresseurs de"
+	cont "ne pas te"
+	cont "réaffronter si"
+	cont "tu le souhaites."
 	done
 	db "@"
 
@@ -308,8 +309,9 @@ Route23Text_VictoryRoadGuide:
 
 .victoryRoadGuideTextDisabled
 	text "Comme tu voudras,"
-	line "tu n'auras pas à"
-	cont "battre à nouveau."
+	line "tu n'auras pas"
+	cont "à les combattre"
+	cont "à nouveau."
 	done
 	db "@"
 

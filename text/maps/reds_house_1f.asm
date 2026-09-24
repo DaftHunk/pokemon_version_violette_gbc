@@ -54,12 +54,6 @@ _TVWrongSideText::
 	line "côté."
 	done
 
-_RedsHouse1FTextLeague::
-	text "Un tas de"
-	line "prospectus sans"
-	cont "intérêt."
-	done
-
 _RedsHouse1FText_RunningShoes::
 	text "Mère: Au fait"
 	line "<PLAYER>!"

@@ -123,8 +123,9 @@ _VermilionCityText_PoliceAlert::
 	cont "un #mon"
 	cont "endormi."
 
-	para "Prendre la Grotte"
-	line "pour rejoindre"
+	para "Prendre la"
+	line "Grotte Sombre"
+	cont "pour rejoindre"
 	cont "Lavanville."
 
 	para "Police de Carmin"

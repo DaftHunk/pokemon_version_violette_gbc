@@ -30,8 +30,8 @@ _PalletTownText_Girl::
 
 _PalletTownText_GirlAfterElite4::
 	text "Oh mais c'est toi"
-	line "qui vient de"
-	cont "battre la Ligue!"
+	line "qui a battu la"
+	cont "Ligue!"
 
 	para "Tu pourras me"
 	line "donner des"

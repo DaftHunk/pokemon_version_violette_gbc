@@ -8,6 +8,7 @@ ListSafariSpecial:
 	db EXEGGUTOR    ; $0A
 	db RHYDON       ; $01
 	db HERACROSS
+	db DRATINI
 	db KABUTO
 	db OMANYTE
 	db AERODACTYL

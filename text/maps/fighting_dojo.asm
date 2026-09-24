@@ -60,9 +60,9 @@ _FightingDojoText_RematchKoichiChoosePokemon::
 	text "OK, t'as encore"
 	para "gagné!"
 
-	para "Okay j'ai compris"
-	para "tu peux prendre"
-	line "l'autre #mon!"
+	para "J'ai compris, tu"
+	line "peux prendre"
+	cont "l'autre #mon!"
 	done
 
 _FightingDojoText_KoichiAfterBattle::

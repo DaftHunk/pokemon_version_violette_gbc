@@ -4,7 +4,8 @@ Route21Object:
 	db 1 ; warps
 	warp 14,  87, 0, VOLCANO_1F
 
-	db 0 ; signs
+	db 1 ; signs
+	sign 12, 88, 10
 
 	db 9 ; objects
 	object SPRITE_FISHER2, 4, 24, STAY, LEFT, 1, OPP_FISHER, 8

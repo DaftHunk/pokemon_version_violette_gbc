@@ -3,7 +3,7 @@ DisplayTextIDInit:
 	xor a
 	ld [wListMenuID], a
 	ld a, [wAutoTextBoxDrawingControl]
-	bit 0, a
+	bit BIT_NO_AUTO_TEXT_BOX, a
 	jr nz, .skipDrawingTextBoxBorder
 	ld a, [hSpriteIndexOrTextID] ; text ID (or sprite ID)
 	and a
@@ -31,10 +31,10 @@ DisplayTextIDInit:
 	call TextBoxBorder
 .skipDrawingTextBoxBorder
 	ld hl, wFontLoaded
-	set 0, [hl]
-	ld hl, wFlags_0xcd60
-	bit 4, [hl]
-	res 4, [hl]
+	set BIT_DISABLE_NPC_MOVEMENT, [hl]
+	ld hl, wMiscFlags
+	bit BIT_NO_SPRITE_UPDATES, [hl]
+	res BIT_NO_SPRITE_UPDATES, [hl]
 	jr nz, .skipMovingSprites
 	call UpdateSprites
 .skipMovingSprites

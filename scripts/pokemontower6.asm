@@ -58,7 +58,7 @@ PokemonTower6Script4:
 	jp z, PokemonTower6Script_60b02
 	ld a, $ff
 	ld [wJoyIgnore], a
-	ld a, [wd72d]
+	ld a, [wStatusFlags3]
 	bit 6, a
 	ret nz
 	call UpdateSprites
@@ -85,7 +85,7 @@ PokemonTower6Script4:
 	xor a
 	ld [wSpriteStateData2 + $06], a
 	ld [wOverrideSimulatedJoypadStatesMask], a
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	set 7, [hl]
 	ld a, $3
 	ld [wPokemonTower6CurScript], a

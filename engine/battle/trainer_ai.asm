@@ -11,8 +11,8 @@ AIEnemyTrainerChooseMoves:
 	;but let's do a little something else
 	;only do wildmon AI move choice for Mewtwo while in SET mode
 	;after all, it is still a cunning foe even as a wild pokemon
-	ld a, [wOptions]
-	bit BIT_BATTLE_HARD, a ;check for hard mode
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_HARDMODE, a ;check for hard mode
 	ret z ;wild AI as normal in outside of hard mode
 	ld a, [wEnemyMon]	
 	cp MEWTWO
@@ -156,7 +156,7 @@ AIMoveChoiceModificationFunctionPointers:
 AIMoveChoiceModification1:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - kick out if no-attack bit is set
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	bit 2, a
 	ret nz
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -748,7 +748,7 @@ OtherZeroBPEffects:	;joenote - added to keep track of some outliers
 AIMoveChoiceModification2:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - kick out if no-attack bit is set
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	bit 2, a
 	ret nz
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -788,7 +788,7 @@ AIMoveChoiceModification2:
 AIMoveChoiceModification3:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - kick out if no-attack bit is set
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	bit 2, a
 	ret nz
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -933,9 +933,9 @@ AIMoveChoiceModification3:
 	push bc
 	push de
 	;reset type-effectiveness bit before calling function
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	res 3, a 
-	ld [wUnusedC000], a
+	ld [wBattleAISettingFlags], a
 	callab AIGetTypeEffectiveness
 	pop de
 	pop bc
@@ -1085,9 +1085,9 @@ AIMoveChoiceModification3:
 	jp .nextMove
 	
 AIMoveChoiceModification4:	;this unused routine now handles intelligent trainer switching
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	set 5, a ; sets the bit that signifies trainer has intelligent switching
-	ld [wUnusedC000], a
+	ld [wBattleAISettingFlags], a
 	push hl
 	push bc
 	callab ScoreAIParty	;carry is cleared if current mon score >= highest score of remaining roster; don't switch
@@ -1213,9 +1213,9 @@ AIMoveChoiceModification4:	;this unused routine now handles intelligent trainer 
 	push bc
 	push de
 	;set type-effectiveness bit before calling function
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	set 3, a 
-	ld [wUnusedC000], a
+	ld [wBattleAISettingFlags], a
 	callab AIGetTypeEffectiveness
 	pop de
 	pop bc
@@ -1428,15 +1428,6 @@ TrainerAI:
 	cp LINK_STATE_BATTLING
 	ret z
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	ld a, [wPlayerBattleStatus1]
-	bit USING_TRAPPING_MOVE, a ; caught in player's trapping move (e.g. wrap)
-	jr z, .notbeingtrapped
-	call CheckandResetSwitchBit	
-	jp nz, AISwitchIfEnoughMons	;switch if switch bit is set and stuck in the player's trapping move
-.notbeingtrapped
-;	...otherwise
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - AI should not use actions if the null move has been selected
 	ld a, [wEnemySelectedMove]
 	cp $FF
@@ -1552,6 +1543,7 @@ TrainerAIPointers:
 	dbw 5,GenericAI ; Sacha
 	dbw 3,GenericAI ; Soldier
 	dbw 3,BlackbeltAI ; Koichi
+	dbw 3,GenericAI   ; Firefighter
 
 ;joenote - reorganizing these AI routines to jump on carry instead of returning on not-carry
 ;also adding recognition of a switch-pkmn bit
@@ -1762,15 +1754,15 @@ GenericAI:
 ;joenote - added these functions to check if the ai switching bit is set
 ;need to have 'a' accumulator and flag register freed up to use this function
 CheckandResetSwitchBit:	
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	bit 0, a	;check a for switch pkmn bit (sets or clears zero flag)
 	res 0, a ; resets the switch pkmn bit (does not affect flags)
-	ld [wUnusedC000], a
+	ld [wBattleAISettingFlags], a
 	ret
 SetSwitchBit:	
-	ld a, [wUnusedC000]
+	ld a, [wBattleAISettingFlags]
 	set 0, a ; sets the switch pkmn bit
-	ld [wUnusedC000], a
+	ld [wBattleAISettingFlags], a
 	ret
 
 DecrementAICount:
@@ -1885,6 +1877,12 @@ AIPrintItemUseAndUpdateHPBar:
 	jp DecrementAICount
 
 AISwitchIfEnoughMons:
+; Cannot switch if Trapped
+	ld a, [wPlayerBattleStatus1]
+	bit USING_TRAPPING_MOVE, a ; is the player using a multi-turn move like wrap?
+	ret nz
+
+.notTrapped
 ; enemy trainer switches if there are 2 or more unfainted mons in party
 	ld a, [wEnemyPartyCount]
 	ld c, a

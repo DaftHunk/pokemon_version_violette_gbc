@@ -16,14 +16,10 @@ PowerPlantTextPointers:
 	dw Voltorb0Text
 	dw Voltorb1Text
 	dw Voltorb2Text
-	dw Voltorb3Text
+	dw Electrode1Text
 	dw Voltorb4Text
 	dw Voltorb5Text
 	dw Voltorb6Text
-	dw Voltorb7Text
-	dw ZapdosText
-	dw PickUpItemText
-	dw PickUpItemText
 	dw PickUpItemText
 	dw PickUpItemText
 	dw PickUpItemText
@@ -56,7 +52,7 @@ Voltorb2TrainerHeader:
 	dw VoltorbBattleText ; TextEndBattle
 	dw VoltorbBattleText ; TextEndBattle
 
-Voltorb3TrainerHeader:
+Electrode1TrainerHeader:
 	dbEventFlagBit EVENT_BEAT_POWER_PLANT_VOLTORB_3
 	db 0 ; view range
 	dwEventFlagAddress EVENT_BEAT_POWER_PLANT_VOLTORB_3
@@ -92,27 +88,9 @@ Voltorb6TrainerHeader:
 	dw VoltorbBattleText ; TextEndBattle
 	dw VoltorbBattleText ; TextEndBattle
 
-Voltorb7TrainerHeader:
-	dbEventFlagBit EVENT_BEAT_POWER_PLANT_VOLTORB_7, 1
-	db 0 ; view range
-	dwEventFlagAddress EVENT_BEAT_POWER_PLANT_VOLTORB_7, 1
-	dw VoltorbBattleText ; TextBeforeBattle
-	dw VoltorbBattleText ; TextAfterBattle
-	dw VoltorbBattleText ; TextEndBattle
-	dw VoltorbBattleText ; TextEndBattle
-
-ZapdosTrainerHeader:
-	dbEventFlagBit EVENT_BEAT_ZAPDOS, 1
-	db 0 ; view range
-	dwEventFlagAddress EVENT_BEAT_ZAPDOS, 1
-	dw ZapdosBattleText ; TextBeforeBattle
-	dw ZapdosBattleText ; TextAfterBattle
-	dw ZapdosBattleText ; TextEndBattle
-	dw ZapdosBattleText ; TextEndBattle
-
 	db $ff
 
-InitVoltorbBattle:
+InitVoltorbBattle::
 	;make the shiny attract cheat work on static wild encounters
 	push hl
 	push bc
@@ -140,9 +118,9 @@ Voltorb2Text:
 	ld hl, Voltorb2TrainerHeader
 	jr InitVoltorbBattle
 
-Voltorb3Text:
+Electrode1Text:
 	TX_ASM
-	ld hl, Voltorb3TrainerHeader
+	ld hl, Electrode1TrainerHeader
 	jr InitVoltorbBattle
 
 Voltorb4Text:
@@ -160,26 +138,6 @@ Voltorb6Text:
 	ld hl, Voltorb6TrainerHeader
 	jr InitVoltorbBattle
 
-Voltorb7Text:
-	TX_ASM
-	ld hl, Voltorb7TrainerHeader
-	jr InitVoltorbBattle
-
-ZapdosText:
-	TX_ASM
-	ld hl, ZapdosTrainerHeader
-	jr InitVoltorbBattle
-
 VoltorbBattleText:
 	TX_FAR _VoltorbBattleText
 	db "@"
-
-ZapdosBattleText:
-	TX_FAR _ZapdosBattleText
-	TX_ASM
-	ld a, ZAPDOS
-	call PlayCry
-	call WaitForSoundToFinish
-	ld a, 8
-	ld [wGymLeaderNo], a	; use gym leader music
-	jp TextScriptEnd

@@ -50,7 +50,7 @@ SubstituteEffect_:
 	ld l, c
 	set HAS_SUBSTITUTE_UP, [hl]
 	ld a, [wOptions]
-	bit BIT_BATTLE_ANIMATION, a ; battle animation is enabled?
+	bit BIT_OPTIONS_BATTLE_ANIMATION, a ; battle animation is enabled?
 	ld hl, PlayCurrentMoveAnimation
 	ld b, BANK(PlayCurrentMoveAnimation)
 	jr z, .animationEnabled
@@ -70,7 +70,7 @@ SubstituteEffect_:
 	jp PrintText
 
 _AttackSubstitute:
-	ld hl, wUnusedD155	;joenote - only print text if bit 0 of wUnusedD155 is cleared
+	ld hl, wTempExpFlags	;joenote - only print text if bit 0 of wTempExpFlags is cleared
 	bit 0, [hl]
 	ld hl, SubstituteTookDamageText
 	call z, PrintText
@@ -97,7 +97,7 @@ _AttackSubstitute:
 	;;;;;;;;;;;;;;;;;;;;;;
 	;joenote - get original turn back
 	push af
-	ld a, [wUnusedD119]
+	ld a, [wMiscsFlags2]
 	ld [H_WHOSETURN], a
 	pop af
 	;;;;;;;;;;;;;;;;;;;;;;

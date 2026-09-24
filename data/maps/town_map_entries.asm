@@ -19,8 +19,9 @@ ExternalMapEntries:
 	EMAP $A,$8,Route6Name
 	EMAP $8,$5,Route7Name
 	EMAP $D,$5,Route8Name
-	EMAP $D,$2,Route9Name
-	EMAP $E,$4,Route10Name
+	EMAP $C,$2,Route9Name
+	EMAP $E,$2,Route10Name
+	EMAP $E,$4,Route10SouthName
 	EMAP $C,$9,Route11Name
 	EMAP $E,$9,Route12Name
 	EMAP $D,$B,Route13Name
@@ -37,6 +38,7 @@ ExternalMapEntries:
 	EMAP $0,$6,Route23Name
 	EMAP $A,$1,Route24Name
 	EMAP $C,$0,BillsGardenName
+	EMAP $6,$2,MountMoonName
 	EMAP $B,$0,Route25Name
 
 InternalMapEntries:
@@ -48,10 +50,9 @@ InternalMapEntries:
 	IMAP MT_MOON_B2F,                   $6,$2,MountMoonName
 	IMAP CERULEAN_MART,                 $A,$2,CeruleanCityName
 	IMAP MT_MOON_POKECENTER,            $5,$2,Route4Name
-	IMAP CERULEAN_TRASHED_HOUSE_COPY,   $A,$2,CeruleanCityName
 	IMAP DAYCAREM,                      $A,$4,Route5Name
-	IMAP PATH_ENTRANCE_ROUTE_6_COPY,    $A,$6,Route6Name
-	IMAP PATH_ENTRANCE_ROUTE_7_COPY,    $9,$5,Route7Name
+	IMAP PATH_ENTRANCE_ROUTE_6,         $A,$6,Route6Name
+	IMAP PATH_ENTRANCE_ROUTE_7,         $9,$5,Route7Name
 	IMAP PATH_ENTRANCE_ROUTE_8,         $B,$5,Route8Name
 	IMAP ROCK_TUNNEL_1F,                $E,$3,RockTunnelName
 	IMAP POWER_PLANT,                   $F,$4,PowerPlantName
@@ -83,7 +84,7 @@ InternalMapEntries:
 	IMAP VERMILION_OLD_ROD_HOUSE,       $A,$9,VermilionCityName
 	IMAP FUCHSIA_GOOD_ROD_HOUSE,        $8,$D,FuchsiaCityName
 	IMAP POKEMON_MANSION_1F,            $2,$F,PokemonMansionName
-	IMAP CINNABAR_MART_COPY,            $2,$F,CinnabarIslandName
+	IMAP CINNABAR_MART,                 $2,$F,CinnabarIslandName
 	IMAP INDIGO_PLATEAU_LOBBY,          $0,$2,IndigoPlateauName
 	IMAP MR_PSYCHICS_HOUSE,             $A,$5,SaffronCityName
 	IMAP ROUTE_15_GATE_2F,              $9,$D,Route15Name

@@ -22,7 +22,7 @@ RocketHideout3Script0:
 	call DecodeArrowMovementRLE
 	cp $ff
 	jp z, CheckFightingMapTrainers
-	ld hl, wd736
+	ld hl, wMovementFlags
 	set 7, [hl]
 	call StartSimulatingJoypadStates
 	ld a, SFX_ARROW_TILES
@@ -137,7 +137,7 @@ RocketHideout3Script3:
 	jp nz, LoadSpinnerArrowTiles
 	xor a
 	ld [wJoyIgnore], a
-	ld hl, wd736
+	ld hl, wMovementFlags
 	res 7, [hl]
 	ld a, $0
 	ld [wCurMapScript], a

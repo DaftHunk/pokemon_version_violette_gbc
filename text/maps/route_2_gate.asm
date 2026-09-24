@@ -12,6 +12,7 @@ _Route2GateText_5d616::
 _Route2GateText2::
 	text "Si un #mon a"
 	line "appris le Flash,"
-	cont "tu pourras tra-"
-	cont "verser la Grotte."
+	cont "tu pourras"
+	cont "traverser la"
+	cont "Grotte Sombre."
 	done

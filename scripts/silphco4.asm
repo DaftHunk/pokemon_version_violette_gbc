@@ -10,8 +10,8 @@ SilphCo4Script:
 
 SilphCo4Script_19d21:
 	ld hl, wCurrentMapScriptFlags
-	bit 5, [hl]
-	res 5, [hl]
+	bit BIT_CUR_MAP_LOADED_1, [hl]
+	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
 	ld hl, SilphCo4GateCoords
 	call SilphCo4Script_19d5d

@@ -22,9 +22,9 @@ WarpTileIDPointers:
 	dw LabWarpTileIDs
 	dw ClubWarpTileIDs
 	dw FacilityWarpTileIDs
-	dw PlateauWarpTileIDs
 	dw ReactorWarpTileIDs
 	dw VolcanoWarpTileIDs
+	dw PlateauWarpTileIDs
 	dw AlphaWarpTileIDs
 
 OverworldWarpTileIDs:

@@ -128,7 +128,7 @@ SSAnne9Text5:
 .leaderFight
 	ld hl, GiovanniText_RematchPreBattle
 	call PrintText
-	ld hl, wd72d ; set the bits for triggering battle
+	ld hl, wStatusFlags3 ; set the bits for triggering battle
 	set 6, [hl]
 	set 7, [hl]
 	ld hl, GiovanniText_RematchEndBattle ; load text for when you win

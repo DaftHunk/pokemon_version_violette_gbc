@@ -13,7 +13,7 @@ LoadSAV:
 	ld a, $2 ; good checksum
 	jr .goodsum
 .badsum
-	ld hl, wd730
+	ld hl, wStatusFlags5
 	push hl
 	set 6, [hl]
 	ld hl, FileDataDestroyedText
@@ -379,11 +379,11 @@ BoxSRAMPointerTable:
 ; PureRGBnote: CHANGED: a lot of this function was modified to have a more advanced change box menu
 ChangeBox::
 	CheckEvent EVENT_HIDE_CHANGE_BOX_SAVE_MSG
-	ld a, [wd730]
+	ld a, [wStatusFlags5]
 	push af
 	jr nz, .savePromptSkip
 	res 6, a ; turn on letter printing delay so we don't get instant text
-	ld [wd730], a 
+	ld [wStatusFlags5], a 
 	
 	ld hl, WhenYouChangeBoxText
 	call PrintText
@@ -413,7 +413,7 @@ ChangeBox::
 .savePromptSkip
 .yes
 	set 6, a ; turn off letter printing delay so we get instant text
-	ld [wd730], a
+	ld [wStatusFlags5], a
 	ld hl, wCurrentBoxNum
 	bit 7, [hl] ; is it the first time player is changing the box?
 	call z, EmptyAllSRAMBoxes ; if so, empty all boxes in SRAM
@@ -453,7 +453,7 @@ ChangeBox::
 	call WaitForSoundToFinish
 .done
 	pop af
-	ld [wd730], a
+	ld [wStatusFlags5], a
 	ret
 
 WhenYouChangeBoxText:
