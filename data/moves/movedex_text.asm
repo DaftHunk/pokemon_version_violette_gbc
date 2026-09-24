@@ -852,7 +852,7 @@ _MimicDexEntry::
 	next "cité utilisée par"
 
 	bage "la cible et la"
-	next "conserve tant qu'"
+	next "garde tant qu'il"
 	next "reste en combat"
 	dex
 
@@ -915,9 +915,11 @@ _WithdrawDexEntry::
 	text_jump _GenericAddDef1Text
 
 _DefenseCurlDexEntry::
-	text "Le lanceur s'enr-"
-	next "oule pour cacher"
-	next "ses points faibles@"
+	text "Le lanceur se"
+	next "met en boule"
+	next "pour cacher ses"
+
+	bage "points faibles.@"
 	; fall through
 	text_jump _GenericAddDef1Text
 
@@ -1099,9 +1101,9 @@ _SpikeCannonDexEntry::
 	text_jump _Generic2To5HitsText
 
 _ConstrictDexEntry::
-	text "De longues tenta-"
-	next "cules ou lianes"
-	next "attaquent l'ennemi@"
+	text "Attaquent l'ennemi"
+	next "avec des liannes"
+	next "ou tentacules.@"
 	; fall through
 	text_jump _Generic33PercentLowSpd1Text
 
