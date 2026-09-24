@@ -40,10 +40,12 @@ MissingnoShore:
 	ld hl, ExclamationText	;load text for when you win
 	ld de, ExclamationText	;load text for when you lose
 	call SaveEndBattleTextPointers	;save the win/lose text
-	ld a, $9
-	ld [wGymLeaderNo], a	;set bgm to champion music
+
+	ld a, $a
+	ld [wGymLeaderNo], a ;set bgm to MissingNo music
+
 	ld a, MISSINGNO	;load the trainer type
-	ld [wCurOpponent], a	;set as the current opponent
+	ld [wCurOpponent], a ;set as the current opponent
 	ld a, 1	;get the right roster
 	ld [wTrainerNo], a
 	ld a, 128
