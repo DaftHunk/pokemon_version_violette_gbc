@@ -411,8 +411,8 @@ Music_MissingNo:
 	ld [wLowHealthAlarm], a
 	call StopAllMusic
 	call DelayFrame
-	ld c, BANK(Music_Cinnabar)
-	ld a, MUSIC_CINNABAR
+	ld c, BANK(Music_Lavender)
+	ld a, MUSIC_LAVENDER
 	call PlayMusic
 	ld hl, wChannelCommandPointers
 	ld de, Music_Cities1_branch_aa6f
