@@ -19,7 +19,8 @@ FanClubTextPointers:
 	dw FanClubText5
 	dw FanClubText6
 	dw FanClubText7
-	dw FanClubText8
+	dw FanClubText_Sign1
+	dw FanClubText_Sign2
 
 FanClubText1:
 ; pikachu fan
@@ -166,6 +167,10 @@ FanClubText7:
 	TX_FAR _FanClubText7
 	db "@"
 
-FanClubText8:
-	TX_FAR _FanClubText8
+FanClubText_Sign1:
+	TX_FAR _FanClubText_Sign1
+	db "@"
+
+FanClubText_Sign2:
+	TX_FAR _FanClubText_Sign2
 	db "@"
