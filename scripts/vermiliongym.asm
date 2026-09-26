@@ -33,8 +33,12 @@ VermilionGymScript_DoorPuzzle:
 	ld a, $24
 	jr .openDoor
 .doorSFX
+	ld a, [wIsInBattle]	;joenote - BUG: SFX plays if you black out to Lt. Surge, so skip if the battle is still running.
+	and a
+	jr nz, .skipsfx
 	ld a, SFX_GO_INSIDE
 	call PlaySound
+.skipsfx
 	ld a, $5
 .openDoor
 	ld [wNewTileBlockID], a

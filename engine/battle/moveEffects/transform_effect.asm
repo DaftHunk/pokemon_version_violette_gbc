@@ -1,17 +1,30 @@
 TransformEffect_:
-;joenote - setting the transform bit has been moved to later on
+;joenote - There are numerous problems here that have been fixed.
+;--> setting the transform bit has been moved to later on
+;--> H_WHOSETURN load and test has been moved so that it does not over-write the BattleStatus1 load
+;--> The BattleStatus addresses were incorrect and needed to be swapped (cannot transform into a flying/digging mon)
+;--> wPlayerMoveListIndex is an address typo and makes no sense to have here now
+
+	ld a, [H_WHOSETURN]
+	and a	;set flags for who is using the transform move
+
+;enemy turn
 	ld hl, wBattleMonSpecies
 	ld de, wEnemyMonSpecies
 ;	ld bc, wEnemyBattleStatus3
-	ld a, [wEnemyBattleStatus1]
-	ld a, [H_WHOSETURN]
-	and a
+;	ld a, [wEnemyBattleStatus1]
+	ld a, [wPlayerBattleStatus1]
+
 	jr nz, .hitTest
+
+;player turn
 	ld hl, wEnemyMonSpecies
 	ld de, wBattleMonSpecies
 ;	ld bc, wPlayerBattleStatus3
-	ld [wPlayerMoveListIndex], a
-	ld a, [wPlayerBattleStatus1]
+;	ld [wPlayerMoveListIndex], a
+;	ld a, [wPlayerBattleStatus1]
+	ld a, [wEnemyBattleStatus1]
+
 .hitTest
 	bit INVULNERABLE, a ; is mon invulnerable to typical attacks? (fly/dig)
 	jp nz, .failed
@@ -54,6 +67,9 @@ TransformEffect_:
 	push hl
 ; transform user into opposing Pokemon
 ; species
+	ld a, [de]
+	ld [hSwapTemp], a	;joenote - temporarily save the original species for later
+	
 	ld a, [hl]
 	ld [de], a
 ; type 1, type 2, catch rate, and moves
@@ -71,9 +87,19 @@ TransformEffect_:
 	;de is now pointing to DVs
 	ld a, [H_WHOSETURN]
 	and a
-	push af	;joenote - save the turn result
+	push af	;joenote - save the turn result flags
+	jr nz, .doEnemy
+
+.doPlayer
 	ld bc, wPlayerBattleStatus3
-	jr z, .next
+	ld a, [bc]
+	bit 3, a 	;check the state of the player transformed bit
+	jr nz, .transformBitIsSet	;skip ahead if bit is set
+	ld a, [hSwapTemp]
+	ld [wBattleMonSpeciesOriginal], a ;joenote - backup the player's species in its own dedicated ram address
+	jr .next
+
+.doEnemy
 ; save enemy mon DVs at wTransformedEnemyMonOriginalDVs
 ; joenote - there is a bug here. It assumes the enemy mon is not transformed already.
 ; If the enemy has already transformed once before, then the DVs for that form 
@@ -85,18 +111,20 @@ TransformEffect_:
 	ld bc, wEnemyBattleStatus3
 	ld a, [bc]
 	bit 3, a 	;check the state of the enemy transformed bit
-	jr nz, .next	;skip ahead if bit is set
+	jr nz, .transformBitIsSet	;skip ahead if bit is set
 	ld a, [de]
 	ld [wTransformedEnemyMonOriginalDVs], a
 	inc de
 	ld a, [de]
 	ld [wTransformedEnemyMonOriginalDVs + 1], a
 	dec de
+
 .next
 	ld a, [bc]
 	set TRANSFORMED, a ; mon is now transformed
 	ld [bc], a
 
+.transformBitIsSet
 ;joenote - handle a conflict with disable
 	pop af	;get the saved turn result
 	jr nz, .undo_enemy_disable

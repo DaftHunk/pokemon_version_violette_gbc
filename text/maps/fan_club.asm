@@ -142,13 +142,33 @@ _FanClubText6::
 	cont "#mon."
 	done
 
+; Added Manga reference
 _FanClubText7::
+	text "Fan Club #mon"
+	line "Bulletin d'info:"
+
+	para "Electrocutée en"
+	line "prenant un bain"
+	cont "avec son"
+	cont "Tentacool."
+
+	para "Un accident mal-"
+	line "heureux qui"
+	cont "aurait pu faire"
+	cont "une victime."
+
+	para "Mme A. témoigne:"
+	line "C'est vraiment"
+	cont "pas cool..."
+	done
+
+_FanClubText_Sign1::
 	text "Ecoutons donc"
 	line "l'avis des"
 	cont "autres dresseurs!"
 	done
 
-_FanClubText8::
+_FanClubText_Sign2::
 	text "Si on te nargue,"
 	line "nargue en retour!"
 	done

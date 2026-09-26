@@ -33,6 +33,11 @@ ShinyAttractFunction:
 CheckEnemyShinyDVs:
 	push hl
 	ld hl, wEnemyMonDVs
+	ld a, [wEnemyBattleStatus3]
+	bit TRANSFORMED, a
+	jr z, .next
+	ld hl, wTransformedEnemyMonOriginalDVs
+.next
 	call ShinyDVsChecker
 	jr z, .end
 	ld a, $01
@@ -69,6 +74,16 @@ CheckEnemyShinyDVs:
 CheckPlayerShinyDVs:
 	push hl
 	ld hl, wBattleMonDVs
+	ld a, [wPlayerBattleStatus3]
+	bit TRANSFORMED, a
+	jr z, .next
+	push bc
+	ld hl, wPartyMon1DVs
+	ld a, [wPlayerMonNumber]
+	ld bc, (wPartyMon2 - wPartyMon1)
+	call AddNTimes
+	pop bc
+.next
 	call ShinyDVsChecker
 	jr z, .end
 	ld a, $01

@@ -12,7 +12,7 @@ _Volcano1FText0_EndBattle::
 
 _Volcano1FText0_AfterBattle::
 	text "Seuls les #mon"
-	line "Eau, Feu et Roche"
+	line "résistants au feu"
 	cont "supportent une"
 	cont "telle chaleur!"
 	done

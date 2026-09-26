@@ -1,17 +1,19 @@
 ; Credit PureRGB ADDED: function used in some special battles where some effect happens each turn.
-; like in the volcano, each turn you have a non fire/rock/water pokemon out they will get burned if they aren't burned.
+; like in the volcano, each turn you have a non fire/rock/dragon/water pokemon out they will get burned if they aren't burned.
 CheckPerTurnSpecialBattleEffect::
 	ld a, [wCurMapTileset]
 	cp VOLCANO
 	jp z, .volcanoPlayerSide
     ret
 .volcanoPlayerSide
-	; in the volcano, the player pokemon is burned if it's not FIRE, WATER or ROCK
+	; in the volcano, the player pokemon is burned if it's not FIRE, WATER, DRAGON or ROCK
 	ld a, [wBattleMonType1]
 
 	cp FIRE
-	ret z    
+	ret z
 	cp WATER
+	ret z
+	cp DRAGON
 	ret z
 	cp ROCK
 	ret z
@@ -21,6 +23,8 @@ CheckPerTurnSpecialBattleEffect::
 	cp FIRE
 	ret z
 	cp WATER
+	ret z
+	cp DRAGON
 	ret z
 	cp ROCK
 	ret z
@@ -50,12 +54,14 @@ CheckPerTurnSpecialEnemyEffect::
 	jp z, .volcanoEnemySide
     ret
 .volcanoEnemySide
-	; in the volcano, the enemy pokemon is burned if it's not FIRE, WATER or ROCK
+	; in the volcano, the enemy pokemon is burned if it's not FIRE, WATER, DRAGON or ROCK
 	ld a, [wEnemyMonType1]
 
 	cp FIRE
 	ret z
 	cp WATER
+	ret z
+	cp DRAGON
 	ret z
 	cp ROCK
 	ret z
@@ -65,6 +71,8 @@ CheckPerTurnSpecialEnemyEffect::
 	cp FIRE
 	ret z
 	cp WATER
+	ret z
+	cp DRAGON
 	ret z
 	cp ROCK
 	ret z
