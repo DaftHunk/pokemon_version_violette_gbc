@@ -105,11 +105,11 @@ RedrawPartyMenu_:
 	push hl
 	predef CanLearnTM ; check if the pokemon can learn the move
 	pop hl
-	ld de, .ableToLearnMoveText
+	ld de, AbleText
 	ld a, c
 	and a
 	jr nz, .placeMoveLearnabilityString
-	ld de, .notAbleToLearnMoveText
+	ld de, NotAbleText
 .placeMoveLearnabilityString
 	ld bc, 20 + 9 ; down 1 row and right 9 columns
 	push hl
@@ -128,10 +128,6 @@ RedrawPartyMenu_:
 	pop bc
 	inc c
 	jp .loop
-.ableToLearnMoveText
-	db "Apte@"
-.notAbleToLearnMoveText
-	db "Pas apte@"
 .evolutionStoneMenu
 	push hl
 	ld hl, EvosMovesPointerTable
@@ -155,7 +151,7 @@ RedrawPartyMenu_:
 	ld bc, wEvosMoves.end - wEvosMoves
 	call FarCopyData
 	ld hl, wEvosMoves
-	ld de, .notAbleToEvolveText
+	ld de, NotAbleText
 ; loop through the pokemon's evolution entries
 .checkEvolutionsLoop
 	ld a, [hli]
@@ -187,7 +183,7 @@ RedrawPartyMenu_:
 	cp b ; does the player's stone match this evolution entry's stone?
 	jr nz, .checkEvolutionsLoop
 ; if it does match
-	ld de, .ableToEvolveText
+	ld de, AbleText
 .placeEvolutionStoneString
 	ld bc, 20 + 9 ; down 1 row and right 9 columns
 	pop hl
@@ -196,10 +192,6 @@ RedrawPartyMenu_:
 	call PlaceString
 	pop hl
 	jp .printLevel
-.ableToEvolveText
-	db "Apte@"
-.notAbleToEvolveText
-	db "Pas Apte@"
 .afterDrawingMonEntries
 	ld b, SET_PAL_PARTY_MENU
 	call RunPaletteCommand
@@ -265,6 +257,11 @@ PartyMenuMessagePointers:
 	dw PartyMenuUseTMText
 	dw PartyMenuSwapMonText
 	dw PartyMenuItemUseText
+
+AbleText:
+	db "Apte@"
+NotAbleText:
+	db "Pas Apte@"
 
 PartyMenuNormalText:
 	TX_FAR _PartyMenuNormalText
