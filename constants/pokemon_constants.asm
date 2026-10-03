@@ -93,8 +93,8 @@ const_value = 1
 	const KABUTOPS     ; $5B
 	const HORSEA       ; $5C
 	const SEADRA       ; $5D
-	const ARMORED_MEWTWO  ; $5E
-	const CHARIZARD_S  ; $5F
+	const MEWTWO_ARMOR ; $5E
+	const GOROCHU      ; $5F
 	const SANDSHREW    ; $60
 	const SANDSLASH    ; $61
 	const OMANYTE      ; $62
@@ -114,38 +114,38 @@ const_value = 1
 	const WEEDLE       ; $70
 	const KAKUNA       ; $71
 	const BEEDRILL     ; $72
-	const VENUSAUR_S   ; $73
+	const SLUGMA       ; $73
 	const DODRIO       ; $74
 	const PRIMEAPE     ; $75
 	const DUGTRIO      ; $76
 	const VENOMOTH     ; $77
 	const DEWGONG      ; $78
-	const ELECTABUZZ_S ; $79
-	const NINETALES_S  ; $7A
+	const MAGCARGO     ; $79
+	const SLOWKING     ; $7A
 	const CATERPIE     ; $7B
 	const METAPOD      ; $7C
 	const BUTTERFREE   ; $7D
 	const MACHAMP      ; $7E
-	const BLASTOISE_S  ; $7F
+	const LICKILICKY   ; $7F
 	const GOLDUCK      ; $80
 	const HYPNO        ; $81
 	const GOLBAT       ; $82
 	const MEWTWO       ; $83
 	const SNORLAX      ; $84
 	const MAGIKARP     ; $85
-	const SCIZOR_S     ; $86
-	const MAGMAR_S     ; $87
+	const TANGROWTH    ; $86
+	const MARILL       ; $87
 	const MUK          ; $88
-	const MISSINGNO_89 ; $89
+	const AZUMARILL    ; $89
 	const KINGLER      ; $8A
 	const CLOYSTER     ; $8B
-	const MISSINGNO_8C ; $8C
+	const PLUX         ; $8C
 	const ELECTRODE    ; $8D
 	const CLEFABLE     ; $8E
 	const WEEZING      ; $8F
 	const PERSIAN      ; $90
 	const MAROWAK      ; $91
-	const MISSINGNO_92 ; $92
+	const IKARI        ; $92
 	const HAUNTER      ; $93
 	const ABRA         ; $94
 	const ALAKAZAM     ; $95
@@ -155,13 +155,13 @@ const_value = 1
 	const BULBASAUR    ; $99
 	const VENUSAUR     ; $9A
 	const TENTACRUEL   ; $9B
-	const MISSINGNO_9C ; $9C
+	const ESPEON       ; $9C
 	const GOLDEEN      ; $9D
 	const SEAKING      ; $9E
-	const MISSINGNO_9F ; $9F
-	const MISSINGNO_A0 ; $A0
-	const MISSINGNO_A1 ; $A1
-	const MISSINGNO_A2 ; $A2
+	const LUGIA        ; $9F
+	const WOLFMAN      ; $A0
+	const WARWOLF      ; $A1
+	const ANNIHILAPE   ; $A2
 	const PONYTA       ; $A3
 	const RAPIDASH     ; $A4
 	const RATTATA      ; $A5
@@ -171,22 +171,29 @@ const_value = 1
 	const GEODUDE      ; $A9
 	const PORYGON      ; $AA
 	const AERODACTYL   ; $AB
-	const MISSINGNO_AC ; $AC
+	const BLASTOISE_S  ; $AC
 	const MAGNEMITE    ; $AD
-	const MISSINGNO_AE ; $AE
-	const MISSINGNO_AF ; $AF
+	const MAGMAR_S     ; $AE
+	const VENUSAUR_S   ; $AF
 	const CHARMANDER   ; $B0
 	const SQUIRTLE     ; $B1
 	const CHARMELEON   ; $B2
 	const WARTORTLE    ; $B3
 	const CHARIZARD    ; $B4
-	const MISSINGNO_B5 ; $B5
-	const FOSSIL_KABUTOPS   ; $B6
-	const FOSSIL_AERODACTYL ; $B7
-	const MON_GHOST    ; $B8
+	const CHARIZARD_S  ; $B5
+	const ELECTABUZZ_S ; $B6
+	const NINETALES_S  ; $B7
+	const SCIZOR_S     ; $B8
 	const ODDISH       ; $B9
 	const GLOOM        ; $BA
 	const VILEPLUME    ; $BB
 	const BELLSPROUT   ; $BC
 	const WEEPINBELL   ; $BD
 	const VICTREEBEL   ; $BE
+
+; Sprite only
+const_value = $F0
+
+	const FOSSIL_KABUTOPS      ; $F0
+	const FOSSIL_AERODACTYL    ; $F1
+	const MON_GHOST            ; $F2

@@ -28,6 +28,7 @@ const_value = 0
 	const ICON_ARBOK
 	const ICON_PIKACHU
 	const ICON_RAICHU
+	const ICON_GOROCHU
 	const ICON_SANDSHREW
 	const ICON_SANDSLASH
 	const ICON_NIDORAN_F
@@ -44,6 +45,7 @@ const_value = 0
 	const ICON_WIGGLYTUFF
 	const ICON_ZUBAT
 	const ICON_GOLBAT
+	const ICON_CROBAT
 	const ICON_ODDISH
 	const ICON_GLOOM
 	const ICON_VILEPLUME
@@ -59,8 +61,11 @@ const_value = 0
 	const ICON_GOLDUCK
 	const ICON_MANKEY
 	const ICON_PRIMEAPE
+	const ICON_ANNIHILAPE
 	const ICON_GROWLITHE
 	const ICON_ARCANINE
+	const ICON_HOUNDOUR
+	const ICON_HOUNDOOM
 	const ICON_POLIWAG
 	const ICON_POLIWHIRL
 	const ICON_POLIWRATH
@@ -78,10 +83,13 @@ const_value = 0
 	const ICON_GEODUDE
 	const ICON_GRAVELER
 	const ICON_GOLEM
+	const ICON_SLUGMA
+	const ICON_MAGCARGO
 	const ICON_PONYTA
 	const ICON_RAPIDASH
 	const ICON_SLOWPOKE
 	const ICON_SLOWBRO
+	const ICON_SLOWKING
 	const ICON_MAGNEMITE
 	const ICON_MAGNETON
 	const ICON_FARFETCHD
@@ -96,7 +104,9 @@ const_value = 0
 	const ICON_GASTLY
 	const ICON_HAUNTER
 	const ICON_GENGAR
+	const ICON_MISDREAVUS
 	const ICON_ONIX
+	const ICON_STEELIX
 	const ICON_DROWZEE
 	const ICON_HYPNO
 	const ICON_KRABBY
@@ -107,38 +117,53 @@ const_value = 0
 	const ICON_EXEGGUTOR
 	const ICON_CUBONE
 	const ICON_MAROWAK
+	const ICON_MAROWRATH
 	const ICON_HITMONLEE
 	const ICON_HITMONCHAN
 	const ICON_LICKITUNG
+	const ICON_LICKILICKY
 	const ICON_KOFFING
 	const ICON_WEEZING
 	const ICON_RHYHORN
 	const ICON_RHYDON
 	const ICON_CHANSEY
 	const ICON_TANGELA
+	const ICON_TANGROWTH
 	const ICON_KANGASKHAN
 	const ICON_HORSEA
 	const ICON_SEADRA
+	const ICON_KINGDRA
 	const ICON_GOLDEEN
 	const ICON_SEAKING
 	const ICON_STARYU
 	const ICON_STARMIE
+	const ICON_MARILL
+	const ICON_AZUMARILL
 	const ICON_MR_MIME
 	const ICON_SCYTHER
+	const ICON_SCIZOR
 	const ICON_JYNX
 	const ICON_ELECTABUZZ
 	const ICON_MAGMAR
 	const ICON_PINSIR
+	const ICON_PLUX
+	const ICON_HERACROSS
 	const ICON_TAUROS
 	const ICON_MAGIKARP
 	const ICON_GYARADOS
 	const ICON_LAPRAS
+	const ICON_IKARI
+	const ICON_SNEASEL
+	const ICON_WOLFMAN
+	const ICON_WARWOLF
 	const ICON_DITTO
 	const ICON_EEVEE
 	const ICON_VAPOREON
 	const ICON_JOLTEON
 	const ICON_FLAREON
 	const ICON_PORYGON
+	const ICON_UMBREON
+	const ICON_ESPEON
 	const ICON_OMANYTE
 	const ICON_OMASTAR
 	const ICON_KABUTO
@@ -152,24 +177,14 @@ const_value = 0
 	const ICON_DRAGONAIR
 	const ICON_DRAGONITE
 	const ICON_MEWTWO
-	const ICON_MEW
-	const ICON_HERACROSS
-	const ICON_CROBAT
-	const ICON_KINGDRA
-	const ICON_STEELIX
-	const ICON_SCIZOR
-	const ICON_HOUNDOUR
-	const ICON_HOUNDOOM
-	const ICON_UMBREON
-	const ICON_SNEASEL
-	const ICON_MISDREAVUS
-	const ICON_MAROWRATH
 	const ICON_LARVITAR
 	const ICON_PUPITAR
 	const ICON_TYRANITAR
+	const ICON_LUGIA
 	const ICON_HOOH
+	const ICON_MEW
+	const ICON_MEWTWO_ARMOR
 	const ICON_MISSINGNO
-	const ICON_ARMORED_MEWTWO
 
 ; overworld sprites
 const_value = 1

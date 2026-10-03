@@ -194,11 +194,11 @@ IF DEF(_DEBUG)
 	ld hl, wPokedexOwned
 	ld b, wPokedexOwnedEnd - wPokedexOwned - 1
 	call DebugSetPokedexEntries
-	ld [hl], %11111111
+	ld [hl], %01111111
 	ld hl, wPokedexSeen
 	ld b, wPokedexSeenEnd - wPokedexSeen - 1
 	call DebugSetPokedexEntries
-	ld [hl], %11111111
+	ld [hl], %01111111
 	ld hl, wMovedexSeen
 	ld b, wMovedexSeenEnd - wMovedexSeen
 	call DebugSetPokedexEntries
@@ -229,7 +229,7 @@ IF DEF(_DEBUG)
 ;	SetEvent EVENT_GOT_MIST_STONE
 ;	SetEvent EVENT_MASTER_POKEMON
 ;	SetEvent EVENT_GOT_DEX_DIPLOMA
-;	SetEvent EVENT_ARMORED_MEWTWO_KNOWLEDGE
+;	SetEvent EVENT_MEWTWO_ARMOR_KNOWLEDGE
 ;	SetEvent EVENT_GOT_HELIX_FOSSIL
 ;	SetEvent EVENT_BEAT_SILPH_CO_GIOVANNI
 ;	SetEvent EVENT_SILPH_CO_11_UNLOCKED_DOOR

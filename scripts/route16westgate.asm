@@ -27,7 +27,7 @@ Route16WestGateSafeText:
 	ld hl, .route16WestGateNoCodeText
 	jr .endScript
 .hasCode
-	SetEvent EVENT_ARMORED_MEWTWO_KNOWLEDGE
+	SetEvent EVENT_MEWTWO_ARMOR_KNOWLEDGE
 	ld hl, .route16WestGateHasCodeText
 	; fallthrough
 .endScript

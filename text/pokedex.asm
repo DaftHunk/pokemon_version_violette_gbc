@@ -1647,7 +1647,7 @@ _MissingNoDexEntry::
 	next "ザジズょゅ"
 	dex
 
-_ArmoredMewtwoDexEntry::
+_MewtwoArmorDexEntry::
 	text "Mewtwo portant"
 	next "l'armure déve-"
 	next "loppée en secret"

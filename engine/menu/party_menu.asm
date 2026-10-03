@@ -165,13 +165,13 @@ RedrawPartyMenu_:
 	; Check for Armored Mewtwo special case
 	ld a, [wLoadedMonSpecies]
 	cp MEWTWO
-	jr nz, .notArmoredMewtwo
-	; if ArmoredMewtwo ensure event is meet
-	CheckEvent EVENT_ARMORED_MEWTWO_KNOWLEDGE
+	jr nz, .notMewtwoArmor
+	; if MewtwoArmor ensure event is meet
+	CheckEvent EVENT_MEWTWO_ARMOR_KNOWLEDGE
 	; if not break
 	jr z, .checkEvolutionsLoop
 	; else continue
-.notArmoredMewtwo
+.notMewtwoArmor
 ; if it's a stone evolution entry
 	dec hl
 	dec hl
