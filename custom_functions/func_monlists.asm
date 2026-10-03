@@ -17,7 +17,7 @@ ListSafariSpecial:
 ListRealPkmn:
 	db MEW          ; $15
 	db MISSINGNO    ; 162
-	db ARMORED_MEWTWO   ; 163
+	db MEWTWO_ARMOR ; 163
 ListNonMythPkmn:
 	db MEWTWO       ; $83
 ListNonMewPkmn:
@@ -368,7 +368,7 @@ ListByGenderRatio:
 ; db MOLTRES      ; $49
 ; db MEWTWO       ; $83
 ; db MEW          ; $15
-; db ARMORED_MEWTWO   ; 163
+; db MEWTWO_ARMOR ; 163
 
 GetGenderRatioTarget:
 	cp 6

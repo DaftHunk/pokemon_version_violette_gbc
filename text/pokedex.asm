@@ -1655,3 +1655,138 @@ _MewtwoArmorDexEntry::
 	bage "par le Dr Fuji"
 	next "et Giovanni"
 	dex
+
+_GorochuDexEntry::
+	text "Gorochu"
+	next "l'armure déve-"
+	next "loppée en secret"
+
+	bage "par le Dr Fuji"
+	next "et Giovanni"
+	dex
+
+_SlugmaDexEntry::
+	text "Slugma"
+	next "l'armure déve-"
+	next "loppée en secret"
+
+	bage "par le Dr Fuji"
+	next "et Giovanni"
+	dex
+
+_MagcargoDexEntry::
+	text "Magcargo"
+	next "l'armure déve-"
+	next "loppée en secret"
+
+	bage "par le Dr Fuji"
+	next "et Giovanni"
+	dex
+
+_SlowkingDexEntry::
+	text "Slowking"
+	next "l'armure déve-"
+	next "loppée en secret"
+
+	bage "par le Dr Fuji"
+	next "et Giovanni"
+	dex
+
+_LickilickyDexEntry::
+	text "Lickilicky"
+	next "l'armure déve-"
+	next "loppée en secret"
+
+	bage "par le Dr Fuji"
+	next "et Giovanni"
+	dex
+
+_TangrowthDexEntry::
+	text "Tangrowth"
+	next "l'armure déve-"
+	next "loppée en secret"
+
+	bage "par le Dr Fuji"
+	next "et Giovanni"
+	dex
+
+_MarillDexEntry::
+	text "Marill"
+	next "l'armure déve-"
+	next "loppée en secret"
+
+	bage "par le Dr Fuji"
+	next "et Giovanni"
+	dex
+
+_AzumarillDexEntry::
+	text "Azumarill"
+	next "l'armure déve-"
+	next "loppée en secret"
+
+	bage "par le Dr Fuji"
+	next "et Giovanni"
+	dex
+
+_PluxDexEntry::
+	text "Plux"
+	next "l'armure déve-"
+	next "loppée en secret"
+
+	bage "par le Dr Fuji"
+	next "et Giovanni"
+	dex
+
+_IkariDexEntry::
+	text "Ikari"
+	next "l'armure déve-"
+	next "loppée en secret"
+
+	bage "par le Dr Fuji"
+	next "et Giovanni"
+	dex
+
+_EspeonDexEntry::
+	text "Espeon"
+	next "l'armure déve-"
+	next "loppée en secret"
+
+	bage "par le Dr Fuji"
+	next "et Giovanni"
+	dex
+
+_LugiaDexEntry::
+	text "Lugia"
+	next "l'armure déve-"
+	next "loppée en secret"
+
+	bage "par le Dr Fuji"
+	next "et Giovanni"
+	dex
+
+_WolfmanDexEntry::
+	text "Wolfman"
+	next "l'armure déve-"
+	next "loppée en secret"
+
+	bage "par le Dr Fuji"
+	next "et Giovanni"
+	dex
+
+_WarwolfDexEntry::
+	text "Warwolf"
+	next "l'armure déve-"
+	next "loppée en secret"
+
+	bage "par le Dr Fuji"
+	next "et Giovanni"
+	dex
+
+_AnnihilapeDexEntry::
+	text "Annihilape"
+	next "l'armure déve-"
+	next "loppée en secret"
+
+	bage "par le Dr Fuji"
+	next "et Giovanni"
+	dex
