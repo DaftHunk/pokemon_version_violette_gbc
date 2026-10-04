@@ -25,6 +25,13 @@ ListNonMewPkmn:
 	db ARTICUNO     ; $4A
 	db ZAPDOS       ; $4B
 	db HOOH         ; 161
+	db LUGIA
+	db MAROWRATH
+	db PLUX
+	db GOROCHU
+	db LICKILICKY
+	db ANNIHILAPE
+	db TANGROWTH
 ListNonLegendPkmn:
 	db ABRA         ; $94
 	db BELLSPROUT   ; $BC
@@ -82,8 +89,14 @@ ListNonLegendPkmn:
 	db ZUBAT        ; $6B
 	db LARVITAR
 	db SCYTHER      ; $1A
-	db ONIX         ; $22	
+	db ONIX         ; $22
 	db HOUNDOUR
+	db WOLFMAN
+	db MARILL
+	db SLUGMA
+	db LICKITUNG    ; $0B
+	db PINSIR       ; $1D
+	db TANGELA      ; $1E
 ListMidEvolvedPkmn:
 	db CHARMELEON   ; $B2
 	db DRAGONAIR    ; $59
@@ -103,6 +116,9 @@ ListMidEvolvedPkmn:
 	db WEEPINBELL   ; $BD
 	db SEADRA       ; $5D
 	db PUPITAR
+	db PRIMEAPE     ; $75
+	db RAICHU       ; $55
+	db SLOWBRO      ; $08
 ListNonEvolvingPkmn:
 	db AERODACTYL   ; $AB
 	db CHANSEY      ; $28
@@ -114,18 +130,15 @@ ListNonEvolvingPkmn:
 	db JYNX         ; $48
 	db KANGASKHAN   ; $02
 	db LAPRAS       ; $13
-	db LICKITUNG    ; $0B
 	db MAGMAR       ; $33
 	db MR_MIME      ; $2A
-	db PINSIR       ; $1D
 	db PORYGON      ; $AA
 	db SNORLAX      ; $84
-	db TANGELA      ; $1E
 	db TAUROS       ; $3C
 	db SNEASEL
 	db MISDREAVUS
-	db MAROWRATH
 	db HERACROSS
+	db ANCHORAGE
 ListMostEvolvedPkmn:
 	db ALAKAZAM     ; $95
 	db ARBOK        ; $2D
@@ -165,14 +178,11 @@ ListMostEvolvedPkmn:
 	db PERSIAN      ; $90
 	db PIDGEOT      ; $97
 	db POLIWRATH    ; $6F
-	db PRIMEAPE     ; $75
-	db RAICHU       ; $55
 	db RAPIDASH     ; $A4
 	db RATICATE     ; $A6
 	db RHYDON       ; $01
 	db SANDSLASH    ; $61
 	db SEAKING      ; $9E
-	db SLOWBRO      ; $08
 	db STARMIE      ; $98
 	db TENTACRUEL   ; $9B
 	db VAPOREON     ; $69
@@ -189,6 +199,11 @@ ListMostEvolvedPkmn:
 	db TYRANITAR
 	db CROBAT
 	db HOUNDOOM
+	db WARWOLF
+	db ESPEON
+	db SLOWKING
+	db MAGCARGO
+	db AZUMARILL
 	db $00
 
 	
@@ -202,7 +217,7 @@ ListByGenderRatio:
 	db HITMONLEE    ; $2B
 	db HITMONCHAN   ; $2C
 	db TAUROS       ; $3C
-;6 to 24 are 1-7 ratio --> atk dv >= 2 is male
+;6 to 25 are 1-7 ratio --> atk dv >= 2 is male
 	db BULBASAUR    ; $99
 	db IVYSAUR      ; $09
 	db VENUSAUR     ; $9A
@@ -222,7 +237,8 @@ ListByGenderRatio:
 	db KABUTOPS     ; $5B
 	db AERODACTYL   ; $AB
 	db SNORLAX      ; $84
-;25 to 34 are 1-3 ratio  --> atk dv >= 4 is male
+	db ESPEON
+;26 to 35 are 1-3 ratio  --> atk dv >= 4 is male
 	db GROWLITHE    ; $21
 	db ARCANINE     ; $14
 	db ABRA         ; $94
@@ -233,7 +249,7 @@ ListByGenderRatio:
 	db MACHAMP      ; $7E
 	db ELECTABUZZ   ; $35
 	db MAGMAR       ; $33
-;35 to 125 are 1-1 ratio --> atk dv >= 8 is male
+;36 to 152 are 1-1 ratio --> atk dv >= 8 is male
 	db CATERPIE     ; $7B
 	db METAPOD      ; $7C
 	db BUTTERFREE   ; $7D
@@ -338,14 +354,27 @@ ListByGenderRatio:
 	db CROBAT
 	db HOUNDOUR
 	db HOUNDOOM
-;126 to 131 are 3-1 ratio --> atk dv >= 12 is male
+	db SLUGMA
+	db MAGCARGO
+	db SLOWKING
+	db LICKILICKY
+	db TANGROWTH
+	db MARILL
+	db AZUMARILL
+	db ANNIHILAPE
+	db ANCHORAGE
+	db PLUX
+	db WOLFMAN
+	db WARWOLF
+	db GOROCHU
+;153 to 158 are 3-1 ratio --> atk dv >= 12 is male
 	db CLEFAIRY     ; $04
 	db CLEFABLE     ; $8E
 	db VULPIX       ; $52
 	db NINETALES    ; $53
 	db JIGGLYPUFF   ; $64
 	db WIGGLYTUFF   ; $65
-;132 to 137 are female only --> atk dv >= 16 (not possible) is male
+;159 to 166 are female only --> atk dv >= 16 (not possible) is male
 	db NIDORAN_F    ; $0F
 	db NIDORINA     ; $A8
 	db NIDOQUEEN    ; $10
@@ -369,21 +398,23 @@ ListByGenderRatio:
 ; db MEWTWO       ; $83
 ; db MEW          ; $15
 ; db MEWTWO_ARMOR ; 163
+; db LUGIA
+; db MISSINGNO
 
 GetGenderRatioTarget:
 	cp 6
 	ld b, 0
 	ret c
-	cp 25
+	cp 26
 	ld b, 2
 	ret c
-	cp 35
+	cp 36
 	ld b, 4
 	ret c
-	cp 139
+	cp 153
 	ld b, 8
 	ret c
-	cp 145
+	cp 159
 	ld b, 12
 	ret c
 	ld b, 16
@@ -518,12 +549,16 @@ ListNonLegendUnEvoPkmn:			;lvl 30+
 	db MR_MIME
 	db RHYHORN
 	db LICKITUNG
+	db SLOWKING
 ListNonLegendUnEvoPkmn_mid:		;lvl 15+
 	db ONIX
 	db GASTLY
 	db SLOWPOKE
 	db CUBONE
 	db MACHOP
+	db ESPEON
+	db MAGCARGO
+	db AZUMARILL
 ListNonLegendUnEvoPkmn_early:	;any time
 	db PONYTA
 	db PORYGON
@@ -577,4 +612,6 @@ ListNonLegendUnEvoPkmn_early:	;any time
 	db MAGIKARP
 	db CATERPIE
 	db WEEDLE
+	db MARILL
+	db SLUGMA
 	db $00

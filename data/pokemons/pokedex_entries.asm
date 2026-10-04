@@ -1372,106 +1372,106 @@ MewtwoArmorDexEntry:
 	db "@"
 
 GorochuDexEntry:
-	db "Genetique@"
-	db 2,00
-	dw 1520
+	db "Souris@"
+	db 1,00
+	dw 360
 	TX_FAR _GorochuDexEntry
 	db "@"
 
 SlugmaDexEntry:
-	db "Genetique@"
-	db 2,00
-	dw 1520
+	db "Lave@"
+	db 0,70
+	dw 350
 	TX_FAR _SlugmaDexEntry
 	db "@"
 
 MagcargoDexEntry:
-	db "Genetique@"
-	db 2,00
-	dw 1520
+	db "Lave@"
+	db 0,80
+	dw 550
 	TX_FAR _MagcargoDexEntry
 	db "@"
 
 SlowkingDexEntry:
-	db "Genetique@"
+	db "Royal@"
 	db 2,00
-	dw 1520
+	dw 795
 	TX_FAR _SlowkingDexEntry
 	db "@"
 
 LickilickyDexEntry:
-	db "Genetique@"
-	db 2,00
-	dw 1520
+	db "Lécheur@"
+	db 1,70
+	dw 1400
 	TX_FAR _LickilickyDexEntry
 	db "@"
 
 TangrowthDexEntry:
-	db "Genetique@"
+	db "Vigne@"
 	db 2,00
-	dw 1520
+	dw 1286
 	TX_FAR _TangrowthDexEntry
 	db "@"
 
 MarillDexEntry:
-	db "Genetique@"
-	db 2,00
-	dw 1520
+	db "Aquasouris@"
+	db 0,40
+	dw 85
 	TX_FAR _MarillDexEntry
 	db "@"
 
 AzumarillDexEntry:
-	db "Genetique@"
-	db 2,00
-	dw 1520
+	db "Aqualapin@"
+	db 0,80
+	dw 285
 	TX_FAR _AzumarillDexEntry
 	db "@"
 
 PluxDexEntry:
-	db "Genetique@"
+	db "Scarabée@"
 	db 2,00
-	dw 1520
+	dw 650
 	TX_FAR _PluxDexEntry
 	db "@"
 
 AnchorageDexEntry:
-	db "Genetique@"
-	db 2,00
-	dw 1520
+	db "Poisson@"
+	db 1,30
+	dw 929
 	TX_FAR _AnchorageDexEntry
 	db "@"
 
 EspeonDexEntry:
-	db "Genetique@"
-	db 2,00
-	dw 1520
+	db "Soleil@"
+	db 0,90
+	dw 584
 	TX_FAR _EspeonDexEntry
 	db "@"
 
 LugiaDexEntry:
-	db "Genetique@"
-	db 2,00
-	dw 1520
+	db "Plongeon@"
+	db 5,20
+	dw 2160
 	TX_FAR _LugiaDexEntry
 	db "@"
 
 WolfmanDexEntry:
-	db "Genetique@"
-	db 2,00
-	dw 1520
+	db "Fourrure@"
+	db 0,40
+	dw 650
 	TX_FAR _WolfmanDexEntry
 	db "@"
 
 WarwolfDexEntry:
-	db "Genetique@"
-	db 2,00
-	dw 1520
+	db "Fourrure@"
+	db 1,40
+	dw 850
 	TX_FAR _WarwolfDexEntry
 	db "@"
 
 AnnihilapeDexEntry:
-	db "Genetique@"
-	db 2,00
-	dw 1520
+	db "Singefurax@"
+	db 1,20
+	dw 1235
 	TX_FAR _AnnihilapeDexEntry
 	db "@"

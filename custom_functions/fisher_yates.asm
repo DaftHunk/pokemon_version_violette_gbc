@@ -322,7 +322,12 @@ MonListStarter:	;because not all mons in c-tier should be allowed as starter pok
 	db EEVEE        ; $66
 	db PORYGON      ; $AA
 	db DRATINI      ; $58
+	db ANCHORAGE
+	db WOLFMAN
+	db MARILL
+	db SLUGMA
 	db $FF
+
 MonListB:
 	db RATICATE     ; $A6
 	db FEAROW       ; $23
@@ -360,7 +365,11 @@ MonListB:
 	db HERACROSS
 	db LARVITAR     ; 163
 	db PUPITAR      ; 164
+	db WARWOLF
+	db MAGCARGO
+	db AZUMARILL
 	db $FF
+
 MonListA:
 	db SANDSLASH    ; $61
 	db DUGTRIO      ; $76
@@ -428,6 +437,9 @@ MonListTrueRandom:
 	db SEAKING      ; $9E
 	db SNEASEL      ; 160
 	db PUPITAR      ; 164
+	db WARWOLF
+	db MAGCARGO
+	db AZUMARILL
 	;fall through
 MonListTrueRandom_Starter:	;because not all mons should be allowed as starter pokemon
 	db BULBASAUR    ; $99
@@ -502,4 +514,8 @@ MonListTrueRandom_Starter:	;because not all mons should be allowed as starter po
 	db HOUNDOUR     ; 157
 	db HERACROSS
 	db LARVITAR     ; 163
+	db ANCHORAGE
+	db WOLFMAN
+	db MARILL
+	db SLUGMA
 	db $FF
