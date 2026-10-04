@@ -346,7 +346,7 @@ ItemSortList::	;only for items that are bag-accessed
 	db X_SPEED
 	db X_SPECIAL
 	db GUARD_SPEC
-	db DIRE_HIT	
+	db DIRE_HIT
 	; Permanent Raises
 	db RARE_CANDY
 	db HP_UP
@@ -356,14 +356,16 @@ ItemSortList::	;only for items that are bag-accessed
 	db CALCIUM
 	db PP_UP
 	db M_GENE
+	db BERSERK_ADN
 	; Stones
 	db LEAF_STONE
 	db FIRE_STONE
 	db THUNDER_STONE
 	db WATER_STONE
 	db MOON_STONE
+	db SOUL_STONE
 	db MIST_STONE
-    db METAL_COAT
+	db METAL_COAT
 	; Money
 	db COIN_CASE
 	db NUGGET

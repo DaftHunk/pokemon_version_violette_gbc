@@ -127,7 +127,7 @@ DirectorText:
 	ret z
 	CheckEvent EVENT_SS_ANNE_TOURNAMENT_BEATEN
 	ret z
-	CheckEvent EVENT_GOT_MIST_STONE
+	CheckEvent EVENT_GOT_BERSERK_ADN
 	ret z
 	CheckEvent EVENT_SPECIAL_4_BEATEN
 	ret z

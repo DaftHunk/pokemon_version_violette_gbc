@@ -42,11 +42,13 @@ _ThunderStoneDescription::
 _WaterStoneDescription::
 _LeafStoneDescription::
 _MetalCoatDescription::
+_SoulStoneDescription::
+_MistStoneDescription::
 	text "Permet d'évoluer"
 	next "certains #mon."
 	prompt
 
-_MistStoneDescription::
+_BerserkADNDescription::
 	text "Maximise les EVs"
 	next "d'un #mon."
 	prompt

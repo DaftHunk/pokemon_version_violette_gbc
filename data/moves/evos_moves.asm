@@ -285,7 +285,7 @@ NidokingEvosMoves:
 
 SlowbroEvosMoves:
 ; Evolutions
-	db EV_ITEM, MOON_STONE, 1, SLOWKING
+	db EV_ITEM, SOUL_STONE, 1, SLOWKING
 	db 0
 ; Learnset
 	db 6, GROWL
@@ -330,7 +330,7 @@ ExeggutorEvosMoves:
 
 LickitungEvosMoves:
 ; Evolutions
-	db EV_ITEM, MOON_STONE, 1, LICKILICKY
+	db EV_ITEM, MIST_STONE, 1, LICKILICKY
 	db 0
 ; Learnset
 	db 7, SUPERSONIC
@@ -568,7 +568,7 @@ BlastoiseEvosMoves:
 
 PinsirEvosMoves:
 ; Evolutions
-	db EV_ITEM, MOON_STONE, 1, PLUX
+	db EV_ITEM, MIST_STONE, 1, PLUX
 	db 0
 ; Learnset
 	db 7, FOCUS_ENERGY
@@ -583,7 +583,7 @@ PinsirEvosMoves:
 
 TangelaEvosMoves:
 ; Evolutions
-	db EV_ITEM, MOON_STONE, 1, TANGROWTH
+	db EV_ITEM, MIST_STONE, 1, TANGROWTH
 	db 0
 ; Learnset
 	db 4, SLEEP_POWDER
@@ -695,7 +695,7 @@ SlowpokeEvosMoves:
 KadabraEvosMoves:
 ; Evolutions
 	db EV_TRADE, 1, ALAKAZAM
-	db EV_ITEM, MOON_STONE, 35, ALAKAZAM
+	db EV_ITEM, SOUL_STONE, 1, ALAKAZAM
 	db 0
 ; Learnset
 	db 16, CONFUSION
@@ -710,7 +710,7 @@ KadabraEvosMoves:
 GravelerEvosMoves:
 ; Evolutions
 	db EV_TRADE, 1, GOLEM
-	db EV_ITEM, FIRE_STONE, 35, GOLEM
+	db EV_ITEM, SOUL_STONE, 1, GOLEM
 	db 0
 ; Learnset
 	db 6, DEFENSE_CURL
@@ -741,7 +741,7 @@ ChanseyEvosMoves:
 MachokeEvosMoves:
 ; Evolutions
 	db EV_TRADE, 1, MACHAMP
-	db EV_ITEM, LEAF_STONE, 35, MACHAMP
+	db EV_ITEM, SOUL_STONE, 1, MACHAMP
 	db 0
 ; Learnset
 	db 8, FOCUS_ENERGY
@@ -1302,7 +1302,7 @@ PikachuEvosMoves:
 
 RaichuEvosMoves:
 ; Evolutions
-	db EV_ITEM, FIRE_STONE, 1, GOROCHU
+	db EV_ITEM, MIST_STONE, 1, GOROCHU
 	db 0
 ; Learnset
 	db 11, TAIL_WHIP
@@ -1410,7 +1410,7 @@ HorseaEvosMoves:
 
 SeadraEvosMoves:
 ; Evolutions
-	db EV_ITEM, MOON_STONE, 1, KINGDRA
+	db EV_ITEM, SOUL_STONE, 1, KINGDRA
 	db 0
 ; Learnset
 	db 8, SMOKESCREEN
@@ -1534,6 +1534,7 @@ EeveeEvosMoves:
 	db EV_ITEM, THUNDER_STONE, 1, JOLTEON
 	db EV_ITEM, WATER_STONE, 1, VAPOREON
 	db EV_ITEM, MOON_STONE, 1, UMBREON
+	db EV_ITEM, SOUL_STONE, 1, ESPEON
 	db 0
 ; Learnset
 	db 8, SAND_ATTACK
@@ -1724,7 +1725,7 @@ DodrioEvosMoves:
 
 PrimeapeEvosMoves:
 ; Evolutions
-	db EV_ITEM, MOON_STONE, 1, ANNIHILAPE
+	db EV_ITEM, MIST_STONE, 1, ANNIHILAPE
 	db 0
 ; Learnset
 	db 9, LOW_KICK
@@ -1804,7 +1805,7 @@ SlowkingEvosMoves:
 	db 54, PSYCHIC_M
 	db 0
 
-CaterpieEvosMoves:	
+CaterpieEvosMoves:
 ; Evolutions
 	db EV_LEVEL, 7, METAPOD
 	db 0
@@ -2073,6 +2074,7 @@ PersianEvosMoves:
 
 MarowakEvosMoves:
 ; Evolutions
+	db EV_ITEM, MIST_STONE, 1, MAROWRATH
 	db 0
 ; Learnset
 	db 5, TAIL_WHIP
@@ -2100,7 +2102,7 @@ IkariEvosMoves:
 HaunterEvosMoves:
 ; Evolutions
 	db EV_TRADE, 1, GENGAR
-	db EV_ITEM, THUNDER_STONE, 35, GENGAR
+	db EV_ITEM, SOUL_STONE, 1, GENGAR
 	db 0
 ; Learnset
 	db 21, NIGHT_SHADE

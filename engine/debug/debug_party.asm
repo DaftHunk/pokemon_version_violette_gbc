@@ -221,12 +221,12 @@ IF DEF(_DEBUG)
 	ret
 
 .unlockPostGameEvents
-	; Uncomment tp start in post game
+	; Uncomment to start in post game
 ;	SetEvent EVENT_ELITE_4_BEATEN
 ;	SetEvent EVENT_TRAINER_LVL_SCALING
 ;	SetEvent EVENT_ELITE_4_REMATCH_BEATEN
 ;	SetEvent EVENT_SS_ANNE_TOURNAMENT_BEATEN
-;	SetEvent EVENT_GOT_MIST_STONE
+;	SetEvent EVENT_GOT_BERSERK_ADN
 ;	SetEvent EVENT_MASTER_POKEMON
 ;	SetEvent EVENT_GOT_DEX_DIPLOMA
 ;	SetEvent EVENT_MEWTWO_ARMOR_KNOWLEDGE

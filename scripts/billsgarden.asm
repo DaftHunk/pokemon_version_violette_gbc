@@ -19,7 +19,7 @@ BillsGardenTextPointers:
 	dw BillsGardenText_Pikachu
 	dw BillsGarden_SachaCongrat
 	dw BillsGarden_SachaBagFull
-	dw BillsGarden_SachaGiveStone
+	dw BillsGarden_SachaGiveADNBerserk
 	dw BillsGarden_SachaStoneExplain
 	dw BillsGarden_SachaRespawnLegendaries
 
@@ -60,7 +60,7 @@ BillsGarden_HoohBattleText:
 BillsGardenText_Sacha:
 	TX_ASM
 
-	CheckEvent EVENT_MIST_STONE_WAIT
+	CheckEvent EVENT_BERSERK_ADN_WAIT
 	jr nz, BillsGarden_ResetScript
 
 	ld hl, BillsGarden_SachaGreet
@@ -101,7 +101,7 @@ BillsGardenText_Sacha:
 	ld [wTrainerNo], a
 
 	; if Sacha never beaten
-	CheckEvent EVENT_GOT_MIST_STONE
+	CheckEvent EVENT_GOT_BERSERK_ADN
 	jr z, BillsGarden_ResetScripts
 	; else
 	; get the right roster
@@ -133,13 +133,13 @@ BillsGarden_ResetLegendaries:
 	ret z
 	; else fallthrough
 BillsGarden_ResetScript:
-	ResetEvent EVENT_MIST_STONE_WAIT
+	ResetEvent EVENT_BERSERK_ADN_WAIT
 	ld a, $4
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 
-	;give MIST_STONE item
-	lb bc, MIST_STONE, 1
+	;give BERSERK_ADN item
+	lb bc, BERSERK_ADN, 1
 	call GiveItem
 	jp nc, .bagFull	;jump if not enough room in bag
 
@@ -151,7 +151,7 @@ BillsGarden_ResetScript:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 
-	SetEvent EVENT_GOT_MIST_STONE
+	SetEvent EVENT_GOT_BERSERK_ADN
 
 	call GBFadeOutToBlack
 	ld a, HOOH
@@ -200,7 +200,7 @@ BillsGarden_ResetScript:
 
 	jp .end
 .bagFull
-	SetEvent EVENT_MIST_STONE_WAIT
+	SetEvent EVENT_BERSERK_ADN_WAIT
 	ld a, $5
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
@@ -234,8 +234,8 @@ BillsGarden_SachaDecline:
 BillsGarden_SachaCongrat:
 	TX_FAR _BillsGarden_SachaCongrat
 	db "@"
-BillsGarden_SachaGiveStone:
-	TX_FAR _BillsGarden_SachaGiveStone
+BillsGarden_SachaGiveADNBerserk:
+	TX_FAR _BillsGarden_SachaGiveADNBerserk
 	TX_SFX_KEY_ITEM ; actually plays the second channel of SFX_BALL_POOF due to the wrong music bank being loaded
 	db "@"
 BillsGarden_SachaBagFull:

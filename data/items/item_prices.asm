@@ -42,14 +42,13 @@ ItemPrices:;joenote - added prices for amber/fossils/moon stone/pp_up/exp all/ma
 	money 12000 ; DOME_FOSSIL
 	money 12000 ; HELIX_FOSSIL
 	money 0     ; SECRET_KEY
-	money 0     ; XXX			;joenote - used for MIST_STONE
+	money 9800  ; BERSERK_ADN
 	money 0     ; BIKE_VOUCHER
 	money 950   ; X_ACCURACY
 	money 2100  ; LEAF_STONE
 	money 0     ; CARD_KEY
 	money 10000 ; NUGGET
-	;money 9800 ; XXX PP_UP (not used)
-	money 9800  ;M_GENE ;joenote - custom item
+	money 9800  ; M_GENE ;joenote - custom item
 	money 1000  ; POKE_DOLL
 	money 600   ; FULL_HEAL
 	money 1500  ; REVIVE
@@ -99,3 +98,5 @@ ItemPrices:;joenote - added prices for amber/fossils/moon stone/pp_up/exp all/ma
 	money 0     ; FLOOR_B4F
 	money 4200  ; METAL_COAT ;dafthunk #19
 	money 0     ; EXP_CATCH_UP
+	money 4200  ; SOUL_STONE
+	money 9800  ; MIST_STONE

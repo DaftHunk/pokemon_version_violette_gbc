@@ -1,13 +1,13 @@
-;joenote - add secret cave for mist_stone with associated warps
+;joenote - add secret cave for BERSERK_ADN with associated warps
 DiglettsCaveScript:
 	jp EnableAutoTextBoxDrawing
 
 DiglettsCaveTextPointers:
 ;	db "@"
-	dw Mist_Stone_Text
+	dw BerserkADN_Text
 	dw BoulderText
 	
-Mist_Stone_Text:
+BerserkADN_Text:
 	TX_ASM
 	ld a, $1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
@@ -43,7 +43,7 @@ Mist_Stone_Text:
 	CheckEvent EVENT_GOT_SACHA_STONE
 	jr nz, .end
 
-	lb bc, MOON_STONE, 1
+	lb bc, SOUL_STONE, 1
 	call GiveItem
 	ld hl, _TXTBag
 	jr nc, .next	;jump if not enough room in bag
@@ -167,7 +167,7 @@ _TXTBookP5:
 
 _TXTSacha_Stone:
 	text "Vous recevez la"
-	line "Pierre Lune!@@"
+	line "Pierre Ame!@@"
 	db "@"
 
 _TXTBag:

@@ -76,9 +76,9 @@ _BillsGarden_SachaCongrat::
 	line "voilà pour toi."
 	done
 
-_BillsGarden_SachaGiveStone::
+_BillsGarden_SachaGiveADNBerserk::
 	text "<PLAYER> reçoit"
-	line "la Pierre Brume!@"
+	line "l'ADN Berserk!@"
 	text_end
 
 _BillsGarden_SachaBagFull::
