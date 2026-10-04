@@ -149,7 +149,7 @@ MonPartyData:
 	db ICON_MAGIKARP      ; Magikarp
 	db ICON_GYARADOS      ; Gyarados
 	db ICON_LAPRAS        ; Lapras
-	db ICON_IKARI         ; Ikari
+	db ICON_ANCHORAGE     ; Anchorage
 	db ICON_SNEASEL       ; Sneasel
 	db ICON_WOLFMAN       ; Wolfman
 	db ICON_WARWOLF       ; Warwolf

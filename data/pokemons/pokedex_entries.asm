@@ -144,7 +144,7 @@ PokedexEntryPointers:
 	dw WeezingDexEntry
 	dw PersianDexEntry
 	dw MarowakDexEntry
-	dw IkariDexEntry
+	dw AnchorageDexEntry
 	dw HaunterDexEntry
 	dw AbraDexEntry
 	dw AlakazamDexEntry
@@ -1434,11 +1434,11 @@ PluxDexEntry:
 	TX_FAR _PluxDexEntry
 	db "@"
 
-IkariDexEntry:
+AnchorageDexEntry:
 	db "Genetique@"
 	db 2,00
 	dw 1520
-	TX_FAR _IkariDexEntry
+	TX_FAR _AnchorageDexEntry
 	db "@"
 
 EspeonDexEntry:

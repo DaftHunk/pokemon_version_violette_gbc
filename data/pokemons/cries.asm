@@ -145,7 +145,7 @@ CryData:
 	db $12, $FF, $FF; Weezing
 	db $19, $99, $FF; Persian
 	db $08, $4F, $60; Marowak
-	db $0C, $88, $C0; Ikari
+	db $0C, $88, $C0; Anchorage
 	db $1C, $30, $40; Haunter
 	db $1C, $C0, $01; Abra
 	db $1C, $98, $FF; Alakazam

@@ -147,7 +147,7 @@ EvosMovesPointerTable:
 	dw WeezingEvosMoves
 	dw PersianEvosMoves
 	dw MarowakEvosMoves
-	dw IkariEvosMoves
+	dw AnchorageEvosMoves
 	dw HaunterEvosMoves
 	dw AbraEvosMoves
 	dw AlakazamEvosMoves
@@ -2087,7 +2087,7 @@ MarowakEvosMoves:
 	db 46, THRASH
 	db 0
 
-IkariEvosMoves:
+AnchorageEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset

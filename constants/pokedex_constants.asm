@@ -150,7 +150,7 @@ const_value = 1
 	const DEX_MAGIKARP      ; 148
 	const DEX_GYARADOS      ; 149
 	const DEX_LAPRAS        ; 150
-	const DEX_IKARI         ; 151
+	const DEX_ANCHORAGE     ; 151
 	const DEX_SNEASEL       ; 152
 	const DEX_WOLFMAN       ; 153
 	const DEX_WARWOLF       ; 154

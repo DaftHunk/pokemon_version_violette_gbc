@@ -145,7 +145,7 @@ const_value = 1
 	const WEEZING      ; $8F
 	const PERSIAN      ; $90
 	const MAROWAK      ; $91
-	const IKARI        ; $92
+	const ANCHORAGE    ; $92
 	const HAUNTER      ; $93
 	const ABRA         ; $94
 	const ALAKAZAM     ; $95

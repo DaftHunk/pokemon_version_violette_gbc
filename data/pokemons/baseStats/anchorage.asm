@@ -1,4 +1,4 @@
-db DEX_IKARI ; pokedex id
+db DEX_ANCHORAGE ; pokedex id
 db 80 ; base hp
 db 92 ; base attack
 db 65 ; base defense
@@ -8,9 +8,9 @@ db WATER ; species type 1
 db STEEL ; species type 2
 db 60 ; catch rate
 db 170 ; base exp yield
-INCBIN "gfx/pokemon/front/ikari.pic",0,1 ; 77, sprite dimensions
-dw IkariPicFront
-dw IkariPicBack
+INCBIN "gfx/pokemon/front/anchorage.pic",0,1 ; 77, sprite dimensions
+dw AnchoragePicFront
+dw AnchoragePicBack
 ; attacks known at lvl 0
 db PECK
 db TAIL_WHIP
@@ -33,6 +33,6 @@ db 0 ; growth rate
 ; 49 -> 56
 	tmlearn tm50_SUBSTITUTE, hm03_SURF
 ;   db 0 ; padding
-	db BANK(IkariPicFront)
-	assert BANK(IkariPicFront) == BANK(IkariPicBack)
+	db BANK(AnchoragePicFront)
+	assert BANK(AnchoragePicFront) == BANK(AnchoragePicBack)
 

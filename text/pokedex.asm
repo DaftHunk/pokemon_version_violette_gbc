@@ -1737,8 +1737,8 @@ _PluxDexEntry::
 	next "et Giovanni"
 	dex
 
-_IkariDexEntry::
-	text "Ikari"
+_AnchorageDexEntry::
+	text "Anchorage"
 	next "l'armure déve-"
 	next "loppée en secret"
 

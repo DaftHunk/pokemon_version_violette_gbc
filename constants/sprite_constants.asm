@@ -152,7 +152,7 @@ const_value = 0
 	const ICON_MAGIKARP
 	const ICON_GYARADOS
 	const ICON_LAPRAS
-	const ICON_IKARI
+	const ICON_ANCHORAGE
 	const ICON_SNEASEL
 	const ICON_WOLFMAN
 	const ICON_WARWOLF
