@@ -41,14 +41,16 @@ SetPal_Battle:
 	jr z, .transformcheck
 	;ld hl, wBattleMonSpecies2	;joenote - Fixing a gamefreak typo. Needed for transformed mon's to retain their palette.
 	ld hl, wBattleMonSpeciesOriginal	; --> Moving to dedicated address. Party menu can clobber wBattleMonSpecies2.
-.transformcheck	
-	
+.transformcheck
+	ld a, [wBattleMonType2]
+	ld e, a
 	call DeterminePaletteID
-	ld b, a		;player mon pal in b
-	ld a, [wEnemyBattleStatus3]
+	ld b, a
+	ld a, [wEnemyMonType2]
+	ld e, a
 	ld hl, wEnemyMonSpecies2
 	call DeterminePaletteID
-	ld c, a		;enemy mon pal in c
+	ld c, a
 	ld hl, wPalPacket + 1
 	ld a, [wPlayerHPBarColor]
 	add PAL_GREENBAR
@@ -92,6 +94,52 @@ SetPal_Battle:
 	ld [wDefaultPaletteCommand], a
 	ret
 
+; Entree : a = espece interne, e = Type 2 ACTUEL du pokemon affiche
+; Sortie : carry + a = palette speciale si une surcharge s'applique
+;          pas de carry, a inchange, sinon
+CheckSpecialPalette:
+	push hl
+	push bc
+	ld c, a
+	ld hl, SpecialPaletteOverrides
+.loop
+	ld a, [hl]
+	cp $FF
+	jr z, .notFound
+	cp c
+	jr z, .maybeMatch
+	inc hl
+	inc hl
+	inc hl
+	jr .loop
+.maybeMatch
+	inc hl
+	ld a, [hli]        ; Type 2 de base attendu
+	cp e
+	jr z, .notFound    ; identique au Type 2 actuel -> pas de surcharge
+	ld a, [hl]         ; palette speciale
+	pop bc
+	pop hl
+	scf
+	ret
+.notFound
+	pop bc
+	pop hl
+	and a
+	ret
+
+; Especes avec palette speciale quand leur Type 2 actuel differe du Type 2 de base
+; Terminee par $FF
+SpecialPaletteOverrides:
+	db CHARIZARD,  FLYING,   PAL_MEWMON
+	db VENUSAUR,   POISON,   PAL_VIOLETTEMON
+	db ELECTABUZZ, ELECTRIC, PAL_BROWNMON
+	db NINETALES,  FIRE,     PAL_VIOLETTEMON
+	db BLASTOISE,  WATER,    PAL_GREYBLUEMON
+	db SCIZOR,     STEEL,    PAL_VIOLETTEMON  ; <- a verifier, meme logique si Scizor normal est Bug/Bug
+	db MAGMAR,     FIRE,     PAL_BROWNMON
+	db $FF
+
 SetPal_TownMap:
 	ld hl, PalPacket_TownMap
 	ld de, BlkPacket_WholeScreen
@@ -108,6 +156,10 @@ SetPal_StatusScreen:
 	jr c, .pokemon
 	ld a, $1 ; not pokemon
 .pokemon
+	ld d, a
+	ld a, [wMonHType2]
+	ld e, a
+	ld a, d
 	call DeterminePaletteIDOutOfBattle
 	push af
 	ld hl, wPalPacket + 1
@@ -140,6 +192,8 @@ SetPal_Pokedex:
 	ld de, wPalPacket
 	ld bc, $10
 	call CopyData
+	ld a, [wMonHType2]
+	ld e, a
 	ld a, [wcf91]
 	call DeterminePaletteIDOutOfBattle
 	ld hl, wPalPacket + 3
@@ -166,8 +220,10 @@ SetPal_MiddleScreenMonBox:
 	ld hl, wPalPacket + 1
 	ld [hl], a
 	
-	ld a, [wcf91]
 	; no alt palette pkmn colors in this case
+	ld a, [wMonHType2]
+	ld e, a
+	ld a, [wcf91]
 	call DeterminePaletteIDOutOfBattle
 	ld hl, wPalPacket + 3
 	ld [hl], a
@@ -347,7 +403,9 @@ SetPal_PokemonWholeScreen:
 	and a
 	ld a, PAL_BLACK
 	jr nz, .next
-	ld a, [wWholeScreenPaletteMonSpecies]
+	ld a, [wMonHType2]
+	ld e, a
+	ld a, [wcf91]
 	call DeterminePaletteIDOutOfBattle
 .next
 	ld [wPalPacket + 1], a
@@ -445,19 +503,30 @@ DeterminePaletteID:
 	;ret nz
 	ld a, [hl]
 DeterminePaletteIDOutOfBattle:
+	ld d, a
 	ld [wPokedexNum], a
-	and a ; is the mon index 0?
+	and a
 	jr z, .skipDexNumConversion
 	push bc
+	push de
 	predef IndexToPokedex
+	pop de
 	pop bc
 	ld a, [wPokedexNum]
 .skipDexNumConversion
+	push af
+	ld a, d
+	call CheckSpecialPalette
+	jr c, .useSpecial
+	pop af
 	ld e, a
 	ld d, 0
 	ld hl, MonsterPalettes ; not just for Pokemon, Trainers use it too
 	add hl, de
 	ld a, [hl]
+	ret
+.useSpecial
+	pop bc
 	ret
 
 InitPartyMenuBlkPacket:
@@ -1294,7 +1363,11 @@ TransferMonPal:
 	pop af
 	call TransferCurBGPData
 	ret
-.isMon	
+.isMon
+	ld d, a
+	ld a, [wMonHType2]
+	ld e, a
+	ld a, d
 	call DeterminePaletteIDOutOfBattle
 	jr .back
 

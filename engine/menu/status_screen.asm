@@ -77,6 +77,9 @@ StatusScreen:
 	ld b, $1
 	call CalcStats ; Recalculate stats
 .DontRecalculate
+	ld a, [wLoadedMonSpecies]
+	ld [wd0b5], a
+	call GetMonHeader
 	ld hl, wStatusFlags2
 	set 1, [hl]
 	ld a, $33
