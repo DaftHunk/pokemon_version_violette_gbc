@@ -16,7 +16,7 @@ db WATER_GUN
 db DEFENSE_CURL
 db TACKLE
 db TAIL_WHIP
-db 43 ; growth rate
+db 4 ; growth rate
 ; learnset
 ; 1 -> 8
 	tmlearn tm01_MEGA_PUNCH, tm05_MEGA_KICK, tm06_TOXIC, tm08_BODY_SLAM

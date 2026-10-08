@@ -1205,8 +1205,8 @@ DragoniteEvosMoves:
 	db 8, THUNDER_WAVE
 	db 22, DRAGON_RAGE
 	db 29, SLAM
-	db 39, DRAGON_RUSH
 	db 38, AGILITY
+	db 39, DRAGON_RUSH
 	db 55, WING_ATTACK
 	db 75, HYPER_BEAM
 	db 0
@@ -1714,7 +1714,6 @@ WigglytuffEvosMoves:
 	db 19, DEFENSE_CURL
 	db 24, SING
 	db 29, DOUBLESLAP
-	db 34, DISABLE
 	db 39, BODY_SLAM
 	db 42, REST
 	db 45, DOUBLE_EDGE
@@ -2459,6 +2458,7 @@ StarmieEvosMoves:
 	db 50, HYDRO_PUMP
 	db 51, REFLECT
 	db 0
+
 BulbasaurEvosMoves:
 ; Evolutions
 	db EV_LEVEL, 16, IVYSAUR
