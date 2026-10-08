@@ -1640,11 +1640,9 @@ _HoohDexEntry::
 	dex
 
 _MissingNoDexEntry::
-	text "コメント"
-	next "さくせい"
-
-	bage "ガギグゲゴ"
-	next "ザジズょゅ"
+	text "┌──┐ ┌──┐"
+	next "│()│ │()│"
+	next "└──┘ └──┘"
 	dex
 
 _MewtwoArmorDexEntry::
@@ -1657,21 +1655,22 @@ _MewtwoArmorDexEntry::
 	dex
 
 _GorochuDexEntry::
-	text "Gorochu"
-	next "l'armure déve-"
-	next "loppée en secret"
+	text "Il se surcharge"
+	next "tellement en"
+	next "éléctricité"
 
-	bage "par le Dr Fuji"
-	next "et Giovanni"
+	bage "qu'il arrive à"
+	next "produire du feu"
 	dex
 
 _SlugmaDexEntry::
-	text "Slugma"
-	next "l'armure déve-"
-	next "loppée en secret"
+	text "Il vit en groupe"
+	next "dans les endroits"
+	next "chauds."
 
-	bage "par le Dr Fuji"
-	next "et Giovanni"
+	bage "Si la température"
+	next "baisse, sa peau"
+	next "se solidifie."
 	dex
 
 _MagcargoDexEntry::

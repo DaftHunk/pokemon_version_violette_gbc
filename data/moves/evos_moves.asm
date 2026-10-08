@@ -1437,17 +1437,20 @@ GorochuEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 11, TAIL_WHIP
+	db 7, TAIL_WHIP
+	db 10, EMBER
 	db 13, THUNDER_WAVE
 	db 15, QUICK_ATTACK
 	db 17, THUNDERSHOCK
 	db 22, DOUBLE_TEAM
 	db 25, SLAM
+	db 27, FIRE_SPIN
 	db 29, SWIFT
 	db 31, THUNDERBOLT
 	db 38, AGILITY
 	db 46, THUNDER
 	db 55, LIGHT_SCREEN
+	db 66, FLAMETHROWER
 	db 0
 
 SandshrewEvosMoves:
@@ -1703,12 +1706,13 @@ SlugmaEvosMoves:
 	db EV_LEVEL, 38, MAGCARGO
 	db 0
 ; Learnset
-	db 9, EMBER
-	db 18, LEER
-	db 26, TAKE_DOWN
-	db 42, AGILITY
-	db 45, CRUNCH
-	db 50, FLAMETHROWER
+	db 8, EMBER
+	db 15, ROCK_THROW
+	db 22, HARDEN
+	db 29, AMNESIA
+	db 36, FLAMETHROWER
+	db 43, ROCK_SLIDE
+	db 50, BODY_SLAM
 	db 0
 
 DodrioEvosMoves:

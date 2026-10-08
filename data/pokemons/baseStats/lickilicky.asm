@@ -1,19 +1,19 @@
 db DEX_LICKILICKY ; pokedex id
-db 95 ; base hp
-db 70 ; base attack
-db 85 ; base defense
-db 30 ; base speed
-db 75 ; base special
+db 110 ; base hp
+db 85 ; base attack
+db 95 ; base defense
+db 50 ; base speed
+db 95 ; base special
 db NORMAL ; species type 1
 db PSYCHIC ; species type 2
-db 45 ; catch rate
-db 127 ; base exp yield
+db 30 ; catch rate
+db 193 ; base exp yield
 INCBIN "gfx/pokemon/front/lickilicky.pic",0,1 ; 77, sprite dimensions
 dw LickilickyPicFront
 dw LickilickyPicBack
 ; attacks known at lvl 0
 db LICK
-db WRAP
+db DEFENSE_CURL
 db SUPERSONIC
 db 0
 db 0 ; growth rate
@@ -25,9 +25,9 @@ db 0 ; growth rate
 ; 17 -> 24
 	tmlearn tm17_SUBMISSION, tm18_COUNTER, tm19_SEISMIC_TOSS, tm24_THUNDERBOLT
 ; 25 -> 32
-	tmlearn tm25_THUNDER, tm26_EARTHQUAKE, tm27_FISSURE, tm28_DIG, tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm25_THUNDER, tm26_EARTHQUAKE, tm27_FISSURE, tm28_DIG, tm29_PSYCHIC_M, tm30_TELEPORT, tm31_MIMIC, tm32_DOUBLE_TEAM
 ; 33 -> 40
-	tmlearn tm34_BIDE, tm38_FIRE_BLAST, tm40_SKULL_BASH
+	tmlearn tm33_REFLECT, tm34_BIDE, tm38_FIRE_BLAST, tm40_SKULL_BASH
 ; 41 -> 48
 	tmlearn tm42_SHADOW_BALL, tm44_REST, tm48_ROCK_SLIDE
 ; 49 -> 56

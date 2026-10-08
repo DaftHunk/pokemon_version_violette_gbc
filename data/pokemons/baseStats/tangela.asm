@@ -31,7 +31,7 @@ db 0 ; growth rate
 ; 41 -> 48
 	tmlearn tm41_GIGA_DRAIN, tm44_REST
 ; 49 -> 56
-	tmlearn tm50_SUBSTITUTE, hm01_CUT, hm05_FLASH
+	tmlearn tm50_SUBSTITUTE, hm01_CUT, hm04_STRENGTH, hm05_FLASH
 ;   db 0 ; padding
 	db BANK(TangelaPicFront)
 	assert BANK(TangelaPicFront) == BANK(TangelaPicBack)
