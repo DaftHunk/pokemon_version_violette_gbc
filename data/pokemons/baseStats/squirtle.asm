@@ -29,7 +29,7 @@ db 3 ; growth rate
 ; 33 -> 40
 	tmlearn tm33_REFLECT, tm34_BIDE, tm40_SKULL_BASH
 ; 41 -> 48
-	tmlearn tm44_REST
+	tmlearn tm44_REST, tm48_ROCK_SLIDE
 ; 49 -> 56
 	tmlearn tm50_SUBSTITUTE, hm03_SURF, hm04_STRENGTH
 ;   db 0 ; padding

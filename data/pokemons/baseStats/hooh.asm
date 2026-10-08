@@ -19,17 +19,17 @@ db 0
 db 5 ; growth rate
 ; learnset
 ; 1 -> 8
-	tmlearn tm02_RAZOR_WIND, tm04_FLAMETHROWER, tm06_TOXIC
+	tmlearn tm02_RAZOR_WIND, tm04_FLAMETHROWER, tm06_TOXIC, tm08_BODY_SLAM
 ; 9 -> 16
 	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm15_HYPER_BEAM
 ; 17 -> 24
-	tmlearn tm22_SOLARBEAM
+	tmlearn tm22_SOLARBEAM, tm24_THUNDERBOLT
 ; 25 -> 32
 	tmlearn tm25_THUNDER, tm26_EARTHQUAKE, tm29_PSYCHIC_M, tm31_MIMIC, tm32_DOUBLE_TEAM
 ; 33 -> 40
 	tmlearn tm33_REFLECT, tm34_BIDE, tm38_FIRE_BLAST, tm39_SWIFT
 ; 41 -> 48
-	tmlearn tm41_GIGA_DRAIN, tm42_SHADOW_BALL, tm43_SKY_ATTACK, tm44_REST
+	tmlearn tm41_GIGA_DRAIN, tm42_SHADOW_BALL, tm43_SKY_ATTACK, tm44_REST, tm45_THUNDER_WAVE
 ; 49 -> 56
 	tmlearn tm50_SUBSTITUTE, hm02_FLY, hm04_STRENGTH, hm05_FLASH
 ;   db 0 ; padding

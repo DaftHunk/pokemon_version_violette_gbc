@@ -29,7 +29,7 @@ db 0 ; growth rate
 ; 33 -> 40
 	tmlearn tm33_REFLECT, tm34_BIDE, tm39_SWIFT
 ; 41 -> 48
-	tmlearn tm44_REST, tm45_THUNDER_WAVE
+	tmlearn tm44_REST, tm45_THUNDER_WAVE, tm47_EXPLOSION
 ; 49 -> 56
 	tmlearn tm50_SUBSTITUTE, hm05_FLASH
 ;   db 0 ; padding

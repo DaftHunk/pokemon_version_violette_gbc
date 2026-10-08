@@ -23,7 +23,7 @@ db 0 ; growth rate
 ; 9 -> 16
 	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE
 ; 17 -> 24
-	tmlearn 0
+	tmlearn tm22_SOLARBEAM
 ; 25 -> 32
 	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM
 ; 33 -> 40

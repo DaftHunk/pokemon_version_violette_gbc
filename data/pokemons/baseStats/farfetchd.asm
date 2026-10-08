@@ -29,7 +29,7 @@ db 0 ; growth rate
 ; 33 -> 40
 	tmlearn tm33_REFLECT, tm34_BIDE, tm39_SWIFT, tm40_SKULL_BASH
 ; 41 -> 48
-	tmlearn tm44_REST
+	tmlearn tm43_SKY_ATTACK, tm44_REST
 ; 49 -> 56
 	tmlearn tm50_SUBSTITUTE, hm01_CUT, hm02_FLY, hm04_STRENGTH
 ;   db 0 ; padding

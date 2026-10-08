@@ -31,7 +31,7 @@ db 0 ; growth rate
 ; 41 -> 48
 	tmlearn tm43_SKY_ATTACK, tm44_REST
 ; 49 -> 56
-	tmlearn tm50_SUBSTITUTE, hm02_FLY
+	tmlearn tm49_TRI_ATTACK, tm50_SUBSTITUTE, hm02_FLY
 ;   db 0 ; padding
 	db BANK(SpearowPicFront)
 	assert BANK(SpearowPicFront) == BANK(SpearowPicBack)

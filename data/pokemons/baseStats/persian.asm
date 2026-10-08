@@ -29,7 +29,7 @@ db 0 ; growth rate
 ; 33 -> 40
 	tmlearn tm34_BIDE, tm39_SWIFT, tm40_SKULL_BASH
 ; 41 -> 48
-	tmlearn tm42_SHADOW_BALL, tm44_REST, tm46_DARK_PULSE
+	tmlearn tm42_SHADOW_BALL, tm44_REST, tm45_THUNDER_WAVE, tm46_DARK_PULSE
 ; 49 -> 56
 	tmlearn tm50_SUBSTITUTE, hm01_CUT, hm05_FLASH
 ;   db 0 ; padding

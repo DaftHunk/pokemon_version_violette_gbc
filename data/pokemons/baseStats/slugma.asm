@@ -25,9 +25,9 @@ db 5 ; growth rate
 ; 17 -> 24
 	tmlearn 0
 ; 25 -> 32
-	tmlearn tm26_EARTHQUAKE, tm28_DIG, tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm26_EARTHQUAKE, tm31_MIMIC, tm32_DOUBLE_TEAM
 ; 33 -> 40
-	tmlearn tm33_REFLECT, tm34_BIDE, tm36_SELFDESTRUCT, tm38_FIRE_BLAST, tm39_SWIFT, tm40_SKULL_BASH
+	tmlearn tm33_REFLECT, tm34_BIDE, tm36_SELFDESTRUCT, tm38_FIRE_BLAST, tm40_SKULL_BASH
 ; 41 -> 48
 	tmlearn tm44_REST, tm48_ROCK_SLIDE
 ; 49 -> 56
