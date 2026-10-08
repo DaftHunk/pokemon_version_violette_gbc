@@ -18,7 +18,7 @@ DebugNewGameParty: ; unreferenced except in _DEBUG
 	; always using this character while I was debugging the program."
 	; From https://web.archive.org/web/20000607152840/http://pocket.ign.com/news/14973.html
 	db MAGNETON, 100
-	db ARMORED_MEWTWO, 100
+	db MEWTWO_ARMOR, 100
 	db EXEGGUTOR, 100
 ;	db EEVEE, 1
 	db SPEAROW, 10

@@ -219,10 +219,7 @@ _RollingKickDexEntry::
 	next "un coup de pied"
 	next "tournoyant extrê-"
 
-	bage "mement rapide."
-
-	bage "Attaque signature"
-	next "de Kicklee.@"
+	bage "mement rapide.@"
 	; fall through
 	text_jump _Generic30PercentFlinchText
 

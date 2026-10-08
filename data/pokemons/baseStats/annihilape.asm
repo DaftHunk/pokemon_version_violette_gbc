@@ -7,7 +7,7 @@ db 90 ; base special
 db FIGHTING ; species type 1
 db GHOST ; species type 2
 db 45 ; catch rate
-db 268 ; base exp yield
+db 215 ; base exp yield
 INCBIN "gfx/pokemon/front/annihilape.pic",0,1 ; 55, sprite dimensions
 dw AnnihilapePicFront
 dw AnnihilapePicBack
