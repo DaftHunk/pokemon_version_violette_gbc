@@ -1571,7 +1571,7 @@ _UmbreonDexEntry::
 	dex
 
 _SneaselDexEntry::
-	text "Ce Pokémon rusé se"
+	text "Ce #mon rusé se"
 	next "cache dans l'ombre"
 	next "et attend"
 
@@ -1646,7 +1646,7 @@ _MissingNoDexEntry::
 	dex
 
 _MewtwoArmorDexEntry::
-	text "Mewtwo portant"
+	text "Mewtwo équipé de"
 	next "l'armure déve-"
 	next "loppée en secret"
 
@@ -1657,7 +1657,7 @@ _MewtwoArmorDexEntry::
 _GorochuDexEntry::
 	text "Il se surcharge"
 	next "tellement en"
-	next "éléctricité"
+	next "électricité"
 
 	bage "qu'il arrive à"
 	next "produire du feu"
@@ -1670,122 +1670,129 @@ _SlugmaDexEntry::
 
 	bage "Si la température"
 	next "baisse, sa peau"
-	next "se solidifie."
+	next "se solidifie"
 	dex
 
 _MagcargoDexEntry::
-	text "Magcargo"
-	next "l'armure déve-"
-	next "loppée en secret"
+	text "Son corps en"
+	next "ébullition est"
+	next "aussi chaud que"
 
-	bage "par le Dr Fuji"
-	next "et Giovanni"
+	bage "de la lave. Des"
+	next "flammes sortent"
+	next "de sa coquille"
 	dex
 
 _SlowkingDexEntry::
-	text "Slowking"
-	next "l'armure déve-"
-	next "loppée en secret"
+	text "A chaque bâille-"
+	next "ment, le Kokiyas"
+	next "lui injecte une"
 
-	bage "par le Dr Fuji"
-	next "et Giovanni"
+	bage "dose de poison,"
+	next "ceci le rendant"
+	next "plus intelligent"
 	dex
 
 _LickilickyDexEntry::
-	text "Lickilicky"
-	next "l'armure déve-"
-	next "loppée en secret"
+	text "Tout ce qu'il"
+	next "enroule dans sa"
+	next "longue langue"
 
-	bage "par le Dr Fuji"
-	next "et Giovanni"
+	bage "finit couvert de"
+	next "bave acide"
 	dex
 
 _TangrowthDexEntry::
-	text "Tangrowth"
-	next "l'armure déve-"
-	next "loppée en secret"
+	text "Il se fond dans"
+	next "la nuit et ne"
+	next "plus."
 
-	bage "par le Dr Fuji"
-	next "et Giovanni"
+	bage "Il ligote ses"
+	next "proies avec"
+	next "ses lianes"
 	dex
 
 _MarillDexEntry::
-	text "Marill"
-	next "l'armure déve-"
-	next "loppée en secret"
+	text "Sa fourrure est"
+	next "imperméable, si"
+	next "bien qu'il reste"
 
-	bage "par le Dr Fuji"
-	next "et Giovanni"
+	bage "sec même en"
+	next "jouant dans l'eau"
 	dex
 
 _AzumarillDexEntry::
-	text "Azumarill"
-	next "l'armure déve-"
-	next "loppée en secret"
+	text "Les motifs sur"
+	next "son ventre lui"
+	next "permettent de se"
 
-	bage "par le Dr Fuji"
-	next "et Giovanni"
+	bage "camoufler lorsqu'"
+	next "il est dans l'eau"
 	dex
 
 _PluxDexEntry::
-	text "Plux"
-	next "l'armure déve-"
-	next "loppée en secret"
+	text "Les Scarbarbar"
+	next "dirigent souvent"
+	next "les groupes de"
 
-	bage "par le Dr Fuji"
-	next "et Giovanni"
+	bage "Scarabrute et les"
+	next "protègent la nuit"
 	dex
 
 _AnchorageDexEntry::
-	text "Anchorage"
-	next "l'armure déve-"
-	next "loppée en secret"
+	text "Ce #mon oublié"
+	next "utilise sa queue"
+	next "en forme d'ancre"
 
-	bage "par le Dr Fuji"
-	next "et Giovanni"
+	bage "pour assomer"
+	next "ses proies"
 	dex
 
 _EspeonDexEntry::
-	text "Espeon"
-	next "l'armure déve-"
-	next "loppée en secret"
+	text "Le bout fourchu"
+	next "de sa queue"
+	next "frémit lorsqu'"
 
-	bage "par le Dr Fuji"
-	next "et Giovanni"
+	bage "il prédit la"
+	next "prochaine attaque"
+	next "de son adversaire"
 	dex
 
 _LugiaDexEntry::
-	text "Lugia"
-	next "l'armure déve-"
-	next "loppée en secret"
+	text "Il peut calmer"
+	next "les mers agitées."
+	next "On raconte que"
 
-	bage "par le Dr Fuji"
-	next "et Giovanni"
+	bage "Lugia apparaît"
+	next "lorsqu'éclate"
+	next "une tempête"
 	dex
 
 _WolfmanDexEntry::
-	text "Wolfman"
-	next "l'armure déve-"
-	next "loppée en secret"
+	text "Ce #mon oublié"
+	next "très social,"
+	next "vit en meute."
 
-	bage "par le Dr Fuji"
-	next "et Giovanni"
+	bage "Sa fourrure lui"
+	next "permet de survivre"
+	next "n'importe où"
 	dex
 
 _WarwolfDexEntry::
-	text "Warwolf"
-	next "l'armure déve-"
-	next "loppée en secret"
+	text "Ce #mon oublié"
+	next "est extrêmement"
+	next "protecteur envers"
 
-	bage "par le Dr Fuji"
-	next "et Giovanni"
+	bage "les Ptiloulou. Ses"
+	next "griffes d'acier"
+	next "sont redoutables"
 	dex
 
 _AnnihilapeDexEntry::
-	text "Annihilape"
-	next "l'armure déve-"
-	next "loppée en secret"
+	text "Il a acquis une"
+	next "puissance qui"
+	next "l'a émancipé"
 
-	bage "par le Dr Fuji"
-	next "et Giovanni"
+	bage "des limites de"
+	next "son corps"
 	dex
