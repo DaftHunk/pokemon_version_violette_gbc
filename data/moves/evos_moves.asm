@@ -1787,12 +1787,13 @@ MagcargoEvosMoves:
 	db 0
 ; Learnset
 	db 10, EMBER
-	db 20, BITE
-	db 30, LEER
+	db 22, HARDEN
+	db 23, RECOVER
+	db 29, AMNESIA
 	db 40, TAKE_DOWN
-	db 42, AGILITY
-	db 45, CRUNCH
+	db 48, ROCK_SLIDE
 	db 50, FLAMETHROWER
+	db 60, BODY_SLAM
 	db 0
 
 SlowkingEvosMoves:
@@ -1855,11 +1856,13 @@ LickilickyEvosMoves:
 	db 0
 ; Learnset
 	db 7, SUPERSONIC
+	db 10, ACID
 	db 13, DEFENSE_CURL
 	db 19, STOMP
 	db 25, WRAP
 	db 31, DISABLE
 	db 37, SLAM
+	db 40, THRASH
 	db 43, SCREECH
 	db 0
 
@@ -1943,13 +1946,18 @@ TangrowthEvosMoves:
 	db 4, SLEEP_POWDER
 	db 10, ABSORB
 	db 13, POISONPOWDER
+	db 16, CONFUSION
 	db 19, VINE_WHIP
+	db 22, PURSUIT
 	db 25, WRAP
 	db 31, MEGA_DRAIN
 	db 34, STUN_SPORE
 	db 38, GIGA_DRAIN
+	db 39, LEECH_SEED
 	db 40, SLAM
+	db 42, DARK_PULSE
 	db 46, GROWTH
+	db 49, AMNESIA
 	db 0
 
 MarillEvosMoves:
@@ -1957,9 +1965,11 @@ MarillEvosMoves:
 	db EV_LEVEL, 18, AZUMARILL
 	db 0
 ; Learnset
-	db 7, HYPNOSIS
+	db 7, BUBBLE
+	db 12, SLAM
 	db 13, WATER_GUN
-	db 19, DOUBLESLAP
+	db 21, BUBBLEBEAM
+	db 28, DOUBLE_EDGE
 	db 31, BODY_SLAM
 	db 45, HYDRO_PUMP
 	db 0
@@ -1980,10 +1990,12 @@ AzumarillEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 7, HYPNOSIS
+	db 7, BUBBLE
+	db 12, SLAM
 	db 13, WATER_GUN
-	db 19, DOUBLESLAP
+	db 25, BUBBLEBEAM
 	db 31, BODY_SLAM
+	db 36, DOUBLE_EDGE
 	db 45, HYDRO_PUMP
 	db 0
 
@@ -2017,13 +2029,17 @@ PluxEvosMoves:
 	db 0
 ; Learnset
 	db 7, FOCUS_ENERGY
+	db 10, PURSUIT
 	db 13, BIND
 	db 19, SEISMIC_TOSS
 	db 25, HARDEN
 	db 31, GUILLOTINE
 	db 34, X_SCISSOR
+	db 35, THRASH
 	db 37, SUBMISSION
+	db 40, DARK_PULSE
 	db 43, SWORDS_DANCE
+	db 49, SLASH
 	db 0
 
 ElectrodeEvosMoves:
@@ -2095,11 +2111,18 @@ AnchorageEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 8, BUBBLE
 	db 10, SUPERSONIC
-	db 15, HORN_ATTACK
-	db 29, FURY_ATTACK
-	db 41, WATERFALL
-	db 49, HORN_DRILL
+	db 12, BITE
+	db 15, WATER_GUN
+	db 17, FOCUS_ENERGY
+	db 20, SCREECH
+	db 26, BUBBLEBEAM
+	db 34, IRON_TAIL
+	db 40, CRUNCH
+	db 49, TAKE_DOWN
+	db 54, DOUBLE_EDGE
+	db 57, HYDRO_PUMP
 	db 61, AGILITY
 	db 0
 
@@ -2226,11 +2249,12 @@ EspeonEvosMoves:
 	db 0
 ; Learnset
 	db 8, SAND_ATTACK
-	db 16, PURSUIT
+	db 16, CONFUSION
 	db 23, QUICK_ATTACK
 	db 30, CONFUSE_RAY
-	db 40, DARK_PULSE
-	db 47, SCREECH
+	db 32, SWIFT
+	db 36, PSYBEAM
+	db 47, PSYCHIC_M
 	db 50, TAKE_DOWN
 	db 0
 
@@ -2263,12 +2287,13 @@ LugiaEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 11, BARRIER
+	db 15, DRAGON_RUSH
 	db 22, SWIFT
+	db 44, HYDRO_PUMP
 	db 55, MIST
 	db 66, PSYCHIC_M
-	db 77, AMNESIA
 	db 88, RECOVER
+	db 99, SKY_ATTACK
 	db 0
 
 WolfmanEvosMoves:
@@ -2278,9 +2303,13 @@ WolfmanEvosMoves:
 ; Learnset
 	db 5, GROWL
 	db 16, AURORA_BEAM
-	db 21, REST
+	db 20, MIST
+	db 25, REST
 	db 32, TAKE_DOWN
 	db 37, ICE_BEAM
+	db 40, AMNESIA
+	db 45, BLIZZARD
+	db 55, THRASH
 	db 0
 
 WarwolfEvosMoves:
@@ -2289,9 +2318,15 @@ WarwolfEvosMoves:
 ; Learnset
 	db 5, GROWL
 	db 16, AURORA_BEAM
-	db 21, REST
+	db 20, MIST
+	db 25, REST
 	db 32, TAKE_DOWN
-	db 43, ICE_BEAM
+	db 35, METAL_CLAW
+	db 37, ICE_BEAM
+	db 40, AMNESIA
+	db 42, FLASH_CANNON
+	db 45, BLIZZARD
+	db 55, THRASH
 	db 0
 
 AnnihilapeEvosMoves:

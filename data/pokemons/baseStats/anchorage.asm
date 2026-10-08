@@ -1,13 +1,13 @@
 db DEX_ANCHORAGE ; pokedex id
-db 80 ; base hp
-db 92 ; base attack
-db 65 ; base defense
-db 68 ; base speed
-db 80 ; base special
+db 70 ; base hp
+db 140 ; base attack
+db 70 ; base defense
+db 105 ; base speed
+db 110 ; base special
 db WATER ; species type 1
 db STEEL ; species type 2
 db 60 ; catch rate
-db 170 ; base exp yield
+db 175 ; base exp yield
 INCBIN "gfx/pokemon/front/anchorage.pic",0,1 ; 77, sprite dimensions
 dw AnchoragePicFront
 dw AnchoragePicBack
