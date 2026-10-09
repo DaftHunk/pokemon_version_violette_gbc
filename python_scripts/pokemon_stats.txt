@@ -36,7 +36,8 @@ Dugtrio|50|100|50|120|70
 Eevee|70|65|65|55|70
 Ekans|35|60|44|55|40
 Electabuzz|65|93|57|105|95
-Electrode|60|50|70|140|80
+Electrode|60|50|70|150|80
+Espeon|65|65|60|110|130
 Exeggcute|60|40|80|40|60
 Exeggutor|95|95|85|55|125
 Farfetchd|62|115|95|85|70
