@@ -952,7 +952,7 @@ GolbatDexEntry:
 	db "@"
 	
 MewtwoDexEntry:	
-	db "Genetique@"
+	db "Génétique@"
 	db 2,00
 	dw 1220
 	TX_FAR _MewtwoDexEntry
@@ -1365,7 +1365,7 @@ MissingNoDexEntry:
 	db "@"
 
 MewtwoArmorDexEntry:
-	db "Genetique@"
+	db "Génétique@"
 	db 2,00
 	dw 1520
 	TX_FAR _MewtwoArmorDexEntry
@@ -1402,7 +1402,7 @@ SlowkingDexEntry:
 LickilickyDexEntry:
 	db "Lécheur@"
 	db 1,70
-	dw 1400
+	dw 1523
 	TX_FAR _LickilickyDexEntry
 	db "@"
 
@@ -1444,7 +1444,7 @@ AnchorageDexEntry:
 EspeonDexEntry:
 	db "Soleil@"
 	db 0,90
-	dw 584
+	dw 265
 	TX_FAR _EspeonDexEntry
 	db "@"
 

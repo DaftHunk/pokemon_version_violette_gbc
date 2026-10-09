@@ -1783,7 +1783,7 @@ _WarwolfDexEntry::
 	next "est extrêmement"
 	next "protecteur envers"
 
-	bage "les Ptiloulou. Ses"
+	bage "ses Ptiloulou. Ses"
 	next "griffes d'acier"
 	next "sont redoutables"
 	dex

@@ -135,8 +135,6 @@ const_value = 1
 	const DEX_SEAKING       ; 133
 	const DEX_STARYU        ; 134
 	const DEX_STARMIE       ; 135
-	const DEX_MARILL        ; 136
-	const DEX_AZUMARILL     ; 137
 	const DEX_MR_MIME       ; 138
 	const DEX_SCYTHER       ; 139
 	const DEX_SCIZOR        ; 140
@@ -150,10 +148,9 @@ const_value = 1
 	const DEX_MAGIKARP      ; 148
 	const DEX_GYARADOS      ; 149
 	const DEX_LAPRAS        ; 150
-	const DEX_ANCHORAGE     ; 151
+	const DEX_MARILL        ; 136
+	const DEX_AZUMARILL     ; 137
 	const DEX_SNEASEL       ; 152
-	const DEX_WOLFMAN       ; 153
-	const DEX_WARWOLF       ; 154
 	const DEX_DITTO         ; 155
 	const DEX_EEVEE         ; 156
 	const DEX_VAPOREON      ; 157
@@ -167,6 +164,9 @@ const_value = 1
 	const DEX_KABUTO        ; 165
 	const DEX_KABUTOPS      ; 166
 	const DEX_AERODACTYL    ; 167
+	const DEX_ANCHORAGE     ; 151
+	const DEX_WOLFMAN       ; 153
+	const DEX_WARWOLF       ; 154
 	const DEX_SNORLAX       ; 168
 	const DEX_ARTICUNO      ; 169
 	const DEX_ZAPDOS        ; 170

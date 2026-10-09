@@ -31,7 +31,7 @@ db 0 ; growth rate
 ; 41 -> 48
 	tmlearn tm44_REST
 ; 49 -> 56
-	tmlearn tm50_SUBSTITUTE, hm02_CUT, hm03_SURF, hm04_STRENGTH
+	tmlearn tm50_SUBSTITUTE, hm01_CUT, hm03_SURF, hm04_STRENGTH
 ;   db 0 ; padding
 	db BANK(WarwolfPicFront)
 	assert BANK(WarwolfPicFront) == BANK(WarwolfPicBack)

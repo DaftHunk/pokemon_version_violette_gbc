@@ -159,7 +159,7 @@ MonsterNames:
 	db "Poissoroy@"
 	db "Lugia@@@@@"
 	db "Ptiloulou@"
-	db "Yetiloulou"
+	db "Groloulou@"
 	db "Corousinge"
 	db "Ponyta@@@@"
 	db "Galopa@@@@"
