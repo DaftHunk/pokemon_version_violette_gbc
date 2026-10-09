@@ -6,9 +6,9 @@ Route20Object:
 	warp 58, 15, 2, SEAFOAM_ISLANDS_1F
 
 	db 3 ; signs
-	sign 46,  8, 11 ; Route20Text11
-	sign 60, 16, 12 ; Route20Text12
-	sign 42,  7, 13 ; Route20Text_Lighthouse
+	sign 46,  8, 11 ; Route20Text_Sign
+	sign 60, 16, 11 ; Route20Text_Sign
+	sign 42,  7, 12 ; Route20Text_Lighthouse
 
 	db 10 ; objects
 	object SPRITE_SWIMMER, 87, 10, STAY, UP, 1, OPP_SWIMMER, 9
