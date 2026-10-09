@@ -16,7 +16,7 @@ Route16WestGateObject:
 	db 0 ; objects
 
 	; warp-to
-	warp_to 0, 14, ROUTE_16_WEST_HOUSE_WIDTH
-	warp_to 0, 15, ROUTE_16_WEST_HOUSE_WIDTH
-	warp_to 7, 14, ROUTE_16_WEST_HOUSE_WIDTH
-	warp_to 7, 15, ROUTE_16_WEST_HOUSE_WIDTH
+	warp_to 0, 14, ROUTE_16_WEST_GATE_WIDTH
+	warp_to 0, 15, ROUTE_16_WEST_GATE_WIDTH
+	warp_to 7, 14, ROUTE_16_WEST_GATE_WIDTH
+	warp_to 7, 15, ROUTE_16_WEST_GATE_WIDTH

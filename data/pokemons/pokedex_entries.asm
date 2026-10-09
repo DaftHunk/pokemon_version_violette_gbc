@@ -616,7 +616,7 @@ PoliwagDexEntry:
 	db "@"
 	
 JynxDexEntry:	
-	db "Humanoide@"
+	db "Humanoïde@"
 	db 1,40
 	dw 406
 	TX_FAR _JynxDexEntry
@@ -1064,7 +1064,7 @@ PidgeotDexEntry:
 	db "@"
 	
 StarmieDexEntry:	
-	db "Mysterieux@"
+	db "Mystérieux@"
 	db 1,10
 	dw 800
 	TX_FAR _StarmieDexEntry
@@ -1260,7 +1260,7 @@ HeracrossDexEntry:
 	db "@"
 
 CrobatDexEntry:
-	db "Chovsouris@"
+	db "ChovSouris@"
 	db 1,80
 	dw 750
 	TX_FAR _CrobatDexEntry

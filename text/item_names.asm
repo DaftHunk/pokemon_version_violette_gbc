@@ -58,7 +58,7 @@ ItemNames:
 	db "Max Repousse@"
 	db "Muscle +@"
 	db "Jetons@"
-	db "Eau Fraiche@"
+	db "Eau Fraîche@"
 	db "Soda Cool@"
 	db "Limonade@"
 	db "Passe Bateau@"
