@@ -103,6 +103,7 @@ HiddenObjectMaps:
 	db ROUTE_18_GATE_2F
 	db ROUTE_20
 	db MT_MOON_SQUARE
+	db ROUTE_16
 	db $FF
 
 HiddenObjectPointers:
@@ -211,6 +212,7 @@ HiddenObjectPointers:
 	dw Route18GateUpstairsHiddenObjects
 	dw Route20HiddenObjects
 	dw MtMoonSquareHiddenObjects
+	dw Route16HiddenObjects
 	
 ; format: y-coord, x-coord, text id/item id, object routine
 TradeCenterHiddenObjects:
@@ -566,7 +568,7 @@ RockTunnelPokecenterHiddenObjects:
 ViridianForestHiddenObjects:
 	db $12,$01,POTION
 	dbw BANK(HiddenItems),HiddenItems
-	db $2a,$10,ANTIDOTE
+	db $2a,$11,ANTIDOTE
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 MtMoonB2FHiddenObjects:
@@ -588,9 +590,9 @@ Route22HiddenObjects:	;joenote - added hidden item
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 Route25HiddenObjects:	
-	db $03,$26,ETHER
+	db $05,$36,ETHER
 	dbw BANK(HiddenItems),HiddenItems
-	db $01,$0a,ELIXER
+	db $04,$0a,ELIXER
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 Route8HiddenObjects:	;joenote - added hidden item
@@ -686,7 +688,7 @@ CopycatsHouse2FHiddenObjects:
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 UnknownDungeon1HiddenObjects:
-	db $0b,$0e,RARE_CANDY
+	db $0a,$0d,RARE_CANDY
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 UnknownDungeon3HiddenObjects:
@@ -773,7 +775,7 @@ BillsHouseHiddenObjects:
 ViridianCityHiddenObjects:
 	db $04,$0e,POTION
 	dbw BANK(HiddenItems),HiddenItems
-	db $04,$06,POTION	;joenote - added hidden item
+	db $0b,$24,POTION	;joenote - added hidden item
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 PewterCityHiddenObjects:	;joenote - added hidden items
@@ -896,8 +898,6 @@ SilphCo11FHiddenObjects:
 Route17HiddenObjects:
 	db $0e,$0f,RARE_CANDY
 	dbw BANK(HiddenItems),HiddenItems
-	db $2d,$08,FULL_RESTORE
-	dbw BANK(HiddenItems),HiddenItems
 	db $48,$11,PP_UP
 	dbw BANK(HiddenItems),HiddenItems
 	db $5b,$04,MAX_REVIVE
@@ -906,7 +906,7 @@ Route17HiddenObjects:
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 UndergroundPathNsHiddenObjects:
-	db $04,$03,FULL_RESTORE
+	db $08,$06,FULL_RESTORE
 	dbw BANK(HiddenItems),HiddenItems
 	db $22,$04,X_SPECIAL
 	dbw BANK(HiddenItems),HiddenItems
@@ -931,7 +931,7 @@ SeafoamIslands4HiddenObjects:
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 VermilionCityHiddenObjects:
-	db $0b,$0e,MAX_ETHER
+	db $0c,$22,MAX_ETHER
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 CeruleanCityHiddenObjects:
@@ -992,10 +992,14 @@ Route18GateUpstairsHiddenObjects:
 	dw Route18GateRightBinoculars
 	db $FF
 Route20HiddenObjects:
-	db $12,$35,WATER_STONE
+	db $12,$35,SOUL_STONE
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 MtMoonSquareHiddenObjects:
 	db $08,$08,MOON_STONE
+	dbw BANK(HiddenItems),HiddenItems
+	db $FF
+Route16HiddenObjects:
+	db $0f,$18,SOUL_STONE
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
