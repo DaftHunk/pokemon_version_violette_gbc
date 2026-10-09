@@ -169,8 +169,7 @@ Route20TextPointers:
 	dw Route20Text8
 	dw Route20Text9
 	dw Route20Text10
-	dw Route20Text11
-	dw Route20Text12
+	dw Route20Text_Sign
 	dw Route20Text_Lighthouse
 
 Route20TrainerHeader0:
@@ -445,9 +444,8 @@ Route20AfterBattleText10:
 	TX_FAR _Route20AfterBattleText10
 	db "@"
 
-Route20Text12:
-Route20Text11:
-	TX_FAR _Route20Text11
+Route20Text_Sign:
+	TX_FAR _Route20Text_Sign
 	db "@"
 
 Route20Text_Lighthouse:

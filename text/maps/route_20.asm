@@ -162,8 +162,7 @@ _Route20AfterBattleText10::
 	cont "volcanique!"
 	done
 
-_Route20Text12::
-_Route20Text11::
+_Route20Text_Sign::
 	text "Iles Ecume"
 	done
 

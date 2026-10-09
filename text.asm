@@ -2611,7 +2611,6 @@ SECTION "Text 8", ROMX, BANK[TEXT_8]
 
 INCLUDE "text/maps/vermilion_gym_2.asm"
 INCLUDE "text/maps/vermilion_house.asm"
-INCLUDE "text/maps/vermilion_dock.asm"
 INCLUDE "text/maps/vermilion_fishing_house.asm"
 INCLUDE "text/maps/celadon_dept_store_1f.asm"
 INCLUDE "text/maps/celadon_dept_store_2f.asm"

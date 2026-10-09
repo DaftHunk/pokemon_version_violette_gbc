@@ -11,7 +11,7 @@ PokemonTower7Object:
 	object SPRITE_ROCKET, 12, 9, STAY, LEFT, 2, OPP_ROCKET, 18
 	object SPRITE_JESSIE, 9, 7, STAY, RIGHT, 3, OPP_JESSIE_JAMES, 3 ;Jessie
 	object SPRITE_MR_FUJI, 10, 3, STAY, DOWN, 4 ; person
-	object SPRITE_JAMES, 10, 6, STAY, DOWN, 5 ; James
+	object SPRITE_JAMES, 10, 6, STAY, DOWN, 3 ; James
 
 	; warp-to
 	warp_to 9, 16, POKEMONTOWER_7F_WIDTH ; POKEMONTOWER_6F
