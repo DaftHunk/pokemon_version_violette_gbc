@@ -1,5 +1,5 @@
 db DEX_MAGMAR_S ; pokedex id
-db 100 ; base hp
+db 150 ; base hp
 db 95 ; base attack
 db 57 ; base defense
 db 93 ; base speed

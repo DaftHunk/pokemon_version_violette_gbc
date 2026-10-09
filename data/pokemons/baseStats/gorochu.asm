@@ -1,6 +1,6 @@
 db DEX_GOROCHU ; pokedex id
 db 60 ; base hp
-db 100 ; base attack
+db 90 ; base attack
 db 55 ; base defense
 db 130 ; base speed
 db 130 ; base special

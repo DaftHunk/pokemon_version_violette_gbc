@@ -1,9 +1,9 @@
 db DEX_ANNIHILAPE ; pokedex id
-db 110 ; base hp
+db 100 ; base hp
 db 115 ; base attack
 db 80 ; base defense
 db 90 ; base speed
-db 90 ; base special
+db 80 ; base special
 db FIGHTING ; species type 1
 db GHOST ; species type 2
 db 45 ; catch rate
