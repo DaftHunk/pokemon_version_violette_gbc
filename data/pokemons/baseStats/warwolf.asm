@@ -1,9 +1,9 @@
 db DEX_WARWOLF ; pokedex id
-db 90 ; base hp
-db 70 ; base attack
+db 100 ; base hp
+db 100 ; base attack
 db 80 ; base defense
-db 70 ; base speed
-db 95 ; base special
+db 50 ; base speed
+db 90 ; base special
 db ICE ; species type 1
 db STEEL ; species type 2
 db 75 ; catch rate

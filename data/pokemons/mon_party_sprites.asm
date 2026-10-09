@@ -134,8 +134,6 @@ MonPartyData:
 	db ICON_SEAKING       ; Seaking
 	db ICON_STARYU        ; Staryu
 	db ICON_STARMIE       ; Starmie
-	db ICON_MARILL        ; Marill
-	db ICON_AZUMARILL     ; Azumarill
 	db ICON_MR_MIME       ; Mr.Mime
 	db ICON_SCYTHER       ; Scyther
 	db ICON_SCIZOR        ; Scizor
@@ -149,10 +147,9 @@ MonPartyData:
 	db ICON_MAGIKARP      ; Magikarp
 	db ICON_GYARADOS      ; Gyarados
 	db ICON_LAPRAS        ; Lapras
-	db ICON_ANCHORAGE     ; Anchorage
+	db ICON_MARILL        ; Marill
+	db ICON_AZUMARILL     ; Azumarill
 	db ICON_SNEASEL       ; Sneasel
-	db ICON_WOLFMAN       ; Wolfman
-	db ICON_WARWOLF       ; Warwolf
 	db ICON_DITTO         ; Ditto
 	db ICON_EEVEE         ; Eevee
 	db ICON_VAPOREON      ; Vaporeon
@@ -166,6 +163,9 @@ MonPartyData:
 	db ICON_KABUTO        ; Kabuto
 	db ICON_KABUTOPS      ; Kabutops
 	db ICON_AERODACTYL    ; Aerodactyl
+	db ICON_ANCHORAGE     ; Anchorage
+	db ICON_WOLFMAN       ; Wolfman
+	db ICON_WARWOLF       ; Warwolf
 	db ICON_SNORLAX       ; Snorlax
 	db ICON_ARTICUNO      ; Articuno
 	db ICON_ZAPDOS        ; Zapdos

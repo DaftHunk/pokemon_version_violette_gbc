@@ -137,8 +137,6 @@ const_value = 0
 	const ICON_SEAKING
 	const ICON_STARYU
 	const ICON_STARMIE
-	const ICON_MARILL
-	const ICON_AZUMARILL
 	const ICON_MR_MIME
 	const ICON_SCYTHER
 	const ICON_SCIZOR
@@ -152,10 +150,9 @@ const_value = 0
 	const ICON_MAGIKARP
 	const ICON_GYARADOS
 	const ICON_LAPRAS
-	const ICON_ANCHORAGE
+	const ICON_MARILL
+	const ICON_AZUMARILL
 	const ICON_SNEASEL
-	const ICON_WOLFMAN
-	const ICON_WARWOLF
 	const ICON_DITTO
 	const ICON_EEVEE
 	const ICON_VAPOREON
@@ -169,6 +166,9 @@ const_value = 0
 	const ICON_KABUTO
 	const ICON_KABUTOPS
 	const ICON_AERODACTYL
+	const ICON_ANCHORAGE
+	const ICON_WOLFMAN
+	const ICON_WARWOLF
 	const ICON_SNORLAX
 	const ICON_ARTICUNO
 	const ICON_ZAPDOS

@@ -1,6 +1,6 @@
 db DEX_ANCHORAGE ; pokedex id
 db 70 ; base hp
-db 140 ; base attack
+db 100 ; base attack
 db 70 ; base defense
 db 105 ; base speed
 db 110 ; base special
