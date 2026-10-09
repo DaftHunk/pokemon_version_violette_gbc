@@ -68,9 +68,6 @@ GetRandRoster:
 	push de
 	ld b, 6
 	ld de, ListNonLegendPkmn
-	CheckEvent EVENT_GOT_DEX_DIPLOMA	;check for diploma
-	jp z, GetRandRosterLoop	;no mew if no diploma
-	ld de, ListNonLegendPkmn
 	jp GetRandRosterLoop
 GetRandRoster3:	;3-mon party
 	push bc

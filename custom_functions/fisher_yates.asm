@@ -68,22 +68,29 @@ _ReplaceMon:
 	ret nz
 	
 	ld a, [wRandomizerSeed]
-	and a 
+	and a
 	jr nz, .no_update
+; fallthrough
 .callRand	;do not allow a seed value of zero
-	call Random	
+	call Random
 	and a
 	jr z, .callRand
+
 	ld [wRandomizerSeed], a
+; fallthrough
 .no_update
 	ld [wTempIVFlags], a
 	
 	CheckEvent EVENT_ENABLE_WILD_RANDOM_TIERS
-	jr z, .tieredRandom
+	jr nz, .tieredRandom
+
 	ld hl, MonListTrueRandom
+
 	CheckEvent EVENT_GOT_STARTER
 	jr nz, .notstarter_trueRandom
+
 	ld hl, MonListTrueRandom_Starter
+; fallthrough
 .notstarter_trueRandom
 	ld a, [wcf91]
 	ld de, $0001
@@ -91,12 +98,14 @@ _ReplaceMon:
 	call IsInArray
 	pop hl
 	jr c, .listfound
-
+; fallthrough
 .tieredRandom
 	ld hl, MonListC
 	CheckEvent EVENT_GOT_STARTER
 	jr nz, .notstarter
+
 	ld hl, MonListStarter
+; fallthrough
 .notstarter
 	ld a, [wcf91]
 	ld de, $0001

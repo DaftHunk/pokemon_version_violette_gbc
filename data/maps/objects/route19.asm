@@ -5,12 +5,11 @@ Route19Object:
 	db 1 ; warps
 	warp 3, 7, 0, ROUTE_19_BEACH_HOUSE
 
-	db 3
+	db 3 ; signs
 	sign 11,  9, 12 ; Route19Text11
 	sign  5, 11, 13 ; _TXTDrinkStandSign
 	sign  3,  9, 14
 
-;	db 10 ; objects
 	db 11 ; objects
 	object SPRITE_BLACK_HAIR_BOY_1, 6, 7, STAY, RIGHT, 1, OPP_SWIMMER, 2
 	object SPRITE_BLACK_HAIR_BOY_1, 13, 7, STAY, LEFT, 2, OPP_SWIMMER, 3

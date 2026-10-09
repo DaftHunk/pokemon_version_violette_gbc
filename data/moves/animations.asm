@@ -185,23 +185,23 @@ AttackAnimationPointers:
 	dw TradeBallPoofAnim
 	dw XStatItemAnim
 	dw XStatItemAnim
-	dw ShrinkingSquareAnim	;B0
+	dw ShrinkingSquareAnim
 	dw ShrinkingSquareAnim
 	dw XStatItemBlackAnim
 	dw XStatItemBlackAnim
 	dw ShrinkingSquareBlackAnim
 	dw ShrinkingSquareBlackAnim
-	dw BurnAnim	;$B6
+	dw BurnAnim
 	dw BurnAnim	
 	dw ParalyzeAnim
 	dw ParalyzeAnim
-	dw PoisonAnim	;BA
+	dw PoisonAnim
 	dw PoisonAnim
 	dw SleepPlayerAnim
 	dw SleepEnemyAnim
 	dw ConfusedPlayerAnim
 	dw ConfusedEnemyAnim
-	dw FaintAnim	;C0
+	dw FaintAnim
 	dw BallTossAnim
 	dw BallShakeAnim
 	dw BallPoofAnim
@@ -211,7 +211,7 @@ AttackAnimationPointers:
 	dw ShakeScreenAnim
 	dw HidePicAnim
 	dw ThrowRockAnim
-	dw ThrowBaitAnim	;CA
+	dw ThrowBaitAnim
 	dw ZigZagScreenAnim
 	dw UnusedAnim
 

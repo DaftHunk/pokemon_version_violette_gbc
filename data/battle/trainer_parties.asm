@@ -755,7 +755,7 @@ SoldierData:
 ; VictoryRoad2F
 	db 51,PRIMEAPE,BLASTOISE,SCYTHER,RAICHU,0
 
-FireFighterData::
+FireFighterData:
 ; Volcano1F
 	db 43,POLIWRATH,BLASTOISE,0
 	db 40,STARMIE,GOLDUCK,0
