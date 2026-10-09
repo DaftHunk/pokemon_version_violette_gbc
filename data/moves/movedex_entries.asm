@@ -171,12 +171,12 @@ MovedexEntryPointers:
 	dw CrunchDexEntry      ; a7 ; dafthunk #20
 	dw MetalClawDexEntry   ; a8 ; dafthunk #20
 	dw IronTailDexEntry    ; a9 ; dafthunk #20
-	dw XScissorDexEntry    ; a5 ; dafthunk #128
-	dw GigaDrainDexEntry   ; a6 ; dafthunk #128
-	dw DarkPulseDexEntry   ; a7 ; dafthunk #128
-	dw ShadowBallDexEntry  ; a8 ; dafthunk #128
-	dw DragonRushDexEntry  ; a9 ; dafthunk #128
-	dw FlashCannonDexEntry ; a9 ; dafthunk #128
+	dw XScissorDexEntry    ; aa ; dafthunk #128
+	dw GigaDrainDexEntry   ; ab ; dafthunk #128
+	dw DarkPulseDexEntry   ; ac ; dafthunk #128
+	dw ShadowBallDexEntry  ; ad ; dafthunk #128
+	dw DragonRushDexEntry  ; ae ; dafthunk #128
+	dw FlashCannonDexEntry ; af ; dafthunk #128
 	dw StruggleDexEntry
 	assert_table_length NUM_ATTACKS + 1
 

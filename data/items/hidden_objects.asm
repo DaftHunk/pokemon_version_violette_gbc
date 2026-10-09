@@ -62,7 +62,7 @@ HiddenObjectMaps:
 	db POKEMON_MANSION_3F
 	db ROUTE_23
 	db VICTORY_ROAD_2
-	db $6F
+	db ROUTE_16_WEST_HOUSE
 	db BILLS_HOUSE
 	db VIRIDIAN_CITY
 	db PEWTER_CITY	;joenote - added hidden items

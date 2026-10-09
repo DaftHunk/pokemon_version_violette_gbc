@@ -54,7 +54,7 @@ WildDataPointers:
 	dw NoMons
 	dw NoMons
 	dw NoMons
-	dw ForestMons ; ViridianForest
+	dw ForestMons ; VIRIDIAN_FOREST
 	dw NoMons
 	dw NoMons
 	dw NoMons

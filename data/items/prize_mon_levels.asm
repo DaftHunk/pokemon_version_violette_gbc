@@ -2,7 +2,7 @@
 PrizeMonLevelDictionary:
 	db ABRA,      8
 	db PIKACHU,  12
-	db HORSEA,   18
+	db EEVEE,    18
 
 	db LARVITAR, 24
 	db DRATINI,  24

@@ -86,6 +86,7 @@ SuperRodData:
 	dbw ROUTE_11, FishingGroup4
 	dbw ROUTE_12, FishingGroup7
 	dbw ROUTE_13, FishingGroup7
+	dbw ROUTE_16_WEST, FishingGroup7
 	dbw ROUTE_17, FishingGroup7
 	dbw ROUTE_18, FishingGroup7
 	dbw ROUTE_19, FishingGroup8
@@ -94,6 +95,7 @@ SuperRodData:
 	dbw ROUTE_22, FishingGroup1
 	dbw ROUTE_23, FishingGroup9
 	dbw ROUTE_24, FishingGroup3
+	dbw BILLS_GARDEN, FishingGroup3
 	dbw ROUTE_25, FishingGroup3
 	dbw CERULEAN_GYM, FishingGroup3
 	dbw VERMILION_DOCK, FishingGroup4
