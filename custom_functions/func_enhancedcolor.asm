@@ -81,7 +81,7 @@ GBCEnhancedOverworldPalettes:
 	RGB  0,  1, 25
 	GBCEnh_Black
 	
-GBCEnhancedOverworldPalettes_ColdCavern:	;just used for seafoam islands for aesthetic
+GBCEnhancedOverworldPalettes_ColdCavern: ; more purple palette
 	; PAL_ENH_OVW_RED     	; $00
 	GBCEnh_White
 	RGB 31, 10,  0
