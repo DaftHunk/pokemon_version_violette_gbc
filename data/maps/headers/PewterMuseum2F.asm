@@ -1,5 +1,5 @@
 Museum2F_h:
-	db MUSEUM ; tileset
+	db GATE ; tileset
 	db PEWTER_MUSEUM_2F_HEIGHT, PEWTER_MUSEUM_2F_WIDTH ; dimensions (y, x)
 	dw Museum2FBlocks, Museum2FTextPointers, Museum2FScript ; blocks, texts, scripts
 	db 0 ; connections

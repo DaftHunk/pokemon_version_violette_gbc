@@ -56,15 +56,13 @@ BookshelfTileIDs:
 	db_tx_pre BookOrSculptureText
 	db MANSION,      $32
 	db_tx_pre BookOrSculptureText
-	db PALLET_REDS_HOUSE_1, $32
+	db PALLET_REDS_HOUSE, $32
 	db_tx_pre BookOrSculptureText
 	db LAB,          $28
 	db_tx_pre BookOrSculptureText
 	db LOBBY,        $16
 	db_tx_pre ElevatorText
 	db GYM,          $1D
-	db_tx_pre BookOrSculptureText
-	db DOJO,         $1D
 	db_tx_pre BookOrSculptureText
 	db GATE,         $22
 	db_tx_pre BookOrSculptureText

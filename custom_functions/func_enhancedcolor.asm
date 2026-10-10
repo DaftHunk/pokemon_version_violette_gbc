@@ -181,16 +181,12 @@ GBCEnhancedOverworldPalettes_DarkCavern:	;palette set used for darkened areas li
 	
 OverworldTilePalPointers:
 	dw PalSettings_OVERWORLD    ; 0
-	dw PalSettings_PALLET_REDS_HOUSE_1 ; 1
+	dw PalSettings_PALLET_REDS_HOUSE ; 1
 	dw PalSettings_MART         ; 2
 	dw PalSettings_FOREST       ; 3
-	dw PalSettings_PALLET_REDS_HOUSE_2 ; 4
-	dw PalSettings_DOJO         ; 5
 	dw PalSettings_POKECENTER   ; 6
 	dw PalSettings_GYM          ; 7
 	dw PalSettings_HOUSE        ; 8
-	dw PalSettings_FOREST_GATE  ; 9
-	dw PalSettings_MUSEUM       ; 10
 	dw PalSettings_UNDERGROUND  ; 11
 	dw PalSettings_GATE         ; 12
 	dw PalSettings_SHIP         ; 13
@@ -227,8 +223,7 @@ db	4,	4,	4,	8,	6,	6,	3,	3,	6,	6,	8,	8,	8,	8,	5,	5;
 db	6,	6,	6,	6,	6,	3,	3,	3,	8,	8,	8,	8,	8,	8,	5,	5;
 ;	70	71	72	73	74	75	76	77	78	79	7A	7B	7C	7D	7E	7F
 db	6,	6,	3,	7,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6;
-PalSettings_PALLET_REDS_HOUSE_1:	; 1		-done
-PalSettings_PALLET_REDS_HOUSE_2:	; 4
+PalSettings_PALLET_REDS_HOUSE:	; 1		-done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	4,	3,	3,	3,	0,	3,	7,	7,	4,	4,	6,	6,	6,	6,	3,	3;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
@@ -272,7 +267,6 @@ db	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	7,	7,	3,	3,	3,	3;
 db	6,	6,	0,	0,	7,	7,	7,	4,	4,	4,	4,	4,	4,	4,	4,	4;
 ;	70	71	72	73	74	75	76	77	78	79	7A	7B	7C	7D	7E	7F
 db	6,	6,	0,	0,	7,	7,	7,	0,	0,	0,	0,	0,	1,	1,	1,	1;
-PalSettings_DOJO:        	; 5
 PalSettings_GYM:          	; 7		- done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	3,	6,	6,	1,	6,	7,	0,	6,	6,	7,	7,	6,	6,	7,	7,	3;
@@ -307,8 +301,6 @@ db	6,	6,	6,	6,	7,	7,	6,	6,	4,	4,	4,	4,	6,	6,	3,	3;
 db	6,	6,	6,	6,	6,	6,	3,	3,	6,	6,	6,	6,	6,	6,	5,	5;
 ;	70	71	72	73	74	75	76	77	78	79	7A	7B	7C	7D	7E	7F
 db	6,	6,	6,	6,	6,	6,	3,	3,	3,	6,	6,	6,	6,	6,	6,	6;
-PalSettings_FOREST_GATE:  	; 9
-PalSettings_MUSEUM:       	; 10
 PalSettings_GATE:         	; 12	- done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	6,	4,	3,	3,	7,	4,	4,	4,	4,	4,	3,	3,	3,	3,	3,	3;

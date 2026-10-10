@@ -31,8 +31,6 @@ DoorTileIDPointers:
 	dbw FOREST,      ForestDoorTileIDs
 	dbw MART,        MartDoorTileIDs
 	dbw HOUSE,       HouseDoorTileIDs
-	dbw FOREST_GATE, TilesetMuseumDoorTileIDs
-	dbw MUSEUM,      TilesetMuseumDoorTileIDs
 	dbw GATE,        TilesetMuseumDoorTileIDs
 	dbw SHIP,        ShipDoorTileIDs
 	dbw LOBBY,       LobbyDoorTileIDs

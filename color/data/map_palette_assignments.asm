@@ -7,16 +7,12 @@
 MapPaletteAssignments:
 	table_width 2, MapPaletteAssignments
 	dw OverworldPalMap   ; OVERWORLD
-	dw RedsHouse1PalMap  ; PALLET_REDS_HOUSE_1
+	dw RedsHousePalMap   ; PALLET_REDS_HOUSE
 	dw MartPalMap        ; MART
 	dw ForestPalMap      ; FOREST
-	dw RedsHouse2PalMap  ; PALLET_REDS_HOUSE_2
-	dw DojoPalMap        ; DOJO
 	dw PokecenterPalMap  ; POKECENTER
 	dw GymPalMap         ; GYM
 	dw HousePalMap       ; HOUSE
-	dw ForestGatePalMap  ; FOREST_GATE
-	dw MuseumPalMap      ; MUSEUM
 	dw UndergroundPalMap ; UNDERGROUND
 	dw GatePalMap        ; GATE
 	dw ShipPalMap        ; SHIP
@@ -35,8 +31,7 @@ MapPaletteAssignments:
 OverworldPalMap:
 	INCLUDE "color/tilesets/overworld.asm"
 
-RedsHouse1PalMap:
-RedsHouse2PalMap:
+RedsHousePalMap:
 	INCLUDE "color/tilesets/reds_house.asm"
 
 MartPalMap:
@@ -46,7 +41,6 @@ PokecenterPalMap:
 ForestPalMap:
 	INCLUDE "color/tilesets/forest.asm"
 
-DojoPalMap:
 GymPalMap:
 	INCLUDE "color/tilesets/gym.asm"
 
@@ -54,8 +48,6 @@ HousePalMap:
 	INCLUDE "color/tilesets/house.asm"
 
 GatePalMap:
-ForestGatePalMap:
-MuseumPalMap:
 	INCLUDE "color/tilesets/gate.asm"
 
 UndergroundPalMap:

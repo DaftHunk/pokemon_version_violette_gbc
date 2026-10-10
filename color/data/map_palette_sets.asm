@@ -2,16 +2,12 @@
 MapPaletteSets:
 	table_width 2, MapPaletteSets
 	dw OverworldPalSet   ; OVERWORLD
-	dw RedsHouse1PalSet  ; PALLET_REDS_HOUSE_1
+	dw RedsHousePalSet   ; PALLET_REDS_HOUSE
 	dw MartPalSet        ; MART
 	dw ForestPalSet      ; FOREST
-	dw RedsHouse2PalSet  ; PALLET_REDS_HOUSE_2
-	dw DojoPalSet        ; DOJO
 	dw PokecenterPalSet  ; POKECENTER
 	dw GymPalSet         ; GYM
 	dw HousePalSet       ; HOUSE
-	dw ForestGatePalSet  ; FOREST_GATE
-	dw MuseumPalSet      ; MUSEUM
 	dw UndergroundPalSet ; UNDERGROUND
 	dw GatePalSet        ; GATE
 	dw ShipPalSet        ; SHIP
@@ -38,9 +34,7 @@ PlateauPalSet:
 	db OUTDOOR_ROOF
 	db CRYS_TEXTBOX
 
-RedsHouse1PalSet:
-RedsHouse2PalSet:
-DojoPalSet:
+RedsHousePalSet:
 GymPalSet:
 HousePalSet:
 ForestGatePalSet:
@@ -92,7 +86,6 @@ PokecenterPalSet:
 	db INDOOR_LIGHT_BLUE
 	db PC_POKEBALL_PAL
 
-MuseumPalSet:
 GatePalSet:
 	db INDOOR_GRAY
 	db INDOOR_RED
