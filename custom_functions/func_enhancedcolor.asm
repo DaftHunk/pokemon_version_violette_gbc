@@ -181,10 +181,10 @@ GBCEnhancedOverworldPalettes_DarkCavern:	;palette set used for darkened areas li
 	
 OverworldTilePalPointers:
 	dw PalSettings_OVERWORLD    ; 0
-	dw PalSettings_REDS_HOUSE_1 ; 1
+	dw PalSettings_PALLET_REDS_HOUSE_1 ; 1
 	dw PalSettings_MART         ; 2
 	dw PalSettings_FOREST       ; 3
-	dw PalSettings_REDS_HOUSE_2 ; 4
+	dw PalSettings_PALLET_REDS_HOUSE_2 ; 4
 	dw PalSettings_DOJO         ; 5
 	dw PalSettings_POKECENTER   ; 6
 	dw PalSettings_GYM          ; 7
@@ -227,8 +227,8 @@ db	4,	4,	4,	8,	6,	6,	3,	3,	6,	6,	8,	8,	8,	8,	5,	5;
 db	6,	6,	6,	6,	6,	3,	3,	3,	8,	8,	8,	8,	8,	8,	5,	5;
 ;	70	71	72	73	74	75	76	77	78	79	7A	7B	7C	7D	7E	7F
 db	6,	6,	3,	7,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6;
-PalSettings_REDS_HOUSE_1:	; 1		-done
-PalSettings_REDS_HOUSE_2:	; 4
+PalSettings_PALLET_REDS_HOUSE_1:	; 1		-done
+PalSettings_PALLET_REDS_HOUSE_2:	; 4
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	4,	3,	3,	3,	0,	3,	7,	7,	4,	4,	6,	6,	6,	6,	3,	3;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
@@ -1399,7 +1399,7 @@ BufferAllEnhancedColorsGBC:
 
 	ld hl, GBCEnhancedOverworldPalettes
 	ld a, [wCurMap]
-	cp LORELEIS_ROOM
+	cp INDIGO_LORELEIS_ROOM
 	jr z, .isColdCavern
 	cp CERULEAN_CAVE_1F
 	jr z, .isColdCavern

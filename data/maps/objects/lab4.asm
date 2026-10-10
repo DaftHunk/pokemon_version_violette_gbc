@@ -2,8 +2,8 @@ Lab4Object:
 	db $17 ; border block
 
 	db 2 ; warps
-	warp 2, 7, 4, CINNABAR_LAB_1
-	warp 3, 7, 4, CINNABAR_LAB_1
+	warp 2, 7, 4, CINNABAR_LAB
+	warp 3, 7, 4, CINNABAR_LAB
 
 	db 0 ; signs
 
@@ -18,5 +18,5 @@ Lab4Object:
 	object SPRITE_BOOK, 7, 2, STAY, NONE, 6 ; person
 
 	; warp-to
-	warp_to 2, 7, CINNABAR_LAB_FOSSIL_ROOM_WIDTH ; CINNABAR_LAB_1
-	warp_to 3, 7, CINNABAR_LAB_FOSSIL_ROOM_WIDTH ; CINNABAR_LAB_1
+	warp_to 2, 7, CINNABAR_LAB_FOSSIL_ROOM_WIDTH ; CINNABAR_LAB
+	warp_to 3, 7, CINNABAR_LAB_FOSSIL_ROOM_WIDTH ; CINNABAR_LAB

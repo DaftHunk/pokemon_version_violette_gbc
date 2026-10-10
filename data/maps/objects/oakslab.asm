@@ -21,5 +21,5 @@ OaksLabObject:
 	object SPRITE_OAK_AIDE, 8, 10, STAY, NONE, 11 ; person
 
 	; warp-to
-	warp_to 4, 11, OAKS_LAB_WIDTH
-	warp_to 5, 11, OAKS_LAB_WIDTH
+	warp_to 4, 11, PALLET_OAKS_LAB_WIDTH
+	warp_to 5, 11, PALLET_OAKS_LAB_WIDTH

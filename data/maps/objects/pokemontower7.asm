@@ -2,7 +2,7 @@ PokemonTower7Object:
 	db $1 ; border block
 
 	db 1 ; warps
-	warp 9, 16, 1, POKEMONTOWER_6F
+	warp 9, 16, 1, LAVENDER_POKEMON_TOWER_6F
 
 	db 0 ; signs
 
@@ -14,4 +14,4 @@ PokemonTower7Object:
 	object SPRITE_JAMES, 10, 6, STAY, DOWN, 3 ; James
 
 	; warp-to
-	warp_to 9, 16, POKEMONTOWER_7F_WIDTH ; POKEMONTOWER_6F
+	warp_to 9, 16, LAVENDER_POKEMON_TOWER_7F_WIDTH ; LAVENDER_POKEMON_TOWER_6F

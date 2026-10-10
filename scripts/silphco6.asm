@@ -16,7 +16,7 @@ SilphCo6Script_1a1bf:
 	ld hl, SilphCo6GateCoords
 	call SilphCo4Script_19d5d
 	call SilphCo6Script_1a1e6
-	CheckEvent EVENT_SILPH_CO_6_UNLOCKED_DOOR
+	CheckEvent EVENT_SAFFRON_SILPH_CO_6_UNLOCKED_DOOR
 	ret nz
 	ld a, $5f
 	ld [wNewTileBlockID], a
@@ -31,7 +31,7 @@ SilphCo6Script_1a1e6:
 	ld a, [$ffe0]
 	and a
 	ret z
-	SetEvent EVENT_SILPH_CO_6_UNLOCKED_DOOR
+	SetEvent EVENT_SAFFRON_SILPH_CO_6_UNLOCKED_DOOR
 	ret
 
 SilphCo6ScriptPointers:
@@ -52,27 +52,27 @@ SilphCo6TextPointers:
 	dw PickUpItemText
 
 SilphCo6TrainerHeader0:
-	dbEventFlagBit EVENT_BEAT_SILPH_CO_6F_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_SAFFRON_SILPH_CO_6F_TRAINER_0
 	db ($2 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SILPH_CO_6F_TRAINER_0
+	dwEventFlagAddress EVENT_BEAT_SAFFRON_SILPH_CO_6F_TRAINER_0
 	dw SilphCo6BattleText2 ; TextBeforeBattle
 	dw SilphCo6AfterBattleText2 ; TextAfterBattle
 	dw SilphCo6EndBattleText2 ; TextEndBattle
 	dw SilphCo6EndBattleText2 ; TextEndBattle
 
 SilphCo6TrainerHeader1:
-	dbEventFlagBit EVENT_BEAT_SILPH_CO_6F_TRAINER_1
+	dbEventFlagBit EVENT_BEAT_SAFFRON_SILPH_CO_6F_TRAINER_1
 	db ($3 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SILPH_CO_6F_TRAINER_1
+	dwEventFlagAddress EVENT_BEAT_SAFFRON_SILPH_CO_6F_TRAINER_1
 	dw SilphCo6BattleText3 ; TextBeforeBattle
 	dw SilphCo6AfterBattleText3 ; TextAfterBattle
 	dw SilphCo6EndBattleText3 ; TextEndBattle
 	dw SilphCo6EndBattleText3 ; TextEndBattle
 
 SilphCo6TrainerHeader2:
-	dbEventFlagBit EVENT_BEAT_SILPH_CO_6F_TRAINER_2, 1
+	dbEventFlagBit EVENT_BEAT_SAFFRON_SILPH_CO_6F_TRAINER_2, 1
 	db ($2 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SILPH_CO_6F_TRAINER_2, 1
+	dwEventFlagAddress EVENT_BEAT_SAFFRON_SILPH_CO_6F_TRAINER_2, 1
 	dw SilphCo6BattleText4 ; TextBeforeBattle
 	dw SilphCo6AfterBattleText4 ; TextAfterBattle
 	dw SilphCo6EndBattleText4 ; TextEndBattle
@@ -81,7 +81,7 @@ SilphCo6TrainerHeader2:
 	db $ff
 
 SilphCo6Script_1a22f:
-	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+	CheckEvent EVENT_BEAT_SAFFRON_SILPH_CO_GIOVANNI
 	jr nz, .asm_1a238
 	jr .asm_1a23a
 .asm_1a238

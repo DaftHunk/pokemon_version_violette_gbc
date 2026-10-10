@@ -12,7 +12,7 @@ VictoryRoad2Script:
 	ret
 
 VictoryRoad2Script_517c9:
-	CheckEvent EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH1
+	CheckEvent EVENT_VICTORY_ROAD_2F_BOULDER_ON_SWITCH1
 	jr z, .asm_517da
 	push af
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -68,17 +68,17 @@ VictoryRoad2Script0:
 	ld hl, CoordsData_51816
 	call CheckBoulderCoords
 	jp nc, CheckFightingMapTrainers
-	EventFlagAddress hl, EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH1
+	EventFlagAddress hl, EVENT_VICTORY_ROAD_2F_BOULDER_ON_SWITCH1
 	ld a, [wCoordIndex]
 	cp $2
 	jr z, .asm_5180b; wispnote - Jump if the boulder is on the second coordinates.
-	CheckEventReuseHL EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH1
-	SetEventReuseHL EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH1
+	CheckEventReuseHL EVENT_VICTORY_ROAD_2F_BOULDER_ON_SWITCH1
+	SetEventReuseHL EVENT_VICTORY_ROAD_2F_BOULDER_ON_SWITCH1
 	ret nz
 	jr .asm_51810
 .asm_5180b
-	CheckEventAfterBranchReuseHL EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH2, EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH1
-	SetEventReuseHL EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH2
+	CheckEventAfterBranchReuseHL EVENT_VICTORY_ROAD_2F_BOULDER_ON_SWITCH2, EVENT_VICTORY_ROAD_2F_BOULDER_ON_SWITCH1
+	SetEventReuseHL EVENT_VICTORY_ROAD_2F_BOULDER_ON_SWITCH2
 	ret nz
 .asm_51810
 	farcall BoulderOnButton
@@ -106,45 +106,45 @@ VictoryRoad2TextPointers:
 	dw BoulderText
 
 VictoryRoad2TrainerHeader0:
-	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_2_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_2F_TRAINER_0
 	db ($4 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_2_TRAINER_0
+	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_2F_TRAINER_0
 	dw VictoryRoad2BattleText1 ; TextBeforeBattle
 	dw VictoryRoad2AfterBattleText1 ; TextAfterBattle
 	dw VictoryRoad2EndBattleText1 ; TextEndBattle
 	dw VictoryRoad2EndBattleText1 ; TextEndBattle
 
 VictoryRoad2TrainerHeader1:
-	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_2_TRAINER_1
+	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_2F_TRAINER_1
 	db ($2 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_2_TRAINER_1
+	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_2F_TRAINER_1
 	dw VictoryRoad2BattleText2 ; TextBeforeBattle
 	dw VictoryRoad2AfterBattleText2 ; TextAfterBattle
 	dw VictoryRoad2EndBattleText2 ; TextEndBattle
 	dw VictoryRoad2EndBattleText2 ; TextEndBattle
 
 VictoryRoad2TrainerHeader2:
-	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_2_TRAINER_2
+	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_2F_TRAINER_2
 	db ($4 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_2_TRAINER_2
+	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_2F_TRAINER_2
 	dw VictoryRoad2BattleText3 ; TextBeforeBattle
 	dw VictoryRoad2AfterBattleText3 ; TextAfterBattle
 	dw VictoryRoad2EndBattleText3 ; TextEndBattle
 	dw VictoryRoad2EndBattleText3 ; TextEndBattle
 
 VictoryRoad2TrainerHeader3:
-	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_2_TRAINER_3
+	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_2F_TRAINER_3
 	db ($4 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_2_TRAINER_3
+	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_2F_TRAINER_3
 	dw VictoryRoad2BattleText4 ; TextBeforeBattle
 	dw VictoryRoad2AfterBattleText4 ; TextAfterBattle
 	dw VictoryRoad2EndBattleText4 ; TextEndBattle
 	dw VictoryRoad2EndBattleText4 ; TextEndBattle
 
 VictoryRoad2TrainerHeader4:
-	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_2_TRAINER_4
+	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_2F_TRAINER_4
 	db ($4 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_2_TRAINER_4
+	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_2F_TRAINER_4
 	dw VictoryRoad2BattleText5 ; TextBeforeBattle
 	dw VictoryRoad2AfterBattleText5 ; TextAfterBattle
 	dw VictoryRoad2EndBattleText5 ; TextEndBattle

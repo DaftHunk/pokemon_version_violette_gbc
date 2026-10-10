@@ -4,7 +4,7 @@ VictoryRoad1Object:
 	db 3 ; warps
 	warp 8, 17, 2, -1
 	warp 9, 17, 2, -1
-	warp 1, 1, 0, VICTORY_ROAD_2
+	warp 1, 1, 0, VICTORY_ROAD_2F
 
 	db 0 ; signs
 
@@ -24,4 +24,4 @@ VictoryRoad1Object:
 	; warp-to
 	warp_to 8, 17, VICTORY_ROAD_1F_WIDTH
 	warp_to 9, 17, VICTORY_ROAD_1F_WIDTH
-	warp_to 1, 1, VICTORY_ROAD_1F_WIDTH ; VICTORY_ROAD_2
+	warp_to 1, 1, VICTORY_ROAD_1F_WIDTH ; VICTORY_ROAD_2F

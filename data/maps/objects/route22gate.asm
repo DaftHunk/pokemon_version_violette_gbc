@@ -6,8 +6,8 @@ Route22GateObject:
 	warp 5, 7, 1, -1
 	warp 4, 0, 0, -1
 	warp 5, 0, 1, -1
-	warp 0, 7, 0, ROUTE_22_GATE_UPSTAIRS
-	warp 9, 7, 1, ROUTE_22_GATE_UPSTAIRS
+	warp 0, 7, 0, ROUTE_22_GATE_2F
+	warp 9, 7, 1, ROUTE_22_GATE_2F
 
 	db 0 ; signs
 
@@ -16,9 +16,9 @@ Route22GateObject:
 	object SPRITE_BUG_CATCHER, 1, 5, WALK, 0,    2 ; person
 	
 	; warp-to
-	warp_to 4, 7, ROUTE_22_GATE_WIDTH
-	warp_to 5, 7, ROUTE_22_GATE_WIDTH
-	warp_to 4, 0, ROUTE_22_GATE_WIDTH
-	warp_to 5, 0, ROUTE_22_GATE_WIDTH
-	warp_to 0, 7, ROUTE_22_GATE_WIDTH
-	warp_to 9, 7, ROUTE_22_GATE_WIDTH
+	warp_to 4, 7, ROUTE_22_GATE_1F_WIDTH
+	warp_to 5, 7, ROUTE_22_GATE_1F_WIDTH
+	warp_to 4, 0, ROUTE_22_GATE_1F_WIDTH
+	warp_to 5, 0, ROUTE_22_GATE_1F_WIDTH
+	warp_to 0, 7, ROUTE_22_GATE_1F_WIDTH
+	warp_to 9, 7, ROUTE_22_GATE_1F_WIDTH

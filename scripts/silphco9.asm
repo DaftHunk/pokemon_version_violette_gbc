@@ -16,7 +16,7 @@ SilphCo9Script_5d7d1:
 	ld hl, SilphCo9GateCoords
 	call SilphCo9Script_5d837
 	call SilphCo9Script_5d863
-	CheckEvent EVENT_SILPH_CO_9_UNLOCKED_DOOR1
+	CheckEvent EVENT_SAFFRON_SILPH_CO_9_UNLOCKED_DOOR1
 	jr nz, .asm_5d7f8
 	push af
 	ld a, $5f
@@ -25,7 +25,7 @@ SilphCo9Script_5d7d1:
 	predef ReplaceTileBlock
 	pop af
 .asm_5d7f8
-	CheckEventAfterBranchReuseA EVENT_SILPH_CO_9_UNLOCKED_DOOR2, EVENT_SILPH_CO_9_UNLOCKED_DOOR1
+	CheckEventAfterBranchReuseA EVENT_SAFFRON_SILPH_CO_9_UNLOCKED_DOOR2, EVENT_SAFFRON_SILPH_CO_9_UNLOCKED_DOOR1
 	jr nz, .asm_5d80b
 	push af
 	ld a, $54
@@ -34,7 +34,7 @@ SilphCo9Script_5d7d1:
 	predef ReplaceTileBlock
 	pop af
 .asm_5d80b
-	CheckEventAfterBranchReuseA EVENT_SILPH_CO_9_UNLOCKED_DOOR3, EVENT_SILPH_CO_9_UNLOCKED_DOOR2
+	CheckEventAfterBranchReuseA EVENT_SAFFRON_SILPH_CO_9_UNLOCKED_DOOR3, EVENT_SAFFRON_SILPH_CO_9_UNLOCKED_DOOR2
 	jr nz, .asm_5d81e
 	push af
 	ld a, $54
@@ -43,7 +43,7 @@ SilphCo9Script_5d7d1:
 	predef ReplaceTileBlock
 	pop af
 .asm_5d81e
-	CheckEventAfterBranchReuseA EVENT_SILPH_CO_9_UNLOCKED_DOOR4, EVENT_SILPH_CO_9_UNLOCKED_DOOR3
+	CheckEventAfterBranchReuseA EVENT_SAFFRON_SILPH_CO_9_UNLOCKED_DOOR4, EVENT_SAFFRON_SILPH_CO_9_UNLOCKED_DOOR3
 	ret nz
 	ld a, $5f
 	ld [wNewTileBlockID], a
@@ -94,28 +94,28 @@ SilphCo9Script_5d837:
 	ret
 
 SilphCo9Script_5d863:
-	EventFlagAddress hl, EVENT_SILPH_CO_9_UNLOCKED_DOOR1
+	EventFlagAddress hl, EVENT_SAFFRON_SILPH_CO_9_UNLOCKED_DOOR1
 	ld a, [$ffe0]
 	and a
 	ret z
 	cp $1
 	jr nz, .next1
-	SetEventReuseHL EVENT_SILPH_CO_9_UNLOCKED_DOOR1
+	SetEventReuseHL EVENT_SAFFRON_SILPH_CO_9_UNLOCKED_DOOR1
 	ret
 .next1
 	cp $2
 	jr nz, .next2
-	SetEventAfterBranchReuseHL EVENT_SILPH_CO_9_UNLOCKED_DOOR2, EVENT_SILPH_CO_9_UNLOCKED_DOOR1
+	SetEventAfterBranchReuseHL EVENT_SAFFRON_SILPH_CO_9_UNLOCKED_DOOR2, EVENT_SAFFRON_SILPH_CO_9_UNLOCKED_DOOR1
 	ret
 .next2
 	cp $3
 	jr nz, .next3
-	SetEventAfterBranchReuseHL EVENT_SILPH_CO_9_UNLOCKED_DOOR3, EVENT_SILPH_CO_9_UNLOCKED_DOOR1
+	SetEventAfterBranchReuseHL EVENT_SAFFRON_SILPH_CO_9_UNLOCKED_DOOR3, EVENT_SAFFRON_SILPH_CO_9_UNLOCKED_DOOR1
 	ret
 .next3
 	cp $4
 	ret nz
-	SetEventAfterBranchReuseHL EVENT_SILPH_CO_9_UNLOCKED_DOOR4, EVENT_SILPH_CO_9_UNLOCKED_DOOR1
+	SetEventAfterBranchReuseHL EVENT_SAFFRON_SILPH_CO_9_UNLOCKED_DOOR4, EVENT_SAFFRON_SILPH_CO_9_UNLOCKED_DOOR1
 	ret
 
 SilphCo9ScriptPointers:
@@ -130,27 +130,27 @@ SilphCo9TextPointers:
 	dw SilphCo9Text4
 
 SilphCo9TrainerHeader0:
-	dbEventFlagBit EVENT_BEAT_SILPH_CO_9F_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_SAFFRON_SILPH_CO_9F_TRAINER_0
 	db ($4 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SILPH_CO_9F_TRAINER_0
+	dwEventFlagAddress EVENT_BEAT_SAFFRON_SILPH_CO_9F_TRAINER_0
 	dw SilphCo9BattleText1 ; TextBeforeBattle
 	dw SilphCo9AfterBattleText1 ; TextAfterBattle
 	dw SilphCo9EndBattleText1 ; TextEndBattle
 	dw SilphCo9EndBattleText1 ; TextEndBattle
 
 SilphCo9TrainerHeader1:
-	dbEventFlagBit EVENT_BEAT_SILPH_CO_9F_TRAINER_1
+	dbEventFlagBit EVENT_BEAT_SAFFRON_SILPH_CO_9F_TRAINER_1
 	db ($2 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SILPH_CO_9F_TRAINER_1
+	dwEventFlagAddress EVENT_BEAT_SAFFRON_SILPH_CO_9F_TRAINER_1
 	dw SilphCo9BattleText2 ; TextBeforeBattle
 	dw SilphCo9AfterBattleText2 ; TextAfterBattle
 	dw SilphCo9EndBattleText2 ; TextEndBattle
 	dw SilphCo9EndBattleText2 ; TextEndBattle
 
 SilphCo9TrainerHeader2:
-	dbEventFlagBit EVENT_BEAT_SILPH_CO_9F_TRAINER_2
+	dbEventFlagBit EVENT_BEAT_SAFFRON_SILPH_CO_9F_TRAINER_2
 	db ($4 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SILPH_CO_9F_TRAINER_2
+	dwEventFlagAddress EVENT_BEAT_SAFFRON_SILPH_CO_9F_TRAINER_2
 	dw SilphCo9BattleText3 ; TextBeforeBattle
 	dw SilphCo9AfterBattleText3 ; TextAfterBattle
 	dw SilphCo9EndBattleText3 ; TextEndBattle
@@ -160,7 +160,7 @@ SilphCo9TrainerHeader2:
 
 SilphCo9Text1:
 	TX_ASM
-	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+	CheckEvent EVENT_BEAT_SAFFRON_SILPH_CO_GIOVANNI
 	jr nz, .asm_5d8dc
 	ld hl, SilphCo9Text_5d8e5
 	call PrintText

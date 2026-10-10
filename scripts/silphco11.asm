@@ -16,7 +16,7 @@ SilphCo11Script_62110:
 	ld hl, SilphCo11GateCoords
 	call SilphCo11Script_62137
 	call SilphCo11Script_62163
-	CheckEvent EVENT_SILPH_CO_11_UNLOCKED_DOOR
+	CheckEvent EVENT_SAFFRON_SILPH_CO_11_UNLOCKED_DOOR
 	jr nz, .unlockShortcut
 	ld a, $20
 	ld [wNewTileBlockID], a
@@ -73,7 +73,7 @@ SilphCo11Script_62163:
 	ld a, [$ffe0]
 	and a
 	ret z
-	SetEvent EVENT_SILPH_CO_11_UNLOCKED_DOOR
+	SetEvent EVENT_SAFFRON_SILPH_CO_11_UNLOCKED_DOOR
 	ret
 
 SilphCo11Script_6216d:
@@ -118,38 +118,38 @@ MissableObjectIDs_6219b:
 	db HS_SAFFRON_CITY_7
 	db HS_SAFFRON_CITY_E
 	db HS_SAFFRON_CITY_F
-	db HS_SILPH_CO_2F_2
-	db HS_SILPH_CO_2F_3
-	db HS_SILPH_CO_2F_4
-	db HS_SILPH_CO_2F_5
-	db HS_SILPH_CO_3F_1
-	db HS_SILPH_CO_3F_2
-	db HS_SILPH_CO_4F_1
-	db HS_SILPH_CO_4F_2
-	db HS_SILPH_CO_4F_3
-	db HS_SILPH_CO_5F_1
-	db HS_SILPH_CO_5F_2
-	db HS_SILPH_CO_5F_3
-	db HS_SILPH_CO_5F_4
-	db HS_SILPH_CO_6F_1
-	db HS_SILPH_CO_6F_2
-	db HS_SILPH_CO_6F_3
-	db HS_SILPH_CO_7F_1
-	db HS_SILPH_CO_7F_2
-	db HS_SILPH_CO_7F_3
-	db HS_SILPH_CO_7F_4
-	db HS_SILPH_CO_8F_1
-	db HS_SILPH_CO_8F_2
-	db HS_SILPH_CO_8F_3
-	db HS_SILPH_CO_9F_1
-	db HS_SILPH_CO_9F_2
-	db HS_SILPH_CO_9F_3
-	db HS_SILPH_CO_10F_1
-	db HS_SILPH_CO_10F_2
-	db HS_SILPH_CO_11F_1
-	db HS_SILPH_CO_11F_JESSIE
-	db HS_SILPH_CO_11F_2
-	db HS_SILPH_CO_11F_JAMES
+	db HS_SAFFRON_SILPH_CO_2F_2
+	db HS_SAFFRON_SILPH_CO_2F_3
+	db HS_SAFFRON_SILPH_CO_2F_4
+	db HS_SAFFRON_SILPH_CO_2F_5
+	db HS_SAFFRON_SILPH_CO_3F_1
+	db HS_SAFFRON_SILPH_CO_3F_2
+	db HS_SAFFRON_SILPH_CO_4F_1
+	db HS_SAFFRON_SILPH_CO_4F_2
+	db HS_SAFFRON_SILPH_CO_4F_3
+	db HS_SAFFRON_SILPH_CO_5F_1
+	db HS_SAFFRON_SILPH_CO_5F_2
+	db HS_SAFFRON_SILPH_CO_5F_3
+	db HS_SAFFRON_SILPH_CO_5F_4
+	db HS_SAFFRON_SILPH_CO_6F_1
+	db HS_SAFFRON_SILPH_CO_6F_2
+	db HS_SAFFRON_SILPH_CO_6F_3
+	db HS_SAFFRON_SILPH_CO_7F_1
+	db HS_SAFFRON_SILPH_CO_7F_2
+	db HS_SAFFRON_SILPH_CO_7F_3
+	db HS_SAFFRON_SILPH_CO_7F_4
+	db HS_SAFFRON_SILPH_CO_8F_1
+	db HS_SAFFRON_SILPH_CO_8F_2
+	db HS_SAFFRON_SILPH_CO_8F_3
+	db HS_SAFFRON_SILPH_CO_9F_1
+	db HS_SAFFRON_SILPH_CO_9F_2
+	db HS_SAFFRON_SILPH_CO_9F_3
+	db HS_SAFFRON_SILPH_CO_10F_1
+	db HS_SAFFRON_SILPH_CO_10F_2
+	db HS_SAFFRON_SILPH_CO_11F_1
+	db HS_SAFFRON_SILPH_CO_11F_JESSIE
+	db HS_SAFFRON_SILPH_CO_11F_2
+	db HS_SAFFRON_SILPH_CO_11F_JAMES
 	db $FF
 
 SilphCo11Script_621c4:
@@ -171,7 +171,7 @@ SilphCo11ScriptPointers:
 	dw SilphCo11Script6
 
 SilphCo11Script0:
-	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+	CheckEvent EVENT_BEAT_SAFFRON_SILPH_CO_GIOVANNI
 	ret nz
 	ld hl, CoordsData_62211
 	call ArePlayerCoordsInArray
@@ -237,7 +237,7 @@ SilphCo11Script5:
 	call UpdateSprites
 	call Delay3
 	call GBFadeInFromBlack
-	SetEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+	SetEvent EVENT_BEAT_SAFFRON_SILPH_CO_GIOVANNI
 	xor a
 	ld [wJoyIgnore], a
 	jp SilphCo11Script_621c8
@@ -304,18 +304,18 @@ SilphCo11TextPointers:
 	dw SilphCo11Text7
 
 SilphCo11TrainerHeader0:
-	dbEventFlagBit EVENT_BEAT_SILPH_CO_11F_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_SAFFRON_SILPH_CO_11F_TRAINER_0
 	db ($4 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SILPH_CO_11F_TRAINER_0
+	dwEventFlagAddress EVENT_BEAT_SAFFRON_SILPH_CO_11F_TRAINER_0
 	dw SilphCo11BattleTextJessieJames ; TextBeforeBattle
 	dw SilphCo11AfterBattleTextJessieJames ; TextAfterBattle
 	dw SilphCo11EndBattleTextJessieJames ; TextEndBattle
 	dw SilphCo11EndBattleTextJessieJames ; TextEndBattle
 
 SilphCo11TrainerHeader1:
-	dbEventFlagBit EVENT_BEAT_SILPH_CO_11F_TRAINER_1
+	dbEventFlagBit EVENT_BEAT_SAFFRON_SILPH_CO_11F_TRAINER_1
 	db ($3 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SILPH_CO_11F_TRAINER_1
+	dwEventFlagAddress EVENT_BEAT_SAFFRON_SILPH_CO_11F_TRAINER_1
 	dw SilphCo11BattleText2 ; TextBeforeBattle
 	dw SilphCo11AfterBattleText2 ; TextAfterBattle
 	dw SilphCo11EndBattleText2 ; TextEndBattle

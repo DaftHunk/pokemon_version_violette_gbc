@@ -263,7 +263,7 @@ CheckIfLookingForCoins:
 	CheckEvent EVENT_GOT_COIN_CASE
 	jr z, .no
 	ld a, [wCurMap]
-	cp GAME_CORNER
+	cp CELADON_GAME_CORNER
 	jr nz, .no
 	scf
 	ret

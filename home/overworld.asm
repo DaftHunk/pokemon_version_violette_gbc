@@ -349,7 +349,7 @@ OverworldLoopLessDelay::
 	ld hl, wStatusFlags4
 	set 5, [hl]
 	;ld a, [wCurMap]	;joenote - check the OaksLab map script number instead
-	;cp OAKS_LAB					;script $0C is the default for just after the rival battle
+	;cp PALLET_OAKS_LAB					;script $0C is the default for just after the rival battle
 	ld a, [wOaksLabCurScript]
 	cp $C
 	jp z, .noFaintCheck ; no blacking out if the player lost to the rival in Oak's lab

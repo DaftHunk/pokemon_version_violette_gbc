@@ -2,7 +2,7 @@ Museum2FObject:
 	db $a ; border block
 
 	db 1 ; warps
-	warp 7, 7, 4, MUSEUM_1F
+	warp 7, 7, 4, PEWTER_MUSEUM_1F
 
 	db 2 ; signs
 	sign 11, 2, 7 ; Museum2FText6
@@ -17,4 +17,4 @@ Museum2FObject:
 	object SPRITE_BALL, 0, 1, STAY, NONE, 6, TM12_WATER_GUN		;joenote - moved tm12 here
 
 	; warp-to
-	warp_to 7, 7, MUSEUM_2F_WIDTH ; MUSEUM_1F
+	warp_to 7, 7, PEWTER_MUSEUM_2F_WIDTH ; PEWTER_MUSEUM_1F

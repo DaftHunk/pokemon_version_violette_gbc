@@ -2,7 +2,7 @@ Mansion4Object:
 	db $1 ; border block
 
 	db 1 ; warps
-	warp 23, 22, 5, POKEMON_MANSION_1F
+	warp 23, 22, 5, CINNABAR_MANSION_1F
 
 	db 0 ; signs
 
@@ -17,4 +17,4 @@ Mansion4Object:
 	object SPRITE_BALL, 5, 13, STAY, NONE, 8, SECRET_KEY
 
 	; warp-to
-	warp_to 23, 22, POKEMON_MANSION_B1F_WIDTH ; POKEMON_MANSION_1F
+	warp_to 23, 22, CINNABAR_MANSION_B2F_WIDTH ; CINNABAR_MANSION_1F

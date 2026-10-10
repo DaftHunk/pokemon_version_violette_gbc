@@ -21,7 +21,7 @@ FightingDojoScriptPointers:
 	dw FightingDojoScript_AfterBattle
 
 FightingDojoScript_Main:
-	CheckEvent EVENT_DEFEATED_FIGHTING_DOJO
+	CheckEvent EVENT_DEFEATED_SAFFRON_FIGHTING_DOJO
 	ret nz
 	call CheckFightingMapTrainers
 	ld a, [wTrainerHeaderFlagBit]
@@ -74,7 +74,7 @@ FightingDojoScript_AfterBattle:
 .choosePokemon
 	ld a, $f0
 	ld [wJoyIgnore], a
-	SetEventRange EVENT_BEAT_KOICHI, EVENT_BEAT_FIGHTING_DOJO_TRAINER_3
+	SetEventRange EVENT_BEAT_KOICHI, EVENT_BEAT_SAFFRON_FIGHTING_DOJO_TRAINER_3
 	ld a, $8
 	jr .endScript
 
@@ -105,36 +105,36 @@ FightingDojoTextPointers:
 	dw FightingDojoText_RematchKoichiChoosePokemon
 
 FightingDojoTrainerHeader0:
-	dbEventFlagBit EVENT_BEAT_FIGHTING_DOJO_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_SAFFRON_FIGHTING_DOJO_TRAINER_0
 	db ($4 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_FIGHTING_DOJO_TRAINER_0
+	dwEventFlagAddress EVENT_BEAT_SAFFRON_FIGHTING_DOJO_TRAINER_0
 	dw FightingDojoBattleText1 ; TextBeforeBattle
 	dw FightingDojoAfterBattleText1 ; TextAfterBattle
 	dw FightingDojoEndBattleText1 ; TextEndBattle
 	dw FightingDojoEndBattleText1 ; TextEndBattle
 
 FightingDojoTrainerHeader1:
-	dbEventFlagBit EVENT_BEAT_FIGHTING_DOJO_TRAINER_1
+	dbEventFlagBit EVENT_BEAT_SAFFRON_FIGHTING_DOJO_TRAINER_1
 	db ($4 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_FIGHTING_DOJO_TRAINER_1
+	dwEventFlagAddress EVENT_BEAT_SAFFRON_FIGHTING_DOJO_TRAINER_1
 	dw FightingDojoBattleText2 ; TextBeforeBattle
 	dw FightingDojoAfterBattleText2 ; TextAfterBattle
 	dw FightingDojoEndBattleText2 ; TextEndBattle
 	dw FightingDojoEndBattleText2 ; TextEndBattle
 
 FightingDojoTrainerHeader2:
-	dbEventFlagBit EVENT_BEAT_FIGHTING_DOJO_TRAINER_2
+	dbEventFlagBit EVENT_BEAT_SAFFRON_FIGHTING_DOJO_TRAINER_2
 	db ($3 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_FIGHTING_DOJO_TRAINER_2
+	dwEventFlagAddress EVENT_BEAT_SAFFRON_FIGHTING_DOJO_TRAINER_2
 	dw FightingDojoBattleText3 ; TextBeforeBattle
 	dw FightingDojoAfterBattleText3 ; TextAfterBattle
 	dw FightingDojoEndBattleText3 ; TextEndBattle
 	dw FightingDojoEndBattleText3 ; TextEndBattle
 
 FightingDojoTrainerHeader3:
-	dbEventFlagBit EVENT_BEAT_FIGHTING_DOJO_TRAINER_3
+	dbEventFlagBit EVENT_BEAT_SAFFRON_FIGHTING_DOJO_TRAINER_3
 	db ($3 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_FIGHTING_DOJO_TRAINER_3
+	dwEventFlagAddress EVENT_BEAT_SAFFRON_FIGHTING_DOJO_TRAINER_3
 	dw FightingDojoBattleText4 ; TextBeforeBattle
 	dw FightingDojoAfterBattleText4 ; TextAfterBattle
 	dw FightingDojoEndBattleText4 ; TextEndBattle
@@ -144,7 +144,7 @@ FightingDojoTrainerHeader3:
 
 FightingDojoText1:
 	TX_ASM
-	CheckEvent EVENT_DEFEATED_FIGHTING_DOJO
+	CheckEvent EVENT_DEFEATED_SAFFRON_FIGHTING_DOJO
 	jp nz, .continue1
 	CheckEventReuseA EVENT_BEAT_KOICHI
 	jp nz, .continue2
@@ -165,7 +165,7 @@ FightingDojoText1:
 	call EngageMapTrainer
 	call InitBattleEnemyParameters
 ;;;;joenote - added for rematch to skip choosing prize
-	CheckEvent EVENT_DEFEATED_FIGHTING_DOJO
+	CheckEvent EVENT_DEFEATED_SAFFRON_FIGHTING_DOJO
 	jp nz, TextScriptEnd
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, $3
@@ -342,10 +342,10 @@ FightingDojoText_Hitmonlee:
 	jr nc, .done
 
 	; once Poké Ball is taken, hide sprite
-	ld a, HS_FIGHTING_DOJO_GIFT_1
+	ld a, HS_SAFFRON_FIGHTING_DOJO_GIFT_1
 	ld [wMissableObjectIndex], a
 	predef HideObject
-	SetEvents EVENT_GOT_HITMONLEE, EVENT_DEFEATED_FIGHTING_DOJO
+	SetEvents EVENT_GOT_HITMONLEE, EVENT_DEFEATED_SAFFRON_FIGHTING_DOJO
 .done
 	jp TextScriptEnd
 
@@ -379,10 +379,10 @@ FightingDojoText_Hitmonchan:
 	ld c, 35
 	call GivePokemon
 	jr nc, .done
-	SetEvents EVENT_GOT_HITMONCHAN, EVENT_DEFEATED_FIGHTING_DOJO
+	SetEvents EVENT_GOT_HITMONCHAN, EVENT_DEFEATED_SAFFRON_FIGHTING_DOJO
 
 	; once Poké Ball is taken, hide sprite
-	ld a, HS_FIGHTING_DOJO_GIFT_2
+	ld a, HS_SAFFRON_FIGHTING_DOJO_GIFT_2
 	ld [wMissableObjectIndex], a
 	predef HideObject
 .done

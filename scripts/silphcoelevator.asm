@@ -59,17 +59,17 @@ SilphCoElevatorWarpMaps:
 ; first byte is warp number
 ; second byte is map number
 ; These specify where the player goes after getting out of the elevator.
-	db $03, SILPH_CO_1F
-	db $02, SILPH_CO_2F
-	db $02, SILPH_CO_3F
-	db $02, SILPH_CO_4F
-	db $02, SILPH_CO_5F
-	db $02, SILPH_CO_6F
-	db $02, SILPH_CO_7F
-	db $02, SILPH_CO_8F
-	db $02, SILPH_CO_9F
-	db $02, SILPH_CO_10F
-	db $01, SILPH_CO_11F
+	db $03, SAFFRON_SILPH_CO_1F
+	db $02, SAFFRON_SILPH_CO_2F
+	db $02, SAFFRON_SILPH_CO_3F
+	db $02, SAFFRON_SILPH_CO_4F
+	db $02, SAFFRON_SILPH_CO_5F
+	db $02, SAFFRON_SILPH_CO_6F
+	db $02, SAFFRON_SILPH_CO_7F
+	db $02, SAFFRON_SILPH_CO_8F
+	db $02, SAFFRON_SILPH_CO_9F
+	db $02, SAFFRON_SILPH_CO_10F
+	db $01, SAFFRON_SILPH_CO_11F
 SilphCoElevatorWarpMapsEnd:
 
 SilphCoElevatorScript_45827:

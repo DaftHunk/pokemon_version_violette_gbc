@@ -4,7 +4,7 @@ CopycatsHouse1FObject:
 	db 3 ; warps
 	warp 2, 7, 0, -1
 	warp 3, 7, 0, -1
-	warp 7, 1, 0, COPYCATS_HOUSE_2F
+	warp 7, 1, 0, SAFFRON_COPYCATS_HOUSE_2F
 
 	db 0 ; signs
 
@@ -14,6 +14,6 @@ CopycatsHouse1FObject:
 	object SPRITE_CHANSEY, 1, 4, WALK, 1, 3 ; person
 
 	; warp-to
-	warp_to 2, 7, COPYCATS_HOUSE_1F_WIDTH
-	warp_to 3, 7, COPYCATS_HOUSE_1F_WIDTH
-	warp_to 7, 1, COPYCATS_HOUSE_1F_WIDTH ; COPYCATS_HOUSE_2F
+	warp_to 2, 7, SAFFRON_COPYCATS_HOUSE_1F_WIDTH
+	warp_to 3, 7, SAFFRON_COPYCATS_HOUSE_1F_WIDTH
+	warp_to 7, 1, SAFFRON_COPYCATS_HOUSE_1F_WIDTH ; SAFFRON_COPYCATS_HOUSE_2F

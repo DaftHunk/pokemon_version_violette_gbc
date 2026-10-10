@@ -14,7 +14,7 @@ AgathaShowOrHideExitBlock:
 	bit BIT_CUR_MAP_LOADED_1, [hl]
 	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
-	CheckEvent EVENT_BEAT_AGATHAS_ROOM_TRAINER_0
+	CheckEvent EVENT_BEAT_INDIGO_AGATHAS_ROOM_TRAINER_0
 	jr z, .blockExitToNextRoom
 	ld a, $e
 	jp .setExitBlock
@@ -70,7 +70,7 @@ AgathaScript0:
 	ld a, [wCoordIndex]
 	cp $3  ; Is player standing one tile above the exit?
 	jr c, .stopPlayerFromLeaving
-	CheckAndSetEvent EVENT_AUTOWALKED_INTO_AGATHAS_ROOM
+	CheckAndSetEvent EVENT_AUTOWALKED_INTO_INDIGO_AGATHAS_ROOM
 	jr z, AgathaScriptWalkIntoRoom
 .stopPlayerFromLeaving
 	ld a, $2
@@ -126,17 +126,17 @@ AgathaTextPointers:
 	dw AgathaDontRunAwayText
 
 AgathaTrainerHeader0:
-	dbEventFlagBit EVENT_BEAT_AGATHAS_ROOM_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_INDIGO_AGATHAS_ROOM_TRAINER_0
 	db ($0 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_AGATHAS_ROOM_TRAINER_0
+	dwEventFlagAddress EVENT_BEAT_INDIGO_AGATHAS_ROOM_TRAINER_0
 	dw AgathaBeforeBattleText ; TextBeforeBattle
 	dw AgathaAfterBattleText ; TextAfterBattle
 	dw AgathaEndBattleText ; TextEndBattle
 	dw AgathaEndBattleText ; TextEndBattle
 AgathaTrainerHeader1:
-	dbEventFlagBit EVENT_BEAT_AGATHAS_ROOM_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_INDIGO_AGATHAS_ROOM_TRAINER_0
 	db ($0 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_AGATHAS_ROOM_TRAINER_0
+	dwEventFlagAddress EVENT_BEAT_INDIGO_AGATHAS_ROOM_TRAINER_0
 	dw RematchAgathaBeforeBattleText ; TextBeforeBattle
 	dw RematchAgathaAfterBattleText ; TextAfterBattle
 	dw RematchAgathaEndBattleText ; TextEndBattle

@@ -18,5 +18,5 @@ BikeShopObject:
 	object SPRITE_BUG_CATCHER, 1, 3, STAY, UP, 3 ; person
 
 	; warp-to
-	warp_to 2, 7, BIKE_SHOP_WIDTH
-	warp_to 3, 7, BIKE_SHOP_WIDTH
+	warp_to 2, 7, CERULEAN_BIKE_SHOP_WIDTH
+	warp_to 3, 7, CERULEAN_BIKE_SHOP_WIDTH

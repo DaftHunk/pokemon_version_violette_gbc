@@ -9,7 +9,7 @@ BluesHouseScriptPointers:
 	dw BluesHouseScript1
 
 BluesHouseScript0:
-	SetEvent EVENT_ENTERED_BLUES_HOUSE
+	SetEvent EVENT_ENTERED_PALLET_BLUES_HOUSE
 
 	; trigger the next script
 	ld a, 1

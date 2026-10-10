@@ -16,7 +16,7 @@ SilphCo7Script_51b77:
 	ld hl, SilphCo7GateCoords
 	call SilphCo7Text_51bc8
 	call SilphCo7Text_51bf4
-	CheckEvent EVENT_SILPH_CO_7_UNLOCKED_DOOR1
+	CheckEvent EVENT_SAFFRON_SILPH_CO_7_UNLOCKED_DOOR1
 	jr nz, .asm_51b9e
 	push af
 	ld a, $54
@@ -25,7 +25,7 @@ SilphCo7Script_51b77:
 	predef ReplaceTileBlock
 	pop af
 .asm_51b9e
-	CheckEventAfterBranchReuseA EVENT_SILPH_CO_7_UNLOCKED_DOOR2, EVENT_SILPH_CO_7_UNLOCKED_DOOR1
+	CheckEventAfterBranchReuseA EVENT_SAFFRON_SILPH_CO_7_UNLOCKED_DOOR2, EVENT_SAFFRON_SILPH_CO_7_UNLOCKED_DOOR1
 	jr nz, .asm_51bb1
 	push af
 	ld a, $54
@@ -34,7 +34,7 @@ SilphCo7Script_51b77:
 	predef ReplaceTileBlock
 	pop af
 .asm_51bb1
-	CheckEventAfterBranchReuseA EVENT_SILPH_CO_7_UNLOCKED_DOOR3, EVENT_SILPH_CO_7_UNLOCKED_DOOR2
+	CheckEventAfterBranchReuseA EVENT_SAFFRON_SILPH_CO_7_UNLOCKED_DOOR3, EVENT_SAFFRON_SILPH_CO_7_UNLOCKED_DOOR2
 	ret nz
 	ld a, $54
 	ld [wNewTileBlockID], a
@@ -84,21 +84,21 @@ SilphCo7Text_51bc8:
 	ret
 
 SilphCo7Text_51bf4:
-	EventFlagAddress hl, EVENT_SILPH_CO_7_UNLOCKED_DOOR1
+	EventFlagAddress hl, EVENT_SAFFRON_SILPH_CO_7_UNLOCKED_DOOR1
 	ld a, [$ffe0]
 	and a
 	ret z
 	cp $1
 	jr nz, .next1
-	SetEventReuseHL EVENT_SILPH_CO_7_UNLOCKED_DOOR1
+	SetEventReuseHL EVENT_SAFFRON_SILPH_CO_7_UNLOCKED_DOOR1
 	ret
 .next1
 	cp $2
 	jr nz, .next2
-	SetEventAfterBranchReuseHL EVENT_SILPH_CO_7_UNLOCKED_DOOR2, EVENT_SILPH_CO_7_UNLOCKED_DOOR1
+	SetEventAfterBranchReuseHL EVENT_SAFFRON_SILPH_CO_7_UNLOCKED_DOOR2, EVENT_SAFFRON_SILPH_CO_7_UNLOCKED_DOOR1
 	ret
 .next2
-	SetEventAfterBranchReuseHL EVENT_SILPH_CO_7_UNLOCKED_DOOR3, EVENT_SILPH_CO_7_UNLOCKED_DOOR1
+	SetEventAfterBranchReuseHL EVENT_SAFFRON_SILPH_CO_7_UNLOCKED_DOOR3, EVENT_SAFFRON_SILPH_CO_7_UNLOCKED_DOOR1
 	ret
 
 SilphCo7Text_51c0c:
@@ -119,7 +119,7 @@ SilphCo7ScriptPointers:
 	dw SilphCo7Script5
 
 SilphCo7Script0:
-	CheckEvent EVENT_BEAT_SILPH_CO_RIVAL
+	CheckEvent EVENT_BEAT_SAFFRON_SILPH_CO_RIVAL
 	jp nz, CheckFightingMapTrainers
 	ld hl, CoordsData_51c78
 	call ArePlayerCoordsInArray
@@ -217,7 +217,7 @@ SilphCo7Script4:
 	jp z, SilphCo7Text_51c0c
 	ld a, $f0
 	ld [wJoyIgnore], a
-	SetEvent EVENT_BEAT_SILPH_CO_RIVAL
+	SetEvent EVENT_BEAT_SAFFRON_SILPH_CO_RIVAL
 	ld a, PLAYER_DIR_DOWN
 	ld [wPlayerMovingDirection], a
 ;	ld a, $9
@@ -266,7 +266,7 @@ SilphCo7Script5:
 	; PureRGBnote: ADDED: make rival teleport away
 	ld a, SFX_TELEPORT_EXIT_1
 	call PlaySound
-	ld a, HS_SILPH_CO_7F_RIVAL
+	ld a, HS_SAFFRON_SILPH_CO_7F_RIVAL
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	call PlayDefaultMusic
@@ -292,36 +292,36 @@ SilphCo7TextPointers:
 	dw SilphCo7Text15
 
 SilphCo7TrainerHeader0:
-	dbEventFlagBit EVENT_BEAT_SILPH_CO_7F_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_SAFFRON_SILPH_CO_7F_TRAINER_0
 	db ($2 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SILPH_CO_7F_TRAINER_0
+	dwEventFlagAddress EVENT_BEAT_SAFFRON_SILPH_CO_7F_TRAINER_0
 	dw SilphCo7BattleText1 ; TextBeforeBattle
 	dw SilphCo7AfterBattleText1 ; TextAfterBattle
 	dw SilphCo7EndBattleText1 ; TextEndBattle
 	dw SilphCo7EndBattleText1 ; TextEndBattle
 
 SilphCo7TrainerHeader1:
-	dbEventFlagBit EVENT_BEAT_SILPH_CO_7F_TRAINER_1
+	dbEventFlagBit EVENT_BEAT_SAFFRON_SILPH_CO_7F_TRAINER_1
 	db ($3 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SILPH_CO_7F_TRAINER_1
+	dwEventFlagAddress EVENT_BEAT_SAFFRON_SILPH_CO_7F_TRAINER_1
 	dw SilphCo7BattleText2 ; TextBeforeBattle
 	dw SilphCo7AfterBattleText2 ; TextAfterBattle
 	dw SilphCo7EndBattleText2 ; TextEndBattle
 	dw SilphCo7EndBattleText2 ; TextEndBattle
 
 SilphCo7TrainerHeader2:
-	dbEventFlagBit EVENT_BEAT_SILPH_CO_7F_TRAINER_2
+	dbEventFlagBit EVENT_BEAT_SAFFRON_SILPH_CO_7F_TRAINER_2
 	db ($3 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SILPH_CO_7F_TRAINER_2
+	dwEventFlagAddress EVENT_BEAT_SAFFRON_SILPH_CO_7F_TRAINER_2
 	dw SilphCo7BattleText3 ; TextBeforeBattle
 	dw SilphCo7AfterBattleText3 ; TextAfterBattle
 	dw SilphCo7EndBattleText3 ; TextEndBattle
 	dw SilphCo7EndBattleText3 ; TextEndBattle
 
 SilphCo7TrainerHeader3:
-	dbEventFlagBit EVENT_BEAT_SILPH_CO_7F_TRAINER_3, 1
+	dbEventFlagBit EVENT_BEAT_SAFFRON_SILPH_CO_7F_TRAINER_3, 1
 	db ($4 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SILPH_CO_7F_TRAINER_3, 1
+	dwEventFlagAddress EVENT_BEAT_SAFFRON_SILPH_CO_7F_TRAINER_3, 1
 	dw SilphCo7BattleText4 ; TextBeforeBattle
 	dw SilphCo7AfterBattleText4 ; TextAfterBattle
 	dw SilphCo7EndBattleText4 ; TextEndBattle
@@ -335,7 +335,7 @@ SilphCo7Text1:
 	ld a, [wStatusFlags4]
 	bit 0, a ; got lapras?
 	jr z, .givelapras
-	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+	CheckEvent EVENT_BEAT_SAFFRON_SILPH_CO_GIOVANNI
 	jr nz, .savedsilph
 	ld hl, .LaprasGuyText
 	call PrintText
@@ -379,7 +379,7 @@ SilphCo7Text1:
 
 SilphCo7Text2:
 	TX_ASM
-	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+	CheckEvent EVENT_BEAT_SAFFRON_SILPH_CO_GIOVANNI
 	jr nz, .savedsilph
 	ld hl, .rockettext
 	call PrintText
@@ -400,7 +400,7 @@ SilphCo7Text2:
 
 SilphCo7Text3:
 	TX_ASM
-	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+	CheckEvent EVENT_BEAT_SAFFRON_SILPH_CO_GIOVANNI
 	jr nz, .savedsilph
 	ld hl, .rockettext
 	call PrintText
@@ -421,7 +421,7 @@ SilphCo7Text3:
 
 SilphCo7Text4:
 	TX_ASM
-	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+	CheckEvent EVENT_BEAT_SAFFRON_SILPH_CO_GIOVANNI
 	jr nz, .savedsilph
 	ld hl, .rockettext
 	call PrintText

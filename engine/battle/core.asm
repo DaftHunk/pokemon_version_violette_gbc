@@ -1308,7 +1308,7 @@ HandlePlayerBlackOut:
 	call DelayFrames
 	call PrintEndBattleText
 	ld a, [wCurMap]
-	cp OAKS_LAB
+	cp PALLET_OAKS_LAB
 	ret z            ; starter battle in oak's lab: don't black out
 	jr .notRival1Battle
 
@@ -3814,9 +3814,9 @@ IsGhostBattle:	;sets z flag if this is a ghost battle
 	dec a
 	ret nz
 	ld a, [wCurMap]
-	cp POKEMONTOWER_1F
+	cp LAVENDER_POKEMON_TOWER_1F
 	jr c, .next
-	cp MR_FUJIS_HOUSE
+	cp LAVENDER_FUJIS_HOUSE
 	jr nc, .next
 	ld b, SILPH_SCOPE
 	call IsItemInBag

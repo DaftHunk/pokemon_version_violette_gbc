@@ -6,7 +6,7 @@ Route8Object:
 	warp 1, 10, 1, ROUTE_8_GATE
 	warp 8,  9, 2, ROUTE_8_GATE
 	warp 8, 10, 3, ROUTE_8_GATE
-	warp 13, 5, 0, PATH_ENTRANCE_ROUTE_8
+	warp 13, 5, 0, UNDERGROUND_PATH_ENTRANCE_ROUTE_8
 
 	db 1 ; signs
 	sign 14,  5, 10 ; Route8Text10
@@ -27,4 +27,4 @@ Route8Object:
 	warp_to 1, 10, ROUTE_8_WIDTH ; ROUTE_8_GATE
 	warp_to 8,  9, ROUTE_8_WIDTH ; ROUTE_8_GATE
 	warp_to 8, 10, ROUTE_8_WIDTH ; ROUTE_8_GATE
-	warp_to 13, 5, ROUTE_8_WIDTH ; PATH_ENTRANCE_ROUTE_8
+	warp_to 13, 5, ROUTE_8_WIDTH ; UNDERGROUND_PATH_ENTRANCE_ROUTE_8

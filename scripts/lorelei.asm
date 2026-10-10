@@ -16,7 +16,7 @@ LoreleiShowOrHideExitBlock:
 	ret z
 	ld hl, wBeatLorelei
 	set 1, [hl]
-	CheckEvent EVENT_BEAT_LORELEIS_ROOM_TRAINER_0
+	CheckEvent EVENT_BEAT_INDIGO_LORELEIS_ROOM_TRAINER_0
 	jr z, .blockExitToNextRoom
 	ld a, $5
 	jr .setExitBlock
@@ -72,7 +72,7 @@ LoreleiScript0:
 	ld a, [wCoordIndex]
 	cp $3  ; Is player standing one tile above the exit?
 	jr c, .stopPlayerFromLeaving
-	CheckAndSetEvent EVENT_AUTOWALKED_INTO_LORELEIS_ROOM
+	CheckAndSetEvent EVENT_AUTOWALKED_INTO_INDIGO_LORELEIS_ROOM
 	jr z, LoreleiScriptWalkIntoRoom
 .stopPlayerFromLeaving
 	ld a, $2
@@ -126,17 +126,17 @@ LoreleiTextPointers:
 	dw LoreleiDontRunAwayText
 
 LoreleiTrainerHeader0:
-	dbEventFlagBit EVENT_BEAT_LORELEIS_ROOM_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_INDIGO_LORELEIS_ROOM_TRAINER_0
 	db ($0 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_LORELEIS_ROOM_TRAINER_0
+	dwEventFlagAddress EVENT_BEAT_INDIGO_LORELEIS_ROOM_TRAINER_0
 	dw LoreleiBeforeBattleText ; TextBeforeBattle
 	dw LoreleiAfterBattleText ; TextAfterBattle
 	dw LoreleiEndBattleText ; TextEndBattle
 	dw LoreleiEndBattleText ; TextEndBattle
 LoreleiTrainerHeader1:
-	dbEventFlagBit EVENT_BEAT_LORELEIS_ROOM_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_INDIGO_LORELEIS_ROOM_TRAINER_0
 	db ($0 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_LORELEIS_ROOM_TRAINER_0
+	dwEventFlagAddress EVENT_BEAT_INDIGO_LORELEIS_ROOM_TRAINER_0
 	dw RematchLoreleiBeforeBattleText ; TextBeforeBattle
 	dw RematchLoreleiAfterBattleText ; TextAfterBattle
 	dw RematchLoreleiEndBattleText ; TextEndBattle

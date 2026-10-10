@@ -4,7 +4,7 @@ PowerPlantObject:
 	db 3 ; warps
 	warp  4, 23, 2, -1
 	warp  5, 23, 2, -1
-	warp  23, 1, 1, POWER_PLANT_1F
+	warp  23, 1, 1, POWER_PLANT_2F
 
 	db 0 ; signs
 
@@ -22,6 +22,6 @@ PowerPlantObject:
 	object SPRITE_BALL, 21,  2, STAY, NONE, 11, METAL_COAT
 
 	; warp-to
-	warp_to  4, 23, POWER_PLANT_WIDTH
-	warp_to  5, 23, POWER_PLANT_WIDTH
-	warp_to  23, 1, POWER_PLANT_WIDTH
+	warp_to  4, 23, POWER_PLANT_1F_WIDTH
+	warp_to  5, 23, POWER_PLANT_1F_WIDTH
+	warp_to  23, 1, POWER_PLANT_1F_WIDTH

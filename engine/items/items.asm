@@ -1736,12 +1736,12 @@ ItemUseEscapeRope:
 	and a
 	jr nz, .notUsable
 	ld a, [wCurMap]
-	cp AGATHAS_ROOM
+	cp INDIGO_AGATHAS_ROOM
 	jr z, .notUsable
 ;joenote - added from pokeyellow; do not allow in Bill's house or the Fan Club
 	cp BILLS_HOUSE
 	jr z, .notUsable
-	cp POKEMON_FAN_CLUB
+	cp VERMILION_FAN_CLUB
 	jr z, .notUsable
 	ld a, [wCurMapTileset]
 	ld b, a
@@ -1864,34 +1864,34 @@ ItemUseCardKey:
 ; 03: ID?
 
 ;CardKeyTable1:
-;	db  SILPH_CO_2F,$04,$04,$00
-;	db  SILPH_CO_2F,$04,$05,$01
-;	db  SILPH_CO_4F,$0C,$04,$02
-;	db  SILPH_CO_4F,$0C,$05,$03
-;	db  SILPH_CO_7F,$06,$0A,$04
-;	db  SILPH_CO_7F,$06,$0B,$05
-;	db  SILPH_CO_9F,$04,$12,$06
-;	db  SILPH_CO_9F,$04,$13,$07
-;	db SILPH_CO_10F,$08,$0A,$08
-;	db SILPH_CO_10F,$08,$0B,$09
+;	db  SAFFRON_SILPH_CO_2F,$04,$04,$00
+;	db  SAFFRON_SILPH_CO_2F,$04,$05,$01
+;	db  SAFFRON_SILPH_CO_4F,$0C,$04,$02
+;	db  SAFFRON_SILPH_CO_4F,$0C,$05,$03
+;	db  SAFFRON_SILPH_CO_7F,$06,$0A,$04
+;	db  SAFFRON_SILPH_CO_7F,$06,$0B,$05
+;	db  SAFFRON_SILPH_CO_9F,$04,$12,$06
+;	db  SAFFRON_SILPH_CO_9F,$04,$13,$07
+;	db SAFFRON_SILPH_CO_10F,$08,$0A,$08
+;	db SAFFRON_SILPH_CO_10F,$08,$0B,$09
 ;	db $ff
 
 ;CardKeyTable2:
-;	db SILPH_CO_3F,$08,$09,$0A
-;	db SILPH_CO_3F,$09,$09,$0B
-;	db SILPH_CO_5F,$04,$07,$0C
-;	db SILPH_CO_5F,$05,$07,$0D
-;	db SILPH_CO_6F,$0C,$05,$0E
-;	db SILPH_CO_6F,$0D,$05,$0F
-;	db SILPH_CO_8F,$08,$07,$10
-;	db SILPH_CO_8F,$09,$07,$11
-;	db SILPH_CO_9F,$08,$03,$12
-;	db SILPH_CO_9F,$09,$03,$13
+;	db SAFFRON_SILPH_CO_3F,$08,$09,$0A
+;	db SAFFRON_SILPH_CO_3F,$09,$09,$0B
+;	db SAFFRON_SILPH_CO_5F,$04,$07,$0C
+;	db SAFFRON_SILPH_CO_5F,$05,$07,$0D
+;	db SAFFRON_SILPH_CO_6F,$0C,$05,$0E
+;	db SAFFRON_SILPH_CO_6F,$0D,$05,$0F
+;	db SAFFRON_SILPH_CO_8F,$08,$07,$10
+;	db SAFFRON_SILPH_CO_8F,$09,$07,$11
+;	db SAFFRON_SILPH_CO_9F,$08,$03,$12
+;	db SAFFRON_SILPH_CO_9F,$09,$03,$13
 ;	db $ff
 
 ;CardKeyTable3:
-;	db SILPH_CO_11F,$08,$09,$14
-;	db SILPH_CO_11F,$09,$09,$15
+;	db SAFFRON_SILPH_CO_11F,$08,$09,$14
+;	db SAFFRON_SILPH_CO_11F,$09,$09,$15
 ;	db $ff
 
 ItemUsePokedoll:

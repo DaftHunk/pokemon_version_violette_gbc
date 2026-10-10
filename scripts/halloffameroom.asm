@@ -72,7 +72,7 @@ HallofFameRoomScript2:
 	predef ShowObject
 
 	; Move Chief in Safari Lab
-	ld a, HS_SILPH_CO_11F_CHIEF
+	ld a, HS_SAFFRON_SILPH_CO_11F_CHIEF
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	

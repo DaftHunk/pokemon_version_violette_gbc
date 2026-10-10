@@ -97,12 +97,12 @@ ENDM
 	music_const MUSIC3_FIRST_ENTRY,        Music_Audio3Start
 	music_const MUSIC_TITLE_SCREEN,        Music_TitleScreen
 	music_const MUSIC_CREDITS,             Music_Credits
-	music_const MUSIC_HALL_OF_FAME,        Music_HallOfFame
-	music_const MUSIC_OAKS_LAB,            Music_OaksLab
+	music_const MUSIC_INDIGO_HALL_OF_FAME,        Music_HallOfFame
+	music_const MUSIC_PALLET_OAKS_LAB,            Music_OaksLab
 	music_const MUSIC_JIGGLYPUFF_SONG,     Music_JigglypuffSong
 	music_const MUSIC_BIKE_RIDING,         Music_BikeRiding
 	music_const MUSIC_SURFING,             Music_Surfing
-	music_const MUSIC_GAME_CORNER,         Music_GameCorner
+	music_const MUSIC_CELADON_GAME_CORNER,         Music_GameCorner
 	music_const MUSIC_INTRO_BATTLE,        Music_IntroBattle
 	music_const MUSIC_DUNGEON1,            Music_Dungeon1
 	music_const MUSIC_DUNGEON2,            Music_Dungeon2

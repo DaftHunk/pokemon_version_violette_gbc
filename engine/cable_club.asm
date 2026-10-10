@@ -313,7 +313,7 @@ CableClub_DoBattleOrTradeAgain:
 	jp ReturnToCableClubRoom
 .trading
 	ld c, BANK(Music_GameCorner)
-	ld a, MUSIC_GAME_CORNER
+	ld a, MUSIC_CELADON_GAME_CORNER
 	call PlayMusic
 	jr CallCurrentTradeCenterFunction
 

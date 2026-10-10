@@ -16,7 +16,7 @@ SilphCo3Script_59f71:
 	ld hl, SilphCo3GateCoords
 	call SilphCo2Script_59d43
 	call SilphCo3Script_59fad
-	CheckEvent EVENT_SILPH_CO_3_UNLOCKED_DOOR1
+	CheckEvent EVENT_SAFFRON_SILPH_CO_3_UNLOCKED_DOOR1
 	jr nz, .asm_59f98
 	push af
 	ld a, $5f
@@ -25,7 +25,7 @@ SilphCo3Script_59f71:
 	predef ReplaceTileBlock
 	pop af
 .asm_59f98
-	CheckEventAfterBranchReuseA EVENT_SILPH_CO_3_UNLOCKED_DOOR2, EVENT_SILPH_CO_3_UNLOCKED_DOOR1
+	CheckEventAfterBranchReuseA EVENT_SAFFRON_SILPH_CO_3_UNLOCKED_DOOR2, EVENT_SAFFRON_SILPH_CO_3_UNLOCKED_DOOR1
 	ret nz
 	ld a, $5f
 	ld [wNewTileBlockID], a
@@ -38,16 +38,16 @@ SilphCo3GateCoords:
 	db $FF
 
 SilphCo3Script_59fad:
-	EventFlagAddress hl, EVENT_SILPH_CO_3_UNLOCKED_DOOR1
+	EventFlagAddress hl, EVENT_SAFFRON_SILPH_CO_3_UNLOCKED_DOOR1
 	ld a, [$ffe0]
 	and a
 	ret z
 	cp $1
 	jr nz, .next
-	SetEventReuseHL EVENT_SILPH_CO_3_UNLOCKED_DOOR1
+	SetEventReuseHL EVENT_SAFFRON_SILPH_CO_3_UNLOCKED_DOOR1
 	ret
 .next
-	SetEventAfterBranchReuseHL EVENT_SILPH_CO_3_UNLOCKED_DOOR2, EVENT_SILPH_CO_3_UNLOCKED_DOOR1
+	SetEventAfterBranchReuseHL EVENT_SAFFRON_SILPH_CO_3_UNLOCKED_DOOR2, EVENT_SAFFRON_SILPH_CO_3_UNLOCKED_DOOR1
 	ret
 
 SilphCo3ScriptPointers:
@@ -62,18 +62,18 @@ SilphCo3TextPointers:
 	dw PickUpItemText
 
 SilphCo3TrainerHeader0:
-	dbEventFlagBit EVENT_BEAT_SILPH_CO_3F_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_SAFFRON_SILPH_CO_3F_TRAINER_0
 	db ($2 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SILPH_CO_3F_TRAINER_0
+	dwEventFlagAddress EVENT_BEAT_SAFFRON_SILPH_CO_3F_TRAINER_0
 	dw SilphCo3BattleText1 ; TextBeforeBattle
 	dw SilphCo3AfterBattleText1 ; TextAfterBattle
 	dw SilphCo3EndBattleText1 ; TextEndBattle
 	dw SilphCo3EndBattleText1 ; TextEndBattle
 
 SilphCo3TrainerHeader1:
-	dbEventFlagBit EVENT_BEAT_SILPH_CO_3F_TRAINER_1
+	dbEventFlagBit EVENT_BEAT_SAFFRON_SILPH_CO_3F_TRAINER_1
 	db ($3 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SILPH_CO_3F_TRAINER_1
+	dwEventFlagAddress EVENT_BEAT_SAFFRON_SILPH_CO_3F_TRAINER_1
 	dw SilphCo3BattleText2 ; TextBeforeBattle
 	dw SilphCo3AfterBattleText2 ; TextAfterBattle
 	dw SilphCo3EndBattleText2 ; TextEndBattle
@@ -83,7 +83,7 @@ SilphCo3TrainerHeader1:
 
 SilphCo3Text1:
 	TX_ASM
-	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+	CheckEvent EVENT_BEAT_SAFFRON_SILPH_CO_GIOVANNI
 	ld hl, SilphCo3Text_59ffe
 	jr nz, .asm_59fee
 	ld hl, SilphCo3Text_59ff9

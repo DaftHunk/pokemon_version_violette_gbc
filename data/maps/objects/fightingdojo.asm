@@ -17,5 +17,5 @@ FightingDojoObject:
 	object SPRITE_POKEBALL, 5, 1, STAY, NONE, 7 ; person
 
 	; warp-to
-	warp_to 4, 11, FIGHTING_DOJO_WIDTH
-	warp_to 5, 11, FIGHTING_DOJO_WIDTH
+	warp_to 4, 11, SAFFRON_FIGHTING_DOJO_WIDTH
+	warp_to 5, 11, SAFFRON_FIGHTING_DOJO_WIDTH

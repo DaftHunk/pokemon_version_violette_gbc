@@ -14,5 +14,5 @@ BluesHouseObject:
 	object SPRITE_MAP, 3, 3, STAY, NONE, 3, 0 ; map on table
 
 	; warp-to
-	warp_to 2, 7, BLUES_HOUSE_WIDTH
-	warp_to 3, 7, BLUES_HOUSE_WIDTH
+	warp_to 2, 7, PALLET_BLUES_HOUSE_WIDTH
+	warp_to 3, 7, PALLET_BLUES_HOUSE_WIDTH

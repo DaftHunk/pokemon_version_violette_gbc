@@ -332,88 +332,88 @@ BillsGardenHS:
 Route25HS:
 	db ROUTE_25,$0A,Show
 RedsHouse2FHS:
-	db REDS_HOUSE_2F,$01,Hide
+	db PALLET_REDS_HOUSE_2F,$01,Hide
 BluesHouseHS:
-	db BLUES_HOUSE,$01,Show
-	db BLUES_HOUSE,$02,Hide
-	db BLUES_HOUSE,$03,Show
+	db PALLET_BLUES_HOUSE,$01,Show
+	db PALLET_BLUES_HOUSE,$02,Hide
+	db PALLET_BLUES_HOUSE,$03,Show
 OaksLabHS:
-	db OAKS_LAB,$01,Show
-	db OAKS_LAB,$02,Show
-	db OAKS_LAB,$03,Show
-	db OAKS_LAB,$04,Show
-	db OAKS_LAB,$05,Hide
-	db OAKS_LAB,$06,Show
-	db OAKS_LAB,$07,Show
-	db OAKS_LAB,$08,Hide
+	db PALLET_OAKS_LAB,$01,Show
+	db PALLET_OAKS_LAB,$02,Show
+	db PALLET_OAKS_LAB,$03,Show
+	db PALLET_OAKS_LAB,$04,Show
+	db PALLET_OAKS_LAB,$05,Hide
+	db PALLET_OAKS_LAB,$06,Show
+	db PALLET_OAKS_LAB,$07,Show
+	db PALLET_OAKS_LAB,$08,Hide
 ViridianGymHS:
 	db VIRIDIAN_GYM,$01,Show
 	db VIRIDIAN_GYM,$0B,Show
 	db VIRIDIAN_GYM,$0C,Hide
 Museum1FHS:
-	db MUSEUM_1F,$05,Show
+	db PEWTER_MUSEUM_1F,$05,Show
 CeruleanCaveHS:
 	db CERULEAN_CAVE_1F,$01,Show
 	db CERULEAN_CAVE_1F,$02,Show
 	db CERULEAN_CAVE_1F,$03,Show
 PokemonTower2FHS:
-	db POKEMONTOWER_2F,$01,Show
+	db LAVENDER_POKEMON_TOWER_2F,$01,Show
 PokemonTower3FHS:
-	db POKEMONTOWER_3F,$04,Show
+	db LAVENDER_POKEMON_TOWER_3F,$04,Show
 PokemonTower4FHS:
-	db POKEMONTOWER_4F,$04,Show
-	db POKEMONTOWER_4F,$05,Show
-	db POKEMONTOWER_4F,$06,Show
+	db LAVENDER_POKEMON_TOWER_4F,$04,Show
+	db LAVENDER_POKEMON_TOWER_4F,$05,Show
+	db LAVENDER_POKEMON_TOWER_4F,$06,Show
 PokemonTower5FHS:
-	db POKEMONTOWER_5F,$06,Show
+	db LAVENDER_POKEMON_TOWER_5F,$06,Show
 PokemonTower6FHS:
-	db POKEMONTOWER_6F,$04,Show
-	db POKEMONTOWER_6F,$05,Show
+	db LAVENDER_POKEMON_TOWER_6F,$04,Show
+	db LAVENDER_POKEMON_TOWER_6F,$05,Show
 PokemonTower7FHS:
-	db POKEMONTOWER_7F,$01,Show
-	db POKEMONTOWER_7F,$02,Show
-	db POKEMONTOWER_7F,$03,Show
-	db POKEMONTOWER_7F,$04,Show
-	db POKEMONTOWER_7F,$05,Show ; James
+	db LAVENDER_POKEMON_TOWER_7F,$01,Show
+	db LAVENDER_POKEMON_TOWER_7F,$02,Show
+	db LAVENDER_POKEMON_TOWER_7F,$03,Show
+	db LAVENDER_POKEMON_TOWER_7F,$04,Show
+	db LAVENDER_POKEMON_TOWER_7F,$05,Show ; James
 MrFujisHouseHS:
-	db MR_FUJIS_HOUSE,$05,Hide
+	db LAVENDER_FUJIS_HOUSE,$05,Hide
 CeladonMansionRoofHouseHS:
 	db CELADON_MANSION_ROOF_HOUSE,$02,Show
 GameCornerHS:
-	db GAME_CORNER,$0B,Show
+	db CELADON_GAME_CORNER,$0B,Show
 WardensHouseHS:
-	db WARDENS_HOUSE,$02,Show
+	db FUCHSIA_WARDENS_HOUSE,$02,Show
 PokemonMansion1FHS:
-	db POKEMON_MANSION_1F,$02,Show
-	db POKEMON_MANSION_1F,$03,Show
+	db CINNABAR_MANSION_1F,$02,Show
+	db CINNABAR_MANSION_1F,$03,Show
 FightingDojoHS:
-	db FIGHTING_DOJO,$06,Show
-	db FIGHTING_DOJO,$07,Show
+	db SAFFRON_FIGHTING_DOJO,$06,Show
+	db SAFFRON_FIGHTING_DOJO,$07,Show
 SilphCo1FHS:
-	db SILPH_CO_1F,$01,Hide
+	db SAFFRON_SILPH_CO_1F,$01,Hide
 PowerPlantHS:
-	db POWER_PLANT,$01,Show ; Voltorb0
-	db POWER_PLANT,$02,Show ; Voltorb1
-	db POWER_PLANT,$03,Show ; Voltorb2
-	db POWER_PLANT,$04,Show ; Electrode1
-	db POWER_PLANT,$05,Show ; Voltorb4
-	db POWER_PLANT,$06,Show ; Voltorb5
-	db POWER_PLANT,$07,Show ; Voltorb6
-	db POWER_PLANT,$08,Show ; Item0
-	db POWER_PLANT,$09,Show ; Item1
-	db POWER_PLANT,$0A,Show ; Item2
-	db POWER_PLANT,$0B,Show ; Item3
+	db POWER_PLANT_1F,$01,Show ; Voltorb0
+	db POWER_PLANT_1F,$02,Show ; Voltorb1
+	db POWER_PLANT_1F,$03,Show ; Voltorb2
+	db POWER_PLANT_1F,$04,Show ; Electrode1
+	db POWER_PLANT_1F,$05,Show ; Voltorb4
+	db POWER_PLANT_1F,$06,Show ; Voltorb5
+	db POWER_PLANT_1F,$07,Show ; Voltorb6
+	db POWER_PLANT_1F,$08,Show ; Item0
+	db POWER_PLANT_1F,$09,Show ; Item1
+	db POWER_PLANT_1F,$0A,Show ; Item2
+	db POWER_PLANT_1F,$0B,Show ; Item3
 PowerPlant1FHS:
-	db POWER_PLANT_1F,$01,Show ; Electrode2
-	db POWER_PLANT_1F,$02,Show ; Zapdos
-	db POWER_PLANT_1F,$03,Show ; Item0
-	db POWER_PLANT_1F,$04,Show ; Item1
+	db POWER_PLANT_2F,$01,Show ; Electrode2
+	db POWER_PLANT_2F,$02,Show ; Zapdos
+	db POWER_PLANT_2F,$03,Show ; Item0
+	db POWER_PLANT_2F,$04,Show ; Item1
 VictoryRoad2FHS:
-	db VICTORY_ROAD_2,$06,Show
-	db VICTORY_ROAD_2,$07,Show
-	db VICTORY_ROAD_2,$08,Show
-	db VICTORY_ROAD_2,$09,Show
-	db VICTORY_ROAD_2,$0C,Hide ; boulder
+	db VICTORY_ROAD_2F,$06,Show
+	db VICTORY_ROAD_2F,$07,Show
+	db VICTORY_ROAD_2F,$08,Show
+	db VICTORY_ROAD_2F,$09,Show
+	db VICTORY_ROAD_2F,$0C,Hide ; boulder
 BillsHouseHS:
 	db BILLS_HOUSE,$01,Show
 	db BILLS_HOUSE,$02,Hide
@@ -483,74 +483,74 @@ RocketHideoutB4FHS:
 	db ROCKET_HIDEOUT_B4F,$08,Hide
 	db ROCKET_HIDEOUT_B4F,$09,Hide
 SilphCo2FHS:
-	db SILPH_CO_2F,$02,Show
-	db SILPH_CO_2F,$03,Show
-	db SILPH_CO_2F,$04,Show
-	db SILPH_CO_2F,$05,Show
+	db SAFFRON_SILPH_CO_2F,$02,Show
+	db SAFFRON_SILPH_CO_2F,$03,Show
+	db SAFFRON_SILPH_CO_2F,$04,Show
+	db SAFFRON_SILPH_CO_2F,$05,Show
 SilphCo3FHS:
-	db SILPH_CO_3F,$02,Show
-	db SILPH_CO_3F,$03,Show
-	db SILPH_CO_3F,$04,Show
+	db SAFFRON_SILPH_CO_3F,$02,Show
+	db SAFFRON_SILPH_CO_3F,$03,Show
+	db SAFFRON_SILPH_CO_3F,$04,Show
 SilphCo4FHS:
-	db SILPH_CO_4F,$02,Show
-	db SILPH_CO_4F,$03,Show
-	db SILPH_CO_4F,$04,Show
-	db SILPH_CO_4F,$05,Show
-	db SILPH_CO_4F,$06,Show
-	db SILPH_CO_4F,$07,Show
+	db SAFFRON_SILPH_CO_4F,$02,Show
+	db SAFFRON_SILPH_CO_4F,$03,Show
+	db SAFFRON_SILPH_CO_4F,$04,Show
+	db SAFFRON_SILPH_CO_4F,$05,Show
+	db SAFFRON_SILPH_CO_4F,$06,Show
+	db SAFFRON_SILPH_CO_4F,$07,Show
 SilphCo5FHS:
-	db SILPH_CO_5F,$02,Show
-	db SILPH_CO_5F,$03,Show
-	db SILPH_CO_5F,$04,Show
-	db SILPH_CO_5F,$05,Show
-	db SILPH_CO_5F,$06,Show
-	db SILPH_CO_5F,$07,Show
-	db SILPH_CO_5F,$08,Show
+	db SAFFRON_SILPH_CO_5F,$02,Show
+	db SAFFRON_SILPH_CO_5F,$03,Show
+	db SAFFRON_SILPH_CO_5F,$04,Show
+	db SAFFRON_SILPH_CO_5F,$05,Show
+	db SAFFRON_SILPH_CO_5F,$06,Show
+	db SAFFRON_SILPH_CO_5F,$07,Show
+	db SAFFRON_SILPH_CO_5F,$08,Show
 SilphCo6FHS:
-	db SILPH_CO_6F,$06,Show
-	db SILPH_CO_6F,$07,Show
-	db SILPH_CO_6F,$08,Show
-	db SILPH_CO_6F,$09,Show
-	db SILPH_CO_6F,$0A,Show
+	db SAFFRON_SILPH_CO_6F,$06,Show
+	db SAFFRON_SILPH_CO_6F,$07,Show
+	db SAFFRON_SILPH_CO_6F,$08,Show
+	db SAFFRON_SILPH_CO_6F,$09,Show
+	db SAFFRON_SILPH_CO_6F,$0A,Show
 SilphCo7FHS:
-	db SILPH_CO_7F,$05,Show
-	db SILPH_CO_7F,$06,Show
-	db SILPH_CO_7F,$07,Show
-	db SILPH_CO_7F,$08,Show
-	db SILPH_CO_7F,$09,Show
-	db SILPH_CO_7F,$0A,Show
-	db SILPH_CO_7F,$0B,Show
+	db SAFFRON_SILPH_CO_7F,$05,Show
+	db SAFFRON_SILPH_CO_7F,$06,Show
+	db SAFFRON_SILPH_CO_7F,$07,Show
+	db SAFFRON_SILPH_CO_7F,$08,Show
+	db SAFFRON_SILPH_CO_7F,$09,Show
+	db SAFFRON_SILPH_CO_7F,$0A,Show
+	db SAFFRON_SILPH_CO_7F,$0B,Show
 SilphCo8FHS:
-	db SILPH_CO_8F,$02,Show
-	db SILPH_CO_8F,$03,Show
-	db SILPH_CO_8F,$04,Show
+	db SAFFRON_SILPH_CO_8F,$02,Show
+	db SAFFRON_SILPH_CO_8F,$03,Show
+	db SAFFRON_SILPH_CO_8F,$04,Show
 SilphCo9FHS:
-	db SILPH_CO_9F,$02,Show
-	db SILPH_CO_9F,$03,Show
-	db SILPH_CO_9F,$04,Show
+	db SAFFRON_SILPH_CO_9F,$02,Show
+	db SAFFRON_SILPH_CO_9F,$03,Show
+	db SAFFRON_SILPH_CO_9F,$04,Show
 SilphCo10FHS:
-	db SILPH_CO_10F,$01,Show
-	db SILPH_CO_10F,$02,Show
-	db SILPH_CO_10F,$04,Show
-	db SILPH_CO_10F,$05,Show
-	db SILPH_CO_10F,$06,Show
+	db SAFFRON_SILPH_CO_10F,$01,Show
+	db SAFFRON_SILPH_CO_10F,$02,Show
+	db SAFFRON_SILPH_CO_10F,$04,Show
+	db SAFFRON_SILPH_CO_10F,$05,Show
+	db SAFFRON_SILPH_CO_10F,$06,Show
 SilphCo11FHS:
-	db SILPH_CO_11F,$01,Show ; Chief
-	db SILPH_CO_11F,$03,Show ; GIOVANNI
-	db SILPH_CO_11F,$04,Show ; jessie
-	db SILPH_CO_11F,$05,Show 
-	db SILPH_CO_11F,$06,Show ; james
+	db SAFFRON_SILPH_CO_11F,$01,Show ; Chief
+	db SAFFRON_SILPH_CO_11F,$03,Show ; GIOVANNI
+	db SAFFRON_SILPH_CO_11F,$04,Show ; jessie
+	db SAFFRON_SILPH_CO_11F,$05,Show 
+	db SAFFRON_SILPH_CO_11F,$06,Show ; james
 PokemonMansion2FHS:
-	db POKEMON_MANSION_2F,$02,Show
+	db CINNABAR_MANSION_B1F,$02,Show
 PokemonMansion3FHS:
-	db POKEMON_MANSION_3F,$03,Show
-	db POKEMON_MANSION_3F,$04,Show
+	db CINNABAR_MANSION_2F,$03,Show
+	db CINNABAR_MANSION_2F,$04,Show
 PokemonMansionB1FHS:
-	db POKEMON_MANSION_B1F,$03,Show
-	db POKEMON_MANSION_B1F,$04,Show
-	db POKEMON_MANSION_B1F,$05,Show
-	db POKEMON_MANSION_B1F,$06,Show
-	db POKEMON_MANSION_B1F,$08,Show
+	db CINNABAR_MANSION_B2F,$03,Show
+	db CINNABAR_MANSION_B2F,$04,Show
+	db CINNABAR_MANSION_B2F,$05,Show
+	db CINNABAR_MANSION_B2F,$06,Show
+	db CINNABAR_MANSION_B2F,$08,Show
 SafariZoneEastHS:
 	db SAFARI_ZONE_EAST,$01,Show
 	db SAFARI_ZONE_EAST,$02,Show
@@ -582,7 +582,7 @@ VictoryRoad1FHS:
 	db VICTORY_ROAD_1F,$07,Show
 	db VICTORY_ROAD_1F,$08,Show
 ChampionsRoomHS:
-	db CHAMPIONS_ROOM,$02,Hide
+	db INDIGO_CHAMPIONS_ROOM,$02,Hide
 SeafoamIslands1FHS:
 	db SEAFOAM_ISLANDS_1F,$01,Show
 	db SEAFOAM_ISLANDS_1F,$02,Show
@@ -609,7 +609,7 @@ VermilionCityHS:
 UndergroundPathWEHS: 
 	db UNDERGROUND_PATH_WE,$02,Hide	;joenote - m_gene pokeball
 Museum2FHS:
-	db MUSEUM_2F,$06,Show	;joenote - added water gun tm to museum 2f
+	db PEWTER_MUSEUM_2F,$06,Show	;joenote - added water gun tm to museum 2f
 VermilionDockHS:
 	db VERMILION_DOCK, $01, Hide
 

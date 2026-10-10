@@ -63,7 +63,7 @@ VictoryRoad3Script0:
 	ld a, HS_VICTORY_ROAD_3F_BOULDER
 	ld [wMissableObjectIndex], a
 	predef HideObject
-	ld a, HS_VICTORY_ROAD_2_BOULDER
+	ld a, HS_VICTORY_ROAD_2F_BOULDER
 	ld [wMissableObjectIndex], a
 	predef_jump ShowObject
 
@@ -73,7 +73,7 @@ VictoryRoad3Script0:
 	db $FF
 
 .asm_449fe
-	ld a, VICTORY_ROAD_2
+	ld a, VICTORY_ROAD_2F
 	ld [wDungeonWarpDestinationMap], a
 	ld hl, .coordsData_449f9
 	call IsPlayerOnDungeonWarp

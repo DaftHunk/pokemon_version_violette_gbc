@@ -111,7 +111,7 @@ PokemonTower2Script2:
 	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
-	ld a, HS_POKEMONTOWER_2F_RIVAL
+	ld a, HS_LAVENDER_POKEMON_TOWER_2F_RIVAL
 	ld [wMissableObjectIndex], a
 	predef HideObject
 ;;;;; PureRGBnote: ADDED: play a sound effect when he goes downstairs

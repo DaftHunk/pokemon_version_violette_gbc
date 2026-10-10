@@ -16,7 +16,7 @@ SilphCo8Script_5651a:
 	ld hl, SilphCo8GateCoords
 	call SilphCo8Script_56541
 	call SilphCo8Script_5656d
-	CheckEvent EVENT_SILPH_CO_8_UNLOCKED_DOOR
+	CheckEvent EVENT_SAFFRON_SILPH_CO_8_UNLOCKED_DOOR
 	ret nz
 	ld a, $5f
 	ld [wNewTileBlockID], a
@@ -67,7 +67,7 @@ SilphCo8Script_5656d:
 	ld a, [$ffe0]
 	and a
 	ret z
-	SetEvent EVENT_SILPH_CO_8_UNLOCKED_DOOR
+	SetEvent EVENT_SAFFRON_SILPH_CO_8_UNLOCKED_DOOR
 	ret
 
 SilphCo8ScriptPointers:
@@ -82,27 +82,27 @@ SilphCo8TextPointers:
 	dw SilphCo8Text4
 
 SilphCo8TrainerHeader0:
-	dbEventFlagBit EVENT_BEAT_SILPH_CO_8F_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_SAFFRON_SILPH_CO_8F_TRAINER_0
 	db ($4 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SILPH_CO_8F_TRAINER_0
+	dwEventFlagAddress EVENT_BEAT_SAFFRON_SILPH_CO_8F_TRAINER_0
 	dw SilphCo8BattleText1 ; TextBeforeBattle
 	dw SilphCo8AfterBattleText1 ; TextAfterBattle
 	dw SilphCo8EndBattleText1 ; TextEndBattle
 	dw SilphCo8EndBattleText1 ; TextEndBattle
 
 SilphCo8TrainerHeader1:
-	dbEventFlagBit EVENT_BEAT_SILPH_CO_8F_TRAINER_1
+	dbEventFlagBit EVENT_BEAT_SAFFRON_SILPH_CO_8F_TRAINER_1
 	db ($4 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SILPH_CO_8F_TRAINER_1
+	dwEventFlagAddress EVENT_BEAT_SAFFRON_SILPH_CO_8F_TRAINER_1
 	dw SilphCo8BattleText2 ; TextBeforeBattle
 	dw SilphCo8AfterBattleText2 ; TextAfterBattle
 	dw SilphCo8EndBattleText2 ; TextEndBattle
 	dw SilphCo8EndBattleText2 ; TextEndBattle
 
 SilphCo8TrainerHeader2:
-	dbEventFlagBit EVENT_BEAT_SILPH_CO_8F_TRAINER_2
+	dbEventFlagBit EVENT_BEAT_SAFFRON_SILPH_CO_8F_TRAINER_2
 	db ($4 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SILPH_CO_8F_TRAINER_2
+	dwEventFlagAddress EVENT_BEAT_SAFFRON_SILPH_CO_8F_TRAINER_2
 	dw SilphCo8BattleText3 ; TextBeforeBattle
 	dw SilphCo8AfterBattleText3 ; TextAfterBattle
 	dw SilphCo8EndBattleText3 ; TextEndBattle
@@ -112,7 +112,7 @@ SilphCo8TrainerHeader2:
 
 SilphCo8Text1:
 	TX_ASM
-	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+	CheckEvent EVENT_BEAT_SAFFRON_SILPH_CO_GIOVANNI
 	ld hl, SilphCo8Text_565c3
 	jr nz, .asm_565b8
 	ld hl, SilphCo8Text_565be

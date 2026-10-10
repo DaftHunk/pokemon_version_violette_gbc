@@ -37,7 +37,7 @@ OaksLabScript0:
 	ld a, [wNPCMovementScriptFunctionNum]
 	and a
 	ret nz
-	ld a, HS_OAKS_LAB_OAK_2
+	ld a, HS_PALLET_OAKS_LAB_OAK_2
 	ld [wMissableObjectIndex], a
 	predef ShowObject2
 	ld hl, wStatusFlags4
@@ -67,10 +67,10 @@ OaksLabScript2:
 	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
-	ld a, HS_OAKS_LAB_OAK_2
+	ld a, HS_PALLET_OAKS_LAB_OAK_2
 	ld [wMissableObjectIndex], a
 	predef HideObject
-	ld a, HS_OAKS_LAB_OAK_1
+	ld a, HS_PALLET_OAKS_LAB_OAK_1
 	ld [wMissableObjectIndex], a
 	predef ShowObject
 
@@ -437,7 +437,7 @@ OaksLabScript12:
 	ld [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
 	predef HealParty
-	SetEvent EVENT_BATTLED_RIVAL_IN_OAKS_LAB
+	SetEvent EVENT_BATTLED_RIVAL_IN_PALLET_OAKS_LAB
 
 	ld a, $d
 	ld [wOaksLabCurScript], a
@@ -482,7 +482,7 @@ OaksLabScript14:
 	ld a, [wStatusFlags5]
 	bit 0, a
 	jr nz, .asm_1ce8c
-	ld a, HS_OAKS_LAB_RIVAL
+	ld a, HS_PALLET_OAKS_LAB_RIVAL
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	xor a
@@ -526,7 +526,7 @@ OaksLabScript15:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	call OaksLabScript_1d02b
-	ld a, HS_OAKS_LAB_RIVAL
+	ld a, HS_PALLET_OAKS_LAB_RIVAL
 	ld [wMissableObjectIndex], a
 	predef ShowObject
 	ld a, [wNPCMovementDirections2Index]
@@ -638,7 +638,7 @@ OaksLabScript17:
 	bit 0, a
 	ret nz
 	call PlayDefaultMusic
-	ld a, HS_OAKS_LAB_RIVAL
+	ld a, HS_PALLET_OAKS_LAB_RIVAL
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	SetEvent EVENT_1ST_ROUTE22_RIVAL_BATTLE
@@ -1111,7 +1111,7 @@ OaksLabText5:
 	jr nz, .eventChenGivesBalls
 	CheckEvent EVENT_GOT_POKEDEX
 	jr nz, .eventChenAroundWorld
-	CheckEventReuseA EVENT_BATTLED_RIVAL_IN_OAKS_LAB
+	CheckEventReuseA EVENT_BATTLED_RIVAL_IN_PALLET_OAKS_LAB
 	jr nz, .eventChenParcelDeliver
 	ld a, [wStatusFlags4]
 	bit 3, a

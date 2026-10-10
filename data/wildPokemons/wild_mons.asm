@@ -40,7 +40,7 @@ WildDataPointers:
 	dw BillsGardenMons 
 	dw MoonSquareMons
 	dw Route25Mons ; ROUTE_25
-	dw NoMons      ; REDS_HOUSE_1F
+	dw NoMons      ; PALLET_REDS_HOUSE_1F
 	dw NoMons
 	dw NoMons
 	dw NoMons

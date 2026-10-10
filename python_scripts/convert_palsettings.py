@@ -14,7 +14,7 @@ Fonctionnement :
   1. Lit la table OverworldTilePalPointers (ordre des blocs PalSettings_).
   2. Extrait les valeurs (0-8) de chaque bloc. Les blocs vides héritent par
      « fall-through » ASM du bloc défini suivant dans le fichier
-     (ex. PalSettings_REDS_HOUSE_1 -> PalSettings_REDS_HOUSE_2,
+     (ex. PalSettings_PALLET_REDS_HOUSE_1 -> PalSettings_PALLET_REDS_HOUSE_2,
      PalSettings_MART -> PalSettings_POKECENTER, FOREST_GATE/MUSEUM -> GATE).
   3. Convertit chaque valeur en nom de couleur via MAPPING ci-dessous, puis
      écrit un fichier <cible>.asm au format « tilepal 0, COULEUR, ... ».
@@ -83,10 +83,10 @@ MAPPING = {
 #  tilesets absents de pokered-gbc d'origine)
 CIBLES = {
     "OVERWORLD": "overworld",
-    "REDS_HOUSE_1": "reds_house",
+    "PALLET_REDS_HOUSE_1": "reds_house",
     "MART": "pokecenter",
     "FOREST": "forest",
-    "REDS_HOUSE_2": "reds_house",
+    "PALLET_REDS_HOUSE_2": "reds_house",
     "DOJO": "gym",
     "POKECENTER": "pokecenter",
     "GYM": "gym",

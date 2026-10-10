@@ -16,7 +16,7 @@ SilphCo2Script_59d07:
 	ld hl, SilphCo2GateCoords
 	call SilphCo2Script_59d43
 	call SilphCo2Script_59d6f
-	CheckEvent EVENT_SILPH_CO_2_UNLOCKED_DOOR1
+	CheckEvent EVENT_SAFFRON_SILPH_CO_2_UNLOCKED_DOOR1
 	jr nz, .asm_59d2e
 	push af
 	ld a, $54
@@ -25,7 +25,7 @@ SilphCo2Script_59d07:
 	predef ReplaceTileBlock
 	pop af
 .asm_59d2e
-	CheckEventAfterBranchReuseA EVENT_SILPH_CO_2_UNLOCKED_DOOR2, EVENT_SILPH_CO_2_UNLOCKED_DOOR1
+	CheckEventAfterBranchReuseA EVENT_SAFFRON_SILPH_CO_2_UNLOCKED_DOOR2, EVENT_SAFFRON_SILPH_CO_2_UNLOCKED_DOOR1
 	ret nz
 	ld a, $54
 	ld [wNewTileBlockID], a
@@ -74,16 +74,16 @@ SilphCo2Script_59d43:
 	ret
 
 SilphCo2Script_59d6f:
-	EventFlagAddress hl, EVENT_SILPH_CO_2_UNLOCKED_DOOR1
+	EventFlagAddress hl, EVENT_SAFFRON_SILPH_CO_2_UNLOCKED_DOOR1
 	ld a, [$ffe0]
 	and a
 	ret z
 	cp $1
 	jr nz, .next
-	SetEventReuseHL EVENT_SILPH_CO_2_UNLOCKED_DOOR1
+	SetEventReuseHL EVENT_SAFFRON_SILPH_CO_2_UNLOCKED_DOOR1
 	ret
 .next
-	SetEventAfterBranchReuseHL EVENT_SILPH_CO_2_UNLOCKED_DOOR2, EVENT_SILPH_CO_2_UNLOCKED_DOOR1
+	SetEventAfterBranchReuseHL EVENT_SAFFRON_SILPH_CO_2_UNLOCKED_DOOR2, EVENT_SAFFRON_SILPH_CO_2_UNLOCKED_DOOR1
 	ret
 
 SilphCo2ScriptPointers:
@@ -99,36 +99,36 @@ SilphCo2TextPointers:
 	dw SilphCo2Text5
 
 SilphCo2TrainerHeader0:
-	dbEventFlagBit EVENT_BEAT_SILPH_CO_2F_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_SAFFRON_SILPH_CO_2F_TRAINER_0
 	db ($3 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SILPH_CO_2F_TRAINER_0
+	dwEventFlagAddress EVENT_BEAT_SAFFRON_SILPH_CO_2F_TRAINER_0
 	dw SilphCo2BattleText1 ; TextBeforeBattle
 	dw SilphCo2AfterBattleText1 ; TextAfterBattle
 	dw SilphCo2EndBattleText1 ; TextEndBattle
 	dw SilphCo2EndBattleText1 ; TextEndBattle
 
 SilphCo2TrainerHeader1:
-	dbEventFlagBit EVENT_BEAT_SILPH_CO_2F_TRAINER_1
+	dbEventFlagBit EVENT_BEAT_SAFFRON_SILPH_CO_2F_TRAINER_1
 	db ($4 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SILPH_CO_2F_TRAINER_1
+	dwEventFlagAddress EVENT_BEAT_SAFFRON_SILPH_CO_2F_TRAINER_1
 	dw SilphCo2BattleText2 ; TextBeforeBattle
 	dw SilphCo2AfterBattleText2 ; TextAfterBattle
 	dw SilphCo2EndBattleText2 ; TextEndBattle
 	dw SilphCo2EndBattleText2 ; TextEndBattle
 
 SilphCo2TrainerHeader2:
-	dbEventFlagBit EVENT_BEAT_SILPH_CO_2F_TRAINER_2
+	dbEventFlagBit EVENT_BEAT_SAFFRON_SILPH_CO_2F_TRAINER_2
 	db ($3 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SILPH_CO_2F_TRAINER_2
+	dwEventFlagAddress EVENT_BEAT_SAFFRON_SILPH_CO_2F_TRAINER_2
 	dw SilphCo2BattleText3 ; TextBeforeBattle
 	dw SilphCo2AfterBattleText3 ; TextAfterBattle
 	dw SilphCo2EndBattleText3 ; TextEndBattle
 	dw SilphCo2EndBattleText3 ; TextEndBattle
 
 SilphCo2TrainerHeader3:
-	dbEventFlagBit EVENT_BEAT_SILPH_CO_2F_TRAINER_3
+	dbEventFlagBit EVENT_BEAT_SAFFRON_SILPH_CO_2F_TRAINER_3
 	db ($3 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SILPH_CO_2F_TRAINER_3
+	dwEventFlagAddress EVENT_BEAT_SAFFRON_SILPH_CO_2F_TRAINER_3
 	dw SilphCo2BattleText4 ; TextBeforeBattle
 	dw SilphCo2AfterBattleText4 ; TextAfterBattle
 	dw SilphCo2EndBattleText4 ; TextEndBattle

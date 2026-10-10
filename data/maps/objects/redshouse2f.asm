@@ -2,7 +2,7 @@ RedsHouse2FObject:
 	db $a ; border block
 
 	db 1 ; warps
-	warp 7, 1, 2, REDS_HOUSE_1F
+	warp 7, 1, 2, PALLET_REDS_HOUSE_1F
 
 	db 0 ; signs
 
@@ -10,4 +10,4 @@ RedsHouse2FObject:
 	object SPRITE_CUP,  2, 1, STAY, NONE, 1
 
 	; warp-to
-	warp_to 7, 1, REDS_HOUSE_2F_WIDTH
+	warp_to 7, 1, PALLET_REDS_HOUSE_2F_WIDTH

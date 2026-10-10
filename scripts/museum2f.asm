@@ -27,7 +27,7 @@ Museum2FPikachuGirlText:
 	TX_ASM
 	ld hl, Museum2FAskMonText
 	; Check if already done
-	CheckEvent EVENT_MUSEUM_2F_SHOWED_PIKACHU
+	CheckEvent EVENT_PEWTER_MUSEUM_2F_SHOWED_PIKACHU
 	jr nz, .endScript
 	; Check if not right mon in first position
 	ld a, [wPartyMon1Species]
@@ -41,7 +41,7 @@ Museum2FPikachuGirlText:
 	call GiveItem
 	jr nc, .noSpace
 	; If reward given
-	SetEvent EVENT_MUSEUM_2F_SHOWED_PIKACHU
+	SetEvent EVENT_PEWTER_MUSEUM_2F_SHOWED_PIKACHU
 	ld hl, Museum2FFoundItemText
 	; fallthrough
 .endScript

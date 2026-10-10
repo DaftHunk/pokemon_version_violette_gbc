@@ -3,7 +3,7 @@ PowerPlant1FObject:
 
 	db 2 ; warps
 	warp 0, 11, 3, ROUTE_10
-	warp 16, 1, 2, POWER_PLANT
+	warp 16, 1, 2, POWER_PLANT_1F
 
 	db 0 ; signs
 
@@ -14,5 +14,5 @@ PowerPlant1FObject:
 	object SPRITE_BALL,  34, 3, STAY, NONE, 4, RARE_CANDY ; PickUpItemText
 
 	; warp-to
-	warp_to 0, 11, POWER_PLANT_1F_WIDTH
-	warp_to 16, 1, POWER_PLANT_1F_WIDTH
+	warp_to 0, 11, POWER_PLANT_2F_WIDTH
+	warp_to 16, 1, POWER_PLANT_2F_WIDTH

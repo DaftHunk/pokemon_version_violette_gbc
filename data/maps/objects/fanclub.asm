@@ -19,5 +19,5 @@ FanClubObject:
 	object SPRITE_PAPER_SHEET,      4, 4, STAY, DOWN,  7 ; FanClubText7
 
 	; warp-to
-	warp_to 2, 7, POKEMON_FAN_CLUB_WIDTH
-	warp_to 3, 7, POKEMON_FAN_CLUB_WIDTH
+	warp_to 2, 7, VERMILION_FAN_CLUB_WIDTH
+	warp_to 3, 7, VERMILION_FAN_CLUB_WIDTH

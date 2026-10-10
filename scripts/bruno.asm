@@ -14,7 +14,7 @@ BrunoShowOrHideExitBlock:
 	bit BIT_CUR_MAP_LOADED_1, [hl]
 	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
-	CheckEvent EVENT_BEAT_BRUNOS_ROOM_TRAINER_0
+	CheckEvent EVENT_BEAT_INDIGO_BRUNOS_ROOM_TRAINER_0
 	jr z, .blockExitToNextRoom
 	ld a, $5
 	jp .setExitBlock
@@ -70,7 +70,7 @@ BrunoScript0:
 	ld a, [wCoordIndex]
 	cp $3  ; Is player standing one tile above the exit?
 	jr c, .stopPlayerFromLeaving
-	CheckAndSetEvent EVENT_AUTOWALKED_INTO_BRUNOS_ROOM
+	CheckAndSetEvent EVENT_AUTOWALKED_INTO_INDIGO_BRUNOS_ROOM
 	jr z, BrunoScriptWalkIntoRoom
 .stopPlayerFromLeaving
 	ld a, $2
@@ -124,17 +124,17 @@ BrunoTextPointers:
 	dw BrunoDontRunAwayText
 
 BrunoTrainerHeader0:
-	dbEventFlagBit EVENT_BEAT_BRUNOS_ROOM_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_INDIGO_BRUNOS_ROOM_TRAINER_0
 	db ($0 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_BRUNOS_ROOM_TRAINER_0
+	dwEventFlagAddress EVENT_BEAT_INDIGO_BRUNOS_ROOM_TRAINER_0
 	dw BrunoBeforeBattleText ; TextBeforeBattle
 	dw BrunoAfterBattleText ; TextAfterBattle
 	dw BrunoEndBattleText ; TextEndBattle
 	dw BrunoEndBattleText ; TextEndBattle
 BrunoTrainerHeader1:
-	dbEventFlagBit EVENT_BEAT_BRUNOS_ROOM_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_INDIGO_BRUNOS_ROOM_TRAINER_0
 	db ($0 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_BRUNOS_ROOM_TRAINER_0
+	dwEventFlagAddress EVENT_BEAT_INDIGO_BRUNOS_ROOM_TRAINER_0
 	dw RematchBrunoBeforeBattleText ; TextBeforeBattle
 	dw RematchBrunoAfterBattleText ; TextAfterBattle
 	dw RematchBrunoEndBattleText ; TextEndBattle

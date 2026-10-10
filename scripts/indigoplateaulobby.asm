@@ -10,7 +10,7 @@ IndigoPlateauLobbyScript:
 	res 1, [hl]
 	ret z
 	; Elite 4 events
-	ResetEventRange ELITE4_EVENTS_START, EVENT_LANCES_ROOM_LOCK_DOOR
+	ResetEventRange ELITE4_EVENTS_START, EVENT_INDIGO_LANCES_ROOM_LOCK_DOOR
 	ret
 
 IndigoPlateauLobbyTextPointers:

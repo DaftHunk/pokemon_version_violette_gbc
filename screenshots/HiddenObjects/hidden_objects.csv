@@ -1,95 +1,251 @@
-﻿carte;png;type;numero_carte;numero_global;y;x;detail;routine
-GAME_CORNER;celadongamecorner.png;piece;10;10;7;11;COIN+40;HiddenCoins
-GAME_CORNER;celadongamecorner.png;piece;1;1;8;0;COIN+10;HiddenCoins
-GAME_CORNER;celadongamecorner.png;piece;11;11;8;15;COIN+100;HiddenCoins
-GAME_CORNER;celadongamecorner.png;piece;3;3;11;3;COIN+20;HiddenCoins
-GAME_CORNER;celadongamecorner.png;piece;5;5;12;4;COIN+10;HiddenCoins
-GAME_CORNER;celadongamecorner.png;piece;6;6;12;9;COIN+20;HiddenCoins
-GAME_CORNER;celadongamecorner.png;piece;4;4;14;3;COIN+10;HiddenCoins
-GAME_CORNER;celadongamecorner.png;piece;8;8;14;16;COIN+10;HiddenCoins
-GAME_CORNER;celadongamecorner.png;piece;7;7;15;9;COIN+10;HiddenCoins
-GAME_CORNER;celadongamecorner.png;piece;2;2;16;1;COIN+10;HiddenCoins
-GAME_CORNER;celadongamecorner.png;piece;9;9;16;10;COIN+10;HiddenCoins
-GAME_CORNER;celadongamecorner.png;piece;12;12;16;12;COIN+10;HiddenCoins
-VIRIDIAN_FOREST;viridianforest.png;objet;1;1;18;1;POTION;HiddenItems
-VIRIDIAN_FOREST;viridianforest.png;objet;2;2;42;17;ANTIDOTE;HiddenItems
-MT_MOON_B2F;mtmoonb2f.png;objet;2;56;9;33;ETHER;HiddenItems
-MT_MOON_B2F;mtmoonb2f.png;objet;1;3;16;17;MOON_STONE;HiddenItems
-ROUTE_22;route22.png;objet;1;69;2;35;POTION;HiddenItems
-ROUTE_25;route25.png;objet;2;55;4;10;ELIXER;HiddenItems
-ROUTE_25;route25.png;objet;1;4;5;54;ETHER;HiddenItems
-ROUTE_8;route8.png;objet;1;76;4;51;ULTRA_BALL;HiddenItems
-ROUTE_9;route9.png;objet;1;5;7;14;ETHER;HiddenItems
-SS_ANNE_KITCHEN;ssanne6.png;objet;1;6;9;13;GREAT_BALL;HiddenItems
-SS_ANNE_B1F_ROOMS;ssanne10.png;objet;1;7;1;3;HYPER_POTION;HiddenItems
-DIGLETTS_CAVE;diglettscave.png;objet;1;67;13;30;NUGGET;HiddenItems
-DIGLETTS_CAVE;diglettscave.png;objet;2;68;19;20;MOON_STONE;HiddenItems
-ROCKET_HIDEOUT_B1F;rockethideout1.png;objet;1;11;15;21;PP_UP;HiddenItems
-ROCKET_HIDEOUT_B3F;rockethideout3.png;objet;1;12;17;27;NUGGET;HiddenItems
-ROCKET_HIDEOUT_B4F;rockethideout4.png;objet;1;13;1;25;SUPER_POTION;HiddenItems
-POKEMONTOWER_5F;pokemontower5.png;objet;1;14;12;4;ELIXER;HiddenItems
-ROUTE_13;route13.png;objet;2;16;13;16;CALCIUM;HiddenItems
-ROUTE_13;route13.png;objet;1;15;14;1;PP_UP;HiddenItems
-SAFARI_ZONE_NORTH;safarizonenorth.png;objet;1;18;13;19;NUGGET;HiddenItems
-SAFARI_ZONE_ENTRANCE;;objet;1;19;5;5;NUGGET;HiddenItems
-SAFARI_ZONE_WEST;safarizonewest.png;objet;1;20;5;6;REVIVE;HiddenItems
-SILPH_CO_5F;silphco5.png;objet;1;21;3;12;ELIXER;HiddenItems
-SILPH_CO_9F;silphco9.png;objet;1;22;15;2;MAX_POTION;HiddenItems
-COPYCATS_HOUSE_2F;copycatshouse2f.png;objet;1;23;1;1;NUGGET;HiddenItems
-CERULEAN_CAVE_1F;unknowndungeon1.png;objet;1;24;10;13;RARE_CANDY;HiddenItems
-CERULEAN_CAVE_B1F;unknowndungeon3.png;objet;1;25;11;1;CALCIUM;HiddenItems
-CERULEAN_CAVE_B1F;unknowndungeon3.png;objet;2;26;17;29;M_GENE;HiddenItems
-POWER_PLANT;powerplant.png;objet;1;27;1;38;MAX_ELIXER;HiddenItems
-POWER_PLANT_1F;powerplant1f.png;objet;1;28;1;1;PP_UP;HiddenItems
-SEAFOAM_ISLANDS_B2F;seafoamislands3.png;objet;1;29;15;15;NUGGET;HiddenItems
-SEAFOAM_ISLANDS_B4F;seafoamislands5.png;objet;1;30;17;25;ULTRA_BALL;HiddenItems
-POKEMON_MANSION_1F;mansion1.png;objet;1;31;16;8;MOON_STONE;HiddenItems
-POKEMON_MANSION_3F;mansion3.png;objet;1;32;9;1;MAX_REVIVE;HiddenItems
-ROUTE_23;route23.png;objet;1;33;32;0;TM26_EARTHQUAKE;HiddenItems
-ROUTE_23;route23.png;objet;2;34;44;19;FULL_RESTORE;HiddenItems
-ROUTE_23;route23.png;objet;3;35;50;0;MAX_REVIVE;HiddenItems
-ROUTE_23;route23.png;objet;4;36;59;8;TM04_FLAMETHROWER;HiddenItems
-ROUTE_23;route23.png;objet;5;37;70;19;TM13_ICE_BEAM;HiddenItems
-ROUTE_23;route23.png;objet;6;38;90;8;MAX_ETHER;HiddenItems
-ROUTE_23;route23.png;objet;7;39;116;19;TM25_THUNDER;HiddenItems
-VICTORY_ROAD_2;victoryroad2.png;objet;1;40;2;5;ULTRA_BALL;HiddenItems
-VICTORY_ROAD_2;victoryroad2.png;objet;2;41;7;26;FULL_RESTORE;HiddenItems
-ROUTE_16_WEST_HOUSE;route16westhouse.png;objet;1;42;7;7;MAX_ELIXER;HiddenItems
-VIRIDIAN_CITY;viridiancity.png;objet;1;43;4;14;POTION;HiddenItems
-VIRIDIAN_CITY;viridiancity.png;objet;2;70;11;36;POTION;HiddenItems
-PEWTER_CITY;pewtercity.png;objet;2;72;2;24;REPEL;HiddenItems
-PEWTER_CITY;pewtercity.png;objet;1;71;3;6;REPEL;HiddenItems
-CELADON_MANSION_ROOF;celadonmansion4.png;objet;1;79;10;0;RARE_CANDY;HiddenItems
-ROUTE_10;route10.png;objet;1;8;6;10;WATER_STONE;HiddenItems
-ROUTE_10;route10.png;objet;2;9;25;11;CALCIUM;HiddenItems
-ROUTE_10_SOUTH;route10south.png;objet;1;10;4;18;MAX_ETHER;HiddenItems
-ROUTE_11;route11.png;objet;1;44;5;48;ESCAPE_ROPE;HiddenItems
-ROUTE_11;route11.png;objet;2;75;17;55;MAX_REVIVE;HiddenItems
-ROUTE_12;route12.png;objet;1;45;63;2;HYPER_POTION;HiddenItems
-POKEMON_MANSION_B1F;mansion4.png;objet;1;17;9;1;RARE_CANDY;HiddenItems
-ROUTE_17;route17.png;objet;1;46;14;15;RARE_CANDY;HiddenItems
-ROUTE_17;route17.png;objet;2;47;72;17;PP_UP;HiddenItems
-ROUTE_17;route17.png;objet;3;48;91;4;MAX_REVIVE;HiddenItems
-ROUTE_17;route17.png;objet;4;49;121;8;MAX_ELIXER;HiddenItems
-UNDERGROUND_PATH_NS;undergroundpathns.png;objet;1;50;8;6;FULL_RESTORE;HiddenItems
-UNDERGROUND_PATH_NS;undergroundpathns.png;objet;2;51;34;4;X_SPECIAL;HiddenItems
-UNDERGROUND_PATH_WE;undergroundpathwe.png;objet;1;52;2;12;NUGGET;HiddenItems
-UNDERGROUND_PATH_WE;undergroundpathwe.png;objet;2;53;5;21;ELIXER;HiddenItems
-CELADON_CITY;celadoncity.png;objet;2;65;7;48;HYPER_POTION;HiddenItems
-CELADON_CITY;celadoncity.png;objet;1;54;15;48;PP_UP;HiddenItems
-CELADON_CITY;celadoncity.png;objet;3;66;34;48;MAX_REVIVE;HiddenItems
-SEAFOAM_ISLANDS_B3F;seafoamislands4.png;objet;1;57;16;9;MAX_ELIXER;HiddenItems
-VERMILION_CITY;vermilioncity.png;objet;1;58;12;34;MAX_ETHER;HiddenItems
-CERULEAN_CITY;ceruleancity.png;objet;1;59;8;15;RARE_CANDY;HiddenItems
-CERULEAN_CITY;ceruleancity.png;objet;2;60;31;6;MAX_REVIVE;HiddenItems
-ROUTE_2;route2.png;objet;1;61;3;17;NUGGET;HiddenItems
-ROUTE_4;route4.png;objet;2;77;3;62;MOON_STONE;HiddenItems
-ROUTE_4;route4.png;objet;1;62;15;61;GREAT_BALL;HiddenItems
-ROUTE_6;route6.png;objet;1;73;4;3;GREAT_BALL;HiddenItems
-ROUTE_6;route6.png;objet;2;74;4;17;POKE_DOLL;HiddenItems
-VERMILION_DOCK;vermiliondock.png;objet;1;63;1;1;NUGGET;HiddenItems
-VERMILION_DOCK;vermiliondock.png;objet;2;64;10;27;TM15_HYPER_BEAM;HiddenItems
-VOLCANO_B2F;volcanob2f.png;objet;1;78;13;13;PP_UP;HiddenItems
-ROUTE_20;route20.png;objet;1;80;18;53;SOUL_STONE;HiddenItems
-MT_MOON_SQUARE;mtmoonsquare.png;objet;1;81;8;8;MOON_STONE;HiddenItems
-ROUTE_16;route16.png;objet;1;82;15;24;SOUL_STONE;HiddenItems
+﻿carte;png;type;numero_carte;numero_global;y;x;detail;nom;routine
+PALLET_REDS_HOUSE_2F;;interactif;1;;1;0;$04;OpenRedsPC;OpenRedsPC
+PALLET_REDS_HOUSE_2F;;interactif;2;;5;3;$d0;PrintRedSNESText;PrintRedSNESText
+PALLET_BLUES_HOUSE;;interactif;1;;1;0;$04;PrintBookcaseText;PrintBookcaseText
+PALLET_BLUES_HOUSE;;interactif;2;;1;1;$04;PrintBookcaseText;PrintBookcaseText
+PALLET_BLUES_HOUSE;;interactif;3;;1;7;$04;PrintBookcaseText;PrintBookcaseText
+PALLET_OAKS_LAB;;interactif;1;;0;4;$04;DisplayOakLabLeftPoster;DisplayOakLabLeftPoster
+PALLET_OAKS_LAB;;interactif;2;;0;5;$04;DisplayOakLabRightPoster;DisplayOakLabRightPoster
+PALLET_OAKS_LAB;;interactif;3;;1;0;$04;DisplayOakLabEmailText;DisplayOakLabEmailText
+PALLET_OAKS_LAB;;interactif;4;;1;1;$04;DisplayOakLabEmailText;DisplayOakLabEmailText
+VIRIDIAN_POKECENTER;;interactif;1;;4;0;$08;PrintBenchGuyText;PrintBenchGuyText
+VIRIDIAN_POKECENTER;;interactif;2;;3;13;$04;OpenPokemonCenterPC;OpenPokemonCenterPC
+VIRIDIAN_SCHOOL;;interactif;1;;4;3;(ViridianSchoolNotebook_id - TextPredefs) / 2 + 1;PrintNotebookText;PrintNotebookText
+VIRIDIAN_SCHOOL;;interactif;2;;0;3;(ViridianSchoolBlackboard_id - TextPredefs) / 2 + 1;PrintBlackboardLinkCableText;PrintBlackboardLinkCableText
+VIRIDIAN_GYM;;interactif;1;;15;15;$04;GymStatues;GymStatues
+VIRIDIAN_GYM;;interactif;2;;15;18;$04;GymStatues;GymStatues
+PEWTER_MUSEUM_1F;;interactif;1;;3;2;$04;AerodactylFossil;AerodactylFossil
+PEWTER_MUSEUM_1F;;interactif;2;;6;2;$04;KabutopsFossil;KabutopsFossil
+PEWTER_GYM;;interactif;1;;10;3;$04;GymStatues;GymStatues
+PEWTER_GYM;;interactif;2;;10;6;$04;GymStatues;GymStatues
+PEWTER_POKECENTER;;interactif;1;;4;0;$08;PrintBenchGuyText;PrintBenchGuyText
+PEWTER_POKECENTER;;interactif;2;;3;13;$04;OpenPokemonCenterPC;OpenPokemonCenterPC
+CERULEAN_POKECENTER;;interactif;1;;4;0;$08;PrintBenchGuyText;PrintBenchGuyText
+CERULEAN_POKECENTER;;interactif;2;;3;13;$04;OpenPokemonCenterPC;OpenPokemonCenterPC
+CERULEAN_GYM;;interactif;1;;11;3;$04;GymStatues;GymStatues
+CERULEAN_GYM;;interactif;2;;11;6;$04;GymStatues;GymStatues
+LAVENDER_POKECENTER;;interactif;1;;4;0;$08;PrintBenchGuyText;PrintBenchGuyText
+LAVENDER_POKECENTER;;interactif;2;;3;13;$04;OpenPokemonCenterPC;OpenPokemonCenterPC
+VERMILION_POKECENTER;;interactif;1;;3;13;$04;OpenPokemonCenterPC;OpenPokemonCenterPC
+VERMILION_POKECENTER;;interactif;2;;4;0;$04;PrintBenchGuyText;PrintBenchGuyText
+VERMILION_GYM;;interactif;1;;14;3;$04;GymStatues;GymStatues
+VERMILION_GYM;;interactif;2;;14;6;$04;GymStatues;GymStatues
+VERMILION_GYM;;interactif;3;;7;1;$00;GymTrashScript;GymTrashScript
+VERMILION_GYM;;interactif;4;;9;1;$01;GymTrashScript;GymTrashScript
+VERMILION_GYM;;interactif;5;;11;1;$02;GymTrashScript;GymTrashScript
+VERMILION_GYM;;interactif;6;;7;3;$03;GymTrashScript;GymTrashScript
+VERMILION_GYM;;interactif;7;;9;3;$04;GymTrashScript;GymTrashScript
+VERMILION_GYM;;interactif;8;;11;3;$05;GymTrashScript;GymTrashScript
+VERMILION_GYM;;interactif;9;;7;5;$06;GymTrashScript;GymTrashScript
+VERMILION_GYM;;interactif;10;;9;5;$07;GymTrashScript;GymTrashScript
+VERMILION_GYM;;interactif;11;;11;5;$08;GymTrashScript;GymTrashScript
+VERMILION_GYM;;interactif;12;;7;7;$09;GymTrashScript;GymTrashScript
+VERMILION_GYM;;interactif;13;;9;7;$0a;GymTrashScript;GymTrashScript
+VERMILION_GYM;;interactif;14;;11;7;$0b;GymTrashScript;GymTrashScript
+VERMILION_GYM;;interactif;15;;7;9;$0c;GymTrashScript;GymTrashScript
+VERMILION_GYM;;interactif;16;;9;9;$0d;GymTrashScript;GymTrashScript
+VERMILION_GYM;;interactif;17;;11;9;$0e;GymTrashScript;GymTrashScript
+CELADON_MANSION_2F;celadonmansion2.png;interactif;1;;5;0;$04;OpenPokemonCenterPC;OpenPokemonCenterPC
+CELADON_POKECENTER;;interactif;1;;4;0;$08;PrintBenchGuyText;PrintBenchGuyText
+CELADON_POKECENTER;;interactif;2;;3;13;$04;OpenPokemonCenterPC;OpenPokemonCenterPC
+CELADON_GYM;;interactif;1;;15;3;$04;GymStatues;GymStatues
+CELADON_GYM;;interactif;2;;15;6;$04;GymStatues;GymStatues
+CELADON_GAME_CORNER;celadongamecorner.png;piece;10;10;7;11;COIN+40;40 jetons;HiddenCoins
+CELADON_GAME_CORNER;celadongamecorner.png;piece;1;1;8;0;COIN+10;10 jetons;HiddenCoins
+CELADON_GAME_CORNER;celadongamecorner.png;piece;11;11;8;15;COIN+100;100 jetons;HiddenCoins
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;31;;10;1;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;30;;10;6;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;19;;10;7;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;18;;10;12;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;7;;10;13;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;6;;10;18;$ff;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;32;;11;1;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;piece;3;3;11;3;COIN+20;20 jetons;HiddenCoins
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;29;;11;6;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;20;;11;7;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;17;;11;12;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;8;;11;13;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;5;;11;18;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;33;;12;1;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;piece;5;5;12;4;COIN+10;10 jetons;HiddenCoins
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;28;;12;6;$fd;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;21;;12;7;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;piece;6;6;12;9;COIN+20;20 jetons;HiddenCoins
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;16;;12;12;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;9;;12;13;$fe;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;4;;12;18;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;34;;13;1;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;27;;13;6;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;22;;13;7;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;15;;13;12;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;10;;13;13;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;3;;13;18;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;35;;14;1;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;piece;4;4;14;3;COIN+10;10 jetons;HiddenCoins
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;26;;14;6;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;23;;14;7;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;14;;14;12;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;11;;14;13;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;piece;8;8;14;16;COIN+10;10 jetons;HiddenCoins
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;2;;14;18;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;36;;15;1;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;25;;15;6;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;24;;15;7;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;piece;7;7;15;9;COIN+10;10 jetons;HiddenCoins
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;13;;15;12;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;12;;15;13;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;interactif;1;;15;18;$d0;StartSlotMachine;StartSlotMachine
+CELADON_GAME_CORNER;celadongamecorner.png;piece;2;2;16;1;COIN+10;10 jetons;HiddenCoins
+CELADON_GAME_CORNER;celadongamecorner.png;piece;9;9;16;10;COIN+10;10 jetons;HiddenCoins
+CELADON_GAME_CORNER;celadongamecorner.png;piece;12;12;16;12;COIN+10;10 jetons;HiddenCoins
+CELADON_HOTEL;;interactif;1;;3;13;$04;OpenPokemonCenterPC;OpenPokemonCenterPC
+CELADON_HOTEL;;interactif;2;;4;0;$08;PrintBenchGuyText;PrintBenchGuyText
+FUCHSIA_POKECENTER;;interactif;1;;3;13;$04;OpenPokemonCenterPC;OpenPokemonCenterPC
+FUCHSIA_POKECENTER;;interactif;2;;4;0;$04;PrintBenchGuyText;PrintBenchGuyText
+FUCHSIA_GYM;;interactif;1;;15;3;$04;GymStatues;GymStatues
+FUCHSIA_GYM;;interactif;2;;15;6;$04;GymStatues;GymStatues
+CINNABAR_GYM;;interactif;1;;13;17;$04;GymStatues;GymStatues
+CINNABAR_GYM;;interactif;2;;5;17;$01;PrintCinnabarQuiz;PrintCinnabarQuiz
+CINNABAR_GYM;;interactif;3;;1;11;$12;PrintCinnabarQuiz;PrintCinnabarQuiz
+CINNABAR_GYM;;interactif;4;;7;11;$13;PrintCinnabarQuiz;PrintCinnabarQuiz
+CINNABAR_GYM;;interactif;5;;13;11;$14;PrintCinnabarQuiz;PrintCinnabarQuiz
+CINNABAR_GYM;;interactif;6;;13;3;$05;PrintCinnabarQuiz;PrintCinnabarQuiz
+CINNABAR_GYM;;interactif;7;;7;3;$16;PrintCinnabarQuiz;PrintCinnabarQuiz
+CINNABAR_POKECENTER;;interactif;1;;4;0;$04;PrintBenchGuyText;PrintBenchGuyText
+CINNABAR_POKECENTER;;interactif;2;;3;13;$04;OpenPokemonCenterPC;OpenPokemonCenterPC
+SAFFRON_GYM;;interactif;1;;15;9;$04;GymStatues;GymStatues
+MT_MOON_POKECENTER;;interactif;1;;4;0;$08;PrintBenchGuyText;PrintBenchGuyText
+MT_MOON_POKECENTER;;interactif;2;;3;13;$04;OpenPokemonCenterPC;OpenPokemonCenterPC
+ROCK_TUNNEL_POKECENTER;;interactif;1;;4;0;$08;PrintBenchGuyText;PrintBenchGuyText
+ROCK_TUNNEL_POKECENTER;;interactif;2;;3;13;$04;OpenPokemonCenterPC;OpenPokemonCenterPC
+TRADE_CENTER;;interactif;1;;4;5;$d0;CableClubRightGameboy;CableClubRightGameboy
+TRADE_CENTER;;interactif;2;;4;4;$d0;CableClubLeftGameboy;CableClubLeftGameboy
+COLOSSEUM;;interactif;1;;4;5;$d0;CableClubRightGameboy;CableClubRightGameboy
+COLOSSEUM;;interactif;2;;4;4;$d0;CableClubLeftGameboy;CableClubLeftGameboy
+VIRIDIAN_FOREST;viridianforest.png;objet;1;1;18;1;POTION;Potion;HiddenItems
+VIRIDIAN_FOREST;viridianforest.png;objet;2;2;42;17;ANTIDOTE;Antidote;HiddenItems
+MT_MOON_B2F;mtmoonb2f.png;objet;2;56;9;33;ETHER;Huile;HiddenItems
+MT_MOON_B2F;mtmoonb2f.png;objet;1;3;16;17;MOON_STONE;Pierre Lune;HiddenItems
+INDIGO_PLATEAU;indigoplateau.png;interactif;1;;13;8;$ff;PrintIndigoPlateauHQText;PrintIndigoPlateauHQText
+INDIGO_PLATEAU;indigoplateau.png;interactif;2;;13;11;$00;PrintIndigoPlateauHQText;PrintIndigoPlateauHQText
+ROUTE_22;route22.png;objet;1;69;2;35;POTION;Potion;HiddenItems
+ROUTE_25;route25.png;objet;2;55;4;10;ELIXER;Elixir;HiddenItems
+ROUTE_25;route25.png;objet;1;4;5;54;ETHER;Huile;HiddenItems
+ROUTE_8;route8.png;objet;1;76;4;51;ULTRA_BALL;Hyper Ball;HiddenItems
+ROUTE_9;route9.png;objet;1;5;7;14;ETHER;Huile;HiddenItems
+SS_ANNE_KITCHEN;ssanne6.png;interactif;3;;1;13;$04;OpenPokemonCenterPC;OpenPokemonCenterPC
+SS_ANNE_KITCHEN;ssanne6.png;interactif;1;;5;13;$00;PrintTrashText;PrintTrashText
+SS_ANNE_KITCHEN;ssanne6.png;interactif;2;;7;13;$00;PrintTrashText;PrintTrashText
+SS_ANNE_KITCHEN;ssanne6.png;objet;1;6;9;13;GREAT_BALL;Super Ball;HiddenItems
+SS_ANNE_B1F_ROOMS;ssanne10.png;objet;1;7;1;3;HYPER_POTION;Hyper Potion;HiddenItems
+DIGLETTS_CAVE;diglettscave.png;objet;1;67;13;30;NUGGET;Pépite;HiddenItems
+DIGLETTS_CAVE;diglettscave.png;objet;2;68;19;20;MOON_STONE;Pierre Lune;HiddenItems
+ROCKET_HIDEOUT_B1F;rockethideout1.png;objet;1;11;15;21;PP_UP;PP Plus;HiddenItems
+ROCKET_HIDEOUT_B3F;rockethideout3.png;objet;1;12;17;27;NUGGET;Pépite;HiddenItems
+ROCKET_HIDEOUT_B4F;rockethideout4.png;objet;1;13;1;25;SUPER_POTION;Super Potion;HiddenItems
+SAFFRON_POKECENTER;;interactif;1;;4;0;$04;PrintBenchGuyText;PrintBenchGuyText
+SAFFRON_POKECENTER;;interactif;2;;3;13;$04;OpenPokemonCenterPC;OpenPokemonCenterPC
+LAVENDER_POKEMON_TOWER_5F;pokemontower5.png;objet;1;14;12;4;ELIXER;Elixir;HiddenItems
+ROUTE_13;route13.png;objet;2;16;13;16;CALCIUM;Calcium;HiddenItems
+ROUTE_13;route13.png;objet;1;15;14;1;PP_UP;PP Plus;HiddenItems
+SAFARI_ZONE_NORTH;safarizonenorth.png;objet;1;18;13;19;NUGGET;Pépite;HiddenItems
+SAFARI_ZONE_ENTRANCE;;objet;1;19;5;5;NUGGET;Pépite;HiddenItems
+SAFARI_ZONE_WEST;safarizonewest.png;objet;1;20;5;6;REVIVE;Rappel;HiddenItems
+SAFFRON_SILPH_CO_5F;silphco5.png;objet;1;21;3;12;ELIXER;Elixir;HiddenItems
+SAFFRON_SILPH_CO_9F;silphco9.png;objet;1;22;15;2;MAX_POTION;Potion Max;HiddenItems
+SAFFRON_COPYCATS_HOUSE_2F;copycatshouse2f.png;objet;1;23;1;1;NUGGET;Pépite;HiddenItems
+CERULEAN_CAVE_1F;unknowndungeon1.png;objet;1;24;10;13;RARE_CANDY;Super Bonbon;HiddenItems
+CERULEAN_CAVE_B1F;unknowndungeon3.png;objet;1;25;11;1;CALCIUM;Calcium;HiddenItems
+CERULEAN_CAVE_B1F;unknowndungeon3.png;objet;2;26;17;29;M_GENE;Modif.Gène;HiddenItems
+POWER_PLANT_1F;powerplant.png;objet;1;27;1;38;MAX_ELIXER;Max Elixir;HiddenItems
+POWER_PLANT_2F;powerplant1f.png;objet;1;28;1;1;PP_UP;PP Plus;HiddenItems
+SEAFOAM_ISLANDS_B2F;seafoamislands3.png;objet;1;29;15;15;NUGGET;Pépite;HiddenItems
+SEAFOAM_ISLANDS_B4F;seafoamislands5.png;objet;1;30;17;25;ULTRA_BALL;Hyper Ball;HiddenItems
+CINNABAR_MANSION_1F;mansion1.png;interactif;1;;5;2;$04;Mansion1Script_Switches;Mansion1Script_Switches
+CINNABAR_MANSION_1F;mansion1.png;objet;1;31;16;8;MOON_STONE;Pierre Lune;HiddenItems
+CINNABAR_MANSION_2F;mansion3.png;interactif;1;;5;10;$04;Mansion3Script_Switches;Mansion3Script_Switches
+CINNABAR_MANSION_2F;mansion3.png;objet;1;32;9;1;MAX_REVIVE;Rappel Max;HiddenItems
+ROUTE_23;route23.png;objet;1;33;32;0;TM26_EARTHQUAKE;CT26 Séisme;HiddenItems
+ROUTE_23;route23.png;objet;2;34;44;19;FULL_RESTORE;Guérison;HiddenItems
+ROUTE_23;route23.png;objet;3;35;50;0;MAX_REVIVE;Rappel Max;HiddenItems
+ROUTE_23;route23.png;objet;4;36;59;8;TM04_FLAMETHROWER;CT04 LancFla;HiddenItems
+ROUTE_23;route23.png;objet;5;37;70;19;TM13_ICE_BEAM;CT13 LaserGl;HiddenItems
+ROUTE_23;route23.png;objet;6;38;90;8;MAX_ETHER;Huile Max;HiddenItems
+ROUTE_23;route23.png;objet;7;39;116;19;TM25_THUNDER;CT25 FatalFo;HiddenItems
+VICTORY_ROAD_2F;victoryroad2.png;objet;1;40;2;5;ULTRA_BALL;Hyper Ball;HiddenItems
+VICTORY_ROAD_2F;victoryroad2.png;objet;2;41;7;26;FULL_RESTORE;Guérison;HiddenItems
+ROUTE_16_WEST_HOUSE;route16westhouse.png;objet;1;42;7;7;MAX_ELIXER;Max Elixir;HiddenItems
+BILLS_HOUSE;;interactif;1;;4;1;$04;BillsHousePC;BillsHousePC
+VIRIDIAN_CITY;viridiancity.png;objet;1;43;4;14;POTION;Potion;HiddenItems
+VIRIDIAN_CITY;viridiancity.png;objet;2;70;11;36;POTION;Potion;HiddenItems
+PEWTER_CITY;pewtercity.png;objet;2;72;2;24;REPEL;Repousse;HiddenItems
+PEWTER_CITY;pewtercity.png;objet;1;71;3;6;REPEL;Repousse;HiddenItems
+SAFARI_ZONE_WEST_REST_HOUSE;;interactif;1;;4;0;$08;PrintBenchGuyText;PrintBenchGuyText
+SAFARI_ZONE_WEST_REST_HOUSE;;interactif;2;;3;13;$04;OpenPokemonCenterPC;OpenPokemonCenterPC
+SAFARI_ZONE_EAST_REST_HOUSE;;interactif;1;;4;0;$08;PrintBenchGuyText;PrintBenchGuyText
+SAFARI_ZONE_EAST_REST_HOUSE;;interactif;2;;3;13;$04;OpenPokemonCenterPC;OpenPokemonCenterPC
+SAFARI_ZONE_NORTH_REST_HOUSE;;interactif;1;;4;0;$08;PrintBenchGuyText;PrintBenchGuyText
+SAFARI_ZONE_NORTH_REST_HOUSE;;interactif;2;;3;13;$04;OpenPokemonCenterPC;OpenPokemonCenterPC
+ROUTE_15_GATE_2F;;interactif;1;;2;1;$04;Route15GateLeftBinoculars;Route15GateLeftBinoculars
+LAVENDER_FUJIS_HOUSE;;interactif;1;;1;0;$00;PrintMagazinesText;PrintMagazinesText
+LAVENDER_FUJIS_HOUSE;;interactif;2;;1;1;$00;PrintMagazinesText;PrintMagazinesText
+LAVENDER_FUJIS_HOUSE;;interactif;3;;1;7;$00;PrintMagazinesText;PrintMagazinesText
+CELADON_MANSION_ROOF;celadonmansion4.png;objet;1;79;10;0;RARE_CANDY;Super Bonbon;HiddenItems
+CELADON_MANSION_ROOF_HOUSE;celadonmansion5.png;interactif;1;;0;3;(LinkCableHelp_id - TextPredefs) / 2 + 1;PrintBlackboardLinkCableText;PrintBlackboardLinkCableText
+CELADON_MANSION_ROOF_HOUSE;celadonmansion5.png;interactif;2;;0;4;(LinkCableHelp_id - TextPredefs) / 2 + 1;PrintBlackboardLinkCableText;PrintBlackboardLinkCableText
+CELADON_MANSION_ROOF_HOUSE;celadonmansion5.png;interactif;3;;4;3;(TMNotebook_id - TextPredefs) / 2 + 1;PrintNotebookText;PrintNotebookText
+SAFFRON_FIGHTING_DOJO;;interactif;1;;9;3;$04;PrintFightingDojoText;PrintFightingDojoText
+SAFFRON_FIGHTING_DOJO;;interactif;2;;9;6;$04;PrintFightingDojoText;PrintFightingDojoText
+SAFFRON_FIGHTING_DOJO;;interactif;3;;0;4;$04;PrintFightingDojoText2;PrintFightingDojoText2
+SAFFRON_FIGHTING_DOJO;;interactif;4;;0;5;$04;PrintFightingDojoText3;PrintFightingDojoText3
+ROUTE_10;route10.png;objet;1;8;6;10;WATER_STONE;Pierre Eau;HiddenItems
+ROUTE_10;route10.png;objet;2;9;25;11;CALCIUM;Calcium;HiddenItems
+ROUTE_10_SOUTH;route10south.png;objet;1;10;4;18;MAX_ETHER;Huile Max;HiddenItems
+INDIGO_PLATEAU_LOBBY;;interactif;1;;7;15;$04;OpenPokemonCenterPC;OpenPokemonCenterPC
+CINNABAR_LAB_FOSSIL_ROOM;;interactif;1;;4;0;$04;OpenPokemonCenterPC;OpenPokemonCenterPC
+CINNABAR_LAB_FOSSIL_ROOM;;interactif;2;;4;2;$04;OpenPokemonCenterPC;OpenPokemonCenterPC
+CERULEAN_BIKE_SHOP;;interactif;1;;0;1;$d0;PrintNewBikeText;PrintNewBikeText
+CERULEAN_BIKE_SHOP;;interactif;2;;1;2;$d0;PrintNewBikeText;PrintNewBikeText
+CERULEAN_BIKE_SHOP;;interactif;3;;2;1;$d0;PrintNewBikeText;PrintNewBikeText
+CERULEAN_BIKE_SHOP;;interactif;4;;2;3;$d0;PrintNewBikeText;PrintNewBikeText
+CERULEAN_BIKE_SHOP;;interactif;5;;4;0;$d0;PrintNewBikeText;PrintNewBikeText
+CERULEAN_BIKE_SHOP;;interactif;6;;5;1;$d0;PrintNewBikeText;PrintNewBikeText
+ROUTE_11;route11.png;objet;1;44;5;48;ESCAPE_ROPE;Corde Sortie;HiddenItems
+ROUTE_11;route11.png;objet;2;75;17;55;MAX_REVIVE;Rappel Max;HiddenItems
+ROUTE_12;route12.png;objet;1;45;63;2;HYPER_POTION;Hyper Potion;HiddenItems
+CINNABAR_MANSION_B1F;mansion2.png;interactif;1;;11;2;$04;Mansion2Script_Switches;Mansion2Script_Switches
+CINNABAR_MANSION_B2F;mansion4.png;interactif;1;;3;20;$04;Mansion4Script_Switches;Mansion4Script_Switches
+CINNABAR_MANSION_B2F;mansion4.png;objet;1;17;9;1;RARE_CANDY;Super Bonbon;HiddenItems
+CINNABAR_MANSION_B2F;mansion4.png;interactif;2;;25;18;$04;Mansion4Script_Switches;Mansion4Script_Switches
+SAFFRON_SILPH_CO_11F;silphco11.png;interactif;1;;14;10;$04;OpenPokemonCenterPC;OpenPokemonCenterPC
+ROUTE_17;route17.png;objet;1;46;14;15;RARE_CANDY;Super Bonbon;HiddenItems
+ROUTE_17;route17.png;objet;2;47;72;17;PP_UP;PP Plus;HiddenItems
+ROUTE_17;route17.png;objet;3;48;91;4;MAX_REVIVE;Rappel Max;HiddenItems
+ROUTE_17;route17.png;objet;4;49;121;8;MAX_ELIXER;Max Elixir;HiddenItems
+UNDERGROUND_PATH_NS;undergroundpathns.png;objet;1;50;8;6;FULL_RESTORE;Guérison;HiddenItems
+UNDERGROUND_PATH_NS;undergroundpathns.png;objet;2;51;34;4;X_SPECIAL;Spécial +;HiddenItems
+UNDERGROUND_PATH_WE;undergroundpathwe.png;objet;1;52;2;12;NUGGET;Pépite;HiddenItems
+UNDERGROUND_PATH_WE;undergroundpathwe.png;objet;2;53;5;21;ELIXER;Elixir;HiddenItems
+CELADON_CITY;celadoncity.png;objet;2;65;7;48;HYPER_POTION;Hyper Potion;HiddenItems
+CELADON_CITY;celadoncity.png;objet;1;54;15;48;PP_UP;PP Plus;HiddenItems
+CELADON_CITY;celadoncity.png;objet;3;66;34;48;MAX_REVIVE;Rappel Max;HiddenItems
+SEAFOAM_ISLANDS_B3F;seafoamislands4.png;objet;1;57;16;9;MAX_ELIXER;Max Elixir;HiddenItems
+VERMILION_CITY;vermilioncity.png;objet;1;58;12;34;MAX_ETHER;Huile Max;HiddenItems
+CERULEAN_CITY;ceruleancity.png;objet;1;59;8;15;RARE_CANDY;Super Bonbon;HiddenItems
+CERULEAN_CITY;ceruleancity.png;objet;2;60;31;6;MAX_REVIVE;Rappel Max;HiddenItems
+ROUTE_2;route2.png;objet;1;61;3;17;NUGGET;Pépite;HiddenItems
+ROUTE_4;route4.png;objet;2;77;3;62;MOON_STONE;Pierre Lune;HiddenItems
+ROUTE_4;route4.png;objet;1;62;15;61;GREAT_BALL;Super Ball;HiddenItems
+ROUTE_6;route6.png;objet;1;73;4;3;GREAT_BALL;Super Ball;HiddenItems
+ROUTE_6;route6.png;objet;2;74;4;17;POKE_DOLL;PokéPoupée;HiddenItems
+VERMILION_DOCK;vermiliondock.png;objet;1;63;1;1;NUGGET;Pépite;HiddenItems
+VERMILION_DOCK;vermiliondock.png;objet;2;64;10;27;TM15_HYPER_BEAM;CT15 Ultrals;HiddenItems
+DAYCAREM;;interactif;1;;1;0;$04;OpenPokemonCenterPC;OpenPokemonCenterPC
+VOLCANO_B2F;volcanob2f.png;objet;1;78;13;13;PP_UP;PP Plus;HiddenItems
+ROUTE_11_GATE_2F;;interactif;1;;2;6;$04;Route11GateRightBinoculars;Route11GateRightBinoculars
+ROUTE_12_GATE_2F;;interactif;1;;2;1;$04;Route12GateLeftBinoculars;Route12GateLeftBinoculars
+ROUTE_16_GATE_2F;;interactif;1;;2;1;$04;Route16GateLeftBinoculars;Route16GateLeftBinoculars
+ROUTE_18_GATE_2F;;interactif;1;;2;6;$04;Route18GateRightBinoculars;Route18GateRightBinoculars
+ROUTE_20;route20.png;objet;1;80;18;53;SOUL_STONE;Pierre Ame;HiddenItems
+MT_MOON_SQUARE;mtmoonsquare.png;objet;1;81;8;8;MOON_STONE;Pierre Lune;HiddenItems
+ROUTE_16;route16.png;objet;1;82;15;24;SOUL_STONE;Pierre Ame;HiddenItems

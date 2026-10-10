@@ -2,10 +2,10 @@ SilphCo11Object:
 	db $d ; border block
 
 	db 4 ; warps
-	warp 9, 0, 1, SILPH_CO_10F
-	warp 13, 0, 0, SILPH_CO_ELEVATOR
+	warp 9, 0, 1, SAFFRON_SILPH_CO_10F
+	warp 13, 0, 0, SAFFRON_SILPH_CO_ELEVATOR
 	warp 5, 5, 9, -1
-	warp 3, 2, 3, SILPH_CO_7F
+	warp 3, 2, 3, SAFFRON_SILPH_CO_7F
 
 	db 0 ; signs
 
@@ -18,7 +18,7 @@ SilphCo11Object:
 	object SPRITE_JAMES, 5, 15, STAY, LEFT, 6 ; James
 
 	; warp-to
-	warp_to 9, 0, SILPH_CO_11F_WIDTH ; SILPH_CO_10F
-	warp_to 13, 0, SILPH_CO_11F_WIDTH ; SILPH_CO_ELEVATOR
-	warp_to 5, 5, SILPH_CO_11F_WIDTH
-	warp_to 3, 2, SILPH_CO_11F_WIDTH ; SILPH_CO_7F
+	warp_to 9, 0, SAFFRON_SILPH_CO_11F_WIDTH ; SAFFRON_SILPH_CO_10F
+	warp_to 13, 0, SAFFRON_SILPH_CO_11F_WIDTH ; SAFFRON_SILPH_CO_ELEVATOR
+	warp_to 5, 5, SAFFRON_SILPH_CO_11F_WIDTH
+	warp_to 3, 2, SAFFRON_SILPH_CO_11F_WIDTH ; SAFFRON_SILPH_CO_7F

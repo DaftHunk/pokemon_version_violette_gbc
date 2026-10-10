@@ -2,8 +2,8 @@ Lab3Object:
 	db $17 ; border block
 
 	db 2 ; warps
-	warp 2, 7, 3, CINNABAR_LAB_1
-	warp 3, 7, 3, CINNABAR_LAB_1
+	warp 2, 7, 3, CINNABAR_LAB
+	warp 3, 7, 3, CINNABAR_LAB
 
 	db 3 ; signs
 	sign 0, 4, 3 ; Lab3Text3
@@ -15,5 +15,5 @@ Lab3Object:
 	object SPRITE_OAK_AIDE, 2, 3, WALK, 2, 2 ; person
 
 	; warp-to
-	warp_to 2, 7, CINNABAR_LAB_METRONOME_ROOM_WIDTH ; CINNABAR_LAB_1
-	warp_to 3, 7, CINNABAR_LAB_METRONOME_ROOM_WIDTH ; CINNABAR_LAB_1
+	warp_to 2, 7, CINNABAR_LAB_METRONOME_ROOM_WIDTH ; CINNABAR_LAB
+	warp_to 3, 7, CINNABAR_LAB_METRONOME_ROOM_WIDTH ; CINNABAR_LAB

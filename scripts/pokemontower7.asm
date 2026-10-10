@@ -35,7 +35,7 @@ PokemonTower7Script2:
 	call DisplayTextID
 	call PokemonTower7Script_60db6
 
-	CheckEvent EVENT_BEAT_POKEMONTOWER_7F_JESSIE_JAMES
+	CheckEvent EVENT_BEAT_LAVENDER_POKEMON_TOWER_7F_JESSIE_JAMES
 	jr nz, .hideJessieJames
 	; else
 	ld a, $3
@@ -44,10 +44,10 @@ PokemonTower7Script2:
 	ret
 .hideJessieJames
 	call GBFadeOutToBlack
-	ld a, HS_POKEMONTOWER_7F_ROCKET_3
+	ld a, HS_LAVENDER_POKEMON_TOWER_7F_ROCKET_3
 	ld [wMissableObjectIndex], a
 	predef HideObject
-	ld a, HS_POKEMONTOWER_7F_JAMES
+	ld a, HS_LAVENDER_POKEMON_TOWER_7F_JAMES
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	call UpdateSprites
@@ -87,12 +87,12 @@ PokemonTower7Script3:
 PokemonTower7Script4:
 	ld a, $ff
 	ld [wJoyIgnore], a
-	ld a, HS_POKEMONTOWER_7F_MR_FUJI
+	ld a, HS_LAVENDER_POKEMON_TOWER_7F_MR_FUJI
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	ld a, SPRITE_FACING_UP
 	ld [wSpriteStateData1 + 9], a
-	ld a, MR_FUJIS_HOUSE
+	ld a, LAVENDER_FUJIS_HOUSE
 	ld [hWarpDestinationMap], a
 	ld a, $1
 	ld [wDestinationWarpID], a
@@ -228,27 +228,27 @@ PokemonTower7TextPointers:
 	dw PokemonTower7FujiText
 
 PokemonTower7TrainerHeader0:
-	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_7F_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_LAVENDER_POKEMON_TOWER_7F_TRAINER_0
 	db ($3 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_7F_TRAINER_0
+	dwEventFlagAddress EVENT_BEAT_LAVENDER_POKEMON_TOWER_7F_TRAINER_0
 	dw PokemonTower7BattleText1 ; TextBeforeBattle
 	dw PokemonTower7AfterBattleText1 ; TextAfterBattle
 	dw PokemonTower7EndBattleText1 ; TextEndBattle
 	dw PokemonTower7EndBattleText1 ; TextEndBattle
 
 PokemonTower7TrainerHeader1:
-	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_7F_TRAINER_1
+	dbEventFlagBit EVENT_BEAT_LAVENDER_POKEMON_TOWER_7F_TRAINER_1
 	db ($3 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_7F_TRAINER_1
+	dwEventFlagAddress EVENT_BEAT_LAVENDER_POKEMON_TOWER_7F_TRAINER_1
 	dw PokemonTower7BattleText2 ; TextBeforeBattle
 	dw PokemonTower7AfterBattleText2 ; TextAfterBattle
 	dw PokemonTower7EndBattleText2 ; TextEndBattle
 	dw PokemonTower7EndBattleText2 ; TextEndBattle
 
 PokemonTower7TrainerHeaderJessieJames:
-	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_7F_JESSIE_JAMES
+	dbEventFlagBit EVENT_BEAT_LAVENDER_POKEMON_TOWER_7F_JESSIE_JAMES
 	db ($3 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_7F_JESSIE_JAMES
+	dwEventFlagAddress EVENT_BEAT_LAVENDER_POKEMON_TOWER_7F_JESSIE_JAMES
 	dw PokemonTower7BattleTextJessieJames ; TextBeforeBattle
 	dw PokemonTower7AfterBattleTextJessieJames ; TextAfterBattle
 	dw PokemonTower7EndBattleTextJessieJames ; TextEndBattle
@@ -271,7 +271,7 @@ PokemonTower7Text2:
 PokemonTower7TextJessieJames:
 	TX_ASM
 
-	CheckEvent EVENT_BEAT_POKEMONTOWER_7F_JESSIE_JAMES
+	CheckEvent EVENT_BEAT_LAVENDER_POKEMON_TOWER_7F_JESSIE_JAMES
 	jr z, .skipMusic
 
 	ld a, $ff
@@ -291,7 +291,7 @@ PokemonTower7FujiText:
 	call PrintText
 	SetEvent EVENT_RESCUED_MR_FUJI
 	SetEvent EVENT_RESCUED_MR_FUJI_2
-	ld a, HS_MR_FUJIS_HOUSE_MR_FUJI
+	ld a, HS_LAVENDER_FUJIS_HOUSE_MR_FUJI
 	ld [wMissableObjectIndex], a
 	predef ShowObject
 	ld a, HS_SAFFRON_CITY_E

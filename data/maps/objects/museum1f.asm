@@ -6,7 +6,7 @@ Museum1FObject:
 	warp 11, 7, 0, -1
 	warp 16, 7, 1, -1
 	warp 17, 7, 1, -1
-	warp 7, 7, 0, MUSEUM_2F
+	warp 7, 7, 0, PEWTER_MUSEUM_2F
 
 	db 0 ; signs
 
@@ -18,8 +18,8 @@ Museum1FObject:
 	object SPRITE_OLD_AMBER, 16, 2, STAY, NONE, 5 ; person
 
 	; warp-to
-	warp_to 10, 7, MUSEUM_1F_WIDTH
-	warp_to 11, 7, MUSEUM_1F_WIDTH
-	warp_to 16, 7, MUSEUM_1F_WIDTH
-	warp_to 17, 7, MUSEUM_1F_WIDTH
-	warp_to 7, 7, MUSEUM_1F_WIDTH ; MUSEUM_2F
+	warp_to 10, 7, PEWTER_MUSEUM_1F_WIDTH
+	warp_to 11, 7, PEWTER_MUSEUM_1F_WIDTH
+	warp_to 16, 7, PEWTER_MUSEUM_1F_WIDTH
+	warp_to 17, 7, PEWTER_MUSEUM_1F_WIDTH
+	warp_to 7, 7, PEWTER_MUSEUM_1F_WIDTH ; PEWTER_MUSEUM_2F

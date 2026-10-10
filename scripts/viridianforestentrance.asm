@@ -13,7 +13,7 @@ ViridianForestEntranceText2:
 	TX_ASM
 	ld hl, ViridianForestEntranceAskMonText
 	; Check if already done
-	CheckEvent EVENT_VIRIDIAN_FOREST_ENTRANCE
+	CheckEvent EVENT_VIRIDIAN_FOREST_SOUTH_GATE
 	jr nz, .afterShow
 	; Check if not right mon in first position
 	ld a, [wPartyMon1Species]
@@ -27,7 +27,7 @@ ViridianForestEntranceText2:
 	call GiveItem
 	jr nc, .noSpace
 	; If reward given
-	SetEvent EVENT_VIRIDIAN_FOREST_ENTRANCE
+	SetEvent EVENT_VIRIDIAN_FOREST_SOUTH_GATE
 	ld hl, ViridianForestEntranceFoundItemText
 	; fallthrough	
 .endScript

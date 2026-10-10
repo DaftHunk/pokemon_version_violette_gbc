@@ -13,7 +13,7 @@ LanceShowOrHideEntranceBlocks:
 	bit BIT_CUR_MAP_LOADED_1, [hl]
 	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
-	CheckEvent EVENT_LANCES_ROOM_LOCK_DOOR
+	CheckEvent EVENT_INDIGO_LANCES_ROOM_LOCK_DOOR
 	jr nz, .closeEntrance
 	; open entrance
 	ld a, $31
@@ -74,7 +74,7 @@ LanceScript0:
 .notStandingNextToLance
 	cp $5  ; Is player standing on the entrance staircase?
 	jr z, WalkToLance
-	CheckAndSetEvent EVENT_LANCES_ROOM_LOCK_DOOR
+	CheckAndSetEvent EVENT_INDIGO_LANCES_ROOM_LOCK_DOOR
 	ret nz
 	ld hl, wCurrentMapScriptFlags
 	set BIT_CUR_MAP_LOADED_1, [hl]
@@ -159,17 +159,17 @@ LanceTextPointers:
 	dw LanceText1
 
 LanceTrainerHeader0:
-	dbEventFlagBit EVENT_BEAT_LANCES_ROOM_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_INDIGO_LANCES_ROOM_TRAINER_0
 	db ($0 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_LANCES_ROOM_TRAINER_0
+	dwEventFlagAddress EVENT_BEAT_INDIGO_LANCES_ROOM_TRAINER_0
 	dw LanceBeforeBattleText ; TextBeforeBattle
 	dw LanceAfterBattleText ; TextAfterBattle
 	dw LanceEndBattleText ; TextEndBattle
 	dw LanceEndBattleText ; TextEndBattle
 LanceTrainerHeader1:
-	dbEventFlagBit EVENT_BEAT_LANCES_ROOM_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_INDIGO_LANCES_ROOM_TRAINER_0
 	db ($0 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_LANCES_ROOM_TRAINER_0
+	dwEventFlagAddress EVENT_BEAT_INDIGO_LANCES_ROOM_TRAINER_0
 	dw RematchLanceBeforeBattleText ; TextBeforeBattle
 	dw RematchLanceAfterBattleText ; TextAfterBattle
 	dw RematchLanceEndBattleText ; TextEndBattle

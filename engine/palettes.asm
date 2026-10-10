@@ -261,7 +261,7 @@ GetOverworldPalette:
 
  	; next, if it's a town or route, use the town palette or route palette
  	ld a, [wCurMap]
- 	cp REDS_HOUSE_1F
+ 	cp PALLET_REDS_HOUSE_1F
  	jr c, .townOrRoute
 
 	; otherwise, use the last overworld map's palette for this indoor map
@@ -325,10 +325,10 @@ MapPalettesJumpTable:
 	db SEAFOAM_ISLANDS_B2F, PAL_0F
 	db SEAFOAM_ISLANDS_B3F, PAL_0F
 	db SEAFOAM_ISLANDS_B4F, PAL_0F
-	db LORELEIS_ROOM, PAL_0F
-	db POWER_PLANT, PAL_YELLOWMON
-	db BRUNOS_ROOM, PAL_CAVE
-	db FUCHSIA_GOOD_ROD_HOUSE, PAL_FUCHSIA
+	db INDIGO_LORELEIS_ROOM, PAL_0F
+	db POWER_PLANT_1F, PAL_YELLOWMON
+	db INDIGO_BRUNOS_ROOM, PAL_CAVE
+	db FUCHSIA_FISHER_HOUSE, PAL_FUCHSIA
 	db CERULEAN_CAVE_1F, PAL_CYANMON
 	db CERULEAN_CAVE_2F, PAL_CYANMON
 	db CERULEAN_CAVE_B1F, PAL_CYANMON

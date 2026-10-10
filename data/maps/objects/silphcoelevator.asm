@@ -11,5 +11,5 @@ SilphCoElevatorObject:
 	db 0 ; objects
 
 	; warp-to
-	warp_to 1, 3, SILPH_CO_ELEVATOR_WIDTH
-	warp_to 2, 3, SILPH_CO_ELEVATOR_WIDTH
+	warp_to 1, 3, SAFFRON_SILPH_CO_ELEVATOR_WIDTH
+	warp_to 2, 3, SAFFRON_SILPH_CO_ELEVATOR_WIDTH

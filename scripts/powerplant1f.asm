@@ -19,9 +19,9 @@ PowerPlant1FTextPointers:
 	dw PickUpItemText
 
 Electrode2TrainerHeader:
-	dbEventFlagBit EVENT_BEAT_POWER_PLANT_VOLTORB_7, 1
+	dbEventFlagBit EVENT_BEAT_POWER_PLANT_1F_VOLTORB_7, 1
 	db 0 ; view range
-	dwEventFlagAddress EVENT_BEAT_POWER_PLANT_VOLTORB_7, 1
+	dwEventFlagAddress EVENT_BEAT_POWER_PLANT_1F_VOLTORB_7, 1
 	dw Electrode2BattleText ; TextBeforeBattle
 	dw Electrode2BattleText ; TextAfterBattle
 	dw Electrode2BattleText ; TextEndBattle

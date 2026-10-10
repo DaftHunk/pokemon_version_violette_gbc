@@ -138,7 +138,7 @@ RivalScript4:
 	ld a, $2
 	ld [H_SPRITEINDEX], a
 	call MoveSprite
-	ld a, HS_CHAMPIONS_ROOM_OAK
+	ld a, HS_INDIGO_CHAMPIONS_ROOM_OAK
 	ld [wMissableObjectIndex], a
 	predef ShowObject2
 	ld a, $5
@@ -215,7 +215,7 @@ RivalScript8:
 	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
-	ld a, HS_CHAMPIONS_ROOM_OAK
+	ld a, HS_INDIGO_CHAMPIONS_ROOM_OAK
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	ld a, $9

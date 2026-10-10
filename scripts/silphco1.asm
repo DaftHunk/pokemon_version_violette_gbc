@@ -1,10 +1,10 @@
 SilphCo1Script:
 	call EnableAutoTextBoxDrawing
-	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+	CheckEvent EVENT_BEAT_SAFFRON_SILPH_CO_GIOVANNI
 	ret z
-	CheckAndSetEvent EVENT_SILPH_CO_RECEPTIONIST_AT_DESK
+	CheckAndSetEvent EVENT_SAFFRON_SILPH_CO_RECEPTIONIST_AT_DESK
 	ret nz
-	ld a, HS_SILPH_CO_1F_RECEPTIONIST
+	ld a, HS_SAFFRON_SILPH_CO_1F_RECEPTIONIST
 	ld [wMissableObjectIndex], a
 	predef_jump ShowObject
 

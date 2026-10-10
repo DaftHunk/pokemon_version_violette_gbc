@@ -2,7 +2,7 @@ CopycatsHouse2FObject:
 	db $a ; border block
 
 	db 1 ; warps
-	warp 7, 1, 2, COPYCATS_HOUSE_1F
+	warp 7, 1, 2, SAFFRON_COPYCATS_HOUSE_1F
 
 	db 2 ; signs
 	sign 3, 5, 6 ; CopycatsHouse2FText6
@@ -16,4 +16,4 @@ CopycatsHouse2FObject:
 	object SPRITE_CLEFAIRY, 1, 6, STAY, RIGHT, 5 ; person
 
 	; warp-to
-	warp_to 7, 1, COPYCATS_HOUSE_2F_WIDTH ; COPYCATS_HOUSE_1F
+	warp_to 7, 1, SAFFRON_COPYCATS_HOUSE_2F_WIDTH ; SAFFRON_COPYCATS_HOUSE_1F

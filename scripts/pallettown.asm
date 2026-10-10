@@ -132,7 +132,7 @@ PalletTownScript4:
 PalletTownScript5:
 	CheckEvent EVENT_DAISY_WALKING
 	jr nz, .next
-	CheckBothEventsSet EVENT_GOT_TOWN_MAP, EVENT_ENTERED_BLUES_HOUSE, 1
+	CheckBothEventsSet EVENT_GOT_TOWN_MAP, EVENT_ENTERED_PALLET_BLUES_HOUSE, 1
 	jr nz, .next
 	SetEvent EVENT_DAISY_WALKING
 	ld a, HS_DAISY_SITTING

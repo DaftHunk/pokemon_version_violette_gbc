@@ -5,7 +5,7 @@ Route6Object:
 	warp 10, 1, 2, ROUTE_6_GATE
 	warp 11, 1, 2, ROUTE_6_GATE
 	warp 10, 5, 0, ROUTE_6_GATE
-	warp 17, 13, 0, PATH_ENTRANCE_ROUTE_6
+	warp 17, 13, 0, UNDERGROUND_PATH_ENTRANCE_ROUTE_6
 
 	db 1 ; signs
 	sign 19, 15, 7 ; Route6Text7
@@ -22,4 +22,4 @@ Route6Object:
 	warp_to 10, 1, ROUTE_6_WIDTH ; ROUTE_6_GATE
 	warp_to 11, 1, ROUTE_6_WIDTH ; ROUTE_6_GATE
 	warp_to 10, 5, ROUTE_6_WIDTH ; ROUTE_6_GATE
-	warp_to 17, 13, ROUTE_6_WIDTH ; PATH_ENTRANCE_ROUTE_6
+	warp_to 17, 13, ROUTE_6_WIDTH ; UNDERGROUND_PATH_ENTRANCE_ROUTE_6
