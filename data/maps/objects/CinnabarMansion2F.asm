@@ -1,0 +1,21 @@
+Mansion3Object:
+	db $1 ; border block
+
+	db 3 ; warps
+	warp 7, 10, 1, CINNABAR_MANSION_B1F
+	warp 6, 1, 3, CINNABAR_MANSION_B1F
+	warp 25, 14, 2, CINNABAR_MANSION_B1F
+
+	db 0 ; signs
+
+	db 5 ; objects
+	object SPRITE_BURGLAR, 5, 11, WALK, 2, 1, OPP_BURGLAR, 3
+	object SPRITE_OAK_AIDE, 20, 11, STAY, LEFT, 2, OPP_SCIENTIST, 11
+	object SPRITE_BALL, 1, 16, STAY, NONE, 3, MAX_POTION
+	object SPRITE_BALL, 25, 5, STAY, NONE, 4, IRON
+	object SPRITE_BOOK, 6, 12, STAY, NONE, 5 ; person
+
+	; warp-to
+	warp_to 7, 10, CINNABAR_MANSION_2F_WIDTH ; CINNABAR_MANSION_B1F
+	warp_to 6, 1, CINNABAR_MANSION_2F_WIDTH ; CINNABAR_MANSION_B1F
+	warp_to 25, 14, CINNABAR_MANSION_2F_WIDTH ; CINNABAR_MANSION_B1F

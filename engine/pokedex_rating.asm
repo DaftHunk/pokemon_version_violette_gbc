@@ -23,7 +23,7 @@ DisplayDexRating:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a ; load text pointer into hl
-	CheckAndResetEventA EVENT_HALL_OF_FAME_DEX_RATING
+	CheckAndResetEventA EVENT_INDIGO_HALL_OF_FAME_DEX_RATING
 	jr nz, .hallOfFame
 	push hl
 	ld hl, PokedexRatingText_441cc

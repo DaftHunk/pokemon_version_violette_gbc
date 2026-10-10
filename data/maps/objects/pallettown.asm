@@ -2,9 +2,9 @@ PalletTownObject:
 	db $f ; border block
 
 	db 3 ; warps
-	warp 5, 5, 0, REDS_HOUSE_1F
-	warp 13, 5, 0, BLUES_HOUSE
-	warp 12, 11, 1, OAKS_LAB
+	warp 5, 5, 0, PALLET_REDS_HOUSE_1F
+	warp 13, 5, 0, PALLET_BLUES_HOUSE
+	warp 12, 11, 1, PALLET_OAKS_LAB
 
 	db 4 ; signs
 	sign 13, 13, 4 ; PalletTownText4
@@ -18,6 +18,6 @@ PalletTownObject:
 	object SPRITE_FISHER2, 11, 14, WALK, 0, 3 ; person
 
 	; warp-to
-	warp_to 5, 5, PALLET_TOWN_WIDTH ; REDS_HOUSE_1F
-	warp_to 13, 5, PALLET_TOWN_WIDTH ; BLUES_HOUSE
-	warp_to 12, 11, PALLET_TOWN_WIDTH ; OAKS_LAB
+	warp_to 5, 5, PALLET_TOWN_WIDTH ; PALLET_REDS_HOUSE_1F
+	warp_to 13, 5, PALLET_TOWN_WIDTH ; PALLET_BLUES_HOUSE
+	warp_to 12, 11, PALLET_TOWN_WIDTH ; PALLET_OAKS_LAB

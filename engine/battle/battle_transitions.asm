@@ -123,9 +123,9 @@ GetBattleTransitionID_CompareLevels:
 	ld [wBattleTransitionSpiralDirection], a
 	ret
 
-; fails to recognize VICTORY_ROAD_2, VICTORY_ROAD_3F, all ROCKET_HIDEOUT maps,
-; POKEMON_MANSION_1F, SEAFOAM_ISLANDS_[2-5], POWER_PLANT, DIGLETTS_CAVE
-; and SILPH_CO_[9-11]F as dungeon maps
+; fails to recognize VICTORY_ROAD_2F, VICTORY_ROAD_3F, all ROCKET_HIDEOUT maps,
+; CINNABAR_MANSION_1F, SEAFOAM_ISLANDS_[2-5], POWER_PLANT_1F, DIGLETTS_CAVE
+; and SAFFRON_SILPH_CO_[9-11]F as dungeon maps
 ;joenote - added missing maps and did a bit of reorganizing
 GetBattleTransitionID_IsDungeonMap:
 	ld a, [wCurMap]
@@ -162,11 +162,11 @@ GetBattleTransitionID_IsDungeonMap:
 DungeonMaps1:
 	db VIRIDIAN_FOREST
 	db ROCK_TUNNEL_1F
-	db POWER_PLANT	;added
+	db POWER_PLANT_1F	;added
 	db VICTORY_ROAD_1F
-	db POKEMON_MANSION_1F	;added
+	db CINNABAR_MANSION_1F	;added
 	db SEAFOAM_ISLANDS_1F
-	db VICTORY_ROAD_2	;added
+	db VICTORY_ROAD_2F	;added
 	db $FF
 
 ; GetBattleTransitionID_IsDungeonMap checks if wCurMap
@@ -176,18 +176,18 @@ DungeonMaps2:
 	db MT_MOON_1F
 	db MT_MOON_B2F
 
-	; all SS_ANNE maps, VICTORY_ROAD_1F, LANCES_ROOM, and HALL_OF_FAME
+	; all SS_ANNE maps, VICTORY_ROAD_1F, INDIGO_LANCES_ROOM, and INDIGO_HALL_OF_FAME
 	;revised to only cover the ss anne
 	db SS_ANNE_1F
-	;db HALL_OF_FAME
+	;db INDIGO_HALL_OF_FAME
 	db SS_ANNE_B1F_ROOMS
 
-	; all POKEMONTOWER maps and Lavender Town buildings
+	; all LAVENDER_POKEMON_TOWER maps and Lavender Town buildings
 	;revised to only count lavender tower
 ;	db LAVENDER_POKECENTER
 ;	db LAVENDER_CUBONE_HOUSE
-	db POKEMONTOWER_1F
-	db POKEMONTOWER_7F
+	db LAVENDER_POKEMON_TOWER_1F
+	db LAVENDER_POKEMON_TOWER_7F
 	
 	;added seafoam islands 2 to 5
 	db SEAFOAM_ISLANDS_B1F
@@ -197,14 +197,14 @@ DungeonMaps2:
 	db DIGLETTS_CAVE
 	db ROCKET_HIDEOUT_B4F
 
-	; SILPH_CO_[2-8]F, MANSION[2-4], SAFARI_ZONE, and UNKNOWN_DUNGEON maps,
-	; except for SILPH_CO_1F --> 1st floor is a public lobby and not really a "dungeon"
-	db SILPH_CO_2F
+	; SAFFRON_SILPH_CO_[2-8]F, MANSION[2-4], SAFARI_ZONE, and UNKNOWN_DUNGEON maps,
+	; except for SAFFRON_SILPH_CO_1F --> 1st floor is a public lobby and not really a "dungeon"
+	db SAFFRON_SILPH_CO_2F
 	db CERULEAN_CAVE_1F
 
 	;moved rock tunnel 2 and added the remaining silph floors
 	db ROCK_TUNNEL_B1F
-	db SILPH_CO_11F
+	db SAFFRON_SILPH_CO_11F
 
 	db $FF
 

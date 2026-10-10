@@ -107,7 +107,7 @@ CeladonGameCornerScript2:
 	ret nz
 	xor a
 	ld [wJoyIgnore], a
-	ld a, HS_GAME_CORNER_ROCKET
+	ld a, HS_CELADON_GAME_CORNER_ROCKET
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	ld hl, wCurrentMapScriptFlags

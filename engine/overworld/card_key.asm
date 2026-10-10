@@ -16,7 +16,7 @@ PrintCardKeyText:
 	jr z, .cardKeyDoorInFrontOfPlayer
 	ld b, a
 	ld a, [wCurMap]
-	cp SILPH_CO_11F
+	cp SAFFRON_SILPH_CO_11F
 	ret nz
 	ld a, b
 	cp $5e
@@ -40,7 +40,7 @@ PrintCardKeyText:
 	ld c, a
 	ld [wCardKeyDoorX], a
 	ld a, [wCurMap]
-	cp SILPH_CO_11F
+	cp SAFFRON_SILPH_CO_11F
 	jr nz, .notSilphCo11F
 	ld a, $3
 	jr .replaceCardKeyDoorTileBlock
@@ -59,16 +59,16 @@ PrintCardKeyText:
 	jp PrintPredefTextID
 
 SilphCoMapList:
-	db SILPH_CO_2F
-	db SILPH_CO_3F
-	db SILPH_CO_4F
-	db SILPH_CO_5F
-	db SILPH_CO_6F
-	db SILPH_CO_7F
-	db SILPH_CO_8F
-	db SILPH_CO_9F
-	db SILPH_CO_10F
-	db SILPH_CO_11F
+	db SAFFRON_SILPH_CO_2F
+	db SAFFRON_SILPH_CO_3F
+	db SAFFRON_SILPH_CO_4F
+	db SAFFRON_SILPH_CO_5F
+	db SAFFRON_SILPH_CO_6F
+	db SAFFRON_SILPH_CO_7F
+	db SAFFRON_SILPH_CO_8F
+	db SAFFRON_SILPH_CO_9F
+	db SAFFRON_SILPH_CO_10F
+	db SAFFRON_SILPH_CO_11F
 	db $FF
 
 CardKeySuccessText:

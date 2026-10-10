@@ -255,7 +255,7 @@ MainMenu:
 	and a
 	jp z, SpecialEnterMap
 	ld a, [wCurMap] ; map ID
-	cp HALL_OF_FAME
+	cp INDIGO_HALL_OF_FAME
 	jp nz, SpecialEnterMap
 .pallet_warp
 	;doing the special warp to pallet town so update some save-able parameters

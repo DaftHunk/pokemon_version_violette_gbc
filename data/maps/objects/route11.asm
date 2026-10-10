@@ -6,7 +6,7 @@ Route11Object:
 	warp 51, 9, 1, ROUTE_11_GATE_1F
 	warp 58, 8, 2, ROUTE_11_GATE_1F
 	warp 58, 9, 3, ROUTE_11_GATE_1F
-	warp 4, 5, 0, DIGLETTS_CAVE_ENTRANCE
+	warp 4, 5, 0, DIGLETTS_CAVE_ROUTE_11
 
 	db 1 ; signs
 	sign 1, 5, 11 ; Route11Text11
@@ -28,4 +28,4 @@ Route11Object:
 	warp_to 51, 9, ROUTE_11_WIDTH ; ROUTE_11_GATE_1F
 	warp_to 58, 8, ROUTE_11_WIDTH ; ROUTE_11_GATE_1F
 	warp_to 58, 9, ROUTE_11_WIDTH ; ROUTE_11_GATE_1F
-	warp_to 4, 5, ROUTE_11_WIDTH ; DIGLETTS_CAVE_ENTRANCE
+	warp_to 4, 5, ROUTE_11_WIDTH ; DIGLETTS_CAVE_ROUTE_11

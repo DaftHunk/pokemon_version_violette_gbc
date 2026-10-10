@@ -688,7 +688,7 @@ LoadTownMapEntryFromD:	;joenote - for more versatility, like with using callba
 LoadTownMapEntry:
 ; in: a = map number
 ; out: lower nybble of [de] = x, upper nybble of [de] = y, hl = address of name
-	cp REDS_HOUSE_1F
+	cp PALLET_REDS_HOUSE_1F
 	jr c, .external
 	ld bc, 4
 	ld hl, InternalMapEntries

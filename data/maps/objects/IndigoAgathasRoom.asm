@@ -1,0 +1,19 @@
+AgathaObject:
+	db $0 ; border block
+
+	db 4 ; warps
+	warp 4, 11, 2, INDIGO_BRUNOS_ROOM
+	warp 5, 11, 3, INDIGO_BRUNOS_ROOM
+	warp 4, 0, 0, INDIGO_LANCES_ROOM
+	warp 5, 0, 0, INDIGO_LANCES_ROOM
+
+	db 0 ; signs
+
+	db 1 ; objects
+	object SPRITE_AGATHA, 5, 2, STAY, DOWN, 1, OPP_AGATHA, 1
+
+	; warp-to
+	warp_to 4, 11, INDIGO_AGATHAS_ROOM_WIDTH ; INDIGO_BRUNOS_ROOM
+	warp_to 5, 11, INDIGO_AGATHAS_ROOM_WIDTH ; INDIGO_BRUNOS_ROOM
+	warp_to 4, 0, INDIGO_AGATHAS_ROOM_WIDTH ; INDIGO_LANCES_ROOM
+	warp_to 5, 0, INDIGO_AGATHAS_ROOM_WIDTH ; INDIGO_LANCES_ROOM

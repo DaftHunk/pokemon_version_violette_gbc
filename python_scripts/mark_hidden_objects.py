@@ -20,6 +20,9 @@ Sources analysées dans le dépôt :
                                         celui des PNG (mansion1, unknowndungeon1,
                                         tradecenter...) via « db <NOM>_HEIGHT,
                                         <NOM>_WIDTH »
+  - constants/item_constants.asm      : identifiants des objets (constantes)
+  - text/item_names.asm               : noms français des objets (ItemNames)
+  - text/tmhm_names.asm               : noms français des CS/CT (tmhmNames)
 
 Trois types d'objets, distingués par la couleur du badge :
   - objet       (rouge)  : objet trouvé au sol (routine HiddenItems)
@@ -51,9 +54,19 @@ placé sur la carte => introuvable en jeu), ainsi que les coordonnées
 hors des limites d'une carte (jamais déclenchables en jeu).
 
 Exports (dans --out, défaut : <dossier du script>/hidden_objects_marques/) :
-  - <carte>.png         : capture marquée
-  - legende.png         : légende des couleurs
+  - <carte>.png         : capture marquée, avec sous l'image la légende des
+                         noms : « n° -> nom français de l'objet » (ItemNames,
+                         tmhmNames pour les CT), « n° -> N jetons » pour les
+                         pièces, « n° -> routine » pour les interactifs ;
+                         entrées triées par numéro croissant (1, 2, 3...).
+                         --sans-legende garde la capture seule.
   - hidden_objects.csv  : récapitulatif (séparateur « ; », ouvrable dans Excel)
+                         — colonne « nom » = nom français résolu
+
+Encodage des noms : les fichiers .asm sont lus en utf-8 puis latin-1 ; les
+accents sont conservés si une police TTF est disponible (DejaVu, Arial,
+Liberation, Noto...), sinon les noms sont automatiquement translittérés
+(é -> e, û -> u...) pour éviter tout caractère cassé dans la légende.
 
 Utilisation :
   python mark_hidden_objects.py                       # tout en automatique
@@ -61,6 +74,7 @@ Utilisation :
   python mark_hidden_objects.py --types objets        # objets au sol uniquement
   python mark_hidden_objects.py --types tous          # + interactifs (bleus)
   python mark_hidden_objects.py --numeration global   # flags plutôt qu'ordre local
+  python mark_hidden_objects.py --sans-legende         # sans bandeau de noms
 
 Dépendance : Pillow  (pip install pillow)
 """
@@ -88,6 +102,28 @@ LIBELLES = {
     "piece": "Pièce cachée",
     "interactif": "Interactif (PC, statue, poubelle...)",
 }
+
+# Translittération de repli si aucune police TTF n'est disponible (les polices
+# bitmap par défaut de Pillow ne couvrent pas les accents français).
+TRANSLIT = str.maketrans({
+    "á": "a", "à": "a", "â": "a", "ä": "a", "ã": "a",
+    "é": "e", "è": "e", "ê": "e", "ë": "e",
+    "í": "i", "ì": "i", "î": "i", "ï": "i",
+    "ó": "o", "ò": "o", "ô": "o", "ö": "o", "õ": "o",
+    "ú": "u", "ù": "u", "û": "u", "ü": "u",
+    "ç": "c", "ñ": "n", "œ": "oe", "æ": "ae",
+    "Á": "A", "À": "A", "Â": "A", "Ä": "A", "Ã": "A",
+    "É": "E", "È": "E", "Ê": "E", "Ë": "E",
+    "Í": "I", "Ì": "I", "Î": "I", "Ï": "I",
+    "Ó": "O", "Ò": "O", "Ô": "O", "Ö": "O", "Õ": "O",
+    "Ú": "U", "Ù": "U", "Û": "U", "Ü": "U",
+    "Ç": "C", "Ñ": "N",
+})
+CANDIDATS_TTF = ("DejaVuSans.ttf", "arial.ttf", "LiberationSans-Regular.ttf",
+                 "NotoSans-Regular.ttf", "FreeSans.ttf", "Verdana.ttf", "tahoma.ttf")
+
+# Ordre d'affichage des types à numéro égal dans la légende
+ORDRE_TYPES = {"objet": 0, "piece": 1, "interactif": 2}
 
 # ----------------------------------------------------------------- utilitaires
 
@@ -150,6 +186,69 @@ def parse_liste_coords(txt):
     ):
         entrees.append((m.group(1), val(m.group(2)), val(m.group(3))))
     return entrees
+
+
+def parse_constantes_items(txt):
+    """{constante d'objet: id} depuis constants/item_constants.asm.
+
+    Suit « const_value = N » puis les « const NOM » séquentiels (l'ordre = l'id) ;
+    les alias « NOM EQU $xx » explicites sont aussi pris en compte.
+    """
+    ids = {}
+    valeur = 1
+    for ligne in txt.splitlines():
+        corps = ligne.split(";")[0].strip()
+        m = re.match(r"const_value\s*=\s*(\$[0-9A-Fa-f]+|\d+)$", corps)
+        if m:
+            valeur = val(m.group(1))
+            continue
+        m = re.match(r"const\s+([A-Za-z0-9_]+)$", corps)
+        if m:
+            ids[m.group(1)] = valeur
+            valeur += 1
+            continue
+        m = re.match(r"([A-Za-z0-9_]+)\s+EQU\s+(\$[0-9A-Fa-f]+|\d+)$", corps)
+        if m:
+            ids.setdefault(m.group(1), val(m.group(2)))
+    return ids
+
+
+def parse_noms_items(txt):
+    """Liste ordonnée des noms d'un fichier « db "NOM@" » (ItemNames/tmhmNames)."""
+    return [m.group(1).rstrip("@").strip()
+            for m in re.finditer(r'db\s+"([^"]*)"', txt)]
+
+
+def nom_objet(detail, routine, ids_items, noms_items, noms_tmhm):
+    """Nom français d'un marqueur depuis son identifiant de bloc (None sinon)."""
+    detail = (detail or "").strip()
+    if routine == "HiddenCoins":
+        m = re.match(r"COIN\s*\+\s*(\d+)", detail)
+        return f"{m.group(1)} jetons" if m else None
+    if routine == "HiddenItems":
+        id_ = ids_items.get(detail)
+        if id_ is None:
+            m = re.fullmatch(r"\$([0-9A-Fa-f]{1,2})", detail)
+            if m:
+                id_ = int(m.group(1), 16)
+        if id_ is None:
+            return None
+        if 1 <= id_ <= len(noms_items):
+            return noms_items[id_ - 1]
+        if noms_tmhm and 0xC4 <= id_ < 0xC4 + len(noms_tmhm):
+            return noms_tmhm[id_ - 0xC4]
+    return None
+
+
+def libelle_marqueur(marqueur, ids_items, noms_items, noms_tmhm):
+    """Texte de légende d'un marqueur : nom FR, jetons, routine ou repli."""
+    if marqueur["type"] == "interactif":
+        return marqueur["routine"] or marqueur["detail"] or "interactif"
+    nom = nom_objet(marqueur["detail"], marqueur["routine"],
+                    ids_items, noms_items, noms_tmhm)
+    if nom:
+        return nom
+    return marqueur["detail"] or LIBELLES[marqueur["type"]]
 
 
 def parse_blocs_hidden_objects(txt):
@@ -271,6 +370,29 @@ def police(taille):
         return ImageFont.load_default()
 
 
+_POLICE_LEGENDE = None
+
+
+def police_legende(taille=15):
+    """Police de la légende : TTF (accents gérés) sinon police par défaut.
+
+    Retourne (police, translitterer) : translitterer=True signifie qu'aucune
+    police TTF n'a été trouvée et qu'il faut convertir les accents en ASCII
+    (é -> e) pour éviter les caractères cassés.
+    """
+    global _POLICE_LEGENDE
+    if _POLICE_LEGENDE is None:
+        for nom in CANDIDATS_TTF:
+            try:
+                _POLICE_LEGENDE = (ImageFont.truetype(nom, taille), False)
+                break
+            except OSError:
+                continue
+        else:
+            _POLICE_LEGENDE = (police(taille), True)
+    return _POLICE_LEGENDE
+
+
 def dessiner_badge(draw, cx, cy, rayon, couleur, numero, font):
     draw.ellipse([cx - rayon, cy - rayon, cx + rayon, cy + rayon],
                  fill=couleur, outline=(0, 0, 0, 255), width=1)
@@ -280,18 +402,49 @@ def dessiner_badge(draw, cx, cy, rayon, couleur, numero, font):
               fill=(255, 255, 255, 255), font=font)
 
 
-def creer_legende(chemin, types):
-    """Légende des couleurs, limitée aux types marqués."""
-    ordonnes = [t for t in ("objet", "piece", "interactif") if t in types]
-    img = Image.new("RGBA", (360, 40 + 30 * len(ordonnes)), (255, 255, 255, 255))
-    draw = ImageDraw.Draw(img)
-    font = police(14)
-    draw.text((10, 8), "Légende", fill=(0, 0, 0, 255), font=font)
-    for i, type_ in enumerate(ordonnes):
-        y = 40 + 30 * i
-        dessiner_badge(draw, 26, y, 11, COULEURS[type_], 1, police(13))
-        draw.text((46, y - 8), LIBELLES[type_], fill=(0, 0, 0, 255), font=font)
-    img.save(chemin)
+def ajouter_legende(img, entrees):
+    """Ajoute sous l'image un bandeau blanc : « n° badge + nom » par entrée.
+
+    entrees = [(numero, couleur, texte), ...] — les numéros sont les mêmes que
+    ceux des badges sur la carte. Retour à la ligne automatique selon la largeur
+    de l'image ; accents translittérés si aucune police TTF n'est disponible.
+    """
+    if not entrees:
+        return img
+    font, translitterer = police_legende()
+    marge, ligne_h, rayon = 6, 26, 9
+    if translitterer:
+        entrees = [(n, c, t.translate(TRANSLIT)) for n, c, t in entrees]
+    mesure = ImageDraw.Draw(Image.new("RGBA", (1, 1)))
+    colonnes = [(num, coul, texte,
+                 2 * rayon + 6 + mesure.textlength(texte, font=font) + 18)
+                for num, coul, texte in entrees]
+    # mise en page : retour à la ligne quand la largeur de l'image est dépassée
+    lignes, courante, x = [], [], marge
+    for col in colonnes:
+        if courante and x + col[3] > img.width - marge:
+            lignes.append(courante)
+            courante, x = [], marge
+        courante.append(col)
+        x += col[3]
+    if courante:
+        lignes.append(courante)
+    hauteur = 2 * marge + ligne_h * len(lignes)
+    finale = Image.new("RGBA", (img.width, img.height + hauteur),
+                      (255, 255, 255, 255))
+    finale.paste(img, (0, 0))
+    draw = ImageDraw.Draw(finale)
+    for i, ligne in enumerate(lignes):
+        cy = img.height + marge + ligne_h * i + ligne_h // 2
+        x = marge
+        for num, coul, texte, largeur in ligne:
+            dessiner_badge(draw, x + rayon, cy, rayon, coul, num, font)
+            bbox = draw.textbbox((0, 0), texte, font=font)
+            h = bbox[3] - bbox[1]
+            draw.text((x + 2 * rayon + 6, cy - h / 2 - bbox[1]), texte,
+                      fill=(0, 0, 0, 255), font=font)
+            x += largeur
+    return finale
 
 # ----------------------------------------------------------------------- main
 
@@ -305,6 +458,8 @@ def main():
                     help="types à marquer : objets,pieces,interactifs ou tous (défaut : objets+pieces)")
     ap.add_argument("--numeration", choices=["carte", "global"], default="carte",
                     help="numéro affiché : ordre sur la carte (défaut) ou index global/flag")
+    ap.add_argument("--sans-legende", action="store_true",
+                    help="ne pas ajouter le bandeau de noms sous l'image")
     ap.add_argument("--taille-tuile", type=int, default=8,
                     help="taille d'une tuile en px (défaut : 8 ; détectée automatiquement "
                          "à partir des dimensions de la carte quand elles sont connues)")
@@ -334,6 +489,17 @@ def main():
     blocs = parse_blocs_hidden_objects(txt_ho)
     items = parse_liste_coords(lire(depot / "data/items/hidden_item_coords.asm"))
     pieces = parse_liste_coords(lire(depot / "data/items/hidden_coins.asm"))
+
+    # noms français des objets (légende + colonne « nom » du CSV)
+    ids_items = parse_constantes_items(lire(depot / "constants/item_constants.asm"))
+    noms_items = parse_noms_items(lire(depot / "text/item_names.asm"))
+    noms_tmhm = parse_noms_items(lire(depot / "text/tmhm_names.asm"))
+    print(f"Noms d'objets : {len(noms_items)} noms FR (ItemNames), "
+          f"{len(noms_tmhm)} noms CS/CT (tmhmNames).")
+    if police_legende()[1]:
+        print("i Police TTF introuvable (DejaVu, Arial, Liberation...) : les noms "
+              "de la légende seront translittérés sans accents (é -> e) pour "
+              "éviter tout souci d'encodage.")
 
     par_carte, detail_items, detail_pieces = collecter(cartes_maps, pointeurs, blocs, items, pieces)
 
@@ -380,7 +546,6 @@ def main():
 
     dossier_out = Path(args.out) if args.out else dossier_script / "../screenshots/HiddenObjects"
     dossier_out.mkdir(parents=True, exist_ok=True)
-    creer_legende(dossier_out / "legende.png", types)
 
     # ---- marquage
     lignes_csv, marquees, sans_png = [], 0, []
@@ -391,6 +556,8 @@ def main():
         marqueurs = [m for m in marqueurs if m["type"] in types]
         if not marqueurs:
             continue
+        for m in marqueurs:
+            m["nom"] = libelle_marqueur(m, ids_items, noms_items, noms_tmhm)
         stem = info_cartes[carte]["fichier"]
         source = pngs.get(stem)
         if source is None:
@@ -399,7 +566,7 @@ def main():
                 lignes_csv.append({"carte": carte, "png": "", "type": m["type"],
                                    "numero_carte": m["numero"], "numero_global": m["global"] or "",
                                    "y": m["y"], "x": m["x"], "detail": m["detail"],
-                                   "routine": m["routine"]})
+                                   "nom": m["nom"], "routine": m["routine"]})
             continue
 
         h_blocs, w_blocs = info_cartes[carte]["dims"]
@@ -429,18 +596,25 @@ def main():
         draw = ImageDraw.Draw(img)
         font = police(max(11, round(taille * 0.9)))
         rayon = max(6, round(taille * 0.75))
+        entrees_legende = []
         for m in sorted(marqueurs, key=lambda m: (m["y"], m["x"])):
             cx = args.decalage_x + m["x"] * taille + taille // 2
             cy = args.decalage_y + m["y"] * taille + taille // 2
             lignes_csv.append({"carte": carte, "png": source.name, "type": m["type"],
                                "numero_carte": m["numero"], "numero_global": m["global"] or "",
                                "y": m["y"], "x": m["x"], "detail": m["detail"],
-                               "routine": m["routine"]})
-            if not (0 <= cx < img.width and 0 <= cy < img.height):
-                continue  # badge en dehors de l'image (coordonnées hors limites)
+                               "nom": m["nom"], "routine": m["routine"]})
             numero = (m["global"] if args.numeration == "global" and m["global"]
                       else m["numero"])
+            entrees_legende.append((numero, COULEURS[m["type"]], m["nom"],
+                                    ORDRE_TYPES[m["type"]]))
+            if not (0 <= cx < img.width and 0 <= cy < img.height):
+                continue  # badge en dehors de l'image (coordonnées hors limites)
             dessiner_badge(draw, cx, cy, rayon, COULEURS[m["type"]], numero, font)
+        if not args.sans_legende:
+            entrees_legende.sort(key=lambda e: (e[0], e[3]))
+            img = ajouter_legende(img,
+                                  [(n, c, t) for n, c, t, _ in entrees_legende])
         img.save(dossier_out / source.name)
         marquees += 1
 
@@ -448,7 +622,7 @@ def main():
     csv_path = dossier_out / "hidden_objects.csv"
     with open(csv_path, "w", newline="", encoding="utf-8-sig") as f:
         colonnes = ["carte", "png", "type", "numero_carte", "numero_global",
-                    "y", "x", "detail", "routine"]
+                    "y", "x", "detail", "nom", "routine"]
         w = csv.DictWriter(f, fieldnames=colonnes, delimiter=";")
         w.writeheader()
         w.writerows(lignes_csv)

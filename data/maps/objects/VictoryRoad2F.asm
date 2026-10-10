@@ -1,0 +1,36 @@
+VictoryRoad2Object:
+	db $7d ; border block
+
+	db 7 ; warps
+	warp 0, 8, 2, VICTORY_ROAD_1F
+	warp 29, 7, 3, -1
+	warp 29, 8, 3, -1
+	warp 23, 7, 0, VICTORY_ROAD_3F
+	warp 25, 14, 2, VICTORY_ROAD_3F
+	warp 27, 7, 1, VICTORY_ROAD_3F
+	warp 1, 1, 3, VICTORY_ROAD_3F
+
+	db 0 ; signs
+
+	db 12 ; objects
+	object SPRITE_BLACKBELT,        14,  9, STAY, LEFT,  1, OPP_BLACKBELT, 8
+	object SPRITE_JUGGLER,          23, 12, STAY, DOWN,  2, OPP_JUGGLER, 5
+	object SPRITE_TAMER,            15,  4, STAY, RIGHT, 3, OPP_TAMER, 5
+	object SPRITE_BLACK_HAIR_BOY_2,  8,  0, STAY, DOWN,  4, OPP_POKEMANIAC, 7
+	object SPRITE_SOLDIER,          24,  0, STAY, DOWN,  5, OPP_SOLDIER, 6 
+	object SPRITE_BALL,             27,  5, STAY, NONE,  6, TM02_RAZOR_WIND
+	object SPRITE_BALL,             18,  9, STAY, NONE,  7, RARE_CANDY
+	object SPRITE_BALL,              9, 11, STAY, NONE,  8, TM05_MEGA_KICK
+	object SPRITE_BALL,             11,  6, STAY, NONE,  9, TM15_HYPER_BEAM
+	object SPRITE_BOULDER,           4, 14, STAY, BOULDER_MOVEMENT_BYTE_2, 10 ; person
+	object SPRITE_BOULDER,           5,  5, STAY, BOULDER_MOVEMENT_BYTE_2, 11 ; person
+	object SPRITE_BOULDER,          23, 16, STAY, BOULDER_MOVEMENT_BYTE_2, 12 ; person
+
+	; warp-to
+	warp_to 0, 8, VICTORY_ROAD_2F_WIDTH ; VICTORY_ROAD_1F
+	warp_to 29, 7, VICTORY_ROAD_2F_WIDTH
+	warp_to 29, 8, VICTORY_ROAD_2F_WIDTH
+	warp_to 23, 7, VICTORY_ROAD_2F_WIDTH ; VICTORY_ROAD_3F
+	warp_to 25, 14, VICTORY_ROAD_2F_WIDTH ; VICTORY_ROAD_3F
+	warp_to 27, 7, VICTORY_ROAD_2F_WIDTH ; VICTORY_ROAD_3F
+	warp_to 1, 1, VICTORY_ROAD_2F_WIDTH ; VICTORY_ROAD_3F

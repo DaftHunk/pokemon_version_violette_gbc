@@ -161,7 +161,7 @@ CinnabarIslandPokecenterBenchGuyText:
 
 SaffronCityPokecenterBenchGuyText:
 	TX_ASM
-	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+	CheckEvent EVENT_BEAT_SAFFRON_SILPH_CO_GIOVANNI
 	ld hl, SaffronCityPokecenterBenchGuyText2
 	jr nz, .asm_624f2
 	ld hl, SaffronCityPokecenterBenchGuyText1

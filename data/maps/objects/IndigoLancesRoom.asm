@@ -1,0 +1,17 @@
+LanceObject:
+	db $3 ; border block
+
+	db 3 ; warps
+	warp 24, 16, 2, INDIGO_AGATHAS_ROOM
+	warp 5, 0, 0, INDIGO_CHAMPIONS_ROOM
+	warp 6, 0, 0, INDIGO_CHAMPIONS_ROOM
+
+	db 0 ; signs
+
+	db 1 ; objects
+	object SPRITE_LANCE, 6, 1, STAY, DOWN, 1, OPP_LANCE, 1
+
+	; warp-to
+	warp_to 24, 16, INDIGO_LANCES_ROOM_WIDTH ; INDIGO_AGATHAS_ROOM
+	warp_to 5, 0, INDIGO_LANCES_ROOM_WIDTH ; INDIGO_CHAMPIONS_ROOM
+	warp_to 6, 0, INDIGO_LANCES_ROOM_WIDTH ; INDIGO_CHAMPIONS_ROOM

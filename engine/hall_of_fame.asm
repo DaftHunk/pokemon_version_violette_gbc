@@ -34,7 +34,7 @@ AnimateHallOfFame:
 	ld a, $90
 	ld [hWY], a
 	ld c, BANK(Music_HallOfFame)
-	ld a, MUSIC_HALL_OF_FAME
+	ld a, MUSIC_INDIGO_HALL_OF_FAME
 	call PlayMusic
 	ld hl, wPartySpecies
 	ld c, $ff
@@ -229,7 +229,7 @@ HoFLoadMonPlayerPicTileIDs:
 	predef_jump CopyTileIDsFromList
 
 HoFDisplayPlayerStats:
-	SetEvent EVENT_HALL_OF_FAME_DEX_RATING
+	SetEvent EVENT_INDIGO_HALL_OF_FAME_DEX_RATING
 	predef DisplayDexRating
 	coord hl, 0, 4
 	ld b, 6
