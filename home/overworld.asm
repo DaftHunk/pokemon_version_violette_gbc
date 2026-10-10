@@ -349,7 +349,7 @@ OverworldLoopLessDelay::
 	ld hl, wStatusFlags4
 	set 5, [hl]
 	;ld a, [wCurMap]	;joenote - check the OaksLab map script number instead
-	;cp OAKS_LAB					;script $0C is the default for just after the rival battle
+	;cp PALLET_OAKS_LAB					;script $0C is the default for just after the rival battle
 	ld a, [wOaksLabCurScript]
 	cp $C
 	jp z, .noFaintCheck ; no blacking out if the player lost to the rival in Oak's lab
@@ -1310,8 +1310,8 @@ TilePairCollisionsWater::
 	db CAVERN, $30, $38
 	db CAVERN, $42, $38
 	db CAVERN, $43, $38
-	db GYM	 , $14, $32	;joenote - can't surf into statue base
-	db GYM	 , $14, $33 ;joenote - can't surf into statue base
+	db GYM	 , $11, $32	;joenote - can't surf into statue base
+	db GYM	 , $11, $33 ;joenote - can't surf into statue base
 	db $FF
 
 ; this builds a tile map from the tile block map based on the current X/Y coordinates of the player's character
