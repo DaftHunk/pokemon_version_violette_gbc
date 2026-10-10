@@ -1310,8 +1310,8 @@ TilePairCollisionsWater::
 	db CAVERN, $30, $38
 	db CAVERN, $42, $38
 	db CAVERN, $43, $38
-	db GYM	 , $14, $32	;joenote - can't surf into statue base
-	db GYM	 , $14, $33 ;joenote - can't surf into statue base
+	db GYM	 , $11, $32	;joenote - can't surf into statue base
+	db GYM	 , $11, $33 ;joenote - can't surf into statue base
 	db $FF
 
 ; this builds a tile map from the tile block map based on the current X/Y coordinates of the player's character
