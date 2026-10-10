@@ -1564,11 +1564,9 @@ SECTION "bank19",ROMX,BANK[$19]
 Overworld_GFX:     INCBIN "gfx/tilesets/overworld.2bpp"
 Overworld_Block:   INCBIN "gfx/blocksets/overworld.bst"
 
-RedsHouse1_GFX:
-RedsHouse2_GFX:    INCBIN "gfx/tilesets/reds_house.2bpp"
+RedsHouse_GFX:    INCBIN "gfx/tilesets/reds_house.2bpp"
 	ds 16
-RedsHouse1_Block:
-RedsHouse2_Block:  INCBIN "gfx/blocksets/reds_house.bst"
+RedsHouse_Block:  INCBIN "gfx/blocksets/reds_house.bst"
 
 House_GFX:         INCBIN "gfx/tilesets/house.2bpp"
 House_Block:       INCBIN "gfx/blocksets/house.bst"
@@ -1588,9 +1586,7 @@ Version_GFXEnd:
 
 Plateau_GFX:       INCBIN "gfx/tilesets/plateau.2bpp"
 Plateau_Block:     INCBIN "gfx/blocksets/plateau.bst"
-Dojo_GFX:
 Gym_GFX:           INCBIN "gfx/tilesets/gym.2bpp"
-Dojo_Block:
 Gym_Block:         INCBIN "gfx/blocksets/gym.bst"
 
 Mart_GFX:
@@ -1598,11 +1594,7 @@ Pokecenter_GFX:    INCBIN "gfx/tilesets/pokecenter.2bpp"
 Mart_Block:
 Pokecenter_Block:  INCBIN "gfx/blocksets/pokecenter.bst"
 
-ForestGate_GFX:
-Museum_GFX:
 Gate_GFX:          INCBIN "gfx/tilesets/gate.2bpp"
-ForestGate_Block:
-Museum_Block:
 Gate_Block:        INCBIN "gfx/blocksets/gate.bst"
 
 

@@ -5,23 +5,23 @@ const_value = 0
 	const PALLET_REDS_HOUSE ; 1
 	const MART              ; 2
 	const FOREST            ; 3
-	const POKECENTER        ; 6
-	const GYM               ; 7
-	const HOUSE             ; 8
-	const UNDERGROUND       ; 11
-	const GATE              ; 12
-	const SHIP              ; 13
-	const SHIP_PORT         ; 14
-	const CEMETERY          ; 15
-	const INTERIOR          ; 16
-	const CAVERN            ; 17
-	const LOBBY             ; 18
-	const MANSION           ; 19
-	const LAB               ; 20
-	const CLUB              ; 21
-	const FACILITY          ; 22
-	const REACTOR           ; 23
-	const VOLCANO           ; 24
-	const PLATEAU           ; 25
+	const POKECENTER        ; 4
+	const GYM               ; 5
+	const HOUSE             ; 6
+	const UNDERGROUND       ; 7
+	const GATE              ; 8
+	const SHIP              ; 9
+	const SHIP_PORT         ; 10
+	const CEMETERY          ; 11
+	const INTERIOR          ; 12
+	const CAVERN            ; 13
+	const LOBBY             ; 14
+	const MANSION           ; 15
+	const LAB               ; 16
+	const CLUB              ; 17
+	const FACILITY          ; 18
+	const REACTOR           ; 19
+	const VOLCANO           ; 20
+	const PLATEAU           ; 21
 ; Outdoor (to add in CheckIfInOutsideMap)
-	const ALPHA             ; 26
+	const ALPHA             ; 22
