@@ -50,10 +50,10 @@ InternalMapEntries:
 	IMAP MT_MOON_B2F,                   $6,$2,MountMoonName
 	IMAP CERULEAN_MART,                 $A,$2,CeruleanCityName
 	IMAP MT_MOON_POKECENTER,            $5,$2,Route4Name
-	IMAP DAYCAREM,                      $A,$4,Route5Name
-	IMAP UNDERGROUND_PATH_ENTRANCE_ROUTE_6,         $A,$6,Route6Name
-	IMAP UNDERGROUND_PATH_ENTRANCE_ROUTE_7,         $9,$5,Route7Name
-	IMAP UNDERGROUND_PATH_ENTRANCE_ROUTE_8,         $B,$5,Route8Name
+	IMAP DAYCARE,                      $A,$4,Route5Name
+	IMAP UNDERGROUND_PATH_ROUTE_6,         $A,$6,Route6Name
+	IMAP UNDERGROUND_PATH_ROUTE_7,         $9,$5,Route7Name
+	IMAP UNDERGROUND_PATH_ROUTE_8,         $B,$5,Route8Name
 	IMAP ROCK_TUNNEL_1F,                $E,$3,RockTunnelName
 	IMAP POWER_PLANT_1F,                   $F,$4,PowerPlantName
 	IMAP ROUTE_11_GATE_2F,              $D,$9,Route11Name
@@ -70,15 +70,15 @@ InternalMapEntries:
 	IMAP INDIGO_LANCES_ROOM,                   $0,$2,PokemonLeagueName
 	IMAP ROUTE_19_BEACH_HOUSE,          $6,$F,Route19Name
 	IMAP INDIGO_HALL_OF_FAME,                  $0,$2,PokemonLeagueName
-	IMAP UNDERGROUND_PATH_NS,           $A,$5,UndergroundPathName
+	IMAP UNDERGROUND_PATH_NORTH_SOUTH,           $A,$5,UndergroundPathName
 	IMAP INDIGO_CHAMPIONS_ROOM,                $0,$2,PokemonLeagueName
-	IMAP UNDERGROUND_PATH_WE,           $A,$5,UndergroundPathName
+	IMAP UNDERGROUND_PATH_WEST_EAST,           $A,$5,UndergroundPathName
 	IMAP CELADON_HOTEL,                 $7,$5,CeladonCityName
 	IMAP LAVENDER_POKECENTER,           $E,$5,LavenderTownName
 	IMAP LAVENDER_POKEMON_TOWER_7F,               $F,$5,PokemonTowerName
 	IMAP LAVENDER_CUBONE_HOUSE,         $E,$5,LavenderTownName
 	IMAP FUCHSIA_WARDENS_HOUSE,                 $8,$D,FuchsiaCityName
-	IMAP SAFARI_ZONE_ENTRANCE,          $8,$C,SafariZoneName
+	IMAP SAFARI_ZONE_GATE,          $8,$C,SafariZoneName
 	IMAP FUCHSIA_MEETING_ROOM,          $8,$D,FuchsiaCityName
 	IMAP SEAFOAM_ISLANDS_B4F,           $5,$F,SeafoamIslandsName
 	IMAP VERMILION_FISHER_HOUSE,       $A,$9,VermilionCityName

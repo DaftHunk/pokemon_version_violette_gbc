@@ -607,7 +607,7 @@ CeladonMart3FHS:
 VermilionCityHS:
 	db VERMILION_CITY,$07,Show	;joenote - replaces bush outside vermilion gym with a lazy pokemon
 UndergroundPathWEHS: 
-	db UNDERGROUND_PATH_WE,$02,Hide	;joenote - m_gene pokeball
+	db UNDERGROUND_PATH_WEST_EAST,$02,Hide	;joenote - m_gene pokeball
 Museum2FHS:
 	db PEWTER_MUSEUM_2F,$06,Show	;joenote - added water gun tm to museum 2f
 VermilionDockHS:

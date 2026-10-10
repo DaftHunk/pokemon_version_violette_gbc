@@ -84,16 +84,16 @@ DEF NUM_CITY_MAPS EQU const_value
     mapconst MT_MOON_POKECENTER,               4,  7 ; $48
     mapconst UNUSED_MAP_47,                    0,  0 ; $49
     mapconst ROUTE_5_GATE,                     3,  4 ; $4A
-    mapconst UNDERGROUND_PATH_ENTRANCE_ROUTE_5,4,  4 ; $4B
-    mapconst DAYCAREM,                         4,  4 ; $4C
+    mapconst UNDERGROUND_PATH_ROUTE_5,         4,  4 ; $4B
+    mapconst DAYCARE,                          4,  4 ; $4C
     mapconst ROUTE_6_GATE,                     3,  4 ; $4D
-    mapconst UNDERGROUND_PATH_ENTRANCE_ROUTE_6,4,  4 ; $4E
+    mapconst UNDERGROUND_PATH_ROUTE_6,         4,  4 ; $4E
     mapconst UNUSED_MAP_4D,                    0,  0 ; $4F
     mapconst ROUTE_7_GATE,                     4,  3 ; $50
-    mapconst UNDERGROUND_PATH_ENTRANCE_ROUTE_7,4,  4 ; $51
+    mapconst UNDERGROUND_PATH_ROUTE_7,         4,  4 ; $51
     mapconst UNUSED_MAP_50,                    0,  0 ; $52
     mapconst ROUTE_8_GATE,                     4,  3 ; $53
-    mapconst UNDERGROUND_PATH_ENTRANCE_ROUTE_8,4,  4 ; $54
+    mapconst UNDERGROUND_PATH_ROUTE_8,         4,  4 ; $54
     mapconst ROCK_TUNNEL_POKECENTER,           4,  7 ; $55
     mapconst ROCK_TUNNEL_1F,                  18, 20 ; $56
     mapconst POWER_PLANT_1F,                  12, 20 ; $57
@@ -128,9 +128,9 @@ DEF NUM_CITY_MAPS EQU const_value
     mapconst INDIGO_LANCES_ROOM,              13, 13 ; $74
     mapconst ROUTE_19_BEACH_HOUSE,             4,  4 ; $75
     mapconst INDIGO_HALL_OF_FAME,              4,  5 ; $76
-    mapconst UNDERGROUND_PATH_NS,             24,  4 ; $77
+    mapconst UNDERGROUND_PATH_NORTH_SOUTH,    24,  4 ; $77
     mapconst INDIGO_CHAMPIONS_ROOM,            4,  4 ; $78
-    mapconst UNDERGROUND_PATH_WE,              4, 25 ; $79
+    mapconst UNDERGROUND_PATH_WEST_EAST,       4, 25 ; $79
     mapconst CELADON_MART_1F,                  4, 10 ; $7A
     mapconst CELADON_MART_2F,                  4, 10 ; $7B
     mapconst CELADON_MART_3F,                  4, 10 ; $7C
@@ -146,7 +146,7 @@ DEF NUM_CITY_MAPS EQU const_value
     mapconst CELADON_GYM,                      9,  5 ; $86
     mapconst CELADON_GAME_CORNER,              9, 10 ; $87
     mapconst CELADON_MART_5F,                  4, 10 ; $88
-    mapconst CELADON_PRIZE_ROOM,               4,  5 ; $89
+    mapconst CELADON_GAME_CORNER_PRIZE_ROOM,   4,  5 ; $89
     mapconst CELADON_DINER,                    4,  5 ; $8A
     mapconst CELADON_CHIEF_HOUSE,              4,  4 ; $8B
     mapconst CELADON_HOTEL,                    4,  7 ; $8C
@@ -165,7 +165,7 @@ DEF NUM_CITY_MAPS EQU const_value
     mapconst FUCHSIA_BILLS_GRANDPAS_HOUSE,     4,  4 ; $99
     mapconst FUCHSIA_POKECENTER,               4,  7 ; $9A
     mapconst FUCHSIA_WARDENS_HOUSE,            4,  5 ; $9B
-    mapconst SAFARI_ZONE_ENTRANCE,             3,  4 ; $9C
+    mapconst SAFARI_ZONE_GATE,                 3,  4 ; $9C
     mapconst FUCHSIA_GYM,                      9,  5 ; $9D
     mapconst FUCHSIA_MEETING_ROOM,             4,  7 ; $9E
     mapconst SEAFOAM_ISLANDS_B1F,              9, 15 ; $9F
