@@ -15,5 +15,5 @@ CeladonPrizeRoomObject:
 	object SPRITE_GAMBLER, 9, 3, WALK, 2, 2 ; person	;joenote - moved two spaces right to avoid blocking the counter
 
 	; warp-to
-	warp_to 4, 7, CELADON_PRIZE_ROOM_WIDTH
-	warp_to 5, 7, CELADON_PRIZE_ROOM_WIDTH
+	warp_to 4, 7, CELADON_GAME_CORNER_PRIZE_ROOM_WIDTH
+	warp_to 5, 7, CELADON_GAME_CORNER_PRIZE_ROOM_WIDTH

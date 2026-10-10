@@ -1,6 +1,6 @@
 UndergroundPathEntranceRoute8_h:
 	db GATE ; tileset
-	db UNDERGROUND_PATH_ENTRANCE_ROUTE_8_HEIGHT, UNDERGROUND_PATH_ENTRANCE_ROUTE_8_WIDTH ; dimensions (y, x)
+	db UNDERGROUND_PATH_ROUTE_8_HEIGHT, UNDERGROUND_PATH_ROUTE_8_WIDTH ; dimensions (y, x)
 	dw UndergroundPathEntranceRoute8Blocks, UndergroundPathEntranceRoute8TextPointers, UndergroundPathEntranceRoute8Script ; blocks, texts, scripts
 	db 0 ; connections
 	dw UndergroundPathEntranceRoute8Object ; objects

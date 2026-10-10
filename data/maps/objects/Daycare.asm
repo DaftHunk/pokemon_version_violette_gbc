@@ -11,5 +11,5 @@ DayCareMObject:
 	object SPRITE_GENTLEMAN, 2, 3, STAY, RIGHT, 1 ; person
 
 	; warp-to
-	warp_to 2, 7, DAYCAREM_WIDTH
-	warp_to 3, 7, DAYCAREM_WIDTH
+	warp_to 2, 7, DAYCARE_WIDTH
+	warp_to 3, 7, DAYCARE_WIDTH
