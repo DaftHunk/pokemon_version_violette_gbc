@@ -1294,7 +1294,6 @@ LavenderPokecenterBlocks:
 PewterPokecenterBlocks: INCBIN "maps/pewterpokecenter.blk"
 
 UndergroundPathEntranceRoute7Blocks:
-UndergroundPathEntranceRoute7CopyBlocks:
 UndergroundPathEntranceRoute6Blocks:
 UndergroundPathEntranceRoute5Blocks: INCBIN "maps/undergroundpathentranceroute5.blk"
 

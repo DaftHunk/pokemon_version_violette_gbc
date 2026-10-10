@@ -128,7 +128,7 @@ DEF NUM_CITY_MAPS EQU const_value
     mapconst INDIGO_LANCES_ROOM,              13, 13 ; $74
     mapconst ROUTE_19_BEACH_HOUSE,             4,  4 ; $75
     mapconst INDIGO_HALL_OF_FAME,              4,  5 ; $76
-    mapconst UNDERGROUND_PATH_NORTH_SOUTH,    24,  4 ; $77
+    mapconst UNDERGROUND_PATH_NORTH_SOUTH,    23,  4 ; $77
     mapconst INDIGO_CHAMPIONS_ROOM,            4,  4 ; $78
     mapconst UNDERGROUND_PATH_WEST_EAST,       4, 25 ; $79
     mapconst CELADON_MART_1F,                  4, 10 ; $7A
