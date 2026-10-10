@@ -992,7 +992,7 @@ Route18GateUpstairsHiddenObjects:
 	dw Route18GateRightBinoculars
 	db $FF
 Route20HiddenObjects:
-	db $12,$35,SOUL_STONE
+	db $12,$35,MOON_STONE
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 MtMoonSquareHiddenObjects:
@@ -1000,6 +1000,6 @@ MtMoonSquareHiddenObjects:
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 Route16HiddenObjects:
-	db $0f,$18,SOUL_STONE
+	db $0f,$18,MOON_STONE
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
