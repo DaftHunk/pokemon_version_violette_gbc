@@ -331,10 +331,10 @@ MonListStarter:	;because not all mons in c-tier should be allowed as starter pok
 	db EEVEE        ; $66
 	db PORYGON      ; $AA
 	db DRATINI      ; $58
-	db ANCHORAGE
-	db WOLFMAN
-	db MARILL
-	db SLUGMA
+	db ANCHORAGE    ; $92
+	db WOLFMAN      ; $A0
+	db MARILL       ; $87
+	db SLUGMA       ; $73
 	db $FF
 
 MonListB:
@@ -368,15 +368,15 @@ MonListB:
 	db JYNX         ; $48
 	db ELECTABUZZ   ; $35
 	db MAGMAR       ; $33
-	db HOUNDOUR     ; 157
-	db SNEASEL      ; 160
-	db MISDREAVUS   ; 161
-	db HERACROSS
-	db LARVITAR     ; 163
-	db PUPITAR      ; 164
-	db WARWOLF
-	db MAGCARGO
-	db AZUMARILL
+	db HOUNDOUR     ; $56
+	db SNEASEL      ; $38
+	db MISDREAVUS   ; $3D
+	db HERACROSS    ; $50
+	db LARVITAR     ; $3E
+	db PUPITAR      ; $3F
+	db WARWOLF      ; $A1
+	db MAGCARGO     ; $79
+	db AZUMARILL    ; $89
 	db $FF
 
 MonListA:
@@ -400,9 +400,9 @@ MonListA:
 	db TAUROS       ; $3C
 	db LAPRAS       ; $13
 	db SNORLAX      ; $84
-	db HOUNDOOM     ; 158
+	db HOUNDOOM     ; $57
 	db $FF
-	
+
 MonListTrueRandom:
 	db METAPOD      ; $7C
 	db KAKUNA       ; $71
@@ -444,11 +444,11 @@ MonListTrueRandom:
 	db RHYDON       ; $01
 	db SEADRA       ; $5D
 	db SEAKING      ; $9E
-	db SNEASEL      ; 160
-	db PUPITAR      ; 164
-	db WARWOLF
-	db MAGCARGO
-	db AZUMARILL
+	db SNEASEL      ; $38
+	db PUPITAR      ; $3F
+	db WARWOLF      ; $A1
+	db MAGCARGO     ; $79
+	db AZUMARILL    ; $89
 	;fall through
 MonListTrueRandom_Starter:	;because not all mons should be allowed as starter pokemon
 	db BULBASAUR    ; $99
@@ -519,12 +519,12 @@ MonListTrueRandom_Starter:	;because not all mons should be allowed as starter po
 	db PORYGON      ; $AA
 	db SNORLAX      ; $84
 	db DRATINI      ; $58
-	db MISDREAVUS   ; 161
-	db HOUNDOUR     ; 157
-	db HERACROSS
-	db LARVITAR     ; 163
-	db ANCHORAGE
-	db WOLFMAN
-	db MARILL
-	db SLUGMA
+	db MISDREAVUS   ; $3D
+	db HOUNDOUR     ; $56
+	db HERACROSS    ; $50
+	db LARVITAR     ; $3E
+	db ANCHORAGE    ; $92
+	db WOLFMAN      ; $A0
+	db MARILL       ; $87
+	db SLUGMA       ; $73
 	db $FF

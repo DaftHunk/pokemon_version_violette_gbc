@@ -57,103 +57,103 @@ PokedexRatingText_441cc:
 
 DexRatingsTable:
 	db 10
-	dw PokedexRatingText_44201
+	dw PokedexRatingText_Caught10
 	db 20
-	dw PokedexRatingText_44206
+	dw PokedexRatingText_Caught20
 	db 30
-	dw PokedexRatingText_4420b
+	dw PokedexRatingText_Caught30
 	db 40
-	dw PokedexRatingText_44210
+	dw PokedexRatingText_Caught40
 	db 50
-	dw PokedexRatingText_44215
+	dw PokedexRatingText_Caught50
 	db 60
-	dw PokedexRatingText_4421a
+	dw PokedexRatingText_Caught60
 	db 70
-	dw PokedexRatingText_4421f
+	dw PokedexRatingText_Caught70
 	db 80
-	dw PokedexRatingText_44224
+	dw PokedexRatingText_Caught80
 	db 90
-	dw PokedexRatingText_44229
+	dw PokedexRatingText_Caught90
 	db 100
-	dw PokedexRatingText_4422e
+	dw PokedexRatingText_Caught100
 	db 110
-	dw PokedexRatingText_44233
+	dw PokedexRatingText_Caught110
 	db 120
-	dw PokedexRatingText_44238
+	dw PokedexRatingText_Caught120
 	db 130
-	dw PokedexRatingText_4423d
+	dw PokedexRatingText_Caught130
 	db 140
-	dw PokedexRatingText_44242
-	db 165 ; Everything except Mew & Hooh
-	dw PokedexRatingText_44247
-	db 167 ; Everything
-	dw PokedexRatingText_4424c
+	dw PokedexRatingText_Caught140
+	db 180 ; Everything except Mew, MewtwoArmor & MissingNo
+	dw PokedexRatingText_CaughtAllExceptFabulous
+	db 182 ; Everything
+	dw PokedexRatingText_CaughtAll
 	; dafthunk Handle MissingNo or error
-	db 168
-	dw PokedexRatingText_4424c
-	db 169
-	dw PokedexRatingText_4424c
+	db 183
+	dw PokedexRatingText_CaughtAll
+	db 184
+	dw PokedexRatingText_CaughtAll
 
-PokedexRatingText_44201:
-	TX_FAR _OaksLabText_44201
+PokedexRatingText_Caught10:
+	TX_FAR _OaksLabText_Caught10
 	db "@"
 
-PokedexRatingText_44206:
-	TX_FAR _OaksLabText_44206
+PokedexRatingText_Caught20:
+	TX_FAR _OaksLabText_Caught20
 	db "@"
 
-PokedexRatingText_4420b:
-	TX_FAR _OaksLabText_4420b
+PokedexRatingText_Caught30:
+	TX_FAR _OaksLabText_Caught30
 	db "@"
 
-PokedexRatingText_44210:
-	TX_FAR _OaksLabText_44210
+PokedexRatingText_Caught40:
+	TX_FAR _OaksLabText_Caught40
 	db "@"
 
-PokedexRatingText_44215:
-	TX_FAR _OaksLabText_44215
+PokedexRatingText_Caught50:
+	TX_FAR _OaksLabText_Caught50
 	db "@"
 
-PokedexRatingText_4421a:
-	TX_FAR _OaksLabText_4421a
+PokedexRatingText_Caught60:
+	TX_FAR _OaksLabText_Caught60
 	db "@"
 
-PokedexRatingText_4421f:
-	TX_FAR _OaksLabText_4421f
+PokedexRatingText_Caught70:
+	TX_FAR _OaksLabText_Caught70
 	db "@"
 
-PokedexRatingText_44224:
-	TX_FAR _OaksLabText_44224
+PokedexRatingText_Caught80:
+	TX_FAR _OaksLabText_Caught80
 	db "@"
 
-PokedexRatingText_44229:
-	TX_FAR _OaksLabText_44229
+PokedexRatingText_Caught90:
+	TX_FAR _OaksLabText_Caught90
 	db "@"
 
-PokedexRatingText_4422e:
-	TX_FAR _OaksLabText_4422e
+PokedexRatingText_Caught100:
+	TX_FAR _OaksLabText_Caught100
 	db "@"
 
-PokedexRatingText_44233:
-	TX_FAR _OaksLabText_44233
+PokedexRatingText_Caught110:
+	TX_FAR _OaksLabText_Caught110
 	db "@"
 
-PokedexRatingText_44238:
-	TX_FAR _OaksLabText_44238
+PokedexRatingText_Caught120:
+	TX_FAR _OaksLabText_Caught120
 	db "@"
 
-PokedexRatingText_4423d:
-	TX_FAR _OaksLabText_4423d
+PokedexRatingText_Caught130:
+	TX_FAR _OaksLabText_Caught130
 	db "@"
 
-PokedexRatingText_44242:
-	TX_FAR _OaksLabText_44242
+PokedexRatingText_Caught140:
+	TX_FAR _OaksLabText_Caught140
 	db "@"
 
-PokedexRatingText_44247:
-	TX_FAR _OaksLabText_44247
+PokedexRatingText_CaughtAllExceptFabulous:
+	TX_FAR _OaksLabText_CaughtAllExceptFabulous
 	db "@"
 
-PokedexRatingText_4424c:
-	TX_FAR _OaksLabText_4424c
+PokedexRatingText_CaughtAll:
+	TX_FAR _OaksLabText_CaughtAll
 	db "@"

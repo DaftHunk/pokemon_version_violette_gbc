@@ -7,31 +7,31 @@ ListSafariSpecial:
 	db VICTREEBEL   ; $BE
 	db EXEGGUTOR    ; $0A
 	db RHYDON       ; $01
-	db HERACROSS
-	db DRATINI
-	db KABUTO
-	db OMANYTE
-	db AERODACTYL
+	db HERACROSS    ; $50
+	db DRATINI      ; $58
+	db KABUTO       ; $5A
+	db OMANYTE      ; $62
+	db AERODACTYL   ; $AB
 	db $00
 
 ListRealPkmn:
 	db MEW          ; $15
-	db MISSINGNO    ; 162
-	db MEWTWO_ARMOR ; 163
+	db MISSINGNO    ; $45
+	db MEWTWO_ARMOR ; $5E
 ListNonMythPkmn:
 	db MEWTWO       ; $83
 ListNonMewPkmn:
 	db MOLTRES      ; $49
 	db ARTICUNO     ; $4A
 	db ZAPDOS       ; $4B
-	db HOOH         ; 161
-	db LUGIA
-	db MAROWRATH
-	db PLUX
-	db GOROCHU
-	db LICKILICKY
-	db ANNIHILAPE
-	db TANGROWTH
+	db HOOH         ; $44
+	db LUGIA        ; $9F
+	db MAROWRATH    ; $4F
+	db PLUX         ; $8C
+	db GOROCHU      ; $5F
+	db LICKILICKY   ; $7F
+	db ANNIHILAPE   ; $A2
+	db TANGROWTH    ; $86
 ListNonLegendPkmn:
 	db ABRA         ; $94
 	db BELLSPROUT   ; $BC
@@ -87,13 +87,13 @@ ListNonLegendPkmn:
 	db VULPIX       ; $52
 	db WEEDLE       ; $70
 	db ZUBAT        ; $6B
-	db LARVITAR
+	db LARVITAR     ; $3E
 	db SCYTHER      ; $1A
 	db ONIX         ; $22
-	db HOUNDOUR
-	db WOLFMAN
-	db MARILL
-	db SLUGMA
+	db HOUNDOUR     ; $56
+	db WOLFMAN      ; $A0
+	db MARILL       ; $87
+	db SLUGMA       ; $73
 	db LICKITUNG    ; $0B
 	db PINSIR       ; $1D
 	db TANGELA      ; $1E
@@ -115,7 +115,7 @@ ListMidEvolvedPkmn:
 	db WARTORTLE    ; $B3
 	db WEEPINBELL   ; $BD
 	db SEADRA       ; $5D
-	db PUPITAR
+	db PUPITAR      ; $3F
 	db PRIMEAPE     ; $75
 	db RAICHU       ; $55
 	db SLOWBRO      ; $08
@@ -135,10 +135,10 @@ ListNonEvolvingPkmn:
 	db PORYGON      ; $AA
 	db SNORLAX      ; $84
 	db TAUROS       ; $3C
-	db SNEASEL
-	db MISDREAVUS
-	db HERACROSS
-	db ANCHORAGE
+	db SNEASEL      ; $38
+	db MISDREAVUS   ; $3D
+	db HERACROSS    ; $50
+	db ANCHORAGE    ; $92
 ListMostEvolvedPkmn:
 	db ALAKAZAM     ; $95
 	db ARBOK        ; $2D
@@ -192,21 +192,20 @@ ListMostEvolvedPkmn:
 	db VILEPLUME    ; $BB
 	db WEEZING      ; $8F
 	db WIGGLYTUFF   ; $65
-	db STEELIX
-	db SCIZOR
-	db TYRANITAR
-	db UMBREON
-	db TYRANITAR
-	db CROBAT
-	db HOUNDOOM
-	db WARWOLF
-	db ESPEON
-	db SLOWKING
-	db MAGCARGO
-	db AZUMARILL
+	db STEELIX      ; $1F
+	db SCIZOR       ; $20
+	db TYRANITAR    ; $43
+	db UMBREON      ; $32
+	db CROBAT       ; $51
+	db HOUNDOOM     ; $57
+	db WARWOLF      ; $A1
+	db ESPEON       ; $9C
+	db SLOWKING     ; $7A
+	db MAGCARGO     ; $79
+	db AZUMARILL    ; $89
 	db $00
 
-	
+    
 ;list pokemon separated out by gener ratio
 ;leave out pokemon with a set gender or are genderless
 ListByGenderRatio:
@@ -237,7 +236,7 @@ ListByGenderRatio:
 	db KABUTOPS     ; $5B
 	db AERODACTYL   ; $AB
 	db SNORLAX      ; $84
-	db ESPEON
+	db ESPEON       ; $9C
 ;26 to 35 are 1-3 ratio  --> atk dv >= 4 is male
 	db GROWLITHE    ; $21
 	db ARCANINE     ; $14
@@ -341,32 +340,32 @@ ListByGenderRatio:
 	db DRATINI      ; $58
 	db DRAGONAIR    ; $59
 	db DRAGONITE    ; $42
-	db STEELIX
-	db SCIZOR
-	db UMBREON
-	db KINGDRA
-	db SNEASEL
-	db MISDREAVUS
-	db LARVITAR
-	db PUPITAR
-	db TYRANITAR
-	db HERACROSS
-	db CROBAT
-	db HOUNDOUR
-	db HOUNDOOM
-	db SLUGMA
-	db MAGCARGO
-	db SLOWKING
-	db LICKILICKY
-	db TANGROWTH
-	db MARILL
-	db AZUMARILL
-	db ANNIHILAPE
-	db ANCHORAGE
-	db PLUX
-	db WOLFMAN
-	db WARWOLF
-	db GOROCHU
+	db STEELIX      ; $1F
+	db SCIZOR       ; $20
+	db UMBREON      ; $32
+	db KINGDRA      ; $34
+	db SNEASEL      ; $38
+	db MISDREAVUS   ; $3D
+	db LARVITAR     ; $3E
+	db PUPITAR      ; $3F
+	db TYRANITAR    ; $43
+	db HERACROSS    ; $50
+	db CROBAT       ; $51
+	db HOUNDOUR     ; $56
+	db HOUNDOOM     ; $57
+	db SLUGMA       ; $73
+	db MAGCARGO     ; $79
+	db SLOWKING     ; $7A
+	db LICKILICKY   ; $7F
+	db TANGROWTH    ; $86
+	db MARILL       ; $87
+	db AZUMARILL    ; $89
+	db ANNIHILAPE   ; $A2
+	db ANCHORAGE    ; $92
+	db PLUX         ; $8C
+	db WOLFMAN      ; $A0
+	db WARWOLF      ; $A1
+	db GOROCHU      ; $5F
 ;153 to 158 are 3-1 ratio --> atk dv >= 12 is male
 	db CLEFAIRY     ; $04
 	db CLEFABLE     ; $8E
@@ -374,14 +373,14 @@ ListByGenderRatio:
 	db NINETALES    ; $53
 	db JIGGLYPUFF   ; $64
 	db WIGGLYTUFF   ; $65
-;159 to 166 are female only --> atk dv >= 16 (not possible) is male
+;159 to 165 are female only --> atk dv >= 16 (not possible) is male
 	db NIDORAN_F    ; $0F
 	db NIDORINA     ; $A8
 	db NIDOQUEEN    ; $10
 	db CHANSEY      ; $28
 	db KANGASKHAN   ; $02
 	db JYNX         ; $48
-	db MAROWRATH
+	db MAROWRATH    ; $4F
 ;otherwise a pokemon not on this list are unsexed
 	db $00
 ; db MAGNEMITE    ; $AD
@@ -397,110 +396,110 @@ ListByGenderRatio:
 ; db MOLTRES      ; $49
 ; db MEWTWO       ; $83
 ; db MEW          ; $15
-; db MEWTWO_ARMOR ; 163
-; db LUGIA
-; db MISSINGNO
+; db MEWTWO_ARMOR ; $5E
+; db LUGIA        ; $9F
+; db MISSINGNO    ; $45
 
 GetGenderRatioTarget:
-	cp 6
-	ld b, 0
-	ret c
-	cp 26
-	ld b, 2
-	ret c
-	cp 36
-	ld b, 4
-	ret c
-	cp 153
-	ld b, 8
-	ret c
-	cp 159
-	ld b, 12
-	ret c
-	ld b, 16
-	ret
+    cp 6
+    ld b, 0
+    ret c
+    cp 26
+    ld b, 2
+    ret c
+    cp 36
+    ld b, 4
+    ret c
+    cp 153
+    ld b, 8
+    ret c
+    cp 159
+    ld b, 12
+    ret c
+    ld b, 16
+    ret
 
 ListNonLegendUnEvoPkmn:			;lvl 30+
-	db LAPRAS
-	db TAUROS
-	db AERODACTYL
-	db PINSIR
-	db SNORLAX
-	db SCYTHER
-	db CHANSEY
-	db KANGASKHAN
-	db ELECTABUZZ
-	db MAGMAR
-	db TANGELA
-	db HITMONCHAN
-	db HITMONLEE
-	db JYNX
-	db MR_MIME
-	db RHYHORN
-	db LICKITUNG
-	db SLOWKING
+	db LAPRAS       ; $13
+	db TAUROS       ; $3C
+	db AERODACTYL   ; $AB
+	db PINSIR       ; $1D
+	db SNORLAX      ; $84
+	db SCYTHER      ; $1A
+	db CHANSEY      ; $28
+	db KANGASKHAN   ; $02
+	db ELECTABUZZ   ; $35
+	db MAGMAR       ; $33
+	db TANGELA      ; $1E
+	db HITMONCHAN   ; $2C
+	db HITMONLEE    ; $2B
+	db JYNX         ; $48
+	db MR_MIME      ; $2A
+	db RHYHORN      ; $12
+	db LICKITUNG    ; $0B
+	db SLOWKING     ; $7A
 ListNonLegendUnEvoPkmn_mid:		;lvl 15+
-	db ONIX
-	db GASTLY
-	db SLOWPOKE
-	db CUBONE
-	db MACHOP
-	db ESPEON
-	db MAGCARGO
-	db AZUMARILL
+	db ONIX         ; $22
+	db GASTLY       ; $19
+	db SLOWPOKE     ; $25
+	db CUBONE       ; $11
+	db MACHOP       ; $6A
+	db ESPEON       ; $9C
+	db MAGCARGO     ; $79
+	db AZUMARILL    ; $89
 ListNonLegendUnEvoPkmn_early:	;any time
-	db PONYTA
-	db PORYGON
-	db KABUTO
-	db KRABBY
-	db OMANYTE
-	db KOFFING
-	db FARFETCHD
-	db DROWZEE
-	db GOLDEEN
-	db STARYU
-	db TENTACOOL
-	db EEVEE
-	db EXEGGCUTE
-	db GROWLITHE
-	db SANDSHREW
-	db SEEL
-	db SHELLDER
-	db DODUO
-	db GRIMER
-	db VOLTORB
-	db BELLSPROUT
-	db GEODUDE
-	db HORSEA
-	db MAGNEMITE
-	db MANKEY
-	db PIKACHU
-	db POLIWAG
-	db CLEFAIRY
-	db ABRA
-	db ODDISH
-	db PSYDUCK
-	db BULBASAUR
-	db DRATINI
-	db MEOWTH
-	db SQUIRTLE
-	db VENONAT
-	db CHARMANDER
-	db VULPIX
-	db DITTO
-	db PARAS
-	db NIDORAN_F
-	db EKANS
-	db NIDORAN_M
-	db SPEAROW
-	db DIGLETT
-	db JIGGLYPUFF
-	db RATTATA
-	db PIDGEY
-	db ZUBAT
-	db MAGIKARP
-	db CATERPIE
-	db WEEDLE
-	db MARILL
-	db SLUGMA
+	db PONYTA       ; $A3
+	db PORYGON      ; $AA
+	db KABUTO       ; $5A
+	db KRABBY       ; $4E
+	db OMANYTE      ; $62
+	db KOFFING      ; $37
+	db FARFETCHD    ; $40
+	db DROWZEE      ; $30
+	db GOLDEEN      ; $9D
+	db STARYU       ; $1B
+	db TENTACOOL    ; $18
+	db EEVEE        ; $66
+	db EXEGGCUTE    ; $0C
+	db GROWLITHE    ; $21
+	db SANDSHREW    ; $60
+	db SEEL         ; $3A
+	db SHELLDER     ; $17
+	db DODUO        ; $46
+	db GRIMER       ; $0D
+	db VOLTORB      ; $06
+	db BELLSPROUT   ; $BC
+	db GEODUDE      ; $A9
+	db HORSEA       ; $5C
+	db MAGNEMITE    ; $AD
+	db MANKEY       ; $39
+	db PIKACHU      ; $54
+	db POLIWAG      ; $47
+	db CLEFAIRY     ; $04
+	db ABRA         ; $94
+	db ODDISH       ; $B9
+	db PSYDUCK      ; $2F
+	db BULBASAUR    ; $99
+	db DRATINI      ; $58
+	db MEOWTH       ; $4D
+	db SQUIRTLE     ; $B1
+	db VENONAT      ; $41
+	db CHARMANDER   ; $B0
+	db VULPIX       ; $52
+	db DITTO        ; $4C
+	db PARAS        ; $6D
+	db NIDORAN_F    ; $0F
+	db EKANS        ; $6C
+	db NIDORAN_M    ; $03
+	db SPEAROW      ; $05
+	db DIGLETT      ; $3B
+	db JIGGLYPUFF   ; $64
+	db RATTATA      ; $A5
+	db PIDGEY       ; $24
+	db ZUBAT        ; $6B
+	db MAGIKARP     ; $85
+	db CATERPIE     ; $7B
+	db WEEDLE       ; $70
+	db MARILL       ; $87
+	db SLUGMA       ; $73
 	db $00

@@ -427,7 +427,7 @@ _OaksLabText_441cc::
 	line "Prof. Chen:"
 	prompt
 
-_OaksLabText_44201::
+_OaksLabText_Caught10::
 	text "Tu ne vas pas"
 	line "assez dans les"
 	cont "hautes herbes."
@@ -436,7 +436,7 @@ _OaksLabText_44201::
 	cont "trouver!"
 	done
 
-_OaksLabText_44206::
+_OaksLabText_Caught20::
 	text "Tu es sur la"
 	line "bonne voie! Mon"
 	cont "Assistant te"
@@ -444,28 +444,28 @@ _OaksLabText_44206::
 	cont "Flash!"
 	done
 
-_OaksLabText_4420b::
+_OaksLabText_Caught30::
 	text "Il te faut encore"
 	line "des #mon!"
 	cont "Va en capturer"
 	cont "d'autres!"
 	done
 
-_OaksLabText_44210::
+_OaksLabText_Caught40::
 	text "Très bien! Mon"
 	line "Assistant a un"
 	cont "Cherch'objet pour"
 	cont "toi!"
 	done
 
-_OaksLabText_44215::
+_OaksLabText_Caught50::
 	text "C'est pas mal!"
 	line "Va voir mon"
 	cont "Assistant quand"
 	cont "tu en auras 50!"
 	done
 
-_OaksLabText_4421a::
+_OaksLabText_Caught60::
 	text "Ah! Tu en as"
 	line "enfin 50!"
 	cont "Mon Assistant te"
@@ -473,60 +473,60 @@ _OaksLabText_4421a::
 	cont "MULTI EXP!"
 	done
 
-_OaksLabText_4421f::
+_OaksLabText_Caught70::
 	text "Oh! C'est de"
 	line "mieux en mieux!"
 	done
 
-_OaksLabText_44224::
+_OaksLabText_Caught80::
 	text "Excellent!"
 	line "Va pêcher des"
 	cont "#mon marins!"
 	done
 
-_OaksLabText_44229::
+_OaksLabText_Caught90::
 	text "Magnifique!"
 	line "T'es un vrai"
 	cont "collectionneur!"
 	done
 
-_OaksLabText_4422e::
+_OaksLabText_Caught100::
 	text "Mirobolant!"
 	line "Ça n'a pas dû"
 	cont "être facile!"
 	done
 
-_OaksLabText_44233::
+_OaksLabText_Caught110::
 	text "Tu en as 100!"
 	cont "Tu es vraiment"
 	cont "très doué!"
 	done
 
-_OaksLabText_44238::
+_OaksLabText_Caught120::
 	text "Tu as même fait"
 	line "évoluer tes"
 	cont "#mon! Génial!"
 	done
 
-_OaksLabText_4423d::
+_OaksLabText_Caught130::
 	text "Parfait! Fais des"
 	line "échanges et tu"
 	cont "en auras plus!"
 	done
 
-_OaksLabText_44242::
+_OaksLabText_Caught140::
 	text "Impressionnant!"
 	line "Tu es devenu un"
 	cont "vrai pro!"
 	done
 
-_OaksLabText_44247::
+_OaksLabText_CaughtAllExceptFabulous::
 	text "Chapeau bas!"
 	line "C'est toi le plus"
 	cont "calé maintenant!"
 	done
 
-_OaksLabText_4424c::
+_OaksLabText_CaughtAll::
 	text "Ton #dex est"
 	line "complet!"
 	cont "Félicitations!"
