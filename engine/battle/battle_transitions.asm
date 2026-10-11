@@ -163,6 +163,7 @@ DungeonMaps1:
 	db VIRIDIAN_FOREST
 	db ROCK_TUNNEL_1F
 	db POWER_PLANT_1F	;added
+	db POWER_PLANT_2F	;added
 	db VICTORY_ROAD_1F
 	db CINNABAR_MANSION_1F	;added
 	db SEAFOAM_ISLANDS_1F
@@ -205,6 +206,9 @@ DungeonMaps2:
 	;moved rock tunnel 2 and added the remaining silph floors
 	db ROCK_TUNNEL_B1F
 	db SAFFRON_SILPH_CO_11F
+
+	db VOLCANO_1F
+	db VOLCANO_B2F
 
 	db $FF
 
