@@ -637,6 +637,11 @@ INCLUDE "scripts/ForgottenTown.asm"
 INCLUDE "data/maps/objects/ForgottenTown.asm"
 ForgottenTownBlocks: INCBIN "maps/ForgottenTown.blk"
 
+INCLUDE "data/maps/headers/ForgottenPassage.asm"
+INCLUDE "scripts/ForgottenPassage.asm"
+INCLUDE "data/maps/objects/ForgottenPassage.asm"
+ForgottenPassageBlocks: INCBIN "maps/ForgottenPassage.blk"
+
 ViridianPokecenterBlocks: INCBIN "maps/ViridianPokecenter.blk"
 
 SafariZoneRestHouse1Blocks:

@@ -24,9 +24,9 @@ IsSurfingAllowed:
 ; Seafoam Islands before the current has been slowed with boulders.
 	ld hl, wStatusFlags1
 	set 1, [hl]
-	ld a, [wStatusFlags6]
-	bit 5, a
-	jr nz, .forcedToRideBike
+;	ld a, [wStatusFlags6]
+;	bit 5, a
+;	jr nz, .forcedToRideBike
 	ld a, [wCurMap]
 	cp SEAFOAM_ISLANDS_B4F
 	ret nz
@@ -45,11 +45,11 @@ IsSurfingAllowed:
 	
 	ld hl, CurrentTooFastText
 	jp PrintText
-.forcedToRideBike
-	ld hl, wStatusFlags1
-	res 1, [hl]
-	ld hl, CyclingIsFunText
-	jp PrintText
+;.forcedToRideBike
+;	ld hl, wStatusFlags1
+;	res 1, [hl]
+;	ld hl, CyclingIsFunText
+;	jp PrintText
 .alt_fastcurrent
 	;initialize a text box without drawing anything special. makes this show up with surf hotkeys
 	ld a, 1

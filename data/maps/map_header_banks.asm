@@ -73,7 +73,7 @@ MapHeaderBanks:
 	db BANK(BikeShop_h)
 	db BANK(CeruleanMart_h)
 	db BANK(MtMoonPokecenter_h)
-	db $01 ; unused
+	db BANK(ForgottenPassage_h)
 	db BANK(Route5Gate_h)
 	db BANK(UndergroundPathEntranceRoute5_h)
 	db BANK(DayCareM_h)
