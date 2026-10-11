@@ -1,6 +1,6 @@
 Tilesets:
 	tileset Overworld_Block,   Overworld_GFX,   Overworld_Coll,   $FF,$FF,$FF, $52, OUTDOOR
-	tileset RedsHouse_Block,   RedsHouse_GFX,   RedsHouse_Coll,  $FF,$FF,$FF, $FF, INDOOR
+	tileset RedsHouse_Block,   RedsHouse_GFX,   RedsHouse_Coll,   $FF,$FF,$FF, $FF, INDOOR
 	tileset Mart_Block,        Mart_GFX,        Mart_Coll,        $18,$19,$1E, $FF, INDOOR
 	tileset Forest_Block,      Forest_GFX,      Forest_Coll,      $FF,$FF,$FF, $20, CAVE
 	tileset Pokecenter_Block,  Pokecenter_GFX,  Pokecenter_Coll,  $18,$19,$1E, $FF, INDOOR

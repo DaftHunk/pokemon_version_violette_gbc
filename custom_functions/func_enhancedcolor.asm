@@ -180,29 +180,29 @@ GBCEnhancedOverworldPalettes_DarkCavern:	;palette set used for darkened areas li
 	GBCEnh_Dark2
 	
 OverworldTilePalPointers:
-	dw PalSettings_OVERWORLD    ; 0
-	dw PalSettings_PALLET_REDS_HOUSE ; 1
-	dw PalSettings_MART         ; 2
-	dw PalSettings_FOREST       ; 3
-	dw PalSettings_POKECENTER   ; 6
-	dw PalSettings_GYM          ; 7
-	dw PalSettings_HOUSE        ; 8
-	dw PalSettings_UNDERGROUND  ; 11
-	dw PalSettings_GATE         ; 12
-	dw PalSettings_SHIP         ; 13
-	dw PalSettings_SHIP_PORT    ; 14
-	dw PalSettings_CEMETERY     ; 15
-	dw PalSettings_INTERIOR     ; 16
-	dw PalSettings_CAVERN       ; 17
-	dw PalSettings_LOBBY        ; 18
-	dw PalSettings_MANSION      ; 19
-	dw PalSettings_LAB          ; 20
-	dw PalSettings_CLUB         ; 21
-	dw PalSettings_FACILITY     ; 22
-	dw PalSettings_REACTOR      ; 24
-	dw PalSettings_VOLCANO      ; 25
-	dw PalSettings_PLATEAU      ; 23
-	dw PalSettings_ALPHA        ; 26
+	dw PalSettings_OVERWORLD         ; 00
+	dw PalSettings_PALLET_REDS_HOUSE ; 01
+	dw PalSettings_MART              ; 02
+	dw PalSettings_FOREST            ; 03
+	dw PalSettings_POKECENTER        ; 04
+	dw PalSettings_GYM               ; 05
+	dw PalSettings_HOUSE             ; 06
+	dw PalSettings_UNDERGROUND       ; 07
+	dw PalSettings_GATE              ; 08
+	dw PalSettings_SHIP              ; 09
+	dw PalSettings_SHIP_PORT         ; 0A
+	dw PalSettings_CEMETERY          ; 0B
+	dw PalSettings_INTERIOR          ; 0C
+	dw PalSettings_CAVERN            ; 0D
+	dw PalSettings_LOBBY             ; 0E
+	dw PalSettings_MANSION           ; 0F
+	dw PalSettings_LAB               ; 10
+	dw PalSettings_CLUB              ; 11
+	dw PalSettings_FACILITY          ; 12
+	dw PalSettings_REACTOR           ; 13
+	dw PalSettings_VOLCANO           ; 14
+	dw PalSettings_PLATEAU           ; 15
+	dw PalSettings_ALPHA             ; 16
 
 ;Assign a color register to be used for each tile in every tileset.
 ;A value of 8 is a "wild card" to set the color register based on the current town.
@@ -250,7 +250,7 @@ db	3,	3,	3,	3,	6,	6,	6,	6,	6,	6,	6,	3,	3,	6,	6,	6;
 ;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
 db	6,	6,	6,	6,	4,	4,	4,	4,	6,	6,	6,	6,	6,	6,	4,	4;
 PalSettings_MART:        	; 2
-PalSettings_POKECENTER:  	; 6		- done
+PalSettings_POKECENTER:  	; 4		- done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	3,	4,	1,	1,	7,	7,	3,	3,	7,	3,	7,	4,	0,	3,	7,	7;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
@@ -267,7 +267,7 @@ db	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	7,	7,	3,	3,	3,	3;
 db	6,	6,	0,	0,	7,	7,	7,	4,	4,	4,	4,	4,	4,	4,	4,	4;
 ;	70	71	72	73	74	75	76	77	78	79	7A	7B	7C	7D	7E	7F
 db	6,	6,	0,	0,	7,	7,	7,	0,	0,	0,	0,	0,	1,	1,	1,	1;
-PalSettings_GYM:          	; 7		- done
+PalSettings_GYM:          	; 5		- done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	3,	6,	6,	1,	6,	7,	0,	6,	6,	7,	7,	6,	6,	7,	7,	3;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
@@ -284,7 +284,7 @@ db	4,	4,	7,	7,	7,	3,	7,	7,	6,	6,	6,	3,	3,	3,	3,	3;
 db	5,	5,	5,	5,	5,	3,	3,	3,	6,	6,	6,	6,	6,	6,	5,	5;
 ;	70	71	72	73	74	75	76	77	78	79	7A	7B	7C	7D	7E	7F
 db	5,	5,	5,	5,	6,	3,	3,	3,	3,	6,	6,	6,	6,	6,	6,	6;
-PalSettings_HOUSE:        	; 8		- done
+PalSettings_HOUSE:        	; 6		- done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	7,	3,	3,	3,	2,	3,	7,	7,	4,	4,	4,	4,	4,	4,	6,	6;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
@@ -301,7 +301,7 @@ db	6,	6,	6,	6,	7,	7,	6,	6,	4,	4,	4,	4,	6,	6,	3,	3;
 db	6,	6,	6,	6,	6,	6,	3,	3,	6,	6,	6,	6,	6,	6,	5,	5;
 ;	70	71	72	73	74	75	76	77	78	79	7A	7B	7C	7D	7E	7F
 db	6,	6,	6,	6,	6,	6,	3,	3,	3,	6,	6,	6,	6,	6,	6,	6;
-PalSettings_GATE:         	; 12	- done
+PalSettings_GATE:         	; 8	- done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	6,	4,	3,	3,	7,	4,	4,	4,	4,	4,	3,	3,	3,	3,	3,	3;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
@@ -318,7 +318,7 @@ db	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	7,	3;
 db	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5;
 ;	70	71	72	73	74	75	76	77	78	79	7A	7B	7C	7D	7E	7F
 db	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5;
-PalSettings_UNDERGROUND:  	; 11	- done
+PalSettings_UNDERGROUND:  	; 7	- done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	3,	2,	7,	1,	1,	7,	7,	7,	7,	7,	7,	1,	1,	0,	0,	0;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
@@ -331,7 +331,7 @@ db	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
 db	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
 ;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
 db	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
-PalSettings_SHIP:         	; 13	- done
+PalSettings_SHIP:         	; 9	- done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	3,	3,	7,	7,	6,	3,	3,	7,	7,	3,	3,	3,	3,	7,	0,	0;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
@@ -344,7 +344,7 @@ db	7,	7,	0,	3,	0,	3,	0,	3,	3,	3,	3,	3,	3,	3,	5,	5;
 db	3,	3,	7,	7,	3,	3,	3,	3,	7,	7,	6,	3,	3,	3,	3,	3;
 ;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
 db	3,	3,	3,	3,	7,	7,	3,	3,	7,	7,	3,	3,	3,	3,	3,	3;
-PalSettings_SHIP_PORT:    	; 14	- done
+PalSettings_SHIP_PORT:    	; A	- done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	7,	0,	7,	7,	7,	7,	7,	7,	7,	7,	3,	7,	7,	7,	7,	7;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
@@ -357,7 +357,7 @@ db	7,	7,	6,	7,	7,	7,	7,	7,	7,	7,	3,	6,	3,	7,	7,	7;
 db	7,	7,	7,	7,	7,	7,	7,	7,	3,	3,	3,	3,	3,	7,	7,	7;
 ;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
 db	0,	7,	7,	7,	7,	7,	0,	0,	3,	3,	7,	7,	7,	7,	7,	7;
-PalSettings_CEMETERY:     	; 15	- done
+PalSettings_CEMETERY:     	; B	- done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	3,	2,	6,	3,	3,	3,	3,	6,	6,	2,	2,	3,	3,	6,	6,	4;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
@@ -370,7 +370,7 @@ db	4,	4,	4,	4,	3,	6,	6,	2,	6,	6,	2,	2,	2,	3,	3,	2;
 db	3,	3,	4,	3,	6,	6,	6,	3,	6,	6,	3,	3,	3,	3,	7,	6;
 ;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
 db	3,	3,	4,	6,	6,	2,	3,	4,	3,	4,	3,	3,	0,	0,	0,	0;
-PalSettings_INTERIOR:     	; 16	- done
+PalSettings_INTERIOR:     	; C	- done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	3,	7,	7,	7,	7,	3,	3,	7,	7,	7,	7,	3,	3,	3,	3,	7;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
@@ -383,7 +383,7 @@ db	7,	2,	2,	2,	3,	7,	7,	7,	7,	7,	7,	3,	3,	3,	3,	6;
 db	6,	2,	2,	2,	2,	7,	4,	4,	6,	6,	6,	6,	6,	6,	6,	6;
 ;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
 db	7,	6,	6,	1,	1,	1,	1,	6,	6,	6,	6,	6,	6,	3,	3,	3;
-PalSettings_CAVERN:       	; 17	- done
+PalSettings_CAVERN:       	; D	- done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	3,	3,	6,	6,	6,	6,	3,	6,	3,	3,	3,	3,	3,	3,	3,	3;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
@@ -396,7 +396,7 @@ db	7,	6,	7,	7,	7,	7,	7,	7,	7,	7,	7,	7,	3,	6,	6,	6;
 db	6,	6,	7,	7,	0,	6,	6,	6,	6,	3,	3,	3,	3,	3,	3,	0;
 ;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
 db	0,	0,	0,	0,	0,	6,	6,	6,	6,	3,	3,	3,	3,	3,	3,	0;
-PalSettings_LOBBY:        	; 18	- done
+PalSettings_LOBBY:        	; E	- done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	3,	4,	3,	3,	0,	7,	4,	2,	2,	7,	3,	3,	3,	3,	3,	3;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
@@ -409,7 +409,7 @@ db	7,	7,	7,	7,	7,	7,	7,	7,	5,	7,	3,	3,	3,	3,	7,	4;
 db	3,	3,	3,	3,	7,	3,	7,	7,	4,	4,	3,	7,	7,	7,	7,	7;
 ;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
 db	3,	3,	3,	3,	7,	7,	3,	3,	4,	4,	3,	2,	7,	7,	3,	0;
-PalSettings_MANSION:      	; 19	- done
+PalSettings_MANSION:      	; F	- done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	3,	3,	6,	6,	4,	4,	1,	1,	4,	4,	3,	3,	3,	3,	3,	1;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
@@ -426,7 +426,7 @@ db	6,	1,	1,	1,	1,	6,	6,	5,	1,	1,	1,	1,	1,	1,	3,	0;
 db	3,	3,	3,	1,	1,	1,	1,	3,	3,	3,	3,	1,	3,	3,	1,	1;
 ;	70	71	72	73	74	75	76	77	78	79	7A	7B	7C	7D	7E	7F
 db	3,	3,	3,	1,	1,	1,	1,	3,	3,	1,	1,	1,	1,	1,	1,	1;
-PalSettings_LAB:          	; 20	- done
+PalSettings_LAB:          	; 10	- done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	3,	7,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
@@ -443,7 +443,7 @@ db	6,	6,	6,	6,	6,	3,	3,	7,	7,	7,	3,	3,	7,	3,	3,	3;
 db	4,	4,	4,	4,	4,	4,	4,	3,	3,	3,	3,	1,	3,	3,	1,	1;
 ;	70	71	72	73	74	75	76	77	78	79	7A	7B	7C	7D	7E	7F
 db	3,	3,	3,	1,	1,	1,	1,	3,	3,	1,	1,	1,	1,	1,	1,	1;
-PalSettings_CLUB:         	; 21	- done
+PalSettings_CLUB:         	; 11	- done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	0,	6,	6,	6,	7,	2,	6,	2,	2,	7,	4,	7,	7,	3,	7,	7;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
@@ -456,7 +456,7 @@ db	1,	1,	1,	1,	2,	2,	2,	2,	2,	2,	2,	2,	2,	2,	2,	4;
 db	2,	2,	4,	4,	4,	4,	4,	2,	2,	2,	2,	2,	0,	0,	0,	0;
 ;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
 db	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
-PalSettings_FACILITY:     	; 22	- done
+PalSettings_FACILITY:     	; 12	- done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	3,	3,	6,	3,	3,	4,	4,	6,	7,	6,	6,	3,	3,	6,	6,	6;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
@@ -473,7 +473,7 @@ db	3,	3,	1,	6,	6,	3,	3,	7,	3,	7,	3,	3,	7,	7,	3,	7;
 db	3,	3,	3,	3,	7,	7,	3,	3,	6,	6,	6,	6,	6,	6,	5,	5;
 ;	70	71	72	73	74	75	76	77	78	79	7A	7B	7C	7D	7E	7F
 db	5,	5,	5,	5,	3,	3,	3,	3,	3,	6,	6,	6,	6,	6,	6,	6;
-PalSettings_REACTOR:        ; 24
+PalSettings_REACTOR:        ; 13
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	3,	3,	3,	3,	3,	3,	3,	3,	3,	4,	4,	3,	3,	3,	3,	3;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
@@ -486,7 +486,7 @@ db	5,	5,	3,	3,	3,	3,	3,	3,	3,	3,	5,	5,	5,	3,	3,	4;
 db	3,	3,	5,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	4,	4;
 ;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
 db	3,	3,	5,	3,	3,	6,	6,	3,	3,	6,	6,	3,	3,	3,	3,	4;
-PalSettings_VOLCANO:        ; 25
+PalSettings_VOLCANO:        ; 14
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	0,	0,	0,	0,	0,	0,	0,	0,	6,	6,	6,	6,	0,	0,	0,	0;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
@@ -499,7 +499,7 @@ db	6,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
 db	6,	6,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
 ;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
 db	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
-PalSettings_PLATEAU:      	; 23	- done
+PalSettings_PLATEAU:      	; 15	- done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	3,	6,	6,	7,	7,	3,	3,	4,	4,	6,	6,	6,	6,	7,	7,	7;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
@@ -516,7 +516,7 @@ db	3,	3,	7,	7,	5,	5,	4,	4,	1,	1,	5,	5,	0,	0,	4,	4;
 db	3,	3,	7,	7,	5,	5,	4,	4,	1,	1,	5,	5,	0,	0,	4,	4;
 ;	70	71	72	73	74	75	76	77	78	79	7A	7B	7C	7D	7E	7F
 db	6,	6,	3,	6,	6,	3,	3,	3,	3,	6,	6,	6,	6,	6,	6,	6;
-PalSettings_ALPHA:          ; 26
+PalSettings_ALPHA:          ; 16
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	3,	6,	6,	1,	6,	8,	8,	8,	8,	8,	3,	6,	6,	3,	6,	3;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F

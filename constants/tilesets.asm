@@ -1,27 +1,27 @@
 const_value = 0
 ; Outdoor
-	const OVERWORLD         ; 0
+	const OVERWORLD         ; 00
 ; Indoor
-	const PALLET_REDS_HOUSE ; 1
-	const MART              ; 2
-	const FOREST            ; 3
-	const POKECENTER        ; 4
-	const GYM               ; 5
-	const HOUSE             ; 6
-	const UNDERGROUND       ; 7
-	const GATE              ; 8
-	const SHIP              ; 9
-	const SHIP_PORT         ; 10
-	const CEMETERY          ; 11
-	const INTERIOR          ; 12
-	const CAVERN            ; 13
-	const LOBBY             ; 14
-	const MANSION           ; 15
-	const LAB               ; 16
-	const CLUB              ; 17
-	const FACILITY          ; 18
-	const REACTOR           ; 19
-	const VOLCANO           ; 20
-	const PLATEAU           ; 21
+	const PALLET_REDS_HOUSE ; 01
+	const MART              ; 02
+	const FOREST            ; 03
+	const POKECENTER        ; 04
+	const GYM               ; 05
+	const HOUSE             ; 06
+	const UNDERGROUND       ; 07
+	const GATE              ; 08
+	const SHIP              ; 09
+	const SHIP_PORT         ; 0A
+	const CEMETERY          ; 0B
+	const INTERIOR          ; 0C
+	const CAVERN            ; 0D
+	const LOBBY             ; 0E
+	const MANSION           ; 0F
+	const LAB               ; 10
+	const CLUB              ; 11
+	const FACILITY          ; 12
+	const REACTOR           ; 13
+	const VOLCANO           ; 14
+	const PLATEAU           ; 15
 ; Outdoor (to add in CheckIfInOutsideMap)
-	const ALPHA             ; 22
+	const ALPHA             ; 16

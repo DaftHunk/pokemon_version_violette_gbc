@@ -48,37 +48,37 @@ NoBookCaseTextMaps:
 
 ; format: db tileset id, bookshelf tile id, text id
 BookshelfTileIDs:
-	db PLATEAU,      $30
+	db PLATEAU,           $30
 	db_tx_pre IndigoPlateauStatues
-	db HOUSE,        $3D
+	db HOUSE,             $3D
 	db_tx_pre TownMapText
-	db HOUSE,        $1E
+	db HOUSE,             $1E
 	db_tx_pre BookOrSculptureText
-	db MANSION,      $32
+	db MANSION,           $32
 	db_tx_pre BookOrSculptureText
 	db PALLET_REDS_HOUSE, $32
 	db_tx_pre BookOrSculptureText
-	db LAB,          $28
+	db LAB,               $28
 	db_tx_pre BookOrSculptureText
-	db LOBBY,        $16
+	db LOBBY,             $16
 	db_tx_pre ElevatorText
-	db GYM,          $1D
+	db GYM,               $1D
 	db_tx_pre BookOrSculptureText
-	db GATE,         $22
+	db GATE,              $22
 	db_tx_pre BookOrSculptureText
-	db MART,         $54
+	db MART,              $54
 	db_tx_pre PokemonStuffText
-	db MART,         $55
+	db MART,              $55
 	db_tx_pre PokemonStuffText
-	db POKECENTER,   $54
+	db POKECENTER,        $54
 	db_tx_pre PokemonStuffText
-	db POKECENTER,   $55
+	db POKECENTER,        $55
 	db_tx_pre PokemonStuffText
-	db LOBBY,        $50
+	db LOBBY,             $50
 	db_tx_pre PokemonStuffText
-	db LOBBY,        $52
+	db LOBBY,             $52
 	db_tx_pre PokemonStuffText
-	db SHIP,         $36
+	db SHIP,              $36
 	db_tx_pre BookOrSculptureText
 	db $FF
 
