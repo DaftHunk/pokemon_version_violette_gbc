@@ -181,7 +181,7 @@ GBCEnhancedOverworldPalettes_DarkCavern:	;palette set used for darkened areas li
 	
 OverworldTilePalPointers:
 	dw PalSettings_OVERWORLD         ; 00
-	dw PalSettings_PALLET_REDS_HOUSE ; 01
+	dw PalSettings_REDS_HOUSE        ; 01
 	dw PalSettings_MART              ; 02
 	dw PalSettings_FOREST            ; 03
 	dw PalSettings_POKECENTER        ; 04
@@ -223,7 +223,7 @@ db	4,	4,	4,	8,	6,	6,	3,	3,	6,	6,	8,	8,	8,	8,	5,	5;
 db	6,	6,	6,	6,	6,	3,	3,	3,	8,	8,	8,	8,	8,	8,	5,	5;
 ;	70	71	72	73	74	75	76	77	78	79	7A	7B	7C	7D	7E	7F
 db	6,	6,	3,	7,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6;
-PalSettings_PALLET_REDS_HOUSE:	; 1		-done
+PalSettings_REDS_HOUSE:	; 1		-done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	4,	3,	3,	3,	0,	3,	7,	7,	4,	4,	6,	6,	6,	6,	3,	3;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F

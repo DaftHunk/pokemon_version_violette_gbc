@@ -7,7 +7,7 @@
 MapPaletteAssignments:
 	table_width 2, MapPaletteAssignments
 	dw OverworldPalMap   ; OVERWORLD
-	dw RedsHousePalMap   ; PALLET_REDS_HOUSE
+	dw RedsHousePalMap   ; REDS_HOUSE
 	dw MartPalMap        ; MART
 	dw ForestPalMap      ; FOREST
 	dw PokecenterPalMap  ; POKECENTER

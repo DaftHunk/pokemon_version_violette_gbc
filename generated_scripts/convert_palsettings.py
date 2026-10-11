@@ -6,16 +6,16 @@ custom_functions/func_enhancedcolor.asm (Pokémon Version Violette) en fichiers
 .asm « tilepal » à placer dans le dossier color/tilesets/ de pokered-gbc.
 
 Source  : <dépôt>/custom_functions/func_enhancedcolor.asm
-Sorties : <dossier du script>/palsettings_convertis/<cible>.asm (un par tileset
+Sorties : <dépôt>/color/tilesets/<cible>.asm (un par tileset
           graphique, ex. overworld.asm, reds_house.asm, reactor.asm, ...)
           + recap_palsettings.txt
 
 Fonctionnement :
-  1. Lit la table OverworldTilePalPointers (ordre des blocs PalSettings_).
+  1. Lit la table OverworldTilePalPointers (23 blocs PalSettings_, un par
+     tileset depuis la fusion Polished Map).
   2. Extrait les valeurs (0-8) de chaque bloc. Les blocs vides héritent par
      « fall-through » ASM du bloc défini suivant dans le fichier
-     (ex. PalSettings_PALLET_REDS_HOUSE_1 -> PalSettings_PALLET_REDS_HOUSE_2,
-     PalSettings_MART -> PalSettings_POKECENTER, FOREST_GATE/MUSEUM -> GATE).
+     (ex. PalSettings_MART, bloc vide, -> PalSettings_POKECENTER).
   3. Convertit chaque valeur en nom de couleur via MAPPING ci-dessous, puis
      écrit un fichier <cible>.asm au format « tilepal 0, COULEUR, ... ».
   4. Plusieurs blocs peuvent viser la même cible (MART et POKECENTER ->
@@ -30,8 +30,8 @@ Mapping des valeurs (moteur Violette + choix validés) :
 
 Options utiles :
     --repo CHEMIN        Dépôt Violette (auto-détecté sinon).
-    --out DOSSIER        Dossier de sortie (défaut : palsettings_convertis
-                         à côté du script).
+    --out DOSSIER        Dossier de sortie (défaut : ../color/tilesets,
+                         à côté du dossier du script).
     --nb-tuiles SPEC     Compléter avec GRAY jusqu'à N tuiles. SPEC = « auto »
                          (défaut : nombre de tuiles lu depuis les gfx du dépôt),
                          « 96 » (tous les fichiers) ou « overworld=158,gym=128 »
@@ -79,20 +79,18 @@ MAPPING = {
 }
 
 # Bloc PalSettings_XXX -> fichier cible color/tilesets/<cible>.asm
-# (table de pointeurs du fichier source ; REACTOR/VOLCANO/ALPHA sont les
-#  tilesets absents de pokered-gbc d'origine)
+# (les 23 blocs de la table OverworldTilePalPointers, dans son ordre ;
+#  MART est un bloc vide qui retombe sur POKECENTER -> même fichier
+#  pokecenter.asm ; REACTOR/VOLCANO/ALPHA sont les tilesets absents de
+#  pokered-gbc d'origine)
 CIBLES = {
     "OVERWORLD": "overworld",
-    "PALLET_REDS_HOUSE_1": "reds_house",
+    "REDS_HOUSE": "reds_house",
     "MART": "pokecenter",
     "FOREST": "forest",
-    "PALLET_REDS_HOUSE_2": "reds_house",
-    "DOJO": "gym",
     "POKECENTER": "pokecenter",
     "GYM": "gym",
     "HOUSE": "house",
-    "FOREST_GATE": "gate",
-    "MUSEUM": "gate",
     "UNDERGROUND": "underground",
     "GATE": "gate",
     "SHIP": "ship",

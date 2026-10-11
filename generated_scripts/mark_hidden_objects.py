@@ -17,9 +17,10 @@ Sources analysées dans le dépôt :
   - data/items/hidden_coins.asm       : liste ordonnée des pièces cachées
   - constants/map_constants.asm       : dimensions des cartes (mapconst NOM, h, l)
   - data/maps/headers/*.asm           : association id de carte -> nom interne,
-                                        celui des PNG (mansion1, unknowndungeon1,
-                                        tradecenter...) via « db <NOM>_HEIGHT,
-                                        <NOM>_WIDTH »
+                                        celui des .blk et des PNG, issu du
+                                        renommage Polished Map (ex. cinnabarmansion1f,
+                                        ceruleancaveb1f, mtmoon1f) via
+                                        « db <NOM>_HEIGHT, <NOM>_WIDTH »
   - constants/item_constants.asm      : identifiants des objets (constantes)
   - text/item_names.asm               : noms français des objets (ItemNames)
   - text/tmhm_names.asm               : noms français des CS/CT (tmhmNames)
@@ -67,6 +68,11 @@ Encodage des noms : les fichiers .asm sont lus en utf-8 puis latin-1 ; les
 accents sont conservés si une police TTF est disponible (DejaVu, Arial,
 Liberation, Noto...), sinon les noms sont automatiquement translittérés
 (é -> e, û -> u...) pour éviter tout caractère cassé dans la légende.
+
+Remarque : depuis le renommage des en-têtes de cartes (fusion Polished Map),
+les captures PNG doivent porter les nouveaux stems (ex. cinnabarmansion1f.png,
+mtmoon1f.png) pour recevoir les badges ; sans PNG correspondant, le CSV
+récapitulatif est quand même généré.
 
 Utilisation :
   python mark_hidden_objects.py                       # tout en automatique

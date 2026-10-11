@@ -2,7 +2,7 @@ const_value = 0
 ; Outdoor
 	const OVERWORLD         ; 00
 ; Indoor
-	const PALLET_REDS_HOUSE ; 01
+	const REDS_HOUSE        ; 01
 	const MART              ; 02
 	const FOREST            ; 03
 	const POKECENTER        ; 04

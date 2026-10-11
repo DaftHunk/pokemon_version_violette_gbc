@@ -2,7 +2,7 @@
 MapPaletteSets:
 	table_width 2, MapPaletteSets
 	dw OverworldPalSet   ; OVERWORLD
-	dw RedsHousePalSet   ; PALLET_REDS_HOUSE
+	dw RedsHousePalSet   ; REDS_HOUSE
 	dw MartPalSet        ; MART
 	dw ForestPalSet      ; FOREST
 	dw PokecenterPalSet  ; POKECENTER
