@@ -1,6 +1,6 @@
 db DEX_BEEDRILL ; pokedex id
 db 65 ; base hp
-db 80 ; base attack
+db 90 ; base attack
 db 40 ; base defense
 db 75 ; base speed
 db 45 ; base special
@@ -23,7 +23,7 @@ db 0 ; growth rate
 ; 9 -> 16
 	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm15_HYPER_BEAM
 ; 17 -> 24
-	tmlearn tm20_X_SCISSOR, tm21_MEGA_DRAIN
+	tmlearn tm20_X_SCISSOR, tm21_MEGA_DRAIN, tm22_SOLARBEAM
 ; 25 -> 32
 	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM
 ; 33 -> 40

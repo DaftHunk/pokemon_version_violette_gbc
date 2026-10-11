@@ -3024,6 +3024,7 @@ INCLUDE "text/maps/celadon_city.asm"
 INCLUDE "text/maps/fuchsia_city.asm"
 INCLUDE "text/maps/cinnabar_island.asm"
 INCLUDE "text/maps/saffron_city.asm"
+INCLUDE "text/maps/forgotten_town.asm"
 
 _ItemUseBallText00::
 	text "Il évite la Ball!"

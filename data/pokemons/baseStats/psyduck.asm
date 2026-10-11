@@ -25,9 +25,9 @@ db 0 ; growth rate
 ; 17 -> 24
 	tmlearn tm17_SUBMISSION, tm18_COUNTER, tm19_SEISMIC_TOSS
 ; 25 -> 32
-	tmlearn tm28_DIG, tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm28_DIG, tm29_PSYCHIC_M, tm31_MIMIC, tm32_DOUBLE_TEAM
 ; 33 -> 40
-	tmlearn tm34_BIDE, tm39_SWIFT, tm40_SKULL_BASH
+	tmlearn tm34_BIDE, tm35_METRONOME, tm39_SWIFT, tm40_SKULL_BASH
 ; 41 -> 48
 	tmlearn tm44_REST
 ; 49 -> 56

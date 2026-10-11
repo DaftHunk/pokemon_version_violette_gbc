@@ -31,7 +31,7 @@ db 0 ; growth rate
 ; 41 -> 48
 	tmlearn tm41_GIGA_DRAIN, tm42_SHADOW_BALL, tm44_REST
 ; 49 -> 56
-	tmlearn tm50_SUBSTITUTE
+	tmlearn tm50_SUBSTITUTE, hm02_FLY
 ;   db 0 ; padding
 	db BANK(ZubatPicFront)
 	assert BANK(ZubatPicFront) == BANK(ZubatPicBack)

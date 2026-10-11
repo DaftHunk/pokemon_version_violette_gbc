@@ -19,7 +19,7 @@ db 0
 db 0 ; growth rate
 ; learnset
 ; 1 -> 8
-	tmlearn tm01_MEGA_PUNCH, tm05_MEGA_KICK, tm06_TOXIC, tm08_BODY_SLAM
+	tmlearn tm01_MEGA_PUNCH, tm03_SWORDS_DANCE, tm05_MEGA_KICK, tm06_TOXIC, tm08_BODY_SLAM
 ; 9 -> 16
 	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE
 ; 17 -> 24

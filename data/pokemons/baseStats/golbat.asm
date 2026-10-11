@@ -19,11 +19,11 @@ db 0
 db 0 ; growth rate
 ; learnset
 ; 1 -> 8
-	tmlearn tm02_RAZOR_WIND, tm04_FLAMETHROWER, tm06_TOXIC
+	tmlearn tm02_RAZOR_WIND, tm06_TOXIC
 ; 9 -> 16
 	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm15_HYPER_BEAM
 ; 17 -> 24
-	tmlearn tm20_X_SCISSOR, tm21_MEGA_DRAIN
+	tmlearn tm21_MEGA_DRAIN
 ; 25 -> 32
 	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM
 ; 33 -> 40

@@ -92,8 +92,8 @@ PokedexEntryPointers:
 	dw KabutopsDexEntry
 	dw HorseaDexEntry
 	dw SeadraDexEntry
-	dw ArmoredMewtwoDexEntry
-	dw MissingNoDexEntry
+	dw MewtwoArmorDexEntry
+	dw GorochuDexEntry
 	dw SandshrewDexEntry
 	dw SandslashDexEntry
 	dw OmanyteDexEntry
@@ -113,38 +113,38 @@ PokedexEntryPointers:
 	dw WeedleDexEntry
 	dw KakunaDexEntry
 	dw BeedrillDexEntry
-	dw MissingNoDexEntry
+	dw SlugmaDexEntry
 	dw DodrioDexEntry
 	dw PrimeapeDexEntry
 	dw DugtrioDexEntry
 	dw VenomothDexEntry
 	dw DewgongDexEntry
-	dw MissingNoDexEntry
-	dw MissingNoDexEntry
+	dw MagcargoDexEntry
+	dw SlowkingDexEntry
 	dw CaterpieDexEntry
 	dw MetapodDexEntry
 	dw ButterfreeDexEntry
 	dw MachampDexEntry
-	dw MissingNoDexEntry
+	dw LickilickyDexEntry
 	dw GolduckDexEntry
 	dw HypnoDexEntry
 	dw GolbatDexEntry
 	dw MewtwoDexEntry
 	dw SnorlaxDexEntry
 	dw MagikarpDexEntry
-	dw MissingNoDexEntry
-	dw MissingNoDexEntry
+	dw TangrowthDexEntry
+	dw MarillDexEntry
 	dw MukDexEntry
-	dw MissingNoDexEntry
+	dw AzumarillDexEntry
 	dw KinglerDexEntry
 	dw CloysterDexEntry
-	dw MissingNoDexEntry
+	dw PluxDexEntry
 	dw ElectrodeDexEntry
 	dw ClefableDexEntry
 	dw WeezingDexEntry
 	dw PersianDexEntry
 	dw MarowakDexEntry
-	dw MissingNoDexEntry
+	dw AnchorageDexEntry
 	dw HaunterDexEntry
 	dw AbraDexEntry
 	dw AlakazamDexEntry
@@ -154,13 +154,13 @@ PokedexEntryPointers:
 	dw BulbasaurDexEntry
 	dw VenusaurDexEntry
 	dw TentacruelDexEntry
-	dw MissingNoDexEntry
+	dw EspeonDexEntry
 	dw GoldeenDexEntry
 	dw SeakingDexEntry
-	dw MissingNoDexEntry
-	dw MissingNoDexEntry
-	dw MissingNoDexEntry
-	dw MissingNoDexEntry
+	dw LugiaDexEntry
+	dw WolfmanDexEntry
+	dw WarwolfDexEntry
+	dw AnnihilapeDexEntry
 	dw PonytaDexEntry
 	dw RapidashDexEntry
 	dw RattataDexEntry
@@ -952,7 +952,7 @@ GolbatDexEntry:
 	db "@"
 	
 MewtwoDexEntry:	
-	db "Genetique@"
+	db "Génétique@"
 	db 2,00
 	dw 1220
 	TX_FAR _MewtwoDexEntry
@@ -1364,9 +1364,114 @@ MissingNoDexEntry:
 	TX_FAR _MissingNoDexEntry
 	db "@"
 
-ArmoredMewtwoDexEntry:	
-	db "Genetique@"
+MewtwoArmorDexEntry:
+	db "Génétique@"
 	db 2,00
 	dw 1520
-	TX_FAR _ArmoredMewtwoDexEntry
+	TX_FAR _MewtwoArmorDexEntry
+	db "@"
+
+GorochuDexEntry:
+	db "Souris@"
+	db 1,00
+	dw 360
+	TX_FAR _GorochuDexEntry
+	db "@"
+
+SlugmaDexEntry:
+	db "Lave@"
+	db 0,70
+	dw 350
+	TX_FAR _SlugmaDexEntry
+	db "@"
+
+MagcargoDexEntry:
+	db "Lave@"
+	db 0,80
+	dw 550
+	TX_FAR _MagcargoDexEntry
+	db "@"
+
+SlowkingDexEntry:
+	db "Royal@"
+	db 2,00
+	dw 795
+	TX_FAR _SlowkingDexEntry
+	db "@"
+
+LickilickyDexEntry:
+	db "Lécheur@"
+	db 1,70
+	dw 1523
+	TX_FAR _LickilickyDexEntry
+	db "@"
+
+TangrowthDexEntry:
+	db "Vigne@"
+	db 2,00
+	dw 1286
+	TX_FAR _TangrowthDexEntry
+	db "@"
+
+MarillDexEntry:
+	db "Aquasouris@"
+	db 0,40
+	dw 85
+	TX_FAR _MarillDexEntry
+	db "@"
+
+AzumarillDexEntry:
+	db "Aqualapin@"
+	db 0,80
+	dw 285
+	TX_FAR _AzumarillDexEntry
+	db "@"
+
+PluxDexEntry:
+	db "Scarabée@"
+	db 2,00
+	dw 650
+	TX_FAR _PluxDexEntry
+	db "@"
+
+AnchorageDexEntry:
+	db "Poisson@"
+	db 1,30
+	dw 929
+	TX_FAR _AnchorageDexEntry
+	db "@"
+
+EspeonDexEntry:
+	db "Soleil@"
+	db 0,90
+	dw 265
+	TX_FAR _EspeonDexEntry
+	db "@"
+
+LugiaDexEntry:
+	db "Plongeon@"
+	db 5,20
+	dw 2160
+	TX_FAR _LugiaDexEntry
+	db "@"
+
+WolfmanDexEntry:
+	db "Fourrure@"
+	db 0,40
+	dw 650
+	TX_FAR _WolfmanDexEntry
+	db "@"
+
+WarwolfDexEntry:
+	db "Fourrure@"
+	db 1,40
+	dw 850
+	TX_FAR _WarwolfDexEntry
+	db "@"
+
+AnnihilapeDexEntry:
+	db "Singefurax@"
+	db 1,20
+	dw 1235
+	TX_FAR _AnnihilapeDexEntry
 	db "@"

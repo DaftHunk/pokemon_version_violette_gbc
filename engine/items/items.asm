@@ -68,15 +68,13 @@ ItemUsePtrTable:
 	dw UnusableItem      ; DOME_FOSSIL
 	dw UnusableItem      ; HELIX_FOSSIL
 	dw UnusableItem      ; SECRET_KEY
-;	dw UnusableItem		 ; XXX
-	dw ItemUseVitamin    ; MIST_STONE	;joenote - custom item
+	dw ItemUseVitamin    ; BERSERK_ADN
 	dw UnusableItem      ; BIKE_VOUCHER
 	dw ItemUseXAccuracy  ; X_ACCURACY
 	dw ItemUseEvoStone   ; LEAF_STONE
 	dw ItemUseCardKey    ; CARD_KEY
 	dw UnusableItem      ; NUGGET
-	;dw UnusableItem      ; unused PP_UP
-	dw ItemUseVitamin    ; M_GENE	;joenote - custom item
+	dw ItemUseVitamin    ; M_GENE ;joenote - custom item
 	dw ItemUsePokedoll   ; POKE_DOLL
 	dw ItemUseMedicine   ; FULL_HEAL
 	dw ItemUseMedicine   ; REVIVE
@@ -126,6 +124,8 @@ ItemUsePtrTable:
 	dw UnusableItem      ; FLOOR_B4F
 	dw ItemUseEvoStone   ; METAL_COAT ;dafthunk #19
 	dw UnusableItem      ; EXP_CATCH_UP
+	dw ItemUseEvoStone   ; SOUL_STONE
+	dw ItemUseEvoStone   ; MIST_STONE
 
 ItemUseBall:
 
@@ -1437,7 +1437,7 @@ ItemUseMedicine:
 	jp z, .useRareCandy
 	push hl		;push wPartyMonX
 		
-	jp UseCustomMedicine	;joenote - custom medicine items (m_gene and mist_stone)
+	jp UseCustomMedicine	;joenote - custom medicine items (m_gene and BERSERK_ADN)
 .no_custom_medicine
 
 	call VitaminLevelCheck
@@ -3474,13 +3474,13 @@ UseCustomMedicine:
 	cp M_GENE	
 	jr z, .useMGene
 
-	cp MIST_STONE	
-	jr z, .useMistStone
+	cp BERSERK_ADN	
+	jr z, .useBerserkADN
 
 	jr .exit_no_usage
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;added code for the MIST_STONE
-.useMistStone
+;added code for the BERSERK_ADN
+.useBerserkADN
 	call VitaminLevelCheck
 	jp c, ItemUseMedicine.vitaminNoEffect
 
@@ -3489,14 +3489,14 @@ UseCustomMedicine:
 	add hl, bc ; hl now points to stat experience
 	ld b, 5
 	ld c, 5
-.useMistStone_loop
+.useBerserkADN_loop
 	call CheckMaxStatExp
 	call c, .decB
 	ld a , $ff
 	ld [hli], a
 	ld [hli], a
 	dec c
-	jr nz, .useMistStone_loop
+	jr nz, .useBerserkADN_loop
 	ld a, b
 	sub 1
 	pop hl

@@ -18,7 +18,7 @@ DebugNewGameParty: ; unreferenced except in _DEBUG
 	; always using this character while I was debugging the program."
 	; From https://web.archive.org/web/20000607152840/http://pocket.ign.com/news/14973.html
 	db MAGNETON, 100
-	db ARMORED_MEWTWO, 100
+	db MEWTWO_ARMOR, 100
 	db EXEGGUTOR, 100
 ;	db EEVEE, 1
 	db SPEAROW, 10
@@ -194,11 +194,11 @@ IF DEF(_DEBUG)
 	ld hl, wPokedexOwned
 	ld b, wPokedexOwnedEnd - wPokedexOwned - 1
 	call DebugSetPokedexEntries
-	ld [hl], %11111111
+	ld [hl], %01111111
 	ld hl, wPokedexSeen
 	ld b, wPokedexSeenEnd - wPokedexSeen - 1
 	call DebugSetPokedexEntries
-	ld [hl], %11111111
+	ld [hl], %01111111
 	ld hl, wMovedexSeen
 	ld b, wMovedexSeenEnd - wMovedexSeen
 	call DebugSetPokedexEntries
@@ -221,15 +221,15 @@ IF DEF(_DEBUG)
 	ret
 
 .unlockPostGameEvents
-	; Uncomment tp start in post game
+	; Uncomment to start in post game
 ;	SetEvent EVENT_ELITE_4_BEATEN
 ;	SetEvent EVENT_TRAINER_LVL_SCALING
 ;	SetEvent EVENT_ELITE_4_REMATCH_BEATEN
 ;	SetEvent EVENT_SS_ANNE_TOURNAMENT_BEATEN
-;	SetEvent EVENT_GOT_MIST_STONE
+;	SetEvent EVENT_GOT_BERSERK_ADN
 ;	SetEvent EVENT_MASTER_POKEMON
 ;	SetEvent EVENT_GOT_DEX_DIPLOMA
-;	SetEvent EVENT_ARMORED_MEWTWO_KNOWLEDGE
+;	SetEvent EVENT_MEWTWO_ARMOR_KNOWLEDGE
 ;	SetEvent EVENT_GOT_HELIX_FOSSIL
 ;	SetEvent EVENT_BEAT_SAFFRON_SILPH_CO_GIOVANNI
 ;	SetEvent EVENT_SAFFRON_SILPH_CO_11_UNLOCKED_DOOR

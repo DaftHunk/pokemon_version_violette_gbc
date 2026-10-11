@@ -1,6 +1,6 @@
 db DEX_POLIWRATH ; pokedex id
 db 90 ; base hp
-db 85 ; base attack
+db 95 ; base attack
 db 95 ; base defense
 db 70 ; base speed
 db 70 ; base special
@@ -27,7 +27,7 @@ db 3 ; growth rate
 ; 25 -> 32
 	tmlearn tm26_EARTHQUAKE, tm27_FISSURE, tm28_DIG, tm29_PSYCHIC_M, tm31_MIMIC, tm32_DOUBLE_TEAM
 ; 33 -> 40
-	tmlearn tm34_BIDE, tm35_METRONOME, tm40_SKULL_BASH
+	tmlearn tm34_BIDE, tm35_METRONOME, tm39_SWIFT, tm40_SKULL_BASH
 ; 41 -> 48
 	tmlearn tm44_REST, tm48_ROCK_SLIDE
 ; 49 -> 56

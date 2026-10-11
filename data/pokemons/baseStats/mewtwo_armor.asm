@@ -1,4 +1,4 @@
-db DEX_ARMORED_MEWTWO ; pokedex id
+db DEX_MEWTWO_ARMOR ; pokedex id
 db 106 ; base hp
 db 190 ; base attack
 db 100 ; base defense
@@ -8,9 +8,9 @@ db PSYCHIC ; species type 1
 db STEEL ; species type 2
 db 3 ; catch rate
 db 220 ; base exp yield
-INCBIN "gfx/pokemon/front/armored_mewtwo.pic",0,1 ; 77, sprite dimensions
-dw ArmoredMewtwoPicFront
-dw ArmoredMewtwoPicBack
+INCBIN "gfx/pokemon/front/mewtwo_armor.pic",0,1 ; 77, sprite dimensions
+dw MewtwoArmorPicFront
+dw MewtwoArmorPicBack
 ; attacks known at lvl 0
 db CONFUSION
 db DISABLE
@@ -33,6 +33,6 @@ db 5 ; growth rate
 ; 49 -> 56
 	tmlearn tm49_TRI_ATTACK, tm50_SUBSTITUTE, hm04_STRENGTH, hm05_FLASH
 ;   db 0 ; padding
-	db BANK(ArmoredMewtwoPicFront)
-	assert BANK(ArmoredMewtwoPicFront) == BANK(ArmoredMewtwoPicBack)
+	db BANK(MewtwoArmorPicFront)
+	assert BANK(MewtwoArmorPicFront) == BANK(MewtwoArmorPicBack)
 

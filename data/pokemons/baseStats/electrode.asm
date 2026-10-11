@@ -2,7 +2,7 @@ db DEX_ELECTRODE ; pokedex id
 db 60 ; base hp
 db 50 ; base attack
 db 70 ; base defense
-db 140 ; base speed
+db 150 ; base speed
 db 80 ; base special
 db ELECTRIC ; species type 1
 db ELECTRIC ; species type 2
@@ -21,7 +21,7 @@ db 0 ; growth rate
 ; 1 -> 8
 	tmlearn tm06_TOXIC
 ; 9 -> 16
-	tmlearn tm09_TAKE_DOWN, tm15_HYPER_BEAM
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm15_HYPER_BEAM
 ; 17 -> 24
 	tmlearn tm24_THUNDERBOLT
 ; 25 -> 32

@@ -27,9 +27,9 @@ db 0 ; growth rate
 ; 25 -> 32
 	tmlearn tm25_THUNDER, tm28_DIG, tm31_MIMIC, tm32_DOUBLE_TEAM
 ; 33 -> 40
-	tmlearn tm34_BIDE, tm39_SWIFT, tm40_SKULL_BASH
+	tmlearn tm34_BIDE, tm37_SLUDGE_BOMB, tm39_SWIFT, tm40_SKULL_BASH
 ; 41 -> 48
-	tmlearn tm42_SHADOW_BALL, tm44_REST
+	tmlearn tm42_SHADOW_BALL, tm44_REST, tm45_THUNDER_WAVE
 ; 49 -> 56
 	tmlearn tm50_SUBSTITUTE, hm01_CUT
 ;   db 0 ; padding

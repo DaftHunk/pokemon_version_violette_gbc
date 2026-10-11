@@ -97,7 +97,7 @@ ItemDescriptionPointers:
 	text_end
 	TX_FAR _SecretKeyDescription
 	text_end
-	TX_FAR _MistStoneDescription
+	TX_FAR _BerserkADNDescription
 	text_end
 	TX_FAR _BikeVoucherDescription
 	text_end
@@ -208,6 +208,10 @@ ItemDescriptionPointers:
     TX_FAR _MetalCoatDescription
 	text_end
 	TX_FAR _ExpCatchUpDescription
+	text_end
+	TX_FAR _SoulStoneDescription
+	text_end
+	TX_FAR _MistStoneDescription
 	text_end
 	TX_FAR _HM01Description
 	text_end

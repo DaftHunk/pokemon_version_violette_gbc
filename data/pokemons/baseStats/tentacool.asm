@@ -27,7 +27,7 @@ db 5 ; growth rate
 ; 25 -> 32
 	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM
 ; 33 -> 40
-	tmlearn tm33_REFLECT, tm34_BIDE, tm37_SLUDGE_BOMB, tm40_SKULL_BASH
+	tmlearn tm33_REFLECT, tm34_BIDE, tm37_SLUDGE_BOMB, tm39_SWIFT, tm40_SKULL_BASH
 ; 41 -> 48
 	tmlearn tm41_GIGA_DRAIN, tm44_REST
 ; 49 -> 56

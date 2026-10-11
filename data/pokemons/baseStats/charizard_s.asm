@@ -1,5 +1,5 @@
 db DEX_CHARIZARD_S ; pokedex id
-db 100 ; base hp
+db 150 ; base hp
 db 84 ; base attack
 db 78 ; base defense
 db 100 ; base speed

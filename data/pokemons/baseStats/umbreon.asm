@@ -21,7 +21,7 @@ db 0 ; growth rate
 ; 1 -> 8
 	tmlearn tm06_TOXIC, tm08_BODY_SLAM
 ; 9 -> 16
-	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm11_BUBBLEBEAM, tm12_WATER_GUN, tm13_ICE_BEAM, tm14_BLIZZARD, tm15_HYPER_BEAM
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm15_HYPER_BEAM, tm16_PAY_DAY
 ; 17 -> 24
 	tmlearn tm24_THUNDERBOLT
 ; 25 -> 32
@@ -29,7 +29,7 @@ db 0 ; growth rate
 ; 33 -> 40
 	tmlearn tm33_REFLECT, tm34_BIDE, tm37_SLUDGE_BOMB, tm39_SWIFT, tm40_SKULL_BASH
 ; 41 -> 48
-	tmlearn tm42_SHADOW_BALL, tm44_REST, tm46_DARK_PULSE
+	tmlearn tm42_SHADOW_BALL, tm44_REST, tm45_THUNDER_WAVE, tm46_DARK_PULSE
 ; 49 -> 56
 	tmlearn tm50_SUBSTITUTE, hm01_CUT, hm03_SURF, hm05_FLASH
 ;   db 0 ; padding

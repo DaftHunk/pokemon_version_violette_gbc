@@ -42,7 +42,7 @@ ItemNames:
 	db "Fossile Dôme@"
 	db "Nautile@"
 	db "Clé Secrète@"
-	db "Pierre Brume@"
+	db "ADN Berserk@"
 	db "Bon Commande@"
 	db "Précision +@"
 	db "PierrePlante@"
@@ -98,3 +98,5 @@ ItemNames:
 	db "4ème ss@"
 	db "Peau Métal@" ;dafthunk #19
 	db "Exp Booster@"
+	db "Pierre Ame@"
+	db "Pierre Brume@"

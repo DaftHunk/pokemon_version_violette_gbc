@@ -3,11 +3,10 @@ BluesHouseObject:
 
 	db 2 ; warps
 	warp 2, 7, 1, -1
-	warp 3, 7, 1, -1
+	warp 3, 7, 0, FORGOTTEN_TOWN
 
 	db 0 ; signs
 
-	;joenote - added an object for toggling the "shimmer" feature
 	db 3 ; objects
 	object SPRITE_DAISY, 2, 3, STAY, RIGHT, 1 ; Daisy, sitting by map
 	object SPRITE_DAISY, 6, 4, WALK, 1, 2, 0 ; Daisy, walking around

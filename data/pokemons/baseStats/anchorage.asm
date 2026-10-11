@@ -1,0 +1,38 @@
+db DEX_ANCHORAGE ; pokedex id
+db 50 ; base hp
+db 100 ; base attack
+db 70 ; base defense
+db 105 ; base speed
+db 110 ; base special
+db WATER ; species type 1
+db STEEL ; species type 2
+db 60 ; catch rate
+db 175 ; base exp yield
+INCBIN "gfx/pokemon/front/anchorage.pic",0,1 ; 77, sprite dimensions
+dw AnchoragePicFront
+dw AnchoragePicBack
+; attacks known at lvl 0
+db PECK
+db TAIL_WHIP
+db 0
+db 0
+db 0 ; growth rate
+; learnset
+; 1 -> 8
+	tmlearn tm06_TOXIC, tm07_HORN_DRILL
+; 9 -> 16
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm11_BUBBLEBEAM, tm12_WATER_GUN, tm13_ICE_BEAM, tm14_BLIZZARD, tm15_HYPER_BEAM
+; 17 -> 24
+	tmlearn 0
+; 25 -> 32
+	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM
+; 33 -> 40
+	tmlearn tm34_BIDE, tm39_SWIFT, tm40_SKULL_BASH
+; 41 -> 48
+	tmlearn tm44_REST
+; 49 -> 56
+	tmlearn tm50_SUBSTITUTE, hm03_SURF
+;   db 0 ; padding
+	db BANK(AnchoragePicFront)
+	assert BANK(AnchoragePicFront) == BANK(AnchoragePicBack)
+

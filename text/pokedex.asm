@@ -1571,7 +1571,7 @@ _UmbreonDexEntry::
 	dex
 
 _SneaselDexEntry::
-	text "Ce Pokémon rusé se"
+	text "Ce #mon rusé se"
 	next "cache dans l'ombre"
 	next "et attend"
 
@@ -1640,18 +1640,159 @@ _HoohDexEntry::
 	dex
 
 _MissingNoDexEntry::
-	text "コメント"
-	next "さくせい"
-
-	bage "ガギグゲゴ"
-	next "ザジズょゅ"
+	text "┌──┐ ┌──┐"
+	next "│()│ │()│"
+	next "└──┘ └──┘"
 	dex
 
-_ArmoredMewtwoDexEntry::
-	text "Mewtwo portant"
+_MewtwoArmorDexEntry::
+	text "Mewtwo équipé de"
 	next "l'armure déve-"
 	next "loppée en secret"
 
 	bage "par le Dr Fuji"
 	next "et Giovanni"
+	dex
+
+_GorochuDexEntry::
+	text "Il se surcharge"
+	next "tellement en"
+	next "électricité"
+
+	bage "qu'il arrive à"
+	next "produire du feu"
+	dex
+
+_SlugmaDexEntry::
+	text "Il vit en groupe"
+	next "dans les endroits"
+	next "chauds."
+
+	bage "Si la température"
+	next "baisse, sa peau"
+	next "se solidifie"
+	dex
+
+_MagcargoDexEntry::
+	text "Son corps en"
+	next "ébullition est"
+	next "aussi chaud que"
+
+	bage "de la lave. Des"
+	next "flammes sortent"
+	next "de sa coquille"
+	dex
+
+_SlowkingDexEntry::
+	text "A chaque bâille-"
+	next "ment, le Kokiyas"
+	next "lui injecte une"
+
+	bage "dose de poison,"
+	next "ceci le rendant"
+	next "plus intelligent"
+	dex
+
+_LickilickyDexEntry::
+	text "Tout ce qu'il"
+	next "enroule dans sa"
+	next "longue langue"
+
+	bage "finit couvert de"
+	next "bave acide"
+	dex
+
+_TangrowthDexEntry::
+	text "Il se fond dans"
+	next "la nuit et ne"
+	next "plus."
+
+	bage "Il ligote ses"
+	next "proies avec"
+	next "ses lianes"
+	dex
+
+_MarillDexEntry::
+	text "Sa fourrure est"
+	next "imperméable, si"
+	next "bien qu'il reste"
+
+	bage "sec même en"
+	next "jouant dans l'eau"
+	dex
+
+_AzumarillDexEntry::
+	text "Les motifs sur"
+	next "son ventre lui"
+	next "permettent de se"
+
+	bage "camoufler lorsqu'"
+	next "il est dans l'eau"
+	dex
+
+_PluxDexEntry::
+	text "Les Scarbarbar"
+	next "dirigent souvent"
+	next "les groupes de"
+
+	bage "Scarabrute et les"
+	next "protègent la nuit"
+	dex
+
+_AnchorageDexEntry::
+	text "Ce #mon oublié"
+	next "utilise sa queue"
+	next "en forme d'ancre"
+
+	bage "pour assomer"
+	next "ses proies"
+	dex
+
+_EspeonDexEntry::
+	text "Le bout fourchu"
+	next "de sa queue"
+	next "frémit lorsqu'"
+
+	bage "il prédit la"
+	next "prochaine attaque"
+	next "de son adversaire"
+	dex
+
+_LugiaDexEntry::
+	text "Il peut calmer"
+	next "les mers agitées."
+	next "On raconte que"
+
+	bage "Lugia apparaît"
+	next "lorsqu'éclate"
+	next "une tempête"
+	dex
+
+_WolfmanDexEntry::
+	text "Ce #mon oublié"
+	next "très social,"
+	next "vit en meute."
+
+	bage "Sa fourrure lui"
+	next "permet de survivre"
+	next "n'importe où"
+	dex
+
+_WarwolfDexEntry::
+	text "Ce #mon oublié"
+	next "est extrêmement"
+	next "protecteur envers"
+
+	bage "ses Ptiloulou. Ses"
+	next "griffes d'acier"
+	next "sont redoutables"
+	dex
+
+_AnnihilapeDexEntry::
+	text "Il a acquis une"
+	next "puissance qui"
+	next "l'a émancipé"
+
+	bage "des limites de"
+	next "son corps"
 	dex

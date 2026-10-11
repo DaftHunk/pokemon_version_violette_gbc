@@ -1,5 +1,5 @@
 db DEX_SCIZOR_S; pokedex id
-db 100 ; base hp
+db 150 ; base hp
 db 130 ; base attack
 db 100 ; base defense
 db 65 ; base speed

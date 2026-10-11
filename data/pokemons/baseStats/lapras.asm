@@ -25,7 +25,7 @@ db 5 ; growth rate
 ; 17 -> 24
 	tmlearn tm22_SOLARBEAM, tm23_DRAGON_RAGE, tm24_THUNDERBOLT
 ; 25 -> 32
-	tmlearn tm25_THUNDER, tm29_PSYCHIC_M, tm31_MIMIC, tm32_DOUBLE_TEAM
+	tmlearn tm25_THUNDER, tm26_EARTHQUAKE, tm29_PSYCHIC_M, tm31_MIMIC, tm32_DOUBLE_TEAM
 ; 33 -> 40
 	tmlearn tm33_REFLECT, tm34_BIDE, tm40_SKULL_BASH
 ; 41 -> 48

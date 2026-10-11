@@ -159,7 +159,7 @@ Lab4Text3:
 	jp z, .done
 	cp MOLTRES
 	jp z, .done
-	cp ARMORED_MEWTWO
+	cp MEWTWO_ARMOR
 	jp z, .done
 	cp HOOH
 	jp z, .done

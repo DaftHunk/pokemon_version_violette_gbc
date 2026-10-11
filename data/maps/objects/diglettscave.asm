@@ -1,4 +1,4 @@
-;joenote - add secret cave for mist_stone with associated warps
+;joenote - add secret cave for BERSERK_ADN with associated warps
 DiglettsCaveObject:
 	db $19 ; border block
 

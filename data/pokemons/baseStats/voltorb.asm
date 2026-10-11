@@ -21,7 +21,7 @@ db 0 ; growth rate
 ; 1 -> 8
 	tmlearn tm06_TOXIC
 ; 9 -> 16
-	tmlearn tm09_TAKE_DOWN
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE
 ; 17 -> 24
 	tmlearn tm24_THUNDERBOLT
 ; 25 -> 32

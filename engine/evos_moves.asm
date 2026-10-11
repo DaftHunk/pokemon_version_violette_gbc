@@ -120,13 +120,13 @@ Evolution_PartyMonLoop: ; loop over party mons
 	push af
 	ld a, [wEvoOldSpecies]
 	cp MEWTWO
-	jr nz, .notArmoredMewtwo
-	; if ArmoredMewtwo ensure event is meet
-	CheckEvent EVENT_ARMORED_MEWTWO_KNOWLEDGE
+	jr nz, .notMewtwoArmor
+	; if MewtwoArmor ensure event is meet
+	CheckEvent EVENT_MEWTWO_ARMOR_KNOWLEDGE
 	; if not break
 	jp z, .armoredMewtwoNotKnown
 	; else continue
-.notArmoredMewtwo
+.notMewtwoArmor
 	pop af
 	ld b, a ; evolution item
 	ld a, [wcf91] ; *fixed above* this is supposed to be the last item used, but it is also used to hold species numbers

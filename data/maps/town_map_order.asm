@@ -48,4 +48,5 @@ TownMapOrder:
 	db ROUTE_23
 	db VICTORY_ROAD_3F
 	db INDIGO_PLATEAU
+	db FORGOTTEN_TOWN
 TownMapOrderEnd:

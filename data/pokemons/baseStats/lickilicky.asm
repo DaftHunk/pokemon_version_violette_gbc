@@ -1,0 +1,38 @@
+db DEX_LICKILICKY ; pokedex id
+db 110 ; base hp
+db 85 ; base attack
+db 95 ; base defense
+db 50 ; base speed
+db 95 ; base special
+db NORMAL ; species type 1
+db PSYCHIC ; species type 2
+db 30 ; catch rate
+db 193 ; base exp yield
+INCBIN "gfx/pokemon/front/lickilicky.pic",0,1 ; 77, sprite dimensions
+dw LickilickyPicFront
+dw LickilickyPicBack
+; attacks known at lvl 0
+db LICK
+db DEFENSE_CURL
+db SUPERSONIC
+db 0
+db 0 ; growth rate
+; learnset
+; 1 -> 8
+	tmlearn tm01_MEGA_PUNCH, tm03_SWORDS_DANCE, tm04_FLAMETHROWER, tm05_MEGA_KICK, tm06_TOXIC, tm08_BODY_SLAM
+; 9 -> 16
+	tmlearn tm09_TAKE_DOWN, tm10_DOUBLE_EDGE, tm13_ICE_BEAM, tm14_BLIZZARD, tm15_HYPER_BEAM
+; 17 -> 24
+	tmlearn tm17_SUBMISSION, tm18_COUNTER, tm19_SEISMIC_TOSS, tm22_SOLARBEAM, tm24_THUNDERBOLT
+; 25 -> 32
+	tmlearn tm25_THUNDER, tm26_EARTHQUAKE, tm27_FISSURE, tm28_DIG, tm29_PSYCHIC_M, tm30_TELEPORT, tm31_MIMIC, tm32_DOUBLE_TEAM
+; 33 -> 40
+	tmlearn tm33_REFLECT, tm34_BIDE, tm36_SELFDESTRUCT, tm38_FIRE_BLAST, tm40_SKULL_BASH
+; 41 -> 48
+	tmlearn tm42_SHADOW_BALL, tm44_REST, tm47_EXPLOSION, tm48_ROCK_SLIDE
+; 49 -> 56
+	tmlearn tm50_SUBSTITUTE, hm01_CUT, hm03_SURF, hm04_STRENGTH
+;   db 0 ; padding
+	db BANK(LickilickyPicFront)
+	assert BANK(LickilickyPicFront) == BANK(LickilickyPicBack)
+

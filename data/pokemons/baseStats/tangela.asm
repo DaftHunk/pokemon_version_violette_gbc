@@ -27,11 +27,11 @@ db 0 ; growth rate
 ; 25 -> 32
 	tmlearn tm31_MIMIC, tm32_DOUBLE_TEAM
 ; 33 -> 40
-	tmlearn tm34_BIDE, tm37_SLUDGE_BOMB, tm40_SKULL_BASH
+	tmlearn tm33_REFLECT, tm34_BIDE, tm37_SLUDGE_BOMB, tm40_SKULL_BASH
 ; 41 -> 48
 	tmlearn tm41_GIGA_DRAIN, tm44_REST
 ; 49 -> 56
-	tmlearn tm50_SUBSTITUTE, hm01_CUT, hm05_FLASH
+	tmlearn tm50_SUBSTITUTE, hm01_CUT, hm04_STRENGTH, hm05_FLASH
 ;   db 0 ; padding
 	db BANK(TangelaPicFront)
 	assert BANK(TangelaPicFront) == BANK(TangelaPicBack)

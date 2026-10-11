@@ -1,7 +1,7 @@
 db DEX_PIKACHU ; pokedex id
 db 35 ; base hp
 db 55 ; base attack
-db 30 ; base defense
+db 40 ; base defense
 db 90 ; base speed
 db 50 ; base special
 db ELECTRIC ; species type 1
@@ -31,7 +31,7 @@ db 0 ; growth rate
 ; 41 -> 48
 	tmlearn tm44_REST, tm45_THUNDER_WAVE
 ; 49 -> 56
-	tmlearn tm50_SUBSTITUTE, hm04_STRENGTH, hm05_FLASH
+	tmlearn tm50_SUBSTITUTE, hm03_SURF, hm04_STRENGTH, hm05_FLASH
 ;   db 0 ; padding
 	db BANK(PikachuPicFront)
 	assert BANK(PikachuPicFront) == BANK(PikachuPicBack)

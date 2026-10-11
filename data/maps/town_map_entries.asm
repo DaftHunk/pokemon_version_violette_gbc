@@ -10,7 +10,7 @@ ExternalMapEntries:
 	EMAP $8,$D,FuchsiaCityName
 	EMAP $2,$F,CinnabarIslandName
 	EMAP $0,$2,IndigoPlateauName
-	EMAP $0,$0,PalletTownName ; unused
+	EMAP $3,$A,ForgottenTownName
 	EMAP $2,$A,Route1Name
 	EMAP $2,$6,Route2Name
 	EMAP $4,$3,Route3Name

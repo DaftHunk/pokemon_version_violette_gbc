@@ -19,9 +19,9 @@ db 0
 db 0 ; growth rate
 ; learnset
 ; 1 -> 8
-	tmlearn tm04_FLAMETHROWER, tm06_TOXIC
+	tmlearn tm04_FLAMETHROWER, tm06_TOXIC, tm08_BODY_SLAM
 ; 9 -> 16
-	tmlearn 0
+	tmlearn tm09_TAKE_DOWN
 ; 17 -> 24
 	tmlearn tm24_THUNDERBOLT
 ; 25 -> 32

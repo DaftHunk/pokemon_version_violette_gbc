@@ -87,6 +87,8 @@ FlyWarpDataPtr:
 	dw CinnabarIslandFlyWarp
 	db INDIGO_PLATEAU, 0
 	dw IndigoPlateauFlyWarp
+	db FORGOTTEN_TOWN, 0
+	dw ForgottenTownFlyWarp
 	db ROUTE_4, 0
 	dw Route4FlyWarp
 	db ROUTE_10, 0
@@ -118,6 +120,8 @@ CinnabarIslandFlyWarp:
 	FLYWARP_DATA CINNABAR_ISLAND_WIDTH, 12, 11
 IndigoPlateauFlyWarp:
 	FLYWARP_DATA INDIGO_PLATEAU_WIDTH,   6,  9
+ForgottenTownFlyWarp:
+	FLYWARP_DATA FORGOTTEN_TOWN_WIDTH,   6, 18
 Route4FlyWarp:
 	FLYWARP_DATA ROUTE_4_WIDTH,          6, 11
 Route10FlyWarp:

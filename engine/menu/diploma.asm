@@ -46,8 +46,8 @@ DisplayDiploma:
 	CheckEvent EVENT_SS_ANNE_TOURNAMENT_BEATEN
 	call nz, .markSSAnneTournament
 
-	CheckEvent EVENT_GOT_MIST_STONE
-	call nz, .markMistStone
+	CheckEvent EVENT_GOT_BERSERK_ADN
+	call nz, .markBerserkADN
 
 	CheckEvent EVENT_SPECIAL_4_BEATEN
 	call nz, .markSpecial4
@@ -82,7 +82,7 @@ DisplayDiploma:
 .markSSAnneTournament
 	coord hl, 2, 8
 	jr .addMark
-.markMistStone
+.markBerserkADN
 	coord hl, 2, 10
 	jr .addMark
 .markSpecial4
@@ -175,7 +175,7 @@ DiplomaCongrats:
 	db   "×Revanche des 8"
 	next "×Revanche Ligue"
 	next "×Tournoi Océane"
-	next "×Pierre Brume"
-	next "×4 dresseurs"
+	next "×Ville oubliée"
+	next "×6 dresseurs"
 	next "×Capadex 100%"
 	next "×#dex 100%@"
