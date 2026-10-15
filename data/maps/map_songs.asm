@@ -134,7 +134,7 @@ MapSongBanks:
 	db MUSIC_CELADON,          0 ; CeladonMansion5
 	db MUSIC_POKECENTER,       0 ; CeladonPokecenter
 	db MUSIC_GYM,              0 ; CeladonGym
-	db MUSIC_GAME_CORNER,      0 ; CeladonGameCorner
+	db MUSIC_CELADON_GAME_CORNER,      0 ; CeladonGameCorner
 	db MUSIC_POKECENTER,       0 ; CeladonMart5
 	db MUSIC_CELADON,          0 ; CeladonPrizeRoom
 	db MUSIC_CELADON,          0 ; CeladonDiner

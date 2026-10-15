@@ -19,6 +19,20 @@ Audio1_OverwriteChannelPointer:
 	ld [hli], a
 	ret
 
+Music_MissingNo:
+	xor a
+	ld [wAudioFadeOutControl], a
+	ld [wLowHealthAlarm], a
+	ld a, SFX_STOP_ALL_MUSIC
+	call PlaySound
+	call DelayFrame
+	ld c, 0 ; BANK(Music_Lavender)
+	ld a, MUSIC_LAVENDER
+	call PlayMusic
+	ld hl, wChannel1MusicAddress
+	ld de, Music_Cities1_Ch1_AlternateTempo
+	jp Audio1_OverwriteChannelPointer
+
 ; an alternate tempo for MeetRival which is slightly slower
 Music_RivalAlternateTempo::
 	ld c, 0 ; BANK(Music_MeetRival)

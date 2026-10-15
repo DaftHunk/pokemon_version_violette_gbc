@@ -1695,7 +1695,9 @@ wTrainerClass:: ; d031
 
 wTrainerPicPointer:: ; d033
 	ds 2
-;	ds 1
+
+wBattleMonSpeciesOriginal:: ;d034	;joenote - used to backup a transformed mon's real species
+	ds 1
 
 wTempMoveNameBuffer:: ; d036
 
@@ -2389,7 +2391,8 @@ wPrize2Price:: ; d143
 wPrize3Price:: ; d145
 	ds 2
 
-;	ds 1
+wPartyAvgLevel::
+	ds 1
 
 wLinkBattleRandomNumberList:: ; d148
 ; shared list of 9 random numbers, indexed by wLinkBattleRandomNumberListIndex

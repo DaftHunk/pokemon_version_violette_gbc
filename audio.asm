@@ -144,19 +144,6 @@ SECTION "Alt Music Routines", ROMX
 
 INCLUDE "audio/alternate_tempo.asm"
 
-Music_MissingNo:
-	xor a
-	ld [wAudioFadeOutControl], a
-	ld [wLowHealthAlarm], a
-	call StopAllMusic
-	call DelayFrame
-	ld c, BANK(Music_Lavender)
-	ld a, MUSIC_LAVENDER
-	call PlayMusic
-	ld hl, wChannelCommandPointers
-	ld de, Music_Cities1_branch_aa6f
-	jp Audio1_OverwriteChannelPointer
-
 SECTION "Pokedex Rating SFX Routines", ROMX
 
 INCLUDE "audio/pokedex_rating_sfx.asm"
