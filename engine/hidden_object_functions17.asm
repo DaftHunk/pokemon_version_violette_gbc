@@ -154,14 +154,6 @@ DisplayMonFrontSpriteInBox:
 	coord hl, 10, 11
 	predef AnimateSendingOutMon
 
-	ld a, [wcf91]
-	; don't play cry for fossils
-	cp FOSSIL_KABUTOPS
-	jr z, .skipCry
-	cp FOSSIL_AERODACTYL
-	jr z, .skipCry
-	call PlayCry
-.skipCry
 ;GBCNote - for enhanced GBC color
 	;The Map View tiles for the text display are now in vBGMap1
 	;This function will make new map attributes based on the current map view
@@ -171,6 +163,14 @@ DisplayMonFrontSpriteInBox:
 	xor a
 	ld [hWY], a
 
+	ld a, [wcf91]
+	; don't play cry for fossils
+	cp FOSSIL_KABUTOPS
+	jr z, .skipCry
+	cp FOSSIL_AERODACTYL
+	jr z, .skipCry
+	call PlayCry
+.skipCry
 	call WaitForTextScrollButtonPress
 
 	ld a, MON_SPRITE_POPUP
