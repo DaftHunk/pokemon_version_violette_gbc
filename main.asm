@@ -533,21 +533,6 @@ INCLUDE "scripts/billsgarden.asm"
 INCLUDE "data/maps/objects/billsgarden.asm"
 BillsGardenBlocks: INCBIN "maps/BillsGarden.blk"
 
-INCLUDE "data/maps/headers/volcano1f.asm"
-INCLUDE "scripts/volcano1f.asm"
-INCLUDE "data/maps/objects/volcano1f.asm"
-Volcano1FBlocks: INCBIN "maps/Volcano1F.blk"
-
-INCLUDE "data/maps/headers/volcanob1f.asm"
-INCLUDE "scripts/volcanob1f.asm"
-INCLUDE "data/maps/objects/volcanob1f.asm"
-VolcanoB1FBlocks: INCBIN "maps/VolcanoB1F.blk"
-
-INCLUDE "data/maps/headers/volcanob2f.asm"
-INCLUDE "scripts/volcanob2f.asm"
-INCLUDE "data/maps/objects/volcanob2f.asm"
-VolcanoB2FBlocks: INCBIN "maps/VolcanoB2F.blk"
-
 INCLUDE "engine/menu/oaks_pc.asm"
 
 INCLUDE "engine/hidden_object_functions7.asm"
@@ -772,6 +757,21 @@ INCLUDE "data/maps/headers/SeafoamIslandsB4F.asm"
 INCLUDE "scripts/SeafoamIslandsB4F.asm"
 INCLUDE "data/maps/objects/SeafoamIslandsB4F.asm"
 SeafoamIslands5Blocks: INCBIN "maps/SeafoamIslandsB4F.blk"
+
+INCLUDE "data/maps/headers/volcano1f.asm"
+INCLUDE "scripts/volcano1f.asm"
+INCLUDE "data/maps/objects/volcano1f.asm"
+Volcano1FBlocks: INCBIN "maps/Volcano1F.blk"
+
+INCLUDE "data/maps/headers/volcanob1f.asm"
+INCLUDE "scripts/volcanob1f.asm"
+INCLUDE "data/maps/objects/volcanob1f.asm"
+VolcanoB1FBlocks: INCBIN "maps/VolcanoB1F.blk"
+
+INCLUDE "data/maps/headers/volcanob2f.asm"
+INCLUDE "scripts/volcanob2f.asm"
+INCLUDE "data/maps/objects/volcanob2f.asm"
+VolcanoB2FBlocks: INCBIN "maps/VolcanoB2F.blk"
 
 INCLUDE "engine/overworld/hidden_objects.asm"
 
