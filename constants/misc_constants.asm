@@ -1,7 +1,7 @@
 FALSE EQU 0
 TRUE  EQU 1
 
-HACK_VERSION EQU 2	;master branch is always an even number
+HACK_VERSION EQU 3	;master branch is always an even number
 
 MAX_LEVEL EQU 100
 
@@ -24,7 +24,7 @@ MONS_PER_BOX EQU 20
 NUM_BOXES    EQU 12
 
 BAG_ITEM_CAPACITY EQU 30
-PC_ITEM_CAPACITY  EQU 50
+PC_ITEM_CAPACITY  EQU 40
 
 HOF_MON           EQU $10
 HOF_TEAM          EQU PARTY_LENGTH * HOF_MON
