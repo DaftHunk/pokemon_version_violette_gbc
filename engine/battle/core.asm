@@ -906,15 +906,24 @@ FaintEnemyPokemon:
 	ld a, [wIsInBattle]
 	dec a
 	jr z, .wild_win
-	xor a
-	ld [wFrequencyModifier], a
-	ld [wTempoModifier], a
+
+	call WaitForSoundToFinish
+	ld bc, $00
+	ld de, $80
 	ld a, SFX_FAINT_FALL
-	call PlaySoundWaitForCurrent
-.sfxwait
-	ld a, [wChannelSoundIDs + Ch4]
-	cp SFX_FAINT_FALL
-	jr z, .sfxwait
+	call PlayBattleSound
+;	xor a
+;	ld [wFrequencyModifier], a
+;	ld [wTempoModifier], a
+;	ld a, SFX_FAINT_FALL
+;	call PlaySoundWaitForCurrent
+
+	call WaitForSoundToFinish
+;.sfxwait
+;	ld a, [wChannelSoundIDs + CHAN5]
+;	cp SFX_FAINT_FALL
+;	jr z, .sfxwait
+
 	ld a, SFX_FAINT_THUD
 	call PlaySound
 	call WaitForSoundToFinish
@@ -965,7 +974,7 @@ EndLowHealthAlarm:
 ; the low health alarm and prevents it from reactivating until the next battle.
 	xor a
 	ld [wLowHealthAlarm], a ; turn off low health alarm
-	ld [wChannelSoundIDs + Ch4], a
+;	ld [wChannelSoundIDs + Ch4], a
 	inc a
 	ld [wLowHealthAlarmDisabled], a ; prevent it from reactivating
 	ret
@@ -1079,7 +1088,7 @@ TrainerDefeatedText:
 PlayBattleVictoryMusic:
 	push af
 	ld a, $ff
-	ld [wNewSoundID], a
+	ld [wMusicFadeID], a
 	call PlaySoundWaitForCurrent
 
 	ld a, [wTrainerClass]
@@ -1095,13 +1104,14 @@ PlayBattleVictoryMusic:
 	cp JOY
 	jr z, .special4Music
 	; else
-	ld c, BANK(Music_DefeatedTrainer)
+	ld c, 0 ; BANK(Music_DefeatedTrainer)
 	pop af
 	jr .playMusic
 .special4Music
 	pop af
-	ld a, MUSIC_BATTLE_VICTORY_GUIDE
-	ld c, BANK(Music_BattleVictoryGuide)
+; TODO
+;	ld a, MUSIC_BATTLE_VICTORY_GUIDE
+	ld c, 0 ; BANK(Music_BattleVictoryGuide)
 	; fallthrough
 .playMusic
 	call PlayMusic
@@ -2059,7 +2069,7 @@ DrawPlayerHUDAndHPBar:
 	ld [hl], $0
 	ret z
 	xor a
-	ld [wChannelSoundIDs + Ch4], a
+;	ld [wChannelSoundIDs + Ch4], a
 	ret
 .setLowHealthAlarm
 	ld hl, wLowHealthAlarm

@@ -833,14 +833,14 @@ PrintLetterDelay_:
 	
 	;	joenote - set a flag to indicate if a sfx is playing while printing text
 	jr nz, .checkButtons
-	ld hl, wChannelSoundIDs + Ch4
-	ld a, [hli]
-	add [hl]
-	inc hl
-	add [hl]
-	inc hl
-	add [hl]
-	jr z, .checkButtons
+;	ld hl, wChannelSoundIDs + Ch4
+;	ld a, [hli]
+;	add [hl]
+;	inc hl
+;	add [hl]
+;	inc hl
+;	add [hl]
+;	jr z, .checkButtons
 	ld hl, hFlagsFFFA
 	set 2, [hl]
 	

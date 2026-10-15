@@ -91,7 +91,7 @@ OakSpeech:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, $FF
 	call PlaySound ; stop music
-	ld a, BANK(Music_Routes2)
+	ld a, 0 ; BANK(Music_Routes2)
 	ld c, a
 	ld a, MUSIC_ROUTES2
 	call PlayMusic
@@ -238,14 +238,15 @@ OakSpeech:
 	call ResetPlayerSpriteData
 	ld a, [H_LOADEDROMBANK]
 	push af
-	ld a, BANK(Music_PalletTown)
-	ld [wAudioROMBank], a
-	ld [wAudioSavedROMBank], a
+;	ld a, 0 ; BANK(Music_PalletTown)
+;	ld [wAudioROMBank], a
+;	ld [wAudioSavedROMBank], a
+
 	ld a, 10
-	ld [wAudioFadeOutControl], a
-	ld a, $FF
-	ld [wNewSoundID], a
-	call PlaySound ; stop music
+	ld [wMusicFade], a
+	xor a
+	ld [wMusicFadeID], a
+
 	pop af
 	ld [H_LOADEDROMBANK], a
 	ld [MBC1RomBank], a

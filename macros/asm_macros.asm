@@ -153,9 +153,22 @@ MACRO overworldMapCoord
 	ld \1, wOverworldMap + ((\2) + 3) + (((\3) + 3) * ((\4) + (3 * 2)))
 ENDM
 
-; macro for two nibbles
-MACRO dn
-	db (\1 << 4 | \2)
+MACRO dn ; nybbles
+	REPT _NARG / 2
+		db ((\1) << 4) | (\2)
+		SHIFT 2
+	ENDR
+ENDM
+
+MACRO dc ; "crumbs"
+	REPT _NARG / 4
+		db ((\1) << 6) | ((\2) << 4) | ((\3) << 2) | (\4)
+		SHIFT 4
+	ENDR
+ENDM
+
+MACRO bigdw ; big-endian word
+	db HIGH(\1), LOW(\1)
 ENDM
 
 ; macro for putting a byte then a word

@@ -53,7 +53,7 @@ LoadBGMapAttributes::
 .lcdOff
 	ld a, c ; number of BG attributes to transfer, plus 1 times 16
 	ld [rHDMA5], a ; initiate transfer
-	call Func_3082 ; update audio so it doesn't "lag"
+;	call Func_3082 ; update audio so it doesn't "lag"
 	
 
 	pop hl	;get packet address back because we're going to do it all again for vBGMap1
@@ -101,7 +101,7 @@ LoadBGMapAttributes::
 	dec a
 	call z, HandlePartyHPBarAttributes
 .done
-	call Func_3082
+;	call Func_3082
 	ld a, [rIF]
 	res VBLANK, a
 	ld [rIF], a
@@ -293,7 +293,7 @@ LoadBGMapAttributes_Lite::
 .lcdOff
 	ld a, c ; number of BG attributes to transfer, plus 1 times 16
 	ld [rHDMA5], a ; initiate transfer (execution halts until transfer is finished)
-	call Func_3082 ; update audio so it doesn't "lag"
+;	call Func_3082 ; update audio so it doesn't "lag"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .doBGMap1
 	pop bc		;get back locations to transfer
@@ -337,7 +337,7 @@ LoadBGMapAttributes_Lite::
 .lcdOff2
 	ld a, c
 	ld [rHDMA5], a
-	call Func_3082
+;	call Func_3082
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .done
 	ld a, [rIF]

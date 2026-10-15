@@ -22,10 +22,11 @@ RocketHideout4Script_45473:
 	jr .asm_45498
 .asm_4548c
 	ld a, $ff
-	ld [wNewSoundID], a
+	ld [wMusicFadeID], a
 	call PlaySound
-	ld c, BANK(Music_MeetJessieJames)
-	ld a, MUSIC_MEET_JESSIE_JAMES
+	ld c, 0 ; BANK(Music_MeetJessieJames)
+	; TODO
+;	ld a, MUSIC_MEET_JESSIE_JAMES
 	call PlayMusic
 
 	; Display RocketHideout4AfterBattleText2

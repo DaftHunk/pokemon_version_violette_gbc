@@ -2258,6 +2258,7 @@ ShipPort_Block:    INCBIN "gfx/blocksets/ship_port.bst"
 SECTION "SGB Border", ROMX
 
 INCLUDE "engine/palettes.asm"
+INCLUDE "engine/menu/bills_pc.asm"
 
 SECTION "Moves", ROMX
 

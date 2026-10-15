@@ -16,8 +16,9 @@ SSAnne1Text1:
 	call ReloadMapData
 	predef HealParty
 
-	ld c, BANK(Music_RestPallet)
-	ld a, MUSIC_REST_PALLET
+	ld c, 0 ; BANK(Music_RestPallet)
+;TODO
+;	ld a, MUSIC_REST_PALLET
 	call PlayMusic
 
 	ld c, $AA

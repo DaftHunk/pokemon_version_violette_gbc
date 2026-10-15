@@ -31,38 +31,43 @@ CeladonMart1Text_Phone:
 	jp nz, .answerNo
 	; else
 
-	call StopAllMusic
+	ld a, SFX_STOP_ALL_MUSIC
+	call PlaySound
 
 	ld hl, .startCall
 	call PrintText
 
 	call DialPhone
 
-	ld a, SFX_SNARE_3
-	call PlaySoundWaitForCurrent
-	ld c, 5
-	call DelayFrames
-	call StopAllMusic
-	ld a, SFX_SNARE_8
-	call PlaySound
+; TODO
+;	ld a, SFX_SNARE_3
+;	call PlaySoundWaitForCurrent
+;	ld c, 5
+;	call DelayFrames
+;	ld a, SFX_STOP_ALL_MUSIC
+;	call PlaySound
+;	ld a, SFX_SNARE_8
+;	call PlaySound
 
-	ld c, BANK(Music_PalletTown)
+	ld c, 0 ; BANK(Music_PalletTown)
 	ld a, MUSIC_PALLET_TOWN
 	call PlayMusic
 
 	ld hl, .momCall
 	call PrintText
 
-	ld a, SFX_SNARE_3
-	call PlaySoundWaitForCurrent
-	ld c, 5
-	call DelayFrames
-	call StopAllMusic
-	ld a, SFX_SNARE_8
-	call PlaySound
-	ld hl, .stopCall
-	call PrintText
-	call PlayDefaultMusic
+; TODO
+;	ld a, SFX_SNARE_3
+;	call PlaySoundWaitForCurrent
+;	ld c, 5
+;	call DelayFrames
+;	ld a, SFX_STOP_ALL_MUSIC
+;	call PlaySound
+;	ld a, SFX_SNARE_8
+;	call PlaySound
+;	ld hl, .stopCall
+;	call PrintText
+;	call PlayDefaultMusic
 	
 	jp TextScriptEnd
 
@@ -159,22 +164,26 @@ DialPhone:
 	pop bc
 	dec b
 	jr z, .doneOutgoing
-	call StopAllMusic
+	ld a, SFX_STOP_ALL_MUSIC
+	call PlaySound
 	ld c, 120
 	call DelayFrames
 	jr .loop
 .doneOutgoing
 	; phone gets picked up
-	call StopAllMusic
-	ld c, 10
-	call DelayFrames
-	ld a, SFX_SNARE_1
+	ld a, SFX_STOP_ALL_MUSIC
 	call PlaySound
-	ld c, 5
-	call DelayFrames
-	call StopAllMusic
-	ld a, SFX_TRIANGLE_1
-	call PlaySound
+; TODO
+;	ld c, 10
+;	call DelayFrames
+;	ld a, SFX_SNARE_1
+;	call PlaySound
+;	ld c, 5
+;	call DelayFrames
+;	ld a, SFX_STOP_ALL_MUSIC
+;	call PlaySound
+;	ld a, SFX_TRIANGLE_1
+;	call PlaySound
 	ld c, 10
 	call DelayFrames
 	ret

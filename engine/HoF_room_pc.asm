@@ -24,7 +24,7 @@ HallOfFamePC:
 	call EnableLCD
 	ld a, $ff
 	call PlaySoundWaitForCurrent
-	ld c, BANK(Music_Credits)
+	ld c, 0 ; BANK(Music_Credits)
 	ld a, MUSIC_CREDITS
 	call PlayMusic
 	ld c, 128
@@ -324,7 +324,7 @@ ShowPostGame:
 
 	ld a, $FF
 	call PlaySound ; stop music
-	ld a, BANK(Music_MeetProfOak)
+	ld a, 0 ; BANK(Music_MeetProfOak)
 	ld c, a
 	ld a, MUSIC_MEET_PROF_OAK
 	call PlayMusic
@@ -340,7 +340,7 @@ ShowPostGame:
 
 	ld a, $FF
 	call PlaySound ; stop music
-	ld a, BANK(Music_SSAnne)
+	ld a, 0 ; BANK(Music_SSAnne)
 	ld c, a
 	ld a, MUSIC_SS_ANNE
 	call PlayMusic
@@ -353,7 +353,7 @@ ShowPostGame:
 
 	ld a, $FF
 	call PlaySound ; stop music
-	ld a, BANK(Music_PalletTown)
+	ld a, 0 ; BANK(Music_PalletTown)
 	ld c, a
 	ld a, MUSIC_PALLET_TOWN
 	call PlayMusic
@@ -366,7 +366,7 @@ ShowPostGame:
 
 	ld a, $FF
 	call PlaySound ; stop music
-	ld a, BANK(Music_Gym)
+	ld a, 0 ; BANK(Music_Gym)
 	ld c, a
 	ld a, MUSIC_GYM
 	call PlayMusic
@@ -379,7 +379,7 @@ ShowPostGame:
 
 	ld a, $FF
 	call PlaySound ; stop music
-	ld a, BANK(Music_Celadon)
+	ld a, 0 ; BANK(Music_Celadon)
 	ld c, a
 	ld a, MUSIC_CELADON
 	call PlayMusic
