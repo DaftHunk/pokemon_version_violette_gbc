@@ -324,7 +324,7 @@ def main(argv=None):
         depot = trouver_depot(base)
         if depot is None:
             sys.exit(f"Erreur : dépôt Violette introuvable ({FICHIER_SOURCE}). "
-                     "Placez le script dans python_scripts/ du dépôt ou utilisez --repo.")
+                     "Placez le script dans generated_scripts/ du dépôt ou utilisez --repo.")
 
     chemin = depot / FICHIER_SOURCE
     texte, enc = lire_texte(chemin)

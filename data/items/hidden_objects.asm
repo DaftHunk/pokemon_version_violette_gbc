@@ -906,7 +906,7 @@ Route17HiddenObjects:
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 UndergroundPathNsHiddenObjects:
-	db $08,$06,FULL_RESTORE
+	db $08,$05,FULL_RESTORE
 	dbw BANK(HiddenItems),HiddenItems
 	db $22,$04,X_SPECIAL
 	dbw BANK(HiddenItems),HiddenItems
