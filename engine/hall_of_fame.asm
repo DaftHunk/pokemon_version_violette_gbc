@@ -53,6 +53,11 @@ AnimateHallOfFame:
 	call AddNTimes
 	ld a, [hl]
 	ld [wHoFMonLevel], a
+; True type2
+	ld de, wPartyMon1Type2 - wPartyMon1Level
+	add hl, de
+	ld a, [hl]
+	ld [wWholeScreenPaletteMonType2], a
 	call HoFShowMonOrPlayer
 	call HoFDisplayAndRecordMonInfo
 	ld c, 80
