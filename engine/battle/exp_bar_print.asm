@@ -82,10 +82,15 @@ PrintEXPBar:
 	call CalcEXPBarPixelLength
 	ld a, [H_QUOTIENT + 3] ; pixel length
 	ld [wEXPBarPixelLength], a
+	coord hl, 17, 11
+	jp DrawEXPBarTiles
+
+; draws the EXP bar tiles from the pixel length in a
+; over the 8 tiles ending at hl
+DrawEXPBarTiles:
 	ld b, a
 	ld c, $08
 	ld d, $08
-	coord hl, 17, 11
 .loop
 	ld a, b
 	sub c
@@ -168,6 +173,8 @@ CalcEXPBarPixelLength:
 	ld de, wEXPBarNeededEXP
 	call SubThreeByteNum
 
+; shared tail: turns wEXPBarCurEXP / wEXPBarNeededEXP into a pixel length
+EXPBarFinalize:
 	; make the divisor an 8-bit number
 	ld hl, wEXPBarNeededEXP
 	ld de, wEXPBarCurEXP + 1
@@ -274,3 +281,65 @@ BattleMonPartyAttr:
 	ld a, [wPlayerMonNumber]
 	ld bc, wPartyMon2 - wPartyMon1
 	jp AddNTimes
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;status screen EXP bar
+CalcStatusEXPBarPixelLength:
+; In : wLoadedMonSpecies, wLoadedMonLevel, wLoadedMonExp
+; Out : H_QUOTIENT + 3 = pixel length (0-$40)
+	; get the base exp needed for the current level
+	ld a, [wLoadedMonSpecies]
+	ld [wd0b5], a
+	call GetMonHeader
+	ld a, [wLoadedMonLevel]
+	ld d, a
+	ld hl, CalcExperience
+	ld b, BANK(CalcExperience)
+	call Bankswitch
+	ld hl, H_MULTIPLICAND
+	ld de, wEXPBarBaseEXP
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hl]
+	ld [de], a
+
+	; get the exp needed to gain a level
+	ld a, [wLoadedMonLevel]
+	ld d, a
+	inc d
+	ld hl, CalcExperience
+	ld b, BANK(CalcExperience)
+	call Bankswitch
+
+	; current exp - base exp
+	ld bc, wLoadedMonExp
+	ld hl, wEXPBarBaseEXP
+	ld de, wEXPBarCurEXP
+	call SubThreeByteNum
+
+	; exp needed - base exp
+	ld bc, H_MULTIPLICAND
+	ld hl, wEXPBarBaseEXP
+	ld de, wEXPBarNeededEXP
+	call SubThreeByteNum
+
+	jp EXPBarFinalize
+
+PrintStatusEXPBar:
+; draws the EXP bar of the mon loaded in wLoadedMon
+; right below the "Statut/Ok" line of the status screen
+	ld a, [wLoadedMonLevel]
+	cp MAX_LEVEL
+	jr c, .calc
+	xor a ; max level, show an empty bar
+	jr .draw
+.calc
+	call CalcStatusEXPBarPixelLength
+	ld a, [H_QUOTIENT + 3] ; pixel length
+.draw
+	coord hl, 18, 7
+jp DrawEXPBarTiles

@@ -101,6 +101,10 @@ StatusScreen:
 	ld hl, vChars1 + $490
 	lb bc, BANK(StatsGraphics), (StatsGraphicsEnd - StatsGraphics) / $10
 	call CopyVideoData
+	ld de, EXPBarGraphics
+	ld hl, vChars1 + $400 ; tiles $C0-$C8 (exp bar)
+	lb bc, BANK(EXPBarGraphics), (EXPBarGraphicsEnd - EXPBarGraphics) / $10
+	call CopyVideoData
 	ld a, [hTilesetType]
 	push af
 	xor a
@@ -183,6 +187,7 @@ StatusScreen:
 	coord hl, 9, 6
 	ld de, StatusText
 	call PlaceString ; "STATUS/"
+	callba PrintStatusEXPBar ; draw the EXP bar under the status line
 	coord hl, 14, 2
 	call PrintLevel ; Pokémon level
 	ld a, [wMonHIndex]

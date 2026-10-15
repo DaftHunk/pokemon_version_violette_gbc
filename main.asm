@@ -190,15 +190,6 @@ INCLUDE "engine/battle/moveEffects/tri_attack_effect.asm"
 INCLUDE "engine/battle/get_trainer_name.asm"
 INCLUDE "engine/random.asm"
 
-;joenote - adding exp bar
-EXPBarGraphics:  INCBIN "gfx/tiles/exp_bar.2bpp"
-EXPBarGraphicsEnd:
-
-StatsGraphics:: INCBIN "gfx/tiles/font_status_screen.2bpp"
-StatsGraphicsEnd::
-
-KeysLogoGraphics:: INCBIN "gfx/tiles/keys_logo.2bpp"
-KeysLogoGraphicsEnd::
 
 SECTION "NPC Sprites 2", ROMX, BANK[NPC_SPRITES_2]
 
@@ -2269,3 +2260,13 @@ INCLUDE "text/tmhm_names.asm"	;joenote - adding name list for tm and hm items
 tmhmNamesEnd:
 
 INCLUDE "data/wildPokemons/super_rod.asm"	;joenote - moving all the super rod data here
+
+;joenote - adding exp bar
+EXPBarGraphics:  INCBIN "gfx/tiles/exp_bar.2bpp"
+EXPBarGraphicsEnd:
+
+StatsGraphics:: INCBIN "gfx/tiles/font_status_screen.2bpp"
+StatsGraphicsEnd::
+
+KeysLogoGraphics:: INCBIN "gfx/tiles/keys_logo.2bpp"
+KeysLogoGraphicsEnd::
