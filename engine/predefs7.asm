@@ -13,6 +13,7 @@ DisplayElevatorFloorMenu::
 .menuDisplayLoop:
 	ld hl, WhichFloorText
 	call PrintText
+	call .printCurrentFloor
 	ld hl, wItemList
 	ld a, l
 	ld [wListPointer], a
@@ -32,8 +33,6 @@ DisplayElevatorFloorMenu::
 	ld a, b
 	ld [wListScrollOffset], a
 	ret c
-	ld hl, wCurrentMapScriptFlags
-	set BIT_CUR_MAP_USED_ELEVATOR, [hl]
 	ld hl, wElevatorWarpMaps
 	ld a, [wWhichPokemon]
 	add a
@@ -49,6 +48,8 @@ DisplayElevatorFloorMenu::
 	cp c
 	jr z, AlreadyOnThatFloor
 ;;;;;;;;;;
+	ld hl, wCurrentMapScriptFlags
+	set BIT_CUR_MAP_USED_ELEVATOR, [hl]
 	ld hl, wWarpEntries
 	call .UpdateWarp ; update first warp
 	call .UpdateWarp ; update second warp
@@ -73,6 +74,40 @@ DisplayElevatorFloorMenu::
 	ld [hli], a ; destination map ID
 	ret
 
+.printCurrentFloor
+	; Current floor box
+	hlcoord 4, 0
+	lb bc, 1, 14
+	call TextBoxBorder
+	hlcoord 5, 1
+	ld de, CurrentFloorText
+	call PlaceString
+	; find current map index wElevatorWarpMaps
+	ld hl, wElevatorWarpMaps + 1
+	ld a, [wItemList] ; available floors
+	ld b, a
+	ld c, 0
+	ld a, [wWarpedFromWhichMap] ; map where we are from
+	ld d, a
+.loopFindFloor
+	ld a, [hli]
+	inc hl
+	cp d
+	jr z, .foundMap
+	inc c
+	dec b
+	jr nz, .loopFindFloor
+.foundMap
+	ld b, 0
+	ld hl, wItemList + 1
+	add hl, bc
+	ld a, [hl] ; current FLOOR_* constant
+	ld [wPokedexNum], a
+	call GetItemName ; floor name in wcd6d
+	hlcoord 7, 1
+	call PlaceString
+	ret
+
 WhichFloorText:
 	TX_FAR _WhichFloorText
 	db "@"
@@ -80,3 +115,6 @@ WhichFloorText:
 AlreadyOnThatFloorText:
 	TX_FAR _AlreadyOnThatFloor
 	db "@"
+
+CurrentFloorText:
+	db "→@"
