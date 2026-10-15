@@ -94,6 +94,8 @@ EvolveMon:
 	jr .done
 
 EvolutionSetWholeScreenPalette:
+	ld a, $FF
+	ld [wWholeScreenPaletteMonType2], a
 	ld b, SET_PAL_POKEMON_WHOLE_SCREEN
 	jp RunPaletteCommand
 

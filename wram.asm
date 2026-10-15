@@ -1469,7 +1469,10 @@ wStatusScreenHPBarColor:: ; cf25
 ; Required to correctly execute the level-up procedure.
 wStartBattleLevels:: 
 	ds PARTY_LENGTH ;which is 6 bytes
-;unused space
+
+wWholeScreenPaletteMonType2::
+; True type2
+; 0 = base palette (trade, exchange)
 	ds 1
 
 wCopyingSGBTileData:: ; cf2d
