@@ -1727,6 +1727,11 @@ _WhichFloorText::
 	text "Quel étage?"
 	done
 
+_AlreadyOnThatFloor::
+	text "C'est l'étage"
+	line "actuel!"
+	prompt
+
 _PartyMenuNormalText::
 	text "Sélectionnez un"
 	line "#mon."
