@@ -1941,6 +1941,8 @@ SendOutMon:
 	ld [wPlayerDisabledMove], a
 	ld [wPlayerDisabledMoveNumber], a
 	ld [wPlayerMonMinimized], a
+	;joenote - check for player shiny & play animation on send-out
+	callba ShinyPlayerAnimation
 	ld b, SET_PAL_BATTLE
 	call RunPaletteCommand
 	ld hl, wEnemyBattleStatus1
@@ -1954,8 +1956,6 @@ SendOutMon:
 	ld a, [wcf91]
 	call PlayCry
 	call PrintEmptyString
-	;joenote - check for player shiny & play animation on send-out
-	callba ShinyPlayerAnimation
 	jp SaveScreenTilesToBuffer1
 
 ; show 2 stages of the player mon getting smaller before disappearing
