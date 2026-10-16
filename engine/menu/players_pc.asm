@@ -192,6 +192,10 @@ PlayerPCToss:
 	xor a
 	ld [wCurrentMenuItem], a
 	ld [wListScrollOffset], a
+	;flag that the displayed list is the PC item box, not the bag
+	;(makes item sorting target the box and blocks bag shortcuts)
+	ld hl, wMiscFlags
+	set BIT_NO_SPRITE_UPDATES, [hl]
 	ld a, [wNumBoxItems]
 	and a
 	jr nz, .loop
