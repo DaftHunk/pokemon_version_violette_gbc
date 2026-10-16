@@ -444,3 +444,63 @@ ItemSortList::	;only for items that are bag-accessed
 	db HM01_CUT + 4
 	db $FF ; end
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Adapted from pureRGB
+; Called from DisplayRepelWoreOffText (home bank 0) when a repel wears off.
+; Scans the ACTIVE bag (wBagItems) for REPEL, then SUPER_REPEL, then MAX_REPEL
+; (weakest first, like pureRGB) and offers to use one.
+; The backup bag space is deliberately NOT searched: it is storage-only and
+; RemoveUsedItem consumes from the active bag anyway.
+; Do not use IsItemInBag here: joenote's GetQuantityOfItemInBag predef
+; also searches the backup bag, which would offer unusable repels.
+UseAnotherRepel:
+	ld hl, .repelList
+.nextRepel
+	ld a, [hli]
+	ld d, a ; d = repel item ID
+	cp $FF
+	ret z ; end of the list, no repel in the active bag
+; scan the active bag for this repel (b = bag index)
+	push hl ; save the position in the repel list
+	ld hl, wBagItems
+	ld b, $00
+.scan
+	ld a, [hli] ; a = item ID of the current bag slot
+	cp $FF
+	jr z, .notInActiveBag ; end of the bag without a match
+	cp d
+	jr z, .found
+	inc hl ; skip the quantity byte
+	inc b
+	jr .scan
+.found
+	pop hl ; drop the saved list pointer (balance the stack)
+; stash everything in WRAM before PrintText/YesNoChoice clobber the registers
+	ld a, d
+	ld [wcf91], a ; item ID for UseItem_
+	ld [wPokedexNum], a ; item ID for GetItemName
+	ld a, b
+	ld [wWhichPokemon], a ; bag index for RemoveUsedItem
+	ld hl, RepelUseAnotherText
+	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	ret nz ; player chose No (or pressed B)
+	call GetItemName
+	call CopyStringToCF4B ; copy name to wcf4b (wStringBuffer) so it shows in the use text
+	call UseItem
+	ret
+.notInActiveBag
+	pop hl
+	jr .nextRepel
+
+.repelList
+	db REPEL
+	db SUPER_REPEL
+	db MAX_REPEL
+	db $FF ; end
+
+RepelUseAnotherText::
+	TX_FAR _RepelUseAnotherText
+	db "@"

@@ -1359,7 +1359,11 @@ PlayerBlackedOutText::
 DisplayRepelWoreOffText::
 	ld hl, RepelWoreOffText
 	call PrintText
-	jp AfterDisplayingTextID
+	; Adapted from pureRGB
+	; the worn-off text now ends with prompt, so the button wait
+	; already happened inside PrintText
+	callba UseAnotherRepel
+	jp CloseTextDisplay
 
 RepelWoreOffText::
 	TX_FAR _RepelWoreOffText

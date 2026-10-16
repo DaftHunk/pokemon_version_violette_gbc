@@ -2689,6 +2689,11 @@ _PlayerBlackedOutText::
 _RepelWoreOffText::
 	text "L'effet Repousse"
 	line "est terminé."
+	prompt ; prompt so the "use another?" question can follow
+
+_RepelUseAnotherText::
+	text "Utiliser un"
+	line "autre Repousse?"
 	done
 
 _PokemartBuyingGreetingText::
