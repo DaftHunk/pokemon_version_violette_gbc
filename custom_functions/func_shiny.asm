@@ -274,3 +274,47 @@ PrintShinySymbolStatus:
 	coord hl, 8, 1
 	ld [hl], "<SHINY>"
 	ret	
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;whole screen mon shiny palette helpers
+;used by trading, evolution and the hall of fame via SET_PAL_POKEMON_WHOLE_SCREEN
+SetWholeScreenShinyFlagFromZ:
+;write wWholeScreenPaletteMonShiny from the z flag (z = not shiny)
+	jr z, .notShiny
+	ld a, $01
+	ld [wWholeScreenPaletteMonShiny], a
+	ret
+.notShiny
+	xor a
+	ld [wWholeScreenPaletteMonShiny], a
+	ret
+
+;d = zero-indexed party mon position
+SetWholeScreenShinyFlagFromPartyIndex:
+	ld a, d
+	ld hl, wPartyMon1DVs
+	ld bc, wPartyMon2 - wPartyMon1
+	call AddNTimes
+	call ShinyDVsChecker
+	jr SetWholeScreenShinyFlagFromZ
+
+;de = address of the mon DVs
+SetWholeScreenShinyFlagFromDVs:
+	call ShinyDVsChecker2
+	jr SetWholeScreenShinyFlagFromZ
+
+SetWholeScreenShinyFlagFromLoadedMon:
+	call CheckLoadedShinyDVs
+	jr SetWholeScreenShinyFlagFromZ
+
+ShinyWholeScreenMon:
+;convert wPalPacket + 1 if the whole screen mon is flagged shiny
+	ld a, [wWholeScreenPaletteMonShiny]
+	and a
+	ret z
+	ld a, [wPalPacket + 1]
+	cp PAL_BLACK
+	ret z ; never convert the evolution black flash
+	call ShinyDVConvert
+	ld [wPalPacket + 1], a
+	ret

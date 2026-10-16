@@ -58,6 +58,10 @@ AnimateHallOfFame:
 	add hl, de
 	ld a, [hl]
 	ld [wWholeScreenPaletteMonType2], a
+;flag the mon as shiny for the whole screen palette
+	ld a, [wHoFPartyMonIndex]
+	ld d, a
+	callba SetWholeScreenShinyFlagFromPartyIndex
 	call HoFShowMonOrPlayer
 	call HoFDisplayAndRecordMonInfo
 	ld c, 80
@@ -85,6 +89,7 @@ AnimateHallOfFame:
 	call SaveHallOfFameTeams
 	xor a
 	ld [wHoFMonSpecies], a
+	ld [wWholeScreenPaletteMonShiny], a ; the player is never shiny
 	inc a
 	ld [wHoFMonOrPlayer], a ; player
 	call HoFShowMonOrPlayer

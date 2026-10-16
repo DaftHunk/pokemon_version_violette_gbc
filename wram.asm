@@ -1454,6 +1454,9 @@ wWholeScreenPaletteMonSpecies:: ; cf1d
 	ds 1
 
 wEnemyHPBarColor:: ; cf1e
+wWholeScreenPaletteMonShiny:: ; cf1e
+; aliased on a battle-only byte like wWholeScreenPaletteMonSpecies above
+; 1 = apply the shiny palette to the whole screen mon (trade, evolution, hall of fame)
 	ds 1
 
 ; 0: green
@@ -1470,7 +1473,7 @@ wStatusScreenHPBarColor:: ; cf25
 wStartBattleLevels:: 
 	ds PARTY_LENGTH ;which is 6 bytes
 
-wWholeScreenPaletteMonType2::
+wWholeScreenPaletteMonType2:: ; cf2c
 ; True type2
 ; 0 = base palette (trade, exchange)
 	ds 1

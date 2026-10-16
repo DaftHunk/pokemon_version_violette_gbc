@@ -411,6 +411,10 @@ SetPal_PokemonWholeScreen:
 	call DeterminePaletteIDOutOfBattle
 .next
 	ld [wPalPacket + 1], a
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;load shiny palette for the whole screen mon (trade, evolution, hall of fame)
+	callba ShinyWholeScreenMon
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, wPalPacket
 	ld de, BlkPacket_WholeScreen
 	ret

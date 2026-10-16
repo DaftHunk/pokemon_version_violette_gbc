@@ -24,14 +24,15 @@ DebugNewGameParty: ; unreferenced except in _DEBUG
 	db SPEAROW, 10
 	db ZAPDOS, 100
 	db MEW, 100
+
 	; Test for trade
-;	db BUTTERFREE, 56
-	
-;	db RAICHU, 56
-;	db NIDORAN_F, 56
-;	db ABRA, 50
-;	db NIDORINO, 80
-;	db PIKACHU, 90
+;	db KAKUNA, 30
+;	db RAICHU, 100
+;	db NIDORAN_F, 30
+;	db POLIWAG, 50
+;	db SPEAROW, 30
+;	db SEEL, 30
+
 	; Test for tutor
 ;	db OMASTAR, 90
 ;	db AERODACTYL, 90
@@ -57,6 +58,8 @@ IF DEF(_DEBUG)
 	call .unlockBadges
 
 	call SetDebugNewGameParty
+
+	call .makeTeamShiny
 
 	; MAGNETON gets Thunderbolt.
 	ld hl, wPartyMon1Moves
@@ -296,6 +299,20 @@ IF DEF(_DEBUG)
 	ld [wBeatGymLeadersRematch], a
 	ld a, [wBeatGymLeadersRematch]
 	set 6, a
+	ret
+
+.makeTeamShiny
+	ld a, [wPartyCount]
+	ld b, a
+	ld hl, wPartyMon1DVs
+	ld de, (wPartyMon2 - wPartyMon1) - 2
+	ld a, $AA
+.shinyDVsLoop
+	ld [hli], a
+	ld [hli], a
+	add hl, de
+	dec b
+	jr nz, .shinyDVsLoop
 	ret
 
 DebugSetPokedexEntries:
