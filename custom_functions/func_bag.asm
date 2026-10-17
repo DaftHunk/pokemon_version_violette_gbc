@@ -508,24 +508,20 @@ RepelUseAnotherText::
 	TX_FAR _RepelUseAnotherText
 	db "@"
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Item icons in the inventory list menus (bag, PC item box, mart sell and buy)
-; A 24x24 px (3x3 tiles) icon of the item under the cursor is drawn in a small
-; UI frame at the bottom-left of the list menu box, at screen coordinates
-; (1,9) to (3,11). The frame spans rows 8-12 on columns 0-4 and stays
-; visible while the menu is open; its interior is filled with blank tiles
-; when the cursor is on Cancel or on an item without an icon.
-; The frame and icon also stay visible while a submenu is open
-; (Util/Info/Jeter/mart): dialogs may blank them, and state $FD tells
-; DrawItemIcon to repair the drawing when the menu resumes.
-; Everything is erased on menu exit only (ExitListMenu).
-; wItemIconState: 0 = off, $FE = on/nothing drawn, $FF = on/empty frame,
-; $FD = on/drawn but needs repair after a submenu,
-; $01-$FA = on/icon of that item drawn.
-; The icon tiles are loaded to vChars1 + $400 (tile IDs $C0-$C8, right below KeysLogoGraphics).
-; The graphics and the ItemIconPointers lookup table live in the icon ROM bank
-; (linker-assigned; BANK() is self-consistent).
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Refills the enhanced GBC BGP palettes even when rBGP did not change
+; since the last refill (UpdateGBCPal_BGP short-circuits in that case).
+; Must be called AFTER wItemIconState got its final value: the
+; .ReadMasterPals override in func_enhancedcolor.asm serves the icon
+; palette only while an icon session is active.
+ForceEnhancedBGPPalRefill:
+	ld a, [hGBC]
+	and a
+	ret z
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_ENHANCED_GBC, a
+	ret z
+	callba UpdateEnhancedGBCPal_BGP
+	ret
 
 ; Called from PrintListMenuEntries every time a list menu is (re)drawn
 InitItemIconState:
@@ -541,6 +537,12 @@ InitItemIconState:
 	ld a, [wIsInBattle]
 	and a
 	ret nz
+	; hide the overworld sprites: the vanilla sprite update only keeps
+	; them behind the list box, but the icon frame sticks out to the
+	; left of it and the sprites would draw over the frame and the icon.
+	; The vanilla UpdateSprites calls on the menu exit paths rebuild the
+	; OAM buffer, so the sprites come back when the menu closes.
+	callba HideSprites
 	; item list or mart stock: start an icon session if none is active yet,
 	; or refresh the borrowed palette after a submenu / a leaked session
 	ld a, [wItemIconState]
@@ -560,34 +562,39 @@ InitItemIconState:
 	; why the icon colors only showed up after the Utiliser/Info/Jeter
 	; submenus changed the palette. Force one enhanced refill now: the
 	; .ReadMasterPals override then fills slot 7 immediately.
-	ld a, [hGBC]
-	and a
-	ret z
-	ld a, [wGraphicOptions]
-	bit BIT_GRAPHIC_ENHANCED_GBC, a
-	ret z
-	callba UpdateEnhancedGBCPal_BGP
+	call ForceEnhancedBGPPalRefill
 	ret
 .notItemList
-	; any other list menu type deactivates the icons
+	; any other list menu type deactivates the icons; force the refill
+	; there too: a session can also end this way without ExitListMenu
+	; ever running, and nothing else would put the overworld blue back
+	; into the borrowed slot (rBGP did not change)
+	ld a, [wItemIconState]
+	and a
+	ret z ; no session was active: nothing to do
 	xor a
 	ld [wItemIconState], a
-	ret
+	call ForceEnhancedBGPPalRefill
+	ret 
 
 ; Called from ExitListMenu (the list menu is closing)
-; No palette restore is needed here: clearing wItemIconState makes the
-; next LoadGBPal refill the borrowed slot with the overworld colors
-; (see the .ReadMasterPals override in func_enhancedcolor.asm)
+; The palette must be restored here, not just the state: closing the menu
+; does not change rBGP, and UpdateGBCPal_BGP short-circuits when rBGP did
+; not change, so no refill would ever put the overworld blue back into the
+; borrowed slot - the water would stay recolored until the next palette
+; change. Clearing wItemIconState first disables the .ReadMasterPals
+; override, then the forced refill serves the overworld blue.
 EraseItemIcon:
 	ld a, [wItemIconState]
 	and a
-	ret z            ; icons not active
+	ret z			; icons not active
 	cp $FE
 	jr z, .nothingDrawn ; nothing was drawn at all
 	call EraseItemIconBG
 .nothingDrawn
 	xor a
 	ld [wItemIconState], a
+	call ForceEnhancedBGPPalRefill
 	ret
 
 ; Restores the background tiles covered by the framed icon (rows 8-12, columns 0-4)
@@ -597,20 +604,20 @@ EraseItemIcon:
 EraseItemIconBG:
 	ld hl, wTileMapBackup2 + 8 * SCREEN_WIDTH
 	ld de, wTileMap + 8 * SCREEN_WIDTH
-	call .copy4        ; row 8, columns 0-3
+	call .copy4		; row 8, columns 0-3
 	ld hl, wTileMapBackup2 + 9 * SCREEN_WIDTH
 	ld de, wTileMap + 9 * SCREEN_WIDTH
-	call .copy4        ; row 9
+	call .copy4		; row 9
 	ld hl, wTileMapBackup2 + 10 * SCREEN_WIDTH
 	ld de, wTileMap + 10 * SCREEN_WIDTH
-	call .copy4        ; row 10
+	call .copy4		; row 10
 	ld hl, wTileMapBackup2 + 11 * SCREEN_WIDTH
 	ld de, wTileMap + 11 * SCREEN_WIDTH
-	call .copy4        ; row 11
+	call .copy4		; row 11
 	ld hl, wItemIconSavedTiles
 	ld de, wTileMap + 12 * SCREEN_WIDTH
-	call .copy4        ; row 12
-	ld a, "│"          ; restore the list menu box's left border at column 4
+	call .copy4		; row 12
+	ld a, "│"		  ; restore the list menu box's left border at column 4
 	ld [wTileMap + 8 * SCREEN_WIDTH + 4], a
 	ld [wTileMap + 9 * SCREEN_WIDTH + 4], a
 	ld [wTileMap + 10 * SCREEN_WIDTH + 4], a
@@ -724,6 +731,7 @@ HideItemIcon:
 	ret
 
 ; Called from PlaceMenuCursor whenever the menu cursor is redrawn
+; (list menu cursors only: see the cursor variable checks below)
 DrawItemIcon:
 	; icons must be active
 	ld a, [wItemIconState]
@@ -732,6 +740,30 @@ DrawItemIcon:
 	; never draw in battle: tile IDs $C0-$C8 are used by the EXP bar there
 	ld a, [wIsInBattle]
 	and a
+	ret nz
+	; only act when the cursor belongs to an item list menu shown by
+	; DisplayListMenuID: it always sets the cursor variables to
+	; wTopMenuItemY = 4 and wTopMenuItemX = 5 before showing the list.
+	; Submenus opened from the list (the Utiliser/Info/Jeter popup,
+	; party menus, Yes/No boxes) reuse the same PlaceMenuCursor and
+	; HandleMenuInput machinery with their own cursor coordinates and
+	; their own menu indices, and DisplayTextIDInit zeroes wListMenuID
+	; for the text they print: without these checks, a popup index would
+	; be mistaken for an item index, the icon would change while browsing
+	; the popup, and the corrupted state would keep DrawItemIcon from
+	; repairing the frame when the list resumes (the popup flow restores
+	; the pre-list screen, which erases the frame).
+	ld a, [wListMenuID]
+	cp ITEMLISTMENU
+	jr z, .listCursor
+	cp PRICEDITEMLISTMENU
+	ret nz
+.listCursor
+	ld a, [wTopMenuItemY]
+	cp 4
+	ret nz
+	ld a, [wTopMenuItemX]
+	cp 5
 	ret nz
 	; c = index of the highlighted entry within the inventory list
 	ld a, [wCurrentMenuItem]
