@@ -1544,7 +1544,7 @@ DisplayListMenuIDLoop::
 .buttonAPressed
 	ld a, [wCurrentMenuItem]
 	call PlaceUnfilledArrowMenuCursor
-	callba EraseItemIcon ; hide the item icon while a submenu is open
+	callba HideItemIcon ; keep the icon visible during the submenu, repair it afterwards
 
 ; pointless because both values are overwritten before they are read
 	;ld a, $01

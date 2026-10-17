@@ -513,9 +513,14 @@ RepelUseAnotherText::
 ; A 24x24 px (3x3 tiles) icon of the item under the cursor is drawn in a small
 ; UI frame at the bottom-left of the list menu box, at screen coordinates
 ; (1,9) to (3,11). The frame spans rows 8-12 on columns 0-4 and stays
-; visible (empty) while the menu is open; it is only erased on menu exit
-; or while a submenu is open.
+; visible while the menu is open; its interior is filled with blank tiles
+; when the cursor is on Cancel or on an item without an icon.
+; The frame and icon also stay visible while a submenu is open
+; (Util/Info/Jeter/mart): dialogs may blank them, and state $FD tells
+; DrawItemIcon to repair the drawing when the menu resumes.
+; Everything is erased on menu exit only (ExitListMenu).
 ; wItemIconState: 0 = off, $FE = on/nothing drawn, $FF = on/empty frame,
+; $FD = on/drawn but needs repair after a submenu,
 ; $01-$FA = on/icon of that item drawn.
 ; The icon tiles are loaded to vChars1 + $400 (tile IDs $C0-$C8, right below KeysLogoGraphics).
 ; The graphics and the ItemIconPointers lookup table live in the icon ROM bank
@@ -543,7 +548,7 @@ InitItemIconState:
 	ld [wItemIconState], a
 	ret
 
-; Called from ExitListMenu and when the A button is pressed on a list entry
+; Called from ExitListMenu (the list menu is closing)
 EraseItemIcon:
 	ld a, [wItemIconState]
 	and a
@@ -598,12 +603,11 @@ EraseItemIconBG:
 	ld [de], a
 	ret
 
-; Draws the UI frame around the icon area (rows 8-12, columns 0-4)
-; and saves the background tiles under its bottom row to WRAM
-; the frame's right column sits on the list menu box's left border column
-; and is restored from constants by EraseItemIconBG
-DrawItemFrame:
-    ; save the 4 bottom-row background tiles
+; Saves the 4 background tiles under the frame's bottom row to WRAM
+; Must be called BEFORE the frame is drawn, and only when nothing is drawn
+; yet: these tiles are the pre-menu background used to erase the frame on
+; menu exit, so they must never capture dialog blanks or the frame itself
+SaveItemFrameTiles:
     coord hl, 0, 12
     ld de, wItemIconSavedTiles
     ld a, [hli]
@@ -617,6 +621,12 @@ DrawItemFrame:
     inc de
     ld a, [hl]
     ld [de], a
+    ret
+
+; Draws the UI frame around the icon area (rows 8-12, columns 0-4)
+; the frame's right column sits on the list menu box's left border column
+; and is restored from constants by EraseItemIconBG
+DrawItemFrame:
     ; top edge
     coord hl, 0, 8
     ld a, "┌"
@@ -654,27 +664,34 @@ DrawItemFrame:
     ld [hl], a
     ret
 
-; Restores the 9 background tiles inside the frame (the frame itself is kept)
+; Fills the 9 cells inside the frame with blank tiles (the frame itself is kept)
 ClearItemIconCells:
-    ld hl, wTileMapBackup2 + 9 * SCREEN_WIDTH + 1
-    ld de, wTileMap + 9 * SCREEN_WIDTH + 1
-    call .copy3        ; row 9, columns 1-3
-    ld hl, wTileMapBackup2 + 10 * SCREEN_WIDTH + 1
-    ld de, wTileMap + 10 * SCREEN_WIDTH + 1
-    call .copy3        ; row 10
-    ld hl, wTileMapBackup2 + 11 * SCREEN_WIDTH + 1
-    ld de, wTileMap + 11 * SCREEN_WIDTH + 1
-    call .copy3        ; row 11
+    ld a, " "
+    coord hl, 1, 9
+    ld [hli], a
+    ld [hli], a
+    ld [hl], a
+    coord hl, 1, 10
+    ld [hli], a
+    ld [hli], a
+    ld [hl], a
+    coord hl, 1, 11
+    ld [hli], a
+    ld [hli], a
+    ld [hl], a
     ret
-.copy3
-    ld a, [hli]
-    ld [de], a
-    inc de
-    ld a, [hli]
-    ld [de], a
-    inc de
-    ld a, [hli]
-    ld [de], a
+
+; Called from DisplayListMenuID when the A button is pressed on a list entry
+; The frame and icon stay on screen while the banked code runs a submenu
+; (Util/Info/Jeter/mart); $FD tells DrawItemIcon to repair them on return
+HideItemIcon:
+    ld a, [wItemIconState]
+    and a
+    ret z ; icons not active
+    cp $FE
+    ret z ; nothing is drawn: nothing to repair
+    ld a, $FD ; something is drawn: mark it for repair
+    ld [wItemIconState], a
     ret
 
 ; Called from PlaceMenuCursor whenever the menu cursor is redrawn
@@ -738,17 +755,28 @@ DrawItemIcon:
     ; all TMs and HMs share a single sprite
     ld de, TMHMIcon
 .gotIcon
-    ; nothing to do if this icon is already on screen (avoids lag on cursor blink)
+    ; nothing to do if this icon is already on screen and intact
+    ; (avoids lag on cursor blink)
     ld a, [wItemIconState]
     cp b
     ret z
-    ; start the frame if nothing is drawn yet
+    ; first drawing of the session: save the background under the frame,
+    ; then draw the frame (SaveItemFrameTiles clobbers de)
     cp $FE
-    jr nz, .frameReady
-    push de ; keep the icon source address (DrawItemFrame clobbers de)
+    jr nz, .iconNeedsRepair
+    push de
+    call SaveItemFrameTiles
     call DrawItemFrame
     pop de
-.frameReady
+    jr .iconDraw
+.iconNeedsRepair
+    ; back from a submenu ($FD): dialogs may have blanked the frame,
+    ; redraw it before the icon ($FD never collides with an item ID, so the
+    ; repair happens even if the item under the cursor did not change)
+    cp $FD
+    jr nz, .iconDraw
+    call DrawItemFrame ; preserves de
+.iconDraw
     ; remember the drawn item before the copy clobbers registers
     ld a, b
     ld [wItemIconState], a
@@ -783,19 +811,25 @@ DrawItemIcon:
     ret
 .emptyFrame
     ; cursor on Cancel or item without an icon:
-    ; keep an empty frame visible while the menu stays open
+    ; keep an empty frame with a blank interior visible while the menu stays open
     ld a, [wItemIconState]
     cp $FF
-    ret z ; empty frame already shown
+    ret z ; empty frame already shown and intact
     cp $FE
     jr z, .firstFrame
-    ; an icon is currently shown: restore the background inside the frame
+    cp $FD
+    jr z, .redrawFrame
+    ; an icon is currently shown: blank the cells inside the frame
     call ClearItemIconCells
     ld a, $FF
     ld [wItemIconState], a
     ret
 .firstFrame
+    call SaveItemFrameTiles
+.redrawFrame
+    ; first frame, or back from a submenu: draw the frame with a blank interior
     call DrawItemFrame
+    call ClearItemIconCells
     ld a, $FF
     ld [wItemIconState], a
     ret
