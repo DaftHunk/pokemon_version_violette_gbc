@@ -535,12 +535,38 @@ InitItemIconState:
 	cp PRICEDITEMLISTMENU
 	jr nz, .notItemList
 .itemList
-	; item list or mart stock: start an icon session if none is active yet
-	ld a, [wItemIconState]
+	; never start a session in battle: tile IDs $C0-$C8 are the EXP bar
+	; there, and an active session would leak the borrowed palette slot
+	; into the battle palettes through the .ReadMasterPals override
+	ld a, [wIsInBattle]
 	and a
 	ret nz
+	; item list or mart stock: start an icon session if none is active yet,
+	; or refresh the borrowed palette after a submenu / a leaked session
+	ld a, [wItemIconState]
+	and a
+	jr z, .startSession
+	cp $FD ; drawn-but-needs-repair: back from a submenu or a leaked session
+	jr z, .refreshIconPal
+	ret
+.startSession
 	ld a, $FE ; active, nothing drawn yet
 	ld [wItemIconState], a
+.refreshIconPal
+	; UpdateGBCPal_BGP only refills the GBC palettes when rBGP changed
+	; since the last refill (it compares rBGP with wLastBGP). Opening a
+	; list menu usually leaves rBGP unchanged, so the borrowed slot 7
+	; would keep the overworld blue until the first BGP change - which is
+	; why the icon colors only showed up after the Utiliser/Info/Jeter
+	; submenus changed the palette. Force one enhanced refill now: the
+	; .ReadMasterPals override then fills slot 7 immediately.
+	ld a, [hGBC]
+	and a
+	ret z
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_ENHANCED_GBC, a
+	ret z
+	callba UpdateEnhancedGBCPal_BGP
 	ret
 .notItemList
 	; any other list menu type deactivates the icons
@@ -549,6 +575,9 @@ InitItemIconState:
 	ret
 
 ; Called from ExitListMenu (the list menu is closing)
+; No palette restore is needed here: clearing wItemIconState makes the
+; next LoadGBPal refill the borrowed slot with the overworld colors
+; (see the .ReadMasterPals override in func_enhancedcolor.asm)
 EraseItemIcon:
 	ld a, [wItemIconState]
 	and a
@@ -556,7 +585,6 @@ EraseItemIcon:
 	cp $FE
 	jr z, .nothingDrawn ; nothing was drawn at all
 	call EraseItemIconBG
-	call RestoreItemIconPal ; put the borrowed palette slot back on menu exit
 .nothingDrawn
 	xor a
 	ld [wItemIconState], a
@@ -756,14 +784,13 @@ DrawItemIcon:
 	; all TMs and HMs share a single sprite
 	ld de, TMHMIcon
 .gotIcon
-	; skip only the graphics copy if this icon is already on screen and
-	; intact (avoids lag on cursor blink), but still redo the GBC colors:
-	; DisplayListMenuIDLoop calls LoadGBPal after redrawing the entries,
-	; and LoadGBPal refills every BGP slot with the overworld palettes
-	; (UpdateEnhancedGBCPal_BGP), wiping the borrowed palette slot
+	; skip the copy if this icon is already on screen and intact
+	; (avoids lag on cursor blink); the borrowed palette slot survives
+	; every LoadGBPal refill via the .ReadMasterPals override, so there
+	; is nothing left to repair while the icon stays on screen
 	ld a, [wItemIconState]
 	cp b
-	jp z, SetItemIconColor
+	ret z
 	; first drawing of the session: save the background under the frame,
 	; then draw the frame (SaveItemFrameTiles clobbers de)
 	cp $FE
@@ -840,9 +867,11 @@ DrawItemIcon:
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; GBC color for the item icon (enhanced GBC mode only)
-; BGP slot ITEM_ICON_PAL is filled with the PAL_MEWMON colors and the 9
-; icon cells point at it, so the sprite gets its own colors instead of
-; inheriting the map palette. The slot is put back on menu exit.
+; BGP slot ITEM_ICON_PAL is borrowed for the icon: the palette data is
+; redirected at the source (.ReadMasterPals in func_enhancedcolor.asm)
+; whenever an icon session is active, so every LoadGBPal refill serves
+; the PAL_MEWMON colors and the slot is put back automatically when the
+; session ends. This routine only points the 9 icon cells at the slot.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ITEM_ICON_PAL EQU PAL_ENH_OVW_BLUE ; borrowed blue overworld palette slot
@@ -856,12 +885,6 @@ SetItemIconColor:
 	ld a, [wGraphicOptions]
 	bit BIT_GRAPHIC_ENHANCED_GBC, a
 	ret z
-	; fill the borrowed slot with the PAL_MEWMON colors
-	ld de, GBCBasePalettes + PAL_MEWMON * 8
-	xor a ; CONVERT_BGP: pick the shades from the current rBGP value
-	callba DMGPalToGBCPal ; wGBCPal = gamma-corrected PAL_MEWMON
-	ld a, ITEM_ICON_PAL
-	callba TransferCurBGPData ; write wGBCPal to BGP slot ITEM_ICON_PAL
 	; point the 9 icon cells at the borrowed palette
 	; While a text window is open (always the case for list menus), the
 	; screen shows the vBGMap1 tile map (the GBC window); the overworld
@@ -902,29 +925,4 @@ SetItemIconColor:
 	xor a
 	ld [rVBK], a
 	ei
-	ret
-
-; Called from EraseItemIcon on menu exit:
-; refills the borrowed slot with the original colors kept in the palette
-; mirror (the icon writes bypass the mirror)
-RestoreItemIconPal:
-	ld a, [hGBC]
-	and a
-	ret z
-	ld a, [wGraphicOptions]
-	bit BIT_GRAPHIC_ENHANCED_GBC, a
-	ret z
-	ld hl, wGBCFullPalBuffer + ITEM_ICON_PAL * 8
-	ld de, wGBCPal
-	ld bc, 8
-.copyLoop
-	ld a, [hli]
-	ld [de], a
-	inc de
-	dec bc
-	ld a, b
-	or c
-	jr nz, .copyLoop
-	ld a, ITEM_ICON_PAL
-	callba TransferCurBGPData
 	ret
