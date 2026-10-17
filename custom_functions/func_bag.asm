@@ -756,11 +756,14 @@ DrawItemIcon:
 	; all TMs and HMs share a single sprite
 	ld de, TMHMIcon
 .gotIcon
-	; nothing to do if this icon is already on screen and intact
-	; (avoids lag on cursor blink)
+	; skip only the graphics copy if this icon is already on screen and
+	; intact (avoids lag on cursor blink), but still redo the GBC colors:
+	; DisplayListMenuIDLoop calls LoadGBPal after redrawing the entries,
+	; and LoadGBPal refills every BGP slot with the overworld palettes
+	; (UpdateEnhancedGBCPal_BGP), wiping the borrowed palette slot
 	ld a, [wItemIconState]
 	cp b
-	ret z
+	jp z, SetItemIconColor
 	; first drawing of the session: save the background under the frame,
 	; then draw the frame (SaveItemFrameTiles clobbers de)
 	cp $FE
@@ -860,10 +863,19 @@ SetItemIconColor:
 	ld a, ITEM_ICON_PAL
 	callba TransferCurBGPData ; write wGBCPal to BGP slot ITEM_ICON_PAL
 	; point the 9 icon cells at the borrowed palette
+	; While a text window is open (always the case for list menus), the
+	; screen shows the vBGMap1 tile map (the GBC window); the overworld
+	; behind uses vBGMap0. OpenText fills the window map attributes with
+	; GRAY for every tile ID >= END_OF_OVERWORLD_TILES, icon tiles
+	; included, so the attributes must be written to BOTH BG maps or
+	; the icon stays gray.
 	di ; a VBlank while rVBK is set would corrupt the attribute map
 	ld a, 1
 	ld [rVBK], a ; VRAM bank 1 = BG map attributes
 	ld hl, vBGMap0 + 9 * BG_MAP_WIDTH + 1
+	ld b, 2 ; update vBGMap0 and vBGMap1
+.mapLoop
+	push hl ; base of the 9 cells in the current BG map
 	ld e, ITEM_ICON_PAL
 	ld c, 3 ; three rows
 .rowLoop
@@ -882,6 +894,11 @@ SetItemIconColor:
 	pop bc
 	dec c
 	jr nz, .rowLoop
+	pop hl
+	ld de, vBGMap1 - vBGMap0 ; same 9 cells in the other BG map
+	add hl, de
+	dec b
+	jr nz, .mapLoop
 	xor a
 	ld [rVBK], a
 	ei
