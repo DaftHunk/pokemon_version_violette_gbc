@@ -1313,8 +1313,10 @@ TransferGBCEnhancedOverworldPalettes:
 ; joenote - This is a function specifically for translating the default enhanced GBC pals into the GBC color buffer
 ; DE is passed-in containing the address of a pal pattern...like FadePal4 or something
 ; 8-byte GBC palette borrowed by the item icon menus (PAL_MEWMON tones)
-; selected by .ReadMasterPals instead of the usual overworld entry 7
-; whenever an item icon session is active (wItemIconState != 0)
+; selected by .ReadMasterPals instead of the usual overworld entry 1
+; (PAL_ENH_OVW_PINK: rare in the tilesets, so the borrowed tint is
+; less noticeable) whenever an item icon session is active
+; (wItemIconState != 0)
 ItemIconPalGBC:
 	RGB 31, 31, 31 ; white
 	RGB 30, 17, 11 ; dark tan
@@ -1399,11 +1401,11 @@ BufferAllEnhancedColorsGBC:
 	ld e, a
 
 ; item icon override: while an icon session is active (wItemIconState
-; nonzero), BGP slot 7 (PAL_ENH_OVW_BLUE) must carry the icon colors.
+; nonzero), BGP slot 1 (PAL_ENH_OVW_PINK) must carry the icon colors.
 ; Redirecting the source entry here makes every LoadGBPal refill (once
 ; per list menu loop iteration, once per overworld frame) keep the
 ; borrowed colors, instead of the refill overwriting them afterwards.
-	cp PAL_ENH_OVW_BLUE * 8
+	cp PAL_ENH_OVW_PINK * 8
 	jr nz, .notItemIconPal
 	ld hl, wItemIconState
 	ld a, [hl]

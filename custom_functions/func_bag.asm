@@ -572,17 +572,17 @@ InitItemIconState:
 .refreshIconPal
 	; UpdateGBCPal_BGP only refills the GBC palettes when rBGP changed
 	; since the last refill (it compares rBGP with wLastBGP). Opening a
-	; list menu usually leaves rBGP unchanged, so the borrowed slot 7
-	; would keep the overworld blue until the first BGP change - which is
+	; list menu usually leaves rBGP unchanged, so the borrowed slot
+	; would keep the overworld pink until the first BGP change - which is
 	; why the icon colors only showed up after the Utiliser/Info/Jeter
 	; submenus changed the palette. Force one enhanced refill now: the
-	; .ReadMasterPals override then fills slot 7 immediately.
+	; .ReadMasterPals override then fills the borrowed slot immediately.
 	call ForceEnhancedBGPPalRefill
 	ret
 .notItemList
 	; any other list menu type deactivates the icons; force the refill
 	; there too: a session can also end this way without ExitListMenu
-	; ever running, and nothing else would put the overworld blue back
+	; ever running, and nothing else would put the overworld pink back
 	; into the borrowed slot (rBGP did not change)
 	ld a, [wItemIconState]
 	and a
@@ -604,10 +604,10 @@ InitItemIconState:
 ; Called from ExitListMenu (the list menu is closing)
 ; The palette must be restored here, not just the state: closing the menu
 ; does not change rBGP, and UpdateGBCPal_BGP short-circuits when rBGP did
-; not change, so no refill would ever put the overworld blue back into the
-; borrowed slot - the water would stay recolored until the next palette
-; change. Clearing wItemIconState first disables the .ReadMasterPals
-; override, then the forced refill serves the overworld blue.
+; not change, so no refill would ever put the overworld pink back into the
+; borrowed slot - the pink tiles would stay recolored until the next
+; palette change. Clearing wItemIconState first disables the
+; .ReadMasterPals override, then the forced refill serves the pink.
 EraseItemIcon:
 	ld a, [wItemIconState]
 	and a
@@ -940,7 +940,7 @@ DrawItemIcon:
 ; session ends. This routine only points the 9 icon cells at the slot.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-ITEM_ICON_PAL EQU PAL_ENH_OVW_BLUE ; borrowed blue overworld palette slot
+ITEM_ICON_PAL EQU PAL_ENH_OVW_PINK ; borrowed pink overworld palette slot (rarely used, so the tint is less noticeable)
 
 ; Called at the end of every actual icon draw
 SetItemIconColor:
