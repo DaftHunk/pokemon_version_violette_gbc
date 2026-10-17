@@ -944,6 +944,12 @@ ITEM_ICON_PAL EQU PAL_ENH_OVW_BLUE ; borrowed blue overworld palette slot
 
 ; Called at the end of every actual icon draw
 SetItemIconColor:
+	ld a, 9 ; the bag icon's top row
+	; fall through
+; Same as SetItemIconColor for an icon area at another vertical position.
+; a = top row of the 3x3 icon area (always column 1).
+SetItemIconColorAt:
+	ld b, a ; b = top row of the icon area
 	; only on GBC with the enhanced color option enabled
 	ld a, [hGBC]
 	and a
@@ -961,7 +967,20 @@ SetItemIconColor:
 	di ; a VBlank while rVBK is set would corrupt the attribute map
 	ld a, 1
 	ld [rVBK], a ; VRAM bank 1 = BG map attributes
-	ld hl, vBGMap0 + 9 * BG_MAP_WIDTH + 1
+	; hl = vBGMap0 + b * BG_MAP_WIDTH + 1
+	; (16-bit multiply: five add a on the row would only produce the LOW
+	; byte and lose the carry for rows >= 8, wrapping the target all the
+	; way back to the top of the screen)
+	ld l, b
+	ld h, 0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl ; hl = top row * 32
+	ld de, vBGMap0
+	add hl, de
+	inc hl
 	ld b, 2 ; update vBGMap0 and vBGMap1
 .mapLoop
 	push hl ; base of the 9 cells in the current BG map
@@ -991,4 +1010,157 @@ SetItemIconColor:
 	xor a
 	ld [rVBK], a
 	ei
+	ret
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; The framed item icon shown when an item is received (GiveItem hook).
+; The frame floats over the map view right above the dialog box, at the
+; same size as the bag icon frame. The icon disappears when the dialog
+; closes: EraseItemIcon (hooked in CloseTextDisplay) resets the state,
+; restores the sprite flag and refills the borrowed palette slot, and
+; LoadCurrentMapView reloads the covered tiles.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+RECEIVE_ICON_TOP_ROW EQU 7 ; frame's top row
+; The coord macro expands to wTileMap + SCREEN_WIDTH * <Y> + <X> with NO
+; parentheses around the Y argument: an expression like RECEIVE_ICON_TOP_ROW + 1
+; would shift the target sideways on the same row instead of moving it down
+; one row. The rows below are precomputed single symbols so that coord's
+; multiplication stays correct.
+RECEIVE_ICON_ROW1 EQU RECEIVE_ICON_TOP_ROW + 1 ; icon cells' top row
+RECEIVE_ICON_ROW2 EQU RECEIVE_ICON_TOP_ROW + 2
+RECEIVE_ICON_ROW3 EQU RECEIVE_ICON_TOP_ROW + 3
+RECEIVE_ICON_BOTTOM_ROW EQU RECEIVE_ICON_TOP_ROW + 4 ; frame's bottom row
+
+; Called from GiveItem (home bank) right after an item was successfully
+; added to the bag. The dialog box is already on screen at that point in
+; every give-item flow (NPC scripts, item balls, hidden items, Oak's aide).
+DrawReceivedItemIcon:
+	; only one icon session at a time (a bag/mart/PC list or a previous
+	; receive in the same dialog)
+	ld a, [wItemIconState]
+	and a
+	ret nz
+	; never draw in battle: tile IDs $C0-$C8 are the EXP bar there
+	ld a, [wIsInBattle]
+	and a
+	ret nz
+	; if the screen at the frame position is not the map view, a menu is
+	; covering the area (vending machine menu, game corner prize menu...)
+	; and the frame must not be drawn over it. Every map view tile is
+	; below $79 (END_OF_OVERWORLD_TILES, see MakeOverworldBGMapAttributes);
+	; text, border and blank tiles are all $79 or above.
+	ld a, [wTileMap + RECEIVE_ICON_TOP_ROW * SCREEN_WIDTH]
+	cp $79
+	ret nc
+	; b = received item ID, de = its icon (0 if the item has none)
+	ld a, [wcf91]
+	ld b, a
+	cp HM01_CUT
+	jr nc, .tmhm
+	; regular item: read ItemIconPointers[(ID - 1)] in the icon bank
+	dec a
+	add a
+	ld e, a
+	ld d, 0
+	push bc ; save the item ID (callba clobbers b and hl)
+	callba GetItemIconPointer ; de = icon source address
+	pop bc
+	; no icon for this item: no session, nothing touched
+	ld a, e
+	or d
+	ret z
+	jr .gotIcon
+.tmhm
+	; all TMs and HMs share a single sprite
+	ld de, TMHMIcon
+.gotIcon
+	; hide the overworld sprites: the frame floats over the map and the
+	; sprites would draw over it (same mechanism and guards as the bag:
+	; see InitItemIconState). Restored by EraseItemIcon when the dialog
+	; closes (hooked in CloseTextDisplay).
+	ld a, [wMiscFlags]
+	bit BIT_NO_SPRITE_UPDATES, a
+	jr nz, .skipSpriteHide
+	xor a
+	ld [wUpdateSpritesEnabled], a
+.skipSpriteHide
+	; state = item ID: enables the .ReadMasterPals palette override
+	; for the rest of the dialog
+	ld a, b
+	ld [wItemIconState], a
+	; draw the frame above the dialog box
+	push de
+	call DrawReceiveItemFrame
+	pop de
+	; load the 9 icon tiles (144 bytes) to vChars1 + $400
+	ld hl, vChars1 + $400
+	lb bc, BANK(ItemIconPointers), 9
+	call CopyVideoData
+	; write the tile IDs to the tile map at coordinates (1,8) to (3,10)
+	coord hl, 1, RECEIVE_ICON_ROW1
+	ld a, $C0
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hl], a
+	inc a
+	coord hl, 1, RECEIVE_ICON_ROW2
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hl], a
+	inc a
+	coord hl, 1, RECEIVE_ICON_ROW3
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hl], a
+	; GBC color: point the icon cells at the borrowed palette slot, then
+	; force one refill so the override serves the icon colors immediately
+	; (UpdateGBCPal_BGP short-circuits when rBGP did not change)
+	ld a, RECEIVE_ICON_TOP_ROW + 1
+	call SetItemIconColorAt
+	jp ForceEnhancedBGPPalRefill
+
+; Draws the frame around the received item icon (rows 7-11, columns 0-4)
+DrawReceiveItemFrame:
+	; top edge
+	coord hl, 0, RECEIVE_ICON_TOP_ROW
+	ld a, "┌"
+	ld [hli], a
+	ld a, "─"
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld a, "┐"
+	ld [hl], a
+	; left edge
+	ld a, "│"
+	coord hl, 0, RECEIVE_ICON_ROW1
+	ld [hl], a
+	coord hl, 0, RECEIVE_ICON_ROW2
+	ld [hl], a
+	coord hl, 0, RECEIVE_ICON_ROW3
+	ld [hl], a
+	; right edge
+	coord hl, 4, RECEIVE_ICON_ROW1
+	ld [hl], a
+	coord hl, 4, RECEIVE_ICON_ROW2
+	ld [hl], a
+	coord hl, 4, RECEIVE_ICON_ROW3
+	ld [hl], a
+	; bottom edge
+	coord hl, 0, RECEIVE_ICON_BOTTOM_ROW
+	ld a, "└"
+	ld [hli], a
+	ld a, "─"
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld a, "┘"
+	ld [hl], a
 	ret
