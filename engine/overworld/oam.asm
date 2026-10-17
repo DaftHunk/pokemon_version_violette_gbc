@@ -77,6 +77,26 @@ PrepareOAMData:
 
 	call GetSpriteScreenXY
 
+	; item icon frame: while a received-item frame is on screen, skip
+	; any NPC sprite that would draw over the frame area (it floats
+	; above the map view and sprites have no priority over it).
+	; The player sprite (offset 0) is never skipped.
+	ld a, [hSpriteOffset2]
+	and a
+	jr z, .noIconFrameOverlap
+	ld a, [wItemIconState]
+	and a
+	jr z, .noIconFrameOverlap
+	ld a, [hSpriteScreenY]
+	cp 41 ; sprite bottom above the frame's top edge?
+	jr c, .noIconFrameOverlap
+	cp 96 ; sprite top below the frame's bottom edge?
+	jr nc, .noIconFrameOverlap
+	ld a, [hSpriteScreenX]
+	cp 40 ; sprite left of the frame's right edge?
+	jr nc, .noIconFrameOverlap
+	jp .nextSprite
+.noIconFrameOverlap
 	ld a, [hOAMBufferOffset]
 	ld e, a
 	ld d, wOAMBuffer / $100

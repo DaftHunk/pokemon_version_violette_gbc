@@ -1013,12 +1013,10 @@ SetItemIconColorAt:
 	ret
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; The framed item icon shown when an item is received (GiveItem hook).
-; The frame floats over the map view right above the dialog box, at the
-; same size as the bag icon frame. The icon disappears when the dialog
-; closes: EraseItemIcon (hooked in CloseTextDisplay) resets the state,
-; restores the sprite flag and refills the borrowed palette slot, and
-; LoadCurrentMapView reloads the covered tiles.
+; The icon disappears when the dialog
+; closes: EraseItemIcon (hooked in CloseTextDisplay) resets the state
+; and refills the borrowed palette slot, and LoadCurrentMapView reloads
+; the covered tiles.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 RECEIVE_ICON_TOP_ROW EQU 7 ; frame's top row
@@ -1075,16 +1073,9 @@ DrawReceivedItemIcon:
 	; all TMs and HMs share a single sprite
 	ld de, TMHMIcon
 .gotIcon
-	; hide the overworld sprites: the frame floats over the map and the
-	; sprites would draw over it (same mechanism and guards as the bag:
-	; see InitItemIconState). Restored by EraseItemIcon when the dialog
-	; closes (hooked in CloseTextDisplay).
-	ld a, [wMiscFlags]
-	bit BIT_NO_SPRITE_UPDATES, a
-	jr nz, .skipSpriteHide
-	xor a
-	ld [wUpdateSpritesEnabled], a
-.skipSpriteHide
+	; no sprite hiding here: PrepareOAMData (engine/overworld/oam.asm)
+	; checks wItemIconState every frame and skips only the sprites that
+	; would draw over the frame, so the giving NPC stays visible
 	; state = item ID: enables the .ReadMasterPals palette override
 	; for the rest of the dialog
 	ld a, b
