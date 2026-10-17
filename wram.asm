@@ -3207,8 +3207,15 @@ wGraphicOptions:: ; d721	;joenote - use to set various wram flags
 	;bit 7 - enhanced GBC colors toggle
 ;;;;;;;;;;;;;;joenote - use these unused locations for debugging and parsing DV scores or holding temp values
 wTempIVFlags:: 
+wItemIconSavedTiles:: ; d722
+; 2 background tiles under the bottom row of the item icon
 	ds 4
-wUnusedD726:: 
+wUnusedD726::
+wItemIconState:: ; d726
+; item icon state for the inventory list menus
+; 0 = icons inactive
+; $FF = active with nothing drawn
+; $01-$FA = item ID of the drawn icon
 	ds 1
 
 wGameplayOptions::

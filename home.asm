@@ -1544,6 +1544,7 @@ DisplayListMenuIDLoop::
 .buttonAPressed
 	ld a, [wCurrentMenuItem]
 	call PlaceUnfilledArrowMenuCursor
+	callba EraseItemIcon ; hide the item icon while a submenu is open
 
 ; pointless because both values are overwritten before they are read
 	;ld a, $01
@@ -1832,6 +1833,11 @@ ExitListMenu::
 	call BankswitchBack
 	xor a
 	ld [wMenuItemToSwap], a ; 0 means no item is currently being swapped
+	push hl
+	push bc
+	callba EraseItemIcon ; restore the background and deactivate item icons on menu exit
+	pop bc
+	pop hl
 	scf
 	ret
 
@@ -1860,6 +1866,7 @@ PrintListMenuEntries::
 	call PlaceString
 
 .skipBagHint
+	callba InitItemIconState ; (de)activate item icons depending on the list menu type
 	hlcoord 5, 3
 	ld b, 9
 	ld c, 14
@@ -4301,6 +4308,11 @@ PlaceMenuCursor::
 	ld [wMenuCursorLocation + 1], a
 	ld a, [wCurrentMenuItem]
 	ld [wLastMenuItem], a
+	push hl
+	push bc
+	callba DrawItemIcon ; draw the icon of the item highlighted by the cursor
+	pop bc
+	pop hl
 	ret
 
 ; This is used to mark a menu cursor other than the one currently being

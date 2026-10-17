@@ -47,6 +47,8 @@ SwapBagData:
 	
 	ld a, SFX_START_MENU
 	call PlaySound
+
+	call DrawItemIcon ; refresh the icon: the bag contents changed
 	
 	pop hl
 	pop de
@@ -169,6 +171,7 @@ SendToBackupBag:
 	ld a, SFX_TINK
 	call PlaySound
 	call UpdateMenuInfo
+	call DrawItemIcon ; refresh the icon: the list contents changed
 .return
 	pop hl
 	pop de
@@ -504,3 +507,200 @@ UseAnotherRepel:
 RepelUseAnotherText::
 	TX_FAR _RepelUseAnotherText
 	db "@"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Item icons in the inventory list menus (bag, PC item box, mart sell)
+; A 24x24 px (3x3 tiles) icon of the item under the cursor is drawn in the
+; bottom-left corner of the list menu box, at screen coordinates (2,10) to (4,12).
+; The icon tiles are loaded to vChars1 + $400 (tile IDs $C0-$C8, right below KeysLogoGraphics).
+; The graphics and the ItemIconPointers lookup table live in ROM bank $2D.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Called from PrintListMenuEntries every time a list menu is (re)drawn
+InitItemIconState:
+	ld a, [wListMenuID]
+	cp ITEMLISTMENU
+	jr z, .itemList
+	cp PRICEDITEMLISTMENU
+	jr nz, .notItemList
+.itemList
+	; item list or mart stock: start an icon session if none is active yet
+	ld a, [wItemIconState]
+	and a
+	ret nz
+	ld a, $FF
+	ld [wItemIconState], a
+	ret
+.notItemList
+	; any other list menu type deactivates the icons
+	xor a
+	ld [wItemIconState], a
+	ret
+
+; Called from ExitListMenu and when the A button is pressed on a list entry
+EraseItemIcon:
+	ld a, [wItemIconState]
+	and a
+	ret z            ; icons not active
+	inc a
+	jr z, .nothingDrawn
+	call EraseItemIconBG
+.nothingDrawn
+	xor a
+	ld [wItemIconState], a
+	ret
+
+; Restores the 9 background tiles covered by the icon
+; the 4 upper tiles come from the pre-menu screen copy in buffer 2
+; the 2 bottom tiles were saved in WRAM when the icon was first drawn
+; the rightmost column overlaps the list menu box border and is rebuilt from constants
+EraseItemIconBG:
+	ld hl, wTileMapBackup2 + 10 * SCREEN_WIDTH + 2
+	ld de, wTileMap + 10 * SCREEN_WIDTH + 2
+	call .copy2        ; tiles (2,10) and (3,10)
+	ld hl, wTileMapBackup2 + 11 * SCREEN_WIDTH + 2
+	ld de, wTileMap + 11 * SCREEN_WIDTH + 2
+	call .copy2        ; tiles (2,11) and (3,11)
+	ld hl, wItemIconSavedTiles
+	ld de, wTileMap + 12 * SCREEN_WIDTH + 2
+	call .copy2        ; tiles (2,12) and (3,12)
+	ld a, "│"          ; restore the list menu box border at column 4
+	ld [wTileMap + 10 * SCREEN_WIDTH + 4], a
+	ld [wTileMap + 11 * SCREEN_WIDTH + 4], a
+	ld a, "└"
+	ld [wTileMap + 12 * SCREEN_WIDTH + 4], a
+	ret
+.copy2
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	ret
+
+; Called from PlaceMenuCursor whenever the menu cursor is redrawn
+DrawItemIcon:
+	; icons must be active
+	ld a, [wItemIconState]
+	and a
+	ret z
+	; never draw in battle: tile IDs $C0-$C8 are used by the EXP bar there
+	ld a, [wIsInBattle]
+	and a
+	ret nz
+	; c = index of the highlighted entry within the inventory list
+	ld a, [wCurrentMenuItem]
+	ld c, a
+	ld a, [wListScrollOffset]
+	add c
+	ld c, a
+	; same cancel check as DisplayListMenuID
+	ld a, [wListCount]
+	and a
+	jr z, .onCancel ; empty list: the cursor is on Cancel
+	dec a
+	cp c
+	jr nc, .onItem
+.onCancel
+	; cursor is on Cancel: hide the icon if one is drawn
+	ld a, [wItemIconState]
+	inc a
+	ret z
+	call EraseItemIconBG
+	ld a, $FF
+	ld [wItemIconState], a
+	ret
+.onItem
+	; b = item ID of the highlighted entry
+	; mart stock lists (PRICEDITEMLISTMENU) have 1-byte entries, other item lists 2
+	ld a, [wListMenuID]
+	cp PRICEDITEMLISTMENU
+	jr z, .gotListEntry
+	sla c
+.gotListEntry
+	ld a, [wListPointer]
+	ld l, a
+	ld a, [wListPointer + 1]
+	ld h, a
+	inc hl
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	ld b, a
+	; nothing to do if this icon is already on screen (avoids lag on cursor blink)
+	ld a, [wItemIconState]
+	cp b
+	ret z
+	; find the icon pointer in de
+	ld a, b
+	cp HM01_CUT
+	jr nc, .tmhm
+	; regular item: read ItemIconPointers[(ID - 1)] in the icon bank
+	dec a
+	add a
+	ld e, a
+	ld d, 0
+	push bc ; save the item ID (callba clobbers b and hl)
+	callba GetItemIconPointer ; de = icon source address
+	pop bc
+	; no icon for this item (badges, COIN, floors): treat like Cancel
+	ld a, e
+	or d
+	jr nz, .haveIcon
+	ld a, [wItemIconState]
+	inc a
+	ret z
+	call EraseItemIconBG
+	ld a, $FF
+	ld [wItemIconState], a
+	ret
+.tmhm
+	; all TMs and HMs share a single sprite
+	ld de, TMHMIcon
+.haveIcon
+	; first icon of the session: save the 2 tiles under the bottom row
+	ld a, [wItemIconState]
+	inc a
+	jr nz, .skipSave
+	push de
+	coord hl, 2, 12
+	ld de, wItemIconSavedTiles
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hl]
+	ld [de], a
+	pop de
+.skipSave
+	; remember the drawn item before the copy clobbers registers
+	ld a, b
+	ld [wItemIconState], a
+	; load the 9 icon tiles (144 bytes) to vChars1 + $400
+	; CopyVideoData lives in the home bank, so the bank switch and the
+	; copy run entirely from always-mapped code
+	ld hl, vChars1 + $400
+	lb bc, BANK(ItemIconPointers), 9
+	call CopyVideoData
+	; write the tile IDs to the tile map at coordinates (2,10) to (4,12)
+	coord hl, 1, 9
+	ld a, $C0
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hl], a
+	inc a
+	coord hl, 1, 10
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hl], a
+	inc a
+	coord hl, 1, 11
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hl], a
+	ret
