@@ -1310,8 +1310,17 @@ TransferGBCEnhancedOverworldPalettes:
 
 
 	
-;joenote - This is a function specifically for translating the default enhanced GBC pals into the GBC color buffer
-;DE is passed-in containing the address of a pal pattern...like FadePal4 or something
+; joenote - This is a function specifically for translating the default enhanced GBC pals into the GBC color buffer
+; DE is passed-in containing the address of a pal pattern...like FadePal4 or something
+; 8-byte GBC palette borrowed by the item icon menus (PAL_MEWMON tones)
+; selected by .ReadMasterPals instead of the usual overworld entry 7
+; whenever an item icon session is active (wItemIconState != 0)
+ItemIconPalGBC:
+	RGB 31, 31, 31 ; white
+	RGB 30, 17, 11 ; dark tan
+	RGB 11,  5, 14 ; purple
+	RGB  3,  3,  3 ; black
+
 BufferAllEnhancedColorsGBC:
 	call .BGP0to3Loop
 	call .BGP4to7Loop
@@ -1389,6 +1398,30 @@ BufferAllEnhancedColorsGBC:
 	add a
 	ld e, a
 
+; item icon override: while an icon session is active (wItemIconState
+; nonzero), BGP slot 7 (PAL_ENH_OVW_BLUE) must carry the icon colors.
+; Redirecting the source entry here makes every LoadGBPal refill (once
+; per list menu loop iteration, once per overworld frame) keep the
+; borrowed colors, instead of the refill overwriting them afterwards.
+	cp PAL_ENH_OVW_BLUE * 8
+	jr nz, .notItemIconPal
+	ld hl, wItemIconState
+	ld a, [hl]
+	and a
+	jr z, .notItemIconPal
+	; only override while a text window covers the screen: menus and
+	; their submenus all display over the GBC window (hWY=0). If a session
+	; state leaks past the menu exit (rope, evolution), the overworld
+	; refills must still put the normal blue back
+	ldh a, [rWY]
+	and a
+	jr nz, .notItemIconPal
+	ld a, [wGBCColorControl]
+	bit 5, a
+	jr nz, .notItemIconPal ; OBP fills share these table entries: leave sprite palettes alone
+	ld hl, ItemIconPalGBC
+	jr .gotBasePal
+.notItemIconPal
 	ld hl, GBCEnhancedOverworldPalettes
 	ld a, [wCurMap]
 	cp INDIGO_LORELEIS_ROOM
@@ -1414,6 +1447,7 @@ BufferAllEnhancedColorsGBC:
 	ld hl, GBCEnhancedOverworldPalettes_DarkCavern
 .notdark
 	add hl, de
+.gotBasePal
 	pop de ;get the pal pattern back
 	ld a, [de]
 	;now put the pattern in E and make D zero
