@@ -1,3 +1,4 @@
+; Credit item icons : Polished Crystal
 ; Item icons for the inventory list menus (bag, PC item box, mart sell)
 ; each sprite is 24x24 px = 9 tiles of 16 bytes = 144 bytes in 2bpp
 ; items with identical sprites share a single INCBIN to save ROM space
