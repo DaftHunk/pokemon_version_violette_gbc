@@ -67,11 +67,11 @@ ItemIconPointers::
     dw UltraBallIcon      ; $02 ULTRA_BALL
     dw GreatBallIcon      ; $03 GREAT_BALL
     dw PokeBallIcon       ; $04 POKE_BALL
-    dw TownMapIcon        ; $05 TOWN_MAP
+    dw 0                  ; $05 TOWN_MAP (no icon)
     dw BicycleIcon        ; $06 BICYCLE
     dw SurfboardIcon      ; $07 SURFBOARD
-    dw SafariBallIcon     ; $08 SAFARI_BALL
-    dw PokedexIcon        ; $09 POKEDEX
+    dw 0                  ; $08 SAFARI_BALL (no icon)
+    dw 0                  ; $09 POKEDEX (no icon)
     dw MoonStoneIcon      ; $0A MOON_STONE
     dw StatusHealIcon     ; $0B ANTIDOTE
     dw StatusHealIcon     ; $0C BURN_HEAL

@@ -348,6 +348,13 @@ StartMenu_Item:
 	jr nc, .choseItem
 .exitMenu
 	call LoadScreenTilesFromBuffer2 ; restore saved screen
+	; the item icon's GBC attributes still point the 3x3 cells it covered
+	; at the borrowed BGP slot after the tiles are restored, tinting the
+	; start menu screen until the text display closes. Now that wTileMap
+	; holds the restored screen, let the vanilla attribute recompute run:
+	; it rewrites every attribute from the tile map and transfers them to
+	; the BG map shown while the text box is open.
+	callba MakeAndTransferOverworldBGMapAttributes_OpenText
 	call UpdateSprites
 	jp RedisplayStartMenu
 .choseItem

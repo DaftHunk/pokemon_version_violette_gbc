@@ -540,9 +540,24 @@ InitItemIconState:
 	; hide the overworld sprites: the vanilla sprite update only keeps
 	; them behind the list box, but the icon frame sticks out to the
 	; left of it and the sprites would draw over the frame and the icon.
-	; The vanilla UpdateSprites calls on the menu exit paths rebuild the
-	; OAM buffer, so the sprites come back when the menu closes.
-	callba HideSprites
+	; PrepareOAMData (engine/overworld/oam.asm) rebuilds the whole OAM
+	; buffer from the sprite data at every DelayFrame while
+	; wUpdateSpritesEnabled is 1, so a one-shot HideSprites on the
+	; buffer gets overwritten within a frame. The engine's own way to
+	; hide sprites durably (the party menus use it too) is to set
+	; wUpdateSpritesEnabled to 0: the next PrepareOAMData then hides
+	; all sprites once and leaves the OAM buffer alone afterwards.
+	; The flag is set back to 1 when the session ends (EraseItemIcon
+	; and the CloseStartMenu hook), so the vanilla UpdateSprites calls
+	; on the menu exit paths rebuild the sprites.
+	; The PC item box context (BIT_NO_SPRITE_UPDATES) manages its own
+	; sprite state: leave the flag alone there.
+	ld a, [wMiscFlags]
+	bit BIT_NO_SPRITE_UPDATES, a
+	jr nz, .skipSpriteHide
+	xor a
+	ld [wUpdateSpritesEnabled], a
+.skipSpriteHide
 	; item list or mart stock: start an icon session if none is active yet,
 	; or refresh the borrowed palette after a submenu / a leaked session
 	ld a, [wItemIconState]
@@ -574,8 +589,17 @@ InitItemIconState:
 	ret z ; no session was active: nothing to do
 	xor a
 	ld [wItemIconState], a
+	; a session can also end here without ExitListMenu: restore the
+	; sprite flag too (see InitItemIconState), unless the PC item box
+	; context is managing its own sprite state
+	ld a, [wMiscFlags]
+	bit BIT_NO_SPRITE_UPDATES, a
+	jr nz, .skipSpriteRestore
+	ld a, 1
+	ld [wUpdateSpritesEnabled], a
+.skipSpriteRestore
 	call ForceEnhancedBGPPalRefill
-	ret 
+	ret
 
 ; Called from ExitListMenu (the list menu is closing)
 ; The palette must be restored here, not just the state: closing the menu
@@ -594,6 +618,16 @@ EraseItemIcon:
 .nothingDrawn
 	xor a
 	ld [wItemIconState], a
+	; bring the overworld sprites back: the vanilla UpdateSprites calls
+	; on the menu exit paths rebuild the OAM buffer, but only when
+	; wUpdateSpritesEnabled is 1 (see InitItemIconState). The PC item
+	; box context manages its own sprite state: leave it alone there.
+	ld a, [wMiscFlags]
+	bit BIT_NO_SPRITE_UPDATES, a
+	jr nz, .skipSpriteRestore
+	ld a, 1
+	ld [wUpdateSpritesEnabled], a
+.skipSpriteRestore
 	call ForceEnhancedBGPPalRefill
 	ret
 
