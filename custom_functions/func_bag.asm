@@ -556,6 +556,7 @@ EraseItemIcon:
 	cp $FE
 	jr z, .nothingDrawn ; nothing was drawn at all
 	call EraseItemIconBG
+	call RestoreItemIconPal ; put the borrowed palette slot back on menu exit
 .nothingDrawn
 	xor a
 	ld [wItemIconState], a
@@ -608,228 +609,305 @@ EraseItemIconBG:
 ; yet: these tiles are the pre-menu background used to erase the frame on
 ; menu exit, so they must never capture dialog blanks or the frame itself
 SaveItemFrameTiles:
-    coord hl, 0, 12
-    ld de, wItemIconSavedTiles
-    ld a, [hli]
-    ld [de], a
-    inc de
-    ld a, [hli]
-    ld [de], a
-    inc de
-    ld a, [hli]
-    ld [de], a
-    inc de
-    ld a, [hl]
-    ld [de], a
-    ret
+	coord hl, 0, 12
+	ld de, wItemIconSavedTiles
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hl]
+	ld [de], a
+	ret
 
 ; Draws the UI frame around the icon area (rows 8-12, columns 0-4)
 ; the frame's right column sits on the list menu box's left border column
 ; and is restored from constants by EraseItemIconBG
 DrawItemFrame:
-    ; top edge
-    coord hl, 0, 8
-    ld a, "┌"
-    ld [hli], a
-    ld a, "─"
-    ld [hli], a
-    ld [hli], a
-    ld [hli], a
-    ld a, "┐"
-    ld [hl], a
-    ; left edge
-    coord hl, 0, 9
-    ld a, "│"
-    ld [hl], a
-    coord hl, 0, 10
-    ld [hl], a
-    coord hl, 0, 11
-    ld [hl], a
-    ; right edge, over the list menu box's left border
-    coord hl, 4, 9
-    ld [hl], a
-    coord hl, 4, 10
-    ld [hl], a
-    coord hl, 4, 11
-    ld [hl], a
-    ; bottom edge
-    coord hl, 0, 12
-    ld a, "└"
-    ld [hli], a
-    ld a, "─"
-    ld [hli], a
-    ld [hli], a
-    ld [hli], a
-    ld a, "┘"
-    ld [hl], a
-    ret
+	; top edge
+	coord hl, 0, 8
+	ld a, "┌"
+	ld [hli], a
+	ld a, "─"
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld a, "┐"
+	ld [hl], a
+	; left edge
+	coord hl, 0, 9
+	ld a, "│"
+	ld [hl], a
+	coord hl, 0, 10
+	ld [hl], a
+	coord hl, 0, 11
+	ld [hl], a
+	; right edge, over the list menu box's left border
+	coord hl, 4, 9
+	ld [hl], a
+	coord hl, 4, 10
+	ld [hl], a
+	coord hl, 4, 11
+	ld [hl], a
+	; bottom edge
+	coord hl, 0, 12
+	ld a, "└"
+	ld [hli], a
+	ld a, "─"
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld a, "┘"
+	ld [hl], a
+	ret
 
 ; Fills the 9 cells inside the frame with blank tiles (the frame itself is kept)
 ClearItemIconCells:
-    ld a, " "
-    coord hl, 1, 9
-    ld [hli], a
-    ld [hli], a
-    ld [hl], a
-    coord hl, 1, 10
-    ld [hli], a
-    ld [hli], a
-    ld [hl], a
-    coord hl, 1, 11
-    ld [hli], a
-    ld [hli], a
-    ld [hl], a
-    ret
+	ld a, " "
+	coord hl, 1, 9
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	coord hl, 1, 10
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	coord hl, 1, 11
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ret
 
 ; Called from DisplayListMenuID when the A button is pressed on a list entry
 ; The frame and icon stay on screen while the banked code runs a submenu
 ; (Util/Info/Jeter/mart); $FD tells DrawItemIcon to repair them on return
 HideItemIcon:
-    ld a, [wItemIconState]
-    and a
-    ret z ; icons not active
-    cp $FE
-    ret z ; nothing is drawn: nothing to repair
-    ld a, $FD ; something is drawn: mark it for repair
-    ld [wItemIconState], a
-    ret
+	ld a, [wItemIconState]
+	and a
+	ret z ; icons not active
+	cp $FE
+	ret z ; nothing is drawn: nothing to repair
+	ld a, $FD ; something is drawn: mark it for repair
+	ld [wItemIconState], a
+	ret
 
 ; Called from PlaceMenuCursor whenever the menu cursor is redrawn
 DrawItemIcon:
-    ; icons must be active
-    ld a, [wItemIconState]
-    and a
-    ret z
-    ; never draw in battle: tile IDs $C0-$C8 are used by the EXP bar there
-    ld a, [wIsInBattle]
-    and a
-    ret nz
-    ; c = index of the highlighted entry within the inventory list
-    ld a, [wCurrentMenuItem]
-    ld c, a
-    ld a, [wListScrollOffset]
-    add c
-    ld c, a
-    ; same cancel check as DisplayListMenuID
-    ld a, [wListCount]
-    and a
-    jr z, .emptyFrame ; empty list: the cursor is on Cancel
-    dec a
-    cp c
-    jr c, .emptyFrame ; cursor on Cancel: show an empty frame
+	; icons must be active
+	ld a, [wItemIconState]
+	and a
+	ret z
+	; never draw in battle: tile IDs $C0-$C8 are used by the EXP bar there
+	ld a, [wIsInBattle]
+	and a
+	ret nz
+	; c = index of the highlighted entry within the inventory list
+	ld a, [wCurrentMenuItem]
+	ld c, a
+	ld a, [wListScrollOffset]
+	add c
+	ld c, a
+	; same cancel check as DisplayListMenuID
+	ld a, [wListCount]
+	and a
+	jr z, .emptyFrame ; empty list: the cursor is on Cancel
+	dec a
+	cp c
+	jr c, .emptyFrame ; cursor on Cancel: show an empty frame
 .onItem
-    ; b = item ID of the highlighted entry
-    ; mart stock lists (PRICEDITEMLISTMENU) have 1-byte entries, other item lists 2
-    ld a, [wListMenuID]
-    cp PRICEDITEMLISTMENU
-    jr z, .gotListEntry
-    sla c
+	; b = item ID of the highlighted entry
+	; mart stock lists (PRICEDITEMLISTMENU) have 1-byte entries, other item lists 2
+	ld a, [wListMenuID]
+	cp PRICEDITEMLISTMENU
+	jr z, .gotListEntry
+	sla c
 .gotListEntry
-    ld a, [wListPointer]
-    ld l, a
-    ld a, [wListPointer + 1]
-    ld h, a
-    inc hl
-    ld b, 0
-    add hl, bc
-    ld a, [hl]
-    ld b, a
-    ; find the icon pointer in de
-    ld a, b
-    cp HM01_CUT
-    jr nc, .tmhm
-    ; regular item: read ItemIconPointers[(ID - 1)] in the icon bank
-    dec a
-    add a
-    ld e, a
-    ld d, 0
-    push bc ; save the item ID (callba clobbers b and hl)
-    callba GetItemIconPointer ; de = icon source address
-    pop bc
-    ; no icon for this item (badges, COIN, floors): show an empty frame
-    ld a, e
-    or d
-    jr z, .emptyFrame
-    jr .gotIcon
+	ld a, [wListPointer]
+	ld l, a
+	ld a, [wListPointer + 1]
+	ld h, a
+	inc hl
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	ld b, a
+	; find the icon pointer in de
+	ld a, b
+	cp HM01_CUT
+	jr nc, .tmhm
+	; regular item: read ItemIconPointers[(ID - 1)] in the icon bank
+	dec a
+	add a
+	ld e, a
+	ld d, 0
+	push bc ; save the item ID (callba clobbers b and hl)
+	callba GetItemIconPointer ; de = icon source address
+	pop bc
+	; no icon for this item (badges, COIN, floors): show an empty frame
+	ld a, e
+	or d
+	jr z, .emptyFrame
+	jr .gotIcon
 .tmhm
-    ; all TMs and HMs share a single sprite
-    ld de, TMHMIcon
+	; all TMs and HMs share a single sprite
+	ld de, TMHMIcon
 .gotIcon
-    ; nothing to do if this icon is already on screen and intact
-    ; (avoids lag on cursor blink)
-    ld a, [wItemIconState]
-    cp b
-    ret z
-    ; first drawing of the session: save the background under the frame,
-    ; then draw the frame (SaveItemFrameTiles clobbers de)
-    cp $FE
-    jr nz, .iconNeedsRepair
-    push de
-    call SaveItemFrameTiles
-    call DrawItemFrame
-    pop de
-    jr .iconDraw
+	; nothing to do if this icon is already on screen and intact
+	; (avoids lag on cursor blink)
+	ld a, [wItemIconState]
+	cp b
+	ret z
+	; first drawing of the session: save the background under the frame,
+	; then draw the frame (SaveItemFrameTiles clobbers de)
+	cp $FE
+	jr nz, .iconNeedsRepair
+	push de
+	call SaveItemFrameTiles
+	call DrawItemFrame
+	pop de
+	jr .iconDraw
 .iconNeedsRepair
-    ; back from a submenu ($FD): dialogs may have blanked the frame,
-    ; redraw it before the icon ($FD never collides with an item ID, so the
-    ; repair happens even if the item under the cursor did not change)
-    cp $FD
-    jr nz, .iconDraw
-    call DrawItemFrame ; preserves de
+	; back from a submenu ($FD): dialogs may have blanked the frame,
+	; redraw it before the icon ($FD never collides with an item ID, so the
+	; repair happens even if the item under the cursor did not change)
+	cp $FD
+	jr nz, .iconDraw
+	call DrawItemFrame ; preserves de
 .iconDraw
-    ; remember the drawn item before the copy clobbers registers
-    ld a, b
-    ld [wItemIconState], a
-    ; load the 9 icon tiles (144 bytes) to vChars1 + $400
-    ; CopyVideoData lives in the home bank, so the bank switch and the
-    ; copy run entirely from always-mapped code
-    ld hl, vChars1 + $400
-    lb bc, BANK(ItemIconPointers), 9
-    call CopyVideoData
-    ; write the tile IDs to the tile map at coordinates (1,9) to (3,11)
-    coord hl, 1, 9
-    ld a, $C0
-    ld [hli], a
-    inc a
-    ld [hli], a
-    inc a
-    ld [hl], a
-    inc a
-    coord hl, 1, 10
-    ld [hli], a
-    inc a
-    ld [hli], a
-    inc a
-    ld [hl], a
-    inc a
-    coord hl, 1, 11
-    ld [hli], a
-    inc a
-    ld [hli], a
-    inc a
-    ld [hl], a
-    ret
+	; remember the drawn item before the copy clobbers registers
+	ld a, b
+	ld [wItemIconState], a
+	; load the 9 icon tiles (144 bytes) to vChars1 + $400
+	; CopyVideoData lives in the home bank, so the bank switch and the
+	; copy run entirely from always-mapped code
+	ld hl, vChars1 + $400
+	lb bc, BANK(ItemIconPointers), 9
+	call CopyVideoData
+	; write the tile IDs to the tile map at coordinates (1,9) to (3,11)
+	coord hl, 1, 9
+	ld a, $C0
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hl], a
+	inc a
+	coord hl, 1, 10
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hl], a
+	inc a
+	coord hl, 1, 11
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hl], a
+	jp SetItemIconColor ; GBC color: borrow a BGP palette slot for the icon
 .emptyFrame
-    ; cursor on Cancel or item without an icon:
-    ; keep an empty frame with a blank interior visible while the menu stays open
-    ld a, [wItemIconState]
-    cp $FF
-    ret z ; empty frame already shown and intact
-    cp $FE
-    jr z, .firstFrame
-    cp $FD
-    jr z, .redrawFrame
-    ; an icon is currently shown: blank the cells inside the frame
-    call ClearItemIconCells
-    ld a, $FF
-    ld [wItemIconState], a
-    ret
+	; cursor on Cancel or item without an icon:
+	; keep an empty frame with a blank interior visible while the menu stays open
+	ld a, [wItemIconState]
+	cp $FF
+	ret z ; empty frame already shown and intact
+	cp $FE
+	jr z, .firstFrame
+	cp $FD
+	jr z, .redrawFrame
+	; an icon is currently shown: blank the cells inside the frame
+	call ClearItemIconCells
+	ld a, $FF
+	ld [wItemIconState], a
+	ret
 .firstFrame
-    call SaveItemFrameTiles
+	call SaveItemFrameTiles
 .redrawFrame
-    ; first frame, or back from a submenu: draw the frame with a blank interior
-    call DrawItemFrame
-    call ClearItemIconCells
-    ld a, $FF
-    ld [wItemIconState], a
-    ret
+	; first frame, or back from a submenu: draw the frame with a blank interior
+	call DrawItemFrame
+	call ClearItemIconCells
+	ld a, $FF
+	ld [wItemIconState], a
+	ret
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; GBC color for the item icon (enhanced GBC mode only)
+; BGP slot ITEM_ICON_PAL is filled with the PAL_MEWMON colors and the 9
+; icon cells point at it, so the sprite gets its own colors instead of
+; inheriting the map palette. The slot is put back on menu exit.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+ITEM_ICON_PAL EQU PAL_ENH_OVW_BLUE ; borrowed blue overworld palette slot
+
+; Called at the end of every actual icon draw
+SetItemIconColor:
+	; only on GBC with the enhanced color option enabled
+	ld a, [hGBC]
+	and a
+	ret z
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_ENHANCED_GBC, a
+	ret z
+	; fill the borrowed slot with the PAL_MEWMON colors
+	ld de, GBCBasePalettes + PAL_MEWMON * 8
+	xor a ; CONVERT_BGP: pick the shades from the current rBGP value
+	callba DMGPalToGBCPal ; wGBCPal = gamma-corrected PAL_MEWMON
+	ld a, ITEM_ICON_PAL
+	callba TransferCurBGPData ; write wGBCPal to BGP slot ITEM_ICON_PAL
+	; point the 9 icon cells at the borrowed palette
+	di ; a VBlank while rVBK is set would corrupt the attribute map
+	ld a, 1
+	ld [rVBK], a ; VRAM bank 1 = BG map attributes
+	ld hl, vBGMap0 + 9 * BG_MAP_WIDTH + 1
+	ld e, ITEM_ICON_PAL
+	ld c, 3 ; three rows
+.rowLoop
+	push bc
+	ld c, 3 ; three columns
+.colLoop
+	ldh a, [rSTAT]
+	and %10 ; OAM or VRAM in use?
+	jr nz, .colLoop ; if so, wait for the next H-blank/V-blank
+	ld a, e
+	ld [hli], a
+	dec c
+	jr nz, .colLoop
+	ld bc, BG_MAP_WIDTH - 3
+	add hl, bc ; move to the next row
+	pop bc
+	dec c
+	jr nz, .rowLoop
+	xor a
+	ld [rVBK], a
+	ei
+	ret
+
+; Called from EraseItemIcon on menu exit:
+; refills the borrowed slot with the original colors kept in the palette
+; mirror (the icon writes bypass the mirror)
+RestoreItemIconPal:
+	ld a, [hGBC]
+	and a
+	ret z
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_ENHANCED_GBC, a
+	ret z
+	ld hl, wGBCFullPalBuffer + ITEM_ICON_PAL * 8
+	ld de, wGBCPal
+	ld bc, 8
+.copyLoop
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec bc
+	ld a, b
+	or c
+	jr nz, .copyLoop
+	ld a, ITEM_ICON_PAL
+	callba TransferCurBGPData
+	ret
