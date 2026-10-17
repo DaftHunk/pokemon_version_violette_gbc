@@ -1223,6 +1223,13 @@ HoldTextDisplayOpen::
 CloseTextDisplay::
 	ld a, [wCurMap]
 	call SwitchToMapRomBank
+	; end any pending item icon session before the map view is reloaded:
+	; an icon shown while an item was received (GiveItem hook) would leak
+	; the borrowed palette slot and the hidden sprite flag into the
+	; overworld otherwise. LoadCurrentMapView below reloads all of wTileMap,
+	; so no tile restore is needed, and the attribute recompute right after
+	; it fixes vBGMap0. No-op when no session is active (state = 0).
+	callba EraseItemIcon
 
 
 ;GBCNote - moved these functions up here to make things update properly for enhanced GBC color
@@ -4604,6 +4611,12 @@ GiveItem::
 	ret nc
 	call GetItemName
 	call CopyStringToCF4B
+	; the dialog box is already on screen in every give-item flow (NPC
+	; scripts, item balls, hidden items): show the received item's framed
+	; icon next to it. Skips itself when an icon session is active, in
+	; battle, or when a menu covers the icon area (vending machines, the
+	; game corner prize menu).
+	callba DrawReceivedItemIcon
 	scf
 	ret
 
