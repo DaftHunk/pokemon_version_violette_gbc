@@ -1443,8 +1443,26 @@ Pokedex_PrintTMHMText:
 	ld [wPokedexNum], a
 	push hl
 	push bc
-	call GetItemName ; de = wcd6d (the machine's name in French), preserves hl and bc
-	call PlaceString
+	call GetItemName ; de = wcd6d ("CSxx "/"CTxx " + a truncated move name), preserves hl and bc
+	ld a, "@"
+	ld [wcd6d + 5], a ; the "CSxx "/"CTxx " prefix is always 5 chars: cut the truncated name after it
+	call PlaceString ; print the prefix, it returns the position after it in bc (hl is preserved)
+	ld h, b
+	ld l, c ; hl = the position right after the prefix
+	pop bc ; restore the item ID and counter (PlaceString clobbers bc)
+	push bc ; re-save them for after the prints
+	push hl ; save the position after the prefix (the predef below clobbers hl)
+	ld a, b
+	sub TM01_MEGA_PUNCH ; machine indexes: TMs are 1-50, HMs are 51-55
+	jr nc, .gotMachineIndex
+	add 55
+.gotMachineIndex
+	inc a
+	ld [wPokedexNum], a
+	predef TMToMove ; [wPokedexNum] = the move ID taught by this machine
+	call GetMoveName ; de = wcd6d (the full move name in French), preserves hl
+	pop hl
+	call PlaceString ; print the move name after the prefix
 	pop bc
 	pop hl
 	ld de, SCREEN_WIDTH
