@@ -107,9 +107,9 @@ _OaksLabDeliverParcelText1::
 _OaksLabDeliverParcelText2::
 	text_start
 
-	para "Ah! C'est la"
+	para "Ah! C'est les"
 	line "# Ball que"
-	cont "j'ai commandée!"
+	cont "j'ai commandées!"
 	cont "Merci!"
 	done
 
@@ -129,17 +129,22 @@ _OaksLabGivePokeballsText1::
 
 	para "Il te faut aussi"
 	line "l'attraper! Voici"
-	cont "des # Ball"
-	cont "pour en capturer."
+	cont "des Ball pour"
+	cont "en capturer."
+	prompt
 
-	para "<PLAYER> obtient"
+_OaksLabGivePokeballsReceivedText::
+	text "<PLAYER> obtient"
 	line "5 # Ball!@"
 	text_end
 
-_OaksLabGivePokeballsText2::
-	text_start
+_OaksLabGiveGreatPokeballsReceivedText::
+	text "<PLAYER> obtient"
+	line "5 Super Ball!@"
+	text_end
 
-	para "Quand un #mon"
+_OaksLabGivePokeballsText2::
+	text "Quand un #mon"
 	line "sauvage apparaît,"
 	cont "il faut jouer"
 	cont "serré."

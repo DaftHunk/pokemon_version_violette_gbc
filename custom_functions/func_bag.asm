@@ -1064,6 +1064,8 @@ DrawReceivedItemIcon:
 	ld a, [wTileMap + RECEIVE_ICON_TOP_ROW * SCREEN_WIDTH]
 	cp $79
 	ret nc
+	; shared draw body: DrawPendingReceivedItemIcon jumps here too
+DrawReceivedItemIconDraw:
 	; b = received item ID, de = its icon (0 if the item has none)
 	ld a, [wcf91]
 	ld b, a
@@ -1078,9 +1080,10 @@ DrawReceivedItemIcon:
 	callba GetItemIconPointer ; de = icon source address
 	pop bc
 	; no icon for this item: no session, nothing touched
+	; (.noIcon rewrites 0 over 0 on the direct path: harmless)
 	ld a, e
 	or d
-	ret z
+	jr z, .noIcon
 	jr .gotIcon
 .tmhm
 	; all TMs and HMs share a single sprite
@@ -1129,6 +1132,72 @@ DrawReceivedItemIcon:
 	ld a, RECEIVE_ICON_TOP_ROW + 1
 	call SetItemIconColorAt
 	jp ForceEnhancedBGPPalRefill
+.noIcon
+	xor a
+	ld [wItemIconState], a
+	ret
+
+; Erases a received-item popup in the middle of a dialog (called via TX_ASM
+; before the follow-up text prints). Restores the map view under the frame,
+; clears the icon session state and refills the borrowed palette slot, then
+; recomputes the window map attributes: the receive draw pointed the 9 icon
+; cells at the borrowed slot in both attribute tables, and the recompute
+; gives them their proper overworld attributes back (same pattern as the
+; start menu .exitMenu hook). CloseTextDisplay's EraseItemIcon then finds
+; state == 0 and does nothing.
+EraseReceivedItemPopup:
+	ld a, [wItemIconState]
+	and a
+	ret z
+	cp $FE
+	jr z, .nothingDrawn
+	call EraseReceivedItemIconBG
+.nothingDrawn
+	xor a
+	ld [wItemIconState], a
+	call ForceEnhancedBGPPalRefill
+	callba MakeAndTransferOverworldBGMapAttributes_OpenText
+	ret
+
+; Restores the map view tiles under the receive popup (rows 7-11, columns
+; 0-4) into wTileMap. The receive draw only wrote the frame and the icon
+; cells into wTileMap (while the text window is open, the auto-transfer
+; moves wTileMap to the visible vBGMap1), so the vBGMap0 tile table still
+; holds the pristine map view to copy from. EraseItemIconBG cannot be used
+; here: it restores the menu frame's rows 8-12 from buffer 2, WRAM and
+; constants, which does not match the receive frame's rows 7-11.
+EraseReceivedItemIconBG:
+	ld hl, vBGMap0 + RECEIVE_ICON_TOP_ROW * BG_MAP_WIDTH
+	ld de, wTileMap + RECEIVE_ICON_TOP_ROW * SCREEN_WIDTH
+	ld b, 5 ; five rows
+.rowLoop
+	push bc
+	ld b, 5 ; five columns per row
+.colLoop
+	ldh a, [rSTAT]
+	and %10 ; VRAM in use?
+	jr nz, .colLoop ; if so, wait for the next H-blank/V-blank
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec b
+	jr nz, .colLoop
+	ld a, l ; skip to the next row in vBGMap0
+	add BG_MAP_WIDTH - 5
+	ld l, a
+	ld a, h
+	adc 0
+	ld h, a
+	ld a, e ; skip to the next row in wTileMap
+	add SCREEN_WIDTH - 5
+	ld e, a
+	ld a, d
+	adc 0
+	ld d, a
+	pop bc
+	dec b
+	jr nz, .rowLoop
+	ret
 
 ; Draws the frame around the received item icon (rows 7-11, columns 0-4)
 DrawReceiveItemFrame:
@@ -1177,67 +1246,5 @@ DrawPendingReceivedItemIcon:
 	ld a, [wItemIconState]
 	cp RECEIVE_ICON_PENDING
 	ret nz
-	; b = received item ID, de = its icon (0 if the item has none)
-	ld a, [wcf91]
-	ld b, a
-	cp HM01_CUT
-	jr nc, .tmhm
-	; regular item: read ItemIconPointers[(ID - 1)] in the icon bank
-	dec a
-	add a
-	ld e, a
-	ld d, 0
-	push bc ; save the item ID (callba clobbers b and hl)
-	callba GetItemIconPointer ; de = icon source address
-	pop bc
-	; no icon for this item: no session, nothing touched
-	ld a, e
-	or d
-	jr z, .noIcon
-	jr .gotIcon
-.tmhm
-	; all TMs and HMs share a single sprite
-	ld de, TMHMIcon
-.gotIcon
-	; state = item ID: enables the .ReadMasterPals palette override
-	ld a, b
-	ld [wItemIconState], a
-	; draw the frame above the dialog box
-	push de
-	call DrawReceiveItemFrame
-	pop de
-	; load the 9 icon tiles (144 bytes) to vChars1 + $400
-	ld hl, vChars1 + $400
-	lb bc, BANK(ItemIconPointers), 9
-	call CopyVideoData
-	; write the tile IDs to the tile map at coordinates (1,8) to (3,10)
-	coord hl, 1, RECEIVE_ICON_ROW1
-	ld a, $C0
-	ld [hli], a
-	inc a
-	ld [hli], a
-	inc a
-	ld [hl], a
-	inc a
-	coord hl, 1, RECEIVE_ICON_ROW2
-	ld [hli], a
-	inc a
-	ld [hli], a
-	inc a
-	ld [hl], a
-	inc a
-	coord hl, 1, RECEIVE_ICON_ROW3
-	ld [hli], a
-	inc a
-	ld [hli], a
-	inc a
-	ld [hl], a
-	; GBC color: point the icon cells at the borrowed palette slot, then
-	; force one refill so the override serves the icon colors immediately
-	ld a, RECEIVE_ICON_TOP_ROW + 1
-	call SetItemIconColorAt
-	jp ForceEnhancedBGPPalRefill
-.noIcon
-	xor a
-	ld [wItemIconState], a
-	ret
+	; same bank: reuse the direct path's draw body
+	jp DrawReceivedItemIconDraw

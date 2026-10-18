@@ -176,7 +176,7 @@ Route22Script2:
 	ld a, [wGameplayOptions]
 	bit BIT_GAMEPLAY_HARDMODE, a
 	jr z, .next1
-	SetEvent EVENT_BEATEN_ROUTE_22_RIVAL
+	SetEvent EVENT_BEATEN_ROUTE_22_RIVAL_HARD
 .next1	
 	
 	ld a, $1

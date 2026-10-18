@@ -28,7 +28,7 @@ const_value = 0
 	const EVENT_ENTERED_PALLET_BLUES_HOUSE           ; 019, (D74A, bit 1)
 	const EVENT_DAISY_WALKING                        ; 01A, (D74A, bit 2)
 	const EVENT_AT_LEAST_ONE_CATCHED                 ; 01B, (D74A, bit 3)	;clear = made at least 1 catch
-	const EVENT_BEATEN_ROUTE_22_RIVAL                ; 01C, (D74A, bit 4)	;1st route 22 rival beaten on hard mode
+	const EVENT_BEATEN_ROUTE_22_RIVAL_HARD           ; 01C, (D74A, bit 4)	;1st route 22 rival beaten on hard mode
 	const EVENT_POKEBALL_ACCESS                      ; 01D, (D74A, bit 5)	;clear = access to pokeball, for nuzlocke mode
 	const EVENT_01E                                  ; 01E, (D74A, bit 6)
 	const EVENT_01F                                  ; 01F, (D74A, bit 7)

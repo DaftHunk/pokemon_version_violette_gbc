@@ -1144,14 +1144,26 @@ OaksLabText5:
 .eventChenGivesBalls
 	CheckAndSetEvent EVENT_GOT_POKEBALLS_FROM_OAK
 	jr nz, .eventChenVisitMe
-	lb bc, POKE_BALL, 5
-	;joenote - check to see if beaten on hard mode and give a different gift if true
-	CheckEvent EVENT_BEATEN_ROUTE_22_RIVAL
-	jr z, .next
-	lb bc, GREAT_BALL, 5
-.next
-	call GiveItem
 	ld hl, OaksLabGivePokeballsText
+	call PrintText
+	
+	;joenote - check to see if beaten on hard mode and give a different gift if true
+	CheckEvent EVENT_BEATEN_ROUTE_22_RIVAL_HARD
+	jr z, .notHardMode
+
+	lb bc, GREAT_BALL, 5
+	call GiveItem
+	ld hl, OaksLabGiveGreatPokeballsReceivedText
+	jr .giveBall
+
+.notHardMode
+	lb bc, POKE_BALL, 5
+	call GiveItem
+	ld hl, OaksLabGivePokeballsReceivedText
+	; fallthrough
+.giveBall
+	call PrintText
+	ld hl, OaksLabGivePokeballsText2
 	call PrintText
 	jr .endScript
 .eventChenVisitMe
@@ -1184,7 +1196,28 @@ OaksLabAroundWorldText:
 
 OaksLabGivePokeballsText:
 	TX_FAR _OaksLabGivePokeballsText1
+	db "@"
+
+OaksLabGivePokeballsReceivedText:
+	TX_FAR _OaksLabGivePokeballsReceivedText
 	TX_SFX_KEY_ITEM
+	db "@"
+
+OaksLabGiveGreatPokeballsReceivedText:
+	TX_FAR _OaksLabGiveGreatPokeballsReceivedText
+	TX_SFX_KEY_ITEM
+	db "@"
+
+OaksLabGivePokeballsText2:
+	; erase the item icon popup right after the jingle, before the
+	; follow-up text (TX_ASM code runs in the text bank: callba is safe)
+	TX_ASM
+	push bc ; keep the print destination across the bankswitch call
+	callba EraseReceivedItemPopup
+	pop bc
+	ld hl, .afterIconErase
+	ret
+.afterIconErase
 	TX_FAR _OaksLabGivePokeballsText2
 	db "@"
 
