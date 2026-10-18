@@ -249,7 +249,7 @@ HandlePokedexListMenu:
 .noSelectPrompt
 ;;;;;;;;;;;
 ; draw the horizontal line separating the seen and owned amounts from the menu
-	coord hl, 15, 8
+	coord hl, 15, 6
 	ld a, "─"
 	ld [hli], a
 	ld [hli], a
@@ -266,20 +266,20 @@ HandlePokedexListMenu:
 	ld b, wPokedexSeenEnd - wPokedexSeen
 	call CountSetBits
 	ld de, wNumSetBits
-	coord hl, 16, 3
+	coord hl, 16, 2
 	lb bc, 1, 3
 	call PrintNumber ; print number of seen pokemon
 	ld hl, wPokedexOwned
 	ld b, wPokedexOwnedEnd - wPokedexOwned
 	call CountSetBits
 	ld de, wNumSetBits
-	coord hl, 16, 6
+	coord hl, 16, 5
 	lb bc, 1, 3
 	call PrintNumber ; print number of owned pokemon
-	coord hl, 16, 2
+	coord hl, 16, 1
 	ld de, PokedexSeenText
 	call PlaceString
-	coord hl, 16, 5
+	coord hl, 16, 4
 	ld de, PokedexOwnText
 	call PlaceString
 	coord hl, 1, 1
@@ -1149,6 +1149,7 @@ ShowPokedexCapa:
 	jr nz, .capaPrevMon
 	bit BIT_D_RIGHT, a
 	jr nz, .capaNextMon
+.capaQuitPage ; exit the capa page
 	pop af
 	ldh [hTilesetType], a
 	call GBPalWhiteOut
@@ -1213,7 +1214,9 @@ ShowPokedexCapa:
 	call Pokedex_PrintMovesText
 	jr c, .capaSeekRequested ; the player seeked while the moves list was waiting for a page turn
 	jp .waitForButtonPress
-.capaSeekRequested ; a = the seek direction pressed while the moves list was waiting for a page turn
+.capaSeekRequested ; a = the seek direction pressed while the moves list was waiting for a page turn, or 0 when the player quit with B
+	and a
+	jp z, .capaQuitPage
 	bit BIT_D_LEFT, a
 	jp nz, .capaPrevMon
 	jp .capaNextMon
@@ -1314,6 +1317,7 @@ ShowPokedexCSCT:
 	jr nz, .csctPrevMon
 	bit BIT_D_RIGHT, a
 	jr nz, .csctNextMon
+.csctQuitPage ; exit the CSCT page
 	pop af
 	ldh [hTilesetType], a
 	call GBPalWhiteOut
@@ -1364,7 +1368,7 @@ ShowPokedexCSCT:
 	push af
 	; erase the old mon's sprite and wait for the transfer before applying
 	; the new palette, or the old mon briefly renders in the new palette
-	coord hl, 1, 1
+	coord hl, 2, 2
 	lb bc, 7, 8
 	call ClearScreenArea
 	call Delay3
@@ -1378,7 +1382,9 @@ ShowPokedexCSCT:
 	call Pokedex_PrintTMHMText
 	jr c, .csctSeekRequested ; the player seeked while the machine list was waiting for a page turn
 	jp .waitForButtonPress
-.csctSeekRequested ; a = the seek direction pressed while the machine list was waiting for a page turn
+.csctSeekRequested ; a = the seek direction pressed while the machine list was waiting for a page turn, or 0 when the player quit with B
+	and a
+	jp z, .csctQuitPage
 	bit BIT_D_LEFT, a
 	jp nz, .csctPrevMon
 	jp .csctNextMon
@@ -1390,8 +1396,9 @@ ShowPokedexCSCT:
 ; prints the list of TMs and HMs the current pokemon can learn, in item constant order (HMs, then TMs)
 ; the mon's learnset must be loaded in wMonHLearnset (done by DrawDexEntryOnScreen via GetMonHeader)
 ; 5 machines per page (rows 12-16), header at row 10
-; returns carry clear when the list is done
-; returns carry set + a = the seek direction when the player seeks during a page turn
+; pressing A on the last page cycles back to the first page
+; returns carry set + a = the seek direction when the player seeks during a page turn or on the last page
+; returns carry set + a = 0 when the player quits the page with B
 Pokedex_PrintTMHMText:
 	ld de, TMHMMovesText
 	coord hl, 1, 10
@@ -1424,9 +1431,9 @@ Pokedex_PrintTMHMText:
 	ld a, c
 	cp 5 ; machines per page (rows 12-16)
 	jr c, .printMachine
-	; the page is full: wait for the player to turn the page or seek
+	; the page is full: wait for the player to turn the page, seek or quit
 	push bc
-	call CapaPageTurnButtonCheck ; A or B turns the page, LEFT/RIGHT seeks to another pokemon
+	call CapaPageTurnButtonCheck ; A turns the page, B quits, LEFT/RIGHT seeks to another 
 	jr c, .seekRequested
 	coord hl, 1, 10
 	lb bc, 7, 18
@@ -1474,9 +1481,22 @@ Pokedex_PrintTMHMText:
 	cp b
 	jr nc, .checkMachineLoop
 .done
-	and a ; return with carry clear: the list is done
+	; the whole list has been printed: wait for the player to cycle, seek or quit
+	call CapaPageTurnButtonCheck ; A cycles back to the first page, B quits, LEFT/RIGHT seeks to another pokemon
+	jr c, .doneButtonRequested ; a = the seek direction, or 0 when the player pressed B
+	coord hl, 1, 10
+	lb bc, 7, 18
+	call ClearScreenArea ; clobbers de, and lb bc clobbers b: they are re-initialized below
+	ld de, TMHMMovesText
+	coord hl, 1, 10
+	call PlaceString ; also clobbers bc (returns hl in bc): they are re-initialized below
+	ld b, HM01_CUT ; restart the list from the first machine
+	ld c, 0 ; reset the count of machines printed on this page
+	coord hl, 1, 12 ; reset the row cursor
+	jp .checkMachineLoop
+.doneButtonRequested ; return the seek or the quit (carry set, a = direction, or 0 for B) to the caller
 	ret
-.seekRequested ; let the caller handle the seek (carry set, a = direction)
+.seekRequested ; let the caller handle the seek or the quit (carry set, a = direction, or 0 for B)
 	pop bc
 	ret
 
@@ -1570,8 +1590,6 @@ DrawDexEntryOnScreen:
 	call GetMonHeader ; load pokemon picture location
 	coord hl, 1, 1
 	call LoadFlippedFrontSpriteByMonIndex ; draw pokemon picture
-	ld a, [wcf91]
-	call PlayCry ; play pokemon cry
 
 	pop hl
 	pop de
@@ -1815,19 +1833,29 @@ Pokedex_PrintMovesText:
 
 	push de
 	push bc
-	call CapaPageTurnButtonCheck ; A or B turns the page, LEFT/RIGHT seeks to another pokemon
-	jr c, .seekRequested ; a = the seek direction pressed during the moves list
+	call CapaPageTurnButtonCheck ; A turns the page, B quits, LEFT/RIGHT seeks to another pokemon
+	jr c, .seekRequested ; a = the seek direction, or 0 when the player pressed B
 	coord hl, 1, 10
 	lb bc, 7, 18
 	call ClearScreenArea
 	pop bc
 	pop de ; keep the pops AFTER ClearScreenArea: it clobbers de, and lb bc clobbers b
 	jp .PrintLevelUpMovesLoop
-.seekRequested ; let the caller handle the seek (carry set, a = direction)
+.seekRequested ; let the caller handle the seek or the quit (carry set, a = direction, or 0 for B)
 	pop bc
 	pop de ; discard the saved registers, everything is reloaded for the new mon
 	ret
 .done
+	; the whole list has been printed: wait for the player to cycle, seek or quit
+	call CapaPageTurnButtonCheck ; A cycles back to the first page, B quits, LEFT/RIGHT seeks to another pokemon
+	jr c, .doneButtonRequested ; a = the seek direction, or 0 when the player pressed B
+	coord hl, 1, 10
+	lb bc, 7, 18
+	call ClearScreenArea ; clobbers de, and lb bc clobbers b: everything is reloaded below
+	ld a, [wcf91] ; the printing clobbered wPokedexNum: restore the current mon before re-reading its move list
+	ld [wPokedexNum], a
+	jp Pokedex_PrintMovesText
+.doneButtonRequested ; return the seek or the quit (carry set, a = direction, or 0 for B) to the caller
 	ret
 
 ; prints the level a move is learned at
@@ -1853,9 +1881,11 @@ PrintLearnLevel:
 	ret
 
 ; waits for the player to let go of the page turn buttons, then waits for a press
-; A or B turns the page
+; A turns the page
+; B quits the page
 ; D_LEFT / D_RIGHT aborts the moves list and seeks to another pokemon (only when the direction is watched, i.e. not at the list bounds)
 ; returns carry set and the seek direction in a when a seek is requested
+; returns carry set and a = 0 when the player quits the page with B
 CapaPageTurnButtonCheck:
 .waitForButtonPressLetGo
 	call Joypad
@@ -1879,7 +1909,13 @@ CapaPageTurnButtonCheck:
 	ld a, b
 	and A_BUTTON | B_BUTTON
 	jr z, .waitForButtonPress
+	bit BIT_B_BUTTON, b
+	jr nz, .buttonBPressed
+	xor a ; carry clear: A was pressed, turn the page
+	ret
+.buttonBPressed
 	xor a
+	scf ; carry set + a = 0: B was pressed, quit the page (the seek directions are never 0)
 	ret
 
 LevelUpMovesText:
