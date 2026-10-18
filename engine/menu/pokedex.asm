@@ -1401,6 +1401,7 @@ Pokedex_PrintTMHMText:
 	coord hl, 1, 12 ; row cursor, advanced by SCREEN_WIDTH after each print
 .checkMachineLoop
 	; test the machine's bit in the learnset
+	push hl ; save the row cursor: the flag test below needs hl
 	push bc
 	ld a, b
 	sub HM01_CUT ; a = machine index in item constant order (0 = HM01 ... 54 = TM50)
@@ -1417,6 +1418,7 @@ Pokedex_PrintTMHMText:
 	predef FlagActionPredef
 	ld a, c
 	pop bc
+	pop hl ; restore the row cursor before printing
 	and a
 	jr z, .nextMachine
 	ld a, c
