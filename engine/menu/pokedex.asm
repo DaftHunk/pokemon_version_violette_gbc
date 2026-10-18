@@ -1128,9 +1128,11 @@ ShowPokedexCapa:
 	pop af
 	ld [wPokedexNum], a
 	call DrawDexEntryOnScreen
-	call c, Pokedex_PrintMovesText
-	call DrawCapaLeftRightPrompts ; draw the seek prompts and update the watched keys
-.waitForButtonPress
+	jp nc, .capaNoMovesText
+	call DrawCapaLeftRightPrompts ; draw the seek prompts before the moves list, so that seeking works during its page turns
+	call Pokedex_PrintMovesText
+	jp c, .capaSeekRequested ; the player seeked while the moves list was waiting for a page turn
+ .waitForButtonPress
 	call JoypadLowSensitivity
 	ld a, [wMenuWatchedKeys]
 	ld c, a
@@ -1592,14 +1594,16 @@ Pokedex_PrintMovesText:
 	push de
 	push bc
 	call CapaPageTurnButtonCheck ; A or B turns the page, LEFT/RIGHT seeks to another pokemon
-	pop bc
-	pop de
 	jr c, .seekRequested ; a = the seek direction pressed during the moves list
 	coord hl, 1, 10
 	lb bc, 7, 18
 	call ClearScreenArea
+	pop bc
+	pop de ; keep the pops AFTER ClearScreenArea: it clobbers de, and lb bc clobbers b
 	jp .PrintLevelUpMovesLoop
 .seekRequested ; let the caller handle the seek (carry set, a = direction)
+	pop bc
+	pop de ; discard the saved registers, everything is reloaded for the new mon
 	ret
 .done
 	ret
