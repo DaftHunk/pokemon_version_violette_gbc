@@ -751,6 +751,7 @@ ClearBasicMoveData:
 ; seeks to the next move that has been seen
 SeekToNextMove:
 	ld de, wStoredMovedexListIndex
+	ld a, [wDexMaxSeenMove]
 	call SeekToNext
 	ld a, [de]
 	ld [wMovedexMoveID], a
@@ -760,14 +761,16 @@ SeekToNextMove:
 
 SeekToNextMon:
 	ld de, wPokedexNum
+	ld a, [wDexMaxSeenMon] ; seeking in the pokedex is bounded by the highest seen pokemon, not the highest seen move
+	call SeekToNext
+	ret
 SeekToNext:
+	inc a ; = the index after the last entry, stop searching if we hit that
+	ld e, a
 	ld a, [de] ; = move index
 	push de
 	dec a ; = list index
 	ld d, a
-	ld a, [wDexMaxSeenMove]
-	inc a 
-	ld e, a
 .loop
 	inc d ; move forward one index
 	ld a, e
@@ -804,6 +807,7 @@ SeekToNext:
 ; INPUT: hl = which set of flags to check
 SeekToPreviousMove:
 	ld de, wStoredMovedexListIndex
+	ld a, [wDexMinSeenMove]
 	call SeekToPrevious
 	ld a, [de]
 	ld [wMovedexMoveID], a
@@ -813,15 +817,17 @@ SeekToPreviousMove:
 
 SeekToPreviousMon:
 	ld de, wPokedexNum
+	ld a, [wDexMinSeenMon] ; seeking in the pokedex is bounded by the lowest seen pokemon, not the lowest seen move
+	call SeekToPrevious
+	ret
 SeekToPrevious:
+	dec a ; = first entry's bit index
+	dec a ; = the index before the first entry (if we get here, we should exit the function)
+	ld e, a
 	ld a, [de] ; = move ID
 	push de
 	dec a ; = current move bit index
 	ld d, a
-	ld a, [wDexMinSeenMove]
-	dec a ; = first move bit index
-	dec a ; = before first move's bit index (if we get here, we should exit the function)
-	ld e, a
 .loop
 	dec d ; move back one index
 	ld a, e
@@ -856,11 +862,12 @@ SeekToPrevious:
 
 ChangeMonListPosition:
 	ld hl, wPokedexNum
+	ld a, [wDexMaxSeenMon] ; position the pokedex list, not the movedex list
 	jr ChangeListPosition
 ChangeMoveListPosition:
 	ld hl, wStoredMovedexListIndex
-ChangeListPosition:
 	ld a, [wDexMaxSeenMove]
+ChangeListPosition:
 	sub 6
 	ld b, a
 	ld a, [hl]

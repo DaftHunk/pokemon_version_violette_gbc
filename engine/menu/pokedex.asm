@@ -469,7 +469,7 @@ HandlePokedexListMenu:
 	ld a, 0
 	ret
 ;;;;;;;;;; PureRGBnote: CHANGED: SELECT button will open the town map while in the pokedex. You need the town map from rival's sister to do this.
-;;;;;;;;;;                       Town map doesn't take up space in the bag due to this modification.
+;;;;;;;;;; Town map doesn't take up space in the bag due to this modification.
 .selectPressed
 	CheckEvent EVENT_GOT_TOWN_MAP
 	jp z, .loop
@@ -1101,10 +1101,16 @@ ShowPokedexCapa:
 	xor a
 	ld [hTilesetType], a
 	call GBPalWhiteOut ; zero all palettes
+	; load pokedex data page UI tiles (left + right arrows)
+	ld de, PokedexDataUI
+	lb bc, BANK(PokedexDataUI), 2
+	ld hl, vChars1 tile $4C
+	call CopyVideoDataDouble
 	ld a, [wPokedexNum] ; pokemon ID
 	ld [wcf91], a
 	ld hl, wPokedexDataFlags
 	res BIT_POKEDEX_DATA_SHINY, [hl] ; never show the shiny palette on the capa page
+	set BIT_VIEWING_POKEDEX, [hl] ; the seek functions are shared with the movedex, tell them 
 	push af
 	ld b, SET_PAL_POKEDEX
 	call RunPaletteCommand
@@ -1116,16 +1122,25 @@ ShowPokedexCapa:
 
 	call DrawDexEntryOnScreen
 	call c, Pokedex_PrintFlavorTextAtRow11
+	call DrawCapaLeftRightPrompts ; draw the seek prompts and update the watched keys
 	jr .waitForButtonPress
 .PrintMoves
 	pop af
 	ld [wPokedexNum], a
  	call DrawDexEntryOnScreen
  	call c, Pokedex_PrintMovesText
+	call DrawCapaLeftRightPrompts ; draw the seek prompts and update the watched keys
 .waitForButtonPress
 	call JoypadLowSensitivity
-	ld a, [hJoy5]
-	and A_BUTTON | B_BUTTON
+	ld a, [wMenuWatchedKeys]
+	ld c, a
+	ldh a, [hJoy5]
+	and c
+	jr z, .waitForButtonPress
+	bit BIT_D_LEFT, a
+	jr nz, .capaPrevMon
+	bit BIT_D_RIGHT, a
+	jr nz, .capaNextMon
 	jr z, .waitForButtonPress
 	pop af
 	ld [hTilesetType], a
@@ -1136,8 +1151,100 @@ ShowPokedexCapa:
 	call GBPalNormal
 	ld hl, wStatusFlags2
 	res 1, [hl]
+	xor a
+	ld [wPokedexDataFlags], a ; clear BIT_VIEWING_POKEDEX (shared with the movedex seek 
 	ld a, $77 ; max volume
 	ld [rNR50], a
+	ret
+
+; LEFT / RIGHT seek to the previous / next seen pokemon, like on the data page
+.capaPrevMon
+	ld a, [wcf91] ; the moves text printing clobbers wPokedexNum, but wcf91 always holds the current mon
+	ld [wPokedexNum], a
+	push af
+	call IndexToPokedex
+	ld hl, wPokedexSeen
+	call SeekToPreviousMon
+	jr c, .reloadCapaMon
+	pop af
+	call ChangeMonListPosition
+	call PokedexToIndex
+	jr .capaShowMon
+.capaNextMon
+	ld a, [wcf91]
+	ld [wPokedexNum], a
+	push af
+	call IndexToPokedex
+	ld hl, wPokedexSeen
+	call SeekToNextMon
+	jr c, .reloadCapaMon
+	pop af
+	call ChangeMonListPosition
+	call PokedexToIndex
+	jr .capaShowMon
+.reloadCapaMon
+	pop af
+	ld [wPokedexNum], a
+	jr .waitForButtonPress
+.capaShowMon
+	ld a, [wPokedexNum] ; internal index of the new mon
+	ld [wcf91], a
+	push af
+	ld b, SET_PAL_POKEDEX
+	call RunPaletteCommand
+	pop af
+	ld [wPokedexNum], a
+	call DrawDexEntryOnScreen
+	call c, Pokedex_PrintMovesText
+	call DrawCapaLeftRightPrompts
+	jp .waitForButtonPress
+
+; draws the left/right seek prompts at the bottom of the capa page
+; and updates wMenuWatchedKeys with the buttons the page watches (A, B, and D_LEFT/D_RIGHT when seeking is possible)
+DrawCapaLeftRightPrompts:
+	ld a, [wcf91] ; the moves text printing clobbers wPokedexNum, but wcf91 always holds the current mon
+	ld [wPokedexNum], a
+	push af
+	call IndexToPokedex
+	ld a, A_BUTTON | B_BUTTON
+	ld b, a ; buttons the capa page watches
+
+	coord hl, 1, 17
+	ld a, [wDexMinSeenMon]
+	ld c, a
+	ld a, [wPokedexNum] ; pokedex number
+	cp c
+	jr z, .noLeftPrompt
+	ld a, $CC ; < prompt
+	ld [hl], a
+	ld a, D_LEFT
+	or b
+	ld b, a
+	jr .checkRightPrompt
+.noLeftPrompt
+	ld a, $6f ; border tile instead
+	ld [hl], a
+.checkRightPrompt
+	coord hl, 18, 17
+	ld a, [wDexMaxSeenMon]
+	ld c, a
+	ld a, [wPokedexNum] ; pokedex number
+	cp c
+	jr z, .noRightPrompt
+	ld a, $CD ; > prompt
+	ld [hl], a
+	ld a, D_RIGHT
+	or b
+	ld b, a
+	jr .storeWatchedKeys
+.noRightPrompt
+	ld a, $6f ; border tile instead
+	ld [hl], a
+.storeWatchedKeys
+	ld a, b
+	ld [wMenuWatchedKeys], a
+	pop af
+	ld [wPokedexNum], a ; restore the internal index
 	ret
 
 DrawDexEntryOnScreen:
@@ -1379,11 +1486,8 @@ Pokedex_PrintMovesText:
 	pop de
 
 	push bc
-	ld a, [de]
 	coord hl, 1, 12
-	lb bc, 1, 3
-	call PrintNumber ; print number of seen pokemon
-	inc de
+	call PrintLearnLevel ; print the learn level (START logo for level 1)
 	inc de
 	ld a, [de]
 	push de
@@ -1392,6 +1496,7 @@ Pokedex_PrintMovesText:
 	coord hl, 5, 12
 	call PlaceString
 	pop de
+	inc de ; de = next entry's level byte
 	pop bc
 
 	inc b
@@ -1400,12 +1505,8 @@ Pokedex_PrintMovesText:
 	jp z, .done
 
 	push bc
-	inc de
-	ld a, [de]
 	coord hl, 1, 13
-	lb bc, 1, 3
-	call PrintNumber ; print number of seen pokemon
-	inc de
+	call PrintLearnLevel ; print the learn level (START logo for level 1)
 	inc de
 	ld a, [de]
 	push de
@@ -1414,6 +1515,7 @@ Pokedex_PrintMovesText:
 	coord hl, 5, 13
 	call PlaceString
 	pop de
+	inc de ; de = next entry's level byte
 	pop bc
 
 	inc b
@@ -1422,12 +1524,8 @@ Pokedex_PrintMovesText:
 	jp z, .done
 
 	push bc
-	inc de
-	ld a, [de]
 	coord hl, 1, 14
-	lb bc, 1, 3
-	call PrintNumber ; print number of seen pokemon
-	inc de
+	call PrintLearnLevel ; print the learn level (START logo for level 1)
 	inc de
 	ld a, [de]
 	push de
@@ -1436,6 +1534,7 @@ Pokedex_PrintMovesText:
 	coord hl, 5, 14
 	call PlaceString
 	pop de
+	inc de ; de = next entry's level byte
 	pop bc
 
 	inc b
@@ -1444,12 +1543,8 @@ Pokedex_PrintMovesText:
 	jr z, .done
 
 	push bc
-	inc de
-	ld a, [de]
 	coord hl, 1, 15
-	lb bc, 1, 3
-	call PrintNumber ; print number of seen pokemon
-	inc de
+	call PrintLearnLevel ; print the learn level (START logo for level 1)
 	inc de
 	ld a, [de]
 	push de
@@ -1458,6 +1553,7 @@ Pokedex_PrintMovesText:
 	coord hl, 5, 15
 	call PlaceString
 	pop de
+	inc de ; de = next entry's level byte
 	pop bc
 
 	inc b
@@ -1466,12 +1562,8 @@ Pokedex_PrintMovesText:
 	jr z, .done
 
 	push bc
-	inc de
-	ld a, [de]
 	coord hl, 1, 16
-	lb bc, 1, 3
-	call PrintNumber ; print number of seen pokemon
-	inc de
+	call PrintLearnLevel ; print the learn level (START logo for level 1)
 	inc de
 	ld a, [de]
 	push de
@@ -1480,14 +1572,13 @@ Pokedex_PrintMovesText:
 	coord hl, 5, 16
 	call PlaceString
 	pop de
+	inc de ; de = next entry's level byte
 	pop bc
 
 	inc b
 	ld a, [wMoveListCounter]
 	cp b
 	jr z, .done
-
-	inc de
 
 	push de
 	push bc
@@ -1499,6 +1590,25 @@ Pokedex_PrintMovesText:
 	pop de
 	jp .PrintLevelUpMovesLoop
 .done
+	ret
+
+; prints the level a move is learned at
+; level 1 entries are moves the pokemon starts with, print the START logo tiles for them
+; INPUT: de = pointer to the level byte, hl = coordinates to print at
+PrintLearnLevel:
+	ld a, [de]
+	cp 1
+	jr z, .startingMove
+	lb bc, 1, 3
+	call PrintNumber ; print the learn level
+	ret
+.startingMove
+	ld a, $C6 ; START logo tiles (PokedexPromptGraphics)
+	ld [hli], a
+	ld a, $C7
+	ld [hli], a
+	ld a, $C8
+	ld [hl], a
 	ret
 
 LevelUpMovesText:
