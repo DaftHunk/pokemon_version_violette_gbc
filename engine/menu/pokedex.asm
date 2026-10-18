@@ -626,6 +626,7 @@ ShowPokedexDataCommon:
 ShowNextPokemonData:
 	ld hl, wPokedexDataFlags
 	res BIT_POKEDEX_WHICH_SPRITE_SHOWING, [hl]
+	res BIT_POKEDEX_DATA_SHINY, [hl] ; shared with the town map area flags, clear any residue
 	ld a, [wPokedexNum] ; pokemon ID
 	ld [wcf91], a
 	ld [wBattleMonSpecies2], a
@@ -766,11 +767,12 @@ ShowNextPokemonData:
 	CheckEvent EVENT_GOT_POKEDEX
 	jr z, .printHeightWeight ; don't track the select button if we're showing the starter dex entries before getting the pokedex
 
-;	ld a, [wMenuWatchedKeys]
-;	ld b, SELECT
-;	or b
-;	ld [wMenuWatchedKeys], a ; watch the select button too if the pokemon is owned (allows the player to see the back sprite on pressing select)
-
+	ld a, [wd0b5]
+	cp MISSINGNO
+	jr z, .printHeightWeight ; missingno's pics are not compatible with the back sprite / shiny palette preview
+	ld a, [wMenuWatchedKeys]
+	or SELECT | START
+	ld [wMenuWatchedKeys], a ; watch SELECT and START too if the pokemon is owned (SELECT shows the back sprite, START toggles the shiny palette)
 
 .printHeightWeight
 	inc de ; de = address of feet (height)
@@ -850,8 +852,10 @@ ShowNextPokemonData:
 	jp nz, .prevMon
 	bit BIT_D_RIGHT, b
 	jp nz, .nextMon
-;	bit BIT_SELECT, b
-;	jp nz, .switchMonSprite
+	bit BIT_SELECT, b
+	jp nz, .switchMonSprite
+	bit BIT_START, b
+	jp nz, .shinyPaletteFromDescription
 ;;;;;;;;;; PureRGBnote: ADDED: pokedex will display the pokemon's types and their base stats on a new third page.
 .printBaseStats
 	coord hl, 1, 10
@@ -963,10 +967,11 @@ ShowNextPokemonData:
 	bit BIT_D_LEFT, b
 	jp nz, .prevMon
 	bit BIT_D_RIGHT, b
-	jr nz, .nextMon
-; Disabled for now as it doesn't work with our current pics system
-;	bit BIT_SELECT, b
-;	jr nz, .switchMonSprite
+	jp nz, .nextMon
+	bit BIT_SELECT, b
+	jp nz, .switchMonSprite
+	bit BIT_START, b
+	jp nz, .shinyPaletteFromStats
 	bit BIT_A_BUTTON, b
 	jp nz, .exitDataPage ; only an option if in the starter pokedex display at the beginning of the game
 .exitDataPage
@@ -993,23 +998,38 @@ ShowNextPokemonData:
 	coord hl, 1, 1
 	lb bc, 7, 8
 	call ClearScreenArea
-;	ld a, [wPokedexDataFlags]
-;	xor %00000010 ; toggle BIT_POKEDEX_WHICH_SPRITE_SHOWING
-;	bit BIT_POKEDEX_WHICH_SPRITE_SHOWING, a
-;	ld [wPokedexDataFlags], a
-;	jr nz, .backSprite
+	ld a, [wPokedexDataFlags]
+	bit BIT_POKEDEX_DATA_SHINY, a
+	jr z, .noShinySymbol
+	ld a, "<SHINY>"
+	Coorda 8, 1 ; keep the shiny symbol displayed across sprite switches
+.noShinySymbol
+	ld a, [wPokedexDataFlags]
+	xor %00000010 ; toggle BIT_POKEDEX_WHICH_SPRITE_SHOWING
+	bit BIT_POKEDEX_WHICH_SPRITE_SHOWING, a
+	ld [wPokedexDataFlags], a
+	jr nz, .backSprite
 .frontSprite
 	coord hl, 1, 1
 	call LoadFlippedFrontSpriteByMonIndex ; draw front sprite
 	jr .reloadwPokedexNum
-; Disabled for now as it doesn't work with our current pics system
-;.backSprite
-;	callfar LoadMonBackPicInPokedex ; draw back sprite
-;	xor a
-;	ldh [hStartTileID], a
-;	coord hl, 1, 1
-;	predef CopyUncompressedPicToTilemap
-;	jr .reloadwPokedexNum
+.backSprite
+	; the mon header is still loaded from ShowNextPokemonData
+	ld hl, wMonHBackSprite - wMonHeader
+	call UncompressMonSprite
+	callba LoadUncompressedBackPics ; interlace the 48x48 back sprite into vBackPic ($9310)
+	ld a, $31 ; back pic tiles start at tile ID $31 (vBackPic), same as in battle
+	ldh [hStartTileID], a
+	coord hl, 1, 1
+	predef CopyUncompressedPicToTilemap
+	jr .reloadwPokedexNum
+; START toggles the shiny palette on the currently displayed sprite (front or back)
+.shinyPaletteFromDescription ; START pressed on the description page
+	callba ToggleShinyPalettePokedex
+	jp .reprintDescription
+.shinyPaletteFromStats ; START pressed on the base stats page
+	callba ToggleShinyPalettePokedex
+	jp .waitForButtonPress2
 .nextMon
 	ld a, [wPokedexNum]
 	push af
@@ -1083,6 +1103,8 @@ ShowPokedexCapa:
 	call GBPalWhiteOut ; zero all palettes
 	ld a, [wPokedexNum] ; pokemon ID
 	ld [wcf91], a
+	ld hl, wPokedexDataFlags
+	res BIT_POKEDEX_DATA_SHINY, [hl] ; never show the shiny palette on the capa page
 	push af
 	ld b, SET_PAL_POKEDEX
 	call RunPaletteCommand

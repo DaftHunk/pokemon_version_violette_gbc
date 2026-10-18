@@ -3084,6 +3084,7 @@ wBattleFunctionalFlags:: db
 ;;;;; bit 0 -> How we're displaying pokedex data. 0 = internal (from the pokedex), 1 = external (from dialog)
 ;;;;; bit 1 -> Which sprite is currently displayed on a pokedex data page. 0 = front sprite, 1 = back sprite 
 ;;;;; bit 2 -> used to indicate whether we're in the pokedex data page or not
+;;;;; bit 3 -> shiny palette shown on the pokedex data page (toggled with START ; shared with the town map area flags, reset on data page entry)
 wPokedexDataFlags::
 ;;;;; PureRGBnote: CHANGED: this property is also used in the "AREA" option in the pokedex for indicating which states are available for a pokemon
 ;;;;; bit 0 -> pokemon has old rod locations
