@@ -54,6 +54,11 @@ ViridianMartScript1:
 	call DisplayTextID
 	lb bc, OAKS_PARCEL, 1
 	call GiveItem
+	; the parcel is excluded from the received-item icons: cancel the
+	; deferred draw GiveItem just armed (no text follows it here, the
+	; pending icon would leak onto the next unrelated dialog)
+	xor a
+	ld [wItemIconState], a
 	SetEvent EVENT_GOT_OAKS_PARCEL
 	ld a, $2
 	ld [wViridianMarketCurScript], a

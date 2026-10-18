@@ -81,6 +81,10 @@ DisplayTextIDInit:
 	xor a
 	ld [hWY], a ; put the window on the screen
 	call LoadFontTilePatterns
+	; draw an icon that was deferred while the window was closed. Must run
+	; after the font copy: LoadFontTilePatterns overwrites the icon tiles
+	; area at $8C00.
+	callba DrawPendingReceivedItemIcon
 	ld a, $01
 	ld [H_AUTOBGTRANSFERENABLED], a ; enable continuous WRAM to VRAM transfer each V-blank
 	ret

@@ -1029,6 +1029,7 @@ RECEIVE_ICON_ROW1 EQU RECEIVE_ICON_TOP_ROW + 1 ; icon cells' top row
 RECEIVE_ICON_ROW2 EQU RECEIVE_ICON_TOP_ROW + 2
 RECEIVE_ICON_ROW3 EQU RECEIVE_ICON_TOP_ROW + 3
 RECEIVE_ICON_BOTTOM_ROW EQU RECEIVE_ICON_TOP_ROW + 4 ; frame's bottom row
+RECEIVE_ICON_PENDING EQU $FC ; icon deferred until the next text opens
 
 ; Called from GiveItem (home bank) right after an item was successfully
 ; added to the bag. The dialog box is already on screen at that point in
@@ -1043,6 +1044,18 @@ DrawReceivedItemIcon:
 	ld a, [wIsInBattle]
 	and a
 	ret nz
+	; rWY != 0: the text window is closed and the tile map is a live mirror
+	; of the map view, so anything drawn here would leak onto the screen at
+	; the next VBlank (gym leaders give their TM between two texts). Defer
+	; instead: DrawPendingReceivedItemIcon draws the icon when the next
+	; text opens, after the font is loaded and the attributes recomputed.
+	ldh a, [rWY]
+	and a
+	jr z, .windowOnScreen
+	ld a, RECEIVE_ICON_PENDING
+	ld [wItemIconState], a
+	ret
+.windowOnScreen
 	; if the screen at the frame position is not the map view, a menu is
 	; covering the area (vending machine menu, game corner prize menu...)
 	; and the frame must not be drawn over it. Every map view tile is
@@ -1154,4 +1167,77 @@ DrawReceiveItemFrame:
 	ld [hli], a
 	ld a, "┘"
 	ld [hl], a
+	ret
+
+; Draws the received item icon that was deferred while the text window was
+; closed (RECEIVE_ICON_PENDING). Called from DisplayTextIDInit after the
+; font copy, so the icon tiles and its GBC attributes survive the font
+; load and the attribute recompute of the text open pipeline.
+DrawPendingReceivedItemIcon:
+	ld a, [wItemIconState]
+	cp RECEIVE_ICON_PENDING
+	ret nz
+	; b = received item ID, de = its icon (0 if the item has none)
+	ld a, [wcf91]
+	ld b, a
+	cp HM01_CUT
+	jr nc, .tmhm
+	; regular item: read ItemIconPointers[(ID - 1)] in the icon bank
+	dec a
+	add a
+	ld e, a
+	ld d, 0
+	push bc ; save the item ID (callba clobbers b and hl)
+	callba GetItemIconPointer ; de = icon source address
+	pop bc
+	; no icon for this item: no session, nothing touched
+	ld a, e
+	or d
+	jr z, .noIcon
+	jr .gotIcon
+.tmhm
+	; all TMs and HMs share a single sprite
+	ld de, TMHMIcon
+.gotIcon
+	; state = item ID: enables the .ReadMasterPals palette override
+	ld a, b
+	ld [wItemIconState], a
+	; draw the frame above the dialog box
+	push de
+	call DrawReceiveItemFrame
+	pop de
+	; load the 9 icon tiles (144 bytes) to vChars1 + $400
+	ld hl, vChars1 + $400
+	lb bc, BANK(ItemIconPointers), 9
+	call CopyVideoData
+	; write the tile IDs to the tile map at coordinates (1,8) to (3,10)
+	coord hl, 1, RECEIVE_ICON_ROW1
+	ld a, $C0
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hl], a
+	inc a
+	coord hl, 1, RECEIVE_ICON_ROW2
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hl], a
+	inc a
+	coord hl, 1, RECEIVE_ICON_ROW3
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hl], a
+	; GBC color: point the icon cells at the borrowed palette slot, then
+	; force one refill so the override serves the icon colors immediately
+	ld a, RECEIVE_ICON_TOP_ROW + 1
+	call SetItemIconColorAt
+	jp ForceEnhancedBGPPalRefill
+.noIcon
+	xor a
+	ld [wItemIconState], a
 	ret
