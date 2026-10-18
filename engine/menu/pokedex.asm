@@ -1127,8 +1127,8 @@ ShowPokedexCapa:
 .PrintMoves
 	pop af
 	ld [wPokedexNum], a
- 	call DrawDexEntryOnScreen
- 	call c, Pokedex_PrintMovesText
+	call DrawDexEntryOnScreen
+	call c, Pokedex_PrintMovesText
 	call DrawCapaLeftRightPrompts ; draw the seek prompts and update the watched keys
 .waitForButtonPress
 	call JoypadLowSensitivity
@@ -1141,9 +1141,8 @@ ShowPokedexCapa:
 	jr nz, .capaPrevMon
 	bit BIT_D_RIGHT, a
 	jr nz, .capaNextMon
-	jr z, .waitForButtonPress
 	pop af
-	ld [hTilesetType], a
+	ldh [hTilesetType], a
 	call GBPalWhiteOut
 	call ClearScreen
 	call RunDefaultPaletteCommand
@@ -1152,7 +1151,7 @@ ShowPokedexCapa:
 	ld hl, wStatusFlags2
 	res 1, [hl]
 	xor a
-	ld [wPokedexDataFlags], a ; clear BIT_VIEWING_POKEDEX (shared with the movedex seek 
+	ld [wPokedexDataFlags], a ; clear BIT_VIEWING_POKEDEX (shared with the movedex seek functions)
 	ld a, $77 ; max volume
 	ld [rNR50], a
 	ret
@@ -1195,7 +1194,17 @@ ShowPokedexCapa:
 	pop af
 	ld [wPokedexNum], a
 	call DrawDexEntryOnScreen
-	call c, Pokedex_PrintMovesText
+	jp nc, .capaNoMovesText
+	call DrawCapaLeftRightPrompts ; draw the seek prompts before the moves list, so that seeking works during its page turns
+	call Pokedex_PrintMovesText
+	jr c, .capaSeekRequested ; the player seeked while the moves list was waiting for a page turn
+	jp .waitForButtonPress
+.capaSeekRequested ; a = the seek direction pressed while the moves list was waiting for a page turn
+	bit BIT_D_LEFT, a
+	jp nz, .capaPrevMon
+	jp .capaNextMon
+.capaNoMovesText
+	; the mon is not owned: no learnset to print, just redraw the seek prompts
 	call DrawCapaLeftRightPrompts
 	jp .waitForButtonPress
 
@@ -1582,13 +1591,16 @@ Pokedex_PrintMovesText:
 
 	push de
 	push bc
-	call NewPageButtonPressCheck
+	call CapaPageTurnButtonCheck ; A or B turns the page, LEFT/RIGHT seeks to another pokemon
+	pop bc
+	pop de
+	jr c, .seekRequested ; a = the seek direction pressed during the moves list
 	coord hl, 1, 10
 	lb bc, 7, 18
 	call ClearScreenArea
-	pop bc
-	pop de
 	jp .PrintLevelUpMovesLoop
+.seekRequested ; let the caller handle the seek (carry set, a = direction)
+	ret
 .done
 	ret
 
@@ -1596,12 +1608,13 @@ Pokedex_PrintMovesText:
 ; level 1 entries are moves the pokemon starts with, print the START logo tiles for them
 ; INPUT: de = pointer to the level byte, hl = coordinates to print at
 PrintLearnLevel:
+	push de
 	ld a, [de]
 	cp 1
 	jr z, .startingMove
 	lb bc, 1, 3
 	call PrintNumber ; print the learn level
-	ret
+	jr .done
 .startingMove
 	ld a, $C6 ; START logo tiles (PokedexPromptGraphics)
 	ld [hli], a
@@ -1609,6 +1622,38 @@ PrintLearnLevel:
 	ld [hli], a
 	ld a, $C8
 	ld [hl], a
+.done
+	pop de ; PrintNumber returns with de decremented, keep the caller's pointer intact
+	ret
+
+; waits for the player to let go of the page turn buttons, then waits for a press
+; A or B turns the page
+; D_LEFT / D_RIGHT aborts the moves list and seeks to another pokemon (only when the direction is watched, i.e. not at the list bounds)
+; returns carry set and the seek direction in a when a seek is requested
+CapaPageTurnButtonCheck:
+.waitForButtonPressLetGo
+	call Joypad
+	ldh a, [hJoyHeld]
+	and A_BUTTON | B_BUTTON
+	jr nz, .waitForButtonPressLetGo
+.waitForButtonPress
+	call Joypad
+	ldh a, [hJoyHeld]
+	ld b, a
+	and D_LEFT | D_RIGHT
+	jr z, .checkPageButton
+	ld c, a ; the held directions
+	ld a, [wMenuWatchedKeys]
+	and c
+	jr z, .checkPageButton ; the direction is not watched (at the list bounds), ignore it
+	ld a, c
+	scf
+	ret
+.checkPageButton
+	ld a, b
+	and A_BUTTON | B_BUTTON
+	jr z, .waitForButtonPress
+	xor a
 	ret
 
 LevelUpMovesText:
