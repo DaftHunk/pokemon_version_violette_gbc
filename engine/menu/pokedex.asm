@@ -1191,6 +1191,12 @@ ShowPokedexCapa:
 	ld a, [wPokedexNum] ; internal index of the new mon
 	ld [wcf91], a
 	push af
+	; erase the old mon's sprite and wait for the transfer before applying
+	; the new palette, or the old mon briefly renders in the new palette
+	coord hl, 1, 1
+	lb bc, 7, 8
+	call ClearScreenArea
+	call Delay3
 	ld b, SET_PAL_POKEDEX
 	call RunPaletteCommand
 	pop af
