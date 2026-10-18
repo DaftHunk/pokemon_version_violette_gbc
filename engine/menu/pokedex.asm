@@ -102,16 +102,16 @@ HandlePokedexSideMenu:
 	jr z, .exitSideMenu
 	call PokedexToIndex
 	ld hl, wTopMenuItemY
-	ld a, 10
+	ld a, 8
 	ld [hli], a ; top menu item Y
 	ld a, 15
 	ld [hli], a ; top menu item X
 	xor a
 	ld [hli], a ; current menu item ID
 	inc hl
-	ld a, 3
+	ld a, 4
 	ld [hli], a ; max menu item ID
-	;ld a, A_BUTTON | B_BUTTON not needed since A_BUTTON | B_BUTTON = 3 and 3 is already in the 'a' register
+	ld a, A_BUTTON | B_BUTTON
 	ld [hli], a ; menu watched keys (A button and B button)
 	xor a
 	ld [hli], a ; old menu item ID
@@ -129,9 +129,9 @@ HandlePokedexSideMenu:
 	dec a
 	jr z, .choseArea
 	dec a
- 	jr z, .choseCapa
-.choseQuit
-	ld b, 1
+	jr z, .choseCapa
+	dec a
+	jr z, .choseCSCT
 .exitSideMenu
 	pop af
 	ld [wDexMaxSeenMon], a
@@ -153,9 +153,9 @@ HandlePokedexSideMenu:
 
 .buttonBPressed
 	push bc
-	coord hl, 15, 10
+	coord hl, 15, 8
 	ld de, 20
-	lb bc, " ", 7
+	lb bc, " ", 5
 	call DrawTileLine ; cover up the menu cursor in the side menu
 	pop bc
 	jr .exitSideMenu
@@ -195,11 +195,17 @@ HandlePokedexSideMenu:
 	ret
 
 .choseCapa ; Changed this to print learnsets
-  	ld a, 1
-  	ld [wMoveListCounter], a
-  	call ShowPokedexCapa
-  	ld b, 0
-  	jr .exitSideMenu
+	ld a, 1
+	ld [wMoveListCounter], a
+	call ShowPokedexCapa
+	ld b, 0
+	jr .exitSideMenu
+
+; show the list of TMs and HMs the pokemon can learn
+.choseCSCT
+	call ShowPokedexCSCT
+	ld b, 0
+	jr .exitSideMenu
 
 ; handles the list of pokemon on the left of the pokedex screen
 ; sets carry flag if player presses A, unsets carry flag if player presses B
@@ -279,7 +285,7 @@ HandlePokedexListMenu:
 	coord hl, 1, 1
 	ld de, PokedexContentsText
 	call PlaceString
-	coord hl, 16, 10
+	coord hl, 16, 8
 	ld de, PokedexMenuItemsText
 	call PlaceString
 
@@ -515,7 +521,7 @@ PokedexMenuItemsText:
 	next "Cri"
 	next "Zone"
 	next "Capa"
-	next "Ret@"
+	next "CSCT@"
 
 ; tests if a pokemon's bit is set in the seen or owned pokemon bit fields
 ; INPUT:
@@ -1264,6 +1270,196 @@ DrawCapaLeftRightPrompts:
 	ld [wPokedexNum], a ; restore the internal index
 	ret
 
+; function to display the pokedex TM/HM page from inside the pokedex
+ShowPokedexCSCT:
+	ld hl, wStatusFlags2
+	set 1, [hl]
+	ld a, $33 ; 3/7 volume
+	ldh [rNR50], a
+	ld a, [hTilesetType]
+	push af
+	xor a
+	ldh [hTilesetType], a
+	call GBPalWhiteOut ; zero all palettes
+	; load pokedex data page UI tiles (left + right arrows)
+	ld de, PokedexDataUI
+	lb bc, BANK(PokedexDataUI), 2
+	ld hl, vChars1 tile $4C
+	call CopyVideoDataDouble
+	ld a, [wPokedexNum] ; pokemon ID
+	ld [wcf91], a
+	ld hl, wPokedexDataFlags
+	res BIT_POKEDEX_DATA_SHINY, [hl] ; never show the shiny palette on the CSCT page
+	set BIT_VIEWING_POKEDEX, [hl] ; the seek functions are shared with the movedex, tell them
+	push af
+	ld b, SET_PAL_POKEDEX
+	call RunPaletteCommand
+	pop af
+	ld [wPokedexNum], a
+
+	call DrawDexEntryOnScreen
+	jp nc, .csctNoCSCTText
+	call DrawCapaLeftRightPrompts ; draw the seek prompts before the machine list, so that seeking works during its page turns
+	call Pokedex_PrintTMHMText
+	jp c, .csctSeekRequested ; the player seeked while the machine list was waiting for a page turn
+	jr .waitForButtonPress
+.waitForButtonPress
+	call JoypadLowSensitivity
+	ld a, [wMenuWatchedKeys]
+	ld c, a
+	ldh a, [hJoy5]
+	and c
+	jr z, .waitForButtonPress
+	bit BIT_D_LEFT, a
+	jr nz, .csctPrevMon
+	bit BIT_D_RIGHT, a
+	jr nz, .csctNextMon
+	pop af
+	ldh [hTilesetType], a
+	call GBPalWhiteOut
+	call ClearScreen
+	call RunDefaultPaletteCommand
+	call LoadTextBoxTilePatterns
+	call GBPalNormal
+	ld hl, wStatusFlags2
+	res 1, [hl]
+	xor a
+	ld [wPokedexDataFlags], a ; clear BIT_VIEWING_POKEDEX (shared with the movedex seek functions)
+	ld a, $77 ; max volume
+	ldh [rNR50], a
+	ret
+
+; LEFT / RIGHT seek to the previous / next seen pokemon, like on the data page
+.csctPrevMon
+	ld a, [wcf91] ; the machine text printing clobbers wPokedexNum, but wcf91 always holds the current mon
+	ld [wPokedexNum], a
+	push af
+	call IndexToPokedex
+	ld hl, wPokedexSeen
+	call SeekToPreviousMon
+	jr c, .reloadCSCTMon
+	pop af
+	call ChangeMonListPosition
+	call PokedexToIndex
+	jr .csctShowMon
+.csctNextMon
+	ld a, [wcf91]
+	ld [wPokedexNum], a
+	push af
+	call IndexToPokedex
+	ld hl, wPokedexSeen
+	call SeekToNextMon
+	jr c, .reloadCSCTMon
+	pop af
+	call ChangeMonListPosition
+	call PokedexToIndex
+	jr .csctShowMon
+.reloadCSCTMon
+	pop af
+	ld [wPokedexNum], a
+	jr .waitForButtonPress
+.csctShowMon
+	ld a, [wPokedexNum] ; internal index of the new mon
+	ld [wcf91], a
+	push af
+	; erase the old mon's sprite and wait for the transfer before applying
+	; the new palette, or the old mon briefly renders in the new palette
+	coord hl, 1, 1
+	lb bc, 7, 8
+	call ClearScreenArea
+	call Delay3
+	ld b, SET_PAL_POKEDEX
+	call RunPaletteCommand
+	pop af
+	ld [wPokedexNum], a
+	call DrawDexEntryOnScreen
+	jp nc, .csctNoCSCTText
+	call DrawCapaLeftRightPrompts ; draw the seek prompts before the machine list, so that seeking works during its page turns
+	call Pokedex_PrintTMHMText
+	jr c, .csctSeekRequested ; the player seeked while the machine list was waiting for a page turn
+	jp .waitForButtonPress
+.csctSeekRequested ; a = the seek direction pressed while the machine list was waiting for a page turn
+	bit BIT_D_LEFT, a
+	jp nz, .csctPrevMon
+	jp .csctNextMon
+.csctNoCSCTText
+	; the mon is not owned: no machine list to print, just redraw the seek prompts
+	call DrawCapaLeftRightPrompts
+	jp .waitForButtonPress
+
+; prints the list of TMs and HMs the current pokemon can learn, in item constant order (HMs, then TMs)
+; the mon's learnset must be loaded in wMonHLearnset (done by DrawDexEntryOnScreen via GetMonHeader)
+; 5 machines per page (rows 12-16), header at row 10
+; returns carry clear when the list is done
+; returns carry set + a = the seek direction when the player seeks during a page turn
+Pokedex_PrintTMHMText:
+	ld de, TMHMMovesText
+	coord hl, 1, 10
+	call PlaceString
+	ld b, HM01_CUT ; the item ID of the machine currently checked
+	ld c, 0 ; machines printed on the current page
+	coord hl, 1, 12 ; row cursor, advanced by SCREEN_WIDTH after each print
+.checkMachineLoop
+	; test the machine's bit in the learnset
+	push bc
+	ld a, b
+	sub HM01_CUT ; a = machine index in item constant order (0 = HM01 ... 54 = TM50)
+	cp TM01_MEGA_PUNCH - HM01_CUT ; machine indexes below TM01 are HMs
+	jr c, .hmBit
+	sub TM01_MEGA_PUNCH - HM01_CUT ; TM bits come first in the learnset: bit = machine index - 5
+	jr .haveBit
+.hmBit
+	add hm01_CUT - 1 ; HM bits come after the 50 TM bits: bit = 50 + machine index
+.haveBit
+	ld c, a
+	ld b, FLAG_TEST
+	ld hl, wMonHLearnset
+	predef FlagActionPredef
+	ld a, c
+	pop bc
+	and a
+	jr z, .nextMachine
+	ld a, c
+	cp 5 ; machines per page (rows 12-16)
+	jr c, .printMachine
+	; the page is full: wait for the player to turn the page or seek
+	push bc
+	call CapaPageTurnButtonCheck ; A or B turns the page, LEFT/RIGHT seeks to another pokemon
+	jr c, .seekRequested
+	coord hl, 1, 10
+	lb bc, 7, 18
+	call ClearScreenArea ; clobbers de, and lb bc clobbers b: keep the pop AFTER
+	ld de, TMHMMovesText
+	coord hl, 1, 10
+	call PlaceString ; also clobbers bc (returns hl in bc): keep the pop AFTER this too
+	pop bc
+	xor a
+	ld c, a ; reset the count of machines printed on this page
+	coord hl, 1, 12 ; reset the row cursor
+.printMachine
+	ld a, b
+	ld [wPokedexNum], a
+	push hl
+	push bc
+	call GetItemName ; de = wcd6d (the machine's name in French), preserves hl and bc
+	call PlaceString
+	pop bc
+	pop hl
+	ld de, SCREEN_WIDTH
+	add hl, de
+	inc c
+.nextMachine
+	inc b
+	ld a, TM50_SUBSTITUTE
+	cp b
+	jr nc, .checkMachineLoop
+.done
+	and a ; return with carry clear: the list is done
+	ret
+.seekRequested ; let the caller handle the seek (carry set, a = direction)
+	pop bc
+	ret
+
 DrawDexEntryOnScreen:
 	call ClearScreen
 
@@ -1668,6 +1864,9 @@ CapaPageTurnButtonCheck:
 
 LevelUpMovesText:
 	db "Capacités:@"
+
+TMHMMovesText:
+	db "CS/CT:@"
 
 DexType1Text:
 	db "Type1/@"
