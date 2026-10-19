@@ -139,14 +139,6 @@ LoadTownMap_Nest:
 	ld [hl], $ff
 	push hl
 	call DisplayWildLocations
-	call GetMonName
-	coord hl, 8, 0
-
-	call PlaceString
-	coord hl, 1, 0
-	ld de, MonsNestText
-	call PlaceString
-	call WaitForTextScrollButtonPress
 	call ExitTownMap
 	pop hl
 	pop af
@@ -403,67 +395,298 @@ DrawPlayerOrBirdSprite:
 	ld bc, $a0
 	jp CopyData
 
-;joenote - added messages for immediate map check with the dex area function
-_DexAreaLand::
-	text "Détecté pas loin!"
-	line "Essaie de Marcher."
-	done
-	db "@"
-_DexAreaSurf::
-	text "Détecté pas loin!"
-	line "Essaie le Surf."
-	done
-	db "@"
-_DexAreaSuperRod::
-	text "Détecté pas loin!"
-	line "Essaie la Canne."
-	done
-	db "@"
+; PureRGB-style wild mon area menu
+; lets the player cycle between land, water, old rod, good rod and super rod areas
+STATE_LAND_AREAS EQU 0
+STATE_WATER_AREAS EQU 1
+STATE_OLD_ROD_AREAS EQU 2
+STATE_GOOD_ROD_AREAS EQU 3
+STATE_SUPER_ROD_AREAS EQU 4
 
 DisplayWildLocations:
-	callba FindWildLocationsOfMon
-	
-	call Delay3
-	ld a, [wActionResultOrTookBattleTurn]
-	bit 1, a
-	jr z, .nexttext1
-	ld hl, _DexAreaLand
-	call PrintText
-	ld c, 45
-	call DelayFrames
-.nexttext1
-	ld a, [wActionResultOrTookBattleTurn]
-	bit 3, a
-	jr z, .nexttext2
-	ld hl, _DexAreaSurf
-	call PrintText
-	ld c, 45
-	call DelayFrames
-.nexttext2
-	ld a, [wActionResultOrTookBattleTurn]
-	bit 4, a
-	jr z, .nexttext3
-	ld hl, _DexAreaSuperRod
-	call PrintText
-	ld c, 45
-	call DelayFrames
-.nexttext3
-	ld a, [wActionResultOrTookBattleTurn]
-	and a
-	call nz, LoadTownMap
 	xor a
-	ld [wActionResultOrTookBattleTurn], a
-	
-	;call ZeroOutDuplicatesInList
-	call RemoveDuplicatesInList	;joenote - much better to consolidate the list
+	ld [wMonAreaTypeFlags], a
+
+	call GetMonName
+	coord hl, 1, 0
+	ld de, MonsNestText
+	call PlaceString ; leaves bc pointing right after the printed text
+	ld h, b
+	ld l, c
+	ld de, wcd6d
+	call PlaceString ; print the mon name right after "Nid de "
+
+	call SaveScreenTilesToBuffer2
+
+; load the area type UI tiles over the unused dynamic font tiles
+	ld de, MapAreasUI
+	ld hl, vChars1 + $400 ; tiles $C0-$D5
+	lb bc, BANK(MapAreasUI), (MapAreasUIEnd - MapAreasUI) / $10
+	call CopyVideoData
+; load the fishing rod hook and water icons as OAM tiles 5 and 6
+	ld de, FishingWaterIcons
+	ld hl, vSprites + $50
+	lb bc, BANK(FishingWaterIcons), 2
+	call CopyVideoDataDouble
+
+	call GetAreaDisplayTypes
+	ld a, [wMonAreaTypeFlags]
+	and a
+	jr z, .unknown ; if it doesn't appear anywhere, don't even look
+	ld a, -1
+	ld [wTownMapAreaState], a ; before the first state, so we will get the first available one
+	call FindNextMonAreaState
+	ld a, b
+	ld [wTownMapAreaState], a
+.doState
+	xor a
+	ld hl, wOAMBuffer
+	ld bc, $90
+	call FillMemory ; clear the map icon OAM entries
+	call DrawMonAreaButtonPrompt
+	ld a, [wTownMapAreaState]
+	cp STATE_LAND_AREAS
+	jr z, .displayLandState
+	cp STATE_WATER_AREAS
+	jr z, .displayWaterState
+	cp STATE_OLD_ROD_AREAS
+	jr z, .displayOldRodState
+	cp STATE_GOOD_ROD_AREAS
+	jr z, .displayGoodRodState
+.displaySuperRodState
+	call DisplaySuperRodLocations
+	jr .checkForNoLocations
+.displayLandState
+	call DisplayLandLocations
+	jr .checkForNoLocations
+.displayWaterState
+	call DisplayWaterLocations
+	jr .checkForNoLocations
+.displayOldRodState
+.displayGoodRodState
+	call DisplayAnyWaterText
+	jr .doneState
+.checkForNoLocations
+	ld a, l
+	and a ; were any OAM entries written?
+	jr nz, .drawPlayerSprite
+	jr .unknown ; if no OAM entries were written, print area unknown text
+.drawPlayerSprite
+	ld a, [wCurMap]
+	ld b, $0
+	call DrawPlayerOrBirdSprite
+	jr .doneState
+.unknown
+	coord hl, 1, 7
+	ld b, 2
+	ld c, 15
+	call TextBoxBorder
+	coord hl, 2, 9
+	ld de, AreaUnknownText
+	call PlaceString
+.doneState
+	ld hl, wOAMBuffer
+	ld de, wTileMapBackup
+	ld bc, $a0
+	call CopyData
+.inputLoop
+	call DelayFrame
+	call JoypadLowSensitivity
+	ld a, [hJoy5]
+	ld b, a
+	and A_BUTTON | B_BUTTON | D_LEFT | D_RIGHT
+	jr z, .inputLoop
+	bit BIT_A_BUTTON, b
+	jr nz, .exit
+	bit BIT_B_BUTTON, b
+	jr nz, .exit
+	bit BIT_D_RIGHT, b
+	jr z, .pressedLeft
+	call FindNextMonAreaState
+	jr z, .inputLoop ; there is no next state available
+	jr .loadState
+.pressedLeft
+	call FindPrevMonAreaState
+	jr z, .inputLoop ; there is no previous state available
+.loadState
+	ld a, b
+	ld [wTownMapAreaState], a
+	ld a, SFX_TINK
+	call PlaySound
+	call LoadScreenTilesFromBuffer2 ; restore the base screen before drawing the new state
+	jp .doState
+.exit
+	ret
+
+GetAreaDisplayTypes:
+; sets the bits in wMonAreaTypeFlags for every kind of location
+; where the mon in [wPokedexNum] can be found
+	callba CheckHasLandWaterLocations
+	callba CheckHasRodLocations
+	callba FindSuperRodLocationsOfMon ; also fills wTownMapCoords with the super rod map list
+	ld a, [wTownMapCoords]
+	cp $ff
+	ret z ; there are no super rod locations
+	ld a, [wMonAreaTypeFlags]
+	set BIT_HAS_SUPER_ROD_LOCATIONS, a
+	ld [wMonAreaTypeFlags], a
+	ret
+
+; output b = next state, z flag indicates if there is one available or not
+FindNextMonAreaState:
+	ld a, [wTownMapAreaState]
+	ld b, a
+.loopNext
+	inc b
+	ld a, b
+	cp STATE_SUPER_ROD_AREAS + 1
+	ret z
+	call HasAreaState
+	ret nz
+	jr .loopNext
+
+; output b = previous state, z flag indicates if there is one available or not
+FindPrevMonAreaState:
+	ld a, [wTownMapAreaState]
+	ld b, a
+.loopPrev
+	dec b
+	ld a, b
+	cp -1
+	ret z
+	call HasAreaState
+	ret nz
+	jr .loopPrev
+
+; b = which state to check if it is available
+HasAreaState:
+	ld a, b
+	cp STATE_LAND_AREAS
+	jr z, .landState
+	cp STATE_WATER_AREAS
+	jr z, .waterState
+	cp STATE_OLD_ROD_AREAS
+	jr z, .oldRodState
+	cp STATE_GOOD_ROD_AREAS
+	jr z, .goodRodState
+.superRodState
+	ld a, [wMonAreaTypeFlags]
+	bit BIT_HAS_SUPER_ROD_LOCATIONS, a
+	ret
+.landState
+	ld a, [wMonAreaTypeFlags]
+	bit BIT_HAS_LAND_LOCATIONS, a
+	ret
+.waterState
+	ld a, [wMonAreaTypeFlags]
+	bit BIT_HAS_WATER_LOCATIONS, a
+	ret
+.oldRodState
+	ld a, [wMonAreaTypeFlags]
+	bit BIT_HAS_OLD_ROD_LOCATIONS, a
+	ret
+.goodRodState
+	ld a, [wMonAreaTypeFlags]
+	bit BIT_HAS_GOOD_ROD_LOCATIONS, a
+	ret
+
+DrawMonAreaButtonPrompt:
+	ld a, [wTownMapAreaState]
+	cp STATE_LAND_AREAS
+	jr z, .landState
+	cp STATE_WATER_AREAS
+	jr z, .waterState
+	cp STATE_OLD_ROD_AREAS
+	jr z, .oldRodState
+	cp STATE_GOOD_ROD_AREAS
+	jr z, .goodRodState
+.superRodState
+	coord hl, 14, 17
+	ld a, $C6
+	ld b, 3
+	call DrawPrompt
+	coord hl, 17, 17
+	ld a, $CE
+	ld b, 2
+	call DrawPrompt
+	coord hl, 13, 17
+	jr .drawArrows
+.landState
+	coord hl, 13, 17
+	ld a, $C0
+	ld b, 6
+	call DrawPrompt
+	jr .drawArrows
+.waterState
+	coord hl, 15, 17
+	ld a, $D2
+	ld b, 4
+	call DrawPrompt
+	coord hl, 14, 17
+	jr .drawArrows
+.oldRodState
+	coord hl, 15, 17
+	ld a, $CC
+	ld b, 4
+	call DrawPrompt
+	coord hl, 14, 17
+	jr .drawArrows
+.goodRodState
+	coord hl, 14, 17
+	ld a, $C9
+	ld b, 3
+	call DrawPrompt
+	coord hl, 17, 17
+	ld a, $CE
+	ld b, 2
+	call DrawPrompt
+	coord hl, 13, 17
+.drawArrows ; assumes hl points at the location the left arrow should be at (if there needs to be one)
+	call FindPrevMonAreaState
+	jr z, .nextArrow
+	ld [hl], $D0
+.nextArrow
+	call FindNextMonAreaState
+	ret z
+	coord hl, 19, 17
+	ld [hl], $D1 ; right prompt
+	ret
+
+; draw a prompt of b tiles starting with tile a at coord hl
+DrawPrompt:
+.loop
+	ld [hli], a
+	inc a
+	dec b
+	jr nz, .loop
+	ret
+
+DisplayLandLocations:
+	callba FindLandLocationsOfMon
+	ld a, $4 ; nest icon tile no.
+	jp LoadMapIcons
+
+DisplayWaterLocations:
+	callba FindWaterLocationsOfMon
+	ld a, $6 ; water icon tile no.
+	jp LoadMapIcons
+
+DisplaySuperRodLocations:
+	callba FindSuperRodLocationsOfMon
+	ld a, $5 ; fishing rod hook icon tile no.
+	; fall through to LoadMapIcons
+
+LoadMapIcons:
+; a = OAM tile to draw the location icons with
+; draws an OAM icon for every map in the wTownMapCoords list
+; returns l = 0 if no icons were drawn
+	push af
 	ld hl, wOAMBuffer
 	ld de, wTownMapCoords
 .loop
 	ld a, [de]
-	cp $ff
+	cp $ff ; indicates end of list
 	jr z, .exitLoop
-;	and a
-;	jr z, .nextEntry	;joenote - this would have skipped Pallet Town. Removed since super rod is now detected
 	push hl
 	call LoadTownMapEntry
 	pop hl
@@ -472,13 +695,13 @@ DisplayWildLocations:
 	jr z, .nextEntry ; skip Cerulean Cave
 	call TownMapCoordsToOAMCoords
 
-;joenote - modified the above function, so have to write to ShadowOAM here.
+; the above function was modified to not write to [hl], so write to ShadowOAM here.
 	ld a, b
 	ld [hli], a
 	ld a, c
 	ld [hli], a
-
-	ld a, $4 ; nest icon tile no.
+	pop af ; get icon tile to display
+	push af
 	ld [hli], a
 	xor a
 	ld [hli], a
@@ -486,27 +709,23 @@ DisplayWildLocations:
 	inc de
 	jr .loop
 .exitLoop
-	ld a, l
-	and a ; were any OAM entries written?
-	jr nz, .drawPlayerSprite
-; if no OAM entries were written, print area unknown text
+	pop af
+	ret
+
+DisplayAnyWaterText:
+; the old rod and good rod encounter lists are global,
+; so just tell the player that any water works
 	coord hl, 1, 7
 	ld b, 2
 	ld c, 15
 	call TextBoxBorder
 	coord hl, 2, 9
-	ld de, AreaUnknownText
+	ld de, AnyWaterText
 	call PlaceString
-	jr .done
-.drawPlayerSprite
-	ld a, [wCurMap]
-	ld b, $0
-	call DrawPlayerOrBirdSprite
-.done
-	ld hl, wOAMBuffer
-	ld de, wTileMapBackup
-	ld bc, $a0
-	jp CopyData
+	ret
+
+AnyWaterText:
+	db "Partout@"
 
 AreaUnknownText:
 	db " Zone Inconnue@"

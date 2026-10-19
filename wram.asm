@@ -3496,7 +3496,21 @@ wEXPBarKeepFullFlag:: ds 1
 wdeed::
 ds 1
 
-; deee
+wTownMapAreaState:: ; deee
+; the wild mon area state currently displayed on the town map
+; 0 = land (grass/caves), 1 = water (surfing), 2 = old rod,
+; 3 = good rod, 4 = super rod
+	ds 1
+
+wMonAreaTypeFlags:: ; deef
+; used by the pokedex area function to indicate
+; which kinds of locations are available for a pokemon
+; bit 0: the mon has land (grass/cave) locations
+; bit 1: the mon has water (surfing) locations
+; bit 2: the mon has old rod locations
+; bit 3: the mon has good rod locations
+; bit 4: the mon has super rod locations
+	ds 1
 
 
 SECTION "Stack", WRAM0[$df00]
