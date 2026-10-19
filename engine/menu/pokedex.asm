@@ -521,7 +521,7 @@ PokedexMenuItemsText:
 	next "Cri"
 	next "Zone"
 	next "Capa"
-	next "CSCT@"
+	next "CT@"
 
 ; tests if a pokemon's bit is set in the seen or owned pokemon bit fields
 ; INPUT:
@@ -1922,7 +1922,7 @@ LevelUpMovesText:
 	db "Capacités:@"
 
 TMHMMovesText:
-	db "CS/CT:@"
+	db "CS et CT:@"
 
 DexType1Text:
 	db "Type1/@"

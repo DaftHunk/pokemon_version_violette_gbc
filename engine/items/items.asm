@@ -3533,7 +3533,7 @@ CheckHasRodLocations:
 	jr z, .hasOldRod
 	dec c
 	jr nz, .oldRodLoop
-	ld c, 4 ; the good rod also picks among entries 4 to 7
+	ld c, 5 ; the expanded good rod list has 9 entries, so check the remaining ones
 .goodRodLoop
 	ld a, [hli]
 	inc hl
@@ -3545,7 +3545,9 @@ CheckHasRodLocations:
 .hasOldRod
 	ld hl, wMonAreaTypeFlags
 	set BIT_HAS_OLD_ROD_LOCATIONS, [hl]
+	; fall through: the good rod also picks among the first 4 entries
 .hasGoodRod
+	ld hl, wMonAreaTypeFlags
 	set BIT_HAS_GOOD_ROD_LOCATIONS, [hl]
 .done
 	pop af

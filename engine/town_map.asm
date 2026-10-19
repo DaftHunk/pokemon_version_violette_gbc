@@ -416,11 +416,9 @@ DisplayWildLocations:
 	ld de, wcd6d
 	call PlaceString ; print the mon name right after "Nid de "
 
-	call SaveScreenTilesToBuffer2
-
 ; load the area type UI tiles over the unused dynamic font tiles
 	ld de, MapAreasUI
-	ld hl, vChars1 + $400 ; tiles $C0-$D5
+	ld hl, vChars1 + $400 ; tiles $C0-$D4
 	lb bc, BANK(MapAreasUI), (MapAreasUIEnd - MapAreasUI) / $10
 	call CopyVideoData
 ; load the fishing rod hook and water icons as OAM tiles 5 and 6
@@ -491,6 +489,7 @@ DisplayWildLocations:
 	call CopyData
 .inputLoop
 	call DelayFrame
+	call TownMapSpriteBlinkingAnimation
 	call JoypadLowSensitivity
 	ld a, [hJoy5]
 	ld b, a
@@ -513,9 +512,48 @@ DisplayWildLocations:
 	ld [wTownMapAreaState], a
 	ld a, SFX_TINK
 	call PlaySound
-	call LoadScreenTilesFromBuffer2 ; restore the base screen before drawing the new state
+	call RedrawWildAreaBase ; redraw the base screen before drawing the new state
 	jp .doState
 .exit
+	ret
+
+; redraws the base town map screen (border, map artwork and title)
+; used when switching area types to erase the previous state's info box.
+; buffer2 is not used on purpose: the START menu keeps the pre-menu screen
+; there and restores it when the pokedex is closed.
+RedrawWildAreaBase:
+	coord hl, 0, 0
+	ld b, $12
+	ld c, $12
+	call TextBoxBorder
+	coord hl, 0, 0
+	ld de, CompressedMap
+.nextTile
+	ld a, [de]
+	and a
+	jr z, .done
+	ld b, a
+	and $f
+	ld c, a
+	ld a, b
+	swap a
+	and $f
+	add $60
+.writeRunLoop
+	ld [hli], a
+	dec c
+	jr nz, .writeRunLoop
+	inc de
+	jr .nextTile
+.done
+	call GetMonName
+	coord hl, 1, 0
+	ld de, MonsNestText
+	call PlaceString ; leaves bc pointing right after the printed text
+	ld h, b
+	ld l, c
+	ld de, wcd6d
+	call PlaceString ; print the mon name right after "Nid de "
 	ret
 
 GetAreaDisplayTypes:
@@ -601,55 +639,55 @@ DrawMonAreaButtonPrompt:
 	cp STATE_GOOD_ROD_AREAS
 	jr z, .goodRodState
 .superRodState
-	coord hl, 14, 17
-	ld a, $C6
+	coord hl, 13, 17
+	ld a, $CB
 	ld b, 3
 	call DrawPrompt
-	coord hl, 17, 17
+	coord hl, 16, 17
 	ld a, $CE
-	ld b, 2
+	ld b, 3
 	call DrawPrompt
-	coord hl, 13, 17
+	coord hl, 12, 17
 	jr .drawArrows
 .landState
-	coord hl, 13, 17
+	coord hl, 11, 17
 	ld a, $C0
-	ld b, 6
+	ld b, 8
 	call DrawPrompt
 	jr .drawArrows
 .waterState
-	coord hl, 15, 17
-	ld a, $D2
-	ld b, 4
-	call DrawPrompt
-	coord hl, 14, 17
-	jr .drawArrows
-.oldRodState
-	coord hl, 15, 17
-	ld a, $CC
-	ld b, 4
-	call DrawPrompt
-	coord hl, 14, 17
-	jr .drawArrows
-.goodRodState
-	coord hl, 14, 17
-	ld a, $C9
-	ld b, 3
-	call DrawPrompt
 	coord hl, 17, 17
-	ld a, $CE
+	ld a, $D3
 	ld b, 2
 	call DrawPrompt
+	coord hl, 16, 17
+	jr .drawArrows
+.oldRodState
+	coord hl, 16, 17
+	ld a, $CE
+	ld b, 3
+	call DrawPrompt
+	coord hl, 15, 17
+	jr .drawArrows
+.goodRodState
 	coord hl, 13, 17
+	ld a, $C8
+	ld b, 3
+	call DrawPrompt
+	coord hl, 16, 17
+	ld a, $CE
+	ld b, 3
+	call DrawPrompt
+	coord hl, 12, 17
 .drawArrows ; assumes hl points at the location the left arrow should be at (if there needs to be one)
 	call FindPrevMonAreaState
 	jr z, .nextArrow
-	ld [hl], $D0
+	ld [hl], $D1
 .nextArrow
 	call FindNextMonAreaState
 	ret z
 	coord hl, 19, 17
-	ld [hl], $D1 ; right prompt
+	ld [hl], $D2 ; right prompt
 	ret
 
 ; draw a prompt of b tiles starting with tile a at coord hl
@@ -715,17 +753,17 @@ LoadMapIcons:
 DisplayAnyWaterText:
 ; the old rod and good rod encounter lists are global,
 ; so just tell the player that any water works
-	coord hl, 1, 7
+	coord hl, 2, 7
 	ld b, 2
-	ld c, 15
+	ld c, 14
 	call TextBoxBorder
-	coord hl, 2, 9
+	coord hl, 4, 9
 	ld de, AnyWaterText
 	call PlaceString
 	ret
 
 AnyWaterText:
-	db "Partout@"
+	db "N'importe où@"
 
 AreaUnknownText:
 	db " Zone Inconnue@"
