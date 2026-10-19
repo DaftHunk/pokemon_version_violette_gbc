@@ -197,11 +197,11 @@ IF DEF(_DEBUG)
 	ld hl, wPokedexOwned
 	ld b, wPokedexOwnedEnd - wPokedexOwned - 1
 	call DebugSetPokedexEntries
-	ld [hl], %01111111
+	ld [hl], %00111111
 	ld hl, wPokedexSeen
 	ld b, wPokedexSeenEnd - wPokedexSeen - 1
 	call DebugSetPokedexEntries
-	ld [hl], %01111111
+	ld [hl], %00111111
 	ld hl, wMovedexSeen
 	ld b, wMovedexSeenEnd - wMovedexSeen
 	call DebugSetPokedexEntries
@@ -324,6 +324,7 @@ DebugSetPokedexEntries:
 	ret
 
 DebugItemsList:
+	db SURFBOARD, 1
 	db ITEMFINDER, 1
 	db MAX_REVIVE, 99
 	db MAX_ELIXER, 99

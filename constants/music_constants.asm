@@ -304,3 +304,9 @@ ENDM
 	music_const SFX_SLOTS_REWARD,       SFX_Slots_Reward
 	music_const SFX_SLOTS_NEW_SPIN,     SFX_Slots_New_Spin
 	music_const SFX_SHOOTING_STAR,      SFX_Shooting_Star
+
+	; AUDIO_4 - Pikachu's Beach minigame
+	music_const SFX_SURFING_JUMP,         SFX_Surfing_Jump_4
+	music_const SFX_SURFING_FLIP,         SFX_Surfing_Flip_4
+	music_const SFX_SURFING_LAND,         SFX_Surfing_Land_4
+	music_const SFX_SURFING_CRASH,        SFX_Surfing_Crash_4

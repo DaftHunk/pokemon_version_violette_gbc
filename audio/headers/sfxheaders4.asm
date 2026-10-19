@@ -280,3 +280,16 @@ SFX_Go_Outside_4::
 
 SFX_Save_4::
 	audio SFX_Save_4, Ch4, Ch5
+
+;Pikachu's Beach minigame
+SFX_Surfing_Jump_4::
+	audio SFX_Surfing_Jump_4, Ch7
+
+SFX_Surfing_Flip_4::
+	audio SFX_Surfing_Flip_4, Ch4
+
+SFX_Surfing_Land_4::
+	audio SFX_Surfing_Land_4, Ch7
+
+SFX_Surfing_Crash_4::
+	audio SFX_Surfing_Crash_4, Ch7

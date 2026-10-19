@@ -21,9 +21,9 @@ Route19BeachHouseFisherText:
 
 	ld a, [wPartyMon1Species]
 	cp PIKACHU
-	jr z, PikachuTutor
+	jp z, PikachuTutor
 	cp RAICHU
-	jr z, PikachuTutor
+	jp z, PikachuTutor
 	; fallthrough
 .displayText
 	call PrintText
@@ -50,7 +50,58 @@ Route19BeachHousePoster2Text:
 	db "@"
 
 Route19BeachHousePCText:
-	TX_FAR _Route19BeachHousePCText
+	TX_ASM
+	ld hl, .wantToSurfText
+	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr z, .startMinigame
+	; no -> show the hi-score screen
+	xor a
+	ld [wUpdateSpritesEnabled], a
+	callba DisplaySurfingMinigameHighScoreScreen
+	ld a, $1
+	ld [wUpdateSpritesEnabled], a
+	ld a, 1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	jp TextScriptEnd
+.startMinigame
+	; the minigame requires a Surfboard in the active bag
+	ld hl, wBagItems
+.itemLoop
+	ld a, [hli]
+	cp $ff
+	jr z, .noSurfboard
+	cp SURFBOARD
+	jr z, .hasSurfboard
+	inc hl
+	jr .itemLoop
+.noSurfboard
+	ld hl, .noSurfboardText
+	call PrintText
+	jp TextScriptEnd
+.hasSurfboard
+	ld a, 1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	callba PikachusBeach
+	; the minigame reload path restores the map, but not the dialogue window
+	callba DisplayTextIDInit
+	xor a
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	jp TextScriptEnd
+
+.wantToSurfText
+	text "Veux-tu surfer"
+	line "avec Pikachu?"
+	prompt
+	db "@"
+.noSurfboardText
+	text "Il te faut une"
+	line "Planche de Surf"
+	cont "dans ton sac"
+	cont "pour jouer!"
+	done
 	db "@"
 
 PikachuTutor:

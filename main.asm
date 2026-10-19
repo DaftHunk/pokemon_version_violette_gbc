@@ -954,6 +954,12 @@ SafariZoneSecretHouseBlocks: INCBIN "maps/SafariZoneSecretHouse.blk"
 
 SECTION "bank13",ROMX,BANK[$13]
 
+INCLUDE "engine/animated_objects.asm"
+INCLUDE "engine/pikachus_beach.asm"
+INCLUDE "gfx/pikachus_beach.asm"
+INCLUDE "gfx/pikachus_beach_mons.asm"
+
+
 SECTION "Trainer Pics 1", ROMX
 YoungsterPic::     INCBIN "gfx/trainer/youngster.pic"
 BugCatcherPic::    INCBIN "gfx/trainer/bugcatcher.pic"

@@ -470,6 +470,17 @@ SendUnknownPalPacket_72064::
 	ld de, UnknownPacket_72751
 	ret
 
+;Pikachu's Beach minigame
+SetPal_PikachusBeach::
+	ld hl, PalPacket_PikachusBeach
+	ld de, BlkPacket_WholeScreen
+	ret
+
+SetPal_PikachusBeachHiscore::
+	ld hl, PalPacket_PikachusBeachHiscore
+	ld de, BlkPacket_WholeScreen
+	ret
+
 SetPalFunctions:
 	dw SetPal_BattleBlack
 	dw SetPal_Battle
@@ -490,6 +501,9 @@ SetPalFunctions:
 	;gbctest - adding packets from yellow
 	dw SendUnknownPalPacket_7205d
 	dw SendUnknownPalPacket_72064
+	;Pikachu's Beach minigame
+	dw SetPal_PikachusBeach
+	dw SetPal_PikachusBeachHiscore
 
 ; The length of the blk data of each badge on the Trainer Card.
 ; The Rainbow Badge has 3 entries because of its many colors.
