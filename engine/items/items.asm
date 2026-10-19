@@ -3328,59 +3328,250 @@ ItemUseReloadOverworldData:
 	call UpdateSprites
 	jp DelayFrame	;joenote - need to make sure OAM data gets updated too
 
-; creates a list at wBuffer of maps where the mon in [wPokedexNum] can be found.
-; this is used by the pokedex to display locations the mon can be found on the map.
-FindWildLocationsOfMon:
-	ld a, 0
-	ld [wActionResultOrTookBattleTurn], a	;joenote - used to differentiate between land, water, and super rod finding
+; area location flags used by the pokedex area function (wMonAreaTypeFlags)
+BIT_HAS_LAND_LOCATIONS EQU 0
+BIT_HAS_WATER_LOCATIONS EQU 1
+BIT_HAS_OLD_ROD_LOCATIONS EQU 2
+BIT_HAS_GOOD_ROD_LOCATIONS EQU 3
+BIT_HAS_SUPER_ROD_LOCATIONS EQU 4
 
+; creates a list at wBuffer of maps where the mon in [wPokedexNum] can be found on land.
+; this is used by the pokedex to display locations the mon can be found on the map.
+FindLandLocationsOfMon:
 	ld a, [wPokedexNum]
 	push af
-	predef LookupWildRandomMon	;joenote - adjusted to show locations of randomized wild mons
+	predef LookupWildRandomMon ;joenote - adjusted to show locations of randomized wild mons
+	ld b, 0
+	jr FindLandOrWaterLocationsOfMon
+
+; creates a list at wBuffer of maps where the mon in [wPokedexNum] can be found in the water.
+FindWaterLocationsOfMon:
+	ld a, [wPokedexNum]
+	push af
+	predef LookupWildRandomMon ;joenote - adjusted to show locations of randomized wild mons
+	ld b, 1
+FindLandOrWaterLocationsOfMon:
+; input b = which kind of locations to find (0 = land, 1 = water)
 	ld hl, WildDataPointers
 	ld de, wBuffer
-	ld c, $0
+	ld c, 0
 .loop
 	inc hl
 	ld a, [hld]
 	inc a
-	jr z, .done
+	jr z, .done ; if at list terminator of jump table, end search
+	push hl ; push list of maps
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a ; deref current map's list of pokemon into hl
+	ld a, b
+	and a
+	jr nz, .water
+	ld a, [hli]
+	and a ; first byte is >0 if we have grass encounters in this map
+	call nz, CheckMapForMon ; land
+	jr .doneCheck
+.water
+	ld a, [hli]
+	and a
+	jr z, .noGrassMons ; this map has no grass encounters if the first byte is 0
+	; skip past the grass encounters to the water mons
+	push bc
+	ld a, $a
+	add a
+	ld b, 0
+	ld c, a
+	add hl, bc
+	pop bc
+.noGrassMons
+	ld a, [hli]
+	and a ; first byte is >0 if we have water encounters in this map
+	call nz, CheckMapForMon ; water
+.doneCheck
+	pop hl ; get back list of maps
+	inc hl
+	inc hl ; go to the next one
+	inc c
+	jr .loop
+.done
+	ld a, $ff ; list terminator
+	ld [de], a
+	pop af
+	ld [wPokedexNum], a
+	ret
+
+CheckMapForMon:
+; adds the map index in c to the list at de if the mon in [wPokedexNum]
+; is in this map's encounter table (at most one entry per map)
+	inc hl
+	push bc
+	ld b, $a
+.loop
+	ld a, [wPokedexNum]
+	cp [hl]
+	jr nz, .nextEntry
+	cp MEW
+	jr z, .nextEntry ;joenote - don't reveal MEW on accident
+.match
+	ld a, c
+	ld [de], a
+	inc de
+	pop bc
+	ret ; the mon was found, so end the search to avoid listing the map twice
+.nextEntry
+	inc hl
+	inc hl
+	dec b
+	jr nz, .loop
+	dec hl
+	pop bc
+	ret
+
+; sets bits 0-1 of wMonAreaTypeFlags if the mon in [wPokedexNum]
+; can be found on land or in the water
+CheckHasLandWaterLocations:
+	ld a, [wPokedexNum]
+	push af
+	predef LookupWildRandomMon ;joenote - adjusted to show locations of randomized wild mons
+	ld hl, WildDataPointers
+	ld c, 0
+.loop
+	inc hl
+	ld a, [hld]
+	inc a
+	jr z, .done ; if we reached the end of the list of maps
 	push hl
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	ld a, [hli]
 	and a
-
-	ld a, [wActionResultOrTookBattleTurn]
-	set 0, a
-	ld [wActionResultOrTookBattleTurn], a
-
-	call nz, CheckMapForMon ; land
+	jr z, .noGrassMons
+	push hl
+	call CheckMapForMonMatch ; land
+	call c, .setLand
+	pop hl
+	; seek to the start of the water mons
+	push bc
+	ld a, $a
+	add a
+	ld b, 0
+	ld c, a
+	add hl, bc
+	pop bc
+.noGrassMons
 	ld a, [hli]
 	and a
-
-	ld a, [wActionResultOrTookBattleTurn]
-	res 0, a
-	set 2, a
-	ld [wActionResultOrTookBattleTurn], a
-
-	call nz, CheckMapForMon ; water
-	
-	ld a, [wActionResultOrTookBattleTurn]
-	res 2, a
-	ld [wActionResultOrTookBattleTurn], a
-
+	call nz, CheckMapForMonMatch ; water
+	call c, .setWater
 	pop hl
+	ld a, [wMonAreaTypeFlags]
+	and %11
+	cp %11
+	jr z, .done ; if we marked both flags we can exit this subroutine early
 	inc hl
 	inc hl
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
-	;joenote - check the map for this loop to see if the 'mon is fishable with the super rod
+	inc c
+	jr .loop
+.setLand
+	ld a, [wMonAreaTypeFlags]
+	set BIT_HAS_LAND_LOCATIONS, a
+	ld [wMonAreaTypeFlags], a
+	ret
+.setWater
+	ld a, [wMonAreaTypeFlags]
+	set BIT_HAS_WATER_LOCATIONS, a
+	ld [wMonAreaTypeFlags], a
+	ret
+.done
+	pop af
+	ld [wPokedexNum], a
+	ret
+
+CheckMapForMonMatch:
+; sets the carry if the mon in [wPokedexNum] is in this map's encounter table
+	inc hl
+	ld b, $a
+.loop
+	ld a, [wPokedexNum]
+	cp [hl]
+	jr nz, .nextEntry
+	cp MEW
+	jr z, .nextEntry ;joenote - don't reveal MEW on accident
+	inc hl
+	scf
+	ret
+.nextEntry
+	inc hl
+	inc hl
+	dec b
+	jr nz, .loop
+	dec hl
+	and a
+	ret
+
+; sets bits 2-3 of wMonAreaTypeFlags if the mon in [wPokedexNum]
+; can be fished with the old rod or the good rod (their lists are global)
+CheckHasRodLocations:
+	ld a, [wPokedexNum]
+	push af
+	predef LookupWildRandomMon ;joenote - adjusted to show locations of randomized wild mons
+	ld a, [wPokedexNum]
+	cp MAGIKARP ; the old rod hooks a Magikarp 50% of the time on any water
+	jr nz, .checkOldRod
+	ld hl, wMonAreaTypeFlags
+	set BIT_HAS_OLD_ROD_LOCATIONS, [hl]
+	jr .done
+.checkOldRod
+	ld b, a
+	ld hl, GoodRodMons + 1 ; the species bytes are at the odd offsets
+	ld c, 4 ; the old rod only picks among the first 4 entries
+.oldRodLoop
+	ld a, [hli]
+	inc hl
+	cp b
+	jr z, .hasOldRod
+	dec c
+	jr nz, .oldRodLoop
+	ld c, 5 ; the expanded good rod list has 9 entries, so check the remaining ones
+.goodRodLoop
+	ld a, [hli]
+	inc hl
+	cp b
+	jr z, .hasGoodRod
+	dec c
+	jr nz, .goodRodLoop
+	jr .done
+.hasOldRod
+	ld hl, wMonAreaTypeFlags
+	set BIT_HAS_OLD_ROD_LOCATIONS, [hl]
+	; fall through: the good rod also picks among the first 4 entries
+.hasGoodRod
+	ld hl, wMonAreaTypeFlags
+	set BIT_HAS_GOOD_ROD_LOCATIONS, [hl]
+.done
+	pop af
+	ld [wPokedexNum], a
+	ret
+
+; creates a list at wBuffer of maps where the mon in [wPokedexNum]
+; can be fished with the super rod
+FindSuperRodLocationsOfMon:
+	ld a, [wPokedexNum]
+	push af
+	predef LookupWildRandomMon ;joenote - adjusted to show locations of randomized wild mons
+	ld hl, WildDataPointers
+	ld de, wBuffer
+	ld c, 0
+.loop
+	inc hl
+	ld a, [hld]
+	inc a
+	jr z, .done
 	ld a, [wCurMap]
 	push af
 	ld a, c
 	ld [wCurMap], a
-
 	push de
 	ld a, [wPokedexNum]
 	ld d, a
@@ -3392,21 +3583,15 @@ FindWildLocationsOfMon:
 	ld a, d
 	and a
 	pop de
-	jr nz, .doneSuperRod
+	jr nz, .nextMap
 	ld a, c
 	ld [de], a
 	inc de
-	pop af
-	cp c
-	push af
-	jr nz, .doneSuperRod
-	ld a, [wActionResultOrTookBattleTurn]
-	set 4, a
-	ld [wActionResultOrTookBattleTurn], a
-.doneSuperRod		
+.nextMap
 	pop af
 	ld [wCurMap], a
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;		
+	inc hl
+	inc hl
 	inc c
 	jr .loop
 .done
@@ -3414,55 +3599,6 @@ FindWildLocationsOfMon:
 	ld [de], a
 	pop af
 	ld [wPokedexNum], a
-	ret
-
-CheckMapForMon:
-	inc hl
-	ld b, $a
-.loop
-	ld a, [wPokedexNum]
-	cp [hl]
-	jr nz, .nextEntry
-	cp MEW
-	jr z, .nextEntry	;joenote - don't reveal MEW on accident
-
-	ld a, c
-	ld [de], a
-	inc de
-
-	ld a, [wCurMap]
-	cp c
-	jr nz, .foundMon
-	ld a, [wActionResultOrTookBattleTurn]
-	bit 0, a
-	jr nz, .handleLand
-	bit 2, a
-	jr z, .foundMon
-.handleSurf
-	set 3, a	
-	ld [wActionResultOrTookBattleTurn], a
-	jr .foundMon
-.handleLand
-	set 1, a
-	ld [wActionResultOrTookBattleTurn], a
-	jr .foundMon
-	
-.nextEntry
-	inc hl
-	inc hl
-	dec b
-	jr nz, .loop
-	dec hl
-	ret
-
-;joenote - if the mon was found on the encounter table, 
-;skip through the rest of the table so as to not flood wBuffer with redundant entries
-.foundMon
-	inc hl
-	inc hl
-	dec b
-	jr nz, .foundMon
-	dec hl
 	ret
 
 ;joenote - custom medicine items

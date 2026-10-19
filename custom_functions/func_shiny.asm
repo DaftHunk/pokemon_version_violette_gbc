@@ -275,6 +275,32 @@ PrintShinySymbolStatus:
 	ld [hl], "<SHINY>"
 	ret	
 
+;toggle the shiny palette on the pokedex data page (START button)
+;toggles BIT_POKEDEX_DATA_SHINY in wPokedexDataFlags, then reruns the pokedex palette command
+;when turning the palette on, ShinyStatusScreen prints the shiny symbol at coord 8,1 itself
+;wPokedexNum is preserved because DeterminePaletteIDOutOfBattle clobbers it
+ToggleShinyPalettePokedex:
+	ld a, [wPokedexNum]
+	push af
+	ld a, [wPokedexDataFlags]
+	bit BIT_POKEDEX_DATA_SHINY, a
+	jr z, .turnShinyOn
+	res BIT_POKEDEX_DATA_SHINY, a
+	ld [wPokedexDataFlags], a
+	coord hl, 8, 1
+	ld a, " "
+	ld [hl], a ; erase the shiny symbol
+	jr .applyPalette
+.turnShinyOn
+	set BIT_POKEDEX_DATA_SHINY, a
+	ld [wPokedexDataFlags], a
+.applyPalette
+	ld b, SET_PAL_POKEDEX
+	call RunPaletteCommand
+	pop af
+	ld [wPokedexNum], a
+	ret
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;whole screen mon shiny palette helpers
 ;used by trading, evolution and the hall of fame via SET_PAL_POKEMON_WHOLE_SCREEN

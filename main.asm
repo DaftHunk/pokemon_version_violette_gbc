@@ -584,6 +584,8 @@ INCLUDE "engine/battle/moveEffects/heal_effect.asm"
 INCLUDE "engine/battle/moveEffects/transform_effect.asm"
 INCLUDE "engine/battle/moveEffects/reflect_light_screen_effect.asm"
 INCLUDE "engine/battle/moveEffects/trapping_effect.asm"
+INCLUDE "engine/intro.asm"
+
 
 SECTION "bankF",ROMX,BANK[$F]
 
@@ -595,7 +597,6 @@ SECTION "bank10",ROMX,BANK[$10]
 
 INCLUDE "engine/menu/pokedex.asm"
 INCLUDE "engine/trade.asm"
-INCLUDE "engine/intro.asm"
 INCLUDE "engine/trade2.asm"
 INCLUDE "engine/menu/movedex.asm"
 INCLUDE "data/moves/movedex_type_palettes.asm"

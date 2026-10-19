@@ -199,9 +199,10 @@ SetPal_Pokedex:
 	ld hl, wPalPacket + 3
 	ld [hl], a
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;joenote - see if SELECT button is being held to load the shiny PalPacket
-	ld a, [hJoyHeld]
-	bit 2, a ; Select button
+;load the shiny PalPacket when the pokedex shiny flag is set instead
+;(the flag is toggled with START on the pokedex data page)
+	ld hl, wPokedexDataFlags
+	bit BIT_POKEDEX_DATA_SHINY, [hl]
 	jp z, .SelectNotHeld
 	callba ShinyStatusScreen
 .SelectNotHeld
