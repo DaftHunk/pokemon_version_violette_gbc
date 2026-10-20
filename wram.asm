@@ -3509,6 +3509,9 @@ wRandomizerSeed:: 	;da3B
 ;joenote - generate a random seed for fisher-yates randomizer functions
 	ds 1
 
+; Pikachu's Beach high score (little-endian BCD)
+; moved out of the wTileMap union (it was getting clobbered by the screen
+; buffers) into this saved Main Data block, so it persists through saves
 wSurfingMinigameHiScore::
 	ds 2
 

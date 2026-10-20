@@ -2430,6 +2430,8 @@ DisplaySurfingMinigameHighScoreScreen::
 	jr nz, .waitReleaseAfterPress
 	ld hl, wStatusFlags5
 	res BIT_NO_TEXT_DELAY, [hl]
+	pop af
+	ldh [hTilesetType], a ; restore map tile animations
 	call GBPalWhiteOutWithDelay3
 	call PlayDefaultMusic
 	call RunDefaultPaletteCommand

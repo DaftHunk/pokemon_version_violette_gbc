@@ -60,7 +60,9 @@ IF !DEF(TILEMAP_AREA)
 TILEMAP_AREA EQU TILEMAP_WIDTH * TILEMAP_HEIGHT
 ENDC
 IF !DEF(OBJ_SIZE)
-OBJ_SIZE EQU 8
+; one OAM buffer entry is 4 bytes (Y, X, tile ID, attributes)
+; matches yumepokered's OBJ_SIZE (hardware.inc rsreset chain)
+OBJ_SIZE EQU 4
 ENDC
 IF !DEF(OAM_X_OFS)
 OAM_X_OFS EQU 8
@@ -345,7 +347,7 @@ UpdateCurrentAnimatedObjectFrame:
 	inc hl
 	inc de
 	call SetCurrentAnimatedObjectOAMAttributes
-	ld a, b
+	; the computed OAM attributes are returned in a by the call above
 	ld [de], a
 	inc hl
 	inc de
