@@ -43,7 +43,7 @@ MapSongBanks:
 	db MUSIC_PALLET_TOWN,      BANK(Music_PalletTown)      ; RedsHouse1F
 	db MUSIC_PALLET_TOWN,      BANK(Music_PalletTown)      ; RedsHouse2F
 	db MUSIC_PALLET_TOWN,      BANK(Music_PalletTown)      ; BluesHouse
-	db MUSIC_PALLET_OAKS_LAB,         BANK(Music_OaksLab)         ; OaksLab
+	db MUSIC_PALLET_OAKS_LAB,  BANK(Music_OaksLab)         ; OaksLab
 	db MUSIC_POKECENTER,       BANK(Music_Pokecenter)      ; ViridianPokecenter
 	db MUSIC_POKECENTER,       BANK(Music_Pokecenter)      ; ViridianMart
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; ViridianSchool

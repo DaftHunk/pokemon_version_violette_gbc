@@ -2483,6 +2483,63 @@ LoadMapData::
 ;commenting out because this is already done during the above call of RunPaletteCommand
 	ret
 
+; reloads the current map after the minigame
+; adapted from Marcel's implementation for the enhanced-GBC reload path
+; Must stay in the home bank: it calls SwitchToMapRomBank, which remaps the
+; ROM window at $4000-$7FFF while the CPU keeps executing. If this function
+; lived in a banked section (like the surf minigame's bank), every
+; instruction fetched after the bank switch would come from the map's bank
+; at the caller's addresses, derailing execution.
+ReloadMapAfterSurfingMinigame::
+	ld a, [H_LOADEDROMBANK]
+	push af
+	call DisableLCD
+	ld a, HIGH(vBGMap0)
+	ld [wMapViewVRAMPointer + 1], a
+	xor a
+	ld [wMapViewVRAMPointer], a
+	ldh [hSCY], a
+	ldh [hSCX], a
+	ld [wWalkCounter], a
+	ld [wSpriteSetID], a
+	ld a, [wCurMap]
+	call SwitchToMapRomBank
+	call LoadTileBlockMap
+	call LoadTilesetTilePatternData
+	call LoadCurrentMapView
+	call .CopyMapViewToBGMap0
+	ld de, vBGMap1
+	call .CopyMapViewToVRAM
+	call EnableLCD
+	call ReloadMapSpriteTilePatterns
+	pop af
+	ld [H_LOADEDROMBANK], a
+	ld [MBC1RomBank], a
+	ret
+
+.CopyMapViewToBGMap0
+	ld de, vBGMap0
+.CopyMapViewToVRAM
+	ld hl, wTileMap
+	ld b, SCREEN_HEIGHT
+.vramCopyLoop
+	ld c, SCREEN_WIDTH
+.vramCopyInnerLoop
+	ld a, [hli]
+	ld [de], a
+	inc e
+	dec c
+	jr nz, .vramCopyInnerLoop
+	ld a, BG_MAP_WIDTH - SCREEN_WIDTH
+	add e
+	ld e, a
+	adc d
+	sub e
+	ld d, a ; de += a
+	dec b
+	jr nz, .vramCopyLoop
+	ret
+
 ; function to switch to the ROM bank that a map is stored in
 ; Input: a = map number
 SwitchToMapRomBank::
