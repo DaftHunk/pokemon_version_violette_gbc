@@ -420,6 +420,7 @@ wSurfingMinigameGameOver:: db
 wSurfingMinigameGameOverDelay:: db
 wSurfingMinigameRoutineDelay:: db
 wSurfingMinigameIntroAnimationFinished:: db
+wSurfingMinigameMusicTempoEnabled:: db
 wSurfingMinigameCloudScrollFraction:: db
 wSurfingMinigameDataEnd::
 ENDU

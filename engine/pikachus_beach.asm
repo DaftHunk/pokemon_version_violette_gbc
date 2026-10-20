@@ -141,8 +141,8 @@ PikachusBeachLoop:
 	call RunObjectAnimations
 	call SurfingMinigame_MoveClouds
 	call DelayFrame
+	call SurfingMinigame_UpdateMusicTempo
 	jr .loop
-
 
 ;PikachusBeach_ToggleStartFlag: ; unused
 ;	ldh a, [hJoyPressed]
@@ -153,6 +153,69 @@ PikachusBeachLoop:
 ;	xor $1
 ;	ld [hl], a
 ;	ret
+
+; Update the global music tempo from Pikachu's speed. The tempo is only
+; applied when the first three music channels are all on their last frame
+; of note delay, so the change lands at the start of their next note.
+SurfingMinigame_UpdateMusicTempo:
+	ld a, [wSurfingMinigameMusicTempoEnabled]
+	and a
+	ret z
+
+	; check that all channels are on their last frame of note delay
+	ld hl, wChannelNoteDelayCounters
+	ld a, $1
+	cp [hl]
+	ret nz
+	inc hl
+	cp [hl]
+	ret nz
+	inc hl
+	cp [hl]
+	ret nz
+
+	; de = ([wSurfingMinigamePikachuSpeed] & $3ff) * 2
+	ld a, [wSurfingMinigamePikachuSpeed]
+	ld e, a
+	ld a, [wSurfingMinigamePikachuSpeed + 1]
+	and $3
+	ld d, a
+	sla e
+	rl d
+	ld e, d
+	ld d, $0
+	ld hl, .Tempos
+	add hl, de
+	add hl, de
+	ld a, [hli]
+	ld [wMusicTempo + 1], a
+	ld a, [hl]
+	ld [wMusicTempo], a
+	ret
+
+.Tempos:
+	dw 117
+	dw 109
+	dw 101
+	dw  93
+	dw  85
+
+SurfingMinigame_ResetMusicTempo:
+	ld hl, wChannelNoteDelayCounters
+	ld a, $1
+	cp [hl]
+	ret nz
+	inc hl
+	cp [hl]
+	ret nz
+	inc hl
+	cp [hl]
+	ret nz
+	ld a, 117
+	ld [wMusicTempo + 1], a
+	xor a
+	ld [wMusicTempo], a
+	ret
 
 PikachusBeach_LoadGFXAndLayout:
 	di
@@ -381,6 +444,8 @@ SurfingMinigame_StartGame:
 	call SpawnAnimatedObject
 	ld hl, wSurfingMinigameRoutineNumber
 	inc [hl]
+	ld a, 1
+	ld [wSurfingMinigameMusicTempoEnabled], a
 	ret
 
 SurfingMinigame_RunGame:
@@ -407,6 +472,8 @@ SurfingMinigame_RunGame:
 	call SpawnAnimatedObject
 	ld hl, wSurfingMinigameRoutineNumber
 	inc [hl]
+	xor a
+	ld [wSurfingMinigameMusicTempoEnabled], a
 	ld a, 192
 	ld [wSurfingMinigameRoutineDelay], a
 	ret
@@ -430,6 +497,8 @@ SurfingMinigame_RunGame:
 	ld hl, ANIM_OBJ_FIELD_C
 	add hl, bc
 	ld [hl], $30
+	xor a
+	ld [wSurfingMinigameMusicTempoEnabled], a
 	ret
 
 SurfingMinigame_WaitToShowResults:
@@ -441,7 +510,7 @@ SurfingMinigame_WaitToShowResults:
 	call SurfingMinigame_SetPikachuHeight
 	call SurfingMinigame_ReadBGMapBuffer
 	call SurfingMinigame_CoastAfterGoal
-	ret
+	jp SurfingMinigame_ResetMusicTempo
 
 .doneDelay
 	ld hl, wSurfingMinigameRoutineNumber
@@ -566,6 +635,7 @@ SurfingMinigame_GameOver:
 	call SurfingMinigame_SetPikachuHeight
 	call SurfingMinigame_ReadBGMapBuffer
 	call SurfingMinigame_ScrollAndGenerateBGMap
+	call SurfingMinigame_ResetMusicTempo
 	ld hl, wSurfingMinigameGameOverDelay
 	ld a, [hl]
 	and a
@@ -2256,6 +2326,13 @@ PikachusBeachIntro:
 	ldh [rOBP1], a
 	call UpdateGBCPal_OBP1
 	call DelayFrame
+	; Start the dedicated minigame theme before the intro loop.
+	; The map music now comes from Audio 1, but the minigame SFX only
+	; exist in Audio 4, so wAudioROMBank must point to the theme's bank
+	; for music and SFX to coexist during the run.
+	ld a, MUSIC_SURFING_PIKACHU
+	ld c, BANK(Music_SurfingPikachu)
+	call PlayMusic
 	xor a
 	ld [wSurfingMinigameIntroAnimationFinished], a
 .loop

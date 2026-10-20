@@ -116,7 +116,7 @@ MapSongBanks:
 	db MUSIC_GIOVANNI_SONG,    BANK(Music_GiovanniSong)    ; Route16WestHouse
 	db MUSIC_GIOVANNI_SONG,    BANK(Music_GiovanniSong)    ; Route16WestGate
 	db MUSIC_INDIGO_PLATEAU,   BANK(Music_IndigoPlateau)   ; Lance
-	db MUSIC_SURFING_PIKACHU,  BANK(Music_SurfingPikachu)  ; Route19BeachHouse
+	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; Route19BeachHouse
 	db MUSIC_PALLET_TOWN,      BANK(Music_PalletTown)      ; HallofFameRoom
 	db MUSIC_ROUTES1,          BANK(Music_Routes1)         ; UndergroundPathNS
 	db MUSIC_INDIGO_PLATEAU,   BANK(Music_IndigoPlateau)   ; Rival
