@@ -38,9 +38,13 @@ ENDM
 
 ; sine table macro
 ; \1 samples of sin(x) from x=0 to x<0.5 turns (pi radians)
+; The animated object engine multiplies each entry by an amplitude
+; and keeps only the high byte of the 16-bit product, so entries
+; must be 8.8 fixed-point: round sin(x) * $100 to the nearest
+; integer instead of emitting the raw Q16.16 result of sin().
 MACRO sine_table
 	FOR x, \1
-		dw sin(x * 0.5 / (\1))
+		dw (sin(x * 0.5 / (\1)) + (sin(x * 0.5 / (\1)) & $ff)) >> 8
 	ENDR
 ENDM
 
