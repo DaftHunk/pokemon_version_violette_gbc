@@ -2405,6 +2405,13 @@ INCBIN "gfx/pikachus_beach/printer_hi_score.tilemap"
 DisplaySurfingMinigameHighScoreScreen::
 	ld hl, wStatusFlags5
 	set BIT_NO_TEXT_DELAY, [hl]
+	; disable overworld tile animations (flower, water, waterfall...)
+	; AnimateTiles writes into vTileset and would corrupt the printer
+	; graphics loaded at vChars2 while this screen is displayed
+	ldh a, [hTilesetType]
+	push af
+	xor a
+	ldh [hTilesetType], a
 	call PrepareSurfingMinigameHighScoreScreen
 .waitRelease
 	call Joypad

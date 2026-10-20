@@ -422,8 +422,6 @@ wSurfingMinigameRoutineDelay:: db
 wSurfingMinigameIntroAnimationFinished:: db
 wSurfingMinigameCloudScrollFraction:: db
 wSurfingMinigameDataEnd::
-wSurfingMinigameHiScore:: ; not cleared on minigame restart
-	ds 2
 ENDU
 
 wTempPic::
@@ -3511,7 +3509,10 @@ wRandomizerSeed:: 	;da3B
 ;joenote - generate a random seed for fisher-yates randomizer functions
 	ds 1
 
-	ds 5
+wSurfingMinigameHiScore::
+	ds 2
+
+	ds 3
 
 wPlayTimeHours:: ; da41
 	ds 1
