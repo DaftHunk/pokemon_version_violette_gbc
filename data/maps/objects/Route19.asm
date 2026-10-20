@@ -8,10 +8,10 @@ Route19Object:
 	db 3 ; signs
 	sign 11,  9, 12 ; Route19Text11
 	sign  5, 11, 13 ; _TXTDrinkStandSign
-	sign  3,  9, 14
+	sign  4,  7, 14
 
 	db 11 ; objects
-	object SPRITE_BLACK_HAIR_BOY_1, 6, 7, STAY, RIGHT, 1, OPP_SWIMMER, 2
+	object SPRITE_BLACK_HAIR_BOY_1,  8,  7, STAY, RIGHT, 1, OPP_SWIMMER, 2
 	object SPRITE_BLACK_HAIR_BOY_1, 13, 7, STAY, LEFT, 2, OPP_SWIMMER, 3
 	object SPRITE_SWIMMER, 13, 25, STAY, LEFT, 3, OPP_SWIMMER, 4
 	object SPRITE_SWIMMER, 4, 27, STAY, RIGHT, 4, OPP_SWIMMER, 5

@@ -88,3 +88,6 @@ Plateau_Coll::
 
 Alpha_Coll::
 	coll_tiles $00, $03, $10, $1b, $20, $21, $23, $2c, $2d, $2e, $30, $31, $33, $39, $3c, $3e, $4b, $52, $54, $58, $5b, $66, $67
+
+PrintHouse_Coll::
+	coll_tiles $01, $12, $20, $21, $58, $5a

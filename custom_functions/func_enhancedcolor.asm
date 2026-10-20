@@ -203,6 +203,7 @@ OverworldTilePalPointers:
 	dw PalSettings_VOLCANO           ; 14
 	dw PalSettings_PLATEAU           ; 15
 	dw PalSettings_ALPHA             ; 16
+	dw PalSettings_PRINT_HOUSE       ; 17
 
 ;Assign a color register to be used for each tile in every tileset.
 ;A value of 8 is a "wild card" to set the color register based on the current town.
@@ -533,6 +534,19 @@ db	4,	4,	4,	8,	6,	6,	6,	6,	6,	6,	8,	8,	8,	8,	3,	3;
 db	3,	3,	3,	3,	3,	3,	6,	6,	6,	6,	6,	6,	6,	6,	5,	5;
 ;	70	71	72	73	74	75	76	77	78	79	7A	7B	7C	7D	7E	7F
 db	8,	2,	3,	7,	3,	3,	3,	3,	3,	6,	6,	6,	6,	6,	6,	6;
+PalSettings_PRINT_HOUSE:        	; 17		- done
+;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
+db	7,	6,	7,	3,	5,	5,	5,	5,	5,	6,	6,	6,	5,	5,	4,	4;
+;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
+db	3,	6,	7,	3,	5,	5,	5,	5,	5,	6,	6,	6,	5,	5,	4,	4;
+;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
+db	5,	5,	5,	7,	7,	6,	7,	7,	7,	6,	6,	6,	3,	3,	4,	4;
+;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
+db	6,	6,	6,	6,	7,	6,	6,	6,	6,	6,	6,	6,	3,	3,	4,	4;
+;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
+db	6,	6,	3,	6,	3,	3,	6,	6,	4,	4,	6,	6,	6,	6,	6,	6;
+;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
+db	6,	6,	6,	6,	7,	7,	6,	6,	4,	4,	6,	6,	6,	6,	6,	6;
 
 
 PalSettings_TownSpecialPal:

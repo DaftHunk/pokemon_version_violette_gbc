@@ -1611,6 +1611,8 @@ Cavern_GFX:        INCBIN "gfx/tilesets/cavern.2bpp"
 Cavern_Block:      INCBIN "gfx/blocksets/cavern.bst"
 Ship_GFX:          INCBIN "gfx/tilesets/ship.2bpp"
 Ship_Block:        INCBIN "gfx/blocksets/ship.bst"
+PrintHouse_GFX:     INCBIN "gfx/tilesets/print_house.2bpp"
+PrintHouse_Block:   INCBIN "gfx/blocksets/print_house.bst"
 
 
 SECTION "bank1C",ROMX,BANK[$1C]
