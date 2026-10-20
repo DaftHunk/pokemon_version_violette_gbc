@@ -356,6 +356,7 @@ wTileMapBackup:: ; c508
 ; (e.g. if menus are drawn on top)
 ;	ds 20 * 18
 
+UNION
 	ds 200
 
 wSerialEnemyMonsPatchList:: ; c5d0
@@ -364,9 +365,80 @@ wSerialEnemyMonsPatchList:: ; c5d0
 
 	ds 80
 
+NEXTU
+;Pikachu's Beach minigame data
+wAnimatedObjectsData:: ; c508
+wAnimatedObjectStartTileOffsets:: ds 10 * 2
+wAnimatedObjectDataStructs:: ds 10 * 16
+wNumLoadedAnimatedObjects:: ds 1
+wCurrentAnimatedObjectOAMBufferOffset:: ds 3
+wAnimatedObjectSpawnStateDataPointer:: ds 2
+wAnimatedObjectFramesDataPointer:: ds 2
+wAnimatedObjectJumptablePointer:: ds 2
+wAnimatedObjectOAMDataPointer:: ds 2
+wCurAnimatedObjectOAMAttributes:: ds 1
+wCurrentAnimatedObjectVTileOffset:: ds 1
+wCurrentAnimatedObjectXCoord:: ds 1
+wCurrentAnimatedObjectYCoord:: ds 1
+wCurrentAnimatedObjectXOffset:: ds 1
+wCurrentAnimatedObjectYOffset:: ds 1
+wAnimatedObjectGlobalYOffset:: ds 1
+wAnimatedObjectGlobalXOffset:: ds 1
+wAnimatedObjectsDataEnd::
+wSurfingMinigameData:: ; follows wAnimatedObjectsDataEnd within the shared UNION
+wSurfingMinigameRoutineNumber:: db
+wSurfingMinigamePikachuState:: db
+wSurfingMinigameWaveFunctionNumber:: dw
+wSurfingMinigameWaveRandomValue:: db
+wSurfingMinigamePikachuHP:: dw ; little-endian BCD
+	ds 1
+wSurfingMinigameRadnessMeter:: db ; number of consecutive tricks
+wSurfingMinigameRadnessScore:: dw ; little-endian BCD
+wSurfingMinigameTotalScore:: dw ; little-endian BCD
+wSurfingMinigameBoardAngleOffset:: db
+wSurfingMinigameBoardAngleDecreasing:: db
+wSurfingMinigameBoardAngleTimer:: db
+wSurfingMinigameCrashTimer:: db
+wSurfingMinigameUnusedToggle:: db ; only used in unused function
+wSurfingMinigamePikachuSpeed:: dw ; little-endian
+wSurfingMinigameDistance:: ds 3 ; big-endian
+wSurfingMinigameWaveHeightBuffer:: dw
+wSurfingMinigamePikachuObjectHeight:: db
+wSurfingMinigameWaterSprayCounter:: db
+wSurfingMinigameJumpArcMagnitude:: db
+wSurfingMinigameJumpDescending:: db
+wSurfingMinigameJumpArcFraction:: db
+wSurfingMinigameBGMapReadBuffer:: ds 16 ; one tile, copied by VBlankCopy in 16-byte units
+	ds 24
+wSurfingMinigameSCX:: db
+wSurfingMinigameSCX2:: db
+wSurfingMinigameSCXHi:: db
+wSurfingMinigameWaveHeight:: ds SCREEN_WIDTH
+wSurfingMinigameXOffset:: db
+wSurfingMinigameTrickFlags:: db
+wSurfingMinigameGameOver:: db
+wSurfingMinigameGameOverDelay:: db
+wSurfingMinigameRoutineDelay:: db
+wSurfingMinigameIntroAnimationFinished:: db
+wSurfingMinigameMusicTempoEnabled:: db
+wSurfingMinigameCloudScrollFraction:: db
+wSurfingMinigameDataEnd::
+ENDU
+
 wTempPic::
 wOverworldMap:: ; c6e8
+UNION
 	ds 1300
+NEXTU
+;Pikachu's Beach minigame - per-scanline SCX overrides
+	ds $18 ; keep wLYOverrides aligned to $c700
+wLYOverrides:: ; c700
+	ds $100
+wLYOverridesEnd::
+wLYOverridesBuffer:: ; c800
+	ds $100
+wLYOverridesBufferEnd::
+ENDU
 
 wRedrawRowOrColumnSrcTiles:: ; cbfc
 ; the tiles of the row or column to be redrawn by RedrawRowOrColumn
@@ -3438,7 +3510,13 @@ wRandomizerSeed:: 	;da3B
 ;joenote - generate a random seed for fisher-yates randomizer functions
 	ds 1
 
-	ds 5
+; Pikachu's Beach high score (little-endian BCD)
+; moved out of the wTileMap union (it was getting clobbered by the screen
+; buffers) into this saved Main Data block, so it persists through saves
+wSurfingMinigameHiScore::
+	ds 2
+
+	ds 3
 
 wPlayTimeHours:: ; da41
 	ds 1

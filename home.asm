@@ -22,9 +22,8 @@ SECTION "rst 38", ROM0 [$38]
 SECTION "vblank", ROM0 [$40]
 	jp VBlank
 SECTION "hblank", ROM0 [$48]
-	ld [$FFF5], a	;joenote - store A contents for the purpose of a LCDC OAM timing test
-	reti
-	;rst $38
+	jp LCDC	;Pikachu's Beach minigame - LCDC interrupt handler
+	nop
 SECTION "timer",  ROM0 [$50]
 	jp Timer
 SECTION "serial", ROM0 [$58]
@@ -960,6 +959,7 @@ INCLUDE "home/text.asm"
 INCLUDE "home/vcopy.asm"
 INCLUDE "home/init.asm"
 INCLUDE "home/vblank.asm"
+INCLUDE "home/lcdc.asm"
 INCLUDE "home/fade.asm"
 INCLUDE "home/serial.asm"
 INCLUDE "home/timer.asm"

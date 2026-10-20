@@ -771,6 +771,11 @@ INCLUDE "audio/sfx/arrow_tiles_4.asm"
 INCLUDE "audio/sfx/push_boulder_4.asm"
 INCLUDE "audio/sfx/ss_anne_horn_4.asm"
 INCLUDE "audio/sfx/withdraw_deposit_4.asm"
+;sfx surfing minigame
+INCLUDE "audio/sfx/surfing_jump_4.asm"
+INCLUDE "audio/sfx/surfing_flip_4.asm"
+INCLUDE "audio/sfx/surfing_land_4.asm"
+INCLUDE "audio/sfx/surfing_crash_4.asm"
 ;sfx cries
 INCLUDE "audio/sfx/cry09_4.asm"
 INCLUDE "audio/sfx/cry23_4.asm"
