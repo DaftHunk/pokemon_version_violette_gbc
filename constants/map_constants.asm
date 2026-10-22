@@ -81,7 +81,7 @@ DEF NUM_CITY_MAPS EQU const_value
     mapconst CERULEAN_BIKE_SHOP,               4,  4 ; $46
     mapconst CERULEAN_MART,                    4,  4 ; $47
     mapconst MT_MOON_POKECENTER,               4,  7 ; $48
-    mapconst UNUSED_MAP_47,                    0,  0 ; $49
+    mapconst LIGHTHOUSE,                      15,  3 ; $49
     mapconst ROUTE_5_GATE,                     3,  4 ; $4A
     mapconst UNDERGROUND_PATH_ROUTE_5,         4,  4 ; $4B
     mapconst DAYCARE,                          4,  4 ; $4C

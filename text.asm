@@ -2181,6 +2181,7 @@ INCLUDE "text/maps/route_9.asm"
 INCLUDE "text/maps/route_10.asm"
 INCLUDE "text/maps/route_10_south.asm"
 INCLUDE "text/maps/route_11_1.asm"
+INCLUDE "text/maps/lighthouse.asm"
 
 
 SECTION "Text 5", ROMX, BANK[TEXT_5]

@@ -251,6 +251,7 @@ const_value = 1
 	const SPRITE_JAMES
 	const SPRITE_KOICHI
 	const SPRITE_FIREFIGHTER
+	const SPRITE_KEEPER
 	const SPRITE_SOLDIER
 	const SPRITE_BROCK
 	const SPRITE_MISTY

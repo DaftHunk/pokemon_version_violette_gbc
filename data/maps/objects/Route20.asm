@@ -1,9 +1,11 @@
 Route20Object:
 	db $43 ; border block
 
-	db 2 ; warps
+	db 3 ; warps
 	warp 48,  7, 0, SEAFOAM_ISLANDS_1F
 	warp 58, 15, 2, SEAFOAM_ISLANDS_1F
+	warp 41,  7, 0, LIGHTHOUSE
+
 
 	db 3 ; signs
 	sign 46,  8, 11 ; Route20Text_Sign
@@ -25,3 +27,4 @@ Route20Object:
 	; warp-to
 	warp_to 48,  7, ROUTE_20_WIDTH ; SEAFOAM_ISLANDS_1F
 	warp_to 58, 15, ROUTE_20_WIDTH ; SEAFOAM_ISLANDS_1F
+	warp_to 41,  7, ROUTE_20_WIDTH ; LIGHTHOUSE

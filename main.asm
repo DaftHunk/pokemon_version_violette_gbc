@@ -236,6 +236,7 @@ MapSprite:            INCBIN "gfx/sprites/map_ow.2bpp"
 CupSprite:            INCBIN "gfx/sprites/cup.2bpp"
 KoichiSprite:         INCBIN "gfx/sprites/koichi.2bpp"
 FireFighterSprite:    INCBIN "gfx/sprites/firefighter.2bpp"
+KeeperSprite:         INCBIN "gfx/sprites/keeper.2bpp"
 
 
 SECTION "Battle (bank 5)", ROMX, BANK[$5]
@@ -523,6 +524,11 @@ INCLUDE "data/maps/headers/BillsGarden.asm"
 INCLUDE "scripts/BillsGarden.asm"
 INCLUDE "data/maps/objects/BillsGarden.asm"
 BillsGardenBlocks: INCBIN "maps/BillsGarden.blk"
+
+INCLUDE "data/maps/headers/Lighthouse.asm"
+INCLUDE "scripts/Lighthouse.asm"
+INCLUDE "data/maps/objects/Lighthouse.asm"
+LighthouseBlocks: INCBIN "maps/Lighthouse.blk"
 
 INCLUDE "engine/menu/oaks_pc.asm"
 

@@ -22,4 +22,4 @@ TradeMons:
 	db SEEL,      ELECTABUZZ,1,"Kourjus@@@@" ; CinnabarLabTradeRoom
 	db VENONAT,   SCYTHER,   2,"Gratouille@" ; CinnabarLabTradeRoom
 	db NIDORAN_F, HOUNDOUR,  2,"Fabi@@@@@@@" ; UndergroundPathRoute5
-;   db SEAKING,   SNEASEL,   0,"Bibi@@@@@@@" ; TODO
+    db SEAKING,   SNEASEL,   0,"Bibi@@@@@@@" ; Lighthouse

@@ -72,7 +72,7 @@ MapSongBanks:
 	db MUSIC_CITIES2,          BANK(Music_Cities2)         ; BikeShop
 	db MUSIC_POKECENTER,       BANK(Music_Pokecenter)      ; CeruleanMart
 	db MUSIC_POKECENTER,       BANK(Music_Pokecenter)      ; MtMoonPokecenter
-	db MUSIC_DUNGEON3,         BANK(Music_Dungeon3)        ; CeruleanHouseTrashed
+	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; Lighthouse
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; Route5Gate
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; UndergroundTunnelEntranceRoute5
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; DayCareM

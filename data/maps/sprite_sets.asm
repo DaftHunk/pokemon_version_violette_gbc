@@ -515,6 +515,11 @@ SpriteSheetPointerTable:
 	db $c0 ; byte count
 	db BANK(FireFighterSprite)
 
+	; SPRITE_KEEPER
+	dw KeeperSprite
+	db $c0 ; byte count
+	db BANK(KeeperSprite)
+
 	; SPRITE_SOLDIER
 	dw SoldierSprite
 	db $c0 ; byte count
