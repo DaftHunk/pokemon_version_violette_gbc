@@ -5,7 +5,7 @@ pokecenter.asm ; PalSettings_MART ; 128 ; 0 ; 128 ; 8 ; pokecenter.2bpp (1904 oc
 forest.asm ; PalSettings_FOREST ; 96 ; 0 ; 96 ; 6 ; forest.2bpp (1536 octets)
 gym.asm ; PalSettings_GYM ; 128 ; 0 ; 128 ; 8 ; gym.2bpp (1840 octets)
 house.asm ; PalSettings_HOUSE ; 128 ; 0 ; 128 ; 8 ; house.2bpp (1872 octets)
-underground.asm ; PalSettings_UNDERGROUND ; 96 ; 0 ; 96 ; 6 ; underground.2bpp (400 octets)
+underground.asm ; PalSettings_UNDERGROUND ; 96 ; 0 ; 96 ; 6 ; underground.2bpp (1536 octets)
 gate.asm ; PalSettings_GATE ; 128 ; 0 ; 128 ; 8 ; gate.2bpp (1888 octets)
 ship.asm ; PalSettings_SHIP ; 96 ; 0 ; 96 ; 6 ; ship.2bpp (1536 octets)
 ship_port.asm ; PalSettings_SHIP_PORT ; 96 ; 0 ; 96 ; 6 ; ship_port.2bpp (1504 octets)

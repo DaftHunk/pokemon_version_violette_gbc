@@ -1903,8 +1903,6 @@ Underground_GFX:   INCBIN "gfx/tilesets/underground.2bpp"
 Underground_Block: INCBIN "gfx/blocksets/underground.bst"
 Reactor_GFX:       INCBIN "gfx/tilesets/reactor.2bpp"
 Reactor_Block:     INCBIN "gfx/blocksets/reactor.bst"
-Volcano_GFX:       INCBIN "gfx/tilesets/volcano.2bpp"
-Volcano_Block:     INCBIN "gfx/blocksets/volcano.bst"
 
 
 SECTION "PARTY ICONS 1", ROMX
@@ -2254,6 +2252,8 @@ Alpha_GFX:         INCBIN "gfx/tilesets/alpha.2bpp"
 Alpha_Block:       INCBIN "gfx/blocksets/alpha.bst"
 ShipPort_GFX:      INCBIN "gfx/tilesets/ship_port.2bpp"
 ShipPort_Block:    INCBIN "gfx/blocksets/ship_port.bst"
+Volcano_GFX:       INCBIN "gfx/tilesets/volcano.2bpp"
+Volcano_Block:     INCBIN "gfx/blocksets/volcano.bst"
 
 
 SECTION "SGB Border", ROMX
