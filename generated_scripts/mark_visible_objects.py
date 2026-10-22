@@ -267,13 +267,13 @@ SPRITE_BALL pour les articles, nom seul sinon). Les numéros sont composés avec
 chiffres de numbers.png (fichier à placer à côté du script : chiffres
 0 à 9 en rangée, déjà détourés, transparents, taille d'origine), collés
 tels quels ; le coin en bas à droite du numéro est posé sur le coin en
-bas à droite de la case de l'objet. La numérotation suit l'ordre de
-déclaration au sein de chaque catégorie de légende : « Rencontres »,
-« Objets », « Récompenses », « Echanges », « Personnage », « Magasin »
-et « Objets cachés » ont chacune leur compteur, repartant
-à 1 ; les objets cachés sont numérotés dans l'ordre de lecture (Y, X) ;
-les entrées d'OBJETS_COORDONNEES sont numérotées dans le compteur
-« Récompenses » à la suite des dons déclarés de leur carte.
+bas à droite de la case de l'objet. La numérotation est GLOBALE
+(sur demande utilisateur : plus de plusieurs « 1 » quand plusieurs
+sections cohabitent sur une carte) : un compteur unique par carte suit
+l'ordre de déclaration — objets de la carte (toutes sections
+confondues), puis entrées d'OBJETS_COORDONNEES, distributeurs et
+panneaux du casino, puis objets cachés dans l'ordre de lecture (Y, X) ;
+le compteur repart à 1 à chaque carte.
 Les sprites sont collés surélevés de taille/4 px comme dans le jeu (ils
 débordent sur la case du dessus) : le numéro, resté en bas de case, en
 recouvre d'autant moins. Sous la capture, un bandeau blanc organisé en
@@ -406,8 +406,9 @@ captures) :
                           d'origine)
   - visible_objects.csv : récapitulatif (séparateur « ; », ouvrable dans
                           Excel) — colonnes « numero » (numéro dessiné
-                          sur la carte : compteur propre à chaque
-                          catégorie de légende, repartant à 1) et
+                          sur la carte : numérotation GLOBALE de la
+                          carte, dans l'ordre de déclaration, repartant
+                          à 1 à chaque carte) et
                           « cache_debut » (oui = invisible au début du
                           jeu : entrée Hide, ou objet/pièce caché ;
                           prioritaire = entrée Hide affichée quand même,
@@ -594,7 +595,11 @@ DONS_MANUELS = {
 # combat en OPP_JOY après la Ligue, script « ld a, OPP_JOY » +
 # « ld [wCurOpponent], a »), Route12 objet 1 (Ronflex 10,62 : combat
 # scripté SNORLAX niveau 30 lancé par le script de la carte après la
-# Poké Flute).
+# Poké Flute), Route16 objet 7 (2e Ronflex, SPRITE_SNORLAX 26,12 —
+# même combat scripté SNORLAX niveau 30), SaffronSilphCo11F objet 1
+# (le président SPRITE_MR_MASTERBALL : combat OPP_CHIEF, donne aussi
+# la Master Ball — DONS_OBJETS_MANUELS), VermilionCity objet 1
+# (Officier Jenny SPRITE_JENNY 19,15 : combat OPP_JENNY).
 COMBATS_SCRIPTES = {
     ("Route22", 1): "OPP_RIVAL1",
     ("Route22", 2): "OPP_RIVAL2",
@@ -683,7 +688,7 @@ DONS_OBJETS_MANUELS = {
     ("SaffronSilphCo2F", 1): "TM36_SELFDESTRUCT",
     ("Route12Gate2F", 1): "TM39_SWIFT",
     ("SSAnneCaptainsRoom", 1): "HM01_CUT",
-    ("SaffronSilphCo11F", 1): "MASTER_BALL", 
+    ("SaffronSilphCo11F", 1): "MASTER_BALL",
     ("UndergroundPathWestEast", 1): "M_GENE",
     ("VermilionFanClub", 5): "BIKE_VOUCHER",
     ("ViridianForestSouthGate", 2): "POKE_BALL",
@@ -698,8 +703,8 @@ DONS_OBJETS_MANUELS = {
 # bas à droite comme les autres numéros (pas de sprite) ; dans la
 # légende, l'entrée reçoit la vignette SPRITE_BALL avec le numéro en
 # bas à droite, suivie du libellé (repli : numéro écrit en tête du
-# libellé si le sprite est introuvable). Les entrées sont numérotées
-# dans le compteur « Récompenses », après les dons déclarés de la carte
+# libellé si le sprite est introuvable). Les entrées suivent la
+# numérotation GLOBALE de la carte, après les objets déclarés
 # (choisir des tuiles sans numéro pour ne pas chevaucher).
 OBJETS_COORDONNEES = {
     # don de Sacha (BillsGarden objet 2, 5,5) après le combat scripté —
@@ -737,7 +742,8 @@ VENTES_POKEMON_MANUELLES = {
 # (sans prix) retombe sur item_prices.asm. Rendu comme un vendeur de
 # magasin : SEUL le numéro est dessiné sur la tuile (pas de sprite),
 # section « Magasin », première ligne « [icône vendeur] Vente » (étiquette
-# puis un article par ligne « [icône] Nom FR : prix [icône P$] », avec
+# LIBELLES["distributeur"]), puis un article par ligne « [icône] Nom FR :
+# prix [icône P$] », avec
 # une ligne CSV par article. Prix du jeu : Eau Fraîche 200, Soda Cool
 # 300, Limonade 350.
 DISTRIBUTEURS_MANUELS = {
@@ -758,7 +764,8 @@ DISTRIBUTEURS_MANUELS = {
 # clé = (stem, n° de l'objet PNJ dans l'ordre de déclaration), valeur =
 # libellé libre de votre choix. Le PNJ rejoint la section « Personnage »
 # de la légende : sprite sur la carte comme d'habitude, numéroté dans
-# le compteur « Personnage », vignette + libellé dans le bandeau. Le
+# la numérotation GLOBALE de la carte, vignette + libellé dans le
+# bandeau. Le
 # libellé personnalisé a priorité sur toute détection automatique (don,
 # vente, combat scripté, échange...).
 LIBELLES_PNJ_MANUELS = {
@@ -772,7 +779,8 @@ LIBELLES_PNJ_MANUELS = {
     ("CinnabarLabFossilRoom", 1): "Cloneur",
     ("Daycare", 1): "Eleveur de Pokémon",
     ("DiglettsCave", 1): "Journal pourri",
-    ("FuchsiaCity", 3): "Nico",    
+    ("FuchsiaCity", 3): "Nico",
+    ("FuchsiaFisherHouse", 1): "Maître pêcheur",
     ("LavenderNameRatersHouse", 1): "Grand Donneur de Noms",
     ("SafariZoneCenterRestHouse", 1): "Julia",
     ("SSAnne1F", 1): "Serveur",
@@ -2733,10 +2741,13 @@ def main():
         decalage = max(1, taille // 4)   # sprite surélevé comme dans le
                                         # jeu ; le numéro, lui, reste en
                                         # bas à droite de la case
-        compteurs = {}       # numérotation par catégorie de légende —
-        colles = 0           # « Rencontres », « Objets », « Récompenses »,
-        entrees_legende = [] # « Echanges », « Magasin », « Objets
-                             # cachés » ; chaque compteur repart à 1
+        compteur = 0         # numérotation GLOBALE de la carte (sur
+        colles = 0           # demande utilisateur : un seul compteur
+        entrees_legende = [] # pour toutes les sections — chaque numéro
+                             # n'apparaît qu'une fois par carte, plus de
+                             # plusieurs « 1 » quand plusieurs sections
+                             # cohabitent ; le compteur repart à 1 à
+                             # chaque carte
         # icône du vendeur (première ligne « Vendeur » des entrées de
         # magasin de la légende) : SPRITE_VENDEUR n'existe pas dans
         # sprite_constants.asm -> repli automatique sur SPRITE_MART_GUY
@@ -2967,8 +2978,8 @@ def main():
                     # vignette du sprite, numéro en bas à droite, libellé
                     if type_o in TYPES_NUMEROTES:
                         cat = CATEGORIES.get(type_o, "Objets")
-                        compteurs[cat] = compteurs.get(cat, 0) + 1
-                        numero = compteurs[cat]
+                        compteur += 1
+                        numero = compteur
                         if chiffres:
                             coller_numero(img, px, py, taille, numero,
                                            chiffres)
@@ -3015,9 +3026,9 @@ def main():
         # ---- objets marqués par coordonnées (OBJETS_COORDONNEES) : seul
         # le numéro est dessiné sur la tuile (pas de sprite) ; entrée de
         # légende avec la vignette SPRITE_BALL (repli : numéro écrit en
-        # tête du libellé si le sprite est introuvable). Numérotés dans
-        # le compteur « Récompenses » à la suite des dons déclarés de
-        # la carte. Valeur = const d'objet, ou liste de consts : plusieurs
+        # tête du libellé si le sprite est introuvable). Numérotation
+        # GLOBALE de la carte, à la suite des dons déclarés.
+        # Valeur = const d'objet, ou liste de consts : plusieurs
         # objets au même endroit partagent le numéro de la tuile et un
         # libellé (noms séparés par une espace), une ligne CSV par objet
         for (stem_c, x_c, y_c), items_c in OBJETS_COORDONNEES.items():
@@ -3033,8 +3044,8 @@ def main():
                 remarque_c = "hors cadre"
             else:
                 cat_c = CATEGORIES["recompense"]
-                compteurs[cat_c] = compteurs.get(cat_c, 0) + 1
-                numero_c = compteurs[cat_c]
+                compteur += 1
+                numero_c = compteur
                 if chiffres:
                     coller_numero(img, px_c, py_c, taille, numero_c,
                                    chiffres)
@@ -3074,8 +3085,8 @@ def main():
         # ---- distributeurs manuels (DISTRIBUTEURS_MANUELS) : SEUL le
         # numéro est dessiné sur la tuile (pas de sprite) ; entrée de
         # légende « [icône vendeur] Vente » puis un article par
-        # ligne avec son prix (icône P$), numérotés dans le compteur
-        # « Magasin » à la suite des vendeurs ; une ligne CSV par
+        # ligne avec son prix (icône P$), numérotés dans la numérotation
+        # GLOBALE de la carte ; une ligne CSV par
         # article. Un article sans prix dans la config retombe sur
         # item_prices.asm
         for (stem_d, x_d, y_d), articles_d in DISTRIBUTEURS_MANUELS.items():
@@ -3091,8 +3102,8 @@ def main():
                 remarque_d = "hors cadre"
             else:
                 cat_d = CATEGORIES["distributeur"]
-                compteurs[cat_d] = compteurs.get(cat_d, 0) + 1
-                numero_d = compteurs[cat_d]
+                compteur += 1
+                numero_d = compteur
                 if chiffres:
                     coller_numero(img, px_d, py_d, taille, numero_d,
                                    chiffres)
@@ -3118,7 +3129,7 @@ def main():
         # en Pokédollars. Badge or numéroté sur la tuile du panneau —
         # même rendu que les pièces cachées (disque d'une tuile,
         # COULEURS_CACHES["piece"]) — et badge en vignette de légende.
-        # Numérotés dans le compteur « Magasin » à la suite des
+        # Numérotation GLOBALE de la carte, à la suite des
         # vendeurs ; une récompense par ligne (icône d'espèce pour les
         # Pokémon, SPRITE_BALL pour les autres), une ligne CSV par
         # récompense (même numéro, tuile du panneau)
@@ -3148,8 +3159,8 @@ def main():
                 remarque_v = "sans capture"
             else:
                 cat_v = CATEGORIES["casino"]    # « Magasin » : suit les vendeurs
-                compteurs[cat_v] = compteurs.get(cat_v, 0) + 1
-                numero_v = compteurs[cat_v]
+                compteur += 1
+                numero_v = compteur
                 cx, cy = (x_v * taille + taille // 2,
                           y_v * taille + taille // 2)
                 if not (0 <= cx < img.width and 0 <= cy < img.height):
@@ -3176,8 +3187,8 @@ def main():
                                    "cache_debut": "",
                                    "remarque": remarque_v})
 
-        # ---- objets cachés (data/items/) : badge numéroté — compteur
-        # « Objets cachés » repartant à 1, dans l'ordre de lecture (Y, X).
+        # ---- objets cachés (data/items/) : badge numéroté — numérotation
+        # GLOBALE de la carte, dans l'ordre de lecture (Y, X).
         # Disque d'une tuile de diamètre centré sur la tuile, contour
         # noir, numéro composé avec les chiffres de numbers.png (repli
         # police) ; rouge = objet au sol, or = pièce
@@ -3197,8 +3208,8 @@ def main():
                                    "remarque": "sans capture"})
                 continue
             cat_c = CATEGORIES[type_c]
-            compteurs[cat_c] = compteurs.get(cat_c, 0) + 1
-            numero_c = compteurs[cat_c]
+            compteur += 1
+            numero_c = compteur
             couleur_c = (COULEURS_CACHES["piece"] if type_c == "cache_piece"
                          else COULEURS_CACHES["objet"])
             cx, cy = x_c * taille + taille // 2, y_c * taille + taille // 2
