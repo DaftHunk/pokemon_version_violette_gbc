@@ -1,4 +1,4 @@
-_Route19BeachHouseFisherBeforeText::
+_Route19BeachHouseText_FisherBefore::
 	text "Yo comment k'ça"
 	line "va? Le Dave"
 	cont "est le Boss"
@@ -15,7 +15,7 @@ _Route19BeachHouseFisherBeforeText::
 	cont "ma main!"
 	done
 
-_Route19BeachHouseFisherAfterText::
+_Route19BeachHouseText_FisherAfter::
 	text "Yo comment k'ça"
 	line "va? Délire!!!"
 	cont "Toi aussi t'es"
@@ -32,19 +32,13 @@ _Route19BeachHousePikachuText::
 	text "Dave: Pikaaan!"
 	done
 
-_Route19BeachHousePoster1Text::
+_Route19BeachHouseText_Poster1::
 	text "Le Surf, la mer:"
 	line "c'est la vie!"
 	done
 
-_Route19BeachHousePoster2Text::
+_Route19BeachHouseText_Poster2::
 	text "Record à battre:"
 	line "Dave le Surfer"
 	cont "7511 points!"
-	done
-
-_Route19BeachHousePCText::
-	text "Oh! Un jeu avec"
-	line "un Pikachu"
-	cont "Surfeur, cool!"
 	done

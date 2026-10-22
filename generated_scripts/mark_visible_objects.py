@@ -692,6 +692,7 @@ DONS_OBJETS_MANUELS = {
     ("UndergroundPathWestEast", 1): "M_GENE",
     ("VermilionFanClub", 5): "BIKE_VOUCHER",
     ("ViridianForestSouthGate", 2): "POKE_BALL",
+    ("Lighthouse", 1): "SURFBOARD",
 }
 
 # Objets à marquer par coordonnées, sans retype d'un objet déclaré :

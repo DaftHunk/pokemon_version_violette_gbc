@@ -3,53 +3,106 @@ Route19BeachHouseScript:
 
 
 Route19BeachHouseTextPointers:
-	dw Route19BeachHouseFisherText
-	dw Route19BeachHousePikachuText
-	dw Route19BeachHousePoster1Text
-	dw Route19BeachHousePoster2Text
-	dw Route19BeachHousePCText
+	dw Route19BeachHouseText_Fisher
+	dw Route19BeachHouseText_Pikachu
+	dw Route19BeachHouseText_Poster1
+	dw Route19BeachHouseText_Poster2
+	dw Route19BeachHouseText_Printer
 
-Route19BeachHouseFisherText:
+Route19BeachHouseText_Fisher:
 	TX_ASM
-	CheckEvent EVENT_GOT_DEX_DIPLOMA
-	jr nz, .gotSurfBoard
-	; else
-	ld hl, Route19BeachHouseFisherBeforeText
+	; the minigame requires a Surfboard in the active bag
+	ld hl, wBagItems
+.itemLoop
+	ld a, [hli]
+	cp $ff
+	jr z, .noSurfboard
+	cp SURFBOARD
+	jr z, .gotSurfBoard
+	inc hl
+	jr .itemLoop
+.noSurfboard
+	ld hl, Route19BeachHouseText_FisherBefore
 	jr .displayText
+
 .gotSurfBoard
-	ld hl, Route19BeachHouseFisherAfterText
+	ld hl, Route19BeachHouseText_FisherAfter
+
+	; TODO Check for 3000 score
 
 	ld a, [wPartyMon1Species]
 	cp PIKACHU
 	jp z, PikachuTutor
 	cp RAICHU
 	jp z, PikachuTutor
+	cp GOROCHU
+	jp z, PikachuTutor
 	; fallthrough
 .displayText
 	call PrintText
 	jp TextScriptEnd
 
-Route19BeachHouseFisherBeforeText:
-	TX_FAR _Route19BeachHouseFisherBeforeText
+PikachuTutor:
+	xor a
+	ld [wWhichPokemon], a
+
+	ld hl, .textStart
+	call PrintText
+
+	ld a, SURF
+	call .learnmove
+	ret
+
+.textStart
+	text "Okay man!"
+	line "Monte sur la"
+	cont "planche, on va"
+	cont "t'apprendre à"
+	cont "enchaîner"
+	cont "les flips!"
+	prompt
 	db "@"
 
-Route19BeachHouseFisherAfterText:
-	TX_FAR _Route19BeachHouseFisherAfterText
+.learnmove
+	ld [wMoveNum], a
+	ld [wPokedexNum],a
+	call GetMoveName
+	call CopyStringToCF4B ; copy name to wcf4b
+
+	ld a, [wPokedexNum]
+	push af
+	ld a, [wPartyMon1Species]
+	ld [wPokedexNum], a
+	call GetMonName
+	pop af
+	ld [wPokedexNum], a
+	
+	callba CheckIfMoveIsKnown
+	jr c, .moveKnown
+
+	ld hl, wStatusFlags7
+	set 6, [hl]
+	push hl		;make it so the move-forget list covers up sprites
+	predef LearnMove
+	pop hl
+	res 6, [hl]
+	ld a, b
+	and a
+	ret z
+.finish
+	ret
+.moveKnown
+	jp TextScriptEnd
+
+Route19BeachHouseText_FisherBefore:
+	TX_FAR _Route19BeachHouseText_FisherBefore
 	db "@"
 
-Route19BeachHousePikachuText:
-	TX_FAR _Route19BeachHousePikachuText
+Route19BeachHouseText_FisherAfter:
+	TX_FAR _Route19BeachHouseText_FisherAfter
 	db "@"
 
-Route19BeachHousePoster1Text:
-	TX_FAR _Route19BeachHousePoster1Text
-	db "@"
-
-Route19BeachHousePoster2Text:
-	TX_FAR _Route19BeachHousePoster2Text
-	db "@"
-
-Route19BeachHousePCText:
+Route19BeachHouseText_Pikachu:
 	TX_ASM
 	ld hl, .wantToSurfText
 	call PrintText
@@ -57,15 +110,11 @@ Route19BeachHousePCText:
 	ld a, [wCurrentMenuItem]
 	and a
 	jr z, .startMinigame
-	; no -> show the hi-score screen
-	xor a
-	ld [wUpdateSpritesEnabled], a
-	callba DisplaySurfingMinigameHighScoreScreen
-	ld a, $1
-	ld [wUpdateSpritesEnabled], a
-	ld a, 1
-	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+
+	ld hl, .noSurfText
+	call PrintText
 	jp TextScriptEnd
+
 .startMinigame
 	; the minigame requires a Surfboard in the active bag
 	ld hl, wBagItems
@@ -92,65 +141,60 @@ Route19BeachHousePCText:
 	jp TextScriptEnd
 
 .wantToSurfText
-	text "Veux-tu surfer"
-	line "avec Pikachu?"
+	text "Dave: Pika pi?"
 	prompt
 	db "@"
+.yesSurfText
+	text "Dave: Pikaaan!"
+	prompt
+	db "@"
+.noSurfText
+	text "Dave: PIKA CHU."
+	done
+	db "@"
 .noSurfboardText
-	text "Il te faut une"
-	line "Planche de Surf"
-	cont "dans ton sac"
-	cont "pour jouer!"
+	text "Dave: PIKA CHU."
+	line "Il pointe le"
+	cont "doigt vers les"
+	cont "Planches de Surf."
 	done
 	db "@"
 
-PikachuTutor:
-	xor a
-	ld [wWhichPokemon], a
+Route19BeachHouseText_Poster1:
+	TX_FAR _Route19BeachHouseText_Poster1
+	db "@"
 
-	ld hl, .textStart
+Route19BeachHouseText_Poster2:
+	TX_FAR _Route19BeachHouseText_Poster2
+	db "@"
+
+Route19BeachHouseText_Printer:
+	TX_ASM
+	ld hl, .wantToPrintText
 	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr z, .printScore
 
-	ld a, SURF
-	call .learnmove
-	ret
-.textStart
-	text "Okay man!"
-	line "Monte sur la"
-	cont "planche, on va"
-	cont "t'apprendre à"
-	cont "enchaîner"
-	cont "les flips!"
+	xor a
+	ld [wUpdateSpritesEnabled], a
+	callba DisplaySurfingMinigameHighScoreScreen
+	ld a, $1
+	ld [wUpdateSpritesEnabled], a
+	ld a, 1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	jp TextScriptEnd
+
+.printScore
+	; TODO Print
+
+	xor a
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	jp TextScriptEnd
+
+.wantToPrintText
+	text "Imprimer le"
+	line "score?"
 	prompt
 	db "@"
-.learnmove
-	ld [wMoveNum], a
-	ld [wPokedexNum],a
-	call GetMoveName
-	call CopyStringToCF4B ; copy name to wcf4b
-
-
-	ld a, [wPokedexNum]
-	push af
-	ld a, [wPartyMon1Species]
-	ld [wPokedexNum], a
-	call GetMonName
-	pop af
-	ld [wPokedexNum], a
-	
-	callba CheckIfMoveIsKnown
-	jr c, .moveKnown
-
-	ld hl, wStatusFlags7
-	set 6, [hl]
-	push hl		;make it so the move-forget list covers up sprites
-	predef LearnMove
-	pop hl
-	res 6, [hl]
-	ld a, b
-	and a
-	ret z
-.finish
-	ret
-.moveKnown
-	jp TextScriptEnd
