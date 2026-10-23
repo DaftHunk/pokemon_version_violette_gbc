@@ -56,6 +56,23 @@ PrintSurfingMinigameHighScore:
 	;screen replaced at vChars2 (like DisplaySurfingMinigameHighScoreScreen)
 	call RunDefaultPaletteCommand
 	call ReloadMapAfterPrinter
+	;the print screen is still in wTileMap: redraw the map view into it
+	;like the text engine's CloseTextDisplay does when a text ends, so
+	;the printer menu is not redrawn over leftover print screen tiles
+	xor a
+	ldh [H_AUTOBGTRANSFERENABLED], a
+	call LoadCurrentMapView
+	;then regenerate the GBC BG map attributes from the redrawn map
+	;view: RunDefaultPaletteCommand built stale ones from the print
+	;screen that was in wTileMap before the redraw. CloseTextDisplay
+	;normally does this on leaving a text screen; the printer menu
+	;has to do it itself.
+	callba MakeAndTransferOverworldBGMapAttributes_CloseText
+	;the printer menu is still shown through the text window (hWY=0),
+	;which uses the vBGMap1 space: the print screen's whole-screen
+	;palette command replaced its attributes too, so refresh them the
+	;same way DisplayTextIDInit does when opening a text box
+	callba MakeAndTransferOverworldBGMapAttributes_OpenText
 	call ReloadMapSpriteTilePatterns
 	call ReloadTilesetTilePatterns
 	call Printer_PlayMapMusic

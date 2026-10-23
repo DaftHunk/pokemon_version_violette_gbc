@@ -317,6 +317,13 @@ PCPrintBox:
 	;OUI prints the box, NON displays the pages without transmitting
 	;(PrintPCBox checks wPrinterDisplayOnly)
 	callba PrintPCBox
+	;PrintPCBox leaves the last printed page in wTileMap: redraw the
+	;map view into it like the text engine's CloseTextDisplay does
+	;when a text ends, so the menu is not redrawn over leftover page
+	;tiles
+	xor a
+	ld [H_AUTOBGTRANSFERENABLED], a
+	call LoadCurrentMapView
 	jp LoopPrinterMenu
 
 PCPrintScore:
@@ -327,8 +334,20 @@ PCPrintScore:
 	;display only: show the high score screen without transmitting it
 	callba DisplaySurfingMinigameHighScoreScreen
 	;DisplaySurfingMinigameHighScoreScreen leaves the print screen in
-	;wTileMap: reload the map view for the menu redraw
-	callba ReloadMapAfterPrinter
+	;wTileMap: redraw the map view into it like the text engine's
+	;CloseTextDisplay does when a text ends, so the menu is not redrawn
+	;over leftover print screen tiles
+	xor a
+	ld [H_AUTOBGTRANSFERENABLED], a
+	call LoadCurrentMapView
+	;then regenerate the GBC BG map attributes from the redrawn map
+	;view (normally done by the text engine's CloseTextDisplay)
+	callba MakeAndTransferOverworldBGMapAttributes_CloseText
+	;the menu is still shown through the text window (hWY=0), which
+	;uses the vBGMap1 space: the print screen's whole-screen palette
+	;command replaced its attributes too, so refresh them the same way
+	;DisplayTextIDInit does when opening a text box
+	callba MakeAndTransferOverworldBGMapAttributes_OpenText
 	jp LoopPrinterMenu
 .printScore
 	callba PrintSurfingMinigameHighScore
