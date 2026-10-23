@@ -52,6 +52,10 @@ PrintSurfingMinigameHighScore:
 	ldh [rIF], a
 	pop af
 	ldh [rIE], a
+	;give immediate feedback that the B press was registered: the restore
+	;below takes a few frames, during which the screen would otherwise stay
+	;frozen on the error message with no visible reaction
+	call GBPalWhiteOutWithDelay3
 	;restore the palettes, the map view and the tile patterns the print
 	;screen replaced at vChars2 (like DisplaySurfingMinigameHighScoreScreen)
 	call RunDefaultPaletteCommand
@@ -76,6 +80,11 @@ PrintSurfingMinigameHighScore:
 	call ReloadMapSpriteTilePatterns
 	call ReloadTilesetTilePatterns
 	call Printer_PlayMapMusic
+	;undo the whiteout above: nothing else in the print flow reloads the
+	;palettes on GBC (RunDefaultPaletteCommand is a no-op there). CloseTextDisplay
+	;normally does this with LoadGBPal when a text ends; the printer menu
+	;has to do it itself.
+	call LoadGBPal
 	pop af
 	ldh [hTilesetType], a
 	ret
@@ -143,8 +152,15 @@ PrintPCBox::
 	ldh [rIF], a
 	pop af
 	ldh [rIE], a
+	;give immediate feedback that the B press was registered: the restore
+	;below takes a few frames, during which the screen would otherwise stay
+	;frozen on the error message with no visible reaction
+	call GBPalWhiteOutWithDelay3
 	call ReloadMapAfterPrinter
 	call Printer_PlayMapMusic
+	;undo the whiteout above (the text engine's CloseTextDisplay normally
+	;does this with LoadGBPal when a text ends)
+	call LoadGBPal
 	pop af
 	ld [wUpdateSpritesEnabled], a
 	ret
@@ -219,6 +235,10 @@ PrintFanClubPortrait:
 	ldh [rIF], a
 	pop af
 	ldh [rIE], a
+	;give immediate feedback that the B press was registered: the caller
+	;(PCPrintMon's .afterPrint in engine/printer/printer_menu.asm) handles
+	;the full screen restore, including the palette reload
+	call GBPalWhiteOutWithDelay3
 	call ReloadMapAfterPrinter
 	call Printer_PlayMapMusic
 	ret
@@ -408,7 +428,11 @@ Printer_PlayPrinterMusic:
 	ret
 
 Printer_PlayMapMusic:
-	call Printer_FadeOutMusicAndWait
+;The printer music is still playing when quitting. Fading it out would
+;block the quit path for ~35 frames (7 NR50 steps at a 5-frame interval),
+;leaving the screen frozen with no reaction to the B press. Stop it
+;instantly instead: the whiteout covers the abrupt music switch.
+	call StopAllMusic
 	call PlayDefaultMusic
 	ret
 
@@ -477,11 +501,24 @@ GBPrinter_UpdateStatusMessage:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
+	;force instant text while (re)drawing the status box: the Yes/No
+	;confirmation prompt (DisplayTwoOptionMenu) clears wStatusFlags5 bit 6
+	;on exit, so these PlaceString calls would otherwise go through
+	;PrintLetterDelay_ and stall ~1 frame per letter. In error mode this
+	;routine redraws the whole box every frame, which slowed the print
+	;loop down to one B check per ~60 frames and swallowed short B
+	;presses (fix 7)
+	ld a, [wStatusFlags5]
+	push af
+	set 6, a
+	ld [wStatusFlags5], a
 	coord hl, 1, 7
 	call PlaceString
 	coord hl, 2, 15
 	ld de, .PressBToCancel
 	call PlaceString
+	pop af
+	ld [wStatusFlags5], a
 	ld a, $1
 	ldh [H_AUTOBGTRANSFERENABLED], a
 	xor a
