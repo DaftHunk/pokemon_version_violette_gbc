@@ -272,6 +272,9 @@ hMovingBGTilesCounter1 EQU $FFD8
 
 H_CURRENTSPRITEOFFSET EQU $FFDA ; multiple of $10
 
+;used by the GB printer code - nonzero if the player canceled a print job
+hCanceledPrinting EQU $FFDB
+
 hItemCounter EQU $FFDB
 
 hGymGateIndex EQU $FFDB

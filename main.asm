@@ -2286,3 +2286,10 @@ StatsGraphicsEnd::
 
 KeysLogoGraphics:: INCBIN "gfx/tiles/keys_logo.2bpp"
 KeysLogoGraphicsEnd::
+
+SECTION "GB Printer", ROMX
+
+INCLUDE "engine/printer/serial.asm"
+INCLUDE "engine/printer/printer.asm"
+INCLUDE "engine/printer/printer2.asm"
+INCLUDE "engine/printer/printer_menu.asm"
