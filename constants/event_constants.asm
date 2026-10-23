@@ -2342,7 +2342,7 @@ const_value = 0
 	const EVENT_PEWTER_MUSEUM_2F_SHOWED_PIKACHU      ; 923, (D86B, bit 3)
 	const EVENT_VIRIDIAN_FOREST_SOUTH_GATE           ; 924, (D86B, bit 4)
 	const EVENT_ROUTE_25_SHOWED_CLEFAIRY             ; 925, (D86B, bit 5)
-	const EVENT_926                                  ; 926, (D86B, bit 6)
+	const EVENT_LIGHTHOUSE_KEEPER                    ; 926, (D86B, bit 6)
 	const EVENT_927                                  ; 927, (D86B, bit 7)
 	const EVENT_928                                  ; 928, (D86C, bit 0)
 	const EVENT_929                                  ; 929, (D86C, bit 1)

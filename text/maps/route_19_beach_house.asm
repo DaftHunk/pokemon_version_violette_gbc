@@ -1,4 +1,4 @@
-_Route19BeachHouseText_FisherBefore::
+_Route19BeachHouseText_FisherGreeting::
 	text "Yo comment k'ça"
 	line "va? Le Dave"
 	cont "est le Boss"
@@ -13,19 +13,6 @@ _Route19BeachHouseText_FisherBefore::
 	line "vrais Surfeurs,"
 	cont "alors parle à"
 	cont "ma main!"
-	done
-
-_Route19BeachHouseText_FisherAfter::
-	text "Yo comment k'ça"
-	line "va? Délire!!!"
-	cont "Toi aussi t'es"
-	cont "Surfeur!"
-
-	para "Ramène moi ton"
-	line "Pikachu ou ton"
-	cont "Raichu et le"
-	cont "Dave lui montrera"
-	cont "la voie du Surf!"
 	done
 
 _Route19BeachHousePikachuText::

@@ -22,13 +22,18 @@ Route19BeachHouseText_Fisher:
 	inc hl
 	jr .itemLoop
 .noSurfboard
-	ld hl, Route19BeachHouseText_FisherBefore
+	ld hl, Route19BeachHouseText_FisherGreeting
 	jr .displayText
 
 .gotSurfBoard
-	ld hl, Route19BeachHouseText_FisherAfter
+	ld hl, .madeHighScore
 
-	; TODO Check for 3000 score
+	; the move tutor requires a Pikachu's Beach high score of 3000+
+	; (2-byte packed BCD: +1 holds the thousands/hundreds byte,
+	; so that byte being >= $30 means a score of at least 3000)
+	ld a, [wSurfingMinigameHiScore + 1]
+	cp $30
+	jr c, .scoreTooLow
 
 	ld a, [wPartyMon1Species]
 	cp PIKACHU
@@ -41,6 +46,43 @@ Route19BeachHouseText_Fisher:
 .displayText
 	call PrintText
 	jp TextScriptEnd
+
+.scoreTooLow
+	ld hl, .scoreTooLowText
+	jr .displayText
+
+.scoreTooLowText
+	text "Yo comment k'ça"
+	line "va? Délire!!!"
+	cont "Toi aussi t'es"
+	cont "Surfeur!"
+
+	para "Réussi à faire un"
+	line "score de 3000 et"
+	cont "j'enseignerai la"
+	cont "voie du Surf à"
+	cont "ton Pikachu, man!"
+	done
+	db "@"
+
+.madeHighScore
+	text "Yo comment k'ça"
+	line "va? Mais nan!!!"
+	cont "T'es un vrai"
+	cont "dompteur de"
+	cont "rouleau!"
+
+	para "T'es l'un des"
+	line "nôtres maintenant"
+	cont "mon gars!"
+
+	para "Ramène moi ton"
+	line "Pikachu ou ton"
+	cont "Raichu et le"
+	cont "Dave lui montrera"
+	cont "la voie du Surf!"
+	done
+	db "@"
 
 PikachuTutor:
 	xor a
@@ -94,12 +136,8 @@ PikachuTutor:
 .moveKnown
 	jp TextScriptEnd
 
-Route19BeachHouseText_FisherBefore:
-	TX_FAR _Route19BeachHouseText_FisherBefore
-	db "@"
-
-Route19BeachHouseText_FisherAfter:
-	TX_FAR _Route19BeachHouseText_FisherAfter
+Route19BeachHouseText_FisherGreeting:
+	TX_FAR _Route19BeachHouseText_FisherGreeting
 	db "@"
 
 Route19BeachHouseText_Pikachu:
