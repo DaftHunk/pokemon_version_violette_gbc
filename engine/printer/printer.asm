@@ -83,12 +83,8 @@ PrintPCBox::
 	xor a
 	ldh [H_AUTOBGTRANSFERENABLED], a
 	call PrintPCBox_DrawPage1
-	call StartTransmission_Send9Rows
 	ld a, $10
-	ld [wcae2], a
-	call Printer_CopyTileMapToPrinterTileBuffer
-	call LoadScreenTilesFromBuffer1
-	call Func_e8dfb
+	call Printer_SendPageOrWait
 	jr c, .asm_e8ddc
 	xor a
 	ld [wPrinterConnectionOpen], a
@@ -98,12 +94,8 @@ PrintPCBox::
 	xor a
 	ldh [H_AUTOBGTRANSFERENABLED], a
 	call PrintPCBox_DrawPage2
-	call StartTransmission_Send9Rows
 	ld a, $0
-	ld [wcae2], a
-	call Printer_CopyTileMapToPrinterTileBuffer
-	call LoadScreenTilesFromBuffer1
-	call Func_e8dfb
+	call Printer_SendPageOrWait
 	jr c, .asm_e8ddc
 	xor a
 	ld [wPrinterConnectionOpen], a
@@ -113,12 +105,8 @@ PrintPCBox::
 	xor a
 	ldh [H_AUTOBGTRANSFERENABLED], a
 	call PrintPCBox_DrawPage3
-	call StartTransmission_Send9Rows
 	ld a, $0
-	ld [wcae2], a
-	call Printer_CopyTileMapToPrinterTileBuffer
-	call LoadScreenTilesFromBuffer1
-	call Func_e8dfb
+	call Printer_SendPageOrWait
 	jr c, .asm_e8ddc
 	xor a
 	ld [wPrinterConnectionOpen], a
@@ -128,12 +116,8 @@ PrintPCBox::
 	xor a
 	ldh [H_AUTOBGTRANSFERENABLED], a
 	call PrintPCBox_DrawPage4
-	call StartTransmission_Send9Rows
 	ld a, $3
-	ld [wcae2], a
-	call Printer_CopyTileMapToPrinterTileBuffer
-	call LoadScreenTilesFromBuffer1
-	call Func_e8dfb
+	call Printer_SendPageOrWait
 .asm_e8ddc
 	xor a
 	ld [wPrinterConnectionOpen], a
@@ -220,6 +204,16 @@ PrintFanClubPortrait:
 	ldh [rIE], a
 	call ReloadMapAfterPrinter
 	call Printer_PlayMapMusic
+	ret
+
+;Show the Fan Club portrait print screen without transmitting it to the
+;printer (display-only mode, NON at the print confirmation prompt).
+;Like PrintFanClubPortrait, the caller handles the screen restore.
+DisplayFanClubPortrait:
+	xor a
+	ldh [hCanceledPrinting], a
+	call Printer_GetMonStats
+	call Printer_WaitForAB
 	ret
 
 PrinterDebug:
@@ -323,6 +317,54 @@ Printer_ResetJoypadHRAM:
 	ldh [hJoyHeld], a
 	ldh [hJoy5], a
 	ldh [hJoy6], a
+	ret
+
+;adding GB_PRINTER display-only mode
+;Send the drawn tilemap page to the printer (print mode), or just display it
+;and wait for a button (display-only mode, NON at the print confirmation
+;prompt - see PrinterMenu_AskPrintConfirm in engine/printer/printer_menu.asm).
+;In print mode, a = the value for wcae2; returns carry if cancelled with B.
+Printer_SendPageOrWait:
+	ld [wcae2], a
+	ld a, [wPrinterDisplayOnly]
+	and a
+	jr nz, .display
+	call StartTransmission_Send9Rows
+	call Printer_CopyTileMapToPrinterTileBuffer
+	call LoadScreenTilesFromBuffer1
+	call Func_e8dfb
+	ret
+.display
+	ld a, $1
+	ldh [H_AUTOBGTRANSFERENABLED], a
+	call Printer_WaitForAB
+	xor a
+	ldh [H_AUTOBGTRANSFERENABLED], a
+	call LoadScreenTilesFromBuffer1
+	and a ;no cancel in display-only mode
+	ret
+
+;Wait for the A or B button: release first, then press, then release again,
+;so the press does not leak into the caller's input (same pattern as
+;DisplaySurfingMinigameHighScoreScreen in engine/pikachus_beach.asm)
+Printer_WaitForAB:
+	call Printer_ResetJoypadHRAM
+.waitRelease
+	call Joypad
+	ldh a, [hJoyHeld]
+	and PAD_A | PAD_B
+	jr nz, .waitRelease
+.waitPress
+	call Joypad
+	ldh a, [hJoyPressed]
+	and PAD_A | PAD_B
+	jr z, .waitPress
+.waitReleaseAfterPress
+	call Joypad
+	ldh a, [hJoyHeld]
+	and PAD_A | PAD_B
+	jr nz, .waitReleaseAfterPress
+	call Printer_ResetJoypadHRAM
 	ret
 
 ; Printer_PlayPrinterMusic:

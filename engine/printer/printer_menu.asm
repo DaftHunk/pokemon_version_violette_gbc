@@ -252,6 +252,27 @@ PCPrinterCurrentSettingDisplay:
 ;TODO: a "Imprimer diplôme" entry (this hack's custom Champion/Maître diploma)
 ;can be added here once the printer NPC design calls for it.
 
+;adding GB_PRINTER
+;Shared print confirmation prompt: OUI = print, NON = display the print
+;screen without transmitting it (sets wPrinterDisplayOnly, checked by
+;PrintPCBox and this menu's print handlers).
+;Input: hl = the confirmation text. Returns z for OUI, nz for NON.
+PrinterMenu_AskPrintConfirm:
+	xor a
+	ld [wPrinterDisplayOnly], a
+	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	ret z
+	ld a, $1
+	ld [wPrinterDisplayOnly], a
+	ret
+
+PCPrint_ConfirmText:
+	text "Imprimer?"
+	prompt
+	db "@"
 
 PCPrintMon:
 .select_mon_to_print
@@ -270,7 +291,15 @@ PCPrintMon:
 .print
 	xor a
 	ld [wUpdateSpritesEnabled], a
+	ld hl, PCPrint_ConfirmText
+	call PrinterMenu_AskPrintConfirm
+	jr z, .printMon
+	;display only: show the portrait screen without transmitting it
+	callab DisplayFanClubPortrait
+	jr .afterPrint
+.printMon
 	callab PrintFanClubPortrait
+.afterPrint
 	call GBPalWhiteOutWithDelay3
 	call ReloadTilesetTilePatterns
 	call RestoreScreenTilesAndReloadTilePatterns
@@ -283,10 +312,24 @@ PCPrintMon:
 
 
 PCPrintBox:
+	ld hl, PCPrint_ConfirmText
+	call PrinterMenu_AskPrintConfirm
+	;OUI prints the box, NON displays the pages without transmitting
+	;(PrintPCBox checks wPrinterDisplayOnly)
 	callba PrintPCBox
 	jp LoopPrinterMenu
 
 PCPrintScore:
-	;print the Pikachu's Beach high score (engine/printer/printer.asm)
+	;print or display the Pikachu's Beach high score
+	ld hl, PCPrint_ConfirmText
+	call PrinterMenu_AskPrintConfirm
+	jr z, .printScore
+	;display only: show the high score screen without transmitting it
+	callba DisplaySurfingMinigameHighScoreScreen
+	;DisplaySurfingMinigameHighScoreScreen leaves the print screen in
+	;wTileMap: reload the map view for the menu redraw
+	callba ReloadMapAfterPrinter
+	jp LoopPrinterMenu
+.printScore
 	callba PrintSurfingMinigameHighScore
 	jp LoopPrinterMenu

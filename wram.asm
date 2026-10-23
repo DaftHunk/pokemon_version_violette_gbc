@@ -3689,6 +3689,10 @@ wPrinterConnectionOpen:: ; def1
 wPrinterOpcode:: ; def2
 ; current serial operation, 0 = idle
 	ds 1
+wPrinterDisplayOnly:: ; def3
+; set while the print screen should only be displayed on screen instead of
+; being transmitted to the GB Printer (NON at the print confirmation prompt)
+	ds 1
 
 SECTION "Stack", WRAM0[$df00]
 	ds $ff
