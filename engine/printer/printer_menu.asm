@@ -345,7 +345,11 @@ PCPrintScore:
 	call PrinterMenu_AskPrintConfirm
 	jr z, .printScore
 	;display only: show the high score screen without transmitting it
+	;play the printer music while the screen is shown, like the print
+	;path does, and restore the map music as soon as the screen closes
+	callba Printer_PlayPrinterMusic
 	callba DisplaySurfingMinigameHighScoreScreen
+	callba Printer_PlayMapMusic
 	;DisplaySurfingMinigameHighScoreScreen leaves the print screen in
 	;wTileMap: redraw the map view into it like the text engine's
 	;CloseTextDisplay does when a text ends, so the menu is not redrawn

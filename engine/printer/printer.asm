@@ -246,11 +246,15 @@ PrintFanClubPortrait:
 ;Show the Fan Club portrait print screen without transmitting it to the
 ;printer (display-only mode, NON at the print confirmation prompt).
 ;Like PrintFanClubPortrait, the caller handles the screen restore.
+;Play the printer music while the portrait is on screen, and restore
+;the map music when the player closes it, like the print path does.
 DisplayFanClubPortrait:
 	xor a
 	ldh [hCanceledPrinting], a
+	call Printer_PlayPrinterMusic
 	call Printer_GetMonStats
 	call Printer_WaitForAB
+	call Printer_PlayMapMusic
 	ret
 
 PrinterDebug:
@@ -404,25 +408,13 @@ Printer_WaitForAB:
 	call Printer_ResetJoypadHRAM
 	ret
 
-; Printer_PlayPrinterMusic:
-	; call Printer_FadeOutMusicAndWait
-	; ld a, [wAudioROMBank]
-	; ld [wAudioSavedROMBank], a
-	; ld a, BANK(Music_GBPrinter)
-	; ld [wAudioROMBank], a
-	; ld a, MUSIC_GB_PRINTER
-	; ld [wNewSoundID], a
-	; call PlaySound
-	; ret
-;The audio banks are already crammed pretty full,
-;so use something that is already in the game for less of a headache
 Printer_PlayPrinterMusic:
 	call Printer_FadeOutMusicAndWait
 	ld a, [wAudioROMBank]
 	ld [wAudioSavedROMBank], a
-	ld a, BANK(Music_MuseumGuy)
+	ld a, BANK(Music_GBPrinter)
 	ld [wAudioROMBank], a
-	ld a, MUSIC_MUSEUM_GUY
+	ld a, MUSIC_GB_PRINTER
 	ld [wNewSoundID], a
 	call PlaySound
 	ret

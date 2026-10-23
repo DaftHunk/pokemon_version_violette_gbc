@@ -827,6 +827,7 @@ INCLUDE "audio/music/surfingpikachu.asm"
 INCLUDE "audio/music/meetjessiejames.asm"
 INCLUDE "audio/music/yellowintro.asm"
 INCLUDE "audio/music/surfingpikachunointro.asm"
+INCLUDE "audio/music/printer.asm"
 ; unused musics
 INCLUDE "audio/music/tradesong.asm"
 INCLUDE "audio/music/giovannisong.asm"
