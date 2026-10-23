@@ -48,9 +48,9 @@ OpenPrinterMenu::
 	ld [wPlayerMonNumber], a
 
 ;now handle the text box giving the current box number
-	coord hl, 9, 14
+	coord hl, 8, 14
 	ld b, 2
-	ld c, 9
+	ld c, 10
 	call TextBoxBorder
 	ld a, [wCurrentBoxNum]
 	and $7f
@@ -66,7 +66,7 @@ OpenPrinterMenu::
 	add "1"
 .next
 	Coorda 18, 16
-	coord hl, 10, 16
+	coord hl, 9, 16
 	ld de, PrinterMenuBoxText
 	call PlaceString
 
@@ -112,7 +112,7 @@ PrinterMenuText:
 	db "@"
 ;max 7 chars: the box number digits are placed at columns 17-18
 PrinterMenuBoxText:
-	db "Boîte №@"
+	db "Boîte n.@"
 
 
 
@@ -155,9 +155,9 @@ PCPrintSettings:
 	ld [wPlayerMonNumber], a
 
 ;now handle the text box giving the current setting
-	coord hl, 9, 14
+	coord hl, 8, 14
 	ld b, 2
-	ld c, 9
+	ld c, 10
 	call TextBoxBorder
 	call PCPrinterCurrentSettingDisplay
 
@@ -245,7 +245,7 @@ PCPrinterCurrentSettingDisplay:
 	jr z, .next
 	ld de, PrinterSettingsMenuTextSingle7F
 .next
-	coord hl, 10, 16
+	coord hl, 9, 16
 	call PlaceString
 	ret
 
@@ -307,8 +307,21 @@ PCPrintMon:
 	call Delay3
 	call GBPalNormal
 .exiting
+	;the party menu and the portrait screen run palette commands whose
+	;GBC packets replace the BG map attributes of the text window space
+	;(vBGMap1) that displays the printer menu: regenerate them from the
+	;restored map view like the text engine's CloseTextDisplay and
+	;DisplayTextIDInit do
+	callba MakeAndTransferOverworldBGMapAttributes_CloseText
+	callba MakeAndTransferOverworldBGMapAttributes_OpenText
+	;RestoreScreenTilesAndReloadTilePatterns re-enables the overworld
+	;sprites, but the script hides them around the printer menu: clear
+	;the OAM buffer and disable sprite updates again the same way
+	call ClearSprites
+	xor a
+	ld [wUpdateSpritesEnabled], a
 	call LoadGBPal
-	jp ExitPrinterMenu
+	jp LoopPrinterMenu
 
 
 PCPrintBox:
@@ -348,6 +361,10 @@ PCPrintScore:
 	;command replaced its attributes too, so refresh them the same way
 	;DisplayTextIDInit does when opening a text box
 	callba MakeAndTransferOverworldBGMapAttributes_OpenText
+	;DisplaySurfingMinigameHighScoreScreen ends with a palette whiteout,
+	;which the text engine's CloseTextDisplay undoes with LoadGBPal when
+	;a text ends: restore the palettes the same way here
+	call LoadGBPal
 	jp LoopPrinterMenu
 .printScore
 	callba PrintSurfingMinigameHighScore

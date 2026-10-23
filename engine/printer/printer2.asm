@@ -79,7 +79,7 @@ Printer_GetMonStats:
 	ld de, .IDNo
 	call PlaceString
 
-	coord hl, 13, 6
+	coord hl, 14, 6
 	ld de, wLoadedMonOTID
 	lb bc, $80 | 2, 5
 	call PrintNumber
@@ -167,7 +167,7 @@ Printer_GetMonStats:
 	db "DO/@"
 
 .IDNo:
-	db "ID №@"
+	db "№",$73,"⠄@"
 
 .Stats:
 	db   "Atq"
