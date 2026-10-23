@@ -1,55 +1,67 @@
 ;GB Printer engine, ported from jojobear13/shinpokered (engine/printer/printer.asm)
 ;The Pokedex entry print hook (PrintPokedexEntry) and the diploma print hook
-;(PrintDiploma) are intentionally NOT ported: in this hack, printing (outside
-;of the surf minigame high score, planned for a later phase) is accessed
-;through a dedicated printer NPC instead of the Pokedex/diploma menus.
-;TODO: callba OpenPrinterMenu (engine/printer/printer_menu.asm) from the
-;printer NPC's script once that NPC is designed.
-;This hack has the Pikachu's Beach minigame: the commented-out high score
-;print code below is the base for a later phase that adapts it to
-;PrepareSurfingMinigameHighScoreScreen in engine/pikachus_beach.asm.
-;Not used for now - the surf minigame high score print is a later phase
-; PrintSurfingMinigameHighScore:
-	; xor a
-	; ldh [hCanceledPrinting], a
-	; call Printer_PlayPrinterMusic
-	; call Printer_PrepareSurfingMinigameHighScoreTileMap
-	; ldh a, [rIE]
-	; push af
-	; xor a
-	; ldh [rIF], a
-	; ld a, $9
-	; ldh [rIE], a
-	; call StartTransmission_Send9Rows
-	; ld a, $13
-	; ld [wcae2], a
-	; call Printer_CopyTileMapToPrinterTileBuffer
-	; call Printer_ResetJoypadHRAM
-; .loop
-	; call JoypadLowSensitivity
-	; call Printer_CheckPressingB
-	; jr c, .quit
-	; ld a, [wPrinterSendState]
-	; bit 7, a
-	; jr nz, .quit
-	; call PrinterTransmissionJumptable
-	; call GBPrinter_CheckForErrors
-	; call GBPrinter_UpdateStatusMessage
-	; call DelayFrame
-	; jr .loop
+;(PrintDiploma) are intentionally NOT ported: in this hack, printing is
+;accessed through the Beach House printer (Route19BeachHouseText_Printer in
+;scripts/Route19BeachHouse.asm), which opens the printer menu
+;(engine/printer/printer_menu.asm).
+;This hack has the Pikachu's Beach minigame: the high score print below uses
+;PrepareSurfingMinigameHighScoreScreen (engine/pikachus_beach.asm), this
+;hack's own version of shin's Printer_PrepareSurfingMinigameHighScoreTileMap.
+PrintSurfingMinigameHighScore:
+	xor a
+	ldh [hCanceledPrinting], a
+	call Printer_PlayPrinterMusic
+	;disable overworld tile animations during the transmission: VBlank's
+	;UpdateMovingBgTiles would corrupt the printer graphics loaded at
+	;vChars2 (the tile patterns are read from VRAM on the fly)
+	ldh a, [hTilesetType]
+	push af
+	xor a
+	ldh [hTilesetType], a
+	callba PrepareSurfingMinigameHighScoreScreen
+	ldh a, [rIE]
+	push af
+	xor a
+	ldh [rIF], a
+	ld a, $9
+	ldh [rIE], a
+	call StartTransmission_Send9Rows
+	ld a, $13
+	ld [wcae2], a
+	call Printer_CopyTileMapToPrinterTileBuffer
+	call Printer_ResetJoypadHRAM
+.loop
+	call JoypadLowSensitivity
+	call Printer_CheckPressingB
+	jr c, .quit
+	ld a, [wPrinterSendState]
+	bit 7, a
+	jr nz, .quit
+	call PrinterTransmissionJumptable
+	call GBPrinter_CheckForErrors
+	call GBPrinter_UpdateStatusMessage
+	call DelayFrame
+	jr .loop
 
-; .quit
-	; xor a
-	; ld [wPrinterConnectionOpen], a
-	; ld [wPrinterOpcode], a
-	; call Printer_CopyTileMapFromPrinterTileBuffer
-	; xor a
-	; ldh [rIF], a
-	; pop af
-	; ldh [rIE], a
-	; call ReloadMapAfterPrinter
-	; call Printer_PlayMapMusic
-	; ret
+.quit
+	xor a
+	ld [wPrinterConnectionOpen], a
+	ld [wPrinterOpcode], a
+	call Printer_CopyTileMapFromPrinterTileBuffer
+	xor a
+	ldh [rIF], a
+	pop af
+	ldh [rIE], a
+	;restore the palettes, the map view and the tile patterns the print
+	;screen replaced at vChars2 (like DisplaySurfingMinigameHighScoreScreen)
+	call RunDefaultPaletteCommand
+	call ReloadMapAfterPrinter
+	call ReloadMapSpriteTilePatterns
+	call ReloadTilesetTilePatterns
+	call Printer_PlayMapMusic
+	pop af
+	ldh [hTilesetType], a
+	ret
 
 PrintPCBox::
 	ld a, [wBoxDataStart]
@@ -470,118 +482,6 @@ GBPrinter_UpdateStatusMessage:
 	next "  Ce n'est pas le"
 	next "  GB Printer !@"
 
-;Not used for now - the surf minigame high score print is a later phase
-; Printer_PrepareSurfingMinigameHighScoreTileMap:
-	; call GBPalWhiteOutWithDelay3
-	; call ClearScreen
-	; ld de, SurfingPikachu2Graphics
-	; ld hl, vChars2
-	; lb bc, BANK(SurfingPikachu2Graphics), (SurfingPikachu2GraphicsEnd - SurfingPikachu2Graphics) / $10
-	; call CopyVideoData
-	; coord hl, 0, 0
-	; call .PlaceRowAlternatingTiles
-	; coord hl, 0, 17
-	; call .PlaceRowAlternatingTiles
-	; coord hl, 0, 0
-	; call .PlaceColumnAlternatingTiles
-	; coord hl, 19, 0
-	; call .PlaceColumnAlternatingTiles
-	; ld a, $4
-	; coord hl, 0, 0
-	; ld [hl], a
-	; coord hl, 0, 17
-	; ld [hl], a
-	; coord hl, 19, 0
-	; ld [hl], a
-	; coord hl, 19, 17
-	; ld [hl], a
-	; ld de, .Tilemap1
-	; coord hl, 10, 8
-	; lb bc, 3, 8
-	; call Diploma_Surfing_CopyBox
-	; ld de, .Tilemap2
-	; coord hl, 2, 11
-	; lb bc, 6, 16
-	; call Diploma_Surfing_CopyBox
-	; ld de, .PikachusBeachString
-	; coord hl, 3, 2
-	; call PlaceString
-	; ld de, .HiScoreString
-	; coord hl, 9, 4
-	; call PlaceString
-	; ld de, .PointsString
-	; coord hl, 12, 6
-	; call PlaceString
-	; ld de, wPlayerName
-	; ld hl, wPlayerName
-	; ld bc, 0
-; .find_end_of_name
-	; ld a, [hli]
-	; inc c
-	; cp "@"
-	; jr nz, .find_end_of_name
-	; ld a, 8
-	; sub c
-	; jr nc, .got_name_length
-	; xor a
-; .got_name_length
-	; ld c, a
-	; coord hl, 2, 4
-	; add hl, bc
-	; call PlaceString
-	; call CopySurfingMinigameScore
-	; ld b, SET_PAL_GENERIC
-	; call RunPaletteCommand
-	; ld a, $1
-	; ldh [H_AUTOBGTRANSFERENABLED], a
-	; call Delay3
-	; call GBPalNormal
-	; ret
-
-; .PlaceRowAlternatingTiles:
-	; ld c, SCREEN_WIDTH / 2
-; .row_loop
-	; ld [hl], $0
-	; inc hl
-	; ld [hl], $1
-	; inc hl
-	; dec c
-	; jr nz, .row_loop
-	; ret
-
-; .PlaceColumnAlternatingTiles:
-	; ld c, SCREEN_HEIGHT / 2
-	; ld de, SCREEN_WIDTH
-; .col_loop
-	; ld [hl], $2
-	; add hl, de
-	; ld [hl], $3
-	; add hl, de
-	; dec c
-	; jr nz, .col_loop
-	; ret
-
-; .Tilemap1:
-	; db $7f, $7f, $10, $11, $12, $13, $14, $15
-	; db $0f, $3c, $3d, $3e, $20, $21, $30, $31
-	; db $4c, $4d, $4e, $50, $34, $1a, $51, $2d
-
-; .Tilemap2:
-	; db $7f, $7f, $7f, $7f, $7f, $7f, $16, $17, $18, $19, $7f, $1b, $1c, $1d, $1e, $1f
-	; db $7f, $7f, $22, $23, $24, $25, $26, $27, $28, $29, $2a, $2b, $2c, $7f, $2e, $2f
-	; db $7f, $7f, $32, $33, $33, $35, $36, $37, $38, $39, $3a, $3b, $7f, $7f, $7f, $3f
-	; db $40, $41, $42, $43, $44, $45, $46, $47, $48, $49, $4a, $4b, $40, $40, $40, $4f
-	; db $52, $52, $52, $53, $54, $55, $56, $57, $58, $59, $5a, $5b, $5c, $5d, $5d, $5e
-	; db $7f, $7f, $7f, $05, $06, $07, $08, $09, $0a, $0b, $0c, $0d, $0e, $7f, $7f, $7f
-
-;.PikachusBeachString:
-;	db "Plage de Pikachu@"
-;.HiScoreString:
-;	db "Score de@"
-;.PointsString:
-;	db "Points@"
-
-
 ;This is used for the diploma as well as the Pikachu's Beach high score screen
 Diploma_Surfing_CopyBox:
 .y
@@ -600,29 +500,6 @@ Diploma_Surfing_CopyBox:
 	dec b
 	jr nz, .y
 	ret
-
-
-; CopySurfingMinigameScore:
-	; ld de, wSurfingMinigameHiScore + 1
-	; coord hl, 7, 6
-	; ld a, [de]
-	; call .BCDConvertScore
-	; ld a, [de]
-; .BCDConvertScore:
-	; ld c, a
-	; swap a
-	; and $f
-	; add -10
-	; ld [hli], a
-	; ld a, c
-	; and $f
-	; add -10
-	; ld [hli], a
-	; dec de
-	; ret
-
-; SurfingPikachu2Graphics:  INCBIN "gfx/surfing_pikachu_2.2bpp"
-; SurfingPikachu2GraphicsEnd:
 
 PrintPCBox_DrawPage1:
 	xor a

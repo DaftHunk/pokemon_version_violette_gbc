@@ -164,7 +164,7 @@ Printer_GetMonStats:
 	ret
 
 .OT:
-	db "OT/@"
+	db "DO/@"
 
 .IDNo:
 	db "ID №@"

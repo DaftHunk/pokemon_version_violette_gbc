@@ -3,12 +3,9 @@
 ;The Pokedex entry (PRINT #DEX) and diploma (PRINT DIPLOMA) menu entries are
 ;intentionally NOT ported: in this hack, printing is accessed through a
 ;dedicated printer NPC instead of the Pokedex/diploma menus.
-;This menu is meant to be opened from the printer NPC's script with
-;`callba OpenPrinterMenu`. The caller is expected to have a screen the menu
-;can draw its boxes on (screen save/restore can be tweaked at integration
-;time). Until the NPC exists, OpenPrinterMenu can also be called from a
-;debug hook or a temporary script to test printing.
-;TODO: hook this up to the future printer NPC.
+;Opened with `callba OpenPrinterMenu` from the Beach House printer's script
+;(Route19BeachHouseText_Printer in scripts/Route19BeachHouse.asm), which
+;redraws the map view after the menu returns.
 
 OpenPrinterMenu::
 	ld hl, wStatusFlags5
@@ -22,7 +19,7 @@ OpenPrinterMenu::
 
 	;size of menu text box
 	coord hl, 0, 0
-	ld b, 8
+	ld b, 10
 	ld c, 15
 	call TextBoxBorder
 	coord hl, 2, 2
@@ -37,7 +34,7 @@ OpenPrinterMenu::
 	inc hl
 	inc hl
 
-	ld a, 3	;number of non-cancel menu items (last one, RETOUR, exits)
+	ld a, 4	;number of non-cancel menu items (last one, RETOUR, exits)
 	ld [hli], a ; wMaxMenuItem
 
 	ld a, A_BUTTON | B_BUTTON
@@ -87,8 +84,10 @@ OpenPrinterMenu::
 	and a
 	jp z, PCPrintSettings
 	cp $1
-	jp z, PCPrintMon
+	jp z, PCPrintScore
 	cp $2
+	jp z, PCPrintMon
+	cp $3
 	jp z, PCPrintBox
 	;fall through for exiting (RETOUR)
 ExitPrinterMenu:
@@ -106,6 +105,7 @@ LoopPrinterMenu:
 
 PrinterMenuText:
 	db   "Réglages"
+	next "Imprimer score"
 	next "Imprimer <pkmn>"
 	next "Imprimer boîte"
 	next "Retour"
@@ -284,4 +284,9 @@ PCPrintMon:
 
 PCPrintBox:
 	callba PrintPCBox
+	jp LoopPrinterMenu
+
+PCPrintScore:
+	;print the Pikachu's Beach high score (engine/printer/printer.asm)
+	callba PrintSurfingMinigameHighScore
 	jp LoopPrinterMenu

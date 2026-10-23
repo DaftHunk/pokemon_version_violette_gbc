@@ -225,8 +225,13 @@ Route19BeachHouseText_Printer:
 	jp TextScriptEnd
 
 .printScore
-	; TODO Print
-
+	; open the GB Printer menu, then redraw the map view
+	xor a
+	ld [wUpdateSpritesEnabled], a
+	callba OpenPrinterMenu
+	callba ReloadMapAfterPrinter
+	ld a, $1
+	ld [wUpdateSpritesEnabled], a
 	xor a
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	jp TextScriptEnd

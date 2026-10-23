@@ -633,3 +633,31 @@ PrinterSerial_:
 	xor a
 	ld [wPrinterOpcode], a
 	ret
+
+;adding GB_PRINTER
+;Polled from home/vblank.asm (VBlank handler) every frame via callba.
+;Lives here (banked ROM) instead of the home bank because the home
+;bank's "Main" section is full.
+SerialFunction::
+	ld a, [wPrinterConnectionOpen]
+	bit 0, a
+	ret z
+	ld a, [wPrinterOpcode]
+	and a
+	ret nz
+	ld hl, wPrinterData + 650
+	inc [hl]
+	ld a, [hl]
+	cp $6
+	ret c
+	xor a
+	ld [hl], a
+	ld a, $0c
+	ld [wPrinterOpcode], a
+	ld a, $88
+	ld [rSB], a
+	ld a, $1
+	ld [rSC], a
+	ld a, START_TRANSFER_INTERNAL_CLOCK
+	ld [rSC], a
+	ret
