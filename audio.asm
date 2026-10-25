@@ -8,13 +8,13 @@ AUDIO_4 EQU $33
 INCLUDE "constants.asm"
 
 
-SECTION "Sound Effect Headers 1", ROMX, BANK[AUDIO_1]
+SECTION "Sound Effect Headers 1", ROMX[$4000], BANK[AUDIO_1]
 INCLUDE "audio/headers/sfxheaders1.asm"
 
-SECTION "Sound Effect Headers 2", ROMX, BANK[AUDIO_2]
+SECTION "Sound Effect Headers 2", ROMX[$4000], BANK[AUDIO_2]
 INCLUDE "audio/headers/sfxheaders2.asm"
 
-SECTION "Sound Effect Headers 3", ROMX, BANK[AUDIO_3]
+SECTION "Sound Effect Headers 3", ROMX[$4000], BANK[AUDIO_3]
 INCLUDE "audio/headers/sfxheaders3.asm"
 
 

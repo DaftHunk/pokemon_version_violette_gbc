@@ -1,8 +1,9 @@
 ;adding GB_PRINTER
-;GB Printer menu, adapted from jojobear13/shinpokered (engine/printer/printer_pc_menu.asm)
-;The Pokedex entry (PRINT #DEX) and diploma (PRINT DIPLOMA) menu entries are
-;intentionally NOT ported: in this hack, printing is accessed through a
-;dedicated printer NPC instead of the Pokedex/diploma menus.
+;The diploma (PRINT DIPLOMA) menu entry is intentionally NOT ported: in
+;this hack, printing is accessed through a dedicated printer NPC instead
+;of the diploma menu.
+;The Pokedex entry print is accessed through the "Imprimer Pokédex" menu
+;entry (PCPrintDex opens the pokedex in printer mode).
 ;Opened with `callba OpenPrinterMenu` from the Beach House printer's script
 ;(Route19BeachHouseText_Printer in scripts/Route19BeachHouse.asm), which
 ;redraws the map view after the menu returns.
@@ -19,8 +20,8 @@ OpenPrinterMenu::
 
 	;size of menu text box
 	coord hl, 0, 0
-	ld b, 10
-	ld c, 15
+	ld b, 12
+	ld c, 17
 	call TextBoxBorder
 	coord hl, 2, 2
 	ld de, PrinterMenuText
@@ -34,7 +35,7 @@ OpenPrinterMenu::
 	inc hl
 	inc hl
 
-	ld a, 4	;number of non-cancel menu items (last one, RETOUR, exits)
+	ld a, 5	;number of non-cancel menu items (last one, RETOUR, exits)
 	ld [hli], a ; wMaxMenuItem
 
 	ld a, A_BUTTON | B_BUTTON
@@ -89,6 +90,8 @@ OpenPrinterMenu::
 	jp z, PCPrintMon
 	cp $3
 	jp z, PCPrintBox
+	cp $4
+	jp z, PCPrintDex
 	;fall through for exiting (RETOUR)
 ExitPrinterMenu:
 	pop af
@@ -108,6 +111,7 @@ PrinterMenuText:
 	next "Imprimer score"
 	next "Imprimer <pkmn>"
 	next "Imprimer boîte"
+	next "Imprimer Pokédex"
 	next "Retour"
 	db "@"
 ;max 7 chars: the box number digits are placed at columns 17-18
@@ -372,4 +376,34 @@ PCPrintScore:
 	jp LoopPrinterMenu
 .printScore
 	callba PrintSurfingMinigameHighScore
+	jp LoopPrinterMenu
+
+;opens the pokedex in printer mode: its side menu offers printing the
+;selected pokedex entry (no print confirmation prompt, choosing Prnt in
+;the side menu is the confirmation step)
+PCPrintDex:
+	call GBPalWhiteOutWithDelay3
+	call LoadCurrentMapView
+	call SaveScreenTilesToBuffer2
+;set the flag that switches the pokedex side menu to its printer variant
+	ld a, $1
+	ld [wPrinterPokedexMode], a
+	callba ShowPokedexMenu
+	xor a
+	ld [wPrinterPokedexMode], a
+;the pokedex replaced the whole screen and ran its own palette commands
+;(like the party menu does in PCPrintMon): restore the printer menu
+;screen the same way PCPrintMon does after the portrait screen
+	call GBPalWhiteOutWithDelay3
+	call ReloadTilesetTilePatterns
+	call RestoreScreenTilesAndReloadTilePatterns
+	call LoadScreenTilesFromBuffer2
+	call Delay3
+	call GBPalNormal
+	callba MakeAndTransferOverworldBGMapAttributes_CloseText
+	callba MakeAndTransferOverworldBGMapAttributes_OpenText
+	call ClearSprites
+	xor a
+	ld [wUpdateSpritesEnabled], a
+	call LoadGBPal
 	jp LoopPrinterMenu

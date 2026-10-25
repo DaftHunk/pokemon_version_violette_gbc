@@ -36,7 +36,16 @@ ShowPokedexMenu:
 	inc hl
 	ld a, 6
 	ld [hli], a ; max menu item ID
+	ld a, [wPrinterPokedexMode]
+	and a
+	jr nz, .printerModeWatchedKeys
 	ld [hl], D_LEFT | D_RIGHT | B_BUTTON | A_BUTTON | SELECT | START ; PureRGBnote: ADDED: track the SELECT and START buttons in order to trigger new functions
+	jr .afterWatchedKeys
+.printerModeWatchedKeys
+	;printer mode: SELECT (town map) and START (movedex) would leave the
+	;pokedex opened from the printer menu, don't watch them
+	ld [hl], D_LEFT | D_RIGHT | B_BUTTON | A_BUTTON
+.afterWatchedKeys
 	call HandlePokedexListMenu
 	jr c, .goToSideMenu ; if the player chose a pokemon from the list
 	cp 1
@@ -109,7 +118,14 @@ HandlePokedexSideMenu:
 	xor a
 	ld [hli], a ; current menu item ID
 	inc hl
+	ld a, [wPrinterPokedexMode]
+	and a
+	jr z, .normalMaxMenuItem
+	ld a, 2 ; printer mode: Info, Prnt, Ret
+	jr .setMaxMenuItem
+.normalMaxMenuItem
 	ld a, 4
+.setMaxMenuItem
 	ld [hli], a ; max menu item ID
 	ld a, A_BUTTON | B_BUTTON
 	ld [hli], a ; menu watched keys (A button and B button)
@@ -124,6 +140,17 @@ HandlePokedexSideMenu:
 	ld a, [wCurrentMenuItem]
 	and a
 	jr z, .choseData
+	ld a, [wPrinterPokedexMode]
+	and a
+	jr z, .normalMenuDispatch
+	;printer mode: 1 = Prnt, 2 = Ret (quit the pokedex)
+	ld a, [wCurrentMenuItem]
+	dec a
+	jp z, .chosePrint
+	ld b, 1
+	jr .exitSideMenu
+.normalMenuDispatch
+	ld a, [wCurrentMenuItem]
 	dec a
 	jr z, .choseCry
 	dec a
@@ -131,7 +158,7 @@ HandlePokedexSideMenu:
 	dec a
 	jr z, .choseCapa
 	dec a
-	jr z, .choseCSCT
+	jp z, .choseCSCT
 .exitSideMenu
 	pop af
 	ld [wDexMaxSeenMon], a
@@ -152,6 +179,11 @@ HandlePokedexSideMenu:
 	ret
 
 .buttonBPressed
+	ld a, [wPrinterPokedexMode]
+	and a
+	jr z, .notPrinterModeB
+	ld b, 1 ; printer mode: B button quits the pokedex back to the printer menu
+.notPrinterModeB
 	push bc
 	coord hl, 15, 8
 	ld de, 20
@@ -179,7 +211,7 @@ HandlePokedexSideMenu:
 .choseCry
 	ld a, [wPokedexNum]
 	call PlayCry
-	jr .handleMenuInput
+	jp .handleMenuInput
 
 .choseArea
 	predef LoadTownMap_Nest ; display pokemon areas
@@ -199,19 +231,31 @@ HandlePokedexSideMenu:
 	ld [wMoveListCounter], a
 	call ShowPokedexCapa
 	ld b, 0
-	jr .exitSideMenu
+	jp .exitSideMenu
 
 ; show the list of TMs and HMs the pokemon can learn
 .choseCSCT
 	call ShowPokedexCSCT
 	ld b, 0
-	jr .exitSideMenu
+	jp .exitSideMenu
+
+; print the pokedex data page of the selected pokemon (printer mode only):
+; PrintPokedexEntry clears the screen on exit, so the pokedex redraw that
+; follows (b = 0) starts from a clean screen
+.chosePrint
+	callba PrintPokedexEntry
+	ld b, 0
+	jp .exitSideMenu
 
 ; handles the list of pokemon on the left of the pokedex screen
 ; sets carry flag if player presses A, unsets carry flag if player presses B
 HandlePokedexListMenu:
 	xor a
 	ldh [H_AUTOBGTRANSFERENABLED], a
+	;printer mode: SELECT and START are disabled, don't draw their prompts
+	ld a, [wPrinterPokedexMode]
+	and a
+	jr nz, .noSelectPrompt
 ;;;;;;;;;;; PureRGBnote: ADDED: If we got the town map, draw the "SELECT: MAP" prompt at the very bottom
 	CheckEvent EVENT_GOT_TOWN_MAP
 	jr z, .movedexPrompt
@@ -286,7 +330,14 @@ HandlePokedexListMenu:
 	ld de, PokedexContentsText
 	call PlaceString
 	coord hl, 16, 8
+	ld a, [wPrinterPokedexMode]
+	and a
+	jr z, .normalMenuItemsText
+	ld de, PokedexPrinterMenuItemsText
+	jr .placeMenuItemsText
+.normalMenuItemsText
 	ld de, PokedexMenuItemsText
+.placeMenuItemsText
 	call PlaceString
 
 ; find the lowest pokedex number among the pokemon the player has seen
@@ -522,6 +573,12 @@ PokedexMenuItemsText:
 	next "Zone"
 	next "Capa"
 	next "CT@"
+
+;printer mode side menu options: Info, Prnt, Ret
+PokedexPrinterMenuItemsText:
+	db   "Info"
+	next "Prnt"
+	next "Ret@"
 
 ; tests if a pokemon's bit is set in the seen or owned pokemon bit fields
 ; INPUT:

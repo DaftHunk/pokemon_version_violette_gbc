@@ -160,7 +160,10 @@ Audio4_7db03:
 	jr .asm_7db89
 .asm_7db5f
 	ld a, [wSoundID]
-	cp $86
+	;bank 4 music ids ($62+) must never take the SFX/cry cleanup
+	;path below: the retail $86 threshold only fits banks 1-3, whose
+	;music ids start much higher ($ba/$c3)
+	cp MUSIC4_FIRST_ENTRY
 	jr z, .asm_7db89
 	jr c, .asm_7db6a
 	jr .asm_7db89

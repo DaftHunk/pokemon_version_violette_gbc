@@ -3693,6 +3693,11 @@ wPrinterDisplayOnly:: ; def3
 ; set while the print screen should only be displayed on screen instead of
 ; being transmitted to the GB Printer (NON at the print confirmation prompt)
 	ds 1
+wPrinterPokedexMode:: ; def4
+; set while the pokedex is opened from the printer menu: the side menu
+; shows the printer options (print the selected pokedex entry) instead
+; of the normal ones, and SELECT/START are disabled
+	ds 1
 
 SECTION "Stack", WRAM0[$df00]
 	ds $ff

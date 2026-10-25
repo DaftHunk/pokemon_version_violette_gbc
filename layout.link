@@ -169,7 +169,10 @@ ROMX $30
   
 ROMX $31
   "Pics 7" ; PICS_7
-  
+
+ROMX $33
+  "General Section Audio 4" ; AUDIO_4
+
 WRAM0
   "WRAM Bank 0"
 

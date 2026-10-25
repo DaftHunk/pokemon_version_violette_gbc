@@ -1,9 +1,10 @@
-;GB Printer engine, ported from jojobear13/shinpokered (engine/printer/printer.asm)
-;The Pokedex entry print hook (PrintPokedexEntry) and the diploma print hook
-;(PrintDiploma) are intentionally NOT ported: in this hack, printing is
-;accessed through the Beach House printer (Route19BeachHouseText_Printer in
-;scripts/Route19BeachHouse.asm), which opens the printer menu
-;(engine/printer/printer_menu.asm).
+;The diploma print hook (PrintDiploma) is intentionally NOT ported: in this
+;hack, printing is accessed through the Beach House printer
+;(Route19BeachHouseText_Printer in scripts/Route19BeachHouse.asm), which
+;opens the printer menu (engine/printer/printer_menu.asm).
+;The Pokedex entry print below (PrintPokedexEntry) is called from the
+;printer-mode pokedex side menu (.chosePrint in engine/menu/pokedex.asm),
+;opened through the printer menu's "Imprimer Pokédex" entry.
 ;This hack has the Pikachu's Beach minigame: the high score print below uses
 ;PrepareSurfingMinigameHighScoreScreen (engine/pikachus_beach.asm), this
 ;hack's own version of shin's Printer_PrepareSurfingMinigameHighScoreTileMap.
@@ -241,6 +242,149 @@ PrintFanClubPortrait:
 	call GBPalWhiteOutWithDelay3
 	call ReloadMapAfterPrinter
 	call Printer_PlayMapMusic
+	ret
+
+;Print the pokedex data page of the pokemon in [wPokedexNum], drawn on
+;screen exactly like the pokedex Info option (DrawDexEntryOnScreen), then
+;transmit it to the GB Printer. Called from the printer-mode pokedex side
+;menu (.chosePrint in engine/menu/pokedex.asm).
+PrintPokedexEntry:
+	xor a
+	ldh [hCanceledPrinting], a
+	call Printer_PlayPrinterMusic
+	;disable overworld tile animations during the transmission: VBlank's
+	;UpdateMovingBgTiles would corrupt the print graphics (the tile
+	;patterns are read from VRAM on the fly)
+	ldh a, [hTilesetType]
+	push af
+	xor a
+	ldh [hTilesetType], a
+	;draw the data page on screen (the same setup ShowPokedexCapa does
+	;before calling DrawDexEntryOnScreen: wcf91 must hold the mon, the
+	;shiny dex palette flag must be cleared and the POKEDEX palette
+	;command must have run, or the GBC colors are wrong)
+	ld a, [wPokedexNum]
+	ld [wcf91], a
+	ld hl, wPokedexDataFlags
+	res BIT_POKEDEX_DATA_SHINY, [hl] ; never use the shiny dex palette on the print screen
+	push af
+	ld b, SET_PAL_POKEDEX
+	call RunPaletteCommand
+	pop af
+	ld [wPokedexNum], a
+	callba DrawDexEntryOnScreen
+	;only owned pokemon have height, weight and a description
+	jr nc, .skipFlavorText
+	call PrintDexFlavorTextSilent
+.skipFlavorText
+	ldh a, [rIE]
+	push af
+	xor a
+	ldh [rIF], a
+	ld a, $9
+	ldh [rIE], a
+	call StartTransmission_Send9Rows
+	ld a, $13
+	ld [wcae2], a
+	call Printer_CopyTileMapToPrinterTileBuffer
+	call Printer_ResetJoypadHRAM
+.loop
+	call JoypadLowSensitivity
+	call Printer_CheckPressingB
+	jr c, .quit
+	ld a, [wPrinterSendState]
+	bit 7, a
+	jr nz, .quit
+	call PrinterTransmissionJumptable
+	call GBPrinter_CheckForErrors
+	call GBPrinter_UpdateStatusMessage
+	call DelayFrame
+	jr .loop
+
+.quit
+	xor a
+	ld [wPrinterConnectionOpen], a
+	ld [wPrinterOpcode], a
+	call Printer_CopyTileMapFromPrinterTileBuffer
+	xor a
+	ldh [rIF], a
+	pop af
+	ldh [rIE], a
+	;the transmission clobbers the overworld map: rebuild it like the
+	;other print routines do
+	call ReloadMapAfterPrinter
+	;leave the screen cleared like ShowPokedexCapa does when it exits, so
+	;the pokedex redraw that follows starts from a clean screen (the
+	;printer status message box may have been drawn over the data page)
+	call GBPalWhiteOut
+	call ClearScreen
+	call RunDefaultPaletteCommand
+	call LoadTextBoxTilePatterns
+	call GBPalNormal
+	pop af
+	ldh [hTilesetType], a
+	call Printer_PlayMapMusic
+	ret
+
+;Draw the first page of the pokedex description at row 11 without the
+;interactive text commands. The FR descriptions contain a "bage" command
+;that waits for a button press: normal on the Info screen, but it has no
+;place on a print screen, and running the full text engine from the print
+;path (never exercised before this port) leaves garbage sounds or crashes.
+;hl = the description pointer returned by DrawDexEntryOnScreen (a TX_FAR
+;in the pokedex code bank).
+PrintDexFlavorTextSilent:
+	ld a, [H_LOADEDROMBANK]
+	push af
+	ld a, BANK(Pokedex_PrintFlavorTextAtRow11)
+	ld [H_LOADEDROMBANK], a
+	ld [MBC1RomBank], a
+	;read the TX_FAR: 17 <ptr lo> <ptr hi> <bank>
+	inc hl
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a ;de = far text address
+	ld a, [hli]
+	ld [H_LOADEDROMBANK], a
+	ld [MBC1RomBank], a ;switch to the text's bank
+	ld l, e
+	ld h, d ;hl = far text
+	coord de, 1, 11 ;de = start of row 11 in the tilemap
+	ld c, e
+	ld b, d ;bc = current destination
+.loop
+	ld a, [hli]
+	cp "@"
+	jr z, .done ;end of text
+	cp $5F
+	jr z, .dexEnd ;"dex": end of entry, draw the period
+	cp $48
+	jr z, .done ;"bage": the rest is the second page, the print shows page 1
+	cp $4E
+	jr z, .nextRow ;"next": move to the next row
+	cp $00
+	jr z, .loop ;"text" command byte, skip
+	ld [bc], a ;draw the character
+	inc bc
+	jr .loop
+.nextRow
+	ld a, e
+	add SCREEN_WIDTH
+	ld e, a
+	jr nc, .noCarry
+	inc d
+.noCarry
+	ld c, e
+	ld b, d
+	jr .loop
+.dexEnd
+	ld a, "."
+	ld [bc], a
+.done
+	pop af
+	ld [H_LOADEDROMBANK], a
+	ld [MBC1RomBank], a
 	ret
 
 ;Show the Fan Club portrait print screen without transmitting it to the
