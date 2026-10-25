@@ -9,109 +9,110 @@ MapHSPointers:
 	dw ViridianCityHS
 	dw PewterCityHS
 	dw CeruleanCityHS
-	dw NoHS
+	dw NoHS ; LAVENDER_TOWN
 	dw VermilionCityHS	;joenote - added vermilion city
-	dw NoHS
+	dw NoHS ; CELADON_CITY
 	dw SaffronCityHS
 	dw FuchsiaCityHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; CINNABAR_ISLAND
+	dw NoHS ; INDIGO_PLATEAU
+	dw NoHS ; FORGOTTEN_TOWN
+	dw NoHS ; ROUTE_1
 	dw Route2HS
-	dw NoHS
+	dw NoHS ; ROUTE_3
 	dw Route4HS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; ROUTE_5
+	dw NoHS ; ROUTE_6
+	dw NoHS ; ROUTE_7
+	dw NoHS ; ROUTE_8
 	dw Route9HS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; ROUTE_10
+	dw NoHS ; ROUTE_10_SOUTH
+	dw NoHS ; ROUTE_11
 	dw Route12HS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; ROUTE_13
+	dw NoHS ; ROUTE_14
 	dw Route15HS
 	dw Route16HS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; ROUTE_16_WEST
+	dw NoHS ; FORGOTTEN_PASSAGE
+	dw NoHS ; ROUTE_17
+	dw NoHS ; ROUTE_18
+	dw NoHS ; ROUTE_19
+	dw NoHS ; ROUTE_20
+	dw NoHS ; ROUTE_21
 	dw Route22HS
-	dw NoHS
+	dw NoHS ; ROUTE_23
 	dw Route24HS
 	dw BillsGardenHS
-	dw NoHS
+	dw NoHS ; MT_MOON_SQUARE
+	dw NoHS ; RUGGED_ROAD
 	dw Route25HS
-	dw NoHS
+	dw NoHS ; PALLET_REDS_HOUSE_1F
 	dw RedsHouse2FHS
 	dw BluesHouseHS
 	dw OaksLabHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; VIRIDIAN_POKECENTER
+	dw NoHS ; VIRIDIAN_MART
+	dw NoHS ; VIRIDIAN_SCHOOL
+	dw NoHS ; VIRIDIAN_NICKNAME_HOUSE
 	dw ViridianGymHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; DIGLETTS_CAVE_ROUTE_2
+	dw NoHS ; VIRIDIAN_FOREST_NORTH_GATE
+	dw NoHS ; ROUTE_2_TRADE_HOUSE
+	dw NoHS ; ROUTE_2_GATE
+	dw NoHS ; VIRIDIAN_FOREST_SOUTH_GATE
 	dw ViridianForestHS
 	dw Museum1FHS
 	dw Museum2FHS	;joenote - added museum 2f
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; PEWTER_GYM
+	dw NoHS ; PEWTER_NIDORAN_HOUSE
+	dw NoHS ; PEWTER_MART
+	dw NoHS ; PEWTER_SPEECH_HOUSE
+	dw NoHS ; PEWTER_POKECENTER
 	dw MtMoon1FHS
 	dw MtMoonB1FHS
 	dw MtMoonB2FHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; CERULEAN_TRASHED_HOUSE
+	dw NoHS ; CERULEAN_TRADE_HOUSE
+	dw NoHS ; CERULEAN_POKECENTER
+	dw NoHS ; CERULEAN_GYM
+	dw NoHS ; CERULEAN_BIKE_SHOP
+	dw NoHS ; CERULEAN_MART
+	dw NoHS ; MT_MOON_POKECENTER
+	dw NoHS ; ROUTE_5_GATE
+	dw NoHS ; UNDERGROUND_PATH_ROUTE_5
+	dw NoHS ; DAYCARE
+	dw NoHS ; ROUTE_6_GATE
+	dw NoHS ; UNDERGROUND_PATH_ROUTE_6
+	dw NoHS ; UNDERGROUND_PATH_WEST_EAST_CASINO
+	dw NoHS ; ROUTE_7_GATE
+	dw NoHS ; UNDERGROUND_PATH_ROUTE_7
+	dw NoHS ; FORGOTTEN_TOWN_HOUSES
+	dw NoHS ; ROUTE_8_GATE
+	dw NoHS ; UNDERGROUND_PATH_ROUTE_8
+	dw NoHS ; ROCK_TUNNEL_POKECENTER
+	dw NoHS ; ROCK_TUNNEL_1F
 	dw PowerPlantHS
 	dw PowerPlant1FHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; ROUTE_11_GATE_1F
+	dw NoHS ; DIGLETTS_CAVE_ROUTE_11
+	dw NoHS ; ROUTE_11_GATE_2F
+	dw NoHS ; ROUTE_12_GATE_1F
 	dw BillsHouseHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; VERMILION_POKECENTER
+	dw NoHS ; VERMILION_FAN_CLUB
+	dw NoHS ; VERMILION_MART
+	dw NoHS ; VERMILION_GYM
+	dw NoHS ; VERMILION_PIDGEY_HOUSE
 	dw VermilionDockHS
-	dw NoHS
+	dw NoHS ; SS_ANNE_1F
 	dw SSAnne2FHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; SS_ANNE_3F
+	dw NoHS ; SS_ANNE_B1F
+	dw NoHS ; SS_ANNE_BOW
+	dw NoHS ; SS_ANNE_KITCHEN
+	dw NoHS ; SS_ANNE_CAPTAINS_ROOM
 	dw SSAnne1FRoomsHS
 	dw SSAnne2FRoomsHS
 	dw SSAnneB1FRoomsHS
@@ -119,35 +120,35 @@ MapHSPointers:
 	dw VolcanoB1FHS
 	dw VictoryRoad1FHS
 	dw VolcanoB2FHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS	
+	dw NoHS ; ROUTE_16_WEST_HOUSE
+	dw NoHS ; ROUTE_16_WEST_GATE
+	dw NoHS ; INDIGO_LANCES_ROOM
+	dw NoHS ; ROUTE_19_BEACH_HOUSE
+	dw NoHS ; INDIGO_HALL_OF_FAME
+	dw NoHS ; UNDERGROUND_PATH_NORTH_SOUTH
 	dw ChampionsRoomHS	
 	dw UndergroundPathWEHS	;joenote - pointer added for underground path w_e
-	dw NoHS
-	dw NoHS
+	dw NoHS ; CELADON_MART_1F
+	dw NoHS ; CELADON_MART_2F
 	dw CeladonMart3FHS	;joenote - pointer added for celadon mart 3f
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; CELADON_MART_4F
+	dw NoHS ; CELADON_MART_ROOF
+	dw NoHS ; CELADON_MART_ELEVATOR
+	dw NoHS ; CELADON_MANSION_1F
+	dw NoHS ; CELADON_MANSION_2F
+	dw NoHS ; CELADON_MANSION_3F
+	dw NoHS ; CELADON_MANSION_ROOF
 	dw CeladonMansionRoofHouseHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; CELADON_POKECENTER
+	dw NoHS ; CELADON_GYM
 	dw GameCornerHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; CELADON_MART_5F
+	dw NoHS ; CELADON_GAME_CORNER_PRIZE_ROOM
+	dw NoHS ; CELADON_DINER
+	dw NoHS ; CELADON_CHIEF_HOUSE
+	dw NoHS ; CELADON_HOTEL
+	dw NoHS ; LAVENDER_POKECENTER
+	dw NoHS ; LAVENDER_POKEMON_TOWER_1F
 	dw PokemonTower2FHS
 	dw PokemonTower3FHS
 	dw PokemonTower4FHS
@@ -155,63 +156,63 @@ MapHSPointers:
 	dw PokemonTower6FHS
 	dw PokemonTower7FHS
 	dw MrFujisHouseHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; LAVENDER_MART
+	dw NoHS ; LAVENDER_CUBONE_HOUSE
+	dw NoHS ; FUCHSIA_MART
+	dw NoHS ; FUCHSIA_BILLS_GRANDPAS_HOUSE
+	dw NoHS ; FUCHSIA_POKECENTER
 	dw WardensHouseHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; SAFARI_ZONE_GATE
+	dw NoHS ; FUCHSIA_GYM
+	dw NoHS ; FUCHSIA_MEETING_ROOM
 	dw SeafoamIslandsB1FHS
 	dw SeafoamIslandsB2FHS
 	dw SeafoamIslandsB3FHS
 	dw SeafoamIslandsB4FHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; VERMILION_FISHER_HOUSE
+	dw NoHS ; FUCHSIA_FISHER_HOUSE
 	dw PokemonMansion1FHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; CINNABAR_GYM
+	dw NoHS ; CINNABAR_LAB
+	dw NoHS ; CINNABAR_LAB_TRADE_ROOM
+	dw NoHS ; CINNABAR_LAB_METRONOME_ROOM
+	dw NoHS ; CINNABAR_LAB_FOSSIL_ROOM
+	dw NoHS ; CINNABAR_POKECENTER
+	dw NoHS ; CINNABAR_MART
+	dw NoHS ; LIGHTHOUSE
+	dw NoHS ; INDIGO_PLATEAU_LOBBY
+	dw NoHS ; SAFFRON_COPYCATS_HOUSE_1F
+	dw NoHS ; SAFFRON_COPYCATS_HOUSE_2F
 	dw FightingDojoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; SAFFRON_GYM
+	dw NoHS ; SAFFRON_PIDGEY_HOUSE
+	dw NoHS ; SAFFRON_MART
 	dw SilphCo1FHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; SAFFRON_POKECENTER
+	dw NoHS ; SAFFRON_MR_PSYCHICS_HOUSE
+	dw NoHS ; ROUTE_15_GATE_1F
+	dw NoHS ; ROUTE_15_GATE_2F
+	dw NoHS ; ROUTE_16_GATE_1F
+	dw NoHS ; ROUTE_16_GATE_2F
+	dw NoHS ; ROUTE_16_FLY_HOUSE
+	dw NoHS ; ROUTE_12_FISHER_HOUSE
+	dw NoHS ; ROUTE_18_GATE_1F
+	dw NoHS ; ROUTE_18_GATE_2F
 	dw SeafoamIslands1FHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; ROUTE_22_GATE_1F
+	dw NoHS ; ROUTE_22_GATE_2F
 	dw VictoryRoad2FHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; ROUTE_12_GATE_2F
+	dw NoHS ; VERMILION_TRADE_HOUSE
+	dw NoHS ; DIGLETTS_CAVE
 	dw VictoryRoad3FHS
 	dw RocketHideoutB1FHS
 	dw RocketHideoutB2FHS
 	dw RocketHideoutB3FHS
 	dw RocketHideoutB4FHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; ROCKET_HIDEOUT_ELEVATOR
+	dw NoHS ; CELADON_SCHOOL
+	dw NoHS ; SAFFRON_UNIVERSITY
 	dw SilphCo2FHS
 	dw SilphCo3FHS
 	dw SilphCo4FHS
@@ -228,31 +229,30 @@ MapHSPointers:
 	dw SafariZoneCenterHS
 	dw SafariZoneCenterRestHS
 	dw SafariZoneSecretHouseHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; SAFARI_ZONE_WEST_REST_HOUSE
+	dw NoHS ; SAFARI_ZONE_EAST_REST_HOUSE
+	dw NoHS ; SAFARI_ZONE_NORTH_REST_HOUSE
 	dw CeruleanCave2FHS
 	dw CeruleanCaveB1FHS
 	dw CeruleanCaveHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; LAVENDER_NAME_RATERS_HOUSE
+	dw NoHS ; CERULEAN_BADGE_HOUSE
+	dw NoHS ; CERULEAN_PRINTER
+	dw NoHS ; ROCK_TUNNEL_B1F
 	dw SilphCo9FHS
 	dw SilphCo10FHS
 	dw SilphCo11FHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
-	dw NoHS
+	dw NoHS ; SAFFRON_SILPH_CO_ELEVATOR
+	dw NoHS ; CERULEAN_MELANIE_HOUSE
+	dw NoHS ; TRADE_CENTER
+	dw NoHS ; COLOSSEUM
+	dw NoHS ; FORGOTTEN_DUNGEON_1F
+	dw NoHS ; FORGOTTEN_DUNGEON_B1F
+	dw NoHS ; FORGOTTEN_DUNGEON_ROOF
+	dw NoHS ; NOISY_FOREST
+	dw NoHS ; INDIGO_LORELEIS_ROOM
+	dw NoHS ; INDIGO_BRUNOS_ROOM
+	dw NoHS ; INDIGO_AGATHAS_ROOM
 	dw $FFFF
 
 ; Structure:

@@ -530,6 +530,19 @@ INCLUDE "scripts/Lighthouse.asm"
 INCLUDE "data/maps/objects/Lighthouse.asm"
 LighthouseBlocks: INCBIN "maps/Lighthouse.blk"
 
+INCLUDE "data/maps/headers/ForgottenPassage.asm"
+INCLUDE "data/maps/headers/RuggedRoad.asm"
+INCLUDE "data/maps/headers/UndergroundPathWestEastCasino.asm"
+INCLUDE "data/maps/headers/ForgottenTownHouses.asm"
+INCLUDE "data/maps/headers/SaffronUniversity.asm"
+INCLUDE "data/maps/headers/CeruleanPrinter.asm"
+INCLUDE "data/maps/headers/CeruleanMelanieHouse.asm"
+INCLUDE "data/maps/headers/ForgottenDungeon1F.asm"
+INCLUDE "data/maps/headers/ForgottenDungeonB1F.asm"
+INCLUDE "data/maps/headers/ForgottenDungeonRoof.asm"
+INCLUDE "data/maps/headers/NoisyForest.asm"
+
+
 INCLUDE "engine/menu/oaks_pc.asm"
 
 INCLUDE "engine/hidden_object_functions7.asm"

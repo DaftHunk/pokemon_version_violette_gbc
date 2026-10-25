@@ -30,6 +30,7 @@ MapHeaderPointers::
 	dw Route15_h
 	dw Route16_h
 	dw Route16West_h
+	dw ForgottenPassage_h
 	dw Route17_h
 	dw Route18_h
 	dw Route19_h
@@ -40,6 +41,7 @@ MapHeaderPointers::
 	dw Route24_h
 	dw BillsGarden_h
 	dw MtMoonSquare_h
+	dw RuggedRoad_h
 	dw Route25_h
 	dw RedsHouse1F_h
 	dw RedsHouse2F_h
@@ -73,16 +75,15 @@ MapHeaderPointers::
 	dw BikeShop_h
 	dw CeruleanMart_h
 	dw MtMoonPokecenter_h
-	dw Lighthouse_h
 	dw Route5Gate_h
 	dw UndergroundPathEntranceRoute5_h
 	dw DayCareM_h
 	dw Route6Gate_h
 	dw UndergroundPathEntranceRoute6_h
-	dw UndergroundPathEntranceRoute6_h ; unused
+	dw UndergroundPathWestEastCasino_h
 	dw Route7Gate_h
 	dw UndergroundPathEntranceRoute7_h
-	dw UndergroundPathEntranceRoute7_h ; unused
+	dw ForgottenTownHouses_h
 	dw Route8Gate_h
 	dw UndergroundPathEntranceRoute8_h ;id=80
 	dw RockTunnelPokecenter_h
@@ -173,7 +174,7 @@ MapHeaderPointers::
 	dw Lab4_h ;id=170
 	dw CinnabarPokecenter_h
 	dw CinnabarMart_h
-	dw CinnabarMart_h ; unused
+	dw Lighthouse_h
 	dw IndigoPlateauLobby_h
 	dw CopycatsHouse1F_h
 	dw CopycatsHouse2F_h
@@ -206,7 +207,7 @@ MapHeaderPointers::
 	dw RocketHideout4_h
 	dw RocketHideoutElevator_h
 	dw CeladonSchool_h
-	dw RocketHideoutElevator_h ; unused
+	dw SaffronUniversity_h
 	dw SilphCo2_h
 	dw SilphCo3_h
 	dw SilphCo4_h
@@ -231,20 +232,19 @@ MapHeaderPointers::
 	dw UnknownDungeon1_h
 	dw NameRater_h
 	dw CeruleanHouse2_h
-	dw Route16Gate_h ; unused
+	dw CeruleanPrinter_h
 	dw RockTunnel2_h
 	dw SilphCo9_h
 	dw SilphCo10_h
 	dw SilphCo11_h
 	dw SilphCoElevator_h
-	dw SilphCo2_h ; unused
-	dw SilphCo2_h ; unused
+	dw CeruleanMelanieHouse_h
 	dw TradeCenter_h
 	dw Colosseum_h
-	dw SilphCo2_h ; unused
-	dw SilphCo2_h ; unused
-	dw SilphCo2_h ; unused
-	dw SilphCo2_h ; unused
+	dw ForgottenDungeon1F_h
+	dw ForgottenDungeonB1F_h
+	dw ForgottenDungeonRoof_h
+	dw NoisyForest_h
 	dw Lorelei_h
 	dw Bruno_h
 	dw Agatha_h ;247
