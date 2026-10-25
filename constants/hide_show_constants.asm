@@ -207,14 +207,14 @@ const_value = 0
     const HS_SAFFRON_SILPH_CO_11F_JESSIE        ; C6
     const HS_SAFFRON_SILPH_CO_11F_2             ; C7
     const HS_SAFFRON_SILPH_CO_11F_JAMES         ; C8
-    const HS_CINNABAR_MANSION_B1F_ITEM          ; C9 X
-    const HS_CINNABAR_MANSION_2F_ITEM_1         ; CA X
-    const HS_CINNABAR_MANSION_2F_ITEM_2         ; CB X
-    const HS_CINNABAR_MANSION_B2F_ITEM_1        ; CC X
-    const HS_CINNABAR_MANSION_B2F_ITEM_2        ; CD X
-    const HS_CINNABAR_MANSION_B2F_ITEM_3        ; CE X
-    const HS_CINNABAR_MANSION_B2F_ITEM_4        ; CF X
-    const HS_CINNABAR_MANSION_B2F_ITEM_5        ; D0 X
+    const HS_CINNABAR_MANSION_2F_ITEM           ; C9 X
+    const HS_CINNABAR_MANSION_3F_ITEM_1         ; CA X
+    const HS_CINNABAR_MANSION_3F_ITEM_2         ; CB X
+    const HS_CINNABAR_MANSION_B1F_ITEM_1        ; CC X
+    const HS_CINNABAR_MANSION_B1F_ITEM_2        ; CD X
+    const HS_CINNABAR_MANSION_B1F_ITEM_3        ; CE X
+    const HS_CINNABAR_MANSION_B1F_ITEM_4        ; CF X
+    const HS_CINNABAR_MANSION_B1F_ITEM_5        ; D0 X
     const HS_SAFARI_ZONE_EAST_ITEM_1            ; D1 X
     const HS_SAFARI_ZONE_EAST_ITEM_2            ; D2 X
     const HS_SAFARI_ZONE_EAST_ITEM_3            ; D3 X

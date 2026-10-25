@@ -226,9 +226,9 @@ DEF NUM_CITY_MAPS EQU const_value
     mapconst SAFFRON_SILPH_CO_6F,              9, 13 ; $D3
     mapconst SAFFRON_SILPH_CO_7F,              9, 13 ; $D4
     mapconst SAFFRON_SILPH_CO_8F,              9, 13 ; $D5
-    mapconst CINNABAR_MANSION_B1F,            14, 15 ; $D6
-    mapconst CINNABAR_MANSION_2F,              9, 15 ; $D7
-    mapconst CINNABAR_MANSION_B2F,            14, 15 ; $D8
+    mapconst CINNABAR_MANSION_2F,             14, 15 ; $D6
+    mapconst CINNABAR_MANSION_3F,              9, 15 ; $D7
+    mapconst CINNABAR_MANSION_B1F,            14, 15 ; $D8
     mapconst SAFARI_ZONE_EAST,                13, 15 ; $D9
     mapconst SAFARI_ZONE_NORTH,               18, 20 ; $DA
     mapconst SAFARI_ZONE_WEST,                13, 15 ; $DB

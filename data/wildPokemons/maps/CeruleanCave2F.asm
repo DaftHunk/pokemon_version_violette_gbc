@@ -1,0 +1,13 @@
+CeruleanCaveMons2F:
+	db $0F
+	db 66,DODRIO
+	db 66,VENOMOTH
+	db 66,LARVITAR
+	db 67,RHYDON
+	db 67,MAROWAK
+	db 67,KADABRA
+	db 69,WIGGLYTUFF
+	db 70,DITTO
+	db 75,DITTO
+	db 71,CHANSEY
+	db $00

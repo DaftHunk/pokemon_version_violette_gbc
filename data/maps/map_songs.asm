@@ -129,8 +129,8 @@ MapSongBanks:
 	db MUSIC_POKECENTER,       BANK(Music_Pokecenter)      ; CeladonMartRoof
 	db MUSIC_POKECENTER,       BANK(Music_Pokecenter)      ; CeladonMartElevator
 	db MUSIC_CELADON,          BANK(Music_Celadon)         ; CeladonMansion1
-	db MUSIC_CELADON,          BANK(Music_Celadon)         ; CeladonMansion2
-	db MUSIC_CELADON,          BANK(Music_Celadon)         ; CeladonMansion3
+	db MUSIC_CELADON,          BANK(Music_Celadon)         ; CeladonMansion2F
+	db MUSIC_CELADON,          BANK(Music_Celadon)         ; CeladonMansion3F
 	db MUSIC_CELADON,          BANK(Music_Celadon)         ; CeladonMansionRoof
 	db MUSIC_CELADON,          BANK(Music_Celadon)         ; CeladonMansion5
 	db MUSIC_POKECENTER,       BANK(Music_Pokecenter)      ; CeladonPokecenter
@@ -214,9 +214,9 @@ MapSongBanks:
 	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)         ; SilphCo6
 	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)         ; SilphCo7
 	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)         ; SilphCo8
-	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; Mansion2
-	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; Mansion3
-	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; Mansion4
+	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; Mansion2F
+	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; Mansion3F
+	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; MansionB1F
 	db MUSIC_SURFING_PIKACHU_NO_INTRO,  BANK(Music_SurfingPikachuNoIntro)      ; SafariZoneEast
 	db MUSIC_SURFING_PIKACHU_NO_INTRO,  BANK(Music_SurfingPikachuNoIntro)      ; SafariZoneNorth
 	db MUSIC_SURFING_PIKACHU_NO_INTRO,  BANK(Music_SurfingPikachuNoIntro)      ; SafariZoneWest

@@ -59,7 +59,7 @@ _MasterText::
 	para "Félicitation!"
 	done
 
-_CeladonMansion3Text5::
+_CeladonMansion3FText5::
 	text "Le programme"
 	line "du jeu! Si tu y"
 	cont "touches, tout va"
@@ -67,18 +67,18 @@ _CeladonMansion3Text5::
 	cont "Daft: trop tard!"
 	done
 
-_CeladonMansion3Text6::
+_CeladonMansion3FText6::
 	text "Quelqu'un joue au"
 	line "lieu de bosser!"
 	done
 
-_CeladonMansion3Text7::
+_CeladonMansion3FText7::
 	text "Le script du jeu!"
 	line "Surtout ne pas"
 	cont "lire la fin!"
 	done
 
-_CeladonMansion3Text8::
+_CeladonMansion3FText8::
 	text "GAME FREAK"
 	line "Développement"
 	done

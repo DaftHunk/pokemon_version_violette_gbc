@@ -1,0 +1,13 @@
+CinnabarMansionMons2F:
+	db $0A
+	db 32,VULPIX
+	db 34,GRIMER
+	db 34,GRIMER
+	db 30,HOUNDOUR
+	db 30,GRIMER
+	db 32,HOUNDOUR
+	db 30,KOFFING
+	db 28,HOUNDOUR
+	db 39,MUK
+	db 37,WEEZING
+	db $00

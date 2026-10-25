@@ -1,10 +1,10 @@
-CeladonMansion2Script:
+CeladonMansion2FScript:
 	call EnableAutoTextBoxDrawing
 	ret
 
-CeladonMansion2TextPointers:
-	dw CeladonMansion2Text1
+CeladonMansion2FTextPointers:
+	dw CeladonMansion2FText1
 
-CeladonMansion2Text1:
-	TX_FAR _CeladonMansion2Text1
+CeladonMansion2FText1:
+	TX_FAR _CeladonMansion2FText1
 	db "@"

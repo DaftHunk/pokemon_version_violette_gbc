@@ -1,0 +1,13 @@
+VictoryRoadMons2F:
+	db $0A
+	db 45,MACHOP
+	db 46,GEODUDE
+	db 44,ZUBAT
+	db 43,ONIX
+	db 42,ONIX
+	db 44,ONIX
+	db 43,MACHOKE
+	db 44,GOLBAT
+	db 45,MACHOKE
+	db 49,GRAVELER
+	db $00

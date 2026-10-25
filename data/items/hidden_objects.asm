@@ -59,7 +59,7 @@ HiddenObjectMaps:
 	db SEAFOAM_ISLANDS_B2F
 	db SEAFOAM_ISLANDS_B4F
 	db CINNABAR_MANSION_1F
-	db CINNABAR_MANSION_2F
+	db CINNABAR_MANSION_3F
 	db ROUTE_23
 	db VICTORY_ROAD_2F
 	db ROUTE_16_WEST_HOUSE
@@ -81,8 +81,8 @@ HiddenObjectMaps:
 	db CERULEAN_BIKE_SHOP
 	db ROUTE_11
 	db ROUTE_12
+	db CINNABAR_MANSION_2F
 	db CINNABAR_MANSION_B1F
-	db CINNABAR_MANSION_B2F
 	db SAFFRON_SILPH_CO_11F
 	db ROUTE_17
 	db UNDERGROUND_PATH_NORTH_SOUTH
@@ -125,7 +125,7 @@ HiddenObjectPointers:
 	dw LavenderPokecenterHiddenObjects
 	dw VermilionPokecenterHiddenObjects
 	dw VermilionGymHiddenObjects
-	dw CeladonMansion2HiddenObjects
+	dw CeladonMansion2FHiddenObjects
 	dw CeladonPokecenterHiddenObjects
 	dw CeladonGymHiddenObjects
 	dw GameCornerHiddenObjects
@@ -168,7 +168,7 @@ HiddenObjectPointers:
 	dw SeafoamIslands3HiddenObjects
 	dw SeafoamIslands5HiddenObjects
 	dw Mansion1HiddenObjects
-	dw Mansion3HiddenObjects
+	dw Mansion3FHiddenObjects
 	dw Route23HiddenObjects
 	dw VictoryRoad2HiddenObjects
 	dw Route16WestHouseHiddenObjects
@@ -190,8 +190,8 @@ HiddenObjectPointers:
 	dw BikeShopHiddenObjects
 	dw Route11HiddenObjects
 	dw Route12HiddenObjects
-	dw Mansion2HiddenObjects
-	dw Mansion4HiddenObjects
+	dw Mansion2FHiddenObjects
+	dw MansionB1FHiddenObjects
 	dw SilphCo11FHiddenObjects
 	dw Route17HiddenObjects
 	dw UndergroundPathNsHiddenObjects
@@ -376,7 +376,7 @@ VermilionGymHiddenObjects:
 	db $0b,$09,$0e
 	dbw BANK(GymTrashScript), GymTrashScript
 	db $FF
-CeladonMansion2HiddenObjects:
+CeladonMansion2FHiddenObjects:
 	db $05,$00,$04
 	db BANK(OpenPokemonCenterPC)
 	dw OpenPokemonCenterPC
@@ -720,27 +720,27 @@ Mansion1HiddenObjects:
 	db BANK(Mansion1Script_Switches)
 	dw Mansion1Script_Switches
 	db $FF
-Mansion2HiddenObjects:
+Mansion2FHiddenObjects:
 	db $0b,$02,$04
-	db BANK(Mansion2Script_Switches)
-	dw Mansion2Script_Switches
+	db BANK(Mansion2FScript_Switches)
+	dw Mansion2FScript_Switches
 	db $FF
-Mansion3HiddenObjects:
+Mansion3FHiddenObjects:
 	db $09,$01,MAX_REVIVE
 	dbw BANK(HiddenItems),HiddenItems
 	db $05,$0a,$04
-	db BANK(Mansion3Script_Switches)
-	dw Mansion3Script_Switches
+	db BANK(Mansion3FScript_Switches)
+	dw Mansion3FScript_Switches
 	db $FF
-Mansion4HiddenObjects:
+MansionB1FHiddenObjects:
 	db $09,$01,RARE_CANDY
 	dbw BANK(HiddenItems),HiddenItems
 	db $03,$14,$04
-	db BANK(Mansion4Script_Switches)
-	dw Mansion4Script_Switches
+	db BANK(MansionB1FScript_Switches)
+	dw MansionB1FScript_Switches
 	db $19,$12,$04
-	db BANK(Mansion4Script_Switches)
-	dw Mansion4Script_Switches
+	db BANK(MansionB1FScript_Switches)
+	dw MansionB1FScript_Switches
 	db $FF
 Route23HiddenObjects:
 	db $20,$00,TM26_EARTHQUAKE

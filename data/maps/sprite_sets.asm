@@ -29,6 +29,7 @@ MapSpriteSets:
 	db $f5 ; ROUTE_15
 	db $f6 ; ROUTE_16
 	db $01 ; ROUTE_16_WEST
+	db $01 ; FORGOTTEN_PASSAGE
 	db $09 ; ROUTE_17
 	db $f7 ; ROUTE_18
 	db $0a ; ROUTE_19
@@ -39,6 +40,7 @@ MapSpriteSets:
 	db $02 ; ROUTE_24
 	db $0b ; BILLS_GARDEN
 	db $0b ; MT_MOON_SQUARE
+	db $01 ; RUGGED_ROAD
 	db $fd ; ROUTE_25
 
 ; Format:

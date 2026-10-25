@@ -130,8 +130,8 @@ MapHeaderPointers::
 	dw CeladonMartRoof_h
 	dw CeladonMartElevator_h
 	dw CeladonMansion1_h
-	dw CeladonMansion2_h
-	dw CeladonMansion3_h ;id=130
+	dw CeladonMansion2F_h
+	dw CeladonMansion3F_h ;id=130
 	dw CeladonMansionRoof_h
 	dw CeladonMansion5_h
 	dw CeladonPokecenter_h
@@ -215,9 +215,9 @@ MapHeaderPointers::
 	dw SilphCo6_h
 	dw SilphCo7_h
 	dw SilphCo8_h
-	dw Mansion2_h
-	dw Mansion3_h
-	dw Mansion4_h
+	dw Mansion2F_h
+	dw Mansion3F_h
+	dw MansionB1F_h
 	dw SafariZoneEast_h
 	dw SafariZoneNorth_h
 	dw SafariZoneWest_h

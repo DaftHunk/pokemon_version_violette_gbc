@@ -3031,11 +3031,11 @@ wCinnabarIslandCurScript:: ; d639
 	ds 1
 wMansion1CurScript:: ; d63a
 	ds 2
-wMansion2CurScript:: ; d63c
+wMansion2FCurScript:: ; d63c
 	ds 1
-wMansion3CurScript:: ; d63d
+wMansion3FCurScript:: ; d63d
 	ds 1
-wMansion4CurScript:: ; d63e
+wMansionB1FCurScript:: ; d63e
 	ds 1
 wVictoryRoad2CurScript:: ; d63f
 	ds 1
