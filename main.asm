@@ -89,6 +89,7 @@ INCLUDE "engine/overworld/tileset_header.asm"
 INCLUDE "engine/overworld/daycare_exp.asm"
 
 INCLUDE "data/maps/hide_show_data.asm"
+INCLUDE "data/maps/item_ball_data.asm"
 
 INCLUDE "engine/overworld/field_move_messages.asm"
 

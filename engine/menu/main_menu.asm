@@ -87,7 +87,7 @@ MainMenu:
 	cp A_BUTTON + SELECT
 	jr nz, .endseed
 ;joedebug - print the random seed
-	ld hl, $DEF3
+	ld hl, wSavedRngSeed + 3
 	ld c, 4
 .seedloop
 	ld a, [hld]

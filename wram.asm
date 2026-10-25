@@ -2886,8 +2886,13 @@ wPlayerCoins:: ; d5a4
 
 wMissableObjectFlags:: ; d5a6
 ; bit array of missable objects. set = removed
-	ds 32
+; 24 bytes = 192 missable object slots (indexes $00-$BF)
+	ds 24
 wMissableObjectFlagsEnd::
+
+; item ball flags, indexed by item ball index ($00-$7F). set = picked up
+wItemBallFlags::
+	ds 16
 
 wd5cd:: ds 1 ; temp copy of c1x2 (sprite facing/anim)
 
@@ -3419,15 +3424,11 @@ wMovementFlags:: ; d736
 wCompletedInGameTradeFlags:: ; d737
 	ds 2
 
-	ds 2
-
 wWarpedFromWhichWarp:: ; d73b
 	ds 1
 
 wWarpedFromWhichMap:: ; d73c
 	ds 1
-
-	ds 2
 
 wCardKeyDoorY:: ; d73f
 	ds 1
@@ -3435,15 +3436,12 @@ wCardKeyDoorY:: ; d73f
 wCardKeyDoorX:: ; d740
 	ds 1
 
-	ds 2
-
 wFirstLockTrashCanIndex:: ; d743
 	ds 1
 
 wSecondLockTrashCanIndex:: ; d743
 	ds 1
 
-	ds 2
 wEventFlags:: ; d747
 	ds 320
 
@@ -3517,8 +3515,6 @@ wRandomizerSeed:: 	;da3B
 wSurfingMinigameHiScore::
 	ds 2
 
-	ds 3
-
 wPlayTimeHours:: ; da41
 	ds 1
 wPlayTimeMaxed:: ; da42
@@ -3590,6 +3586,17 @@ wMonAreaTypeFlags:: ; deef
 ; bit 3: the mon has good rod locations
 ; bit 4: the mon has super rod locations
 	ds 1
+
+; saved copy of the RNG seed (4 bytes), written once at boot by Init
+; and read by RNG_Correction at the main menu. kept outside the saved
+; MainData block on purpose: never written to SRAM
+wSavedRngSeed:: ; deed
+	ds 4
+
+; per-map list of item balls: (sprite ID, item ball index) pairs, $FF-terminated
+; rebuilt on every map load, not saved. max 6 balls per map
+wItemBallList::
+	ds 7 * 2
 
 
 SECTION "Stack", WRAM0[$df00]

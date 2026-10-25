@@ -18,21 +18,21 @@ MapHSPointers:
 	dw NoHS ; INDIGO_PLATEAU
 	dw NoHS ; FORGOTTEN_TOWN
 	dw NoHS ; ROUTE_1
-	dw Route2HS
+	dw NoHS ; ROUTE_2
 	dw NoHS ; ROUTE_3
-	dw Route4HS
+	dw NoHS ; ROUTE_4
 	dw NoHS ; ROUTE_5
 	dw NoHS ; ROUTE_6
 	dw NoHS ; ROUTE_7
 	dw NoHS ; ROUTE_8
-	dw Route9HS
+	dw NoHS ; ROUTE_9
 	dw NoHS ; ROUTE_10
 	dw NoHS ; ROUTE_10_SOUTH
 	dw NoHS ; ROUTE_11
 	dw Route12HS
 	dw NoHS ; ROUTE_13
 	dw NoHS ; ROUTE_14
-	dw Route15HS
+	dw NoHS ; ROUTE_15
 	dw Route16HS
 	dw NoHS ; ROUTE_16_WEST
 	dw NoHS ; FORGOTTEN_PASSAGE
@@ -47,7 +47,7 @@ MapHSPointers:
 	dw BillsGardenHS
 	dw NoHS ; MT_MOON_SQUARE
 	dw NoHS ; RUGGED_ROAD
-	dw Route25HS
+	dw NoHS ; ROUTE_25
 	dw NoHS ; PALLET_REDS_HOUSE_1F
 	dw RedsHouse2FHS
 	dw BluesHouseHS
@@ -62,7 +62,7 @@ MapHSPointers:
 	dw NoHS ; ROUTE_2_TRADE_HOUSE
 	dw NoHS ; ROUTE_2_GATE
 	dw NoHS ; VIRIDIAN_FOREST_SOUTH_GATE
-	dw ViridianForestHS
+	dw NoHS ; VIRIDIAN_FOREST
 	dw Museum1FHS
 	dw Museum2FHS	;joenote - added museum 2f
 	dw NoHS ; PEWTER_GYM
@@ -70,7 +70,7 @@ MapHSPointers:
 	dw NoHS ; PEWTER_MART
 	dw NoHS ; PEWTER_SPEECH_HOUSE
 	dw NoHS ; PEWTER_POKECENTER
-	dw MtMoon1FHS
+	dw NoHS ; MT_MOON_1F
 	dw MtMoonB1FHS
 	dw MtMoonB2FHS
 	dw NoHS ; CERULEAN_TRASHED_HOUSE
@@ -93,8 +93,8 @@ MapHSPointers:
 	dw NoHS ; UNDERGROUND_PATH_ROUTE_8
 	dw NoHS ; ROCK_TUNNEL_POKECENTER
 	dw NoHS ; ROCK_TUNNEL_1F
-	dw PowerPlantHS
 	dw PowerPlant1FHS
+	dw PowerPlant2FHS
 	dw NoHS ; ROUTE_11_GATE_1F
 	dw NoHS ; DIGLETTS_CAVE_ROUTE_11
 	dw NoHS ; ROUTE_11_GATE_2F
@@ -113,12 +113,12 @@ MapHSPointers:
 	dw NoHS ; SS_ANNE_BOW
 	dw NoHS ; SS_ANNE_KITCHEN
 	dw NoHS ; SS_ANNE_CAPTAINS_ROOM
-	dw SSAnne1FRoomsHS
-	dw SSAnne2FRoomsHS
-	dw SSAnneB1FRoomsHS
+	dw NoHS ; SS_ANNE_1F_ROOMS
+	dw NoHS ; SS_ANNE_2F_ROOMS
+	dw NoHS ; SS_ANNE_B1F_ROOMS
 	dw Volcano1FHS
 	dw VolcanoB1FHS
-	dw VictoryRoad1FHS
+	dw NoHS ; VICTORY_ROAD_1F
 	dw VolcanoB2FHS
 	dw NoHS ; ROUTE_16_WEST_HOUSE
 	dw NoHS ; ROUTE_16_WEST_GATE
@@ -150,10 +150,10 @@ MapHSPointers:
 	dw NoHS ; LAVENDER_POKECENTER
 	dw NoHS ; LAVENDER_POKEMON_TOWER_1F
 	dw PokemonTower2FHS
-	dw PokemonTower3FHS
-	dw PokemonTower4FHS
-	dw PokemonTower5FHS
-	dw PokemonTower6FHS
+	dw NoHS ; LAVENDER_POKEMON_TOWER_3F
+	dw NoHS ; LAVENDER_POKEMON_TOWER_4F
+	dw NoHS ; LAVENDER_POKEMON_TOWER_5F
+	dw NoHS ; LAVENDER_POKEMON_TOWER_6F
 	dw PokemonTower7FHS
 	dw MrFujisHouseHS
 	dw NoHS ; LAVENDER_MART
@@ -161,7 +161,7 @@ MapHSPointers:
 	dw NoHS ; FUCHSIA_MART
 	dw NoHS ; FUCHSIA_BILLS_GRANDPAS_HOUSE
 	dw NoHS ; FUCHSIA_POKECENTER
-	dw WardensHouseHS
+	dw NoHS ; FUCHSIA_WARDENS_HOUSE
 	dw NoHS ; SAFARI_ZONE_GATE
 	dw NoHS ; FUCHSIA_GYM
 	dw NoHS ; FUCHSIA_MEETING_ROOM
@@ -171,7 +171,7 @@ MapHSPointers:
 	dw SeafoamIslandsB4FHS
 	dw NoHS ; VERMILION_FISHER_HOUSE
 	dw NoHS ; FUCHSIA_FISHER_HOUSE
-	dw PokemonMansion1FHS
+	dw NoHS ; CINNABAR_MANSION_1F
 	dw NoHS ; CINNABAR_GYM
 	dw NoHS ; CINNABAR_LAB
 	dw NoHS ; CINNABAR_LAB_TRADE_ROOM
@@ -206,9 +206,9 @@ MapHSPointers:
 	dw NoHS ; VERMILION_TRADE_HOUSE
 	dw NoHS ; DIGLETTS_CAVE
 	dw VictoryRoad3FHS
-	dw RocketHideoutB1FHS
-	dw RocketHideoutB2FHS
-	dw RocketHideoutB3FHS
+	dw NoHS ; ROCKET_HIDEOUT_B1F
+	dw NoHS ; ROCKET_HIDEOUT_B2F
+	dw NoHS ; ROCKET_HIDEOUT_B3F
 	dw RocketHideoutB4FHS
 	dw NoHS ; ROCKET_HIDEOUT_ELEVATOR
 	dw NoHS ; CELADON_SCHOOL
@@ -220,21 +220,21 @@ MapHSPointers:
 	dw SilphCo6FHS
 	dw SilphCo7FHS
 	dw SilphCo8FHS
-	dw PokemonMansion2FHS
-	dw PokemonMansion3FHS
-	dw PokemonMansionB1FHS
-	dw SafariZoneEastHS
-	dw SafariZoneNorthHS
-	dw SafariZoneWestHS
-	dw SafariZoneCenterHS
+	dw NoHS ; CINNABAR_MANSION_2F
+	dw NoHS ; CINNABAR_MANSION_3F
+	dw NoHS ; CINNABAR_MANSION_B1F
+	dw NoHS ; SAFARI_ZONE_EAST
+	dw NoHS ; SAFARI_ZONE_NORTH
+	dw NoHS ; SAFARI_ZONE_WEST
+	dw NoHS ; SAFARI_ZONE_CENTER
 	dw SafariZoneCenterRestHS
 	dw SafariZoneSecretHouseHS
 	dw NoHS ; SAFARI_ZONE_WEST_REST_HOUSE
 	dw NoHS ; SAFARI_ZONE_EAST_REST_HOUSE
 	dw NoHS ; SAFARI_ZONE_NORTH_REST_HOUSE
-	dw CeruleanCave2FHS
+	dw NoHS ; CERULEAN_CAVE_2F
 	dw CeruleanCaveB1FHS
-	dw CeruleanCaveHS
+	dw NoHS ; CERULEAN_CAVE_1F
 	dw NoHS ; LAVENDER_NAME_RATERS_HOUSE
 	dw NoHS ; CERULEAN_BADGE_HOUSE
 	dw NoHS ; CERULEAN_PRINTER
@@ -263,14 +263,13 @@ MapHSPointers:
 ; a) Map_ID = $FF
 ; b) Map_ID ≠ currentMapID
 ;
-; This Data is loaded into RAM at wd5ce-$D5F?. (wMissableObjectList)
+; This Data is loaded into RAM at wMissableObjectList
 
 ;THESE FUNCTIONS MUST FOLLOW THE ORDER LAID OUT IN "hide_show_constants.asm"!!!
 
 ; These constants come from the bytes for Predef functions:
 Hide equ $11
 Show equ $15
-; Only one space left
 
 NoHS:
 	db $FF,$FF,$FF
@@ -306,19 +305,8 @@ SaffronCityHS:
 	db SAFFRON_CITY,$0F,Hide
 FuchsiaCityHS:
 	db FUCHSIA_CITY,$03,Show
-Route2HS:
-	db ROUTE_2,$01,Show
-	db ROUTE_2,$02,Show
-Route4HS:
-	db ROUTE_4,$03,Show
-Route9HS:
-	db ROUTE_9,$0A,Show
 Route12HS:
 	db ROUTE_12,$01,Show
-	db ROUTE_12,$09,Show
-	db ROUTE_12,$0A,Show
-Route15HS:
-	db ROUTE_15,$0B,Show
 Route16HS:
 	db ROUTE_16,$07,Show
 Route22HS:
@@ -326,11 +314,8 @@ Route22HS:
 	db ROUTE_22,$02,Hide
 Route24HS:
 	db ROUTE_24,$01,Show
-	db ROUTE_24,$08,Show
 BillsGardenHS:
 	db BILLS_GARDEN,$01,Hide
-Route25HS:
-	db ROUTE_25,$0A,Show
 RedsHouse2FHS:
 	db PALLET_REDS_HOUSE_2F,$01,Hide
 BluesHouseHS:
@@ -348,27 +333,11 @@ OaksLabHS:
 	db PALLET_OAKS_LAB,$08,Hide
 ViridianGymHS:
 	db VIRIDIAN_GYM,$01,Show
-	db VIRIDIAN_GYM,$0B,Show
 	db VIRIDIAN_GYM,$0C,Hide
 Museum1FHS:
 	db PEWTER_MUSEUM_1F,$05,Show
-CeruleanCaveHS:
-	db CERULEAN_CAVE_1F,$01,Show
-	db CERULEAN_CAVE_1F,$02,Show
-	db CERULEAN_CAVE_1F,$03,Show
 PokemonTower2FHS:
 	db LAVENDER_POKEMON_TOWER_2F,$01,Show
-PokemonTower3FHS:
-	db LAVENDER_POKEMON_TOWER_3F,$04,Show
-PokemonTower4FHS:
-	db LAVENDER_POKEMON_TOWER_4F,$04,Show
-	db LAVENDER_POKEMON_TOWER_4F,$05,Show
-	db LAVENDER_POKEMON_TOWER_4F,$06,Show
-PokemonTower5FHS:
-	db LAVENDER_POKEMON_TOWER_5F,$06,Show
-PokemonTower6FHS:
-	db LAVENDER_POKEMON_TOWER_6F,$04,Show
-	db LAVENDER_POKEMON_TOWER_6F,$05,Show
 PokemonTower7FHS:
 	db LAVENDER_POKEMON_TOWER_7F,$01,Show
 	db LAVENDER_POKEMON_TOWER_7F,$02,Show
@@ -381,17 +350,12 @@ CeladonMansionRoofHouseHS:
 	db CELADON_MANSION_ROOF_HOUSE,$02,Show
 GameCornerHS:
 	db CELADON_GAME_CORNER,$0B,Show
-WardensHouseHS:
-	db FUCHSIA_WARDENS_HOUSE,$02,Show
-PokemonMansion1FHS:
-	db CINNABAR_MANSION_1F,$02,Show
-	db CINNABAR_MANSION_1F,$03,Show
 FightingDojoHS:
 	db SAFFRON_FIGHTING_DOJO,$06,Show
 	db SAFFRON_FIGHTING_DOJO,$07,Show
 SilphCo1FHS:
 	db SAFFRON_SILPH_CO_1F,$01,Hide
-PowerPlantHS:
+PowerPlant1FHS:
 	db POWER_PLANT_1F,$01,Show ; Voltorb0
 	db POWER_PLANT_1F,$02,Show ; Voltorb1
 	db POWER_PLANT_1F,$03,Show ; Voltorb2
@@ -399,36 +363,15 @@ PowerPlantHS:
 	db POWER_PLANT_1F,$05,Show ; Voltorb4
 	db POWER_PLANT_1F,$06,Show ; Voltorb5
 	db POWER_PLANT_1F,$07,Show ; Voltorb6
-	db POWER_PLANT_1F,$08,Show ; Item0
-	db POWER_PLANT_1F,$09,Show ; Item1
-	db POWER_PLANT_1F,$0A,Show ; Item2
-	db POWER_PLANT_1F,$0B,Show ; Item3
-PowerPlant1FHS:
+PowerPlant2FHS:
 	db POWER_PLANT_2F,$01,Show ; Electrode2
 	db POWER_PLANT_2F,$02,Show ; Zapdos
-	db POWER_PLANT_2F,$03,Show ; Item0
-	db POWER_PLANT_2F,$04,Show ; Item1
 VictoryRoad2FHS:
-	db VICTORY_ROAD_2F,$06,Show
-	db VICTORY_ROAD_2F,$07,Show
-	db VICTORY_ROAD_2F,$08,Show
-	db VICTORY_ROAD_2F,$09,Show
 	db VICTORY_ROAD_2F,$0C,Hide ; boulder
 BillsHouseHS:
 	db BILLS_HOUSE,$01,Show
 	db BILLS_HOUSE,$02,Hide
 	db BILLS_HOUSE,$03,Hide
-ViridianForestHS:
-	db VIRIDIAN_FOREST,$05,Show
-	db VIRIDIAN_FOREST,$06,Show
-	db VIRIDIAN_FOREST,$07,Show
-MtMoon1FHS:
-	db MT_MOON_1F,$08,Show
-	db MT_MOON_1F,$09,Show
-	db MT_MOON_1F,$0A,Show
-	db MT_MOON_1F,$0B,Show
-	db MT_MOON_1F,$0C,Show
-	db MT_MOON_1F,$0D,Show
 MtMoonB1FHS:
 	db MT_MOON_B1F,$01,Show ; Jessie
 	db MT_MOON_B1F,$02,Show ; James
@@ -436,19 +379,8 @@ MtMoonB2FHS:
 	db MT_MOON_B2F,$01,Show
 	db MT_MOON_B2F,$06,Show
 	db MT_MOON_B2F,$07,Show
-	db MT_MOON_B2F,$08,Show
-	db MT_MOON_B2F,$09,Show
 SSAnne2FHS:
 	db SS_ANNE_2F,$02,Hide
-SSAnne1FRoomsHS:
-	db SS_ANNE_1F_ROOMS,$0A,Show
-SSAnne2FRoomsHS:
-	db SS_ANNE_2F_ROOMS,$06,Show
-	db SS_ANNE_2F_ROOMS,$09,Show
-SSAnneB1FRoomsHS:
-	db SS_ANNE_B1F_ROOMS,$09,Show
-	db SS_ANNE_B1F_ROOMS,$0A,Show
-	db SS_ANNE_B1F_ROOMS,$0B,Show
 Volcano1FHS:
 	db VOLCANO_1F, $04, Show
 	db VOLCANO_1F, $05, Show
@@ -457,29 +389,13 @@ VolcanoB1FHS:
 	db VOLCANO_B1F, $04, Show
 	db VOLCANO_B1F, $05, Show
 VictoryRoad3FHS:
-	db VICTORY_ROAD_3F,$05,Show
-	db VICTORY_ROAD_3F,$06,Show
 	db VICTORY_ROAD_3F,$0A,Show
 VolcanoB2FHS:
 	db VOLCANO_B2F, $01, Show
-RocketHideoutB1FHS:
-	db ROCKET_HIDEOUT_B1F,$06,Show
-	db ROCKET_HIDEOUT_B1F,$07,Show
-RocketHideoutB2FHS:
-	db ROCKET_HIDEOUT_B2F,$02,Show
-	db ROCKET_HIDEOUT_B2F,$03,Show
-	db ROCKET_HIDEOUT_B2F,$04,Show
-	db ROCKET_HIDEOUT_B2F,$05,Show
-RocketHideoutB3FHS:
-	db ROCKET_HIDEOUT_B3F,$03,Show
-	db ROCKET_HIDEOUT_B3F,$04,Show
 RocketHideoutB4FHS:
 	db ROCKET_HIDEOUT_B4F,$01,Show
 	db ROCKET_HIDEOUT_B4F,$02,Show ;Jessie
 	db ROCKET_HIDEOUT_B4F,$03,Show ;James
-	db ROCKET_HIDEOUT_B4F,$05,Show
-	db ROCKET_HIDEOUT_B4F,$06,Show
-	db ROCKET_HIDEOUT_B4F,$07,Show
 	db ROCKET_HIDEOUT_B4F,$08,Hide
 	db ROCKET_HIDEOUT_B4F,$09,Hide
 SilphCo2FHS:
@@ -490,36 +406,25 @@ SilphCo2FHS:
 SilphCo3FHS:
 	db SAFFRON_SILPH_CO_3F,$02,Show
 	db SAFFRON_SILPH_CO_3F,$03,Show
-	db SAFFRON_SILPH_CO_3F,$04,Show
 SilphCo4FHS:
 	db SAFFRON_SILPH_CO_4F,$02,Show
 	db SAFFRON_SILPH_CO_4F,$03,Show
 	db SAFFRON_SILPH_CO_4F,$04,Show
-	db SAFFRON_SILPH_CO_4F,$05,Show
-	db SAFFRON_SILPH_CO_4F,$06,Show
-	db SAFFRON_SILPH_CO_4F,$07,Show
 SilphCo5FHS:
 	db SAFFRON_SILPH_CO_5F,$02,Show
 	db SAFFRON_SILPH_CO_5F,$03,Show
 	db SAFFRON_SILPH_CO_5F,$04,Show
 	db SAFFRON_SILPH_CO_5F,$05,Show
-	db SAFFRON_SILPH_CO_5F,$06,Show
-	db SAFFRON_SILPH_CO_5F,$07,Show
-	db SAFFRON_SILPH_CO_5F,$08,Show
 SilphCo6FHS:
 	db SAFFRON_SILPH_CO_6F,$06,Show
 	db SAFFRON_SILPH_CO_6F,$07,Show
 	db SAFFRON_SILPH_CO_6F,$08,Show
-	db SAFFRON_SILPH_CO_6F,$09,Show
-	db SAFFRON_SILPH_CO_6F,$0A,Show
 SilphCo7FHS:
 	db SAFFRON_SILPH_CO_7F,$05,Show
 	db SAFFRON_SILPH_CO_7F,$06,Show
 	db SAFFRON_SILPH_CO_7F,$07,Show
 	db SAFFRON_SILPH_CO_7F,$08,Show
 	db SAFFRON_SILPH_CO_7F,$09,Show
-	db SAFFRON_SILPH_CO_7F,$0A,Show
-	db SAFFRON_SILPH_CO_7F,$0B,Show
 SilphCo8FHS:
 	db SAFFRON_SILPH_CO_8F,$02,Show
 	db SAFFRON_SILPH_CO_8F,$03,Show
@@ -531,56 +436,18 @@ SilphCo9FHS:
 SilphCo10FHS:
 	db SAFFRON_SILPH_CO_10F,$01,Show
 	db SAFFRON_SILPH_CO_10F,$02,Show
-	db SAFFRON_SILPH_CO_10F,$04,Show
-	db SAFFRON_SILPH_CO_10F,$05,Show
-	db SAFFRON_SILPH_CO_10F,$06,Show
 SilphCo11FHS:
 	db SAFFRON_SILPH_CO_11F,$01,Show ; Chief
 	db SAFFRON_SILPH_CO_11F,$03,Show ; GIOVANNI
 	db SAFFRON_SILPH_CO_11F,$04,Show ; jessie
 	db SAFFRON_SILPH_CO_11F,$05,Show 
 	db SAFFRON_SILPH_CO_11F,$06,Show ; james
-PokemonMansion2FHS:
-	db CINNABAR_MANSION_2F,$02,Show
-PokemonMansion3FHS:
-	db CINNABAR_MANSION_3F,$03,Show
-	db CINNABAR_MANSION_3F,$04,Show
-PokemonMansionB1FHS:
-	db CINNABAR_MANSION_B1F,$03,Show
-	db CINNABAR_MANSION_B1F,$04,Show
-	db CINNABAR_MANSION_B1F,$05,Show
-	db CINNABAR_MANSION_B1F,$06,Show
-	db CINNABAR_MANSION_B1F,$08,Show
-SafariZoneEastHS:
-	db SAFARI_ZONE_EAST,$01,Show
-	db SAFARI_ZONE_EAST,$02,Show
-	db SAFARI_ZONE_EAST,$03,Show
-	db SAFARI_ZONE_EAST,$04,Show
-SafariZoneNorthHS:
-	db SAFARI_ZONE_NORTH,$01,Show
-	db SAFARI_ZONE_NORTH,$02,Show
-SafariZoneWestHS:
-	db SAFARI_ZONE_WEST,$01,Show
-	db SAFARI_ZONE_WEST,$02,Show
-	db SAFARI_ZONE_WEST,$03,Show
-	db SAFARI_ZONE_WEST,$04,Show
-SafariZoneCenterHS:
-	db SAFARI_ZONE_CENTER,$01,Show
 SafariZoneCenterRestHS:
 	db SAFARI_ZONE_CENTER_REST_HOUSE,$03,Hide
 SafariZoneSecretHouseHS:
 	db SAFARI_ZONE_SECRET_HOUSE,$02,Hide  ; Chief
-CeruleanCave2FHS:
-	db CERULEAN_CAVE_2F,$01,Show
-	db CERULEAN_CAVE_2F,$02,Show
-	db CERULEAN_CAVE_2F,$03,Show
 CeruleanCaveB1FHS:
 	db CERULEAN_CAVE_B1F,$01,Show
-	db CERULEAN_CAVE_B1F,$02,Show
-	db CERULEAN_CAVE_B1F,$03,Show
-VictoryRoad1FHS:
-	db VICTORY_ROAD_1F,$07,Show
-	db VICTORY_ROAD_1F,$08,Show
 ChampionsRoomHS:
 	db INDIGO_CHAMPIONS_ROOM,$02,Hide
 SeafoamIslands1FHS:
