@@ -250,12 +250,12 @@ DEF NUM_CITY_MAPS EQU const_value
     mapconst SAFFRON_SILPH_CO_11F,             9,  9 ; $EB
     mapconst SAFFRON_SILPH_CO_ELEVATOR,        2,  2 ; $EC
     mapconst CERULEAN_MELANIE_HOUSE,           4,  4 ; $ED
-    mapconst TRADE_CENTER,                     4,  5 ; $EF
-    mapconst COLOSSEUM,                        4,  5 ; $F0
-    mapconst FORGOTTEN_DUNGEON_1F,             0,  0 ; $F1
-    mapconst FORGOTTEN_DUNGEON_B1F,            0,  0 ; $F3
+    mapconst TRADE_CENTER,                     4,  5 ; $EE
+    mapconst COLOSSEUM,                        4,  5 ; $EF
+    mapconst FORGOTTEN_DUNGEON_1F,             0,  0 ; $F0
+    mapconst FORGOTTEN_DUNGEON_B1F,            0,  0 ; $F1
     mapconst FORGOTTEN_DUNGEON_ROOF,           0,  0 ; $F2
-    mapconst NOISY_FOREST,                     0,  0 ; $F4
-    mapconst INDIGO_LORELEIS_ROOM,             6,  5 ; $F5
-    mapconst INDIGO_BRUNOS_ROOM,               6,  5 ; $F6
-    mapconst INDIGO_AGATHAS_ROOM,              6,  5 ; $F7
+    mapconst NOISY_FOREST,                     0,  0 ; $F3
+    mapconst INDIGO_LORELEIS_ROOM,             6,  5 ; $F4
+    mapconst INDIGO_BRUNOS_ROOM,               6,  5 ; $F5
+    mapconst INDIGO_AGATHAS_ROOM,              6,  5 ; $F6
