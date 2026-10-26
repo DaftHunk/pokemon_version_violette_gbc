@@ -2561,7 +2561,6 @@ wObtainedBadges:: ; d356
 ;	BIT_MARSHBADGE   ; 5
 ;	BIT_VOLCANOBADGE ; 6
 ;	BIT_EARTHBADGE   ; 7
-	ds 1
 
 wLetterPrintingDelayFlags:: ; d358
 ; bit 0: If 0, limit the delay to 1 frame. Note that this has no effect if
@@ -2755,8 +2754,6 @@ wSpriteSetID:: ; d3a8
 wObjectDataPointerTemp:: ; d3a9
 	ds 2
 
-	ds 2
-
 wMapBackgroundTile:: ; d3ad
 ; the tile shown outside the boundaries of the map
 	ds 1
@@ -2857,8 +2854,6 @@ wTilesetTalkingOverTiles:: ; d532
 wGrassTile:: ; d535
 	ds 1
 
-	ds 1
-
 wNumBoxItems:: ; d53a
 	ds 1
 wBoxItems:: ; d53b
@@ -2917,7 +2912,6 @@ wBluesHouseCurScript:: ; d5f3
 	ds 1
 wViridianCityCurScript:: ; d5f4
 	ds 1
-	ds 2
 wPewterCityCurScript:: ; d5f7
 	ds 1
 wRoute3CurScript:: ; d5f8
@@ -3363,16 +3357,12 @@ wStatusFlags4:: ; d72e
 ; bit 7: set if scripted NPC movement has been initialised
 	ds 1
 
-	ds 1
-
 wStatusFlags5:: ; d730
 ; bit 0: NPC sprite being moved by script
 ; bit 2: Input is being ignored for half a second
 ; bit 5: ignore joypad input
 ; bit 6: print text with no delay between each letter
 ; bit 7: set if joypad states are being simulated in the overworld or an NPC's movement is being scripted
-	ds 1
-
 	ds 1
 
 wStatusFlags6:: ; d732
@@ -3487,8 +3477,6 @@ ENDU
 wTrainerHeaderPtr:: ; da30
 	ds 2
 
-	ds 6
-
 wOpponentAfterWrongAnswer:: ; da38
 ; the trainer the player must face after getting a wrong answer in the Cinnabar
 ; gym quiz
@@ -3590,7 +3578,7 @@ wMonAreaTypeFlags:: ; deef
 ; saved copy of the RNG seed (4 bytes), written once at boot by Init
 ; and read by RNG_Correction at the main menu. kept outside the saved
 ; MainData block on purpose: never written to SRAM
-wSavedRngSeed:: ; deed
+wSavedRngSeed:: ; deea
 	ds 4
 
 ; per-map list of item balls: (sprite ID, item ball index) pairs, $FF-terminated
