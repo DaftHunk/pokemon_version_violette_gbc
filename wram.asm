@@ -3664,20 +3664,20 @@ wMonAreaTypeFlags:: ; dee7
 ;adding GB_PRINTER
 ;GB Printer settings - placed after the last mapped label (deef) so nothing
 ;moves, and outside any save block
-wPrinterSettings:: ; def0
+wPrinterSettings:: ; dee8
 ; bits 0-6: how dark to make the prints
 	ds 1
-wPrinterConnectionOpen:: ; def1
+wPrinterConnectionOpen:: ; dee9
 ; bit 0: a printer transmission is in progress
 	ds 1
-wPrinterOpcode:: ; def2
+wPrinterOpcode:: ; deea
 ; current serial operation, 0 = idle
 	ds 1
-wPrinterDisplayOnly:: ; def3
+wPrinterDisplayOnly:: ; deeb
 ; set while the print screen should only be displayed on screen instead of
 ; being transmitted to the GB Printer (NON at the print confirmation prompt)
 	ds 1
-wPrinterPokedexMode:: ; def4
+wPrinterPokedexMode:: ; deec
 ; set while the pokedex is opened from the printer menu: the side menu
 ; shows the printer options (print the selected pokedex entry) instead
 ; of the normal ones, and SELECT/START are disabled
@@ -3686,7 +3686,7 @@ wPrinterPokedexMode:: ; def4
 ; saved copy of the RNG seed (4 bytes), written once at boot by Init
 ; and read by RNG_Correction at the main menu. kept outside the saved
 ; MainData block on purpose: never written to SRAM
-wSavedRngSeed:: ; dee8
+wSavedRngSeed:: ; deed
 	ds 4
 
 ; per-map list of item balls: (sprite ID, item ball index) pairs, $FF-terminated
