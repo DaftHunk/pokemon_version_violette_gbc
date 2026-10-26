@@ -3,17 +3,17 @@ PickUpItem:
 
 	ld a, [hSpriteIndexOrTextID]
 	ld b, a
-	ld hl, wMissableObjectList
-.missableObjectsListLoop
+	ld hl, wItemBallList
+.itemBallsListLoop
 	ld a, [hli]
 	cp $ff
 	ret z
 	cp b
-	jr z, .isMissable
+	jr z, .isItemBall
 	inc hl
-	jr .missableObjectsListLoop
+	jr .itemBallsListLoop
 
-.isMissable
+.isItemBall
 	ld a, [hl]
 	ld [hItemToRemoveID], a
 
@@ -30,9 +30,7 @@ PickUpItem:
 	call GiveItem
 	jr nc, .BagFull
 
-	ld a, [hItemToRemoveID]
-	ld [wMissableObjectIndex], a
-	predef HideObject
+	callba HideItemBall
 	ld a, 1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	ld hl, FoundItemText

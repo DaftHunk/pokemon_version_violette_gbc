@@ -65,6 +65,39 @@ LoadMissableObjects:
 .done
 	ld a, $ff
 	ld [de], a                 ; write sentinel
+	; fall through
+
+LoadItemBalls:
+; builds wItemBallList: (sprite ID, item ball index) pairs for the current map,
+; $FF-terminated. ItemBallData entries are [Map_ID][Object_ID][ItemBallIndex]
+; and may appear anywhere in the table. capacity is 6 balls per map.
+	ld hl, ItemBallData
+	ld a, [wCurMap]
+	ld b, a
+	ld de, wItemBallList
+	ld c, 6
+.itemBallsLoop
+	ld a, [hli]
+	cp $ff
+	jr z, .done     ; end of data
+	cp b
+	jr nz, .skipEntry
+	ld a, [hli]
+	ld [de], a                 ; write sprite ID
+	inc de
+	ld a, [hli]
+	ld [de], a                 ; write item ball index
+	inc de
+	dec c
+	jr z, .done     ; list is full (6 item balls)
+	jr .itemBallsLoop
+.skipEntry
+	inc hl
+	inc hl
+	jr .itemBallsLoop
+.done
+	ld a, $ff
+	ld [de], a                 ; write sentinel
 	ret
 
 InitializeMissableObjectsFlags:
@@ -72,6 +105,10 @@ InitializeMissableObjectsFlags:
 	ld bc, wMissableObjectFlagsEnd - wMissableObjectFlags
 	xor a
 	call FillMemory ; clear missable objects flags
+	ld hl, wItemBallFlags
+	ld bc, $10
+	xor a
+	call FillMemory ; clear item ball flags (16 bytes = 128 slots)
 	ld hl, PalletTownHS
 	xor a
 	ld [wMissableObjectCounter], a
@@ -109,7 +146,7 @@ IsObjectHidden:
 .loop
 	ld a, [hli]
 	cp $ff
-	jr z, .notHidden ; not missable -> not hidden
+	jr z, .itemBallTest ; not a regular missable -> check item balls
 	cp b
 	ld a, [hli]
 	jr nz, .loop
@@ -126,7 +163,26 @@ IsObjectHidden:
 .hidden
 	ld [$ffe5], a
 	ret
-
+ 
+.itemBallTest
+; item balls were split out of the missable objects system:
+; check wItemBallList and test the picked-up flag in wItemBallFlags
+	ld hl, wItemBallList
+.itemBallLoop
+	ld a, [hli]
+	cp $ff
+	jr z, .notHidden ; not an item ball -> not hidden
+	cp b
+	ld a, [hli]
+	jr nz, .itemBallLoop
+	ld c, a
+	ld b, FLAG_TEST
+	ld hl, wItemBallFlags
+	call MissableObjectFlagAction
+	ld a, c
+	and a
+	jr nz, .hidden
+	jr .notHidden
 
 ;joenote - This is just for sprites that appear on the same map during a scripted event.
 ;It pre-loads their facing so they don't look down for one frame.
@@ -186,6 +242,16 @@ HideObject:
 	ld c, a
 	ld b, FLAG_SET
 	call MissableObjectFlagAction   ; set "removed" flag
+	jp UpdateSprites
+
+; removes an item ball from the map after it has been picked up
+; [hItemToRemoveID]: index of the item ball to be removed
+HideItemBall:
+	ld a, [hItemToRemoveID]
+	ld c, a
+	ld b, FLAG_SET
+	ld hl, wItemBallFlags
+	call MissableObjectFlagAction   ; set "picked up" flag
 	jp UpdateSprites
 
 MissableObjectFlagAction:
