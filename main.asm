@@ -89,6 +89,7 @@ INCLUDE "engine/overworld/tileset_header.asm"
 INCLUDE "engine/overworld/daycare_exp.asm"
 
 INCLUDE "data/maps/hide_show_data.asm"
+INCLUDE "data/maps/item_ball_data.asm"
 
 INCLUDE "engine/overworld/field_move_messages.asm"
 
@@ -530,6 +531,19 @@ INCLUDE "scripts/Lighthouse.asm"
 INCLUDE "data/maps/objects/Lighthouse.asm"
 LighthouseBlocks: INCBIN "maps/Lighthouse.blk"
 
+INCLUDE "data/maps/headers/ForgottenPassage.asm"
+INCLUDE "data/maps/headers/RuggedRoad.asm"
+INCLUDE "data/maps/headers/UndergroundPathWestEastCasino.asm"
+INCLUDE "data/maps/headers/ForgottenTownHouses.asm"
+INCLUDE "data/maps/headers/SaffronUniversity.asm"
+INCLUDE "data/maps/headers/CeruleanPrinter.asm"
+INCLUDE "data/maps/headers/CeruleanMelanieHouse.asm"
+INCLUDE "data/maps/headers/ForgottenDungeon1F.asm"
+INCLUDE "data/maps/headers/ForgottenDungeonB1F.asm"
+INCLUDE "data/maps/headers/ForgottenDungeonRoof.asm"
+INCLUDE "data/maps/headers/NoisyForest.asm"
+
+
 INCLUDE "engine/menu/oaks_pc.asm"
 
 INCLUDE "engine/hidden_object_functions7.asm"
@@ -831,12 +845,12 @@ CeladonMansion1Blocks: INCBIN "maps/CeladonMansion1F.blk"
 INCLUDE "data/maps/headers/CeladonMansion2F.asm"
 INCLUDE "scripts/CeladonMansion2F.asm"
 INCLUDE "data/maps/objects/CeladonMansion2F.asm"
-CeladonMansion2Blocks: INCBIN "maps/CeladonMansion2F.blk"
+CeladonMansion2FBlocks: INCBIN "maps/CeladonMansion2F.blk"
 
 INCLUDE "data/maps/headers/CeladonMansion3F.asm"
 INCLUDE "scripts/CeladonMansion3F.asm"
 INCLUDE "data/maps/objects/CeladonMansion3F.asm"
-CeladonMansion3Blocks: INCBIN "maps/CeladonMansion3F.blk"
+CeladonMansion3FBlocks: INCBIN "maps/CeladonMansion3F.blk"
 
 INCLUDE "data/maps/headers/CeladonMansionRoof.asm"
 INCLUDE "scripts/CeladonMansionRoof.asm"
@@ -1046,20 +1060,20 @@ INCLUDE "scripts/SaffronSilphCo7F.asm"
 INCLUDE "data/maps/objects/SaffronSilphCo7F.asm"
 SilphCo7Blocks: INCBIN "maps/SaffronSilphCo7F.blk"
 
-INCLUDE "data/maps/headers/CinnabarMansionB1F.asm"
-INCLUDE "scripts/CinnabarMansionB1F.asm"
-INCLUDE "data/maps/objects/CinnabarMansionB1F.asm"
-Mansion2Blocks: INCBIN "maps/CinnabarMansionB1F.blk"
-
 INCLUDE "data/maps/headers/CinnabarMansion2F.asm"
 INCLUDE "scripts/CinnabarMansion2F.asm"
 INCLUDE "data/maps/objects/CinnabarMansion2F.asm"
-Mansion3Blocks: INCBIN "maps/CinnabarMansion2F.blk"
+Mansion2FBlocks: INCBIN "maps/CinnabarMansion2F.blk"
 
-INCLUDE "data/maps/headers/CinnabarMansionB2F.asm"
-INCLUDE "scripts/CinnabarMansionB2F.asm"
-INCLUDE "data/maps/objects/CinnabarMansionB2F.asm"
-Mansion4Blocks: INCBIN "maps/CinnabarMansionB2F.blk"
+INCLUDE "data/maps/headers/CinnabarMansion3F.asm"
+INCLUDE "scripts/CinnabarMansion3F.asm"
+INCLUDE "data/maps/objects/CinnabarMansion3F.asm"
+Mansion3FBlocks: INCBIN "maps/CinnabarMansion3F.blk"
+
+INCLUDE "data/maps/headers/CinnabarMansionB1F.asm"
+INCLUDE "scripts/CinnabarMansionB1F.asm"
+INCLUDE "data/maps/objects/CinnabarMansionB1F.asm"
+MansionB1FBlocks: INCBIN "maps/CinnabarMansionB1F.blk"
 
 INCLUDE "engine/battle/init_battle_variables.asm"
 INCLUDE "engine/battle/moveEffects/paralyze_effect.asm"

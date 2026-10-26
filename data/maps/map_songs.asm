@@ -28,7 +28,8 @@ MapSongBanks:
 	db MUSIC_ROUTES4,          BANK(Music_Routes4)         ; ROUTE_14
 	db MUSIC_ROUTES4,          BANK(Music_Routes4)         ; ROUTE_15
 	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; ROUTE_16
-	db MUSIC_ROUTES1,          BANK(Music_Routes1)         ; Route16West
+	db MUSIC_ROUTES1,          BANK(Music_Routes1)         ; ROUTE_16_WEST
+	db MUSIC_ROUTES1,          BANK(Music_Routes1)         ; FORGOTTEN_PASSAGE
 	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; ROUTE_17
 	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; ROUTE_18
 	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; ROUTE_19
@@ -39,6 +40,7 @@ MapSongBanks:
 	db MUSIC_ROUTES2,          BANK(Music_Routes2)         ; ROUTE_24
 	db MUSIC_PALLET_TOWN,      BANK(Music_PalletTown)      ; BillsGarden
 	db MUSIC_MUSEUM_GUY,       BANK(Music_MuseumGuy)       ; MtMoonSquare
+	db MUSIC_DUNGEON3,         BANK(Music_Dungeon3)        ; RUGGED_ROAD
 	db MUSIC_ROUTES2,          BANK(Music_Routes2)         ; ROUTE_25
 	db MUSIC_PALLET_TOWN,      BANK(Music_PalletTown)      ; RedsHouse1F
 	db MUSIC_PALLET_TOWN,      BANK(Music_PalletTown)      ; RedsHouse2F
@@ -72,16 +74,15 @@ MapSongBanks:
 	db MUSIC_CITIES2,          BANK(Music_Cities2)         ; BikeShop
 	db MUSIC_POKECENTER,       BANK(Music_Pokecenter)      ; CeruleanMart
 	db MUSIC_POKECENTER,       BANK(Music_Pokecenter)      ; MtMoonPokecenter
-	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; Lighthouse
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; Route5Gate
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; UndergroundTunnelEntranceRoute5
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; DayCareM
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; Route6Gate
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; UndergroundTunnelEntranceRoute6
-	db MUSIC_VERMILION,        BANK(Music_Vermilion)       ; FREEZE
+	db MUSIC_CELADON_GAME_CORNER,BANK(Music_GameCorner)    ; UNDERGROUND_PATH_WEST_EAST_CASINO
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; Route7Gate
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; UndergroundPathEntranceRoute7
-	db MUSIC_CELADON,          BANK(Music_Celadon)         ; FREEZE
+	db MUSIC_LAVENDER,         BANK(Music_Lavender)        ; FORGOTTEN_TOWN_HOUSES
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; Route8Gate
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; UndergroundPathEntranceRoute8
 	db MUSIC_POKECENTER,       BANK(Music_Pokecenter)      ; RockTunnelPokecenter
@@ -128,13 +129,13 @@ MapSongBanks:
 	db MUSIC_POKECENTER,       BANK(Music_Pokecenter)      ; CeladonMartRoof
 	db MUSIC_POKECENTER,       BANK(Music_Pokecenter)      ; CeladonMartElevator
 	db MUSIC_CELADON,          BANK(Music_Celadon)         ; CeladonMansion1
-	db MUSIC_CELADON,          BANK(Music_Celadon)         ; CeladonMansion2
-	db MUSIC_CELADON,          BANK(Music_Celadon)         ; CeladonMansion3
+	db MUSIC_CELADON,          BANK(Music_Celadon)         ; CeladonMansion2F
+	db MUSIC_CELADON,          BANK(Music_Celadon)         ; CeladonMansion3F
 	db MUSIC_CELADON,          BANK(Music_Celadon)         ; CeladonMansionRoof
 	db MUSIC_CELADON,          BANK(Music_Celadon)         ; CeladonMansion5
 	db MUSIC_POKECENTER,       BANK(Music_Pokecenter)      ; CeladonPokecenter
 	db MUSIC_GYM,              BANK(Music_Gym)             ; CeladonGym
-	db MUSIC_CELADON_GAME_CORNER,      BANK(Music_GameCorner)      ; CeladonGameCorner
+	db MUSIC_CELADON_GAME_CORNER,BANK(Music_GameCorner)    ; CeladonGameCorner
 	db MUSIC_POKECENTER,       BANK(Music_Pokecenter)      ; CeladonMart5
 	db MUSIC_CELADON,          BANK(Music_Celadon)         ; CeladonPrizeRoom
 	db MUSIC_CELADON,          BANK(Music_Celadon)         ; CeladonDiner
@@ -172,7 +173,7 @@ MapSongBanks:
 	db MUSIC_CINNABAR,         BANK(Music_Cinnabar)        ; Lab4
 	db MUSIC_POKECENTER,       BANK(Music_Pokecenter)      ; CinnabarPokecenter
 	db MUSIC_POKECENTER,       BANK(Music_Pokecenter)      ; CinnabarMart
-	db MUSIC_CINNABAR,         BANK(Music_Cinnabar)        ; Cinnabar
+	db MUSIC_ROUTES3,          BANK(Music_Routes3)         ; Lighthouse
 	db MUSIC_INDIGO_PLATEAU,   BANK(Music_IndigoPlateau)   ; IndigoPlateauLobby
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; CopycatsHouse1F
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; CopycatsHouse2F
@@ -205,7 +206,7 @@ MapSongBanks:
 	db MUSIC_DUNGEON1,         BANK(Music_Dungeon1)        ; RocketHideout4
 	db MUSIC_DUNGEON1,         BANK(Music_Dungeon1)        ; RocketHideoutElevator
 	db MUSIC_CELADON,          BANK(Music_Celadon)         ; CeladonSchool
-	db MUSIC_DUNGEON1,         BANK(Music_Dungeon1)
+	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; SAFFRON_UNIVERSITY
 	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)         ; SilphCo2
 	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)         ; SilphCo3
 	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)         ; SilphCo4
@@ -213,9 +214,9 @@ MapSongBanks:
 	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)         ; SilphCo6
 	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)         ; SilphCo7
 	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)         ; SilphCo8
-	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; Mansion2
-	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; Mansion3
-	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; Mansion4
+	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; Mansion2F
+	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; Mansion3F
+	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; MansionB1F
 	db MUSIC_SURFING_PIKACHU_NO_INTRO,  BANK(Music_SurfingPikachuNoIntro)      ; SafariZoneEast
 	db MUSIC_SURFING_PIKACHU_NO_INTRO,  BANK(Music_SurfingPikachuNoIntro)      ; SafariZoneNorth
 	db MUSIC_SURFING_PIKACHU_NO_INTRO,  BANK(Music_SurfingPikachuNoIntro)      ; SafariZoneWest
@@ -230,20 +231,19 @@ MapSongBanks:
 	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; UnknownDungeon1
 	db MUSIC_CITIES2,          BANK(Music_Cities2)         ; NameRater
 	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; CeruleanHouse2
-	db MUSIC_CINNABAR,         BANK(Music_Cinnabar)
+	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; CERULEAN_PRINTER
 	db MUSIC_DUNGEON3,         BANK(Music_Dungeon3)        ; RockTunnel2
 	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)         ; SilphCo9
 	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)         ; SilphCo10
 	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)         ; SilphCo11
 	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)         ; SilphCoElevator
-	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)
-	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)
+	db MUSIC_CITIES1,          BANK(Music_Cities1)         ; CERULEAN_MELANIE_HOUSE
 	db MUSIC_CELADON,          BANK(Music_Celadon)         ; TradeCenter
 	db MUSIC_CELADON,          BANK(Music_Celadon)         ; Colosseum
-	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)
-	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)
-	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)
-	db MUSIC_SILPH_CO,         BANK(Music_SilphCo)
-	db MUSIC_GYM,              BANK(Music_Gym)              ; Lorelei
-	db MUSIC_GYM,              BANK(Music_Gym)              ; Bruno
-	db MUSIC_GYM,              BANK(Music_Gym)              ; Agatha
+	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; FORGOTTEN_DUNGEON_1F
+	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; FORGOTTEN_DUNGEON_B1F
+	db MUSIC_CINNABAR_MANSION, BANK(Music_CinnabarMansion) ; FORGOTTEN_DUNGEON_ROOF
+	db MUSIC_DUNGEON2,         BANK(Music_Dungeon2)        ; NOISY_FOREST
+	db MUSIC_GYM,              BANK(Music_Gym)             ; Lorelei
+	db MUSIC_GYM,              BANK(Music_Gym)             ; Bruno
+	db MUSIC_GYM,              BANK(Music_Gym)             ; Agatha

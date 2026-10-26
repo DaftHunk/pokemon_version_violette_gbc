@@ -1,3 +1,3 @@
-_CeladonMansion2Text1::
+_CeladonMansion2FText1::
 	text "Etage à louer"
 	done

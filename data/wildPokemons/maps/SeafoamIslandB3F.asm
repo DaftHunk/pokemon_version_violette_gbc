@@ -1,0 +1,13 @@
+SeafoamIslandMonsB3F:
+	db $0A
+	db 36,PSYDUCK
+	db 36,SEEL
+	db 38,PSYDUCK
+	db 38,SEEL
+	db 34,KRABBY
+	db 35,STARYU
+	db 35,KRABBY
+	db 34,SNEASEL
+	db 41,JYNX
+	db 42,DEWGONG
+	db $00

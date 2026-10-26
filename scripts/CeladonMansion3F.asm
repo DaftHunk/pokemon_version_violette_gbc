@@ -1,7 +1,7 @@
-CeladonMansion3Script:
+CeladonMansion3FScript:
 	jp EnableAutoTextBoxDrawing
 
-CeladonMansion3TextPointers:
+CeladonMansion3FTextPointers:
 	dw ProgrammerText
 	dw GraphicArtistText
 	dw WriterText
@@ -161,17 +161,17 @@ SurfboardNoRoomText:
 	db "@"
 
 GameFreakPCText1:
-	TX_FAR _CeladonMansion3Text5
+	TX_FAR _CeladonMansion3FText5
 	db "@"
 
 GameFreakPCText2:
-	TX_FAR _CeladonMansion3Text6
+	TX_FAR _CeladonMansion3FText6
 	db "@"
 
 GameFreakPCText3:
-	TX_FAR _CeladonMansion3Text7
+	TX_FAR _CeladonMansion3FText7
 	db "@"
 
 GameFreakSignText:
-	TX_FAR _CeladonMansion3Text8
+	TX_FAR _CeladonMansion3FText8
 	db "@"
