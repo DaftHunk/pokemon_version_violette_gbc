@@ -43,9 +43,9 @@ Mansion3FScript0:
 	and a
 	jp z, CheckFightingMapTrainers
 	cp $3
-	ld a, $a5
+	ld a, CINNABAR_MANSION_1F
 	jr nz, .asm_52250
-	ld a, $d6
+	ld a, CINNABAR_MANSION_2F
 .asm_52250
 	ld [wDungeonWarpDestinationMap], a
 	ret
