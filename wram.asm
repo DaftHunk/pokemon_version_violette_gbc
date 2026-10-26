@@ -3694,6 +3694,17 @@ wSavedRngSeed:: ; dee8
 wItemBallList::
 	ds 7 * 2
 
+; saved copy of the RNG seed (4 bytes), written once at boot by Init
+; and read by RNG_Correction at the main menu. kept outside the saved
+; MainData block on purpose: never written to SRAM
+wSavedRngSeed:: ; dee8
+	ds 4
+
+; per-map list of item balls: (sprite ID, item ball index) pairs, $FF-terminated
+; rebuilt on every map load, not saved. max 6 balls per map
+wItemBallList::
+	ds 7 * 2
+
 
 SECTION "Stack", WRAM0[$df00]
 	ds $ff
