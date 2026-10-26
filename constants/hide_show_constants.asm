@@ -1,8 +1,4 @@
 ; this is a list of the sprites that can be enabled/disabled during the game
-; sprites marked with an X are constants that are never used
-; because those sprites are not (de)activated in a map's script
-; (they are sprites that deactivate after battle
-; and are detected in wMissableObjectList)
 ; item balls were moved to constants/item_ball_constants.asm
 
 const_value = 0
