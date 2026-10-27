@@ -12,6 +12,9 @@ CeruleanPrinterText:
 
 CeruleanPrinterText_Printer:
 	TX_ASM
+	;display the PC-style power-on text, then open the printer menu
+	ld hl, .turnedOnPrinterText
+	call PrintText
 	; open the GB Printer menu, then redraw the map view
 	xor a
 	ld [wUpdateSpritesEnabled], a
@@ -25,6 +28,13 @@ CeruleanPrinterText_Printer:
 	ld a, 1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	jp TextScriptEnd
+
+;shown above the printer menu, like the "allume le PC" texts
+.turnedOnPrinterText
+	text "<PLAYER> allume"
+	line "l'imprimante."
+	prompt
+	db "@"
 
 CeruleanPrinterPoster:
 	TX_FAR _CeruleanPrinterPoster

@@ -16,7 +16,7 @@ _CeruleanPrinterPoster::
 	cont "impressions de"
 	cont "#mon."
 
-	para "Elles sont"
+	para "Elles sont mêmes"
 	line "autocollantes,"
 	cont "la classe!"
 	done

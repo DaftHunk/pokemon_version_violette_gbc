@@ -13,6 +13,20 @@
 ;Both scripts open the menu with `callba OpenPrinterMenu` and redraw the
 ;map view after the menu returns.
 OpenPrinterMenu::
+	;the text engine drew an empty dialogue box when the text started:
+	;erase it, so the menu opens over a clean map view. This also gives
+	;the print handlers a clean base to redraw over when they come back
+	;through LoopPrinterMenu
+	xor a
+	ld [H_AUTOBGTRANSFERENABLED], a
+	call LoadCurrentMapView
+	;opening the dialogue box also replaced the GBC BG map attributes
+	;of its rows (the gray text box palette): regenerate them from the
+	;redrawn map view like the text engine's CloseTextDisplay does, and
+	;refresh the open text window copy the menu is shown through (the
+	;same pair PCPrintScore uses after its display screen)
+	callba MakeAndTransferOverworldBGMapAttributes_CloseText
+	callba MakeAndTransferOverworldBGMapAttributes_OpenText
 	ld hl, wStatusFlags5
 	set 6, [hl]		;set instant text
 	xor a
@@ -150,14 +164,6 @@ LoopPrinterMenu:
 	ld [wListScrollOffset], a
 	ld hl, wStatusFlags5
 	res 6, [hl]
-;the print handlers and the settings submenu draw their own screens
-;around the menu box: redraw the map view so the menu is drawn over
-;a clean base (the small Beach House menu would otherwise keep pieces
-;of the settings submenu on screen). wOverworldMap is valid here: the
-;handlers reload it before returning.
-	xor a
-	ld [H_AUTOBGTRANSFERENABLED], a
-	call LoadCurrentMapView
 	jp OpenPrinterMenu
 
 PrinterMenuText:
@@ -336,6 +342,15 @@ PCPrint_ConfirmText:
 	prompt
 	db "@"
 
+;shown by PCPrintDiploma when EVENT_GOT_DEX_DIPLOMA is not set yet
+PCPrintDiplomaLockedText:
+	text "Seuls les"
+	line "Champions"
+	cont "peuvent imprimer"
+	cont "leur Diplôme!"
+	prompt
+	db "@"
+
 PCPrintMon:
 .select_mon_to_print
 	call GBPalWhiteOutWithDelay3
@@ -387,6 +402,14 @@ PCPrintMon:
 
 ;print or display the Champion/Master diploma
 PCPrintDiploma:
+	;only players who received the dex diploma from the director (proof
+	;they are champions) may print their diploma: others get a message
+	CheckEvent EVENT_GOT_DEX_DIPLOMA
+	jr nz, .gotDexDiploma
+	ld hl, PCPrintDiplomaLockedText
+	call PrintText
+	jp LoopPrinterMenu
+.gotDexDiploma
 	ld hl, PCPrint_ConfirmText
 	call PrinterMenu_AskPrintConfirm
 	jr z, .printDiploma
