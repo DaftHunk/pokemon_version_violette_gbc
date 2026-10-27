@@ -2,6 +2,16 @@ DisplayDiploma::
 	call SaveScreenTilesToBuffer2
 	call GBPalWhiteOutWithDelay3
 	call PrepareDiplomaScreen
+	;restore the original in-game diploma: close the decorative frame
+	;at the bottom of the screen. the printed first sheet keeps its
+	;frame open at the bottom: the printed second sheet closes it
+	;instead (PrepareDiplomaBottomScreen draws the same bottom row)
+	coord hl, 0, 17
+	call DiplomaDrawHorizontalBorder
+	ld a, $00
+	Coorda 0, 17
+	ld a, $00
+	Coorda 19, 17
 ;joenote - support female player character
 	ld a, [wGraphicOptions]
 	bit BIT_GRAPHIC_FEMALE, a	;check if girl
