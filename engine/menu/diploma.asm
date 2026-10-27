@@ -166,8 +166,8 @@ PrepareDiplomaScreen::
 ;print: the in-game DisplayDiploma shows the top page alone). The
 ;diploma gfx are already loaded at vChars2 by PrepareDiplomaScreen.
 ;Pikachu with its camera, the CONGRATULATIONS! tiles, the play time,
-;and Mew if the pokedex is complete (Yellow draws Mew when all the
-;pokemon are caught).
+;and Mew if the Master diploma is earned (EVENT_MASTER_POKEMON: the
+;same event that swaps the top page's title to "Diplôme Maître").
 PrepareDiplomaBottomScreen::
 	call ClearScreen
 	coord hl, 0, 17
@@ -184,12 +184,12 @@ PrepareDiplomaBottomScreen::
 	ld de, DiplomaPikachuTiles
 	coord hl, 6, 2
 	lb bc, 10, 12
-	callba Diploma_Surfing_CopyBox
+	call DiplomaCopyBox
 
 	ld de, CongratulationsTiles
 	coord hl, 7, 13
 	lb bc, 1, 6
-	callba Diploma_Surfing_CopyBox
+	call DiplomaCopyBox
 
 	ld de, DiplomaPlayTime
 	coord hl, 2, 15
@@ -204,12 +204,34 @@ PrepareDiplomaBottomScreen::
 	lb bc, LEADING_ZEROES | 1, 2
 	call PrintNumber
 
-	CheckEvent EVENT_POKEDEX_COMPLETED
+	CheckEvent EVENT_MASTER_POKEMON
 	ret z
 	ld de, DiplomaMewTiles
 	coord hl, 2, 0
 	lb bc, 4, 5
-	callba Diploma_Surfing_CopyBox
+	call DiplomaCopyBox
+	ret
+
+;local copy of Diploma_Surfing_CopyBox (engine/printer/printer.asm):
+;the Pikachu, CONGRATULATIONS! and Mew tilemaps live in this bank, and a
+;far call would remap the $4000-$7FFF window under the data pointer's
+;feet (the box copy reads through the currently mapped bank)
+DiplomaCopyBox:
+.y
+	push bc
+	push hl
+.x
+	ld a, [de]
+	inc de
+	ld [hli], a
+	dec c
+	jr nz, .x
+	pop hl
+	ld bc, SCREEN_WIDTH
+	add hl, bc
+	pop bc
+	dec b
+	jr nz, .y
 	ret
 
 ;the Yellow diploma border drawing (from pokeyellow's engine/events/
