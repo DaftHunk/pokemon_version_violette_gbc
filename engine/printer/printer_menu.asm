@@ -27,21 +27,25 @@ OpenPrinterMenu::
 	cp ROUTE_19_BEACH_HOUSE
 	jr z, .beachMenu
 ;full menu: 6 items now that the score is Beach House only,
-;RETOUR sits at row 12
-	coord hl, 0, 0
+;sized to the longest item ("Réglages") and flush against the right
+;edge of the screen, RETOUR sits at row 12
+	coord hl, 8, 0
 	ld b, 12
-	ld c, 17
+	ld c, 10
 	call TextBoxBorder
-	coord hl, 2, 2
+	coord hl, 10, 2
 	ld de, PrinterMenuText
 	call PlaceString
 	jr .menuVars
 .beachMenu
-;Beach House menu: 3 items, RETOUR sits at row 6
+;Beach House menu: 3 items, right aligned and sized to the longest
+;item ("Réglages"): one blank column between the text and the right
+;border, RETOUR sits at row 6
+	coord hl, 8, 0
 	ld b, 6
-	ld c, 15
+	ld c, 10
 	call TextBoxBorder
-	coord hl, 2, 2
+	coord hl, 10, 2
 	ld de, PrinterMenuTextBeach
 	call PlaceString
 
@@ -49,7 +53,7 @@ OpenPrinterMenu::
 	ld hl, wTopMenuItemY
 	ld a, 2
 	ld [hli], a ; wTopMenuItemY
-	dec a
+	ld a, 9 ;both menus are right aligned: cursor sits at column 7
 	ld [hli], a ; wTopMenuItemX
 	inc hl
 	inc hl
@@ -77,7 +81,7 @@ OpenPrinterMenu::
 	ld a, [wCurMap]
 	cp ROUTE_19_BEACH_HOUSE
 	jr z, .menuControls
-	coord hl, 8, 12
+	coord hl, 8, 14
 	ld b, 2
 	ld c, 10
 	call TextBoxBorder
@@ -87,15 +91,15 @@ OpenPrinterMenu::
 	jr c, .singleDigitBoxNum
 ; two digit box num
 	sub 9
-	coord hl, 17, 14
+	coord hl, 17, 16
 	ld [hl], "1"
 	add "0"
 	jr .next
 .singleDigitBoxNum
 	add "1"
 .next
-	Coorda 18, 14
-	coord hl, 9, 14
+	Coorda 18, 16
+	coord hl, 9, 16
 	ld de, PrinterMenuBoxText
 	call PlaceString
 
@@ -140,6 +144,12 @@ ExitPrinterMenu:
 	ld [wListScrollOffset], a
 	ld hl, wStatusFlags5
 	res 6, [hl]
+	ret
+LoopPrinterMenu:
+	pop af
+	ld [wListScrollOffset], a
+	ld hl, wStatusFlags5
+	res 6, [hl]
 ;the print handlers and the settings submenu draw their own screens
 ;around the menu box: redraw the map view so the menu is drawn over
 ;a clean base (the small Beach House menu would otherwise keep pieces
@@ -148,12 +158,6 @@ ExitPrinterMenu:
 	xor a
 	ld [H_AUTOBGTRANSFERENABLED], a
 	call LoadCurrentMapView
-	ret
-LoopPrinterMenu:
-	pop af
-	ld [wListScrollOffset], a
-	ld hl, wStatusFlags5
-	res 6, [hl]
 	jp OpenPrinterMenu
 
 PrinterMenuText:
@@ -170,7 +174,7 @@ PrinterMenuTextBeach:
 	next "Score"
 	next "Retour"
 	db "@"
-;max 7 chars: the box number digits are placed at columns 17-18
+;max 8 chars: the box number digits are placed at columns 16-17
 PrinterMenuBoxText:
 	db "Boîte n.@"
 
@@ -184,18 +188,19 @@ PCPrintSettings:
 	push af
 
 	;size of menu text box
-	coord hl, 0, 0
+	;right aligned and sized to the longest item ("Très foncé")
+	coord hl, 6, 0
 	ld b, 12
-	ld c, 15
+	ld c, 12
 	call TextBoxBorder
-	coord hl, 2, 2
+	coord hl, 8, 2
 	ld de, PrinterSettingsMenuText
 	call PlaceString
 
 	ld hl, wTopMenuItemY
 	ld a, 2
 	ld [hli], a ; wTopMenuItemY
-	dec a
+	ld a, 7 ;right aligned: cursor sits at column 5
 	ld [hli], a ; wTopMenuItemX
 	inc hl
 	inc hl
@@ -214,9 +219,9 @@ PCPrintSettings:
 	ld [wPlayerMonNumber], a
 
 ;now handle the text box giving the current setting
-	coord hl, 8, 14
+	coord hl, 6, 14
 	ld b, 2
-	ld c, 10
+	ld c, 12
 	call TextBoxBorder
 	call PCPrinterCurrentSettingDisplay
 
@@ -304,7 +309,7 @@ PCPrinterCurrentSettingDisplay:
 	jr z, .next
 	ld de, PrinterSettingsMenuTextSingle7F
 .next
-	coord hl, 9, 16
+	coord hl, 8, 16
 	call PlaceString
 	ret
 
