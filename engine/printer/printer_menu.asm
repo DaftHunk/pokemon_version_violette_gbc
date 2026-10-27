@@ -5,10 +5,13 @@
 ;(DisplayDiploma in engine/menu/diploma.asm) without transmitting.
 ;The Pokedex entry print is accessed through the "Imprimer Pokédex" menu
 ;entry (PCPrintDex opens the pokedex in printer mode).
-;Opened with `callba OpenPrinterMenu` from the Beach House printer's script
-;(Route19BeachHouseText_Printer in scripts/Route19BeachHouse.asm), which
-;redraws the map view after the menu returns.
-
+;Two menu variants share this code, chosen from the current map:
+;- full menu at the Cerulean printer house (scripts/CeruleanPrinter.asm):
+;  everything except the score, plus the box number text box
+;- Beach House menu on route 19 (scripts/Route19BeachHouse.asm):
+;  Réglages, score and Retour only
+;Both scripts open the menu with `callba OpenPrinterMenu` and redraw the
+;map view after the menu returns.
 OpenPrinterMenu::
 	ld hl, wStatusFlags5
 	set 6, [hl]		;set instant text
@@ -20,14 +23,29 @@ OpenPrinterMenu::
 	ld [wCurrentMenuItem], a
 
 	;size of menu text box
+	ld a, [wCurMap]
+	cp ROUTE_19_BEACH_HOUSE
+	jr z, .beachMenu
+;full menu: 6 items now that the score is Beach House only,
+;RETOUR sits at row 12
 	coord hl, 0, 0
-	ld b, 14 ;7 items now: RETOUR sits at row 14
+	ld b, 12
 	ld c, 17
 	call TextBoxBorder
 	coord hl, 2, 2
 	ld de, PrinterMenuText
 	call PlaceString
+	jr .menuVars
+.beachMenu
+;Beach House menu: 3 items, RETOUR sits at row 6
+	ld b, 6
+	ld c, 15
+	call TextBoxBorder
+	coord hl, 2, 2
+	ld de, PrinterMenuTextBeach
+	call PlaceString
 
+.menuVars
 	ld hl, wTopMenuItemY
 	ld a, 2
 	ld [hli], a ; wTopMenuItemY
@@ -36,7 +54,12 @@ OpenPrinterMenu::
 	inc hl
 	inc hl
 
-	ld a, 6	;number of non-cancel menu items (last one, RETOUR, exits)
+	ld a, [wCurMap]
+	cp ROUTE_19_BEACH_HOUSE
+	ld a, 5	;number of non-cancel menu items (last one, RETOUR, exits)
+	jr nz, .setMaxMenuItem
+	ld a, 2	;Beach House menu: Réglages and score
+.setMaxMenuItem
 	ld [hli], a ; wMaxMenuItem
 
 	ld a, A_BUTTON | B_BUTTON
@@ -50,7 +73,11 @@ OpenPrinterMenu::
 	ld [wPlayerMonNumber], a
 
 ;now handle the text box giving the current box number
-	coord hl, 8, 14
+;full menu only: the Beach House menu has no "Imprimer boîte" entry
+	ld a, [wCurMap]
+	cp ROUTE_19_BEACH_HOUSE
+	jr z, .menuControls
+	coord hl, 8, 12
 	ld b, 2
 	ld c, 10
 	call TextBoxBorder
@@ -60,18 +87,19 @@ OpenPrinterMenu::
 	jr c, .singleDigitBoxNum
 ; two digit box num
 	sub 9
-	coord hl, 17, 16
+	coord hl, 17, 14
 	ld [hl], "1"
 	add "0"
 	jr .next
 .singleDigitBoxNum
 	add "1"
 .next
-	Coorda 18, 16
-	coord hl, 9, 16
+	Coorda 18, 14
+	coord hl, 9, 14
 	ld de, PrinterMenuBoxText
 	call PlaceString
 
+.menuControls
 ;now do menu controls
 	ld a, 1
 	ld [H_AUTOBGTRANSFERENABLED], a
@@ -83,17 +111,28 @@ OpenPrinterMenu::
 
 	ld a, [wCurrentMenuItem]
 	ld [wParentMenuItem], a
+	ld a, [wCurMap]
+	cp ROUTE_19_BEACH_HOUSE
+	jr nz, .fullMenu
+;Beach House menu: Réglages, score, Retour
+	ld a, [wCurrentMenuItem]
 	and a
 	jp z, PCPrintSettings
 	cp $1
 	jp z, PCPrintScore
-	cp $2
+	jp ExitPrinterMenu
+.fullMenu
+;full menu: Réglages, <pkmn>, boîte, Pokédex, diplôme, Retour
+	ld a, [wCurrentMenuItem]
+	and a
+	jp z, PCPrintSettings
+	cp $1
 	jp z, PCPrintMon
-	cp $3
+	cp $2
 	jp z, PCPrintBox
-	cp $4
+	cp $3
 	jp z, PCPrintDex
-	cp $5
+	cp $4
 	jp z, PCPrintDiploma
 	;fall through for exiting (RETOUR)
 ExitPrinterMenu:
@@ -101,6 +140,14 @@ ExitPrinterMenu:
 	ld [wListScrollOffset], a
 	ld hl, wStatusFlags5
 	res 6, [hl]
+;the print handlers and the settings submenu draw their own screens
+;around the menu box: redraw the map view so the menu is drawn over
+;a clean base (the small Beach House menu would otherwise keep pieces
+;of the settings submenu on screen). wOverworldMap is valid here: the
+;handlers reload it before returning.
+	xor a
+	ld [H_AUTOBGTRANSFERENABLED], a
+	call LoadCurrentMapView
 	ret
 LoopPrinterMenu:
 	pop af
@@ -111,17 +158,21 @@ LoopPrinterMenu:
 
 PrinterMenuText:
 	db   "Réglages"
-	next "Imprimer score"
-	next "Imprimer <pkmn>"
-	next "Imprimer boîte"
-	next "Imprimer Pokédex"
-	next "Imprimer Diplôme"
+	next "<pkmn>"
+	next "Boîte"
+	next "Pokédex"
+	next "Diplôme"
+	next "Retour"
+	db "@"
+;Beach House variant
+PrinterMenuTextBeach:
+	db   "Réglages"
+	next "Score"
 	next "Retour"
 	db "@"
 ;max 7 chars: the box number digits are placed at columns 17-18
 PrinterMenuBoxText:
 	db "Boîte n.@"
-
 
 
 ;This is a menu for setting how dark to make the prints
@@ -275,7 +326,8 @@ PrinterMenu_AskPrintConfirm:
 	ret
 
 PCPrint_ConfirmText:
-	text "Imprimer?"
+	text "Imprimer? Sinon"
+	line "ça sera affiché."
 	prompt
 	db "@"
 
