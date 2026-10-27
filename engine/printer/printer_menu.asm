@@ -1,7 +1,8 @@
 ;adding GB_PRINTER
-;The diploma (PRINT DIPLOMA) menu entry is intentionally NOT ported: in
-;this hack, printing is accessed through a dedicated printer NPC instead
-;of the diploma menu.
+;The diploma print is launched from this menu's "Imprimer diplôme" entry
+;(PCPrintDiploma): OUI prints the Champion/Master diploma (PrintDiploma in
+;engine/printer/printer.asm), NON displays the in-game diploma screen
+;(DisplayDiploma in engine/menu/diploma.asm) without transmitting.
 ;The Pokedex entry print is accessed through the "Imprimer Pokédex" menu
 ;entry (PCPrintDex opens the pokedex in printer mode).
 ;Opened with `callba OpenPrinterMenu` from the Beach House printer's script
@@ -20,7 +21,7 @@ OpenPrinterMenu::
 
 	;size of menu text box
 	coord hl, 0, 0
-	ld b, 12
+	ld b, 14 ;7 items now: RETOUR sits at row 14
 	ld c, 17
 	call TextBoxBorder
 	coord hl, 2, 2
@@ -35,7 +36,7 @@ OpenPrinterMenu::
 	inc hl
 	inc hl
 
-	ld a, 5	;number of non-cancel menu items (last one, RETOUR, exits)
+	ld a, 6	;number of non-cancel menu items (last one, RETOUR, exits)
 	ld [hli], a ; wMaxMenuItem
 
 	ld a, A_BUTTON | B_BUTTON
@@ -92,6 +93,8 @@ OpenPrinterMenu::
 	jp z, PCPrintBox
 	cp $4
 	jp z, PCPrintDex
+	cp $5
+	jp z, PCPrintDiploma
 	;fall through for exiting (RETOUR)
 ExitPrinterMenu:
 	pop af
@@ -112,6 +115,7 @@ PrinterMenuText:
 	next "Imprimer <pkmn>"
 	next "Imprimer boîte"
 	next "Imprimer Pokédex"
+	next "Imprimer Diplôme"
 	next "Retour"
 	db "@"
 ;max 7 chars: the box number digits are placed at columns 17-18
@@ -253,9 +257,6 @@ PCPrinterCurrentSettingDisplay:
 	call PlaceString
 	ret
 
-;TODO: a "Imprimer diplôme" entry (this hack's custom Champion/Maître diploma)
-;can be added here once the printer NPC design calls for it.
-
 ;adding GB_PRINTER
 ;Shared print confirmation prompt: OUI = print, NON = display the print
 ;screen without transmitting it (sets wPrinterDisplayOnly, checked by
@@ -327,6 +328,33 @@ PCPrintMon:
 	call LoadGBPal
 	jp LoopPrinterMenu
 
+;print or display the Champion/Master diploma
+PCPrintDiploma:
+	ld hl, PCPrint_ConfirmText
+	call PrinterMenu_AskPrintConfirm
+	jr z, .printDiploma
+	;display only: show the diploma screen without transmitting it
+	;(DisplayDiploma waits for a button press and restores the saved
+	;screen itself). Play the printer music while it is shown, like the
+	;print path and PCPrintScore's display path do.
+	callba Printer_PlayPrinterMusic
+	callba DisplayDiploma
+	callba Printer_PlayMapMusic
+	;DisplayDiploma ran its own whole-screen palette command
+	;(SET_PAL_GENERIC) and re-enabled the overworld sprites on restore:
+	;like PCPrintMon after the portrait screen, regenerate the GBC BG map
+	;attributes of the menu's text window and hide the sprites again (the
+	;script hides them around the printer menu)
+	callba MakeAndTransferOverworldBGMapAttributes_CloseText
+	callba MakeAndTransferOverworldBGMapAttributes_OpenText
+	call ClearSprites
+	xor a
+	ld [wUpdateSpritesEnabled], a
+	call LoadGBPal
+	jp LoopPrinterMenu
+.printDiploma
+	callba PrintDiploma
+	jp LoopPrinterMenu
 
 PCPrintBox:
 	ld hl, PCPrint_ConfirmText

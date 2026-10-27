@@ -1,10 +1,102 @@
-;The diploma print hook (PrintDiploma) is intentionally NOT ported: in this
-;hack, printing is accessed through the Beach House printer
-;(Route19BeachHouseText_Printer in scripts/Route19BeachHouse.asm), which
-;opens the printer menu (engine/printer/printer_menu.asm).
+;The diploma print (PrintDiploma below) prints this hack's Champion/Master
+;diploma in two sheets, like the Yellow diploma print: the top page (the
+;same screen the in-game DisplayDiploma shows, with this hack's texts),
+;then the Yellow bottom page (Pikachu, CONGRATULATIONS!, play time, Mew).
+;It is launched from the printer menu's "Imprimer diplôme" entry
+;(PCPrintDiploma in engine/printer/printer_menu.asm).
 ;The Pokedex entry print below (PrintPokedexEntry) is called from the
 ;printer-mode pokedex side menu (.chosePrint in engine/menu/pokedex.asm),
 ;opened through the printer menu's "Imprimer Pokédex" entry.
+;adding GB_PRINTER
+;Print the Champion/Master diploma to the GB Printer in two sheets, like
+;the Yellow diploma print (PrintDiploma in pokeyellow): the top page drawn
+;by the shared PrepareDiplomaScreen (the in-game diploma screen with the
+;Yellow diploma gfx border), then the bottom page drawn by
+;PrepareDiplomaBottomScreen (engine/menu/diploma.asm). The player
+;character is a sprite, so it is not part of the printed tilemap.
+PrintDiploma::
+	xor a
+	ldh [hCanceledPrinting], a
+	call Printer_PlayPrinterMusic
+	;disable overworld tile animations during the transmission: VBlank's
+	;UpdateMovingBgTiles would corrupt the diploma gfx loaded at vChars2
+	;(the tile patterns are read from VRAM on the fly)
+	ldh a, [hTilesetType]
+	push af
+	xor a
+	ldh [hTilesetType], a
+	;sheet 1: the diploma screen itself. The bottom page always follows,
+	;so keep the frame open and feed the paper before only (like the
+	;first dex sheet and PrintPCBox's first page)
+	callba PrepareDiplomaScreen
+	call EnableLCD
+	ld b, SET_PAL_GENERIC
+	call RunPaletteCommand
+	call Delay3
+	call GBPalNormal
+	ldh a, [rIE]
+	push af
+	xor a
+	ldh [rIF], a
+	ld a, $9
+	ldh [rIE], a
+	call StartTransmission_Send9Rows
+	ld a, $10
+	ld [wcae2], a
+	call Printer_CopyTileMapToPrinterTileBuffer
+	call Func_e8dfb
+	jr c, .quit
+	;sheet 2: the Yellow bottom page (print only). Draw it with the
+	;automatic BG transfer stopped, so the screen keeps showing the top
+	;page while the printer gets the bottom one (like PrintPCBox's pages)
+	call Printer_ResetForNextDexSheet
+	call SaveScreenTilesToBuffer1
+	callba PrepareDiplomaBottomScreen
+	call StartTransmission_Send9Rows
+	ld a, $3 ;last sheet: feed the paper out
+	ld [wcae2], a
+	call Printer_CopyTileMapToPrinterTileBuffer
+	call LoadScreenTilesFromBuffer1
+	call Func_e8dfb
+
+.quit
+	xor a
+	ld [wPrinterConnectionOpen], a
+	ld [wPrinterOpcode], a
+	call Printer_CopyTileMapFromPrinterTileBuffer
+	xor a
+	ldh [rIF], a
+	pop af
+	ldh [rIE], a
+	;clear the instant text flag PrepareDiplomaScreen set (the in-game
+	;DisplayDiploma clears it after its own button wait)
+	ld hl, wStatusFlags5
+	res 6, [hl]
+	;give immediate feedback that the B press was registered: the restore
+	;below takes a few frames, during which the screen would otherwise stay
+	;frozen on the error message with no visible reaction
+	call GBPalWhiteOutWithDelay3
+	;restore the palettes, the map view and the tile patterns the diploma
+	;screens replaced at vChars2 (the Yellow diploma gfx overwrite the
+	;whole tile area), like the other print routines do
+	call RunDefaultPaletteCommand
+	call ReloadMapAfterPrinter
+	;the diploma screen is still in wTileMap: redraw the map view into it
+	;like the text engine's CloseTextDisplay does when a text ends, so
+	;the printer menu is not redrawn over leftover diploma tiles
+	xor a
+	ldh [H_AUTOBGTRANSFERENABLED], a
+	call LoadCurrentMapView
+	callba MakeAndTransferOverworldBGMapAttributes_CloseText
+	callba MakeAndTransferOverworldBGMapAttributes_OpenText
+	call ReloadMapSpriteTilePatterns
+	call ReloadTilesetTilePatterns
+	call Printer_PlayMapMusic
+	call LoadGBPal
+	pop af
+	ldh [hTilesetType], a
+	ret
+
 ;This hack has the Pikachu's Beach minigame: the high score print below uses
 ;PrepareSurfingMinigameHighScoreScreen (engine/pikachus_beach.asm), this
 ;hack's own version of shin's Printer_PrepareSurfingMinigameHighScoreTileMap.
