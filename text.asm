@@ -2611,6 +2611,7 @@ INCLUDE "text/maps/vermilion_pokecenter.asm"
 INCLUDE "text/maps/fan_club.asm"
 INCLUDE "text/maps/vermilion_mart.asm"
 INCLUDE "text/maps/vermilion_gym_1.asm"
+INCLUDE "text/maps/CeruleanPrinter.asm"
 
 
 SECTION "Text 8", ROMX, BANK[TEXT_8]

@@ -208,23 +208,6 @@ Route19BeachHouseText_Poster2:
 
 Route19BeachHouseText_Printer:
 	TX_ASM
-	ld hl, .wantToPrintText
-	call PrintText
-	call YesNoChoice
-	ld a, [wCurrentMenuItem]
-	and a
-	jr z, .printScore
-
-	xor a
-	ld [wUpdateSpritesEnabled], a
-	callba DisplaySurfingMinigameHighScoreScreen
-	ld a, $1
-	ld [wUpdateSpritesEnabled], a
-	ld a, 1
-	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	jp TextScriptEnd
-
-.printScore
 	; open the GB Printer menu, then redraw the map view
 	xor a
 	ld [wUpdateSpritesEnabled], a
@@ -232,12 +215,9 @@ Route19BeachHouseText_Printer:
 	callba ReloadMapAfterPrinter
 	ld a, $1
 	ld [wUpdateSpritesEnabled], a
-	xor a
+	;the menu is the whole interaction: close the dialogue box right
+	;away instead of waiting for one more button press (mirrors the
+	;NON branch above)
+	ld a, 1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	jp TextScriptEnd
-
-.wantToPrintText
-	text "Imprimer le"
-	line "score?"
-	prompt
-	db "@"
