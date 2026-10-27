@@ -244,9 +244,12 @@ PrintFanClubPortrait:
 	call Printer_PlayMapMusic
 	ret
 
-;Print the pokedex data page of the pokemon in [wPokedexNum], drawn on
-;screen exactly like the pokedex Info option (DrawDexEntryOnScreen), then
-;transmit it to the GB Printer. Called from the printer-mode pokedex side
+;Print the pokedex entry of the pokemon in [wPokedexNum] to the GB Printer,
+;like the pokedex print in Pokemon Yellow: the data page is printed once
+;with BOTH description pages stacked below it (no blank row between
+;them), then the base stats page (the Info screen's third page) as a
+;second sheet. Seen-only pokemon have no description or stats: their
+;data page is printed alone. Called from the printer-mode pokedex side
 ;menu (.chosePrint in engine/menu/pokedex.asm).
 PrintPokedexEntry:
 	xor a
@@ -273,33 +276,89 @@ PrintPokedexEntry:
 	pop af
 	ld [wPokedexNum], a
 	callba DrawDexEntryOnScreen
-	;only owned pokemon have height, weight and a description
-	jr nc, .skipFlavorText
+	jr nc, .notOwned
+	;owned: the printout continues with the stats sheet, so keep the
+	;frame open: replace the data page's bottom border line with plain
+	;side border tiles, the frame closes on the stats sheet after the
+	;stats block
+	;hl must survive this fixup: it holds the description pointer that
+	;DrawDexEntryOnScreen returned and PrintDexFlavorTextSilent takes
+	;as input (clobbering it makes the silent reader copy the text from
+	;a garbage far address)
+	push hl
+	coord hl, 1, 17
+	ld bc, SCREEN_WIDTH - 2
+	ld a, " "
+	call FillMemory
+	ld a, $66
+	Coorda 0, 17
+	ld a, $67
+	Coorda 19, 17
+	pop hl
+	;draw the data page once with both description pages stacked below it
+	;(see PrintDexFlavorTextSilent)
 	call PrintDexFlavorTextSilent
-.skipFlavorText
 	ldh a, [rIE]
 	push af
 	xor a
 	ldh [rIF], a
 	ld a, $9
 	ldh [rIE], a
-	call StartTransmission_Send9Rows
-	ld a, $13
-	ld [wcae2], a
-	call Printer_CopyTileMapToPrinterTileBuffer
-	call Printer_ResetJoypadHRAM
-.loop
-	call JoypadLowSensitivity
-	call Printer_CheckPressingB
+	;sheet 1: data page + both description pages. The stats sheet always
+	;follows, so feed the paper before only (like PrintPCBox's first page)
+	ld a, $10
+	ld c, 9 ;full 18-row sheet
+	call Printer_SendDexSheet
 	jr c, .quit
-	ld a, [wPrinterSendState]
-	bit 7, a
-	jr nz, .quit
-	call PrinterTransmissionJumptable
-	call GBPrinter_CheckForErrors
-	call GBPrinter_UpdateStatusMessage
-	call DelayFrame
-	jr .loop
+	;sheet 2: the base stats page continues the printout below the
+	;description, and the frame closes around it (the data page is not
+	;redrawn: it was printed once, above). The stats block is drawn at
+	;the top of the sheet: the first sheet's blank last row separates
+	;the description from the stats
+	call Printer_ResetForNextDexSheet
+	ld a, [wPokedexNum]
+	ld [wd0b5], a
+	call GetMonHeader ;reload the mon header: DrawDexEntryOnScreen is not called again
+	call ClearScreen
+	;continue the frame's side borders, then close it under the stats
+	;block (same tiles as the data page)
+	coord hl, 0, 0
+	ld de, SCREEN_WIDTH
+	lb bc, $66, 7
+	call DrawTileLine
+	coord hl, 19, 0
+	ld de, SCREEN_WIDTH
+	lb bc, $67, 7
+	call DrawTileLine
+	coord hl, 0, 7
+	ld de, 1 ;step right: DrawTileLine draws the closing line horizontally
+	lb bc, $6f, SCREEN_WIDTH
+	call DrawTileLine
+	ld a, $6c
+	Coorda 0, 7
+	ld a, $6e
+	Coorda 19, 7
+	callba DrawDexEntryStatsOnScreen
+	;the sheet uses exactly rows 0-7 (stats block + closing frame
+	;line): transmit those 8 rows instead of a full 18-row sheet, so
+	;the printout ends right after the frame and the next printout
+	;follows on the paper without a blank gap (packets are 2 rows, so
+	;a partial sheet's row count must be even)
+	ld c, 4
+	ld a, $3 ;last sheet: feed the paper out (like PrintPCBox's last page)
+	call Printer_SendDexSheet
+	jr .quit
+.notOwned
+	;seen only: no description or base stats, print the data page alone
+	ldh a, [rIE]
+	push af
+	xor a
+	ldh [rIF], a
+	ld a, $9
+	ldh [rIE], a
+	ld a, $13
+	ld c, 9 ;full 18-row sheet
+	call Printer_SendDexSheet
 
 .quit
 	xor a
@@ -331,25 +390,25 @@ PrintPokedexEntry:
 ;that waits for a button press: normal on the Info screen, but it has no
 ;place on a print screen, and running the full text engine from the print
 ;path (never exercised before this port) leaves garbage sounds or crashes.
+;Like the Pokemon Yellow print, the two description pages are stacked on
+;the same sheet below the data page with no blank row between them
+;(rows 11-16: 3 rows + 3 rows), so the sheet's last row stays blank as
+;the separator line before the stats sheet.
 ;hl = the description pointer returned by DrawDexEntryOnScreen (a TX_FAR
 ;in the pokedex code bank).
 PrintDexFlavorTextSilent:
-	ld a, [H_LOADEDROMBANK]
-	push af
-	ld a, BANK(Pokedex_PrintFlavorTextAtRow11)
-	ld [H_LOADEDROMBANK], a
-	ld [MBC1RomBank], a
-	;read the TX_FAR: 17 <ptr lo> <ptr hi> <bank>
-	inc hl
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a ;de = far text address
-	ld a, [hli]
-	ld [H_LOADEDROMBANK], a
-	ld [MBC1RomBank], a ;switch to the text's bank
-	ld l, e
-	ld h, d ;hl = far text
+	;Fetch the description data through a far call. The TX_FAR bytes and
+	;the text data live in other banks, and the bank switches must run
+	;from the home bank: this routine is banked code, and writing
+	;MBC1RomBank here would remap the $4000-$7FFF window under the CPU's
+	;feet, so the next instruction would be fetched from the newly mapped
+	;bank (garbage) - the original implementation crashed exactly here.
+	;callba clobbers hl and bc, so the TX_FAR address is passed in de.
+	ld d, h
+	ld e, l
+	callba Pokedex_CopyDexEntryTextToBuffer
+	;process the WRAM copy: no bank is switched while the loop runs
+	ld hl, wPrinterTileBuffer
 	coord de, 1, 11 ;de = start of row 11 in the tilemap
 	ld c, e
 	ld b, d ;bc = current destination
@@ -360,11 +419,13 @@ PrintDexFlavorTextSilent:
 	cp $5F
 	jr z, .dexEnd ;"dex": end of entry, draw the period
 	cp $48
-	jr z, .done ;"bage": the rest is the second page, the print shows page 1
+	jr z, .skipRow ;"bage": the second description page continues on the next row
 	cp $4E
 	jr z, .nextRow ;"next": move to the next row
 	cp $00
 	jr z, .loop ;"text" command byte, skip
+	cp $54
+	jr z, .poke ;"#": dictionary code expanded to "Poké" (see below)
 	ld [bc], a ;draw the character
 	inc bc
 	jr .loop
@@ -378,13 +439,72 @@ PrintDexFlavorTextSilent:
 	ld c, e
 	ld b, d
 	jr .loop
+.skipRow
+	;"bage" only marks the second description page: stack it right
+	;below the first page with no blank row between them, so advance
+	;to the next row like the "next" code does (the description then
+	;ends one row earlier, and the first sheet's last row stays blank
+	;as the separator before the stats sheet)
+	ld a, e
+	add SCREEN_WIDTH
+	ld e, a
+	jr nc, .skipRowNoCarry
+	inc d
+.skipRowNoCarry
+	ld c, e
+	ld b, d
+	jr .loop
 .dexEnd
 	ld a, "."
 	ld [bc], a
 .done
-	pop af
-	ld [H_LOADEDROMBANK], a
-	ld [MBC1RomBank], a
+	ret
+.poke
+	;"#" is a text engine dictionary code (dict $54, PokeChar in
+	;home/text.asm): the Info screen's text engine expands it to
+	;"Poké", the printout must show the same thing
+	ld a, "P"
+	ld [bc], a
+	inc bc
+	ld a, "o"
+	ld [bc], a
+	inc bc
+	ld a, "k"
+	ld [bc], a
+	inc bc
+	ld a, "é"
+	ld [bc], a
+	inc bc
+	jr .loop
+
+;Send the current wTileMap to the printer as one dex print sheet.
+;a = the paper feed byte for wcae2: $10 feed before (first sheet), $00 no
+;feed (middle sheets), $03/$13 feed after (last/only sheet), like the
+;PrintPCBox pages. c = the number of 2-row packets to transmit: 9 for a
+;full 18-row sheet, fewer for a short sheet (the stats sheet prints only
+;the rows it uses, so the next printout follows on the paper without a
+;large blank gap). Returns carry if the player cancelled with B.
+Printer_SendDexSheet:
+	ld [wcae2], a
+	ld a, c
+	call Printer_StartTransmission
+	call Printer_CopyTileMapToPrinterTileBuffer
+	call Func_e8dfb
+	ret
+
+;Reset the printer connection between two dex print sheets, and let the
+;printer breathe for a moment (the same reset PrintPCBox does between its
+;pages). Stop the automatic BG transfer too, so the next sheet is not
+;shown half-drawn while it is being redrawn; the status message box drawn
+;during the next transmission re-enables it.
+Printer_ResetForNextDexSheet:
+	xor a
+	ld [wPrinterConnectionOpen], a
+	ld [wPrinterOpcode], a
+	ld c, 12
+	call DelayFrames
+	xor a
+	ldh [H_AUTOBGTRANSFERENABLED], a
 	ret
 
 ;Show the Fan Club portrait print screen without transmitting it to the
