@@ -536,7 +536,12 @@ INCLUDE "data/maps/headers/RuggedRoad.asm"
 INCLUDE "data/maps/headers/UndergroundPathWestEastCasino.asm"
 INCLUDE "data/maps/headers/ForgottenTownHouses.asm"
 INCLUDE "data/maps/headers/SaffronUniversity.asm"
+
 INCLUDE "data/maps/headers/CeruleanPrinter.asm"
+INCLUDE "scripts/CeruleanPrinter.asm"
+INCLUDE "data/maps/objects/CeruleanPrinter.asm"
+CeruleanPrinterBlocks: INCBIN "maps/CeruleanPrinter.blk"
+
 INCLUDE "data/maps/headers/CeruleanMelanieHouse.asm"
 INCLUDE "data/maps/headers/ForgottenDungeon1F.asm"
 INCLUDE "data/maps/headers/ForgottenDungeonB1F.asm"
@@ -2300,3 +2305,10 @@ StatsGraphicsEnd::
 
 KeysLogoGraphics:: INCBIN "gfx/tiles/keys_logo.2bpp"
 KeysLogoGraphicsEnd::
+
+SECTION "GB Printer", ROMX
+
+INCLUDE "engine/printer/serial.asm"
+INCLUDE "engine/printer/printer.asm"
+INCLUDE "engine/printer/printer2.asm"
+INCLUDE "engine/printer/printer_menu.asm"

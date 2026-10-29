@@ -119,7 +119,7 @@ ENDM
 	; AUDIO_4
 	music_const MUSIC4_FIRST_ENTRY,            Music_Audio4Start
 	music_const MUSIC_TRADE_SONG,              Music_TradeSong
-    music_const MUSIC_TRADE_SONG_L,            Music_TradeSong_L
+	music_const MUSIC_TRADE_SONG_L,            Music_TradeSong_L
 	music_const MUSIC_TRADE_SONG_R,            Music_TradeSong_R
 	music_const MUSIC_SURFING_PIKACHU,         Music_SurfingPikachu
 	music_const MUSIC_MEET_JESSIE_JAMES,       Music_MeetJessieJames
@@ -130,6 +130,7 @@ ENDM
 	music_const MUSIC_REST_PALLET,             Music_RestPallet
 	music_const MUSIC_ROUTE_3_EARLY,           Music_Route3Early
 	music_const MUSIC_SURFING_PIKACHU_NO_INTRO,Music_SurfingPikachuNoIntro
+	music_const MUSIC_GB_PRINTER,              Music_GBPrinter
 	music_const MUSIC4_END,                    Music_Audio4End
 
 	; AUDIO_1 AUDIO_2 AUDIO_3 AUDIO_4

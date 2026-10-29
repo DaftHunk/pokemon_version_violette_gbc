@@ -30,7 +30,7 @@ _LighthouseText_Surfboard::
 	cont "#mon!"
 	done
 
-_LighthouseText_SurfboardNoRoomText::
+_LighthouseText_NoRoom::
 	text "Ton inventaire"
 	line "est plein."
 	done

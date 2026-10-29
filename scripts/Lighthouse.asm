@@ -36,7 +36,7 @@ LighthouseText_Keeper:
 	ld hl, LighthouseText_Surfboard
 	jr .endScript
 .noSpace
-	ld hl, LighthouseText_SurfboardNoRoomText
+	ld hl, LighthouseText_NoRoom
 	jr .endScript
 
 LighthouseText_KeeperQuest:
@@ -56,8 +56,8 @@ LighthouseText_Surfboard:
 	TX_FAR _LighthouseText_Surfboard
 	db "@"
 
-LighthouseText_SurfboardNoRoomText:
-	TX_FAR _LighthouseText_SurfboardNoRoomText
+LighthouseText_NoRoom:
+	TX_FAR _LighthouseText_NoRoom
 	db "@"
 
 LighthouseText_Trade:

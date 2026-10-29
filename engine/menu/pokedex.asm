@@ -36,7 +36,16 @@ ShowPokedexMenu:
 	inc hl
 	ld a, 6
 	ld [hli], a ; max menu item ID
+	ld a, [wPrinterPokedexMode]
+	and a
+	jr nz, .printerModeWatchedKeys
 	ld [hl], D_LEFT | D_RIGHT | B_BUTTON | A_BUTTON | SELECT | START ; PureRGBnote: ADDED: track the SELECT and START buttons in order to trigger new functions
+	jr .afterWatchedKeys
+.printerModeWatchedKeys
+	;printer mode: SELECT (town map) and START (movedex) would leave the
+	;pokedex opened from the printer menu, don't watch them
+	ld [hl], D_LEFT | D_RIGHT | B_BUTTON | A_BUTTON
+.afterWatchedKeys
 	call HandlePokedexListMenu
 	jr c, .goToSideMenu ; if the player chose a pokemon from the list
 	cp 1
@@ -109,7 +118,14 @@ HandlePokedexSideMenu:
 	xor a
 	ld [hli], a ; current menu item ID
 	inc hl
+	ld a, [wPrinterPokedexMode]
+	and a
+	jr z, .normalMaxMenuItem
+	ld a, 2 ; printer mode: Info, Prnt, Ret
+	jr .setMaxMenuItem
+.normalMaxMenuItem
 	ld a, 4
+.setMaxMenuItem
 	ld [hli], a ; max menu item ID
 	ld a, A_BUTTON | B_BUTTON
 	ld [hli], a ; menu watched keys (A button and B button)
@@ -124,6 +140,17 @@ HandlePokedexSideMenu:
 	ld a, [wCurrentMenuItem]
 	and a
 	jr z, .choseData
+	ld a, [wPrinterPokedexMode]
+	and a
+	jr z, .normalMenuDispatch
+	;printer mode: 1 = Prnt, 2 = Ret (quit the pokedex)
+	ld a, [wCurrentMenuItem]
+	dec a
+	jp z, .chosePrint
+	ld b, 1
+	jr .exitSideMenu
+.normalMenuDispatch
+	ld a, [wCurrentMenuItem]
 	dec a
 	jr z, .choseCry
 	dec a
@@ -131,7 +158,7 @@ HandlePokedexSideMenu:
 	dec a
 	jr z, .choseCapa
 	dec a
-	jr z, .choseCSCT
+	jp z, .choseCSCT
 .exitSideMenu
 	pop af
 	ld [wDexMaxSeenMon], a
@@ -152,6 +179,11 @@ HandlePokedexSideMenu:
 	ret
 
 .buttonBPressed
+	ld a, [wPrinterPokedexMode]
+	and a
+	jr z, .notPrinterModeB
+	ld b, 1 ; printer mode: B button quits the pokedex back to the printer menu
+.notPrinterModeB
 	push bc
 	coord hl, 15, 8
 	ld de, 20
@@ -179,7 +211,7 @@ HandlePokedexSideMenu:
 .choseCry
 	ld a, [wPokedexNum]
 	call PlayCry
-	jr .handleMenuInput
+	jp .handleMenuInput
 
 .choseArea
 	predef LoadTownMap_Nest ; display pokemon areas
@@ -199,19 +231,31 @@ HandlePokedexSideMenu:
 	ld [wMoveListCounter], a
 	call ShowPokedexCapa
 	ld b, 0
-	jr .exitSideMenu
+	jp .exitSideMenu
 
 ; show the list of TMs and HMs the pokemon can learn
 .choseCSCT
 	call ShowPokedexCSCT
 	ld b, 0
-	jr .exitSideMenu
+	jp .exitSideMenu
+
+; print the pokedex data page of the selected pokemon (printer mode only):
+; PrintPokedexEntry clears the screen on exit, so the pokedex redraw that
+; follows (b = 0) starts from a clean screen
+.chosePrint
+	callba PrintPokedexEntry
+	ld b, 0
+	jp .exitSideMenu
 
 ; handles the list of pokemon on the left of the pokedex screen
 ; sets carry flag if player presses A, unsets carry flag if player presses B
 HandlePokedexListMenu:
 	xor a
 	ldh [H_AUTOBGTRANSFERENABLED], a
+	;printer mode: SELECT and START are disabled, don't draw their prompts
+	ld a, [wPrinterPokedexMode]
+	and a
+	jr nz, .noSelectPrompt
 ;;;;;;;;;;; PureRGBnote: ADDED: If we got the town map, draw the "SELECT: MAP" prompt at the very bottom
 	CheckEvent EVENT_GOT_TOWN_MAP
 	jr z, .movedexPrompt
@@ -286,7 +330,14 @@ HandlePokedexListMenu:
 	ld de, PokedexContentsText
 	call PlaceString
 	coord hl, 16, 8
+	ld a, [wPrinterPokedexMode]
+	and a
+	jr z, .normalMenuItemsText
+	ld de, PokedexPrinterMenuItemsText
+	jr .placeMenuItemsText
+.normalMenuItemsText
 	ld de, PokedexMenuItemsText
+.placeMenuItemsText
 	call PlaceString
 
 ; find the lowest pokedex number among the pokemon the player has seen
@@ -522,6 +573,12 @@ PokedexMenuItemsText:
 	next "Zone"
 	next "Capa"
 	next "CT@"
+
+;printer mode side menu options: Info, Impr, Ret
+PokedexPrinterMenuItemsText:
+	db   "Info"
+	next "Impr"
+	next "Ret@"
 
 ; tests if a pokemon's bit is set in the seen or owned pokemon bit fields
 ; INPUT:
@@ -1662,6 +1719,125 @@ Pokedex_PrintFlavorTextAtBC:
 	call TextCommandProcessor ; print pokedex description text
 	xor a
 	ldh [hClearLetterPrintingDelayFlags], a
+	ret
+
+;Copy the first page of the description text of the TX_FAR command at de
+;(in this bank) into wPrinterTileBuffer, a scratch area that the print
+;flow overwrites before use. Called through callba from
+;PrintDexFlavorTextSilent (engine/printer/printer.asm): the TX_FAR bytes
+;live in this bank and the text data in another bank, and both bank
+;switches must run from the home bank (callba's Bankswitch and FarCopyData
+;both do it safely). A description page is 3 rows (about 60 bytes with
+;control codes), so 160 bytes always cover both description pages up to
+;the "dex" terminator.
+;in: de = TX_FAR address
+Pokedex_CopyDexEntryTextToBuffer::
+	ld h, d
+	ld l, e
+	inc hl
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a ;de = far text address
+	ld a, [hli] ;a = far text bank
+	ld h, d
+	ld l, e ;hl = far text address
+	ld de, wPrinterTileBuffer
+	ld bc, 160
+	call FarCopyData ;copy bc bytes from a:hl to de
+	ret
+
+;Draw the pokedex base stats page (base stats and types, the Info screen's
+;third page) at the top of a blank tilemap, as the continuation of the
+;pokedex printout: PrintPokedexEntry prints it on the sheet that follows
+;the data page + description sheet, without redrawing the data page.
+;The mon header must be loaded first (GetMonHeader with [wd0b5] = species).
+;Called through callba from PrintPokedexEntry (engine/printer/printer.asm).
+DrawDexEntryStatsOnScreen::
+	;same layout as the Info screen's .printBaseStats / .printMonTypes,
+	;drawn at the top of the sheet (rows 0-6): the description sheet's
+	;blank last row acts as the separator line above the block, and
+	;the frame closes under the block (see PrintPokedexEntry)
+	coord hl, 9, 0
+	ld de, BaseStatsText
+	call PlaceString
+	coord hl, 12, 1
+	ld de, HPText
+	call PlaceString
+	ld de, wMonHBaseHP
+	coord hl, 15, 1
+	lb bc, 1, 3
+	call PrintNumber
+	coord hl, 11, 2
+	ld de, AtkText
+	call PlaceString
+	ld de, wMonHBaseAttack
+	coord hl, 15, 2
+	lb bc, 1, 3
+	call PrintNumber
+	coord hl, 11, 3
+	ld de, DefText
+	call PlaceString
+	ld de, wMonHBaseDefense
+	coord hl, 15, 3
+	lb bc, 1, 3
+	call PrintNumber
+	coord hl, 11, 4
+	ld de, SpdText
+	call PlaceString
+	ld de, wMonHBaseSpeed
+	coord hl, 15, 4
+	lb bc, 1, 3
+	call PrintNumber
+	coord hl, 11, 5
+	ld de, SpcText
+	call PlaceString
+	ld de, wMonHBaseSpecial
+	coord hl, 15, 5
+	lb bc, 1, 3
+	call PrintNumber
+	coord hl, 9, 6
+	ld de, TotalText
+	call PlaceString
+	;calculate the base stat total to print it
+	ld b, 0
+	ld a, [wMonHBaseHP]
+	ld hl, 0
+	ld c, a
+	add hl, bc
+	ld a, [wMonHBaseAttack]
+	ld c, a
+	add hl, bc
+	ld a, [wMonHBaseDefense]
+	ld c, a
+	add hl, bc
+	ld a, [wMonHBaseSpeed]
+	ld c, a
+	add hl, bc
+	ld a, [wMonHBaseSpecial]
+	ld c, a
+	add hl, bc
+	ld a, h
+	ld [wSum], a
+	ld a, l
+	ld [wSum+1], a
+	ld de, wSum
+	coord hl, 15, 6
+	lb bc, 2, 3
+	call PrintNumber
+	;print the types (same layout as the Info screen's .printMonTypes)
+	coord hl, 1, 1
+	ld de, DexType1Text
+	call PlaceString
+	coord hl, 2, 2
+	predef PrintMonType
+	coord hl, 2, 4
+	ld a, [hl]
+	cp " "
+	ret z ;don't print TYPE2/ if the pokemon has one type only
+	coord hl, 1, 3
+	ld de, DexType2Text
+	call PlaceString
 	ret
 
 HeightWeightText:

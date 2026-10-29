@@ -657,8 +657,7 @@ DONS_OBJETS_MANUELS = {
     ("PewterMuseum1F", 5): "OLD_AMBER",
     ("CeladonDiner", 5): "COIN_CASE",
     ("BillsHouse", 1): "S_S_TICKET",
-    ("CeladonCity", 5): "TM37_SLUDGE_BOMB",
-    ("CeladonMansion3F", 4): "SURFBOARD",
+    ("CeladonCity", 5): "TM37_SLUDGE_BOMB",   
     ("CeladonMart3F", 1): "TM18_COUNTER",
     ("CeruleanBikeShop", 1): "BICYCLE",
     ("PewterGym", 1): "TM34_BIDE",
@@ -787,6 +786,8 @@ LIBELLES_PNJ_MANUELS = {
     ("SSAnne1F", 1): "Serveur",
     ("SSAnneKitchen", 8): "Organisateur du Tournoi",
     ("UndergroundPathNorthSouth", 1): "Cilque",
+    ("CeruleanPrinter", 1): "Imprimeur",
+    ("CeladonMansion3F", 4): "Certificat",
 }
 
 # Catégories de la légende : « Rencontres » = dresseurs + rencontres

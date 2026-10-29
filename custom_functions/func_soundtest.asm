@@ -1,4 +1,4 @@
-NUM_MUSIC_TRACKS EQU 54
+NUM_MUSIC_TRACKS EQU 55
 
 DisplaySoundTestMenu:
 	ld a, SFX_PRESS_AB
@@ -191,6 +191,7 @@ SoundTestTrackList:
 	dw Title_Music_MeetJessieJames, (MUSIC_MEET_JESSIE_JAMES << 8) | Bank(Music_MeetJessieJames)
 	dw Title_Music_GiovanniSong, (MUSIC_GIOVANNI_SONG << 8) | Bank(Music_GiovanniSong)
 	dw Title_Music_YellowIntro, (MUSIC_YELLOW_INTRO << 8) | Bank(Music_YellowIntro)
+	dw Title_Music_GBPrinter, (MUSIC_GB_PRINTER << 8) | Bank(Music_GBPrinter)
 	dw Title_Music_BattleVictoryGuide, (MUSIC_BATTLE_VICTORY_GUIDE << 8) | Bank(Music_BattleVictoryGuide)
 	dw Title_Music_DiglettsCave, (MUSIC_DIGLETTS_CAVE << 8) | Bank(Music_DiglettsCave)
 	dw Title_Music_RestPallet, (MUSIC_REST_PALLET << 8) | Bank(Music_RestPallet)
@@ -247,6 +248,7 @@ Title_Music_SurfingPikachu: db "Surfing Pikachu@"
 Title_Music_MeetJessieJames: db "Meet Jessie James@"
 Title_Music_GiovanniSong: db "Giovanni@"
 Title_Music_YellowIntro: db "Yellow Intro@"
+Title_Music_GBPrinter: db "GB Printer@"
 Title_Music_BattleVictoryGuide: db "Victory Guide@"
 Title_Music_DiglettsCave: db "Digletts Cave@"
 Title_Music_RestPallet: db "Rest Pallet@"

@@ -3,6 +3,12 @@ Serial::
 	push bc
 	push de
 	push hl
+
+	;adding GB_PRINTER
+	ld a, [wPrinterConnectionOpen]
+	bit 0, a
+	jp nz, PrinterSerial_RetI
+
 	ld a, [hSerialConnectionStatus]
 	inc a
 	jr z, .connectionNotYetEstablished

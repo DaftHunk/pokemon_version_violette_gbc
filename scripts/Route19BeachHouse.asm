@@ -5,9 +5,10 @@ Route19BeachHouseScript:
 Route19BeachHouseTextPointers:
 	dw Route19BeachHouseText_Fisher
 	dw Route19BeachHouseText_Pikachu
-	dw Route19BeachHouseText_Poster1
-	dw Route19BeachHouseText_Poster2
-	dw Route19BeachHouseText_Printer
+	dw Route19BeachHouseSign_Poster1
+	dw Route19BeachHouseSign_Poster2
+	dw Route19BeachHouseSign_Printer
+	dw Route19BeachHouseSign_Shelves
 
 Route19BeachHouseText_Fisher:
 	TX_ASM
@@ -56,6 +57,11 @@ Route19BeachHouseText_Fisher:
 	line "va? Délire!!!"
 	cont "Toi aussi t'es"
 	cont "Surfeur!"
+
+	para "Tu as donc"
+	line "le droit de"
+	cont "surfer avec"
+	cont "le DAVE!"
 
 	para "Réussi à faire un"
 	line "score de 3000 et"
@@ -176,6 +182,8 @@ Route19BeachHouseText_Pikachu:
 	callba DisplayTextIDInit
 	xor a
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	ld hl, .byeSurfText
+	call PrintText
 	jp TextScriptEnd
 
 .wantToSurfText
@@ -190,6 +198,10 @@ Route19BeachHouseText_Pikachu:
 	text "Dave: PIKA CHU."
 	done
 	db "@"
+.byeSurfText
+	text "Dave: Pika!"
+	done
+	db "@"
 .noSurfboardText
 	text "Dave: PIKA CHU."
 	line "Il pointe le"
@@ -198,41 +210,40 @@ Route19BeachHouseText_Pikachu:
 	done
 	db "@"
 
-Route19BeachHouseText_Poster1:
-	TX_FAR _Route19BeachHouseText_Poster1
+Route19BeachHouseSign_Poster1:
+	TX_FAR _Route19BeachHouseSign_Poster1
 	db "@"
 
-Route19BeachHouseText_Poster2:
-	TX_FAR _Route19BeachHouseText_Poster2
+Route19BeachHouseSign_Poster2:
+	TX_FAR _Route19BeachHouseSign_Poster2
 	db "@"
 
-Route19BeachHouseText_Printer:
+Route19BeachHouseSign_Printer:
 	TX_ASM
-	ld hl, .wantToPrintText
+	;display the PC-style power-on text, then open the printer menu
+	ld hl, .turnedOnPrinterText
 	call PrintText
-	call YesNoChoice
-	ld a, [wCurrentMenuItem]
-	and a
-	jr z, .printScore
-
+	; open the GB Printer menu, then redraw the map view
 	xor a
 	ld [wUpdateSpritesEnabled], a
-	callba DisplaySurfingMinigameHighScoreScreen
+	callba OpenPrinterMenu
+	callba ReloadMapAfterPrinter
 	ld a, $1
 	ld [wUpdateSpritesEnabled], a
+	;the menu is the whole interaction: close the dialogue box right
+	;away instead of waiting for one more button press (mirrors the
+	;NON branch above)
 	ld a, 1
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
 	jp TextScriptEnd
 
-.printScore
-	; TODO Print
-
-	xor a
-	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
-	jp TextScriptEnd
-
-.wantToPrintText
-	text "Imprimer le"
-	line "score?"
+;shown above the printer menu, like the "allume le PC" texts
+.turnedOnPrinterText
+	text "<PLAYER> allume"
+	line "l'imprimante."
 	prompt
+	db "@"
+
+Route19BeachHouseSign_Shelves:
+	TX_FAR _Route19BeachHouseSign_Shelves
 	db "@"

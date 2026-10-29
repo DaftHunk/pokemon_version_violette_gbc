@@ -1,22 +1,47 @@
 
-; The rst vectors are unused.
+; The rst 00 vector holds the _Bankswitch far call used by the
+; callba/callab macros. The $08-$3F vectors are unused, so their space
+; is repurposed for the GB Printer's fixed-address trampolines
+; (adding GB_PRINTER) to keep the home bank's "Main" section from
+; overflowing.
 SECTION "rst 00", ROM0 [$00]
 _Bankswitch::
 	jp Bankswitch
-SECTION "rst 08", ROM0 [$08]
-	rst $38
-SECTION "rst 10", ROM0 [$10]
-	rst $38
-SECTION "rst 18", ROM0 [$18]
-	rst $38
-SECTION "rst 20", ROM0 [$20]
-	rst $38
-SECTION "rst 28", ROM0 [$28]
-	rst $38
-SECTION "rst 30", ROM0 [$30]
-	rst $38
-SECTION "rst 38", ROM0 [$38]
-	rst $38
+;adding GB_PRINTER
+;Fixed ROM0 trampolines for the GB Printer. They must live in ROM0
+;(always mapped) but not inside the "Main" section, which is full.
+; - PrinterSerial_RetI: serial interrupt tail, entered by the hook in
+;   Serial:: (home/serial.asm); never returns to Serial::.
+; - ReloadMapAfterPrinter: called from engine/printer/printer.asm after
+;   printing. Like ReloadMapAfterSurfingMinigame (home/overworld.asm),
+;   it must stay in ROM0 because SwitchToMapRomBank remaps the
+;   $4000-$7FFF window while the CPU keeps executing.
+SECTION "GB Printer home trampolines", ROM0 [$08]
+PrinterSerial_RetI::
+	ldh a, [H_LOADEDROMBANK]
+	push af
+	ld a, BANK(PrinterSerial_)
+	call BankswitchCommon
+	call PrinterSerial_
+	pop af
+	call BankswitchCommon
+	pop hl
+	pop de
+	pop bc
+	pop af
+	reti
+
+ReloadMapAfterPrinter::
+	ld a, [H_LOADEDROMBANK]
+	push af
+	ld a, [wCurMap]
+	call SwitchToMapRomBank
+	call LoadTileBlockMap
+	pop af
+	call BankswitchCommon
+	ret
+
+ASSERT @ <= $40
 
 ; Hardware interrupts
 SECTION "vblank", ROM0 [$40]

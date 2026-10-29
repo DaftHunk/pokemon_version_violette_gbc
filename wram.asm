@@ -438,6 +438,92 @@ wLYOverridesEnd::
 wLYOverridesBuffer:: ; c800
 	ds $100
 wLYOverridesBufferEnd::
+NEXTU
+;adding GB_PRINTER
+;GB Printer transmission data, ported from shinpokered - exactly 1300 bytes,
+;overlapping the overworld map and the minigame SCX overrides; the printer is
+;never used while either of those is live, and the map is reloaded after
+;printing via ReloadMapAfterPrinter
+wPrinterData:: ; c6e8
+wPrinterSendState:: ; c6e8
+
+	ds 1
+wPrinterRowIndex:: ; c6e9
+
+	ds 1
+; Printer data header runs from c6ea to c6ed
+wPrinterDataHeader:: ; c6ea
+	ds 4
+wPrinterChecksum:: ; c6ee
+	dw
+
+UNION
+wPrinterSerialReceived:: ; c6f0
+	ds 1
+wPrinterStatusReceived:: ; c6f1
+; bit 7: set if error 1 (battery low)
+; bit 6: set if error 4 (too hot or cold)
+; bit 5: set if error 3 (paper jammed or empty)
+; if this and the previous byte are both $ff: error 2 (connection error)
+	ds 1
+;These are for temporarily handling printer settings
+wc6f2:: ; c6f2
+	ds 1
+wc6f3:: ; c6f3
+	ds 13
+;filler for this section of the UNION
+; c700
+	ds $270
+NEXTU
+wPrinterSendDataSource1:: ; c6f0
+; two 20-tile buffers
+	ds $140
+wPrinterSendDataSource2::
+	ds $140
+ENDU
+wPrinterSendDataSource1End:: ; c970
+
+wPrinterHandshake:: ; c970
+	ds 1
+wPrinterStatusFlags:: ; c971
+	ds 1
+wHandshakeFrameDelay:: ; c972
+	ds 1
+wPrinterSerialFrameDelay:: ; c973
+	ds 1
+wPrinterSendByteOffset:: ; c974
+	dw
+wPrinterDataSize:: ; c976
+	dw
+wPrinterTileBuffer:: ; c978
+	ds SCREEN_HEIGHT * SCREEN_WIDTH
+wPrinterStatusIndicator:: ; cae0
+	ds 2
+;used for storing commands having to do with printer transmission
+wcae2:: ; cae2
+	ds 1
+wPrinterSettingsTempCopy:: ; cae3
+	ds 17
+wPrinterQueueLength:: ; caf4
+	ds 1
+wPrinterDataEnd:: ; caf5
+
+wPrinterPokedexEntryTextPointer:: ; caf5
+	dw
+
+; caf7
+	ds 2
+
+wPrinterPokedexMonIsOwned:: ; caf9
+	ds 227
+
+;These appear to be for handling vram during printing
+wcbdc:: ; cbdc
+	ds 14
+wcbea:: ; cbea
+	ds 2
+wcbec:: ; cbec
+	ds 16
 ENDU
 
 wRedrawRowOrColumnSrcTiles:: ; cbfc
@@ -3574,11 +3660,33 @@ wMonAreaTypeFlags:: ; dee7
 ; bit 3: the mon has good rod locations
 ; bit 4: the mon has super rod locations
 	ds 1
+ 
+;adding GB_PRINTER
+;GB Printer settings - placed after the last mapped label (deef) so nothing
+;moves, and outside any save block
+wPrinterSettings:: ; dee8
+; bits 0-6: how dark to make the prints
+	ds 1
+wPrinterConnectionOpen:: ; dee9
+; bit 0: a printer transmission is in progress
+	ds 1
+wPrinterOpcode:: ; deea
+; current serial operation, 0 = idle
+	ds 1
+wPrinterDisplayOnly:: ; deeb
+; set while the print screen should only be displayed on screen instead of
+; being transmitted to the GB Printer (NON at the print confirmation prompt)
+	ds 1
+wPrinterPokedexMode:: ; deec
+; set while the pokedex is opened from the printer menu: the side menu
+; shows the printer options (print the selected pokedex entry) instead
+; of the normal ones, and SELECT/START are disabled
+	ds 1
 
 ; saved copy of the RNG seed (4 bytes), written once at boot by Init
 ; and read by RNG_Correction at the main menu. kept outside the saved
 ; MainData block on purpose: never written to SRAM
-wSavedRngSeed:: ; dee8
+wSavedRngSeed:: ; deed
 	ds 4
 
 ; per-map list of item balls: (sprite ID, item ball index) pairs, $FF-terminated

@@ -2315,7 +2315,7 @@ const_value = 0
 	const EVENT_ELITE_4_BEATEN                       ; 908, (D868, bit 0)	;joenote
 	const EVENT_REMATCH_DELAY                        ; 909, (D868, bit 1)
 	const EVENT_RANDOM_TRAINER                       ; 90A, (D868, bit 2)
-	const EVENT_GOT_DEX_DIPLOMA                      ; 90B, (D868, bit 3)
+	const EVENT_GOT_DIPLOMA                          ; 90B, (D868, bit 3)
 	const EVENT_TRAINER_LVL_SCALING                  ; 90C, (D868, bit 4)
 	const EVENT_3_MONS_RANDOM_TRAINER                ; 90D, (D868, bit 5)
 	const EVENT_GENDER_CAUGHT_INDICATOR	             ; 90E, (D868, bit 6)

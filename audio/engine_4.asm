@@ -160,7 +160,11 @@ Audio4_7db03:
 	jr .asm_7db89
 .asm_7db5f
 	ld a, [wSoundID]
-	cp $86
+	;the block below is cry-only setup: it marks all four sfx channel
+	;ids and resurrects stale sfx channel pointers, so it must never
+	;run for regular SFX or music. Bank 4 cries end exactly at
+	;CRY_SFX_END ($86) like banks 1-3, and music starts at $bc.
+	cp CRY_SFX_END
 	jr z, .asm_7db89
 	jr c, .asm_7db6a
 	jr .asm_7db89
