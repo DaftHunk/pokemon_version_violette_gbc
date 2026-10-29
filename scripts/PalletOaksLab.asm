@@ -30,6 +30,7 @@ OaksLabScriptPointers:
 	dw OaksLabScript17
 	dw OaksLabScript18
 	dw OaksLabScript19
+	dw OaksLabScript20
 
 OaksLabScript0:
 	CheckEvent EVENT_OAK_APPEARED_IN_PALLET
@@ -336,16 +337,98 @@ OaksLabScript9:
 	ld a, SPRITE_FACING_UP
 	ld [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
+
+	; Is alternate starters ?
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_ALT_STARTERS, a
+	jr nz, .alternateRivalChoice
+
+	; Is random starters ?
+	CheckEvent EVENT_ENABLE_WILD_RANDOM
+	jr nz, .alternateRivalChoice
+
+	; Else Original Rival behaviour
 	ld a, $e
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_GOT_STARTER
 	xor a
 	ld [wJoyIgnore], a
-
 	ld a, $a
 	ld [wOaksLabCurScript], a
 	ret
+
+.alternateRivalChoice
+	;the rival rejects the mon he took and asks Chen for another one
+	ld hl, OaksLabRivalGrumbleText
+	call PrintText
+	ld a, $5
+	ld [H_SPRITEINDEX], a
+	xor a ; SPRITE_FACING_DOWN
+	ld [hSpriteFacingDirection], a
+	call SetSpriteFacingDirectionAndDelay
+	ld hl, OaksLabChenSpareMonText
+	call PrintText
+	ld hl, OaksLabRivalTakeItText
+	call PrintText
+	;walk the rival to Chen so he gets the spare mon from him
+	ld a, [wRivalStarterBallSpriteIndex]
+	cp $2
+	jr z, .fromLeftBall
+	cp $3
+	jr z, .fromMiddleBall
+	ld de, .RivalToChenFromRightBall
+	jr .moveRivalToChen
+.fromLeftBall
+	ld de, .RivalToChenFromLeftBall
+	jr .moveRivalToChen
+.fromMiddleBall
+	ld de, .RivalToChenFromMiddleBall
+.moveRivalToChen
+	ld a, $1
+	ld [H_SPRITEINDEX], a
+	call MoveSprite
+	ld [wJoyIgnore], a
+
+	SetEvent EVENT_GOT_STARTER
+	SetEvent EVENT_GOT_ALTERNATE_STARTER
+
+	ld a, $14
+	ld [wOaksLabCurScript], a
+	ret
+
+.RivalToChenFromLeftBall
+	db NPC_MOVEMENT_DOWN
+	db NPC_MOVEMENT_LEFT
+	db NPC_MOVEMENT_UP
+	db $FF
+
+.RivalToChenFromMiddleBall
+	db NPC_MOVEMENT_DOWN
+	db NPC_MOVEMENT_LEFT
+	db NPC_MOVEMENT_LEFT
+	db NPC_MOVEMENT_UP
+	db $FF
+
+.RivalToChenFromRightBall
+	db NPC_MOVEMENT_DOWN
+	db NPC_MOVEMENT_LEFT
+	db NPC_MOVEMENT_LEFT
+	db NPC_MOVEMENT_LEFT
+	db NPC_MOVEMENT_UP
+	db $FF
+
+OaksLabRivalGrumbleText:
+	TX_FAR _OaksLabRivalGrumbleText
+	db "@"
+
+OaksLabChenSpareMonText:
+	TX_FAR _OaksLabChenSpareMonText
+	db "@"
+
+OaksLabRivalTakeItText:
+	TX_FAR _OaksLabRivalTakeItText
+	db "@"
 
 OaksLabScript10:
 	ld a, [wYCoord]
@@ -512,6 +595,22 @@ OaksLabScript14:
 	xor a ; ld a, SPRITE_FACING_DOWN
 	ld [wSpriteStateData1 + 9], a
 .done
+	ret
+
+OaksLabScript20:
+	;the rival reached Chen and got the spare mon
+	ld a, [wStatusFlags5]
+	bit 0, a
+	ret nz
+	ld a, $e
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	SetEvent EVENT_GOT_STARTER
+	xor a
+	ld [wJoyIgnore], a
+
+	ld a, $a
+	ld [wOaksLabCurScript], a
 	ret
 
 OaksLabScript15:
@@ -1053,23 +1152,9 @@ OaksLabScript_1d22d:
 	CheckEvent EVENT_GOT_POKEDEX
 	jp z, TextScriptEnd
 
-	ld a, [wPlayerStarter]
-	; if player starter is BULBASAUR chen have SQUIRTLE
-	cp STARTER3
-	jr z, .chenHaveSquirtle
-	; if player starter is SQUIRTLE chen have CHARMANDER
-	cp STARTER2
-	jr z, .chenHaveCharmander
-	; else he have BULBASAUR
-	ld a, STARTER3
-	jr .displayDex
-.chenHaveCharmander
-	ld a, STARTER1
-	jr .displayDex
-.chenHaveSquirtle
-	ld a, STARTER2
-	; fallthrough
-.displayDex
+	; show the dex entry of the mon actually in the last ball
+	; wcf91 still holds its species, randomizer included
+	ld a, [wcf91]
 	call DisplayPokedex
 	jp TextScriptEnd
 

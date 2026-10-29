@@ -287,7 +287,7 @@ _OaksLabChooseMonText::
 
 	para "Mais avec l'âge,"
 	line "il ne m'en reste"
-	cont "plus que 3!"
+	cont "plus beaucoup!"
 	cont "Choisis-en un!"
 	done
 
@@ -311,6 +311,25 @@ _OaksLabLeavingText::
 _OaksLabRivalPickingMonText::
 	text "<RIVAL>: Je"
 	line "prends celui-ci!"
+	done
+
+_OaksLabRivalGrumbleText::
+	text "<RIVAL>: Mais"
+	line "pépé, il est nul"
+	cont "celui-là! J'en"
+	cont "veux un autre!"
+	done
+
+_OaksLabChenSpareMonText::
+	text "Chen: Heu..."
+	line "Eh bien oui, il"
+	cont "m'en reste un"
+	cont "autre mais..."
+	done
+
+_OaksLabRivalTakeItText::
+	text "<RIVAL>: J'le"
+	line "prends!"
 	done
 
 _OaksLabRivalReceivedMonText::

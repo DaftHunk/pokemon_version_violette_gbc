@@ -42,7 +42,7 @@ const_value = 0
 	const EVENT_OAK_APPEARED_IN_PALLET               ; 027, (D74B, bit 7)
 	const EVENT_VIRIDIAN_GYM_OPEN                    ; 028, (D74C, bit 0)
 	const EVENT_GOT_TM42                             ; 029, (D74C, bit 1)
-	const EVENT_02A                                  ; 02A, (D74C, bit 2)
+	const EVENT_GOT_ALTERNATE_STARTER                ; 02A, (D74C, bit 2)
 	const EVENT_02B                                  ; 02B, (D74C, bit 3)
 	const EVENT_02C                                  ; 02C, (D74C, bit 4)
 	const EVENT_02D                                  ; 02D, (D74C, bit 5)

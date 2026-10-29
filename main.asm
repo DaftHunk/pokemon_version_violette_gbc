@@ -324,12 +324,12 @@ INCLUDE "engine/overworld/npc_movement.asm"
 INCLUDE "engine/overworld/doors.asm"
 INCLUDE "engine/overworld/ledges.asm"
 
-
-SECTION "bank7",ROMX,BANK[$7]
-
 INCLUDE "data/maps/headers/CinnabarIsland.asm"
 INCLUDE "data/maps/objects/CinnabarIsland.asm"
 CinnabarIslandBlocks: INCBIN "maps/CinnabarIsland.blk"
+
+
+SECTION "bank7",ROMX,BANK[$7]
 
 INCLUDE "data/maps/headers/Route1.asm"
 INCLUDE "data/maps/objects/Route1.asm"
