@@ -543,6 +543,10 @@ INCLUDE "data/maps/objects/CeruleanPrinter.asm"
 CeruleanPrinterBlocks: INCBIN "maps/CeruleanPrinter.blk"
 
 INCLUDE "data/maps/headers/CeruleanMelanieHouse.asm"
+INCLUDE "scripts/CeruleanMelanieHouse.asm"
+INCLUDE "data/maps/objects/CeruleanMelanieHouse.asm"
+CeruleanMelanieHouseBlocks: INCBIN "maps/CeruleanMelanieHouse.blk"
+
 INCLUDE "data/maps/headers/ForgottenDungeon1F.asm"
 INCLUDE "data/maps/headers/ForgottenDungeonB1F.asm"
 INCLUDE "data/maps/headers/ForgottenDungeonRoof.asm"
@@ -2174,6 +2178,9 @@ WigglytuffSprite:     INCBIN "gfx/sprites/pokemons/wigglytuff.2bpp"
 ZapdosSprite:         INCBIN "gfx/sprites/pokemons/zapdos.2bpp"
 MewSprite:            INCBIN "gfx/sprites/pokemons/mew.2bpp"
 HoohSprite:           INCBIN "gfx/sprites/pokemons/hooh.2bpp"
+BulbasaurSprite:      INCBIN "gfx/sprites/pokemons/bulbasaur.2bpp"
+OddishSprite:         INCBIN "gfx/sprites/pokemons/oddish.2bpp"
+SandshrewSprite:      INCBIN "gfx/sprites/pokemons/sandshrew.2bpp"
 
 
 SECTION "NPC Sprites 4", ROMX

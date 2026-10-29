@@ -670,6 +670,18 @@ SpriteSheetPointerTable:
 	db $c0 ; byte count
 	db BANK(HoohSprite)
 
+	dw BulbasaurSprite
+	db $c0 ; byte count
+	db BANK(BulbasaurSprite)
+
+	dw OddishSprite
+	db $c0 ; byte count
+	db BANK(OddishSprite)
+
+	dw SandshrewSprite
+	db $c0 ; byte count
+	db BANK(SandshrewSprite)
+
 	dw DoduoSprite
 	db $c0 ; byte count
 	db BANK(DoduoSprite)

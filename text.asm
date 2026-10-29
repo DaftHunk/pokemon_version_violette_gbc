@@ -2184,6 +2184,7 @@ INCLUDE "text/maps/route_11_1.asm"
 INCLUDE "text/maps/lighthouse.asm"
 
 
+
 SECTION "Text 5", ROMX, BANK[TEXT_5]
 
 INCLUDE "text/maps/route_11_2.asm"
@@ -2612,6 +2613,7 @@ INCLUDE "text/maps/fan_club.asm"
 INCLUDE "text/maps/vermilion_mart.asm"
 INCLUDE "text/maps/vermilion_gym_1.asm"
 INCLUDE "text/maps/CeruleanPrinter.asm"
+INCLUDE "text/maps/CeruleanMelanieHouse.asm"
 
 
 SECTION "Text 8", ROMX, BANK[TEXT_8]
