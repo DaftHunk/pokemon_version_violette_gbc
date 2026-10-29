@@ -83,23 +83,26 @@ _CeladonMansion3FText8::
 	line "Développement"
 	done
 
-_ReceivedSurfboard::
+_CeladonMansion3FText_ReceivedMistStone::
 	text "<PLAYER> reçoit"
 	line "@"
 	text_ram wStringBuffer
 	text "!@"
 	text_end
 
-_SurfboardText::
+_CeladonMansion3FText_MistStone::
 	text_start
 
-	para "La Planche de"
-	line "Surf te permet"
-	cont "de Surfer sans"
-	cont "#mon!"
+	para "La Pierre Brume"
+	line "est une pierre"
+	cont "mythique!"
+
+	para "Il en existe"
+	line "d'autres dans des"
+	cont "lieux oubliés!"
 	done
 
-_SurfboardNoRoomText::
+_CeladonMansion3FText_NoRoom::
 	text "Ton inventaire"
 	line "est plein."
 	done

@@ -10,8 +10,8 @@ CeladonMansion3FTextPointers:
 	dw GameFreakPCText2
 	dw GameFreakPCText3
 	dw GameFreakSignText
-	dw SurfboardText
-	dw SurfboardNoRoomText
+	dw CeladonMansion3FText_MistStone
+	dw CeladonMansion3FText_NoRoom
 
 ProgrammerText:
 	TX_FAR _ProgrammerText
@@ -57,15 +57,15 @@ DirectorText:
 	TX_ASM
 	callab DisplayDiploma
 	
-	CheckEvent EVENT_GOT_DEX_DIPLOMA
+	CheckEvent EVENT_GOT_DIPLOMA
 	jr nz, .scriptEnd
 	
 	;dafthunk : Added award #53
-	lb bc, SURFBOARD, 1
+	lb bc, MIST_STONE, 1
 	call GiveItem
 	jr nc, .bagFull
 
-	SetEvent EVENT_GOT_DEX_DIPLOMA
+	SetEvent EVENT_GOT_DIPLOMA
 	ld a, $9
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
@@ -150,14 +150,14 @@ DirectorText:
 	SetEvent EVENT_POKEDEX_COMPLETED
 	ret
 
-SurfboardText:
-	TX_FAR _ReceivedSurfboard
+CeladonMansion3FText_MistStone:
+	TX_FAR _CeladonMansion3FText_ReceivedMistStone
 	TX_SFX_ITEM_1
-	TX_FAR _SurfboardText
+	TX_FAR _CeladonMansion3FText_MistStone
 	db "@"
 
-SurfboardNoRoomText:
-	TX_FAR _SurfboardNoRoomText
+CeladonMansion3FText_NoRoom:
+	TX_FAR _CeladonMansion3FText_NoRoom
 	db "@"
 
 GameFreakPCText1:

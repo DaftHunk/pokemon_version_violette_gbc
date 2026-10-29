@@ -342,7 +342,7 @@ PCPrint_ConfirmText:
 	prompt
 	db "@"
 
-;shown by PCPrintDiploma when EVENT_GOT_DEX_DIPLOMA is not set yet
+;shown by PCPrintDiploma when EVENT_GOT_DIPLOMA is not set yet
 PCPrintDiplomaLockedText:
 	text "Seuls les"
 	line "Champions"
@@ -404,7 +404,7 @@ PCPrintMon:
 PCPrintDiploma:
 	;only players who received the dex diploma from the director (proof
 	;they are champions) may print their diploma: others get a message
-	CheckEvent EVENT_GOT_DEX_DIPLOMA
+	CheckEvent EVENT_GOT_DIPLOMA
 	jr nz, .gotDexDiploma
 	ld hl, PCPrintDiplomaLockedText
 	call PrintText

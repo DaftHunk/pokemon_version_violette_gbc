@@ -176,6 +176,8 @@ Route19BeachHouseText_Pikachu:
 	callba DisplayTextIDInit
 	xor a
 	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	ld hl, .byeSurfText
+	call PrintText
 	jp TextScriptEnd
 
 .wantToSurfText
@@ -188,6 +190,10 @@ Route19BeachHouseText_Pikachu:
 	db "@"
 .noSurfText
 	text "Dave: PIKA CHU."
+	done
+	db "@"
+.byeSurfText
+	text "Dave: Pika!"
 	done
 	db "@"
 .noSurfboardText
