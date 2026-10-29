@@ -57,7 +57,8 @@ Sources analysées dans le dépôt :
   - gfx/sprites/*.png          : sprites overworld en niveaux de gris
         2 bits sans transparence ; le crop 16x16 en haut à gauche donne
         la frame statique ; repli dans gfx/sprites/pokemons/ pour les
-        Pokémon
+        Pokémon, puis gfx/sprites/static_objects/ pour les objets
+        statiques (balle, rocher, tasse, carte...)
   - gfx/pokemon/icons/*.png     : icônes du jeu, une par espèce (ex.
         mr_mime.png, nidoran_f.png) ; le crop 16x16 du haut donne la
         frame utilisée dans la légende des échanges (repli : sprite
@@ -472,6 +473,7 @@ FICHIER_HIDDEN_COINS = "data/items/hidden_coins.asm"
 DOSSIER_SCRIPTS = "scripts"
 DOSSIER_SPRITES = "gfx/sprites"
 SOUS_DOSSIER_PKMN = "pokemons"
+SOUS_DOSSIER_STATIQUES = "static_objects"
 DOSSIER_ICONES = "gfx/pokemon/icons"       # icônes des espèces (jeu)
 DOSSIER_ICONES_ITEMS = "gfx/items"          # icônes des objets (24x24)
 ICONE_TM_HM = "tm_hm.png"                  # icône unique des CT/CS
@@ -480,9 +482,8 @@ FICHIER_POKEDOLLAR = "pokedollar.png"      # icône des Pokédollars (annexe)
 # Sprites dont le PNG ne suit pas la dérivation snake_case automatique
 # (fichiers vérifiés dans gfx/sprites/ ; LaprassSprite = typo du dépôt).
 # NidoranF/Seel2 sont les overworlds d'espèces de gfx/sprites/pokemons/
-# (Seel2Sprite est listé dans la SpriteSheetPointerTable entre Pikachu et
-# Zapdos, i.e. bloc des Pokémon — le seel.png de la racine, lui, est le
-# Seel « PNJ » de SPRITE_SEEL) ; Fisher2/KimonoWoman sans séparateur ;
+# (SeelSprite est listé dans la SpriteSheetPointerTable entre Pikachu et
+# Zapdos, i.e. bloc des Pokémon — Fisher2/KimonoWoman sans séparateur ;
 # MapSprite -> map_ow.png.
 EXCEPTIONS_PNG = {
     "BlackHairBoy1Sprite": "black_hair_boy_1.png",
@@ -491,10 +492,8 @@ EXCEPTIONS_PNG = {
     "LaprassSprite": "pokemons/lapras.png",
     "Fisher2Sprite": "fisher2.png",
     "KimonoWomanSprite": "kimonowoman.png",
-    "MapSprite": "map_ow.png",
     "NidoranFSprite": "pokemons/nidoranF.png",
     "NidoranMSprite": "pokemons/nidoranM.png",
-    "Seel2Sprite": "pokemons/seel.png",
 }
 
 # Palette des PNJ (recoloration avant collage) :
@@ -2405,6 +2404,8 @@ def main():
                     p = repo / DOSSIER_SPRITES / nom
                 elif (repo / DOSSIER_SPRITES / SOUS_DOSSIER_PKMN / nom).is_file():
                     p = repo / DOSSIER_SPRITES / SOUS_DOSSIER_PKMN / nom
+                elif (repo / DOSSIER_SPRITES / SOUS_DOSSIER_STATIQUES / nom).is_file():
+                    p = repo / DOSSIER_SPRITES / SOUS_DOSSIER_STATIQUES / nom
         cache_chemin[nom_dw] = p if (p and p.is_file()) else None
         return cache_chemin[nom_dw]
 

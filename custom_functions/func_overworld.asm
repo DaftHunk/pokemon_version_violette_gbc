@@ -400,12 +400,12 @@ LoadRedSpriteToDE:
 	ld [wGraphicOptions], a
 	ret
 	
-LoadSeelSpriteToDE:
+LoadSurfingSpriteToDE:
 	ld a, [wGraphicOptions]
-	ld de, SeelFSprite
+	ld de, SurfingFSprite
 	bit BIT_GRAPHIC_FEMALE, a	;check if girl
 	jr nz, .next
-	ld de, SeelSprite
+	ld de, SurfingSprite
 .next
 	res BIT_GRAPHIC_FEMALE_BANK, a
 	ld [wGraphicOptions], a

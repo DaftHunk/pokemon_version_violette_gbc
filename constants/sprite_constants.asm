@@ -188,137 +188,140 @@ const_value = 0
 
 ; overworld sprites
 const_value = 1
-	; NPC
-	const SPRITE_RED                       ; $01
-	const SPRITE_BLUE                      ; $02
-	const SPRITE_OAK                       ; $03
-	const SPRITE_BUG_CATCHER               ; $04
-	const SPRITE_LASS                      ; $06
-	const SPRITE_BLACK_HAIR_BOY_1          ; $07
-	const SPRITE_LITTLE_GIRL               ; $08
-	const SPRITE_FAT_BALD_GUY              ; $0a
-	const SPRITE_GAMBLER                   ; $0b
-	const SPRITE_BLACK_HAIR_BOY_2          ; $0c
-	const SPRITE_GIRL                      ; $0d
-	const SPRITE_HIKER                     ; $0e
-	const SPRITE_FOULARD_WOMAN             ; $0f
-	const SPRITE_GENTLEMAN                 ; $10
-	const SPRITE_DAISY                     ; $11
-	const SPRITE_BIKER                     ; $12
-	const SPRITE_SAILOR                    ; $13
-	const SPRITE_COOK                      ; $14
-	const SPRITE_BIKE_SHOP_GUY             ; $15
-	const SPRITE_MR_FUJI                   ; $16
-	const SPRITE_GIOVANNI                  ; $17
-	const SPRITE_ROCKET                    ; $18
-	const SPRITE_MEDIUM                    ; $19
-	const SPRITE_WAITER                    ; $1a
-	const SPRITE_KIMONO_WOMAN              ; $1b
-	const SPRITE_MOM_GEISHA                ; $1c
-	const SPRITE_BRUNETTE_GIRL             ; $1d
-	const SPRITE_LANCE                     ; $1e
-	const SPRITE_OAK_SCIENTIST_AIDE        ; $1f
-	const SPRITE_OAK_AIDE                  ; $20
-	const SPRITE_ROCKER                    ; $21
-	const SPRITE_SWIMMER                   ; $22
-	const SPRITE_WHITE_PLAYER              ; $23
-	const SPRITE_GYM_HELPER                ; $24
-	const SPRITE_OLD_PERSON                ; $25
-	const SPRITE_MART_GUY                  ; $26
-	const SPRITE_FISHER                    ; $27
-	const SPRITE_OLD_MEDIUM_WOMAN          ; $28
-	const SPRITE_NURSE                     ; $29
-	const SPRITE_CABLE_CLUB_WOMAN          ; $2a
-	const SPRITE_MR_MASTERBALL             ; $2b
-	const SPRITE_LAPRAS_GIVER              ; $2c
-	const SPRITE_WARDEN                    ; $2d
-	const SPRITE_SS_CAPTAIN                ; $2e
-	const SPRITE_FISHER2                   ; $2f
-	const SPRITE_BLACKBELT                 ; $30
-	const SPRITE_GUARD                     ; $31
-	const SPRITE_COP_GUARD                 ; $32
-	const SPRITE_MOM                       ; $33
-	const SPRITE_BALDING_GUY               ; $34
-	const SPRITE_YOUNG_BOY                 ; $35
-	const SPRITE_GAMEBOY_KID               ; $36
-	const SPRITE_GAMEBOY_KID_COPY          ; $37
-	const SPRITE_AGATHA                    ; $39
-	const SPRITE_BRUNO                     ; $3a
-	const SPRITE_LORELEI                   ; $3b
-	const SPRITE_SEEL                      ; $3c
-	const SPRITE_JENNY
-	const SPRITE_JESSIE
-	const SPRITE_JAMES
-	const SPRITE_KOICHI
-	const SPRITE_FIREFIGHTER
-	const SPRITE_KEEPER
-	const SPRITE_SOLDIER
-	const SPRITE_BROCK
-	const SPRITE_MISTY
-	const SPRITE_SURGE
-	const SPRITE_ERIKA
-	const SPRITE_SABRINA
-	const SPRITE_KOGA
-	const SPRITE_BLAINE
-	const SPRITE_BURGLAR
-	const SPRITE_NERD
-	const SPRITE_JUGGLER
-	const SPRITE_TAMER
-	const SPRITE_SACHA
-	; Pokemons
-	const SPRITE_SLOWBRO                   ; $05
-	const SPRITE_BIRD                      ; $09
-	const SPRITE_CLEFAIRY                  ; $38
-	const SPRITE_ARTICUNO				 ; $3d
- 	const SPRITE_CHANSEY				 ; $3e
- 	const SPRITE_CUBONE					 ; $40
- 	const SPRITE_KANGASKHAN				 ; $41
- 	const SPRITE_LAPRAS  				 ; $42
- 	const SPRITE_MEOWTH					 ; $43
- 	const SPRITE_MEWTWO					 ; $44
- 	const SPRITE_MOLTRES				 ; $45
- 	const SPRITE_NIDORINO				 ; $46
- 	const SPRITE_PIDGEOT				 ; $47
- 	const SPRITE_POLYWRATH				 ; $48
- 	const SPRITE_PSYDUCK				 ; $49
- 	const SPRITE_SLOWPOKE				 ; $4b
- 	const SPRITE_SPEAROW				 ; $4c
- 	const SPRITE_WIGGLYTUFF				 ; $4e
-	const SPRITE_MEW
-	const SPRITE_HOOH
-	const SPRITE_BULBASAUR
-	const SPRITE_ODDISH
-	const SPRITE_SANDSHREW
- 	; Pokémons with odd pixel number
- 	const SPRITE_DODUO					 ; $4f
- 	const SPRITE_FEAROW					 ; $50
- 	const SPRITE_JIGGLYPUFF				 ; $51
- 	const SPRITE_MACHOKE				 ; $52
- 	const SPRITE_MACHOP					 ; $53
- 	const SPRITE_NIDORANF				 ; $54
- 	const SPRITE_NIDORANM				 ; $55
- 	const SPRITE_PIDGEY					 ; $56
- 	const SPRITE_PIKACHU				 ; $57
- 	const SPRITE_SEEL2					 ; $58
- 	const SPRITE_ZAPDOS					 ; $59
-	const SPRITE_DOME
-	const SPRITE_BALL                      ; $3d
-	const SPRITE_OMANYTE                   ; $3e
-	const SPRITE_BOULDER                   ; $3f
-	const SPRITE_PAPER_SHEET               ; $40
-	const SPRITE_BOOK              ; $41
-	const SPRITE_POKEDEX
-	const SPRITE_POKEBALL
-	const SPRITE_MAP
-	const SPRITE_CUP
-	const SPRITE_CLIPBOARD                 ; $42
-	const SPRITE_SNORLAX                   ; $43
-	const SPRITE_OLD_AMBER_COPY            ; $44
-	const SPRITE_OLD_AMBER                 ; $45
-	const SPRITE_LYING_OLD_MAN_UNUSED_1    ; $46
-	const SPRITE_LYING_OLD_MAN_UNUSED_2    ; $47
-	const SPRITE_LYING_OLD_MAN             ; $48
-	const SPRITE_RHYHORN
+
+; Walking Srites
+
+	const SPRITE_RED                ; $01
+	const SPRITE_BLUE               ; $02
+	const SPRITE_OAK                ; $03
+	const SPRITE_BUG_CATCHER        ; $04
+	const SPRITE_LASS               ; $05
+	const SPRITE_BLACK_HAIR_BOY_1   ; $06
+	const SPRITE_LITTLE_GIRL        ; $07
+	const SPRITE_FAT_BALD_GUY       ; $08
+	const SPRITE_GAMBLER            ; $09
+	const SPRITE_BLACK_HAIR_BOY_2   ; $0A
+	const SPRITE_GIRL               ; $0B
+	const SPRITE_HIKER              ; $0C
+	const SPRITE_FOULARD_WOMAN      ; $0D
+	const SPRITE_GENTLEMAN          ; $0E
+	const SPRITE_DAISY              ; $0F
+	const SPRITE_BIKER              ; $10
+	const SPRITE_SAILOR             ; $11
+	const SPRITE_COOK               ; $12
+	const SPRITE_BIKE_SHOP_GUY      ; $13
+	const SPRITE_MR_FUJI            ; $14
+	const SPRITE_GIOVANNI           ; $15
+	const SPRITE_ROCKET             ; $16
+	const SPRITE_MEDIUM             ; $17
+	const SPRITE_WAITER             ; $18
+	const SPRITE_KIMONO_WOMAN       ; $19
+	const SPRITE_MOM_GEISHA         ; $1A
+	const SPRITE_BRUNETTE_GIRL      ; $1B
+	const SPRITE_LANCE              ; $1C
+	const SPRITE_OAK_SCIENTIST_AIDE ; $1D
+	const SPRITE_OAK_AIDE           ; $1E
+	const SPRITE_ROCKER             ; $1F
+	const SPRITE_SWIMMER            ; $20
+	const SPRITE_WHITE_PLAYER       ; $21
+	const SPRITE_GYM_HELPER         ; $22
+	const SPRITE_OLD_PERSON         ; $23
+	const SPRITE_MART_GUY           ; $24
+	const SPRITE_FISHER             ; $25
+	const SPRITE_OLD_MEDIUM_WOMAN   ; $26
+	const SPRITE_NURSE              ; $27
+	const SPRITE_CABLE_CLUB_WOMAN   ; $28
+	const SPRITE_MR_MASTERBALL      ; $29
+	const SPRITE_LAPRAS_GIVER       ; $2A
+	const SPRITE_WARDEN             ; $2B
+	const SPRITE_SS_CAPTAIN         ; $2C
+	const SPRITE_FISHER2            ; $2D
+	const SPRITE_BLACKBELT          ; $2E
+	const SPRITE_GUARD              ; $2F
+	const SPRITE_COP_GUARD          ; $30
+	const SPRITE_MOM                ; $31
+	const SPRITE_BALDING_GUY        ; $32
+	const SPRITE_YOUNG_BOY          ; $33
+	const SPRITE_GAMEBOY_KID        ; $34
+	const SPRITE_GAMEBOY_KID_COPY   ; $35
+	const SPRITE_AGATHA             ; $36
+	const SPRITE_BRUNO              ; $37
+	const SPRITE_LORELEI            ; $38
+	const SPRITE_SURFING            ; $39
+	const SPRITE_JENNY              ; $3A
+	const SPRITE_JESSIE             ; $3B
+	const SPRITE_JAMES              ; $3C
+	const SPRITE_KOICHI             ; $3D
+	const SPRITE_FIREFIGHTER        ; $3E
+	const SPRITE_KEEPER             ; $3F
+	const SPRITE_SOLDIER            ; $40
+	const SPRITE_BROCK              ; $41
+	const SPRITE_MISTY              ; $42
+	const SPRITE_SURGE              ; $43
+	const SPRITE_ERIKA              ; $44
+	const SPRITE_SABRINA            ; $45
+	const SPRITE_KOGA               ; $46
+	const SPRITE_BLAINE             ; $47
+	const SPRITE_BURGLAR            ; $48
+	const SPRITE_NERD               ; $49
+	const SPRITE_JUGGLER            ; $4A
+	const SPRITE_TAMER              ; $4B
+	const SPRITE_SACHA              ; $4C
+
+; Pokemons Sprites
+
+	const SPRITE_SLOWBRO            ; $4D
+	const SPRITE_BIRD               ; $4E
+	const SPRITE_CLEFAIRY           ; $4F
+	const SPRITE_ARTICUNO           ; $50
+	const SPRITE_CHANSEY            ; $51
+	const SPRITE_CUBONE             ; $52
+	const SPRITE_KANGASKHAN         ; $53
+	const SPRITE_LAPRAS             ; $54
+	const SPRITE_MEOWTH             ; $55
+	const SPRITE_MEWTWO             ; $56
+	const SPRITE_MOLTRES            ; $57
+	const SPRITE_NIDORINO           ; $58
+	const SPRITE_PIDGEOT            ; $59
+	const SPRITE_POLYWRATH          ; $5A
+	const SPRITE_PSYDUCK            ; $5B
+	const SPRITE_SLOWPOKE           ; $5C
+	const SPRITE_SPEAROW            ; $5D
+	const SPRITE_WIGGLYTUFF         ; $5E
+	const SPRITE_MEW                ; $5F
+	const SPRITE_HOOH               ; $60
+	const SPRITE_BULBASAUR          ; $61
+	const SPRITE_ODDISH             ; $62
+	const SPRITE_SANDSHREW          ; $63
+	const SPRITE_DODUO              ; $64
+	const SPRITE_FEAROW             ; $65
+	const SPRITE_JIGGLYPUFF         ; $66
+	const SPRITE_MACHOKE            ; $67
+	const SPRITE_MACHOP             ; $68
+	const SPRITE_NIDORANF           ; $69
+	const SPRITE_NIDORANM           ; $6A
+	const SPRITE_PIDGEY             ; $6B
+	const SPRITE_PIKACHU            ; $6C
+	const SPRITE_SEEL               ; $6D
+	const SPRITE_ZAPDOS             ; $6E
+
+; Static Sprites (cp SPRITE_BALL)
+	; SPRITE_DOME (fake static to avoid static sprite limitation in MtMoon)
+	const SPRITE_DOME               ; $70
+	const SPRITE_BALL               ; $6F
+	const SPRITE_OMANYTE            ; $71
+	const SPRITE_BOULDER            ; $72
+	const SPRITE_PAPER_SHEET        ; $73
+	const SPRITE_BOOK               ; $74
+	const SPRITE_POKEDEX            ; $75
+	const SPRITE_POKEBALL           ; $76
+	const SPRITE_MAP                ; $77
+	const SPRITE_CUP                ; $78
+	const SPRITE_CLIPBOARD          ; $79
+	const SPRITE_SNORLAX            ; $7A
+	const SPRITE_OLD_AMBER          ; $7B
+	const SPRITE_LYING_OLD_MAN      ; $7C
+	const SPRITE_RHYHORN            ; $7D
 
 ; different kinds of people events
 ITEM    EQU $80

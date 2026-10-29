@@ -13,7 +13,7 @@ FanClubObject:
 	object SPRITE_FISHER2,          6, 3, STAY, LEFT,  1 ; FanClubText1
 	object SPRITE_GIRL,             1, 3, STAY, RIGHT, 2 ; FanClubText2
 	object SPRITE_PIKACHU,          6, 4, STAY, LEFT,  3 ; FanClubText3
-	object SPRITE_SEEL2,            1, 4, STAY, RIGHT, 4 ; FanClubText4
+	object SPRITE_SEEL,             1, 4, STAY, RIGHT, 4 ; FanClubText4
 	object SPRITE_GENTLEMAN,        3, 1, STAY, DOWN,  5 ; FanClubText5
 	object SPRITE_CABLE_CLUB_WOMAN, 5, 1, STAY, DOWN,  6 ; FanClubText6
 	object SPRITE_PAPER_SHEET,      4, 4, STAY, DOWN,  7 ; FanClubText7

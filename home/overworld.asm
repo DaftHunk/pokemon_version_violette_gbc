@@ -2068,7 +2068,7 @@ LoadWalkingPlayerSpriteGraphics::
 	jr LoadPlayerSpriteGraphicsCommon
 
 LoadSurfingPlayerSpriteGraphics::
-	callba LoadSeelSpriteToDE
+	callba LoadSurfingSpriteToDE
 ;	ld hl, vNPCSprites
 	jr LoadPlayerSpriteGraphicsCommon
 

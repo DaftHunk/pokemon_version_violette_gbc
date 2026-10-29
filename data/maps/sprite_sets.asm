@@ -73,7 +73,7 @@ SpriteSets:
 	db SPRITE_FISHER2
 	db SPRITE_BLACK_HAIR_BOY_1
 	db SPRITE_GAMBLER
-	db SPRITE_SEEL
+	db SPRITE_SURFING
 	db SPRITE_OAK
 	db SPRITE_SWIMMER
 	db SPRITE_BALL
@@ -142,7 +142,7 @@ SpriteSets:
 	db SPRITE_GUARD
 	db SPRITE_GAMBLER
 	db SPRITE_BALL
-	db SPRITE_LYING_OLD_MAN_UNUSED_2
+	db SPRITE_LYING_OLD_MAN
 
 ; SPRITESET_SAFFRON
 	db SPRITE_ROCKET
@@ -155,7 +155,7 @@ SpriteSets:
 	db SPRITE_BLACK_HAIR_BOY_1
 	db SPRITE_SLOWBRO
 	db SPRITE_BALL
-	db SPRITE_LYING_OLD_MAN_UNUSED_2
+	db SPRITE_LYING_OLD_MAN
 
 ; SPRITESET_SILENCE_BRIDGE
 	db SPRITE_BIKER
@@ -210,6 +210,11 @@ SpriteSets:
 	db SPRITE_LITTLE_GIRL
 
 SpriteSheetPointerTable:
+; $40 Static, 64 octets, 4 tiles
+; $c0 Walking, 192 octets, 12 tiles + 2 optional walking tiles
+
+; Walking Sprite
+
 	; SPRITE_RED
 	dw RedSprite
 	db $c0 ; byte count
@@ -445,7 +450,7 @@ SpriteSheetPointerTable:
 	db $c0 ; byte count
 	db BANK(GuardSprite)
 
-	; $32
+	; SPRITE_COP_GUARD
 	dw GuardSprite
 	db $c0 ; byte count
 	db BANK(GuardSprite)
@@ -490,19 +495,22 @@ SpriteSheetPointerTable:
 	db $c0 ; byte count
 	db BANK(LoreleiSprite)
 
-	; SPRITE_SEEL
-	dw SeelSprite
+	; SPRITE_SURFING
+	dw SurfingSprite
 	db $c0 ; byte count
-	db BANK(SeelSprite)
+	db BANK(SurfingSprite)
 
+	; SPRITE_JENNY
 	dw JennySprite
 	db $c0 ; byte count
 	db BANK(JennySprite)
 
+	; SPRITE_JESSIE
 	dw JessieSprite
 	db $c0 ; byte count
 	db BANK(JessieSprite)
 
+	; SPRITE_JAMES
 	dw JamesSprite
 	db $c0 ; byte count
 	db BANK(JamesSprite)
@@ -587,6 +595,8 @@ SpriteSheetPointerTable:
 	db $c0 ; byte count
 	db BANK(SachaSprite)
 
+; Pokemons Sprites
+
 	; SPRITE_SLOWBRO
 	dw SlowbroSprite
 	db $c0 ; byte count
@@ -602,131 +612,163 @@ SpriteSheetPointerTable:
 	db $c0 ; byte count
 	db BANK(ClefairySprite)
 
+	; SPRITE_ARTICUNO
 	dw ArticunoSprite
 	db $c0 ; byte count
 	db BANK(ArticunoSprite)
 
+	; SPRITE_CHANSEY
 	dw ChanseySprite
 	db $c0 ; byte count
 	db BANK(ChanseySprite)
-	
+
+	; SPRITE_CUBONE
 	dw CuboneSprite
 	db $c0 ; byte count
 	db BANK(CuboneSprite)
-	
+
+	; SPRITE_KANGASKHAN
 	dw KangaskhanSprite
 	db $c0 ; byte count
 	db BANK(KangaskhanSprite)
-	
+
+	; SPRITE_LAPRAS
 	dw LaprassSprite
 	db $c0 ; byte count
 	db BANK(LaprassSprite)
-	
+
+	; SPRITE_MEOWTH
 	dw MeowthSprite
 	db $c0 ; byte count
 	db BANK(MeowthSprite)
-	
+
+	; SPRITE_MEWTWO
 	dw MewtwoSprite
 	db $c0 ; byte count
 	db BANK(MewtwoSprite)
-	
+
+	; SPRITE_MOLTRES
 	dw MoltresSprite
 	db $c0 ; byte count
 	db BANK(MoltresSprite)
-	
+
+	; SPRITE_NIDORINO
 	dw NidorinoSprite
 	db $c0 ; byte count
 	db BANK(NidorinoSprite)
-	
+
+	; SPRITE_PIDGEOT
 	dw PidgeotSprite
 	db $c0 ; byte count
 	db BANK(PidgeotSprite)
-	
+
+	; SPRITE_POLYWRATH
 	dw PolywrathSprite
 	db $c0 ; byte count
 	db BANK(PolywrathSprite)
-	
+
+	; SPRITE_PSYDUCK
 	dw PsyduckSprite
 	db $c0 ; byte count
 	db BANK(PsyduckSprite)
-	
+
+	; SPRITE_SLOWPOKE
 	dw SlowpokeSprite
 	db $c0 ; byte count
 	db BANK(SlowpokeSprite)
-	
+
+	; SPRITE_SPEAROW
 	dw SpearowSprite
 	db $c0 ; byte count
 	db BANK(SpearowSprite)
 
+	; SPRITE_WIGGLYTUFF
 	dw WigglytuffSprite
 	db $c0 ; byte count
 	db BANK(WigglytuffSprite)
 
+	; SPRITE_MEW
 	dw MewSprite
 	db $c0 ; byte count
 	db BANK(MewSprite)
 
+	; SPRITE_HOOH
 	dw HoohSprite
 	db $c0 ; byte count
 	db BANK(HoohSprite)
 
+	; SPRITE_BULBASAUR
 	dw BulbasaurSprite
 	db $c0 ; byte count
 	db BANK(BulbasaurSprite)
 
+	; SPRITE_ODDISH
 	dw OddishSprite
 	db $c0 ; byte count
 	db BANK(OddishSprite)
 
+	; SPRITE_SANDSHREW
 	dw SandshrewSprite
 	db $c0 ; byte count
 	db BANK(SandshrewSprite)
 
+	; SPRITE_DODUO
 	dw DoduoSprite
 	db $c0 ; byte count
 	db BANK(DoduoSprite)
 
+	; SPRITE_FEAROW
 	dw FearowSprite
 	db $c0 ; byte count
 	db BANK(FearowSprite)
 
+	; SPRITE_JIGGLYPUFF
 	dw JigglypuffSprite
 	db $c0 ; byte count
 	db BANK(JigglypuffSprite)
 
+	; SPRITE_MACHOKE
 	dw MachokeSprite
 	db $c0 ; byte count
 	db BANK(MachokeSprite)
 
+	; SPRITE_MACHOP
 	dw MachopSprite
 	db $c0 ; byte count
 	db BANK(MachopSprite)
 
+	; SPRITE_NIDORANF
 	dw NidoranFSprite
 	db $c0 ; byte count
 	db BANK(NidoranFSprite)
 
+	; SPRITE_NIDORANM
 	dw NidoranMSprite
 	db $c0 ; byte count
 	db BANK(NidoranMSprite)
 
+	; SPRITE_PIDGEY
 	dw PidgeySprite
 	db $c0 ; byte count
 	db BANK(PidgeySprite)
 
+	; SPRITE_PIKACHU
 	dw PikachuSprite
 	db $c0 ; byte count
 	db BANK(PikachuSprite)
 
-	dw Seel2Sprite
+	; SPRITE_SEEL
+	dw SeelSprite
 	db $c0 ; byte count
-	db BANK(Seel2Sprite)
+	db BANK(SeelSprite)
 
+	; SPRITE_ZAPDOS
 	dw ZapdosSprite
 	db $c0 ; byte count
 	db BANK(ZapdosSprite)
 
-	; SPRITE_DOME
+; Static Sprites (cp SPRITE_BALL)
+	; SPRITE_DOME (fake static to avoid static sprite limitation in MtMoon)
 	dw DomeSprite
 	db $c0 ; byte count
 	db BANK(DomeSprite)
@@ -786,25 +828,10 @@ SpriteSheetPointerTable:
 	db $40 ; byte count
 	db BANK(SnorlaxSprite)
 
-	; SPRITE_OLD_AMBER_COPY
-	dw OldAmberSprite
-	db $40 ; byte count
-	db BANK(OldAmberSprite)
-
 	; SPRITE_OLD_AMBER
 	dw OldAmberSprite
 	db $40 ; byte count
 	db BANK(OldAmberSprite)
-
-	; SPRITE_LYING_OLD_MAN_UNUSED_1
-	dw LyingOldManSprite
-	db $40 ; byte count
-	db BANK(LyingOldManSprite)
-
-	; SPRITE_LYING_OLD_MAN_UNUSED_2
-	dw LyingOldManSprite
-	db $40 ; byte count
-	db BANK(LyingOldManSprite)
 
 	; SPRITE_LYING_OLD_MAN
 	dw LyingOldManSprite
