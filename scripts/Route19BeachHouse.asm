@@ -5,9 +5,10 @@ Route19BeachHouseScript:
 Route19BeachHouseTextPointers:
 	dw Route19BeachHouseText_Fisher
 	dw Route19BeachHouseText_Pikachu
-	dw Route19BeachHouseText_Poster1
-	dw Route19BeachHouseText_Poster2
-	dw Route19BeachHouseText_Printer
+	dw Route19BeachHouseSign_Poster1
+	dw Route19BeachHouseSign_Poster2
+	dw Route19BeachHouseSign_Printer
+	dw Route19BeachHouseSign_Shelves
 
 Route19BeachHouseText_Fisher:
 	TX_ASM
@@ -56,6 +57,11 @@ Route19BeachHouseText_Fisher:
 	line "va? Délire!!!"
 	cont "Toi aussi t'es"
 	cont "Surfeur!"
+
+	para "Tu as donc"
+	line "le droit de"
+	cont "surfer avec"
+	cont "le DAVE!"
 
 	para "Réussi à faire un"
 	line "score de 3000 et"
@@ -204,15 +210,15 @@ Route19BeachHouseText_Pikachu:
 	done
 	db "@"
 
-Route19BeachHouseText_Poster1:
-	TX_FAR _Route19BeachHouseText_Poster1
+Route19BeachHouseSign_Poster1:
+	TX_FAR _Route19BeachHouseSign_Poster1
 	db "@"
 
-Route19BeachHouseText_Poster2:
-	TX_FAR _Route19BeachHouseText_Poster2
+Route19BeachHouseSign_Poster2:
+	TX_FAR _Route19BeachHouseSign_Poster2
 	db "@"
 
-Route19BeachHouseText_Printer:
+Route19BeachHouseSign_Printer:
 	TX_ASM
 	;display the PC-style power-on text, then open the printer menu
 	ld hl, .turnedOnPrinterText
@@ -236,4 +242,8 @@ Route19BeachHouseText_Printer:
 	text "<PLAYER> allume"
 	line "l'imprimante."
 	prompt
+	db "@"
+
+Route19BeachHouseSign_Shelves:
+	TX_FAR _Route19BeachHouseSign_Shelves
 	db "@"

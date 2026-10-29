@@ -81,7 +81,7 @@ CeladonMansion1F;CELADON_MANSION_1F;SPRITE_NIDORANF;102;nidoranF.png;;4;4;WALK;1
 CeladonMansion3F;CELADON_MANSION_3F;SPRITE_BIKE_SHOP_GUY;19;bike_shop_guy.png;;0;4;STAY;UP;1;personnage;;;
 CeladonMansion3F;CELADON_MANSION_3F;SPRITE_MART_GUY;36;mart_guy.png;;3;4;STAY;UP;2;personnage;;;
 CeladonMansion3F;CELADON_MANSION_3F;SPRITE_BLACK_HAIR_BOY_2;10;black_hair_boy_2.png;;0;7;STAY;UP;3;personnage;;;
-CeladonMansion3F;CELADON_MANSION_3F;SPRITE_LAPRAS_GIVER;42;lapras_giver.png;1;2;3;STAY;NONE;4;objet_offert;SURFBOARD;;
+CeladonMansion3F;CELADON_MANSION_3F;SPRITE_LAPRAS_GIVER;42;lapras_giver.png;1;2;3;STAY;NONE;4;pnj_libelle;Certificat;;
 CeladonMansionRoof;CELADON_MANSION_ROOF;;;;1;0;10;;;;cache_objet;RARE_CANDY;oui;
 CeladonMansionRoofHouse;CELADON_MANSION_ROOF_HOUSE;SPRITE_HIKER;12;hiker.png;;2;2;STAY;DOWN;1;personnage;;;
 CeladonMansionRoofHouse;CELADON_MANSION_ROOF_HOUSE;SPRITE_POKEBALL;115;pokeball.png;1;4;3;STAY;NONE;2;pokemon_offert;EEVEE/25;;
@@ -171,7 +171,7 @@ CeruleanPokecenter;CERULEAN_POKECENTER;SPRITE_BLACK_HAIR_BOY_2;10;black_hair_boy
 CeruleanPokecenter;CERULEAN_POKECENTER;SPRITE_GENTLEMAN;14;gentleman.png;;5;3;STAY;DOWN;3;personnage;;;
 CeruleanPokecenter;CERULEAN_POKECENTER;SPRITE_CABLE_CLUB_WOMAN;40;cable_club_woman.png;;11;2;STAY;DOWN;4;personnage;;;
 CeruleanPokecenter;CERULEAN_POKECENTER;SPRITE_CHANSEY;81;chansey.png;;4;1;STAY;DOWN;5;personnage;;;
-CeruleanPrinter;CERULEAN_PRINTER;SPRITE_NERD;73;nerd.png;;2;3;STAY;RIGHT;1;personnage;;;
+CeruleanPrinter;CERULEAN_PRINTER;SPRITE_NERD;73;nerd.png;1;2;3;STAY;RIGHT;1;pnj_libelle;Imprimeur;;
 CeruleanTradeHouse;CERULEAN_TRADE_HOUSE;SPRITE_OLD_MEDIUM_WOMAN;38;old_medium_woman.png;;5;4;STAY;LEFT;1;personnage;;;
 CeruleanTradeHouse;CERULEAN_TRADE_HOUSE;SPRITE_GAMBLER;9;gambler.png;1;1;2;STAY;NONE;2;echange;MARILL/POLIWAG;;
 CeruleanTrashedHouse;CERULEAN_TRASHED_HOUSE;SPRITE_FISHER;37;fisher.png;;2;1;STAY;DOWN;1;personnage;;;

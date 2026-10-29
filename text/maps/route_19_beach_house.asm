@@ -19,13 +19,21 @@ _Route19BeachHousePikachuText::
 	text "Dave: Pikaaan!"
 	done
 
-_Route19BeachHouseText_Poster1::
-	text "Le Surf, la mer:"
-	line "c'est la vie!"
+_Route19BeachHouseSign_Poster1::
+	text "Astuce de Dave"
+
+	para "Après un flip,"
+	line "aligner le Surf"
+	cont "avec la vague!"
 	done
 
-_Route19BeachHouseText_Poster2::
+_Route19BeachHouseSign_Poster2::
 	text "Record à battre:"
 	line "Dave le Surfer"
 	cont "7511 points!"
+	done
+
+_Route19BeachHouseSign_Shelves::
+	text "Hot Dogs et"
+	line "Burgers à gogo!"
 	done

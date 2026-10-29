@@ -10,7 +10,7 @@ _CeruleanPrinterText::
 	cont "les copains!"
 	done
 
-_CeruleanPrinterPoster::
+_CeruleanPrinterSign_Poster::
 	text "Un tableau"
 	line "avec diverses"
 	cont "impressions de"
@@ -19,4 +19,12 @@ _CeruleanPrinterPoster::
 	para "Elles sont mêmes"
 	line "autocollantes,"
 	cont "la classe!"
+	done
+
+_CeruleanPrinterSign_Sheves::
+	text "Des étagères"
+	line "pleines de cart-"
+	cont "ouches d'encre"
+	cont "d'Hypotrempe"
+	cont "et de papier!"
 	done

@@ -4,7 +4,8 @@ CeruleanPrinterScript:
 CeruleanPrinterTextPointers:
 	dw CeruleanPrinterText
 	dw CeruleanPrinterText_Printer
-	dw CeruleanPrinterPoster
+	dw CeruleanPrinterSign_Poster
+	dw CeruleanPrinterSign_Sheves
 
 CeruleanPrinterText:
 	TX_FAR _CeruleanPrinterText
@@ -36,6 +37,10 @@ CeruleanPrinterText_Printer:
 	prompt
 	db "@"
 
-CeruleanPrinterPoster:
-	TX_FAR _CeruleanPrinterPoster
+CeruleanPrinterSign_Poster:
+	TX_FAR _CeruleanPrinterSign_Poster
+	db "@"
+
+CeruleanPrinterSign_Sheves:
+	TX_FAR _CeruleanPrinterSign_Sheves
 	db "@"
