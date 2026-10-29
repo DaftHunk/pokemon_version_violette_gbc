@@ -1044,7 +1044,12 @@ OaksLabScript_1d133:
 	ld [wcf91], a
 	
 	;joenote - randomize the starter
+	;but alternate starters have priority over the random mode
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_ALT_STARTERS, a
+	jr nz, .noRandomStarter
 	predef ReplaceWildMon
+.noRandomStarter
 	ld a, [wcf91]
 	
 	ld [wPokedexNum], a
@@ -1083,6 +1088,17 @@ OaksLabScript_1d157:
 	call ReloadMapData
 	ld c, 10
 	call DelayFrames
+	;random mode without alternate starters: use a generic choice
+	;text that displays the randomized mon's name
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_ALT_STARTERS, a
+	jr nz, .dedicatedChoiceTexts
+	CheckEvent EVENT_ENABLE_WILD_RANDOM
+	jr z, .dedicatedChoiceTexts
+	call GetMonName
+	ld hl, OaksLabRandomStarterText
+	jr OaksLabMonChoiceMenu
+.dedicatedChoiceTexts
 	ld a, [wSpriteIndex]
 	cp $2
 	jr z, OaksLabLookAtCharmander
@@ -1140,6 +1156,10 @@ OaksLabPikachuText:
 	db "@"
 OaksLabClefairyText:
 	TX_FAR _OaksLabClefairyText
+	db "@"
+
+OaksLabRandomStarterText:
+	TX_FAR _OaksLabRandomStarterText
 	db "@"
 
 OaksLabMonChoiceMenu:

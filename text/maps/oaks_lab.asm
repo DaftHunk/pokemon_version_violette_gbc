@@ -62,6 +62,13 @@ _OaksLabClefairyText::
 	cont "Mélofée?"
 	done
 
+_OaksLabRandomStarterText::
+	text "Veux-tu choisir"
+	line "@"
+	text_ram wcd6d
+	text "?@"
+	text_end
+
 _OaksLabMonEnergeticText::
 	text "Ce #mon est"
 	line "très énergique!"
