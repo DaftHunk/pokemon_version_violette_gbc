@@ -153,10 +153,9 @@ LoadTownMap_Fly:
 	call LoadTownMap
 	call LoadPlayerSpriteGraphics
 	call LoadFontTilePatterns
-	ld de, BirdSprite
-	ld hl, vSprites + $40
-	lb bc, BANK(BirdSprite), $c
-	call CopyVideoData
+	; use the party icon of the FLY user as the location
+	; cursor instead of the generic bird sprite
+	call LoadFlyUserIconGfx
 	ld de, TownMapUpArrow
 	ld hl, vChars1 + $6d0
 	lb bc, BANK(TownMapUpArrow), (TownMapUpArrowEnd - TownMapUpArrow) / $8
@@ -263,6 +262,67 @@ LoadTownMap_Fly:
 
 ToText:
 	db " →@"
+
+GetFlyUserIconId:
+; look up the party icon id of the mon that used FLY (the
+; same lookup the party menu does) and stash it in wFlyUserIconId for
+; the town map cursor and the fly cutscenes. Must be called while
+; wWhichPokemon still points at the FLY user (true on fly menu entry).
+	ld a, [wWhichPokemon]
+	ld c, a
+	ld b, 0
+	ld hl, wPartySpecies
+	add hl, bc
+	ld a, [hl] ; species of the FLY user
+	ld [wcf91], a
+	ld [wPokedexNum], a
+	predef IndexToPokedex
+	ld a, [wPokedexNum]
+	dec a
+	ld hl, MonPartyData
+	ld e, a
+	ld d, 0
+	add hl, de
+	ld a, [hl] ; icon id
+	ld [wFlyUserIconId], a
+	ret
+
+GetFlyUserIconPointer:
+; returns hl = address of the FLY user's party icon graphics
+; (first frame) and a = its ROM bank
+	ld a, [wFlyUserIconId]
+	cp $80
+	jr c, .useMonIcons
+; icon ids >= $80 index the MonIcons2 table
+	sub $80
+	ld d, a
+	ld hl, MonIcons2
+	ld a, BANK(MonIcons2)
+	jr .gotTable
+.useMonIcons
+	ld d, a
+	ld hl, MonIcons
+	ld a, BANK(MonIcons)
+.gotTable
+	ld e, a
+	ld bc, $80 ; each icon is 8 tiles (2 animation frames)
+	ld a, d
+	call AddNTimes ; hl = icon graphics
+	ld a, e ; a = icon bank
+	ret
+
+LoadFlyUserIconGfx:
+; copy the party icon of the FLY user over the bird cursor
+; tiles of the town map fly menu (vSprites + $40), both frames. The
+; cursor OAM uses tiles 4-7, i.e. the icon's first frame.
+	call GetFlyUserIconId
+	call GetFlyUserIconPointer
+	ld b, a
+	ld c, 8 ; both animation frames
+	ld d, h
+	ld e, l
+	ld hl, vSprites + $40
+	jp CopyVideoData
 
 BuildFlyLocationsList:
 	ld hl, wFlyAnimUsingCoordList

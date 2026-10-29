@@ -45,11 +45,8 @@ EnterMapAnim:
 	jr .done
 .flyAnimation
 	pop hl
-	ld de, BirdSprite
-	ld hl, vNPCSprites
-	lb bc, BANK(BirdSprite), $0c
-	call CopyVideoData
-	call LoadBirdSpriteGraphics
+	; show the FLY user's party icon instead of the bird
+	call LoadFlyUserSpriteGfx
 	ld a, SFX_FLY
 	call PlaySound
 	ld hl, wFlyAnimUsingCoordList
@@ -140,7 +137,8 @@ _LeaveMapAnim:
 	call PlayerSpinInPlace
 	jr .spinWhileMovingUp
 .flyAnimation
-	call LoadBirdSpriteGraphics
+	; show the FLY user's party icon instead of the bird
+	call LoadFlyUserSpriteGfx
 	ld hl, wFlyAnimUsingCoordList
 	ld a, $ff ; is not using coord list (flap in place)
 	ld [hli], a ; wFlyAnimUsingCoordList
@@ -258,14 +256,31 @@ DoFlyAnimation:
 	jr nz, DoFlyAnimation
 	ret
 
-LoadBirdSpriteGraphics:
-	ld de, BirdSprite
-	ld hl, vNPCSprites
-	lb bc, BANK(BirdSprite), $0c
+LoadFlyUserSpriteGfx:
+; replaces LoadBirdSpriteGraphics
+; the fly cutscene drives the bird through the player's sprite slot,
+; using the side-facing images: image 8/9 = left stand/walk frames,
+; image 12/13 = the same tiles mirrored by the OAM table. Copy the FLY
+; user's party icon there instead:
+; standing frame -> tiles $08-$0B (vNPCSprites + $80)
+; walking frame  -> tiles $88-$8B (vNPCSprites2 + $80)
+; the flap toggle (image index xor 1) alternates the two icon frames,
+; and facing right mirrors the icon for free.
+	call GetFlyUserIconPointer
+	ld b, a
+	ld c, 4 ; first frame
+	ld d, h
+	ld e, l
+	ld hl, vNPCSprites + $80
 	call CopyVideoData
-	ld de, BirdSprite + $c0 ; moving animation sprite
-	ld hl, vNPCSprites2
-	lb bc, BANK(BirdSprite), $0c
+	call GetFlyUserIconPointer
+	ld b, a
+	ld c, 4
+	ld de, $40
+	add hl, de ; skip to the second frame
+	ld d, h
+	ld e, l
+	ld hl, vNPCSprites2 + $80
 	jp CopyVideoData
 
 InitFacingDirectionList:

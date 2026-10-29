@@ -1382,6 +1382,13 @@ wSymmetricSpriteOAMAttributes:: ; cd5c
 wMonPartySpriteSpecies:: ; cd5d
 	ds 1
 
+wFlyUserIconId:: ; cd5d
+; party icon id of the mon that used FLY
+; aliased on wMonPartySpriteSpecies (naming screen only, and the naming
+; screen cannot run during the fly flow). Stashed when the fly menu opens,
+; used by the town map cursor and the fly departure/arrival cutscenes
+	ds 1
+
 wLeftGBMonSpecies:: ; cd5e
 ; in the trade animation, the mon that leaves the left gameboy
 	ds 1
