@@ -360,18 +360,30 @@ OaksLabScript9:
 
 .alternateRivalChoice
 	;the rival rejects the mon he took and asks Chen for another one
-	ld hl, OaksLabRivalGrumbleText
-	call PrintText
+	xor a
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a ; make each line wait for A
+	ld a, $1c
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
 	ld a, $5
 	ld [H_SPRITEINDEX], a
 	xor a ; SPRITE_FACING_DOWN
 	ld [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
-	ld hl, OaksLabChenSpareMonText
-	call PrintText
-	ld hl, OaksLabRivalTakeItText
-	call PrintText
+	ld a, $1d
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	ld a, $1e
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	ld a, $1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a ; restore vanilla auto-close
 	;walk the rival to Chen so he gets the spare mon from him
+	;if the player stands left of the table, the spot in front of
+	;Chen is taken: send the rival around to Chen's left side
+	ld a, [wXCoord]
+	cp $5
+	jr z, .playerLeftOfTable
 	ld a, [wRivalStarterBallSpriteIndex]
 	cp $2
 	jr z, .fromLeftBall
@@ -388,7 +400,6 @@ OaksLabScript9:
 	ld a, $1
 	ld [H_SPRITEINDEX], a
 	call MoveSprite
-	ld [wJoyIgnore], a
 
 	SetEvent EVENT_GOT_STARTER
 	SetEvent EVENT_GOT_ALTERNATE_STARTER
@@ -397,8 +408,11 @@ OaksLabScript9:
 	ld [wOaksLabCurScript], a
 	ret
 
+.playerLeftOfTable
+	ld de, .RivalToChenLeftOfChen
+	jr .moveRivalToChen
+
 .RivalToChenFromLeftBall
-	db NPC_MOVEMENT_DOWN
 	db NPC_MOVEMENT_LEFT
 	db NPC_MOVEMENT_UP
 	db $FF
@@ -408,6 +422,7 @@ OaksLabScript9:
 	db NPC_MOVEMENT_LEFT
 	db NPC_MOVEMENT_LEFT
 	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
 	db $FF
 
 .RivalToChenFromRightBall
@@ -416,7 +431,37 @@ OaksLabScript9:
 	db NPC_MOVEMENT_LEFT
 	db NPC_MOVEMENT_LEFT
 	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
 	db $FF
+
+;used when the player stands left of the table (the rival then
+;always comes from the middle ball); the rival ends on Chen's
+;left side, facing him
+.RivalToChenLeftOfChen
+	db NPC_MOVEMENT_LEFT
+	db NPC_MOVEMENT_LEFT
+	db NPC_MOVEMENT_LEFT
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+	db $FF
+
+OaksLabText28: ; rival grumbles about the mon he took
+	TX_ASM
+	ld hl, OaksLabRivalGrumbleText
+	call PrintText
+	jp TextScriptEnd
+
+OaksLabText29: ; Chen offers the spare mon
+	TX_ASM
+	ld hl, OaksLabChenSpareMonText
+	call PrintText
+	jp TextScriptEnd
+
+OaksLabText30: ; rival takes the spare mon
+	TX_ASM
+	ld hl, OaksLabRivalTakeItText
+	call PrintText
+	jp TextScriptEnd
 
 OaksLabRivalGrumbleText:
 	TX_FAR _OaksLabRivalGrumbleText
@@ -602,6 +647,8 @@ OaksLabScript20:
 	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
+	ld a, $fc
+	ld [wJoyIgnore], a ; keep directions locked, but let A/B dismiss the text
 	ld a, $e
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
@@ -881,6 +928,9 @@ OaksLabTextPointers:
 	dw OaksLabText25
 	dw OaksLabText26
 	dw OaksLabText27
+	dw OaksLabText28
+	dw OaksLabText29
+	dw OaksLabText30
 
 OaksLabTextPointers2:
 	dw OaksLabText1
