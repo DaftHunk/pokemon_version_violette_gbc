@@ -92,6 +92,8 @@ CalcPositionOfPlayerRelativeToNPC:
 	ld a, d
 	ld b, a
 	ld a, [hli] ; NPC sprite screen Y position in pixels
+	cp $e0 ; NPC above the top screen edge? his pixel Y wrapped around
+	jr nc, .yAboveScreenEdge
 	call CalcDifference
 	jr nc, .NPCSouthOfOrAlignedWithPlayer
 .NPCNorthOfPlayer
@@ -150,6 +152,15 @@ CalcPositionOfPlayerRelativeToNPC:
 	and $3
 	ld [hNPCPlayerRelativePosFlags], a
 	ret
+
+.yAboveScreenEdge
+	; the NPC's true pixel Y is negative, so the plain 8-bit
+	; difference would wrap around; subtract the other way around
+	dec hl
+	ld a, d
+	sub [hl]
+	inc hl
+	jr .NPCNorthOfPlayer
 
 ConvertNPCMovementDirectionsToJoypadMasks:
 	ld a, [hNPCMovementDirections2Index]

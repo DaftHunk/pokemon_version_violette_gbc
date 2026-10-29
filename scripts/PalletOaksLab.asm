@@ -647,6 +647,17 @@ OaksLabScript20:
 	ld a, [wStatusFlags5]
 	bit 0, a
 	ret nz
+	;if the rival went around to Chen's left side (player standing
+	;left of the table), have him turn toward Chen for the handover
+	ld a, [wXCoord]
+	cp $5
+	jr nz, .noFacingFix
+	ld a, $1
+	ld [H_SPRITEINDEX], a
+	ld a, SPRITE_FACING_RIGHT
+	ld [hSpriteFacingDirection], a
+	call SetSpriteFacingDirectionAndDelay
+.noFacingFix
 	ld a, $fc
 	ld [wJoyIgnore], a ; keep directions locked, but let A/B dismiss the text
 	ld a, $e
