@@ -834,7 +834,14 @@ OaksLabText2:
 	ld a, $3
 	ld [wRivalStarterBallSpriteIndex], a
 PlayerStarter1Label::
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_ALT_STARTERS, a
+	jr z, .classicStarter1
+	ld a, PLAYER_STARTER1
+	jr .gotStarter1
+.classicStarter1
 	ld a, STARTER1
+.gotStarter1
 	ld b, $2
 	jr OaksLabScript_1d133
 
@@ -845,7 +852,14 @@ OaksLabText3:
 	ld a, $4
 	ld [wRivalStarterBallSpriteIndex], a
 PlayerStarter2Label::
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_ALT_STARTERS, a
+	jr z, .classicStarter2
+	ld a, PLAYER_STARTER2
+	jr .gotStarter2
+.classicStarter2
 	ld a, STARTER2
+.gotStarter2
 	ld b, $3
 	jr OaksLabScript_1d133
 
@@ -856,7 +870,14 @@ OaksLabText4:
 	ld a, $2
 	ld [wRivalStarterBallSpriteIndex], a
 PlayerStarter3Label::
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_ALT_STARTERS, a
+	jr z, .classicStarter3
+	ld a, PLAYER_STARTER3
+	jr .gotStarter3
+.classicStarter3
 	ld a, STARTER3
+.gotStarter3
 	ld b, $4
 
 OaksLabScript_1d133:
@@ -910,24 +931,55 @@ OaksLabScript_1d157:
 	jr OaksLabLookAtBulbasaur
 
 OaksLabLookAtCharmander:
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_ALT_STARTERS, a
+	jr z, .classicText1
+	ld hl, OaksLabEeveeText
+	jr .gotText1
+.classicText1
 	ld hl, OaksLabCharmanderText
+.gotText1
 	jr OaksLabMonChoiceMenu
 OaksLabCharmanderText:
 	TX_FAR _OaksLabCharmanderText
 	db "@"
 
 OaksLabLookAtSquirtle:
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_ALT_STARTERS, a
+	jr z, .classicText2
+	ld hl, OaksLabPikachuText
+	jr .gotText2
+.classicText2
 	ld hl, OaksLabSquirtleText
+.gotText2
 	jr OaksLabMonChoiceMenu
 OaksLabSquirtleText:
 	TX_FAR _OaksLabSquirtleText
 	db "@"
 
 OaksLabLookAtBulbasaur:
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_ALT_STARTERS, a
+	jr z, .classicText3
+	ld hl, OaksLabClefairyText
+	jr .gotText3
+.classicText3
 	ld hl, OaksLabBulbasaurText
+.gotText3
 	jr OaksLabMonChoiceMenu
 OaksLabBulbasaurText:
 	TX_FAR _OaksLabBulbasaurText
+	db "@"
+
+OaksLabEeveeText:
+	TX_FAR _OaksLabEeveeText
+	db "@"
+OaksLabPikachuText:
+	TX_FAR _OaksLabPikachuText
+	db "@"
+OaksLabClefairyText:
+	TX_FAR _OaksLabClefairyText
 	db "@"
 
 OaksLabMonChoiceMenu:

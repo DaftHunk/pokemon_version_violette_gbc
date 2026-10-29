@@ -44,6 +44,24 @@ _OaksLabBulbasaurText::
 	cont "Bulbizarre?"
 	done
 
+_OaksLabEeveeText::
+	text "Veux-tu le #-"
+	line "mon évolution,"
+	cont "Evoli?"
+	done
+
+_OaksLabPikachuText::
+	text "Veux-tu le"
+	line "#mon souris,"
+	cont "Pikachu?"
+	done
+
+_OaksLabClefairyText::
+	text "Veux-tu le"
+	line "#mon fée,"
+	cont "Mélofée?"
+	done
+
 _OaksLabMonEnergeticText::
 	text "Ce #mon est"
 	line "très énergique!"

@@ -303,6 +303,7 @@ InitOptions:
 
 	ld a, [wGameplayOptions]
 	set BIT_GAMEPLAY_LEVEL_CAP, a ; level cap mode
+	set BIT_GAMEPLAY_ALT_STARTERS, a ; alternate starters
 	ld [wGameplayOptions], a
 	ret
 
