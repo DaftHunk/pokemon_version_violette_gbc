@@ -1,4 +1,4 @@
-_CeruleanMelanieHouseText_Bulbasaur::
+_CeruleanMelanieHouseText_Melanie::
 	text "Je m'occupe des"
 	line "#MON malades."
 
@@ -12,12 +12,12 @@ _CeruleanMelanieHouseText_Bulbasaur::
 _CeruleanMelanieHouseText_Bulbasaur::
 	text "Bulbizarre: BUL!"
 	line "BIZZZAAARRR!"
-	done
+	prompt
 
 _CeruleanMelanieHouseText_Oddish::
 	text "MYSTHERBE: Miiis!"
-	done
+	prompt
 
 _CeruleanMelanieHouseText_Sandhrew::
 	text "SABELETTE: Belêt!"
-	done
+	prompt
