@@ -375,6 +375,13 @@ InitOutsideMapSprites:
 	ld l, a
 	and a
 	jr nz, .storeVRAMSlotsLoop
+; set bit 3 of hFlagsFFFA so subsequent sprite tile copies go through the
+; LCD-safe CopyData instead of corrupting the display during map transitions
+	push af
+	ldh a, [hFlagsFFFA]
+	set 3, a
+	ldh [hFlagsFFFA], a
+	pop af
 	scf
 	ret
 
@@ -411,7 +418,7 @@ GetSplitMapSpriteSetID:
 .loadSpriteSetID
 	ld a, [hl]
 	ret
-; Uses sprite set $01 for West side and $0A for East side.
+; Uses sprite set $01 for West side and $0E for East side.
 ; Route 20 is a special case because the two map sections have a more complex
 ; shape instead of the map simply being split horizontally or vertically.
 .route20
@@ -422,7 +429,7 @@ GetSplitMapSpriteSetID:
 	ret c
 	ld a, [hl]
 	cp $3e
-	ld a, $0a
+	ld a, $0e
 	ret nc
 	ld a, [hl]
 	cp $37
@@ -432,7 +439,7 @@ GetSplitMapSpriteSetID:
 .next
 	ld a, [wYCoord]
 	cp b
-	ld a, $0a
+	ld a, $0e
 	ret c
 	ld a, $01
 	ret

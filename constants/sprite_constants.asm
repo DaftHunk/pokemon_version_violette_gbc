@@ -323,6 +323,12 @@ const_value = 1
 	const SPRITE_LYING_OLD_MAN      ; $7C
 	const SPRITE_RHYHORN            ; $7D
 
+; Follower overworld placeholder: always entry 0 of every sprite set (VRAM slot 2).
+; Valid on its own today (loads a real sheet, used by no NPC); once the follower
+; engine lands, the sheet in slot 2 is replaced at spawn with the party leader's
+; follower graphics. Walking-class ID required, never used by map NPCs.
+SPRITE_FOLLOWER EQU SPRITE_SURFING
+
 ; different kinds of people events
 ITEM    EQU $80
 TRAINER EQU $40
