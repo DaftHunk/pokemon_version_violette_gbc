@@ -321,7 +321,17 @@ InitOutsideMapSprites:
 	push af ; save number of sprites
 	ld a, 11 ; 11 sprites in sprite set
 	ld [wNumSprites], a
+; The sprite set can change when walking across a map connection, which
+; happens with the LCD on. Save the LCD-safe copy flag state and set bit 3
+; so the tile pattern copies below poll rSTAT instead of writing VRAM
+; during mode 3 and leaving partially-updated sprite tiles behind.
+	ldh a, [hFlagsFFFA]
+	push af
+	set 3, a
+	ldh [hFlagsFFFA], a
 	call LoadMapSpriteTilePatterns
+	pop af
+	ldh [hFlagsFFFA], a
 	pop af
 	ld [wNumSprites], a ; restore number of sprites
 	ld hl, wSpriteStateData2 + $1e
@@ -375,13 +385,6 @@ InitOutsideMapSprites:
 	ld l, a
 	and a
 	jr nz, .storeVRAMSlotsLoop
-; set bit 3 of hFlagsFFFA so subsequent sprite tile copies go through the
-; LCD-safe CopyData instead of corrupting the display during map transitions
-	push af
-	ldh a, [hFlagsFFFA]
-	set 3, a
-	ldh [hFlagsFFFA], a
-	pop af
 	scf
 	ret
 
