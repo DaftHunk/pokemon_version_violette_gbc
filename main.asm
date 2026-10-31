@@ -325,6 +325,7 @@ INCLUDE "engine/overworld/doors.asm"
 INCLUDE "engine/overworld/ledges.asm"
 
 INCLUDE "data/maps/headers/CinnabarIsland.asm"
+INCLUDE "scripts/CinnabarIsland.asm"
 INCLUDE "data/maps/objects/CinnabarIsland.asm"
 CinnabarIslandBlocks: INCBIN "maps/CinnabarIsland.blk"
 
@@ -367,8 +368,6 @@ INCLUDE "text/monster_names.asm"
 INCLUDE "engine/clear_save.asm"
 
 INCLUDE "engine/predefs7.asm"
-
-INCLUDE "scripts/CinnabarIsland.asm"
 
 INCLUDE "scripts/Route1.asm"
 
