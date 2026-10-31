@@ -64,7 +64,7 @@ MapHSPointers:
 	dw NoHS ; VIRIDIAN_FOREST_SOUTH_GATE
 	dw NoHS ; VIRIDIAN_FOREST
 	dw Museum1FHS
-	dw Museum2FHS	;joenote - added museum 2f
+	dw NoHS ; PEWTER_MUSEUM_2F
 	dw NoHS ; PEWTER_GYM
 	dw NoHS ; PEWTER_NIDORAN_HOUSE
 	dw NoHS ; PEWTER_MART
@@ -116,8 +116,8 @@ MapHSPointers:
 	dw NoHS ; SS_ANNE_1F_ROOMS
 	dw NoHS ; SS_ANNE_2F_ROOMS
 	dw NoHS ; SS_ANNE_B1F_ROOMS
-	dw Volcano1FHS
-	dw VolcanoB1FHS
+	dw NoHS ; VOLCANO_1F
+	dw NoHS ; VOLCANO_B1F
 	dw NoHS ; VICTORY_ROAD_1F
 	dw VolcanoB2FHS
 	dw NoHS ; ROUTE_16_WEST_HOUSE
@@ -381,13 +381,6 @@ MtMoonB2FHS:
 	db MT_MOON_B2F,$07,Show
 SSAnne2FHS:
 	db SS_ANNE_2F,$02,Hide
-Volcano1FHS:
-	db VOLCANO_1F, $04, Show
-	db VOLCANO_1F, $05, Show
-VolcanoB1FHS:
-	db VOLCANO_B1F, $03, Show
-	db VOLCANO_B1F, $04, Show
-	db VOLCANO_B1F, $05, Show
 VictoryRoad3FHS:
 	db VICTORY_ROAD_3F,$0A,Show
 VolcanoB2FHS:
@@ -464,7 +457,6 @@ SeafoamIslandsB3FHS:
 	db SEAFOAM_ISLANDS_B3F,$03,Show
 	db SEAFOAM_ISLANDS_B3F,$05,Hide
 	db SEAFOAM_ISLANDS_B3F,$06,Hide
-	db SEAFOAM_ISLANDS_B3F,$07,Show
 SeafoamIslandsB4FHS:
 	db SEAFOAM_ISLANDS_B4F,$01,Hide
 	db SEAFOAM_ISLANDS_B4F,$02,Hide
@@ -475,8 +467,6 @@ VermilionCityHS:
 	db VERMILION_CITY,$07,Show	;joenote - replaces bush outside vermilion gym with a lazy pokemon
 UndergroundPathWEHS: 
 	db UNDERGROUND_PATH_WEST_EAST,$02,Hide	;joenote - m_gene pokeball
-Museum2FHS:
-	db PEWTER_MUSEUM_2F,$06,Show	;joenote - added water gun tm to museum 2f
 VermilionDockHS:
 	db VERMILION_DOCK, $01, Hide
 
