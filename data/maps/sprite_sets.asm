@@ -193,7 +193,7 @@ SpriteSets:
 	db SPRITE_KANGASKHAN
 	db SPRITE_SLOWPOKE
 	db SPRITE_LAPRAS
-	db SPRITE_BUG_CATCHER ; Free
+	db SPRITE_BLACK_HAIR_BOY_1 ; Route 18 bird keepers use this set via the $f7 east split
 	db SPRITE_BALL
 	db SPRITE_OMANYTE
 

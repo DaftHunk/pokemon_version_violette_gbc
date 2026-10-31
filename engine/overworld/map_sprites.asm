@@ -369,7 +369,17 @@ InitOutsideMapSprites:
 	ld a, [de]
 	inc de
 	cp b ; does the picture ID match?
-	jr nz, .getPictureIndexLoop
+	jr z, .foundInSet
+	ld a, c
+	cp 11 ; scanned all 11 sprite set entries without a match?
+	jr c, .getPictureIndexLoop
+; The picture ID is not in the sprite set: data error. Map the sprite to the
+; FOLLOWER placeholder (entry 0 of every sprite set, VRAM slot 2) so it shows
+; up as a highly visible surfing sheet instead of garbage tiles or a missing
+; NPC, making the faulty set entry easy to spot while investigating.
+	ld c, 2
+	jr .skipGettingPictureIndex
+.foundInSet
 	inc c
 .skipGettingPictureIndex
 	push hl
