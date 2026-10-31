@@ -158,10 +158,56 @@ FollowerMovementState_Idle:
 ; trail got broken (dropped commands after a full buffer, ledges, etc.)
 	call CheckFollowerDistanceToPlayer
 	jr c, .snap
+	call CheckFollowerBlockingPlayerPath
+	jr c, .snap
 	call UpdateFollowerWalkingSprite
 	ret
 .snap
 	call SnapFollowerBehindPlayer
+	ret
+
+CheckFollowerBlockingPlayerPath:
+; carry = the follower occupies the tile directly in front of the player.
+; After a 180-degree turn it would sit in the player's path and permanently
+; block movement (a deadlock in one-tile-wide corridors), so the idle state
+; snaps it back behind the player instead.
+; d = expected follower map Y, e = expected follower map X (both in +4 space)
+	ld hl, wSpriteStateData2 + $f4
+	ld a, [wYCoord]
+	add $4
+	ld d, a
+	ld a, [wXCoord]
+	add $4
+	ld e, a
+	ld a, [wSpriteStateData1 + 9] ; player facing
+	and a ; SPRITE_FACING_DOWN
+	jr z, .down
+	cp SPRITE_FACING_UP
+	jr z, .up
+	cp SPRITE_FACING_LEFT
+	jr z, .left
+; SPRITE_FACING_RIGHT
+	inc e
+	jr .compare
+.down
+	inc d
+	jr .compare
+.up
+	dec d
+	jr .compare
+.left
+	dec e
+.compare
+	ld a, [hli]
+	cp d
+	jr nz, .noBlock
+	ld a, [hl]
+	cp e
+	jr nz, .noBlock
+	scf
+	ret
+.noBlock
+	and a
 	ret
 
 NormalFollowerFollow:

@@ -1650,10 +1650,10 @@ AdvancePlayerSprite::
 ; shift all the sprites in the direction opposite of the player's motion
 ; so that the player appears to move relative to them
 	ld hl, wSpriteStateData1 + $14
-	ld a, [wNumSprites] ; number of sprites
-	and a ; are there any sprites?
-	jr z, .done
-	ld e, a
+; shift all 15 NPC sprite slots, not just [wNumSprites]: the follower
+; (slot 15) lives beyond wNumSprites and would otherwise drift one tile
+; per player step during the smooth scroll (camera compensation missing)
+	ld e, 15
 .spriteShiftLoop
 	ld a, [hl]
 	sub b
