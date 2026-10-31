@@ -2,8 +2,8 @@ CeruleanMelanieHouseObject:
 	db $a ; border block
 
 	db 2 ; warps
-	warp 2, 7, 1, -1
-	warp 3, 7, 1, -1
+	warp 2, 7, 11, -1
+	warp 3, 7, 11, -1
 
 	db 0 ; signs
 

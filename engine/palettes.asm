@@ -525,6 +525,11 @@ DeterminePaletteID:
 	ld a, [hl]
 DeterminePaletteIDOutOfBattle:
 	ld d, a
+; sprite-only IDs (fossils, ghost) have no PokedexOrder entry and would read
+; out of bounds: resolve them to the first MonsterPalettes entry, like before
+; the pokedex rework
+	cp FOSSIL_KABUTOPS
+	jr nc, .spriteOnly
 	ld [wPokedexNum], a
 	and a
 	jr z, .skipDexNumConversion
@@ -534,6 +539,10 @@ DeterminePaletteIDOutOfBattle:
 	pop de
 	pop bc
 	ld a, [wPokedexNum]
+	jr .skipDexNumConversion
+.spriteOnly
+	xor a ; dex # 0 = first MonsterPalettes entry (PAL_MEWMON)
+	ld [wPokedexNum], a
 .skipDexNumConversion
 	push af
 	ld a, d
@@ -1368,6 +1377,11 @@ TransferMonPal:
 	ld a, [wcf91]
 	cp VICTREEBEL+1
 	jr c, .isMon
+; sprite-only IDs (fossils, ghost) would be mistaken for offset palette IDs
+; and index past the end of GBCBasePalettes: treat them like regular mons,
+; like before the pokedex rework
+	cp FOSSIL_KABUTOPS
+	jr nc, .isMon
 	sub VICTREEBEL+1
 .back	
 	call GetGBCBasePalAddress
