@@ -76,7 +76,7 @@ SpriteSets:
 	db SPRITE_GIRL
 	db SPRITE_OAK
 	db SPRITE_SWIMMER
-	db SPRITE_BLUE ; Free
+	db SPRITE_BLACK_HAIR_BOY_1 ; Route 20 bird keeper (west half uses this set)
 	db SPRITE_BALL
 	db SPRITE_LYING_OLD_MAN
 
