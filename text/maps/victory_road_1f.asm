@@ -66,9 +66,9 @@ _VictoryRoad1FBeautyEndBattleText::
 
 _VictoryRoad1FBeautyAfterBattleText::
 	text "J'ai entendu dire"
-	line "qu'une autre"
-	cont "forme d'Evoli"
-	cont "existe!"
+	line "que d'autres"
+	cont "formes d'Evoli"
+	cont "existeraient!"
 	done
 
 _VictoryRoad1FBurglarBattleText::

@@ -1,6 +1,8 @@
 _CeruleanMelanieHouseText_Melanie::
-	text "Je m'occupe des"
-	line "#MON malades."
+	text "Bonjour, je suis"
+	line "Mélanie, je"
+	cont "m'occupe des"
+	cont "#MON malades."
 
 	para "J'ai soigné ce"
 	line "Bulbizarre."

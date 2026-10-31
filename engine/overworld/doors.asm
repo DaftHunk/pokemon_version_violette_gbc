@@ -59,7 +59,7 @@ HouseDoorTileIDs:
 	db $54,$00
 
 TilesetMuseumDoorTileIDs:
-	db $3b,$00
+	db $3b,$5f,$00
 
 ShipDoorTileIDs:
 	db $1e,$00

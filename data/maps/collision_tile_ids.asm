@@ -23,7 +23,7 @@ ENDM
 
 ; the ID of tiles that do NOT incur a collision
 Underground_Coll::
-	coll_tiles $00, $11, $15, $20, $22, $33, $42, $54, $5c, $5e
+	coll_tiles $00, $11, $15, $20, $22, $33, $35, $42, $54, $5c, $5e
 
 Overworld_Coll::
 	coll_tiles $00, $10, $1b, $20, $21, $23, $2c, $2d, $2e, $30, $31, $33, $39, $3c, $3e, $52, $54, $58, $5b
@@ -45,7 +45,7 @@ House_Coll::
 	coll_tiles $01, $12, $14, $28, $32, $37, $44, $54, $5c
 
 Gate_Coll::
-	coll_tiles $01, $12, $14, $1a, $1c, $37, $38, $3b, $3c, $5e
+	coll_tiles $01, $12, $14, $1a, $1c, $37, $38, $3b, $3c, $5e, $5f
 
 Ship_Coll::
 	coll_tiles $04, $0d, $17, $1d, $1e, $23, $34, $37, $39, $4a

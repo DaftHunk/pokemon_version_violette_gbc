@@ -69,8 +69,8 @@ DEF NUM_CITY_MAPS EQU const_value
     mapconst ROUTE_2_GATE,                     4,  5 ; $37
     mapconst VIRIDIAN_FOREST_SOUTH_GATE,       4,  5 ; $38
     mapconst VIRIDIAN_FOREST,                 24, 17 ; $39
-    mapconst PEWTER_MUSEUM_1F,                 4, 10 ; $3A
-    mapconst PEWTER_MUSEUM_2F,                 4,  7 ; $3B
+    mapconst PEWTER_MUSEUM_1F,                 5, 10 ; $3A
+    mapconst PEWTER_MUSEUM_2F,                 5,  7 ; $3B
     mapconst PEWTER_GYM,                       7,  5 ; $3C
     mapconst PEWTER_NIDORAN_HOUSE,             4,  4 ; $3D
     mapconst PEWTER_MART,                      4,  4 ; $3E

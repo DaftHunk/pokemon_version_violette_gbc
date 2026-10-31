@@ -109,3 +109,10 @@ const_value = 0
 	const HS_CERULEAN_CAVE_B1F_ITEM_2          ; 64
 	const HS_VICTORY_ROAD_1F_ITEM_1            ; 65
 	const HS_VICTORY_ROAD_1F_ITEM_2            ; 66
+	const HS_MUSEUM_TM12                       ; 67 ;joenote - moving water gun here
+	const HS_VOLCANO_1F_ITEM_1                 ; 68
+	const HS_VOLCANO_1F_ITEM_2                 ; 69
+	const HS_VOLCANO_B1F_ITEM_1                ; 6A
+	const HS_VOLCANO_B1F_ITEM_2                ; 6B
+	const HS_VOLCANO_B1F_ITEM_3                ; 6C
+	const HS_SEAFOAM_ISLANDS_B3F_ITEM_1        ; 6D
