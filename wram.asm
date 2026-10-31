@@ -1868,8 +1868,6 @@ wTrainerBaseMoney:: ; d047
 wMissableObjectCounter:: ; d049
 	ds 1
 
-	ds 1
-
 wTrainerName:: ; d04b
 ; 13 bytes for the letters of the opposing trainer
 ; the name is terminated with $50 with possible
@@ -2042,8 +2040,6 @@ wEnemyDisabledMove:: ; d073
 ; low nibble: disable turns left
 	ds 1
 
-	ds 1
-
 wPlayerNumHits:: ; d075
 ; number of hits by player in attacks like Double Slap, etc.
 
@@ -2095,8 +2091,6 @@ wSavedListScrollOffset:: ; d07f
 ; used by the pokemart code to save the existing value of wListScrollOffset
 ; so that it can be restored when the player is done with the pokemart NPC
 	ds 1
-
-	ds 2
 
 ; base coordinates of frame block
 wBaseCoordX:: ; d082
@@ -2177,11 +2171,7 @@ wEndBattleWinTextPointer:: ; d08d
 wEndBattleLoseTextPointer:: ; d08f
 	ds 2
 
-	ds 2
-
 wEndBattleTextRomBank:: ; d093
-	ds 1
-
 	ds 1
 
 wSubAnimAddrPtr:: ; d095
@@ -2196,8 +2186,6 @@ wSlotMachineAllowMatchesCounter:: ; d097
 
 wSubAnimSubEntryAddr:: ; d097
 ; the address of the current subentry of the current subanimation
-	ds 2
-
 	ds 2
 
 wOutwardSpiralTileMapPointer:: ; d09b
@@ -2357,12 +2345,7 @@ wSavedTilesetType:: ; d0d5
 ; saved at the start of a battle and then written back at the end of the battle
 	ds 1
 
-	ds 2
-
-
 wDamage:: ; d0d8
-	ds 2
-
 	ds 2
 
 wRepelRemainingSteps:: ; d0dc
@@ -2506,7 +2489,12 @@ wSavedSpriteMapY:: ; d133
 wSavedSpriteMapX:: ; d134
 	ds 1
 
-	ds 5
+; follower mon command FIFO
+wFollowerCommandBufferSize:: ; number of pending commands in the FIFO below
+	db
+wFollowerCommandBuffer:: ds 16 ; FIFO of follower movement commands
+wFollowerStateFlags:: ; bit 0: follower currently hidden (biking/surfing)
+	db
 
 wWhichPrize:: ; d13a
 	ds 1

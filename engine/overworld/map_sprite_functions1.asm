@@ -24,9 +24,16 @@ _UpdateSprites:
 	jr nz, .spriteLoop
 	ret
 .updateCurrentSprite
+	ld a, [H_CURRENTSPRITEOFFSET]
+	cp $f0 ; follower sprite (struct 15)?
+	jr z, .follower
+	ld a, [hl] ; a = VRAM tile pattern slot
 	cp $1
 	jp nz, UpdateNonPlayerSprite
 	jp UpdatePlayerSprite
+.follower
+	callba FollowerUpdate
+	ret
 
 UpdateNonPlayerSprite:
 	dec a

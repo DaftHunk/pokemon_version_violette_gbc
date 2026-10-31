@@ -261,6 +261,7 @@ OverworldLoopLessDelay::
 .pc60fpsCounter
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld [wWalkCounter], a
+	callba QueueFollowerFollowCommand
 	jr .moveAhead2
 
 .moveAhead

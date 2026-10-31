@@ -90,6 +90,7 @@ INCLUDE "engine/overworld/daycare_exp.asm"
 
 INCLUDE "data/maps/hide_show_data.asm"
 INCLUDE "data/maps/item_ball_data.asm"
+INCLUDE "data/pokemons/follower_sheets.asm"
 
 INCLUDE "engine/overworld/field_move_messages.asm"
 
@@ -2291,6 +2292,7 @@ Volcano_Block:     INCBIN "gfx/blocksets/volcano.bst"
 SECTION "SGB Border", ROMX
 
 INCLUDE "engine/palettes.asm"
+INCLUDE "engine/overworld/follower.asm"
 
 SECTION "Moves", ROMX
 

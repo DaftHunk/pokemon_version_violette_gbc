@@ -347,7 +347,9 @@ InitOutsideMapSprites:
 	ld l, a
 	dec b
 	jr nz, .zeroVRAMSlotsLoop
+	callba RefreshFollowerSheet
 .skipLoadingSpriteSet
+	callba TrySpawnFollower
 	ld hl, wSpriteStateData1 + $10
 ; This loop stores the correct VRAM tile pattern slots according the sprite
 ; data from the map's header. Since the VRAM tile pattern slots are filled in
