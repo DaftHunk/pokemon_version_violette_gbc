@@ -27,11 +27,6 @@ SECTION "Follower engine", ROMX[$4000], BANK[75]
 ; ---------------------------------------------------------------------------
 
 FollowerUpdate::
-	ld hl, wSpriteStateData2 + $fe
-	ld a, [hl] ; VRAM tile pattern slot of the follower
-	dec a
-	swap a
-	ld [$ff93], a ; hTilePlayerStandingOn = (slot - 1) << 4
 ; hide and freeze while the player is biking or surfing
 	ld a, [wWalkBikeSurfState]
 	and a
@@ -120,8 +115,21 @@ FollowerMovementState_Init:
 	ret
 
 FollowerMovementState_ProcessCommand:
+; hold the oldest command while the player is mid-step, unless the follower
+; is already lagging two steps behind: consuming the command only once the
+; player's step has finished keeps the follower one step behind on the
+; player's path (retracing the trail) instead of moving in parallel.
+; This reproduces pokeyellow's natural lag (its step is half the length of
+; the player's 30fps step, so the next command only arrives mid-idle).
+	ld a, [wWalkCounter]
+	and a
+	jr z, .gotCommand
+	call AreThereAtLeastTwoStepsInFollowerCommandBuffer
+	jp nc, FollowerMovementState_Idle
+.gotCommand
 	call GetNextFollowerFollowCommand
 	jp c, FollowerMovementState_Idle
+	call CorrectFollowerFollowStep
 	dec a
 	ld l, a
 	ld h, 0
@@ -179,6 +187,16 @@ CheckFollowerBlockingPlayerPath:
 	ld a, [wXCoord]
 	add $4
 	ld e, a
+; also treat the follower standing on the player's own tile as blocking
+	ld a, [hl]
+	cp d
+	jr nz, .checkFront
+	inc hl
+	ld a, [hl]
+	cp e
+	jr z, .block
+    dec hl
+.checkFront
 	ld a, [wSpriteStateData1 + 9] ; player facing
 	and a ; SPRITE_FACING_DOWN
 	jr z, .down
@@ -204,10 +222,255 @@ CheckFollowerBlockingPlayerPath:
 	ld a, [hl]
 	cp e
 	jr nz, .noBlock
+.block
 	scf
 	ret
 .noBlock
 	and a
+	ret
+
+CorrectFollowerFollowStep:
+; Corrective logic for regular follow commands (1-4).
+; If the follower already holds the steady trailing position for this
+; command (on the player's line, one or two tiles behind), replay the
+; command as-is so it keeps retracing the player's path. Otherwise
+; burn it for a corrective step: perpendicular axis first, to get back
+; on the player's line, then along it to close the gap (a far, 2-tile
+; step when the gap is 3 or more). A corrective step that would land
+; on the player's tile is only safe while they are walking (the tile
+; is vacated the same step); at rest it would stick, so step to the
+; player's trailing side instead. Far commands (5-8) replay as-is.
+	ld b, a
+	cp $5
+	jp nc, .replay
+; d = player Y - follower Y
+; e = player X - follower X  (both in +4 map space)
+	ld a, [wYCoord]
+	add $4
+	ld h, a
+	ld a, [wSpriteStateData2 + $f4]
+	sub h
+	cpl
+	inc a
+	ld d, a
+	ld a, [wXCoord]
+	add $4
+	ld h, a
+	ld a, [wSpriteStateData2 + $f5]
+	sub h
+	cpl
+	inc a
+	ld e, a
+	ld a, b
+	cp $3
+	jr nc, .horizontal
+
+; ----- vertical commands (1-2): get back on the player's column -----
+	ld a, e
+	and a
+	jr z, .vOnColumn
+	bit 7, a
+	jr nz, .vRightOfColumn
+; the follower is left of the column (e > 0): step right
+	cp $3
+	jr nc, .vFarRight
+	ld a, d
+	and a
+	jr nz, .vRight
+	call .blockedIfIdle
+	jp c, .fallback
+.vRight
+	ld a, $4		; right
+	ret
+.vFarRight
+	ld a, $8		; right (far)
+	ret
+.vRightOfColumn
+; the follower is right of the column (e < 0): step left
+	ld a, e
+	cp -2
+	jr nc, .vNearLeft
+	ld a, $7			; left (far)
+	ret
+.vNearLeft
+	ld a, d
+	and a
+	jr nz, .vLeft
+	call .blockedIfIdle
+	jp c, .fallback
+.vLeft
+	ld a, $3			; left
+	ret
+.vOnColumn
+	ld a, b
+	cp $1
+	jr z, .vDown
+; up command: steady when the follower is 1-2 tiles below (d = -2..-1)
+	ld a, d
+	cp -1
+	jp z, .replay
+	cp -2
+	jp z, .replay
+	bit 7, a
+	jr z, .vAhead
+	and a
+	jp z, .replay		; on the player's tile: replay
+	ld a, $6			; up (far): d <= -3
+	ret
+.vAhead
+	ld a, d
+	cp $1
+	jr nz, .vDownStep
+	call .blockedIfIdle		; d == 1: lands on the player's tile
+	jp c, .fallback
+.vDownStep
+	ld a, $1			; down
+	ret
+.vDown
+; down command: steady when the follower is 1-2 tiles above (d = 1..2)
+	ld a, d
+	cp $1
+	jp z, .replay
+	cp $2
+	jp z, .replay
+	bit 7, a
+	jr nz, .vBackUp
+	and a
+	jp z, .replay		; on the player's tile: replay
+	ld a, $5			; down (far): d >= 3
+	ret
+.vBackUp
+	ld a, d
+	cp -1
+	jp nz, .vUpStep
+	call .blockedIfIdle		; d == -1: lands on the player's tile
+	jp c, .fallback
+.vUpStep
+	ld a, $2			; up
+	ret
+
+.horizontal
+; ----- horizontal commands (3-4): get back on the player's row -----
+	ld a, d
+	and a
+	jr z, .hOnRow
+	bit 7, a
+	jr nz, .hAbove
+; the follower is above the row (d > 0): step down
+	cp $3
+	jr nc, .hFarDown
+	ld a, e
+	and a
+	jr nz, .hDown
+	call .blockedIfIdle
+	jr c, .fallback
+.hDown
+	ld a, $1			; down
+	ret
+.hFarDown
+	ld a, $5			; down (far)
+	ret
+.hAbove
+; the follower is below the row (d < 0): step up
+	ld a, d
+	cp -2
+	jr nc, .hNearUp
+	ld a, $6			; up (far)
+	ret
+.hNearUp
+	ld a, e
+	and a
+	jr nz, .hUp
+	call .blockedIfIdle
+	jr c, .fallback
+.hUp
+	ld a, $2			; up
+	ret
+.hOnRow
+	ld a, b
+	cp $3
+	jr z, .hLeftCmd
+; right command: steady when the follower is 1-2 tiles left (e = 1..2)
+	ld a, e
+	cp $1
+	jr z, .replay
+	cp $2
+	jr z, .replay
+	bit 7, a
+	jr nz, .hBackLeft		; e < 0: ahead of the player: step back
+	and a
+	jr z, .replay		; on the player's tile: replay
+	ld a, $8			; right (far): e >= 3
+	ret
+.hBackLeft
+	ld a, e
+	cp -1
+	jr nz, .hLeft
+	call .blockedIfIdle		; e == -1: lands on the player's tile
+	jr c, .fallback
+.hLeft
+	ld a, $3			; left
+	ret
+.hLeftCmd
+; left command: steady when the follower is 1-2 tiles right (e = -2..-1)
+	ld a, e
+	cp -1
+	jr z, .replay
+	cp -2
+	jr z, .replay
+	bit 7, a
+	jr z, .hBackRight		; e > 0: ahead of the player: step back
+	and a
+	jr z, .replay		; on the player's tile: replay
+	ld a, $7			; left (far): e <= -3
+	ret
+.hBackRight
+	ld a, e
+	cp $1
+	jr nz, .hRight
+	call .blockedIfIdle		; e == 1: lands on the player's tile
+	jr c, .fallback
+.hRight
+	ld a, $4			; right
+	ret
+
+.blockedIfIdle
+; The corrective step would land on the player's tile: it only sticks
+; when the player is standing still, because mid-step the tile is
+; vacated the same frame. Carry = blocked at rest.
+	ld a, [wWalkCounter]
+	and a
+	jr z, .idle
+	and a			; walking: clear carry
+	ret
+.idle
+	scf
+	ret
+
+.fallback
+; Blocked at rest: step to the player's trailing side instead
+; (opposite of their facing: 0 = down, 4 = up, 8 = left, 12 = right)
+	ld a, [wSpriteStateData1 + 9]
+	and a			; facing down?
+	jr z, .fbUp
+	cp $4			; facing up?
+	jr z, .fbDown
+	cp $8			; facing left?
+	jr z, .fbRight
+	ld a, $3			; facing right: step left
+	ret
+.fbUp
+	ld a, $2			; up
+	ret
+.fbDown
+	ld a, $1			; down
+	ret
+.fbRight
+	ld a, $4			; right
+	ret
+
+.replay
+	ld a, b
 	ret
 
 NormalFollowerFollow:
@@ -269,16 +532,20 @@ FollowerMovementState_DoubleStep:
 	ret
 
 ; facing, X step, Y step, movement status
-; commands 1-4: one tile, 5-8: two tiles (ledge catch-up)
+; commands 1-4: one tile, 5-8: two tiles (ledge catch-up).
+; The far commands use a one-tile delta like pokeyellow: FollowerDoubleStep
+; adds the step vector twice to the map coords and the DoubleAdd pixel
+; update moves 4 pixels per tick, covering two tiles in the same 8 ticks
+; as the player's jump.
 FollowerMovementCommandData:
 	db  0,  0,  1, $3 ; 1 down
 	db  4,  0, -1, $3 ; 2 up
 	db  8, -1,  0, $3 ; 3 left
 	db 12,  1,  0, $3 ; 4 right
-	db  0,  0,  2, $4 ; 5 down (far)
-	db  4,  0, -2, $4 ; 6 up (far)
-	db  8, -2,  0, $4 ; 7 left (far)
-	db 12,  2,  0, $4 ; 8 right (far)
+	db  0,  0,  1, $4 ; 5 down (far)
+	db  4,  0, -1, $4 ; 6 up (far)
+	db  8, -1,  0, $4 ; 7 left (far)
+	db 12,  1,  0, $4 ; 8 right (far)
 
 FollowerFaceAwayFromPlayer:
 ; the player bumped into the follower (bit 7 of the movement status)
@@ -473,6 +740,9 @@ GetNextFollowerFollowCommand:
 	ld hl, wFollowerCommandBuffer
 	ld a, [hli] ; oldest command
 	push af
+	ld a, b
+	and a
+	jr z, .done ; the popped command was the only one: nothing to shift
 .shiftLoop
 	ld a, [hli]
 	dec hl
@@ -482,6 +752,7 @@ GetNextFollowerFollowCommand:
 	inc hl
 	dec b
 	jr nz, .shiftLoop
+.done
 	pop af
 	and a
 	ret
@@ -526,26 +797,33 @@ QueueFollowerFollowCommand::
 	ld a, [wWalkBikeSurfState]
 	and a
 	ret nz ; no following while biking or surfing
-; the D-pad handlers store the step deltas in the player struct
-; ($c103 = delta Y, $c105 = delta X) before the step starts
-	ld a, [wSpriteStateData1 + 3]
+; the D-pad handlers only set the delta of the pressed axis, so the other
+; axis keeps a stale value from a previous step; the current moving
+; direction (set from wPlayerDirection on every step start) is reliable
+	ld a, [wPlayerMovingDirection]
 	and a
-	jr z, .checkX
-	bit 7, a
-	ld a, 1 ; down
-	jr z, .haveDirection
-	ld a, 2 ; up
-	jr .haveDirection
-.checkX
-	ld a, [wSpriteStateData1 + 5]
-	and a
-	ret z ; no delta (should not happen when a step starts)
-	bit 7, a
-	ld a, 4 ; right
-	jr z, .haveDirection
-	ld a, 3 ; left
-.haveDirection
-	ld b, a
+	ret z ; no direction (should not happen when a step starts)
+	cp PLAYER_DIR_DOWN
+	jr z, .down
+	cp PLAYER_DIR_UP
+	jr z, .up
+	cp PLAYER_DIR_LEFT
+	jr z, .left
+	cp PLAYER_DIR_RIGHT
+	jr z, .right
+	ret ; unknown direction: nothing to queue
+.down
+	ld b, 1
+	jr .checkLedge
+.up
+	ld b, 2
+	jr .checkLedge
+.left
+	ld b, 3
+	jr .checkLedge
+.right
+	ld b, 4
+.checkLedge
 	ld a, [wMovementFlags]
 	bit 6, a ; is the player jumping down a ledge?
 	jr z, .append
@@ -648,7 +926,7 @@ CheckFollowerDistanceToPlayer:
 	cpl
 	inc a
 .positive
-	cp 3
+	cp 4
 	jr nc, .far
 	and a
 	ret
