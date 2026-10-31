@@ -1,3 +1,9 @@
+; The follower engine lives in its own bank. The sheet table
+; (data/pokemons/follower_sheets.asm) must be included right after this file
+; so it lands in the SAME bank: GetFollowerSheetEntry reads it directly
+; (no bank switch); FarCopyData2 fetches each sheet from its own bank.
+SECTION "Follower engine", ROMX[$4000], BANK[75]
+
 ; Follower mon engine.
 ; The first party mon follows the player on outside maps, using the sprite
 ; sheets from data/pokemons/follower_sheets.asm (indexed by the internal species ID).
@@ -63,7 +69,7 @@ FollowerUpdate::
 	jp nz, FollowerFaceAwayFromPlayer
 	ld a, [hl]
 	and $7f
-	cp $5
+	cp $6
 	jr c, .valid
 	xor a
 .valid
@@ -394,6 +400,7 @@ ClearFollowerCommandBuffer:
 
 AppendFollowerFollowCommandToBuffer:
 ; a = command to append
+	ld b, a
 	ld hl, wFollowerCommandBufferSize
 	ld a, [hl]
 	cp 16
@@ -406,7 +413,7 @@ AppendFollowerFollowCommandToBuffer:
 	inc [hl]
 	ld hl, wFollowerCommandBuffer
 	add hl, de
-	ld [hl], a
+	ld [hl], b
 	ret
 
 GetNextFollowerFollowCommand:

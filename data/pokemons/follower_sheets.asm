@@ -5,7 +5,9 @@
 ; nothing is displayed until a PNG is added and the script is re-run.
 ; The INCBIN'd .2bpp files are built by make from gfx/follower/*.png (rgbgfx).
 
-SECTION "Follower sheets 1", ROMX[$4000], BANK[70]
+; IMPORTANT: include this file immediately AFTER
+; engine/overworld/follower.asm (same bank for the table).
+
 FollowerSheetTable::
 	dw $0000 ; species 0 (unused)
 	db $00
@@ -582,6 +584,7 @@ FollowerSheetTable::
 	db $00 ; reserved
 FollowerSheetTableEnd::
 
+SECTION "Follower sheets 1", ROMX[$4000], BANK[70]
 RhydonFollowerSheet:: INCBIN "gfx/pokemon/follower/rhydon.2bpp"
 KangaskhanFollowerSheet:: INCBIN "gfx/pokemon/follower/kangaskhan.2bpp"
 NidoranMFollowerSheet:: INCBIN "gfx/pokemon/follower/nidoran_m.2bpp"
@@ -622,10 +625,10 @@ SlowpokeFollowerSheet:: INCBIN "gfx/pokemon/follower/slowpoke.2bpp"
 KadabraFollowerSheet:: INCBIN "gfx/pokemon/follower/kadabra.2bpp"
 GravelerFollowerSheet:: INCBIN "gfx/pokemon/follower/graveler.2bpp"
 ChanseyFollowerSheet:: INCBIN "gfx/pokemon/follower/chansey.2bpp"
-
-SECTION "Follower sheets 2", ROMX[$4000], BANK[71]
 MachokeFollowerSheet:: INCBIN "gfx/pokemon/follower/machoke.2bpp"
 MrMimeFollowerSheet:: INCBIN "gfx/pokemon/follower/mr_mime.2bpp"
+
+SECTION "Follower sheets 2", ROMX[$4000], BANK[71]
 HitmonleeFollowerSheet:: INCBIN "gfx/pokemon/follower/hitmonlee.2bpp"
 HitmonchanFollowerSheet:: INCBIN "gfx/pokemon/follower/hitmonchan.2bpp"
 ArbokFollowerSheet:: INCBIN "gfx/pokemon/follower/arbok.2bpp"
@@ -666,10 +669,10 @@ CrobatFollowerSheet:: INCBIN "gfx/pokemon/follower/crobat.2bpp"
 VulpixFollowerSheet:: INCBIN "gfx/pokemon/follower/vulpix.2bpp"
 NinetalesFollowerSheet:: INCBIN "gfx/pokemon/follower/ninetales.2bpp"
 PikachuFollowerSheet:: INCBIN "gfx/pokemon/follower/pikachu.2bpp"
-
-SECTION "Follower sheets 3", ROMX[$4000], BANK[72]
 RaichuFollowerSheet:: INCBIN "gfx/pokemon/follower/raichu.2bpp"
 HoundourFollowerSheet:: INCBIN "gfx/pokemon/follower/houndour.2bpp"
+
+SECTION "Follower sheets 3", ROMX[$4000], BANK[72]
 HoundoomFollowerSheet:: INCBIN "gfx/pokemon/follower/houndoom.2bpp"
 DratiniFollowerSheet:: INCBIN "gfx/pokemon/follower/dratini.2bpp"
 DragonairFollowerSheet:: INCBIN "gfx/pokemon/follower/dragonair.2bpp"
@@ -710,10 +713,10 @@ ButterfreeFollowerSheet:: INCBIN "gfx/pokemon/follower/butterfree.2bpp"
 MachampFollowerSheet:: INCBIN "gfx/pokemon/follower/machamp.2bpp"
 GolduckFollowerSheet:: INCBIN "gfx/pokemon/follower/golduck.2bpp"
 HypnoFollowerSheet:: INCBIN "gfx/pokemon/follower/hypno.2bpp"
-
-SECTION "Follower sheets 4", ROMX[$4000], BANK[73]
 GolbatFollowerSheet:: INCBIN "gfx/pokemon/follower/golbat.2bpp"
 MewtwoFollowerSheet:: INCBIN "gfx/pokemon/follower/mewtwo.2bpp"
+
+SECTION "Follower sheets 4", ROMX[$4000], BANK[73]
 SnorlaxFollowerSheet:: INCBIN "gfx/pokemon/follower/snorlax.2bpp"
 MagikarpFollowerSheet:: INCBIN "gfx/pokemon/follower/magikarp.2bpp"
 MarillFollowerSheet:: INCBIN "gfx/pokemon/follower/marill.2bpp"
@@ -754,10 +757,10 @@ SquirtleFollowerSheet:: INCBIN "gfx/pokemon/follower/squirtle.2bpp"
 CharmeleonFollowerSheet:: INCBIN "gfx/pokemon/follower/charmeleon.2bpp"
 WartortleFollowerSheet:: INCBIN "gfx/pokemon/follower/wartortle.2bpp"
 CharizardFollowerSheet:: INCBIN "gfx/pokemon/follower/charizard.2bpp"
-
-SECTION "Follower sheets 5", ROMX[$4000], BANK[74]
 OddishFollowerSheet:: INCBIN "gfx/pokemon/follower/oddish.2bpp"
 GloomFollowerSheet:: INCBIN "gfx/pokemon/follower/gloom.2bpp"
+
+SECTION "Follower sheets 5", ROMX[$4000], BANK[74]
 VileplumeFollowerSheet:: INCBIN "gfx/pokemon/follower/vileplume.2bpp"
 BellsproutFollowerSheet:: INCBIN "gfx/pokemon/follower/bellsprout.2bpp"
 WeepinbellFollowerSheet:: INCBIN "gfx/pokemon/follower/weepinbell.2bpp"

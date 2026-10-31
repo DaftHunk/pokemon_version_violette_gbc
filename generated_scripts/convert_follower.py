@@ -208,8 +208,10 @@ def main():
     # One sheet = 24 tiles x 16 bytes = 384 bytes (2bpp packs 4 pixels per byte).
     SHEET_BYTES = OUT_W * OUT_H // 4
     sheets_here = [e for e in entries if e[2]]
-    caps = [(BANK_SIZE - 191 * 4) // SHEET_BYTES] + \
-           [BANK_SIZE // SHEET_BYTES] * (len(BANKS) - 1)
+    # The table is emitted WITHOUT a section: it must land in the follower
+    # engine's bank (direct reads, no bank switch). Only the sheets get their
+    # own sections.
+    caps = [BANK_SIZE // SHEET_BYTES] * len(BANKS)
     if len(sheets_here) > sum(caps):
         sys.exit("not enough banks: %d sheets, given banks hold %d"
                  % (len(sheets_here), sum(caps)))
@@ -221,24 +223,26 @@ def main():
         "; nothing is displayed until a PNG is added and the script is re-run.",
         "; The INCBIN'd .2bpp files are built by make from gfx/follower/*.png (rgbgfx).",
         "",
+        "; IMPORTANT: include this file immediately AFTER",
+        "; engine/overworld/follower.asm (same bank for the table).",
+        "",
+        "FollowerSheetTable::",
     ]
+    for sid, name, label in entries:
+        if label:
+            lines.append("\tdw %s" % label)
+            lines.append("\tdb BANK(%s)" % label)
+            lines.append("\tdb $00 ; reserved")
+        else:
+            comment = "; %s: no sheet" % name if name else "; species 0 (unused)"
+            lines.append("\tdw $0000 %s" % comment)
+            lines.append("\tdb $00")
+            lines.append("\tdb $00")
+    lines.append("FollowerSheetTableEnd::")
+    lines.append("")
     si = 0
     for bi, bank in enumerate(BANKS):
         lines.append('SECTION "Follower sheets %d", ROMX[$4000], BANK[%d]' % (bi + 1, bank))
-        if bi == 0:
-            lines.append("FollowerSheetTable::")
-            for sid, name, label in entries:
-                if label:
-                    lines.append("\tdw %s" % label)
-                    lines.append("\tdb BANK(%s)" % label)
-                    lines.append("\tdb $00 ; reserved")
-                else:
-                    comment = "; %s: no sheet" % name if name else "; species 0 (unused)"
-                    lines.append("\tdw $0000 %s" % comment)
-                    lines.append("\tdb $00")
-                    lines.append("\tdb $00")
-            lines.append("FollowerSheetTableEnd::")
-            lines.append("")
         for _ in range(caps[bi]):
             if si >= len(sheets_here):
                 break
