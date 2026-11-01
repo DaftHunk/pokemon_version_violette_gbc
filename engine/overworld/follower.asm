@@ -127,6 +127,19 @@ FollowerMovementState_ProcessCommand:
 	call AreThereAtLeastTwoStepsInFollowerCommandBuffer
 	jp nc, FollowerMovementState_Idle
 .gotCommand
+; when the oldest command heads opposite the player's current direction
+; and its replay would step onto their tile (a 180-degree turn just
+; happened), hold it: standing this frame lets the idle snap reposition
+; the follower if it blocks the player, or the next command (the new
+; direction) re-enter the trail behind them once they've walked on,
+; instead of the replay crossing straight through them
+	ld a, [wFollowerCommandBufferSize]
+	and a
+	jr z, .popCommand
+	ld a, [wFollowerCommandBuffer]
+	call FollowerCommandWouldCrossPlayer
+	jp c, FollowerMovementState_Idle
+.popCommand
 	call GetNextFollowerFollowCommand
 	jp c, FollowerMovementState_Idle
 	call CorrectFollowerFollowStep
@@ -211,7 +224,7 @@ CheckFollowerBlockingPlayerPath:
 	ld a, [hl]
 	cp e
 	jr z, .block
-    dec hl
+	dec hl
 .checkFront
 	ld a, [wSpriteStateData1 + 9] ; player facing
 	and a ; SPRITE_FACING_DOWN
@@ -245,6 +258,76 @@ CheckFollowerBlockingPlayerPath:
 	and a
 	ret
 
+; carry = the command in a heads opposite the player's current moving
+; direction AND the follower sits one tile away on the player's line:
+; replaying it would swap the follower straight through the player (a
+; 180-degree turn just happened). Hold it for a step instead and let
+; the idle snaps or the next commands re-enter the trail cleanly.
+FollowerCommandWouldCrossPlayer:
+	dec a
+	and $3 ; fold far commands 5-8 onto their base direction
+	ld e, a
+	ld d, 0
+	ld hl, PlayerDirBitTable
+	add hl, de
+	ld c, [hl] ; the command's direction bit
+	ld a, [wPlayerMovingDirection]
+	and a
+	ret z ; player standing: never hold
+	xor c
+	cp $3 ; down/up pair?
+	jr z, .vertical
+	cp $12 ; left/right pair?
+	jr z, .horizontal
+	and a ; same or perpendicular direction: let it replay
+	ret
+.horizontal
+; the follower must be one tile away on the player's row to cross them
+	ld a, [wYCoord]
+	add $4
+	ld h, a
+	ld a, [wSpriteStateData2 + $f4]
+	sub h
+	and a
+	ret nz ; not on the player's row
+	ld a, [wXCoord]
+	add $4
+	ld h, a
+	ld a, [wSpriteStateData2 + $f5]
+	sub h
+	cp $1
+	jr z, .hold
+	cp -1
+	jr z, .hold
+	and a ; not adjacent: let it replay
+	ret
+.vertical
+; the follower must be one tile away on the player's column to cross them
+	ld a, [wXCoord]
+	add $4
+	ld h, a
+	ld a, [wSpriteStateData2 + $f5]
+	sub h
+	and a
+	ret nz ; not on the player's column
+	ld a, [wYCoord]
+	add $4
+	ld h, a
+	ld a, [wSpriteStateData2 + $f4]
+	sub h
+	cp $1
+	jr z, .hold
+	cp -1
+	jr z, .hold
+	and a ; not adjacent: let it replay
+	ret
+.hold
+	scf
+	ret
+
+PlayerDirBitTable:
+	db PLAYER_DIR_DOWN, PLAYER_DIR_UP, PLAYER_DIR_LEFT, PLAYER_DIR_RIGHT
+
 CorrectFollowerFollowStep:
 ; Corrective logic for regular follow commands (1-4).
 ; If the follower already holds the steady trailing position for this
@@ -252,10 +335,11 @@ CorrectFollowerFollowStep:
 ; command as-is so it keeps retracing the player's path. Otherwise
 ; burn it for a corrective step: perpendicular axis first, to get back
 ; on the player's line, then along it to close the gap (a far, 2-tile
-; step when the gap is 3 or more). A corrective step that would land
-; on the player's tile is only safe while they are walking (the tile
-; is vacated the same step); at rest it would stick, so step to the
-; player's trailing side instead. Far commands (5-8) replay as-is.
+; step when the gap is 3 or more). Steps that cross the player are
+; transient while they are walking; at rest the idle snaps clean up
+; any landing on their tile (CheckFollowerBlockingPlayerPath also
+; treats standing on the player's tile as blocking). Far commands
+; (5-8) replay as-is.
 	ld b, a
 	cp $5
 	jp nc, .replay
@@ -290,12 +374,6 @@ CorrectFollowerFollowStep:
 ; the follower is left of the column (e > 0): step right
 	cp $3
 	jr nc, .vFarRight
-	ld a, d
-	and a
-	jr nz, .vRight
-	call .blockedIfIdle
-	jp c, .fallback
-.vRight
 	ld a, $4		; right
 	ret
 .vFarRight
@@ -309,12 +387,6 @@ CorrectFollowerFollowStep:
 	ld a, $7			; left (far)
 	ret
 .vNearLeft
-	ld a, d
-	and a
-	jr nz, .vLeft
-	call .blockedIfIdle
-	jp c, .fallback
-.vLeft
 	ld a, $3			; left
 	ret
 .vOnColumn
@@ -334,12 +406,6 @@ CorrectFollowerFollowStep:
 	ld a, $6			; up (far): d <= -3
 	ret
 .vAhead
-	ld a, d
-	cp $1
-	jr nz, .vDownStep
-	call .blockedIfIdle		; d == 1: lands on the player's tile
-	jp c, .fallback
-.vDownStep
 	ld a, $1			; down
 	ret
 .vDown
@@ -356,12 +422,6 @@ CorrectFollowerFollowStep:
 	ld a, $5			; down (far): d >= 3
 	ret
 .vBackUp
-	ld a, d
-	cp -1
-	jp nz, .vUpStep
-	call .blockedIfIdle		; d == -1: lands on the player's tile
-	jp c, .fallback
-.vUpStep
 	ld a, $2			; up
 	ret
 
@@ -375,12 +435,6 @@ CorrectFollowerFollowStep:
 ; the follower is above the row (d > 0): step down
 	cp $3
 	jr nc, .hFarDown
-	ld a, e
-	and a
-	jr nz, .hDown
-	call .blockedIfIdle
-	jr c, .fallback
-.hDown
 	ld a, $1			; down
 	ret
 .hFarDown
@@ -394,12 +448,6 @@ CorrectFollowerFollowStep:
 	ld a, $6			; up (far)
 	ret
 .hNearUp
-	ld a, e
-	and a
-	jr nz, .hUp
-	call .blockedIfIdle
-	jr c, .fallback
-.hUp
 	ld a, $2			; up
 	ret
 .hOnRow
@@ -419,12 +467,6 @@ CorrectFollowerFollowStep:
 	ld a, $8			; right (far): e >= 3
 	ret
 .hBackLeft
-	ld a, e
-	cp -1
-	jr nz, .hLeft
-	call .blockedIfIdle		; e == -1: lands on the player's tile
-	jr c, .fallback
-.hLeft
 	ld a, $3			; left
 	ret
 .hLeftCmd
@@ -441,50 +483,8 @@ CorrectFollowerFollowStep:
 	ld a, $7			; left (far): e <= -3
 	ret
 .hBackRight
-	ld a, e
-	cp $1
-	jr nz, .hRight
-	call .blockedIfIdle		; e == 1: lands on the player's tile
-	jr c, .fallback
-.hRight
 	ld a, $4			; right
 	ret
-
-.blockedIfIdle
-; The corrective step would land on the player's tile: it only sticks
-; when the player is standing still, because mid-step the tile is
-; vacated the same frame. wPlayerMovingDirection is set on every step
-; start and cleared whenever no direction is held, so it tells an
-; imminent step apart from a full stop — wWalkCounter cannot, because
-; it also reads 0 on every step-start frame. Carry = blocked at rest.
-	ld a, [wPlayerMovingDirection]
-	and a
-	ret nz			; player walking: clear carry
-	scf				; blocked at rest
-	ret
-
-.fallback
-; Blocked at rest: step to the player's trailing side instead
-; (opposite of their facing: 0 = down, 4 = up, 8 = left, 12 = right)
-	ld a, [wSpriteStateData1 + 9]
-	and a			; facing down?
-	jr z, .fbUp
-	cp $4			; facing up?
-	jr z, .fbDown
-	cp $8			; facing left?
-	jr z, .fbRight
-	ld a, $3			; facing right: step left
-	ret
-.fbUp
-	ld a, $2			; up
-	ret
-.fbDown
-	ld a, $1			; down
-	ret
-.fbRight
-	ld a, $4			; right
-	ret
-
 .replay
 	ld a, b
 	ret
@@ -637,9 +637,9 @@ ResetFollowerStepVector:
 
 GetFollowerWalkingAnimationSpeed:
 ; Advance the walk frame at a fixed interval of 4 ticks (3 when
-; running with B held): two pose changes per tile, the classic gait,
-; at any frame rate — at 60fps tiles are crossed twice as fast, so the
-; feet must cycle twice as fast too.
+; running with B held): two pose changes per tile at any frame rate,
+; like the classic gait — at 60fps tiles are crossed twice as fast,
+; so the feet must cycle twice as fast too.
 	ld a, [wJoyIgnore]
 	and a
 	jr nz, .notRunning
