@@ -129,10 +129,9 @@ FollowerMovementState_ProcessCommand:
 .gotCommand
 ; when the oldest command heads opposite the player's current direction
 ; and its replay would step onto their tile (a 180-degree turn just
-; happened), hold it: standing this frame lets the idle snap reposition
-; the follower if it blocks the player, or the next command (the new
-; direction) re-enter the trail behind them once they've walked on,
-; instead of the replay crossing straight through them
+; happened), hold it: standing this frame lets the next command (the
+; new direction) re-enter the trail behind them once they've walked
+; on, instead of the replay crossing straight through them
 	ld a, [wFollowerCommandBufferSize]
 	and a
 	jr z, .popCommand
@@ -204,10 +203,12 @@ FollowerMovementState_ProcessCommand:
 
 FollowerMovementState_Idle:
 ; no pending commands: stand still, but snap back behind the player if the
-; trail got broken (dropped commands after a full buffer, ledges, etc.)
+; trail got broken (dropped commands after a full buffer, ledges, etc.).
+; A follower standing in front of the player is not a broken trail: the
+; player walks through it (DetectCollisionBetweenSprites skips the
+; blocking bits for the follower) and it re-enters the trail behind
+; them, like the follower in Pokemon Yellow
 	call CheckFollowerDistanceToPlayer
-	jr c, .snap
-	call CheckFollowerBlockingPlayerPath
 	jr c, .snap
 ; stand on the standing frame, like the player sprite when it stops moving
 	xor a
@@ -218,61 +219,6 @@ FollowerMovementState_Idle:
 	ret
 .snap
 	call SnapFollowerBehindPlayer
-	ret
-
-CheckFollowerBlockingPlayerPath:
-; carry = the follower occupies the tile directly in front of the player.
-; After a 180-degree turn it would sit in the player's path and permanently
-; block movement (a deadlock in one-tile-wide corridors), so the idle state
-; snaps it back behind the player instead.
-; d = expected follower map Y, e = expected follower map X (both in +4 space)
-	ld hl, wSpriteStateData2 + $f4
-	ld a, [wYCoord]
-	add $4
-	ld d, a
-	ld a, [wXCoord]
-	add $4
-	ld e, a
-; also treat the follower standing on the player's own tile as blocking
-	ld a, [hl]
-	cp d
-	jr nz, .checkFront
-	inc hl
-	ld a, [hl]
-	cp e
-	jr z, .block
-	dec hl
-.checkFront
-	ld a, [wSpriteStateData1 + 9] ; player facing
-	and a ; SPRITE_FACING_DOWN
-	jr z, .down
-	cp SPRITE_FACING_UP
-	jr z, .up
-	cp SPRITE_FACING_LEFT
-	jr z, .left
-; SPRITE_FACING_RIGHT
-	inc e
-	jr .compare
-.down
-	inc d
-	jr .compare
-.up
-	dec d
-	jr .compare
-.left
-	dec e
-.compare
-	ld a, [hli]
-	cp d
-	jr nz, .noBlock
-	ld a, [hl]
-	cp e
-	jr nz, .noBlock
-.block
-	scf
-	ret
-.noBlock
-	and a
 	ret
 
 ; carry = the command in a heads opposite the player's current moving
@@ -391,12 +337,6 @@ PlayerDirBitTable:
 ; player is walking; at rest the idle snaps already clean up overlaps.
 FollowerStepWouldLandOnPlayerFrontTile:
 	ld b, a ; step command
-	ld a, [wPlayerMovingDirection]
-	and a
-	jr nz, .walking
-	ld a, b ; player standing: let the step through
-	ret
-.walking
 ; landing vector: d = dy, pushed dx (doubled for far commands 5-8)
 	ld a, b
 	dec a
@@ -418,10 +358,12 @@ FollowerStepWouldLandOnPlayerFrontTile:
 	add a
 .nearX
 	push af
+	ld a, [wPlayerMovingDirection]
+	and a
+	jr z, .standing
 ; c = front tile dy, e = front tile dx (from the player's heading)
 	ld c, 0
 	ld e, 0
-	ld a, [wPlayerMovingDirection]
 	cp PLAYER_DIR_DOWN
 	jr z, .frontDown
 	cp PLAYER_DIR_UP
@@ -429,15 +371,23 @@ FollowerStepWouldLandOnPlayerFrontTile:
 	cp PLAYER_DIR_LEFT
 	jr z, .frontLeft
 	inc e ; PLAYER_DIR_RIGHT
-	jr .front
+	jr .checkAxes
 .frontDown
 	inc c
-	jr .front
+	jr .checkAxes
 .frontUp
 	dec c
-	jr .front
+	jr .checkAxes
 .frontLeft
 	dec e
+	jr .checkAxes
+.standing
+; the player is standing: drop a step that lands on their own tile —
+; the steady replay from one tile behind would step right onto them,
+; and at rest the trail has no vacated tile to retrace. Everything
+; else passes freely
+	ld c, 0
+	ld e, 0
 .front
 ; the front tile is always the tile the player is entering with their
 ; current step. Ledge jumps get no +2 special case anymore: the far
@@ -591,10 +541,10 @@ CorrectFollowerFollowStep:
 ; burn it for a corrective step: perpendicular axis first, to get back
 ; on the player's line, then along it to close the gap (a far, 2-tile
 ; step when the gap is 3 or more). Steps that cross the player are
-; transient while they are walking; at rest the idle snaps clean up
-; any landing on their tile (CheckFollowerBlockingPlayerPath also
-; treats standing on the player's tile as blocking). Far commands
-; (5-8) replay as-is.
+; transient while they are walking; at rest a follower that landed
+; on the player's tile stands there until they walk on and re-enters
+; the trail through them (the player walks through the follower).
+; Far commands (5-8) replay as-is.
 	ld b, a
 	cp $5
 	jr c, .nearStep
@@ -708,34 +658,51 @@ CorrectFollowerFollowStep:
 	ld a, b
 	cp $1
 	jr z, .vDown
-; up command: steady when the follower is 1-2 tiles below (d = -2..-1)
+; up command: steady when the follower is 1 tile below (d = -1);
+; two below while the player walks: far to catch up onto the tile
+; they vacate with this step; at rest a single walk step closes it
 	ld a, d
 	cp -1
 	jp z, .replay
 	cp -2
-	jp z, .replay
+	jp z, .vUpCatchUp
 	bit 7, a
 	jr z, .vAhead		; d >= 0: on the player's tile or ahead of it
 	ld a, $6			; up (far): d <= -3
+	ret
+.vUpCatchUp
+	ld a, [wPlayerMovingDirection]
+	and a
+	jp z, .replay		; standing: a single walk step closes it
+	ld a, $6			; up (far)
 	ret
 .vAhead
 	ld a, $1			; down: step back (or off the player's tile)
 	ret
 .vDown
-; down command: steady when the follower is 1-2 tiles above (d = 1..2)
+; down command: steady when the follower is 1 tile above (d = 1);
+; two tiles above while the player walks: far to catch up onto the
+; tile they vacate with this step (real distance 1, like the follower
+; in Pokemon Yellow); at rest a single walk step closes it
 	ld a, d
 	cp $1
 	jp z, .replay
 	cp $2
-	jp z, .replay
+	jp z, .vDownCatchUp
 	bit 7, a
 	jr nz, .vBackUp
 	and a
-	jp z, .replay		; on the player's tile: replay
+	jp z, .vBackUp		; on the player's tile: step back off it
 	ld a, $5			; down (far): d >= 3
 	ret
 .vBackUp
 	ld a, $2			; up
+	ret
+.vDownCatchUp
+	ld a, [wPlayerMovingDirection]
+	and a
+	jr z, .replay		; standing: a single step lands adjacent
+	ld a, $5			; down (far)
 	ret
 
 .horizontal
@@ -772,28 +739,42 @@ CorrectFollowerFollowStep:
 	cp $1
 	jr z, .replay
 	cp $2
-	jr z, .replay
+	jr z, .hRightCatchUp
 	bit 7, a
 	jr nz, .hBackLeft		; e < 0: ahead of the player: step back
 	and a
-	jr z, .replay		; on the player's tile: replay
+	jr z, .hBackLeft		; on the player's tile: step back off it
 	ld a, $8			; right (far): e >= 3
+	ret
+.hRightCatchUp
+	ld a, [wPlayerMovingDirection]
+	and a
+	jr z, .replay		; standing: a single walk step closes it
+	ld a, $8			; right (far)
 	ret
 .hBackLeft
 	ld a, $3			; left
 	ret
 .hLeftCmd
-; left command: steady when the follower is 1-2 tiles right (e = -2..-1)
+; left command: steady when the follower is 1 tile right (e = -1);
+; two right while the player walks: far to catch up onto the tile
+; they vacate with this step; at rest a single walk step closes it
 	ld a, e
 	cp -1
 	jr z, .replay
 	cp -2
-	jr z, .replay
+	jr z, .hLeftCatchUp
 	bit 7, a
 	jr z, .hBackRight		; e > 0: ahead of the player: step back
 	and a
-	jr z, .replay		; on the player's tile: replay
+	jr z, .hBackRight		; on the player's tile: step back off it
 	ld a, $7			; left (far): e <= -3
+	ret
+.hLeftCatchUp
+	ld a, [wPlayerMovingDirection]
+	and a
+	jr z, .replay		; standing: a single walk step closes it
+	ld a, $7			; left (far)
 	ret
 .hBackRight
 	ld a, $4			; right

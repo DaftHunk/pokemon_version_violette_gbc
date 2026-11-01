@@ -277,6 +277,22 @@ DetectCollisionBetweenSprites:
 	jr nc, .next ; go to next sprite if distance is still positive after both adjustments
 
 .collision
+	ld a, l
+	and $f0 ; is the moving sprite the player? (sprite offsets are
+	        ; multiples of $10 and the player's is 0)
+	jr nz, .standardCollision
+	ld a, [$ff8f] ; a = loop counter
+	cp $f ; collision with the follower (sprite 15)?
+	jr nz, .standardCollision
+; the follower never blocks the player's step: skip the direction
+; bits that block movement and only set the identity bits, so the
+; player walks through and the follow engine trails them through,
+; like the follower in Pokemon Yellow
+	inc l
+	inc l
+	inc l
+	jr .storeCollisionBits
+.standardCollision
 	ld a, [$ff91] ; a = 7 or 9 depending on sprite i's delta X
 	ld b, a
 	ld a, [$ff90] ; a = 7 or 9 depending on sprite i's delta Y
@@ -301,6 +317,7 @@ DetectCollisionBetweenSprites:
 ; set bit in [$c1ie] or [$c1if] to indicate which sprite the collision occurred with
 	inc l
 	inc l
+.storeCollisionBits
 	ld a, [$ff8f] ; a = loop counter
 	ld de, SpriteCollisionBitTable
 	add a
