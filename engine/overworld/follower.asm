@@ -628,9 +628,23 @@ CorrectFollowerFollowStep:
 	ld a, b
 	ret
 
+FollowerGetStepTicks:
+; a = ticks in a full player step at the current frame rate: $8 at 30fps
+; (8 frames per tile, 2 pixels each), $10 at 60fps (16 frames per tile,
+; 1 pixel each) — the same value home/overworld.asm loads into
+; wWalkCounter, so the follower's steps span exactly the player's steps.
+; BIT_GRAPHIC_60_FPS clear (z) = 30fps, matching Check60fps' polarity
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_60_FPS, a
+	ld a, $8
+	ret z
+	ld a, $10
+	ret
+
 NormalFollowerFollow:
+	call FollowerGetStepTicks
 	ld hl, wSpriteStateData2 + $f8
-	ld [hl], $8
+	ld [hl], a
 	ld hl, wSpriteStateData1 + $f1
 	ld [hl], $3
 	call AddFollowerStepVector
@@ -648,8 +662,11 @@ FollowerMovementState_NormalFollow:
 	ret
 
 FastFollowerFollow:
+; running steps are half as long: the player advances twice per frame
+	call FollowerGetStepTicks
+	srl a
 	ld hl, wSpriteStateData2 + $f8
-	ld [hl], $4
+	ld [hl], a
 	ld hl, wSpriteStateData1 + $f1
 	ld [hl], $5
 	call AddFollowerStepVector
@@ -667,8 +684,9 @@ FollowerMovementState_FastFollow:
 	ret
 
 FollowerDoubleStep:
+	call FollowerGetStepTicks
 	ld hl, wSpriteStateData2 + $f8
-	ld [hl], $8
+	ld [hl], a
 	ld hl, wSpriteStateData1 + $f1
 	ld [hl], $4
 	call AddFollowerStepVector
@@ -741,6 +759,22 @@ TryDoubleAddFollowerStepVectorToScreenPixelCoords:
 	bit 6, a ; ledge jump?
 	jr nz, AddFollowerStepVectorToScreenPixelCoords
 DoubleAddFollowerStepVectorToScreenPixelCoords:
+; 4 pixels per tick at 30fps, 2 pixels per tick at 60fps: the far and
+; running steps still cover their tiles within the player's step time
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_60_FPS, a
+	jr z, .doubleRate
+	ld hl, wSpriteStateData1 + $f3
+	ld a, [hli] ; delta Y
+	add a
+	add [hl] ; Y pixels
+	ld [hli], a
+	ld a, [hli] ; delta X
+	add a
+	add [hl] ; X pixels
+	ld [hl], a
+	ret
+.doubleRate
 	ld hl, wSpriteStateData1 + $f3
 	ld a, [hli] ; delta Y
 	add a
@@ -755,6 +789,22 @@ DoubleAddFollowerStepVectorToScreenPixelCoords:
 	ret
 
 AddFollowerStepVectorToScreenPixelCoords:
+; move the screen pixels by the step slice for one tick: 2 pixels per
+; tick at 30fps (8 ticks per tile), 1 pixel per tick at 60fps (16 ticks
+; per tile) — mirroring AdvancePlayerSprite, which doubles its scroll
+; deltas at 30fps only
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_60_FPS, a
+	jr z, .doubleRate
+	ld hl, wSpriteStateData1 + $f3
+	ld a, [hli] ; delta Y
+	add [hl] ; Y pixels
+	ld [hli], a
+	ld a, [hli] ; delta X
+	add [hl] ; X pixels
+	ld [hl], a
+	ret
+.doubleRate
 	ld hl, wSpriteStateData1 + $f3
 	ld a, [hli] ; delta Y
 	add a
@@ -775,10 +825,10 @@ ResetFollowerStepVector:
 	ret
 
 GetFollowerWalkingAnimationSpeed:
-; Advance the walk frame at a fixed interval of 4 ticks (3 when
-; running with B held): two pose changes per tile at any frame rate,
-; like the classic gait — at 60fps tiles are crossed twice as fast,
-; so the feet must cycle twice as fast too.
+; Advance the walk frame at a fixed interval of 4 ticks (3 when running
+; with B held), doubled to 8 (6) at 60fps: a tile takes twice as many
+; ticks there, so the pose rhythm stays locked to the tile — two pose
+; changes per tile at any frame rate, matching the player's gait
 	ld a, [wJoyIgnore]
 	and a
 	jr nz, .notRunning
@@ -791,6 +841,11 @@ GetFollowerWalkingAnimationSpeed:
 	ld a, 4
 .gotInterval
 	ld b, a
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_60_FPS, a
+	jr z, .gotInterval2 ; 30fps: ticks already match the player's frames
+	sla b ; 60fps: a tile takes twice as many ticks
+.gotInterval2
 	ld hl, wSpriteStateData1 + $f7
 	ld a, [hl]
 	inc a
