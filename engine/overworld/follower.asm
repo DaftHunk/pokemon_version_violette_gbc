@@ -115,18 +115,11 @@ FollowerMovementState_Init:
 	ret
 
 FollowerMovementState_ProcessCommand:
-; hold the oldest command while the player is mid-step, unless the follower
-; is already lagging two steps behind: consuming the command only once the
-; player's step has finished keeps the follower one step behind on the
-; player's path (retracing the trail) instead of moving in parallel.
-; This reproduces pokeyellow's natural lag (its step is half the length of
-; the player's 30fps step, so the next command only arrives mid-idle).
-	ld a, [wWalkCounter]
-	and a
-	jr z, .gotCommand
-	call AreThereAtLeastTwoStepsInFollowerCommandBuffer
-	jp nc, FollowerMovementState_Idle
-.gotCommand
+; consume commands as they are queued: the follower steps in parallel with
+; the player, always landing on the tile they vacate with their current
+; step — one tile behind at all times, like the follower in Pokemon
+; Yellow. The step animation itself bounds consumption to one command per
+; player step: this state only runs again once the follower's step ends.
 ; when the oldest command heads opposite the player's current direction
 ; and its replay would step onto their tile (a 180-degree turn just
 ; happened), hold it: standing this frame lets the next command (the
@@ -358,9 +351,14 @@ FollowerStepWouldLandOnPlayerFrontTile:
 	add a
 .nearX
 	push af
-	ld a, [wPlayerMovingDirection]
+; wWalkCounter, not wPlayerMovingDirection: the moving direction keeps
+; its last value at rest (it encodes the player's facing), so it is
+; never zero while standing — only the walk counter truly separates
+; rest from walking
+	ld a, [wWalkCounter]
 	and a
 	jr z, .standing
+	ld a, [wPlayerMovingDirection]
 ; c = front tile dy, e = front tile dx (from the player's heading)
 	ld c, 0
 	ld e, 0
@@ -388,7 +386,6 @@ FollowerStepWouldLandOnPlayerFrontTile:
 ; else passes freely
 	ld c, 0
 	ld e, 0
-.front
 ; the front tile is always the tile the player is entering with their
 ; current step. Ledge jumps get no +2 special case anymore: the far
 ; command queued for a jump lands on the jump's landing tile, which
@@ -671,7 +668,7 @@ CorrectFollowerFollowStep:
 	ld a, $6			; up (far): d <= -3
 	ret
 .vUpCatchUp
-	ld a, [wPlayerMovingDirection]
+	ld a, [wWalkCounter]
 	and a
 	jp z, .replay		; standing: a single walk step closes it
 	ld a, $6			; up (far)
@@ -699,7 +696,7 @@ CorrectFollowerFollowStep:
 	ld a, $2			; up
 	ret
 .vDownCatchUp
-	ld a, [wPlayerMovingDirection]
+	ld a, [wWalkCounter]
 	and a
 	jr z, .replay		; standing: a single step lands adjacent
 	ld a, $5			; down (far)
@@ -747,7 +744,7 @@ CorrectFollowerFollowStep:
 	ld a, $8			; right (far): e >= 3
 	ret
 .hRightCatchUp
-	ld a, [wPlayerMovingDirection]
+	ld a, [wWalkCounter]
 	and a
 	jr z, .replay		; standing: a single walk step closes it
 	ld a, $8			; right (far)
@@ -771,7 +768,7 @@ CorrectFollowerFollowStep:
 	ld a, $7			; left (far): e <= -3
 	ret
 .hLeftCatchUp
-	ld a, [wPlayerMovingDirection]
+	ld a, [wWalkCounter]
 	and a
 	jr z, .replay		; standing: a single walk step closes it
 	ld a, $7			; left (far)
