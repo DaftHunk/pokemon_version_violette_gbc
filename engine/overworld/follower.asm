@@ -429,11 +429,13 @@ FollowerStepWouldLandOnPlayerFrontTile:
 .frontLeft
 	dec e
 .front
-; ledge jumps enter the tile two below, not the adjacent one
-	ld a, [wMovementFlags]
-	bit 6, a
-	jr z, .checkAxes
-	inc c ; always a downward jump
+; the front tile is always the tile the player is entering with their
+; current step. Ledge jumps get no +2 special case anymore: the far
+; command queued for a jump lands on the jump's landing tile, which
+; the player enters with their second simulated step — dropping it
+; there keeps the follower on the takeoff/ledge tile until the player
+; has moved on, and the follow logic then crosses behind them, like
+; the follower in Pokemon Yellow
 .checkAxes
 ; the landing tile must equal the front tile on both axes (map coords
 ; are stored with a +$4 bias, so both sides keep it)
@@ -1051,10 +1053,27 @@ QueueFollowerFollowCommand::
 .checkLedge
 	ld a, [wMovementFlags]
 	bit 6, a ; is the player jumping down a ledge?
-	jr z, .append
+	jr z, .notLedge
+; a ledge jump runs as TWO simulated steps, so this hook fires twice
+; per jump. Queue the far command on the first step only and swallow
+; the second: with two fars the follower would cross four tiles while
+; the player jumps two and end up in front of them (pokeyellow does
+; the same with a latch in PikachuLedgeOrFishingDirection)
+	ld hl, wFollowerStateFlags
+	bit 1, [hl]
+	jr nz, .secondLedgeStep
+	set 1, [hl]
 	ld a, b
 	add 4 ; far commands 5-8 to cross the ledge gap
 	ld b, a
+	jr .append
+.secondLedgeStep
+	res 1, [hl]
+	ret
+.notLedge
+; normal step: clear the latch for the next jump
+	ld hl, wFollowerStateFlags
+	res 1, [hl]
 .append
 	ld a, b
 	jp AppendFollowerFollowCommandToBuffer
