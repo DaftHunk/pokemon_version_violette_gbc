@@ -143,6 +143,13 @@ FollowerMovementState_ProcessCommand:
 	call GetNextFollowerFollowCommand
 	jp c, FollowerMovementState_Idle
 	call CorrectFollowerFollowStep
+; drop the command when its step would land on the tile the player is
+; entering: both sprites would end up on the same tile and the next
+; replays would keep the follower glued to the player. Standing this
+; frame lets the player's step close the gap so the next command can
+; land on the tile they just left (the trailing position)
+	call FollowerStepWouldLandOnPlayerFrontTile
+	jp c, FollowerMovementState_Idle
 	dec a
 	ld l, a
 	ld h, 0
@@ -259,10 +266,12 @@ CheckFollowerBlockingPlayerPath:
 	ret
 
 ; carry = the command in a heads opposite the player's current moving
-; direction AND the follower sits one tile away on the player's line:
-; replaying it would swap the follower straight through the player (a
-; 180-degree turn just happened). Hold it for a step instead and let
-; the idle snaps or the next commands re-enter the trail cleanly.
+; direction AND the follower sits in their path, one or two tiles away
+; on the player's line: replaying it would meet the player head-on (a
+; 180-degree turn just happened; one tile apart they swap tiles, two
+; apart they land on the same tile and the follower sticks to the
+; player). Hold it for a step instead and let the idle snaps or the
+; next commands re-enter the trail cleanly.
 FollowerCommandWouldCrossPlayer:
 	dec a
 	and $3 ; fold far commands 5-8 onto their base direction
@@ -275,14 +284,16 @@ FollowerCommandWouldCrossPlayer:
 	and a
 	ret z ; player standing: never hold
 	xor c
-	cp $3 ; down/up pair?
-	jr z, .vertical
-	cp $12 ; left/right pair?
+	cp $3 ; left/right pair (PLAYER_DIR_RIGHT = 1, PLAYER_DIR_LEFT = 2)?
 	jr z, .horizontal
+	cp $0c ; down/up pair (PLAYER_DIR_DOWN = 4, PLAYER_DIR_UP = 8)?
+	jr z, .vertical
 	and a ; same or perpendicular direction: let it replay
 	ret
 .horizontal
-; the follower must be one tile away on the player's row to cross them
+; the follower must be on the player's row, in their path: one or two
+; tiles away in the direction the old command heads (from there its
+; replay meets the player walking the other way)
 	ld a, [wYCoord]
 	add $4
 	ld h, a
@@ -295,14 +306,32 @@ FollowerCommandWouldCrossPlayer:
 	ld h, a
 	ld a, [wSpriteStateData2 + $f5]
 	sub h
-	cp $1
-	jr z, .hold
+	ld e, a ; signed follower X offset from the player
+	ld a, c
+	cp PLAYER_DIR_LEFT
+	jr z, .hOldLeft
+; the old command steps right (the player now walks left): hold when the
+; follower sits 1-2 tiles left of the player
+	ld a, e
 	cp -1
 	jr z, .hold
-	and a ; not adjacent: let it replay
+	cp -2
+	jr z, .hold
+	and a ; wrong side or too far: let it replay
+	ret
+.hOldLeft
+; the old command steps left (the player now walks right): hold when the
+; follower sits 1-2 tiles right of the player
+	ld a, e
+	cp $1
+	jr z, .hold
+	cp $2
+	jr z, .hold
+	and a ; wrong side or too far: let it replay
 	ret
 .vertical
-; the follower must be one tile away on the player's column to cross them
+; the follower must be on the player's column, in their path: one or two
+; tiles away in the direction the old command heads
 	ld a, [wXCoord]
 	add $4
 	ld h, a
@@ -315,11 +344,28 @@ FollowerCommandWouldCrossPlayer:
 	ld h, a
 	ld a, [wSpriteStateData2 + $f4]
 	sub h
-	cp $1
-	jr z, .hold
+	ld e, a ; signed follower Y offset from the player
+	ld a, c
+	cp PLAYER_DIR_UP
+	jr z, .vOldUp
+; the old command steps down (the player now walks up): hold when the
+; follower sits 1-2 tiles above the player
+	ld a, e
 	cp -1
 	jr z, .hold
-	and a ; not adjacent: let it replay
+	cp -2
+	jr z, .hold
+	and a ; wrong side or too far: let it replay
+	ret
+.vOldUp
+; the old command steps up (the player now walks down): hold when the
+; follower sits 1-2 tiles below the player
+	ld a, e
+	cp $1
+	jr z, .hold
+	cp $2
+	jr z, .hold
+	and a ; wrong side or too far: let it replay
 	ret
 .hold
 	scf
@@ -327,6 +373,101 @@ FollowerCommandWouldCrossPlayer:
 
 PlayerDirBitTable:
 	db PLAYER_DIR_DOWN, PLAYER_DIR_UP, PLAYER_DIR_LEFT, PLAYER_DIR_RIGHT
+ 
+; carry = the landing tile of the step command in a (1-8) is the tile
+; the player is entering with their current step (their front tile).
+; This catches the head-on meets the opposite-pair hold above cannot
+; see (corrective steps toward the player). Only checked while the
+; player is walking; at rest the idle snaps already clean up overlaps.
+FollowerStepWouldLandOnPlayerFrontTile:
+	ld b, a ; step command
+	ld a, [wPlayerMovingDirection]
+	and a
+	jr nz, .walking
+	ld a, b ; player standing: let the step through
+	ret
+.walking
+; landing vector: d = dy, pushed dx (doubled for far commands 5-8)
+	ld a, b
+	dec a
+	and $3 ; folded: 0 down, 1 up, 2 left, 3 right
+	add a
+	ld e, a
+	ld d, 0
+	ld hl, FollowerStepVectorTable
+	add hl, de
+	ld a, b
+	sub $5 ; carry = near step (1-4)
+	ld a, [hli] ; dy
+	jr c, .nearY
+	add a
+.nearY
+	ld d, a
+	ld a, [hli] ; dx
+	jr c, .nearX
+	add a
+.nearX
+	push af
+; c = front tile dy, e = front tile dx (from the player's heading)
+	ld c, 0
+	ld e, 0
+	ld a, [wPlayerMovingDirection]
+	cp PLAYER_DIR_DOWN
+	jr z, .frontDown
+	cp PLAYER_DIR_UP
+	jr z, .frontUp
+	cp PLAYER_DIR_LEFT
+	jr z, .frontLeft
+	inc e ; PLAYER_DIR_RIGHT
+	jr .front
+.frontDown
+	inc c
+	jr .front
+.frontUp
+	dec c
+	jr .front
+.frontLeft
+	dec e
+.front
+; ledge jumps enter the tile two below, not the adjacent one
+	ld a, [wMovementFlags]
+	bit 6, a
+	jr z, .checkAxes
+	inc c ; always a downward jump
+.checkAxes
+; the landing tile must equal the front tile on both axes (map coords
+; are stored with a +$4 bias, so both sides keep it)
+	ld a, [wSpriteStateData2 + $f4]
+	add d ; landing Y
+	ld h, a
+	pop af ; dx
+	ld d, a
+	ld a, [wYCoord]
+	add c ; front tile Y
+	add $4
+	cp h
+	jr nz, .noLand
+	ld a, [wSpriteStateData2 + $f5]
+	add d ; landing X
+	ld h, a
+	ld a, [wXCoord]
+	add e ; front tile X
+	add $4
+	cp h
+	jr nz, .noLand
+	scf
+	ret
+.noLand
+	ld a, b ; restore the command for the caller's table lookup
+	and a
+	ret
+
+FollowerStepVectorTable:
+; dy, dx per folded direction (down, up, left, right)
+	db  1,  0
+	db -1,  0
+	db  0, -1
+	db  0,  1
 
 CorrectFollowerFollowStep:
 ; Corrective logic for regular follow commands (1-4).
@@ -400,13 +541,11 @@ CorrectFollowerFollowStep:
 	cp -2
 	jp z, .replay
 	bit 7, a
-	jr z, .vAhead
-	and a
-	jp z, .replay		; on the player's tile: replay
+	jr z, .vAhead		; d >= 0: on the player's tile or ahead of it
 	ld a, $6			; up (far): d <= -3
 	ret
 .vAhead
-	ld a, $1			; down
+	ld a, $1			; down: step back (or off the player's tile)
 	ret
 .vDown
 ; down command: steady when the follower is 1-2 tiles above (d = 1..2)
