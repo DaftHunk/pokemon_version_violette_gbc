@@ -139,6 +139,16 @@ FollowerMovementState_ProcessCommand:
 	ld a, [wFollowerCommandBuffer]
 	call FollowerCommandWouldCrossPlayer
 	jp c, FollowerMovementState_Idle
+; hold a far command while its crossing would land on the player:
+; mid-jump, or the player standing on its landing tile. The follower
+; waits on the takeoff tile and crosses once the landing has freed
+; up, like Pokemon Yellow's follower. Only the crossing itself is
+; held; approach steps run freely.
+	ld a, [wFollowerCommandBuffer]
+	cp $5
+	jr c, .popCommand
+	call FollowerFarCrossingBlocked
+	jp c, FollowerMovementState_Idle
 .popCommand
 	call GetNextFollowerFollowCommand
 	jp c, FollowerMovementState_Idle
@@ -471,6 +481,108 @@ FollowerStepVectorTable:
 	db  0, -1
 	db  0,  1
 
+; carry = the far command in a (5-8) must wait this frame: the
+; follower stands on the takeoff tile ($c2f9/$c2fa), but the player
+; is still mid-jump or on the landing tile (two tiles past the
+; takeoff, in the far's direction). Crossing now would land the
+; follower on the player; holding the command lets it cross once
+; the landing has freed up. Off the takeoff, approach steps run
+; freely. Clobbers a/b/d/hl.
+FollowerFarCrossingBlocked:
+	ld b, a
+	ld hl, wSpriteStateData2 + $f4 ; follower map Y (+$4 bias)
+	ld a, [$c2f9] ; takeoff map Y
+	cp [hl]
+	jp nz, .clear
+	inc l ; follower map X
+	ld a, [$c2fa] ; takeoff map X
+	cp [hl]
+	jp nz, .clear
+; on the takeoff: hold while the player is still jumping
+	ld a, [wMovementFlags]
+	bit 6, a
+	jr nz, .blocked
+; or while they stand on the landing tile
+	ld a, b
+	cp $6
+	jr z, .upLanding
+	cp $7
+	jr z, .leftLanding
+	cp $8
+	jr z, .rightLanding
+; far down ($5): landing = (takeoff Y + 2, takeoff X)
+	ld a, [$c2f9]
+	inc a
+	inc a
+	ld d, a
+	ld a, [wYCoord]
+	add $4
+	cp d
+	jr nz, .clear
+	ld a, [$c2fa]
+	ld d, a
+	ld a, [wXCoord]
+	add $4
+	cp d
+	jr z, .blocked
+	jr .clear
+.upLanding
+; far up ($6): landing = (takeoff Y - 2, takeoff X)
+	ld a, [$c2f9]
+	dec a
+	dec a
+	ld d, a
+	ld a, [wYCoord]
+	add $4
+	cp d
+	jr nz, .clear
+	ld a, [$c2fa]
+	ld d, a
+	ld a, [wXCoord]
+	add $4
+	cp d
+	jr z, .blocked
+	jr .clear
+.leftLanding
+; far left ($7): landing = (takeoff Y, takeoff X - 2)
+	ld a, [$c2f9]
+	ld d, a
+	ld a, [wYCoord]
+	add $4
+	cp d
+	jr nz, .clear
+	ld a, [$c2fa]
+	dec a
+	dec a
+	ld d, a
+	ld a, [wXCoord]
+	add $4
+	cp d
+	jr z, .blocked
+	jr .clear
+.rightLanding
+; far right ($8): landing = (takeoff Y, takeoff X + 2)
+	ld a, [$c2f9]
+	ld d, a
+	ld a, [wYCoord]
+	add $4
+	cp d
+	jr nz, .clear
+	ld a, [$c2fa]
+	inc a
+	inc a
+	ld d, a
+	ld a, [wXCoord]
+	add $4
+	cp d
+	jr z, .blocked
+.clear
+	and a
+	ret
+.blocked
+	scf
+	ret
+
 CorrectFollowerFollowStep:
 ; Corrective logic for regular follow commands (1-4).
 ; If the follower already holds the steady trailing position for this
@@ -485,7 +597,67 @@ CorrectFollowerFollowStep:
 ; (5-8) replay as-is.
 	ld b, a
 	cp $5
-	jp nc, .replay
+	jr c, .nearStep
+; ---- far commands (5-8): retrace the player's ledge crossing ----
+; the two-tile jump is only valid from the takeoff tile stored at
+; queue time ($c2f9/$c2fa); from anywhere else the far converts
+; into single corrective steps toward the takeoff, so a follower
+; that is merely lined up with the ledge walks back onto the
+; crossing line instead of blindly jumping two tiles with no
+; ledge under it
+	cp $7
+	jr nc, .farHorizontal
+; far down ($5) / up ($6): the crossing runs along Y
+	ld hl, wSpriteStateData2 + $f5 ; follower map X
+	ld a, [$c2fa] ; takeoff map X
+	cp [hl]
+	jr z, .farVertReady
+	jr c, .farGoLeft
+	ld a, $4 ; right, toward the takeoff column
+	ret
+.farGoLeft
+	ld a, $3 ; left, toward the takeoff column
+	ret
+.farVertReady
+	ld hl, wSpriteStateData2 + $f4 ; follower map Y
+	ld a, [$c2f9] ; takeoff map Y
+	cp [hl]
+	jr z, .farCross
+; walk along the crossing line: a folded single step converges
+; on the takeoff without ever stepping onto the ledge tile
+	ld a, b
+	dec a
+	and $3
+	inc a
+	ret
+.farHorizontal
+; far left ($7) / far right ($8): the crossing runs along X
+	ld hl, wSpriteStateData2 + $f4 ; follower map Y
+	ld a, [$c2f9] ; takeoff map Y
+	cp [hl]
+	jr z, .farHorizReady
+	jr c, .farGoUp
+	ld a, $1 ; down, toward the takeoff row
+	ret
+.farGoUp
+	ld a, $2 ; up, toward the takeoff row
+	ret
+.farHorizReady
+	ld hl, wSpriteStateData2 + $f5 ; follower map X
+	ld a, [$c2fa] ; takeoff map X
+	cp [hl]
+	jr z, .farCross
+	ld a, b
+	dec a
+	and $3
+	inc a
+	ret
+.farCross
+; on the takeoff: the hold in ProcessCommand guarantees the landing
+; tile is free; cross the gap exactly like the player did
+	ld a, b
+	ret
+.nearStep
 ; d = player Y - follower Y
 ; e = player X - follower X  (both in +4 map space)
 	ld a, [wYCoord]
@@ -1063,6 +1235,15 @@ QueueFollowerFollowCommand::
 	bit 1, [hl]
 	jr nz, .secondLedgeStep
 	set 1, [hl]
+; remember the takeoff tile: the follower may only cross the two-tile
+; ledge gap from here ($c2f9/$c2fa hold map Y/X with the same +$4
+; bias as the follower's own coords in c2f4/c2f5)
+	ld a, [wYCoord]
+	add $4
+	ld [$c2f9], a
+	ld a, [wXCoord]
+	add $4
+	ld [$c2fa], a
 	ld a, b
 	add 4 ; far commands 5-8 to cross the ledge gap
 	ld b, a
