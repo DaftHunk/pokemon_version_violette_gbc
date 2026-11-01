@@ -157,6 +157,17 @@ FollowerMovementState_ProcessCommand:
 	ld [hl], a
 	cp $4
 	jp z, FollowerDoubleStep
+; when the player is running, steps complete at double speed: always
+; take fast (4-tick) steps to keep pace, instead of rubber-banding
+; between slow steps and the backlog-gated fast follow
+	ld a, [wJoyIgnore]
+	and a
+	jr nz, .checkBacklog
+	ld a, [hJoyHeld]
+	and B_BUTTON
+	jr z, .checkBacklog
+	jp FastFollowerFollow
+.checkBacklog
 	call AreThereAtLeastTwoStepsInFollowerCommandBuffer
 	jp c, FastFollowerFollow
 	jp NormalFollowerFollow
@@ -168,6 +179,11 @@ FollowerMovementState_Idle:
 	jr c, .snap
 	call CheckFollowerBlockingPlayerPath
 	jr c, .snap
+; stand on the standing frame, like the player sprite when it stops moving
+	xor a
+	ld hl, wSpriteStateData1 + $f7
+	ld [hli], a
+	ld [hl], a
 	call UpdateFollowerWalkingSprite
 	ret
 .snap
@@ -437,14 +453,14 @@ CorrectFollowerFollowStep:
 .blockedIfIdle
 ; The corrective step would land on the player's tile: it only sticks
 ; when the player is standing still, because mid-step the tile is
-; vacated the same frame. Carry = blocked at rest.
-	ld a, [wWalkCounter]
+; vacated the same frame. wPlayerMovingDirection is set on every step
+; start and cleared whenever no direction is held, so it tells an
+; imminent step apart from a full stop — wWalkCounter cannot, because
+; it also reads 0 on every step-start frame. Carry = blocked at rest.
+	ld a, [wPlayerMovingDirection]
 	and a
-	jr z, .idle
-	and a			; walking: clear carry
-	ret
-.idle
-	scf
+	ret nz			; player walking: clear carry
+	scf				; blocked at rest
 	ret
 
 .fallback
@@ -620,15 +636,30 @@ ResetFollowerStepVector:
 	ret
 
 GetFollowerWalkingAnimationSpeed:
+; Advance the walk frame at a fixed interval of 4 ticks (3 when
+; running with B held): two pose changes per tile, the classic gait,
+; at any frame rate — at 60fps tiles are crossed twice as fast, so the
+; feet must cycle twice as fast too.
+	ld a, [wJoyIgnore]
+	and a
+	jr nz, .notRunning
+	ld a, [hJoyHeld]
+	and B_BUTTON
+	jr z, .notRunning
+	ld a, 3
+	jr .gotInterval
+.notRunning
+	ld a, 4
+.gotInterval
+	ld b, a
 	ld hl, wSpriteStateData1 + $f7
 	ld a, [hl]
 	inc a
-	cp $2
-	jr nz, .dontReset
+	ld [hl], a
+	cp b
+	ret c
 	xor a
-.dontReset
 	ld [hli], a
-	ret nz
 	ld a, [hl]
 	inc a
 	and $3
