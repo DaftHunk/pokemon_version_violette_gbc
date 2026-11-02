@@ -59,6 +59,13 @@ FollowerUpdate::
 	ld a, [hl]
 	and a
 	ret z ; follower not spawned on this map
+	ld hl, wFollowerStateFlags
+	bit 2, [hl] ; is the start menu tree open?
+	jr z, .noMenu
+	ld hl, wSpriteStateData1 + $f2
+	ld [hl], $ff ; hold the follower sprite hidden under the menu boxes
+	ret
+.noMenu
 	ld hl, wSpriteStateData1 + $f1
 	bit 7, [hl] ; does the game want the follower to face the player?
 	jp nz, FollowerFaceAwayFromPlayer
@@ -1338,6 +1345,9 @@ TrySpawnFollower::
 ; map load, so this re-spawns the follower on each map transition.
 	ld hl, wFollowerStateFlags
 	res 0, [hl] ; follower starts active
+	res 2, [hl] ; sprites are only (re)loaded with the menus closed (every
+	            ; return to the overworld reloads them), so the start-menu
+	            ; hide no longer applies
 	ld a, [wSpriteStateData1 + $f0]
 	and a
 	ret nz ; already spawned (e.g. after displaying text)

@@ -21,6 +21,7 @@ DrawStartMenu:
 	lb bc, 16, 8
 	jr .drawTextBoxBorder
 .drawTextBoxBorder
+	call FollowerCheckStartMenuOcclusion
 	call TextBoxBorder
 	ld a, D_DOWN | D_UP | START | B_BUTTON | A_BUTTON
 	ld [wMenuWatchedKeys], a
@@ -106,4 +107,47 @@ PrintStartMenuItem:
 	pop hl
 	ld de, SCREEN_WIDTH * 2
 	add hl, de
+	ret
+
+; The follower sprite is drawn on top of the map's BG boxes, so it is
+; latched hidden only when its 16x16 sprite actually overlaps the box
+; DrawStartMenu is about to draw (cols 10-17, rows 0 to b+1). bit 2 of
+; wFollowerStateFlags makes FollowerUpdate hold the image index at $ff,
+; and TrySpawnFollower clears the bit when the map's sprites are reloaded
+; on the way back to the overworld. The START button only registers at
+; rest, so the follower is standing still and grid-aligned here.
+; INPUT: b = number of middle rows in the box
+FollowerCheckStartMenuOcclusion:
+	push bc
+	push hl
+	ld a, [wSpriteStateData1 + $f0]
+	and a
+	jr z, .visible ; follower not spawned on this map
+	ld a, [wSpriteStateData1 + $f6] ; screen X (left edge)
+	cp $41 ; sprite right edge (X + 16) vs box left edge (10 * 8)
+	jr c, .visible
+	cp $90 ; sprite left edge vs box right edge (18 * 8)
+	jr nc, .visible
+	ld a, b
+	add a
+	add a
+	add a
+	add $0c ; box bottom edge (b + 2) * 8, minus the -4 bias of $f4
+	ld d, a
+	ld a, [wSpriteStateData1 + $f4] ; screen Y (top edge - 4)
+	cp d
+	jr nc, .visible ; sprite top edge below the box bottom edge
+	ld hl, wFollowerStateFlags
+	set 2, [hl]
+	ld hl, wSpriteStateData1 + $f2
+	ld [hl], $ff ; hide it right away: the boxes are drawn before the next
+	             ; UpdateSprites call, and the gate only runs there
+	pop hl
+	pop bc
+	ret
+.visible
+	ld hl, wFollowerStateFlags
+	res 2, [hl]
+	pop hl
+	pop bc
 	ret
