@@ -66,6 +66,26 @@ FollowerUpdate::
 	ld [hl], $ff ; hold the follower sprite hidden under the menu boxes
 	ret
 .noMenu
+; tall grass occlusion, same rule as the player and NPC updaters: when the
+; block under the follower is the tileset's grass tile, set bit 7 of c2x7
+; ($c2f7) so the grass tiles draw over the lower half of its sprite (the
+; OAM per-tile flags only honor the priority bit on the bottom tiles).
+; FollowerUpdate replaces UpdateNPCSprite for struct 15, so the vanilla
+; grass check inside CheckSpriteAvailability never runs for it. Unlike the
+; NPC check this runs every update: the follower keeps moving while the
+; player walks, so its grass state must not be frozen then.
+; GetTileSpriteStandsOn reads the follower's position through
+; H_CURRENTSPRITEOFFSET, which is $f0 here.
+	callba GetTileSpriteStandsOn
+	ld a, [hl] ; the tile the follower stands on
+	ld c, a
+	ld hl, wSpriteStateData2 + $f7
+	ld a, [wGrassTile]
+	cp c
+	res 7, [hl]
+	jr nz, .notInGrass
+	set 7, [hl]
+.notInGrass
 	ld hl, wSpriteStateData1 + $f1
 	bit 7, [hl] ; does the game want the follower to face the player?
 	jp nz, FollowerFaceAwayFromPlayer
