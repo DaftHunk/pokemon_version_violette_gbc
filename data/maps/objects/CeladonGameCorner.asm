@@ -12,7 +12,7 @@ CeladonGameCornerObject:
 	db 11 ; objects
 	object SPRITE_FOULARD_WOMAN, 2, 6, STAY, DOWN, 1 ; person
 	object SPRITE_MART_GUY, 5, 6, STAY, DOWN, 2 ; person
-	object SPRITE_FAT_BALD_GUY, 2, 10, STAY, LEFT, 3 ; person
+	object SPRITE_GAMBLER, 2, 10, STAY, LEFT, 3 ; person
 	object SPRITE_FOULARD_WOMAN, 2, 13, STAY, LEFT, 4 ; person
 	object SPRITE_FISHER, 5, 11, STAY, RIGHT, 5 ; person
 	object SPRITE_MOM_GEISHA, 8, 11, STAY, LEFT, 6 ; person
