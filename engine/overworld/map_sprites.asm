@@ -70,6 +70,7 @@ InitMapSprites:
 	ld [wSpriteStateData2 + $fe], a ; struct 15 unused: UpdateSprites skips it
 	ld a, $ff
 	ld [wSpriteStateData1 + $f2], a ; keep the follower out of OAM
+	ret
 .loadSprites
 	call LoadMapSpriteTilePatterns
 	ret

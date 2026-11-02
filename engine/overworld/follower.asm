@@ -1562,10 +1562,8 @@ RefreshFollowerSheet::
 	ld l, e
 	ld de, $c0
 	add hl, de ; source = sheet + $c0
-	pop hl ; hl = still-half address
-	set 3, h ; walking half = still-half address + $800
-	ld d, h
-	ld e, l
+	pop de ; de = still-half address
+	set 3, d ; walking half = still-half address + $800
 	ld bc, $c0
 	call FarCopyData2
 .done
