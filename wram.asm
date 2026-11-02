@@ -3689,9 +3689,12 @@ wSavedRngSeed:: ; deed
 wItemBallList::
 	ds 7 * 2
 
+SECTION "Follower Idle", WRAM0[$df00]
+wFollowerIdleScratch:: ; df00
+	ds 3 ; idle look-around: line accumulator + last rLY sample + rest period count
 
-SECTION "Stack", WRAM0[$df00]
-	ds $ff
+SECTION "Stack", WRAM0[$df03]
+	ds $fc
 wStack:: ; dfff
 
 

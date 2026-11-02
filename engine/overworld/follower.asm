@@ -208,10 +208,97 @@ FollowerMovementState_Idle:
 	ld hl, wSpriteStateData1 + $f7
 	ld [hli], a
 	ld [hl], a
+	call FollowerIdleTurning
 	call UpdateFollowerWalkingSprite
 	ret
 .snap
 	call SnapFollowerBehindPlayer
+	ret
+
+; Pokemon Yellow's idle follower: when the player has been standing still
+; for a while, the follower starts turning to random facings on its tile,
+; like pokeyellow's PikachuMovementState_Idle. The wait is measured on the
+; hardware divider (rDIV), NOT on rLY or overworld iterations: at
+; rest the loop free-runs and only reaches this roughly once every two
+; frames, so an iteration counter made the follower spin, and the
+; scanline repeats every frame — sampling it slower than it wraps made
+; every rLY-based timer drift by aliasing (the ~16-frame ticks and the
+; ~ten-second waits measured along the way). The divider wraps even
+; faster (16384 Hz in normal speed, 32768 Hz in double speed:
+; every ~15.6ms/~7.8ms), so a raw sample is phase noise too — but the
+; call interval is frame-locked, and (rDIV_now - last) mod 256 leaves
+; a steady +18 (+36 at 60fps) ticks per call: sampling a wrapped
+; clock at a stable interval still accumulates at a fixed apparent
+; rate (~1092/~2185 ticks per second). Every 64 accumulated ticks
+; counts as one rest period, and 32 periods at 30fps, 64 at 60fps —
+; about two seconds — must pass before each look-around. Nothing in
+; this fork writes $FF04 (Shin's Random is a Patrik Rak xor-shift
+; that never touches it). Any player movement restarts the count.
+FollowerIdleTurning:
+	ldh a, [rDIV]
+	ld b, a
+	ld a, [wWalkCounter]
+	and a
+	jr nz, .moving ; player walking: no idle turning, restart the wait
+	ld a, [wMovementFlags]
+	bit 7, a
+	jr nz, .moving ; spin tiles: the follower copies the player's image anyway
+	ld hl, wFollowerIdleScratch + 1 ; the last rDIV sample
+	ld a, b
+	sub [hl] ; a = divider ticks elapsed since the previous call
+	ld [hl], b ; remember the latest rDIV sample
+	dec hl ; the tick accumulator
+	add [hl]
+	ld [hl], a ; accumulator += elapsed ticks
+	cp 64
+	ret c ; not a full 64-tick period of rest yet
+	sub 64
+	ld [hl], a ; keep the remainder: the next turn stays exactly one wait away
+	inc hl
+	inc hl ; the rest-period count
+	inc [hl]
+	call FollowerGetIdleTurnPeriods ; a = rest periods before the next turn
+	ld b, a ; b = the wait threshold
+	ld a, [hl] ; a = the rest-period count so far
+	cp b
+	ret c ; not enough rest yet: keep waiting
+; enough rest: turn to a random facing and restart the period count
+; (the tick accumulator keeps its remainder: the next turn stays
+; exactly one wait away)
+	xor a
+	ld [hl], a
+	call Random
+	and $c ; the sprite facing values are $0/$4/$8/$c (SPRITE_FACING_*)
+	ld [wSpriteStateData1 + $f9], a ; face a random direction
+	ret
+.moving
+	call ResetFollowerIdleWait ; moving: restart the wait
+	ret
+
+FollowerGetIdleTurnPeriods:
+; a = 64-tick rest periods before an idle look-around: 64 at 60fps,
+; 32 at 30fps — about two seconds. rDIV ticks at 16384 Hz in normal
+; speed and 32768 Hz in double speed, so a frame-locked call sees a
+; steady residue of +18 (+36 at 60fps) ticks per call
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_60_FPS, a
+	ld a, 32
+	ret z ; 30fps
+	ld a, 64
+	ret
+
+ResetFollowerIdleWait:
+; start the idle look-around wait from scratch: zero the tick
+; accumulator and the period count, fresh rDIV sample — used when the
+; follower spawns or snaps behind the player, or on any player
+; movement, so it cannot leak a half-elapsed wait
+	xor a
+	ld hl, wFollowerIdleScratch
+	ld [hli], a ; tick accumulator = 0
+	ldh a, [rDIV]
+	ld [hli], a ; fresh rDIV sample
+	xor a
+	ld [hl], a ; rest-period count = 0
 	ret
 
 ; carry = the command in a heads opposite the player's current moving
@@ -1234,6 +1321,9 @@ QueueFollowerFollowCommand::
 	ld hl, wFollowerStateFlags
 	res 1, [hl]
 .append
+; a fresh player step restarts the idle look-around wait (b keeps the
+; command)
+	call ResetFollowerIdleWait
 	ld a, b
 	jp AppendFollowerFollowCommandToBuffer
 
@@ -1301,6 +1391,7 @@ CalculateFollowerSpawnCoordsAndFacing:
 	ld a, $ff
 	ld [wSpriteStateData1 + $f2], a ; hidden until the first update
 	call ClearFollowerCommandBuffer
+	call ResetFollowerIdleWait
 	ret
 
 SnapFollowerBehindPlayer:
