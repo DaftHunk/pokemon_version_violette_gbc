@@ -116,8 +116,11 @@ PrintStartMenuItem:
 ; and TrySpawnFollower clears the bit when the map's sprites are reloaded
 ; on the way back to the overworld. The START button only registers at
 ; rest, so the follower is standing still and grid-aligned here.
-; INPUT: b = number of middle rows in the box
-FollowerCheckStartMenuOcclusion:
+; The box height is recomputed inside (same order as DrawStartMenu) so the
+; routine is self-contained: DisplayTextIDInit callba's it before showing
+; the start menu window, and the border code over there has no SS-ticket
+; case to take the height from.
+FollowerCheckStartMenuOcclusion::
 	push bc
 	push hl
 	ld a, [wSpriteStateData1 + $f0]
@@ -128,7 +131,15 @@ FollowerCheckStartMenuOcclusion:
 	jr c, .visible
 	cp $90 ; sprite left edge vs box right edge (18 * 8)
 	jr nc, .visible
-	ld a, b
+; a = number of middle rows in the box, like DrawStartMenu
+	CheckEvent EVENT_GOT_SS_TICKET
+	ld a, 16
+	jr nz, .gotHeight
+	CheckEvent EVENT_GOT_POKEDEX
+	ld a, 14
+	jr nz, .gotHeight
+	ld a, 12
+.gotHeight
 	add a
 	add a
 	add a
