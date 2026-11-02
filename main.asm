@@ -243,7 +243,6 @@ KeeperSprite:         INCBIN "gfx/sprites/keeper.2bpp"
 SECTION "Battle (bank 5)", ROMX, BANK[$5]
 
 INCLUDE "engine/load_pokedex_tiles.asm"
-INCLUDE "engine/overworld/map_sprites.asm"
 INCLUDE "engine/overworld/emotion_bubbles.asm"
 INCLUDE "engine/evolve_trade.asm"
 INCLUDE "engine/battle/moveEffects/substitute_effect.asm"
@@ -589,17 +588,6 @@ INCLUDE "engine/overworld/pewter_guys.asm"
 INCLUDE "engine/multiply_divide.asm"
 INCLUDE "engine/game_corner_slots.asm"
 
-SECTION "Battle (bank A)", ROMX, BANK[$A]
-;migrated content to bank 9
-
-SECTION "Battle (bank B)", ROMX, BANK[$B]
-;migrated content to bank 9
-
-SECTION "Battle (bank C)", ROMX, BANK[$C]
-;migrated content to bank 9
-
-SECTION "Battle (bank D)", ROMX, BANK[$D]
-;migrated content to bank 9
 
 SECTION "bankE",ROMX,BANK[$E]
 
@@ -2292,6 +2280,7 @@ SECTION "SGB Border", ROMX
 INCLUDE "engine/palettes.asm"
 INCLUDE "engine/overworld/follower.asm"
 INCLUDE "data/pokemons/follower_sheets.asm"
+INCLUDE "engine/overworld/map_sprites.asm"
 
 SECTION "Moves", ROMX
 

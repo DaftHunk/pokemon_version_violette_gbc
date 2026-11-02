@@ -11,7 +11,9 @@
 InitMapSprites:
 	call InitOutsideMapSprites
 	ret c ; return if the map is an outside map (already handled by above call)
-; if the map is an inside map (i.e. mapID >= $25)
+; if the map is an inside map (i.e. mapID >= $25): spawn the follower first
+; so its picture can take part in the VRAM slot assignment below
+	callba TrySpawnFollower
 	ld hl, wSpriteStateData1
 	ld de, wSpriteStateData2 + $0d
 ; Loop to copy picture ID's from $C1X0 to $C2XD for LoadMapSpriteTilePatterns.
@@ -25,6 +27,52 @@ InitMapSprites:
 	add l
 	ld l, a
 	jr nz, .copyPictureIDLoop
+; if the follower spawned, park its picture ID (copied to $C2FD above) in
+; the first unused NPC position so the assignment gives it a VRAM slot
+	ld a, [wSpriteStateData1 + $f0]
+	and a
+	jr z, .loadSprites ; follower not spawned on this map
+	ld a, [wNumSprites]
+	cp 15
+	jr nc, .loadSprites ; struct 15 belongs to a map NPC: leave it alone
+	inc a ; a = first unused sprite position (1-based)
+	swap a ; a = position * 16 (always < 256)
+	ld hl, wSpriteStateData2 + $0d
+	add l
+	ld l, a
+	ld a, [wSpriteStateData2 + $fd] ; follower picture ID (copied above)
+	ld [hl], a
+	ld a, [wNumSprites]
+	push af
+	inc a
+	ld [wNumSprites], a ; include the parked picture in the assignment
+	call LoadMapSpriteTilePatterns
+	pop af
+	ld [wNumSprites], a
+; move the assigned VRAM slot from the parking position to struct 15
+	inc a
+	swap a
+	ld hl, wSpriteStateData2 + $0e
+	add l
+	ld l, a
+	ld a, [hl] ; the VRAM slot assigned to the parked picture
+	ld b, a
+	xor a
+	ld [hl], a ; keep the unused NPC struct clean
+	ld a, b
+	cp 11
+	jr nc, .hideFollower ; would overlap the 4-tile sprite area
+	ld [wSpriteStateData2 + $fe], a ; struct 15: the follower's VRAM slot
+	callba RefreshFollowerSheet
+	ret
+.hideFollower ; no regular VRAM slot available for the follower on this map
+	xor a
+	ld [wSpriteStateData2 + $fe], a ; struct 15 unused: UpdateSprites skips it
+	ld a, $ff
+	ld [wSpriteStateData1 + $f2], a ; keep the follower out of OAM
+.loadSprites
+	call LoadMapSpriteTilePatterns
+	ret
 
 ; This is used for both inside and outside maps, since it is called by
 ; InitOutsideMapSprites.
@@ -347,7 +395,6 @@ InitOutsideMapSprites:
 	ld l, a
 	dec b
 	jr nz, .zeroVRAMSlotsLoop
-	callba RefreshFollowerSheet
 .skipLoadingSpriteSet
 	callba TrySpawnFollower
 	ld hl, wSpriteStateData1 + $10
@@ -397,6 +444,7 @@ InitOutsideMapSprites:
 	ld l, a
 	and a
 	jr nz, .storeVRAMSlotsLoop
+	callba RefreshFollowerSheet
 	scf
 	ret
 

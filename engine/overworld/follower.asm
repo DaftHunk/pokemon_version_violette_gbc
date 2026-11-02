@@ -1504,9 +1504,15 @@ GetFollowerSheetEntry:
 	ret
 
 RefreshFollowerSheet::
-; overwrite VRAM slot 2 (still: $80C0, walking: $88C0) with the leader's
-; follower sheet. Runs after every sprite set (re)load, so it also fixes
-; the walking half that LoadMapSpriteTilePatterns re-copies after text.
+; overwrite the follower's VRAM slot with the leader's follower sheet.
+; The slot is read from struct 15 ($C2FE): slot 2 on outside maps (the
+; SPRITE_FOLLOWER placeholder is entry 0 of every outside sprite set), and
+; the slot right after the map's NPC pictures on inside maps. Runs after
+; every sprite (re)load, so it also fixes the walking half that
+; LoadMapSpriteTilePatterns re-copies after text.
+	ld a, [wSpriteStateData2 + $fe]
+	and a
+	ret z ; follower struct has no VRAM slot: nothing to overwrite
 	ld a, [wWalkBikeSurfState]
 	and a
 	ret nz ; don't clobber the player's surfing sheet (same VRAM slot)
@@ -1516,26 +1522,50 @@ RefreshFollowerSheet::
 	push af
 	set 3, a
 	ldh [hFlagsFFFA], a
-; still half of VRAM slot 2 ($80C0)
+; hl = still-half address of the follower's slot: the slot's tiles start at
+; (slot - 1) * 12, so the byte offset is (slot - 1) * $C0
+	ld a, [wSpriteStateData2 + $fe]
+	dec a
+	add a
+	add a
+	ld b, a
+	add a
+	add b ; a = (slot - 1) * 12
+	ld hl, 0
+	ld l, a
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl ; hl = (slot - 1) * $C0
+	ld de, vNPCSprites
+	add hl, de
+	push hl ; keep the still-half address for the walking copy
+	push hl ; still-half address for the still copy
 	call GetFollowerSheetEntry
 	jr c, .still
+	pop de
+	pop de
 	jr .done
 .still
 	ld h, d
 	ld l, e
-	ld de, vNPCSprites + $c0
+	pop de ; de = still-half address
 	ld bc, $c0
 	call FarCopyData2
-; walking half of VRAM slot 2 ($88C0)
+; walking half: still-half address + $800
 	call GetFollowerSheetEntry
 	jr c, .walking
+	pop de ; no walking sheet: discard the kept address
 	jr .done
 .walking
 	ld h, d
 	ld l, e
 	ld de, $c0
 	add hl, de ; source = sheet + $c0
-	ld de, vNPCSprites + $c0 + $800
+	pop hl ; hl = still-half address
+	set 3, h ; walking half = still-half address + $800
+	ld d, h
+	ld e, l
 	ld bc, $c0
 	call FarCopyData2
 .done
