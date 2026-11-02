@@ -302,7 +302,6 @@ SaffronCityHS:
 	db SAFFRON_CITY,$0C,Hide
 	db SAFFRON_CITY,$0D,Hide
 	db SAFFRON_CITY,$0E,Show
-	db SAFFRON_CITY,$0F,Hide
 FuchsiaCityHS:
 	db FUCHSIA_CITY,$03,Show
 Route12HS:

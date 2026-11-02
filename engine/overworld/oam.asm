@@ -181,10 +181,21 @@ PrepareOAMData:
 
 .nextSprite
 	ld a, [hSpriteOffset2]
+	and a
+	jr nz, .afterPlayer
+	ld a, $f0 ; after the player (struct 0), draw the follower (struct 15) next
+	jp .spriteLoop
+.afterPlayer
+	cp $f0
+	jr nz, .nextNPCSprite
+	ld a, $10 ; after the follower, continue with the first NPC (struct 1)
+	jp .spriteLoop
+.nextNPCSprite
 	add $10
-	cp $100 % $100
-	jp nz, .spriteLoop
-
+	cp $f0
+	jr z, .doneSpriteLoop ; all 16 structs drawn (the follower was drawn second)
+	jp .spriteLoop
+.doneSpriteLoop
 	; Clear unused OAM.
 	ld a, [hOAMBufferOffset]
 	ld l, a

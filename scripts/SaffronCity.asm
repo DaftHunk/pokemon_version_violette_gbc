@@ -1,5 +1,17 @@
 SaffronCityScript:
-	jp EnableAutoTextBoxDrawing
+	call EnableAutoTextBoxDrawing
+	CheckEvent EVENT_RESCUED_MR_FUJI
+	jr z, .done
+	; Mr. Fuji was rescued: the guard moves to the neighboring tile (x=19, y=22)
+	; and answers with the sleeping guard text
+	ld hl, wSpriteStateData2 + $e4 ; struct 14: map Y
+	ld [hl], 22 + 4
+	inc hl
+	ld [hl], 19 + 4 ; map X
+	ld hl, wMapSpriteData + (14 - 1) * 2 + 1 ; text ID byte of sprite 14
+	ld [hl], 15 ; SaffronCityText_RocketGuardSleep
+.done
+	ret
 
 SaffronCityTextPointers:
 	dw SaffronCityText_NPCRocket1
