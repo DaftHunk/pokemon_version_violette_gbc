@@ -737,6 +737,21 @@ CorrectFollowerFollowStep:
 	cpl
 	inc a
 	ld e, a
+	; follower exactly on the player's tile (just spawned/snapped there):
+	; while the player walks away, replay the command unchanged and let the
+	; step-onto-player guard hold it, so the follower stays on the tile the
+	; player just vacated instead of stepping back into a wall
+	ld a, d
+	and a
+	jr nz, .notOnPlayerTile
+	ld a, e
+	and a
+	jr nz, .notOnPlayerTile
+	ld a, [wWalkCounter]
+	and a
+	jr z, .notOnPlayerTile
+	jp .replay
+.notOnPlayerTile
 	ld a, b
 	cp $3
 	jr nc, .horizontal
@@ -1378,34 +1393,17 @@ TrySpawnFollower::
 	jp CalculateFollowerSpawnCoordsAndFacing
 
 CalculateFollowerSpawnCoordsAndFacing:
-; place the follower one tile behind the player, facing the player's
-; direction, and leave it in the Init state
+; place the follower on the player's own tile: it is drawn under the player
+; (OAM priority: player first) and replays the player's exact steps, so at
+; warps, doors, stairs, surf exits and fly destinations it can never end up
+; inside a wall. The step-onto-player guard (FollowerStepWouldLandOnPlayer-
+; FrontTile) keeps it one tile behind once the player is moving.
 	ld a, [wYCoord]
 	add $4
 	ld e, a
 	ld a, [wXCoord]
 	add $4
 	ld d, a
-	ld a, [wSpriteStateData1 + 9] ; player facing
-	and a ; SPRITE_FACING_DOWN
-	jr z, .above
-	cp SPRITE_FACING_UP
-	jr z, .below
-	cp SPRITE_FACING_LEFT
-	jr z, .right
-	jr .left
-.above
-	dec e
-	jr .load
-.below
-	inc e
-	jr .load
-.right
-	inc d
-	jr .load
-.left
-	dec d
-.load
 	ld hl, wSpriteStateData2 + $f4
 	ld [hl], e ; map Y
 	inc hl
