@@ -5,8 +5,9 @@
 SECTION "Follower engine", ROMX[$4000], BANK[75]
 
 ; Follower mon engine.
-; The first party mon follows the player on outside maps, using the sprite
-; sheets from data/pokemons/follower_sheets.asm (indexed by the internal species ID).
+; The first non-KO party mon with a follower sheet follows the player, using
+; the sprite sheets from data/pokemons/follower_sheets.asm (indexed by the
+; internal species ID).
 ; Uses sprite struct 15 ($C1F0/$C2F0, VRAM slot 2, the SPRITE_FOLLOWER
 ; placeholder that is entry 0 of all 14 outside sprite sets).
 ; Adapted from pret/pokeyellow's Pikachu follower, old-disasm style.
@@ -1461,42 +1462,80 @@ CheckFollowerDistanceToPlayer:
 ; ---------------------------------------------------------------------------
 
 GetFollowerSheetEntry:
-; find the leader's (party slot 1) follower sheet entry
-; output: carry set = found, de = sheet data ptr, a = ROM bank
+; pick the first party member, in party order, that is not KO (HP != 0) and
+; whose species has a follower sheet entry in FollowerSheetTable
+; output: carry set = found (de = sheet data ptr, a = ROM bank); carry clear = none
 ; A null entry (no sheet yet) is treated as "no follower".
-	ld a, [wPartyMon1Species]
+	ld a, [wPartyCount]
 	and a
-	jr z, .none ; empty party slot
-	ld e, a
-	ld d, 0
-	ld hl, FollowerSheetTable
-	add hl, de
-	add hl, de
-	add hl, de
-	add hl, de ; entry = table + species * 4 (entry 0 = species 0, unused)
+	jr z, .none ; empty party
+	ld b, a ; party slots left to scan
+	ld hl, wPartySpecies ; hl -> species of the current slot
+	ld de, wPartyMon1 + 1 ; de -> HP of the current slot (party structs are $2C bytes)
+.scanLoop:
+	push hl
+	push de
+	ld a, [de] ; HP low byte
+	ld c, a
+	inc de
+	ld a, [de] ; HP high byte
+	or c
+	dec de
+	ld c, a ; c = HP != 0
+	ld a, [hl] ; species of the slot
+	and a
+	jr z, .advance ; empty slot
+	ld a, c
+	and a
+	jr z, .advance ; KO: HP == 0
+	push hl
+	ld a, [hl] ; species
+	ld hl, 0
+	ld l, a
+	add hl, hl
+	add hl, hl ; hl = species * 4
+	ld de, FollowerSheetTable
+	add hl, de ; hl = &FollowerSheetTable[species] (entry 0 = species 0, unused)
 ; bounds check: the whole 4-byte entry must be inside the table
 	ld de, FollowerSheetTableEnd - 3
 	ld a, h
 	cp d
 	jr c, .entryExists
-	jr nz, .none
+	jr nz, .noSheet
 	ld a, l
 	cp e
 	jr c, .entryExists
-	jr .none
+	jr .noSheet
 .entryExists
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
 	ld d, a ; de = sheet data ptr
 	ld a, [hli] ; ROM bank
-	ld b, a
+	ld c, a
 	or e
 	or d
-	jr z, .none ; null entry: species has no follower sheet yet
-	ld a, b
+	jr z, .noSheet ; null entry: species has no follower sheet yet
+	ld a, c
+	pop hl ; discard the saved pointers (de keeps the sheet ptr)
+	pop hl
+	pop hl
 	scf
 	ret
+.noSheet
+	pop hl ; discard the inner saved species ptr
+.advance
+	pop de ; de = HP ptr
+	pop hl ; hl = species ptr
+	inc hl ; next slot
+	ld a, $2c
+	add a, e
+	ld e, a
+	jr nc, .noCarry
+	inc d
+.noCarry
+	dec b
+	jr nz, .scanLoop
 .none
 	xor a
 	ret
@@ -1543,6 +1582,8 @@ RefreshFollowerSheet::
 	jr c, .still
 	pop de
 	pop de
+	xor a
+	ld [wSpriteStateData1 + $f0], a ; no alive party mon has a sheet: hide the follower instead of showing the SPRITE_SURFING placeholder
 	jr .done
 .still
 	ld h, d
