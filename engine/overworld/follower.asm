@@ -67,6 +67,32 @@ FollowerUpdate::
 	ld [hl], $ff ; hold the follower sprite hidden under the menu boxes
 	ret
 .noMenu
+; text box occlusion, same rule as NPCs in CheckSpriteAvailability: a sprite
+; standing on a text box tile (ID >= $79) is hidden. Runs per frame here
+; because FollowerUpdate replaces UpdateNPCSprite for struct 15, so the
+; vanilla check never runs for it.
+	callba GetTileSpriteStandsOn
+	ld d, $79
+	ld a, [hli]
+	cp d
+	jr nc, .hiddenByTextBox
+	ld a, [hld]
+	cp d
+	jr nc, .hiddenByTextBox
+	ld bc, -SCREEN_WIDTH
+	add hl, bc
+	ld a, [hli]
+	cp d
+	jr nc, .hiddenByTextBox
+	ld a, [hl]
+	cp d
+	jr nc, .hiddenByTextBox
+	jr .noTextBox
+.hiddenByTextBox
+	ld a, $ff
+	ld [wSpriteStateData1 + $f2], a
+	ret
+.noTextBox
 ; tall grass occlusion, same rule as the player and NPC updaters: when the
 ; block under the follower is the tileset's grass tile, set bit 7 of c2x7
 ; ($c2f7) so the grass tiles draw over the lower half of its sprite (the
@@ -1392,6 +1418,23 @@ TrySpawnFollower::
 	ld a, SPRITE_FOLLOWER
 	ld [wSpriteStateData1 + $f0], a
 	jp CalculateFollowerSpawnCoordsAndFacing
+
+HideFollowerForMenu::
+; latch the follower hidden while a menu/screen covers the map view:
+; bit 2 of wFollowerStateFlags makes FollowerUpdate hold the image index at $ff.
+; The bit is cleared on the way back to the overworld when the map's sprites
+; reload (TrySpawnFollower) or when the start menu is redrawn
+; (FollowerCheckStartMenuOcclusion); ShowFollowerAfterMenu clears it directly.
+	ld hl, wFollowerStateFlags
+	set 2, [hl]
+	ld a, $ff
+	ld [wSpriteStateData1 + $f2], a
+	ret
+
+ShowFollowerAfterMenu::
+	ld hl, wFollowerStateFlags
+	res 2, [hl]
+	ret
 
 CalculateFollowerSpawnCoordsAndFacing:
 ; place the follower on the player's own tile: it is drawn under the player
