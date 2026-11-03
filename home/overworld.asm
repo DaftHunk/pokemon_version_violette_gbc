@@ -2255,6 +2255,9 @@ LoadMapHeader::
 	inc e
 	dec b
 	jr nz, .zeroSpriteDataLoop
+; a real map load (warp) clears the fly-hide latch: the follower respawns
+	ld hl, wFollowerStateFlags
+	res 1, [hl]
 ; initialize all C100-C1FF sprite entries to disabled (other than player's)
 	ld hl, wSpriteStateData1 + $12
 	ld de, $0010

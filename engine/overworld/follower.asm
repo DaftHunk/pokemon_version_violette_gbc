@@ -1406,6 +1406,8 @@ TrySpawnFollower::
 ; of every outside sprite set). LoadMapHeader zeroes the structs on every
 ; map load, so this re-spawns the follower on each map transition.
 	ld hl, wFollowerStateFlags
+	bit 1, [hl] ; fly in progress: stay hidden until the destination map loads
+	ret nz
 	res 0, [hl] ; follower starts active
 	res 2, [hl] ; sprites are only (re)loaded with the menus closed (every
 	            ; return to the overworld reloads them), so the start-menu
@@ -1418,6 +1420,20 @@ TrySpawnFollower::
 	ld a, SPRITE_FOLLOWER
 	ld [wSpriteStateData1 + $f0], a
 	jp CalculateFollowerSpawnCoordsAndFacing
+
+HideFollowerForFly::
+; called when a fly destination is chosen (LoadTownMap_Fly .pressedA): hide the
+; follower through the fly animation. Bit 1 keeps TrySpawnFollower from
+; respawning it on same-map sprite reloads (e.g. the after-text reload when the
+; town map closes); LoadMapHeader clears the bit on the warp's map load, where
+; the follower respawns normally. Cancelling the town map (B) never calls this.
+	ld hl, wFollowerStateFlags
+	set 1, [hl]
+	xor a
+	ld [wSpriteStateData1 + $f0], a
+	ld a, $ff
+	ld [wSpriteStateData1 + $f2], a
+	ret
 
 HideFollowerForMenu::
 ; latch the follower hidden while a menu/screen covers the map view:

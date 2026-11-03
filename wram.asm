@@ -2494,6 +2494,8 @@ wFollowerCommandBufferSize:: ; number of pending commands in the FIFO below
 	db
 wFollowerCommandBuffer:: ds 16 ; FIFO of follower movement commands
 wFollowerStateFlags:: ; bit 0: follower currently hidden (biking/surfing)
+                      ; bit 1: fly in progress (hide until the destination map loads)
+                      ; bit 2: menu/screen open (hold the image index at $ff)
 	db
 
 wWhichPrize:: ; d13a

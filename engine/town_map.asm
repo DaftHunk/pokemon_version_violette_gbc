@@ -227,6 +227,7 @@ LoadTownMap_Fly:
 	set 3, [hl]
 	inc hl
 	set 7, [hl]
+	callba HideFollowerForFly ; stay hidden through the fly animation
 .pressedB
 	xor a
 	ld [wTownMapSpriteBlinkingEnabled], a
