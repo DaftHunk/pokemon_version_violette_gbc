@@ -54,6 +54,7 @@ FollowerUpdate::
 	ld a, SPRITE_FOLLOWER
 	ld [wSpriteStateData1 + $f0], a
 	call RefreshFollowerSheet
+	xor a ; a = 0: surf/bike reactivation spawns on the player's tile
 	call CalculateFollowerSpawnCoordsAndFacing
 .spawned
 	ld hl, wSpriteStateData1 + $f0
@@ -1419,14 +1420,20 @@ TrySpawnFollower::
 	ret nc ; leader has no follower sheet yet: no follower for now
 	ld a, SPRITE_FOLLOWER
 	ld [wSpriteStateData1 + $f0], a
+	ld a, [wCurMap]
+	cp PALLET_REDS_HOUSE_1F ; exterior map (city/route, ID < $25)?
+	ld a, 1 ; a = 1: on map transitions, spawn one tile behind the player
+	jr c, .doSpawn
+	xor a ; a = 0: indoor map, spawn on the player's tile (behind is often a wall indoors)
+.doSpawn
 	jp CalculateFollowerSpawnCoordsAndFacing
 
-HideFollowerForFly::
-; called when a fly destination is chosen (LoadTownMap_Fly .pressedA): hide the
-; follower through the fly animation. Bit 1 keeps TrySpawnFollower from
-; respawning it on same-map sprite reloads (e.g. the after-text reload when the
-; town map closes); LoadMapHeader clears the bit on the warp's map load, where
-; the follower respawns normally. Cancelling the town map (B) never calls this.
+HideFollowerUntilMapLoad::
+; hide the follower during a map transition (warp/door/stairs leave animation,
+; fly destination chosen): bit 1 keeps TrySpawnFollower from respawning it on
+; same-map sprite reloads; LoadMapHeader clears the bit on the destination map
+; load, where the follower respawns normally. Cancelling the town map (B) never
+; calls this.
 	ld hl, wFollowerStateFlags
 	set 1, [hl]
 	xor a
@@ -1453,17 +1460,90 @@ ShowFollowerAfterMenu::
 	ret
 
 CalculateFollowerSpawnCoordsAndFacing:
-; place the follower on the player's own tile: it is drawn under the player
-; (OAM priority: player first) and replays the player's exact steps, so at
-; warps, doors, stairs, surf exits and fly destinations it can never end up
-; inside a wall. The step-onto-player guard (FollowerStepWouldLandOnPlayer-
-; FrontTile) keeps it one tile behind once the player is moving.
+; input: a = 0 -> spawn on the player's own tile (indoor maps, mid-map snap,
+; surf-bike reactivation: that tile is always safe). a = 1 -> spawn one tile
+; behind the player, opposite of the facing (exterior map transitions, like
+; Pokemon Yellow's follower after a warp); if that tile is impassable (door,
+; wall, map edge), fall back to the player's own tile. Either way the follower replays the
+; player's exact steps, and the step-onto-player guard keeps it from gluing
+; onto the player while moving.
+	and a
+	jr z, .onTile
+	ld a, [wSpriteStateData1 + 9] ; player facing
+	and a ; SPRITE_FACING_DOWN
+	jr z, .faceDown
+	cp SPRITE_FACING_UP
+	jr z, .faceUp
+	cp SPRITE_FACING_LEFT
+	jr z, .faceLeft
+	; facing right: behind = one tile left
+	aCoord 6, 9
+	jr .haveTile
+.faceDown: ; behind = one tile up
+	aCoord 8, 7
+	jr .haveTile
+.faceUp: ; behind = one tile down
+	aCoord 8, 11
+	jr .haveTile
+.faceLeft: ; behind = one tile right
+	aCoord 10, 9
+.haveTile
+	ld c, a ; tile behind the player (screen tilemap, like the game's own checks)
+	; map coords behind, in +4 space
+	ld a, [wSpriteStateData1 + 9]
+	and a
+	jr z, .bDown
+	cp SPRITE_FACING_UP
+	jr z, .bUp
+	cp SPRITE_FACING_LEFT
+	jr z, .bLeft
+	; facing right: mapX = wXCoord+4-1, mapY = wYCoord+4
+	ld a, [wXCoord]
+	add $3
+	ld d, a
+	ld a, [wYCoord]
+	add $4
+	ld e, a
+	jr .checkTile
+.bDown: ; facing down: mapY = wYCoord+4-1, mapX = wXCoord+4
+	ld a, [wYCoord]
+	add $3
+	ld e, a
+	ld a, [wXCoord]
+	add $4
+	ld d, a
+	jr .checkTile
+.bUp: ; facing up: mapY = wYCoord+4+1
+	ld a, [wYCoord]
+	add $5
+	ld e, a
+	ld a, [wXCoord]
+	add $4
+	ld d, a
+	jr .checkTile
+.bLeft: ; facing left: mapX = wXCoord+4+1
+	ld a, [wYCoord]
+	add $4
+	ld e, a
+	ld a, [wXCoord]
+	add $5
+	ld d, a
+.checkTile:
+	push de ; save behind map coords (d = mapX, e = mapY)
+	ld a, c
+	ld d, a ; d = tile for _CheckTilePassable
+	callba _CheckTilePassable ; carry = impassable
+	pop de
+	jr c, .onTile ; door/wall/map edge behind: fall back to the player's tile
+	jr .load
+.onTile:
 	ld a, [wYCoord]
 	add $4
 	ld e, a
 	ld a, [wXCoord]
 	add $4
 	ld d, a
+.load:
 	ld hl, wSpriteStateData2 + $f4
 	ld [hl], e ; map Y
 	inc hl
@@ -1483,8 +1563,9 @@ CalculateFollowerSpawnCoordsAndFacing:
 	ret
 
 SnapFollowerBehindPlayer:
-; teleport the follower behind the player and restart the trail cleanly
+; teleport the follower back to the player and restart the trail cleanly
 	call ClearFollowerCommandBuffer
+	xor a ; a = 0: mid-map snap spawns on the player's tile (always safe)
 	call CalculateFollowerSpawnCoordsAndFacing
 	jp FollowerMovementState_Init
 
@@ -1667,4 +1748,13 @@ RefreshFollowerSheet::
 .done
 	pop af
 	ldh [hFlagsFFFA], a
+	; reveal the follower right away when spawned: the slot and tiles are ready
+	; here, so it is visible from the very first frame of a newly loaded map
+	; (no hidden frames during map transitions)
+	ld a, [wSpriteStateData1 + $f0]
+	and a
+	ret z
+	ld a, $f0
+	ldh [H_CURRENTSPRITEOFFSET], a
+	call FollowerMovementState_Init
 	ret

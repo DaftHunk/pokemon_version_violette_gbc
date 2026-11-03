@@ -89,6 +89,7 @@ PlayerSpinWhileMovingDown:
 	jp PlayerSpinWhileMovingUpOrDown
 
 _LeaveMapAnim:
+	callba HideFollowerUntilMapLoad ; like Yellow's EnableHidePikachuWhileLeavingMap: hidden during the whole leave-map animation
 	call InitFacingDirectionList
 	call IsPlayerStandingOnWarpPadOrHole
 	ld a, b
