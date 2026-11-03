@@ -582,6 +582,8 @@ CheckMapConnections::	;joenote - these routines moved to func_overworld.asm to s
 	jr nz, .didNotEnterConnectedMap
 
 .loadNewMap ; load the connected map that was entered
+	ld a, $ff
+	ld [wDestinationWarpID], a ; seamless connections have no destination warp: clear the stale ID so LoadTilesetHeader skips the warp-position adjust
 	call LoadMapHeader
 	call PlayDefaultMusicFadeOutCurrent
 	ld b, SET_PAL_OVERWORLD
