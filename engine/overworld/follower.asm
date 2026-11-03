@@ -1420,9 +1420,13 @@ TrySpawnFollower::
 	ret nc ; leader has no follower sheet yet: no follower for now
 	ld a, SPRITE_FOLLOWER
 	ld [wSpriteStateData1 + $f0], a
+	ld a, [wStatusFlags6]
+	bit 3, a ; arriving by fly warp?
+	ld a, 0 ; a = 0: fly arrival spawns on the player's tile (under the player)
+	jr nz, .doSpawn
 	ld a, [wCurMap]
 	cp PALLET_REDS_HOUSE_1F ; exterior map (city/route, ID < $25)?
-	ld a, 1 ; a = 1: on map transitions, spawn one tile behind the player
+	ld a, 1 ; a = 1: exterior map transition, spawn one tile behind the player
 	jr c, .doSpawn
 	xor a ; a = 0: indoor map, spawn on the player's tile (behind is often a wall indoors)
 .doSpawn
@@ -1440,6 +1444,17 @@ HideFollowerUntilMapLoad::
 	ld [wSpriteStateData1 + $f0], a
 	ld a, $ff
 	ld [wSpriteStateData1 + $f2], a
+	ret
+
+ShowFollowerAfterFlyArrival::
+; reveal the follower at its spawn position at the very end of the fly arrival
+; animation (called from EnterMapAnim .flyAnimation, after DoFlyAnimation)
+	ld a, [wSpriteStateData1 + $f0]
+	and a
+	ret z ; not spawned (no follower sheet): nothing to show
+	ld a, $f0
+	ldh [H_CURRENTSPRITEOFFSET], a
+	call FollowerMovementState_Init
 	ret
 
 HideFollowerForMenu::

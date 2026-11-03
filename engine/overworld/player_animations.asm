@@ -1,4 +1,10 @@
 EnterMapAnim:
+	ld hl, wStatusFlags7
+	bit 7, [hl] ; fly arrival animation?
+	jr z, .notFlyArrival
+	ld a, $ff
+	ld [wSpriteStateData1 + $f2], a ; hide the follower from the very start of the fly arrival (incl. fade-in)
+.notFlyArrival
 	call InitFacingDirectionList
 	ld a, $ec
 	ld [wSpriteStateData1 + 4], a ; player's sprite Y screen position
@@ -45,6 +51,7 @@ EnterMapAnim:
 	jr .done
 .flyAnimation
 	pop hl
+	; (the follower was already hidden at the top of EnterMapAnim)
 	; show the FLY user's party icon instead of the bird
 	call LoadFlyUserSpriteGfx
 	ld a, SFX_FLY
@@ -58,6 +65,7 @@ EnterMapAnim:
 	ld de, FlyAnimationEnterScreenCoords
 	call DoFlyAnimation
 	call LoadPlayerSpriteGraphics
+	callba ShowFollowerAfterFlyArrival ; reveal the follower only at the very end
 	jr .restoreDefaultMusic
 
 FlyAnimationEnterScreenCoords:
