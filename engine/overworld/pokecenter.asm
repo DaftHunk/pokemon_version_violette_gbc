@@ -14,6 +14,7 @@ DisplayPokemonCenterDialogue_:
 	and a
 	jr nz, .declinedHealing ; if the player chose No
 .skipShallWeHealYourPokemon
+	callba SnapFollowerToPlayer ; healing confirmed: the follower moves onto the player's tile (the healing machine animation then hides all sprites, and it reappears when healing ends)
 	call SetLastBlackoutMap
 	call LoadScreenTilesFromBuffer1 ; restore screen
 	ld hl, NeedYourPokemonText

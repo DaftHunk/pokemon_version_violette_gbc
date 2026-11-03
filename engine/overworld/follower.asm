@@ -267,7 +267,7 @@ FollowerMovementState_Idle:
 	call UpdateFollowerWalkingSprite
 	ret
 .snap
-	call SnapFollowerBehindPlayer
+	call SnapFollowerToPlayer
 	ret
 
 ; Pokemon Yellow's idle follower: when the player has been standing still
@@ -1577,10 +1577,10 @@ CalculateFollowerSpawnCoordsAndFacing:
 	call ResetFollowerIdleWait
 	ret
 
-SnapFollowerBehindPlayer:
-; teleport the follower back to the player and restart the trail cleanly
+SnapFollowerToPlayer::
+; teleport the follower onto the player's tile and restart the trail cleanly
 	call ClearFollowerCommandBuffer
-	xor a ; a = 0: mid-map snap spawns on the player's tile (always safe)
+	xor a ; a = 0: snap spawns on the player's tile (always safe)
 	call CalculateFollowerSpawnCoordsAndFacing
 	jp FollowerMovementState_Init
 
