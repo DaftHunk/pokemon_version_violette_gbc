@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="fr">
 <head>
@@ -134,6 +133,15 @@
     pointer-events: none;
   }
   .marker .shopico img { width: 16px; height: 16px; image-rendering: pixelated; }
+  .marker .hitrond {
+    position: absolute; left: -6px; top: -10px;
+    width: 26px; height: 26px; border-radius: 999px; box-sizing: border-box;
+    background: transparent; border: 2px dashed transparent;
+    transform: scale(calc(1 / var(--z, 1)));
+    transform-origin: 13px 13px;
+  }
+  .marker:hover .hitrond { border-color: rgba(255,255,255,0.55); }
+  .marker.sel .hitrond { border-color: #fff; }
   .marker.sel img.spr { filter: drop-shadow(0 0 4px #fff) drop-shadow(0 1px 2px rgba(0,0,0,0.6)); }
   .marker .badge {
     position: absolute; transform: translate(-50%, -50%) scale(calc(1 / var(--z, 1)));
@@ -230,10 +238,6 @@
   .catico { width: 22px; height: 22px; border-radius: 50%; background: #fff; display: inline-flex; align-items: center; justify-content: center; flex: none; }
   .catico img { width: 16px; height: 16px; image-rendering: pixelated; display: block; }
   .fnote { font-size: 11px; color: var(--muted); margin: 6px 0 0; line-height: 1.45; }
-  footer {
-    padding: 6px 16px; font-size: 11px; color: var(--muted);
-    background: #0d1226; border-top: 1px solid #2c3a63;
-  }
   /* ---------- écran de chargement ---------- */
   #loader { position: fixed; inset: 0; z-index: 9999; display: flex; flex-direction: column;
     align-items: center; justify-content: center; gap: 13px; background: var(--bg);
@@ -275,7 +279,7 @@
       <div class="ddmenu"></div>
     </div>
   </nav>
-  <span class="mapname" id="mapname">Monde — de Bourg Palette à Carmin sur Mer</span>
+  <span class="mapname" id="mapname">Monde — de Bourg Palette à Cramois'Ile</span>
   <span class="proto">PROTOTYPE</span>
 </header>
 <div id="layout">
@@ -304,8 +308,7 @@
     </div>
   </aside>
 </div>
-<footer>Prototype — captures, sprites et données extraits du dépôt (branche dev ; captures Route 2 et Argenta : copie locale à jour) : screenshots/Maps (PalletTown, Route1, ViridianCity, Route22, Route23, IndigoPlateau, Route22Gate1F/2F, VictoryRoad1F/2F/3F, IndigoPlateauLobby, ViridianPokecenter/Mart/School/NicknameHouse/Gym, PalletRedsHouse1F/2F, PalletBluesHouse, PalletOaksLab, IndigoLoreleisRoom/BrunosRoom/AgathasRoom/LancesRoom/ChampionsRoom/HallOfFame, Route2, PewterCity, Route2Gate, Route2TradeHouse, DiglettsCaveRoute2, DiglettsCaveRoute11, PewterPokecenter/Mart/Gym/Museum1F/2F/NidoranHouse/SpeechHouse, ViridianForest, ViridianForestNorthGate/SouthGate, DiglettsCave, Route3, MtMoon1F/B1F/B2F, MtMoonSquare, MtMoonPokecenter, Route4, CeruleanCity, CeruleanTrashedHouse/TradeHouse/Pokecenter/Gym/BikeShop/Mart/BadgeHouse/Printer/MelanieHouse, Route24, Route25, BillsHouse/BillsGarden, Route9, Route10, Route10South, LavenderTown, Route8, Route12, RockTunnelPokecenter, RockTunnel1F/B1F, PowerPlant1F/2F, LavenderPokecenter, LavenderMart, LavenderFujisHouse, LavenderCuboneHouse, LavenderNameRatersHouse, LavenderPokemonTower1F–7F, SaffronCity, Route5, Route5Gate, Route8Gate, UndergroundPathRoute8, UndergroundPathWestEast, Route12Gate1F, Route12Gate2F, Route12FisherHouse, SaffronCopycatsHouse1F/2F, SaffronFightingDojo, SaffronGym, SaffronMart, SaffronMrPsychicsHouse, SaffronPidgeyHouse, SaffronPokecenter, SaffronSilphCo1F–11F, SaffronSilphCoElevator, Route6, Route7, Route6Gate, Route7Gate, UndergroundPathRoute5, UndergroundPathRoute7, UndergroundPathNorthSouth, UndergroundPathRoute6, Daycare, VermilionCity, VermilionPokecenter, VermilionFanClub, VermilionMart, VermilionGym, VermilionPidgeyHouse, VermilionFisherHouse, VermilionTradeHouse, VermilionDock, Route11, Route11Gate1F, Route11Gate2F, SSAnne1F, SSAnne1FRooms, SSAnne2F, SSAnne2FRooms, SSAnne3F, SSAnneB1F, SSAnneB1FRooms, SSAnneBow, SSAnneCaptainsRoom, SSAnneKitchen), data/maps/objects (marqueurs, orientation des sprites et warp_to des destinations), data/items/hidden_objects.asm (objets cachés Jadielle/Route 1/Argenta/Forêt de Jade/Grotte Taupiqueur/Mont Sélénite/Route 4/Azuria/Route 25/Route 9/Route 10/Route 10 South (NoHS sur ces
-   trois dernières) ; intérieurs : Centrale 1F/2F (Max Elixir, PP Plus) et Tour Pokémon 5F (Elixir), Route 8 (Hyper Ball), Route 12 (Hyper Potion), Souterrain Ouest-Est (Pépite, Élixir), Maison de la Copieuse 2F (Pépite), Sylphe 5F (Elixir), Sylphe 9F (Potion Max), Route 6 (Super Ball, PokéPoupée), Souterrain Nord-Sud (Total Soin, Spécial +), Carmin sur Mer (Huile Max), Dock de Carmin sur Mer (Pépite, CT15 Ultralaser) ; L'Océane : Cuisine (Super Ball) et cabines du pont B1 (Hyper Potion)), data/wildPokemons/maps (Route1, Route2, Route22, Route23, VictoryRoad1F/2F/3F, ViridianForest, DiglettsCave, Route3, Route4, Route9, Route10, MtMoon1F/B1F/B2F, MtMoonSquare, RockTunnel1F/B1F, PowerPlant1F/2F, PokemonTower3F–7F, Route8, Route12, Route5, Route6, Route7, Route11 : rencontres ; Tour Pokémon 1F/2F, Route 10 South, Lavanville et Safrania : aucune ; idem la tour Sylphe (2F-11F et ascenseur), les Souterrains et les postes de garde, ainsi que Carmin sur Mer, son dock et l'Océane), data/wildPokemons/good_rod.asm + super_rod.asm + wild_mons.asm, engine/items/items.asm (pêche), text/monster_names.asm + trainer_names.asm + item_names.asm + move_names.asm (noms FR), gfx/sprites + pokemons + static_objects (PNJ, ball, rochers), gfx/items (icônes d'objets), gfx/pokemon/front (sprites de face et de pêche), constants/map_constants.asm (indices de cartes), data/palettes/mon_palettes.asm + gbc_palettes.asm. Sprites overworld recolorés selon les conventions mark_visible_objects.py ; sprites Pokémon avec leur palette GBC réelle (RGB 5-bit ×8). Pipeline généralisable aux 248 cartes.</footer>
+
 <script>
 
 var B85A="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!#$%&()*+-;<=>?@^_`{|}~";
@@ -627,7 +630,42 @@ itemfinder: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette
   machoke: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/sprites/pokemons/machoke.png",
   wigglytuff: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/sprites/pokemons/wigglytuff.png",
   paper_sheet: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/sprites/static_objects/paper_sheet.png",
-  bike_voucher: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/items/bike_voucher.png"
+  bike_voucher: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/items/bike_voucher.png",
+  erika: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/sprites/erika.png",
+  polywrath: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/sprites/pokemons/polywrath.png",
+  meowth: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/sprites/pokemons/meowth.png",
+  nidoranf: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/sprites/pokemons/nidoranF.png",
+  coin_case: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/items/coin_case.png",
+  lift_key: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/items/lift_key.png",
+  silph_scope: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/items/silph_scope.png",
+  fire_stone: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/items/fire_stone.png",
+  thunder_stone: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/items/thunder_stone.png",
+  leaf_stone: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/items/leaf_stone.png",
+  guard_spec: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/items/guard_spec.png",
+  dire_hit: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/items/dire_hit.png",
+  x_attack: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/items/x_attack.png",
+  x_defend: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/items/x_defend.png",
+  x_speed: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/items/x_speed.png",
+  fresh_water: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/items/fresh_water.png",
+  soda_pop: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/items/soda_pop.png",
+  lemonade: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/items/lemonade.png",
+  white_player: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/sprites/white_player.png",
+  koga: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/sprites/koga.png",
+  warden: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/sprites/warden.png",
+  biker: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/sprites/biker.png",
+  fearow: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/sprites/pokemons/fearow.png",
+  kangaskhan: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/sprites/pokemons/kangaskhan.png",
+  slowpoke: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/sprites/pokemons/slowpoke.png",
+  lapras: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/sprites/pokemons/lapras.png",
+  gold_teeth: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/items/gold_teeth.png",
+  secret_key: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/items/secret_key.png",
+  surfboard: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/items/surfboard.png",
+  dome_fossil: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/items/dome_fossil.png",
+  helix_fossil: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/items/helix_fossil.png",
+  blaine: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/sprites/blaine.png",
+  firefighter: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/sprites/firefighter.png",
+  keeper: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/sprites/keeper.png",
+  moltres_ow: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/sprites/pokemons/moltres.png",
 };
 /* Sprites de face (combat) — gfx/pokemon/front/, recolorés avec la palette GBC réelle
    (data/palettes/mon_palettes.asm + gbc_palettes.asm) */
@@ -788,7 +826,15 @@ abra: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/d
   houndour: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/pokemon/front/houndour.png",
   muk: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/pokemon/front/muk.png",
   mew: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/pokemon/front/mew.png",
-  ponyta: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/pokemon/front/ponyta.png"
+  ponyta: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/pokemon/front/ponyta.png",
+  dratini: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/pokemon/front/dratini.png",
+  larvitar: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/pokemon/front/larvitar.png",
+  doduo: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/pokemon/front/doduo.png",
+  dodrio: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/pokemon/front/dodrio.png",
+  golduck: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/pokemon/front/golduck.png",
+  slugma: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/pokemon/front/slugma.png",
+  magcargo: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/pokemon/front/magcargo.png",
+  moltres: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/pokemon/front/moltres.png"
 };
 const PNJ = [[255,255,255],[244,125,64],[0,0,0]];
 const MENU = [[232,176,144],[144,120,152],[24,24,24]];
@@ -952,6 +998,14 @@ const MONPAL = {
   zapdos: [[255, 255, 0],[230, 115, 0]]  ,  // PAL_YELLOWMON
   marowrath: [[107, 58, 140],[41, 41, 41]]  ,  // PAL_VIOLETTEMON
   kadabra: [[255, 255, 0],[230, 115, 0]]  ,  // PAL_YELLOWMON
+  dratini: [[132, 148, 255],[0, 8, 206]],   // PAL_BLUEMON
+  larvitar: [[107, 58, 140],[41, 41, 41]]  ,  // PAL_VIOLETTEMON
+  doduo:   [[239,148,82],[140,74,41]],   // PAL_BROWNMON
+  dodrio:  [[239,148,82],[140,74,41]],   // PAL_BROWNMON
+  golduck: [[132,148,255],[0,8,206]],   // PAL_BLUEMON
+  slugma:   [[255,140,0],[255,0,0]],   // PAL_ORANGEMON
+  magcargo: [[41,41,107],[255,41,41]], // PAL_REDBLUEMON
+  moltres:  [[255,140,0],[255,0,0]]    // PAL_ORANGEMON
 };
 function loadB64(b64) {
   const src = SRC(b64);
@@ -987,7 +1041,7 @@ async function recolor(b64, pal, frame, yoff = 0, mirror = false) {
   return c.toDataURL("image/png");
 }
 const ICONS = {};
-const PNJ_SPRITES = ["bug_catcher", "oak", "girl", "fisher2", "gambler", "lying_old_man", "blue", "guard", "gym_helper", "ball", "oak_aide", "black_hair_boy_1", "black_hair_boy_2", "foulard_woman", "burglar", "blackbelt", "juggler", "tamer", "soldier", "lass", "rocker", "nurse", "mart_guy", "cable_club_woman", "chansey", "spearow", "boulder", "cup", "nerd", "gentleman", "giovanni", "brunette_girl", "young_boy", "balding_guy", "little_girl", "clipboard", "book_map_dex", "mom", "daisy", "lorelei", "bruno", "agatha", "lance", "brock", "fisher", "gameboy_kid", "hiker", "old_person", "jigglypuff", "nidoranm", "old_amber", "pokedex", "map", "rocket", "jessie", "james", "clefairy", "dome", "omanyte", "fat_bald_guy", "misty", "swimmer", "bike_shop_guy", "mom_geisha", "old_medium_woman", "slowbro", "rhyhorn", "bulbasaur", "oddish", "sandshrew", "sacha", "hooh", "pikachu", "medium", "mr_fuji", "mr_masterball", "psyduck", "nidorino", "cubone", "zapdos", "snorlax", "lapras_giver", "kimonowoman", "pidgeot", "koichi", "sabrina", "doduo", "bird", "pidgey", "waiter", "jenny", "sailor", "surge", "machop", "mew", "seel", "cook", "ss_captain", "machoke", "wigglytuff", "paper_sheet"];
+const PNJ_SPRITES = ["bug_catcher", "oak", "girl", "fisher2", "gambler", "lying_old_man", "blue", "guard", "gym_helper", "ball", "oak_aide", "black_hair_boy_1", "black_hair_boy_2", "foulard_woman", "burglar", "blackbelt", "juggler", "tamer", "soldier", "lass", "rocker", "nurse", "mart_guy", "cable_club_woman", "chansey", "spearow", "boulder", "cup", "nerd", "gentleman", "giovanni", "brunette_girl", "young_boy", "balding_guy", "little_girl", "clipboard", "book_map_dex", "mom", "daisy", "lorelei", "bruno", "agatha", "lance", "brock", "fisher", "gameboy_kid", "hiker", "old_person", "jigglypuff", "nidoranm", "old_amber", "pokedex", "map", "rocket", "jessie", "james", "clefairy", "dome", "omanyte", "fat_bald_guy", "misty", "swimmer", "bike_shop_guy", "mom_geisha", "old_medium_woman", "slowbro", "rhyhorn", "bulbasaur", "oddish", "sandshrew", "sacha", "hooh", "pikachu", "medium", "mr_fuji", "mr_masterball", "psyduck", "nidorino", "cubone", "zapdos", "snorlax", "lapras_giver", "kimonowoman", "pidgeot", "koichi", "sabrina", "doduo", "bird", "pidgey", "waiter", "jenny", "sailor", "surge", "machop", "mew", "seel", "cook", "ss_captain", "machoke", "wigglytuff", "paper_sheet", "erika", "polywrath", "meowth", "nidoranf", "white_player", "koga", "warden", "biker", "fearow", "kangaskhan", "slowpoke", "lapras", "blaine", "firefighter", "keeper", "moltres_ow"];
 async function buildIcons() {
   for (const k of PNJ_SPRITES)
     ICONS[k] = await recolor(ICONS_B64[k], PNJ, true);
@@ -1002,7 +1056,7 @@ async function buildIcons() {
     ICONS[k + "_left"] = await recolor(ICONS_B64[k], PNJ, true, 32);
     ICONS[k + "_right"] = await recolor(ICONS_B64[k], PNJ, true, 32, true);
   }
-  for (const k of ["potion", "tm_hm", "rare_candy", "metal_coat", "max_revive", "revive", "full_restore", "max_ether", "ultra_ball", "oaks_parcel", "poke_ball", "antidote", "old_rod", "good_rod", "super_rod", "exp_catch_up", "parlyz_heal", "burn_heal", "max_potion", "full_heal", "max_elixer", "moon_stone", "hp_up", "repel", "escape_rope", "awakening", "ether", "nugget", "soul_stone", "water_stone", "calcium", "great_ball", "bicycle", "berserk_adn", "s_s_ticket", "elixer", "super_potion", "super_repel", "ice_heal", "pp_up", "carbos", "x_accuracy", "poke_flute", "hyper_potion", "iron", "m_gene", "max_repel", "protein", "card_key", "x_special", "master_ball", "poke_doll", "itemfinder", "bike_voucher"])
+  for (const k of ["potion", "tm_hm", "rare_candy", "metal_coat", "max_revive", "revive", "full_restore", "max_ether", "ultra_ball", "oaks_parcel", "poke_ball", "antidote", "old_rod", "good_rod", "super_rod", "exp_catch_up", "parlyz_heal", "burn_heal", "max_potion", "full_heal", "max_elixer", "moon_stone", "hp_up", "repel", "escape_rope", "awakening", "ether", "nugget", "soul_stone", "water_stone", "calcium", "great_ball", "bicycle", "berserk_adn", "s_s_ticket", "elixer", "super_potion", "super_repel", "ice_heal", "pp_up", "carbos", "x_accuracy", "poke_flute", "hyper_potion", "iron", "m_gene", "max_repel", "protein", "card_key", "x_special", "master_ball", "poke_doll", "itemfinder", "bike_voucher", "coin_case", "lift_key", "silph_scope", "fire_stone", "thunder_stone", "leaf_stone", "guard_spec", "dire_hit", "x_attack", "x_defend", "x_speed", "fresh_water", "soda_pop", "lemonade", "gold_teeth", "secret_key", "surfboard", "dome_fossil", "helix_fossil"])
     ICONS[k] = await recolor(ICONS_B64[k], MENU, false);
   for (const k of Object.keys(FRONT_B64)) {
     const p = MONPAL[k];
@@ -3156,12 +3210,14 @@ MARKERS_VDOCK.forEach(m => {
    Indigo et Tour Pokémon 1F/2F : pas de rencontres sauvages (wild: null) ; idem les 10 étages
    de la tour Sylphe (2F-11F), son ascenseur, les Souterrains et les postes de garde, ainsi que Carmin sur Mer et son dock. */
 
-/* Vingt-six cartes de surface (chemin de Bourg Palette à la Route 11,
+/* Trente-six cartes de surface (chemin de Bourg Palette à Cramois'Ile,
    nord en haut) :
    Plateau Indigo (20×18), Route 23 (20×144), Route 22 (40×18), Argenta (20×18),
    Route 2 (24×72), Jadielle (40×36), Route 1 (24×36), Bourg Palette (20×18), Route 3 (70×18), Route 4 (90×18), Azuria (40×36), Route 24 (20×36), Route 25 (60×20),
    Jardin de Léo (22×14), Route 9 (58×18), Route 10 (24×54),
-   Route 10 South (24×24), Lavanville (22×18), Route 8 (60×18), Route 12 (20×108), Safrania (40×36), Route 5 (20×36), Route 6 (20×36), Route 7 (20×18), Carmin sur Mer (40×36), Route 11 (60×18), centrées horizontalement.
+   Route 10 South (24×24), Lavanville (22×18), Route 8 (60×18), Route 12 (20×108), Safrania (40×36), Route 5 (20×36), Route 6 (20×36), Route 7 (20×18), Carmin sur Mer (40×36), Route 11 (60×18),
+   puis Route 16-18, Parmanie, Chenal 19 (10×27), Chenal 20 (50×10),
+   Cramois'Ile (10×9), Chenal 21 (10×45), centrées horizontalement.
    Plus les intérieurs de la zone Ligue, regroupés par zone dans la colonne est :
    Hall de la Ligue (16×12) près du Plateau, Route Victoire 1F (20×18) puis
    Poste de garde
@@ -3178,6 +3234,7 @@ MARKERS_VDOCK.forEach(m => {
    25 % de raté. Noms FR : text/monster_names.asm. */
 const SURF_FISH = [["tentacool", "Tentacool", "n.5–20", "89,5 %"], ["tentacruel", "Tentacruel", "n.30–40", "6,3 %"], ["seaking", "Poissoroy", "n.35", "4,3 %"]];
 const MEGA_FISH = [["psyduck", "Psykokwak", "n.15", "37,5 %"], ["poliwag", "Ptitard", "n.15", "37,5 %"]];
+const ROUTE21_SURF = [["tentacool", "Tentacool", "n.5–20", "89,5 %"], ["tentacruel", "Tentacruel", "n.30–35", "9,4 %"], ["seaking", "Poissoroy", "n.40", "1,2 %"]];
 const MAP_LAVENDER_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/LavenderTown.png";
 const MAP_ROUTE8_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/Route8.png";
 const MAP_ROUTE12_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/Route12.png";
@@ -3258,6 +3315,81 @@ const MAP_SSAB1FR_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_vers
 const MAP_SSABOW_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/SSAnneBow.png";
 const MAP_SSACPT_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/SSAnneCaptainsRoom.png";
 const MAP_SSAKCH_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/SSAnneKitchen.png";
+const MAP_CCITY_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CeladonCity.png";
+const MAP_CPC_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CeladonPokecenter.png";
+const MAP_CGYM_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CeladonGym.png";
+const MAP_CGC_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CeladonGameCorner.png";
+const MAP_CPRICE_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CeladonGameCornerPrizeRoom.png";
+const MAP_CDINER_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CeladonDiner.png";
+const MAP_CCHEF_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CeladonChiefHouse.png";
+const MAP_CHOTEL_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CeladonHotel.png";
+const MAP_CSCHOOL_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CeladonSchool.png";
+const MAP_CMART1F_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CeladonMart1F.png";
+const MAP_CMART2F_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CeladonMart2F.png";
+const MAP_CMART3F_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CeladonMart3F.png";
+const MAP_CMART4F_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CeladonMart4F.png";
+const MAP_CMART5F_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CeladonMart5F.png";
+const MAP_CMARTROOF_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CeladonMartRoof.png";
+const MAP_CMARTELEV_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CeladonMartElevator.png";
+const MAP_CMAS1F_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CeladonMansion1F.png";
+const MAP_CMAS2F_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CeladonMansion2F.png";
+const MAP_CMAS3F_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CeladonMansion3F.png";
+const MAP_CMASROOF_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CeladonMansionRoof.png";
+const MAP_CMASRHOUSE_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CeladonMansionRoofHouse.png";
+const MAP_RHOB1F_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/RocketHideoutB1F.png";
+const MAP_RHOB2F_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/RocketHideoutB2F.png";
+const MAP_RHOB3F_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/RocketHideoutB3F.png";
+const MAP_RHOB4F_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/RocketHideoutB4F.png";
+const MAP_RHOELEV_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/RocketHideoutElevator.png";
+const MAP_R16_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/Route16.png";
+const MAP_R16W_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/Route16West.png";
+const MAP_R17_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/Route17.png";
+const MAP_R18_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/Route18.png";
+const MAP_FUCHSIA_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/FuchsiaCity.png";
+const MAP_R16GATE1F_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/Route16Gate1F.png";
+const MAP_R16GATE2F_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/Route16Gate2F.png";
+const MAP_R16WGATE_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/Route16WestGate.png";
+const MAP_R16WHOUSE_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/Route16WestHouse.png";
+const MAP_R16FLYHOUSE_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/Route16FlyHouse.png";
+const MAP_R18GATE1F_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/Route18Gate1F.png";
+const MAP_R18GATE2F_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/Route18Gate2F.png";
+const MAP_FPC_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/FuchsiaPokecenter.png";
+const MAP_FMART_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/FuchsiaMart.png";
+const MAP_FGYM_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/FuchsiaGym.png";
+const MAP_FGRANDPA_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/FuchsiaBillsGrandpasHouse.png";
+const MAP_FWARDENS_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/FuchsiaWardensHouse.png";
+const MAP_FMEETING_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/FuchsiaMeetingRoom.png";
+const MAP_FFISHER_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/FuchsiaFisherHouse.png";
+const MAP_SZGATE_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/SafariZoneGate.png";
+const MAP_SZCENTER_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/SafariZoneCenter.png";
+const MAP_SZEAST_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/SafariZoneEast.png";
+const MAP_SZWEST_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/SafariZoneWest.png";
+const MAP_SZNORTH_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/SafariZoneNorth.png";
+const MAP_SZRHC_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/SafariZoneCenterRestHouse.png";
+const MAP_SZRHE_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/SafariZoneEastRestHouse.png";
+const MAP_SZRHW_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/SafariZoneWestRestHouse.png";
+const MAP_SZRHN_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/SafariZoneNorthRestHouse.png";
+const MAP_SZSECRET_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/SafariZoneSecretHouse.png";
+const MAP_R19_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/Route19.png";
+const MAP_R20_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/Route20.png";
+const MAP_R21_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/Route21.png";
+const MAP_CINNABAR_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CinnabarIsland.png";
+const MAP_BEACHHOUSE_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/Route19BeachHouse.png";
+const MAP_LIGHTHOUSE_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/Lighthouse.png";
+const MAP_CNGYM_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CinnabarGym.png";
+const MAP_CNPC_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CinnabarPokecenter.png";
+const MAP_CNMART_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CinnabarMart.png";
+const MAP_CNLAB_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CinnabarLab.png";
+const MAP_CNTRADE_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CinnabarLabTradeRoom.png";
+const MAP_CNMETRO_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CinnabarLabMetronomeRoom.png";
+const MAP_CNFOSSIL_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CinnabarLabFossilRoom.png";
+const MAP_MANSION1F_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CinnabarMansion1F.png";
+const MAP_MANSION2F_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CinnabarMansion2F.png";
+const MAP_MANSION3F_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CinnabarMansion3F.png";
+const MAP_MANSIONB1F_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/CinnabarMansionB1F.png";
+const MAP_VOLC1F_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/Volcano1F.png";
+const MAP_VOLCB1F_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/VolcanoB1F.png";
+const MAP_VOLCB2F_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/VolcanoB2F.png";
 const MAPS = [
   { id: "ViridianCity", label: "Jadielle", w: 640, h: 576, b64: MAP_VIRIDIAN_B64, wild: null,
     fish: [
@@ -3944,6 +4076,342 @@ const MAPS = [
     fish: [
       ["Pêche", "Impossible : aucun point d'eau sur la carte."]
     ] },
+  { id: "CeladonCity", label: "Céladopole", w: 800, h: 576, b64: MAP_CCITY_B64, wild: null,
+    fish: [
+      ["Méga Canne", [["grimer", "Tadmorv", "n.10", "18,75 %"], ["grimer", "Tadmorv", "n.11", "18,75 %"], ["grimer", "Tadmorv", "n.15", "18,75 %"], ["muk", "Grotadmorv", "n.20", "18,75 %"]]]
+    ] },
+  { id: "CeladonPokecenter", label: "Centre Pokémon (Céladopole)", w: 224, h: 128, b64: MAP_CPC_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CeladonGym", label: "Arène de Céladopole", w: 160, h: 288, b64: MAP_CGYM_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CeladonGameCorner", label: "Casino Rocket", w: 320, h: 288, b64: MAP_CGC_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CeladonGameCornerPrizeRoom", label: "Salle des prix (Casino)", w: 160, h: 128, b64: MAP_CPRICE_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CeladonDiner", label: "Restaurant Au Caninos mal léché", w: 160, h: 128, b64: MAP_CDINER_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CeladonChiefHouse", label: "Maison du Chef", w: 128, h: 128, b64: MAP_CCHEF_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CeladonHotel", label: "Hôtel de Céladopole", w: 224, h: 128, b64: MAP_CHOTEL_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CeladonSchool", label: "École de Céladopole", w: 128, h: 128, b64: MAP_CSCHOOL_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CeladonMart1F", label: "Centre commercial (1F)", w: 320, h: 128, b64: MAP_CMART1F_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CeladonMart2F", label: "Centre commercial (2F)", w: 320, h: 128, b64: MAP_CMART2F_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CeladonMart3F", label: "Centre commercial (3F)", w: 320, h: 128, b64: MAP_CMART3F_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CeladonMart4F", label: "Centre commercial (4F)", w: 320, h: 128, b64: MAP_CMART4F_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CeladonMart5F", label: "Centre commercial (5F)", w: 320, h: 128, b64: MAP_CMART5F_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CeladonMartRoof", label: "Centre commercial (toit)", w: 320, h: 192, b64: MAP_CMARTROOF_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CeladonMartElevator", label: "Ascenseur du centre commercial", w: 64, h: 64, b64: MAP_CMARTELEV_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CeladonMansion1F", label: "Manoir Céladon (1F)", w: 128, h: 192, b64: MAP_CMAS1F_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CeladonMansion2F", label: "Manoir Céladon (2F)", w: 128, h: 192, b64: MAP_CMAS2F_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CeladonMansion3F", label: "Manoir Céladon (3F)", w: 128, h: 192, b64: MAP_CMAS3F_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CeladonMansionRoof", label: "Manoir Céladon (toit)", w: 128, h: 256, b64: MAP_CMASROOF_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CeladonMansionRoofHouse", label: "Maison du toit du Manoir", w: 128, h: 128, b64: MAP_CMASRHOUSE_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "RocketHideoutB1F", label: "Planque Rocket (B1F)", w: 480, h: 448, b64: MAP_RHOB1F_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "RocketHideoutB2F", label: "Planque Rocket (B2F)", w: 480, h: 448, b64: MAP_RHOB2F_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "RocketHideoutB3F", label: "Planque Rocket (B3F)", w: 480, h: 448, b64: MAP_RHOB3F_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "RocketHideoutB4F", label: "Planque Rocket (B4F)", w: 480, h: 384, b64: MAP_RHOB4F_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "RocketHideoutElevator", label: "Ascenseur de la Planque", w: 96, h: 128, b64: MAP_RHOELEV_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },  { id: "Route16", label: "Route 16", w: 640, h: 320, b64: MAP_R16_B64, rate: "25",
+    wild: [["spearow", "Piafabec", "n.20–22", "39,8 %"], ["rattata", "Rattata", "n.18–22", "30,1 %"], ["doduo", "Doduo", "n.18–22", "24,6 %"], ["raticate", "Rattatac", "n.23–25", "5,5 %"]],
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "Route16West", label: "Clairière (Route 16 Ouest)", w: 640, h: 672, b64: MAP_R16W_B64, rate: "25",
+    wild: [["meowth", "Miaouss", "n.20–22", "39,8 %"], ["ekans", "Abo", "n.18–20", "25,0 %"], ["nidoranf", "Nidoran♀", "n.20–22", "19,5 %"], ["nidoranm", "Nidoran♂", "n.18–22", "14,8 %"], ["persian", "Persian", "n.23", "4,3 %"], ["arbok", "Arbok", "n.25", "1,2 %"]],
+    fish: [
+      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["poliwag", "Ptitard", "n.5", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n.5", "18,75 %"], ["goldeen", "Poissirène", "n.9", "18,75 %"], ["krabby", "Krabby", "n.12", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"]]],
+      ["Méga Canne", [["tentacool", "Tentacool", "n.5", "18,75 %"], ["krabby", "Krabby", "n.15", "18,75 %"], ["goldeen", "Poissirène", "n.15", "18,75 %"], ["magikarp", "Magicarpe", "n.15", "18,75 %"]]]
+    ] },
+  { id: "Route17", label: "Piste Cyclable (Route 17)", w: 320, h: 2304, b64: MAP_R17_B64, rate: "25",
+    wild: [["spearow", "Piafabec", "n.20–22", "39,8 %"], ["raticate", "Rattatac", "n.25–27", "25,0 %"], ["doduo", "Doduo", "n.24–28", "24,6 %"], ["dodrio", "Dodrio", "n.29", "5,1 %"], ["fearow", "Rapasdepic", "n.25–27", "5,5 %"]],
+    fish: [
+      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["goldeen", "Poissirène", "n.12", "50 %"]]],
+      ["Super Canne", [["goldeen", "Poissirène", "n.12", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["shellder", "Kokiyas", "n.12", "18,75 %"], ["tentacool", "Tentacool", "n.5", "18,75 %"]]],
+      ["Méga Canne", [["tentacool", "Tentacool", "n.5", "18,75 %"], ["krabby", "Krabby", "n.15", "18,75 %"], ["goldeen", "Poissirène", "n.15", "18,75 %"], ["magikarp", "Magicarpe", "n.15", "18,75 %"]]]
+    ] },
+  { id: "Route18", label: "Route 18", w: 800, h: 288, b64: MAP_R18_B64, rate: "25",
+    wild: [["spearow", "Piafabec", "n.20–22", "39,8 %"], ["raticate", "Rattatac", "n.25–29", "20,3 %"], ["doduo", "Doduo", "n.24–28", "24,6 %"], ["fearow", "Rapasdepic", "n.25–29", "15,2 %"]],
+    fish: [
+      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["poliwag", "Ptitard", "n.4", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n.4–5", "37,5 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["krabby", "Krabby", "n.12", "18,75 %"]]],
+      ["Méga Canne", [["tentacool", "Tentacool", "n.5", "18,75 %"], ["krabby", "Krabby", "n.15", "18,75 %"], ["goldeen", "Poissirène", "n.15", "18,75 %"], ["magikarp", "Magicarpe", "n.15", "18,75 %"]]]
+    ] },
+  { id: "FuchsiaCity", label: "Parmanie", w: 640, h: 576, b64: MAP_FUCHSIA_B64, wild: null,
+    fish: [
+      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["poliwag", "Ptitard", "n.4", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n.4–5", "37,5 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["krabby", "Krabby", "n.12", "18,75 %"]]],
+      ["Méga Canne", [["seaking", "Poissoroy", "n.23", "18,75 %"], ["krabby", "Krabby", "n.15", "18,75 %"], ["goldeen", "Poissirène", "n.15", "18,75 %"], ["magikarp", "Magicarpe", "n.15", "18,75 %"]]]
+    ] },
+  { id: "Route16Gate1F", label: "Poste de garde Route 16 (1F)", w: 128, h: 224, b64: MAP_R16GATE1F_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "Route16Gate2F", label: "Poste de garde Route 16 (2F)", w: 128, h: 128, b64: MAP_R16GATE2F_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "Route16WestGate", label: "Poste de garde de la Clairière (Laboratoire abandonné)", w: 128, h: 288, b64: MAP_R16WGATE_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "Route16WestHouse", label: "Maison de la Clairière", w: 128, h: 128, b64: MAP_R16WHOUSE_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "Route16FlyHouse", label: "Maison Volante (Route 16)", w: 128, h: 128, b64: MAP_R16FLYHOUSE_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "Route18Gate1F", label: "Poste de garde Route 18 (1F)", w: 128, h: 160, b64: MAP_R18GATE1F_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "Route18Gate2F", label: "Poste de garde Route 18 (2F)", w: 128, h: 128, b64: MAP_R18GATE2F_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "FuchsiaPokecenter", label: "Centre Pokémon (Parmanie)", w: 224, h: 128, b64: MAP_FPC_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "FuchsiaMart", label: "Magasin (Parmanie)", w: 128, h: 128, b64: MAP_FMART_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "FuchsiaGym", label: "Arène de Parmanie", w: 160, h: 288, b64: MAP_FGYM_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "FuchsiaBillsGrandpasHouse", label: "Maison du grand-père de Léo", w: 128, h: 128, b64: MAP_FGRANDPA_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "FuchsiaWardensHouse", label: "Maison du Gardien (Parmanie)", w: 160, h: 128, b64: MAP_FWARDENS_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "FuchsiaMeetingRoom", label: "Salle de réunion (Parc Safari)", w: 224, h: 128, b64: MAP_FMEETING_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "FuchsiaFisherHouse", label: "Maison du Pêcheur (Parmanie)", w: 128, h: 128, b64: MAP_FFISHER_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "SafariZoneGate", label: "Entrée du Parc Safari", w: 128, h: 96, b64: MAP_SZGATE_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "SafariZoneCenterRestHouse", label: "Aire de repos (Centre)", w: 128, h: 128, b64: MAP_SZRHC_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "SafariZoneEastRestHouse", label: "Aire de repos (Est)", w: 128, h: 128, b64: MAP_SZRHE_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "SafariZoneWestRestHouse", label: "Aire de repos (Ouest)", w: 128, h: 128, b64: MAP_SZRHW_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "SafariZoneNorthRestHouse", label: "Aire de repos (Nord)", w: 128, h: 128, b64: MAP_SZRHN_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "SafariZoneSecretHouse", label: "Maison secrète", w: 128, h: 128, b64: MAP_SZSECRET_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "SafariZoneCenter", label: "Parc Safari (Centre)", w: 480, h: 416, b64: MAP_SZCENTER_B64, rate: "30",
+    wild: [["nidoranf", "Nidoran♀", "n.22", "19,9 %"], ["rhyhorn", "Rhinocorne", "n.25", "19,9 %"], ["venonat", "Mimitoss", "n.22", "15,2 %"], ["exeggcute", "Noeunoeuf", "n.24–25", "19,5 %"], ["nidorina", "Nidorina", "n.31", "9,8 %"], ["nidorino", "Nidorino", "n.31", "5,1 %"], ["parasect", "Parasect", "n.30", "5,1 %"], ["scyther", "Insécateur", "n.23", "4,3 %"], ["chansey", "Leveinard", "n.23", "1,2 %"]],
+    fish: [
+      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["poliwag", "Ptitard", "n.5", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n.5", "18,75 %"], ["goldeen", "Poissirène", "n.9", "18,75 %"], ["krabby", "Krabby", "n.12", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"]]],
+      ["Méga Canne", [["staryu", "Stari", "n.15", "18,75 %"], ["horsea", "Hypotrempe", "n.15", "18,75 %"], ["shellder", "Kokiyas", "n.15", "18,75 %"], ["goldeen", "Poissirène", "n.15", "18,75 %"]]]
+    ] },
+  { id: "SafariZoneEast", label: "Parc Safari (Est)", w: 480, h: 416, b64: MAP_SZEAST_B64, rate: "30",
+    wild: [["nidoranf", "Nidoran♀", "n.24", "19,9 %"], ["doduo", "Doduo", "n.26", "19,9 %"], ["paras", "Paras", "n.22", "15,2 %"], ["exeggcute", "Noeunoeuf", "n.25", "9,8 %"], ["nidorina", "Nidorina", "n.33", "9,8 %"], ["nidoranm", "Nidoran♂", "n.24", "9,8 %"], ["pinsir", "Scarabrute", "n.28", "5,1 %"], ["lickitung", "Excelangue", "n.22", "5,1 %"], ["kangaskhan", "Kangourex", "n.25", "4,3 %"], ["parasect", "Parasect", "n.25", "1,2 %"]],
+    fish: [
+      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["goldeen", "Poissirène", "n.9", "50 %"]]],
+      ["Super Canne", [["goldeen", "Poissirène", "n.9–12", "37,5 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["shellder", "Kokiyas", "n.12", "18,75 %"]]],
+      ["Méga Canne", [["staryu", "Stari", "n.15", "18,75 %"], ["horsea", "Hypotrempe", "n.15", "18,75 %"], ["shellder", "Kokiyas", "n.15", "18,75 %"], ["goldeen", "Poissirène", "n.15", "18,75 %"]]]
+    ] },
+  { id: "SafariZoneWest", label: "Parc Safari (Ouest)", w: 480, h: 416, b64: MAP_SZWEST_B64, rate: "30",
+    wild: [["nidoranf", "Nidoran♀", "n.25", "19,9 %"], ["doduo", "Doduo", "n.26", "19,9 %"], ["venonat", "Mimitoss", "n.23", "15,2 %"], ["exeggcute", "Noeunoeuf", "n.24", "9,8 %"], ["nidorina", "Nidorina", "n.33", "9,8 %"], ["nidoranm", "Nidoran♂", "n.25", "9,8 %"], ["mr_mime", "M.Mime", "n.26", "5,1 %"], ["venomoth", "Aéromite", "n.31", "5,1 %"], ["tauros", "Tauros", "n.26", "4,3 %"], ["kangaskhan", "Kangourex", "n.28", "1,2 %"]],
+    fish: [
+      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["poliwag", "Ptitard", "n.4", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n.4–5", "37,5 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["krabby", "Krabby", "n.12", "18,75 %"]]],
+      ["Méga Canne", [["staryu", "Stari", "n.15", "18,75 %"], ["horsea", "Hypotrempe", "n.15", "18,75 %"], ["shellder", "Kokiyas", "n.15", "18,75 %"], ["goldeen", "Poissirène", "n.15", "18,75 %"]]]
+    ] },
+  { id: "SafariZoneNorth", label: "Parc Safari (Nord)", w: 640, h: 576, b64: MAP_SZNORTH_B64, rate: "30",
+    wild: [["nidoranf", "Nidoran♀", "n.22", "19,9 %"], ["rhyhorn", "Rhinocorne", "n.26", "19,9 %"], ["paras", "Paras", "n.23", "15,2 %"], ["exeggcute", "Noeunoeuf", "n.25", "9,8 %"], ["nidorina", "Nidorina", "n.30", "9,8 %"], ["nidorino", "Nidorino", "n.30", "9,8 %"], ["venomoth", "Aéromite", "n.32", "5,1 %"], ["tangela", "Saquedeneu", "n.27", "5,1 %"], ["chansey", "Leveinard", "n.26", "4,3 %"], ["tauros", "Tauros", "n.28", "1,2 %"]],
+    fish: [
+      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["goldeen", "Poissirène", "n.12", "50 %"]]],
+      ["Super Canne", [["goldeen", "Poissirène", "n.12", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["shellder", "Kokiyas", "n.12", "18,75 %"], ["tentacool", "Tentacool", "n.5", "18,75 %"]]],
+      ["Méga Canne", [["staryu", "Stari", "n.15", "18,75 %"], ["horsea", "Hypotrempe", "n.15", "18,75 %"], ["shellder", "Kokiyas", "n.15", "18,75 %"], ["goldeen", "Poissirène", "n.15", "18,75 %"]]]
+    ] },
+  { id: "Route19", label: "Chenal 19", w: 320, h: 864, b64: MAP_R19_B64, wild: null,
+    fish: [
+      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["poliwag", "Ptitard", "n.5", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n.5", "18,75 %"], ["goldeen", "Poissirène", "n.9", "18,75 %"], ["krabby", "Krabby", "n.12", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"]]],
+      ["Méga Canne", [["staryu", "Stari", "n.15", "18,75 %"], ["horsea", "Hypotrempe", "n.15", "18,75 %"], ["shellder", "Kokiyas", "n.15", "18,75 %"], ["goldeen", "Poissirène", "n.15", "18,75 %"]]],
+      ["Surf", SURF_FISH]
+    ] },
+  { id: "Route20", label: "Chenal 20", w: 1600, h: 320, b64: MAP_R20_B64, wild: null,
+    fish: [
+      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["goldeen", "Poissirène", "n.9", "50 %"]]],
+      ["Super Canne", [["goldeen", "Poissirène", "n.9 et n.12", "37,5 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["shellder", "Kokiyas", "n.12", "18,75 %"]]],
+      ["Méga Canne", [["staryu", "Stari", "n.15", "18,75 %"], ["horsea", "Hypotrempe", "n.15", "18,75 %"], ["shellder", "Kokiyas", "n.15", "18,75 %"], ["goldeen", "Poissirène", "n.15", "18,75 %"]]],
+      ["Surf", SURF_FISH]
+    ] },
+  { id: "Route21", label: "Chenal 21", w: 320, h: 1440, b64: MAP_R21_B64, rate: "25",
+    wild: [["pidgey", "Roucool", "n.21–23", "29,7 %"], ["rattata", "Rattata", "n.23", "19,9 %"], ["pidgeotto", "Roucoups", "n.30–32", "19,5 %"], ["raticate", "Rattatac", "n.30", "15,2 %"], ["tangela", "Saquedeneu", "n.28–30", "10,2 %"], ["eevee", "Évoli", "n.21–23", "5,5 %"]],
+    fish: [
+      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["goldeen", "Poissirène", "n.12", "50 %"]]],
+      ["Super Canne", [["goldeen", "Poissirène", "n.12", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["shellder", "Kokiyas", "n.12", "18,75 %"], ["tentacool", "Tentacool", "n.5", "18,75 %"]]],
+      ["Méga Canne", [["staryu", "Stari", "n.15", "18,75 %"], ["horsea", "Hypotrempe", "n.15", "18,75 %"], ["shellder", "Kokiyas", "n.15", "18,75 %"], ["goldeen", "Poissirène", "n.15", "18,75 %"]]],
+      ["Surf", ROUTE21_SURF]
+    ] },
+  { id: "CinnabarIsland", label: "Cramois'Ile", w: 320, h: 288, b64: MAP_CINNABAR_B64, wild: null,
+    fish: [
+      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["poliwag", "Ptitard", "n.5", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n.5", "18,75 %"], ["goldeen", "Poissirène", "n.9", "18,75 %"], ["krabby", "Krabby", "n.12", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"]]],
+      ["Méga Canne", [["staryu", "Stari", "n.15", "18,75 %"], ["horsea", "Hypotrempe", "n.15", "18,75 %"], ["shellder", "Kokiyas", "n.15", "18,75 %"], ["goldeen", "Poissirène", "n.15", "18,75 %"]]],
+      ["Surf", SURF_FISH]
+    ] },
+  { id: "Route19BeachHouse", label: "Bungalow d'Été", w: 224, h: 128, b64: MAP_BEACHHOUSE_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "Lighthouse", label: "Phare", w: 96, h: 480, b64: MAP_LIGHTHOUSE_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CinnabarGym", label: "Arène de Cramois'Île", w: 320, h: 288, b64: MAP_CNGYM_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CinnabarPokecenter", label: "Centre Pokémon (Cramois'Île)", w: 224, h: 128, b64: MAP_CNPC_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CinnabarMart", label: "Magasin (Cramois'Île)", w: 128, h: 128, b64: MAP_CNMART_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CinnabarLab", label: "Labo #mon de Cramois'Île", w: 288, h: 128, b64: MAP_CNLAB_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CinnabarLabTradeRoom", label: "Salle de réunion du Labo", w: 128, h: 128, b64: MAP_CNTRADE_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CinnabarLabMetronomeRoom", label: "Département R&D du Labo", w: 128, h: 128, b64: MAP_CNMETRO_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CinnabarLabFossilRoom", label: "Salle de test du Labo", w: 128, h: 128, b64: MAP_CNFOSSIL_B64, wild: null,
+    fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CinnabarMansion1F", label: "Manoir Pokémon 1F", w: 480, h: 448, b64: MAP_MANSION1F_B64, rate: "10",
+    wild: [["grimer", "Tadmorv", "n.30–32", "39,8 %"], ["houndour", "Malosse", "n.28–34", "39,8 %"], ["vulpix", "Goupix", "n.34", "9,8 %"], ["koffing", "Smogo", "n.30", "5,1 %"], ["muk", "Grotadmorv", "n.37", "4,3 %"], ["weezing", "Smogogo", "n.39", "1,2 %"]], fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CinnabarMansion2F", label: "Manoir Pokémon 2F", w: 480, h: 448, b64: MAP_MANSION2F_B64, rate: "10",
+    wild: [["grimer", "Tadmorv", "n.30–34", "44,9 %"], ["houndour", "Malosse", "n.28–32", "24,6 %"], ["vulpix", "Goupix", "n.32", "19,9 %"], ["koffing", "Smogo", "n.30", "5,1 %"], ["muk", "Grotadmorv", "n.39", "4,3 %"], ["weezing", "Smogogo", "n.37", "1,2 %"]], fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CinnabarMansion3F", label: "Manoir Pokémon 3F", w: 480, h: 288, b64: MAP_MANSION3F_B64, rate: "10",
+    wild: [["grimer", "Tadmorv", "n.31–35", "35,2 %"], ["vulpix", "Goupix", "n.33–34", "29,7 %"], ["muk", "Grotadmorv", "n.38–40", "14,8 %"], ["houndour", "Malosse", "n.32", "9,8 %"], ["koffing", "Smogo", "n.34", "5,1 %"], ["houndoom", "Démolosse", "n.36", "4,3 %"], ["weezing", "Smogogo", "n.42", "1,2 %"]], fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "CinnabarMansionB1F", label: "Manoir Pokémon B1F", w: 480, h: 448, b64: MAP_MANSIONB1F_B64, rate: "10",
+    wild: [["grimer", "Tadmorv", "n.31–33", "39,8 %"], ["vulpix", "Goupix", "n.35/38", "19,5 %"], ["houndoom", "Démolosse", "n.31–34", "14,8 %"], ["houndour", "Malosse", "n.32", "9,8 %"], ["muk", "Grotadmorv", "n.40", "9,8 %"], ["koffing", "Smogo", "n.35", "5,1 %"], ["weezing", "Smogogo", "n.42", "1,2 %"]], fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "Volcano1F", label: "Volcan Cramoisi 1F", w: 384, h: 384, b64: MAP_VOLC1F_B64, rate: "10",
+    wild: [["slugma", "Limagma", "n.31–37", "34,8 %"], ["growlithe", "Caninos", "n.28–30", "25,0 %"], ["ponyta", "Ponyta", "n.30–34", "25,0 %"], ["vulpix", "Goupix", "n.34", "9,8 %"], ["charmeleon", "Reptincel", "n.30", "4,3 %"], ["magmar", "Magmar", "n.39", "1,2 %"]], fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "VolcanoB1F", label: "Volcan Cramoisi B1F", w: 256, h: 672, b64: MAP_VOLCB1F_B64, rate: "10",
+    wild: [["growlithe", "Caninos", "n.35–38", "29,7 %"], ["slugma", "Limagma", "n.36–37", "25,0 %"], ["vulpix", "Goupix", "n.36", "19,9 %"], ["ponyta", "Ponyta", "n.40", "9,8 %"], ["magcargo", "Volcaropod", "n.38", "5,1 %"], ["magmar", "Magmar", "n.38", "5,1 %"], ["charmeleon", "Reptincel", "n.38", "4,3 %"], ["rapidash", "Galopa", "n.42", "1,2 %"]], fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
+  { id: "VolcanoB2F", label: "Volcan Cramoisi B2F", w: 288, h: 288, b64: MAP_VOLCB2F_B64, rate: "10",
+    wild: [["slugma", "Limagma", "n.36–37", "39,8 %"], ["magcargo", "Volcaropod", "n.38–40", "19,5 %"], ["growlithe", "Caninos", "n.37", "15,2 %"], ["ninetales", "Feunard", "n.35", "9,8 %"], ["magmar", "Magmar", "n.36–38", "9,4 %"], ["charmeleon", "Reptincel", "n.38", "5,1 %"], ["arcanine", "Arcanin", "n.42", "1,2 %"]], fish: [
+      ["Pêche", "Impossible : aucun point d'eau sur la carte."]
+    ] },
 ];
 /* Pages du menu du haut : Monde = surface ; Intérieurs et Donjons = une page
    par groupe de lieu (tous les étages / intérieurs ensemble). */
@@ -4016,7 +4484,39 @@ const ZONES = {
   SSAnne2F: ["donjon", "L'Océane"], SSAnne2FRooms: ["donjon", "L'Océane"],
   SSAnne3F: ["donjon", "L'Océane"], SSAnneB1F: ["donjon", "L'Océane"],
   SSAnneB1FRooms: ["donjon", "L'Océane"], SSAnneBow: ["donjon", "L'Océane"],
-  SSAnneCaptainsRoom: ["donjon", "L'Océane"], SSAnneKitchen: ["donjon", "L'Océane"]
+  SSAnneCaptainsRoom: ["donjon", "L'Océane"], SSAnneKitchen: ["donjon", "L'Océane"],
+  CeladonCity: ["monde", null],
+  CeladonPokecenter: ["interieur", "Céladopole"], CeladonGym: ["interieur", "Céladopole"],
+  CeladonGameCorner: ["interieur", "Casino Rocket"], CeladonGameCornerPrizeRoom: ["interieur", "Casino Rocket"],
+  CeladonDiner: ["interieur", "Céladopole"], CeladonChiefHouse: ["interieur", "Céladopole"],
+  CeladonHotel: ["interieur", "Céladopole"], CeladonSchool: ["interieur", "Céladopole"],
+  CeladonMart1F: ["interieur", "Centre commercial"], CeladonMart2F: ["interieur", "Centre commercial"], CeladonMart3F: ["interieur", "Centre commercial"],
+  CeladonMart4F: ["interieur", "Centre commercial"], CeladonMart5F: ["interieur", "Centre commercial"], CeladonMartRoof: ["interieur", "Centre commercial"],
+  CeladonMartElevator: ["interieur", "Centre commercial"],
+  CeladonMansion1F: ["interieur", "Manoir Céladon"], CeladonMansion2F: ["interieur", "Manoir Céladon"], CeladonMansion3F: ["interieur", "Manoir Céladon"],
+  CeladonMansionRoof: ["interieur", "Manoir Céladon"], CeladonMansionRoofHouse: ["interieur", "Manoir Céladon"],
+  RocketHideoutB1F: ["donjon", "Planque Rocket"], RocketHideoutB2F: ["donjon", "Planque Rocket"], RocketHideoutB3F: ["donjon", "Planque Rocket"],
+  RocketHideoutB4F: ["donjon", "Planque Rocket"], RocketHideoutElevator: ["donjon", "Planque Rocket"],
+  Route16: ["monde", null], Route16West: ["monde", null], Route17: ["monde", null], Route18: ["monde", null],
+  FuchsiaCity: ["monde", null],
+  Route16Gate1F: ["interieur", "Route 16"], Route16Gate2F: ["interieur", "Route 16"],
+  Route16FlyHouse: ["interieur", "Route 16"], Route16WestGate: ["interieur", "Clairière (Route 16)"],
+  Route16WestHouse: ["interieur", "Clairière (Route 16)"],
+  Route18Gate1F: ["interieur", "Route 18"], Route18Gate2F: ["interieur", "Route 18"],
+  FuchsiaPokecenter: ["interieur", "Parmanie"], FuchsiaMart: ["interieur", "Parmanie"], FuchsiaGym: ["interieur", "Parmanie"],
+  FuchsiaBillsGrandpasHouse: ["interieur", "Parmanie"], FuchsiaWardensHouse: ["interieur", "Parmanie"],
+  FuchsiaMeetingRoom: ["interieur", "Parmanie"], FuchsiaFisherHouse: ["interieur", "Parmanie"],
+  SafariZoneGate: ["donjon", "Parc Safari"], SafariZoneCenter: ["donjon", "Parc Safari"], SafariZoneEast: ["donjon", "Parc Safari"],
+  SafariZoneWest: ["donjon", "Parc Safari"], SafariZoneNorth: ["donjon", "Parc Safari"],
+  SafariZoneCenterRestHouse: ["donjon", "Parc Safari"], SafariZoneEastRestHouse: ["donjon", "Parc Safari"],
+  SafariZoneWestRestHouse: ["donjon", "Parc Safari"], SafariZoneNorthRestHouse: ["donjon", "Parc Safari"],
+  SafariZoneSecretHouse: ["donjon", "Parc Safari"],
+  Route19: ["monde", null], Route20: ["monde", null], Route21: ["monde", null], CinnabarIsland: ["monde", null],
+  Route19BeachHouse: ["interieur", "Chenal 19"], Lighthouse: ["interieur", "Chenal 20"],
+  CinnabarGym: ["interieur", "Cramois'Île"], CinnabarPokecenter: ["interieur", "Cramois'Île"], CinnabarMart: ["interieur", "Cramois'Île"],
+  CinnabarLab: ["interieur", "Cramois'Île"], CinnabarLabTradeRoom: ["interieur", "Cramois'Île"], CinnabarLabMetronomeRoom: ["interieur", "Cramois'Île"], CinnabarLabFossilRoom: ["interieur", "Cramois'Île"],
+  CinnabarMansion1F: ["donjon", "Manoir Pokémon"], CinnabarMansion2F: ["donjon", "Manoir Pokémon"], CinnabarMansion3F: ["donjon", "Manoir Pokémon"], CinnabarMansionB1F: ["donjon", "Manoir Pokémon"],
+  Volcano1F: ["donjon", "Volcan Cramoisi"], VolcanoB1F: ["donjon", "Volcan Cramoisi"], VolcanoB2F: ["donjon", "Volcan Cramoisi"]
 };
 MAPS.forEach(m => { m.zone = ZONES[m.id][0]; m.group = ZONES[m.id][1]; });
 const RT1 = MAPS[1];
@@ -4410,10 +4910,1012 @@ MAPS[145].markers = MARKERS_SSABOW;
 MAPS[146].markers = MARKERS_SSACPT;
 MAPS[147].markers = MARKERS_SSAKCH;
 
+/* Céladopole (CeladonCity.asm) : 13 warps, 11 PNJ (Rhinocorne et Tartard scripted,
+   la vieille personne au bord de la rivière polluée donne la CT37), aucun retour de
+   la vieille 2F ; cachés (hidden_objects.asm db y,x) : PP Plus, Hyper Potion,
+   Rappel Max ; pêche Méga Canne uniquement (super_rod.asm FishingGroup2) :
+   Tadmorv n.10/11/15, Grotadmorv n.20. */
+const MARKERS_CCITY = [
+  { cat: "pnj", spr: true, icon: "little_girl", x: 5, y: 15, name: "Petite fille" },
+  { cat: "pnj", spr: true, icon: "old_person", x: 11, y: 28, name: "Vieille personne" },
+  { cat: "pnj", spr: true, icon: "girl", x: 16, y: 18, name: "Fille" },
+  { cat: "pnj", spr: true, icon: "old_person", x: 25, y: 22, name: "Vieille personne" },
+  { cat: "pnj", spr: true, icon: "old_person", x: 22, y: 16, dir: "down", name: "Vieille personne", scripted: true, give: ["tm_hm", "CT37 BombBeu"] },
+  { cat: "pnj", spr: true, icon: "fisher2", x: 32, y: 12, dir: "left", name: "Pêcheur" },
+  { cat: "pnj", spr: true, icon: "polywrath", x: 30, y: 12, dir: "right", name: "Tartard", scripted: true },
+  { cat: "pnj", spr: true, icon: "rocket", x: 32, y: 29, name: "Rocket" },
+  { cat: "pnj", spr: true, icon: "rocket", x: 15, y: 2, name: "Rocket" },
+  { cat: "pnj", spr: true, icon: "fat_bald_guy", x: 10, y: 20, name: "Homme" },
+  { cat: "pnj", spr: true, icon: "rhyhorn", x: 9, y: 20, name: "Rhinocorne", scripted: true },
+  { cat: "hidden", tipIcon: "pp_up", x: 48, y: 15, name: "PP Plus" },
+  { cat: "hidden", tipIcon: "hyper_potion", x: 48, y: 7, name: "Hyper Potion" },
+  { cat: "hidden", tipIcon: "max_revive", x: 48, y: 34, name: "Rappel Max" },
+  { cat: "warp", x: 8, y: 13, name: "Centre commercial (1F)", dx: 2, dy: 7, badge: "Magasin" },
+  { cat: "warp", x: 10, y: 13, name: "Centre commercial (1F)", dx: 16, dy: 7, badge: "Magasin" },
+  { cat: "warp", x: 24, y: 9, name: "Manoir Céladon (1F)", dx: 4, dy: 11, badge: "Manoir" },
+  { cat: "warp", x: 24, y: 3, name: "Manoir Céladon (1F)", dx: 4, dy: 0, badge: "Manoir" },
+  { cat: "warp", x: 25, y: 3, name: "Manoir Céladon (1F)", dx: 4, dy: 0, badge: "Manoir" },
+  { cat: "warp", x: 41, y: 9, name: "Centre Pokémon (Céladopole)", dx: 3, dy: 7, badge: "Centre" },
+  { cat: "warp", x: 12, y: 27, name: "Arène de Céladopole", dx: 4, dy: 17, badge: "Arène" },
+  { cat: "warp", x: 28, y: 19, name: "Casino Rocket", dx: 15, dy: 17, badge: "Casino" },
+  { cat: "warp", x: 33, y: 19, name: "Salle des prix (Casino)", dx: 4, dy: 7, badge: "Prix" },
+  { cat: "warp", x: 29, y: 27, name: "Restaurant Au Caninos mal léché", dx: 3, dy: 7, badge: "Resto" },
+  { cat: "warp", x: 33, y: 27, name: "Maison du Chef", dx: 2, dy: 7, badge: "Chef" },
+  { cat: "warp", x: 41, y: 27, name: "Hôtel de Céladopole", dx: 3, dy: 7, badge: "Hôtel" },
+  { cat: "warp", x: 23, y: 29, name: "École de Céladopole", dx: 2, dy: 7, badge: "École" }
+];
+/* Centre Pokémon de Céladopole : Infirmière, Leveinard, un Distingué (la PokéFlute),
+   une femme au foulard, l'hôtesse du Cable Club. Pas de marqueur PC (mobilier). */
+const MARKERS_CPC = [
+  { cat: "pnj", spr: true, icon: "nurse", x: 3, y: 1, dir: "down", name: "Infirmière" },
+  { cat: "pnj", spr: true, icon: "chansey", x: 4, y: 1, dir: "down", name: "Leveinard" },
+  { cat: "pnj", spr: true, icon: "gentleman", x: 7, y: 3, name: "Distingué" },
+  { cat: "pnj", spr: true, icon: "foulard_woman", x: 10, y: 5, name: "Femme au foulard" },
+  { cat: "pnj", spr: true, icon: "cable_club_woman", x: 11, y: 2, dir: "down", name: "Hôtesse Cable Club", cable: true },
+  { cat: "warp", x: 3, y: 7, name: "Céladopole", dx: 41, dy: 9, badge: "Sortie" },
+  { cat: "warp", x: 4, y: 7, name: "Céladopole", dx: 41, dy: 9, badge: "Sortie" }
+];
+/* Arène de Céladopole (Erika) : 7 dresseurs + la Championne ; elle donne la CT21.
+   Les statues de l'arène ne sont pas des marqueurs (règle du mobilier). */
+const MARKERS_CGYM = [
+  { cat: "trainer", spr: true, icon: "erika", x: 4, y: 3, dir: "down", name: "Erika", scripted: true,
+    team: [["tangela", "Saquedeneu", 33], ["victreebel", "Empiflor", 34], ["venusaur", "Florizarre", 33], ["exeggutor", "Noadkoko", 34], ["vileplume", "Ortide", 35]],
+    give: ["tm_hm", "CT21 MégaSan"] },
+  { cat: "trainer", spr: true, icon: "lass", x: 2, y: 11, dir: "right", name: "Fillette", team: [["oddish", "Mystherbe", 28], ["weepinbell", "Boustiflor", 28]] },
+  { cat: "trainer", spr: true, icon: "foulard_woman", x: 7, y: 10, dir: "left", name: "Canon", team: [["tangela", "Saquedeneu", 29], ["weepinbell", "Boustiflor", 29], ["exeggcute", "Noeunoeuf", 29]] },
+  { cat: "trainer", spr: true, icon: "lass", x: 9, y: 5, dir: "down", name: "Dresseur jr♀", team: [["bulbasaur", "Bulbizarre", 29], ["ivysaur", "Herbizarre", 29]] },
+  { cat: "trainer", spr: true, icon: "foulard_woman", x: 1, y: 5, dir: "down", name: "Canon", team: [["tangela", "Saquedeneu", 30], ["oddish", "Mystherbe", 30]] },
+  { cat: "trainer", spr: true, icon: "lass", x: 6, y: 3, name: "Fillette", team: [["parasect", "Parasect", 29], ["exeggcute", "Noeunoeuf", 29]] },
+  { cat: "trainer", spr: true, icon: "foulard_woman", x: 3, y: 3, name: "Canon", team: [["victreebel", "Empiflor", 32]] },
+  { cat: "trainer", spr: true, icon: "lass", x: 5, y: 3, name: "TopDresseur♀", team: [["weepinbell", "Boustiflor", 29], ["oddish", "Mystherbe", 29], ["ivysaur", "Herbizarre", 29]] },
+  { cat: "warp", x: 4, y: 17, name: "Céladopole", dx: 12, dy: 27, badge: "Sortie" },
+  { cat: "warp", x: 5, y: 17, name: "Céladopole", dx: 12, dy: 27, badge: "Sortie" }
+];
+/* Casino Rocket (GameCorner) : vendeur de Jetons (50 pour 1000 P$ ; Boîte Jeton requise), deux PNJ qui
+   donnent des jetons, un Rocket (n°7 de l'index OPP_ROCKET) et l'affiche secrète
+   derrière laquelle descend le warp vers la Planque (19,4) ; 12 tas de jetons
+   cachés (hidden_objects.asm, COIN+10/20/40/100). */
+const MARKERS_CGC = [
+  { cat: "pnj", spr: true, icon: "foulard_woman", x: 2, y: 6, name: "Hôtesse" },
+  { cat: "pnj", spr: true, icon: "mart_guy", x: 5, y: 6, dir: "down", name: "Vendeur de Jetons", scripted: true, shop: [["pokedollar", "Jetons ×50", 1000]] },
+  { cat: "pnj", spr: true, icon: "fat_bald_guy", x: 2, y: 10, name: "Homme" },
+  { cat: "pnj", spr: true, icon: "foulard_woman", x: 2, y: 13, name: "Femme" },
+  { cat: "pnj", spr: true, icon: "fisher", x: 5, y: 11, dir: "right", name: "Pêcheur", scripted: true, give: ["coin_case", "10 Jetons"] },
+  { cat: "pnj", spr: true, icon: "mom_geisha", x: 8, y: 11, name: "Dame" },
+  { cat: "pnj", spr: true, icon: "gym_helper", x: 8, y: 14, name: "Homme" },
+  { cat: "pnj", spr: true, icon: "gambler", x: 11, y: 15, dir: "right", name: "Joueur" },
+  { cat: "pnj", spr: true, icon: "mart_guy", x: 14, y: 11, dir: "left", name: "Homme", scripted: true, give: ["coin_case", "20 Jetons"] },
+  { cat: "pnj", spr: true, icon: "gentleman", x: 17, y: 13, dir: "right", name: "Distingué" },
+  { cat: "trainer", spr: true, icon: "rocket", x: 9, y: 5, dir: "up", name: "Rocket n°7", scripted: true, team: [["raticate", "Rattatac", 23], ["golbat", "Nosferalto", 23]] },
+  { cat: "hidden", tipIcon: "coin_case", x: 0, y: 8, name: "Jetons (10)" },
+  { cat: "hidden", tipIcon: "coin_case", x: 1, y: 16, name: "Jetons (10)" },
+  { cat: "hidden", tipIcon: "coin_case", x: 3, y: 11, name: "Jetons (20)" },
+  { cat: "hidden", tipIcon: "coin_case", x: 3, y: 14, name: "Jetons (10)" },
+  { cat: "hidden", tipIcon: "coin_case", x: 4, y: 12, name: "Jetons (10)" },
+  { cat: "hidden", tipIcon: "coin_case", x: 9, y: 12, name: "Jetons (20)" },
+  { cat: "hidden", tipIcon: "coin_case", x: 9, y: 15, name: "Jetons (10)" },
+  { cat: "hidden", tipIcon: "coin_case", x: 16, y: 14, name: "Jetons (10)" },
+  { cat: "hidden", tipIcon: "coin_case", x: 10, y: 16, name: "Jetons (10)" },
+  { cat: "hidden", tipIcon: "coin_case", x: 11, y: 7, name: "Jetons (40)" },
+  { cat: "hidden", tipIcon: "coin_case", x: 15, y: 8, name: "Jetons (100)" },
+  { cat: "hidden", tipIcon: "coin_case", x: 12, y: 16, name: "Jetons (10)" },
+  { cat: "warp", x: 15, y: 17, name: "Céladopole", dx: 28, dy: 19, badge: "Sortie" },
+  { cat: "warp", x: 16, y: 17, name: "Céladopole", dx: 28, dy: 19, badge: "Sortie" },
+  { cat: "warp", x: 17, y: 4, name: "Planque Rocket (B1F)", dx: 21, dy: 2, badge: "Planque" }
+];
+/* Salle des prix (PrizeRoom) : 3 comptoirs (Abra/Pikachu/Évoli, Embrylex/Minidraco/
+   Porygon, CT04/CT13/CT24 — prix en JETONS, monnaie s[3]), un joueur et un homme. */
+const MARKERS_CPRIZE = [
+  { cat: "pnj", spr: true, icon: "balding_guy", x: 1, y: 4, name: "Homme" },
+  { cat: "pnj", spr: true, icon: "gambler", x: 9, y: 3, name: "Joueur" },
+  { cat: "pnj", x: 2, y: 2, name: "Vendeur", scripted: true,
+    shop: [["front_abra", "Abra n.8", 150, "Jetons"], ["front_pikachu", "Pikachu n.12", 750, "Jetons"], ["front_eevee", "Évoli n.18", 1500, "Jetons"]] },
+  { cat: "pnj", x: 4, y: 2, name: "Vendeur", scripted: true,
+    shop: [["front_larvitar", "Embrylex n.24", 3500, "Jetons"], ["front_dratini", "Minidraco n.24", 5200, "Jetons"], ["front_porygon", "Porygon n.22", 6500, "Jetons"]] },
+  { cat: "pnj", x: 6, y: 2, name: "Vendeur", scripted: true,
+    shop: [["tm_hm", "CT04 LancFla", 5000, "Jetons"], ["tm_hm", "CT13 LaserGl", 5000, "Jetons"], ["tm_hm", "CT24 Tonnerr", 5000, "Jetons"]] },
+  { cat: "warp", x: 4, y: 7, name: "Céladopole", dx: 33, dy: 19, badge: "Sortie" },
+  { cat: "warp", x: 5, y: 7, name: "Céladopole", dx: 33, dy: 19, badge: "Sortie" }
+];
+/* Restaurant « Au Caninos mal léché » : le serveur donne la Boîte Jeton, un client
+   chuchote qu'il y a quelque chose sous le Casino. */
+const MARKERS_CDINER = [
+  { cat: "pnj", spr: true, icon: "gym_helper", x: 0, y: 1, dir: "down", name: "Serveur", scripted: true, give: ["coin_case", "Boîte Jeton"] },
+  { cat: "pnj", spr: true, icon: "cook", x: 8, y: 5, name: "Cuisinier" },
+  { cat: "pnj", spr: true, icon: "mom_geisha", x: 7, y: 2, name: "Dame" },
+  { cat: "pnj", spr: true, icon: "fat_bald_guy", x: 1, y: 4, name: "Homme" },
+  { cat: "pnj", spr: true, icon: "fisher2", x: 5, y: 3, dir: "right", name: "Pêcheur" },
+  { cat: "pnj", spr: true, icon: "oak_aide", x: 5, y: 5, name: "Homme" },
+  { cat: "warp", x: 3, y: 7, name: "Céladopole", dx: 29, dy: 27, badge: "Sortie" },
+  { cat: "warp", x: 4, y: 7, name: "Céladopole", dx: 29, dy: 27, badge: "Sortie" }
+];
+/* Maison du Chef : il achète des #mon (mécanique joenote) ; un Rocket et un
+   marin qui met en garde contre le bouton derrière l'affiche du Casino. */
+const MARKERS_CCHEF = [
+  { cat: "pnj", spr: true, icon: "old_person", x: 4, y: 2, dir: "down", name: "Chef", scripted: true },
+  { cat: "pnj", spr: true, icon: "rocket", x: 1, y: 4, name: "Rocket" },
+  { cat: "pnj", spr: true, icon: "sailor", x: 5, y: 6, dir: "left", name: "Marin" },
+  { cat: "warp", x: 2, y: 7, name: "Céladopole", dx: 33, dy: 27, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 7, name: "Céladopole", dx: 33, dy: 27, badge: "Sortie" }
+];
+/* Hôtel de Céladopole : le Distingué évalue les DV du #mon montré (100 jetons
+   par bonne stat, ×4 s'il est shiny) — pas de donne. */
+const MARKERS_CHOTEL = [
+  { cat: "pnj", spr: true, icon: "old_medium_woman", x: 3, y: 1, dir: "down", name: "Dame" },
+  { cat: "pnj", spr: true, icon: "foulard_woman", x: 2, y: 4, name: "Touriste" },
+  { cat: "pnj", spr: true, icon: "black_hair_boy_2", x: 8, y: 4, name: "Touriste" },
+  { cat: "pnj", spr: true, icon: "gentleman", x: 11, y: 7, dir: "left", name: "Distingué (jetons selon les DV)", scripted: true },
+  { cat: "warp", x: 3, y: 7, name: "Céladopole", dx: 41, dy: 27, badge: "Sortie" },
+  { cat: "warp", x: 4, y: 7, name: "Céladopole", dx: 41, dy: 27, badge: "Sortie" }
+];
+/* École de Céladopole : Effaceur de capacités et Maître des capacités
+   (réapprentissage), deux ajouts du hack. */
+const MARKERS_CSCHOOL = [
+  { cat: "pnj", spr: true, icon: "little_girl", x: 4, y: 5, dir: "left", name: "Effaceur de capacités", scripted: true },
+  { cat: "pnj", spr: true, icon: "oak_aide", x: 2, y: 1, dir: "down", name: "Maître des capacités", scripted: true },
+  { cat: "pnj", spr: true, icon: "young_boy", x: 0, y: 3, dir: "up", name: "Garçon" },
+  { cat: "warp", x: 2, y: 7, name: "Céladopole", dx: 23, dy: 29, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 7, name: "Céladopole", dx: 23, dy: 29, badge: "Sortie" }
+];
+/* Centre commercial (CeladonMart*.asm) : 1F hôtesse Cable Club et 4 sorties vers
+   la ville ; 2F deux vendeurs (soins + CT) ; 3F vendeur de CT18 à un client,
+   échange de Kangourex/Gravalanch (mimique du linker, d'où l'évolution), vendeur
+   d'objets rares gardé par une Mélofée ; 4F boutiques de pierres ; 5F bonus de
+   stats ; toit : distributeurs + la petite fille qui échange une boisson contre
+   une CT (Eau Fraîche→CT13, Soda Cool→CT48, Limonade→CT49). */
+const MARKERS_CMART1F = [
+  { cat: "pnj", spr: true, icon: "cable_club_woman", x: 8, y: 3, dir: "down", name: "Hôtesse Cable Club", cable: true },
+  { cat: "warp", x: 2, y: 7, name: "Céladopole", dx: 8, dy: 13, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 7, name: "Céladopole", dx: 8, dy: 13, badge: "Sortie" },
+  { cat: "warp", x: 16, y: 7, name: "Céladopole", dx: 10, dy: 13, badge: "Sortie" },
+  { cat: "warp", x: 17, y: 7, name: "Céladopole", dx: 10, dy: 13, badge: "Sortie" },
+  { cat: "warp", x: 12, y: 1, name: "Centre commercial (2F)", dx: 12, dy: 1, badge: "2F" },
+  { cat: "warp", x: 1, y: 1, name: "Ascenseur du centre commercial", dx: 2, dy: 2, badge: "ASC" }
+];
+const MARKERS_CMART2F = [
+  { cat: "pnj", spr: true, icon: "mart_guy", x: 5, y: 3, dir: "down", name: "Vendeur", scripted: true, shop: [["great_ball", "Super Ball", 600], ["super_potion", "Super Potion", 700], ["escape_rope", "Corde Sortie", 550], ["revive", "Rappel", 1500], ["super_repel", "Superepousse", 500], ["antidote", "Antidote", 100], ["burn_heal", "Anti-Brûlure", 250], ["ice_heal", "Anti-Gel", 250], ["awakening", "Réveil", 200], ["parlyz_heal", "Anti-Para", 200]] },
+  { cat: "pnj", spr: true, icon: "mart_guy", x: 6, y: 3, dir: "down", name: "Vendeur", scripted: true, shop: [["tm_hm", "CT21 MégaSan", 5000], ["tm_hm", "CT22 LancSol", 5000], ["tm_hm", "CT32 Reflet", 1000], ["tm_hm", "CT49 Triplat", 4000], ["tm_hm", "CT16 Jackpot", 6000], ["tm_hm", "CT07 EmpalKo", 2000], ["tm_hm", "CT01 UltiPng", 3000], ["tm_hm", "CT08 Plaquag", 4000], ["tm_hm", "CT05 Ultimaw", 3000], ["tm_hm", "CT09 Bélier", 3000]] },
+  { cat: "pnj", spr: true, icon: "fat_bald_guy", x: 19, y: 5, name: "Homme" },
+  { cat: "pnj", spr: true, icon: "girl", x: 14, y: 4, name: "Fille" },
+  { cat: "warp", x: 12, y: 1, name: "Centre commercial (1F)", dx: 12, dy: 1, badge: "1F" },
+  { cat: "warp", x: 16, y: 1, name: "Centre commercial (3F)", dx: 16, dy: 1, badge: "3F" },
+  { cat: "warp", x: 1, y: 1, name: "Ascenseur du centre commercial", dx: 2, dy: 2, badge: "ASC" }
+];
+const MARKERS_CMART3F = [
+  { cat: "pnj", spr: true, icon: "mart_guy", x: 16, y: 5, name: "Vendeur", scripted: true, give: ["tm_hm", "CT18 Riposte"] },
+  { cat: "pnj", spr: true, icon: "gameboy_kid", x: 11, y: 6, dir: "right", name: "Garçon" },
+  { cat: "pnj", spr: true, icon: "gameboy_kid", x: 7, y: 2, name: "Garçon", trade: ["graveler", "Gravalanch", "kangaskhan", "Kangourex"] },
+  { cat: "pnj", spr: true, icon: "gameboy_kid", x: 8, y: 2, name: "Garçon", trade: ["kangaskhan", "Kangourex", "graveler", "Gravalanch"] },
+  { cat: "pnj", spr: true, icon: "young_boy", x: 2, y: 5, name: "Garçon" },
+  { cat: "pnj", spr: true, icon: "mart_guy", x: 13, y: 7, dir: "left", name: "Vendeur", scripted: true, shop: [["ultra_ball", "Hyper Ball", 1200], ["full_heal", "Guérison", 600], ["max_potion", "Potion Max", 2500], ["full_restore", "Total Soin", 3000], ["max_revive", "Rappel Max", 4000], ["max_repel", "Max Repousse", 700], ["rare_candy", "Super Bonbon", 5000], ["moon_stone", "Pierre Lune", 4200], ["metal_coat", "Peau Métal", 4200], ["soul_stone", "Pierre Ame", 4200]] },
+  { cat: "pnj", spr: true, icon: "clefairy", x: 11, y: 7, name: "Mélofée", scripted: true },
+  { cat: "warp", x: 12, y: 1, name: "Centre commercial (4F)", dx: 12, dy: 1, badge: "4F" },
+  { cat: "warp", x: 16, y: 1, name: "Centre commercial (2F)", dx: 16, dy: 1, badge: "2F" },
+  { cat: "warp", x: 1, y: 1, name: "Ascenseur du centre commercial", dx: 2, dy: 2, badge: "ASC" }
+];
+const MARKERS_CMART4F = [
+  { cat: "pnj", spr: true, icon: "mart_guy", x: 5, y: 7, dir: "down", name: "Vendeur", scripted: true, shop: [["poke_doll", "PokéPoupée", 1000], ["fire_stone", "Pierre Feu", 2100], ["thunder_stone", "PierreFoudre", 2100], ["water_stone", "Pierre Eau", 2100], ["leaf_stone", "PierrePlante", 2100]] },
+  { cat: "pnj", spr: true, icon: "black_hair_boy_2", x: 15, y: 5, name: "Garçon" },
+  { cat: "pnj", spr: true, icon: "bug_catcher", x: 5, y: 2, name: "Garçon" },
+  { cat: "warp", x: 12, y: 1, name: "Centre commercial (3F)", dx: 12, dy: 1, badge: "3F" },
+  { cat: "warp", x: 16, y: 1, name: "Centre commercial (5F)", dx: 16, dy: 1, badge: "5F" },
+  { cat: "warp", x: 1, y: 1, name: "Ascenseur du centre commercial", dx: 2, dy: 2, badge: "ASC" }
+];
+const MARKERS_CMART5F = [
+  { cat: "pnj", spr: true, icon: "gentleman", x: 14, y: 5, name: "Distingué" },
+  { cat: "pnj", spr: true, icon: "sailor", x: 2, y: 6, name: "Marin" },
+  { cat: "pnj", spr: true, icon: "mart_guy", x: 5, y: 3, dir: "down", name: "Vendeur", scripted: true, shop: [["x_accuracy", "Précision +", 950], ["guard_spec", "Défense Spéc", 700], ["dire_hit", "Muscle +", 650], ["x_attack", "Attaque +", 500], ["x_defend", "Défense +", 550], ["x_speed", "Vitesse +", 350]] },
+  { cat: "pnj", spr: true, icon: "mart_guy", x: 6, y: 3, dir: "down", name: "Vendeur", scripted: true, shop: [["hp_up", "PV Plus", 9800], ["pp_up", "PP Plus", 9800], ["protein", "Protéine", 9800], ["iron", "Fer", 9800], ["carbos", "Carbone", 9800], ["calcium", "Calcium", 9800]] },
+  { cat: "warp", x: 12, y: 1, name: "Centre commercial (toit)", dx: 15, dy: 2, badge: "Toit" },
+  { cat: "warp", x: 16, y: 1, name: "Centre commercial (4F)", dx: 16, dy: 1, badge: "4F" },
+  { cat: "warp", x: 1, y: 1, name: "Ascenseur du centre commercial", dx: 2, dy: 2, badge: "ASC" }
+];
+const MARKERS_CMARTROOF = [
+  { cat: "pnj", spr: true, icon: "black_hair_boy_2", x: 10, y: 4, dir: "left", name: "Garçon" },
+  { cat: "pnj", spr: true, icon: "little_girl", x: 5, y: 5, name: "Petite fille", scripted: true },
+  { cat: "pnj", x: 10, y: 1, name: "Distributeur", scripted: true, shop: [["fresh_water", "Eau Fraîche", 200], ["soda_pop", "Soda Cool", 300], ["lemonade", "Limonade", 350]] },
+  { cat: "pnj", x: 12, y: 2, name: "Distributeur", scripted: true, shop: [["fresh_water", "Eau Fraîche", 200], ["soda_pop", "Soda Cool", 300], ["lemonade", "Limonade", 350]] },
+  { cat: "warp", x: 15, y: 2, name: "Centre commercial (5F)", dx: 12, dy: 1, badge: "5F" }
+];
+const MARKERS_CMARTELEV = [
+  { cat: "warp", x: 1, y: 3, name: "Centre commercial (1F)", dx: 1, dy: 2, badge: "1F" },
+  { cat: "warp", x: 2, y: 3, name: "Centre commercial (1F)", dx: 1, dy: 2, badge: "1F" },
+  { cat: "warp", x: 0, y: 0, name: "Centre commercial (1F)", badge: "1F" },
+  { cat: "warp", x: 1, y: 0, name: "Centre commercial (2F)", badge: "2F" },
+  { cat: "warp", x: 2, y: 0, name: "Centre commercial (3F)", badge: "3F" },
+  { cat: "warp", x: 3, y: 0, name: "Centre commercial (4F)", badge: "4F" },
+  { cat: "warp", x: 0, y: 1, name: "Centre commercial (5F)", badge: "5F" }
+];
+/* Manoir Céladon (CeladonMansion*.asm) : le « repaire des programmeurs » du
+   Game Freak (3F) ; Miaouss, Mélofée et Nidoran♀ s'y promènent en scripted ;
+   sortie nord du 1F vers la ville ; toit : Super Bonbon caché (db y,x) et la
+   maison du toit où le Savant offre un Évoli n.25. */
+const MARKERS_CMAS1F = [
+  { cat: "pnj", spr: true, icon: "meowth", x: 0, y: 5, dir: "right", name: "Miaouss", scripted: true },
+  { cat: "pnj", spr: true, icon: "old_medium_woman", x: 1, y: 5, name: "Dame" },
+  { cat: "pnj", spr: true, icon: "clefairy", x: 1, y: 8, name: "Mélofée", scripted: true },
+  { cat: "pnj", spr: true, icon: "nidoranf", x: 4, y: 4, name: "Nidoran♀", scripted: true },
+  { cat: "warp", x: 4, y: 11, name: "Céladopole", dx: 24, dy: 9, badge: "Sortie" },
+  { cat: "warp", x: 5, y: 11, name: "Céladopole", dx: 24, dy: 9, badge: "Sortie" },
+  { cat: "warp", x: 4, y: 0, name: "Céladopole", dx: 24, dy: 3, badge: "Sortie" },
+  { cat: "warp", x: 7, y: 1, name: "Manoir Céladon (2F)", dx: 7, dy: 1, badge: "2F" },
+  { cat: "warp", x: 2, y: 1, name: "Manoir Céladon (2F)", dx: 2, dy: 1, badge: "2F" }
+];
+const MARKERS_CMAS2F = [
+  { cat: "warp", x: 6, y: 1, name: "Manoir Céladon (3F)", dx: 6, dy: 1, badge: "3F" },
+  { cat: "warp", x: 7, y: 1, name: "Manoir Céladon (1F)", dx: 7, dy: 1, badge: "1F" },
+  { cat: "warp", x: 2, y: 1, name: "Manoir Céladon (1F)", dx: 2, dy: 1, badge: "1F" },
+  { cat: "warp", x: 4, y: 1, name: "Manoir Céladon (3F)", dx: 4, dy: 1, badge: "3F" }
+];
+const MARKERS_CMAS3F = [
+  { cat: "pnj", spr: true, icon: "bike_shop_guy", x: 0, y: 4, dir: "up", name: "Programmeur" },
+  { cat: "pnj", spr: true, icon: "mart_guy", x: 3, y: 4, dir: "up", name: "Graphiste" },
+  { cat: "pnj", spr: true, icon: "black_hair_boy_2", x: 0, y: 7, dir: "up", name: "Écrivain" },
+  { cat: "pnj", spr: true, icon: "lapras_giver", x: 2, y: 3, name: "Designer", scripted: true },
+  { cat: "warp", x: 6, y: 1, name: "Manoir Céladon (2F)", dx: 6, dy: 1, badge: "2F" },
+  { cat: "warp", x: 7, y: 1, name: "Manoir Céladon (toit)", dx: 7, dy: 1, badge: "Toit" },
+  { cat: "warp", x: 2, y: 1, name: "Manoir Céladon (toit)", dx: 1, dy: 1, badge: "Toit" },
+  { cat: "warp", x: 4, y: 1, name: "Manoir Céladon (2F)", dx: 4, dy: 1, badge: "2F" }
+];
+const MARKERS_CMASROOF = [
+  { cat: "hidden", tipIcon: "rare_candy", x: 0, y: 10, name: "Super Bonbon" },
+  { cat: "warp", x: 6, y: 1, name: "Manoir Céladon (3F)", dx: 7, dy: 1, badge: "3F" },
+  { cat: "warp", x: 1, y: 1, name: "Manoir Céladon (3F)", dx: 2, dy: 1, badge: "3F" },
+  { cat: "warp", x: 2, y: 7, name: "Maison du toit du Manoir", dx: 2, dy: 7, badge: "Maison" }
+];
+const MARKERS_CMASRHOUSE = [
+  { cat: "pnj", spr: true, icon: "hiker", x: 2, y: 2, dir: "down", name: "Savant" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "front_eevee", x: 4, y: 3, name: "Évoli n.25" },
+  { cat: "warp", x: 2, y: 7, name: "Manoir Céladon (toit)", dx: 2, dy: 7, badge: "Toit" },
+  { cat: "warp", x: 3, y: 7, name: "Manoir Céladon (toit)", dx: 2, dy: 7, badge: "Toit" }
+];
+/* Planque Rocket (RocketHideout*.asm) : sous le Casino, derrière l'affiche ;
+   Rockets n°8 à n°16 de l'index OPP_ROCKET, puis Jessie, James et Giovanni en
+   B4F ; la Clé Asc. ouvre l'ascenseur (boutons B1F/B2F/B4F dans
+   RocketHideoutElevator.asm) ; les HS B4F sont « Show » (script), donc sans
+   tag hs. Cachés (db y,x) : PP Plus (B1F), Pépite (B3F), Super Potion (B4F). */
+const MARKERS_RHOB1F = [
+  { cat: "trainer", spr: true, icon: "rocket", x: 26, y: 8, dir: "left", name: "Rocket n°8", team: [["drowzee", "Soporifik", 25], ["machop", "Machoc", 25]] },
+  { cat: "trainer", spr: true, icon: "rocket", x: 12, y: 6, dir: "right", name: "Rocket n°9", team: [["ekans", "Abo", 26], ["raticate", "Rattatac", 26]] },
+  { cat: "trainer", spr: true, icon: "rocket", x: 18, y: 17, dir: "down", name: "Rocket n°10", team: [["grimer", "Tadmorv", 25], ["koffing", "Smogo", 25], ["cubone", "Osselait", 25]] },
+  { cat: "trainer", spr: true, icon: "rocket", x: 15, y: 25, dir: "right", name: "Rocket n°11", team: [["drowzee", "Soporifik", 26], ["sandshrew", "Sabelette", 26], ["raticate", "Rattatac", 26]] },
+  { cat: "trainer", spr: true, icon: "rocket", x: 28, y: 18, dir: "left", name: "Rocket n°12", team: [["grimer", "Tadmorv", 25], ["arbok", "Arbok", 25]] },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "escape_rope", x: 11, y: 14, name: "Corde Sortie" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "hyper_potion", x: 9, y: 17, name: "Hyper Potion" },
+  { cat: "hidden", tipIcon: "pp_up", x: 21, y: 15, name: "PP Plus" },
+  { cat: "warp", x: 23, y: 2, name: "Planque Rocket (B2F)", dx: 27, dy: 8, badge: "B2F" },
+  { cat: "warp", x: 21, y: 2, name: "Casino Rocket", dx: 17, dy: 4, badge: "Casino" },
+  { cat: "warp", x: 24, y: 19, name: "Ascenseur de la Planque", dx: 2, dy: 2, badge: "ASC" },
+  { cat: "warp", x: 25, y: 19, name: "Ascenseur de la Planque", dx: 2, dy: 2, badge: "ASC" },
+  { cat: "warp", x: 21, y: 24, name: "Planque Rocket (B2F)", dx: 21, dy: 22, badge: "B2F" }
+];
+const MARKERS_RHOB2F = [
+  { cat: "trainer", spr: true, icon: "rocket", x: 20, y: 12, dir: "down", name: "Rocket n°13", team: [["golbat", "Nosferalto", 24], ["koffing", "Smogo", 24], ["grimer", "Tadmorv", 24], ["raticate", "Rattatac", 24]] },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "moon_stone", x: 1, y: 11, name: "Pierre Lune" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "nugget", x: 16, y: 8, name: "Pépite" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 6, y: 12, name: "CT07 EmpalKo" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "super_potion", x: 3, y: 21, name: "Super Potion" },
+  { cat: "warp", x: 27, y: 8, name: "Planque Rocket (B1F)", dx: 23, dy: 2, badge: "B1F" },
+  { cat: "warp", x: 21, y: 8, name: "Planque Rocket (B3F)", dx: 25, dy: 6, badge: "B3F" },
+  { cat: "warp", x: 24, y: 19, name: "Ascenseur de la Planque", dx: 2, dy: 2, badge: "ASC" },
+  { cat: "warp", x: 25, y: 19, name: "Ascenseur de la Planque", dx: 2, dy: 2, badge: "ASC" },
+  { cat: "warp", x: 21, y: 22, name: "Planque Rocket (B1F)", dx: 21, dy: 24, badge: "B1F" }
+];
+const MARKERS_RHOB3F = [
+  { cat: "trainer", spr: true, icon: "rocket", x: 10, y: 22, dir: "right", name: "Rocket n°14", team: [["ekans", "Abo", 26], ["raticate", "Rattatac", 26], ["drowzee", "Soporifik", 26]] },
+  { cat: "trainer", spr: true, icon: "rocket", x: 26, y: 12, dir: "up", name: "Rocket n°15", team: [["machoke", "Machopeur", 27], ["arbok", "Arbok", 27]] },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 26, y: 17, name: "CT10 Damoclè" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "rare_candy", x: 20, y: 14, name: "Super Bonbon" },
+  { cat: "hidden", tipIcon: "nugget", x: 27, y: 17, name: "Pépite" },
+  { cat: "warp", x: 25, y: 6, name: "Planque Rocket (B2F)", dx: 21, dy: 8, badge: "B2F" },
+  { cat: "warp", x: 19, y: 18, name: "Planque Rocket (B4F)", dx: 19, dy: 10, badge: "B4F" }
+];
+const MARKERS_RHOB4F = [
+  { cat: "trainer", spr: true, icon: "giovanni", x: 25, y: 3, dir: "down", name: "Giovanni", scripted: true, team: [["onix", "Onix", 29], ["kangaskhan", "Kangourex", 31], ["marowak", "Ossatueur", 30], ["persian", "Persian", 32]] },
+  { cat: "trainer", spr: true, icon: "jessie", x: 24, y: 12, dir: "down", name: "Jessie", scripted: true, team: [["koffing", "Smogo", 28], ["meowth", "Miaouss", 29], ["arbok", "Arbok", 28]] },
+  { cat: "trainer", spr: true, icon: "james", x: 25, y: 12, dir: "down", name: "James", scripted: true, team: [["koffing", "Smogo", 28], ["meowth", "Miaouss", 29], ["arbok", "Arbok", 28]] },
+  { cat: "trainer", spr: true, icon: "rocket", x: 11, y: 2, dir: "down", name: "Rocket n°16", team: [["koffing", "Smogo", 26], ["golbat", "Nosferalto", 26]] },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "hp_up", x: 10, y: 12, name: "PV Plus" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 9, y: 4, name: "CT17 Sacrifi" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "iron", x: 12, y: 20, name: "Fer" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "silph_scope", x: 25, y: 2, name: "Scope Sylphe" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "lift_key", x: 10, y: 2, name: "Clé Asc." },
+  { cat: "hidden", tipIcon: "super_potion", x: 25, y: 1, name: "Super Potion" },
+  { cat: "warp", x: 19, y: 10, name: "Planque Rocket (B3F)", dx: 19, dy: 18, badge: "B3F" },
+  { cat: "warp", x: 24, y: 15, name: "Ascenseur de la Planque", dx: 2, dy: 2, badge: "ASC" },
+  { cat: "warp", x: 25, y: 15, name: "Ascenseur de la Planque", dx: 2, dy: 2, badge: "ASC" }
+];
+const MARKERS_RHOELEV = [
+  { cat: "warp", x: 2, y: 1, name: "Planque Rocket (B1F)", dx: 24, dy: 19, badge: "B1F" },
+  { cat: "warp", x: 3, y: 1, name: "Planque Rocket (B1F)", dx: 24, dy: 19, badge: "B1F" },
+  { cat: "warp", x: 0, y: 3, name: "Planque Rocket (B1F)", badge: "B1F" },
+  { cat: "warp", x: 1, y: 3, name: "Planque Rocket (B2F)", badge: "B2F" },
+  { cat: "warp", x: 2, y: 3, name: "Planque Rocket (B4F)", badge: "B4F" }
+];
+
+MARKERS_CCITY.forEach(m => {
+  if (m.cat === "hidden") m.badge = String(++hidCount);
+});
+MARKERS_CGC.forEach(m => {
+  if (m.cat === "hidden") m.badge = String(++hidCount);
+});
+MARKERS_CMASROOF.forEach(m => {
+  if (m.cat === "hidden") m.badge = String(++hidCount);
+});
+MARKERS_RHOB1F.forEach(m => {
+  if (m.cat === "hidden") m.badge = String(++hidCount);
+});
+MARKERS_RHOB3F.forEach(m => {
+  if (m.cat === "hidden") m.badge = String(++hidCount);
+});
+MARKERS_RHOB4F.forEach(m => {
+  if (m.cat === "hidden") m.badge = String(++hidCount);
+});
+
+MAPS[148].markers = MARKERS_CCITY;
+MAPS[149].markers = MARKERS_CPC;
+MAPS[150].markers = MARKERS_CGYM;
+MAPS[151].markers = MARKERS_CGC;
+MAPS[152].markers = MARKERS_CPRIZE;
+MAPS[153].markers = MARKERS_CDINER;
+MAPS[154].markers = MARKERS_CCHEF;
+MAPS[155].markers = MARKERS_CHOTEL;
+MAPS[156].markers = MARKERS_CSCHOOL;
+MAPS[157].markers = MARKERS_CMART1F;
+MAPS[158].markers = MARKERS_CMART2F;
+MAPS[159].markers = MARKERS_CMART3F;
+MAPS[160].markers = MARKERS_CMART4F;
+MAPS[161].markers = MARKERS_CMART5F;
+MAPS[162].markers = MARKERS_CMARTROOF;
+MAPS[163].markers = MARKERS_CMARTELEV;
+MAPS[164].markers = MARKERS_CMAS1F;
+MAPS[165].markers = MARKERS_CMAS2F;
+MAPS[166].markers = MARKERS_CMAS3F;
+MAPS[167].markers = MARKERS_CMASROOF;
+MAPS[168].markers = MARKERS_CMASRHOUSE;
+MAPS[169].markers = MARKERS_RHOB1F;
+MAPS[170].markers = MARKERS_RHOB2F;
+MAPS[171].markers = MARKERS_RHOB3F;
+MAPS[172].markers = MARKERS_RHOB4F;
+MAPS[173].markers = MARKERS_RHOELEV;
+
+/* Route 16 : Ronflex bloque la piste (script ld 30, pas de HS) ; six Motards/
+   Loubards du camping ; warp vers la Maison Volante (CS02) par la 8e porte, poste
+   de garde (2 entrées haut/bas, chaque côté du bâtiment à cheval sur la route) ;
+   sortie ouest vers la Clairière. Hidden : Pierre Lune. */
+const MARKERS_R16 = [
+  { cat: "trainer", spr: true, icon: "biker", x: 17, y: 14, dir: "left", name: "Motard n°8", team: [["grimer", "Tadmorv", 29], ["beedrill", "Dardargnan", 29]] },
+  { cat: "trainer", spr: true, icon: "biker", x: 14, y: 15, dir: "right", name: "Loubard n°1", team: [["machop", "Machoc", 28], ["wigglytuff", "Grodoudou", 28], ["machop", "Machoc", 28]] },
+  { cat: "trainer", spr: true, icon: "biker", x: 11, y: 14, dir: "up", name: "Loubard n°2", team: [["mankey", "Férosinge", 29], ["machop", "Machoc", 29]] },
+  { cat: "trainer", spr: true, icon: "biker", x: 9, y: 13, dir: "left", name: "Motard n°9", team: [["weezing", "Smogogo", 30]] },
+  { cat: "trainer", spr: true, icon: "biker", x: 6, y: 12, dir: "right", name: "Loubard n°3", team: [["machoke", "Machopeur", 31]] },
+  { cat: "trainer", spr: true, icon: "biker", x: 3, y: 14, dir: "right", name: "Motard n°10", team: [["grimer", "Tadmorv", 28], ["charmeleon", "Reptincel", 28], ["rhyhorn", "Rhinocorne", 28], ["grimer", "Tadmorv", 28]] },
+  { cat: "trainer", spr: true, icon: "snorlax", x: 26, y: 12, dir: "down", name: "Ronflex", scripted: true, team: [["snorlax", "Ronflex", 30]] },
+  { cat: "hidden", tipIcon: "moon_stone", x: 24, y: 15, name: "Pierre Lune" },
+  { cat: "warp", x: 17, y: 12, name: "Poste de garde Route 16 (1F)", dx: 0, dy: 8, badge: "Poste" },
+  { cat: "warp", x: 17, y: 13, name: "Poste de garde Route 16 (1F)", dx: 0, dy: 9, badge: "Poste" },
+  { cat: "warp", x: 24, y: 12, name: "Poste de garde Route 16 (1F)", dx: 7, dy: 8, badge: "Poste" },
+  { cat: "warp", x: 24, y: 13, name: "Poste de garde Route 16 (1F)", dx: 7, dy: 9, badge: "Poste" },
+  { cat: "warp", x: 17, y: 6, name: "Poste de garde Route 16 (1F)", dx: 0, dy: 2, badge: "Poste" },
+  { cat: "warp", x: 17, y: 7, name: "Poste de garde Route 16 (1F)", dx: 0, dy: 3, badge: "Poste" },
+  { cat: "warp", x: 24, y: 6, name: "Poste de garde Route 16 (1F)", dx: 7, dy: 2, badge: "Poste" },
+  { cat: "warp", x: 24, y: 7, name: "Poste de garde Route 16 (1F)", dx: 7, dy: 3, badge: "Poste" },
+  { cat: "warp", x: 7, y: 7, name: "Maison Volante (Route 16)", dx: 2, dy: 7, badge: "Vol" },
+  { cat: "warp", x: 2, y: 8, name: "Poste de garde de la Clairière (Laboratoire abandonné)", dx: 7, dy: 14, badge: "Poste" },
+  { cat: "warp", x: 2, y: 9, name: "Poste de garde de la Clairière (Laboratoire abandonné)", dx: 7, dy: 15, badge: "Poste" }
+];
+/* Clairière (Route 16 Ouest) : aucun PNJ ; maison et sortie est vers le poste
+   de garde du vrai monde (portail entre la route et la Clairière). */
+const MARKERS_R16W = [
+  { cat: "warp", x: 17, y: 25, name: "Maison de la Clairière", dx: 2, dy: 7, badge: "Maison" },
+  { cat: "warp", x: 33, y: 4, name: "Poste de garde de la Clairière (Laboratoire abandonné)", dx: 0, dy: 14, badge: "Poste" },
+  { cat: "warp", x: 33, y: 5, name: "Poste de garde de la Clairière (Laboratoire abandonné)", dx: 0, dy: 15, badge: "Poste" }
+];
+/* Piste Cyclable (Route 17) : 10 Motards/Loubards jusqu'à mi-piste ;
+   4 objets cachés (joenote : deux Max Elixir). Aucun warp. */
+const MARKERS_R17 = [
+  { cat: "trainer", spr: true, icon: "biker", x: 12, y: 19, dir: "left", name: "Loubard n°4", team: [["primeape", "Colossinge", 31], ["wigglytuff", "Grodoudou", 31]] },
+  { cat: "trainer", spr: true, icon: "biker", x: 11, y: 16, dir: "right", name: "Loubard n°5", team: [["machoke", "Machopeur", 32], ["clefable", "Mélodelfe", 32]] },
+  { cat: "trainer", spr: true, icon: "biker", x: 4, y: 18, dir: "up", name: "Motard n°11", team: [["weezing", "Smogogo", 33], ["koffing", "Smogo", 33], ["weezing", "Smogogo", 33]] },
+  { cat: "trainer", spr: true, icon: "biker", x: 7, y: 32, dir: "left", name: "Motard n°12", team: [["muk", "Grotadmorv", 35]] },
+  { cat: "trainer", spr: true, icon: "biker", x: 14, y: 34, dir: "right", name: "Motard n°13", team: [["voltorb", "Voltorbe", 32], ["magneton", "Magnéton", 32]] },
+  { cat: "trainer", spr: true, icon: "biker", x: 17, y: 58, dir: "left", name: "Loubard n°6", team: [["machoke", "Machopeur", 34]] },
+  { cat: "trainer", spr: true, icon: "biker", x: 2, y: 68, dir: "right", name: "Loubard n°7", team: [["mankey", "Férosinge", 30], ["primeape", "Colossinge", 30], ["clefable", "Mélodelfe", 30], ["machoke", "Machopeur", 30]] },
+  { cat: "trainer", spr: true, icon: "biker", x: 14, y: 87, dir: "right", name: "Loubard n°8", team: [["primeape", "Colossinge", 32], ["machoke", "Machopeur", 32]] },
+  { cat: "trainer", spr: true, icon: "biker", x: 5, y: 98, dir: "left", name: "Motard n°14", team: [["weezing", "Smogogo", 32], ["muk", "Grotadmorv", 32]] },
+  { cat: "trainer", spr: true, icon: "biker", x: 10, y: 120, dir: "down", name: "Motard n°15", team: [["sandslash", "Sablaireau", 30], ["krabby", "Krabby", 30], ["koffing", "Smogo", 30], ["kingler", "Krabboss", 30]] },
+  { cat: "hidden", tipIcon: "rare_candy", x: 15, y: 14, name: "Super Bonbon" },
+  { cat: "hidden", tipIcon: "pp_up", x: 17, y: 72, name: "PP Plus" },
+  { cat: "hidden", tipIcon: "max_revive", x: 4, y: 91, name: "Rappel Max" },
+  { cat: "hidden", tipIcon: "max_elixer", x: 8, y: 121, name: "Max Elixir" }
+];
+/* Route 18 : trois Ornithologues et le poste de garde vers Parmanie. */
+const MARKERS_R18 = [
+  { cat: "trainer", spr: true, icon: "black_hair_boy_1", x: 36, y: 11, dir: "right", name: "Ornithologue n°12", team: [["pidgeotto", "Roucoups", 34], ["fearow", "Rapasdepic", 34]] },
+  { cat: "trainer", spr: true, icon: "black_hair_boy_1", x: 40, y: 15, dir: "left", name: "Ornithologue n°13", team: [["dodrio", "Dodrio", 36]] },
+  { cat: "trainer", spr: true, icon: "black_hair_boy_1", x: 42, y: 13, dir: "left", name: "Ornithologue n°14", team: [["farfetchd", "Canarticho", 32], ["doduo", "Doduo", 32], ["fearow", "Rapasdepic", 32]] },
+  { cat: "warp", x: 33, y: 8, name: "Poste de garde Route 18 (1F)", dx: 0, dy: 4, badge: "Poste" },
+  { cat: "warp", x: 33, y: 9, name: "Poste de garde Route 18 (1F)", dx: 0, dy: 5, badge: "Poste" },
+  { cat: "warp", x: 40, y: 8, name: "Poste de garde Route 18 (1F)", dx: 7, dy: 4, badge: "Poste" },
+  { cat: "warp", x: 40, y: 9, name: "Poste de garde Route 18 (1F)", dx: 7, dy: 5, badge: "Poste" }
+];
+/* Poste de garde Route 16 1F : la rive est/ouest du bâtiment traverse la route
+   (jauge vélo du garde, joenote : vélo requis pour la Piste Cyclable). */
+const MARKERS_R16GATE1F = [
+  { cat: "pnj", spr: true, icon: "guard", x: 4, y: 5, dir: "down", name: "Garde" },
+  { cat: "pnj", spr: true, icon: "gambler", x: 4, y: 3, name: "Joueur" },
+  { cat: "warp", x: 0, y: 8, name: "Route 16", dx: 17, dy: 12, badge: "R16" },
+  { cat: "warp", x: 0, y: 9, name: "Route 16", dx: 17, dy: 13, badge: "R16" },
+  { cat: "warp", x: 7, y: 8, name: "Route 16", dx: 24, dy: 12, badge: "R16" },
+  { cat: "warp", x: 7, y: 9, name: "Route 16", dx: 24, dy: 13, badge: "R16" },
+  { cat: "warp", x: 0, y: 2, name: "Route 16", dx: 17, dy: 6, badge: "R16" },
+  { cat: "warp", x: 0, y: 3, name: "Route 16", dx: 17, dy: 7, badge: "R16" },
+  { cat: "warp", x: 7, y: 2, name: "Route 16", dx: 24, dy: 6, badge: "R16" },
+  { cat: "warp", x: 7, y: 3, name: "Route 16", dx: 24, dy: 7, badge: "R16" },
+  { cat: "warp", x: 6, y: 12, name: "Poste de garde Route 16 (2F)", dx: 7, dy: 7, badge: "2F" }
+];
+const MARKERS_R16GATE2F = [
+  { cat: "pnj", spr: true, icon: "young_boy", x: 4, y: 2, name: "Garçon" },
+  { cat: "pnj", spr: true, icon: "little_girl", x: 2, y: 5, name: "Petite fille" },
+  { cat: "warp", x: 7, y: 7, name: "Poste de garde Route 16 (1F)", dx: 6, dy: 12, badge: "1F" }
+];
+/* Poste de garde de la Clairière : sous-monde « Clairière » entre Route 16 et
+   Route 2 (connexion spéciale du hack) ; aquarium, coffre et lettres (signes). */
+const MARKERS_R16WGATE = [
+  { cat: "warp", x: 0, y: 14, name: "Clairière (Route 16 Ouest)", dx: 33, dy: 4, badge: "Clairière" },
+  { cat: "warp", x: 0, y: 15, name: "Clairière (Route 16 Ouest)", dx: 33, dy: 5, badge: "Clairière" },
+  { cat: "warp", x: 7, y: 14, name: "Route 16", dx: 2, dy: 8, badge: "R16" },
+  { cat: "warp", x: 7, y: 15, name: "Route 16", dx: 2, dy: 9, badge: "R16" }
+];
+/* Maison de la Clairière : livre de comptes (mobilier, sans marqueur) ;
+   Max Elixir caché en coin. */
+const MARKERS_R16WHOUSE = [
+  { cat: "hidden", tipIcon: "max_elixer", x: 7, y: 7, name: "Max Elixir" },
+  { cat: "warp", x: 2, y: 7, name: "Clairière (Route 16 Ouest)", dx: 17, dy: 25, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 7, name: "Clairière (Route 16 Ouest)", dx: 17, dy: 25, badge: "Sortie" }
+];
+/* Maison Volante : la fille donne la CS02 Vol, et le Rapasdepic « Vrivri »
+   réapprend Bec Vrille à un Roucoups/Roucarnage en tête d'équipe. */
+const MARKERS_R16FLY = [
+  { cat: "pnj", spr: true, icon: "brunette_girl", x: 2, y: 3, dir: "right", name: "Fille", scripted: true, give: ["tm_hm", "CS02 Vol"] },
+  { cat: "pnj", spr: true, icon: "fearow", x: 6, y: 4, name: "Rapasdepic", scripted: true },
+  { cat: "warp", x: 2, y: 7, name: "Route 16", dx: 7, dy: 7, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 7, name: "Route 16", dx: 7, dy: 7, badge: "Sortie" }
+];
+const MARKERS_R18GATE1F = [
+  { cat: "pnj", spr: true, icon: "guard", x: 4, y: 1, dir: "down", name: "Garde" },
+  { cat: "warp", x: 0, y: 4, name: "Route 18", dx: 33, dy: 8, badge: "R18" },
+  { cat: "warp", x: 0, y: 5, name: "Route 18", dx: 33, dy: 9, badge: "R18" },
+  { cat: "warp", x: 7, y: 4, name: "Route 18", dx: 40, dy: 8, badge: "R18" },
+  { cat: "warp", x: 7, y: 5, name: "Route 18", dx: 40, dy: 9, badge: "R18" },
+  { cat: "warp", x: 6, y: 8, name: "Poste de garde Route 18 (2F)", dx: 7, dy: 7, badge: "2F" }
+];
+/* Poste de garde Route 18, 2F : le garçon échange un Noeunoeuf contre son
+   Excelangue « Glavioteur » (in_game_trades wWhichTrade 5). */
+const MARKERS_R18GATE2F = [
+  { cat: "pnj", spr: true, icon: "bug_catcher", x: 4, y: 2, name: "Garçon", trade: ["exeggcute", "Noeunoeuf", "lickitung", "Excelangue"] },
+  { cat: "warp", x: 7, y: 7, name: "Poste de garde Route 18 (1F)", dx: 6, dy: 8, badge: "1F" }
+];
+/* Parmanie : zoo (enclos scriptés : Leveinard, Kangourex, Ramoloss, Lokhlass,
+   Amonita et la balle truquée = Voltorbe), Scout, Joueur, Nico. */
+const MARKERS_FUCHSIA = [
+  { cat: "pnj", spr: true, icon: "bug_catcher", x: 10, y: 12, name: "Scout" },
+  { cat: "pnj", spr: true, icon: "gambler", x: 28, y: 17, name: "Joueur" },
+  { cat: "pnj", spr: true, icon: "fisher2", x: 30, y: 14, dir: "down", name: "Nico" },
+  { cat: "pnj", spr: true, icon: "bug_catcher", x: 24, y: 8, dir: "up", name: "Scout" },
+  { cat: "pnj", spr: true, icon: "chansey", x: 31, y: 5, name: "Leveinard", scripted: true },
+  { cat: "pnj", spr: true, icon: "ball", x: 25, y: 6, name: "Voltorbe", scripted: true },
+  { cat: "pnj", spr: true, icon: "kangaskhan", x: 12, y: 6, name: "Kangourex", scripted: true },
+  { cat: "pnj", spr: true, icon: "slowpoke", x: 30, y: 12, name: "Ramoloss", scripted: true },
+  { cat: "pnj", spr: true, icon: "lapras", x: 8, y: 17, name: "Lokhlass", scripted: true },
+  { cat: "pnj", spr: true, icon: "omanyte", x: 6, y: 5, name: "Amonita", scripted: true },
+  { cat: "warp", x: 5, y: 13, name: "Magasin (Parmanie)", dx: 3, dy: 7, badge: "Magasin" },
+  { cat: "warp", x: 11, y: 27, name: "Maison du grand-père de Léo", dx: 2, dy: 7, badge: "Maison" },
+  { cat: "warp", x: 19, y: 27, name: "Centre Pokémon (Parmanie)", dx: 3, dy: 7, badge: "Centre" },
+  { cat: "warp", x: 27, y: 27, name: "Maison du Gardien (Parmanie)", dx: 4, dy: 7, badge: "Gardien" },
+  { cat: "warp", x: 18, y: 3, name: "Entrée du Parc Safari", dx: 3, dy: 5, badge: "Safari" },
+  { cat: "warp", x: 5, y: 27, name: "Arène de Parmanie", dx: 4, dy: 17, badge: "Arène" },
+  { cat: "warp", x: 22, y: 13, name: "Salle de réunion (Parc Safari)", dx: 4, dy: 7, badge: "Réunion" },
+  { cat: "warp", x: 31, y: 27, name: "Maison du Pêcheur (Parmanie)", dx: 2, dy: 7, badge: "Maison" },
+  { cat: "warp", x: 31, y: 24, name: "Maison du Pêcheur (Parmanie)", dx: 2, dy: 0, badge: "Maison" }
+];
+/* Centre Pokémon de Parmanie : l'infirmière Joëlle propose un rematch de haut
+   niveau après la Ligue (joenote). */
+const MARKERS_FPC = [
+  { cat: "trainer", spr: true, icon: "nurse", x: 3, y: 1, dir: "down", name: "Infirmière Joëlle", scripted: true, badge: "Après la Ligue",
+    team: [["kangaskhan", "Kangourex", 72], ["snorlax", "Ronflex", 72], ["starmie", "Staross", 72], ["porygon", "Porygon", 72], ["exeggutor", "Noadkoko", 72], ["chansey", "Leveinard", 72]] },
+  { cat: "pnj", spr: true, icon: "rocker", x: 2, y: 3, name: "Rockeur" },
+  { cat: "pnj", spr: true, icon: "lass", x: 6, y: 5, name: "Fille" },
+  { cat: "pnj", spr: true, icon: "cable_club_woman", x: 11, y: 2, dir: "down", name: "Hôtesse Cable Club", cable: true },
+  { cat: "pnj", spr: true, icon: "chansey", x: 4, y: 1, dir: "down", name: "Leveinard" },
+  { cat: "warp", x: 3, y: 7, name: "Parmanie", dx: 19, dy: 27, badge: "Sortie" },
+  { cat: "warp", x: 4, y: 7, name: "Parmanie", dx: 19, dy: 27, badge: "Sortie" }
+];
+/* Magasin de Parmanie (mart_inventories.asm, prix item_prices/tm_prices). */
+const MARKERS_FMART = [
+  { cat: "pnj", spr: true, icon: "mart_guy", x: 0, y: 5, dir: "right", name: "Vendeur", scripted: true,
+    shop: [["ultra_ball", "Hyper Ball", 1200], ["great_ball", "Super Ball", 600], ["super_potion", "Super Potion", 700], ["hyper_potion", "Hyper Potion", 1500], ["revive", "Rappel", 1500], ["full_heal", "Total Soin", 600], ["super_repel", "Superepousse", 500], ["tm_hm", "CT06 Toxik", 4000], ["tm_hm", "CT37 BombBeu", 4000], ["tm_hm", "CT33 Protect", 1000], ["tm_hm", "CT18 Riposte", 2000], ["tm_hm", "CT39 Météore", 2000], ["tm_hm", "CT20 PlaiCrx", 6000]] },
+  { cat: "pnj", spr: true, icon: "fat_bald_guy", x: 4, y: 2, name: "Homme" },
+  { cat: "pnj", spr: true, icon: "lass", x: 6, y: 5, name: "Fille" },
+  { cat: "warp", x: 3, y: 7, name: "Parmanie", dx: 5, dy: 13, badge: "Sortie" },
+  { cat: "warp", x: 4, y: 7, name: "Parmanie", dx: 5, dy: 13, badge: "Sortie" }
+];
+/* Arène de Parmanie (Koga) : Badge Âme + CT06 Toxik ; Janine, ajout du hack,
+   et le Guide. Les statues restent du mobilier (sans marqueur). */
+const MARKERS_FGYM = [
+  { cat: "trainer", spr: true, icon: "koga", x: 4, y: 10, dir: "down", name: "Koga", scripted: true,
+    team: [["crobat", "Nostenfer", 35], ["tentacruel", "Tentacruel", 33], ["arbok", "Arbok", 34], ["venomoth", "Aéromite", 33], ["scyther", "Insécateur", 35]],
+    give: ["tm_hm", "CT06 Toxik"] },
+  { cat: "trainer", spr: true, icon: "juggler", x: 8, y: 13, dir: "down", name: "Jongleur n°2", team: [["hypno", "Hypnomade", 32]] },
+  { cat: "trainer", spr: true, icon: "juggler", x: 7, y: 8, dir: "right", name: "Jongleur n°3", team: [["weezing", "Smogogo", 28], ["hypno", "Hypnomade", 28]] },
+  { cat: "trainer", spr: true, icon: "juggler", x: 1, y: 12, dir: "down", name: "Jongleur n°4", team: [["beedrill", "Dardargnan", 29], ["nidoking", "Nidoking", 29], ["golbat", "Nosferalto", 29], ["haunter", "Spectrum", 29]] },
+  { cat: "trainer", spr: true, icon: "tamer", x: 3, y: 5, dir: "up", name: "Dompteur n°1", team: [["sandslash", "Sablaireau", 29], ["arbok", "Arbok", 29]] },
+  { cat: "trainer", spr: true, icon: "tamer", x: 8, y: 2, dir: "down", name: "Dompteur n°2", team: [["arbok", "Arbok", 30], ["nidoqueen", "Nidoqueen", 30], ["arbok", "Arbok", 30]] },
+  { cat: "trainer", spr: true, icon: "brunette_girl", x: 2, y: 7, dir: "left", name: "Janine", team: [["weezing", "Smogogo", 33], ["venomoth", "Aéromite", 33], ["nidoqueen", "Nidoqueen", 33]] },
+  { cat: "pnj", spr: true, icon: "gym_helper", x: 7, y: 15, dir: "down", name: "Guide" },
+  { cat: "warp", x: 4, y: 17, name: "Parmanie", dx: 5, dy: 27, badge: "Sortie" },
+  { cat: "warp", x: 5, y: 17, name: "Parmanie", dx: 5, dy: 27, badge: "Sortie" }
+];
+const MARKERS_FGRANDPA = [
+  { cat: "pnj", spr: true, icon: "mom_geisha", x: 2, y: 3, dir: "right", name: "Dame" },
+  { cat: "pnj", spr: true, icon: "gambler", x: 7, y: 2, dir: "up", name: "Joueur" },
+  { cat: "pnj", spr: true, icon: "bug_catcher", x: 5, y: 5, name: "Garçon" },
+  { cat: "warp", x: 2, y: 7, name: "Parmanie", dx: 11, dy: 27, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 7, name: "Parmanie", dx: 11, dy: 27, badge: "Sortie" }
+];
+/* Maison du Gardien : Baoba attend ses Dent d'Or (Safari Ouest) puis donne la
+   CS04 Force ; Super Bonbon visible ; le rocher est du mobilier. */
+const MARKERS_FWARDENS = [
+  { cat: "pnj", spr: true, icon: "warden", x: 2, y: 3, name: "Gardien Baoba", scripted: true, give: ["tm_hm", "CS04 Force"] },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "rare_candy", x: 8, y: 3, name: "Super Bonbon" },
+  { cat: "warp", x: 4, y: 7, name: "Parmanie", dx: 27, dy: 27, badge: "Sortie" },
+  { cat: "warp", x: 5, y: 7, name: "Parmanie", dx: 27, dy: 27, badge: "Sortie" }
+];
+const MARKERS_FMEETING = [
+  { cat: "pnj", spr: true, icon: "white_player", x: 4, y: 1, dir: "down", name: "Dresseur" },
+  { cat: "pnj", spr: true, icon: "white_player", x: 0, y: 2, dir: "up", name: "Dresseur" },
+  { cat: "pnj", spr: true, icon: "white_player", x: 10, y: 1, dir: "down", name: "Dresseur" },
+  { cat: "warp", x: 4, y: 7, name: "Parmanie", dx: 22, dy: 13, badge: "Sortie" },
+  { cat: "warp", x: 5, y: 7, name: "Parmanie", dx: 22, dy: 13, badge: "Sortie" }
+];
+/* Maison du Pêcheur : le frère du Maître pêcheur donne la Méga Canne
+   (joenote : les cannes bonne/super sont inversées). Porte arrière sur l'eau. */
+const MARKERS_FFISHER = [
+  { cat: "pnj", spr: true, icon: "fisher", x: 5, y: 3, dir: "right", name: "Frère du maître pêcheur", scripted: true, give: ["super_rod", "Méga Canne"] },
+  { cat: "warp", x: 2, y: 0, name: "Parmanie", dx: 31, dy: 24, badge: "Sortie" },
+  { cat: "warp", x: 2, y: 7, name: "Parmanie", dx: 31, dy: 27, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 7, name: "Parmanie", dx: 31, dy: 27, badge: "Sortie" }
+];
+/* Entrée du Parc Safari : entrée à 500 P$ (30 Safari Ball, 502 pas) déclenchée
+   au guichet par coordonnées (joenote : aucun sprite de caissier, pas de marqueur
+   fantôme) ; l'hôte activateur du « Safari Primal » n'apparaît qu'après la Ligue.
+   Pépite cachée. */
+const MARKERS_SZGATE = [
+  { cat: "pnj", spr: true, icon: "white_player", x: 6, y: 2, dir: "left", name: "Hôte" },
+  { cat: "pnj", spr: true, icon: "white_player", x: 1, y: 4, dir: "right", name: "Hôte" },
+  { cat: "pnj", spr: true, icon: "white_player", x: 6, y: 4, dir: "left", name: "Hôte (Safari Primal)", scripted: true, badge: "Après la Ligue" },
+  { cat: "hidden", tipIcon: "nugget", x: 5, y: 5, name: "Pépite" },
+  { cat: "warp", x: 3, y: 5, name: "Parmanie", dx: 18, dy: 3, badge: "Sortie" },
+  { cat: "warp", x: 4, y: 5, name: "Parmanie", dx: 18, dy: 3, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 0, name: "Parc Safari (Centre)", dx: 14, dy: 25, badge: "Parc" },
+  { cat: "warp", x: 4, y: 0, name: "Parc Safari (Centre)", dx: 15, dy: 25, badge: "Parc" }
+];
+const MARKERS_SZCENTER = [
+  { cat: "item", spr: true, icon: "ball", tipIcon: "nugget", x: 14, y: 10, name: "Pépite" },
+  { cat: "warp", x: 14, y: 25, name: "Entrée du Parc Safari", dx: 3, dy: 0, badge: "Entrée" },
+  { cat: "warp", x: 15, y: 25, name: "Entrée du Parc Safari", dx: 4, dy: 0, badge: "Entrée" },
+  { cat: "warp", x: 0, y: 10, name: "Parc Safari (Ouest)", dx: 29, dy: 22, badge: "Ouest" },
+  { cat: "warp", x: 0, y: 11, name: "Parc Safari (Ouest)", dx: 29, dy: 23, badge: "Ouest" },
+  { cat: "warp", x: 14, y: 0, name: "Parc Safari (Nord)", dx: 20, dy: 35, badge: "Nord" },
+  { cat: "warp", x: 15, y: 0, name: "Parc Safari (Nord)", dx: 21, dy: 35, badge: "Nord" },
+  { cat: "warp", x: 29, y: 10, name: "Parc Safari (Est)", dx: 0, dy: 22, badge: "Est" },
+  { cat: "warp", x: 29, y: 11, name: "Parc Safari (Est)", dx: 0, dy: 23, badge: "Est" },
+  { cat: "warp", x: 17, y: 19, name: "Aire de repos (Centre)", dx: 2, dy: 7, badge: "Aire" }
+];
+const MARKERS_SZEAST = [
+  { cat: "item", spr: true, icon: "ball", tipIcon: "full_restore", x: 21, y: 10, name: "Guérison" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "max_potion", x: 3, y: 7, name: "Potion Max" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "carbos", x: 20, y: 13, name: "Carbone" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 15, y: 12, name: "CT41 GigaSan" },
+  { cat: "warp", x: 0, y: 4, name: "Parc Safari (Nord)", dx: 39, dy: 30, badge: "Nord" },
+  { cat: "warp", x: 0, y: 5, name: "Parc Safari (Nord)", dx: 39, dy: 31, badge: "Nord" },
+  { cat: "warp", x: 0, y: 22, name: "Parc Safari (Centre)", dx: 29, dy: 10, badge: "Centre" },
+  { cat: "warp", x: 0, y: 23, name: "Parc Safari (Centre)", dx: 29, dy: 10, badge: "Centre" },
+  { cat: "warp", x: 25, y: 9, name: "Aire de repos (Est)", dx: 2, dy: 7, badge: "Aire" }
+];
+/* Parc Safari Ouest : la Dent d'Or de Baoba et la maison secrète (CS03). */
+const MARKERS_SZWEST = [
+  { cat: "item", spr: true, icon: "ball", tipIcon: "max_potion", x: 8, y: 20, name: "Potion Max" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 9, y: 7, name: "CT32 Reflet" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "max_revive", x: 18, y: 18, name: "Rappel Max" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "gold_teeth", x: 19, y: 7, name: "Dent d'Or" },
+  { cat: "hidden", tipIcon: "revive", x: 6, y: 5, name: "Rappel" },
+  { cat: "warp", x: 20, y: 0, name: "Parc Safari (Nord)", dx: 2, dy: 35, badge: "Nord" },
+  { cat: "warp", x: 21, y: 0, name: "Parc Safari (Nord)", dx: 3, dy: 35, badge: "Nord" },
+  { cat: "warp", x: 26, y: 0, name: "Parc Safari (Nord)", dx: 8, dy: 35, badge: "Nord" },
+  { cat: "warp", x: 27, y: 0, name: "Parc Safari (Nord)", dx: 9, dy: 35, badge: "Nord" },
+  { cat: "warp", x: 29, y: 22, name: "Parc Safari (Centre)", dx: 0, dy: 10, badge: "Centre" },
+  { cat: "warp", x: 29, y: 23, name: "Parc Safari (Centre)", dx: 0, dy: 11, badge: "Centre" },
+  { cat: "warp", x: 3, y: 3, name: "Maison secrète", dx: 2, dy: 7, badge: "Secret" },
+  { cat: "warp", x: 11, y: 11, name: "Aire de repos (Ouest)", dx: 2, dy: 7, badge: "Aire" }
+];
+const MARKERS_SZNORTH = [
+  { cat: "item", spr: true, icon: "ball", tipIcon: "protein", x: 25, y: 1, name: "Protéine" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 19, y: 7, name: "CT40 CoudKrâ" },
+  { cat: "hidden", tipIcon: "nugget", x: 19, y: 13, name: "Pépite" },
+  { cat: "warp", x: 2, y: 35, name: "Parc Safari (Ouest)", dx: 20, dy: 0, badge: "Ouest" },
+  { cat: "warp", x: 3, y: 35, name: "Parc Safari (Ouest)", dx: 21, dy: 0, badge: "Ouest" },
+  { cat: "warp", x: 8, y: 35, name: "Parc Safari (Ouest)", dx: 26, dy: 0, badge: "Ouest" },
+  { cat: "warp", x: 9, y: 35, name: "Parc Safari (Ouest)", dx: 27, dy: 0, badge: "Ouest" },
+  { cat: "warp", x: 20, y: 35, name: "Parc Safari (Centre)", dx: 14, dy: 0, badge: "Centre" },
+  { cat: "warp", x: 21, y: 35, name: "Parc Safari (Centre)", dx: 15, dy: 0, badge: "Centre" },
+  { cat: "warp", x: 39, y: 30, name: "Parc Safari (Est)", dx: 0, dy: 4, badge: "Est" },
+  { cat: "warp", x: 39, y: 31, name: "Parc Safari (Est)", dx: 0, dy: 5, badge: "Est" },
+  { cat: "warp", x: 35, y: 3, name: "Aire de repos (Nord)", dx: 2, dy: 7, badge: "Aire" }
+];
+const MARKERS_SZRHC = [
+  { cat: "pnj", spr: true, icon: "girl", x: 3, y: 2, dir: "down", name: "Julia" },
+  { cat: "pnj", spr: true, icon: "oak_aide", x: 1, y: 4, name: "Aide du Prof. Chen" },
+  { cat: "pnj", spr: true, icon: "fisher2", x: 4, y: 2, dir: "down", name: "Nico" },
+  { cat: "warp", x: 2, y: 7, name: "Parc Safari (Centre)", dx: 17, dy: 19, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 7, name: "Parc Safari (Centre)", dx: 17, dy: 19, badge: "Sortie" }
+];
+const MARKERS_SZRHE = [
+  { cat: "pnj", spr: true, icon: "oak_aide", x: 1, y: 3, name: "Aide du Prof. Chen" },
+  { cat: "pnj", spr: true, icon: "rocker", x: 4, y: 2, name: "Rockeur" },
+  { cat: "pnj", spr: true, icon: "lapras_giver", x: 5, y: 2, name: "Homme" },
+  { cat: "pnj", spr: true, icon: "black_hair_boy_1", x: 2, y: 3, name: "Garçon" },
+  { cat: "warp", x: 2, y: 7, name: "Parc Safari (Est)", dx: 25, dy: 9, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 7, name: "Parc Safari (Est)", dx: 25, dy: 9, badge: "Sortie" }
+];
+const MARKERS_SZRHW = [
+  { cat: "pnj", spr: true, icon: "oak_aide", x: 4, y: 4, name: "Aide du Prof. Chen" },
+  { cat: "pnj", spr: true, icon: "black_hair_boy_1", x: 0, y: 2, dir: "right", name: "Garçon" },
+  { cat: "pnj", spr: true, icon: "kimonowoman", x: 6, y: 2, dir: "down", name: "Dame kimono" },
+  { cat: "pnj", spr: true, icon: "bug_catcher", x: 3, y: 2, dir: "down", name: "Garçon" },
+  { cat: "warp", x: 2, y: 7, name: "Parc Safari (Ouest)", dx: 11, dy: 11, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 7, name: "Parc Safari (Ouest)", dx: 11, dy: 11, badge: "Sortie" }
+];
+const MARKERS_SZRHN = [
+  { cat: "pnj", spr: true, icon: "oak_aide", x: 6, y: 3, name: "Aide du Prof. Chen" },
+  { cat: "pnj", spr: true, icon: "white_player", x: 3, y: 4, name: "Dresseur" },
+  { cat: "pnj", spr: true, icon: "gentleman", x: 1, y: 5, name: "Distingué" },
+  { cat: "pnj", spr: true, icon: "lass", x: 0, y: 2, name: "Fille" },
+  { cat: "warp", x: 2, y: 7, name: "Parc Safari (Nord)", dx: 35, dy: 3, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 7, name: "Parc Safari (Nord)", dx: 35, dy: 3, badge: "Sortie" }
+];
+/* Maison secrète : le Pêcheur donne la CS03 Surf pour avoir atteint la maison ;
+   le « Chef » (après la Ligue, joenote) se cache aussi ici. */
+const MARKERS_SZSECRET = [
+  { cat: "pnj", spr: true, icon: "fisher", x: 3, y: 3, dir: "down", name: "Pêcheur", scripted: true, give: ["tm_hm", "CS03 Surf"] },
+  { cat: "trainer", spr: true, icon: "mr_masterball", x: 4, y: 3, dir: "down", name: "Chef", scripted: true, badge: "Après la Ligue",
+    team: [["kangaskhan", "Kangourex", 72], ["rhydon", "Rhinoféros", 73], ["golduck", "Akwakwak", 73], ["pinsir", "Scarabrute", 74], ["scyther", "Insécateur", 74], ["tauros", "Tauros", 76]] },
+  { cat: "warp", x: 2, y: 7, name: "Parc Safari (Ouest)", dx: 3, dy: 3, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 7, name: "Parc Safari (Ouest)", dx: 3, dy: 3, badge: "Sortie" }
+];
+
+MAPS[174].markers = MARKERS_R16;
+MAPS[175].markers = MARKERS_R16W;
+MAPS[176].markers = MARKERS_R17;
+MAPS[177].markers = MARKERS_R18;
+MAPS[178].markers = MARKERS_FUCHSIA;
+MAPS[179].markers = MARKERS_R16GATE1F;
+MAPS[180].markers = MARKERS_R16GATE2F;
+MAPS[181].markers = MARKERS_R16WGATE;
+MAPS[182].markers = MARKERS_R16WHOUSE;
+MAPS[183].markers = MARKERS_R16FLY;
+MAPS[184].markers = MARKERS_R18GATE1F;
+MAPS[185].markers = MARKERS_R18GATE2F;
+MAPS[186].markers = MARKERS_FPC;
+MAPS[187].markers = MARKERS_FMART;
+MAPS[188].markers = MARKERS_FGYM;
+MAPS[189].markers = MARKERS_FGRANDPA;
+MAPS[190].markers = MARKERS_FWARDENS;
+MAPS[191].markers = MARKERS_FMEETING;
+MAPS[192].markers = MARKERS_FFISHER;
+MAPS[193].markers = MARKERS_SZGATE;
+MAPS[194].markers = MARKERS_SZCENTER;
+MAPS[195].markers = MARKERS_SZEAST;
+MAPS[196].markers = MARKERS_SZWEST;
+MAPS[197].markers = MARKERS_SZNORTH;
+MAPS[198].markers = MARKERS_SZRHC;
+MAPS[199].markers = MARKERS_SZRHE;
+MAPS[200].markers = MARKERS_SZRHW;
+MAPS[201].markers = MARKERS_SZRHN;
+/* ---------- t55 : Cramois'Ile, Chenals 19-21, Manoir Pokémon, Volcan Cramoisi
+   Coordonnées en tuiles des fichiers objects ; équipes numérotées comme OPP
+   (numérotation 1-based de trainer_parties.asm, confirmée par teams.json). ---------- */
+/* Chenal 19 : Nageurs n°2-8 (dont les deux premiers, sprite garçon, et le n°8 à
+   5 #mon), Canons n°8-10 ; stand de boissons du bord de plage (Fisher2) ;
+   Bungalow d'Été. */
+const MARKERS_R19 = [
+  { cat: "trainer", spr: true, icon: "black_hair_boy_1", x: 8, y: 7, dir: "right", name: "Nageur n°2", team: [["tentacruel", "Tentacruel", 43], ["cloyster", "Crustabri", 43]] },
+  { cat: "trainer", spr: true, icon: "black_hair_boy_1", x: 13, y: 7, dir: "left", name: "Nageur n°3", team: [["seaking", "Poissoroy", 40], ["seadra", "Hypocéan", 40], ["starmie", "Staross", 40]] },
+  { cat: "trainer", spr: true, icon: "swimmer", x: 13, y: 25, dir: "left", name: "Nageur n°4", team: [["poliwrath", "Tartard", 42], ["seadra", "Hypocéan", 42]] },
+  { cat: "trainer", spr: true, icon: "swimmer", x: 4, y: 27, dir: "right", name: "Nageur n°5", team: [["seadra", "Hypocéan", 41], ["tentacruel", "Tentacruel", 41], ["kingler", "Krabboss", 41]] },
+  { cat: "trainer", spr: true, icon: "swimmer", x: 16, y: 31, dir: "up", name: "Nageur n°6", team: [["seaking", "Poissoroy", 41], ["slowbro", "Flagadoss", 41], ["golduck", "Akwakwak", 41]] },
+  { cat: "trainer", spr: true, icon: "swimmer", x: 9, y: 11, name: "Nageur n°7", team: [["seadra", "Hypocéan", 45]] },
+  { cat: "trainer", spr: true, icon: "swimmer", x: 9, y: 42, dir: "up", name: "Nageur n°8", team: [["tentacruel", "Tentacruel", 40], ["tentacruel", "Tentacruel", 40], ["starmie", "Staross", 40], ["seadra", "Hypocéan", 40], ["tentacruel", "Tentacruel", 40]] },
+  { cat: "trainer", spr: true, icon: "swimmer", x: 8, y: 43, dir: "left", name: "Canon n°8", team: [["golduck", "Akwakwak", 43], ["dewgong", "Lamantine", 43], ["seaking", "Poissoroy", 43]] },
+  { cat: "trainer", spr: true, icon: "swimmer", x: 11, y: 43, dir: "right", name: "Canon n°9", team: [["lapras", "Lokhlass", 46]] },
+  { cat: "trainer", spr: true, icon: "swimmer", x: 10, y: 44, name: "Canon n°10", team: [["dragonair", "Draco", 43], ["kingler", "Krabboss", 43], ["seadra", "Hypocéan", 43]] },
+  { cat: "pnj", spr: true, icon: "fisher2", x: 1, y: 10, dir: "right", name: "Vendeur de boissons", scripted: true, shop: [["fresh_water", "Eau Fraîche", 200], ["soda_pop", "Soda Cool", 300], ["lemonade", "Limonade", 350]] },
+  { cat: "warp", x: 3, y: 7, name: "Bungalow d'Été", dx: 2, dy: 7, badge: "Maison" }
+];
+/* Chenal 20 : Nageurs n°9-11, Canons n°11-14, Dresseurs jr♀ n°20-21, Ornithologue
+   n°15 ; Pierre Lune cachée ; Îles Écume (pas encore sur la carte -> badge ?)
+   et Phare. Le n°20 des Dresseurs jr♀ recycle l'équipe de la Route 15
+   (Mélodelfe n.38) : c'est bien ce que le moteur affiche. */
+const MARKERS_R20 = [
+  { cat: "trainer", spr: true, icon: "swimmer", x: 87, y: 10, dir: "up", name: "Nageur n°9", team: [["kingler", "Krabboss", 42], ["cloyster", "Crustabri", 42]] },
+  { cat: "trainer", spr: true, icon: "swimmer", x: 68, y: 13, dir: "up", name: "Canon n°11", team: [["blastoise", "Tortank", 43], ["dewgong", "Lamantine", 43], ["slowbro", "Flagadoss", 43]] },
+  { cat: "trainer", spr: true, icon: "swimmer", x: 46, y: 17, dir: "up", name: "Canon n°12", team: [["seaking", "Poissoroy", 45]] },
+  { cat: "trainer", spr: true, icon: "swimmer", x: 59, y: 7, dir: "right", name: "Dresseur jr♀ n°20", team: [["clefable", "Mélodelfe", 38]] },
+  { cat: "trainer", spr: true, icon: "swimmer", x: 38, y: 15, name: "Nageur n°10", team: [["seadra", "Hypocéan", 42], ["kingler", "Krabboss", 42], ["seadra", "Hypocéan", 42]] },
+  { cat: "trainer", spr: true, icon: "swimmer", x: 87, y: 15, dir: "up", name: "Nageur n°11", team: [["blastoise", "Tortank", 45]] },
+  { cat: "trainer", spr: true, icon: "black_hair_boy_1", x: 79, y: 8, dir: "up", name: "Ornithologue n°15", team: [["fearow", "Rapasdepic", 41], ["fearow", "Rapasdepic", 41], ["pidgeot", "Roucarnage", 41]] },
+  { cat: "trainer", spr: true, icon: "swimmer", x: 25, y: 9, dir: "up", name: "Canon n°13", team: [["cloyster", "Crustabri", 40], ["kingler", "Krabboss", 40], ["cloyster", "Crustabri", 40]] },
+  { cat: "trainer", spr: true, icon: "swimmer", x: 24, y: 14, name: "Dresseur jr♀ n°21", team: [["tangela", "Saquedeneu", 35], ["ponyta", "Ponyta", 35], ["sandslash", "Sablaireau", 35]] },
+  { cat: "trainer", spr: true, icon: "swimmer", x: 15, y: 10, dir: "up", name: "Canon n°14", team: [["poliwhirl", "Têtarte", 41], ["seaking", "Poissoroy", 41]] },
+  { cat: "hidden", tipIcon: "moon_stone", x: 53, y: 18, name: "Pierre Lune" },
+  { cat: "warp", x: 48, y: 7, name: "Îles Écume", badge: "?" },
+  { cat: "warp", x: 58, y: 15, name: "Îles Écume", badge: "?" },
+  { cat: "warp", x: 41, y: 7, name: "Phare", dx: 2, dy: 29, badge: "Phare" }
+];
+/* Chenal 21 : Pêcheurs n°8-11 (le n°10 aligne un banc de Krabby par niveaux :
+   Magicarpe n.29 puis Krabby n.38×4 et n.40), Nageurs n°12-15, Loubard n°9 ;
+   entrée du Volcan Cramoisi. */
+const MARKERS_R21 = [
+  { cat: "trainer", spr: true, icon: "fisher2", x: 4, y: 24, dir: "left", name: "Pêcheur n°8", team: [["seaking", "Poissoroy", 40], ["goldeen", "Poissirène", 40], ["seaking", "Poissoroy", 40], ["seaking", "Poissoroy", 40]] },
+  { cat: "trainer", spr: true, icon: "fisher2", x: 6, y: 25, name: "Pêcheur n°9", team: [["shellder", "Kokiyas", 41], ["cloyster", "Crustabri", 41]] },
+  { cat: "trainer", spr: true, icon: "swimmer", x: 10, y: 31, dir: "up", name: "Nageur n°12", team: [["seadra", "Hypocéan", 43], ["tentacruel", "Tentacruel", 43]] },
+  { cat: "trainer", spr: true, icon: "swimmer", x: 12, y: 30, dir: "right", name: "Loubard n°9", team: [["cloyster", "Crustabri", 42], ["rhydon", "Rhinoféros", 42], ["tentacruel", "Tentacruel", 42]] },
+  { cat: "trainer", spr: true, icon: "swimmer", x: 16, y: 63, name: "Nageur n°13", team: [["starmie", "Staross", 47]] },
+  { cat: "trainer", spr: true, icon: "swimmer", x: 5, y: 71, dir: "right", name: "Nageur n°14", team: [["tentacruel", "Tentacruel", 44], ["blastoise", "Tortank", 44]] },
+  { cat: "trainer", spr: true, icon: "swimmer", x: 13, y: 71, dir: "left", name: "Nageur n°15", team: [["poliwhirl", "Têtarte", 44], ["kingler", "Krabboss", 44], ["seadra", "Hypocéan", 44]] },
+  { cat: "trainer", spr: true, icon: "fisher2", x: 14, y: 56, dir: "left", name: "Pêcheur n°10", team: [["magikarp", "Magicarpe", 29], ["krabby", "Krabby", 38], ["krabby", "Krabby", 38], ["krabby", "Krabby", 38], ["krabby", "Krabby", 38], ["krabby", "Krabby", 40]] },
+  { cat: "trainer", spr: true, icon: "fisher2", x: 17, y: 57, dir: "right", name: "Pêcheur n°11", team: [["seaking", "Poissoroy", 40], ["tentacruel", "Tentacruel", 40]] },
+  { cat: "warp", x: 14, y: 87, name: "Volcan Cramoisi 1F", dx: 2, dy: 23, badge: "Volcan" }
+];
+/* Cramois'Ile : le Manoir Pokémon, l'Arène d'Auguste, le Labo #mon, le Centre
+   et le Magasin ; une fille parle du Manoir, un joueur du Labo. */
+const MARKERS_CINNABAR = [
+  { cat: "pnj", spr: true, icon: "girl", x: 12, y: 5, name: "Fille" },
+  { cat: "pnj", spr: true, icon: "gambler", x: 14, y: 6, name: "Joueur" },
+  { cat: "warp", x: 6, y: 3, name: "Manoir Pokémon 1F", dx: 5, dy: 27, badge: "Manoir" },
+  { cat: "warp", x: 18, y: 3, name: "Arène de Cramois'Île", dx: 16, dy: 17, badge: "Arène" },
+  { cat: "warp", x: 6, y: 9, name: "Labo #mon de Cramois'Île", dx: 2, dy: 7, badge: "Labo" },
+  { cat: "warp", x: 11, y: 11, name: "Centre Pokémon (Cramois'Île)", dx: 3, dy: 7, badge: "Centre" },
+  { cat: "warp", x: 15, y: 11, name: "Magasin (Cramois'Île)", dx: 3, dy: 7, badge: "Magasin" }
+];
+/* Bungalow d'Été : Dave, « le Boss des Surfeurs », et son admirateur Pêcheur. */
+const MARKERS_BEACHHOUSE = [
+  { cat: "pnj", spr: true, icon: "fisher", x: 8, y: 4, dir: "right", name: "Surfeur" },
+  { cat: "pnj", spr: true, icon: "pikachu", x: 2, y: 4, name: "Dave" },
+  { cat: "warp", x: 2, y: 7, name: "Chenal 19", dx: 3, dy: 7, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 7, name: "Chenal 19", dx: 3, dy: 7, badge: "Sortie" }
+];
+/* Phare : le gardien confie la Planche Surf (« retrouve-moi un Minidraco »,
+   d'où le braconnage au Parc Safari) ; un pompier échangeur en bas ;
+   cage d'escalier montante/descendante (paires de warps). */
+const MARKERS_LIGHTHOUSE = [
+  { cat: "pnj", spr: true, icon: "keeper", x: 4, y: 5, name: "Gardien", scripted: true, give: ["surfboard", "Planche Surf"] },
+  { cat: "pnj", spr: true, icon: "firefighter", x: 0, y: 28, name: "Pompier", trade: ["seaking", "Poissoroy", "sneasel", "Farfuret"] },
+  { cat: "warp", x: 2, y: 29, name: "Chenal 20", dx: 41, dy: 7, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 29, name: "Chenal 20", dx: 41, dy: 7, badge: "Sortie" },
+  { cat: "warp", x: 5, y: 27, name: "Phare", dx: 0, dy: 19, badge: "ASC" },
+  { cat: "warp", x: 0, y: 19, name: "Phare", dx: 5, dy: 27, badge: "ASC" },
+  { cat: "warp", x: 5, y: 19, name: "Phare", dx: 0, dy: 11, badge: "ASC" },
+  { cat: "warp", x: 0, y: 11, name: "Phare", dx: 5, dy: 19, badge: "ASC" },
+  { cat: "warp", x: 5, y: 11, name: "Phare", dx: 0, dy: 1, badge: "ASC" },
+  { cat: "warp", x: 0, y: 1, name: "Phare", dx: 5, dy: 11, badge: "ASC" }
+];
+/* Arène de Cramois'Île : Auguste (Badge Volcan + CT38 Déflagration ; rematch
+   après la Ligue, Dracaufeu et Magmar « _S » rendus par leurs sprites normaux)
+   et ses huit adversaires : Intellos n°6-9, Pillards n°4-6 ; guide du quiz. */
+const MARKERS_CNGYM = [
+  { cat: "trainer", spr: true, icon: "blaine", x: 3, y: 3, name: "Auguste", scripted: true,
+    team: [["rapidash", "Galopa", 54], ["charizard", "Dracaufeu", 53], ["ninetales", "Feunard", 54], ["arcanine", "Arcanin", 55], ["magmar", "Magmar", 53]],
+    team2: [["houndoom", "Démolosse", 64], ["flareon", "Pyroli", 64], ["charizard", "Dracaufeu", 64], ["rapidash", "Galopa", 64], ["arcanine", "Arcanin", 65], ["magmar", "Magmar", 65]],
+    give: ["tm_hm", "CT38 Déflagration"] },
+  { cat: "trainer", spr: true, icon: "nerd", x: 17, y: 2, name: "Intéllo n°6", team: [["vulpix", "Goupix", 50], ["ninetales", "Feunard", 50]] },
+  { cat: "trainer", spr: true, icon: "burglar", x: 17, y: 8, name: "Pillard n°4", team: [["flareon", "Pyroli", 50], ["ninetales", "Feunard", 50]] },
+  { cat: "trainer", spr: true, icon: "nerd", x: 11, y: 4, name: "Intéllo n°7", team: [["ponyta", "Ponyta", 53], ["charmeleon", "Reptincel", 53], ["vulpix", "Goupix", 53], ["growlithe", "Caninos", 53]] },
+  { cat: "trainer", spr: true, icon: "burglar", x: 11, y: 10, name: "Pillard n°5", team: [["houndoom", "Démolosse", 51]] },
+  { cat: "trainer", spr: true, icon: "nerd", x: 11, y: 16, name: "Intéllo n°8", team: [["rapidash", "Galopa", 52]] },
+  { cat: "trainer", spr: true, icon: "burglar", x: 3, y: 16, name: "Pillard n°6", team: [["vulpix", "Goupix", 54], ["houndour", "Malosse", 54]] },
+  { cat: "trainer", spr: true, icon: "nerd", x: 3, y: 10, name: "Intéllo n°9", team: [["charmeleon", "Reptincel", 50], ["flareon", "Pyroli", 50]] },
+  { cat: "pnj", spr: true, icon: "gym_helper", x: 16, y: 13, name: "Guide" },
+  { cat: "warp", x: 16, y: 17, name: "Cramois'Ile", dx: 18, dy: 3, badge: "Sortie" },
+  { cat: "warp", x: 17, y: 17, name: "Cramois'Ile", dx: 18, dy: 3, badge: "Sortie" }
+];
+/* Centre Pokémon (Cramois'Île). */
+const MARKERS_CNPC = [
+  { cat: "pnj", spr: true, icon: "nurse", x: 3, y: 1, name: "Infirmière" },
+  { cat: "pnj", spr: true, icon: "lass", x: 9, y: 4, name: "Fillette" },
+  { cat: "pnj", spr: true, icon: "gentleman", x: 2, y: 6, name: "Distingué" },
+  { cat: "pnj", spr: true, icon: "cable_club_woman", x: 11, y: 2, name: "Hôtesse Cable Club", cable: true },
+  { cat: "pnj", spr: true, icon: "chansey", x: 4, y: 1, name: "Leveinard" },
+  { cat: "warp", x: 3, y: 7, name: "Cramois'Ile", dx: 11, dy: 11, badge: "Sortie" },
+  { cat: "warp", x: 4, y: 7, name: "Cramois'Ile", dx: 11, dy: 11, badge: "Sortie" }
+];
+/* Magasin (Cramois'Île) : inventaire complet du magasinier ; une kimono déplore
+   l'absence d'Attaque +, un Aide du Prof. Chen vante les réserves d'objets. */
+const MARKERS_CNMART = [
+  { cat: "pnj", spr: true, icon: "mart_guy", x: 0, y: 5, dir: "right", name: "Vendeur", shop: [["ultra_ball", "Ultra Ball", 1200], ["hyper_potion", "Hyper Potion", 1500], ["max_repel", "Max Repousse", 700], ["escape_rope", "Corde Sortie", 550], ["full_heal", "Total Soin", 600], ["revive", "Rappel", 1500], ["max_elixer", "Max Elixir", 5500], ["tm_hm", "CT38 Déflagration", 5000], ["tm_hm", "CT23 Draco-Rage", 5000], ["tm_hm", "CT40 Coud'Krâ", 4000], ["tm_hm", "CT36 Destruction", 2000], ["tm_hm", "CT48 Éboulement", 4000], ["tm_hm", "CT41 Giga-Sangsue", 5000]] },
+  { cat: "pnj", spr: true, icon: "kimonowoman", x: 6, y: 2, name: "Femme kimono" },
+  { cat: "pnj", spr: true, icon: "oak_aide", x: 3, y: 4, name: "Aide du Prof. Chen" },
+  { cat: "warp", x: 3, y: 7, name: "Cramois'Ile", dx: 15, dy: 11, badge: "Sortie" },
+  { cat: "warp", x: 4, y: 7, name: "Cramois'Ile", dx: 15, dy: 11, badge: "Sortie" }
+];
+/* Labo #mon de Cramois'Île : un pêcheur « apporte » des #mon rares ; les trois
+   salles de l'étage (réunion, R&D, test). */
+const MARKERS_CNLAB = [
+  { cat: "pnj", spr: true, icon: "fisher", x: 1, y: 3, name: "Pêcheur" },
+  { cat: "warp", x: 2, y: 7, name: "Cramois'Ile", dx: 6, dy: 9, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 7, name: "Cramois'Ile", dx: 6, dy: 9, badge: "Sortie" },
+  { cat: "warp", x: 8, y: 4, name: "Salle de réunion du Labo", dx: 2, dy: 7, badge: "Réunion" },
+  { cat: "warp", x: 12, y: 4, name: "Département R&D du Labo", dx: 2, dy: 7, badge: "R&D" },
+  { cat: "warp", x: 16, y: 4, name: "Salle de test du Labo", dx: 2, dy: 7, badge: "Test" }
+];
+/* Salle de réunion du Labo : l'Intéllo du Mont Sélénite vend ses fossiles
+   (Dôme et Nautile, 10 000 P$ chacun) ; deux échanges (trades.asm : on donne
+   Otaria -> Élektek « Kourjus », Mimitoss -> Insécateur « Gratouille »). */
+const MARKERS_CNTRADE = [
+  { cat: "pnj", spr: true, icon: "nerd", x: 3, y: 2, name: "Spécialiste des fossiles", scripted: true, shop: [["dome_fossil", "Fossile Dôme", 10000], ["helix_fossil", "Fossile Nautile", 10000]] },
+  { cat: "pnj", spr: true, icon: "old_person", x: 1, y: 4, name: "Vieil homme", trade: ["seel", "Otaria", "electabuzz", "Élektek"] },
+  { cat: "pnj", spr: true, icon: "foulard_woman", x: 5, y: 5, dir: "up", name: "Femme au foulard", trade: ["venonat", "Mimitoss", "scyther", "Insécateur"] },
+  { cat: "warp", x: 2, y: 7, name: "Labo #mon de Cramois'Île", dx: 8, dy: 4, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 7, name: "Labo #mon de Cramois'Île", dx: 8, dy: 4, badge: "Sortie" }
+];
+/* Département R&D du Labo : l'Aide vient d'assembler la CT35 Métronome et la
+   donne au joueur ; son collègue ballade des notes. */
+const MARKERS_CNMETRO = [
+  { cat: "pnj", spr: true, icon: "oak_aide", x: 7, y: 2, name: "Aide du Prof. Chen", scripted: true, give: ["tm_hm", "CT35 Métronome"] },
+  { cat: "pnj", spr: true, icon: "oak_aide", x: 2, y: 3, name: "Aide du Prof. Chen" },
+  { cat: "warp", x: 2, y: 7, name: "Labo #mon de Cramois'Île", dx: 12, dy: 4, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 7, name: "Labo #mon de Cramois'Île", dx: 12, dy: 4, badge: "Sortie" }
+];
+/* Salle de test du Labo : clonage et résurrection des fossiles (le
+   « Résurrecteur » transforme le fossile en #mon : Amonita ou Kabuto) ;
+   trois livres d'étude. */
+const MARKERS_CNFOSSIL = [
+  { cat: "pnj", spr: true, icon: "oak_aide", x: 5, y: 2, name: "Cloneur", scripted: true },
+  { cat: "pnj", spr: true, icon: "oak_aide", x: 7, y: 6, dir: "up", name: "Résurrecteur de fossile", scripted: true },
+  { cat: "pnj", spr: true, icon: "oak_aide", x: 0, y: 5, dir: "up", name: "Aide du Prof. Chen" },
+  { cat: "pnj", spr: true, icon: "book_map_dex", x: 6, y: 4, name: "Livre" },
+  { cat: "pnj", spr: true, icon: "book_map_dex", x: 7, y: 4, name: "Livre" },
+  { cat: "pnj", spr: true, icon: "book_map_dex", x: 7, y: 2, name: "Livre" },
+  { cat: "warp", x: 2, y: 7, name: "Labo #mon de Cramois'Île", dx: 16, dy: 4, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 7, name: "Labo #mon de Cramois'Île", dx: 16, dy: 4, badge: "Sortie" }
+];
+/* Manoir Pokémon 1F : Scientifique n°3 ; Corde Sortie et Carbone ; Pierre Lune
+   cachée ; six portes vers Cramois'Ile, l'escalier du 2F et la descente B1F. */
+const MARKERS_MANSION1F = [
+  { cat: "trainer", spr: true, icon: "oak_aide", x: 17, y: 17, dir: "left", name: "Scientifique n°3", team: [["electrode", "Electrode", 39], ["weezing", "Smogogo", 39]] },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "escape_rope", x: 14, y: 3, name: "Corde Sortie" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "carbos", x: 18, y: 21, name: "Carbone" },
+  { cat: "hidden", tipIcon: "moon_stone", x: 8, y: 16, name: "Pierre Lune" },
+  { cat: "warp", x: 4, y: 27, name: "Cramois'Ile", dx: 6, dy: 3, badge: "Sortie" },
+  { cat: "warp", x: 5, y: 27, name: "Cramois'Ile", dx: 6, dy: 3, badge: "Sortie" },
+  { cat: "warp", x: 6, y: 27, name: "Cramois'Ile", dx: 6, dy: 3, badge: "Sortie" },
+  { cat: "warp", x: 7, y: 27, name: "Cramois'Ile", dx: 6, dy: 3, badge: "Sortie" },
+  { cat: "warp", x: 26, y: 27, name: "Cramois'Ile", dx: 6, dy: 3, badge: "Sortie" },
+  { cat: "warp", x: 27, y: 27, name: "Cramois'Ile", dx: 6, dy: 3, badge: "Sortie" },
+  { cat: "warp", x: 5, y: 10, name: "Manoir Pokémon 2F", dx: 5, dy: 10, badge: "2F" },
+  { cat: "warp", x: 21, y: 23, name: "Manoir Pokémon B1F", dx: 23, dy: 22, badge: "B1" }
+];
+/* Manoir Pokémon 2F : Pillard n°1 ; Calcium ; deux Rapports (journaux du
+   Dr Fuji et de MEWTWO) ; trois montées et la descente 1F. */
+const MARKERS_MANSION2F = [
+  { cat: "trainer", spr: true, icon: "burglar", x: 3, y: 17, dir: "left", name: "Pillard n°1", team: [["primeape", "Colossinge", 44], ["magmar", "Magmar", 44]] },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "calcium", x: 28, y: 7, name: "Calcium" },
+  { cat: "pnj", spr: true, icon: "book_map_dex", x: 18, y: 2, name: "Rapport" },
+  { cat: "pnj", spr: true, icon: "book_map_dex", x: 3, y: 22, name: "Rapport" },
+  { cat: "warp", x: 5, y: 10, name: "Manoir Pokémon 1F", dx: 5, dy: 10, badge: "1F" },
+  { cat: "warp", x: 7, y: 10, name: "Manoir Pokémon 3F", dx: 7, dy: 10, badge: "3F" },
+  { cat: "warp", x: 25, y: 14, name: "Manoir Pokémon 3F", dx: 25, dy: 14, badge: "3F" },
+  { cat: "warp", x: 6, y: 1, name: "Manoir Pokémon 3F", dx: 6, dy: 1, badge: "3F" }
+];
+/* Manoir Pokémon 3F : Pillard n°3 et Scientifique n°11 ; Potion Max, Fer ;
+   Rapport ; Rappel Max caché ; trois warps vers le 2F. */
+const MARKERS_MANSION3F = [
+  { cat: "trainer", spr: true, icon: "burglar", x: 5, y: 11, dir: "left", name: "Pillard n°3", team: [["machoke", "Machopeur", 44], ["rapidash", "Galopa", 44]] },
+  { cat: "trainer", spr: true, icon: "oak_aide", x: 20, y: 11, dir: "left", name: "Scientifique n°11", team: [["magneton", "Magnéton", 45], ["arcanine", "Arcanin", 45], ["muk", "Grotadmorv", 45]] },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "max_potion", x: 1, y: 16, name: "Potion Max" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "iron", x: 25, y: 5, name: "Fer" },
+  { cat: "pnj", spr: true, icon: "book_map_dex", x: 6, y: 12, name: "Rapport" },
+  { cat: "hidden", tipIcon: "max_revive", x: 1, y: 9, name: "Rappel Max" },
+  { cat: "warp", x: 7, y: 10, name: "Manoir Pokémon 2F", dx: 7, dy: 10, badge: "2F" },
+  { cat: "warp", x: 6, y: 1, name: "Manoir Pokémon 2F", dx: 6, dy: 1, badge: "2F" },
+  { cat: "warp", x: 25, y: 14, name: "Manoir Pokémon 2F", dx: 25, dy: 14, badge: "2F" }
+];
+/* Manoir Pokémon B1F : le Pillard n°3 réapparaît (doublon des datas du moteur,
+   conservé tel quel) et le Scientifique n°12 ; Clé Secrète de l'Arène
+   d'Auguste, deux CT, Guérison, Super Bonbon visible et caché ; Rapport. */
+const MARKERS_MANSIONB1F = [
+  { cat: "trainer", spr: true, icon: "burglar", x: 16, y: 23, name: "Pillard n°3", team: [["machoke", "Machopeur", 44], ["rapidash", "Galopa", 44]] },
+  { cat: "trainer", spr: true, icon: "oak_aide", x: 27, y: 11, name: "Scientifique n°12", team: [["porygon", "Porygon", 46], ["electrode", "Electrode", 46]] },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "rare_candy", x: 10, y: 2, name: "Super Bonbon" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "full_restore", x: 1, y: 22, name: "Guérison" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 19, y: 25, name: "CT50 Clonage" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 5, y: 4, name: "CT22 Lance-Soleil" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "secret_key", x: 5, y: 13, name: "Clé Secrète" },
+  { cat: "pnj", spr: true, icon: "book_map_dex", x: 16, y: 20, name: "Rapport" },
+  { cat: "hidden", tipIcon: "rare_candy", x: 1, y: 9, name: "Super Bonbon" },
+  { cat: "warp", x: 23, y: 22, name: "Manoir Pokémon 1F", dx: 21, dy: 23, badge: "1F" }
+];
+/* Volcan Cramoisi 1F : Pompiers n°1-2 et Soldat n°3 (donjon du hack) ;
+   Guérison et Carbone ; sorties vers le Chenal 21 et deux descentes B1F. */
+const MARKERS_VOLC1F = [
+  { cat: "trainer", spr: true, icon: "firefighter", x: 8, y: 14, name: "Pompier n°1", team: [["poliwrath", "Tartard", 43], ["blastoise", "Tortank", 43]] },
+  { cat: "trainer", spr: true, icon: "soldier", x: 21, y: 16, dir: "left", name: "Soldat n°3", team: [["hitmonchan", "Tygnon", 45], ["raichu", "Raichu", 45]] },
+  { cat: "trainer", spr: true, icon: "firefighter", x: 14, y: 6, dir: "up", name: "Pompier n°2", team: [["starmie", "Staross", 40], ["golduck", "Akwakwak", 40]] },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "full_restore", x: 6, y: 10, name: "Guérison" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "carbos", x: 6, y: 5, name: "Carbone" },
+  { cat: "warp", x: 2, y: 23, name: "Chenal 21", dx: 14, dy: 87, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 23, name: "Chenal 21", dx: 14, dy: 87, badge: "Sortie" },
+  { cat: "warp", x: 13, y: 6, name: "Volcan Cramoisi B1F", dx: 5, dy: 1, badge: "B1" },
+  { cat: "warp", x: 21, y: 20, name: "Volcan Cramoisi B1F", dx: 12, dy: 34, badge: "B1" }
+];
+/* Volcan Cramoisi B1F : Soldats n°4-5 (Électrode en chaîne) ; Pierre Feu,
+   CT23 Draco-Rage, Max Elixir ; trois warps (1F haut, spirale B2F, 1F bas). */
+const MARKERS_VOLCB1F = [
+  { cat: "trainer", spr: true, icon: "soldier", x: 2, y: 5, dir: "right", name: "Soldat n°4", team: [["primeape", "Colossinge", 45], ["blastoise", "Tortank", 45]] },
+  { cat: "trainer", spr: true, icon: "soldier", x: 10, y: 37, dir: "up", name: "Soldat n°5", team: [["electrode", "Electrode", 42], ["electrode", "Electrode", 42], ["electrode", "Electrode", 42], ["electrode", "Electrode", 42], ["wartortle", "Carabaffe", 42]] },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "fire_stone", x: 2, y: 30, name: "Pierre Feu" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 13, y: 30, name: "CT23 Draco-Rage" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "max_elixer", x: 4, y: 35, name: "Max Elixir" },
+  { cat: "warp", x: 5, y: 1, name: "Volcan Cramoisi 1F", dx: 13, dy: 6, badge: "1F" },
+  { cat: "warp", x: 5, y: 26, name: "Volcan Cramoisi B2F", dx: 3, dy: 14, badge: "B2" },
+  { cat: "warp", x: 12, y: 34, name: "Volcan Cramoisi 1F", dx: 21, dy: 20, badge: "1F" }
+];
+/* Volcan Cramoisi B2F : Sulfura n.50 attend au fond du cratère (visible dès
+   l'arrivée, comme l'Electhor de la Centrale) ; PP Plus caché ; retour B1F. */
+const MARKERS_VOLCB2F = [
+  { cat: "trainer", spr: true, icon: "moltres_ow", x: 8, y: 6, name: "Sulfura", scripted: true, team: [["moltres", "Sulfura", 50]] },
+  { cat: "hidden", tipIcon: "pp_up", x: 13, y: 13, name: "PP Plus" },
+  { cat: "warp", x: 3, y: 14, name: "Volcan Cramoisi B1F", dx: 5, dy: 26, badge: "B1" }
+];
+
+MAPS[203].markers = MARKERS_R19;
+MAPS[204].markers = MARKERS_R20;
+MAPS[205].markers = MARKERS_R21;
+MAPS[206].markers = MARKERS_CINNABAR;
+MAPS[207].markers = MARKERS_BEACHHOUSE;
+MAPS[208].markers = MARKERS_LIGHTHOUSE;
+MAPS[209].markers = MARKERS_CNGYM;
+MAPS[210].markers = MARKERS_CNPC;
+MAPS[211].markers = MARKERS_CNMART;
+MAPS[212].markers = MARKERS_CNLAB;
+MAPS[213].markers = MARKERS_CNTRADE;
+MAPS[214].markers = MARKERS_CNMETRO;
+MAPS[215].markers = MARKERS_CNFOSSIL;
+MAPS[216].markers = MARKERS_MANSION1F;
+MAPS[217].markers = MARKERS_MANSION2F;
+MAPS[218].markers = MARKERS_MANSION3F;
+MAPS[219].markers = MARKERS_MANSIONB1F;
+MAPS[220].markers = MARKERS_VOLC1F;
+MAPS[221].markers = MARKERS_VOLCB1F;
+MAPS[222].markers = MARKERS_VOLCB2F;
 const MARKERS = MARKERS_VIRIDIAN.concat(
 MARKERS_ROUTE1, MARKERS_PALLET, MARKERS_ROUTE22, MARKERS_ROUTE23, MARKERS_INDIGO, MARKERS_GATE1F, MARKERS_GATE2F, MARKERS_VR1F, MARKERS_VR2F, MARKERS_VR3F, MARKERS_LOBBY, MARKERS_VPOKECENTER, MARKERS_VMART, MARKERS_VSCHOOL, MARKERS_VNICKHOUSE, MARKERS_VGYM, MARKERS_REDS1F, MARKERS_REDS2F, MARKERS_BLUEHOUSE, MARKERS_OAKSLAB, MARKERS_LORELEI, MARKERS_BRUNO, MARKERS_AGATHA, MARKERS_LANCE, MARKERS_CHAMPION, MARKERS_HOF, MARKERS_R2, MARKERS_ARG, MARKERS_R2GATE, MARKERS_R2TRADE, MARKERS_R2CAVE, MARKERS_ARGCENTER, MARKERS_ARGMART, MARKERS_ARGGYM, MARKERS_ARGMUS1F, MARKERS_ARGMUS2F, MARKERS_ARGNIDORAN, MARKERS_ARGSPEECH, MARKERS_FOREST, MARKERS_FNGATE, MARKERS_FSGATE, MARKERS_DCAVE, MARKERS_R11CAVE, MARKERS_ROUTE3, MARKERS_MOONSQ, MARKERS_MOON1F, MARKERS_MOONB1F, MARKERS_MOONB2F, MARKERS_MOONPC, MARKERS_ROUTE4, MARKERS_AZURIA, MARKERS_TRASHED, MARKERS_TRADEHOUSE, MARKERS_AZURPC, MARKERS_AZURGYM, MARKERS_BIKESHOP, MARKERS_AZURMART, MARKERS_BADGEHOUSE, MARKERS_PRINTER, MARKERS_MELANIE, MARKERS_ROUTE24, MARKERS_ROUTE25, MARKERS_BILLSHOUSE, MARKERS_BILLSGARDEN, MARKERS_ROUTE9, MARKERS_ROUTE10, MARKERS_ROUTE10SOUTH, MARKERS_LAVENDER, MARKERS_RTCENTER, MARKERS_RT1F, MARKERS_RTB1F, MARKERS_PP1F, MARKERS_PP2F, MARKERS_LPCCR, MARKERS_LMART, MARKERS_LFUJI, MARKERS_LCUBONE, MARKERS_LJUDGE, MARKERS_LT1F, MARKERS_LT2F, MARKERS_LT3F, MARKERS_LT4F, MARKERS_LT5F, MARKERS_LT6F, MARKERS_LT7F, MARKERS_ROUTE8, MARKERS_ROUTE12, MARKERS_SAFFRON, MARKERS_ROUTE5, MARKERS_R5GATE, MARKERS_R8GATE, MARKERS_UPR8, MARKERS_UPWE, MARKERS_R12GATE1F, MARKERS_R12GATE2F, MARKERS_R12HOUSE, MARKERS_CC1F, MARKERS_CC2F, MARKERS_DOJO, MARKERS_SGYM, MARKERS_SMART, MARKERS_MPSY, MARKERS_SPIDG, MARKERS_SPOKEC, MARKERS_SYLPH1F, MARKERS_UPR5, MARKERS_UPR7, MARKERS_PENSION, MARKERS_SYLPH2F, MARKERS_SYLPH3F, MARKERS_SYLPH4F, MARKERS_SYLPH5F, MARKERS_SYLPH6F, MARKERS_SYLPH7F, MARKERS_SYLPH8F, MARKERS_SYLPH9F, MARKERS_SYLPH10F, MARKERS_SYLPH11F, MARKERS_SGELEV, MARKERS_ROUTE6, MARKERS_ROUTE7, MARKERS_R6GATE, MARKERS_R7GATE, MARKERS_UPNS, MARKERS_UPR6, MARKERS_VMCITY, MARKERS_VMPC, MARKERS_VMFAN, MARKERS_VMMART, MARKERS_VMGYM, MARKERS_VMPH, MARKERS_VMFH, MARKERS_VMTH, MARKERS_VDOCK, MARKERS_ROUTE11, MARKERS_R11GATE1F, MARKERS_R11GATE2F,
   MARKERS_SSA1F, MARKERS_SSA1FR, MARKERS_SSA2F, MARKERS_SSA2FR, MARKERS_SSA3F,
-  MARKERS_SSAB1F, MARKERS_SSAB1FR, MARKERS_SSABOW, MARKERS_SSACPT, MARKERS_SSAKCH);
+  MARKERS_SSAB1F, MARKERS_SSAB1FR, MARKERS_SSABOW, MARKERS_SSACPT, MARKERS_SSAKCH,
+  MARKERS_CCITY, MARKERS_CPC, MARKERS_CGYM, MARKERS_CGC, MARKERS_CPRIZE, MARKERS_CDINER, MARKERS_CCHEF, MARKERS_CHOTEL, MARKERS_CSCHOOL,
+  MARKERS_CMART1F, MARKERS_CMART2F, MARKERS_CMART3F, MARKERS_CMART4F, MARKERS_CMART5F, MARKERS_CMARTROOF, MARKERS_CMARTELEV,
+  MARKERS_CMAS1F, MARKERS_CMAS2F, MARKERS_CMAS3F, MARKERS_CMASROOF, MARKERS_CMASRHOUSE,
+  MARKERS_RHOB1F, MARKERS_RHOB2F, MARKERS_RHOB3F, MARKERS_RHOB4F, MARKERS_RHOELEV,
+  MARKERS_R16, MARKERS_R16W, MARKERS_R17, MARKERS_R18, MARKERS_FUCHSIA,
+  MARKERS_R16GATE1F, MARKERS_R16GATE2F, MARKERS_R16WGATE, MARKERS_R16WHOUSE, MARKERS_R16FLY,
+  MARKERS_R18GATE1F, MARKERS_R18GATE2F,
+  MARKERS_FPC, MARKERS_FMART, MARKERS_FGYM, MARKERS_FGRANDPA, MARKERS_FWARDENS, MARKERS_FMEETING, MARKERS_FFISHER,
+  MARKERS_SZGATE, MARKERS_SZCENTER, MARKERS_SZEAST, MARKERS_SZWEST, MARKERS_SZNORTH,
+  MARKERS_SZRHC, MARKERS_SZRHE, MARKERS_SZRHW, MARKERS_SZRHN, MARKERS_SZSECRET,
+  MARKERS_R19, MARKERS_R20, MARKERS_R21, MARKERS_CINNABAR, MARKERS_BEACHHOUSE, MARKERS_LIGHTHOUSE,
+  MARKERS_CNGYM, MARKERS_CNPC, MARKERS_CNMART, MARKERS_CNLAB, MARKERS_CNTRADE, MARKERS_CNMETRO, MARKERS_CNFOSSIL,
+  MARKERS_MANSION1F, MARKERS_MANSION2F, MARKERS_MANSION3F, MARKERS_MANSIONB1F,
+  MARKERS_VOLC1F, MARKERS_VOLCB1F, MARKERS_VOLCB2F);
 
 /* ---------- cartes collées : positions issues des map connections des headers
    (data/maps/headers/*.asm), alignements vérifiés par pixels sur les captures :
@@ -4469,7 +5971,9 @@ const mapsEl = document.getElementById("maps");
 /* Positions de la page Monde uniquement (collage des connexions ci-dessus) ;
    chaque intérieur / donjon a sa page, seule sur le stage en (0, 0). */
 const WORLD_OFFSETS = { IndigoPlateau: [0, 2], Route23: [0, 20], Route22: [0, 162], ViridianCity: [40, 154], Route1: [50, 190], PalletTown: [50, 226], Route2: [46, 82], PewterCity: [40, 46], Route3: [80, 54], Route4: [130, 36], CeruleanCity: [220, 28], Route24: [230, -8], Route25: [250, -10], BillsGarden: [286, -24], Route9: [260, 36], Route10: [318, 30], Route10South: [318, 84], LavenderTown: [320, 108], Route8: [260, 108], Route12: [320, 126], SaffronCity: [220, 100], Route5: [230, 64],
-  Route6: [230, 136], Route7: [200, 108], VermilionCity: [220, 172], Route11: [260, 180] }; // [x, y] en tuiles
+  Route6: [230, 136], Route7: [200, 108], VermilionCity: [220, 172], Route11: [260, 180], CeladonCity: [150, 100],
+  Route16: [110, 106], Route16West: [70, 110], Route17: [110, 126], Route18: [110, 270], FuchsiaCity: [160, 262],
+  Route19: [170, 298], Route20: [70, 332], CinnabarIsland: [50, 334], Route21: [50, 244] }; // [x, y] en tuiles
 /* Pages de groupe : bâtiments d'une même rangée alignés par le bas
    (sorties au même niveau), étages empilés avec le 1F en bas
    (écarts de 4 tuiles) ; piles en colonne centrées horizontalement sur la carte la plus large ; Ligue : entrée (Hall) en bas, Panthéon en haut ;
@@ -4508,6 +6012,41 @@ const GROUP_OFFSETS = {
   "donjon|L'Océane": { SSAnneBow: [12, 0], SSAnne3F: [34, 0], SSAnne2F: [24, 8], SSAnneCaptainsRoom: [66, 8],
     SSAnne2FRooms: [32, 28], SSAnneKitchen: [8, 46], SSAnne1F: [24, 46], VermilionDock: [66, 46],
     SSAnne1FRooms: [32, 66], SSAnneB1F: [29, 84], SSAnneB1FRooms: [32, 94] },
+  /* Céladopole : rangée de bâtiments alignés par le bas (Arène et Casino, 18 tuiles de haut,
+     posent le niveau de sol) ; Centre commercial : pile de même largeur, toit en haut, 1F en bas,
+     ascenseur en annexe à 2 tuiles, aligné par le bas du 1F ; Manoir : pile centrée (même
+     largeur), maison du toit en haut ; Planque Rocket : pile centrée B1F→B4F (30 tuiles),
+     ascenseur en annexe à droite du B1F, aligné par le bas. */
+  "interieur|Casino Rocket": { CeladonGameCorner: [0, 0], CeladonGameCornerPrizeRoom: [22, 10] },
+  "interieur|Céladopole": { CeladonGym: [0, 0], CeladonPokecenter: [12, 10], CeladonDiner: [28, 10], CeladonChiefHouse: [40, 10], CeladonSchool: [50, 10], CeladonHotel: [60, 10] },
+  "interieur|Centre commercial": { CeladonMartRoof: [0, 0], CeladonMart5F: [0, 14], CeladonMart4F: [0, 24], CeladonMart3F: [0, 34], CeladonMart2F: [0, 44], CeladonMart1F: [0, 54], CeladonMartElevator: [22, 58] },
+  "interieur|Manoir Céladon": { CeladonMansionRoofHouse: [0, 0], CeladonMansionRoof: [0, 10], CeladonMansion3F: [0, 28], CeladonMansion2F: [0, 42], CeladonMansion1F: [0, 56] },
+  "donjon|Planque Rocket": { RocketHideoutB1F: [0, 0], RocketHideoutB2F: [0, 32], RocketHideoutB3F: [0, 64], RocketHideoutB4F: [0, 96], RocketHideoutElevator: [32, 20] },
+  /* Route 16 : poste de garde principal (1F/2F empilés) + Maison Volante ;
+     Clairière (Route 16) : poste de garde-laboratoire + maison, en bas ;
+     Route 18 : 2F centré sur le 1F ; Parmanie : l'Arène (18 tuiles) pose le sol,
+     rangée de bâtiments alignés par le bas ; Parc Safari : Nord centré sur
+     l'axe de la rangée Centre/Est/Ouest ; rangée basse alignée par le bas,
+     chaque annexe sous sa zone : Ouest + maison secrète sous l'Ouest,
+     entrée + aire du Centre sous le Centre, aires Est/Nord sous l'Est
+     (l'entrée, haute de 6 tuiles, est calée en bas). */
+  "interieur|Route 16": { Route16Gate2F: [0, 0], Route16Gate1F: [0, 10], Route16FlyHouse: [10, 16] },
+  "interieur|Clairière (Route 16)": { Route16WestGate: [0, 0], Route16WestHouse: [10, 10] },
+  "interieur|Route 18": { Route18Gate2F: [0, 0], Route18Gate1F: [0, 10] },
+  "interieur|Parmanie": { FuchsiaGym: [0, 0], FuchsiaMart: [12, 10], FuchsiaBillsGrandpasHouse: [22, 10], FuchsiaPokecenter: [32, 10], FuchsiaWardensHouse: [48, 10], FuchsiaMeetingRoom: [60, 10], FuchsiaFisherHouse: [76, 10] },
+  "donjon|Parc Safari": { SafariZoneNorth: [27, 0], SafariZoneWest: [0, 40], SafariZoneCenter: [32, 40], SafariZoneEast: [64, 40],
+    SafariZoneWestRestHouse: [0, 68], SafariZoneSecretHouse: [10, 68], SafariZoneGate: [32, 70], SafariZoneCenterRestHouse: [42, 68],
+    SafariZoneEastRestHouse: [64, 68], SafariZoneNorthRestHouse: [74, 68] },
+
+  /* Cramois'Île, comme la maquette : arène à gauche, Centre et Magasin
+     plus au sud, Labo à droite puis ses trois salles au-dessus du Labo ; Manoir :
+     étages empilés (1F en bas, B1F sous les étages) ; Volcan : B1F puis
+     B2F sous le 1F. */
+  "interieur|Chenal 19": { Route19BeachHouse: [0, 0] },
+  "interieur|Chenal 20": { Lighthouse: [0, 0] },
+  "interieur|Cramois'Île": { CinnabarGym: [0, 0], CinnabarPokecenter: [24, 10], CinnabarMart: [42, 10], CinnabarLab: [54, 10], CinnabarLabTradeRoom: [54, 0], CinnabarLabMetronomeRoom: [68, 0], CinnabarLabFossilRoom: [82, 0] },
+  "donjon|Manoir Pokémon": { CinnabarMansion3F: [0, 0], CinnabarMansion2F: [0, 32], CinnabarMansion1F: [0, 64], CinnabarMansionB1F: [0, 86] },
+  "donjon|Volcan Cramoisi": { Volcano1F: [0, 0], VolcanoB1F: [4, 28], VolcanoB2F: [3, 74] }
 };
 const GROUP_LABELS = {
   "interieur|Jadielle": "Jadielle",
@@ -4534,7 +6073,22 @@ const GROUP_LABELS = {
 ,
   "interieur|Carmin sur Mer": "Carmin sur Mer",
   "interieur|Route 11": "Route 11 : Poste de garde",
-  "donjon|L'Océane": "L'Océane"
+  "donjon|L'Océane": "L'Océane",
+  "interieur|Céladopole": "Céladopole",
+  "interieur|Centre commercial": "Centre commercial de Céladopole",
+  "interieur|Manoir Céladon": "Manoir Céladon",
+  "donjon|Planque Rocket": "Planque Rocket",
+  "interieur|Route 16": "Route 16 : Poste de garde, Maison Volante",
+  "interieur|Clairière (Route 16)": "Clairière (Route 16)",
+  "interieur|Casino Rocket": "Casino Rocket",
+  "interieur|Route 18": "Route 18 : Poste de garde",
+  "interieur|Parmanie": "Parmanie",
+  "donjon|Parc Safari": "Parc Safari",
+  "interieur|Chenal 19": "Chenal 19 : Bungalow d'Été",
+  "interieur|Chenal 20": "Chenal 20 : Phare",
+  "interieur|Cramois'Île": "Cramois'Île",
+  "donjon|Manoir Pokémon": "Manoir Pokémon",
+  "donjon|Volcan Cramoisi": "Volcan Cramoisi"
 };
 let stageW = 0, stageH = 0;
 MAPS.forEach(m => {
@@ -4591,7 +6145,7 @@ function showPage(p, noFit) {
   document.querySelectorAll("#pages button").forEach(b => b.classList.remove("active"));
   if (page === "monde") {
     document.querySelector('#pages [data-page="monde"]').classList.add("active");
-    document.getElementById("mapname").textContent = "Monde — de Bourg Palette à Carmin sur Mer";
+    document.getElementById("mapname").textContent = "Monde — de Bourg Palette à Cramois'Ile";
   } else {
     const key = page.slice(2);
     document.querySelector("#dd-" + key.split("|")[0] + " > button").classList.add("active");
@@ -4706,6 +6260,18 @@ vp.addEventListener("pointerup", e => {
   drag = null;
 });
 vp.addEventListener("pointercancel", () => { vp.classList.remove("dragging"); drag = null; });
+/* double-clic sur un marqueur de warp (badge bleu) = téléportation directe,
+   même action que le lien de l'infobulle */
+vp.addEventListener("dblclick", e => {
+  /* NB : setPointerCapture (pointerdown) re-cible les evenements souris sur le
+     viewport, donc e.target est #viewport et non la pastille — on teste
+     l'element reellement sous le curseur */
+  const under = document.elementFromPoint(e.clientX, e.clientY);
+  const t = under && under.closest ? under.closest(".marker") : null;
+  if (!t) return;
+  const m = MARKERS.find(mm => mm.el === t);
+  if (m && m.cat === "warp") { const d = mapFromName(m.name); if (d) gotoMap(d, m); }
+});
 window.addEventListener("resize", fit);
 fit();
 
@@ -4734,6 +6300,11 @@ function buildMarkers() {
       im.src = ICONS[m.dir ? m.icon + "_" + m.dir : m.icon] || ICONS[m.icon];
       im.draggable = false;
       el.appendChild(im);
+    } else if (m.shop) {
+      /* comptoir de vente sans sprite : logo P$ + rond transparent cliquable */
+      const h = document.createElement("span");
+      h.className = "hitrond";
+      el.appendChild(h);
     } else {
       const b = document.createElement("span");
       b.className = "badge " + m.cat;
@@ -4749,7 +6320,7 @@ function buildMarkers() {
     if (m.trade) {
       const ti = document.createElement("span");
       ti.className = "giveico";
-      ti.innerHTML = '<img src="' + ICONS["front_" + m.trade[0]] + '" alt="">';
+      ti.innerHTML = '<img src="' + ICONS["front_" + m.trade[2]] + '" alt="">';
       el.appendChild(ti);
     }
     if (m.shop) {
@@ -4758,7 +6329,7 @@ function buildMarkers() {
       si.innerHTML = '<img src="' + ICONS["pokedollar"] + '" alt="">';
       el.appendChild(si);
     }
-    el.title = m.name + (m.shop ? "\nMagasin : " + m.shop.map(s => s[1] + " " + s[2] + " P$").join(", ") : "")
+    el.title = m.name + (m.shop ? "\nMagasin : " + m.shop.map(s => s[1] + " " + s[2] + " " + (s[3] || "P$")).join(", ") : "")
       + (m.trade ? "\nÉchange : " + m.trade[1] + " contre " + m.trade[3] : "");
     m.el = el;
     markersLayer.appendChild(el);
@@ -4828,7 +6399,7 @@ function openTip(m, el) {
   if (m.shop) {
     html += '<h3 class="shop">Magasin :</h3><ul class="shoplist">' + m.shop.map(s =>
       '<li><img class="mon" src="' + ICONS[s[0]] + '">' + s[1] +
-      ' <span class="lv">' + s[2] + ' <img class="pd" src="' + ICONS["pokedollar_white"] + '" alt="P$"></span></li>').join("") + "</ul>";
+      ' <span class="lv">' + s[2] + (s[3] ? " " + s[3] : ' <img class="pd" src="' + ICONS["pokedollar_white"] + '" alt="P$">') + "</span></li>").join("") + "</ul>";
   }
   html += '<p class="src">Sources : data/maps/objects/' + m.mp.id + '.asm' +
     ((m.team || m.teams) ? ", data/battle/trainer_parties.asm" : "") +
@@ -4948,6 +6519,5 @@ function gotoMap(m, warp) {
   anim = requestAnimationFrame(step);
 }
 </script>
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" nonce="Mwt0TGjUuOBztqnA6NIoRw==" data-cf-beacon='{"version":"2024.11.0","token":"36b4216ae2dc4d5488c249161e71fe1e","spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
