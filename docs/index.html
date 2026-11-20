@@ -124,6 +124,17 @@
     pointer-events: none;
   }
   .marker .giveico img { width: 16px; height: 16px; image-rendering: pixelated; }
+  .marker .ballico {
+    position: absolute; left: -6px; top: -10px;
+    width: 22px; height: 22px; border-radius: 999px;
+    background: #ffffff; border: 2px solid rgba(0,0,0,0.75);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    display: flex; align-items: center; justify-content: center;
+    transform: scale(calc(1 / var(--z, 1)));
+    transform-origin: 6px 14px;
+    pointer-events: none;
+  }
+  .marker .ballico img { width: 16px; height: 16px; image-rendering: pixelated; }
   .marker .shopico {
     position: absolute; left: -6px; top: -10px;
     width: 22px; height: 22px; border-radius: 999px;
@@ -493,6 +504,7 @@ blue: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/d
 guard: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/sprites/guard.png",
 gym_helper: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/sprites/gym_helper.png",
 ball: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/sprites/static_objects/ball.png",
+pokeball: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/sprites/static_objects/pokeball.png",
 oak_aide: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/sprites/oak_aide.png",
 black_hair_boy_1: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/sprites/black_hair_boy_1.png",
 black_hair_boy_2: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/gfx/sprites/black_hair_boy_2.png",
@@ -1060,7 +1072,7 @@ async function recolor(b64, pal, frame, yoff = 0, mirror = false) {
   return c.toDataURL("image/png");
 }
 const ICONS = {};
-const PNJ_SPRITES = ["bug_catcher", "oak", "girl", "fisher2", "gambler", "lying_old_man", "blue", "guard", "gym_helper", "ball", "oak_aide", "black_hair_boy_1", "black_hair_boy_2", "foulard_woman", "burglar", "blackbelt", "juggler", "tamer", "soldier", "lass", "rocker", "nurse", "mart_guy", "cable_club_woman", "chansey", "spearow", "boulder", "cup", "nerd", "gentleman", "giovanni", "brunette_girl", "young_boy", "balding_guy", "little_girl", "clipboard", "book_map_dex", "mom", "daisy", "lorelei", "bruno", "agatha", "lance", "brock", "fisher", "gameboy_kid", "hiker", "old_person", "jigglypuff", "nidoranm", "old_amber", "pokedex", "map", "rocket", "jessie", "james", "clefairy", "dome", "omanyte", "fat_bald_guy", "misty", "swimmer", "bike_shop_guy", "mom_geisha", "old_medium_woman", "slowbro", "rhyhorn", "bulbasaur", "oddish", "sandshrew", "sacha", "hooh", "pikachu", "medium", "mr_fuji", "mr_masterball", "psyduck", "nidorino", "cubone", "zapdos", "snorlax", "lapras_giver", "kimonowoman", "pidgeot", "koichi", "sabrina", "doduo", "bird", "pidgey", "waiter", "jenny", "sailor", "surge", "machop", "mew", "seel", "cook", "ss_captain", "machoke", "wigglytuff", "paper_sheet", "erika", "polywrath", "meowth", "nidoranf", "white_player", "koga", "warden", "biker", "fearow", "kangaskhan", "slowpoke", "lapras", "blaine", "firefighter", "keeper", "moltres_ow", "articuno_ow", "mewtwo_ow"];
+const PNJ_SPRITES = ["bug_catcher", "oak", "girl", "fisher2", "gambler", "lying_old_man", "blue", "guard", "gym_helper", "ball", "pokeball", "oak_aide", "black_hair_boy_1", "black_hair_boy_2", "foulard_woman", "burglar", "blackbelt", "juggler", "tamer", "soldier", "lass", "rocker", "nurse", "mart_guy", "cable_club_woman", "chansey", "spearow", "boulder", "cup", "nerd", "gentleman", "giovanni", "brunette_girl", "young_boy", "balding_guy", "little_girl", "clipboard", "book_map_dex", "mom", "daisy", "lorelei", "bruno", "agatha", "lance", "brock", "fisher", "gameboy_kid", "hiker", "old_person", "jigglypuff", "nidoranm", "old_amber", "pokedex", "map", "rocket", "jessie", "james", "clefairy", "dome", "omanyte", "fat_bald_guy", "misty", "swimmer", "bike_shop_guy", "mom_geisha", "old_medium_woman", "slowbro", "rhyhorn", "bulbasaur", "oddish", "sandshrew", "sacha", "hooh", "pikachu", "medium", "mr_fuji", "mr_masterball", "psyduck", "nidorino", "cubone", "zapdos", "snorlax", "lapras_giver", "kimonowoman", "pidgeot", "koichi", "sabrina", "doduo", "bird", "pidgey", "waiter", "jenny", "sailor", "surge", "machop", "mew", "seel", "cook", "ss_captain", "machoke", "wigglytuff", "paper_sheet", "erika", "polywrath", "meowth", "nidoranf", "white_player", "koga", "warden", "biker", "fearow", "kangaskhan", "slowpoke", "lapras", "blaine", "firefighter", "keeper", "moltres_ow", "articuno_ow", "mewtwo_ow"];
 async function buildIcons() {
   for (const k of PNJ_SPRITES)
     ICONS[k] = await recolor(ICONS_B64[k], PNJ, true);
@@ -1201,8 +1213,8 @@ const MARKERS_VR1F = [
   { cat: "pnj", spr: true, icon: "boulder", x: 5, y: 15, name: "Rocher" },
   { cat: "pnj", spr: true, icon: "boulder", x: 14, y: 2, name: "Rocher" },
   { cat: "pnj", spr: true, icon: "boulder", x: 2, y: 10, name: "Rocher" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 11, y: 0, name: "CT43 Piqué" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "metal_coat", x: 9, y: 2, name: "Peau Métal" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 11, y: 0, name: "CT43 Piqué" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "metal_coat", ballMini: true, x: 9, y: 2, name: "Peau Métal" },
   { cat: "warp", x: 8, y: 17, name: "Route 23", dx: 4, dy: 31, badge: "Sortie" },
   { cat: "warp", x: 1, y: 1, name: "Route Victoire 2F", dx: 0, dy: 8, badge: "2F" }
 ];
@@ -1217,10 +1229,10 @@ const MARKERS_VR2F = [
   { cat: "pnj", spr: true, icon: "boulder", x: 23, y: 16, name: "Rocher", hs: "cache" },
   { cat: "hidden", tipIcon: "ultra_ball", x: 5, y: 2, name: "Hyper Ball" },
   { cat: "hidden", tipIcon: "full_restore", x: 26, y: 7, name: "Guérison" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 27, y: 5, name: "CT02 Coupe-vent" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "rare_candy", x: 18, y: 9, name: "Super Bonbon" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 9, y: 11, name: "CT05 Ultimawashi" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 11, y: 6, name: "CT15 Ultralaser" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 27, y: 5, name: "CT02 Coupe-vent" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "rare_candy", ballMini: true, x: 18, y: 9, name: "Super Bonbon" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 9, y: 11, name: "CT05 Ultimawashi" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 11, y: 6, name: "CT15 Ultralaser" },
   { cat: "warp", x: 0, y: 8, name: "Route Victoire 1F", dx: 1, dy: 1, badge: "1F" },
   { cat: "warp", x: 29, y: 7, name: "Route 23", dx: 14, dy: 31, badge: "Sortie" },
   { cat: "warp", x: 23, y: 7, name: "Route Victoire 3F", dx: 23, dy: 7, badge: "3F" },
@@ -1237,8 +1249,8 @@ const MARKERS_VR3F = [
   { cat: "pnj", spr: true, icon: "boulder", x: 13, y: 12, name: "Rocher" },
   { cat: "pnj", spr: true, icon: "boulder", x: 24, y: 10, name: "Rocher" },
   { cat: "pnj", spr: true, icon: "boulder", x: 22, y: 15, name: "Rocher" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "max_revive", x: 26, y: 5, name: "Rappel Max" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 7, y: 7, name: "CT47 Explosion" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "max_revive", ballMini: true, x: 26, y: 5, name: "Rappel Max" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 7, y: 7, name: "CT47 Explosion" },
   { cat: "warp", x: 23, y: 7, name: "Route Victoire 2F", dx: 23, dy: 7, badge: "2F" },
   { cat: "warp", x: 26, y: 8, name: "Route Victoire 2F", dx: 27, dy: 7, badge: "2F" },
   { cat: "warp", x: 27, y: 15, name: "Route Victoire 2F", dx: 25, dy: 14, badge: "2F" },
@@ -1297,7 +1309,7 @@ const MARKERS_VGYM = [
   { cat: "trainer", spr: true, icon: "tamer", x: 10, y: 7, name: "Dompteur n°1", team: [["rhyhorn","Rhinocorne",55]] },
   { cat: "trainer", spr: true, icon: "tamer", x: 2, y: 16, dir: "right", name: "Dompteur n°2", team: [["arbok","Arbok",53],["tauros","Tauros",53]] },
   { cat: "pnj", spr: true, icon: "gym_helper", x: 16, y: 15, name: "Guide" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "revive", x: 16, y: 9, name: "Rappel" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "revive", ballMini: true, x: 16, y: 9, name: "Rappel" },
   { cat: "warp", x: 16, y: 17, name: "Jadielle", dx: 32, dy: 7, badge: "Sortie" }
 ];
 
@@ -1327,9 +1339,9 @@ const MARKERS_BLUEHOUSE = [
 ];
 const MARKERS_OAKSLAB = [
   { cat: "trainer", spr: true, icon: "blue", x: 4, y: 3, name: "Rival", team: [[["squirtle", "Carapuce", 5], ["bulbasaur", "Bulbizarre", 5], ["charmander", "Salamèche", 5]]] },
-  { cat: "pnj", spr: true, icon: "ball", x: 6, y: 3, name: "Poké Ball", give: ["front_charmander", "Salamèche n.5"] },
-  { cat: "pnj", spr: true, icon: "ball", x: 7, y: 3, name: "Poké Ball", give: ["front_squirtle", "Carapuce n.5"] },
-  { cat: "pnj", spr: true, icon: "ball", x: 8, y: 3, name: "Poké Ball", give: ["front_bulbasaur", "Bulbizarre n.5"] },
+  { cat: "pnj", spr: true, icon: "pokeball", x: 6, y: 3, name: "Poké Ball", give: ["front_charmander", "Salamèche n.5"] },
+  { cat: "pnj", spr: true, icon: "pokeball", x: 7, y: 3, name: "Poké Ball", give: ["front_squirtle", "Carapuce n.5"] },
+  { cat: "pnj", spr: true, icon: "pokeball", x: 8, y: 3, name: "Poké Ball", give: ["front_bulbasaur", "Bulbizarre n.5"] },
   /* Duel secret de Chen (OaksLabText5) : après la Ligue, il propose un duel
      pour l'évaluation du Pokédex ; son dernier #mon est le starter du rival
      (Tortank, Florizarre ou Dracaufeu n.69) — spoil. */
@@ -1408,8 +1420,8 @@ const MARKERS_R2 = [
   { cat: "warp", x: 20, y: 35, name: "Poste de garde (Route 2)", dx: 5, dy: 0, badge: "Poste" },
   { cat: "warp", x: 19, y: 39, name: "Poste de garde (Route 2)", dx: 4, dy: 7, badge: "Poste" },
   { cat: "warp", x: 7, y: 43, name: "Poste Forêt de Jade (sud)", dx: 4, dy: 7, badge: "Poste" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "hp_up", x: 17, y: 45, name: "PV Plus" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "moon_stone", x: 17, y: 54, name: "Pierre Lune" }
+  { cat: "item", spr: true, icon: "ball", tipIcon: "hp_up", ballMini: true, x: 17, y: 45, name: "PV Plus" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "moon_stone", ballMini: true, x: 17, y: 54, name: "Pierre Lune" }
 ];
 /* Marqueurs d'Argenta (data/maps/objects/PewterCity.asm) : 5 PNJ, 2 Repousses
    cachés (data/items/hidden_objects.asm) et 7 portes (2 entrées du musée). */
@@ -1510,7 +1522,7 @@ const MARKERS_ARGMUS2F = [
   { cat: "pnj", spr: true, icon: "oak_aide", x: 7, y: 7, name: "Assistant Prof. Chen" },
   { cat: "pnj", spr: true, icon: "brunette_girl", x: 3, y: 2, name: "Fille", give: ["rare_candy", "Super Bonbon"] },
   { cat: "pnj", spr: true, icon: "hiker", x: 4, y: 2, name: "Montagnard" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 12, y: 9, name: "CT12 Pistolet à O" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 12, y: 9, name: "CT12 Pistolet à O" },
   { cat: "warp", x: 7, y: 9, name: "Musée 1F (Argenta)", dx: 7, dy: 9, badge: "1F" }
 ];
 /* Maison du Nidoran♂ (PewterNidoranHouse.asm). */
@@ -1540,9 +1552,9 @@ const MARKERS_FOREST = [
   { cat: "trainer", spr: true, icon: "lass", x: 3, y: 41, dir: "right", name: "Fillette", team: [["nidoranf", "Nidoran♀", 6], ["nidoranm", "Nidoran♂", 6]] },
   { cat: "pnj", spr: true, icon: "bug_catcher", x: 16, y: 43, name: "Gamin" },
   { cat: "pnj", spr: true, icon: "bug_catcher", x: 27, y: 40, name: "Gamin" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "antidote", x: 25, y: 11, name: "Antidote" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "potion", x: 12, y: 29, name: "Potion" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "poke_ball", x: 1, y: 31, name: "Poké Ball" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "antidote", ballMini: true, x: 25, y: 11, name: "Antidote" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "potion", ballMini: true, x: 12, y: 29, name: "Potion" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "poke_ball", ballMini: true, x: 1, y: 31, name: "Poké Ball" },
   { cat: "hidden", tipIcon: "potion", x: 1, y: 18, name: "Potion" },
   { cat: "hidden", tipIcon: "antidote", x: 17, y: 42, name: "Antidote" },
   { cat: "warp", x: 1, y: 0, name: "Poste Forêt de Jade (nord)", dx: 4, dy: 7, badge: "Poste" },
@@ -1617,7 +1629,7 @@ const MARKERS_ROUTE3 = [
 const MARKERS_ROUTE4 = [
   { cat: "pnj", spr: true, icon: "lass", x: 9, y: 8, name: "Fille" },
   { cat: "trainer", spr: true, icon: "lass", x: 63, y: 2, name: "Fillette", team: [["parasect", "Parasect", 30], ["gloom", "Ortide", 30], ["parasect", "Parasect", 30]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 57, y: 3, name: "CT03 DanseLm" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 57, y: 3, name: "CT03 DanseLm" },
   { cat: "hidden", tipIcon: "great_ball", x: 61, y: 15, name: "Super Ball" },
   { cat: "hidden", tipIcon: "moon_stone", x: 62, y: 3, name: "Pierre Lune" },
   { cat: "warp", x: 11, y: 5, name: "Centre Pokémon Mont Sélénite", dx: 3, dy: 7, badge: "Centre" },
@@ -1636,12 +1648,12 @@ const MARKERS_MOON1F = [
   { cat: "trainer", spr: true, icon: "lass", x: 16, y: 23, name: "Fillette n°2", team: [["clefairy", "Mélofée", 14]] },
   { cat: "trainer", spr: true, icon: "bug_catcher", x: 7, y: 22, name: "Scout n°1", team: [["weedle", "Aspicot", 10], ["beedrill", "Dardargnan", 10]] },
   { cat: "trainer", spr: true, icon: "bug_catcher", x: 30, y: 27, dir: "right", name: "Scout n°2", team: [["caterpie", "Chenipan", 10], ["butterfree", "Papilusion", 10]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "potion", x: 2, y: 20, name: "Potion" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "moon_stone", x: 2, y: 2, name: "Pierre Lune" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "rare_candy", x: 35, y: 31, name: "Super Bonbon" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "escape_rope", x: 36, y: 23, name: "Corde Sortie" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "potion", x: 20, y: 33, name: "Potion" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "repel", x: 5, y: 32, name: "Superepousse" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "potion", ballMini: true, x: 2, y: 20, name: "Potion" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "moon_stone", ballMini: true, x: 2, y: 2, name: "Pierre Lune" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "rare_candy", ballMini: true, x: 35, y: 31, name: "Super Bonbon" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "escape_rope", ballMini: true, x: 36, y: 23, name: "Corde Sortie" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "potion", ballMini: true, x: 20, y: 33, name: "Potion" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "repel", ballMini: true, x: 5, y: 32, name: "Superepousse" },
   { cat: "warp", x: 5, y: 5, name: "Mont Sélénite Sous-sol 1", dx: 5, dy: 5, badge: "S-Sol 1" },
   { cat: "warp", x: 17, y: 11, name: "Mont Sélénite Sous-sol 1", dx: 25, dy: 9, badge: "S-Sol 1" },
   { cat: "warp", x: 25, y: 15, name: "Mont Sélénite Sous-sol 1", dx: 25, dy: 15, badge: "S-Sol 1" },
@@ -1676,8 +1688,8 @@ const MARKERS_MOONB2F = [
   { cat: "trainer", spr: true, icon: "rocket", x: 29, y: 17, dir: "left", name: "Rocket n°4", team: [["raticate", "Rattatac", 16]] },
   { cat: "pnj", spr: true, icon: "dome", x: 12, y: 6, name: "Fossile Dôme" },
   { cat: "pnj", spr: true, icon: "omanyte", x: 13, y: 6, name: "Amonita" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "hp_up", x: 25, y: 21, name: "PV Plus" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 29, y: 5, name: "CT01 UltiPng" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "hp_up", ballMini: true, x: 25, y: 21, name: "PV Plus" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 29, y: 5, name: "CT01 UltiPng" },
   { cat: "hidden", tipIcon: "moon_stone", x: 17, y: 16, name: "Pierre Lune" },
   { cat: "hidden", tipIcon: "ether", x: 33, y: 9, name: "Huile" },
   { cat: "warp", x: 25, y: 9, name: "Mont Sélénite Sous-sol 1", dx: 17, dy: 11, badge: "S-Sol 1" },
@@ -1854,7 +1866,7 @@ const MARKERS_ROUTE24 = [
   { cat: "trainer", spr: true, icon: "bug_catcher", x: 11, y: 25, dir: "left", name: "TopDresseur♂ n°3", team: [["butterfree", "Papilusion", 13], ["beedrill", "Dardargnan", 13]] },
   { cat: "trainer", spr: true, icon: "lass", x: 10, y: 28, dir: "right", name: "TopDresseur♀ n°2", team: [["jigglypuff", "Rondoudou", 15], ["oddish", "Mystherbe", 15]] },
   { cat: "trainer", spr: true, icon: "bug_catcher", x: 11, y: 31, dir: "left", name: "TopDresseur♂ n°4", team: [["diglett", "Taupiqueur", 15], ["psyduck", "Psykokwak", 15]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 10, y: 5, name: "CT45 CageEcl" }
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 10, y: 5, name: "CT45 CageEcl" }
 ];
 /* Route 25 (data/maps/objects/Route25.asm) : 9 dresseurs du chemin de la
    Villa Léo, CT19 FrappAt (TM19_SEISMIC_TOSS), 2 objets cachés
@@ -1874,7 +1886,7 @@ const MARKERS_ROUTE25 = [
   { cat: "trainer", spr: true, icon: "hiker", x: 8, y: 6, dir: "right", name: "Montagnard n°1", team: [["machop", "Machoc", 16], ["geodude", "Racaillou", 16]] },
   { cat: "trainer", spr: true, icon: "hiker", x: 23, y: 11, dir: "up", name: "Montagnard n°2", team: [["geodude", "Racaillou", 15], ["zubat", "Nosferapti", 15], ["machop", "Machoc", 15], ["geodude", "Racaillou", 15]] },
   { cat: "trainer", spr: true, icon: "hiker", x: 13, y: 9, dir: "right", name: "Montagnard n°3", team: [["onix", "Onix", 18]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 22, y: 4, name: "CT19 FrappAt" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 22, y: 4, name: "CT19 FrappAt" },
   { cat: "hidden", tipIcon: "ether", x: 54, y: 5, name: "Huile" },
   { cat: "hidden", tipIcon: "elixer", x: 10, y: 4, name: "Elixir" },
   { cat: "warp", x: 45, y: 5, name: "Villa Léo", dx: 2, dy: 7, badge: "Léo" },
@@ -1930,7 +1942,7 @@ const MARKERS_ROUTE9 = [
   { cat: "trainer", spr: true, icon: "bug_catcher", x: 22, y: 2, dir: "down", name: "Scout n°1", team: [["butterfree", "Papilusion", 21], ["beedrill", "Dardargnan", 21], ["scyther", "Insécateur", 21]] },
   { cat: "trainer", spr: true, icon: "hiker", x: 45, y: 15, dir: "right", name: "Montagnard n°3", team: [["machop", "Machoc", 23], ["onix", "Onix", 23]] },
   { cat: "trainer", spr: true, icon: "bug_catcher", x: 40, y: 8, dir: "right", name: "Scout n°2", team: [["venonat", "Mimitoss", 23], ["pinsir", "Scarabrute", 23]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 10, y: 15, name: "CT30 Télépor" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 10, y: 15, name: "CT30 Télépor" },
   { cat: "pnj", spr: true, icon: "hiker", x: 5, y: 8, name: "Montagnard" },
   { cat: "hidden", tipIcon: "ether", x: 14, y: 7, name: "Huile" }
 ];
@@ -2083,10 +2095,10 @@ const MARKERS_PP1F = [
   { cat: "trainer", spr: true, icon: "ball", tipIcon: "front_voltorb", x: 26, y: 16, name: "Voltorbe", team: [["voltorb", "Voltorbe", 40]] },
   { cat: "trainer", spr: true, icon: "ball", tipIcon: "front_voltorb", x: 37, y: 20, name: "Voltorbe", team: [["voltorb", "Voltorbe", 40]] },
   { cat: "trainer", spr: true, icon: "ball", tipIcon: "front_electrode", x: 25, y: 6, name: "Electrode", team: [["electrode", "Electrode", 43]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "carbos", x: 7, y: 13, name: "Carbone" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 26, y: 20, name: "CT25 FatalFo" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 20, y: 20, name: "CT33 Protect" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "metal_coat", x: 21, y: 2, name: "Peau Métal" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "carbos", ballMini: true, x: 7, y: 13, name: "Carbone" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 26, y: 20, name: "CT25 FatalFo" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 20, y: 20, name: "CT33 Protect" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "metal_coat", ballMini: true, x: 21, y: 2, name: "Peau Métal" },
   { cat: "hidden", tipIcon: "max_elixer", x: 38, y: 1, name: "Max Elixir" },
   { cat: "warp", x: 4, y: 23, name: "Route 10", dx: 8, dy: 45, badge: "Sortie" },
   { cat: "warp", x: 5, y: 23, name: "Route 10", dx: 8, dy: 45, badge: "Sortie" },
@@ -2100,8 +2112,8 @@ const MARKERS_PP1F = [
 const MARKERS_PP2F = [
   { cat: "trainer", spr: true, icon: "ball", tipIcon: "front_electrode", x: 16, y: 5, name: "Electrode", team: [["electrode", "Electrode", 43]] },
   { cat: "trainer", spr: true, icon: "zapdos", x: 4, y: 9, name: "Electhor", scripted: true, team: [["zapdos", "Electhor", 50]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "hp_up", x: 28, y: 3, name: "PV Plus" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "rare_candy", x: 34, y: 3, name: "Super Bonbon" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "hp_up", ballMini: true, x: 28, y: 3, name: "PV Plus" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "rare_candy", ballMini: true, x: 34, y: 3, name: "Super Bonbon" },
   { cat: "hidden", tipIcon: "pp_up", x: 1, y: 1, name: "PP Plus" },
   { cat: "warp", x: 0, y: 11, name: "Route 10", dx: 5, dy: 43, badge: "Sortie" },
   { cat: "warp", x: 16, y: 1, name: "Centrale (1F)", dx: 23, dy: 1, badge: "1F" }
@@ -2197,7 +2209,7 @@ const MARKERS_LT3F = [
   { cat: "trainer", spr: true, icon: "medium", x: 12, y: 3, dir: "left", name: "Exorciste n°1", team: [["gastly", "Fantominus", 26]] },
   { cat: "trainer", spr: true, icon: "medium", x: 9, y: 8, dir: "down", name: "Exorciste n°2", team: [["vulpix", "Goupix", 26]] },
   { cat: "trainer", spr: true, icon: "medium", x: 10, y: 13, dir: "down", name: "Exorciste n°3", team: [["gastly", "Fantominus", 27]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "escape_rope", x: 12, y: 1, name: "Corde Sortie" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "escape_rope", ballMini: true, x: 12, y: 1, name: "Corde Sortie" },
   { cat: "warp", x: 3, y: 9, name: "Tour Pokémon 2F", dx: 3, dy: 9, badge: "2F" },
   { cat: "warp", x: 18, y: 9, name: "Tour Pokémon 4F", dx: 18, dy: 9, badge: "4F" }
 ];
@@ -2208,9 +2220,9 @@ const MARKERS_LT4F = [
   { cat: "trainer", spr: true, icon: "medium", x: 5, y: 10, dir: "right", name: "Exorciste n°1", team: [["gastly", "Fantominus", 27], ["vulpix", "Goupix", 27]] },
   { cat: "trainer", spr: true, icon: "medium", x: 15, y: 7, dir: "down", name: "Exorciste n°2", team: [["gastly", "Fantominus", 28], ["drowzee", "Soporifik", 28]] },
   { cat: "trainer", spr: true, icon: "medium", x: 14, y: 12, dir: "left", name: "Exorciste n°3", team: [["haunter", "Spectrum", 29]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "elixer", x: 12, y: 10, name: "Elixir" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "awakening", x: 9, y: 10, name: "Réveil" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "hp_up", x: 12, y: 16, name: "PV Plus" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "elixer", ballMini: true, x: 12, y: 10, name: "Elixir" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "awakening", ballMini: true, x: 9, y: 10, name: "Réveil" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "hp_up", ballMini: true, x: 12, y: 16, name: "PV Plus" },
   { cat: "warp", x: 3, y: 9, name: "Tour Pokémon 5F", dx: 3, dy: 9, badge: "5F" },
   { cat: "warp", x: 18, y: 9, name: "Tour Pokémon 3F", dx: 18, dy: 9, badge: "3F" }
 ];
@@ -2223,7 +2235,7 @@ const MARKERS_LT5F = [
   { cat: "trainer", spr: true, icon: "medium", x: 14, y: 3, dir: "left", name: "Exorciste n°2", team: [["gastly", "Fantominus", 30], ["ninetales", "Feunard", 30]] },
   { cat: "trainer", spr: true, icon: "medium", x: 6, y: 10, dir: "right", name: "Exorciste n°3", team: [["mr_mime", "M.Mime", 30], ["gastly", "Fantominus", 30]] },
   { cat: "trainer", spr: true, icon: "medium", x: 9, y: 16, dir: "right", name: "Exorciste n°4", team: [["vulpix", "Goupix", 28], ["haunter", "Spectrum", 28]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "nugget", x: 6, y: 14, name: "Pépite" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "nugget", ballMini: true, x: 6, y: 14, name: "Pépite" },
   { cat: "pnj", spr: true, icon: "medium", x: 12, y: 8, name: "Exorciste", scripted: true },
   { cat: "pnj", badge: "Zone purifiée", x: 10, y: 8, name: "Zone purifiée" },
   { cat: "hidden", tipIcon: "elixer", x: 4, y: 12, name: "Elixir" },
@@ -2240,8 +2252,8 @@ const MARKERS_LT6F = [
   { cat: "trainer", spr: true, icon: "medium", x: 9, y: 5, dir: "down", name: "Exorciste n°2", team: [["haunter", "Spectrum", 35]] },
   { cat: "trainer", spr: true, icon: "medium", x: 16, y: 5, dir: "left", name: "Exorciste n°3", team: [["hypno", "Hypnomade", 33], ["haunter", "Spectrum", 33], ["ninetales", "Feunard", 33]] },
   { cat: "trainer", spr: true, icon: "front_marowrath", x: 10, y: 16, name: "Spectre", scripted: true, team: [["marowrath", "Osavengeur", 35]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "rare_candy", x: 6, y: 8, name: "Super Bonbon" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "x_accuracy", x: 14, y: 14, name: "Précision+" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "rare_candy", ballMini: true, x: 6, y: 8, name: "Super Bonbon" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "x_accuracy", ballMini: true, x: 14, y: 14, name: "Précision+" },
   { cat: "warp", x: 18, y: 9, name: "Tour Pokémon 5F", dx: 18, dy: 9, badge: "5F" },
   { cat: "warp", x: 9, y: 16, name: "Tour Pokémon 7F", dx: 9, dy: 16, badge: "7F" }
 ];
@@ -2300,8 +2312,8 @@ const MARKERS_ROUTE12 = [
   { cat: "trainer", spr: true, icon: "rocker", x: 14, y: 76, dir: "up", name: "Rocker", team: [["voltorb", "Voltorbe", 29], ["electrode", "Electrode", 29]] },
   { cat: "trainer", spr: true, icon: "fisher2", x: 6, y: 87, name: "Pêcheur n°5", team: [["magikarp", "Magicarpe", 27], ["magikarp", "Magicarpe", 27], ["magikarp", "Magicarpe", 29]] },
   { cat: "trainer", spr: true, icon: "black_hair_boy_1", x: 11, y: 92, dir: "left", name: "Dresseur jr♂", team: [["nidorina", "Nidorina", 29], ["nidorino", "Nidorino", 29]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 14, y: 35, name: "CT16 Jackpot" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "iron", x: 5, y: 89, name: "Fer" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 14, y: 35, name: "CT16 Jackpot" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "iron", ballMini: true, x: 5, y: 89, name: "Fer" },
   { cat: "warp", x: 10, y: 15, name: "Poste de garde Route 12", dx: 4, dy: 0, badge: "Poste" },
   { cat: "warp", x: 11, y: 15, name: "Poste de garde Route 12", dx: 5, dy: 0, badge: "Poste" },
   { cat: "warp", x: 10, y: 21, name: "Poste de garde Route 12", dx: 4, dy: 7, badge: "Poste" },
@@ -2413,7 +2425,7 @@ const MARKERS_UPR8 = [
    44 et désormais cliquables. Aucune rencontre. */
 const MARKERS_UPWE = [
   { cat: "trainer", spr: true, icon: "bike_shop_guy", x: 22, y: 2, dir: "down", name: "Dresseur aléatoire (après la Ligue)", scripted: true },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "m_gene", x: 22, y: 4, name: "Modif.Gène", hs: "cache" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "m_gene", ballMini: true, x: 22, y: 4, name: "Modif.Gène", hs: "cache" },
   { cat: "hidden", tipIcon: "nugget", x: 12, y: 2, name: "Pépite" },
   { cat: "hidden", tipIcon: "elixer", x: 21, y: 5, name: "Élixir" },
   { cat: "warp", x: 3, y: 1, name: "Passage Souterrain Route 7", dx: 3, dy: 7, badge: "R7" },
@@ -2498,8 +2510,8 @@ const MARKERS_DOJO = [
   { cat: "trainer", spr: true, icon: "blackbelt", x: 3, y: 6, dir: "right", name: "Karatéka n°2", team: [["machop", "Machoc", 32], ["machoke", "Machopeur", 32]] },
   { cat: "trainer", spr: true, icon: "blackbelt", x: 6, y: 5, dir: "left", name: "Karatéka n°3", team: [["primeape", "Colossinge", 36]] },
   { cat: "trainer", spr: true, icon: "blackbelt", x: 6, y: 7, dir: "left", name: "Karatéka n°4", team: [["machop", "Machoc", 31], ["mankey", "Férosinge", 31], ["primeape", "Colossinge", 31]] },
-  { cat: "pnj", spr: true, icon: "ball", x: 4, y: 1, name: "Poké Ball", give: ["front_hitmonlee", "Kicklee n.35"], scripted: true },
-  { cat: "pnj", spr: true, icon: "ball", x: 5, y: 1, name: "Poké Ball", give: ["front_hitmonchan", "Tygnon n.35"], scripted: true },
+  { cat: "pnj", spr: true, icon: "pokeball", x: 4, y: 1, name: "Poké Ball", give: ["front_hitmonlee", "Kicklee n.35"], scripted: true },
+  { cat: "pnj", spr: true, icon: "pokeball", x: 5, y: 1, name: "Poké Ball", give: ["front_hitmonchan", "Tygnon n.35"], scripted: true },
   { cat: "warp", x: 4, y: 11, name: "Safrania", dx: 26, dy: 3, badge: "Sortie" },
   { cat: "warp", x: 5, y: 11, name: "Safrania", dx: 26, dy: 3, badge: "Sortie" }
 ];
@@ -2693,7 +2705,7 @@ const MARKERS_SYLPH3F = [
   { cat: "pnj", spr: true, icon: "lapras_giver", x: 24, y: 8, name: "Homme" },
   { cat: "trainer", spr: true, icon: "rocket", x: 20, y: 7, dir: "left", name: "Rocket n°21", team: [["raticate", "Rattatac", 38], ["hypno", "Hypnomade", 38], ["muk", "Grotadmorv", 38]] },
   { cat: "trainer", spr: true, icon: "oak_aide", x: 7, y: 9, dir: "down", name: "Scientifique n°3", team: [["electrode", "Electrode", 39], ["weezing", "Smogogo", 39]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "hyper_potion", x: 8, y: 5, name: "Hyper Potion" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "hyper_potion", ballMini: true, x: 8, y: 5, name: "Hyper Potion" },
   { cat: "warp", x: 26, y: 0, name: "Sylphe SARL (2F)", dx: 26, dy: 0, badge: "2F" },
   { cat: "warp", x: 24, y: 0, name: "Sylphe SARL (4F)", dx: 24, dy: 0, badge: "4F" },
   { cat: "warp", x: 20, y: 0, name: "Ascenseur Sylphe", dx: 1, dy: 3, badge: "ASC" },
@@ -2717,9 +2729,9 @@ const MARKERS_SYLPH4F = [
   { cat: "trainer", spr: true, icon: "rocket", x: 9, y: 14, dir: "right", name: "Rocket n°22", team: [["machoke", "Machopeur", 39], ["hypno", "Hypnomade", 39]] },
   { cat: "trainer", spr: true, icon: "oak_aide", x: 14, y: 6, dir: "left", name: "Scientifique n°4", team: [["electabuzz", "Elektek", 41]] },
   { cat: "trainer", spr: true, icon: "rocket", x: 26, y: 10, dir: "up", name: "Rocket n°23", team: [["arbok", "Arbok", 38], ["vileplume", "Rafflesia", 38], ["marowak", "Ossatueur", 38]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "full_heal", x: 3, y: 9, name: "Guérison" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "max_revive", x: 4, y: 7, name: "Rappel Max" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "escape_rope", x: 5, y: 8, name: "Corde Sortie" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "full_heal", ballMini: true, x: 3, y: 9, name: "Guérison" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "max_revive", ballMini: true, x: 4, y: 7, name: "Rappel Max" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "escape_rope", ballMini: true, x: 5, y: 8, name: "Corde Sortie" },
   { cat: "warp", x: 24, y: 0, name: "Sylphe SARL (3F)", dx: 24, dy: 0, badge: "3F" },
   { cat: "warp", x: 26, y: 0, name: "Sylphe SARL (5F)", dx: 26, dy: 0, badge: "5F" },
   { cat: "warp", x: 20, y: 0, name: "Ascenseur Sylphe", dx: 1, dy: 3, badge: "ASC" },
@@ -2742,9 +2754,9 @@ const MARKERS_SYLPH5F = [
   { cat: "trainer", spr: true, icon: "oak_aide", x: 8, y: 3, dir: "right", name: "Scientifique n°5", team: [["magneton", "Magnéton", 36], ["porygon", "Porygon", 36], ["weezing", "Smogogo", 36], ["magnemite", "Magnéti", 36]] },
   { cat: "trainer", spr: true, icon: "juggler", x: 18, y: 10, dir: "up", name: "Jongleur", team: [["kadabra", "Kadabra", 37], ["mr_mime", "M.Mime", 37]] },
   { cat: "trainer", spr: true, icon: "rocket", x: 28, y: 4, dir: "up", name: "Rocket n°25", team: [["hypno", "Hypnomade", 41]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 2, y: 13, name: "CT09 Bélier" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "protein", x: 4, y: 6, name: "Protéine" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "card_key", x: 14, y: 15, name: "Carte" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 2, y: 13, name: "CT09 Bélier" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "protein", ballMini: true, x: 4, y: 6, name: "Protéine" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "card_key", ballMini: true, x: 14, y: 15, name: "Carte" },
   { cat: "hidden", tipIcon: "elixer", x: 12, y: 3, name: "Elixir" },
   { cat: "warp", x: 24, y: 0, name: "Sylphe SARL (6F)", dx: 14, dy: 0, badge: "6F" },
   { cat: "warp", x: 26, y: 0, name: "Sylphe SARL (4F)", dx: 26, dy: 0, badge: "4F" },
@@ -2771,8 +2783,8 @@ const MARKERS_SYLPH6F = [
   { cat: "trainer", spr: true, icon: "rocket", x: 17, y: 3, dir: "right", name: "Rocket n°26", team: [["muk", "Grotadmorv", 39], ["primeape", "Colossinge", 39]] },
   { cat: "trainer", spr: true, icon: "oak_aide", x: 7, y: 8, dir: "down", name: "Scientifique n°6", team: [["voltorb", "Voltorbe", 35], ["staryu", "Stari", 35], ["electrode", "Electrode", 35], ["magneton", "Magnéton", 35], ["starmie", "Staross", 35]] },
   { cat: "trainer", spr: true, icon: "rocket", x: 14, y: 15, dir: "left", name: "Rocket n°27", team: [["golbat", "Nosferalto", 38], ["vileplume", "Rafflesia", 38], ["raticate", "Rattatac", 38]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "hp_up", x: 3, y: 12, name: "PV Plus" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "x_accuracy", x: 2, y: 15, name: "Précision +" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "hp_up", ballMini: true, x: 3, y: 12, name: "PV Plus" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "x_accuracy", ballMini: true, x: 2, y: 15, name: "Précision +" },
   { cat: "warp", x: 16, y: 0, name: "Sylphe SARL (7F)", dx: 14, dy: 0, badge: "7F" },
   { cat: "warp", x: 14, y: 0, name: "Sylphe SARL (5F)", dx: 24, dy: 0, badge: "5F" },
   { cat: "warp", x: 18, y: 0, name: "Ascenseur Sylphe", dx: 1, dy: 3, badge: "ASC" },
@@ -2800,8 +2812,8 @@ const MARKERS_SYLPH7F = [
   { cat: "trainer", spr: true, icon: "rocket", x: 20, y: 2, dir: "left", name: "Rocket n°29", team: [["marowak", "Ossatueur", 39], ["magmar", "Magmar", 39]] },
   { cat: "trainer", spr: true, icon: "rocket", x: 19, y: 14, dir: "right", name: "Rocket n°30", team: [["sandslash", "Sablaireau", 39], ["vileplume", "Rafflesia", 39]] },
   { cat: "trainer", spr: true, icon: "blue", x: 3, y: 7, dir: "up", name: "Rival (6e duel)", scripted: true, team: [["pidgeot", "Roucarnage", 43], [["growlithe", "Caninos", 44], ["gyarados", "Léviator", 44], ["nidorino", "Nidorino", 44]], [["nidorino", "Nidorino", 43], ["growlithe", "Caninos", 43], ["gyarados", "Léviator", 43]], ["alakazam", "Alakazam", 44], [["blastoise", "Tortank", 46], ["venusaur", "Florizarre", 46], ["charizard", "Dracaufeu", 46]]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "calcium", x: 1, y: 9, name: "Calcium" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 24, y: 11, name: "CT04 LancFla" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "calcium", ballMini: true, x: 1, y: 9, name: "Calcium" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 24, y: 11, name: "CT04 LancFla" },
   { cat: "warp", x: 16, y: 0, name: "Sylphe SARL (8F)", dx: 14, dy: 0, badge: "8F" },
   { cat: "warp", x: 22, y: 0, name: "Sylphe SARL (6F)", dx: 16, dy: 0, badge: "6F" },
   { cat: "warp", x: 18, y: 0, name: "Ascenseur Sylphe", dx: 1, dy: 3, badge: "ASC" },
@@ -2858,9 +2870,9 @@ const MARKERS_SYLPH10F = [
   { cat: "trainer", spr: true, icon: "rocket", x: 1, y: 9, dir: "right", name: "Rocket n°35", team: [["machoke", "Machopeur", 43]] },
   { cat: "trainer", spr: true, icon: "oak_aide", x: 10, y: 2, dir: "left", name: "Scientifique n°10", team: [["weezing", "Smogogo", 40], ["omastar", "Amonistar", 40]] },
   { cat: "pnj", spr: true, icon: "kimonowoman", x: 9, y: 15, name: "Femme" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 2, y: 12, name: "CT26 Séisme" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "rare_candy", x: 4, y: 14, name: "Super Bonbon" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "carbos", x: 5, y: 11, name: "Carbone" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 2, y: 12, name: "CT26 Séisme" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "rare_candy", ballMini: true, x: 4, y: 14, name: "Super Bonbon" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "carbos", ballMini: true, x: 5, y: 11, name: "Carbone" },
   { cat: "warp", x: 8, y: 0, name: "Sylphe SARL (9F)", dx: 14, dy: 0, badge: "9F" },
   { cat: "warp", x: 10, y: 0, name: "Sylphe SARL (11F)", dx: 9, dy: 0, badge: "11F" },
   { cat: "warp", x: 12, y: 0, name: "Ascenseur Sylphe", dx: 1, dy: 3, badge: "ASC" },
@@ -4160,7 +4172,7 @@ const MAPS = [
     fish: [
       ["Pêche", "Impossible : aucun point d'eau sur la carte."]
     ] },
-  { id: "CeladonChiefHouse", label: "Maison du Chef", w: 128, h: 128, b64: MAP_CCHEF_B64, wild: null,
+  { id: "CeladonChiefHouse", label: "Maison du Patron", w: 128, h: 128, b64: MAP_CCHEF_B64, wild: null,
     fish: [
       ["Pêche", "Impossible : aucun point d'eau sur la carte."]
     ] },
@@ -4279,15 +4291,15 @@ const MAPS = [
     fish: [
       ["Pêche", "Impossible : aucun point d'eau sur la carte."]
     ] },
-  { id: "Route16WestGate", label: "Poste de garde de la Clairière (Laboratoire abandonné)", w: 128, h: 288, b64: MAP_R16WGATE_B64, wild: null,
+  { id: "Route16WestGate", label: "Laboratoire abandonné", w: 128, h: 288, b64: MAP_R16WGATE_B64, wild: null,
     fish: [
       ["Pêche", "Impossible : aucun point d'eau sur la carte."]
     ] },
-  { id: "Route16WestHouse", label: "Maison de la Clairière", w: 128, h: 128, b64: MAP_R16WHOUSE_B64, wild: null,
+  { id: "Route16WestHouse", label: "Maison de la Clairière", spoil: true, w: 128, h: 128, b64: MAP_R16WHOUSE_B64, wild: null,
     fish: [
       ["Pêche", "Impossible : aucun point d'eau sur la carte."]
     ] },
-  { id: "Route16FlyHouse", label: "Maison Volante (Route 16)", w: 128, h: 128, b64: MAP_R16FLYHOUSE_B64, wild: null,
+  { id: "Route16FlyHouse", label: "Maison du Vol", w: 128, h: 128, b64: MAP_R16FLYHOUSE_B64, wild: null,
     fish: [
       ["Pêche", "Impossible : aucun point d'eau sur la carte."]
     ] },
@@ -4905,7 +4917,7 @@ const MARKERS_SSA1FR = [
   { cat: "pnj", spr: true, icon: "little_girl", x: 2, y: 11, dir: "down", name: "Gamine" },
   { cat: "pnj", spr: true, icon: "wigglytuff", x: 3, y: 11, dir: "down", name: "Grodoudou" },
   { cat: "pnj", spr: true, icon: "girl", x: 10, y: 13, dir: "right", name: "Fillette" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 12, y: 15, name: "CT08 Plaquag" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 12, y: 15, name: "CT08 Plaquag" },
   { cat: "pnj", spr: true, icon: "gentleman", x: 21, y: 13, name: "Gentleman" },
   { cat: "warp", x: 0, y: 0, name: "L'Océane (1er pont)", dx: 31, dy: 8, badge: "1F" },
   { cat: "warp", x: 10, y: 0, name: "L'Océane (1er pont)", dx: 23, dy: 8, badge: "1F" },
@@ -4942,10 +4954,10 @@ const MARKERS_SSA2FR = [
   { cat: "trainer", spr: true, icon: "gentleman", x: 0, y: 14, dir: "right", name: "Gentleman", team: [["growlithe", "Caninos", 18], ["ponyta", "Ponyta", 18]] },
   { cat: "trainer", spr: true, icon: "lass", x: 2, y: 11, dir: "down", name: "Fillette", team: [["jigglypuff", "Rondoudou", 21]] },
   { cat: "pnj", spr: true, icon: "gentleman", x: 1, y: 2, dir: "down", name: "Gentleman", spoil2: true, team2: [["charizard", "Dracaufeu", 64], ["nidoqueen", "Nidoqueen", 64], ["kangaskhan", "Kangourex", 64], ["nidoking", "Nidoking", 64], ["rhydon", "Rhinoféros", 65], ["tyranitar", "Tyranocif", 65]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "max_ether", x: 12, y: 1, name: "Huile Max" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "max_ether", ballMini: true, x: 12, y: 1, name: "Huile Max" },
   { cat: "pnj", spr: true, icon: "gentleman", x: 21, y: 2, dir: "down", name: "Gentleman" },
   { cat: "pnj", spr: true, icon: "old_person", x: 22, y: 1, dir: "down", name: "Personne âgée" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "rare_candy", x: 0, y: 12, name: "Super Bonbon" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "rare_candy", ballMini: true, x: 0, y: 12, name: "Super Bonbon" },
   { cat: "pnj", spr: true, icon: "gentleman", x: 12, y: 12, dir: "down", name: "Gentleman" },
   { cat: "pnj", spr: true, icon: "young_boy", x: 11, y: 14, name: "Garçon" },
   { cat: "pnj", spr: true, icon: "brunette_girl", x: 22, y: 12, dir: "left", name: "Fille" },
@@ -5033,9 +5045,9 @@ const MARKERS_SSAB1FR = [
   { cat: "hidden", tipIcon: "hyper_potion", x: 3, y: 1, name: "Hyper Potion" },
   { cat: "pnj", spr: true, icon: "black_hair_boy_2", x: 10, y: 13, dir: "right", name: "Homme" },
   { cat: "pnj", spr: true, icon: "machoke", x: 11, y: 12, name: "Machopeur" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "ether", x: 20, y: 2, name: "Huile" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 10, y: 2, name: "CT44 Repos" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "max_potion", x: 12, y: 11, name: "Potion Max" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "ether", ballMini: true, x: 20, y: 2, name: "Huile" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 10, y: 2, name: "CT44 Repos" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "max_potion", ballMini: true, x: 12, y: 11, name: "Potion Max" },
   { cat: "warp", x: 2, y: 5, name: "L'Océane (pont B1)", dx: 7, dy: 3, badge: "B1" },
   { cat: "warp", x: 3, y: 5, name: "L'Océane (pont B1)", dx: 7, dy: 3, badge: "B1" },
   { cat: "warp", x: 12, y: 5, name: "L'Océane (pont B1)", dx: 11, dy: 3, badge: "B1" },
@@ -5068,8 +5080,10 @@ MAPS[147].markers = MARKERS_SSAKCH;
 
 /* Céladopole (CeladonCity.asm) : 13 warps, 11 PNJ (Rhinocorne et Tartard scripted,
    la vieille personne au bord de la rivière polluée donne la CT37), aucun retour de
-   la vieille 2F ; cachés (hidden_objects.asm db y,x) : PP Plus, Hyper Potion,
-   Rappel Max ; pêche Méga Canne uniquement (super_rod.asm FishingGroup2) :
+   la vieille 2F ; le Rocket au nord vend ×1000 jetons pour 15 000 P$ après
+   la Ligue (scripts/CeladonCity.asm) ; cachés (hidden_objects.asm db y,x) :
+   PP Plus, Hyper Potion, Rappel Max ; pêche Méga Canne uniquement
+   (super_rod.asm FishingGroup2) :
    Tadmorv n.10/11/15, Grotadmorv n.20. */
 const MARKERS_CCITY = [
   { cat: "pnj", spr: true, icon: "little_girl", x: 5, y: 15, name: "Gamine" },
@@ -5080,7 +5094,7 @@ const MARKERS_CCITY = [
   { cat: "pnj", spr: true, icon: "fisher2", x: 32, y: 12, dir: "left", name: "Pêcheur" },
   { cat: "pnj", spr: true, icon: "polywrath", x: 30, y: 12, dir: "right", name: "Tartard", scripted: true },
   { cat: "pnj", spr: true, icon: "rocket", x: 32, y: 29, name: "Rocket" },
-  { cat: "pnj", spr: true, icon: "rocket", x: 15, y: 2, name: "Rocket" },
+  { cat: "pnj", spr: true, icon: "rocket", x: 15, y: 2, name: "Rocket", scripted: true, shop: [["pokedollar", "Jetons ×1000 (après la Ligue)", 15000]] },
   { cat: "pnj", spr: true, icon: "fat_bald_guy", x: 10, y: 20, name: "Homme" },
   { cat: "pnj", spr: true, icon: "rhyhorn", x: 9, y: 20, name: "Rhinocorne", scripted: true },
   { cat: "hidden", tipIcon: "pp_up", x: 48, y: 15, name: "PP Plus" },
@@ -5096,7 +5110,7 @@ const MARKERS_CCITY = [
   { cat: "warp", x: 28, y: 19, name: "Casino Rocket", dx: 15, dy: 17, badge: "Casino" },
   { cat: "warp", x: 33, y: 19, name: "Salle des prix (Casino)", dx: 4, dy: 7, badge: "Prix" },
   { cat: "warp", x: 29, y: 27, name: "Restaurant Au Caninos mal léché", dx: 3, dy: 7, badge: "Resto" },
-  { cat: "warp", x: 33, y: 27, name: "Maison du Chef", dx: 2, dy: 7, badge: "Chef" },
+  { cat: "warp", x: 33, y: 27, name: "Maison du Patron", dx: 2, dy: 7, badge: "Patron" },
   { cat: "warp", x: 41, y: 27, name: "Hôtel de Céladopole", dx: 3, dy: 7, badge: "Hôtel" },
   { cat: "warp", x: 23, y: 29, name: "École de Céladopole", dx: 2, dy: 7, badge: "École" }
 ];
@@ -5188,30 +5202,33 @@ const MARKERS_CDINER = [
   { cat: "warp", x: 3, y: 7, name: "Céladopole", dx: 29, dy: 27, badge: "Sortie" },
   { cat: "warp", x: 4, y: 7, name: "Céladopole", dx: 29, dy: 27, badge: "Sortie" }
 ];
-/* Maison du Chef : il achète des #mon (mécanique joenote) ; un Rocket et un
-   marin qui met en garde contre le bouton derrière l'affiche du Casino. */
+/* Maison du Patron : le Patron du Casino rachète le Pokémon de tête (offre
+   selon les DV, ×4 si shiny, ×niveau ; mécanique joenote, après Giovanni à
+   Sylphe). Un Rocket et un marin qui mettent en garde contre le bouton
+   derrière l'affiche du Casino. */
 const MARKERS_CCHEF = [
-  { cat: "pnj", spr: true, icon: "old_person", x: 4, y: 2, dir: "down", name: "Personne âgée", scripted: true },
+  { cat: "pnj", spr: true, icon: "old_person", x: 4, y: 2, dir: "down", name: "Patron du Casino", scripted: true, shop: [["pokedollar", "Rachat de Pokémon", "Offre selon DV et niveau", "×4 si shiny"]] },
   { cat: "pnj", spr: true, icon: "rocket", x: 1, y: 4, name: "Rocket" },
   { cat: "pnj", spr: true, icon: "sailor", x: 5, y: 6, dir: "left", name: "Marin" },
   { cat: "warp", x: 2, y: 7, name: "Céladopole", dx: 33, dy: 27, badge: "Sortie" },
   { cat: "warp", x: 3, y: 7, name: "Céladopole", dx: 33, dy: 27, badge: "Sortie" }
 ];
-/* Hôtel de Céladopole : le Distingué évalue les DV du #mon montré (100 jetons
-   par bonne stat, ×4 s'il est shiny) — pas de donne. */
+/* Hôtel de Céladopole : le Chasseur de Pokémon demande à voir un #mon
+   précis ; gain 100 jetons + bonus DV, ×4 si shiny ; Boîte Jeton requise
+   (joenote). */
 const MARKERS_CHOTEL = [
   { cat: "pnj", spr: true, icon: "old_medium_woman", x: 3, y: 1, dir: "down", name: "Vieille femme" },
   { cat: "pnj", spr: true, icon: "foulard_woman", x: 2, y: 4, name: "Femme" },
   { cat: "pnj", spr: true, icon: "black_hair_boy_2", x: 8, y: 4, name: "Homme" },
-  { cat: "pnj", spr: true, icon: "gentleman", x: 11, y: 7, dir: "left", name: "Gentleman", scripted: true },
+  { cat: "pnj", spr: true, icon: "gentleman", x: 11, y: 7, dir: "left", name: "Chasseur de Pokémon", scripted: true, shop: [["coin_case", "Jetons ×100 + bonus DV (Pokémon demandé)", "Boîte Jeton requise", "×4 si shiny"]] },
   { cat: "warp", x: 3, y: 7, name: "Céladopole", dx: 41, dy: 27, badge: "Sortie" },
   { cat: "warp", x: 4, y: 7, name: "Céladopole", dx: 41, dy: 27, badge: "Sortie" }
 ];
-/* École de Céladopole : Effaceur de capacités et Maître des capacités
-   (réapprentissage), deux ajouts du hack. */
+/* École de Céladopole : Professeur des capacités (réapprentissage, 1000 P$
+   le cours) et Effaceuse de capacités (gratuit), deux ajouts du hack. */
 const MARKERS_CSCHOOL = [
-  { cat: "pnj", spr: true, icon: "little_girl", x: 4, y: 5, dir: "left", name: "Gamine", scripted: true },
-  { cat: "pnj", spr: true, icon: "oak_aide", x: 2, y: 1, dir: "down", name: "Assistant Prof. Chen", scripted: true },
+  { cat: "pnj", spr: true, icon: "little_girl", x: 4, y: 5, dir: "left", name: "Effaceuse de capacités", scripted: true, shop: [["tm_hm", "Effacement d'une capacité", "Gratuit"]] },
+  { cat: "pnj", spr: true, icon: "oak_aide", x: 2, y: 1, dir: "down", name: "Professeur des capacités", scripted: true, shop: [["tm_hm", "Réapprentissage d'une capacité", 1000]] },
   { cat: "pnj", spr: true, icon: "young_boy", x: 0, y: 3, dir: "up", name: "Garçon" },
   { cat: "warp", x: 2, y: 7, name: "Céladopole", dx: 23, dy: 29, badge: "Sortie" },
   { cat: "warp", x: 3, y: 7, name: "Céladopole", dx: 23, dy: 29, badge: "Sortie" }
@@ -5307,7 +5324,7 @@ const MARKERS_CMAS2F = [
   { cat: "warp", x: 4, y: 1, name: "Manoir Céladon (3F)", dx: 4, dy: 1, badge: "3F" }
 ];
 const MARKERS_CMAS3F = [
-  { cat: "pnj", spr: true, icon: "bike_shop_guy", x: 0, y: 4, dir: "up", name: "Programmeur" },
+  { cat: "pnj", spr: true, icon: "bike_shop_guy", x: 0, y: 4, dir: "up", name: "Vendeur" },
   { cat: "pnj", spr: true, icon: "mart_guy", x: 3, y: 4, dir: "up", name: "Vendeur" },
   { cat: "pnj", spr: true, icon: "black_hair_boy_2", x: 0, y: 7, dir: "up", name: "Homme" },
   { cat: "pnj", spr: true, icon: "lapras_giver", x: 2, y: 3, name: "Homme", scripted: true },
@@ -5324,7 +5341,7 @@ const MARKERS_CMASROOF = [
 ];
 const MARKERS_CMASRHOUSE = [
   { cat: "pnj", spr: true, icon: "hiker", x: 2, y: 2, dir: "down", name: "Montagnard" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "front_eevee", x: 4, y: 3, name: "Evoli n.25" },
+  { cat: "item", spr: true, icon: "pokeball", tipIcon: "front_eevee", ballMini: true, x: 4, y: 3, name: "Evoli n.25" },
   { cat: "warp", x: 2, y: 7, name: "Manoir Céladon (toit)", dx: 2, dy: 7, badge: "Toit" },
   { cat: "warp", x: 3, y: 7, name: "Manoir Céladon (toit)", dx: 2, dy: 7, badge: "Toit" }
 ];
@@ -5339,8 +5356,8 @@ const MARKERS_RHOB1F = [
   { cat: "trainer", spr: true, icon: "rocket", x: 18, y: 17, dir: "down", name: "Rocket n°10", team: [["grimer", "Tadmorv", 25], ["koffing", "Smogo", 25], ["cubone", "Osselait", 25]] },
   { cat: "trainer", spr: true, icon: "rocket", x: 15, y: 25, dir: "right", name: "Rocket n°11", team: [["drowzee", "Soporifik", 26], ["sandshrew", "Sabelette", 26], ["raticate", "Rattatac", 26]] },
   { cat: "trainer", spr: true, icon: "rocket", x: 28, y: 18, dir: "left", name: "Rocket n°12", team: [["grimer", "Tadmorv", 25], ["arbok", "Arbok", 25]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "escape_rope", x: 11, y: 14, name: "Corde Sortie" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "hyper_potion", x: 9, y: 17, name: "Hyper Potion" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "escape_rope", ballMini: true, x: 11, y: 14, name: "Corde Sortie" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "hyper_potion", ballMini: true, x: 9, y: 17, name: "Hyper Potion" },
   { cat: "hidden", tipIcon: "pp_up", x: 21, y: 15, name: "PP Plus" },
   { cat: "warp", x: 23, y: 2, name: "Planque Rocket (B2F)", dx: 27, dy: 8, badge: "B2F" },
   { cat: "warp", x: 21, y: 2, name: "Casino Rocket", dx: 17, dy: 4, badge: "Casino" },
@@ -5350,10 +5367,10 @@ const MARKERS_RHOB1F = [
 ];
 const MARKERS_RHOB2F = [
   { cat: "trainer", spr: true, icon: "rocket", x: 20, y: 12, dir: "down", name: "Rocket n°13", team: [["golbat", "Nosferalto", 24], ["koffing", "Smogo", 24], ["grimer", "Tadmorv", 24], ["raticate", "Rattatac", 24]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "moon_stone", x: 1, y: 11, name: "Pierre Lune" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "nugget", x: 16, y: 8, name: "Pépite" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 6, y: 12, name: "CT07 EmpalKo" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "super_potion", x: 3, y: 21, name: "Super Potion" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "moon_stone", ballMini: true, x: 1, y: 11, name: "Pierre Lune" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "nugget", ballMini: true, x: 16, y: 8, name: "Pépite" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 6, y: 12, name: "CT07 EmpalKo" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "super_potion", ballMini: true, x: 3, y: 21, name: "Super Potion" },
   { cat: "warp", x: 27, y: 8, name: "Planque Rocket (B1F)", dx: 23, dy: 2, badge: "B1F" },
   { cat: "warp", x: 21, y: 8, name: "Planque Rocket (B3F)", dx: 25, dy: 6, badge: "B3F" },
   { cat: "warp", x: 24, y: 19, name: "Ascenseur de la Planque", dx: 2, dy: 2, badge: "ASC" },
@@ -5363,8 +5380,8 @@ const MARKERS_RHOB2F = [
 const MARKERS_RHOB3F = [
   { cat: "trainer", spr: true, icon: "rocket", x: 10, y: 22, dir: "right", name: "Rocket n°14", team: [["ekans", "Abo", 26], ["raticate", "Rattatac", 26], ["drowzee", "Soporifik", 26]] },
   { cat: "trainer", spr: true, icon: "rocket", x: 26, y: 12, dir: "up", name: "Rocket n°15", team: [["machoke", "Machopeur", 27], ["arbok", "Arbok", 27]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 26, y: 17, name: "CT10 Damoclè" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "rare_candy", x: 20, y: 14, name: "Super Bonbon" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 26, y: 17, name: "CT10 Damoclè" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "rare_candy", ballMini: true, x: 20, y: 14, name: "Super Bonbon" },
   { cat: "hidden", tipIcon: "nugget", x: 27, y: 17, name: "Pépite" },
   { cat: "warp", x: 25, y: 6, name: "Planque Rocket (B2F)", dx: 21, dy: 8, badge: "B2F" },
   { cat: "warp", x: 19, y: 18, name: "Planque Rocket (B4F)", dx: 19, dy: 10, badge: "B4F" }
@@ -5374,11 +5391,11 @@ const MARKERS_RHOB4F = [
   { cat: "trainer", spr: true, icon: "jessie", x: 24, y: 12, dir: "down", name: "Jessie", scripted: true, team: [["koffing", "Smogo", 28], ["meowth", "Miaouss", 29], ["arbok", "Arbok", 28]] },
   { cat: "trainer", spr: true, icon: "james", x: 25, y: 12, dir: "down", name: "James", scripted: true, team: [["koffing", "Smogo", 28], ["meowth", "Miaouss", 29], ["arbok", "Arbok", 28]] },
   { cat: "trainer", spr: true, icon: "rocket", x: 11, y: 2, dir: "down", name: "Rocket n°16", team: [["koffing", "Smogo", 26], ["golbat", "Nosferalto", 26]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "hp_up", x: 10, y: 12, name: "PV Plus" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 9, y: 4, name: "CT17 Sacrifi" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "iron", x: 12, y: 20, name: "Fer" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "silph_scope", x: 25, y: 2, name: "Scope Sylphe" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "lift_key", x: 10, y: 2, name: "Clé Asc." },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "hp_up", ballMini: true, x: 10, y: 12, name: "PV Plus" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 9, y: 4, name: "CT17 Sacrifi" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "iron", ballMini: true, x: 12, y: 20, name: "Fer" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "silph_scope", ballMini: true, x: 25, y: 2, name: "Scope Sylphe" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "lift_key", ballMini: true, x: 10, y: 2, name: "Clé Asc." },
   { cat: "hidden", tipIcon: "super_potion", x: 25, y: 1, name: "Super Potion" },
   { cat: "warp", x: 19, y: 10, name: "Planque Rocket (B3F)", dx: 19, dy: 18, badge: "B3F" },
   { cat: "warp", x: 24, y: 15, name: "Ascenseur de la Planque", dx: 2, dy: 2, badge: "ASC" },
@@ -5439,7 +5456,7 @@ MAPS[172].markers = MARKERS_RHOB4F;
 MAPS[173].markers = MARKERS_RHOELEV;
 
 /* Route 16 : Ronflex bloque la piste (script ld 30, pas de HS) ; six Motards/
-   Loubards du camping ; warp vers la Maison Volante (CS02) par la 8e porte, poste
+   Loubards du camping ; warp vers la Maison du Vol (CS02) par la 8e porte, poste
    de garde (2 entrées haut/bas, chaque côté du bâtiment à cheval sur la route) ;
    sortie ouest vers la Clairière. Hidden : Pierre Lune. */
 const MARKERS_R16 = [
@@ -5459,16 +5476,16 @@ const MARKERS_R16 = [
   { cat: "warp", x: 17, y: 7, name: "Poste de garde Route 16 (1F)", dx: 0, dy: 3, badge: "Poste" },
   { cat: "warp", x: 24, y: 6, name: "Poste de garde Route 16 (1F)", dx: 7, dy: 2, badge: "Poste" },
   { cat: "warp", x: 24, y: 7, name: "Poste de garde Route 16 (1F)", dx: 7, dy: 3, badge: "Poste" },
-  { cat: "warp", x: 7, y: 7, name: "Maison Volante (Route 16)", dx: 2, dy: 7, badge: "Vol" },
-  { cat: "warp", x: 2, y: 8, name: "Poste de garde de la Clairière (Laboratoire abandonné)", dx: 7, dy: 14, badge: "Poste" },
-  { cat: "warp", x: 2, y: 9, name: "Poste de garde de la Clairière (Laboratoire abandonné)", dx: 7, dy: 15, badge: "Poste" }
+  { cat: "warp", x: 7, y: 7, name: "Maison du Vol", dx: 2, dy: 7, badge: "Vol" },
+  { cat: "warp", x: 2, y: 8, name: "Laboratoire abandonné", dx: 7, dy: 14, badge: "Poste" },
+  { cat: "warp", x: 2, y: 9, name: "Laboratoire abandonné", dx: 7, dy: 15, badge: "Poste" }
 ];
 /* Clairière (Route 16 Ouest) : aucun PNJ ; maison et sortie est vers le poste
    de garde du vrai monde (portail entre la route et la Clairière). */
 const MARKERS_R16W = [
   { cat: "warp", x: 17, y: 25, name: "Maison de la Clairière", dx: 2, dy: 7, badge: "Maison" },
-  { cat: "warp", x: 33, y: 4, name: "Poste de garde de la Clairière (Laboratoire abandonné)", dx: 0, dy: 14, badge: "Poste" },
-  { cat: "warp", x: 33, y: 5, name: "Poste de garde de la Clairière (Laboratoire abandonné)", dx: 0, dy: 15, badge: "Poste" }
+  { cat: "warp", x: 33, y: 4, name: "Laboratoire abandonné", dx: 0, dy: 14, badge: "Poste" },
+  { cat: "warp", x: 33, y: 5, name: "Laboratoire abandonné", dx: 0, dy: 15, badge: "Poste" }
 ];
 /* Piste Cyclable (Route 17) : 10 Motards/Loubards jusqu'à mi-piste ;
    4 objets cachés (joenote : deux Max Elixir). Aucun warp. */
@@ -5518,7 +5535,7 @@ const MARKERS_R16GATE2F = [
   { cat: "pnj", spr: true, icon: "little_girl", x: 2, y: 5, name: "Gamine" },
   { cat: "warp", x: 7, y: 7, name: "Poste de garde Route 16 (1F)", dx: 6, dy: 12, badge: "1F" }
 ];
-/* Poste de garde de la Clairière : sous-monde « Clairière » entre Route 16 et
+/* Laboratoire abandonné : sous-monde « Clairière » entre Route 16 et
    Route 2 (connexion spéciale du hack) ; aquarium, coffre et lettres (signes). */
 const MARKERS_R16WGATE = [
   { cat: "warp", x: 0, y: 14, name: "Clairière (Route 16 Ouest)", dx: 33, dy: 4, badge: "Clairière" },
@@ -5533,7 +5550,7 @@ const MARKERS_R16WHOUSE = [
   { cat: "warp", x: 2, y: 7, name: "Clairière (Route 16 Ouest)", dx: 17, dy: 25, badge: "Sortie" },
   { cat: "warp", x: 3, y: 7, name: "Clairière (Route 16 Ouest)", dx: 17, dy: 25, badge: "Sortie" }
 ];
-/* Maison Volante : la fille donne la CS02 Vol, et le Rapasdepic « Vrivri »
+/* Maison du Vol : la fille donne la CS02 Vol, et le Rapasdepic « Vrivri »
    réapprend Bec Vrille à un Roucoups/Roucarnage en tête d'équipe. */
 const MARKERS_R16FLY = [
   { cat: "pnj", spr: true, icon: "brunette_girl", x: 2, y: 3, dir: "right", name: "Fille", scripted: true, give: ["tm_hm", "CS02 Vol"] },
@@ -5633,7 +5650,7 @@ const MARKERS_FGRANDPA = [
    CS04 Force ; Super Bonbon visible ; le rocher est du mobilier. */
 const MARKERS_FWARDENS = [
   { cat: "pnj", spr: true, icon: "warden", x: 2, y: 3, name: "Gardien Baoba", scripted: true, give: ["tm_hm", "CS04 Force"] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "rare_candy", x: 8, y: 3, name: "Super Bonbon" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "rare_candy", ballMini: true, x: 8, y: 3, name: "Super Bonbon" },
   { cat: "warp", x: 4, y: 7, name: "Parmanie", dx: 27, dy: 27, badge: "Sortie" },
   { cat: "warp", x: 5, y: 7, name: "Parmanie", dx: 27, dy: 27, badge: "Sortie" }
 ];
@@ -5667,7 +5684,7 @@ const MARKERS_SZGATE = [
   { cat: "warp", x: 4, y: 0, name: "Parc Safari (Centre)", dx: 15, dy: 25, badge: "Parc" }
 ];
 const MARKERS_SZCENTER = [
-  { cat: "item", spr: true, icon: "ball", tipIcon: "nugget", x: 14, y: 10, name: "Pépite" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "nugget", ballMini: true, x: 14, y: 10, name: "Pépite" },
   { cat: "warp", x: 14, y: 25, name: "Entrée du Parc Safari", dx: 3, dy: 0, badge: "Entrée" },
   { cat: "warp", x: 15, y: 25, name: "Entrée du Parc Safari", dx: 4, dy: 0, badge: "Entrée" },
   { cat: "warp", x: 0, y: 10, name: "Parc Safari (Ouest)", dx: 29, dy: 22, badge: "Ouest" },
@@ -5679,10 +5696,10 @@ const MARKERS_SZCENTER = [
   { cat: "warp", x: 17, y: 19, name: "Aire de repos (Centre)", dx: 2, dy: 7, badge: "Aire" }
 ];
 const MARKERS_SZEAST = [
-  { cat: "item", spr: true, icon: "ball", tipIcon: "full_restore", x: 21, y: 10, name: "Guérison" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "max_potion", x: 3, y: 7, name: "Potion Max" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "carbos", x: 20, y: 13, name: "Carbone" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 15, y: 12, name: "CT41 GigaSan" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "full_restore", ballMini: true, x: 21, y: 10, name: "Guérison" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "max_potion", ballMini: true, x: 3, y: 7, name: "Potion Max" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "carbos", ballMini: true, x: 20, y: 13, name: "Carbone" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 15, y: 12, name: "CT41 GigaSan" },
   { cat: "warp", x: 0, y: 4, name: "Parc Safari (Nord)", dx: 39, dy: 30, badge: "Nord" },
   { cat: "warp", x: 0, y: 5, name: "Parc Safari (Nord)", dx: 39, dy: 31, badge: "Nord" },
   { cat: "warp", x: 0, y: 22, name: "Parc Safari (Centre)", dx: 29, dy: 10, badge: "Centre" },
@@ -5691,10 +5708,10 @@ const MARKERS_SZEAST = [
 ];
 /* Parc Safari Ouest : la Dent d'Or de Baoba et la maison secrète (CS03). */
 const MARKERS_SZWEST = [
-  { cat: "item", spr: true, icon: "ball", tipIcon: "max_potion", x: 8, y: 20, name: "Potion Max" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 9, y: 7, name: "CT32 Reflet" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "max_revive", x: 18, y: 18, name: "Rappel Max" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "gold_teeth", x: 19, y: 7, name: "Dent d'Or" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "max_potion", ballMini: true, x: 8, y: 20, name: "Potion Max" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 9, y: 7, name: "CT32 Reflet" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "max_revive", ballMini: true, x: 18, y: 18, name: "Rappel Max" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "gold_teeth", ballMini: true, x: 19, y: 7, name: "Dent d'Or" },
   { cat: "hidden", tipIcon: "revive", x: 6, y: 5, name: "Rappel" },
   { cat: "warp", x: 20, y: 0, name: "Parc Safari (Nord)", dx: 2, dy: 35, badge: "Nord" },
   { cat: "warp", x: 21, y: 0, name: "Parc Safari (Nord)", dx: 3, dy: 35, badge: "Nord" },
@@ -5706,8 +5723,8 @@ const MARKERS_SZWEST = [
   { cat: "warp", x: 11, y: 11, name: "Aire de repos (Ouest)", dx: 2, dy: 7, badge: "Aire" }
 ];
 const MARKERS_SZNORTH = [
-  { cat: "item", spr: true, icon: "ball", tipIcon: "protein", x: 25, y: 1, name: "Protéine" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 19, y: 7, name: "CT40 CoudKrâ" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "protein", ballMini: true, x: 25, y: 1, name: "Protéine" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 19, y: 7, name: "CT40 CoudKrâ" },
   { cat: "hidden", tipIcon: "nugget", x: 19, y: 13, name: "Pépite" },
   { cat: "warp", x: 2, y: 35, name: "Parc Safari (Ouest)", dx: 20, dy: 0, badge: "Ouest" },
   { cat: "warp", x: 3, y: 35, name: "Parc Safari (Ouest)", dx: 21, dy: 0, badge: "Ouest" },
@@ -5961,8 +5978,8 @@ const MARKERS_CNFOSSIL = [
    cachée ; six portes vers Cramois'Ile, l'escalier du 2F et la descente B1F. */
 const MARKERS_MANSION1F = [
   { cat: "trainer", spr: true, icon: "oak_aide", x: 17, y: 17, dir: "left", name: "Scientifique n°3", team: [["electrode", "Electrode", 39], ["weezing", "Smogogo", 39]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "escape_rope", x: 14, y: 3, name: "Corde Sortie" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "carbos", x: 18, y: 21, name: "Carbone" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "escape_rope", ballMini: true, x: 14, y: 3, name: "Corde Sortie" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "carbos", ballMini: true, x: 18, y: 21, name: "Carbone" },
   { cat: "hidden", tipIcon: "moon_stone", x: 8, y: 16, name: "Pierre Lune" },
   { cat: "warp", x: 4, y: 27, name: "Cramois'Ile", dx: 6, dy: 3, badge: "Sortie" },
   { cat: "warp", x: 5, y: 27, name: "Cramois'Ile", dx: 6, dy: 3, badge: "Sortie" },
@@ -5977,7 +5994,7 @@ const MARKERS_MANSION1F = [
    Dr Fuji et de MEWTWO) ; trois montées et la descente 1F. */
 const MARKERS_MANSION2F = [
   { cat: "trainer", spr: true, icon: "burglar", x: 3, y: 17, dir: "left", name: "Pillard n°1", team: [["primeape", "Colossinge", 44], ["magmar", "Magmar", 44]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "calcium", x: 28, y: 7, name: "Calcium" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "calcium", ballMini: true, x: 28, y: 7, name: "Calcium" },
   { cat: "pnj", spr: true, icon: "book_map_dex", x: 18, y: 2, name: "Livre" },
   { cat: "pnj", spr: true, icon: "book_map_dex", x: 3, y: 22, name: "Livre" },
   { cat: "warp", x: 5, y: 10, name: "Manoir Pokémon 1F", dx: 5, dy: 10, badge: "1F" },
@@ -5990,8 +6007,8 @@ const MARKERS_MANSION2F = [
 const MARKERS_MANSION3F = [
   { cat: "trainer", spr: true, icon: "burglar", x: 5, y: 11, dir: "left", name: "Pillard n°3", team: [["machoke", "Machopeur", 44], ["rapidash", "Galopa", 44]] },
   { cat: "trainer", spr: true, icon: "oak_aide", x: 20, y: 11, dir: "left", name: "Scientifique n°11", team: [["magneton", "Magnéton", 45], ["arcanine", "Arcanin", 45], ["muk", "Grotadmorv", 45]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "max_potion", x: 1, y: 16, name: "Potion Max" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "iron", x: 25, y: 5, name: "Fer" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "max_potion", ballMini: true, x: 1, y: 16, name: "Potion Max" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "iron", ballMini: true, x: 25, y: 5, name: "Fer" },
   { cat: "pnj", spr: true, icon: "book_map_dex", x: 6, y: 12, name: "Livre" },
   { cat: "hidden", tipIcon: "max_revive", x: 1, y: 9, name: "Rappel Max" },
   { cat: "warp", x: 7, y: 10, name: "Manoir Pokémon 2F", dx: 7, dy: 10, badge: "2F" },
@@ -6004,11 +6021,11 @@ const MARKERS_MANSION3F = [
 const MARKERS_MANSIONB1F = [
   { cat: "trainer", spr: true, icon: "burglar", x: 16, y: 23, name: "Pillard n°3", team: [["machoke", "Machopeur", 44], ["rapidash", "Galopa", 44]] },
   { cat: "trainer", spr: true, icon: "oak_aide", x: 27, y: 11, name: "Scientifique n°12", team: [["porygon", "Porygon", 46], ["electrode", "Electrode", 46]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "rare_candy", x: 10, y: 2, name: "Super Bonbon" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "full_restore", x: 1, y: 22, name: "Guérison" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 19, y: 25, name: "CT50 Clonage" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 5, y: 4, name: "CT22 Lance-Soleil" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "secret_key", x: 5, y: 13, name: "Clé Secrète" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "rare_candy", ballMini: true, x: 10, y: 2, name: "Super Bonbon" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "full_restore", ballMini: true, x: 1, y: 22, name: "Guérison" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 19, y: 25, name: "CT50 Clonage" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 5, y: 4, name: "CT22 Lance-Soleil" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "secret_key", ballMini: true, x: 5, y: 13, name: "Clé Secrète" },
   { cat: "pnj", spr: true, icon: "book_map_dex", x: 16, y: 20, name: "Livre" },
   { cat: "hidden", tipIcon: "rare_candy", x: 1, y: 9, name: "Super Bonbon" },
   { cat: "warp", x: 23, y: 22, name: "Manoir Pokémon 1F", dx: 21, dy: 23, badge: "1F" }
@@ -6019,8 +6036,8 @@ const MARKERS_VOLC1F = [
   { cat: "trainer", spr: true, icon: "firefighter", x: 8, y: 14, name: "Pompier n°1", team: [["poliwrath", "Tartard", 43], ["blastoise", "Tortank", 43]] },
   { cat: "trainer", spr: true, icon: "soldier", x: 21, y: 16, dir: "left", name: "Soldat n°3", team: [["hitmonchan", "Tygnon", 45], ["raichu", "Raichu", 45]] },
   { cat: "trainer", spr: true, icon: "firefighter", x: 14, y: 6, dir: "up", name: "Pompier n°2", team: [["starmie", "Staross", 40], ["golduck", "Akwakwak", 40]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "full_restore", x: 6, y: 10, name: "Guérison" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "carbos", x: 6, y: 5, name: "Carbone" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "full_restore", ballMini: true, x: 6, y: 10, name: "Guérison" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "carbos", ballMini: true, x: 6, y: 5, name: "Carbone" },
   { cat: "warp", x: 2, y: 23, name: "Chenal 21", dx: 14, dy: 87, badge: "Sortie" },
   { cat: "warp", x: 3, y: 23, name: "Chenal 21", dx: 14, dy: 87, badge: "Sortie" },
   { cat: "warp", x: 13, y: 6, name: "Volcan Cramoisi B1F", dx: 5, dy: 1, badge: "B1" },
@@ -6031,9 +6048,9 @@ const MARKERS_VOLC1F = [
 const MARKERS_VOLCB1F = [
   { cat: "trainer", spr: true, icon: "soldier", x: 2, y: 5, dir: "right", name: "Soldat n°4", team: [["primeape", "Colossinge", 45], ["blastoise", "Tortank", 45]] },
   { cat: "trainer", spr: true, icon: "soldier", x: 10, y: 37, dir: "up", name: "Soldat n°5", team: [["electrode", "Electrode", 42], ["electrode", "Electrode", 42], ["electrode", "Electrode", 42], ["electrode", "Electrode", 42], ["wartortle", "Carabaffe", 42]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "fire_stone", x: 2, y: 30, name: "Pierre Feu" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 13, y: 30, name: "CT23 Draco-Rage" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "max_elixer", x: 4, y: 35, name: "Max Elixir" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "fire_stone", ballMini: true, x: 2, y: 30, name: "Pierre Feu" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 13, y: 30, name: "CT23 Draco-Rage" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "max_elixer", ballMini: true, x: 4, y: 35, name: "Max Elixir" },
   { cat: "warp", x: 5, y: 1, name: "Volcan Cramoisi 1F", dx: 13, dy: 6, badge: "1F" },
   { cat: "warp", x: 5, y: 26, name: "Volcan Cramoisi B2F", dx: 3, dy: 14, badge: "B2" },
   { cat: "warp", x: 12, y: 34, name: "Volcan Cramoisi 1F", dx: 21, dy: 20, badge: "1F" }
@@ -6098,7 +6115,7 @@ const MARKERS_ECUMB3F = [
   { cat: "pnj", spr: true, icon: "boulder", x: 9, y: 14, name: "Rocher" },
   { cat: "pnj", spr: true, icon: "boulder", x: 18, y: 6, name: "Rocher" },
   { cat: "pnj", spr: true, icon: "boulder", x: 19, y: 6, name: "Rocher" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 2, y: 1, name: "CT14 Blizzard" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 2, y: 1, name: "CT14 Blizzard" },
   { cat: "hidden", tipIcon: "max_elixer", x: 9, y: 16, name: "Max Elixir" },
   { cat: "warp", x: 5, y: 12, name: "Îles Écume B2F", dx: 5, dy: 13, badge: "B2" },
   { cat: "warp", x: 8, y: 6, name: "Îles Écume B4F", dx: 11, dy: 7, badge: "B4" },
@@ -6175,7 +6192,7 @@ const MARKERS_R15 = [
   { cat: "trainer", spr: true, icon: "foulard_woman", x: 41, y: 10, dir: "right", name: "Canon n°7", team: [["ivysaur", "Herbizarre", 35], ["tangela", "Saquedeneu", 35]] },
   { cat: "trainer", spr: true, icon: "biker", x: 48, y: 10, dir: "down", name: "Motard n°6", team: [["sandslash", "Sablaireau", 34], ["koffing", "Smogo", 34], ["sandslash", "Sablaireau", 34], ["grimer", "Tadmorv", 34]] },
   { cat: "trainer", spr: true, icon: "biker", x: 46, y: 10, dir: "down", name: "Motard n°7", team: [["koffing", "Smogo", 34], ["grimer", "Tadmorv", 34], ["weezing", "Smogogo", 36]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", x: 18, y: 5, name: "CT20 PlaiCrx" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 18, y: 5, name: "CT20 PlaiCrx" },
   { cat: "warp", x: 7, y: 8, name: "Poste de garde Route 15", dx: 0, dy: 4, badge: "Poste" },
   { cat: "warp", x: 7, y: 9, name: "Poste de garde Route 15", dx: 0, dy: 5, badge: "Poste" },
   { cat: "warp", x: 14, y: 8, name: "Poste de garde Route 15", dx: 7, dy: 4, badge: "Poste" },
@@ -6203,9 +6220,9 @@ const MARKERS_R15GATE2F = [
    (hidden_objects.asm), sortie sud vers Azuria (warp -1 du bas) et six
    montées vers le 2F + une descente B1F à l'ouest ; pêche et surf (lac $14). */
 const MARKERS_CERU1F = [
-  { cat: "item", spr: true, icon: "ball", tipIcon: "full_restore", x: 7, y: 13, name: "Guérison" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "max_elixer", x: 19, y: 3, name: "Max Elixir" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "nugget", x: 5, y: 0, name: "Pépite" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "full_restore", ballMini: true, x: 7, y: 13, name: "Guérison" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "max_elixer", ballMini: true, x: 19, y: 3, name: "Max Elixir" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "nugget", ballMini: true, x: 5, y: 0, name: "Pépite" },
   { cat: "hidden", tipIcon: "rare_candy", x: 13, y: 10, name: "Super Bonbon" },
   { cat: "warp", x: 24, y: 17, name: "Azuria", dx: 4, dy: 11, badge: "Sortie" },
   { cat: "warp", x: 25, y: 17, name: "Azuria", dx: 4, dy: 11, badge: "Sortie" },
@@ -6220,9 +6237,9 @@ const MARKERS_CERU1F = [
 /* Caverne Azurée 2F : 3 boules (PP Plus, Hyper Ball, Guérison), six descentes
    1F en vis-à-vis des montées ; aucune eau -> pêche impossible. */
 const MARKERS_CERU2F = [
-  { cat: "item", spr: true, icon: "ball", tipIcon: "pp_up", x: 29, y: 9, name: "PP Plus" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "ultra_ball", x: 4, y: 15, name: "Hyper Ball" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "full_restore", x: 13, y: 6, name: "Guérison" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "pp_up", ballMini: true, x: 29, y: 9, name: "PP Plus" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "ultra_ball", ballMini: true, x: 4, y: 15, name: "Hyper Ball" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "full_restore", ballMini: true, x: 13, y: 6, name: "Guérison" },
   { cat: "warp", x: 29, y: 1, name: "Caverne Azurée 1F", dx: 27, dy: 1, badge: "1F" },
   { cat: "warp", x: 22, y: 6, name: "Caverne Azurée 1F", dx: 23, dy: 7, badge: "1F" },
   { cat: "warp", x: 19, y: 7, name: "Caverne Azurée 1F", dx: 18, dy: 9, badge: "1F" },
@@ -6237,8 +6254,8 @@ const MARKERS_CERU2F = [
    (lac $14), Méga Canne FishingGroup 9. */
 const MARKERS_CERUB1F = [
   { cat: "trainer", spr: true, icon: "mewtwo_ow", x: 27, y: 13, dir: "down", name: "Mewtwo", scripted: true, team: [["mewtwo", "Mewtwo", 70]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "ultra_ball", x: 16, y: 9, name: "Hyper Ball" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "max_revive", x: 18, y: 1, name: "Rappel Max" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "ultra_ball", ballMini: true, x: 16, y: 9, name: "Hyper Ball" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "max_revive", ballMini: true, x: 18, y: 1, name: "Rappel Max" },
   { cat: "hidden", tipIcon: "calcium", x: 1, y: 11, name: "Calcium" },
   { cat: "hidden", tipIcon: "m_gene", x: 29, y: 17, name: "Modif.Gène" },
   { cat: "warp", x: 3, y: 6, name: "Caverne Azurée 1F", dx: 0, dy: 6, badge: "1F" }
@@ -6424,8 +6441,8 @@ const GROUP_OFFSETS = {
   "interieur|Centre commercial": { CeladonMartRoof: [0, 0], CeladonMart5F: [0, 14], CeladonMart4F: [0, 24], CeladonMart3F: [0, 34], CeladonMart2F: [0, 44], CeladonMart1F: [0, 54], CeladonMartElevator: [22, 58] },
   "interieur|Manoir Céladon": { CeladonMansionRoofHouse: [0, 0], CeladonMansionRoof: [0, 10], CeladonMansion3F: [0, 28], CeladonMansion2F: [0, 42], CeladonMansion1F: [0, 56] },
   "donjon|Planque Rocket": { RocketHideoutB1F: [0, 0], RocketHideoutB2F: [0, 32], RocketHideoutB3F: [0, 64], RocketHideoutB4F: [0, 96], RocketHideoutElevator: [32, 20] },
-  /* Route 16 : poste de garde principal (1F/2F empilés) + Maison Volante ;
-     Clairière (Route 16) : poste de garde-laboratoire + maison, en bas ;
+  /* Route 16 : poste de garde principal (1F/2F empilés) + Maison du Vol ;
+     Clairière (Route 16) : Laboratoire abandonné + maison, alignés par le bas ;
      Route 18 : 2F centré sur le 1F ; Parmanie : l'Arène (18 tuiles) pose le sol,
      rangée de bâtiments alignés par le bas ; Parc Safari : Nord centré sur
      l'axe de la rangée Centre/Est/Ouest ; rangée basse alignée par le bas,
@@ -6433,7 +6450,7 @@ const GROUP_OFFSETS = {
      entrée + aire du Centre sous le Centre, aires Est/Nord sous l'Est
      (l'entrée, haute de 6 tuiles, est calée en bas). */
   "interieur|Route 16": { Route16Gate2F: [0, 0], Route16Gate1F: [0, 10], Route16FlyHouse: [10, 16] },
-  "interieur|Clairière (Route 16)": { Route16WestHouse: [0, 0], Route16WestGate: [10, 10] },
+  "interieur|Clairière (Route 16)": { Route16WestHouse: [0, 20], Route16WestGate: [10, 10] },
   "interieur|Route 18": { Route18Gate2F: [0, 0], Route18Gate1F: [0, 10] },
   "interieur|Parmanie": { FuchsiaGym: [0, 0], FuchsiaMart: [12, 10], FuchsiaBillsGrandpasHouse: [22, 10], FuchsiaPokecenter: [32, 10], FuchsiaWardensHouse: [48, 10], FuchsiaMeetingRoom: [60, 10], FuchsiaFisherHouse: [76, 10] },
   "donjon|Parc Safari": { SafariZoneNorth: [27, 0], SafariZoneWest: [0, 40], SafariZoneCenter: [32, 40], SafariZoneEast: [64, 40],
@@ -6486,10 +6503,10 @@ const GROUP_LABELS = {
   "interieur|Route 11": "Route 11 : Poste de garde",
   "donjon|L'Océane": "L'Océane",
   "interieur|Céladopole": "Céladopole",
-  "interieur|Centre commercial": "Centre commercial de Céladopole",
+  "interieur|Centre commercial": "Centre commercial",
   "interieur|Manoir Céladon": "Manoir Céladon",
   "donjon|Planque Rocket": "Planque Rocket",
-  "interieur|Route 16": "Route 16 : Poste de garde, Maison Volante",
+  "interieur|Route 16": "Route 16 : Poste de garde, Maison du Vol",
   "interieur|Clairière (Route 16)": "Route 16 : Clairière",
   "interieur|Casino Rocket": "Casino Rocket",
   "interieur|Route 18": "Route 18 : Poste de garde",
@@ -6583,18 +6600,25 @@ document.querySelector('#pages [data-page="monde"]').onclick = () => showPage("m
     g.maps.push(m);
   });
   /* t70 : ordre des menus - Intérieurs : villes (alphabétique), puis routes
-     (numérique), puis autres (alphabétique) ; Donjons : alphabétique. */
+     (numérique), puis autres (alphabétique) ; Donjons : alphabétique.
+     t72 : groupes satellites placés juste après leur ville - Céladopole ->
+     Casino Rocket, Centre commercial, Manoir Céladon ; Safrania -> Postes
+     de garde Safrania (clé de tri "ville + label", ils suivent leur ville
+     dans l'ordre alphabétique et passent devant la ville suivante). */
   const VILLES = ["Argenta", "Azuria", "Bourg Palette", "Carmin sur Mer", "Céladopole", "Cramois'Île", "Jadielle", "Lavanville", "Parmanie", "Safrania"];
   const glabel = g => GROUP_LABELS[zone + "|" + g.name] || g.name;
+  const SATELLITES = { "Céladopole": ["Casino Rocket", "Centre commercial", "Manoir Céladon"], "Safrania": ["Postes de garde Safrania"] };
+  const maitre = g => { for (const v in SATELLITES) if (SATELLITES[v].includes(g.name)) return v; return null; };
+  const cleTri = g => maitre(g) ? maitre(g) + " " + glabel(g) : glabel(g);
   groups.sort((a, b) => {
     if (zone === "donjon") return glabel(a).localeCompare(glabel(b), "fr");
-    const rank = g => VILLES.includes(g.name) ? 0 : /^Route/.test(glabel(g)) ? 1 : 2;
+    const rank = g => (maitre(g) || VILLES.includes(g.name)) ? 0 : /^Route/.test(glabel(g)) ? 1 : 2;
     if (rank(a) !== rank(b)) return rank(a) - rank(b);
     if (rank(a) === 1) {
       const num = g => parseInt((glabel(g).match(/[0-9]+/) || ["0"])[0], 10);
       return num(a) - num(b) || glabel(a).localeCompare(glabel(b), "fr");
     }
-    return glabel(a).localeCompare(glabel(b), "fr");
+    return cleTri(a).localeCompare(cleTri(b), "fr");
   });
   groups.forEach(g => {
     const key = zone + "|" + g.name;
@@ -6733,6 +6757,12 @@ function buildMarkers() {
       im.src = ICONS[m.dir ? m.icon + "_" + m.dir : m.icon] || ICONS[m.icon];
       im.draggable = false;
       el.appendChild(im);
+      if (m.tipIcon && m.ballMini) {
+        const bm = document.createElement("span");
+        bm.className = "ballico";
+        bm.innerHTML = '<img src="' + ICONS[m.tipIcon] + '" alt="">';
+        el.appendChild(bm);
+      }
     } else if (m.shop) {
       /* comptoir de vente sans sprite : logo P$ + rond transparent cliquable */
       const h = document.createElement("span");
@@ -6833,7 +6863,7 @@ function openTip(m, el) {
   if (m.shop) {
     html += '<h3 class="shop">Magasin :</h3><ul class="shoplist">' + m.shop.map(s =>
       '<li><img class="mon" src="' + ICONS[s[0]] + '">' + s[1] +
-      ' <span class="lv">' + s[2] + (s[3] ? " " + s[3] : ' <img class="pd" src="' + ICONS["pokedollar_white"] + '" alt="P$">') + "</span></li>").join("") + "</ul>";
+      ' <span class="lv">' + s[2] + (s[3] ? " " + s[3] : typeof s[2] === "number" ? ' <img class="pd" src="' + ICONS["pokedollar_white"] + '" alt="P$">' : "") + "</span></li>").join("") + "</ul>";
   }
   html += '<p class="src">Sources : data/maps/objects/' + m.mp.id + '.asm' +
     ((m.team || m.teams) ? ", data/battle/trainer_parties.asm" : "") +
