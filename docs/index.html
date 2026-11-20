@@ -83,11 +83,16 @@
   #viewport.dragging { cursor: grabbing; }
   #stage { position: absolute; transform-origin: 0 0; }
   #viewport, #viewport * { user-select: none; -webkit-user-select: none; }
-  #maps { position: absolute; inset: 0; }
+  .page { position: absolute; left: 0; top: 0; }
   .maplayer { position: absolute; }
   .maplayer img { image-rendering: pixelated; display: block; user-select: none; width: 100%; height: 100%; }
   .maplayer.sel { box-shadow: 0 0 0 2px var(--accent); }
-  #markers { position: absolute; inset: 0; }
+  /* t76 : le calque de type ne capture PAS les clics (pointer-events none),
+     seuls les marqueurs le font : sans ça, les calques créés plus tard dans
+     l'ordre de la légende (item, hidden, warp) couvraient les marqueurs des
+     types créés avant (pnj, vendeur, trainer) et bloquaient leur sélection. */
+  .mtype { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
+  .mtype .marker { pointer-events: auto; }
   .marker {
     position: absolute; width: 0; height: 0; cursor: pointer; z-index: 4;
   }
@@ -103,21 +108,28 @@
   .marker img.spr.item { filter: drop-shadow(0 0 8px var(--item)) drop-shadow(0 1px 1px rgba(0,0,0,0.5)); }
   .marker img.spr.pnj { filter: drop-shadow(0 0 2px var(--npc)) drop-shadow(0 1px 1px rgba(0,0,0,0.5)); }
   .marker img.spr.vendeur { filter: drop-shadow(0 0 8px var(--vendor)) drop-shadow(0 1px 1px rgba(0,0,0,0.5)); }
+  /* t78 : pastilles 1px pleines (retour user) et pivots des contre-échelles
+     collés au pied du sprite : left/top + transform-origin = (0, 4) par
+     rapport à la pointe du marqueur, exactement comme img.spr (origine
+     16px 32px sur -16 -28). Ainsi chaque pastille garde une position fixe
+     par rapport à son PNJ à tout niveau de zoom. L'ancienne origine 14px
+     16px de .shopico (ancre en 8, 6) faisait dériver les P$ des vendeurs
+     en gauche-droite au dézoom. */
   .marker .hiddenico {
-    position: absolute; left: -6px; top: -10px;
+    position: absolute; left: -4px; top: -10px;
     width: 22px; height: 22px; border-radius: 999px;
-    background: var(--hidden); border: 2px solid rgba(0,0,0,0.75);
-    border-style: dashed; box-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    background: var(--hidden); border: 1px solid rgba(0,0,0,0.75);
+    border-style: solid; box-shadow: 0 1px 4px rgba(0,0,0,0.6);
     display: flex; align-items: center; justify-content: center;
     transform: scale(calc(1 / var(--z, 1)));
     transform-origin: 6px 14px;
   }
   .marker .hiddenico img { width: 16px; height: 16px; image-rendering: pixelated; }
   .marker .giveico {
-    position: absolute; left: -6px; top: -10px;
+    position: absolute; left: -4px; top: -10px;
     width: 22px; height: 22px; border-radius: 999px;
-    background: #ffffff; border: 2px solid rgba(0,0,0,0.75);
-    border-style: dashed; box-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    background: #ffffff; border: 1px solid rgba(0,0,0,0.75);
+    border-style: solid; box-shadow: 0 1px 4px rgba(0,0,0,0.6);
     display: flex; align-items: center; justify-content: center;
     transform: scale(calc(1 / var(--z, 1)));
     transform-origin: 6px 14px;
@@ -125,9 +137,9 @@
   }
   .marker .giveico img { width: 16px; height: 16px; image-rendering: pixelated; }
   .marker .ballico {
-    position: absolute; left: -6px; top: -10px;
+    position: absolute; left: -4px; top: -10px;
     width: 22px; height: 22px; border-radius: 999px;
-    background: #ffffff; border: 2px solid rgba(0,0,0,0.75);
+    background: #ffffff; border: 1px solid rgba(0,0,0,0.75);
     box-shadow: 0 1px 4px rgba(0,0,0,0.6);
     display: flex; align-items: center; justify-content: center;
     transform: scale(calc(1 / var(--z, 1)));
@@ -136,22 +148,22 @@
   }
   .marker .ballico img { width: 16px; height: 16px; image-rendering: pixelated; }
   .marker .shopico {
-    position: absolute; left: -6px; top: -10px;
+    position: absolute; left: -4px; top: -10px;
     width: 22px; height: 22px; border-radius: 999px;
-    background: #f7d24a; border: 2px solid rgba(0,0,0,0.75);
-    border-style: dashed; box-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    background: #f7d24a; border: 1px solid rgba(0,0,0,0.75);
+    border-style: solid; box-shadow: 0 1px 4px rgba(0,0,0,0.6);
     display: flex; align-items: center; justify-content: center;
     transform: scale(calc(1 / var(--z, 1)));
-    transform-origin: 14px 16px;
+    transform-origin: 6px 14px;
     pointer-events: none;
   }
   .marker .shopico img { width: 16px; height: 16px; image-rendering: pixelated; }
   .marker .hitrond {
-    position: absolute; left: -6px; top: -10px;
+    position: absolute; left: -4px; top: -10px;
     width: 26px; height: 26px; border-radius: 999px; box-sizing: border-box;
-    background: transparent; border: 2px dashed transparent;
+    background: transparent; border: 2px solid transparent;
     transform: scale(calc(1 / var(--z, 1)));
-    transform-origin: 13px 13px;
+    transform-origin: 6px 14px;
   }
   .marker:hover .hitrond { border-color: rgba(255,215,0,0.65); }
   .marker.sel .hitrond { border-color: #fff; }
@@ -213,7 +225,7 @@
   .legend-row .lab { font-size: 13px; flex: 1; }
   .legend-row .cnt { font-size: 11px; color: var(--muted); }
   #poi-tip {
-    position: absolute; z-index: 30; width: 235px;
+    position: absolute; z-index: 30; width: 250px;
     background: #141d38; border: 1px solid #3a4a7e; border-top: 3px solid var(--warp);
     border-radius: 10px; padding: 10px 12px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.55);
@@ -242,7 +254,9 @@
   #poi-tip img.mon { height: 32px; vertical-align: -13px; margin-right: 5px; }
   .wildrow img.mon { height: 32px; }
   #poi-tip .lv { color: var(--muted); }
-  #poi-tip .src { font-size: 10.5px; color: #5f6f99; margin-top: 10px; word-break: break-all; }
+  /* t77 : les sources restent dans le DOM de l'infobulle (debug, inspecteur)
+     mais ne s'affichent plus. */
+  #poi-tip .src { display: none; font-size: 10.5px; color: #5f6f99; margin-top: 10px; word-break: break-all; }
   #poi-tip .close {
     position: absolute; top: 6px; right: 8px; border: none; background: none;
     color: var(--muted); font-size: 13px; cursor: pointer; padding: 2px 4px;
@@ -310,10 +324,14 @@
       <button id="zout" title="Dézoomer">−</button>
       <button id="zfit" class="fit" title="Ajuster">Ajuster</button>
     </div>
-    <div id="stage">
-      <div id="maps"></div>
-      <div id="markers"></div>
-    </div>
+    <!-- t75 : structure hiérarchique du DOM, lisible par un humain :
+         #stage > div.page (une par page : Monde, puis chaque groupe
+         Intérieurs/Donjons) > div.maplayer (une par carte, avec sa capture
+         img) > div.mtype (un par type de contenu : pnj, vendeur, trainer,
+         item, hidden, warp) > div.marker (le contenu lui-même).
+         Les pages, cartes et types sont créés par le JS (buildPages,
+         buildLayers, buildMarkers). -->
+    <div id="stage"></div>
     <div id="zoomlevel">100 %</div>
     <div id="poi-tip"></div>
   </div>
@@ -1149,7 +1167,7 @@ const MARKERS_PALLET = [
 /* Marqueurs de la Route 22 (data/maps/objects/Route22.asm) : le rival (duels 1 et 2
    à la même case), la porte du poste de garde. Panneau ignoré (pas de catégorie). */
 const MARKERS_ROUTE22 = [
-  { cat: "trainer", spr: true, icon: "blue", x: 25, y: 5, dir: "right", hs: "cache", name: "Rival (1er et 2e duel)", team: [["pidgey","Roucool",9],[["squirtle","Carapuce",8],["bulbasaur","Bulbizarre",8],["charmander","Salamèche",8]]], team2: [["pidgeot","Roucarnage",58],["nidorino","Nidorino",59],[["growlithe","Caninos",57],["gyarados","Léviator",57],["exeggcute","Noeunoeuf",57]],["alakazam","Alakazam",58],[["blastoise","Tortank",60],["venusaur","Florizarre",60],["charizard","Dracaufeu",60]]] },
+  { cat: "trainer", spr: true, icon: "blue", x: 25, y: 5, dir: "right", hs: "cache", name: "Rival", team: [["pidgey","Roucool",9],[["squirtle","Carapuce",8],["bulbasaur","Bulbizarre",8],["charmander","Salamèche",8]]], team2: [["pidgeot","Roucarnage",58],["nidorino","Nidorino",59],[["growlithe","Caninos",57],["gyarados","Léviator",57],["exeggcute","Noeunoeuf",57]],["alakazam","Alakazam",58],[["blastoise","Tortank",60],["venusaur","Florizarre",60],["charizard","Dracaufeu",60]]] },
   { cat: "hidden", tipIcon: "potion", x: 35, y: 2, name: "Potion" },
   { cat: "warp", x: 8, y: 5, name: "Poste de garde", dx: 4, dy: 7, badge: "Poste" }
 ];
@@ -1899,7 +1917,7 @@ const MARKERS_ROUTE25 = [
    de Léo (BillsHousePC) est ignoré (pas de catégorie). warp_to (3,2) : arrivée
    depuis le jardin secret, case sans warp de départ -> pas de marqueur. */
 const MARKERS_BILLSHOUSE = [
-  { cat: "pnj", spr: true, icon: "slowbro", x: 6, y: 5, name: "Flagadoss", scripted: true, give: ["s_s_ticket", "Passe Bateau"] },
+  { cat: "pnj", spr: true, icon: "black_hair_boy_2", x: 6, y: 5, name: "Léo", scripted: true, give: ["s_s_ticket", "Passe Bateau"] },
   { cat: "pnj", spr: true, icon: "black_hair_boy_2", x: 4, y: 4, hs: "cache", name: "Homme" },
   { cat: "pnj", spr: true, icon: "black_hair_boy_2", x: 6, y: 5, hs: "cache", name: "Homme" },
   { cat: "warp", x: 2, y: 7, name: "Route 25", dx: 45, dy: 5, badge: "Sortie" },
@@ -2424,7 +2442,7 @@ const MARKERS_UPR8 = [
    Route 7 (3,1) et le Passage Souterrain Route 8 (46,1), dessinés au tour
    44 et désormais cliquables. Aucune rencontre. */
 const MARKERS_UPWE = [
-  { cat: "trainer", spr: true, icon: "bike_shop_guy", x: 22, y: 2, dir: "down", name: "Dresseur aléatoire (après la Ligue)", scripted: true },
+  { cat: "trainer", spr: true, icon: "bike_shop_guy", x: 22, y: 2, dir: "down", name: "Dresseur aléatoire", scripted: true },
   { cat: "item", spr: true, icon: "ball", tipIcon: "m_gene", ballMini: true, x: 22, y: 4, name: "Modif.Gène", hs: "cache" },
   { cat: "hidden", tipIcon: "nugget", x: 12, y: 2, name: "Pépite" },
   { cat: "hidden", tipIcon: "elixer", x: 21, y: 5, name: "Élixir" },
@@ -2989,7 +3007,7 @@ const MARKERS_R7GATE = [
    EVENT_ELITE_4_BEATEN) ; Total Soin (5,8) et Spécial + (4,34) cachés
    (hidden_objects.asm). NoHS, aucune rencontre. */
 const MARKERS_UPNS = [
-  { cat: "trainer", spr: true, icon: "waiter", x: 4, y: 20, dir: "right", name: "Cilque", scripted: true, spoil2: true, t2label: "Duel Miroir après la Ligue" },
+  { cat: "trainer", spr: true, icon: "waiter", x: 4, y: 20, dir: "right", name: "Cilque", scripted: true, spoil2: true, t2label: "Mec louche" },
   { cat: "warp", x: 6, y: 1, name: "Passage Souterrain Route 5", dx: 4, dy: 4, badge: "R5" },
   { cat: "warp", x: 2, y: 37, name: "Passage Souterrain Route 6", dx: 4, dy: 4, badge: "R6" },
   { cat: "hidden", tipIcon: "full_restore", x: 5, y: 8, name: "Total Soin" },
@@ -4931,7 +4949,7 @@ const MARKERS_SSA1FR = [
    Rival2Data : Roucoups 20, Rattatac 22, Kadabra 21, starter adverse 24).
    Renumerotation : Tour = 5e duel, Sylphe = 6e duel. Serveur soin (3,7). */
 const MARKERS_SSA2F = [
-  { cat: "trainer", spr: true, icon: "blue", x: 36, y: 4, dir: "down", hs: "cache", name: "Rival (4e duel)", scripted: true, team: [["pidgeotto", "Roucoups", 20], ["raticate", "Rattatac", 22], ["kadabra", "Kadabra", 21], [["wartortle", "Carabaffe", 24], ["ivysaur", "Herbizarre", 24], ["charmeleon", "Reptincel", 24]]] },
+  { cat: "trainer", spr: true, icon: "blue", x: 36, y: 4, dir: "down", hs: "cache", name: "Rival", scripted: true, team: [["pidgeotto", "Roucoups", 20], ["raticate", "Rattatac", 22], ["kadabra", "Kadabra", 21], [["wartortle", "Carabaffe", 24], ["ivysaur", "Herbizarre", 24], ["charmeleon", "Reptincel", 24]]] },
   { cat: "pnj", spr: true, icon: "waiter", x: 3, y: 7, name: "Serveur" },
   { cat: "warp", x: 9, y: 11, name: "Cabines du 2e pont", dx: 2, dy: 5, badge: "Cab." },
   { cat: "warp", x: 13, y: 11, name: "Cabines du 2e pont", dx: 12, dy: 5, badge: "Cab." },
@@ -5220,15 +5238,15 @@ const MARKERS_CHOTEL = [
   { cat: "pnj", spr: true, icon: "old_medium_woman", x: 3, y: 1, dir: "down", name: "Vieille femme" },
   { cat: "pnj", spr: true, icon: "foulard_woman", x: 2, y: 4, name: "Femme" },
   { cat: "pnj", spr: true, icon: "black_hair_boy_2", x: 8, y: 4, name: "Homme" },
-  { cat: "pnj", spr: true, icon: "gentleman", x: 11, y: 7, dir: "left", name: "Chasseur de Pokémon", scripted: true, shop: [["coin_case", "Jetons ×100 + bonus DV (Pokémon demandé)", "Boîte Jeton requise", "×4 si shiny"]] },
+  { cat: "pnj", spr: true, icon: "gentleman", x: 11, y: 7, dir: "left", name: "Chasseur de Pokémon", scripted: true, shop: [["coin_case", "Cherche des Pokémons en échange de Jetons", "Jetons ×100 + bonus DV", "×4 si shiny"]] },
   { cat: "warp", x: 3, y: 7, name: "Céladopole", dx: 41, dy: 27, badge: "Sortie" },
   { cat: "warp", x: 4, y: 7, name: "Céladopole", dx: 41, dy: 27, badge: "Sortie" }
 ];
 /* École de Céladopole : Professeur des capacités (réapprentissage, 1000 P$
    le cours) et Effaceuse de capacités (gratuit), deux ajouts du hack. */
 const MARKERS_CSCHOOL = [
-  { cat: "pnj", spr: true, icon: "little_girl", x: 4, y: 5, dir: "left", name: "Effaceuse de capacités", scripted: true, shop: [["tm_hm", "Effacement d'une capacité", "Gratuit"]] },
-  { cat: "pnj", spr: true, icon: "oak_aide", x: 2, y: 1, dir: "down", name: "Professeur des capacités", scripted: true, shop: [["tm_hm", "Réapprentissage d'une capacité", 1000]] },
+  { cat: "pnj", spr: true, icon: "little_girl", x: 4, y: 5, dir: "left", name: "Effaceuse de capacités", scripted: true, shop: [["tm_hm", "Efface une capacité", "Gratuit"]] },
+  { cat: "pnj", spr: true, icon: "oak_aide", x: 2, y: 1, dir: "down", name: "Professeur des capacités", scripted: true, shop: [["tm_hm", "Réapprends capacité", 1000]] },
   { cat: "pnj", spr: true, icon: "young_boy", x: 0, y: 3, dir: "up", name: "Garçon" },
   { cat: "warp", x: 2, y: 7, name: "Céladopole", dx: 23, dy: 29, badge: "Sortie" },
   { cat: "warp", x: 3, y: 7, name: "Céladopole", dx: 23, dy: 29, badge: "Sortie" }
@@ -6377,7 +6395,6 @@ MARKERS_ROUTE1, MARKERS_PALLET, MARKERS_ROUTE22, MARKERS_ROUTE23, MARKERS_INDIGO
    collage déjà en place. Safrania SOUTH -> Route 6 et WEST -> Route 7 non
    dessinées.
    bords ouest alignés (Argenta, Jadielle, Route 22). ---------- */
-const mapsEl = document.getElementById("maps");
 /* Positions de la page Monde uniquement (collage des connexions ci-dessus) ;
    chaque intérieur / donjon a sa page, seule sur le stage en (0, 0). */
 const WORLD_OFFSETS = { IndigoPlateau: [0, 2], Route23: [0, 20], Route22: [0, 162], ViridianCity: [40, 154], Route1: [50, 190], PalletTown: [50, 226], Route2: [46, 82], PewterCity: [40, 46], Route3: [80, 54], Route4: [130, 36], CeruleanCity: [220, 28], Route24: [230, -8], Route25: [250, -10], BillsGarden: [286, -24], Route9: [260, 36], Route10: [318, 30], Route10South: [318, 84], LavenderTown: [320, 108], Route8: [260, 108], Route12: [320, 126], SaffronCity: [220, 100], Route5: [230, 64],
@@ -6423,12 +6440,12 @@ const GROUP_OFFSETS = {
   "interieur|Route 12": { Route12Gate2F: [1, 0], Route12Gate1F: [0, 12], Route12FisherHouse: [14, 12] },
 
   "interieur|Carmin sur Mer": { VermilionGym: [0, 0], VermilionPokecenter: [12, 10], VermilionFanClub: [28, 10], VermilionMart: [38, 10], VermilionPidgeyHouse: [48, 10], VermilionFisherHouse: [58, 10], VermilionTradeHouse: [68, 10] },
-  "interieur|Route 11": { Route11Gate2F: [1, 0], Route11Gate1F: [0, 12] },
+  "interieur|Route 11": { Route11Gate2F: [0, 0], Route11Gate1F: [0, 12] },
   /* L'Océane selon la maquette utilisateur : poupe a gauche du pont 3F, cuisine
      a gauche du pont 1F, cabine du capitaine puis dock a droite des ponts 2F/1F ;
      convention : etages de la pile CENTRES entre eux sur l'axe des ponts larges
      (2F/1F x 24..64 -> axe x=44 ; 3F 34, cabines 32, B1F 29), annexes a 2 tuiles. */
-  "donjon|L'Océane": { SSAnneBow: [12, 0], SSAnne3F: [34, 0], SSAnne2F: [24, 8], SSAnneCaptainsRoom: [66, 8],
+  "donjon|L'Océane": { SSAnneBow: [2, 0], SSAnne3F: [34, 0], SSAnne2F: [24, 8], SSAnneCaptainsRoom: [66, 8],
     SSAnne2FRooms: [32, 28], SSAnneKitchen: [8, 46], SSAnne1F: [24, 46], VermilionDock: [66, 46],
     SSAnne1FRooms: [32, 66], SSAnneB1F: [29, 84], SSAnneB1FRooms: [32, 94] },
   /* Céladopole : rangée de bâtiments alignés par le bas (Arène et Casino, 18 tuiles de haut,
@@ -6497,7 +6514,7 @@ const GROUP_LABELS = {
   "interieur|Souterrains": "Souterrains Est-Ouest",
   "interieur|Safrania": "Safrania",
   "donjon|Sylphe SARL": "Sylphe SARL",
-  "interieur|Route 12": "Route 12 : Poste de garde, Maison du Pêcheur"
+  "interieur|Route 12": "Route 12 : Poste de garde"
 ,
   "interieur|Carmin sur Mer": "Carmin sur Mer",
   "interieur|Route 11": "Route 11 : Poste de garde",
@@ -6506,7 +6523,7 @@ const GROUP_LABELS = {
   "interieur|Centre commercial": "Centre commercial",
   "interieur|Manoir Céladon": "Manoir Céladon",
   "donjon|Planque Rocket": "Planque Rocket",
-  "interieur|Route 16": "Route 16 : Poste de garde, Maison du Vol",
+  "interieur|Route 16": "Route 16 : Poste de garde",
   "interieur|Clairière (Route 16)": "Route 16 : Clairière",
   "interieur|Casino Rocket": "Casino Rocket",
   "interieur|Route 18": "Route 18 : Poste de garde",
@@ -6521,10 +6538,30 @@ const GROUP_LABELS = {
   "interieur|Route 15": "Route 15 : Poste de garde",
   "donjon|Caverne Azurée": "Caverne Azurée"
 };
+/* ---------- t75 : structure hiérarchique du DOM ----------
+   #stage
+     +- div.page         : LA div au plus haut, une par page (Monde puis
+     |                     une par groupe zone|groupe, data-page)
+     |   +- div.maplayer : une carte par page (classe spoil si secrète)
+     |       +- img        : la capture de la carte
+     |       +- div.mtype  : un par type de contenu, ordre de la légende
+     |           +- div.marker : le contenu lui-même, en cases de la carte
+   Pages et cartes créées ici, marqueurs dans buildMarkers. */
+const stg = document.getElementById("stage");
+const PAGE_ELS = {};
+["monde"].concat(Object.keys(GROUP_OFFSETS)).forEach(pk => {
+  const pd = document.createElement("div");
+  pd.className = "page";
+  pd.dataset.page = pk === "monde" ? "monde" : "g:" + pk;
+  stg.appendChild(pd);
+  PAGE_ELS[pk] = pd;
+});
+const pageKeyOf = m => m.zone === "monde" ? "monde" : m.zone + "|" + m.group;
 let stageW = 0, stageH = 0;
 MAPS.forEach(m => {
   const layer = document.createElement("div");
   layer.className = "maplayer" + (m.spoil ? " spoil" : "");
+  layer.dataset.map = m.id;
   layer.style.width = m.w + "px";
   layer.style.height = m.h + "px";
   const im = document.createElement("img");
@@ -6537,9 +6574,8 @@ MAPS.forEach(m => {
   im.alt = m.label;
   layer.appendChild(im);
   m.el = layer;
-  mapsEl.appendChild(layer);
+  PAGE_ELS[pageKeyOf(m)].appendChild(layer);
 });
-const stg = document.getElementById("stage");
 
 /* ---------- pages : Monde = surface collée ; Intérieurs / Donjons = une
    page par groupe de lieu. Seule la page courante est affichée et cliquable. ---------- */
@@ -6563,11 +6599,11 @@ function layoutPage() {
   });
   stg.style.width = stageW + "px";
   stg.style.height = stageH + "px";
-  MARKERS.forEach(m => { if (m.el) {
-    m.el.style.left = (m.mp.left + m.x * TILE + TILE / 2) + "px";
-    m.el.style.top = (m.mp.top + m.y * TILE + TILE / 2) + "px";
-    m.el.style.display = (m.mp.onPage && visible[m.shop ? "vendeur" : m.cat]) ? "" : "none";
-  } });
+  /* t75 : marqueurs imbriqués dans leur carte, positionnés une seule fois
+     à la construction ; seule la page affichée change la visibilité. */
+  Object.keys(PAGE_ELS).forEach(k =>
+    PAGE_ELS[k].style.display = (k === "monde" ? "monde" : "g:" + k) === page ? "" : "none");
+  refreshMarkers();
 }
 function showPage(p, noFit) {
   page = p;
@@ -6728,24 +6764,43 @@ window.addEventListener("resize", fit);
 fit();
 
 /* ---------- marqueurs ---------- */
-const markersLayer = document.getElementById("markers");
 const visible = { pnj: true, vendeur: true, trainer: true, item: true, hidden: true, warp: true };
-const HS_VISIBLES = ["Rival (1er et 2e duel)", "Rival (3e duel)", "Rival (4e duel)", "Ho-Oh"]; // RÈGLE HS : toute entrée Hide de data/maps/hide_show_data.asm (= invisible au début du jeu, drapeau armé à l'init) → marqueur hs:"cache" ; seules les exceptions TOUJOURS_VISIBLIBLES de mark_visible_objects.py (rivaux, Mew du quai de Vermillon, Ho-Oh du jardin... : ce tableau, par name) restent affichées. Hide non listé = caché ; Show = visible au départ puis retiré par script → pas de tag.
+const HS_VISIBLES = ["Rival", "Rival", "Rival", "Ho-Oh"]; // RÈGLE HS : toute entrée Hide de data/maps/hide_show_data.asm (= invisible au début du jeu, drapeau armé à l'init) → marqueur hs:"cache" ; seules les exceptions TOUJOURS_VISIBLIBLES de mark_visible_objects.py (rivaux, Mew du quai de Vermillon, Ho-Oh du jardin... : ce tableau, par name) restent affichées. Hide non listé = caché ; Show = visible au départ puis retiré par script → pas de tag.
 const hsVisible = m => !m.hs || HS_VISIBLES.includes(m.name);
 
 function buildMarkers() {
+  /* t75 : un div.mtype par type de contenu de la carte, dans l'ordre de la
+     légende (pnj, vendeur, trainer, item, hidden, warp) ; chaque marqueur
+     vit dans le type de contenu de sa carte : la carte > le type > le
+     contenu. Conteneurs créés seulement pour les types réellement présents
+     (et visibles au départ, règle HS). */
+  MAPS.forEach(mp => {
+    mp.types = {};
+    Object.keys(CATS).filter(tk =>
+      (mp.markers || []).some(m => hsVisible(m) && (m.shop ? "vendeur" : m.cat) === tk)
+    ).forEach(tk => {
+      const tEl = document.createElement("div");
+      tEl.className = "mtype " + tk;
+      tEl.dataset.type = tk;
+      mp.el.appendChild(tEl);
+      mp.types[tk] = tEl;
+    });
+  });
   MAPS.forEach(mp => (mp.markers || []).forEach(m => {
     m.mp = mp;
     if (!hsVisible(m)) return; // HS caché au début du jeu : pas affiché
     const el = document.createElement("div");
     /* t60 : un warp vers une carte spoil est masqué comme elle ; t61 : tout
        marqueur posé sur une carte spoil est masqué comme elle (warps, objets,
-       PNJ) : les marqueurs vivant dans markersLayer, masquer le calque de la
-       carte ne suffisait pas et la zone cachée se devinait sous les marqueurs. */
+       PNJ) : depuis t75 les marqueurs vivent dans le type de contenu de leur
+       carte, donc une carte masquée masque aussi ses marqueurs ; les classes
+       spoil propres aux marqueurs restent nécessaires pour les warps pointant
+       vers une carte spoil depuis une carte visible (spoilDest) et pour les
+       marqueurs spoil isolés. */
     const spoilDest = m.cat === "warp" && !!mapFromName(m.name) && mapFromName(m.name).spoil;
     el.className = "marker" + (m.give ? " don" : "") + ((m.spoil || spoilDest || mp.spoil) ? " spoil" : "");
-    el.style.left = (mp.left + m.x * TILE + TILE / 2) + "px";
-    el.style.top = (mp.top + m.y * TILE + TILE / 2) + "px";
+    el.style.left = (m.x * TILE + TILE / 2) + "px"; /* t75 : relatif à la carte */
+    el.style.top = (m.y * TILE + TILE / 2) + "px";
     if (m.cat === "hidden") { // objet caché : badge à l'icône, homogène au don
       const b = document.createElement("span");
       b.className = "hiddenico";
@@ -6795,7 +6850,7 @@ function buildMarkers() {
     el.title = m.name + (m.shop ? "\nMagasin : " + m.shop.map(s => s[1] + " " + s[2] + " " + (s[3] || "P$")).join(", ") : "")
       + (m.trade ? "\nÉchange : " + m.trade[1] + " contre " + m.trade[3] : "");
     m.el = el;
-    markersLayer.appendChild(el);
+    (mp.types[m.shop ? "vendeur" : m.cat] || mp.el).appendChild(el);
   }));
 }
 
@@ -6849,8 +6904,8 @@ function openTip(m, el) {
     m.teams.forEach(te => { html += /^Revanche/.test(te[0]) ? teamHtmlSp(te[1], te[0]) : teamHtml(te[1], te[0]); });
   }
   if (m.team || m.team2) {
-    if (m.team) html += teamHtml(m.team, m.team2 ? "1er duel" : null);
-    if (m.team2) html += m.spoil2 ? teamHtmlSp(m.team2, m.t2label || "Revanche") : teamHtml(m.team2, "2e duel");
+    if (m.team) html += teamHtml(m.team, m.team2 ? "1ère rencontre" : null);
+    if (m.team2) html += m.spoil2 ? teamHtmlSp(m.team2, m.t2label || "Revanche") : teamHtml(m.team2, "2ème rencontre");
   }
   if (m.trade) {
     html += '<h3 class="shop">Échange :</h3><ul class="shoplist tradelist"><li><img class="mon" src="' +
