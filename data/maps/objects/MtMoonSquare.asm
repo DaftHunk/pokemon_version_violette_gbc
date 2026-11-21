@@ -5,11 +5,12 @@ MtMoonSquareObject:
 	warp 16, 5, 3, ROUTE_4
 
 	db 1 ; signs
-	sign 14, 6, 3 ; PokeCenterSignText
+	sign 14, 6, 4 ; PokeCenterSignText
 
-	db 2 ; objects
-	object SPRITE_CLEFAIRY, 7, 8, WALK, 0, 1
-	object SPRITE_CLEFAIRY, 9, 8, WALK, 0, 2
+	db 3 ; objects
+	object SPRITE_CLEFAIRY,  7,  8, WALK, 0,    1
+	object SPRITE_CLEFAIRY,  9,  8, WALK, 0,    2
+	object SPRITE_BALL,     21, 13, STAY, NONE, 3, SOUL_STONE 
 
 
 	; warp-to

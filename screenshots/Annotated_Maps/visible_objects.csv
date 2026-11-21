@@ -384,7 +384,8 @@ MtMoonPokecenter;MT_MOON_POKECENTER;SPRITE_CABLE_CLUB_WOMAN;40;cable_club_woman.
 MtMoonPokecenter;MT_MOON_POKECENTER;SPRITE_CHANSEY;81;chansey.png;;4;1;STAY;DOWN;7;personnage;;;
 MtMoonSquare;MT_MOON_SQUARE;SPRITE_CLEFAIRY;79;clefairy.png;;7;8;WALK;0;1;personnage;;;
 MtMoonSquare;MT_MOON_SQUARE;SPRITE_CLEFAIRY;79;clefairy.png;;9;8;WALK;0;2;personnage;;;
-MtMoonSquare;MT_MOON_SQUARE;;;;1;8;8;;;;cache_objet;MOON_STONE;oui;
+MtMoonSquare;MT_MOON_SQUARE;SPRITE_BALL;112;ball.png;1;21;13;STAY;NONE;3;objet;SOUL_STONE;;
+MtMoonSquare;MT_MOON_SQUARE;;;;2;8;8;;;;cache_objet;MOON_STONE;oui;
 PalletBluesHouse;PALLET_BLUES_HOUSE;SPRITE_DAISY;15;daisy.png;;2;3;STAY;RIGHT;1;personnage;;;
 PalletBluesHouse;PALLET_BLUES_HOUSE;SPRITE_DAISY;15;daisy.png;;6;4;WALK;1;2;personnage;;oui;invisible au début du jeu (hide_show_data)
 PalletBluesHouse;PALLET_BLUES_HOUSE;SPRITE_MAP;119;map.png;1;3;3;STAY;NONE;3;objet_offert;TOWN_MAP;;
@@ -418,17 +419,17 @@ PewterGym;PEWTER_GYM;SPRITE_GYM_HELPER;34;gym_helper.png;;7;10;STAY;DOWN;3;perso
 PewterMart;PEWTER_MART;SPRITE_MART_GUY;36;mart_guy.png;1;0;5;STAY;RIGHT;1;magasin;POKE_BALL,POTION,OLD_ROD,ESCAPE_ROPE,ANTIDOTE,BURN_HEAL,AWAKENING,PARLYZ_HEAL,ETHER,TM34_BIDE,TM19_SEISMIC_TOSS;;
 PewterMart;PEWTER_MART;SPRITE_BUG_CATCHER;4;bug_catcher.png;;3;3;WALK;1;2;personnage;;;
 PewterMart;PEWTER_MART;SPRITE_BLACK_HAIR_BOY_2;10;black_hair_boy_2.png;;5;5;STAY;NONE;3;personnage;;;
-PewterMuseum1F;PEWTER_MUSEUM_1F;SPRITE_OAK_AIDE;30;oak_aide.png;;12;4;STAY;LEFT;1;personnage;;;
+PewterMuseum1F;PEWTER_MUSEUM_1F;SPRITE_OAK_AIDE;30;oak_aide.png;;12;5;STAY;LEFT;1;personnage;;;
 PewterMuseum1F;PEWTER_MUSEUM_1F;SPRITE_GAMBLER;9;gambler.png;;1;4;STAY;NONE;2;personnage;;;
 PewterMuseum1F;PEWTER_MUSEUM_1F;SPRITE_OAK_AIDE;30;oak_aide.png;;15;2;STAY;DOWN;3;personnage;;;
-PewterMuseum1F;PEWTER_MUSEUM_1F;SPRITE_OAK_AIDE;30;oak_aide.png;;17;4;STAY;NONE;4;personnage;;;
+PewterMuseum1F;PEWTER_MUSEUM_1F;SPRITE_OAK_AIDE;30;oak_aide.png;;18;4;STAY;NONE;4;personnage;;;
 PewterMuseum1F;PEWTER_MUSEUM_1F;SPRITE_OLD_AMBER;123;old_amber.png;1;16;2;STAY;NONE;5;objet_offert;OLD_AMBER;;
-PewterMuseum2F;PEWTER_MUSEUM_2F;SPRITE_BUG_CATCHER;4;bug_catcher.png;;1;7;WALK;2;1;personnage;;;
-PewterMuseum2F;PEWTER_MUSEUM_2F;SPRITE_OLD_PERSON;35;old_person.png;;0;5;STAY;DOWN;2;personnage;;;
-PewterMuseum2F;PEWTER_MUSEUM_2F;SPRITE_OAK_AIDE;30;oak_aide.png;;7;5;STAY;DOWN;3;personnage;;;
-PewterMuseum2F;PEWTER_MUSEUM_2F;SPRITE_BRUNETTE_GIRL;27;brunette_girl.png;1;11;5;STAY;NONE;4;objet_offert;RARE_CANDY;;
-PewterMuseum2F;PEWTER_MUSEUM_2F;SPRITE_HIKER;12;hiker.png;;12;5;STAY;DOWN;5;personnage;;;
-PewterMuseum2F;PEWTER_MUSEUM_2F;SPRITE_BALL;112;ball.png;2;0;1;STAY;NONE;6;objet;TM12_WATER_GUN;;
+PewterMuseum2F;PEWTER_MUSEUM_2F;SPRITE_BUG_CATCHER;4;bug_catcher.png;;1;8;WALK;2;1;personnage;;;
+PewterMuseum2F;PEWTER_MUSEUM_2F;SPRITE_OLD_PERSON;35;old_person.png;;9;4;STAY;DOWN;2;personnage;;;
+PewterMuseum2F;PEWTER_MUSEUM_2F;SPRITE_OAK_AIDE;30;oak_aide.png;;7;7;STAY;DOWN;3;personnage;;;
+PewterMuseum2F;PEWTER_MUSEUM_2F;SPRITE_BRUNETTE_GIRL;27;brunette_girl.png;1;3;2;STAY;NONE;4;objet_offert;RARE_CANDY;;
+PewterMuseum2F;PEWTER_MUSEUM_2F;SPRITE_HIKER;12;hiker.png;;4;2;STAY;DOWN;5;personnage;;;
+PewterMuseum2F;PEWTER_MUSEUM_2F;SPRITE_BALL;112;ball.png;2;12;9;STAY;NONE;6;objet;TM12_WATER_GUN;;
 PewterNidoranHouse;PEWTER_NIDORAN_HOUSE;SPRITE_NIDORANM;106;nidoranM.png;;4;5;STAY;LEFT;1;personnage;;;
 PewterNidoranHouse;PEWTER_NIDORAN_HOUSE;SPRITE_YOUNG_BOY;51;young_boy.png;;3;5;STAY;RIGHT;2;personnage;;;
 PewterNidoranHouse;PEWTER_NIDORAN_HOUSE;SPRITE_FAT_BALD_GUY;8;fat_bald_guy.png;;1;2;STAY;NONE;3;personnage;;;
