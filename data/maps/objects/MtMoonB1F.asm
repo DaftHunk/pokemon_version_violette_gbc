@@ -1,7 +1,7 @@
 MtMoonB1FObject:
 	db $3 ; border block
 
-	db 8 ; warps
+	db 9 ; warps
 	warp 5, 5, 2, MT_MOON_1F
 	warp 17, 11, 0, MT_MOON_B2F
 	warp 25, 9, 3, MT_MOON_1F
@@ -9,6 +9,7 @@ MtMoonB1FObject:
 	warp 21, 17, 1, MT_MOON_B2F
 	warp 13, 27, 2, MT_MOON_B2F
 	warp 23, 3, 3, MT_MOON_B2F
+	warp 26, 3, 2, -1
 	warp 27, 3, 2, -1
 
 	db 0 ; signs
@@ -25,4 +26,5 @@ MtMoonB1FObject:
 	warp_to 21, 17, MT_MOON_B1F_WIDTH ; MT_MOON_B2F
 	warp_to 13, 27, MT_MOON_B1F_WIDTH ; MT_MOON_B2F
 	warp_to 23, 3, MT_MOON_B1F_WIDTH ; MT_MOON_B2F
+	warp_to 26, 3, MT_MOON_B1F_WIDTH
 	warp_to 27, 3, MT_MOON_B1F_WIDTH
