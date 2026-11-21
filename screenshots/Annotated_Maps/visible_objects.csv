@@ -384,7 +384,7 @@ MtMoonPokecenter;MT_MOON_POKECENTER;SPRITE_CABLE_CLUB_WOMAN;40;cable_club_woman.
 MtMoonPokecenter;MT_MOON_POKECENTER;SPRITE_CHANSEY;81;chansey.png;;4;1;STAY;DOWN;7;personnage;;;
 MtMoonSquare;MT_MOON_SQUARE;SPRITE_CLEFAIRY;79;clefairy.png;;7;8;WALK;0;1;personnage;;;
 MtMoonSquare;MT_MOON_SQUARE;SPRITE_CLEFAIRY;79;clefairy.png;;9;8;WALK;0;2;personnage;;;
-MtMoonSquare;MT_MOON_SQUARE;SPRITE_BALL;112;ball.png;1;21;13;STAY;NONE;3;objet;SOUL_STONE;;
+MtMoonSquare;MT_MOON_SQUARE;SPRITE_BALL;112;ball.png;1;24;9;STAY;NONE;3;objet;SOUL_STONE;;
 MtMoonSquare;MT_MOON_SQUARE;;;;2;8;8;;;;cache_objet;MOON_STONE;oui;
 PalletBluesHouse;PALLET_BLUES_HOUSE;SPRITE_DAISY;15;daisy.png;;2;3;STAY;RIGHT;1;personnage;;;
 PalletBluesHouse;PALLET_BLUES_HOUSE;SPRITE_DAISY;15;daisy.png;;6;4;WALK;1;2;personnage;;oui;invisible au début du jeu (hide_show_data)
@@ -708,9 +708,9 @@ Route3;ROUTE_3;SPRITE_BUG_CATCHER;4;bug_catcher.png;6;22;9;STAY;LEFT;7;dresseur;
 Route3;ROUTE_3;SPRITE_BUG_CATCHER;4;bug_catcher.png;7;24;6;STAY;RIGHT;8;dresseur;OPP_BUG_CATCHER 7;;
 Route3;ROUTE_3;SPRITE_LASS;5;lass.png;8;33;10;STAY;UP;9;dresseur;OPP_LASS 4;;
 Route4;ROUTE_4;SPRITE_LASS;5;lass.png;;9;8;WALK;0;1;personnage;;;
-Route4;ROUTE_4;SPRITE_LASS;5;lass.png;1;63;2;STAY;DOWN;2;dresseur;OPP_LASS 7;;
-Route4;ROUTE_4;SPRITE_BALL;112;ball.png;2;57;3;STAY;NONE;3;objet;TM03_SWORDS_DANCE;;
-Route4;ROUTE_4;;;;3;62;3;;;;cache_objet;MOON_STONE;oui;
+Route4;ROUTE_4;SPRITE_LASS;5;lass.png;1;70;2;STAY;DOWN;2;dresseur;OPP_LASS 7;;
+Route4;ROUTE_4;SPRITE_BALL;112;ball.png;2;53;4;STAY;NONE;3;objet;TM03_SWORDS_DANCE;;
+Route4;ROUTE_4;;;;3;64;2;;;;cache_objet;MOON_STONE;oui;
 Route4;ROUTE_4;;;;4;61;15;;;;cache_objet;GREAT_BALL;oui;
 Route5Gate;ROUTE_5_GATE;SPRITE_GUARD;47;guard.png;;1;3;STAY;RIGHT;1;personnage;;;
 Route6;ROUTE_6;SPRITE_BLACK_HAIR_BOY_1;6;black_hair_boy_1.png;1;10;21;STAY;RIGHT;1;dresseur;OPP_JR_TRAINER_M 3;;

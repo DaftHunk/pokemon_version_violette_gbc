@@ -10,7 +10,7 @@ MtMoonSquareObject:
 	db 3 ; objects
 	object SPRITE_CLEFAIRY,  7,  8, WALK, 0,    1
 	object SPRITE_CLEFAIRY,  9,  8, WALK, 0,    2
-	object SPRITE_BALL,     21, 13, STAY, NONE, 3, SOUL_STONE 
+	object SPRITE_BALL, 24,  9, STAY, NONE, 3, SOUL_STONE
 
 
 	; warp-to

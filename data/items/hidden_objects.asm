@@ -947,7 +947,7 @@ Route2HiddenObjects:
 Route4HiddenObjects:
 	db $0f,$3d,GREAT_BALL
 	dbw BANK(HiddenItems),HiddenItems
-	db 3,62,MOON_STONE
+	db 2,64,MOON_STONE
 	dbw BANK(HiddenItems),HiddenItems	;joenote - added an extra moon stone
 	db $FF
 Route6HiddenObjects: ;joenote - added hidden items
