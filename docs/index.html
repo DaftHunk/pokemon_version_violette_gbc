@@ -4630,7 +4630,7 @@ const ZONES = {
   CeruleanMelanieHouse: ["interieur", "Azuria"],
   Route24: ["monde", null],
   Route25: ["monde", null],
-  BillsHouse: ["interieur", "Azuria"],
+  BillsHouse: ["interieur", "Villa Léo"],
   BillsGarden: ["monde", null],
   Route9: ["monde", null],
   Route10: ["monde", null],
@@ -6420,45 +6420,48 @@ const GROUP_OFFSETS = {
   "interieur|Route 22": { Route22Gate2F: [0, 0], Route22Gate1F: [0, 12] },
   "donjon|Route Victoire": { VictoryRoad3F: [0, 0], VictoryRoad2F: [0, 22], VictoryRoad1F: [5, 44] },
   "interieur|Route 2": { Route2Gate: [0, 0], Route2TradeHouse: [14, 0] },
-  "interieur|Argenta": { PewterPokecenter: [0, 16], PewterMart: [18, 16], PewterGym: [30, 10], PewterMuseum1F: [44, 14], PewterMuseum2F: [47, 0], PewterNidoranHouse: [68, 16], PewterSpeechHouse: [80, 16] },
+  "interieur|Argenta": { PewterSpeechHouse: [0, 16], PewterPokecenter: [12, 16], PewterMart: [30, 16], PewterNidoranHouse: [42, 16], PewterGym: [54, 10], PewterMuseum1F: [68, 14], PewterMuseum2F: [71, 0] },
   "donjon|Forêt de Jade": { ViridianForestNorthGate: [12, 0], ViridianForest: [0, 12], ViridianForestSouthGate: [12, 64] },
   "donjon|Grotte Taupiqueur": { DiglettsCaveRoute2: [0, 28], DiglettsCave: [12, 0], DiglettsCaveRoute11: [56, 28] },
   "donjon|Mont Sélénite": { MtMoonPokecenter: [0, 28], MtMoon1F: [18, 0], MtMoonSquare: [62, 18], MtMoonB1F: [24, 40], MtMoonB2F: [18, 72] },
-  "interieur|Azuria": { CeruleanPokecenter: [0, 16], CeruleanGym: [18, 10], CeruleanBikeShop: [32, 16], CeruleanMart: [44, 16], CeruleanTrashedHouse: [56, 16], CeruleanTradeHouse: [68, 16], CeruleanBadgeHouse: [80, 16], CeruleanPrinter: [92, 16], CeruleanMelanieHouse: [104, 16], BillsHouse: [116, 16] },
+  "interieur|Azuria": { CeruleanBikeShop: [0, 16], CeruleanPrinter: [12, 16], CeruleanMart: [24, 16], CeruleanMelanieHouse: [36, 16], CeruleanTradeHouse: [48, 16], CeruleanPokecenter: [60, 16], CeruleanBadgeHouse: [78, 16], CeruleanTrashedHouse: [90, 16], CeruleanGym: [102, 10] },
+  "interieur|Villa Léo": { BillsHouse: [0, 0] },
   "donjon|Grotte Sombre": { RockTunnelB1F: [18, 40], RockTunnel1F: [18, 0], RockTunnelPokecenter: [62, 28] },
   "donjon|Centrale": { PowerPlant2F: [0, 0], PowerPlant1F: [0, 20] },
   /* t69 : Tour Pokémon détachée dans son propre espace donjons, 7F en haut
      jusqu'au 1F en bas ; Lavanville réduit aux 5 bâtiments en ligne. */
   "donjon|Tour Pokémon": { LavenderPokemonTower7F: [0, 0], LavenderPokemonTower6F: [0, 22], LavenderPokemonTower5F: [0, 44], LavenderPokemonTower4F: [0, 66], LavenderPokemonTower3F: [0, 88], LavenderPokemonTower2F: [0, 110], LavenderPokemonTower1F: [0, 132] },
-  "interieur|Lavanville": { LavenderPokecenter: [0, 0], LavenderMart: [16, 0], LavenderFujisHouse: [26, 0], LavenderCuboneHouse: [36, 0], LavenderNameRatersHouse: [46, 0] },
-  "interieur|Postes de garde Safrania": { Route5Gate: [6, 0], Route7Gate: [0, 7], Route8Gate: [14, 7], Route6Gate: [6, 15] },
+  "interieur|Lavanville": { LavenderPokecenter: [0, 0], LavenderMart: [18, 0], LavenderFujisHouse: [30, 0], LavenderCuboneHouse: [42, 0], LavenderNameRatersHouse: [54, 0] },
+  "interieur|Postes de garde Safrania": { Route5Gate: [10, 0], Route7Gate: [0, 7], Route6Gate: [10, 10], Route8Gate: [22, 7] },
   "interieur|Route 5": { Daycare: [0, 0] },
-  "interieur|Souterrain Nord-Sud": { UndergroundPathRoute5: [1, 0], UndergroundPathNorthSouth: [0, 8], UndergroundPathRoute6: [1, 50] },
-  "interieur|Souterrains": { UndergroundPathRoute7: [0, 0], UndergroundPathWestEast: [10, 0], UndergroundPathRoute8: [62, 0] },
-  "interieur|Safrania": { SaffronCopycatsHouse2F: [0, 2], SaffronCopycatsHouse1F: [0, 12], SaffronPidgeyHouse: [10, 12], SaffronMrPsychicsHouse: [20, 12], SaffronMart: [30, 12], SaffronPokecenter: [40, 12], SaffronFightingDojo: [56, 8], SaffronGym: [68, 2] },
-  "donjon|Sylphe SARL": { SaffronSilphCo11F: [6, 0], SaffronSilphCo10F: [7, 22], SaffronSilphCo9F: [2, 44], SaffronSilphCo8F: [2, 66], SaffronSilphCo7F: [2, 88], SaffronSilphCo6F: [2, 110], SaffronSilphCo5F: [0, 132], SaffronSilphCo4F: [0, 154], SaffronSilphCo3F: [0, 176], SaffronSilphCo2F: [0, 198], SaffronSilphCo1F: [0, 220], SaffronSilphCoElevator: [32, 220] },
+  "interieur|Souterrain Nord-Sud": { UndergroundPathRoute5: [1, 0], UndergroundPathNorthSouth: [0, 12], UndergroundPathRoute6: [1, 58] },
+  "interieur|Souterrains": { UndergroundPathRoute7: [0, 0], UndergroundPathWestEast: [12, 0], UndergroundPathRoute8: [66, 0] },
+  "interieur|Safrania": { SaffronCopycatsHouse2F: [0, 0], SaffronCopycatsHouse1F: [0, 12], SaffronPidgeyHouse: [12, 12], SaffronMrPsychicsHouse: [24, 12], SaffronMart: [36, 12], SaffronPokecenter: [48, 12], SaffronFightingDojo: [66, 8], SaffronGym: [80, 2] },
+  "donjon|Sylphe SARL": { SaffronSilphCo11F: [6, 0], SaffronSilphCo10F: [7, 22], SaffronSilphCo9F: [2, 44], SaffronSilphCo8F: [2, 66], SaffronSilphCo7F: [2, 88], SaffronSilphCo6F: [2, 110], SaffronSilphCo5F: [2, 132], SaffronSilphCo4F: [0, 154], SaffronSilphCo3F: [0, 176], SaffronSilphCo2F: [0, 198], SaffronSilphCo1F: [0, 220], SaffronSilphCoElevator: [34, 220] },
   "interieur|Route 12": { Route12Gate2F: [1, 0], Route12Gate1F: [0, 12], Route12FisherHouse: [14, 12] },
 
-  "interieur|Carmin sur Mer": { VermilionGym: [0, 0], VermilionPokecenter: [12, 10], VermilionFanClub: [28, 10], VermilionMart: [38, 10], VermilionPidgeyHouse: [48, 10], VermilionFisherHouse: [58, 10], VermilionTradeHouse: [68, 10] },
+  "interieur|Carmin sur Mer": { VermilionPokecenter: [0, 10], VermilionFanClub: [18, 10], VermilionMart: [30, 10], VermilionPidgeyHouse: [42, 10], VermilionFisherHouse: [54, 10], VermilionTradeHouse: [66, 10], VermilionGym: [78, 0] },
   "interieur|Route 11": { Route11Gate2F: [0, 0], Route11Gate1F: [0, 12] },
   /* L'Océane selon la maquette utilisateur : poupe a gauche du pont 3F, cuisine
      a gauche du pont 1F, cabine du capitaine puis dock a droite des ponts 2F/1F ;
      convention : etages de la pile CENTRES entre eux sur l'axe des ponts larges
-     (2F/1F x 24..64 -> axe x=44 ; 3F 34, cabines 32, B1F 29), annexes a 2 tuiles. */
-  "donjon|L'Océane": { SSAnneBow: [2, 0], SSAnne3F: [34, 0], SSAnne2F: [24, 8], SSAnneCaptainsRoom: [66, 8],
-    SSAnne2FRooms: [32, 28], SSAnneKitchen: [8, 46], SSAnne1F: [24, 46], VermilionDock: [66, 46],
-    SSAnne1FRooms: [32, 66], SSAnneB1F: [29, 84], SSAnneB1FRooms: [32, 94] },
-  /* Céladopole : rangée de bâtiments alignés par le bas (Arène et Casino, 18 tuiles de haut,
-     posent le niveau de sol) ; Centre commercial : pile de même largeur, toit en haut, 1F en bas,
-     ascenseur en annexe à 2 tuiles, aligné par le bas du 1F ; Manoir : pile centrée (même
+     (2F/1F x 24..64 -> axe x=44 ; 3F 34, cabines 32, B1F 29), annexes a 4 tuiles (64px, t80) ;
+     poupe [0,0] detachee du pont 2F a 4 tuiles (retour user t81 : plus d'interlock). */
+  "donjon|L'Océane": { SSAnneBow: [0, 0], SSAnne3F: [34, 0], SSAnne2F: [24, 10], SSAnneCaptainsRoom: [68, 10],
+    SSAnne2FRooms: [32, 32], SSAnneKitchen: [6, 52], SSAnne1F: [24, 52], VermilionDock: [68, 52],
+    SSAnne1FRooms: [32, 74], SSAnneB1F: [29, 94], SSAnneB1FRooms: [32, 106] },
+  /* t80 : écart homogène de 4 tuiles (64px) entre cartes adjacentes, alignements et
+     placements conservés ; Céladopole : rangée alignée par le bas, l'Arène (18 tuiles,
+     t80) à droite ; Centre commercial : pile de même largeur, toit en haut, 1F en bas,
+     ascenseur en annexe à 4 tuiles, aligné par le bas du 1F ; Manoir : pile centrée (même
      largeur), maison du toit en haut ; Planque Rocket : pile centrée B1F→B4F (30 tuiles),
      ascenseur en annexe à droite du B1F, aligné par le bas. */
-  "interieur|Casino Rocket": { CeladonGameCorner: [0, 0], CeladonGameCornerPrizeRoom: [22, 10] },
-  "interieur|Céladopole": { CeladonGym: [0, 0], CeladonPokecenter: [12, 10], CeladonDiner: [28, 10], CeladonChiefHouse: [40, 10], CeladonSchool: [50, 10], CeladonHotel: [60, 10] },
-  "interieur|Centre commercial": { CeladonMartRoof: [0, 0], CeladonMart5F: [0, 14], CeladonMart4F: [0, 24], CeladonMart3F: [0, 34], CeladonMart2F: [0, 44], CeladonMart1F: [0, 54], CeladonMartElevator: [22, 58] },
-  "interieur|Manoir Céladon": { CeladonMansionRoofHouse: [0, 0], CeladonMansionRoof: [0, 10], CeladonMansion3F: [0, 28], CeladonMansion2F: [0, 42], CeladonMansion1F: [0, 56] },
-  "donjon|Planque Rocket": { RocketHideoutB1F: [0, 0], RocketHideoutB2F: [0, 32], RocketHideoutB3F: [0, 64], RocketHideoutB4F: [0, 96], RocketHideoutElevator: [32, 20] },
-  /* Route 16 : poste de garde principal (1F/2F empilés) + Maison du Vol ;
+  "interieur|Casino Rocket": { CeladonGameCorner: [0, 0], CeladonGameCornerPrizeRoom: [24, 10] },
+  "interieur|Céladopole": { CeladonPokecenter: [0, 10], CeladonDiner: [18, 10], CeladonChiefHouse: [32, 10], CeladonSchool: [44, 10], CeladonHotel: [56, 10], CeladonGym: [74, 0] },
+  "interieur|Centre commercial": { CeladonMartRoof: [0, 0], CeladonMart5F: [0, 16], CeladonMart4F: [0, 28], CeladonMart3F: [0, 40], CeladonMart2F: [0, 52], CeladonMart1F: [0, 64], CeladonMartElevator: [24, 68] },
+  "interieur|Manoir Céladon": { CeladonMansionRoofHouse: [0, 0], CeladonMansionRoof: [0, 12], CeladonMansion3F: [0, 32], CeladonMansion2F: [0, 48], CeladonMansion1F: [0, 64] },
+  "donjon|Planque Rocket": { RocketHideoutB1F: [0, 0], RocketHideoutB2F: [0, 32], RocketHideoutB3F: [0, 64], RocketHideoutB4F: [0, 96], RocketHideoutElevator: [34, 20] },
+  /* Route 16 (t80) : Maison du Vol à gauche du poste de garde (1F/2F empilés) ;
      Clairière (Route 16) : Laboratoire abandonné + maison, alignés par le bas ;
      Route 18 : 2F centré sur le 1F ; Parmanie : l'Arène (18 tuiles) pose le sol,
      rangée de bâtiments alignés par le bas ; Parc Safari : Nord centré sur
@@ -6466,31 +6469,30 @@ const GROUP_OFFSETS = {
      chaque annexe sous sa zone : Ouest + maison secrète sous l'Ouest,
      entrée + aire du Centre sous le Centre, aires Est/Nord sous l'Est
      (l'entrée, haute de 6 tuiles, est calée en bas). */
-  "interieur|Route 16": { Route16Gate2F: [0, 0], Route16Gate1F: [0, 10], Route16FlyHouse: [10, 16] },
-  "interieur|Clairière (Route 16)": { Route16WestHouse: [0, 20], Route16WestGate: [10, 10] },
-  "interieur|Route 18": { Route18Gate2F: [0, 0], Route18Gate1F: [0, 10] },
-  "interieur|Parmanie": { FuchsiaGym: [0, 0], FuchsiaMart: [12, 10], FuchsiaBillsGrandpasHouse: [22, 10], FuchsiaPokecenter: [32, 10], FuchsiaWardensHouse: [48, 10], FuchsiaMeetingRoom: [60, 10], FuchsiaFisherHouse: [76, 10] },
-  "donjon|Parc Safari": { SafariZoneNorth: [27, 0], SafariZoneWest: [0, 40], SafariZoneCenter: [32, 40], SafariZoneEast: [64, 40],
-    SafariZoneWestRestHouse: [0, 68], SafariZoneSecretHouse: [10, 68], SafariZoneGate: [32, 70], SafariZoneCenterRestHouse: [42, 68],
-    SafariZoneEastRestHouse: [64, 68], SafariZoneNorthRestHouse: [74, 68] },
+  "interieur|Route 16": { Route16FlyHouse: [0, 18], Route16Gate2F: [12, 0], Route16Gate1F: [12, 12] },
+  "interieur|Clairière (Route 16)": { Route16WestHouse: [0, 20], Route16WestGate: [12, 10] },
+  "interieur|Route 18": { Route18Gate2F: [0, 0], Route18Gate1F: [0, 12] },
+  "interieur|Parmanie": { FuchsiaMart: [0, 10], FuchsiaBillsGrandpasHouse: [12, 10], FuchsiaPokecenter: [24, 10], FuchsiaWardensHouse: [42, 10], FuchsiaMeetingRoom: [56, 10], FuchsiaFisherHouse: [74, 10], FuchsiaGym: [86, 0] },
+  "donjon|Parc Safari": { SafariZoneNorth: [29, 0], SafariZoneWest: [0, 40], SafariZoneCenter: [34, 40], SafariZoneEast: [68, 40],
+    SafariZoneWestRestHouse: [0, 70], SafariZoneSecretHouse: [12, 70], SafariZoneGate: [34, 72], SafariZoneCenterRestHouse: [46, 70],
+    SafariZoneEastRestHouse: [68, 70], SafariZoneNorthRestHouse: [80, 70] },
 
-  /* Cramois'Île, comme la maquette : arène à gauche, Centre et Magasin
-     plus au sud, Labo à droite puis ses trois salles au-dessus du Labo ; Manoir :
-     étages empilés (1F en bas, B1F sous les étages) ; Volcan : B1F puis
-     B2F sous le 1F. */
+  /* Cramois'Île (t80) : Centre, Magasin, Arène puis Labo, ses trois salles
+     au-dessus du Labo ; Manoir : étages empilés à 4 tuiles (64px, t80) ;
+     Volcan : B1F puis B2F sous le 1F. */
   "interieur|Chenal 19": { Route19BeachHouse: [0, 0] },
   "interieur|Chenal 20": { Lighthouse: [0, 0] },
-  "interieur|Cramois'Île": { CinnabarGym: [0, 0], CinnabarPokecenter: [24, 10], CinnabarMart: [42, 10], CinnabarLab: [54, 10], CinnabarLabTradeRoom: [54, 0], CinnabarLabMetronomeRoom: [68, 0], CinnabarLabFossilRoom: [82, 0] },
-  "donjon|Manoir Pokémon": { CinnabarMansion3F: [0, 0], CinnabarMansion2F: [0, 32], CinnabarMansion1F: [0, 64], CinnabarMansionB1F: [0, 86] },
+  "interieur|Cramois'Île": { CinnabarPokecenter: [0, 12], CinnabarMart: [18, 12], CinnabarGym: [30, 2], CinnabarLab: [54, 12], CinnabarLabTradeRoom: [54, 0], CinnabarLabMetronomeRoom: [66, 0], CinnabarLabFossilRoom: [78, 0] },
+  "donjon|Manoir Pokémon": { CinnabarMansion3F: [0, 0], CinnabarMansion2F: [0, 22], CinnabarMansion1F: [0, 54], CinnabarMansionB1F: [0, 86] },
   "donjon|Volcan Cramoisi": { Volcano1F: [0, 0], VolcanoB1F: [4, 28], VolcanoB2F: [3, 74] },
   /* Îles Écume : les cinq étages empilés en colonne (même largeur 30 tuiles),
      du 1F au B4F, convention t55-quater : du niveau le plus haut vers le plus bas. */
-  "donjon|Îles Écume": { SeafoamIslands1F: [0, 0], SeafoamIslandsB1F: [0, 20], SeafoamIslandsB2F: [0, 40], SeafoamIslandsB3F: [0, 60], SeafoamIslandsB4F: [0, 80] },
+  "donjon|Îles Écume": { SeafoamIslands1F: [0, 0], SeafoamIslandsB1F: [0, 22], SeafoamIslandsB2F: [0, 44], SeafoamIslandsB3F: [0, 66], SeafoamIslandsB4F: [0, 88] },
   /* Route 15 : 2F centré sur le 1F (même largeur 8 tuiles, écart 4 tuiles) ;
      Caverne Azurée : les trois étages empilés en colonne (même largeur
      30 tuiles), t69 : 2F au-dessus du 1F (2F, 1F, B1F). */
   "interieur|Route 15": { Route15Gate2F: [0, 0], Route15Gate1F: [0, 12] },
-  "donjon|Caverne Azurée": { CeruleanCave2F: [0, 0], CeruleanCave1F: [0, 20], CeruleanCaveB1F: [0, 40] }
+  "donjon|Caverne Azurée": { CeruleanCave2F: [0, 0], CeruleanCave1F: [0, 22], CeruleanCaveB1F: [0, 44] }
 };
 const GROUP_LABELS = {
   "interieur|Jadielle": "Jadielle",
@@ -6504,6 +6506,7 @@ const GROUP_LABELS = {
   "donjon|Grotte Taupiqueur": "Grotte Taupiqueur",
   "donjon|Mont Sélénite": "Mont Sélénite",
   "interieur|Azuria": "Azuria",
+  "interieur|Villa Léo": "Villa Léo",
   "donjon|Grotte Sombre": "Grotte Sombre",
   "donjon|Centrale": "Centrale",
   "donjon|Tour Pokémon": "Tour Pokémon",
@@ -6643,7 +6646,7 @@ document.querySelector('#pages [data-page="monde"]').onclick = () => showPage("m
      dans l'ordre alphabétique et passent devant la ville suivante). */
   const VILLES = ["Argenta", "Azuria", "Bourg Palette", "Carmin sur Mer", "Céladopole", "Cramois'Île", "Jadielle", "Lavanville", "Parmanie", "Safrania"];
   const glabel = g => GROUP_LABELS[zone + "|" + g.name] || g.name;
-  const SATELLITES = { "Céladopole": ["Casino Rocket", "Centre commercial", "Manoir Céladon"], "Safrania": ["Postes de garde Safrania"] };
+  const SATELLITES = { "Céladopole": ["Casino Rocket", "Centre commercial", "Manoir Céladon"], "Safrania": ["Postes de garde Safrania"], "Azuria": ["Villa Léo"] };
   const maitre = g => { for (const v in SATELLITES) if (SATELLITES[v].includes(g.name)) return v; return null; };
   const cleTri = g => maitre(g) ? maitre(g) + " " + glabel(g) : glabel(g);
   groups.sort((a, b) => {
@@ -6765,7 +6768,7 @@ fit();
 
 /* ---------- marqueurs ---------- */
 const visible = { pnj: true, vendeur: true, trainer: true, item: true, hidden: true, warp: true };
-const HS_VISIBLES = ["Rival", "Rival", "Rival", "Ho-Oh"]; // RÈGLE HS : toute entrée Hide de data/maps/hide_show_data.asm (= invisible au début du jeu, drapeau armé à l'init) → marqueur hs:"cache" ; seules les exceptions TOUJOURS_VISIBLIBLES de mark_visible_objects.py (rivaux, Mew du quai de Vermillon, Ho-Oh du jardin... : ce tableau, par name) restent affichées. Hide non listé = caché ; Show = visible au départ puis retiré par script → pas de tag.
+const HS_VISIBLES = ["Rival", "Rival", "Rival", "Rival (3e duel)", "Ho-Oh"]; // RÈGLE HS : toute entrée Hide de data/maps/hide_show_data.asm (= invisible au début du jeu, drapeau armé à l'init) → marqueur hs:"cache" ; seules les exceptions TOUJOURS_VISIBLIBLES de mark_visible_objects.py (rivaux, Mew du quai de Vermillon, Ho-Oh du jardin... : ce tableau, par name) restent affichées. Hide non listé = caché ; Show = visible au départ puis retiré par script → pas de tag.
 const hsVisible = m => !m.hs || HS_VISIBLES.includes(m.name);
 
 function buildMarkers() {
