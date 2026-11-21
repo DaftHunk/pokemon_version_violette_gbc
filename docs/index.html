@@ -1361,7 +1361,7 @@ const MARKERS_OAKSLAB = [
   { cat: "pnj", spr: true, icon: "pokeball", x: 7, y: 3, name: "Poké Ball", give: ["front_squirtle", "Carapuce n.5"] },
   { cat: "pnj", spr: true, icon: "pokeball", x: 8, y: 3, name: "Poké Ball", give: ["front_bulbasaur", "Bulbizarre n.5"] },
   /* Duel secret de Chen (OaksLabText5) : après la Ligue, il propose un duel
-     pour l'évaluation du Pokédex ; son dernier #mon est le starter du rival
+     pour l'évaluation du Pokédex ; son dernier Pokémon est le starter du rival
      (Tortank, Florizarre ou Dracaufeu n.69) — spoil. */
   { cat: "trainer", spr: true, icon: "oak", x: 5, y: 2, dir: "down", name: "Prof. Chen", scripted: true, badge: "Après la Ligue", spoil: true,
     team: [["tauros", "Tauros", 66], ["exeggutor", "Noadkoko", 67], ["arcanine", "Arcanin", 68],
@@ -2022,14 +2022,14 @@ const MARKERS_ROUTE10SOUTH = [
 /* Lavanville (data/maps/objects/LavenderTown.asm, scripts/LavenderTown.asm,
    text/maps/lavender_town.asm) : 3 habitants — Petite fille (croit-elle aux
    Spectres ? easter egg Spectrum évolutif sous les tempêtes de Foudre),
-   Jeune homme (la ville, cimetière des #mon), Jeune homme (les Spectres de
-   la Tour #mon) ; 6 portes vers les intérieurs dessinés (page Lavanville) :
+   Jeune homme (la ville, cimetière des Pokémon), Jeune homme (les Spectres de
+   la Tour Pokémon) ; 6 portes vers les intérieurs dessinés (page Lavanville) :
    Centre Pokémon, Tour Pokémon 1F, Maison de Fuji (le Bénévolat du panneau ;
-   donne la Flûte #mon — hack : duel spécial de Fuji débloqué après la Ligue),
+   donne la Flûte Pokémon — hack : duel spécial de Fuji débloqué après la Ligue),
    Magasin, Maison d'Osselait (l'enfant et sa mère ; Spectre apaisé), Maison
    du Juge de noms ; 6 panneaux ignorés (ville « Lavanville — Le pourpre de
    la noblesse », pub Scope Sylphe, enseignes Pokécentre/Magasin, Bénévolat,
-   Tour #mon) ; NoHS, aucun objet caché, aucune rencontre sauvage (aucun
+   Tour Pokémon) ; NoHS, aucun objet caché, aucune rencontre sauvage (aucun
    data/wildPokemons/maps/LavenderTown.asm), aucun point d'eau. Connexions
    dessinées : Route 8 à l'ouest, Route 12 au sud (bords collés, page Monde).
    */
@@ -2046,7 +2046,7 @@ const MARKERS_LAVENDER = [
 ];
 
 /* Pokécentre de la Grotte Sombre (RockTunnelPokecenter.asm) : Infirmière et
-   Leveinard, Distingué (#mon d'un certain élément : la CT ne fonctionne que
+   Leveinard, Distingué (Pokémon d'un certain élément : la CT ne fonctionne que
    sur eux), Pêcheur (a vendu une Pépite 5000 P$), Hôtesse Cable Club ;
    2 portes vers la Route 10 (13,25). NoHS. */
 const MARKERS_RTCENTER = [
@@ -2188,14 +2188,14 @@ const MARKERS_LCUBONE = [
   { cat: "warp", x: 3, y: 7, name: "Lavanville", dx: 3, dy: 13, badge: "Sortie" }
 ];
 /* Maison du Juge de noms (LavenderNameRatersHouse.asm) : le Juge renomme
-   les #mon échangés ; 2 portes vers Lavanville (7,13). NoHS. */
+   les Pokémon échangés ; 2 portes vers Lavanville (7,13). NoHS. */
 const MARKERS_LJUDGE = [
   { cat: "pnj", spr: true, icon: "mr_masterball", x: 5, y: 3, dir: "left", name: "Juge de noms" },
   { cat: "warp", x: 2, y: 7, name: "Lavanville", dx: 7, dy: 13, badge: "Sortie" },
   { cat: "warp", x: 3, y: 7, name: "Lavanville", dx: 7, dy: 13, badge: "Sortie" }
 ];
 /* Tour Pokémon 1F (LavenderPokemonTower1F.asm) : 5 habitants autour de la
-   stèle (Femme : érigée en mémoire des #mon morts au combat ; Dame ;
+   stèle (Femme : érigée en mémoire des Pokémon morts au combat ; Dame ;
    Homme : prie pour son Mélofée ; Fille : « Mon Caninos » ; Exorciste :
    je chasse les esprits) ; 2 sorties sud vers Lavanville (14,5), escalier
    nord-est vers le 2F. NoHS. Pas de rencontres (NoMons). */
@@ -2464,9 +2464,9 @@ const MARKERS_R12GATE1F = [
 ];
 
 /* Poste de garde Route 12, 2F (data/maps/objects/Route12Gate2F.asm) : une
-   jumelle (3,4) offre la CT39 Météore (« Les cendres de mes #mon sont dans
-   la Tour #mon ») ; le panneau (6,2) et les jumelles interactives
-   (hidden_objects.asm (1,2)) regardent la Tour #mon : ils montrent la
+   jumelle (3,4) offre la CT39 Météore (« Les cendres de mes Pokémon sont dans
+   la Tour Pokémon ») ; le panneau (6,2) et les jumelles interactives
+   (hidden_objects.asm (1,2)) regardent la Tour Pokémon : ils montrent la
    Centrale et un « magnifique oiseau » doré (Electhor) : décor sans
    marqueur. NoHS, aucune rencontre. */
 const MARKERS_R12GATE2F = [
@@ -2670,7 +2670,7 @@ const MARKERS_UPR5 = [
 ];
 
 /* Passage Souterrain Route 7 (data/maps/objects/UndergroundPathRoute7.asm)
-   : un homme (2,4) « Il y a un #mon endormi près de Céladopole » (le
+   : un homme (2,4) « Il y a un Pokémon endormi près de Céladopole » (le
    Ronflex des Routes 16-17) ; escalier (4,4) vers le Souterrain
    Ouest-Est ; 2 portes vers la Route 7 (dessinée depuis la mise à
    jour 45). NoHS, aucune rencontre. */
@@ -3044,7 +3044,7 @@ const MARKERS_VMCITY = [
   { cat: "hidden", tipIcon: "max_ether", x: 34, y: 12, name: "Huile Max" },
   { cat: "warp", x: 11, y: 3, name: "Centre Pokémon (Carmin sur Mer)", dx: 3, dy: 7, badge: "Centre" },
   { cat: "warp", x: 7, y: 3, name: "Maison du Maître Pêcheur", dx: 2, dy: 7, badge: "Pêcheur" },
-  { cat: "warp", x: 9, y: 13, name: "Fan Club #mon", dx: 2, dy: 7, badge: "Fans" },
+  { cat: "warp", x: 9, y: 13, name: "Fan Club Pokémon", dx: 2, dy: 7, badge: "Fans" },
   { cat: "warp", x: 23, y: 13, name: "Magasin (Carmin sur Mer)", dx: 3, dy: 7, badge: "Magasin" },
   { cat: "warp", x: 15, y: 13, name: "Maison de l'échange (Carmin sur Mer)", dx: 2, dy: 7, badge: "Échange" },
   { cat: "warp", x: 12, y: 19, name: "Arène (Carmin sur Mer)", dx: 4, dy: 17, badge: "Arène" },
@@ -3064,7 +3064,7 @@ const MARKERS_VMPC = [
   { cat: "warp", x: 3, y: 7, name: "Carmin sur Mer", dx: 11, dy: 3, badge: "Sortie" },
   { cat: "warp", x: 4, y: 7, name: "Carmin sur Mer", dx: 11, dy: 3, badge: "Sortie" },
 ];
-/* Fan Club #mon (data/maps/objects/VermilionFanClub.asm) : fan de Pikachu,
+/* Fan Club Pokémon (data/maps/objects/VermilionFanClub.asm) : fan de Pikachu,
    fan d'Otaria, mascottes Pikachu et Otaria, Président (offre le Bon Commande
    après son discours, fan_club.asm), Hôtesse, Bulletin (manga Tentacool).
    NoHS ; aucune rencontre. */
@@ -4082,7 +4082,7 @@ const MAPS = [
     fish: [
       ["Pêche", "Impossible : aucun point d'eau sur la carte."]
     ] },
-  { id: "VermilionFanClub", label: "Fan Club #mon", w: 128, h: 128, b64: MAP_VMFAN_B64, wild: null,
+  { id: "VermilionFanClub", label: "Fan Club Pokémon", w: 128, h: 128, b64: MAP_VMFAN_B64, wild: null,
     fish: [
       ["Pêche", "Impossible : aucun point d'eau sur la carte."]
     ] },
@@ -4458,19 +4458,19 @@ const MAPS = [
     fish: [
       ["Pêche", "Impossible : aucun point d'eau sur la carte."]
     ] },
-  { id: "CinnabarLab", label: "Labo #mon de Cramois'Île", w: 288, h: 128, b64: MAP_CNLAB_B64, wild: null,
+  { id: "CinnabarLab", label: "Laboratoire Pokémon de Cramois'Île", w: 288, h: 128, b64: MAP_CNLAB_B64, wild: null,
     fish: [
       ["Pêche", "Impossible : aucun point d'eau sur la carte."]
     ] },
-  { id: "CinnabarLabTradeRoom", label: "Salle de réunion du Labo", w: 128, h: 128, b64: MAP_CNTRADE_B64, wild: null,
+  { id: "CinnabarLabTradeRoom", label: "Salle des échanges", w: 128, h: 128, b64: MAP_CNTRADE_B64, wild: null,
     fish: [
       ["Pêche", "Impossible : aucun point d'eau sur la carte."]
     ] },
-  { id: "CinnabarLabMetronomeRoom", label: "Département R&D du Labo", w: 128, h: 128, b64: MAP_CNMETRO_B64, wild: null,
+  { id: "CinnabarLabMetronomeRoom", label: "Salle d'expérimentation", w: 128, h: 128, b64: MAP_CNMETRO_B64, wild: null,
     fish: [
       ["Pêche", "Impossible : aucun point d'eau sur la carte."]
     ] },
-  { id: "CinnabarLabFossilRoom", label: "Salle de test du Labo", w: 128, h: 128, b64: MAP_CNFOSSIL_B64, wild: null,
+  { id: "CinnabarLabFossilRoom", label: "Salle des fossiles", w: 128, h: 128, b64: MAP_CNFOSSIL_B64, wild: null,
     fish: [
       ["Pêche", "Impossible : aucun point d'eau sur la carte."]
     ] },
@@ -4881,7 +4881,7 @@ const MARKERS_R11GATE1F = [
 /* Poste de garde Route 11, 2F (data/maps/objects/Route11Gate2F.asm) : le Gamin
    (4,2) propose l'échange n°0 du hack (trades.asm : Férosinge contre un
    Scarhino surnommé Bibiche) ; l'Aide du Prof. Chen (2,6) offre le
-   Cherch'Objet après 30 #mon capturés (10 en mode Nuzlocke). Les jumelles
+   Cherch'Objet après 30 Pokémon capturés (10 en mode Nuzlocke). Les jumelles
    (1,2), sign PrintIfFacingUp, regardent vers le Nord (seul chemin
    Azuria-Lavanville : la Grotte Sombre) ; celles de l'Est (6,2,
    hidden_objects.asm) montrent Ronflex endormi sur la route : décor sans
@@ -5022,7 +5022,7 @@ const MARKERS_SSACPT = [
 ];
 /* Cuisine de l'Océane (SSAnneKitchen.asm + ss_anne_6.asm) : 7 cuisiniers ;
    le Guide (SPRITE_GYM_HELPER, 11,2) organise le tournoi post-game (7
-   dresseurs, exactement 3 #mon, soins entre chaque tour, Rappel interdit,
+   dresseurs, exactement 3 Pokémon, soins entre chaque tour, Rappel interdit,
    Master Ball, sponsor Sylphe SARL, « Il y a un PC de bord dans le coin »).
    SSAnne6HiddenObjects (db y puis x) : PC de bord (1,13, joenote : PC de
    Centre Pokemon), 2 poubelles a texte (5,13) et (7,13), Super Ball cachee
@@ -5231,7 +5231,7 @@ const MARKERS_CCHEF = [
   { cat: "warp", x: 2, y: 7, name: "Céladopole", dx: 33, dy: 27, badge: "Sortie" },
   { cat: "warp", x: 3, y: 7, name: "Céladopole", dx: 33, dy: 27, badge: "Sortie" }
 ];
-/* Hôtel de Céladopole : le Chasseur de Pokémon demande à voir un #mon
+/* Hôtel de Céladopole : le Chasseur de Pokémon demande à voir un Pokémon
    précis ; gain 100 jetons + bonus DV, ×4 si shiny ; Boîte Jeton requise
    (joenote). */
 const MARKERS_CHOTEL = [
@@ -5278,8 +5278,8 @@ const MARKERS_CMART2F = [
 const MARKERS_CMART3F = [
   { cat: "pnj", spr: true, icon: "mart_guy", x: 16, y: 5, name: "Vendeur", scripted: true, give: ["tm_hm", "CT18 Riposte"] },
   { cat: "pnj", spr: true, icon: "gameboy_kid", x: 11, y: 6, dir: "right", name: "Gamin" },
-  { cat: "pnj", spr: true, icon: "gameboy_kid", x: 7, y: 2, name: "Gamin", trade: ["graveler", "Gravalanch", "kangaskhan", "Kangourex"] },
-  { cat: "pnj", spr: true, icon: "gameboy_kid", x: 8, y: 2, name: "Gamin", trade: ["kangaskhan", "Kangourex", "graveler", "Gravalanch"] },
+  { cat: "pnj", spr: true, icon: "gameboy_kid", x: 7, y: 2, name: "Gamin" },
+  { cat: "pnj", spr: true, icon: "gameboy_kid", x: 8, y: 2, name: "Gamin" },
   { cat: "pnj", spr: true, icon: "young_boy", x: 2, y: 5, name: "Garçon" },
   { cat: "pnj", spr: true, icon: "mart_guy", x: 13, y: 7, dir: "left", name: "Vendeur", scripted: true, shop: [["ultra_ball", "Hyper Ball", 1200], ["full_heal", "Guérison", 600], ["max_potion", "Potion Max", 2500], ["full_restore", "Total Soin", 3000], ["max_revive", "Rappel Max", 4000], ["max_repel", "Max Repousse", 700], ["rare_candy", "Super Bonbon", 5000], ["moon_stone", "Pierre Lune", 4200], ["metal_coat", "Peau Métal", 4200], ["soul_stone", "Pierre Ame", 4200]] },
   { cat: "pnj", spr: true, icon: "clefairy", x: 11, y: 7, name: "Mélofée", scripted: true },
@@ -5587,7 +5587,7 @@ const MARKERS_R18GATE1F = [
 /* Poste de garde Route 18, 2F : le garçon échange un Noeunoeuf contre son
    Excelangue « Glavioteur » (in_game_trades wWhichTrade 5). */
 const MARKERS_R18GATE2F = [
-  { cat: "pnj", spr: true, icon: "bug_catcher", x: 4, y: 2, name: "Gamin", trade: ["exeggcute", "Noeunoeuf", "lickitung", "Excelangue"] },
+  { cat: "pnj", spr: true, icon: "bug_catcher", x: 4, y: 2, name: "Gamin", trade: ["lickitung", "Excelangue", "exeggcute", "Noeunoeuf"] },
   { cat: "warp", x: 7, y: 7, name: "Poste de garde Route 18 (1F)", dx: 6, dy: 8, badge: "1F" }
 ];
 /* Parmanie : zoo (enclos scriptés : Leveinard, Kangourex, Ramoloss, Lokhlass,
@@ -5880,14 +5880,14 @@ const MARKERS_R21 = [
   { cat: "trainer", spr: true, icon: "fisher2", x: 17, y: 57, dir: "right", name: "Pêcheur n°11", team: [["seaking", "Poissoroy", 40], ["tentacruel", "Tentacruel", 40]] },
   { cat: "warp", x: 14, y: 87, name: "Volcan Cramoisi 1F", dx: 2, dy: 23, badge: "Volcan" }
 ];
-/* Cramois'Ile : le Manoir Pokémon, l'Arène d'Auguste, le Labo #mon, le Centre
+/* Cramois'Ile : le Manoir Pokémon, l'Arène d'Auguste, le Labo Pokémon, le Centre
    et le Magasin ; une fille parle du Manoir, un joueur du Labo. */
 const MARKERS_CINNABAR = [
   { cat: "pnj", spr: true, icon: "girl", x: 12, y: 5, name: "Fillette" },
   { cat: "pnj", spr: true, icon: "gambler", x: 14, y: 6, name: "Joueur" },
   { cat: "warp", x: 6, y: 3, name: "Manoir Pokémon 1F", dx: 5, dy: 27, badge: "Manoir" },
   { cat: "warp", x: 18, y: 3, name: "Arène de Cramois'Île", dx: 16, dy: 17, badge: "Arène" },
-  { cat: "warp", x: 6, y: 9, name: "Labo #mon de Cramois'Île", dx: 2, dy: 7, badge: "Labo" },
+  { cat: "warp", x: 6, y: 9, name: "Laboratoire Pokémon de Cramois'Île", dx: 2, dy: 7, badge: "Labo" },
   { cat: "warp", x: 11, y: 11, name: "Centre Pokémon (Cramois'Île)", dx: 3, dy: 7, badge: "Centre" },
   { cat: "warp", x: 15, y: 11, name: "Magasin (Cramois'Île)", dx: 3, dy: 7, badge: "Magasin" }
 ];
@@ -5903,7 +5903,7 @@ const MARKERS_BEACHHOUSE = [
    cage d'escalier montante/descendante (paires de warps). */
 const MARKERS_LIGHTHOUSE = [
   { cat: "pnj", spr: true, icon: "keeper", x: 4, y: 5, name: "Gardien", scripted: true, give: ["surfboard", "Planche Surf"] },
-  { cat: "pnj", spr: true, icon: "firefighter", x: 0, y: 28, name: "Pompier", trade: ["seaking", "Poissoroy", "sneasel", "Farfuret"] },
+  { cat: "pnj", spr: true, icon: "firefighter", x: 0, y: 28, name: "Pompier", trade: ["sneasel", "Farfuret", "seaking", "Poissoroy"] },
   { cat: "warp", x: 2, y: 29, name: "Chenal 20", dx: 41, dy: 7, badge: "Sortie" },
   { cat: "warp", x: 3, y: 29, name: "Chenal 20", dx: 41, dy: 7, badge: "Sortie" },
   { cat: "warp", x: 5, y: 27, name: "Phare", dx: 0, dy: 19, badge: "ASC" },
@@ -5951,46 +5951,46 @@ const MARKERS_CNMART = [
   { cat: "warp", x: 3, y: 7, name: "Cramois'Ile", dx: 15, dy: 11, badge: "Sortie" },
   { cat: "warp", x: 4, y: 7, name: "Cramois'Ile", dx: 15, dy: 11, badge: "Sortie" }
 ];
-/* Labo #mon de Cramois'Île : un pêcheur « apporte » des #mon rares ; les trois
+/* Labo Pokémon de Cramois'Île : un pêcheur « apporte » des Pokémon rares ; les trois
    salles de l'étage (réunion, R&D, test). */
 const MARKERS_CNLAB = [
   { cat: "pnj", spr: true, icon: "fisher", x: 1, y: 3, name: "Pêcheur" },
   { cat: "warp", x: 2, y: 7, name: "Cramois'Ile", dx: 6, dy: 9, badge: "Sortie" },
   { cat: "warp", x: 3, y: 7, name: "Cramois'Ile", dx: 6, dy: 9, badge: "Sortie" },
-  { cat: "warp", x: 8, y: 4, name: "Salle de réunion du Labo", dx: 2, dy: 7, badge: "Réunion" },
-  { cat: "warp", x: 12, y: 4, name: "Département R&D du Labo", dx: 2, dy: 7, badge: "R&D" },
-  { cat: "warp", x: 16, y: 4, name: "Salle de test du Labo", dx: 2, dy: 7, badge: "Test" }
+  { cat: "warp", x: 8, y: 4, name: "Salle des échanges", dx: 2, dy: 7, badge: "Echanges" },
+  { cat: "warp", x: 12, y: 4, name: "Salle d'expérimentation", dx: 2, dy: 7, badge: "R&D" },
+  { cat: "warp", x: 16, y: 4, name: "Salle des fossiles", dx: 2, dy: 7, badge: "Fossiles" }
 ];
 /* Salle de réunion du Labo : l'Intéllo du Mont Sélénite vend ses fossiles
    (Dôme et Nautile, 10 000 P$ chacun) ; deux échanges (trades.asm : on donne
    Otaria -> Elektek « Kourjus », Mimitoss -> Insécateur « Gratouille »). */
 const MARKERS_CNTRADE = [
   { cat: "pnj", spr: true, icon: "nerd", x: 3, y: 2, name: "Intéllo du Mont Sélénite", scripted: true, shop: [["dome_fossil", "Fossile Dôme", 10000], ["helix_fossil", "Fossile Nautile", 10000]] },
-  { cat: "pnj", spr: true, icon: "old_person", x: 1, y: 4, name: "Personne âgée", trade: ["seel", "Otaria", "electabuzz", "Elektek"] },
-  { cat: "pnj", spr: true, icon: "foulard_woman", x: 5, y: 5, dir: "up", name: "Femme", trade: ["venonat", "Mimitoss", "scyther", "Insécateur"] },
-  { cat: "warp", x: 2, y: 7, name: "Labo #mon de Cramois'Île", dx: 8, dy: 4, badge: "Sortie" },
-  { cat: "warp", x: 3, y: 7, name: "Labo #mon de Cramois'Île", dx: 8, dy: 4, badge: "Sortie" }
+  { cat: "pnj", spr: true, icon: "old_person", x: 1, y: 4, name: "Personne âgée", trade: ["electabuzz", "Elektek", "seel", "Otaria"] },
+  { cat: "pnj", spr: true, icon: "foulard_woman", x: 5, y: 5, dir: "up", name: "Femme", trade: ["scyther", "Insécateur", "venonat", "Mimitoss"] },
+  { cat: "warp", x: 2, y: 7, name: "Laboratoire Pokémon de Cramois'Île", dx: 8, dy: 4, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 7, name: "Laboratoire Pokémon de Cramois'Île", dx: 8, dy: 4, badge: "Sortie" }
 ];
 /* Département R&D du Labo : l'Aide vient d'assembler la CT35 Métronome et la
    donne au joueur ; son collègue ballade des notes. */
 const MARKERS_CNMETRO = [
   { cat: "pnj", spr: true, icon: "oak_aide", x: 7, y: 2, name: "Assistant Prof. Chen", scripted: true, give: ["tm_hm", "CT35 Métronome"] },
   { cat: "pnj", spr: true, icon: "oak_aide", x: 2, y: 3, name: "Assistant Prof. Chen" },
-  { cat: "warp", x: 2, y: 7, name: "Labo #mon de Cramois'Île", dx: 12, dy: 4, badge: "Sortie" },
-  { cat: "warp", x: 3, y: 7, name: "Labo #mon de Cramois'Île", dx: 12, dy: 4, badge: "Sortie" }
+  { cat: "warp", x: 2, y: 7, name: "Laboratoire Pokémon de Cramois'Île", dx: 12, dy: 4, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 7, name: "Laboratoire Pokémon de Cramois'Île", dx: 12, dy: 4, badge: "Sortie" }
 ];
 /* Salle de test du Labo : clonage et résurrection des fossiles (le
-   « Résurrecteur » transforme le fossile en #mon : Amonita ou Kabuto) ;
+   « Résurrecteur » transforme le fossile en Pokémon : Amonita ou Kabuto) ;
    trois livres d'étude. */
 const MARKERS_CNFOSSIL = [
   { cat: "pnj", spr: true, icon: "oak_aide", x: 5, y: 2, name: "Assistant Prof. Chen", scripted: true },
-  { cat: "pnj", spr: true, icon: "oak_aide", x: 7, y: 6, dir: "up", name: "Assistant Prof. Chen", scripted: true },
+  { cat: "pnj", spr: true, icon: "oak_aide", x: 7, y: 6, dir: "up", name: "Assistant Prof. Chen", scripted: true, trade: ["jynx", "Lippoutou", "ponyta", "Ponyta"] },
   { cat: "pnj", spr: true, icon: "oak_aide", x: 0, y: 5, dir: "up", name: "Assistant Prof. Chen" },
   { cat: "pnj", spr: true, icon: "book_map_dex", x: 6, y: 4, name: "Livre" },
   { cat: "pnj", spr: true, icon: "book_map_dex", x: 7, y: 4, name: "Livre" },
   { cat: "pnj", spr: true, icon: "book_map_dex", x: 7, y: 2, name: "Livre" },
-  { cat: "warp", x: 2, y: 7, name: "Labo #mon de Cramois'Île", dx: 16, dy: 4, badge: "Sortie" },
-  { cat: "warp", x: 3, y: 7, name: "Labo #mon de Cramois'Île", dx: 16, dy: 4, badge: "Sortie" }
+  { cat: "warp", x: 2, y: 7, name: "Laboratoire Pokémon de Cramois'Île", dx: 16, dy: 4, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 7, name: "Laboratoire Pokémon de Cramois'Île", dx: 16, dy: 4, badge: "Sortie" }
 ];
 /* Manoir Pokémon 1F : Scientifique n°3 ; Corde Sortie et Carbone ; Pierre Lune
    cachée ; six portes vers Cramois'Ile, l'escalier du 2F et la descente B1F. */
@@ -6435,7 +6435,7 @@ const GROUP_OFFSETS = {
   "interieur|Route 5": { Daycare: [0, 0] },
   "interieur|Souterrain Nord-Sud": { UndergroundPathRoute5: [1, 0], UndergroundPathNorthSouth: [0, 8], UndergroundPathRoute6: [1, 50] },
   "interieur|Souterrains": { UndergroundPathRoute7: [0, 0], UndergroundPathWestEast: [10, 0], UndergroundPathRoute8: [62, 0] },
-  "interieur|Safrania": { SaffronCopycatsHouse2F: [0, 0], SaffronCopycatsHouse1F: [0, 12], SaffronPidgeyHouse: [10, 12], SaffronMrPsychicsHouse: [20, 12], SaffronMart: [30, 12], SaffronPokecenter: [40, 12], SaffronFightingDojo: [66, 8], SaffronGym: [78, 2] },
+  "interieur|Safrania": { SaffronCopycatsHouse2F: [0, 2], SaffronCopycatsHouse1F: [0, 12], SaffronPidgeyHouse: [10, 12], SaffronMrPsychicsHouse: [20, 12], SaffronMart: [30, 12], SaffronPokecenter: [40, 12], SaffronFightingDojo: [56, 8], SaffronGym: [68, 2] },
   "donjon|Sylphe SARL": { SaffronSilphCo11F: [6, 0], SaffronSilphCo10F: [7, 22], SaffronSilphCo9F: [2, 44], SaffronSilphCo8F: [2, 66], SaffronSilphCo7F: [2, 88], SaffronSilphCo6F: [2, 110], SaffronSilphCo5F: [0, 132], SaffronSilphCo4F: [0, 154], SaffronSilphCo3F: [0, 176], SaffronSilphCo2F: [0, 198], SaffronSilphCo1F: [0, 220], SaffronSilphCoElevator: [32, 220] },
   "interieur|Route 12": { Route12Gate2F: [1, 0], Route12Gate1F: [0, 12], Route12FisherHouse: [14, 12] },
 
