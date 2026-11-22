@@ -384,7 +384,7 @@ MtMoonPokecenter;MT_MOON_POKECENTER;SPRITE_CABLE_CLUB_WOMAN;40;cable_club_woman.
 MtMoonPokecenter;MT_MOON_POKECENTER;SPRITE_CHANSEY;81;chansey.png;;4;1;STAY;DOWN;7;personnage;;;
 MtMoonSquare;MT_MOON_SQUARE;SPRITE_CLEFAIRY;79;clefairy.png;;7;8;WALK;0;1;personnage;;;
 MtMoonSquare;MT_MOON_SQUARE;SPRITE_CLEFAIRY;79;clefairy.png;;9;8;WALK;0;2;personnage;;;
-MtMoonSquare;MT_MOON_SQUARE;SPRITE_BALL;112;ball.png;1;24;9;STAY;NONE;3;objet;SOUL_STONE;;
+MtMoonSquare;MT_MOON_SQUARE;SPRITE_BALL;112;ball.png;1;24;5;STAY;NONE;3;objet;SOUL_STONE;;
 MtMoonSquare;MT_MOON_SQUARE;;;;2;8;8;;;;cache_objet;MOON_STONE;oui;
 PalletBluesHouse;PALLET_BLUES_HOUSE;SPRITE_DAISY;15;daisy.png;;2;3;STAY;RIGHT;1;personnage;;;
 PalletBluesHouse;PALLET_BLUES_HOUSE;SPRITE_DAISY;15;daisy.png;;6;4;WALK;1;2;personnage;;oui;invisible au début du jeu (hide_show_data)
@@ -509,7 +509,7 @@ Route1;ROUTE_1;SPRITE_BUG_CATCHER;4;bug_catcher.png;1;5;24;WALK;1;1;objet_offert
 Route1;ROUTE_1;SPRITE_BUG_CATCHER;4;bug_catcher.png;;15;13;WALK;2;2;personnage;;;
 Route10;ROUTE_10;SPRITE_BLACK_HAIR_BOY_2;10;black_hair_boy_2.png;1;13;49;STAY;LEFT;1;dresseur;OPP_POKEMANIAC 5;;
 Route10;ROUTE_10;SPRITE_LASS;5;lass.png;2;9;31;STAY;LEFT;2;dresseur;OPP_JR_TRAINER_F 11;;
-Route10;ROUTE_10;;;;3;10;6;;;;cache_objet;WATER_STONE;oui;
+Route10;ROUTE_10;;;;3;10;6;;;;cache_objet;SOUL_STONE;oui;
 Route10;ROUTE_10;;;;4;11;25;;;;cache_objet;CALCIUM;oui;
 Route10South;ROUTE_10_SOUTH;SPRITE_HIKER;12;hiker.png;1;4;9;STAY;LEFT;1;dresseur;OPP_HIKER 14;;
 Route10South;ROUTE_10_SOUTH;SPRITE_BLACK_HAIR_BOY_2;10;black_hair_boy_2.png;2;15;16;STAY;LEFT;2;dresseur;OPP_POKEMANIAC 6;;
@@ -587,7 +587,7 @@ Route16;ROUTE_16;SPRITE_BIKER;16;biker.png;4;9;13;STAY;LEFT;4;dresseur;OPP_BIKER
 Route16;ROUTE_16;SPRITE_BIKER;16;biker.png;5;6;12;STAY;RIGHT;5;dresseur;OPP_CUE_BALL 3;;
 Route16;ROUTE_16;SPRITE_BIKER;16;biker.png;6;3;14;STAY;RIGHT;6;dresseur;OPP_BIKER 10;;
 Route16;ROUTE_16;SPRITE_SNORLAX;122;snorlax.png;7;26;12;STAY;DOWN;7;pokemon;SNORLAX/30;;
-Route16;ROUTE_16;;;;8;24;15;;;;cache_objet;MOON_STONE;oui;
+Route16;ROUTE_16;;;;8;24;15;;;;cache_objet;SOUL_STONE;oui;
 Route16FlyHouse;ROUTE_16_FLY_HOUSE;SPRITE_BRUNETTE_GIRL;27;brunette_girl.png;1;2;3;STAY;RIGHT;1;objet_offert;HM02_FLY;;
 Route16FlyHouse;ROUTE_16_FLY_HOUSE;SPRITE_FEAROW;101;fearow.png;;6;4;WALK;0;2;personnage;;;
 Route16Gate1F;ROUTE_16_GATE_1F;SPRITE_GUARD;47;guard.png;;4;5;STAY;DOWN;1;personnage;;;
@@ -641,7 +641,7 @@ Route20;ROUTE_20;SPRITE_BLACK_HAIR_BOY_1;6;black_hair_boy_1.png;7;79;8;STAY;UP;7
 Route20;ROUTE_20;SPRITE_SWIMMER;32;swimmer.png;8;25;9;STAY;UP;8;dresseur;OPP_BEAUTY 13;;
 Route20;ROUTE_20;SPRITE_SWIMMER;32;swimmer.png;9;24;14;STAY;DOWN;9;dresseur;OPP_JR_TRAINER_F 21;;
 Route20;ROUTE_20;SPRITE_SWIMMER;32;swimmer.png;10;15;10;STAY;UP;10;dresseur;OPP_BEAUTY 14;;
-Route20;ROUTE_20;;;;11;53;18;;;;cache_objet;MOON_STONE;oui;
+Route20;ROUTE_20;;;;11;53;18;;;;cache_objet;SOUL_STONE;oui;
 Route21;ROUTE_21;SPRITE_FISHER2;45;fisher2.png;1;4;24;STAY;LEFT;1;dresseur;OPP_FISHER 8;;
 Route21;ROUTE_21;SPRITE_FISHER2;45;fisher2.png;2;6;25;STAY;DOWN;2;dresseur;OPP_FISHER 9;;
 Route21;ROUTE_21;SPRITE_SWIMMER;32;swimmer.png;3;10;31;STAY;UP;3;dresseur;OPP_SWIMMER 12;;

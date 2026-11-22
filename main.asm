@@ -2283,6 +2283,10 @@ Alpha_GFX:         INCBIN "gfx/tilesets/alpha.2bpp"
 Alpha_Block:       INCBIN "gfx/blocksets/alpha.bst"
 ShipPort_GFX:      INCBIN "gfx/tilesets/ship_port.2bpp"
 ShipPort_Block:    INCBIN "gfx/blocksets/ship_port.bst"
+
+
+SECTION "Expanded Tilesets 2", ROMX
+
 Volcano_GFX:       INCBIN "gfx/tilesets/volcano.2bpp"
 Volcano_Block:     INCBIN "gfx/blocksets/volcano.bst"
 

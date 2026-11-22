@@ -9,7 +9,7 @@ MtMoonB1FObject:
 	warp 21, 17, 1, MT_MOON_B2F
 	warp 13, 27, 2, MT_MOON_B2F
 	warp 23, 3, 3, MT_MOON_B2F
-	warp 26, 3, 2, -1
+	warp 27,  2, 2, -1
 	warp 27, 3, 2, -1
 
 	db 0 ; signs
@@ -26,5 +26,5 @@ MtMoonB1FObject:
 	warp_to 21, 17, MT_MOON_B1F_WIDTH ; MT_MOON_B2F
 	warp_to 13, 27, MT_MOON_B1F_WIDTH ; MT_MOON_B2F
 	warp_to 23, 3, MT_MOON_B1F_WIDTH ; MT_MOON_B2F
-	warp_to 26, 3, MT_MOON_B1F_WIDTH
+	warp_to 27,  2, MT_MOON_B1F_WIDTH
 	warp_to 27, 3, MT_MOON_B1F_WIDTH
