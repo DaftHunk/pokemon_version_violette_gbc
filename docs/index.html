@@ -244,6 +244,9 @@
   #poi-tip h3.shop { margin: 12px 0 2px; }
   #poi-tip img.pd { width: 14px; height: 14px; image-rendering: pixelated; vertical-align: -2px; margin-left: 3px; }
   #poi-tip .ou { color: var(--muted); font-size: 11px; }
+  #poi-tip .teamlist li { display: flex; align-items: center; gap: 6px; }
+  #poi-tip .teamlist .tnm { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  #poi-tip .teamlist .lv { flex: 0 0 auto; margin-left: auto; white-space: nowrap; }
   #poi-tip .shoplist li { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
   #poi-tip .shoplist .lv { margin-left: auto; white-space: nowrap; }
   #poi-tip .tradelist .vs { justify-content: center; color: white; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -267,7 +270,8 @@
   #poi-tip h3 .arrow { margin-left: auto; color: var(--accent); font-weight: 700; font-size: 16px; }
   .wildrow { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 3px 0; border-bottom: 1px dashed #263254; }
   .wildrow:last-child { border-bottom: none; }
-  .wildrow .rng { color: var(--muted); margin-left: auto; padding-left: 8px; }
+  .wildrow .rng { display: flex; align-items: baseline; gap: 8px; color: var(--muted); margin-left: auto; padding-left: 8px; }
+  .wildrow .rng .lvl, .wildrow .rng .pct { white-space: nowrap; }
   .wildrow .wname { display: flex; align-items: center; gap: 6px; }
   .ftool { display: flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 700; color: #fff; margin: 10px 0 2px; }
   .catico { width: 22px; height: 22px; border-radius: 50%; background: #fff; display: inline-flex; align-items: center; justify-content: center; flex: none; }
@@ -1357,12 +1361,12 @@ const MARKERS_BLUEHOUSE = [
 ];
 const MARKERS_OAKSLAB = [
   { cat: "trainer", spr: true, icon: "blue", x: 4, y: 3, name: "Rival", team: [[["squirtle", "Carapuce", 5], ["bulbasaur", "Bulbizarre", 5], ["charmander", "Salamèche", 5]]] },
-  { cat: "pnj", spr: true, icon: "pokeball", x: 6, y: 3, name: "Poké Ball", give: ["front_charmander", "Salamèche n.5"] },
-  { cat: "pnj", spr: true, icon: "pokeball", x: 7, y: 3, name: "Poké Ball", give: ["front_squirtle", "Carapuce n.5"] },
-  { cat: "pnj", spr: true, icon: "pokeball", x: 8, y: 3, name: "Poké Ball", give: ["front_bulbasaur", "Bulbizarre n.5"] },
+  { cat: "pnj", spr: true, icon: "pokeball", x: 6, y: 3, name: "Poké Ball", give: ["front_charmander", "Salamèche n. 5"] },
+  { cat: "pnj", spr: true, icon: "pokeball", x: 7, y: 3, name: "Poké Ball", give: ["front_squirtle", "Carapuce n. 5"] },
+  { cat: "pnj", spr: true, icon: "pokeball", x: 8, y: 3, name: "Poké Ball", give: ["front_bulbasaur", "Bulbizarre n. 5"] },
   /* Duel secret de Chen (OaksLabText5) : après la Ligue, il propose un duel
      pour l'évaluation du Pokédex ; son dernier Pokémon est le starter du rival
-     (Tortank, Florizarre ou Dracaufeu n.69) — spoil. */
+     (Tortank, Florizarre ou Dracaufeu n. 69) — spoil. */
   { cat: "trainer", spr: true, icon: "oak", x: 5, y: 2, dir: "down", name: "Prof. Chen", scripted: true, badge: "Après la Ligue", spoil: true,
     team: [["tauros", "Tauros", 66], ["exeggutor", "Noadkoko", 67], ["arcanine", "Arcanin", 68],
            [["blastoise", "Tortank", 69], ["venusaur", "Florizarre", 69], ["charizard", "Dracaufeu", 69]],
@@ -1505,10 +1509,10 @@ const MARKERS_ARGMART = [
   { cat: "warp", x: 3, y: 7, name: "Argenta", dx: 23, dy: 17, badge: "Sortie" },
   { cat: "warp", x: 4, y: 7, name: "Argenta", dx: 23, dy: 17, badge: "Sortie" }
 ];
-/* Arène d'Argenta (PewterGym.asm) : Pierre (Racaillou n.14, Rhinocorne n.13,
-   Onix n.15, data/battle/trainer_parties.asm) donne CT34 Patience ;
-   Dresseur jr♂ (Taupiqueur et Sabelette n.9). Revanche de Pierre après la
-   Ligue (BrockData n.64-65, EVENT_BEAT_BROCK_REMATCH ; t70 : 2e duel
+/* Arène d'Argenta (PewterGym.asm) : Pierre (Racaillou n. 14, Rhinocorne n. 13,
+   Onix n. 15, data/battle/trainer_parties.asm) donne CT34 Patience ;
+   Dresseur jr♂ (Taupiqueur et Sabelette n. 9). Revanche de Pierre après la
+   Ligue (BrockData n. 64-65, EVENT_BEAT_BROCK_REMATCH ; t70 : 2e duel
    spoil, même PNJ, la porte CT34 reste visible). */
 const MARKERS_ARGGYM = [
   { cat: "trainer", spr: true, icon: "brock", x: 4, y: 1, name: "Pierre", team: [["geodude", "Racaillou", 14], ["rhyhorn", "Rhinocorne", 13], ["onix", "Onix", 15]], give: ["tm_hm", "CT34 Patience"],
@@ -1646,13 +1650,13 @@ const MARKERS_ROUTE3 = [
    1F, SS1, Aire de repos. */
 const MARKERS_ROUTE4 = [
   { cat: "pnj", spr: true, icon: "lass", x: 9, y: 8, name: "Jeune femme" },
-  { cat: "trainer", spr: true, icon: "lass", x: 63, y: 2, name: "Fillette", team: [["parasect", "Parasect", 30], ["gloom", "Ortide", 30], ["parasect", "Parasect", 30]] },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 57, y: 3, name: "CT03 DanseLm" },
+  { cat: "trainer", spr: true, icon: "lass", x: 70, y: 2, name: "Fillette", team: [["parasect", "Parasect", 30], ["gloom", "Ortide", 30], ["parasect", "Parasect", 30]] },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 53, y: 4, name: "CT03 DanseLm" },
   { cat: "hidden", tipIcon: "great_ball", x: 61, y: 15, name: "Super Ball" },
-  { cat: "hidden", tipIcon: "moon_stone", x: 62, y: 3, name: "Pierre Lune" },
+  { cat: "hidden", tipIcon: "moon_stone", x: 64, y: 2, name: "Pierre Lune" },
   { cat: "warp", x: 11, y: 5, name: "Centre Pokémon Mont Sélénite", dx: 3, dy: 7, badge: "Centre" },
   { cat: "warp", x: 18, y: 5, name: "Mont Sélénite", dx: 14, dy: 35, badge: "MS RDC" },
-  { cat: "warp", x: 26, y: 5, name: "Mont Sélénite SS1", dx: 27, dy: 3, badge: "MS SS1" },
+  { cat: "warp", x: 26, y: 5, name: "Mont Sélénite SS1", dx: 26, dy: 3, badge: "MS SS1" },
   { cat: "warp", x: 38, y: 3, name: "Mont Sélénite (Aire de repos)", dx: 16, dy: 5, badge: "Aire" }
 ];
 /* Mont Sélénite (MountMoon1F.asm) : 7 dresseurs, 6 objets au sol (Potion ×2,
@@ -1680,8 +1684,9 @@ const MARKERS_MOON1F = [
 ];
 /* Mont Sélénite SS1 (MountMoonB1F.asm) : Jessie et James (OPP_JESSIE_JAMES,
    classe « Jessie James ») ; échelles vers le 1F et le SS2 ; la sortie
-   nord-est est dynamique (wLastMap : retour vers la carte de provenance) ;
-   la seule provenance possible est la Route 4, porte directe (24,5). */
+   nord-est (2 tuiles désormais, (26,3) et (27,3)) est dynamique (wLastMap :
+   retour vers la carte de provenance) ; la seule provenance possible est la
+   Route 4, porte directe (26,5). */
 const MARKERS_MOONB1F = [
   { cat: "trainer", spr: true, icon: "jessie", x: 23, y: 2, name: "Jessie", team: [["ekans", "Abo", 15], ["meowth", "Miaouss", 16], ["koffing", "Smogo", 15]] },
   { cat: "trainer", spr: true, icon: "james", x: 24, y: 3, dir: "left", name: "James", team: [["ekans", "Abo", 15], ["meowth", "Miaouss", 16], ["koffing", "Smogo", 15]] },
@@ -1692,7 +1697,8 @@ const MARKERS_MOONB1F = [
   { cat: "warp", x: 21, y: 17, name: "Mont Sélénite SS2", dx: 21, dy: 17, badge: "SS2" },
   { cat: "warp", x: 13, y: 27, name: "Mont Sélénite SS2", dx: 15, dy: 27, badge: "SS2" },
   { cat: "warp", x: 23, y: 3, name: "Mont Sélénite SS2", dx: 5, dy: 7, badge: "SS2" },
-  { cat: "warp", x: 27, y: 3, name: "Route 4", dx: 24, dy: 5, badge: "Sortie" }
+  { cat: "warp", x: 26, y: 3, name: "Route 4", dx: 26, dy: 5, badge: "Sortie" },
+  { cat: "warp", x: 27, y: 3, name: "Route 4", dx: 26, dy: 5, badge: "Sortie" }
 ];
 /* Mont Sélénite SS2 (MountMoonB2F.asm) : l'Intéllo bloque le choix du
    fossile (SPRITE_DOME « Fossile Dôme », SPRITE_OMANYTE « Amonita ») ; 4 Rockets,
@@ -1716,10 +1722,12 @@ const MARKERS_MOONB2F = [
   { cat: "warp", x: 5, y: 7, name: "Mont Sélénite SS1", dx: 23, dy: 3, badge: "SS1" }
 ];
 /* Mont Sélénite, Aire de repos (MountMoonSquare.asm) : 2 Mélofée apprivoisés,
-   une Pierre Lune cachée ; sortie est vers la Route 4 (38,3). */
+   une Pierre Ame au sol (typo exacte du jeu), une Pierre Lune cachée ; sortie
+   est vers la Route 4 (38,3). */
 const MARKERS_MOONSQ = [
   { cat: "pnj", spr: true, icon: "clefairy", x: 7, y: 8, name: "Mélofée" },
   { cat: "pnj", spr: true, icon: "clefairy", x: 9, y: 8, name: "Mélofée" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "soul_stone", ballMini: true, x: 24, y: 9, name: "Pierre Ame" },
   { cat: "hidden", tipIcon: "moon_stone", x: 8, y: 8, name: "Pierre Lune" },
   { cat: "warp", x: 16, y: 5, name: "Route 4", dx: 38, dy: 3, badge: "Sortie" }
 ];
@@ -1733,7 +1741,7 @@ const MARKERS_MOONPC = [
   { cat: "pnj", spr: true, icon: "chansey", x: 4, y: 1, name: "Leveinard" },
   { cat: "pnj", spr: true, icon: "bug_catcher", x: 4, y: 3, dir: "up", name: "Gamin" },
   { cat: "pnj", spr: true, icon: "gentleman", x: 7, y: 3, dir: "up", name: "Gentleman" },
-  { cat: "pnj", spr: true, icon: "fat_bald_guy", x: 10, y: 6, name: "Vendeur louche", scripted: true, shop: [["front_magikarp", "Magicarpe n.5", 500]] },
+  { cat: "pnj", spr: true, icon: "fat_bald_guy", x: 10, y: 6, name: "Vendeur louche", scripted: true, shop: [["front_magikarp", "Magicarpe n. 5", 500]] },
   { cat: "pnj", spr: true, icon: "clipboard", x: 7, y: 2, name: "Presse-papiers" },
   { cat: "pnj", spr: true, icon: "cable_club_woman", x: 11, y: 2, name: "Hôtesse", cable: true },
   { cat: "warp", x: 3, y: 7, name: "Route 4", dx: 11, dy: 5, badge: "Sortie" },
@@ -1810,7 +1818,7 @@ const MARKERS_AZURPC = [
    apprend Hydrocanon à un Tortank après la Ligue, scripts/CeruleanGym.asm),
    Dresseur jr♀ et Nageur (OPP_MISTY/JR_TRAINER_F/SWIMMER 1,
    data/battle/trainer_parties.asm). Revanche d'Ondine après la Ligue
-   (MistyData n.64-65, EVENT_BEAT_MISTY_REMATCH ; t70 : 2e duel spoil,
+   (MistyData n. 64-65, EVENT_BEAT_MISTY_REMATCH ; t70 : 2e duel spoil,
    même PNJ, le badge et la CT11 restent visibles). t70b : la piscine est
    de vraie eau ($14), les trois cannes y pêchent (CERULEAN_GYM ->
    FishingGroup3, $47 & 3 = 3), aucune rencontre sauvage (NoMons). */
@@ -1929,15 +1937,15 @@ const MARKERS_BILLSHOUSE = [
    pas de warp), l'accès de jeu passe par l'easter egg Mew de la Villa Léo
    (Léo téléporte sur la faille 45,2 de la Route 25, qui re-téléporte dans la
    maison puis on ressort par la porte avant ; les warps faille ne sont plus
-   cartographiés depuis t69). Ho-Oh statique n.80 (bataille
+   cartographiés depuis t69). Ho-Oh statique n. 80 (bataille
    événement EVENT_BEAT_HOOH, ShinyAttract actif), duel de Sacha
-   (trainer_parties.asm SachaData : Pikachu n.88, Tauros 85, Dracaufeu 85,
+   (trainer_parties.asm SachaData : Pikachu n. 88, Tauros 85, Dracaufeu 85,
    Roucarnage 85, Ronflex 87, Scarhino 83) qui donne l'ADN Berserk et fait
    réapparaître tous les légendaires battus (Ho-Oh, Ossatueur fantôme,
    Artikodin, Sulfura, Electhor, Mewtwo, Mew + dresseurs du Volcan) ;
    Pikachu montre l'entrée Pokédex. warp_to (9,15)/(10,15) hors carte
    (garbage) : ignorés. Rencontres sauvages uniques : starters, Evoli et
-   Porygon sauvages n.10-15. */
+   Porygon sauvages n. 10-15. */
 const MARKERS_BILLSGARDEN = [
   { cat: "trainer", spr: true, icon: "hooh", x: 6, y: 3, hs: "cache", name: "Ho-Oh", team: [["hooh", "Ho-Oh", 80]] },
   { cat: "trainer", spr: true, icon: "sacha", x: 5, y: 5, name: "Sacha", team: [["pikachu", "Pikachu", 88], ["tauros", "Tauros", 85], ["charizard", "Dracaufeu", 85], ["pidgeot", "Roucarnage", 85], ["snorlax", "Ronflex", 87], ["heracross", "Scarhino", 83]], give: ["berserk_adn", "ADN Berserk"] },
@@ -1949,7 +1957,7 @@ const MARKERS_BILLSGARDEN = [
    est nommé dans trainer_parties.asm (Dresseur jr♂ n°5 de la classe, équipe
    28,SANDSHREW). 0 warp, 1 panneau ignoré, aucune entrée hide_show (NoHS),
    1 objet caché (Huile, y=7 x=14), pas d'eau (pêche impossible). Rencontres : Rattata
-   103/256 (n.14–17), Piafabec 89 (n.13–17), Sabelette 64 (n.11–17). */
+   103/256 (n. 14 à 17), Piafabec 89 (n. 13 à 17), Sabelette 64 (n. 11 à 17). */
 const MARKERS_ROUTE9 = [
   { cat: "trainer", spr: true, icon: "lass", x: 13, y: 10, dir: "left", name: "Dresseur jr♀ n°1", team: [["oddish", "Mystherbe", 21], ["bellsprout", "Chétiflor", 21], ["tangela", "Saquedeneu", 21], ["pidgeotto", "Roucoups", 21]] },
   { cat: "trainer", spr: true, icon: "black_hair_boy_1", x: 24, y: 7, dir: "left", name: "Dresseur jr♂ n°1 (Albert)", team: [["sandshrew", "Sabelette", 28]] },
@@ -1971,27 +1979,27 @@ const MARKERS_ROUTE9 = [
    Grotte Sombre, Centrale 1F et Centrale 2F (deux entrées de bâtiment) ;
    3 panneaux ignorés, NoHS, 2 objets cachés (Pierre Eau y=6 x=10, Calcium
    y=25 x=11). Rivière pleine hauteur :
-   Surf + Canne (GoodRodMons[1] = Ptitard n.5), Super Canne (indices
-   (carte&3)|{0,4}+{0,1} = 1, 2, 5, 6 : Ptitard n.5, Poissirène n.9,
-   Krabby n.12, Psykokwak n.12), Méga Canne = FishingGroup5
-   (Têtarte n.23, Ramoloss n.15, Psykokwak n.15). Rencontres : Voltorbe
-   90/256 (n.14–16), Piafabec 89 (n.13–17), Sabelette 39 (n.11–17),
-   Magnéti 38 (n.15–17).
-   Grotte Sombre (RockTunnelMons1F, taux $0A = 10) : Nosferapti 127/256 (n.16–18),
-   Racaillou 64 (n.16–17), Machoc 38 (n.15–17), Onix 14 (n.13–15), Osselait 13 (n.15).
-   Grotte Sombre SS1 (RockTunnelMonsB1F, taux $0B = 11) : Nosferapti 102/256 (n.16–17),
-   Racaillou 64 (n.16–17), Machoc 50 (n.15–17), Onix 24 (n.13–17), Osselait 16 (n.15–18).
-   Centrale 1F/2F (PowerPlantMons partagé, taux $0A = 10) : Voltorbe 76/256 (n.21–23),
-   Magnéti 76 (n.21–23), Pikachu 39 (n.24), Magnéton 38 (n.32–35), Raichu 14 (n.33–36),
-   Elektek 13 (n.33).
-   Tour Pokémon 3F (LavenderPokemonTowerMons3F, taux $0A = 10) : Fantominus 229/256 (n.18–24),
-   Osselait 16 (n.20/25), Feuforêve 11 (n.22).
-   Tour Pokémon 4F/5F (TowerMons4F/5F, taux $0A = 10) : Fantominus 216/256 (n.18–23),
-   Osselait 16 (n.20/24), Spectrum 13 (n.25), Feuforêve 11 (n.22).
-   Tour Pokémon 6F (TowerMons6F, taux $0F = 15) : Fantominus 216/256 (n.19–24),
-   Osselait 16 (n.22/28), Spectrum 13 (n.26), Feuforêve 11 (n.24).
-   Tour Pokémon 7F (TowerMons7F, taux $0F = 15) : Fantominus 191/256 (n.20–24),
-   Spectrum 28 (n.28/30), Osselait 26 (n.22–24), Feuforêve 11 (n.28). */
+   Surf + Canne (GoodRodMons[1] = Ptitard n. 5), Super Canne (indices
+   (carte&3)|{0,4}+{0,1} = 1, 2, 5, 6 : Ptitard n. 5, Poissirène n. 9,
+   Krabby n. 12, Psykokwak n. 12), Méga Canne = FishingGroup5
+   (Têtarte n. 23, Ramoloss n. 15, Psykokwak n. 15). Rencontres : Voltorbe
+   90/256 (n. 14 à 16), Piafabec 89 (n. 13 à 17), Sabelette 39 (n. 11 à 17),
+   Magnéti 38 (n. 15 à 17).
+   Grotte Sombre (RockTunnelMons1F, taux $0A = 10) : Nosferapti 127/256 (n. 16 à 18),
+   Racaillou 64 (n. 16 à 17), Machoc 38 (n. 15 à 17), Onix 14 (n. 13 à 15), Osselait 13 (n. 15).
+   Grotte Sombre SS1 (RockTunnelMonsB1F, taux $0B = 11) : Nosferapti 102/256 (n. 16 à 17),
+   Racaillou 64 (n. 16 à 17), Machoc 50 (n. 15 à 17), Onix 24 (n. 13 à 17), Osselait 16 (n. 15 à 18).
+   Centrale 1F/2F (PowerPlantMons partagé, taux $0A = 10) : Voltorbe 76/256 (n. 21 à 23),
+   Magnéti 76 (n. 21 à 23), Pikachu 39 (n. 24), Magnéton 38 (n. 32 à 35), Raichu 14 (n. 33 à 36),
+   Elektek 13 (n. 33).
+   Tour Pokémon 3F (LavenderPokemonTowerMons3F, taux $0A = 10) : Fantominus 229/256 (n. 18 à 24),
+   Osselait 16 (n. 20/25), Feuforêve 11 (n. 22).
+   Tour Pokémon 4F/5F (TowerMons4F/5F, taux $0A = 10) : Fantominus 216/256 (n. 18 à 23),
+   Osselait 16 (n. 20/24), Spectrum 13 (n. 25), Feuforêve 11 (n. 22).
+   Tour Pokémon 6F (TowerMons6F, taux $0F = 15) : Fantominus 216/256 (n. 19 à 24),
+   Osselait 16 (n. 22/28), Spectrum 13 (n. 26), Feuforêve 11 (n. 24).
+   Tour Pokémon 7F (TowerMons7F, taux $0F = 15) : Fantominus 191/256 (n. 20 à 24),
+   Spectrum 28 (n. 28/30), Osselait 26 (n. 22 à 24), Feuforêve 11 (n. 28). */
 const MARKERS_ROUTE10 = [
   { cat: "trainer", spr: true, icon: "black_hair_boy_2", x: 13, y: 49, dir: "left", name: "PokéManiac n°1", team: [["magmar", "Magmar", 43], ["jynx", "Lippoutou", 43], ["lapras", "Lokhlass", 43]] },
   { cat: "trainer", spr: true, icon: "lass", x: 9, y: 31, dir: "left", name: "Dresseur jr♀ n°1", team: [["clefairy", "Mélofée", 25], ["wigglytuff", "Grodoudou", 25]] },
@@ -2008,8 +2016,8 @@ const MARKERS_ROUTE10 = [
    4 dresseurs, 1 warp vers la Grotte Sombre, 1 panneau ignoré,
    NoHS, 1 objet caché (Huile Max, y=4 x=18), pas de rencontre sauvage (aucun
    data/wildPokemons/maps/Route10South.asm). eau du coin sud-est : Surf +
-   Canne (GoodRodMons[2] = Poissirène n.9), Super Canne (indices 2, 3, 6, 7 :
-   Poissirène n.9–12 37,5 %, Psykokwak n.12, Kokiyas n.12), pas de Méga
+   Canne (GoodRodMons[2] = Poissirène n. 9), Super Canne (indices 2, 3, 6, 7 :
+   Poissirène n. 9 à 12 37,5 %, Psykokwak n. 12, Kokiyas n. 12), pas de Méga
    Canne (absente de SuperRodData). */
 const MARKERS_ROUTE10SOUTH = [
   { cat: "trainer", spr: true, icon: "hiker", x: 4, y: 9, dir: "left", name: "Montagnard n°1", team: [["rhyhorn", "Rhinocorne", 27], ["dugtrio", "Triopikeur", 27]] },
@@ -2099,8 +2107,8 @@ const MARKERS_RTB1F = [
   { cat: "warp", x: 23, y: 11, name: "Grotte Sombre", dx: 17, dy: 11, badge: "RDC" },
   { cat: "warp", x: 3, y: 3, name: "Grotte Sombre", dx: 37, dy: 17, badge: "RDC" }
 ];
-/* Centrale 1F (PowerPlant1F.asm) : 7 faux objets — 6 Voltorbe n.40 et
-   1 Electrode n.43 (catégorie dresseur, icône ball ; PowerPlant1FHS tout
+/* Centrale 1F (PowerPlant1F.asm) : 7 faux objets — 6 Voltorbe n. 40 et
+   1 Electrode n. 43 (catégorie dresseur, icône ball ; PowerPlant1FHS tout
    Show -> visibles) ; 4 objets au sol (Carbone, CT25 FatalFo, CT33 Protect,
    Peau Métal) ; 1 objet caché (Max Elixir, hidden_objects.asm y=1 x=38) ;
    2 entrées sud vers la Route 10, escalier nord vers le 2F (23,1).
@@ -2122,7 +2130,7 @@ const MARKERS_PP1F = [
   { cat: "warp", x: 5, y: 23, name: "Route 10", dx: 8, dy: 45, badge: "Sortie" },
   { cat: "warp", x: 23, y: 1, name: "Centrale E1", dx: 16, dy: 1, badge: "E1" }
 ];
-/* Centrale 2F (PowerPlant2F.asm) : Electrode n.43 + Electhor n.50 (sprite
+/* Centrale 2F (PowerPlant2F.asm) : Electrode n. 43 + Electhor n. 50 (sprite
    SPRITE_ZAPDOS, musique d'arène, scripté ; PowerPlant2FHS tout Show) ;
    2 objets au sol (PV Plus, Super Bonbon), 1 objet caché (PP Plus y=1 x=1,
    hidden_objects.asm) ; sortie ouest vers la Route 10 (5,43), escalier vers
@@ -2216,7 +2224,7 @@ const MARKERS_LT1F = [
    explique que rien ne fonctionne sans un Scope Sylphe (script).
    Pas de rencontres (Mons $00). */
 const MARKERS_LT2F = [
-  { cat: "trainer", spr: true, icon: "blue", x: 14, y: 5, name: "Rival (5e duel)", scripted: true, team: [["pidgeotto", "Roucoups", 34], [["growlithe", "Caninos", 32], ["gyarados", "Léviator", 30], ["nidorino", "Nidorino", 32]], [["nidorino", "Nidorino", 32], ["growlithe", "Caninos", 33], ["gyarados", "Léviator", 30]], ["kadabra", "Kadabra", "32–33"], [["wartortle", "Carabaffe", 35], ["ivysaur", "Herbizarre", 35], ["charmeleon", "Reptincel", 35]]] },
+  { cat: "trainer", spr: true, icon: "blue", x: 14, y: 5, name: "Rival (5e duel)", scripted: true, team: [["pidgeotto", "Roucoups", 34], [["growlithe", "Caninos", 32], ["gyarados", "Léviator", 30], ["nidorino", "Nidorino", 32]], [["nidorino", "Nidorino", 32], ["growlithe", "Caninos", 33], ["gyarados", "Léviator", 30]], ["kadabra", "Kadabra", "32 à 33"], [["wartortle", "Carabaffe", 35], ["ivysaur", "Herbizarre", 35], ["charmeleon", "Reptincel", 35]]] },
   { cat: "pnj", spr: true, icon: "medium", x: 3, y: 7, dir: "right", name: "Exorciste" },
   { cat: "warp", x: 3, y: 9, name: "Tour Pokémon 3F", dx: 3, dy: 9, badge: "E2" },
   { cat: "warp", x: 18, y: 9, name: "Tour Pokémon 1F", dx: 18, dy: 9, badge: "RDC" }
@@ -2262,7 +2270,7 @@ const MARKERS_LT5F = [
 ];
 /* Tour Pokémon 6F : 3 Exorcistes (32 Fantominus/Soporifik/Spectrum,
    35 Spectrum, 33 Hypnomade/Spectrum/Feunard), 2 objets (Super Bonbon,
-   Précision+) et le Spectre : Osavengeur n.35 (EVENT_ACTIVATE_GHOST_MAROWAK,
+   Précision+) et le Spectre : Osavengeur n. 35 (EVENT_ACTIVATE_GHOST_MAROWAK,
    bloque l'escalier vers le 7F ; sans le Scope Sylphe les attaques ne le
    touchent pas). Rencontres : TowerMons6F. NoHS. */
 const MARKERS_LT6F = [
@@ -2313,14 +2321,14 @@ const MARKERS_ROUTE8 = [
 ];
 
 /* Route 12 (data/maps/objects/Route12.asm) : Ronflex endormi qui barre la
-   route (SNORLAX n.30, réveil à la Poké Flûte, Route12Script ; Route12HS :
+   route (SNORLAX n. 30, réveil à la Poké Flûte, Route12Script ; Route12HS :
    objet $01 au Show), 7 dresseurs (5 Pêcheurs, 1 Rocker, 1 Dresseur jr♂,
    équipes trainer_parties.asm), 2 objets au sol (CT16 Jackpot, Fer), 4 portes
    désormais cliquables (Porte Route 12 ×3, Maison du Pêcheur),
    1 objet caché (Hyper Potion) ; 2 panneaux ignorés (« Route 12 Lavanville -
    Nord », « Zone de Pêche »). Rencontres : Route12Mons (taux $0F = 15) ;
-   pêche : Canne, Super Canne, Méga Canne (FishingGroup 7 : Tentacool n.5,
-   Krabby n.15, Poissirène n.15, Magicarpe n.15) et surf. */
+   pêche : Canne, Super Canne, Méga Canne (FishingGroup 7 : Tentacool n. 5,
+   Krabby n. 15, Poissirène n. 15, Magicarpe n. 15) et surf. */
 const MARKERS_ROUTE12 = [
   { cat: "trainer", spr: true, icon: "snorlax", x: 10, y: 62, dir: "down", name: "Ronflex", scripted: true, team: [["snorlax", "Ronflex", 30]] },
   { cat: "trainer", spr: true, icon: "fisher2", x: 14, y: 31, dir: "left", name: "Pêcheur n°1", team: [["goldeen", "Poissirène", 25], ["poliwag", "Ptitard", 25], ["goldeen", "Poissirène", 25]] },
@@ -2519,7 +2527,7 @@ const MARKERS_CC2F = [
    duel) : Kicklee 48, Tygnon 48, Canarticho 50, Elektek 48, Scarhino 48,
    Kangourex 50) et 4 Karatékas : Férosinge/Tartard 34,
    Machoc/Machopeur 32, Colossinge 36, Machoc/Férosinge/Colossinge 31 ;
-   2 Poké Ball offrant Kicklee ou Tygnon n.35 (choix,
+   2 Poké Ball offrant Kicklee ou Tygnon n. 35 (choix,
    scripts/SaffronFightingDojo.asm) ; bannières du dojo ignorées (décor).
    NoHS, aucune rencontre. */
 const MARKERS_DOJO = [
@@ -2528,8 +2536,8 @@ const MARKERS_DOJO = [
   { cat: "trainer", spr: true, icon: "blackbelt", x: 3, y: 6, dir: "right", name: "Karatéka n°2", team: [["machop", "Machoc", 32], ["machoke", "Machopeur", 32]] },
   { cat: "trainer", spr: true, icon: "blackbelt", x: 6, y: 5, dir: "left", name: "Karatéka n°3", team: [["primeape", "Colossinge", 36]] },
   { cat: "trainer", spr: true, icon: "blackbelt", x: 6, y: 7, dir: "left", name: "Karatéka n°4", team: [["machop", "Machoc", 31], ["mankey", "Férosinge", 31], ["primeape", "Colossinge", 31]] },
-  { cat: "pnj", spr: true, icon: "pokeball", x: 4, y: 1, name: "Poké Ball", give: ["front_hitmonlee", "Kicklee n.35"], scripted: true },
-  { cat: "pnj", spr: true, icon: "pokeball", x: 5, y: 1, name: "Poké Ball", give: ["front_hitmonchan", "Tygnon n.35"], scripted: true },
+  { cat: "pnj", spr: true, icon: "pokeball", x: 4, y: 1, name: "Poké Ball", give: ["front_hitmonlee", "Kicklee n. 35"], scripted: true },
+  { cat: "pnj", spr: true, icon: "pokeball", x: 5, y: 1, name: "Poké Ball", give: ["front_hitmonchan", "Tygnon n. 35"], scripted: true },
   { cat: "warp", x: 4, y: 11, name: "Safrania", dx: 26, dy: 3, badge: "Sortie" },
   { cat: "warp", x: 5, y: 11, name: "Safrania", dx: 26, dy: 3, badge: "Sortie" }
 ];
@@ -2821,7 +2829,7 @@ const MARKERS_SYLPH6F = [
    ascenseur (18,0), warps (5,3) -> 3F, (5,7) -> 11F, (21,15) -> 5F.
    NoHS, aucune rencontre. */
 const MARKERS_SYLPH7F = [
-  { cat: "pnj", spr: true, icon: "lapras_giver", x: 1, y: 5, name: "Homme", give: ["front_lapras", "Lokhlass n.40"], scripted: true },
+  { cat: "pnj", spr: true, icon: "lapras_giver", x: 1, y: 5, name: "Homme", give: ["front_lapras", "Lokhlass n. 40"], scripted: true },
   { cat: "pnj", spr: true, icon: "lapras_giver", x: 13, y: 13, dir: "up", name: "Homme" },
   { cat: "pnj", spr: true, icon: "lapras_giver", x: 7, y: 10, name: "Homme" },
   { cat: "pnj", spr: true, icon: "kimonowoman", x: 10, y: 8, name: "Femme" },
@@ -3135,7 +3143,7 @@ const MARKERS_VMTH = [
    VermilionDock.asm) : le camion se pousse avec Force vers la gauche
    (TruckCheck : joueur en (22,0) + Force + gauche, EVENT_FOUND_MEW ; panneau
    « Vous sentez comme une irrépressible envie de pousser ce camion... ») et
-   révèle Mew (n.50, musique de chef d'arène ; Mew vit dans le camion) ;
+   révèle Mew (n. 50, musique de chef d'arène ; Mew vit dans le camion) ;
    cachés Pépite ($01,$01) et CT15 Ultralaser ($0A,$1B, db y puis x) ;
    l'Océane accoste : sa trappe disparaît quand le bateau lève l'ancre
    (SS_ANNE_1F désormais dessinée : warp « Océane »). NoMons ; pêche différente de la ville
@@ -3229,51 +3237,51 @@ MARKERS_VDOCK.forEach(m => {
   if (m.cat === "hidden") m.badge = String(++hidCount);
 });
 /* Taux par slot (WildMonEncounterSlotChances, /256) : 51, 51, 39, 25, 25, 25, 13, 13, 11, 3.
-   Route 1 (Route1Mons, taux global $19 = 25) : Roucool 128/256 (n.2-5), Rattata 128/256 (n.2-4).
-   Route 22 (Route22Mons, taux $19 = 25) : Rattata 115/256 (n.2-4), Nidoran♀ 76 (n.3-4),
-   Nidoran♂ 39 (n.2-4), Piafabec 26 (n.3-5).
-   Route 23 (Route23Mons, taux $0A = 10) : Sabelette 76 (n.38-41), Rapasdepic 64 (n.41-46),
-   Métamorph 51 (n.43), Piafabec 39 (n.38), Tygnon 13 (n.45), Kicklee 13 (n.45).
-   Route 2 (Route2Mons, taux $19 = 25) : Roucool 115/256 (n.3-5), Rattata 102/256 (n.2-5), Chenipan 39/256 (n.3-5).
-   Forêt de Jade (ViridianForestMons, taux $08 = 8) : Chenipan 90/256 (n.3-5), Aspicot 76 (n.4-5),
-   Chrysacier 38 (n.3-4), Mystherbe 25 (n.6), Coconfort 13 (n.4), Pikachu 11 (n.3), Scarabrute 3 (n.5).
-   Cave Taupiqueur (DiglettsCaveMons, taux $14 = 20) : Taupiqueur 229/256 (n.15-21), Triopikeur 24/256 (n.29-31), Ronflex 3/256 (n.25).
-   Route 3 (Route3Mons, taux $14 = 20) : Roucool 51/256 (n.6), Abo 64 (n.7-8), Piafabec 89 (n.6-8),
-   Férosinge 25 (n.8), Sabelette 13 (n.8), Rondoudou 14 (n.5-7).
-   Mont Sélénite (MountMoon1FMons, taux $07 = 7) : Nosferapti 202/256 (n.6-11),
-   Racaillou 38 (n.8-10), Paras 13 (n.8), Mélofée 3 (n.8).
-   Mont Sélénite SS1 (MountMoonB1FMons, taux $08 = 8) : Nosferapti 153/256 (n.7-11),
-   Racaillou 67 (n.7-9), Paras 25 (n.10), Mélofée 11 (n.9).
-   Mont Sélénite SS2 (MountMoonB2FMons, taux $09 = 9) : Nosferapti 126/256 (n.9-12),
-   Racaillou 76 (n.9-10), Paras 38 (n.10-12), Mélofée 16 (n.10-12).
-   Mont Sélénite, aire de repos (MountMoonSquareMons, taux $19 = 25) : Nidoran♀ 51/256 (n.20),
-   Rondoudou 89 (n.18-22), Nidoran♂ 39 (n.18), Mélofée 50 (n.20-21), M.Mime 13 (n.22), Leveinard 14 (n.23-25).
-   Route 4 (Route4Mons, taux $14 = 20) : Abo 51/256 (n.10), Piafabec 89 (n.8–12),
-   Rattata 39 (n.8), Sabelette 41 (n.8–12), Férosinge 25 (n.12), Bulbizarre 11 (n.10).
-   Route 24 (Route24Mons, taux $19 = 25) : Chenipan 51/256 (n.7), Chrysacier 51 (n.8),
-   Roucool 52 (n.12–13), Chétiflor 50 (n.13–14), Abra 41 (n.8–12), Mystherbe 11 (n.12).
-   Route 25 (Route25Mons, taux $0F = 15) : Chenipan 51/256 (n.8), Chrysacier 51 (n.9),
-   Chétiflor 50 (n.13–14), Roucool 39 (n.13), Abra 38 (n.10–12), Coconfort 13 (n.7),
-   Salamèche 11 (n.10), Aspicot 3 (n.8).
-   Jardin de Léo (BillsGardenMons, taux $0F = 15) : Abra 51/256 (n.15), Pikachu 51 (n.14),
-   Mélofée 39 (n.13), Evoli 29 (n.10–15), Carapuce/Salamèche/Bulbizarre 25 (n.13/12/14),
-   Porygon 11 (n.15).
-   Route 9 (Route9Mons, taux $0F = 15) : Rattata 103/256 (n.14–17), Piafabec 89 (n.13–17),
-   Sabelette 64 (n.11–17).
-   Route 10 (Route10Mons, taux $0F = 15) : Voltorbe 90/256 (n.14–16), Piafabec 89 (n.13–17),
-   Sabelette 39 (n.11–17), Magnéti 38 (n.15–17).
-   Route 8 (Route8Mons, taux $0F = 15) : Miaouss 76/256 (n.18–20), Sabelette 52 (n.17–19),
-   Roucool 51 (n.18), Goupix 41 (n.16–18), Caninos 36 (n.15–20).
-   Route 12 (Route12Mons, taux $0F = 15) : Chétiflor 101/256 (n.22–26), Mimitoss 64 (n.24–26),
-   Roucool 51 (n.25), Boustiflor 24 (n.28–30), Canarticho 16 (n.22–25).
-   Route 5 (Route5Mons, taux $0F = 15) : Roucool 103/256 (n.13–16), Chétiflor 89 (n.13–16),
-   Miaouss 39 (n.12–16), Férosinge 25 (n.10).
-   Route 6 (Route6Mons, taux $0F = 15) : Roucool 103/256 (n.13–16), Chétiflor 101 (n.13–16),
-   Miaouss 41 (n.12–16), Carapuce 11 (n.10).
-   Route 7 (Route7Mons, taux $0F = 15) : Chétiflor 64/256 (n.19–22), Roucool 51 (n.19),
-   Miaouss 42 (n.17–20), Caninos 38 (n.18–22), Goupix 36 (n.18–20).
-   Route 11 (Route11Mons, taux $0F = 15) : Sabelette 103/256 (n.12–15), Piafabec 89 (n.13–17),
-   Soporifik 64 (n.9–15).
+   Route 1 (Route1Mons, taux global $19 = 25) : Roucool 128/256 (n. 2-5), Rattata 128/256 (n. 2-4).
+   Route 22 (Route22Mons, taux $19 = 25) : Rattata 115/256 (n. 2-4), Nidoran♀ 76 (n. 3-4),
+   Nidoran♂ 39 (n. 2-4), Piafabec 26 (n. 3-5).
+   Route 23 (Route23Mons, taux $0A = 10) : Sabelette 76 (n. 38-41), Rapasdepic 64 (n. 41-46),
+   Métamorph 51 (n. 43), Piafabec 39 (n. 38), Tygnon 13 (n. 45), Kicklee 13 (n. 45).
+   Route 2 (Route2Mons, taux $19 = 25) : Roucool 115/256 (n. 3-5), Rattata 102/256 (n. 2-5), Chenipan 39/256 (n. 3-5).
+   Forêt de Jade (ViridianForestMons, taux $08 = 8) : Chenipan 90/256 (n. 3-5), Aspicot 76 (n. 4-5),
+   Chrysacier 38 (n. 3-4), Mystherbe 25 (n. 6), Coconfort 13 (n. 4), Pikachu 11 (n. 3), Scarabrute 3 (n. 5).
+   Cave Taupiqueur (DiglettsCaveMons, taux $14 = 20) : Taupiqueur 229/256 (n. 15-21), Triopikeur 24/256 (n. 29-31), Ronflex 3/256 (n. 25).
+   Route 3 (Route3Mons, taux $14 = 20) : Roucool 51/256 (n. 6), Abo 64 (n. 7-8), Piafabec 89 (n. 6-8),
+   Férosinge 25 (n. 8), Sabelette 13 (n. 8), Rondoudou 14 (n. 5-7).
+   Mont Sélénite (MountMoon1FMons, taux $07 = 7) : Nosferapti 202/256 (n. 6-11),
+   Racaillou 38 (n. 8-10), Paras 13 (n. 8), Mélofée 3 (n. 8).
+   Mont Sélénite SS1 (MountMoonB1FMons, taux $08 = 8) : Nosferapti 153/256 (n. 7-11),
+   Racaillou 67 (n. 7-9), Paras 25 (n. 10), Mélofée 11 (n. 9).
+   Mont Sélénite SS2 (MountMoonB2FMons, taux $09 = 9) : Nosferapti 126/256 (n. 9-12),
+   Racaillou 76 (n. 9-10), Paras 38 (n. 10-12), Mélofée 16 (n. 10-12).
+   Mont Sélénite, aire de repos (MountMoonSquareMons, taux $19 = 25) : Nidoran♀ 51/256 (n. 20),
+   Rondoudou 89 (n. 18-22), Nidoran♂ 39 (n. 18), Mélofée 50 (n. 20-21), M.Mime 13 (n. 22), Leveinard 14 (n. 23-25).
+   Route 4 (Route4Mons, taux $14 = 20) : Abo 51/256 (n. 10), Piafabec 89 (n. 8 à 12),
+   Rattata 39 (n. 8), Sabelette 41 (n. 8 à 12), Férosinge 25 (n. 12), Bulbizarre 11 (n. 10).
+   Route 24 (Route24Mons, taux $19 = 25) : Chenipan 51/256 (n. 7), Chrysacier 51 (n. 8),
+   Roucool 52 (n. 12 à 13), Chétiflor 50 (n. 13 à 14), Abra 41 (n. 8 à 12), Mystherbe 11 (n. 12).
+   Route 25 (Route25Mons, taux $0F = 15) : Chenipan 51/256 (n. 8), Chrysacier 51 (n. 9),
+   Chétiflor 50 (n. 13 à 14), Roucool 39 (n. 13), Abra 38 (n. 10 à 12), Coconfort 13 (n. 7),
+   Salamèche 11 (n. 10), Aspicot 3 (n. 8).
+   Jardin de Léo (BillsGardenMons, taux $0F = 15) : Abra 51/256 (n. 15), Pikachu 51 (n. 14),
+   Mélofée 39 (n. 13), Evoli 29 (n. 10 à 15), Carapuce/Salamèche/Bulbizarre 25 (n. 13/12/14),
+   Porygon 11 (n. 15).
+   Route 9 (Route9Mons, taux $0F = 15) : Rattata 103/256 (n. 14 à 17), Piafabec 89 (n. 13 à 17),
+   Sabelette 64 (n. 11 à 17).
+   Route 10 (Route10Mons, taux $0F = 15) : Voltorbe 90/256 (n. 14 à 16), Piafabec 89 (n. 13 à 17),
+   Sabelette 39 (n. 11 à 17), Magnéti 38 (n. 15 à 17).
+   Route 8 (Route8Mons, taux $0F = 15) : Miaouss 76/256 (n. 18 à 20), Sabelette 52 (n. 17 à 19),
+   Roucool 51 (n. 18), Goupix 41 (n. 16 à 18), Caninos 36 (n. 15 à 20).
+   Route 12 (Route12Mons, taux $0F = 15) : Chétiflor 101/256 (n. 22 à 26), Mimitoss 64 (n. 24 à 26),
+   Roucool 51 (n. 25), Boustiflor 24 (n. 28 à 30), Canarticho 16 (n. 22 à 25).
+   Route 5 (Route5Mons, taux $0F = 15) : Roucool 103/256 (n. 13 à 16), Chétiflor 89 (n. 13 à 16),
+   Miaouss 39 (n. 12 à 16), Férosinge 25 (n. 10).
+   Route 6 (Route6Mons, taux $0F = 15) : Roucool 103/256 (n. 13 à 16), Chétiflor 101 (n. 13 à 16),
+   Miaouss 41 (n. 12 à 16), Carapuce 11 (n. 10).
+   Route 7 (Route7Mons, taux $0F = 15) : Chétiflor 64/256 (n. 19 à 22), Roucool 51 (n. 19),
+   Miaouss 42 (n. 17 à 20), Caninos 38 (n. 18 à 22), Goupix 36 (n. 18 à 20).
+   Route 11 (Route11Mons, taux $0F = 15) : Sabelette 103/256 (n. 12 à 15), Piafabec 89 (n. 13 à 17),
+   Soporifik 64 (n. 9 à 15).
    Bourg Palette, Jadielle, Argenta, Azuria, Villa Léo, Safrania, Route 10 South, Plateau
    Indigo et Tour Pokémon 1F/2F : pas de rencontres sauvages (wild: null) ; idem les 10 étages
    de la tour Sylphe (2F-11F), son ascenseur, les Souterrains et les postes de garde, ainsi que Carmin sur Mer et son dock. */
@@ -3300,9 +3308,9 @@ MARKERS_VDOCK.forEach(m => {
    Super Canne = entrées (carte&3)|(aléa&4)+(aléa&1) de GoodRodMons, 25 % de raté ;
    Méga Canne = FishingGroup de SuperRodData (Route 22 -> G1, Route 23 -> G9),
    25 % de raté. Noms FR : text/monster_names.asm. */
-const SURF_FISH = [["tentacool", "Tentacool", "n.5–20", "89,5 %"], ["tentacruel", "Tentacruel", "n.30–40", "6,3 %"], ["seaking", "Poissoroy", "n.35", "4,3 %"]];
-const MEGA_FISH = [["psyduck", "Psykokwak", "n.15", "30 %"], ["poliwag", "Ptitard", "n.15", "30 %"]];
-const ROUTE21_SURF = [["tentacool", "Tentacool", "n.5–20", "89,5 %"], ["tentacruel", "Tentacruel", "n.30–35", "9,4 %"], ["seaking", "Poissoroy", "n.40", "1,2 %"]];
+const SURF_FISH = [["tentacool", "Tentacool", "n. 5 à 20", "89,5 %"], ["tentacruel", "Tentacruel", "n. 30 à 40", "6,3 %"], ["seaking", "Poissoroy", "n. 35", "4,3 %"]];
+const MEGA_FISH = [["psyduck", "Psykokwak", "n. 15", "30 %"], ["poliwag", "Ptitard", "n. 15", "30 %"]];
+const ROUTE21_SURF = [["tentacool", "Tentacool", "n. 5 à 20", "89,5 %"], ["tentacruel", "Tentacruel", "n. 30 à 35", "9,4 %"], ["seaking", "Poissoroy", "n. 40", "1,2 %"]];
 const MAP_LAVENDER_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/LavenderTown.png";
 const MAP_ROUTE8_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/Route8.png";
 const MAP_ROUTE12_B64 = "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/dev/screenshots/Maps/Route12.png";
@@ -3476,37 +3484,37 @@ const MAPS = [
   { id: "ViridianCity", label: "Jadielle", w: 640, h: 576, b64: MAP_VIRIDIAN_B64, wild: null,
     fish: [
       ["Surf", "Aucun Pokémon disponible en Surfant"],
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["poliwag", "Ptitard", "n.5", "50 %"]]],
-      ["Super Canne", [["poliwag", "Ptitard", "n.5", "18,75 %"], ["goldeen", "Poissirène", "n.9", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["krabby", "Krabby", "n.12", "18,75 %"]]],
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["poliwag", "Ptitard", "n. 5", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n. 5", "18,75 %"], ["goldeen", "Poissirène", "n. 9", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["krabby", "Krabby", "n. 12", "18,75 %"]]],
       ["Méga Canne", MEGA_FISH]
     ] },
   { id: "Route1", label: "Route 1", w: 384, h: 576, b64: MAP_ROUTE1_B64, rate: "25",
-    wild: [["pidgey", "Roucool", "n.2–5", "50,0 %"], ["rattata", "Rattata", "n.2–4", "50,0 %"]],
+    wild: [["pidgey", "Roucool", "n. 2 à 5", "50,0 %"], ["rattata", "Rattata", "n. 2 à 4", "50,0 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "PalletTown", label: "Bourg Palette", w: 320, h: 288, b64: MAP_PALLET_B64, wild: null,
     fish: [
       ["Surf", "Aucun Pokémon disponible en Surfant"],
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["poliwag", "Ptitard", "n.4", "50 %"]]],
-      ["Super Canne", [["poliwag", "Ptitard", "n.4–5", "37,5 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["krabby", "Krabby", "n.12", "18,75 %"]]],
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["poliwag", "Ptitard", "n. 4", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n. 4 à 5", "37,5 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["krabby", "Krabby", "n. 12", "18,75 %"]]],
       ["Méga Canne", MEGA_FISH]
     ] },
   { id: "Route22", label: "Route 22", w: 640, h: 288, b64: MAP_ROUTE22_B64, rate: "25",
-    wild: [["rattata", "Rattata", "n.2–4", "44,9 %"], ["nidoranf", "Nidoran♀", "n.3–4", "29,7 %"], ["nidoranm", "Nidoran♂", "n.2–4", "15,2 %"], ["spearow", "Piafabec", "n.3–5", "10,2 %"]],
+    wild: [["rattata", "Rattata", "n. 2 à 4", "44,9 %"], ["nidoranf", "Nidoran♀", "n. 3 à 4", "29,7 %"], ["nidoranm", "Nidoran♂", "n. 2 à 4", "15,2 %"], ["spearow", "Piafabec", "n. 3 à 5", "10,2 %"]],
     fish: [
       ["Surf", "Aucun Pokémon disponible en Surfant"],
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["poliwag", "Ptitard", "n.4", "50 %"]]],
-      ["Super Canne", [["poliwag", "Ptitard", "n.4–5", "37,5 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["krabby", "Krabby", "n.12", "18,75 %"]]],
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["poliwag", "Ptitard", "n. 4", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n. 4 à 5", "37,5 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["krabby", "Krabby", "n. 12", "18,75 %"]]],
       ["Méga Canne", MEGA_FISH]
     ] },
   { id: "Route23", label: "Route 23", w: 320, h: 2304, b64: MAP_ROUTE23_B64, rate: "10",
-    wild: [["sandshrew", "Sabelette", "n.38–41", "29,7 %"], ["fearow", "Rapasdepic", "n.41–46", "25,0 %"], ["ditto", "Métamorph", "n.43", "19,9 %"], ["spearow", "Piafabec", "n.38", "15,2 %"], ["hitmonchan", "Tygnon", "n.45", "5,1 %"], ["hitmonlee", "Kicklee", "n.45", "5,1 %"]],
+    wild: [["sandshrew", "Sabelette", "n. 38 à 41", "29,7 %"], ["fearow", "Rapasdepic", "n. 41 à 46", "25,0 %"], ["ditto", "Métamorph", "n. 43", "19,9 %"], ["spearow", "Piafabec", "n. 38", "15,2 %"], ["hitmonchan", "Tygnon", "n. 45", "5,1 %"], ["hitmonlee", "Kicklee", "n. 45", "5,1 %"]],
     fish: [
       ["Surf", "Aucun Pokémon disponible en Surfant"],
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["poliwag", "Ptitard", "n.5", "50 %"]]],
-      ["Super Canne", [["poliwag", "Ptitard", "n.5", "18,75 %"], ["goldeen", "Poissirène", "n.9", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["krabby", "Krabby", "n.12", "18,75 %"]]],
-      ["Méga Canne", [["slowbro", "Flagadoss", "n.23", "18,75 %"], ["seaking", "Poissoroy", "n.23", "18,75 %"], ["kingler", "Krabboss", "n.23", "18,75 %"], ["seadra", "Hypocéan", "n.23", "18,75 %"]]]
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["poliwag", "Ptitard", "n. 5", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n. 5", "18,75 %"], ["goldeen", "Poissirène", "n. 9", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["krabby", "Krabby", "n. 12", "18,75 %"]]],
+      ["Méga Canne", [["slowbro", "Flagadoss", "n. 23", "18,75 %"], ["seaking", "Poissoroy", "n. 23", "18,75 %"], ["kingler", "Krabboss", "n. 23", "18,75 %"], ["seadra", "Hypocéan", "n. 23", "18,75 %"]]]
     ] },
   { id: "IndigoPlateau", label: "Plateau Indigo", w: 320, h: 288, b64: MAP_INDIGO_B64, wild: null,
     fish: [
@@ -3521,17 +3529,17 @@ const MAPS = [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "VictoryRoad1F", label: "Route Victoire", w: 320, h: 288, b64: MAP_VR1F_B64, rate: "15",
-    wild: [["onix", "Onix", "n.41–42", "29,3 %"], ["machop", "Machoc", "n.42", "19,9 %"], ["geodude", "Racaillou", "n.39", "19,9 %"], ["zubat", "Nosferapti", "n.40", "15,2 %"], ["graveler", "Gravalanch", "n.43–49", "6,3 %"], ["golbat", "Nosferalto", "n.45", "5,1 %"], ["machoke", "Machopeur", "n.45", "4,3 %"]],
+    wild: [["onix", "Onix", "n. 41 à 42", "29,3 %"], ["machop", "Machoc", "n. 42", "19,9 %"], ["geodude", "Racaillou", "n. 39", "19,9 %"], ["zubat", "Nosferapti", "n. 40", "15,2 %"], ["graveler", "Gravalanch", "n. 43 à 49", "6,3 %"], ["golbat", "Nosferalto", "n. 45", "5,1 %"], ["machoke", "Machopeur", "n. 45", "4,3 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "VictoryRoad2F", label: "Route Victoire E1", w: 480, h: 288, b64: MAP_VR2F_B64, rate: "10",
-    wild: [["onix", "Onix", "n.42–44", "29,3 %"], ["machop", "Machoc", "n.45", "19,9 %"], ["geodude", "Racaillou", "n.46", "19,9 %"], ["zubat", "Nosferapti", "n.44", "15,2 %"], ["machoke", "Machopeur", "n.43–45", "9,4 %"], ["golbat", "Nosferalto", "n.44", "5,1 %"], ["graveler", "Gravalanch", "n.49", "1,2 %"]],
+    wild: [["onix", "Onix", "n. 42 à 44", "29,3 %"], ["machop", "Machoc", "n. 45", "19,9 %"], ["geodude", "Racaillou", "n. 46", "19,9 %"], ["zubat", "Nosferapti", "n. 44", "15,2 %"], ["machoke", "Machopeur", "n. 43 à 45", "9,4 %"], ["golbat", "Nosferalto", "n. 44", "5,1 %"], ["graveler", "Gravalanch", "n. 49", "1,2 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "VictoryRoad3F", label: "Route Victoire E2", w: 480, h: 288, b64: MAP_VR3F_B64, rate: "15",
-    wild: [["machop", "Machoc", "n.47", "19,9 %"], ["geodude", "Racaillou", "n.47", "19,9 %"], ["zubat", "Nosferapti", "n.45", "15,2 %"], ["onix", "Onix", "n.48–49", "14,8 %"], ["venomoth", "Aéromite", "n.48", "9,8 %"], ["golbat", "Nosferalto", "n.48", "9,8 %"], ["machoke", "Machopeur", "n.48–49", "6,3 %"], ["graveler", "Gravalanch", "n.49", "4,3 %"]],
+    wild: [["machop", "Machoc", "n. 47", "19,9 %"], ["geodude", "Racaillou", "n. 47", "19,9 %"], ["zubat", "Nosferapti", "n. 45", "15,2 %"], ["onix", "Onix", "n. 48 à 49", "14,8 %"], ["venomoth", "Aéromite", "n. 48", "9,8 %"], ["golbat", "Nosferalto", "n. 48", "9,8 %"], ["machoke", "Machopeur", "n. 48 à 49", "6,3 %"], ["graveler", "Gravalanch", "n. 49", "4,3 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
@@ -3600,7 +3608,7 @@ const MAPS = [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "Route2", label: "Route 2", w: 384, h: 1152, b64: MAP_ROUTE2_B64, rate: "25",
-    wild: [["pidgey", "Roucool", "n.3–5", "44,9 %"], ["rattata", "Rattata", "n.2–5", "39,8 %"], ["caterpie", "Chenipan", "n.3–5", "15,2 %"]],
+    wild: [["pidgey", "Roucool", "n. 3 à 5", "44,9 %"], ["rattata", "Rattata", "n. 2 à 5", "39,8 %"], ["caterpie", "Chenipan", "n. 3 à 5", "15,2 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
@@ -3649,7 +3657,7 @@ const MAPS = [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "ViridianForest", label: "Forêt de Jade", w: 544, h: 768, b64: MAP_FOREST_B64, rate: "8",
-    wild: [["caterpie", "Chenipan", "n.3–5", "35,2 %"], ["weedle", "Aspicot", "n.4–5", "29,7 %"], ["metapod", "Chrysacier", "n.3–4", "14,8 %"], ["oddish", "Mystherbe", "n.6", "9,8 %"], ["kakuna", "Coconfort", "n.4", "5,1 %"], ["pikachu", "Pikachu", "n.3", "4,3 %"], ["pinsir", "Scarabrute", "n.5", "1,2 %"]],
+    wild: [["caterpie", "Chenipan", "n. 3 à 5", "35,2 %"], ["weedle", "Aspicot", "n. 4 à 5", "29,7 %"], ["metapod", "Chrysacier", "n. 3 à 4", "14,8 %"], ["oddish", "Mystherbe", "n. 6", "9,8 %"], ["kakuna", "Coconfort", "n. 4", "5,1 %"], ["pikachu", "Pikachu", "n. 3", "4,3 %"], ["pinsir", "Scarabrute", "n. 5", "1,2 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
@@ -3662,7 +3670,7 @@ const MAPS = [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "DiglettsCave", label: "Cave Taupiqueur", w: 640, h: 576, b64: MAP_DCAVE_B64, rate: "20",
-    wild: [["diglett", "Taupiqueur", "n.15–21", "89,5 %"], ["dugtrio", "Triopikeur", "n.29–31", "9,4 %"], ["snorlax", "Ronflex", "n.25", "1,2 %"]],
+    wild: [["diglett", "Taupiqueur", "n. 15 à 21", "89,5 %"], ["dugtrio", "Triopikeur", "n. 29 à 31", "9,4 %"], ["snorlax", "Ronflex", "n. 25", "1,2 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
@@ -3671,27 +3679,27 @@ const MAPS = [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "Route3", label: "Route 3", w: 1120, h: 288, b64: MAP_ROUTE3_B64, rate: "20",
-    wild: [["pidgey", "Roucool", "n.6", "19,9 %"], ["ekans", "Abo", "n.7–8", "25,0 %"], ["spearow", "Piafabec", "n.6–8", "34,8 %"], ["mankey", "Férosinge", "n.8", "9,8 %"], ["sandshrew", "Sabelette", "n.8", "5,1 %"], ["jigglypuff", "Rondoudou", "n.5–7", "5,5 %"]],
+    wild: [["pidgey", "Roucool", "n. 6", "19,9 %"], ["ekans", "Abo", "n. 7 à 8", "25,0 %"], ["spearow", "Piafabec", "n. 6 à 8", "34,8 %"], ["mankey", "Férosinge", "n. 8", "9,8 %"], ["sandshrew", "Sabelette", "n. 8", "5,1 %"], ["jigglypuff", "Rondoudou", "n. 5 à 7", "5,5 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "MtMoonSquare", label: "Mont Sélénite (Aire de repos)", spoil: true, w: 480, h: 288, b64: MAP_MOONSQ_B64, rate: "25",
-    wild: [["nidoranf", "Nidoran♀", "n.20", "19,9 %"], ["jigglypuff", "Rondoudou", "n.18–22", "34,8 %"], ["nidoranm", "Nidoran♂", "n.18", "15,2 %"], ["clefairy", "Mélofée", "n.20–21", "19,5 %"], ["mr_mime", "M.Mime", "n.22", "5,1 %"], ["chansey", "Leveinard", "n.23–25", "5,5 %"]],
+    wild: [["nidoranf", "Nidoran♀", "n. 20", "19,9 %"], ["jigglypuff", "Rondoudou", "n. 18 à 22", "34,8 %"], ["nidoranm", "Nidoran♂", "n. 18", "15,2 %"], ["clefairy", "Mélofée", "n. 20 à 21", "19,5 %"], ["mr_mime", "M.Mime", "n. 22", "5,1 %"], ["chansey", "Leveinard", "n. 23 à 25", "5,5 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "MtMoon1F", label: "Mont Sélénite", w: 640, h: 576, b64: MAP_MOON1F_B64, rate: "7",
-    wild: [["zubat", "Nosferapti", "n.6–11", "78,9 %"], ["geodude", "Racaillou", "n.8–10", "14,8 %"], ["paras", "Paras", "n.8", "5,1 %"], ["clefairy", "Mélofée", "n.8", "1,2 %"]],
+    wild: [["zubat", "Nosferapti", "n. 6 à 11", "78,9 %"], ["geodude", "Racaillou", "n. 8 à 10", "14,8 %"], ["paras", "Paras", "n. 8", "5,1 %"], ["clefairy", "Mélofée", "n. 8", "1,2 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "MtMoonB1F", label: "Mont Sélénite SS1", w: 448, h: 448, b64: MAP_MOONB1F_B64, rate: "8",
-    wild: [["zubat", "Nosferapti", "n.7–11", "59,8 %"], ["geodude", "Racaillou", "n.7–9", "26,2 %"], ["paras", "Paras", "n.10", "9,8 %"], ["clefairy", "Mélofée", "n.9", "4,3 %"]],
+    wild: [["zubat", "Nosferapti", "n. 7 à 11", "59,8 %"], ["geodude", "Racaillou", "n. 7 à 9", "26,2 %"], ["paras", "Paras", "n. 10", "9,8 %"], ["clefairy", "Mélofée", "n. 9", "4,3 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "MtMoonB2F", label: "Mont Sélénite SS2", w: 640, h: 576, b64: MAP_MOONB2F_B64, rate: "9",
-    wild: [["zubat", "Nosferapti", "n.9–12", "49,2 %"], ["geodude", "Racaillou", "n.9–10", "29,7 %"], ["paras", "Paras", "n.10–12", "14,8 %"], ["clefairy", "Mélofée", "n.10–12", "6,3 %"]],
+    wild: [["zubat", "Nosferapti", "n. 9 à 12", "49,2 %"], ["geodude", "Racaillou", "n. 9 à 10", "29,7 %"], ["paras", "Paras", "n. 10 à 12", "14,8 %"], ["clefairy", "Mélofée", "n. 10 à 12", "6,3 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
@@ -3700,19 +3708,19 @@ const MAPS = [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "Route4", label: "Route 4", w: 1440, h: 288, b64: MAP_ROUTE4_B64, rate: "20",
-    wild: [["ekans", "Abo", "n.10", "19,9 %"], ["spearow", "Piafabec", "n.8–12", "34,8 %"], ["rattata", "Rattata", "n.8", "15,2 %"], ["sandshrew", "Sabelette", "n.8–12", "16,0 %"], ["mankey", "Férosinge", "n.12", "9,8 %"], ["bulbasaur", "Bulbizarre", "n.10", "4,3 %"]],
+    wild: [["ekans", "Abo", "n. 10", "19,9 %"], ["spearow", "Piafabec", "n. 8 à 12", "34,8 %"], ["rattata", "Rattata", "n. 8", "15,2 %"], ["sandshrew", "Sabelette", "n. 8 à 12", "16,0 %"], ["mankey", "Férosinge", "n. 12", "9,8 %"], ["bulbasaur", "Bulbizarre", "n. 10", "4,3 %"]],
     fish: [
       ["Surf", "Aucun Pokémon disponible en Surfant"],
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["goldeen", "Poissirène", "n.12", "50 %"]]],
-      ["Super Canne", [["goldeen", "Poissirène", "n.12", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["shellder", "Kokiyas", "n.12", "18,75 %"], ["tentacool", "Tentacool", "n.5", "18,75 %"]]],
-      ["Méga Canne", [["psyduck", "Psykokwak", "n.15", "23,1 %"], ["goldeen", "Poissirène", "n.15", "23,1 %"], ["staryu", "Stari", "n.15", "23,1 %"]]]
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["goldeen", "Poissirène", "n. 12", "50 %"]]],
+      ["Super Canne", [["goldeen", "Poissirène", "n. 12", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["shellder", "Kokiyas", "n. 12", "18,75 %"], ["tentacool", "Tentacool", "n. 5", "18,75 %"]]],
+      ["Méga Canne", [["psyduck", "Psykokwak", "n. 15", "23,1 %"], ["goldeen", "Poissirène", "n. 15", "23,1 %"], ["staryu", "Stari", "n. 15", "23,1 %"]]]
     ] },
   { id: "CeruleanCity", label: "Azuria", w: 640, h: 576, b64: MAP_CERULEAN_B64, wild: null,
     fish: [
       ["Surf", "Aucun Pokémon disponible en Surfant"],
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["goldeen", "Poissirène", "n.12", "50 %"]]],
-      ["Super Canne", [["goldeen", "Poissirène", "n.12", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["shellder", "Kokiyas", "n.12", "18,75 %"], ["tentacool", "Tentacool", "n.5", "18,75 %"]]],
-      ["Méga Canne", [["psyduck", "Psykokwak", "n.15", "23,1 %"], ["goldeen", "Poissirène", "n.15", "23,1 %"], ["staryu", "Stari", "n.15", "23,1 %"]]]
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["goldeen", "Poissirène", "n. 12", "50 %"]]],
+      ["Super Canne", [["goldeen", "Poissirène", "n. 12", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["shellder", "Kokiyas", "n. 12", "18,75 %"], ["tentacool", "Tentacool", "n. 5", "18,75 %"]]],
+      ["Méga Canne", [["psyduck", "Psykokwak", "n. 15", "23,1 %"], ["goldeen", "Poissirène", "n. 15", "23,1 %"], ["staryu", "Stari", "n. 15", "23,1 %"]]]
     ] },
   { id: "CeruleanTrashedHouse", label: "Maison cambriolée (Azuria)", w: 128, h: 128, b64: MAP_TRASHED_B64, wild: null,
     fish: [
@@ -3734,9 +3742,9 @@ const MAPS = [
        water_rate 0). */
     fish: [
       ["Surf", "Surf possible sur la piscine, mais aucune rencontre sauvage : seules les Routes 19, 20 et 21 ont une section eau dans leur table."],
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["goldeen", "Poissirène", "n.12", "50 %"]]],
-      ["Super Canne", [["goldeen", "Poissirène", "n.12", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["shellder", "Kokiyas", "n.12", "18,75 %"], ["tentacool", "Tentacool", "n.5", "18,75 %"]]],
-      ["Méga Canne", [["psyduck", "Psykokwak", "n.15", "23,1 %"], ["goldeen", "Poissirène", "n.15", "23,1 %"], ["staryu", "Stari", "n.15", "23,1 %"]]]
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["goldeen", "Poissirène", "n. 12", "50 %"]]],
+      ["Super Canne", [["goldeen", "Poissirène", "n. 12", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["shellder", "Kokiyas", "n. 12", "18,75 %"], ["tentacool", "Tentacool", "n. 5", "18,75 %"]]],
+      ["Méga Canne", [["psyduck", "Psykokwak", "n. 15", "23,1 %"], ["goldeen", "Poissirène", "n. 15", "23,1 %"], ["staryu", "Stari", "n. 15", "23,1 %"]]]
     ] },
   { id: "CeruleanBikeShop", label: "Magasin de vélos (Azuria)", w: 128, h: 128, b64: MAP_BIKESHOP_B64, wild: null,
     fish: [
@@ -3759,65 +3767,65 @@ const MAPS = [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "Route24", label: "Route 24", w: 320, h: 576, b64: MAP_ROUTE24_B64, rate: "25",
-    wild: [["pidgey", "Roucool", "n.12–13", "20,3 %"], ["caterpie", "Chenipan", "n.7", "19,9 %"], ["metapod", "Chrysacier", "n.8", "19,9 %"], ["bellsprout", "Chétiflor", "n.13–14", "19,5 %"], ["abra", "Abra", "n.8–12", "16,0 %"], ["oddish", "Mystherbe", "n.12", "4,3 %"]],
+    wild: [["pidgey", "Roucool", "n. 12 à 13", "20,3 %"], ["caterpie", "Chenipan", "n. 7", "19,9 %"], ["metapod", "Chrysacier", "n. 8", "19,9 %"], ["bellsprout", "Chétiflor", "n. 13 à 14", "19,5 %"], ["abra", "Abra", "n. 8 à 12", "16,0 %"], ["oddish", "Mystherbe", "n. 12", "4,3 %"]],
     fish: [
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["goldeen", "Poissirène", "n.9", "50 %"]]],
-      ["Super Canne", [["goldeen", "Poissirène", "n.9–12", "37,5 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["shellder", "Kokiyas", "n.12", "18,75 %"]]],
-      ["Méga Canne", [["psyduck", "Psykokwak", "n.15", "23,1 %"], ["goldeen", "Poissirène", "n.15", "23,1 %"], ["staryu", "Stari", "n.15", "23,1 %"]]]
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["goldeen", "Poissirène", "n. 9", "50 %"]]],
+      ["Super Canne", [["goldeen", "Poissirène", "n. 9 à 12", "37,5 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["shellder", "Kokiyas", "n. 12", "18,75 %"]]],
+      ["Méga Canne", [["psyduck", "Psykokwak", "n. 15", "23,1 %"], ["goldeen", "Poissirène", "n. 15", "23,1 %"], ["staryu", "Stari", "n. 15", "23,1 %"]]]
     ] },
   { id: "Route25", label: "Route 25", w: 960, h: 320, b64: MAP_ROUTE25_B64, rate: "15",
-    wild: [["caterpie", "Chenipan", "n.8", "19,9 %"], ["metapod", "Chrysacier", "n.9", "19,9 %"], ["bellsprout", "Chétiflor", "n.13–14", "19,5 %"], ["pidgey", "Roucool", "n.13", "15,2 %"], ["abra", "Abra", "n.10–12", "14,8 %"], ["kakuna", "Coconfort", "n.7", "5,1 %"], ["charmander", "Salamèche", "n.10", "4,3 %"], ["weedle", "Aspicot", "n.8", "1,2 %"]],
+    wild: [["caterpie", "Chenipan", "n. 8", "19,9 %"], ["metapod", "Chrysacier", "n. 9", "19,9 %"], ["bellsprout", "Chétiflor", "n. 13 à 14", "19,5 %"], ["pidgey", "Roucool", "n. 13", "15,2 %"], ["abra", "Abra", "n. 10 à 12", "14,8 %"], ["kakuna", "Coconfort", "n. 7", "5,1 %"], ["charmander", "Salamèche", "n. 10", "4,3 %"], ["weedle", "Aspicot", "n. 8", "1,2 %"]],
     fish: [
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["goldeen", "Poissirène", "n.9", "50 %"]]],
-      ["Super Canne", [["goldeen", "Poissirène", "n.9–12", "37,5 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["shellder", "Kokiyas", "n.12", "18,75 %"]]],
-      ["Méga Canne", [["psyduck", "Psykokwak", "n.15", "23,1 %"], ["goldeen", "Poissirène", "n.15", "23,1 %"], ["staryu", "Stari", "n.15", "23,1 %"]]]
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["goldeen", "Poissirène", "n. 9", "50 %"]]],
+      ["Super Canne", [["goldeen", "Poissirène", "n. 9 à 12", "37,5 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["shellder", "Kokiyas", "n. 12", "18,75 %"]]],
+      ["Méga Canne", [["psyduck", "Psykokwak", "n. 15", "23,1 %"], ["goldeen", "Poissirène", "n. 15", "23,1 %"], ["staryu", "Stari", "n. 15", "23,1 %"]]]
     ] },
   { id: "BillsHouse", label: "Villa Léo", w: 128, h: 128, b64: MAP_BILLSHOUSE_B64, wild: null,
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "BillsGarden", label: "Jardin de Léo", spoil: true, w: 352, h: 224, b64: MAP_BILLSGARDEN_B64, rate: "15",
-    wild: [["abra", "Abra", "n.15", "19,9 %"], ["pikachu", "Pikachu", "n.14", "19,9 %"], ["clefairy", "Mélofée", "n.13", "15,2 %"], ["eevee", "Evoli", "n.10–15", "11,3 %"], ["squirtle", "Carapuce", "n.13", "9,8 %"], ["charmander", "Salamèche", "n.12", "9,8 %"], ["bulbasaur", "Bulbizarre", "n.14", "9,8 %"], ["porygon", "Porygon", "n.15", "4,3 %"]],
+    wild: [["abra", "Abra", "n. 15", "19,9 %"], ["pikachu", "Pikachu", "n. 14", "19,9 %"], ["clefairy", "Mélofée", "n. 13", "15,2 %"], ["eevee", "Evoli", "n. 10 à 15", "11,3 %"], ["squirtle", "Carapuce", "n. 13", "9,8 %"], ["charmander", "Salamèche", "n. 12", "9,8 %"], ["bulbasaur", "Bulbizarre", "n. 14", "9,8 %"], ["porygon", "Porygon", "n. 15", "4,3 %"]],
     fish: [
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["goldeen", "Poissirène", "n.12", "50 %"]]],
-      ["Super Canne", [["goldeen", "Poissirène", "n.12", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["shellder", "Kokiyas", "n.12", "18,75 %"], ["tentacool", "Tentacool", "n.5", "18,75 %"]]],
-      ["Méga Canne", [["psyduck", "Psykokwak", "n.15", "23,1 %"], ["goldeen", "Poissirène", "n.15", "23,1 %"], ["staryu", "Stari", "n.15", "23,1 %"]]]
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["goldeen", "Poissirène", "n. 12", "50 %"]]],
+      ["Super Canne", [["goldeen", "Poissirène", "n. 12", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["shellder", "Kokiyas", "n. 12", "18,75 %"], ["tentacool", "Tentacool", "n. 5", "18,75 %"]]],
+      ["Méga Canne", [["psyduck", "Psykokwak", "n. 15", "23,1 %"], ["goldeen", "Poissirène", "n. 15", "23,1 %"], ["staryu", "Stari", "n. 15", "23,1 %"]]]
     ] },
   { id: "Route9", label: "Route 9", w: 928, h: 288, b64: MAP_ROUTE9_B64, rate: "15",
-    wild: [["rattata", "Rattata", "n.14–17", "40,2 %"], ["spearow", "Piafabec", "n.13–17", "34,8 %"], ["sandshrew", "Sabelette", "n.11–17", "25,0 %"]],
+    wild: [["rattata", "Rattata", "n. 14 à 17", "40,2 %"], ["spearow", "Piafabec", "n. 13 à 17", "34,8 %"], ["sandshrew", "Sabelette", "n. 11 à 17", "25,0 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "Route10", label: "Route 10", w: 384, h: 864, b64: MAP_ROUTE10_B64, rate: "15",
-    wild: [["voltorb", "Voltorbe", "n.14–16", "35,2 %"], ["spearow", "Piafabec", "n.13–17", "34,8 %"], ["sandshrew", "Sabelette", "n.11–17", "15,2 %"], ["magnemite", "Magnéti", "n.15–17", "14,8 %"]],
+    wild: [["voltorb", "Voltorbe", "n. 14 à 16", "35,2 %"], ["spearow", "Piafabec", "n. 13 à 17", "34,8 %"], ["sandshrew", "Sabelette", "n. 11 à 17", "15,2 %"], ["magnemite", "Magnéti", "n. 15 à 17", "14,8 %"]],
     fish: [
       ["Surf", "Aucun Pokémon disponible en Surfant"],
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["poliwag", "Ptitard", "n.5", "50 %"]]],
-      ["Super Canne", [["poliwag", "Ptitard", "n.5", "18,75 %"], ["goldeen", "Poissirène", "n.9", "18,75 %"], ["krabby", "Krabby", "n.12", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"]]],
-      ["Méga Canne", [["poliwhirl", "Têtarte", "n.23", "23,1 %"], ["slowpoke", "Ramoloss", "n.15", "23,1 %"], ["psyduck", "Psykokwak", "n.15", "23,1 %"]]]
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["poliwag", "Ptitard", "n. 5", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n. 5", "18,75 %"], ["goldeen", "Poissirène", "n. 9", "18,75 %"], ["krabby", "Krabby", "n. 12", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"]]],
+      ["Méga Canne", [["poliwhirl", "Têtarte", "n. 23", "23,1 %"], ["slowpoke", "Ramoloss", "n. 15", "23,1 %"], ["psyduck", "Psykokwak", "n. 15", "23,1 %"]]]
     ] },
   { id: "Route10South", label: "Route 10 South", w: 384, h: 384, b64: MAP_ROUTE10SOUTH_B64, wild: null,
     fish: [
       ["Surf", "Aucun Pokémon disponible en Surfant"],
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["goldeen", "Poissirène", "n.9", "50 %"]]],
-      ["Super Canne", [["goldeen", "Poissirène", "n.9–12", "37,5 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["shellder", "Kokiyas", "n.12", "18,75 %"]]]
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["goldeen", "Poissirène", "n. 9", "50 %"]]],
+      ["Super Canne", [["goldeen", "Poissirène", "n. 9 à 12", "37,5 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["shellder", "Kokiyas", "n. 12", "18,75 %"]]]
     ] },
   { id: "LavenderTown", label: "Lavanville", w: 352, h: 288, b64: MAP_LAVENDER_B64, wild: null,
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "Route8", label: "Route 8", w: 960, h: 288, b64: MAP_ROUTE8_B64, rate: "15",
-    wild: [["meowth", "Miaouss", "n.18–20", "29,7 %"], ["sandshrew", "Sabelette", "n.17–19", "20,3 %"], ["pidgey", "Roucool", "n.18", "19,9 %"], ["vulpix", "Goupix", "n.16–18", "16,0 %"], ["growlithe", "Caninos", "n.15–20", "14,1 %"]],
+    wild: [["meowth", "Miaouss", "n. 18 à 20", "29,7 %"], ["sandshrew", "Sabelette", "n. 17 à 19", "20,3 %"], ["pidgey", "Roucool", "n. 18", "19,9 %"], ["vulpix", "Goupix", "n. 16 à 18", "16,0 %"], ["growlithe", "Caninos", "n. 15 à 20", "14,1 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "Route12", label: "Route 12", w: 320, h: 1728, b64: MAP_ROUTE12_B64, rate: "15",
-    wild: [["bellsprout", "Chétiflor", "n.22–26", "39,5 %"], ["venonat", "Mimitoss", "n.24–26", "25,0 %"], ["pidgey", "Roucool", "n.25", "19,9 %"], ["weepinbell", "Boustiflor", "n.28–30", "9,4 %"], ["farfetchd", "Canarticho", "n.22–25", "6,3 %"]],
+    wild: [["bellsprout", "Chétiflor", "n. 22 à 26", "39,5 %"], ["venonat", "Mimitoss", "n. 24 à 26", "25,0 %"], ["pidgey", "Roucool", "n. 25", "19,9 %"], ["weepinbell", "Boustiflor", "n. 28 à 30", "9,4 %"], ["farfetchd", "Canarticho", "n. 22 à 25", "6,3 %"]],
     fish: [
       ["Surf", "Aucun Pokémon disponible en Surfant"],
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["poliwag", "Ptitard", "n.4", "50 %"]]],
-      ["Super Canne", [["poliwag", "Ptitard", "n.4–5", "37,5 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["krabby", "Krabby", "n.12", "18,75 %"]]],
-      ["Méga Canne", [["tentacool", "Tentacool", "n.5", "18,75 %"], ["krabby", "Krabby", "n.15", "18,75 %"], ["goldeen", "Poissirène", "n.15", "18,75 %"], ["magikarp", "Magicarpe", "n.15", "18,75 %"]]]
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["poliwag", "Ptitard", "n. 4", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n. 4 à 5", "37,5 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["krabby", "Krabby", "n. 12", "18,75 %"]]],
+      ["Méga Canne", [["tentacool", "Tentacool", "n. 5", "18,75 %"], ["krabby", "Krabby", "n. 15", "18,75 %"], ["goldeen", "Poissirène", "n. 15", "18,75 %"], ["magikarp", "Magicarpe", "n. 15", "18,75 %"]]]
     ] },
   { id: "RockTunnelPokecenter", label: "Pokécentre de la Grotte Sombre", w: 224, h: 128, b64: MAP_RTPOKECENTER_B64, wild: null,
     fish: [
@@ -3825,25 +3833,25 @@ const MAPS = [
     ]
   },
   { id: "RockTunnel1F", label: "Grotte Sombre", w: 640, h: 576, b64: MAP_RT1F_B64, rate: "10",
-    wild: [["zubat", "Nosferapti", "n.16–18", "49,6 %"], ["geodude", "Racaillou", "n.16–17", "25,0 %"], ["machop", "Machoc", "n.15–17", "14,8 %"], ["onix", "Onix", "n.13–15", "5,5 %"], ["cubone", "Osselait", "n.15", "5,1 %"]],
+    wild: [["zubat", "Nosferapti", "n. 16 à 18", "49,6 %"], ["geodude", "Racaillou", "n. 16 à 17", "25,0 %"], ["machop", "Machoc", "n. 15 à 17", "14,8 %"], ["onix", "Onix", "n. 13 à 15", "5,5 %"], ["cubone", "Osselait", "n. 15", "5,1 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ]
   },
   { id: "RockTunnelB1F", label: "Grotte Sombre SS1", w: 640, h: 576, b64: MAP_RTB1F_B64, rate: "11",
-    wild: [["zubat", "Nosferapti", "n.16–17", "39,8 %"], ["geodude", "Racaillou", "n.16–17", "25,0 %"], ["machop", "Machoc", "n.15–17", "19,5 %"], ["onix", "Onix", "n.13–17", "9,4 %"], ["cubone", "Osselait", "n.15–18", "6,3 %"]],
+    wild: [["zubat", "Nosferapti", "n. 16 à 17", "39,8 %"], ["geodude", "Racaillou", "n. 16 à 17", "25,0 %"], ["machop", "Machoc", "n. 15 à 17", "19,5 %"], ["onix", "Onix", "n. 13 à 17", "9,4 %"], ["cubone", "Osselait", "n. 15 à 18", "6,3 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ]
   },
   { id: "PowerPlant1F", label: "Centrale", w: 640, h: 384, b64: MAP_PP1F_B64, rate: "10",
-    wild: [["voltorb", "Voltorbe", "n.21–23", "29,7 %"], ["magnemite", "Magnéti", "n.21–23", "29,7 %"], ["pikachu", "Pikachu", "n.24", "15,2 %"], ["magneton", "Magnéton", "n.32–35", "14,8 %"], ["raichu", "Raichu", "n.33–36", "5,5 %"], ["electabuzz", "Elektek", "n.33", "5,1 %"]],
+    wild: [["voltorb", "Voltorbe", "n. 21 à 23", "29,7 %"], ["magnemite", "Magnéti", "n. 21 à 23", "29,7 %"], ["pikachu", "Pikachu", "n. 24", "15,2 %"], ["magneton", "Magnéton", "n. 32 à 35", "14,8 %"], ["raichu", "Raichu", "n. 33 à 36", "5,5 %"], ["electabuzz", "Elektek", "n. 33", "5,1 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ]
   },
   { id: "PowerPlant2F", label: "Centrale E1", w: 640, h: 256, b64: MAP_PP2F_B64, rate: "10",
-    wild: [["voltorb", "Voltorbe", "n.21–23", "29,7 %"], ["magnemite", "Magnéti", "n.21–23", "29,7 %"], ["pikachu", "Pikachu", "n.24", "15,2 %"], ["magneton", "Magnéton", "n.32–35", "14,8 %"], ["raichu", "Raichu", "n.33–36", "5,5 %"], ["electabuzz", "Elektek", "n.33", "5,1 %"]],
+    wild: [["voltorb", "Voltorbe", "n. 21 à 23", "29,7 %"], ["magnemite", "Magnéti", "n. 21 à 23", "29,7 %"], ["pikachu", "Pikachu", "n. 24", "15,2 %"], ["magneton", "Magnéton", "n. 32 à 35", "14,8 %"], ["raichu", "Raichu", "n. 33 à 36", "5,5 %"], ["electabuzz", "Elektek", "n. 33", "5,1 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ]
@@ -3884,31 +3892,31 @@ const MAPS = [
     ]
   },
   { id: "LavenderPokemonTower3F", label: "Tour Pokémon 3F", w: 320, h: 288, b64: MAP_LT3F_B64, rate: "10",
-    wild: [["gastly", "Fantominus", "n.18–24", "89,5 %"], ["cubone", "Osselait", "n.20/25", "6,3 %"], ["misdreavus", "Feuforêve", "n.22", "4,3 %"]],
+    wild: [["gastly", "Fantominus", "n. 18 à 24", "89,5 %"], ["cubone", "Osselait", "n. 20/25", "6,3 %"], ["misdreavus", "Feuforêve", "n. 22", "4,3 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ]
   },
   { id: "LavenderPokemonTower4F", label: "Tour Pokémon 4F", w: 320, h: 288, b64: MAP_LT4F_B64, rate: "10",
-    wild: [["gastly", "Fantominus", "n.18–23", "84,4 %"], ["cubone", "Osselait", "n.20/24", "6,3 %"], ["haunter", "Spectrum", "n.25", "5,1 %"], ["misdreavus", "Feuforêve", "n.22", "4,3 %"]],
+    wild: [["gastly", "Fantominus", "n. 18 à 23", "84,4 %"], ["cubone", "Osselait", "n. 20/24", "6,3 %"], ["haunter", "Spectrum", "n. 25", "5,1 %"], ["misdreavus", "Feuforêve", "n. 22", "4,3 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ]
   },
   { id: "LavenderPokemonTower5F", label: "Tour Pokémon 5F", w: 320, h: 288, b64: MAP_LT5F_B64, rate: "10",
-    wild: [["gastly", "Fantominus", "n.18–23", "84,4 %"], ["cubone", "Osselait", "n.20/24", "6,3 %"], ["haunter", "Spectrum", "n.25", "5,1 %"], ["misdreavus", "Feuforêve", "n.22", "4,3 %"]],
+    wild: [["gastly", "Fantominus", "n. 18 à 23", "84,4 %"], ["cubone", "Osselait", "n. 20/24", "6,3 %"], ["haunter", "Spectrum", "n. 25", "5,1 %"], ["misdreavus", "Feuforêve", "n. 22", "4,3 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ]
   },
   { id: "LavenderPokemonTower6F", label: "Tour Pokémon 6F", w: 320, h: 288, b64: MAP_LT6F_B64, rate: "15",
-    wild: [["gastly", "Fantominus", "n.19–24", "84,4 %"], ["cubone", "Osselait", "n.22/28", "6,3 %"], ["haunter", "Spectrum", "n.26", "5,1 %"], ["misdreavus", "Feuforêve", "n.24", "4,3 %"]],
+    wild: [["gastly", "Fantominus", "n. 19 à 24", "84,4 %"], ["cubone", "Osselait", "n. 22/28", "6,3 %"], ["haunter", "Spectrum", "n. 26", "5,1 %"], ["misdreavus", "Feuforêve", "n. 24", "4,3 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ]
   },
   { id: "LavenderPokemonTower7F", label: "Tour Pokémon 7F", w: 320, h: 288, b64: MAP_LT7F_B64, rate: "15",
-    wild: [["gastly", "Fantominus", "n.20–24", "74,6 %"], ["haunter", "Spectrum", "n.28/30", "10,9 %"], ["cubone", "Osselait", "n.22–24", "10,2 %"], ["misdreavus", "Feuforêve", "n.28", "4,3 %"]],
+    wild: [["gastly", "Fantominus", "n. 20 à 24", "74,6 %"], ["haunter", "Spectrum", "n. 28/30", "10,9 %"], ["cubone", "Osselait", "n. 22 à 24", "10,2 %"], ["misdreavus", "Feuforêve", "n. 28", "4,3 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ]
@@ -3918,7 +3926,7 @@ const MAPS = [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "Route5", label: "Route 5", w: 320, h: 576, b64: MAP_ROUTE5_B64, rate: "15",
-    wild: [["pidgey", "Roucool", "n.13–16", "40,2 %"], ["bellsprout", "Chétiflor", "n.13–16", "34,8 %"], ["meowth", "Miaouss", "n.12–16", "15,2 %"], ["mankey", "Férosinge", "n.10", "9,8 %"]],
+    wild: [["pidgey", "Roucool", "n. 13 à 16", "40,2 %"], ["bellsprout", "Chétiflor", "n. 13 à 16", "34,8 %"], ["meowth", "Miaouss", "n. 12 à 16", "15,2 %"], ["mankey", "Férosinge", "n. 10", "9,8 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
@@ -4043,15 +4051,15 @@ const MAPS = [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "Route6", label: "Route 6", w: 320, h: 576, b64: MAP_ROUTE6_B64, rate: "15",
-    wild: [["pidgey", "Roucool", "n.13–16", "40,2 %"], ["bellsprout", "Chétiflor", "n.13–16", "39,5 %"], ["meowth", "Miaouss", "n.12–16", "16,0 %"], ["squirtle", "Carapuce", "n.10", "4,3 %"]],
+    wild: [["pidgey", "Roucool", "n. 13 à 16", "40,2 %"], ["bellsprout", "Chétiflor", "n. 13 à 16", "39,5 %"], ["meowth", "Miaouss", "n. 12 à 16", "16,0 %"], ["squirtle", "Carapuce", "n. 10", "4,3 %"]],
     fish: [
       ["Surf", "Aucun Pokémon disponible en Surfant"],
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["poliwag", "Ptitard", "n.5", "50 %"]]],
-      ["Super Canne", [["poliwag", "Ptitard", "n.5", "18,75 %"], ["goldeen", "Poissirène", "n.9", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["krabby", "Krabby", "n.12", "18,75 %"]]],
-      ["Méga Canne", [["krabby", "Krabby", "n.15", "30 %"], ["shellder", "Kokiyas", "n.15", "30 %"]]]
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["poliwag", "Ptitard", "n. 5", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n. 5", "18,75 %"], ["goldeen", "Poissirène", "n. 9", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["krabby", "Krabby", "n. 12", "18,75 %"]]],
+      ["Méga Canne", [["krabby", "Krabby", "n. 15", "30 %"], ["shellder", "Kokiyas", "n. 15", "30 %"]]]
     ] },
   { id: "Route7", label: "Route 7", w: 320, h: 288, b64: MAP_ROUTE7_B64, rate: "15",
-    wild: [["bellsprout", "Chétiflor", "n.19–22", "29,7 %"], ["meowth", "Miaouss", "n.17–20", "20,7 %"], ["pidgey", "Roucool", "n.19", "19,9 %"], ["growlithe", "Caninos", "n.18–22", "19,5 %"], ["vulpix", "Goupix", "n.18–20", "10,2 %"]],
+    wild: [["bellsprout", "Chétiflor", "n. 19 à 22", "29,7 %"], ["meowth", "Miaouss", "n. 17 à 20", "20,7 %"], ["pidgey", "Roucool", "n. 19", "19,9 %"], ["growlithe", "Caninos", "n. 18 à 22", "19,5 %"], ["vulpix", "Goupix", "n. 18 à 20", "10,2 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
@@ -4074,9 +4082,9 @@ const MAPS = [
   { id: "VermilionCity", label: "Carmin sur Mer", w: 640, h: 576, b64: MAP_VMCITY_B64, wild: null,
     fish: [
       ["Surf", "Aucun Pokémon disponible en Surfant"],
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["poliwag", "Ptitard", "n.5", "50 %"]]],
-      ["Super Canne", [["poliwag", "Ptitard", "n.5", "18,75 %"], ["goldeen", "Poissirène", "n.9", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["krabby", "Krabby", "n.12", "18,75 %"]]],
-      ["Méga Canne", [["krabby", "Krabby", "n.15", "30 %"], ["shellder", "Kokiyas", "n.15", "30 %"]]]
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["poliwag", "Ptitard", "n. 5", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n. 5", "18,75 %"], ["goldeen", "Poissirène", "n. 9", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["krabby", "Krabby", "n. 12", "18,75 %"]]],
+      ["Méga Canne", [["krabby", "Krabby", "n. 15", "30 %"], ["shellder", "Kokiyas", "n. 15", "30 %"]]]
     ] },
   { id: "VermilionPokecenter", label: "Centre Pokémon (Carmin sur Mer)", w: 224, h: 128, b64: MAP_VMPC_B64, wild: null,
     fish: [
@@ -4109,12 +4117,12 @@ const MAPS = [
   { id: "VermilionDock", label: "Dock de Carmin sur Mer", w: 448, h: 192, b64: MAP_VDOCK_B64, wild: null,
     fish: [
       ["Surf", "Aucun Pokémon disponible en Surfant"],
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["poliwag", "Ptitard", "n.4", "50 %"]]],
-      ["Super Canne", [["poliwag", "Ptitard", "n.4", "18,75 %"], ["poliwag", "Ptitard", "n.5", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["krabby", "Krabby", "n.12", "18,75 %"]]],
-      ["Méga Canne", [["krabby", "Krabby", "n.15", "30 %"], ["shellder", "Kokiyas", "n.15", "30 %"]]]
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["poliwag", "Ptitard", "n. 4", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n. 4", "18,75 %"], ["poliwag", "Ptitard", "n. 5", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["krabby", "Krabby", "n. 12", "18,75 %"]]],
+      ["Méga Canne", [["krabby", "Krabby", "n. 15", "30 %"], ["shellder", "Kokiyas", "n. 15", "30 %"]]]
     ] },
   { id: "Route11", label: "Route 11", w: 960, h: 288, b64: MAP_ROUTE11_B64, rate: "15",
-    wild: [["sandshrew", "Sabelette", "n.12–15", "40,2 %"], ["spearow", "Piafabec", "n.13–17", "34,8 %"], ["drowzee", "Soporifik", "n.9–15", "25,0 %"]],
+    wild: [["sandshrew", "Sabelette", "n. 12 à 15", "40,2 %"], ["spearow", "Piafabec", "n. 13 à 17", "34,8 %"], ["drowzee", "Soporifik", "n. 9 à 15", "25,0 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
@@ -4168,7 +4176,7 @@ const MAPS = [
     ] },
   { id: "CeladonCity", label: "Céladopole", w: 800, h: 576, b64: MAP_CCITY_B64, wild: null,
     fish: [
-      ["Méga Canne", [["grimer", "Tadmorv", "n.10", "18,75 %"], ["grimer", "Tadmorv", "n.11", "18,75 %"], ["grimer", "Tadmorv", "n.15", "18,75 %"], ["muk", "Grotadmorv", "n.20", "18,75 %"]]]
+      ["Méga Canne", [["grimer", "Tadmorv", "n. 10", "18,75 %"], ["grimer", "Tadmorv", "n. 11", "18,75 %"], ["grimer", "Tadmorv", "n. 15", "18,75 %"], ["muk", "Grotadmorv", "n. 20", "18,75 %"]]]
     ] },
   { id: "CeladonPokecenter", label: "Centre Pokémon (Céladopole)", w: 224, h: 128, b64: MAP_CPC_B64, wild: null,
     fish: [
@@ -4270,36 +4278,36 @@ const MAPS = [
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },  { id: "Route16", label: "Route 16", w: 640, h: 320, b64: MAP_R16_B64, rate: "25",
-    wild: [["spearow", "Piafabec", "n.20–22", "39,8 %"], ["rattata", "Rattata", "n.18–22", "30,1 %"], ["doduo", "Doduo", "n.18–22", "24,6 %"], ["raticate", "Rattatac", "n.23–25", "5,5 %"]],
+    wild: [["spearow", "Piafabec", "n. 20 à 22", "39,8 %"], ["rattata", "Rattata", "n. 18 à 22", "30,1 %"], ["doduo", "Doduo", "n. 18 à 22", "24,6 %"], ["raticate", "Rattatac", "n. 23 à 25", "5,5 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "Route16West", label: "Clairière", spoil: true, w: 640, h: 672, b64: MAP_R16W_B64, rate: "25",
-    wild: [["meowth", "Miaouss", "n.20–22", "39,8 %"], ["ekans", "Abo", "n.18–20", "25,0 %"], ["nidoranf", "Nidoran♀", "n.20–22", "14,8 %"], ["nidoranm", "Nidoran♂", "n.18–22", "14,8 %"], ["persian", "Persian", "n.23", "4,3 %"], ["arbok", "Arbok", "n.25", "1,2 %"]],
+    wild: [["meowth", "Miaouss", "n. 20 à 22", "39,8 %"], ["ekans", "Abo", "n. 18 à 20", "25,0 %"], ["nidoranf", "Nidoran♀", "n. 20 à 22", "14,8 %"], ["nidoranm", "Nidoran♂", "n. 18 à 22", "14,8 %"], ["persian", "Persian", "n. 23", "4,3 %"], ["arbok", "Arbok", "n. 25", "1,2 %"]],
     fish: [
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["poliwag", "Ptitard", "n.5", "50 %"]]],
-      ["Super Canne", [["poliwag", "Ptitard", "n.5", "18,75 %"], ["goldeen", "Poissirène", "n.9", "18,75 %"], ["krabby", "Krabby", "n.12", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"]]],
-      ["Méga Canne", [["tentacool", "Tentacool", "n.5", "18,75 %"], ["krabby", "Krabby", "n.15", "18,75 %"], ["goldeen", "Poissirène", "n.15", "18,75 %"], ["magikarp", "Magicarpe", "n.15", "18,75 %"]]]
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["poliwag", "Ptitard", "n. 5", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n. 5", "18,75 %"], ["goldeen", "Poissirène", "n. 9", "18,75 %"], ["krabby", "Krabby", "n. 12", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"]]],
+      ["Méga Canne", [["tentacool", "Tentacool", "n. 5", "18,75 %"], ["krabby", "Krabby", "n. 15", "18,75 %"], ["goldeen", "Poissirène", "n. 15", "18,75 %"], ["magikarp", "Magicarpe", "n. 15", "18,75 %"]]]
     ] },
   { id: "Route17", label: "Piste Cyclable (Route 17)", w: 320, h: 2304, b64: MAP_R17_B64, rate: "25",
-    wild: [["spearow", "Piafabec", "n.20–22", "39,8 %"], ["raticate", "Rattatac", "n.25–27", "25,0 %"], ["doduo", "Doduo", "n.24–28", "24,6 %"], ["dodrio", "Dodrio", "n.29", "5,1 %"], ["fearow", "Rapasdepic", "n.25–27", "5,5 %"]],
+    wild: [["spearow", "Piafabec", "n. 20 à 22", "39,8 %"], ["raticate", "Rattatac", "n. 25 à 27", "25,0 %"], ["doduo", "Doduo", "n. 24 à 28", "24,6 %"], ["dodrio", "Dodrio", "n. 29", "5,1 %"], ["fearow", "Rapasdepic", "n. 25 à 27", "5,5 %"]],
     fish: [
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["goldeen", "Poissirène", "n.12", "50 %"]]],
-      ["Super Canne", [["goldeen", "Poissirène", "n.12", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["shellder", "Kokiyas", "n.12", "18,75 %"], ["tentacool", "Tentacool", "n.5", "18,75 %"]]],
-      ["Méga Canne", [["tentacool", "Tentacool", "n.5", "18,75 %"], ["krabby", "Krabby", "n.15", "18,75 %"], ["goldeen", "Poissirène", "n.15", "18,75 %"], ["magikarp", "Magicarpe", "n.15", "18,75 %"]]]
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["goldeen", "Poissirène", "n. 12", "50 %"]]],
+      ["Super Canne", [["goldeen", "Poissirène", "n. 12", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["shellder", "Kokiyas", "n. 12", "18,75 %"], ["tentacool", "Tentacool", "n. 5", "18,75 %"]]],
+      ["Méga Canne", [["tentacool", "Tentacool", "n. 5", "18,75 %"], ["krabby", "Krabby", "n. 15", "18,75 %"], ["goldeen", "Poissirène", "n. 15", "18,75 %"], ["magikarp", "Magicarpe", "n. 15", "18,75 %"]]]
     ] },
   { id: "Route18", label: "Route 18", w: 800, h: 288, b64: MAP_R18_B64, rate: "25",
-    wild: [["spearow", "Piafabec", "n.20–22", "39,8 %"], ["raticate", "Rattatac", "n.25–29", "20,3 %"], ["doduo", "Doduo", "n.24–28", "24,6 %"], ["fearow", "Rapasdepic", "n.25–29", "15,2 %"]],
+    wild: [["spearow", "Piafabec", "n. 20 à 22", "39,8 %"], ["raticate", "Rattatac", "n. 25 à 29", "20,3 %"], ["doduo", "Doduo", "n. 24 à 28", "24,6 %"], ["fearow", "Rapasdepic", "n. 25 à 29", "15,2 %"]],
     fish: [
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["poliwag", "Ptitard", "n.4", "50 %"]]],
-      ["Super Canne", [["poliwag", "Ptitard", "n.4–5", "37,5 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["krabby", "Krabby", "n.12", "18,75 %"]]],
-      ["Méga Canne", [["tentacool", "Tentacool", "n.5", "18,75 %"], ["krabby", "Krabby", "n.15", "18,75 %"], ["goldeen", "Poissirène", "n.15", "18,75 %"], ["magikarp", "Magicarpe", "n.15", "18,75 %"]]]
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["poliwag", "Ptitard", "n. 4", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n. 4 à 5", "37,5 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["krabby", "Krabby", "n. 12", "18,75 %"]]],
+      ["Méga Canne", [["tentacool", "Tentacool", "n. 5", "18,75 %"], ["krabby", "Krabby", "n. 15", "18,75 %"], ["goldeen", "Poissirène", "n. 15", "18,75 %"], ["magikarp", "Magicarpe", "n. 15", "18,75 %"]]]
     ] },
   { id: "FuchsiaCity", label: "Parmanie", w: 640, h: 576, b64: MAP_FUCHSIA_B64, wild: null,
     fish: [
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["poliwag", "Ptitard", "n.4", "50 %"]]],
-      ["Super Canne", [["poliwag", "Ptitard", "n.4–5", "37,5 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["krabby", "Krabby", "n.12", "18,75 %"]]],
-      ["Méga Canne", [["seaking", "Poissoroy", "n.23", "18,75 %"], ["krabby", "Krabby", "n.15", "18,75 %"], ["goldeen", "Poissirène", "n.15", "18,75 %"], ["magikarp", "Magicarpe", "n.15", "18,75 %"]]]
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["poliwag", "Ptitard", "n. 4", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n. 4 à 5", "37,5 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["krabby", "Krabby", "n. 12", "18,75 %"]]],
+      ["Méga Canne", [["seaking", "Poissoroy", "n. 23", "18,75 %"], ["krabby", "Krabby", "n. 15", "18,75 %"], ["goldeen", "Poissirène", "n. 15", "18,75 %"], ["magikarp", "Magicarpe", "n. 15", "18,75 %"]]]
     ] },
   { id: "Route16Gate1F", label: "Porte Route 16", w: 128, h: 224, b64: MAP_R16GATE1F_B64, wild: null,
     fish: [
@@ -4382,60 +4390,60 @@ const MAPS = [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "SafariZoneCenter", label: "Parc Safari (Centre)", w: 480, h: 416, b64: MAP_SZCENTER_B64, rate: "30",
-    wild: [["nidoranf", "Nidoran♀", "n.22", "19,9 %"], ["rhyhorn", "Rhinocorne", "n.25", "19,9 %"], ["venonat", "Mimitoss", "n.22", "15,2 %"], ["exeggcute", "Noeunoeuf", "n.24–25", "19,5 %"], ["nidorina", "Nidorina", "n.31", "9,8 %"], ["nidorino", "Nidorino", "n.31", "5,1 %"], ["parasect", "Parasect", "n.30", "5,1 %"], ["scyther", "Insécateur", "n.23", "4,3 %"], ["chansey", "Leveinard", "n.23", "1,2 %"]],
+    wild: [["nidoranf", "Nidoran♀", "n. 22", "19,9 %"], ["rhyhorn", "Rhinocorne", "n. 25", "19,9 %"], ["venonat", "Mimitoss", "n. 22", "15,2 %"], ["exeggcute", "Noeunoeuf", "n. 24 à 25", "19,5 %"], ["nidorina", "Nidorina", "n. 31", "9,8 %"], ["nidorino", "Nidorino", "n. 31", "5,1 %"], ["parasect", "Parasect", "n. 30", "5,1 %"], ["scyther", "Insécateur", "n. 23", "4,3 %"], ["chansey", "Leveinard", "n. 23", "1,2 %"]],
     fish: [
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["poliwag", "Ptitard", "n.5", "50 %"]]],
-      ["Super Canne", [["poliwag", "Ptitard", "n.5", "18,75 %"], ["goldeen", "Poissirène", "n.9", "18,75 %"], ["krabby", "Krabby", "n.12", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"]]],
-      ["Méga Canne", [["staryu", "Stari", "n.15", "18,75 %"], ["horsea", "Hypotrempe", "n.15", "18,75 %"], ["shellder", "Kokiyas", "n.15", "18,75 %"], ["goldeen", "Poissirène", "n.15", "18,75 %"]]]
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["poliwag", "Ptitard", "n. 5", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n. 5", "18,75 %"], ["goldeen", "Poissirène", "n. 9", "18,75 %"], ["krabby", "Krabby", "n. 12", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"]]],
+      ["Méga Canne", [["staryu", "Stari", "n. 15", "18,75 %"], ["horsea", "Hypotrempe", "n. 15", "18,75 %"], ["shellder", "Kokiyas", "n. 15", "18,75 %"], ["goldeen", "Poissirène", "n. 15", "18,75 %"]]]
     ] },
   { id: "SafariZoneEast", label: "Parc Safari (Est)", w: 480, h: 416, b64: MAP_SZEAST_B64, rate: "30",
-    wild: [["nidoranf", "Nidoran♀", "n.24", "19,9 %"], ["doduo", "Doduo", "n.26", "19,9 %"], ["paras", "Paras", "n.22", "15,2 %"], ["exeggcute", "Noeunoeuf", "n.25", "9,8 %"], ["nidorina", "Nidorina", "n.33", "9,8 %"], ["nidoranm", "Nidoran♂", "n.24", "9,8 %"], ["pinsir", "Scarabrute", "n.28", "5,1 %"], ["lickitung", "Excelangue", "n.22", "5,1 %"], ["kangaskhan", "Kangourex", "n.25", "4,3 %"], ["parasect", "Parasect", "n.25", "1,2 %"]],
+    wild: [["nidoranf", "Nidoran♀", "n. 24", "19,9 %"], ["doduo", "Doduo", "n. 26", "19,9 %"], ["paras", "Paras", "n. 22", "15,2 %"], ["exeggcute", "Noeunoeuf", "n. 25", "9,8 %"], ["nidorina", "Nidorina", "n. 33", "9,8 %"], ["nidoranm", "Nidoran♂", "n. 24", "9,8 %"], ["pinsir", "Scarabrute", "n. 28", "5,1 %"], ["lickitung", "Excelangue", "n. 22", "5,1 %"], ["kangaskhan", "Kangourex", "n. 25", "4,3 %"], ["parasect", "Parasect", "n. 25", "1,2 %"]],
     fish: [
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["goldeen", "Poissirène", "n.9", "50 %"]]],
-      ["Super Canne", [["goldeen", "Poissirène", "n.9–12", "37,5 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["shellder", "Kokiyas", "n.12", "18,75 %"]]],
-      ["Méga Canne", [["staryu", "Stari", "n.15", "18,75 %"], ["horsea", "Hypotrempe", "n.15", "18,75 %"], ["shellder", "Kokiyas", "n.15", "18,75 %"], ["goldeen", "Poissirène", "n.15", "18,75 %"]]]
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["goldeen", "Poissirène", "n. 9", "50 %"]]],
+      ["Super Canne", [["goldeen", "Poissirène", "n. 9 à 12", "37,5 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["shellder", "Kokiyas", "n. 12", "18,75 %"]]],
+      ["Méga Canne", [["staryu", "Stari", "n. 15", "18,75 %"], ["horsea", "Hypotrempe", "n. 15", "18,75 %"], ["shellder", "Kokiyas", "n. 15", "18,75 %"], ["goldeen", "Poissirène", "n. 15", "18,75 %"]]]
     ] },
   { id: "SafariZoneWest", label: "Parc Safari (Ouest)", w: 480, h: 416, b64: MAP_SZWEST_B64, rate: "30",
-    wild: [["nidoranf", "Nidoran♀", "n.25", "19,9 %"], ["doduo", "Doduo", "n.26", "19,9 %"], ["venonat", "Mimitoss", "n.23", "15,2 %"], ["exeggcute", "Noeunoeuf", "n.24", "9,8 %"], ["nidorina", "Nidorina", "n.33", "9,8 %"], ["nidoranm", "Nidoran♂", "n.25", "9,8 %"], ["mr_mime", "M.Mime", "n.26", "5,1 %"], ["venomoth", "Aéromite", "n.31", "5,1 %"], ["tauros", "Tauros", "n.26", "4,3 %"], ["kangaskhan", "Kangourex", "n.28", "1,2 %"]],
+    wild: [["nidoranf", "Nidoran♀", "n. 25", "19,9 %"], ["doduo", "Doduo", "n. 26", "19,9 %"], ["venonat", "Mimitoss", "n. 23", "15,2 %"], ["exeggcute", "Noeunoeuf", "n. 24", "9,8 %"], ["nidorina", "Nidorina", "n. 33", "9,8 %"], ["nidoranm", "Nidoran♂", "n. 25", "9,8 %"], ["mr_mime", "M.Mime", "n. 26", "5,1 %"], ["venomoth", "Aéromite", "n. 31", "5,1 %"], ["tauros", "Tauros", "n. 26", "4,3 %"], ["kangaskhan", "Kangourex", "n. 28", "1,2 %"]],
     fish: [
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["poliwag", "Ptitard", "n.4", "50 %"]]],
-      ["Super Canne", [["poliwag", "Ptitard", "n.4–5", "37,5 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["krabby", "Krabby", "n.12", "18,75 %"]]],
-      ["Méga Canne", [["staryu", "Stari", "n.15", "18,75 %"], ["horsea", "Hypotrempe", "n.15", "18,75 %"], ["shellder", "Kokiyas", "n.15", "18,75 %"], ["goldeen", "Poissirène", "n.15", "18,75 %"]]]
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["poliwag", "Ptitard", "n. 4", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n. 4 à 5", "37,5 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["krabby", "Krabby", "n. 12", "18,75 %"]]],
+      ["Méga Canne", [["staryu", "Stari", "n. 15", "18,75 %"], ["horsea", "Hypotrempe", "n. 15", "18,75 %"], ["shellder", "Kokiyas", "n. 15", "18,75 %"], ["goldeen", "Poissirène", "n. 15", "18,75 %"]]]
     ] },
   { id: "SafariZoneNorth", label: "Parc Safari (Nord)", w: 640, h: 576, b64: MAP_SZNORTH_B64, rate: "30",
-    wild: [["nidoranf", "Nidoran♀", "n.22", "19,9 %"], ["rhyhorn", "Rhinocorne", "n.26", "19,9 %"], ["paras", "Paras", "n.23", "15,2 %"], ["exeggcute", "Noeunoeuf", "n.25", "9,8 %"], ["nidorina", "Nidorina", "n.30", "9,8 %"], ["nidorino", "Nidorino", "n.30", "9,8 %"], ["venomoth", "Aéromite", "n.32", "5,1 %"], ["tangela", "Saquedeneu", "n.27", "5,1 %"], ["chansey", "Leveinard", "n.26", "4,3 %"], ["tauros", "Tauros", "n.28", "1,2 %"]],
+    wild: [["nidoranf", "Nidoran♀", "n. 22", "19,9 %"], ["rhyhorn", "Rhinocorne", "n. 26", "19,9 %"], ["paras", "Paras", "n. 23", "15,2 %"], ["exeggcute", "Noeunoeuf", "n. 25", "9,8 %"], ["nidorina", "Nidorina", "n. 30", "9,8 %"], ["nidorino", "Nidorino", "n. 30", "9,8 %"], ["venomoth", "Aéromite", "n. 32", "5,1 %"], ["tangela", "Saquedeneu", "n. 27", "5,1 %"], ["chansey", "Leveinard", "n. 26", "4,3 %"], ["tauros", "Tauros", "n. 28", "1,2 %"]],
     fish: [
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["goldeen", "Poissirène", "n.12", "50 %"]]],
-      ["Super Canne", [["goldeen", "Poissirène", "n.12", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["shellder", "Kokiyas", "n.12", "18,75 %"], ["tentacool", "Tentacool", "n.5", "18,75 %"]]],
-      ["Méga Canne", [["staryu", "Stari", "n.15", "18,75 %"], ["horsea", "Hypotrempe", "n.15", "18,75 %"], ["shellder", "Kokiyas", "n.15", "18,75 %"], ["goldeen", "Poissirène", "n.15", "18,75 %"]]]
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["goldeen", "Poissirène", "n. 12", "50 %"]]],
+      ["Super Canne", [["goldeen", "Poissirène", "n. 12", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["shellder", "Kokiyas", "n. 12", "18,75 %"], ["tentacool", "Tentacool", "n. 5", "18,75 %"]]],
+      ["Méga Canne", [["staryu", "Stari", "n. 15", "18,75 %"], ["horsea", "Hypotrempe", "n. 15", "18,75 %"], ["shellder", "Kokiyas", "n. 15", "18,75 %"], ["goldeen", "Poissirène", "n. 15", "18,75 %"]]]
     ] },
   { id: "Route19", label: "Chenal 19", w: 320, h: 864, b64: MAP_R19_B64, wild: null,
     fish: [
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["poliwag", "Ptitard", "n.5", "50 %"]]],
-      ["Super Canne", [["poliwag", "Ptitard", "n.5", "18,75 %"], ["goldeen", "Poissirène", "n.9", "18,75 %"], ["krabby", "Krabby", "n.12", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"]]],
-      ["Méga Canne", [["staryu", "Stari", "n.15", "18,75 %"], ["horsea", "Hypotrempe", "n.15", "18,75 %"], ["shellder", "Kokiyas", "n.15", "18,75 %"], ["goldeen", "Poissirène", "n.15", "18,75 %"]]],
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["poliwag", "Ptitard", "n. 5", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n. 5", "18,75 %"], ["goldeen", "Poissirène", "n. 9", "18,75 %"], ["krabby", "Krabby", "n. 12", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"]]],
+      ["Méga Canne", [["staryu", "Stari", "n. 15", "18,75 %"], ["horsea", "Hypotrempe", "n. 15", "18,75 %"], ["shellder", "Kokiyas", "n. 15", "18,75 %"], ["goldeen", "Poissirène", "n. 15", "18,75 %"]]],
       ["Surf", SURF_FISH]
     ] },
   { id: "Route20", label: "Chenal 20", w: 1600, h: 320, b64: MAP_R20_B64, wild: null,
     fish: [
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["goldeen", "Poissirène", "n.9", "50 %"]]],
-      ["Super Canne", [["goldeen", "Poissirène", "n.9 et n.12", "37,5 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["shellder", "Kokiyas", "n.12", "18,75 %"]]],
-      ["Méga Canne", [["staryu", "Stari", "n.15", "18,75 %"], ["horsea", "Hypotrempe", "n.15", "18,75 %"], ["shellder", "Kokiyas", "n.15", "18,75 %"], ["goldeen", "Poissirène", "n.15", "18,75 %"]]],
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["goldeen", "Poissirène", "n. 9", "50 %"]]],
+      ["Super Canne", [["goldeen", "Poissirène", "n. 9 et n. 12", "37,5 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["shellder", "Kokiyas", "n. 12", "18,75 %"]]],
+      ["Méga Canne", [["staryu", "Stari", "n. 15", "18,75 %"], ["horsea", "Hypotrempe", "n. 15", "18,75 %"], ["shellder", "Kokiyas", "n. 15", "18,75 %"], ["goldeen", "Poissirène", "n. 15", "18,75 %"]]],
       ["Surf", SURF_FISH]
     ] },
   { id: "Route21", label: "Chenal 21", w: 320, h: 1440, b64: MAP_R21_B64, rate: "25",
-    wild: [["pidgey", "Roucool", "n.21–23", "29,7 %"], ["rattata", "Rattata", "n.23", "19,9 %"], ["pidgeotto", "Roucoups", "n.30–32", "19,5 %"], ["raticate", "Rattatac", "n.30", "15,2 %"], ["tangela", "Saquedeneu", "n.28–30", "10,2 %"], ["eevee", "Evoli", "n.21–23", "5,5 %"]],
+    wild: [["pidgey", "Roucool", "n. 21 à 23", "29,7 %"], ["rattata", "Rattata", "n. 23", "19,9 %"], ["pidgeotto", "Roucoups", "n. 30 à 32", "19,5 %"], ["raticate", "Rattatac", "n. 30", "15,2 %"], ["tangela", "Saquedeneu", "n. 28 à 30", "10,2 %"], ["eevee", "Evoli", "n. 21 à 23", "5,5 %"]],
     fish: [
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["goldeen", "Poissirène", "n.12", "50 %"]]],
-      ["Super Canne", [["goldeen", "Poissirène", "n.12", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["shellder", "Kokiyas", "n.12", "18,75 %"], ["tentacool", "Tentacool", "n.5", "18,75 %"]]],
-      ["Méga Canne", [["staryu", "Stari", "n.15", "18,75 %"], ["horsea", "Hypotrempe", "n.15", "18,75 %"], ["shellder", "Kokiyas", "n.15", "18,75 %"], ["goldeen", "Poissirène", "n.15", "18,75 %"]]],
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["goldeen", "Poissirène", "n. 12", "50 %"]]],
+      ["Super Canne", [["goldeen", "Poissirène", "n. 12", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["shellder", "Kokiyas", "n. 12", "18,75 %"], ["tentacool", "Tentacool", "n. 5", "18,75 %"]]],
+      ["Méga Canne", [["staryu", "Stari", "n. 15", "18,75 %"], ["horsea", "Hypotrempe", "n. 15", "18,75 %"], ["shellder", "Kokiyas", "n. 15", "18,75 %"], ["goldeen", "Poissirène", "n. 15", "18,75 %"]]],
       ["Surf", ROUTE21_SURF]
     ] },
   { id: "CinnabarIsland", label: "Cramois'Ile", w: 320, h: 288, b64: MAP_CINNABAR_B64, wild: null,
     fish: [
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["poliwag", "Ptitard", "n.5", "50 %"]]],
-      ["Super Canne", [["poliwag", "Ptitard", "n.5", "18,75 %"], ["goldeen", "Poissirène", "n.9", "18,75 %"], ["krabby", "Krabby", "n.12", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"]]],
-      ["Méga Canne", [["staryu", "Stari", "n.15", "18,75 %"], ["horsea", "Hypotrempe", "n.15", "18,75 %"], ["shellder", "Kokiyas", "n.15", "18,75 %"], ["goldeen", "Poissirène", "n.15", "18,75 %"]]],
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["poliwag", "Ptitard", "n. 5", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n. 5", "18,75 %"], ["goldeen", "Poissirène", "n. 9", "18,75 %"], ["krabby", "Krabby", "n. 12", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"]]],
+      ["Méga Canne", [["staryu", "Stari", "n. 15", "18,75 %"], ["horsea", "Hypotrempe", "n. 15", "18,75 %"], ["shellder", "Kokiyas", "n. 15", "18,75 %"], ["goldeen", "Poissirène", "n. 15", "18,75 %"]]],
       ["Surf", "Aucun Pokémon disponible en Surfant"]
     ] },
   { id: "Route19BeachHouse", label: "Bungalow d'Été", w: 224, h: 128, b64: MAP_BEACHHOUSE_B64, wild: null,
@@ -4475,84 +4483,84 @@ const MAPS = [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "CinnabarMansion1F", label: "Manoir Pokémon 1F", w: 480, h: 448, b64: MAP_MANSION1F_B64, rate: "10",
-    wild: [["grimer", "Tadmorv", "n.30–32", "39,8 %"], ["houndour", "Malosse", "n.28–34", "39,8 %"], ["vulpix", "Goupix", "n.34", "9,8 %"], ["koffing", "Smogo", "n.30", "5,1 %"], ["muk", "Grotadmorv", "n.37", "4,3 %"], ["weezing", "Smogogo", "n.39", "1,2 %"]], fish: [
+    wild: [["grimer", "Tadmorv", "n. 30 à 32", "39,8 %"], ["houndour", "Malosse", "n. 28 à 34", "39,8 %"], ["vulpix", "Goupix", "n. 34", "9,8 %"], ["koffing", "Smogo", "n. 30", "5,1 %"], ["muk", "Grotadmorv", "n. 37", "4,3 %"], ["weezing", "Smogogo", "n. 39", "1,2 %"]], fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "CinnabarMansion2F", label: "Manoir Pokémon 2F", w: 480, h: 448, b64: MAP_MANSION2F_B64, rate: "10",
-    wild: [["grimer", "Tadmorv", "n.30–34", "44,9 %"], ["houndour", "Malosse", "n.28–32", "24,6 %"], ["vulpix", "Goupix", "n.32", "19,9 %"], ["koffing", "Smogo", "n.30", "5,1 %"], ["muk", "Grotadmorv", "n.39", "4,3 %"], ["weezing", "Smogogo", "n.37", "1,2 %"]], fish: [
+    wild: [["grimer", "Tadmorv", "n. 30 à 34", "44,9 %"], ["houndour", "Malosse", "n. 28 à 32", "24,6 %"], ["vulpix", "Goupix", "n. 32", "19,9 %"], ["koffing", "Smogo", "n. 30", "5,1 %"], ["muk", "Grotadmorv", "n. 39", "4,3 %"], ["weezing", "Smogogo", "n. 37", "1,2 %"]], fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "CinnabarMansion3F", label: "Manoir Pokémon 3F", w: 480, h: 288, b64: MAP_MANSION3F_B64, rate: "10",
-    wild: [["grimer", "Tadmorv", "n.31–35", "35,2 %"], ["vulpix", "Goupix", "n.33–34", "29,7 %"], ["muk", "Grotadmorv", "n.38–40", "14,8 %"], ["houndour", "Malosse", "n.32", "9,8 %"], ["koffing", "Smogo", "n.34", "5,1 %"], ["houndoom", "Démolosse", "n.36", "4,3 %"], ["weezing", "Smogogo", "n.42", "1,2 %"]], fish: [
+    wild: [["grimer", "Tadmorv", "n. 31 à 35", "35,2 %"], ["vulpix", "Goupix", "n. 33 à 34", "29,7 %"], ["muk", "Grotadmorv", "n. 38 à 40", "14,8 %"], ["houndour", "Malosse", "n. 32", "9,8 %"], ["koffing", "Smogo", "n. 34", "5,1 %"], ["houndoom", "Démolosse", "n. 36", "4,3 %"], ["weezing", "Smogogo", "n. 42", "1,2 %"]], fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "CinnabarMansionB1F", label: "Manoir Pokémon B1F", w: 480, h: 448, b64: MAP_MANSIONB1F_B64, rate: "10",
-    wild: [["grimer", "Tadmorv", "n.31–33", "39,8 %"], ["vulpix", "Goupix", "n.35/38", "19,5 %"], ["houndoom", "Démolosse", "n.31–34", "14,8 %"], ["houndour", "Malosse", "n.32", "9,8 %"], ["muk", "Grotadmorv", "n.40", "9,8 %"], ["koffing", "Smogo", "n.35", "5,1 %"], ["weezing", "Smogogo", "n.42", "1,2 %"]], fish: [
+    wild: [["grimer", "Tadmorv", "n. 31 à 33", "39,8 %"], ["vulpix", "Goupix", "n. 35/38", "19,5 %"], ["houndoom", "Démolosse", "n. 31 à 34", "14,8 %"], ["houndour", "Malosse", "n. 32", "9,8 %"], ["muk", "Grotadmorv", "n. 40", "9,8 %"], ["koffing", "Smogo", "n. 35", "5,1 %"], ["weezing", "Smogogo", "n. 42", "1,2 %"]], fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "Volcano1F", label: "Volcan Cramoisi 1F", w: 384, h: 384, b64: MAP_VOLC1F_B64, rate: "10",
-    wild: [["slugma", "Limagma", "n.31–37", "34,8 %"], ["growlithe", "Caninos", "n.28–30", "25,0 %"], ["ponyta", "Ponyta", "n.30–34", "25,0 %"], ["vulpix", "Goupix", "n.34", "9,8 %"], ["charmeleon", "Reptincel", "n.30", "4,3 %"], ["magmar", "Magmar", "n.39", "1,2 %"]], fish: [
+    wild: [["slugma", "Limagma", "n. 31 à 37", "34,8 %"], ["growlithe", "Caninos", "n. 28 à 30", "25,0 %"], ["ponyta", "Ponyta", "n. 30 à 34", "25,0 %"], ["vulpix", "Goupix", "n. 34", "9,8 %"], ["charmeleon", "Reptincel", "n. 30", "4,3 %"], ["magmar", "Magmar", "n. 39", "1,2 %"]], fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "VolcanoB1F", label: "Volcan Cramoisi B1F", w: 256, h: 672, b64: MAP_VOLCB1F_B64, rate: "10",
-    wild: [["growlithe", "Caninos", "n.35–38", "29,7 %"], ["slugma", "Limagma", "n.36–37", "25,0 %"], ["vulpix", "Goupix", "n.36", "19,9 %"], ["ponyta", "Ponyta", "n.40", "9,8 %"], ["magcargo", "Volcaropod", "n.38", "5,1 %"], ["magmar", "Magmar", "n.38", "5,1 %"], ["charmeleon", "Reptincel", "n.38", "4,3 %"], ["rapidash", "Galopa", "n.42", "1,2 %"]], fish: [
+    wild: [["growlithe", "Caninos", "n. 35 à 38", "29,7 %"], ["slugma", "Limagma", "n. 36 à 37", "25,0 %"], ["vulpix", "Goupix", "n. 36", "19,9 %"], ["ponyta", "Ponyta", "n. 40", "9,8 %"], ["magcargo", "Volcaropod", "n. 38", "5,1 %"], ["magmar", "Magmar", "n. 38", "5,1 %"], ["charmeleon", "Reptincel", "n. 38", "4,3 %"], ["rapidash", "Galopa", "n. 42", "1,2 %"]], fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "VolcanoB2F", label: "Volcan Cramoisi B2F", w: 288, h: 288, b64: MAP_VOLCB2F_B64, rate: "10",
-    wild: [["slugma", "Limagma", "n.36–37", "39,8 %"], ["magcargo", "Volcaropod", "n.38–40", "19,5 %"], ["growlithe", "Caninos", "n.37", "15,2 %"], ["ninetales", "Feunard", "n.35", "9,8 %"], ["magmar", "Magmar", "n.36–38", "9,4 %"], ["charmeleon", "Reptincel", "n.38", "5,1 %"], ["arcanine", "Arcanin", "n.42", "1,2 %"]], fish: [
+    wild: [["slugma", "Limagma", "n. 36 à 37", "39,8 %"], ["magcargo", "Volcaropod", "n. 38 à 40", "19,5 %"], ["growlithe", "Caninos", "n. 37", "15,2 %"], ["ninetales", "Feunard", "n. 35", "9,8 %"], ["magmar", "Magmar", "n. 36 à 38", "9,4 %"], ["charmeleon", "Reptincel", "n. 38", "5,1 %"], ["arcanine", "Arcanin", "n. 42", "1,2 %"]], fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   /* ---------- t56 : Îles Écume (grotte 5 étages ; pêche possible sur
      le B3F et le B4F uniquement : tuiles de courant $30/$3B/$42/$43,
      cf. IsNextTileShoreOrWater ; surf : eau profonde $14 sur le B4F). */
   { id: "SeafoamIslands1F", label: "Îles Écume 1F", w: 480, h: 288, b64: MAP_ECUM1F_B64, rate: "15",
-    wild: [["seel", "Otaria", "n.30", "19,9 %"], ["psyduck", "Psykokwak", "n.30", "19,9 %"], ["staryu", "Stari", "n.28–30", "19,5 %"], ["krabby", "Krabby", "n.28–30", "19,5 %"], ["zubat", "Nosferapti", "n.21", "9,8 %"], ["golbat", "Nosferalto", "n.29", "5,1 %"], ["slowpoke", "Ramoloss", "n.28", "5,1 %"], ["slowbro", "Flagadoss", "n.38", "1,2 %"]], fish: [
+    wild: [["seel", "Otaria", "n. 30", "19,9 %"], ["psyduck", "Psykokwak", "n. 30", "19,9 %"], ["staryu", "Stari", "n. 28 à 30", "19,5 %"], ["krabby", "Krabby", "n. 28 à 30", "19,5 %"], ["zubat", "Nosferapti", "n. 21", "9,8 %"], ["golbat", "Nosferalto", "n. 29", "5,1 %"], ["slowpoke", "Ramoloss", "n. 28", "5,1 %"], ["slowbro", "Flagadoss", "n. 38", "1,2 %"]], fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "SeafoamIslandsB1F", label: "Îles Écume B1F", w: 480, h: 288, b64: MAP_ECUMB1F_B64, rate: "10",
-    wild: [["krabby", "Krabby", "n.30–32", "29,7 %"], ["shellder", "Kokiyas", "n.30", "19,9 %"], ["staryu", "Stari", "n.32", "15,2 %"], ["psyduck", "Psykokwak", "n.28–30", "14,8 %"], ["seel", "Otaria", "n.28–30", "14,8 %"], ["dewgong", "Lamantine", "n.38", "4,3 %"], ["kingler", "Krabboss", "n.37", "1,2 %"]], fish: [
+    wild: [["krabby", "Krabby", "n. 30 à 32", "29,7 %"], ["shellder", "Kokiyas", "n. 30", "19,9 %"], ["staryu", "Stari", "n. 32", "15,2 %"], ["psyduck", "Psykokwak", "n. 28 à 30", "14,8 %"], ["seel", "Otaria", "n. 28 à 30", "14,8 %"], ["dewgong", "Lamantine", "n. 38", "4,3 %"], ["kingler", "Krabboss", "n. 37", "1,2 %"]], fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "SeafoamIslandsB2F", label: "Îles Écume B2F", w: 480, h: 288, b64: MAP_ECUMB2F_B64, rate: "10",
-    wild: [["seel", "Otaria", "n.30–32", "35,2 %"], ["psyduck", "Psykokwak", "n.30–32", "29,7 %"], ["krabby", "Krabby", "n.28–30", "14,8 %"], ["shellder", "Kokiyas", "n.30", "9,8 %"], ["staryu", "Stari", "n.28", "5,1 %"], ["starmie", "Staross", "n.30", "4,3 %"], ["golduck", "Akwakwak", "n.37", "1,2 %"]], fish: [
+    wild: [["seel", "Otaria", "n. 30 à 32", "35,2 %"], ["psyduck", "Psykokwak", "n. 30 à 32", "29,7 %"], ["krabby", "Krabby", "n. 28 à 30", "14,8 %"], ["shellder", "Kokiyas", "n. 30", "9,8 %"], ["staryu", "Stari", "n. 28", "5,1 %"], ["starmie", "Staross", "n. 30", "4,3 %"], ["golduck", "Akwakwak", "n. 37", "1,2 %"]], fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "SeafoamIslandsB3F", label: "Îles Écume B3F", w: 480, h: 288, b64: MAP_ECUMB3F_B64, rate: "10",
-    wild: [["psyduck", "Psykokwak", "n.36–38", "35,2 %"], ["seel", "Otaria", "n.36–38", "29,7 %"], ["krabby", "Krabby", "n.34–35", "14,8 %"], ["staryu", "Stari", "n.35", "9,8 %"], ["sneasel", "Farfuret", "n.34", "5,1 %"], ["jynx", "Lippoutou", "n.41", "4,3 %"], ["dewgong", "Lamantine", "n.42", "1,2 %"]],
+    wild: [["psyduck", "Psykokwak", "n. 36 à 38", "35,2 %"], ["seel", "Otaria", "n. 36 à 38", "29,7 %"], ["krabby", "Krabby", "n. 34 à 35", "14,8 %"], ["staryu", "Stari", "n. 35", "9,8 %"], ["sneasel", "Farfuret", "n. 34", "5,1 %"], ["jynx", "Lippoutou", "n. 41", "4,3 %"], ["dewgong", "Lamantine", "n. 42", "1,2 %"]],
     fish: [
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["goldeen", "Poissirène", "n.9", "50 %"]]],
-      ["Super Canne", [["goldeen", "Poissirène", "n.9 et n.12", "37,5 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["shellder", "Kokiyas", "n.12", "18,75 %"]]],
-      ["Méga Canne", [["poliwhirl", "Têtarte", "n.23", "23,1 %"], ["slowpoke", "Ramoloss", "n.15", "23,1 %"], ["psyduck", "Psykokwak", "n.15", "23,1 %"]]]
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["goldeen", "Poissirène", "n. 9", "50 %"]]],
+      ["Super Canne", [["goldeen", "Poissirène", "n. 9 et n. 12", "37,5 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["shellder", "Kokiyas", "n. 12", "18,75 %"]]],
+      ["Méga Canne", [["poliwhirl", "Têtarte", "n. 23", "23,1 %"], ["slowpoke", "Ramoloss", "n. 15", "23,1 %"], ["psyduck", "Psykokwak", "n. 15", "23,1 %"]]]
     ] },
   { id: "SeafoamIslandsB4F", label: "Îles Écume B4F", w: 480, h: 288, b64: MAP_ECUMB4F_B64, rate: "10",
-    wild: [["krabby", "Krabby", "n.36–38", "35,2 %"], ["staryu", "Stari", "n.36–38", "29,7 %"], ["sneasel", "Farfuret", "n.35–36", "14,8 %"], ["psyduck", "Psykokwak", "n.35", "9,8 %"], ["jynx", "Lippoutou", "n.36–42", "6,3 %"], ["golduck", "Akwakwak", "n.41", "4,3 %"]],
+    wild: [["krabby", "Krabby", "n. 36 à 38", "35,2 %"], ["staryu", "Stari", "n. 36 à 38", "29,7 %"], ["sneasel", "Farfuret", "n. 35 à 36", "14,8 %"], ["psyduck", "Psykokwak", "n. 35", "9,8 %"], ["jynx", "Lippoutou", "n. 36 à 42", "6,3 %"], ["golduck", "Akwakwak", "n. 41", "4,3 %"]],
     fish: [
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["goldeen", "Poissirène", "n.12", "50 %"]]],
-      ["Super Canne", [["goldeen", "Poissirène", "n.12", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["shellder", "Kokiyas", "n.12", "18,75 %"], ["tentacool", "Tentacool", "n.5", "18,75 %"]]],
-      ["Méga Canne", [["psyduck", "Psykokwak", "n.15", "18,75 %"], ["slowpoke", "Ramoloss", "n.15", "18,75 %"], ["dratini", "Minidraco", "n.15", "18,75 %"], ["lapras", "Lokhlass", "n.15", "18,75 %"]]],
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["goldeen", "Poissirène", "n. 12", "50 %"]]],
+      ["Super Canne", [["goldeen", "Poissirène", "n. 12", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["shellder", "Kokiyas", "n. 12", "18,75 %"], ["tentacool", "Tentacool", "n. 5", "18,75 %"]]],
+      ["Méga Canne", [["psyduck", "Psykokwak", "n. 15", "18,75 %"], ["slowpoke", "Ramoloss", "n. 15", "18,75 %"], ["dratini", "Minidraco", "n. 15", "18,75 %"], ["lapras", "Lokhlass", "n. 15", "18,75 %"]]],
       ["Surf", "Aucun Pokémon disponible en Surfant"]
     ] },
   /* ---------- t57 : cartes manquantes (captures du dépôt) : Routes
-     13-15 + Porte Route 15, Caverne Azurée (Mewtwo n.70 ; le
+     13-15 + Porte Route 15, Caverne Azurée (Mewtwo n. 70 ; le
      commentaire asm « bumped to lvl 74 » est périmé, l'objet encode 70),
      Ville oubliée (ForgottenTown, tileset ALPHA, île sans habitant). */
   { id: "Route13", label: "Route 13", w: 960, h: 288, b64: MAP_R13_B64, rate: "20",
-    wild: [["bellsprout", "Chétiflor", "n.22–26", "39,5 %"], ["venonat", "Mimitoss", "n.24–26", "25,0 %"], ["pidgey", "Roucool", "n.25", "19,9 %"], ["weepinbell", "Boustiflor", "n.28–30", "6,3 %"], ["ditto", "Métamorph", "n.25", "5,1 %"], ["farfetchd", "Canarticho", "n.27", "4,3 %"]],
+    wild: [["bellsprout", "Chétiflor", "n. 22 à 26", "39,5 %"], ["venonat", "Mimitoss", "n. 24 à 26", "25,0 %"], ["pidgey", "Roucool", "n. 25", "19,9 %"], ["weepinbell", "Boustiflor", "n. 28 à 30", "6,3 %"], ["ditto", "Métamorph", "n. 25", "5,1 %"], ["farfetchd", "Canarticho", "n. 27", "4,3 %"]],
     fish: [
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["poliwag", "Ptitard", "n.5", "50 %"]]],
-      ["Super Canne", [["poliwag", "Ptitard", "n.5", "18,75 %"], ["goldeen", "Poissirène", "n.9", "18,75 %"], ["krabby", "Krabby", "n.12", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"]]],
-      ["Méga Canne", [["tentacool", "Tentacool", "n.5", "18,75 %"], ["krabby", "Krabby", "n.15", "18,75 %"], ["goldeen", "Poissirène", "n.15", "18,75 %"], ["magikarp", "Magicarpe", "n.15", "18,75 %"]]],
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["poliwag", "Ptitard", "n. 5", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n. 5", "18,75 %"], ["goldeen", "Poissirène", "n. 9", "18,75 %"], ["krabby", "Krabby", "n. 12", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"]]],
+      ["Méga Canne", [["tentacool", "Tentacool", "n. 5", "18,75 %"], ["krabby", "Krabby", "n. 15", "18,75 %"], ["goldeen", "Poissirène", "n. 15", "18,75 %"], ["magikarp", "Magicarpe", "n. 15", "18,75 %"]]],
       ["Surf", "Aucun Pokémon disponible en Surfant"]
     ] },
   { id: "Route14", label: "Route 14", w: 320, h: 864, b64: MAP_R14_B64, rate: "15",
-    wild: [["bellsprout", "Chétiflor", "n.24–26", "25,0 %"], ["ponyta", "Ponyta", "n.22–23", "25,0 %"], ["pidgey", "Roucool", "n.26", "19,9 %"], ["venonat", "Mimitoss", "n.24–26", "19,5 %"], ["pidgeotto", "Roucoups", "n.28–30", "5,5 %"], ["weepinbell", "Boustiflor", "n.30", "5,1 %"]],
+    wild: [["bellsprout", "Chétiflor", "n. 24 à 26", "25,0 %"], ["ponyta", "Ponyta", "n. 22 à 23", "25,0 %"], ["pidgey", "Roucool", "n. 26", "19,9 %"], ["venonat", "Mimitoss", "n. 24 à 26", "19,5 %"], ["pidgeotto", "Roucoups", "n. 28 à 30", "5,5 %"], ["weepinbell", "Boustiflor", "n. 30", "5,1 %"]],
     fish: [
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["goldeen", "Poissirène", "n.9", "50 %"]]],
-      ["Super Canne", [["goldeen", "Poissirène", "n.9–12", "37,5 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["shellder", "Kokiyas", "n.12", "18,75 %"]]],
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["goldeen", "Poissirène", "n. 9", "50 %"]]],
+      ["Super Canne", [["goldeen", "Poissirène", "n. 9 à 12", "37,5 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["shellder", "Kokiyas", "n. 12", "18,75 %"]]],
       ["Surf", "Aucun Pokémon disponible en Surfant"]
     ] },
   { id: "Route15", label: "Route 15", w: 960, h: 288, b64: MAP_R15_B64, rate: "15",
-    wild: [["ponyta", "Ponyta", "n.22–26", "29,7 %"], ["bellsprout", "Chétiflor", "n.24–26", "25,0 %"], ["venonat", "Mimitoss", "n.26–28", "19,5 %"], ["pidgey", "Roucool", "n.23", "15,2 %"], ["pidgeotto", "Roucoups", "n.28–30", "5,5 %"], ["weepinbell", "Boustiflor", "n.30", "5,1 %"]],
+    wild: [["ponyta", "Ponyta", "n. 22 à 26", "29,7 %"], ["bellsprout", "Chétiflor", "n. 24 à 26", "25,0 %"], ["venonat", "Mimitoss", "n. 26 à 28", "19,5 %"], ["pidgey", "Roucool", "n. 23", "15,2 %"], ["pidgeotto", "Roucoups", "n. 28 à 30", "5,5 %"], ["weepinbell", "Boustiflor", "n. 30", "5,1 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
@@ -4565,30 +4573,30 @@ const MAPS = [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "CeruleanCave1F", label: "Caverne Azurée 1F", w: 480, h: 288, b64: MAP_CERU1F_B64, rate: "10",
-    wild: [["golbat", "Nosferalto", "n.61", "19,9 %"], ["hypno", "Hypnomade", "n.61", "19,9 %"], ["larvitar", "Embrylex", "n.61", "15,2 %"], ["dodrio", "Dodrio", "n.64", "9,8 %"], ["venomoth", "Aéromite", "n.64", "9,8 %"], ["kadabra", "Kadabra", "n.64", "9,8 %"], ["arbok", "Arbok", "n.67", "5,1 %"], ["parasect", "Parasect", "n.67", "5,1 %"], ["ditto", "Métamorph", "n.75", "4,3 %"], ["raichu", "Raichu", "n.68", "1,2 %"]],
+    wild: [["golbat", "Nosferalto", "n. 61", "19,9 %"], ["hypno", "Hypnomade", "n. 61", "19,9 %"], ["larvitar", "Embrylex", "n. 61", "15,2 %"], ["dodrio", "Dodrio", "n. 64", "9,8 %"], ["venomoth", "Aéromite", "n. 64", "9,8 %"], ["kadabra", "Kadabra", "n. 64", "9,8 %"], ["arbok", "Arbok", "n. 67", "5,1 %"], ["parasect", "Parasect", "n. 67", "5,1 %"], ["ditto", "Métamorph", "n. 75", "4,3 %"], ["raichu", "Raichu", "n. 68", "1,2 %"]],
     fish: [
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["poliwag", "Ptitard", "n.5", "50 %"]]],
-      ["Super Canne", [["poliwag", "Ptitard", "n.5", "18,75 %"], ["goldeen", "Poissirène", "n.9", "18,75 %"], ["krabby", "Krabby", "n.12", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"]]],
-      ["Méga Canne", [["slowbro", "Flagadoss", "n.23", "18,75 %"], ["seaking", "Poissoroy", "n.23", "18,75 %"], ["kingler", "Krabboss", "n.23", "18,75 %"], ["seadra", "Hypocéan", "n.23", "18,75 %"]]],
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["poliwag", "Ptitard", "n. 5", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n. 5", "18,75 %"], ["goldeen", "Poissirène", "n. 9", "18,75 %"], ["krabby", "Krabby", "n. 12", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"]]],
+      ["Méga Canne", [["slowbro", "Flagadoss", "n. 23", "18,75 %"], ["seaking", "Poissoroy", "n. 23", "18,75 %"], ["kingler", "Krabboss", "n. 23", "18,75 %"], ["seadra", "Hypocéan", "n. 23", "18,75 %"]]],
       ["Surf", "Aucun Pokémon disponible en Surfant"]
     ] },
   { id: "CeruleanCave2F", label: "Caverne Azurée 2F", w: 480, h: 288, b64: MAP_CERU2F_B64, rate: "15",
-    wild: [["dodrio", "Dodrio", "n.66", "19,9 %"], ["venomoth", "Aéromite", "n.66", "19,9 %"], ["larvitar", "Embrylex", "n.66", "15,2 %"], ["rhydon", "Rhinoféros", "n.67", "9,8 %"], ["marowak", "Ossatueur", "n.67", "9,8 %"], ["kadabra", "Kadabra", "n.67", "9,8 %"], ["ditto", "Métamorph", "n.70–75", "9,4 %"], ["wigglytuff", "Grodoudou", "n.69", "5,1 %"], ["chansey", "Leveinard", "n.71", "1,2 %"]],
+    wild: [["dodrio", "Dodrio", "n. 66", "19,9 %"], ["venomoth", "Aéromite", "n. 66", "19,9 %"], ["larvitar", "Embrylex", "n. 66", "15,2 %"], ["rhydon", "Rhinoféros", "n. 67", "9,8 %"], ["marowak", "Ossatueur", "n. 67", "9,8 %"], ["kadabra", "Kadabra", "n. 67", "9,8 %"], ["ditto", "Métamorph", "n. 70 à 75", "9,4 %"], ["wigglytuff", "Grodoudou", "n. 69", "5,1 %"], ["chansey", "Leveinard", "n. 71", "1,2 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   { id: "CeruleanCaveB1F", label: "Caverne Azurée B1F", w: 480, h: 288, b64: MAP_CERUB1F_B64, rate: "25",
-    wild: [["rhydon", "Rhinoféros", "n.70", "19,9 %"], ["marowak", "Ossatueur", "n.70", "19,9 %"], ["larvitar", "Embrylex", "n.70", "15,2 %"], ["ditto", "Métamorph", "n.70–80", "10,5 %"], ["sandslash", "Sablaireau", "n.69", "9,8 %"], ["parasect", "Parasect", "n.69", "9,8 %"], ["raichu", "Raichu", "n.69", "9,8 %"], ["chansey", "Leveinard", "n.69", "5,1 %"]],
+    wild: [["rhydon", "Rhinoféros", "n. 70", "19,9 %"], ["marowak", "Ossatueur", "n. 70", "19,9 %"], ["larvitar", "Embrylex", "n. 70", "15,2 %"], ["ditto", "Métamorph", "n. 70 à 80", "10,5 %"], ["sandslash", "Sablaireau", "n. 69", "9,8 %"], ["parasect", "Parasect", "n. 69", "9,8 %"], ["raichu", "Raichu", "n. 69", "9,8 %"], ["chansey", "Leveinard", "n. 69", "5,1 %"]],
     fish: [
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["poliwag", "Ptitard", "n.4", "50 %"]]],
-      ["Super Canne", [["poliwag", "Ptitard", "n.4–5", "37,5 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["krabby", "Krabby", "n.12", "18,75 %"]]],
-      ["Méga Canne", [["slowbro", "Flagadoss", "n.23", "18,75 %"], ["seaking", "Poissoroy", "n.23", "18,75 %"], ["kingler", "Krabboss", "n.23", "18,75 %"], ["seadra", "Hypocéan", "n.23", "18,75 %"]]],
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["poliwag", "Ptitard", "n. 4", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n. 4 à 5", "37,5 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["krabby", "Krabby", "n. 12", "18,75 %"]]],
+      ["Méga Canne", [["slowbro", "Flagadoss", "n. 23", "18,75 %"], ["seaking", "Poissoroy", "n. 23", "18,75 %"], ["kingler", "Krabboss", "n. 23", "18,75 %"], ["seadra", "Hypocéan", "n. 23", "18,75 %"]]],
       ["Surf", "Aucun Pokémon disponible en Surfant"]
     ] },
   { id: "ForgottenTown", label: "Ville oubliée", spoil: true, w: 640, h: 576, b64: MAP_FGTOWN_B64, wild: null,
     fish: [
-      ["Canne", [["magikarp", "Magicarpe", "n.4", "50 %"], ["goldeen", "Poissirène", "n.12", "50 %"]]],
-      ["Super Canne", [["goldeen", "Poissirène", "n.12", "18,75 %"], ["psyduck", "Psykokwak", "n.12", "18,75 %"], ["shellder", "Kokiyas", "n.12", "18,75 %"], ["tentacool", "Tentacool", "n.5", "18,75 %"]]],
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["goldeen", "Poissirène", "n. 12", "50 %"]]],
+      ["Super Canne", [["goldeen", "Poissirène", "n. 12", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["shellder", "Kokiyas", "n. 12", "18,75 %"], ["tentacool", "Tentacool", "n. 5", "18,75 %"]]],
       ["Surf", "Aucun Pokémon disponible en Surfant"]
     ] },
 ];
@@ -4617,7 +4625,7 @@ const ZONES = {
   ViridianForest: ["donjon", "Forêt de Jade"], ViridianForestNorthGate: ["donjon", "Forêt de Jade"], ViridianForestSouthGate: ["donjon", "Forêt de Jade"],
   DiglettsCave: ["donjon", "Cave Taupiqueur"],
   DiglettsCaveRoute11: ["donjon", "Cave Taupiqueur"],
-  Route3: ["monde", null], MtMoonSquare: ["donjon", "Mont Sélénite"], MtMoon1F: ["donjon", "Mont Sélénite"], MtMoonB1F: ["donjon", "Mont Sélénite"], MtMoonB2F: ["donjon", "Mont Sélénite"], MtMoonPokecenter: ["donjon", "Mont Sélénite"], Route4: ["monde", null],
+  Route3: ["monde", null], MtMoonSquare: ["monde", null], MtMoon1F: ["donjon", "Mont Sélénite"], MtMoonB1F: ["donjon", "Mont Sélénite"], MtMoonB2F: ["donjon", "Mont Sélénite"], MtMoonPokecenter: ["donjon", "Mont Sélénite"], Route4: ["monde", null],
   CeruleanCity: ["monde", null],
   CeruleanTrashedHouse: ["interieur", "Azuria"],
   CeruleanTradeHouse: ["interieur", "Azuria"],
@@ -4841,9 +4849,9 @@ MAPS[134].markers = MARKERS_VDOCK;
 
 /* Route 11 (data/maps/objects + text/maps/route_11_1.asm) : 10 dresseurs —
    4 Pillards (Ptitard/Hypotrempe, Chétiflor/Mystherbe, Soporifik/Kadabra,
-   Caninos/Goupix n.19), 4 Mécanos (Métamorph 21, Magnéti 21, Elektek 20,
-   Magnéti-Machoc-Magnéti n.18) et 2 Gamins (Sabelette/Abo n.19,
-   Nidoran♂-Nidorino n.18) ; entrée de la Cave Taupiqueur (4,5) et poste
+   Caninos/Goupix n. 19), 4 Mécanos (Métamorph 21, Magnéti 21, Elektek 20,
+   Magnéti-Machoc-Magnéti n. 18) et 2 Gamins (Sabelette/Abo n. 19,
+   Nidoran♂-Nidorino n. 18) ; entrée de la Cave Taupiqueur (4,5) et poste
    de garde à l'est (51/58, 8-9). Taux $0F = 15 (wild_Route11.asm) :
    Sabelette 103/256, Piafabec 89, Soporifik 64 ; aucun point d'eau,
    aucun objet caché. */
@@ -4964,7 +4972,7 @@ const MARKERS_SSA2F = [
 /* Cabines du 2e pont (SSAnne2FRooms.asm) : 4 dresseurs (GentlemanData 3-4,
    FisherData 1, LassData 11) ; Huile Max (12,1) et Super Bonbon (0,12). Le
    Gentleman (1,2) montre Ronflex avant la Ligue, puis se révèle être
-   Giovanni en revanche n.64-65 (EVENT_BEAT_GIOVANNI_REMATCH ; t70 : 2e
+   Giovanni en revanche n. 64-65 (EVENT_BEAT_GIOVANNI_REMATCH ; t70 : 2e
    duel spoil sur le même PNJ Gentleman). */
 const MARKERS_SSA2FR = [
   { cat: "trainer", spr: true, icon: "gentleman", x: 10, y: 2, dir: "right", name: "Gentleman", team: [["voltorb", "Voltorbe", 22], ["magnemite", "Magnéti", 22]] },
@@ -5102,7 +5110,7 @@ MAPS[147].markers = MARKERS_SSAKCH;
    la Ligue (scripts/CeladonCity.asm) ; cachés (hidden_objects.asm db y,x) :
    PP Plus, Hyper Potion, Rappel Max ; pêche Méga Canne uniquement
    (super_rod.asm FishingGroup2) :
-   Tadmorv n.10/11/15, Grotadmorv n.20. */
+   Tadmorv n. 10/11/15, Grotadmorv n. 20. */
 const MARKERS_CCITY = [
   { cat: "pnj", spr: true, icon: "little_girl", x: 5, y: 15, name: "Gamine" },
   { cat: "pnj", spr: true, icon: "old_person", x: 11, y: 28, name: "Personne âgée" },
@@ -5145,7 +5153,7 @@ const MARKERS_CPC = [
 ];
 /* Arène de Céladopole (Erika) : 7 dresseurs + la Championne ; elle donne la CT21.
    Les statues de l'arène ne sont pas des marqueurs (règle du mobilier).
-   Revanche d'Erika après la Ligue (ErikaData n.64-65 ; t70 : 2e duel
+   Revanche d'Erika après la Ligue (ErikaData n. 64-65 ; t70 : 2e duel
    spoil, même PNJ, la CT21 reste visible). */
 const MARKERS_CGYM = [
   { cat: "trainer", spr: true, icon: "erika", x: 4, y: 3, dir: "down", name: "Erika", scripted: true,
@@ -5200,9 +5208,9 @@ const MARKERS_CPRIZE = [
   { cat: "pnj", spr: true, icon: "balding_guy", x: 1, y: 4, name: "Homme" },
   { cat: "pnj", spr: true, icon: "gambler", x: 9, y: 3, name: "Joueur" },
   { cat: "pnj", x: 2, y: 2, name: "Prix", scripted: true,
-    shop: [["front_abra", "Abra n.8", 150, "Jetons"], ["front_pikachu", "Pikachu n.12", 750, "Jetons"], ["front_eevee", "Evoli n.18", 1500, "Jetons"]] },
+    shop: [["front_abra", "Abra n. 8", 150, "Jetons"], ["front_pikachu", "Pikachu n. 12", 750, "Jetons"], ["front_eevee", "Evoli n. 18", 1500, "Jetons"]] },
   { cat: "pnj", x: 4, y: 2, name: "Prix", scripted: true,
-    shop: [["front_larvitar", "Embrylex n.24", 3500, "Jetons"], ["front_dratini", "Minidraco n.24", 5200, "Jetons"], ["front_porygon", "Porygon n.22", 6500, "Jetons"]] },
+    shop: [["front_larvitar", "Embrylex n. 24", 3500, "Jetons"], ["front_dratini", "Minidraco n. 24", 5200, "Jetons"], ["front_porygon", "Porygon n. 22", 6500, "Jetons"]] },
   { cat: "pnj", x: 6, y: 2, name: "Prix", scripted: true,
     shop: [["tm_hm", "CT04 LancFla", 5000, "Jetons"], ["tm_hm", "CT13 LaserGl", 5000, "Jetons"], ["tm_hm", "CT24 Tonnerr", 5000, "Jetons"]] },
   { cat: "warp", x: 4, y: 7, name: "Céladopole", dx: 33, dy: 19, badge: "Sortie" },
@@ -5323,7 +5331,7 @@ const MARKERS_CMARTELEV = [
 /* Manoir Céladon (CeladonMansion*.asm) : le « repaire des programmeurs » du
    Game Freak E2 ; Miaouss, Mélofée et Nidoran♀ s'y promènent en scripted ;
    sortie nord du 1F vers la ville ; toit : Super Bonbon caché (db y,x) et la
-   maison du toit où le Savant offre un Evoli n.25. */
+   maison du toit où le Savant offre un Evoli n. 25. */
 const MARKERS_CMAS1F = [
   { cat: "pnj", spr: true, icon: "meowth", x: 0, y: 5, dir: "right", name: "Miaouss", scripted: true },
   { cat: "pnj", spr: true, icon: "old_medium_woman", x: 1, y: 5, name: "Vieille femme" },
@@ -5359,7 +5367,7 @@ const MARKERS_CMASROOF = [
 ];
 const MARKERS_CMASRHOUSE = [
   { cat: "pnj", spr: true, icon: "hiker", x: 2, y: 2, dir: "down", name: "Montagnard" },
-  { cat: "item", spr: true, icon: "pokeball", tipIcon: "front_eevee", ballMini: true, x: 4, y: 3, name: "Evoli n.25" },
+  { cat: "item", spr: true, icon: "pokeball", tipIcon: "front_eevee", ballMini: true, x: 4, y: 3, name: "Evoli n. 25" },
   { cat: "warp", x: 2, y: 7, name: "Manoir Céladon (toit)", dx: 2, dy: 7, badge: "Toit" },
   { cat: "warp", x: 3, y: 7, name: "Manoir Céladon (toit)", dx: 2, dy: 7, badge: "Toit" }
 ];
@@ -5640,7 +5648,7 @@ const MARKERS_FMART = [
 ];
 /* Arène de Parmanie (Koga) : Badge Âme + CT06 Toxik ; Janine, ajout du hack,
    et le Guide. Les statues restent du mobilier (sans marqueur). Revanche
-   de Koga après la Ligue (KogaData n.64-65, SCIZOR_S violet ; t70 : 2e
+   de Koga après la Ligue (KogaData n. 64-65, SCIZOR_S violet ; t70 : 2e
    duel spoil, même PNJ, la CT06 reste visible). */
 const MARKERS_FGYM = [
   { cat: "trainer", spr: true, icon: "koga", x: 4, y: 10, dir: "down", name: "Koga", scripted: true,
@@ -5848,7 +5856,7 @@ const MARKERS_R19 = [
 /* Chenal 20 : Nageurs n°9-11, Canons n°11-14, Dresseurs jr♀ n°20-21, Ornithologue
    n°15 ; Pierre Lune cachée ; Îles Écume 1F (entrées ouest et est,
    rattachées au donjon t56) et Phare. Le n°20 des Dresseurs jr♀ recycle l'équipe de la Route 15
-   (Mélodelfe n.38) : c'est bien ce que le moteur affiche. */
+   (Mélodelfe n. 38) : c'est bien ce que le moteur affiche. */
 const MARKERS_R20 = [
   { cat: "trainer", spr: true, icon: "swimmer", x: 87, y: 10, dir: "up", name: "Nageur n°9", team: [["kingler", "Krabboss", 42], ["cloyster", "Crustabri", 42]] },
   { cat: "trainer", spr: true, icon: "swimmer", x: 68, y: 13, dir: "up", name: "Canon n°11", team: [["blastoise", "Tortank", 43], ["dewgong", "Lamantine", 43], ["slowbro", "Flagadoss", 43]] },
@@ -5866,7 +5874,7 @@ const MARKERS_R20 = [
   { cat: "warp", x: 41, y: 7, name: "Phare", dx: 2, dy: 29, badge: "Phare" }
 ];
 /* Chenal 21 : Pêcheurs n°8-11 (le n°10 aligne un banc de Krabby par niveaux :
-   Magicarpe n.29 puis Krabby n.38×4 et n.40), Nageurs n°12-15, Loubard n°9 ;
+   Magicarpe n. 29 puis Krabby n. 38×4 et n. 40), Nageurs n°12-15, Loubard n°9 ;
    entrée du Volcan Cramoisi. */
 const MARKERS_R21 = [
   { cat: "trainer", spr: true, icon: "fisher2", x: 4, y: 24, dir: "left", name: "Pêcheur n°8", team: [["seaking", "Poissoroy", 40], ["goldeen", "Poissirène", 40], ["seaking", "Poissoroy", 40], ["seaking", "Poissoroy", 40]] },
@@ -6073,7 +6081,7 @@ const MARKERS_VOLCB1F = [
   { cat: "warp", x: 5, y: 26, name: "Volcan Cramoisi B2F", dx: 3, dy: 14, badge: "B2" },
   { cat: "warp", x: 12, y: 34, name: "Volcan Cramoisi 1F", dx: 21, dy: 20, badge: "RDC" }
 ];
-/* Volcan Cramoisi B2F : Sulfura n.50 attend au fond du cratère (visible dès
+/* Volcan Cramoisi B2F : Sulfura n. 50 attend au fond du cratère (visible dès
    l'arrivée, comme l'Electhor de la Centrale) ; PP Plus caché ; retour B1F. */
 const MARKERS_VOLCB2F = [
   { cat: "trainer", spr: true, icon: "moltres_ow", x: 8, y: 6, name: "Sulfura", scripted: true, team: [["moltres", "Sulfura", 50]] },
@@ -6143,7 +6151,7 @@ const MARKERS_ECUMB3F = [
   { cat: "warp", x: 20, y: 17, name: "Îles Écume B4F", dx: 20, dy: 17, badge: "B4" },
   { cat: "warp", x: 21, y: 17, name: "Îles Écume B4F", dx: 21, dy: 17, badge: "B4" }
 ];
-/* Îles Écume B4F : Artikodin n.50 au fond de la crière de glace (visible
+/* Îles Écume B4F : Artikodin n. 50 au fond de la crière de glace (visible
    dès l'arrivée, comme Sulfura et l'Electhor) ; Hyper Ball cachée ;
    deux rochers statiques issus des rapides ; 2 panneaux ignorés
    (« Les rochers peuvent changer le niveau de l'eau! » et « DANGER!
@@ -6265,7 +6273,7 @@ const MARKERS_CERU2F = [
   { cat: "warp", x: 1, y: 3, name: "Caverne Azurée 1F", dx: 1, dy: 3, badge: "RDC" },
   { cat: "warp", x: 3, y: 11, name: "Caverne Azurée 1F", dx: 3, dy: 11, badge: "RDC" }
 ];
-/* Caverne Azurée B1F : Mewtwo n.70 dans l'arène lac ( UnknownDungeon3, le
+/* Caverne Azurée B1F : Mewtwo n. 70 dans l'arène lac ( UnknownDungeon3, le
    commentaire asm « bumped to lvl 74 » est périmé : l'objet encode
    SPRITE_MEWTWO, 27, 13, MEWTWO, 70), 2 boules (Hyper Ball, Rappel Max),
    2 objets cachés (Calcium, Modif.Gène), unique remontée 1F ; pêche et surf
@@ -6397,7 +6405,12 @@ MARKERS_ROUTE1, MARKERS_PALLET, MARKERS_ROUTE22, MARKERS_ROUTE23, MARKERS_INDIGO
    bords ouest alignés (Argenta, Jadielle, Route 22). ---------- */
 /* Positions de la page Monde uniquement (collage des connexions ci-dessus) ;
    chaque intérieur / donjon a sa page, seule sur le stage en (0, 0). */
-const WORLD_OFFSETS = { IndigoPlateau: [0, 2], Route23: [0, 20], Route22: [0, 162], ViridianCity: [40, 154], Route1: [50, 190], PalletTown: [50, 226], Route2: [46, 82], PewterCity: [40, 46], Route3: [80, 54], Route4: [130, 36], CeruleanCity: [220, 28], Route24: [230, -8], Route25: [250, -10], BillsGarden: [286, -24], Route9: [260, 36], Route10: [318, 30], Route10South: [318, 84], LavenderTown: [320, 108], Route8: [260, 108], Route12: [320, 126], SaffronCity: [220, 100], Route5: [230, 64],
+const WORLD_OFFSETS = { IndigoPlateau: [0, 2], Route23: [0, 20], Route22: [0, 162], ViridianCity: [40, 154], Route1: [50, 190], PalletTown: [50, 226], Route2: [46, 82], PewterCity: [40, 46], Route3: [80, 54], Route4: [130, 36],
+  /* t85 : Aire de repos à sa place dans le monde, collée au-dessus de la
+     Route 4 (quasi centrée sur son haut) ; sa colonne d'eau (tuiles locales
+     22-23 au bord sud) coïncide avec la cascade de la Route 4 (tuiles locales
+     50-51 au bord nord) : colonnes monde 180-181 (158+22 = 130+50). */
+  MtMoonSquare: [158, 18], CeruleanCity: [220, 28], Route24: [230, -8], Route25: [250, -10], BillsGarden: [286, -24], Route9: [260, 36], Route10: [318, 30], Route10South: [318, 84], LavenderTown: [320, 108], Route8: [260, 108], Route12: [320, 126], SaffronCity: [220, 100], Route5: [230, 64],
   Route6: [230, 136], Route7: [200, 108], VermilionCity: [220, 172], Route11: [260, 180], CeladonCity: [150, 100],
   Route16: [110, 106], Route16West: [70, 110], Route17: [110, 126], Route18: [110, 270], FuchsiaCity: [160, 262],
   Route19: [170, 298], Route20: [70, 332], CinnabarIsland: [50, 334], Route21: [50, 244],
@@ -6411,8 +6424,9 @@ const WORLD_OFFSETS = { IndigoPlateau: [0, 2], Route23: [0, 20], Route22: [0, 16
    (sorties au même niveau), étages empilés avec le 1F en bas
    (écarts de 4 tuiles) ; piles en colonne centrées horizontalement sur la carte la plus large ; Ligue : entrée (Hall) en bas, Panthéon en haut ;
    donjons : cartes annexes en rangée horizontale alignée par le bas à côté
-   de la carte principale (Mont Sélénite : Pokécentre, 1F, Aire de repos ;
-   Cave Taupiqueur : entrées Route 2 et Route 11). */
+   de la carte principale (Mont Sélénite : Pokécentre, 1F, l'Aire de repos
+   étant passée dans le monde (t85) ; Cave Taupiqueur : entrées Route 2
+   et Route 11). */
 const GROUP_OFFSETS = {
   "interieur|Jadielle": { ViridianPokecenter: [0, 10], ViridianMart: [18, 10], ViridianSchool: [30, 10], ViridianNicknameHouse: [42, 10], ViridianGym: [54, 0] },
   "interieur|Bourg Palette": { PalletRedsHouse2F: [0, 0], PalletRedsHouse1F: [0, 12], PalletBluesHouse: [12, 12], PalletOaksLab: [24, 8] },
@@ -6423,7 +6437,7 @@ const GROUP_OFFSETS = {
   "interieur|Argenta": { PewterSpeechHouse: [0, 16], PewterPokecenter: [12, 16], PewterMart: [30, 16], PewterNidoranHouse: [42, 16], PewterGym: [54, 10], PewterMuseum1F: [68, 14], PewterMuseum2F: [71, 0] },
   "donjon|Forêt de Jade": { ViridianForestNorthGate: [12, 0], ViridianForest: [0, 12], ViridianForestSouthGate: [12, 64] },
   "donjon|Cave Taupiqueur": { DiglettsCaveRoute2: [0, 28], DiglettsCave: [12, 0], DiglettsCaveRoute11: [56, 28] },
-  "donjon|Mont Sélénite": { MtMoonPokecenter: [0, 28], MtMoon1F: [18, 0], MtMoonSquare: [62, 18], MtMoonB1F: [24, 40], MtMoonB2F: [18, 72] },
+  "donjon|Mont Sélénite": { MtMoonPokecenter: [0, 28], MtMoon1F: [18, 0], MtMoonB1F: [24, 40], MtMoonB2F: [18, 72] },
   "interieur|Azuria": { CeruleanBikeShop: [0, 16], CeruleanPrinter: [12, 16], CeruleanMart: [24, 16], CeruleanMelanieHouse: [36, 16], CeruleanTradeHouse: [48, 16], CeruleanPokecenter: [60, 16], CeruleanBadgeHouse: [78, 16], CeruleanTrashedHouse: [90, 16], CeruleanGym: [102, 10] },
   "interieur|Villa Léo": { BillsHouse: [0, 0] },
   "donjon|Grotte Sombre": { RockTunnelB1F: [18, 40], RockTunnel1F: [18, 0], RockTunnelPokecenter: [62, 28] },
@@ -6895,11 +6909,11 @@ function openTip(m, el) {
   }
   const teamHtml = (t, label) => {
     let h = label ? '<p class="tlabel">' + label + "</p>" : "";
-    h += "<ul>" + t.map(e => Array.isArray(e[0]) ? e.map((u, i) =>
-      '<li>' + (i ? '<span class="ou">ou </span>' : "") + '<img class="mon" src="' + ICONS["front_" + u[0]] + '">' + u[1] +
-      ' <span class="lv">n.' + u[2] + "</span></li>").join("") :
-      '<li><img class="mon" src="' + ICONS["front_" + e[0]] + '">' + e[1] +
-      ' <span class="lv">n.' + e[2] + "</span></li>").join("") + "</ul>";
+    h += '<ul class="teamlist">' + t.map(e => Array.isArray(e[0]) ? e.map((u, i) =>
+      '<li>' + (i ? '<span class="ou">ou </span>' : "") + '<img class="mon" src="' + ICONS["front_" + u[0]] + '">' +
+      '<span class="tnm">' + u[1] + '</span><span class="lv">n. ' + u[2] + "</span></li>").join("") :
+      '<li><img class="mon" src="' + ICONS["front_" + e[0]] + '">' +
+      '<span class="tnm">' + e[1] + '</span><span class="lv">n. ' + e[2] + "</span></li>").join("") + "</ul>";
     return h;
   };
   const teamHtmlSp = (t, label) => '<div class="spoil">' + teamHtml(t, label) + '</div>'; // t70 : 2e duel spoil
@@ -6985,31 +6999,31 @@ function ftool(label) {
   const ic = { "Terrestre": "grass", "Surf": "surf", "Canne": "old_rod", "Super Canne": "good_rod", "Méga Canne": "super_rod" }[label];
   return '<div class="ftool">' + (ic && ICONS[ic] ? '<span class="catico"><img src="' + ICONS[ic] + '" alt=""></span>' : '') + label + '</div>';
 }
+/* t83 : panneau Rencontres toujours en 3 sections Terrestre / Surf / Pêche ;
+   chaque section montre ses listes quand elles existent, sinon un texte qui
+   explique l'absence (pas de point d'eau, rien à Surfer/Pêcher, pas de
+   rencontre terrestre). Niveaux et pourcentements en 2 colonnes alignées
+   à droite (lvl collé au pct : le pourcentage garde toujours la même place). */
 function renderWild(m) {
   m = m || selMap || RT1;
+  const fish = m.fish || [];
+  const surfE = fish.find(t => t[0] === "Surf");
+  const rods = fish.filter(t => t[0] !== "Surf" && t[0] !== "Pêche" && Array.isArray(t[1]));
+  const noWater = !surfE && !rods.length;
+  const wnote = msg => '<p class="coords" style="color:var(--muted);font-size:12px;margin:0">' + msg + '</p>';
+  const rowHtml = w => '<div class="wildrow"><span class="wname"><img class="mon" src="' + ICONS["front_" + w[0]] + '">' + w[1] + '</span><span class="rng"><span class="lvl">' + w[2] + '</span><span class="pct">' + w[3] + '</span></span></div>';
   let html = ftool("Terrestre");
-  if (m.wild) {
-    html +=
-      m.wild.map(w => '<div class="wildrow"><span class="wname"><img class="mon" src="' + ICONS["front_" + w[0]] + '">' + w[1] + '</span><span class="rng">' + w[2] + " · " + w[3] + "</span></div>").join("");
+  html += m.wild ? m.wild.map(rowHtml).join("") : wnote("Aucune rencontre sauvage sur cette carte.");
+  html += ftool("Surf");
+  if (surfE) html += Array.isArray(surfE[1]) ? surfE[1].map(rowHtml).join("") : wnote(surfE[1]);
+  else html += wnote(noWater ? "Aucun point d'eau sur la carte." : "Aucun Pokémon disponible en Surfant.");
+  html += ftool("Pêche");
+  if (rods.length) {
+    rods.forEach(t => { html += ftool(t[0]) + t[1].map(rowHtml).join(""); });
+    html += '<p class="fnote">Listes fixes pour Surf, Canne et Super Canne. Niveaux + 0 à 7 après le badge Cascade.</p>';
   } else {
-    html += '<p class="coords" style="color:var(--muted);font-size:12px;margin:0">Aucune rencontre sauvage sur cette carte.</p>';
-  }
-  if (m.fish) {
-    m.fish.forEach(t => {
-      if (typeof t[1] === "string") {
-        if (t[0] === "Pêche") {
-          html += ftool("Surf") + '<p class="coords" style="color:var(--muted);font-size:12px;margin:0">Aucun point d\'eau sur la carte.</p>';
-        } else {
-          html += ftool(t[0]) + '<p class="coords" style="color:var(--muted);font-size:12px;margin:0">' + t[1] + '</p>';
-        }
-      } else {
-        html += ftool(t[0]) +
-          t[1].map(w => '<div class="wildrow"><span class="wname"><img class="mon" src="' + ICONS["front_" + w[0]] + '">' + w[1] + '</span><span class="rng">' + w[2] + " (" + w[3] + ")</span></div>").join("");
-      }
-    });
-    if (m.fish.some(t => Array.isArray(t[1]))) {
-      html += '<p class="fnote">Listes fixes pour Surf, Canne et Super Canne. Niveaux + 0 à 7 après le badge Cascade.</p>';
-    }
+    const p = fish.find(t => t[0] === "Pêche" && typeof t[1] === "string");
+    html += wnote(p ? p[1] : "Aucun Pokémon disponible en Pêchant.");
   }
   wildEl.innerHTML = html;
 }
