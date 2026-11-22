@@ -1145,10 +1145,10 @@ const MARKERS_VIRIDIAN = [
   { cat: "pnj", spr: true, icon: "gambler", x: 17, y: 5, name: "Joueur", hs: "cache" },
   { cat: "hidden", tipIcon: "potion", x: 14, y: 4, name: "Potion" },
   { cat: "hidden", tipIcon: "potion", x: 36, y: 11, name: "Potion" },
-  { cat: "warp", x: 23, y: 25, name: "Centre Pokémon", dx: 3, dy: 7, badge: "Centre" },
+  { cat: "warp", x: 23, y: 25, name: "Centre Pokémon", dx: 3, dy: 7, badge: "Pokécentre" },
   { cat: "warp", x: 29, y: 19, name: "Magasin", dx: 3, dy: 7, badge: "Magasin" },
   { cat: "warp", x: 21, y: 15, name: "École", dx: 2, dy: 7, badge: "École" },
-  { cat: "warp", x: 21, y: 9, name: "Maison des surnoms", dx: 2, dy: 7, badge: "Surnoms" },
+  { cat: "warp", x: 21, y: 9, name: "Maison des surnoms", dx: 2, dy: 7, badge: "Maison" },
   { cat: "warp", x: 32, y: 7, name: "Arène", dx: 16, dy: 17, badge: "Arène" }
 ];
 
@@ -1197,8 +1197,8 @@ const MARKERS_ROUTE23 = [
   { cat: "hidden", tipIcon: "max_ether", x: 8, y: 90, name: "Huile Max" },
   { cat: "hidden", tipIcon: "tm_hm", x: 19, y: 116, name: "CT25 Fatal-Foudre" },
   { cat: "warp", x: 8, y: 139, name: "Porte Route 22", dx: 4, dy: 0, badge: "Porte" },
-  { cat: "warp", x: 4, y: 31, name: "Route Victoire", dx: 8, dy: 17, badge: "RV" },
-  { cat: "warp", x: 14, y: 31, name: "Route Victoire E1", dx: 29, dy: 7, badge: "RV E1" }
+  { cat: "warp", x: 4, y: 31, name: "Route Victoire", dx: 8, dy: 17, badge: "Route Victoire" },
+  { cat: "warp", x: 14, y: 31, name: "Route Victoire E1", dx: 29, dy: 7, badge: "Route Victoire" }
 ];
 
 /* Marqueurs du Plateau Indigo (data/maps/objects/IndigoPlateau.asm) : porte du
@@ -1436,12 +1436,12 @@ const MARKERS_HOF = [
    Cave Taupiqueur, 2 postes de la Forêt de Jade, maison de l'échange, 2 portes du
    poste de garde ; PV Plus et Pierre Lune au sol (HP_UP, MOON_STONE). */
 const MARKERS_R2 = [
-  { cat: "warp", x: 16, y: 9, name: "Entrée Route 2 Cave Taupiqueur", dx: 2, dy: 7, badge: "Entrée" },
-  { cat: "warp", x: 7, y: 11, name: "Porte Nord Forêt de Jade", dx: 5, dy: 0, badge: "Porte" },
+  { cat: "warp", x: 16, y: 9, name: "Entrée Route 2 Cave Taupiqueur", dx: 2, dy: 7, badge: "Cave Taupiqueur" },
+  { cat: "warp", x: 7, y: 11, name: "Porte Nord Forêt de Jade", dx: 5, dy: 0, badge: "Forêt Jade" },
   { cat: "warp", x: 19, y: 19, name: "Maison de l'échange", dx: 2, dy: 7, badge: "Échange" },
-  { cat: "warp", x: 20, y: 35, name: "Porte Route 2", dx: 5, dy: 0, badge: "Porte" },
-  { cat: "warp", x: 19, y: 39, name: "Porte Route 2", dx: 4, dy: 7, badge: "Porte" },
-  { cat: "warp", x: 7, y: 43, name: "Porte Sud Forêt de Jade", dx: 4, dy: 7, badge: "Porte" },
+  { cat: "warp", x: 20, y: 35, name: "Porte Route 2", dx: 5, dy: 0, badge: "Flash" },
+  { cat: "warp", x: 19, y: 39, name: "Porte Route 2", dx: 4, dy: 7, badge: "Flash" },
+  { cat: "warp", x: 7, y: 43, name: "Porte Sud Forêt de Jade", dx: 4, dy: 7, badge: "Forêt Jade" },
   { cat: "item", spr: true, icon: "ball", tipIcon: "hp_up", ballMini: true, x: 17, y: 45, name: "PV Plus" },
   { cat: "item", spr: true, icon: "ball", tipIcon: "moon_stone", ballMini: true, x: 17, y: 54, name: "Pierre Lune" }
 ];
@@ -1461,7 +1461,7 @@ const MARKERS_ARG = [
   { cat: "warp", x: 29, y: 13, name: "Maison du Nidoran♂", dx: 2, dy: 7, badge: "Maison" },
   { cat: "warp", x: 23, y: 17, name: "Magasin (Argenta)", dx: 3, dy: 7, badge: "Magasin" },
   { cat: "warp", x: 7, y: 29, name: "Maison (Argenta)", dx: 2, dy: 7, badge: "Maison" },
-  { cat: "warp", x: 13, y: 25, name: "Centre Pokémon (Argenta)", dx: 3, dy: 7, badge: "Centre" }
+  { cat: "warp", x: 13, y: 25, name: "Centre Pokémon (Argenta)", dx: 3, dy: 7, badge: "Pokécentre" }
 ];
 /* Porte de la Route 2 (Route2Gate.asm) : l'aide du Prof. Chen donne
    CS05 Flash à 10 captures (scripts/Route2Gate.asm). */
@@ -1486,8 +1486,7 @@ const MARKERS_R2TRADE = [
 const MARKERS_R2CAVE = [
   { cat: "pnj", spr: true, icon: "fisher", x: 3, y: 3, name: "Pêcheur" },
   { cat: "warp", x: 2, y: 7, name: "Route 2", dx: 16, dy: 9, badge: "Sortie" },
-  { cat: "warp", x: 3, y: 7, name: "Route 2", dx: 16, dy: 9, badge: "Sortie" },
-  { cat: "warp", x: 4, y: 4, name: "Cave Taupiqueur", dx: 5, dy: 5, badge: "Cave" }
+  { cat: "warp", x: 4, y: 4, name: "Cave Taupiqueur", dx: 5, dy: 5, badge: "Cave Taupiqueur" }
 ];
 /* Centre Pokémon d'Argenta (PewterPokecenter.asm) : Rondoudou, Leveinard,
    hôtesse du Cable Club (scripts/PewterPokecenter.asm). */
@@ -1580,11 +1579,7 @@ const MARKERS_FOREST = [
   { cat: "hidden", tipIcon: "potion", x: 1, y: 18, name: "Potion" },
   { cat: "hidden", tipIcon: "antidote", x: 17, y: 42, name: "Antidote" },
   { cat: "warp", x: 1, y: 0, name: "Porte Nord Forêt de Jade", dx: 4, dy: 7, badge: "Porte" },
-  { cat: "warp", x: 2, y: 0, name: "Porte Nord Forêt de Jade", dx: 5, dy: 7, badge: "Porte" },
-  { cat: "warp", x: 15, y: 47, name: "Porte Sud Forêt de Jade", dx: 5, dy: 0, badge: "Porte" },
-  { cat: "warp", x: 16, y: 47, name: "Porte Sud Forêt de Jade", dx: 5, dy: 0, badge: "Porte" },
-  { cat: "warp", x: 17, y: 47, name: "Porte Sud Forêt de Jade", dx: 5, dy: 0, badge: "Porte" },
-  { cat: "warp", x: 18, y: 47, name: "Porte Sud Forêt de Jade", dx: 5, dy: 0, badge: "Porte" }
+  { cat: "warp", x: 16, y: 47, name: "Porte Sud Forêt de Jade", dx: 5, dy: 0, badge: "Porte" }
 ];
 /* Poste nord de la Forêt de Jade (ViridianForestNorthGate.asm) : les 2 warps
    nord mènent à la Route 2 (atterrissage (7,11)), les 2 sud retournent dans la
@@ -1592,10 +1587,8 @@ const MARKERS_FOREST = [
 const MARKERS_FNGATE = [
   { cat: "pnj", spr: true, icon: "black_hair_boy_2", x: 3, y: 2, name: "Homme" },
   { cat: "pnj", spr: true, icon: "old_person", x: 2, y: 5, name: "Personne âgée" },
-  { cat: "warp", x: 4, y: 0, name: "Route 2", dx: 7, dy: 11, badge: "Sortie" },
   { cat: "warp", x: 5, y: 0, name: "Route 2", dx: 7, dy: 11, badge: "Sortie" },
-  { cat: "warp", x: 4, y: 7, name: "Forêt de Jade", dx: 1, dy: 0, badge: "Forêt" },
-  { cat: "warp", x: 5, y: 7, name: "Forêt de Jade", dx: 1, dy: 0, badge: "Forêt" }
+  { cat: "warp", x: 4, y: 7, name: "Forêt de Jade", dx: 1, dy: 0, badge: "Forêt Jade" }
 ];
 /* Poste sud de la Forêt de Jade (ViridianForestSouthGate.asm) : la petite
    fille donne 5 Poké Balls si un Rattata est en tête (scripts/
@@ -1604,18 +1597,16 @@ const MARKERS_FNGATE = [
 const MARKERS_FSGATE = [
   { cat: "pnj", spr: true, icon: "girl", x: 8, y: 4, dir: "left", name: "Fillette" },
   { cat: "pnj", spr: true, icon: "little_girl", x: 2, y: 4, name: "Gamine", give: ["poke_ball", "Poké Ball ×5 (Rattata en tête)"] },
-  { cat: "warp", x: 4, y: 0, name: "Forêt de Jade", dx: 17, dy: 47, badge: "Forêt" },
-  { cat: "warp", x: 5, y: 0, name: "Forêt de Jade", dx: 18, dy: 47, badge: "Forêt" },
-  { cat: "warp", x: 4, y: 7, name: "Route 2", dx: 7, dy: 43, badge: "Sortie" },
-  { cat: "warp", x: 5, y: 7, name: "Route 2", dx: 7, dy: 43, badge: "Sortie" }
+  { cat: "warp", x: 5, y: 0, name: "Forêt de Jade", dx: 16, dy: 47, badge: "Forêt Jade" },
+  { cat: "warp", x: 4, y: 7, name: "Route 2", dx: 7, dy: 43, badge: "Sortie" }
 ];
 const MARKERS_DCAVE = [
   { cat: "pnj", spr: true, icon: "book_map_dex", x: 35, y: 5, name: "Livre", give: ["soul_stone", "Pierre Ame"] },
   { cat: "pnj", spr: true, icon: "boulder", x: 21, y: 25, name: "Rocher" },
   { cat: "hidden", tipIcon: "nugget", x: 30, y: 13, name: "Pépite" },
   { cat: "hidden", tipIcon: "moon_stone", x: 20, y: 19, name: "Pierre Lune" },
-  { cat: "warp", x: 5, y: 5, name: "Entrée Route 2 Cave Taupiqueur", dx: 4, dy: 4, badge: "Entrée" },
-  { cat: "warp", x: 37, y: 31, name: "Entrée Route 11 Cave Taupiqueur", dx: 4, dy: 4, badge: "Entrée" }
+  { cat: "warp", x: 5, y: 5, name: "Entrée Route 2 Cave Taupiqueur", dx: 4, dy: 4, badge: "Cave Taupiqueur" },
+  { cat: "warp", x: 37, y: 31, name: "Entrée Route 11 Cave Taupiqueur", dx: 4, dy: 4, badge: "Cave Taupiqueur" }
 ];
 
 /* Entrée Route 11 de la Cave Taupiqueur (DiglettsCaveRoute11.asm) :
@@ -1624,9 +1615,8 @@ const MARKERS_DCAVE = [
    la porte intérieure mène à la Cave Taupiqueur. */
 const MARKERS_R11CAVE = [
   { cat: "pnj", spr: true, icon: "gambler", x: 2, y: 3, name: "Joueur" },
-  { cat: "warp", x: 2, y: 7, name: "Route 11", dx: 4, dy: 5, badge: "R11" },
-  { cat: "warp", x: 3, y: 7, name: "Route 11", dx: 4, dy: 5, badge: "R11" },
-  { cat: "warp", x: 4, y: 4, name: "Cave Taupiqueur", dx: 37, dy: 31, badge: "Grotte" }
+  { cat: "warp", x: 2, y: 7, name: "Route 11", dx: 4, dy: 5, badge: "Sortie" },
+  { cat: "warp", x: 4, y: 4, name: "Cave Taupiqueur", dx: 37, dy: 31, badge: "Cave Taupiqueur" }
 ];
 
 
@@ -1654,10 +1644,10 @@ const MARKERS_ROUTE4 = [
   { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 53, y: 4, name: "CT03 DanseLm" },
   { cat: "hidden", tipIcon: "great_ball", x: 61, y: 15, name: "Super Ball" },
   { cat: "hidden", tipIcon: "moon_stone", x: 64, y: 2, name: "Pierre Lune" },
-  { cat: "warp", x: 11, y: 5, name: "Centre Pokémon Mont Sélénite", dx: 3, dy: 7, badge: "Centre" },
-  { cat: "warp", x: 18, y: 5, name: "Mont Sélénite", dx: 14, dy: 35, badge: "MS RDC" },
-  { cat: "warp", x: 26, y: 5, name: "Mont Sélénite SS1", dx: 26, dy: 3, badge: "MS SS1" },
-  { cat: "warp", x: 38, y: 3, name: "Mont Sélénite (Aire de repos)", dx: 16, dy: 5, badge: "Aire" }
+  { cat: "warp", x: 11, y: 5, name: "Centre Pokémon Mont Sélénite", dx: 3, dy: 7, badge: "Pokécentre" },
+  { cat: "warp", x: 18, y: 5, name: "Mont Sélénite", dx: 14, dy: 35, badge: "Mont Sélénite" },
+  { cat: "warp", x: 26, y: 5, name: "Mont Sélénite SS1", dx: 26, dy: 3, badge: "Mont Sélénite" },
+  { cat: "warp", x: 38, y: 3, name: "Mont Sélénite (Aire de repos)", dx: 16, dy: 5, badge: "Aire repos" }
 ];
 /* Mont Sélénite (MountMoon1F.asm) : 7 dresseurs, 6 objets au sol (Potion ×2,
    Pierre Lune, Super Bonbon, Corde Sortie, Superepousse), 3 descentes vers le
@@ -1697,7 +1687,7 @@ const MARKERS_MOONB1F = [
   { cat: "warp", x: 21, y: 17, name: "Mont Sélénite SS2", dx: 21, dy: 17, badge: "SS2" },
   { cat: "warp", x: 13, y: 27, name: "Mont Sélénite SS2", dx: 15, dy: 27, badge: "SS2" },
   { cat: "warp", x: 23, y: 3, name: "Mont Sélénite SS2", dx: 5, dy: 7, badge: "SS2" },
-  { cat: "warp", x: 26, y: 3, name: "Route 4", dx: 26, dy: 5, badge: "Sortie" },
+  { cat: "warp", x: 27, y: 2, name: "Route 4", dx: 26, dy: 5, badge: "Sortie" },
   { cat: "warp", x: 27, y: 3, name: "Route 4", dx: 26, dy: 5, badge: "Sortie" }
 ];
 /* Mont Sélénite SS2 (MountMoonB2F.asm) : l'Intéllo bloque le choix du
@@ -1727,7 +1717,7 @@ const MARKERS_MOONB2F = [
 const MARKERS_MOONSQ = [
   { cat: "pnj", spr: true, icon: "clefairy", x: 7, y: 8, name: "Mélofée" },
   { cat: "pnj", spr: true, icon: "clefairy", x: 9, y: 8, name: "Mélofée" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "soul_stone", ballMini: true, x: 24, y: 9, name: "Pierre Ame" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "soul_stone", ballMini: true, x: 24, y: 5, name: "Pierre Ame" },
   { cat: "hidden", tipIcon: "moon_stone", x: 8, y: 8, name: "Pierre Lune" },
   { cat: "warp", x: 16, y: 5, name: "Route 4", dx: 38, dy: 3, badge: "Sortie" }
 ];
@@ -1772,18 +1762,18 @@ const MARKERS_AZURIA = [
   { cat: "pnj", spr: true, icon: "rhyhorn", x: 35, y: 18, name: "Rhinocorne" },
   { cat: "hidden", tipIcon: "rare_candy", x: 15, y: 8, name: "Super Bonbon" },
   { cat: "hidden", tipIcon: "max_revive", x: 6, y: 31, name: "Rappel Max" },
-  { cat: "warp", x: 27, y: 11, name: "Maison cambriolée (Azuria)", dx: 2, dy: 7, badge: "Saccagée" },
+  { cat: "warp", x: 27, y: 11, name: "Maison cambriolée (Azuria)", dx: 2, dy: 7, badge: "Cambriolage" },
   { cat: "warp", x: 13, y: 15, name: "Maison de l'échange (Azuria)", dx: 2, dy: 7, badge: "Échange" },
-  { cat: "warp", x: 19, y: 17, name: "Centre Pokémon (Azuria)", dx: 3, dy: 7, badge: "Centre" },
+  { cat: "warp", x: 19, y: 17, name: "Centre Pokémon (Azuria)", dx: 3, dy: 7, badge: "Pokécentre" },
   { cat: "warp", x: 30, y: 19, name: "Arène (Azuria)", dx: 4, dy: 13, badge: "Arène" },
   { cat: "warp", x: 13, y: 25, name: "Magasin de vélos (Azuria)", dx: 2, dy: 7, badge: "Vélos" },
   { cat: "warp", x: 25, y: 25, name: "Magasin (Azuria)", dx: 3, dy: 7, badge: "Magasin" },
-  { cat: "warp", x: 4, y: 11, name: "Caverne Azurée 1F", dx: 24, dy: 17, badge: "Caverne" },
-  { cat: "warp", x: 27, y: 9, name: "Maison cambriolée (Azuria)", dx: 3, dy: 0, badge: "Saccagée" },
+  { cat: "warp", x: 4, y: 11, name: "Caverne Azurée", dx: 24, dy: 17, badge: "Caverne Azurée" },
+  { cat: "warp", x: 27, y: 9, name: "Maison cambriolée (Azuria)", dx: 3, dy: 0, badge: "Cambriolage" },
   { cat: "warp", x: 9, y: 11, name: "Maison des Badges (Azuria)", dx: 2, dy: 7, badge: "Badges" },
   { cat: "warp", x: 9, y: 9, name: "Maison des Badges (Azuria)", dx: 2, dy: 0, badge: "Badges" },
   { cat: "warp", x: 19, y: 25, name: "Imprimante (Azuria)", dx: 2, dy: 7, badge: "Imprimante" },
-  { cat: "warp", x: 29, y: 25, name: "Maison Mélanie (Azuria)", dx: 2, dy: 7, badge: "Mélanie" }
+  { cat: "warp", x: 29, y: 25, name: "Maison Mélanie (Azuria)", dx: 2, dy: 7, badge: "Maison" }
 ];
 /* Maison cambriolée d'Azuria (CeruleanTrashedHouse.asm) : visitée par le Rocket
    de la ville ; porte arrière (warp 3,0) vers la ruelle nord. */
@@ -2003,11 +1993,11 @@ const MARKERS_ROUTE9 = [
 const MARKERS_ROUTE10 = [
   { cat: "trainer", spr: true, icon: "black_hair_boy_2", x: 13, y: 49, dir: "left", name: "PokéManiac n°1", team: [["magmar", "Magmar", 43], ["jynx", "Lippoutou", 43], ["lapras", "Lokhlass", 43]] },
   { cat: "trainer", spr: true, icon: "lass", x: 9, y: 31, dir: "left", name: "Dresseur jr♀ n°1", team: [["clefairy", "Mélofée", 25], ["wigglytuff", "Grodoudou", 25]] },
-  { cat: "warp", x: 13, y: 25, name: "Pokécentre de la Grotte Sombre", dx: 3, dy: 7, badge: "PC Grotte" },
-  { cat: "warp", x: 10, y: 23, name: "Grotte Sombre", dx: 15, dy: 3, badge: "Grotte" },
+  { cat: "warp", x: 13, y: 25, name: "Pokécentre de la Grotte Sombre", dx: 3, dy: 7, badge: "Pokécentre" },
+  { cat: "warp", x: 10, y: 23, name: "Grotte Sombre", dx: 15, dy: 3, badge: "Grotte Sombre" },
   { cat: "warp", x: 8, y: 45, name: "Centrale", dx: 4, dy: 23, badge: "Centrale" },
   { cat: "warp", x: 5, y: 43, name: "Centrale E1", dx: 0, dy: 11, badge: "Centrale" },
-  { cat: "hidden", tipIcon: "water_stone", x: 10, y: 6, name: "Pierre Eau" },
+  { cat: "hidden", tipIcon: "soul_stone", x: 10, y: 6, name: "Pierre Ame" },
   { cat: "hidden", tipIcon: "calcium", x: 11, y: 25, name: "Calcium" }
 ];
 /* Route 10 South (data/maps/objects/Route10South.asm) : tronçon sud de la
@@ -2024,7 +2014,7 @@ const MARKERS_ROUTE10SOUTH = [
   { cat: "trainer", spr: true, icon: "black_hair_boy_2", x: 15, y: 16, dir: "left", name: "PokéManiac n°1", team: [["kangaskhan", "Kangourex", 27]] },
   { cat: "trainer", spr: true, icon: "hiker", x: 4, y: 15, dir: "right", name: "Montagnard n°2", team: [["zubat", "Nosferapti", 25], ["onix", "Onix", 25], ["golbat", "Nosferalto", 25]] },
   { cat: "trainer", spr: true, icon: "lass", x: 9, y: 6, dir: "down", name: "Dresseur jr♀ n°1", team: [["pidgeotto", "Roucoups", 26], ["farfetchd", "Canarticho", 26]] },
-  { cat: "warp", x: 10, y: 5, name: "Grotte Sombre", dx: 15, dy: 33, badge: "Grotte" },
+  { cat: "warp", x: 10, y: 5, name: "Grotte Sombre", dx: 15, dy: 33, badge: "Grotte Sombre" },
   { cat: "hidden", tipIcon: "max_ether", x: 18, y: 4, name: "Huile Max" }
 ];
 /* Lavanville (data/maps/objects/LavenderTown.asm, scripts/LavenderTown.asm,
@@ -2049,8 +2039,8 @@ const MARKERS_LAVENDER = [
   { cat: "warp", x: 14, y: 5, name: "Tour Pokémon 1F", dx: 10, dy: 17, badge: "Tour" },
   { cat: "warp", x: 7, y: 9, name: "Maison de Fuji", dx: 2, dy: 7, badge: "Fuji" },
   { cat: "warp", x: 15, y: 13, name: "Magasin (Lavanville)", dx: 3, dy: 7, badge: "Magasin" },
-  { cat: "warp", x: 3, y: 13, name: "Maison d'Osselait", dx: 2, dy: 7, badge: "Osselait" },
-  { cat: "warp", x: 7, y: 13, name: "Maison du Juge de noms", dx: 2, dy: 7, badge: "Juge" }
+  { cat: "warp", x: 3, y: 13, name: "Maison d'Osselait", dx: 2, dy: 7, badge: "Maison" },
+  { cat: "warp", x: 7, y: 13, name: "Maison du Renommeur", dx: 2, dy: 7, badge: "Renommeur" }
 ];
 
 /* Pokécentre de la Grotte Sombre (RockTunnelPokecenter.asm) : Infirmière et
@@ -2410,10 +2400,10 @@ const MARKERS_ROUTE5 = [
    warps vers la Route 5, NoHS, aucune rencontre. */
 const MARKERS_R5GATE = [
   { cat: "pnj", spr: true, icon: "guard", x: 1, y: 3, dir: "right", name: "Garde" },
-  { cat: "warp", x: 3, y: 5, name: "Route 5", dx: 10, dy: 33, badge: "R5" },
-  { cat: "warp", x: 4, y: 5, name: "Route 5", dx: 10, dy: 33, badge: "R5" },
-  { cat: "warp", x: 3, y: 0, name: "Route 5", dx: 9, dy: 29, badge: "R5" },
-  { cat: "warp", x: 4, y: 0, name: "Route 5", dx: 10, dy: 29, badge: "R5" }
+  { cat: "warp", x: 3, y: 5, name: "Route 5", dx: 10, dy: 33, badge: "Sortie" },
+  { cat: "warp", x: 4, y: 5, name: "Route 5", dx: 10, dy: 33, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 0, name: "Route 5", dx: 9, dy: 29, badge: "Sortie" },
+  { cat: "warp", x: 4, y: 0, name: "Route 5", dx: 10, dy: 29, badge: "Sortie" }
 ];
 
 /* Porte Route 8 (data/maps/objects/Route8Gate.asm,
@@ -2421,10 +2411,10 @@ const MARKERS_R5GATE = [
    (saffron_gates.asm) ; 4 warps vers la Route 8, NoHS, aucune rencontre. */
 const MARKERS_R8GATE = [
   { cat: "pnj", spr: true, icon: "guard", x: 2, y: 1, dir: "down", name: "Garde" },
-  { cat: "warp", x: 0, y: 3, name: "Route 8", dx: 1, dy: 9, badge: "R8" },
-  { cat: "warp", x: 0, y: 4, name: "Route 8", dx: 1, dy: 10, badge: "R8" },
-  { cat: "warp", x: 5, y: 3, name: "Route 8", dx: 8, dy: 9, badge: "R8" },
-  { cat: "warp", x: 5, y: 4, name: "Route 8", dx: 8, dy: 10, badge: "R8" }
+  { cat: "warp", x: 0, y: 3, name: "Route 8", dx: 1, dy: 9, badge: "Sortie" },
+  { cat: "warp", x: 0, y: 4, name: "Route 8", dx: 1, dy: 10, badge: "Sortie" },
+  { cat: "warp", x: 5, y: 3, name: "Route 8", dx: 8, dy: 9, badge: "Sortie" },
+  { cat: "warp", x: 5, y: 4, name: "Route 8", dx: 8, dy: 10, badge: "Sortie" }
 ];
 
 /* Entrée du Souterrain Route 8 (data/maps/objects/UndergroundPathRoute8.asm)
@@ -2434,8 +2424,8 @@ const MARKERS_R8GATE = [
    rencontre. */
 const MARKERS_UPR8 = [
   { cat: "pnj", spr: true, icon: "girl", x: 3, y: 4, name: "Fillette" },
-  { cat: "warp", x: 3, y: 7, name: "Route 8", dx: 13, dy: 5, badge: "R8" },
-  { cat: "warp", x: 4, y: 7, name: "Route 8", dx: 13, dy: 5, badge: "R8" },
+  { cat: "warp", x: 3, y: 7, name: "Route 8", dx: 13, dy: 5, badge: "Sortie" },
+  { cat: "warp", x: 4, y: 7, name: "Route 8", dx: 13, dy: 5, badge: "Sortie" },
   { cat: "warp", x: 4, y: 4, name: "Souterrain Ouest-Est", dx: 46, dy: 1, badge: "Souterrain" }
 ];
 
@@ -2454,8 +2444,8 @@ const MARKERS_UPWE = [
   { cat: "item", spr: true, icon: "ball", tipIcon: "m_gene", ballMini: true, x: 22, y: 4, name: "Modif.Gène", hs: "cache" },
   { cat: "hidden", tipIcon: "nugget", x: 12, y: 2, name: "Pépite" },
   { cat: "hidden", tipIcon: "elixer", x: 21, y: 5, name: "Élixir" },
-  { cat: "warp", x: 3, y: 1, name: "Passage Souterrain Route 7", dx: 3, dy: 7, badge: "R7" },
-  { cat: "warp", x: 46, y: 1, name: "Passage Souterrain Route 8", dx: 4, dy: 4, badge: "R8" }
+  { cat: "warp", x: 3, y: 1, name: "Passage Souterrain Route 7", dx: 3, dy: 7, badge: "Sortie" },
+  { cat: "warp", x: 46, y: 1, name: "Passage Souterrain Route 8", dx: 4, dy: 4, badge: "Sortie" }
 ];
 
 /* Porte Route 12, 1F (data/maps/objects/Route12Gate1F.asm) : un
@@ -2464,10 +2454,10 @@ const MARKERS_UPWE = [
    rencontre. */
 const MARKERS_R12GATE1F = [
   { cat: "pnj", spr: true, icon: "guard", x: 1, y: 3, name: "Garde" },
-  { cat: "warp", x: 4, y: 0, name: "Route 12", dx: 10, dy: 15, badge: "R12" },
-  { cat: "warp", x: 5, y: 0, name: "Route 12", dx: 11, dy: 15, badge: "R12" },
-  { cat: "warp", x: 4, y: 7, name: "Route 12", dx: 10, dy: 21, badge: "R12" },
-  { cat: "warp", x: 5, y: 7, name: "Route 12", dx: 10, dy: 21, badge: "R12" },
+  { cat: "warp", x: 4, y: 0, name: "Route 12", dx: 10, dy: 15, badge: "Sortie" },
+  { cat: "warp", x: 5, y: 0, name: "Route 12", dx: 11, dy: 15, badge: "Sortie" },
+  { cat: "warp", x: 4, y: 7, name: "Route 12", dx: 10, dy: 21, badge: "Sortie" },
+  { cat: "warp", x: 5, y: 7, name: "Route 12", dx: 10, dy: 21, badge: "Sortie" },
   { cat: "warp", x: 8, y: 6, name: "Porte Route 12 E1", dx: 7, dy: 7, badge: "E1" }
 ];
 
@@ -2488,8 +2478,8 @@ const MARKERS_R12GATE2F = [
    Route 12. NoHS, aucune rencontre. */
 const MARKERS_R12HOUSE = [
   { cat: "pnj", spr: true, icon: "fisher", x: 2, y: 4, dir: "right", name: "Maître Pêcheur", give: ["super_rod", "Méga Canne"], scripted: true },
-  { cat: "warp", x: 2, y: 7, name: "Route 12", dx: 11, dy: 77, badge: "R12" },
-  { cat: "warp", x: 3, y: 7, name: "Route 12", dx: 11, dy: 77, badge: "R12" }
+  { cat: "warp", x: 2, y: 7, name: "Route 12", dx: 11, dy: 77, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 7, name: "Route 12", dx: 11, dy: 77, badge: "Sortie" }
 ];
 
 /* Maison de la Copieuse, 1F (data/maps/objects/SaffronCopycatsHouse1F.asm) :
@@ -2672,9 +2662,9 @@ const MARKERS_SYLPH1F = [
    depuis la mise à jour 45). NoHS, aucune rencontre. */
 const MARKERS_UPR5 = [
   { cat: "pnj", spr: true, icon: "little_girl", x: 2, y: 3, name: "Gamine", trade: ["houndour", "Malosse", "nidoranf", "Nidoran♀"] },
-  { cat: "warp", x: 3, y: 7, name: "Route 5", dx: 17, dy: 27, badge: "R5" },
-  { cat: "warp", x: 4, y: 7, name: "Route 5", dx: 17, dy: 27, badge: "R5" },
-  { cat: "warp", x: 4, y: 4, name: "Souterrain Nord-Sud", dx: 6, dy: 1, badge: "N-S" }
+  { cat: "warp", x: 3, y: 7, name: "Route 5", dx: 17, dy: 27, badge: "Sortie" },
+  { cat: "warp", x: 4, y: 7, name: "Route 5", dx: 17, dy: 27, badge: "Sortie" },
+  { cat: "warp", x: 4, y: 4, name: "Souterrain Nord-Sud", dx: 6, dy: 1, badge: "Souterrain" }
 ];
 
 /* Passage Souterrain Route 7 (data/maps/objects/UndergroundPathRoute7.asm)
@@ -2684,8 +2674,8 @@ const MARKERS_UPR5 = [
    jour 45). NoHS, aucune rencontre. */
 const MARKERS_UPR7 = [
   { cat: "pnj", spr: true, icon: "fat_bald_guy", x: 2, y: 4, name: "Homme" },
-  { cat: "warp", x: 3, y: 7, name: "Route 7", dx: 5, dy: 13, badge: "R7" },
-  { cat: "warp", x: 4, y: 7, name: "Route 7", dx: 5, dy: 13, badge: "R7" },
+  { cat: "warp", x: 3, y: 7, name: "Route 7", dx: 5, dy: 13, badge: "Sortie" },
+  { cat: "warp", x: 4, y: 7, name: "Route 7", dx: 5, dy: 13, badge: "Sortie" },
   { cat: "warp", x: 4, y: 4, name: "Souterrain Ouest-Est", dx: 3, dy: 1, badge: "Souterrain" }
 ];
 
@@ -2693,9 +2683,9 @@ const MARKERS_UPR7 = [
    élève les Pokémon déposés (100 P$ par niveau gagné) ; 2 portes vers la
    Route 5. NoHS, aucune rencontre. */
 const MARKERS_PENSION = [
-  { cat: "pnj", spr: true, icon: "gentleman", x: 2, y: 3, dir: "right", name: "Gentleman" },
-  { cat: "warp", x: 2, y: 7, name: "Route 5", dx: 10, dy: 21, badge: "R5" },
-  { cat: "warp", x: 3, y: 7, name: "Route 5", dx: 10, dy: 21, badge: "R5" }
+  { cat: "pnj", spr: true, icon: "gentleman", x: 2, y: 3, dir: "right", name: "Gérant de la Pension" },
+  { cat: "warp", x: 2, y: 7, name: "Route 5", dx: 10, dy: 21, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 7, name: "Route 5", dx: 10, dy: 21, badge: "Sortie" }
 ];
 
 /* Sylphe SARL, 2F (data/maps/objects/SaffronSilphCo2F.asm +
@@ -2989,10 +2979,10 @@ const MARKERS_ROUTE7 = [
    NoHS, aucune rencontre. */
 const MARKERS_R6GATE = [
   { cat: "pnj", spr: true, icon: "guard", x: 6, y: 2, dir: "left", name: "Garde" },
-  { cat: "warp", x: 3, y: 5, name: "Route 6", dx: 10, dy: 5, badge: "R6" },
-  { cat: "warp", x: 4, y: 5, name: "Route 6", dx: 10, dy: 5, badge: "R6" },
-  { cat: "warp", x: 3, y: 0, name: "Route 6", dx: 10, dy: 1, badge: "R6" },
-  { cat: "warp", x: 4, y: 0, name: "Route 6", dx: 11, dy: 1, badge: "R6" },
+  { cat: "warp", x: 3, y: 5, name: "Route 6", dx: 10, dy: 5, badge: "Sortie" },
+  { cat: "warp", x: 4, y: 5, name: "Route 6", dx: 10, dy: 5, badge: "Sortie" },
+  { cat: "warp", x: 3, y: 0, name: "Route 6", dx: 10, dy: 1, badge: "Sortie" },
+  { cat: "warp", x: 4, y: 0, name: "Route 6", dx: 11, dy: 1, badge: "Sortie" },
 ];
 
 /* Porte Route 7 (data/maps/objects/Route7Gate.asm +
@@ -3002,10 +2992,10 @@ const MARKERS_R6GATE = [
    (18,9)/(18,10), ouest (11,9)/(11,10)). NoHS, aucune rencontre. */
 const MARKERS_R7GATE = [
   { cat: "pnj", spr: true, icon: "guard", x: 3, y: 1, dir: "down", name: "Garde" },
-  { cat: "warp", x: 0, y: 3, name: "Route 7", dx: 18, dy: 9, badge: "R7" },
-  { cat: "warp", x: 0, y: 4, name: "Route 7", dx: 18, dy: 10, badge: "R7" },
-  { cat: "warp", x: 5, y: 3, name: "Route 7", dx: 11, dy: 9, badge: "R7" },
-  { cat: "warp", x: 5, y: 4, name: "Route 7", dx: 11, dy: 10, badge: "R7" },
+  { cat: "warp", x: 0, y: 3, name: "Route 7", dx: 18, dy: 9, badge: "Sortie" },
+  { cat: "warp", x: 0, y: 4, name: "Route 7", dx: 18, dy: 10, badge: "Sortie" },
+  { cat: "warp", x: 5, y: 3, name: "Route 7", dx: 11, dy: 9, badge: "Sortie" },
+  { cat: "warp", x: 5, y: 4, name: "Route 7", dx: 11, dy: 10, badge: "Sortie" },
 ];
 
 /* Souterrain Nord-Sud (data/maps/objects/UndergroundPathNorthSouth.asm)
@@ -3016,8 +3006,8 @@ const MARKERS_R7GATE = [
    (hidden_objects.asm). NoHS, aucune rencontre. */
 const MARKERS_UPNS = [
   { cat: "trainer", spr: true, icon: "waiter", x: 4, y: 20, dir: "right", name: "Cilque", scripted: true, spoil2: true, t2label: "Mec louche" },
-  { cat: "warp", x: 6, y: 1, name: "Passage Souterrain Route 5", dx: 4, dy: 4, badge: "R5" },
-  { cat: "warp", x: 2, y: 37, name: "Passage Souterrain Route 6", dx: 4, dy: 4, badge: "R6" },
+  { cat: "warp", x: 6, y: 1, name: "Passage Souterrain Route 5", dx: 4, dy: 4, badge: "Sortie" },
+  { cat: "warp", x: 2, y: 37, name: "Passage Souterrain Route 6", dx: 4, dy: 4, badge: "Sortie" },
   { cat: "hidden", tipIcon: "full_restore", x: 5, y: 8, name: "Total Soin" },
   { cat: "hidden", tipIcon: "x_special", x: 4, y: 34, name: "Spécial +" },
 ];
@@ -3028,9 +3018,9 @@ const MARKERS_UPNS = [
    aucune rencontre. */
 const MARKERS_UPR6 = [
   { cat: "pnj", spr: true, icon: "girl", x: 2, y: 3, name: "Fillette" },
-  { cat: "warp", x: 3, y: 7, name: "Route 6", dx: 17, dy: 13, badge: "R6" },
-  { cat: "warp", x: 4, y: 7, name: "Route 6", dx: 17, dy: 13, badge: "R6" },
-  { cat: "warp", x: 4, y: 4, name: "Souterrain Nord-Sud", dx: 2, dy: 37, badge: "N-S" },
+  { cat: "warp", x: 3, y: 7, name: "Route 6", dx: 17, dy: 13, badge: "Sortie" },
+  { cat: "warp", x: 4, y: 7, name: "Route 6", dx: 17, dy: 13, badge: "Sortie" },
+  { cat: "warp", x: 4, y: 4, name: "Souterrain Nord-Sud", dx: 2, dy: 37, badge: "Souterrain" },
 ];
 
 /* Carmin sur Mer (data/maps/objects/VermilionCity.asm) : l'Agent Jenny
@@ -3050,7 +3040,7 @@ const MARKERS_VMCITY = [
   { cat: "pnj", spr: true, icon: "sailor", x: 25, y: 27, name: "Marin" },
   { cat: "pnj", spr: true, icon: "slowbro", x: 15, y: 19, dir: "down", name: "Flagadoss", scripted: true },
   { cat: "hidden", tipIcon: "max_ether", x: 34, y: 12, name: "Huile Max" },
-  { cat: "warp", x: 11, y: 3, name: "Centre Pokémon (Carmin sur Mer)", dx: 3, dy: 7, badge: "Centre" },
+  { cat: "warp", x: 11, y: 3, name: "Centre Pokémon (Carmin sur Mer)", dx: 3, dy: 7, badge: "Pokécentre" },
   { cat: "warp", x: 7, y: 3, name: "Maison du Maître Pêcheur", dx: 2, dy: 7, badge: "Pêcheur" },
   { cat: "warp", x: 9, y: 13, name: "Fan Club Pokémon", dx: 2, dy: 7, badge: "Fans" },
   { cat: "warp", x: 23, y: 13, name: "Magasin (Carmin sur Mer)", dx: 3, dy: 7, badge: "Magasin" },
@@ -4482,57 +4472,57 @@ const MAPS = [
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
-  { id: "CinnabarMansion1F", label: "Manoir Pokémon 1F", w: 480, h: 448, b64: MAP_MANSION1F_B64, rate: "10",
+  { id: "CinnabarMansion1F", label: "Manoir Pokémon", w: 480, h: 448, b64: MAP_MANSION1F_B64, rate: "10",
     wild: [["grimer", "Tadmorv", "n. 30 à 32", "39,8 %"], ["houndour", "Malosse", "n. 28 à 34", "39,8 %"], ["vulpix", "Goupix", "n. 34", "9,8 %"], ["koffing", "Smogo", "n. 30", "5,1 %"], ["muk", "Grotadmorv", "n. 37", "4,3 %"], ["weezing", "Smogogo", "n. 39", "1,2 %"]], fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
-  { id: "CinnabarMansion2F", label: "Manoir Pokémon 2F", w: 480, h: 448, b64: MAP_MANSION2F_B64, rate: "10",
+  { id: "CinnabarMansion2F", label: "Manoir Pokémon E1", w: 480, h: 448, b64: MAP_MANSION2F_B64, rate: "10",
     wild: [["grimer", "Tadmorv", "n. 30 à 34", "44,9 %"], ["houndour", "Malosse", "n. 28 à 32", "24,6 %"], ["vulpix", "Goupix", "n. 32", "19,9 %"], ["koffing", "Smogo", "n. 30", "5,1 %"], ["muk", "Grotadmorv", "n. 39", "4,3 %"], ["weezing", "Smogogo", "n. 37", "1,2 %"]], fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
-  { id: "CinnabarMansion3F", label: "Manoir Pokémon 3F", w: 480, h: 288, b64: MAP_MANSION3F_B64, rate: "10",
+  { id: "CinnabarMansion3F", label: "Manoir Pokémon E2", w: 480, h: 288, b64: MAP_MANSION3F_B64, rate: "10",
     wild: [["grimer", "Tadmorv", "n. 31 à 35", "35,2 %"], ["vulpix", "Goupix", "n. 33 à 34", "29,7 %"], ["muk", "Grotadmorv", "n. 38 à 40", "14,8 %"], ["houndour", "Malosse", "n. 32", "9,8 %"], ["koffing", "Smogo", "n. 34", "5,1 %"], ["houndoom", "Démolosse", "n. 36", "4,3 %"], ["weezing", "Smogogo", "n. 42", "1,2 %"]], fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
-  { id: "CinnabarMansionB1F", label: "Manoir Pokémon B1F", w: 480, h: 448, b64: MAP_MANSIONB1F_B64, rate: "10",
+  { id: "CinnabarMansionB1F", label: "Manoir Pokémon SS1", w: 480, h: 448, b64: MAP_MANSIONB1F_B64, rate: "10",
     wild: [["grimer", "Tadmorv", "n. 31 à 33", "39,8 %"], ["vulpix", "Goupix", "n. 35/38", "19,5 %"], ["houndoom", "Démolosse", "n. 31 à 34", "14,8 %"], ["houndour", "Malosse", "n. 32", "9,8 %"], ["muk", "Grotadmorv", "n. 40", "9,8 %"], ["koffing", "Smogo", "n. 35", "5,1 %"], ["weezing", "Smogogo", "n. 42", "1,2 %"]], fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
-  { id: "Volcano1F", label: "Volcan Cramoisi 1F", w: 384, h: 384, b64: MAP_VOLC1F_B64, rate: "10",
+  { id: "Volcano1F", label: "Volcan Cramoisi", w: 384, h: 384, b64: MAP_VOLC1F_B64, rate: "10",
     wild: [["slugma", "Limagma", "n. 31 à 37", "34,8 %"], ["growlithe", "Caninos", "n. 28 à 30", "25,0 %"], ["ponyta", "Ponyta", "n. 30 à 34", "25,0 %"], ["vulpix", "Goupix", "n. 34", "9,8 %"], ["charmeleon", "Reptincel", "n. 30", "4,3 %"], ["magmar", "Magmar", "n. 39", "1,2 %"]], fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
-  { id: "VolcanoB1F", label: "Volcan Cramoisi B1F", w: 256, h: 672, b64: MAP_VOLCB1F_B64, rate: "10",
+  { id: "VolcanoB1F", label: "Volcan Cramoisi SS1", w: 256, h: 672, b64: MAP_VOLCB1F_B64, rate: "10",
     wild: [["growlithe", "Caninos", "n. 35 à 38", "29,7 %"], ["slugma", "Limagma", "n. 36 à 37", "25,0 %"], ["vulpix", "Goupix", "n. 36", "19,9 %"], ["ponyta", "Ponyta", "n. 40", "9,8 %"], ["magcargo", "Volcaropod", "n. 38", "5,1 %"], ["magmar", "Magmar", "n. 38", "5,1 %"], ["charmeleon", "Reptincel", "n. 38", "4,3 %"], ["rapidash", "Galopa", "n. 42", "1,2 %"]], fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
-  { id: "VolcanoB2F", label: "Volcan Cramoisi B2F", w: 288, h: 288, b64: MAP_VOLCB2F_B64, rate: "10",
+  { id: "VolcanoB2F", label: "Volcan Cramoisi SS2", w: 288, h: 288, b64: MAP_VOLCB2F_B64, rate: "10",
     wild: [["slugma", "Limagma", "n. 36 à 37", "39,8 %"], ["magcargo", "Volcaropod", "n. 38 à 40", "19,5 %"], ["growlithe", "Caninos", "n. 37", "15,2 %"], ["ninetales", "Feunard", "n. 35", "9,8 %"], ["magmar", "Magmar", "n. 36 à 38", "9,4 %"], ["charmeleon", "Reptincel", "n. 38", "5,1 %"], ["arcanine", "Arcanin", "n. 42", "1,2 %"]], fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
   /* ---------- t56 : Îles Écume (grotte 5 étages ; pêche possible sur
      le B3F et le B4F uniquement : tuiles de courant $30/$3B/$42/$43,
      cf. IsNextTileShoreOrWater ; surf : eau profonde $14 sur le B4F). */
-  { id: "SeafoamIslands1F", label: "Îles Écume 1F", w: 480, h: 288, b64: MAP_ECUM1F_B64, rate: "15",
+  { id: "SeafoamIslands1F", label: "Îles Écume", w: 480, h: 288, b64: MAP_ECUM1F_B64, rate: "15",
     wild: [["seel", "Otaria", "n. 30", "19,9 %"], ["psyduck", "Psykokwak", "n. 30", "19,9 %"], ["staryu", "Stari", "n. 28 à 30", "19,5 %"], ["krabby", "Krabby", "n. 28 à 30", "19,5 %"], ["zubat", "Nosferapti", "n. 21", "9,8 %"], ["golbat", "Nosferalto", "n. 29", "5,1 %"], ["slowpoke", "Ramoloss", "n. 28", "5,1 %"], ["slowbro", "Flagadoss", "n. 38", "1,2 %"]], fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
-  { id: "SeafoamIslandsB1F", label: "Îles Écume B1F", w: 480, h: 288, b64: MAP_ECUMB1F_B64, rate: "10",
+  { id: "SeafoamIslandsB1F", label: "Îles Écume SS1", w: 480, h: 288, b64: MAP_ECUMB1F_B64, rate: "10",
     wild: [["krabby", "Krabby", "n. 30 à 32", "29,7 %"], ["shellder", "Kokiyas", "n. 30", "19,9 %"], ["staryu", "Stari", "n. 32", "15,2 %"], ["psyduck", "Psykokwak", "n. 28 à 30", "14,8 %"], ["seel", "Otaria", "n. 28 à 30", "14,8 %"], ["dewgong", "Lamantine", "n. 38", "4,3 %"], ["kingler", "Krabboss", "n. 37", "1,2 %"]], fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
-  { id: "SeafoamIslandsB2F", label: "Îles Écume B2F", w: 480, h: 288, b64: MAP_ECUMB2F_B64, rate: "10",
+  { id: "SeafoamIslandsB2F", label: "Îles Écume SS2", w: 480, h: 288, b64: MAP_ECUMB2F_B64, rate: "10",
     wild: [["seel", "Otaria", "n. 30 à 32", "35,2 %"], ["psyduck", "Psykokwak", "n. 30 à 32", "29,7 %"], ["krabby", "Krabby", "n. 28 à 30", "14,8 %"], ["shellder", "Kokiyas", "n. 30", "9,8 %"], ["staryu", "Stari", "n. 28", "5,1 %"], ["starmie", "Staross", "n. 30", "4,3 %"], ["golduck", "Akwakwak", "n. 37", "1,2 %"]], fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
-  { id: "SeafoamIslandsB3F", label: "Îles Écume B3F", w: 480, h: 288, b64: MAP_ECUMB3F_B64, rate: "10",
+  { id: "SeafoamIslandsB3F", label: "Îles Écume SS3", w: 480, h: 288, b64: MAP_ECUMB3F_B64, rate: "10",
     wild: [["psyduck", "Psykokwak", "n. 36 à 38", "35,2 %"], ["seel", "Otaria", "n. 36 à 38", "29,7 %"], ["krabby", "Krabby", "n. 34 à 35", "14,8 %"], ["staryu", "Stari", "n. 35", "9,8 %"], ["sneasel", "Farfuret", "n. 34", "5,1 %"], ["jynx", "Lippoutou", "n. 41", "4,3 %"], ["dewgong", "Lamantine", "n. 42", "1,2 %"]],
     fish: [
       ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["goldeen", "Poissirène", "n. 9", "50 %"]]],
       ["Super Canne", [["goldeen", "Poissirène", "n. 9 et n. 12", "37,5 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["shellder", "Kokiyas", "n. 12", "18,75 %"]]],
       ["Méga Canne", [["poliwhirl", "Têtarte", "n. 23", "23,1 %"], ["slowpoke", "Ramoloss", "n. 15", "23,1 %"], ["psyduck", "Psykokwak", "n. 15", "23,1 %"]]]
     ] },
-  { id: "SeafoamIslandsB4F", label: "Îles Écume B4F", w: 480, h: 288, b64: MAP_ECUMB4F_B64, rate: "10",
+  { id: "SeafoamIslandsB4F", label: "Îles Écume SS4", w: 480, h: 288, b64: MAP_ECUMB4F_B64, rate: "10",
     wild: [["krabby", "Krabby", "n. 36 à 38", "35,2 %"], ["staryu", "Stari", "n. 36 à 38", "29,7 %"], ["sneasel", "Farfuret", "n. 35 à 36", "14,8 %"], ["psyduck", "Psykokwak", "n. 35", "9,8 %"], ["jynx", "Lippoutou", "n. 36 à 42", "6,3 %"], ["golduck", "Akwakwak", "n. 41", "4,3 %"]],
     fish: [
       ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["goldeen", "Poissirène", "n. 12", "50 %"]]],
@@ -4572,7 +4562,7 @@ const MAPS = [
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
-  { id: "CeruleanCave1F", label: "Caverne Azurée 1F", w: 480, h: 288, b64: MAP_CERU1F_B64, rate: "10",
+  { id: "CeruleanCave1F", label: "Caverne Azurée", w: 480, h: 288, b64: MAP_CERU1F_B64, rate: "10",
     wild: [["golbat", "Nosferalto", "n. 61", "19,9 %"], ["hypno", "Hypnomade", "n. 61", "19,9 %"], ["larvitar", "Embrylex", "n. 61", "15,2 %"], ["dodrio", "Dodrio", "n. 64", "9,8 %"], ["venomoth", "Aéromite", "n. 64", "9,8 %"], ["kadabra", "Kadabra", "n. 64", "9,8 %"], ["arbok", "Arbok", "n. 67", "5,1 %"], ["parasect", "Parasect", "n. 67", "5,1 %"], ["ditto", "Métamorph", "n. 75", "4,3 %"], ["raichu", "Raichu", "n. 68", "1,2 %"]],
     fish: [
       ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["poliwag", "Ptitard", "n. 5", "50 %"]]],
@@ -4580,12 +4570,12 @@ const MAPS = [
       ["Méga Canne", [["slowbro", "Flagadoss", "n. 23", "18,75 %"], ["seaking", "Poissoroy", "n. 23", "18,75 %"], ["kingler", "Krabboss", "n. 23", "18,75 %"], ["seadra", "Hypocéan", "n. 23", "18,75 %"]]],
       ["Surf", "Aucun Pokémon disponible en Surfant"]
     ] },
-  { id: "CeruleanCave2F", label: "Caverne Azurée 2F", w: 480, h: 288, b64: MAP_CERU2F_B64, rate: "15",
+  { id: "CeruleanCave2F", label: "Caverne Azurée E1", w: 480, h: 288, b64: MAP_CERU2F_B64, rate: "15",
     wild: [["dodrio", "Dodrio", "n. 66", "19,9 %"], ["venomoth", "Aéromite", "n. 66", "19,9 %"], ["larvitar", "Embrylex", "n. 66", "15,2 %"], ["rhydon", "Rhinoféros", "n. 67", "9,8 %"], ["marowak", "Ossatueur", "n. 67", "9,8 %"], ["kadabra", "Kadabra", "n. 67", "9,8 %"], ["ditto", "Métamorph", "n. 70 à 75", "9,4 %"], ["wigglytuff", "Grodoudou", "n. 69", "5,1 %"], ["chansey", "Leveinard", "n. 71", "1,2 %"]],
     fish: [
       ["Pêche", "Aucun Pokémon disponible en Pêchant"]
     ] },
-  { id: "CeruleanCaveB1F", label: "Caverne Azurée B1F", w: 480, h: 288, b64: MAP_CERUB1F_B64, rate: "25",
+  { id: "CeruleanCaveB1F", label: "Caverne Azurée SS1", w: 480, h: 288, b64: MAP_CERUB1F_B64, rate: "25",
     wild: [["rhydon", "Rhinoféros", "n. 70", "19,9 %"], ["marowak", "Ossatueur", "n. 70", "19,9 %"], ["larvitar", "Embrylex", "n. 70", "15,2 %"], ["ditto", "Métamorph", "n. 70 à 80", "10,5 %"], ["sandslash", "Sablaireau", "n. 69", "9,8 %"], ["parasect", "Parasect", "n. 69", "9,8 %"], ["raichu", "Raichu", "n. 69", "9,8 %"], ["chansey", "Leveinard", "n. 69", "5,1 %"]],
     fish: [
       ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["poliwag", "Ptitard", "n. 4", "50 %"]]],
@@ -4879,10 +4869,10 @@ const MARKERS_ROUTE11 = [
    (6,8) vers le 2F. NoHS, aucune rencontre. */
 const MARKERS_R11GATE1F = [
   { cat: "pnj", spr: true, icon: "guard", x: 4, y: 1, name: "Garde" },
-  { cat: "warp", x: 0, y: 4, name: "Route 11", dx: 51, dy: 8, badge: "R11" },
-  { cat: "warp", x: 0, y: 5, name: "Route 11", dx: 51, dy: 9, badge: "R11" },
-  { cat: "warp", x: 7, y: 4, name: "Route 11", dx: 58, dy: 8, badge: "R11" },
-  { cat: "warp", x: 7, y: 5, name: "Route 11", dx: 58, dy: 9, badge: "R11" },
+  { cat: "warp", x: 0, y: 4, name: "Route 11", dx: 51, dy: 8, badge: "Sortie" },
+  { cat: "warp", x: 0, y: 5, name: "Route 11", dx: 51, dy: 9, badge: "Sortie" },
+  { cat: "warp", x: 7, y: 4, name: "Route 11", dx: 58, dy: 8, badge: "Sortie" },
+  { cat: "warp", x: 7, y: 5, name: "Route 11", dx: 58, dy: 9, badge: "Sortie" },
   { cat: "warp", x: 6, y: 8, name: "Porte Route 11 E1", dx: 7, dy: 7, badge: "E1" }
 ];
 
@@ -5131,7 +5121,7 @@ const MARKERS_CCITY = [
   { cat: "warp", x: 24, y: 9, name: "Manoir Céladon", dx: 4, dy: 11, badge: "Manoir" },
   { cat: "warp", x: 24, y: 3, name: "Manoir Céladon", dx: 4, dy: 0, badge: "Manoir" },
   { cat: "warp", x: 25, y: 3, name: "Manoir Céladon", dx: 4, dy: 0, badge: "Manoir" },
-  { cat: "warp", x: 41, y: 9, name: "Centre Pokémon (Céladopole)", dx: 3, dy: 7, badge: "Centre" },
+  { cat: "warp", x: 41, y: 9, name: "Centre Pokémon (Céladopole)", dx: 3, dy: 7, badge: "Pokécentre" },
   { cat: "warp", x: 12, y: 27, name: "Arène de Céladopole", dx: 4, dy: 17, badge: "Arène" },
   { cat: "warp", x: 28, y: 19, name: "Casino Rocket", dx: 15, dy: 17, badge: "Casino" },
   { cat: "warp", x: 33, y: 19, name: "Salle des prix (Casino)", dx: 4, dy: 7, badge: "Prix" },
@@ -5546,14 +5536,14 @@ const MARKERS_R18 = [
 const MARKERS_R16GATE1F = [
   { cat: "pnj", spr: true, icon: "guard", x: 4, y: 5, dir: "down", name: "Garde" },
   { cat: "pnj", spr: true, icon: "gambler", x: 4, y: 3, name: "Joueur" },
-  { cat: "warp", x: 0, y: 8, name: "Route 16", dx: 17, dy: 12, badge: "R16" },
-  { cat: "warp", x: 0, y: 9, name: "Route 16", dx: 17, dy: 13, badge: "R16" },
-  { cat: "warp", x: 7, y: 8, name: "Route 16", dx: 24, dy: 12, badge: "R16" },
-  { cat: "warp", x: 7, y: 9, name: "Route 16", dx: 24, dy: 13, badge: "R16" },
-  { cat: "warp", x: 0, y: 2, name: "Route 16", dx: 17, dy: 6, badge: "R16" },
-  { cat: "warp", x: 0, y: 3, name: "Route 16", dx: 17, dy: 7, badge: "R16" },
-  { cat: "warp", x: 7, y: 2, name: "Route 16", dx: 24, dy: 6, badge: "R16" },
-  { cat: "warp", x: 7, y: 3, name: "Route 16", dx: 24, dy: 7, badge: "R16" },
+  { cat: "warp", x: 0, y: 8, name: "Route 16", dx: 17, dy: 12, badge: "Sortie" },
+  { cat: "warp", x: 0, y: 9, name: "Route 16", dx: 17, dy: 13, badge: "Sortie" },
+  { cat: "warp", x: 7, y: 8, name: "Route 16", dx: 24, dy: 12, badge: "Sortie" },
+  { cat: "warp", x: 7, y: 9, name: "Route 16", dx: 24, dy: 13, badge: "Sortie" },
+  { cat: "warp", x: 0, y: 2, name: "Route 16", dx: 17, dy: 6, badge: "Sortie" },
+  { cat: "warp", x: 0, y: 3, name: "Route 16", dx: 17, dy: 7, badge: "Sortie" },
+  { cat: "warp", x: 7, y: 2, name: "Route 16", dx: 24, dy: 6, badge: "Sortie" },
+  { cat: "warp", x: 7, y: 3, name: "Route 16", dx: 24, dy: 7, badge: "Sortie" },
   { cat: "warp", x: 6, y: 12, name: "Porte Route 16 E1", dx: 7, dy: 7, badge: "E1" }
 ];
 const MARKERS_R16GATE2F = [
@@ -5566,8 +5556,8 @@ const MARKERS_R16GATE2F = [
 const MARKERS_R16WGATE = [
   { cat: "warp", x: 0, y: 14, name: "Clairière", dx: 33, dy: 4, badge: "Clairière" },
   { cat: "warp", x: 0, y: 15, name: "Clairière", dx: 33, dy: 5, badge: "Clairière" },
-  { cat: "warp", x: 7, y: 14, name: "Route 16", dx: 2, dy: 8, badge: "R16" },
-  { cat: "warp", x: 7, y: 15, name: "Route 16", dx: 2, dy: 9, badge: "R16" }
+  { cat: "warp", x: 7, y: 14, name: "Route 16", dx: 2, dy: 8, badge: "Sortie" },
+  { cat: "warp", x: 7, y: 15, name: "Route 16", dx: 2, dy: 9, badge: "Sortie" }
 ];
 /* Maison de la Clairière : livre de comptes (mobilier, sans marqueur) ;
    Max Elixir caché en coin. */
@@ -5586,10 +5576,10 @@ const MARKERS_R16FLY = [
 ];
 const MARKERS_R18GATE1F = [
   { cat: "pnj", spr: true, icon: "guard", x: 4, y: 1, dir: "down", name: "Garde" },
-  { cat: "warp", x: 0, y: 4, name: "Route 18", dx: 33, dy: 8, badge: "R18" },
-  { cat: "warp", x: 0, y: 5, name: "Route 18", dx: 33, dy: 9, badge: "R18" },
-  { cat: "warp", x: 7, y: 4, name: "Route 18", dx: 40, dy: 8, badge: "R18" },
-  { cat: "warp", x: 7, y: 5, name: "Route 18", dx: 40, dy: 9, badge: "R18" },
+  { cat: "warp", x: 0, y: 4, name: "Route 18", dx: 33, dy: 8, badge: "Sortie" },
+  { cat: "warp", x: 0, y: 5, name: "Route 18", dx: 33, dy: 9, badge: "Sortie" },
+  { cat: "warp", x: 7, y: 4, name: "Route 18", dx: 40, dy: 8, badge: "Sortie" },
+  { cat: "warp", x: 7, y: 5, name: "Route 18", dx: 40, dy: 9, badge: "Sortie" },
   { cat: "warp", x: 6, y: 8, name: "Porte Route 18 E1", dx: 7, dy: 7, badge: "E1" }
 ];
 /* Porte Route 18, 2F : le garçon échange un Noeunoeuf contre son
@@ -5613,7 +5603,7 @@ const MARKERS_FUCHSIA = [
   { cat: "pnj", spr: true, icon: "omanyte", x: 6, y: 5, name: "Amonita", scripted: true },
   { cat: "warp", x: 5, y: 13, name: "Magasin (Parmanie)", dx: 3, dy: 7, badge: "Magasin" },
   { cat: "warp", x: 11, y: 27, name: "Maison du grand-père de Léo", dx: 2, dy: 7, badge: "Maison" },
-  { cat: "warp", x: 19, y: 27, name: "Centre Pokémon (Parmanie)", dx: 3, dy: 7, badge: "Centre" },
+  { cat: "warp", x: 19, y: 27, name: "Centre Pokémon (Parmanie)", dx: 3, dy: 7, badge: "Pokécentre" },
   { cat: "warp", x: 27, y: 27, name: "Maison du Gardien (Parmanie)", dx: 4, dy: 7, badge: "Gardien" },
   { cat: "warp", x: 18, y: 3, name: "Entrée du Parc Safari", dx: 3, dy: 5, badge: "Safari" },
   { cat: "warp", x: 5, y: 27, name: "Arène de Parmanie", dx: 4, dy: 17, badge: "Arène" },
@@ -5728,8 +5718,8 @@ const MARKERS_SZEAST = [
   { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 15, y: 12, name: "CT41 GigaSan" },
   { cat: "warp", x: 0, y: 4, name: "Parc Safari (Nord)", dx: 39, dy: 30, badge: "Nord" },
   { cat: "warp", x: 0, y: 5, name: "Parc Safari (Nord)", dx: 39, dy: 31, badge: "Nord" },
-  { cat: "warp", x: 0, y: 22, name: "Parc Safari (Centre)", dx: 29, dy: 10, badge: "Centre" },
-  { cat: "warp", x: 0, y: 23, name: "Parc Safari (Centre)", dx: 29, dy: 10, badge: "Centre" },
+  { cat: "warp", x: 0, y: 22, name: "Parc Safari (Centre)", dx: 29, dy: 10, badge: "Pokécentre" },
+  { cat: "warp", x: 0, y: 23, name: "Parc Safari (Centre)", dx: 29, dy: 10, badge: "Pokécentre" },
   { cat: "warp", x: 25, y: 9, name: "Aire de repos (Est)", dx: 2, dy: 7, badge: "Aire" }
 ];
 /* Parc Safari Ouest : la Dent d'Or de Baoba et la maison secrète (CS03). */
@@ -5743,8 +5733,8 @@ const MARKERS_SZWEST = [
   { cat: "warp", x: 21, y: 0, name: "Parc Safari (Nord)", dx: 3, dy: 35, badge: "Nord" },
   { cat: "warp", x: 26, y: 0, name: "Parc Safari (Nord)", dx: 8, dy: 35, badge: "Nord" },
   { cat: "warp", x: 27, y: 0, name: "Parc Safari (Nord)", dx: 9, dy: 35, badge: "Nord" },
-  { cat: "warp", x: 29, y: 22, name: "Parc Safari (Centre)", dx: 0, dy: 10, badge: "Centre" },
-  { cat: "warp", x: 29, y: 23, name: "Parc Safari (Centre)", dx: 0, dy: 11, badge: "Centre" },
+  { cat: "warp", x: 29, y: 22, name: "Parc Safari (Centre)", dx: 0, dy: 10, badge: "Pokécentre" },
+  { cat: "warp", x: 29, y: 23, name: "Parc Safari (Centre)", dx: 0, dy: 11, badge: "Pokécentre" },
   { cat: "warp", x: 3, y: 3, name: "Maison secrète", dx: 2, dy: 7, badge: "Secret" },
   { cat: "warp", x: 11, y: 11, name: "Aire de repos (Ouest)", dx: 2, dy: 7, badge: "Aire" }
 ];
@@ -5756,8 +5746,8 @@ const MARKERS_SZNORTH = [
   { cat: "warp", x: 3, y: 35, name: "Parc Safari (Ouest)", dx: 21, dy: 0, badge: "Ouest" },
   { cat: "warp", x: 8, y: 35, name: "Parc Safari (Ouest)", dx: 26, dy: 0, badge: "Ouest" },
   { cat: "warp", x: 9, y: 35, name: "Parc Safari (Ouest)", dx: 27, dy: 0, badge: "Ouest" },
-  { cat: "warp", x: 20, y: 35, name: "Parc Safari (Centre)", dx: 14, dy: 0, badge: "Centre" },
-  { cat: "warp", x: 21, y: 35, name: "Parc Safari (Centre)", dx: 15, dy: 0, badge: "Centre" },
+  { cat: "warp", x: 20, y: 35, name: "Parc Safari (Centre)", dx: 14, dy: 0, badge: "Pokécentre" },
+  { cat: "warp", x: 21, y: 35, name: "Parc Safari (Centre)", dx: 15, dy: 0, badge: "Pokécentre" },
   { cat: "warp", x: 39, y: 30, name: "Parc Safari (Est)", dx: 0, dy: 4, badge: "Est" },
   { cat: "warp", x: 39, y: 31, name: "Parc Safari (Est)", dx: 0, dy: 5, badge: "Est" },
   { cat: "warp", x: 35, y: 3, name: "Aire de repos (Nord)", dx: 2, dy: 7, badge: "Aire" }
@@ -5796,7 +5786,7 @@ const MARKERS_SZRHN = [
 /* Maison secrète : le Pêcheur donne la CS03 Surf pour avoir atteint la maison ;
    le « Chef » (après la Ligue, joenote) se cache aussi ici. */
 const MARKERS_SZSECRET = [
-  { cat: "pnj", spr: true, icon: "fisher", x: 3, y: 3, dir: "down", name: "Baoba", scripted: true, give: ["tm_hm", "CS03 Surf"] },
+  { cat: "pnj", spr: true, icon: "fisher", x: 3, y: 3, dir: "down", name: "Pêcheur", scripted: true, give: ["tm_hm", "CS03 Surf"] },
   { cat: "trainer", spr: true, icon: "mr_masterball", x: 4, y: 3, dir: "down", name: "Chef", scripted: true, badge: "Après la Ligue", spoil: true,
     team: [["kangaskhan", "Kangourex", 72], ["rhydon", "Rhinoféros", 73], ["golduck", "Akwakwak", 73], ["pinsir", "Scarabrute", 74], ["scyther", "Insécateur", 74], ["tauros", "Tauros", 76]] },
   { cat: "warp", x: 2, y: 7, name: "Parc Safari (Ouest)", dx: 3, dy: 3, badge: "Sortie" },
@@ -5854,7 +5844,7 @@ const MARKERS_R19 = [
   { cat: "warp", x: 3, y: 7, name: "Bungalow d'Été", dx: 2, dy: 7, badge: "Maison" }
 ];
 /* Chenal 20 : Nageurs n°9-11, Canons n°11-14, Dresseurs jr♀ n°20-21, Ornithologue
-   n°15 ; Pierre Lune cachée ; Îles Écume 1F (entrées ouest et est,
+   n°15 ; Pierre Lune cachée ; Îles Écume (entrées ouest et est,
    rattachées au donjon t56) et Phare. Le n°20 des Dresseurs jr♀ recycle l'équipe de la Route 15
    (Mélodelfe n. 38) : c'est bien ce que le moteur affiche. */
 const MARKERS_R20 = [
@@ -5869,8 +5859,8 @@ const MARKERS_R20 = [
   { cat: "trainer", spr: true, icon: "swimmer", x: 24, y: 14, name: "Dresseur jr♀ n°21", team: [["tangela", "Saquedeneu", 35], ["ponyta", "Ponyta", 35], ["sandslash", "Sablaireau", 35]] },
   { cat: "trainer", spr: true, icon: "swimmer", x: 15, y: 10, dir: "up", name: "Canon n°14", team: [["poliwhirl", "Têtarte", 41], ["seaking", "Poissoroy", 41]] },
   { cat: "hidden", tipIcon: "moon_stone", x: 53, y: 18, name: "Pierre Lune" },
-  { cat: "warp", x: 48, y: 7, name: "Îles Écume 1F", dx: 4, dy: 17, badge: "Écume" },
-  { cat: "warp", x: 58, y: 15, name: "Îles Écume 1F", dx: 26, dy: 17, badge: "Écume" },
+  { cat: "warp", x: 48, y: 7, name: "Îles Écume", dx: 4, dy: 17, badge: "Écume" },
+  { cat: "warp", x: 58, y: 15, name: "Îles Écume", dx: 26, dy: 17, badge: "Écume" },
   { cat: "warp", x: 41, y: 7, name: "Phare", dx: 2, dy: 29, badge: "Phare" }
 ];
 /* Chenal 21 : Pêcheurs n°8-11 (le n°10 aligne un banc de Krabby par niveaux :
@@ -5886,17 +5876,17 @@ const MARKERS_R21 = [
   { cat: "trainer", spr: true, icon: "swimmer", x: 13, y: 71, dir: "left", name: "Nageur n°15", team: [["poliwhirl", "Têtarte", 44], ["kingler", "Krabboss", 44], ["seadra", "Hypocéan", 44]] },
   { cat: "trainer", spr: true, icon: "fisher2", x: 14, y: 56, dir: "left", name: "Pêcheur n°10", team: [["magikarp", "Magicarpe", 29], ["krabby", "Krabby", 38], ["krabby", "Krabby", 38], ["krabby", "Krabby", 38], ["krabby", "Krabby", 38], ["krabby", "Krabby", 40]] },
   { cat: "trainer", spr: true, icon: "fisher2", x: 17, y: 57, dir: "right", name: "Pêcheur n°11", team: [["seaking", "Poissoroy", 40], ["tentacruel", "Tentacruel", 40]] },
-  { cat: "warp", x: 14, y: 87, name: "Volcan Cramoisi 1F", dx: 2, dy: 23, badge: "Volcan" }
+  { cat: "warp", x: 14, y: 87, name: "Volcan Cramoisi", dx: 2, dy: 23, badge: "Volcan" }
 ];
 /* Cramois'Ile : le Manoir Pokémon, l'Arène d'Auguste, le Labo Pokémon, le Centre
    et le Magasin ; une fille parle du Manoir, un joueur du Labo. */
 const MARKERS_CINNABAR = [
   { cat: "pnj", spr: true, icon: "girl", x: 12, y: 5, name: "Fillette" },
   { cat: "pnj", spr: true, icon: "gambler", x: 14, y: 6, name: "Joueur" },
-  { cat: "warp", x: 6, y: 3, name: "Manoir Pokémon 1F", dx: 5, dy: 27, badge: "Manoir" },
+  { cat: "warp", x: 6, y: 3, name: "Manoir Pokémon", dx: 5, dy: 27, badge: "Manoir" },
   { cat: "warp", x: 18, y: 3, name: "Arène de Cramois'Île", dx: 16, dy: 17, badge: "Arène" },
   { cat: "warp", x: 6, y: 9, name: "Laboratoire Pokémon de Cramois'Île", dx: 2, dy: 7, badge: "Labo" },
-  { cat: "warp", x: 11, y: 11, name: "Centre Pokémon (Cramois'Île)", dx: 3, dy: 7, badge: "Centre" },
+  { cat: "warp", x: 11, y: 11, name: "Centre Pokémon (Cramois'Île)", dx: 3, dy: 7, badge: "Pokécentre" },
   { cat: "warp", x: 15, y: 11, name: "Magasin (Cramois'Île)", dx: 3, dy: 7, badge: "Magasin" }
 ];
 /* Bungalow d'Été : Dave, « le Boss des Surfeurs », et son admirateur Pêcheur. */
@@ -6000,7 +5990,7 @@ const MARKERS_CNFOSSIL = [
   { cat: "warp", x: 2, y: 7, name: "Laboratoire Pokémon de Cramois'Île", dx: 16, dy: 4, badge: "Sortie" },
   { cat: "warp", x: 3, y: 7, name: "Laboratoire Pokémon de Cramois'Île", dx: 16, dy: 4, badge: "Sortie" }
 ];
-/* Manoir Pokémon 1F : Scientifique n°3 ; Corde Sortie et Carbone ; Pierre Lune
+/* Manoir Pokémon : Scientifique n°3 ; Corde Sortie et Carbone ; Pierre Lune
    cachée ; six portes vers Cramois'Ile, l'escalier du 2F et la descente B1F. */
 const MARKERS_MANSION1F = [
   { cat: "trainer", spr: true, icon: "oak_aide", x: 17, y: 17, dir: "left", name: "Scientifique n°3", team: [["electrode", "Electrode", 39], ["weezing", "Smogogo", 39]] },
@@ -6013,22 +6003,22 @@ const MARKERS_MANSION1F = [
   { cat: "warp", x: 7, y: 27, name: "Cramois'Ile", dx: 6, dy: 3, badge: "Sortie" },
   { cat: "warp", x: 26, y: 27, name: "Cramois'Ile", dx: 6, dy: 3, badge: "Sortie" },
   { cat: "warp", x: 27, y: 27, name: "Cramois'Ile", dx: 6, dy: 3, badge: "Sortie" },
-  { cat: "warp", x: 5, y: 10, name: "Manoir Pokémon 2F", dx: 5, dy: 10, badge: "E1" },
-  { cat: "warp", x: 21, y: 23, name: "Manoir Pokémon B1F", dx: 23, dy: 22, badge: "B1" }
+  { cat: "warp", x: 5, y: 10, name: "Manoir Pokémon E1", dx: 5, dy: 10, badge: "E1" },
+  { cat: "warp", x: 21, y: 23, name: "Manoir Pokémon SS1", dx: 23, dy: 22, badge: "B1" }
 ];
-/* Manoir Pokémon 2F : Pillard n°1 ; Calcium ; deux Rapports (journaux du
+/* Manoir Pokémon E1 : Pillard n°1 ; Calcium ; deux Rapports (journaux du
    Dr Fuji et de MEWTWO) ; trois montées et la descente 1F. */
 const MARKERS_MANSION2F = [
   { cat: "trainer", spr: true, icon: "burglar", x: 3, y: 17, dir: "left", name: "Pillard n°1", team: [["primeape", "Colossinge", 44], ["magmar", "Magmar", 44]] },
   { cat: "item", spr: true, icon: "ball", tipIcon: "calcium", ballMini: true, x: 28, y: 7, name: "Calcium" },
   { cat: "pnj", spr: true, icon: "book_map_dex", x: 18, y: 2, name: "Livre" },
   { cat: "pnj", spr: true, icon: "book_map_dex", x: 3, y: 22, name: "Livre" },
-  { cat: "warp", x: 5, y: 10, name: "Manoir Pokémon 1F", dx: 5, dy: 10, badge: "RDC" },
-  { cat: "warp", x: 7, y: 10, name: "Manoir Pokémon 3F", dx: 7, dy: 10, badge: "E2" },
-  { cat: "warp", x: 25, y: 14, name: "Manoir Pokémon 3F", dx: 25, dy: 14, badge: "E2" },
-  { cat: "warp", x: 6, y: 1, name: "Manoir Pokémon 3F", dx: 6, dy: 1, badge: "E2" }
+  { cat: "warp", x: 5, y: 10, name: "Manoir Pokémon", dx: 5, dy: 10, badge: "RDC" },
+  { cat: "warp", x: 7, y: 10, name: "Manoir Pokémon E2", dx: 7, dy: 10, badge: "E2" },
+  { cat: "warp", x: 25, y: 14, name: "Manoir Pokémon E2", dx: 25, dy: 14, badge: "E2" },
+  { cat: "warp", x: 6, y: 1, name: "Manoir Pokémon E2", dx: 6, dy: 1, badge: "E2" }
 ];
-/* Manoir Pokémon 3F : Pillard n°3 et Scientifique n°11 ; Potion Max, Fer ;
+/* Manoir Pokémon E2 : Pillard n°3 et Scientifique n°11 ; Potion Max, Fer ;
    Rapport ; Rappel Max caché ; trois warps vers le 2F. */
 const MARKERS_MANSION3F = [
   { cat: "trainer", spr: true, icon: "burglar", x: 5, y: 11, dir: "left", name: "Pillard n°3", team: [["machoke", "Machopeur", 44], ["rapidash", "Galopa", 44]] },
@@ -6037,11 +6027,11 @@ const MARKERS_MANSION3F = [
   { cat: "item", spr: true, icon: "ball", tipIcon: "iron", ballMini: true, x: 25, y: 5, name: "Fer" },
   { cat: "pnj", spr: true, icon: "book_map_dex", x: 6, y: 12, name: "Livre" },
   { cat: "hidden", tipIcon: "max_revive", x: 1, y: 9, name: "Rappel Max" },
-  { cat: "warp", x: 7, y: 10, name: "Manoir Pokémon 2F", dx: 7, dy: 10, badge: "E1" },
-  { cat: "warp", x: 6, y: 1, name: "Manoir Pokémon 2F", dx: 6, dy: 1, badge: "E1" },
-  { cat: "warp", x: 25, y: 14, name: "Manoir Pokémon 2F", dx: 25, dy: 14, badge: "E1" }
+  { cat: "warp", x: 7, y: 10, name: "Manoir Pokémon E1", dx: 7, dy: 10, badge: "E1" },
+  { cat: "warp", x: 6, y: 1, name: "Manoir Pokémon E1", dx: 6, dy: 1, badge: "E1" },
+  { cat: "warp", x: 25, y: 14, name: "Manoir Pokémon E1", dx: 25, dy: 14, badge: "E1" }
 ];
-/* Manoir Pokémon B1F : le Pillard n°3 réapparaît (doublon des datas du moteur,
+/* Manoir Pokémon SS1 : le Pillard n°3 réapparaît (doublon des datas du moteur,
    conservé tel quel) et le Scientifique n°12 ; Clé Secrète de l'Arène
    d'Auguste, deux CT, Guérison, Super Bonbon visible et caché ; Rapport. */
 const MARKERS_MANSIONB1F = [
@@ -6054,9 +6044,9 @@ const MARKERS_MANSIONB1F = [
   { cat: "item", spr: true, icon: "ball", tipIcon: "secret_key", ballMini: true, x: 5, y: 13, name: "Clé Secrète" },
   { cat: "pnj", spr: true, icon: "book_map_dex", x: 16, y: 20, name: "Livre" },
   { cat: "hidden", tipIcon: "rare_candy", x: 1, y: 9, name: "Super Bonbon" },
-  { cat: "warp", x: 23, y: 22, name: "Manoir Pokémon 1F", dx: 21, dy: 23, badge: "RDC" }
+  { cat: "warp", x: 23, y: 22, name: "Manoir Pokémon", dx: 21, dy: 23, badge: "RDC" }
 ];
-/* Volcan Cramoisi 1F : Pompiers n°1-2 et Soldat n°3 (donjon du hack) ;
+/* Volcan Cramoisi : Pompiers n°1-2 et Soldat n°3 (donjon du hack) ;
    Guérison et Carbone ; sorties vers le Chenal 21 et deux descentes B1F. */
 const MARKERS_VOLC1F = [
   { cat: "trainer", spr: true, icon: "firefighter", x: 8, y: 14, name: "Pompier n°1", team: [["poliwrath", "Tartard", 43], ["blastoise", "Tortank", 43]] },
@@ -6066,10 +6056,10 @@ const MARKERS_VOLC1F = [
   { cat: "item", spr: true, icon: "ball", tipIcon: "carbos", ballMini: true, x: 6, y: 5, name: "Carbone" },
   { cat: "warp", x: 2, y: 23, name: "Chenal 21", dx: 14, dy: 87, badge: "Sortie" },
   { cat: "warp", x: 3, y: 23, name: "Chenal 21", dx: 14, dy: 87, badge: "Sortie" },
-  { cat: "warp", x: 13, y: 6, name: "Volcan Cramoisi B1F", dx: 5, dy: 1, badge: "B1" },
-  { cat: "warp", x: 21, y: 20, name: "Volcan Cramoisi B1F", dx: 12, dy: 34, badge: "B1" }
+  { cat: "warp", x: 13, y: 6, name: "Volcan Cramoisi SS1", dx: 5, dy: 1, badge: "B1" },
+  { cat: "warp", x: 21, y: 20, name: "Volcan Cramoisi SS1", dx: 12, dy: 34, badge: "B1" }
 ];
-/* Volcan Cramoisi B1F : Soldats n°4-5 (Electrode en chaîne) ; Pierre Feu,
+/* Volcan Cramoisi SS1 : Soldats n°4-5 (Electrode en chaîne) ; Pierre Feu,
    CT23 Draco-Rage, Max Elixir ; trois warps (1F haut, spirale B2F, 1F bas). */
 const MARKERS_VOLCB1F = [
   { cat: "trainer", spr: true, icon: "soldier", x: 2, y: 5, dir: "right", name: "Soldat n°4", team: [["primeape", "Colossinge", 45], ["blastoise", "Tortank", 45]] },
@@ -6077,18 +6067,18 @@ const MARKERS_VOLCB1F = [
   { cat: "item", spr: true, icon: "ball", tipIcon: "fire_stone", ballMini: true, x: 2, y: 30, name: "Pierre Feu" },
   { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 13, y: 30, name: "CT23 Draco-Rage" },
   { cat: "item", spr: true, icon: "ball", tipIcon: "max_elixer", ballMini: true, x: 4, y: 35, name: "Max Elixir" },
-  { cat: "warp", x: 5, y: 1, name: "Volcan Cramoisi 1F", dx: 13, dy: 6, badge: "RDC" },
-  { cat: "warp", x: 5, y: 26, name: "Volcan Cramoisi B2F", dx: 3, dy: 14, badge: "B2" },
-  { cat: "warp", x: 12, y: 34, name: "Volcan Cramoisi 1F", dx: 21, dy: 20, badge: "RDC" }
+  { cat: "warp", x: 5, y: 1, name: "Volcan Cramoisi", dx: 13, dy: 6, badge: "RDC" },
+  { cat: "warp", x: 5, y: 26, name: "Volcan Cramoisi SS2", dx: 3, dy: 14, badge: "B2" },
+  { cat: "warp", x: 12, y: 34, name: "Volcan Cramoisi", dx: 21, dy: 20, badge: "RDC" }
 ];
-/* Volcan Cramoisi B2F : Sulfura n. 50 attend au fond du cratère (visible dès
+/* Volcan Cramoisi SS2 : Sulfura n. 50 attend au fond du cratère (visible dès
    l'arrivée, comme l'Electhor de la Centrale) ; PP Plus caché ; retour B1F. */
 const MARKERS_VOLCB2F = [
   { cat: "trainer", spr: true, icon: "moltres_ow", x: 8, y: 6, name: "Sulfura", scripted: true, team: [["moltres", "Sulfura", 50]] },
   { cat: "hidden", tipIcon: "pp_up", x: 13, y: 13, name: "PP Plus" },
-  { cat: "warp", x: 3, y: 14, name: "Volcan Cramoisi B1F", dx: 5, dy: 26, badge: "B1" }
+  { cat: "warp", x: 3, y: 14, name: "Volcan Cramoisi SS1", dx: 5, dy: 26, badge: "B1" }
 ];
-/* Îles Écume 1F : deux rochers à pousser vers les trous de la salle
+/* Îles Écume : deux rochers à pousser vers les trous de la salle
    centrale (trous en (17,6) et (24,6) : seuls les rochers y tombent,
    jusqu'au B1F - pas des warps de joueur) ; quatre sorties vers le
    Chenal 20 (ouest (4,17)+(5,17), est (26,17)+(27,17)) et trois B1F. */
@@ -6099,39 +6089,39 @@ const MARKERS_ECUM1F = [
   { cat: "warp", x: 5, y: 17, name: "Chenal 20", dx: 48, dy: 7, badge: "Sortie" },
   { cat: "warp", x: 26, y: 17, name: "Chenal 20", dx: 58, dy: 15, badge: "Sortie" },
   { cat: "warp", x: 27, y: 17, name: "Chenal 20", dx: 58, dy: 15, badge: "Sortie" },
-  { cat: "warp", x: 7, y: 5, name: "Îles Écume B1F", dx: 7, dy: 5, badge: "B1" },
-  { cat: "warp", x: 25, y: 3, name: "Îles Écume B1F", dx: 25, dy: 3, badge: "B1" },
-  { cat: "warp", x: 23, y: 15, name: "Îles Écume B1F", dx: 23, dy: 15, badge: "B1" }
+  { cat: "warp", x: 7, y: 5, name: "Îles Écume SS1", dx: 7, dy: 5, badge: "B1" },
+  { cat: "warp", x: 25, y: 3, name: "Îles Écume SS1", dx: 25, dy: 3, badge: "B1" },
+  { cat: "warp", x: 23, y: 15, name: "Îles Écume SS1", dx: 23, dy: 15, badge: "B1" }
 ];
-/* Îles Écume B1F : les rochers tombés du 1F salissent la salle des
+/* Îles Écume SS1 : les rochers tombés du 1F salissent la salle des
    rapides ; quatre montées 1F au nord-est, trois descentes B2F à
    l'ouest et au sud. */
 const MARKERS_ECUMB1F = [
   { cat: "pnj", spr: true, icon: "boulder", x: 17, y: 6, name: "Rocher" },
   { cat: "pnj", spr: true, icon: "boulder", x: 22, y: 6, name: "Rocher" },
-  { cat: "warp", x: 4, y: 2, name: "Îles Écume B2F", dx: 5, dy: 3, badge: "B2" },
-  { cat: "warp", x: 13, y: 7, name: "Îles Écume B2F", dx: 13, dy: 7, badge: "B2" },
-  { cat: "warp", x: 19, y: 15, name: "Îles Écume B2F", dx: 19, dy: 15, badge: "B2" },
-  { cat: "warp", x: 25, y: 11, name: "Îles Écume B2F", dx: 25, dy: 11, badge: "B2" },
-  { cat: "warp", x: 7, y: 5, name: "Îles Écume 1F", dx: 7, dy: 5, badge: "RDC" },
-  { cat: "warp", x: 23, y: 15, name: "Îles Écume 1F", dx: 23, dy: 15, badge: "RDC" },
-  { cat: "warp", x: 25, y: 3, name: "Îles Écume 1F", dx: 25, dy: 3, badge: "RDC" }
+  { cat: "warp", x: 4, y: 2, name: "Îles Écume SS2", dx: 5, dy: 3, badge: "B2" },
+  { cat: "warp", x: 13, y: 7, name: "Îles Écume SS2", dx: 13, dy: 7, badge: "B2" },
+  { cat: "warp", x: 19, y: 15, name: "Îles Écume SS2", dx: 19, dy: 15, badge: "B2" },
+  { cat: "warp", x: 25, y: 11, name: "Îles Écume SS2", dx: 25, dy: 11, badge: "B2" },
+  { cat: "warp", x: 7, y: 5, name: "Îles Écume", dx: 7, dy: 5, badge: "RDC" },
+  { cat: "warp", x: 23, y: 15, name: "Îles Écume", dx: 23, dy: 15, badge: "RDC" },
+  { cat: "warp", x: 25, y: 3, name: "Îles Écume", dx: 25, dy: 3, badge: "RDC" }
 ];
-/* Îles Écume B2F : Pépite cachée au centre ; quatre remontées B1F,
+/* Îles Écume SS2 : Pépite cachée au centre ; quatre remontées B1F,
    trois descentes B3F (la (5,13) mène à la salle de l'escalier). */
 const MARKERS_ECUMB2F = [
   { cat: "pnj", spr: true, icon: "boulder", x: 18, y: 6, name: "Rocher" },
   { cat: "pnj", spr: true, icon: "boulder", x: 23, y: 6, name: "Rocher" },
   { cat: "hidden", tipIcon: "nugget", x: 15, y: 15, name: "Pépite" },
-  { cat: "warp", x: 5, y: 3, name: "Îles Écume B1F", dx: 4, dy: 2, badge: "B1" },
-  { cat: "warp", x: 13, y: 7, name: "Îles Écume B1F", dx: 13, dy: 7, badge: "B1" },
-  { cat: "warp", x: 19, y: 15, name: "Îles Écume B1F", dx: 19, dy: 15, badge: "B1" },
-  { cat: "warp", x: 25, y: 11, name: "Îles Écume B1F", dx: 25, dy: 11, badge: "B1" },
-  { cat: "warp", x: 5, y: 13, name: "Îles Écume B3F", dx: 5, dy: 12, badge: "B3" },
-  { cat: "warp", x: 25, y: 3, name: "Îles Écume B3F", dx: 25, dy: 3, badge: "B3" },
-  { cat: "warp", x: 25, y: 14, name: "Îles Écume B3F", dx: 25, dy: 14, badge: "B3" }
+  { cat: "warp", x: 5, y: 3, name: "Îles Écume SS1", dx: 4, dy: 2, badge: "B1" },
+  { cat: "warp", x: 13, y: 7, name: "Îles Écume SS1", dx: 13, dy: 7, badge: "B1" },
+  { cat: "warp", x: 19, y: 15, name: "Îles Écume SS1", dx: 19, dy: 15, badge: "B1" },
+  { cat: "warp", x: 25, y: 11, name: "Îles Écume SS1", dx: 25, dy: 11, badge: "B1" },
+  { cat: "warp", x: 5, y: 13, name: "Îles Écume SS3", dx: 5, dy: 12, badge: "B3" },
+  { cat: "warp", x: 25, y: 3, name: "Îles Écume SS3", dx: 25, dy: 3, badge: "B3" },
+  { cat: "warp", x: 25, y: 14, name: "Îles Écume SS3", dx: 25, dy: 14, badge: "B3" }
 ];
-/* Îles Écume B3F : CT14 Blizzard à la pointe nord-ouest, Max Elixir
+/* Îles Écume SS3 : CT14 Blizzard à la pointe nord-ouest, Max Elixir
    caché au centre ; quatre rochers à pousser dans les rapides ouest,
    deux rochers statiques (tombés du B2F) ; pêche possible (courants). */
 const MARKERS_ECUMB3F = [
@@ -6143,15 +6133,15 @@ const MARKERS_ECUMB3F = [
   { cat: "pnj", spr: true, icon: "boulder", x: 19, y: 6, name: "Rocher" },
   { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 2, y: 1, name: "CT14 Blizzard" },
   { cat: "hidden", tipIcon: "max_elixer", x: 9, y: 16, name: "Max Elixir" },
-  { cat: "warp", x: 5, y: 12, name: "Îles Écume B2F", dx: 5, dy: 13, badge: "B2" },
-  { cat: "warp", x: 8, y: 6, name: "Îles Écume B4F", dx: 11, dy: 7, badge: "B4" },
-  { cat: "warp", x: 25, y: 4, name: "Îles Écume B4F", dx: 25, dy: 4, badge: "B4" },
-  { cat: "warp", x: 25, y: 3, name: "Îles Écume B2F", dx: 25, dy: 3, badge: "B2" },
-  { cat: "warp", x: 25, y: 14, name: "Îles Écume B2F", dx: 25, dy: 14, badge: "B2" },
-  { cat: "warp", x: 20, y: 17, name: "Îles Écume B4F", dx: 20, dy: 17, badge: "B4" },
-  { cat: "warp", x: 21, y: 17, name: "Îles Écume B4F", dx: 21, dy: 17, badge: "B4" }
+  { cat: "warp", x: 5, y: 12, name: "Îles Écume SS2", dx: 5, dy: 13, badge: "B2" },
+  { cat: "warp", x: 8, y: 6, name: "Îles Écume SS4", dx: 11, dy: 7, badge: "B4" },
+  { cat: "warp", x: 25, y: 4, name: "Îles Écume SS4", dx: 25, dy: 4, badge: "B4" },
+  { cat: "warp", x: 25, y: 3, name: "Îles Écume SS2", dx: 25, dy: 3, badge: "B2" },
+  { cat: "warp", x: 25, y: 14, name: "Îles Écume SS2", dx: 25, dy: 14, badge: "B2" },
+  { cat: "warp", x: 20, y: 17, name: "Îles Écume SS4", dx: 20, dy: 17, badge: "B4" },
+  { cat: "warp", x: 21, y: 17, name: "Îles Écume SS4", dx: 21, dy: 17, badge: "B4" }
 ];
-/* Îles Écume B4F : Artikodin n. 50 au fond de la crière de glace (visible
+/* Îles Écume SS4 : Artikodin n. 50 au fond de la crière de glace (visible
    dès l'arrivée, comme Sulfura et l'Electhor) ; Hyper Ball cachée ;
    deux rochers statiques issus des rapides ; 2 panneaux ignorés
    (« Les rochers peuvent changer le niveau de l'eau! » et « DANGER!
@@ -6161,10 +6151,10 @@ const MARKERS_ECUMB4F = [
   { cat: "pnj", spr: true, icon: "boulder", x: 4, y: 15, name: "Rocher" },
   { cat: "pnj", spr: true, icon: "boulder", x: 5, y: 15, name: "Rocher" },
   { cat: "hidden", tipIcon: "ultra_ball", x: 25, y: 17, name: "Hyper Ball" },
-  { cat: "warp", x: 20, y: 17, name: "Îles Écume B3F", dx: 20, dy: 17, badge: "B3" },
-  { cat: "warp", x: 21, y: 17, name: "Îles Écume B3F", dx: 21, dy: 17, badge: "B3" },
-  { cat: "warp", x: 11, y: 7, name: "Îles Écume B3F", dx: 8, dy: 6, badge: "B3" },
-  { cat: "warp", x: 25, y: 4, name: "Îles Écume B3F", dx: 25, dy: 4, badge: "B3" }
+  { cat: "warp", x: 20, y: 17, name: "Îles Écume SS3", dx: 20, dy: 17, badge: "B3" },
+  { cat: "warp", x: 21, y: 17, name: "Îles Écume SS3", dx: 21, dy: 17, badge: "B3" },
+  { cat: "warp", x: 11, y: 7, name: "Îles Écume SS3", dx: 8, dy: 6, badge: "B3" },
+  { cat: "warp", x: 25, y: 4, name: "Îles Écume SS3", dx: 25, dy: 4, badge: "B3" }
 ];
 /* Route 13 (data/maps/objects/Route13.asm) : 10 dresseurs (Ornithologues
    n°1-3, Dresseuses jr♀ n°14-17, Canons n°4-5, Motard n°1 ; équipes
@@ -6231,17 +6221,17 @@ const MARKERS_R15 = [
    (scripts/Route15Gate2F.asm, EVENT_GOT_EXP_ALL) ; panneau ignoré. */
 const MARKERS_R15GATE1F = [
   { cat: "pnj", spr: true, icon: "guard", x: 4, y: 1, name: "Garde" },
-  { cat: "warp", x: 0, y: 4, name: "Route 15", dx: 7, dy: 8, badge: "R15" },
-  { cat: "warp", x: 0, y: 5, name: "Route 15", dx: 7, dy: 9, badge: "R15" },
-  { cat: "warp", x: 7, y: 4, name: "Route 15", dx: 14, dy: 8, badge: "R15" },
-  { cat: "warp", x: 7, y: 5, name: "Route 15", dx: 14, dy: 9, badge: "R15" },
+  { cat: "warp", x: 0, y: 4, name: "Route 15", dx: 7, dy: 8, badge: "Sortie" },
+  { cat: "warp", x: 0, y: 5, name: "Route 15", dx: 7, dy: 9, badge: "Sortie" },
+  { cat: "warp", x: 7, y: 4, name: "Route 15", dx: 14, dy: 8, badge: "Sortie" },
+  { cat: "warp", x: 7, y: 5, name: "Route 15", dx: 14, dy: 9, badge: "Sortie" },
   { cat: "warp", x: 6, y: 8, name: "Porte Route 15 E1", dx: 7, dy: 7, badge: "E1" }
 ];
 const MARKERS_R15GATE2F = [
   { cat: "pnj", spr: true, icon: "oak_aide", x: 4, y: 2, dir: "down", name: "Assistant Prof. Chen", give: ["exp_all", "Multi Exp (50 Pokémon)"] },
   { cat: "warp", x: 7, y: 7, name: "Porte Route 15", dx: 6, dy: 8, badge: "RDC" }
 ];
-/* Caverne Azurée 1F (data/maps/objects/CeruleanCave1F.asm) : gouffre de
+/* Caverne Azurée (data/maps/objects/CeruleanCave1F.asm) : gouffre de
    Vorbeys, 3 boules (Guérison, Max Elixir, Pépite), Super Bonbon caché
    (hidden_objects.asm), sortie sud vers Azuria (warp -1 du bas) et six
    montées vers le 2F + une descente B1F à l'ouest ; pêche et surf (lac $14). */
@@ -6252,28 +6242,28 @@ const MARKERS_CERU1F = [
   { cat: "hidden", tipIcon: "rare_candy", x: 13, y: 10, name: "Super Bonbon" },
   { cat: "warp", x: 24, y: 17, name: "Azuria", dx: 4, dy: 11, badge: "Sortie" },
   { cat: "warp", x: 25, y: 17, name: "Azuria", dx: 4, dy: 11, badge: "Sortie" },
-  { cat: "warp", x: 27, y: 1, name: "Caverne Azurée 2F", dx: 29, dy: 1, badge: "E1" },
-  { cat: "warp", x: 23, y: 7, name: "Caverne Azurée 2F", dx: 22, dy: 6, badge: "E1" },
-  { cat: "warp", x: 18, y: 9, name: "Caverne Azurée 2F", dx: 19, dy: 7, badge: "E1" },
-  { cat: "warp", x: 7, y: 1, name: "Caverne Azurée 2F", dx: 9, dy: 1, badge: "E1" },
-  { cat: "warp", x: 1, y: 3, name: "Caverne Azurée 2F", dx: 1, dy: 3, badge: "E1" },
-  { cat: "warp", x: 3, y: 11, name: "Caverne Azurée 2F", dx: 3, dy: 11, badge: "E1" },
-  { cat: "warp", x: 0, y: 6, name: "Caverne Azurée B1F", dx: 3, dy: 6, badge: "B1" }
+  { cat: "warp", x: 27, y: 1, name: "Caverne Azurée E1", dx: 29, dy: 1, badge: "E1" },
+  { cat: "warp", x: 23, y: 7, name: "Caverne Azurée E1", dx: 22, dy: 6, badge: "E1" },
+  { cat: "warp", x: 18, y: 9, name: "Caverne Azurée E1", dx: 19, dy: 7, badge: "E1" },
+  { cat: "warp", x: 7, y: 1, name: "Caverne Azurée E1", dx: 9, dy: 1, badge: "E1" },
+  { cat: "warp", x: 1, y: 3, name: "Caverne Azurée E1", dx: 1, dy: 3, badge: "E1" },
+  { cat: "warp", x: 3, y: 11, name: "Caverne Azurée E1", dx: 3, dy: 11, badge: "E1" },
+  { cat: "warp", x: 0, y: 6, name: "Caverne Azurée SS1", dx: 3, dy: 6, badge: "B1" }
 ];
-/* Caverne Azurée 2F : 3 boules (PP Plus, Hyper Ball, Guérison), six descentes
+/* Caverne Azurée E1 : 3 boules (PP Plus, Hyper Ball, Guérison), six descentes
    1F en vis-à-vis des montées ; aucune eau -> pêche impossible. */
 const MARKERS_CERU2F = [
   { cat: "item", spr: true, icon: "ball", tipIcon: "pp_up", ballMini: true, x: 29, y: 9, name: "PP Plus" },
   { cat: "item", spr: true, icon: "ball", tipIcon: "ultra_ball", ballMini: true, x: 4, y: 15, name: "Hyper Ball" },
   { cat: "item", spr: true, icon: "ball", tipIcon: "full_restore", ballMini: true, x: 13, y: 6, name: "Guérison" },
-  { cat: "warp", x: 29, y: 1, name: "Caverne Azurée 1F", dx: 27, dy: 1, badge: "RDC" },
-  { cat: "warp", x: 22, y: 6, name: "Caverne Azurée 1F", dx: 23, dy: 7, badge: "RDC" },
-  { cat: "warp", x: 19, y: 7, name: "Caverne Azurée 1F", dx: 18, dy: 9, badge: "RDC" },
-  { cat: "warp", x: 9, y: 1, name: "Caverne Azurée 1F", dx: 7, dy: 1, badge: "RDC" },
-  { cat: "warp", x: 1, y: 3, name: "Caverne Azurée 1F", dx: 1, dy: 3, badge: "RDC" },
-  { cat: "warp", x: 3, y: 11, name: "Caverne Azurée 1F", dx: 3, dy: 11, badge: "RDC" }
+  { cat: "warp", x: 29, y: 1, name: "Caverne Azurée", dx: 27, dy: 1, badge: "RDC" },
+  { cat: "warp", x: 22, y: 6, name: "Caverne Azurée", dx: 23, dy: 7, badge: "RDC" },
+  { cat: "warp", x: 19, y: 7, name: "Caverne Azurée", dx: 18, dy: 9, badge: "RDC" },
+  { cat: "warp", x: 9, y: 1, name: "Caverne Azurée", dx: 7, dy: 1, badge: "RDC" },
+  { cat: "warp", x: 1, y: 3, name: "Caverne Azurée", dx: 1, dy: 3, badge: "RDC" },
+  { cat: "warp", x: 3, y: 11, name: "Caverne Azurée", dx: 3, dy: 11, badge: "RDC" }
 ];
-/* Caverne Azurée B1F : Mewtwo n. 70 dans l'arène lac ( UnknownDungeon3, le
+/* Caverne Azurée SS1 : Mewtwo n. 70 dans l'arène lac ( UnknownDungeon3, le
    commentaire asm « bumped to lvl 74 » est périmé : l'objet encode
    SPRITE_MEWTWO, 27, 13, MEWTWO, 70), 2 boules (Hyper Ball, Rappel Max),
    2 objets cachés (Calcium, Modif.Gène), unique remontée 1F ; pêche et surf
@@ -6284,7 +6274,7 @@ const MARKERS_CERUB1F = [
   { cat: "item", spr: true, icon: "ball", tipIcon: "max_revive", ballMini: true, x: 18, y: 1, name: "Rappel Max" },
   { cat: "hidden", tipIcon: "calcium", x: 1, y: 11, name: "Calcium" },
   { cat: "hidden", tipIcon: "m_gene", x: 29, y: 17, name: "Modif.Gène" },
-  { cat: "warp", x: 3, y: 6, name: "Caverne Azurée 1F", dx: 0, dy: 6, badge: "RDC" }
+  { cat: "warp", x: 3, y: 6, name: "Caverne Azurée", dx: 0, dy: 6, badge: "RDC" }
 ];
 /* Ville oubliée (data/maps/objects/ForgottenTown.asm) : l'île fantôme du
    hack (tileset ALPHA), sans un habitant, ni panneau, ni rencontre à pied
