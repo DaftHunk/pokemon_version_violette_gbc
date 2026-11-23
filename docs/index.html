@@ -47,9 +47,6 @@
     background: #2b2410; border-radius: 10px; padding: 2px 8px;
   }
   #pages { display: flex; align-items: center; gap: 6px; align-self: center; margin-left: auto; }
-  /* t95 : nav alignée à droite de la barre ; le bouton collapse qui suit
-     les menus replie le menu de droite (Légende / Rencontres). L'icône
-     chevrons » (replier) devient « quand le menu est replié. */
   #paneltoggle .car { font-size: 11px; }
   #pages > button, .dd > button {
     font-size: 12.5px; padding: 4px 12px; border-radius: 8px; border: 1px solid #33436e;
@@ -68,6 +65,7 @@
     padding: 4px; z-index: 60;
   }
   .dd.open .ddmenu { display: block; }
+  #pages .ddmenu { left: auto; right: 0; }
   .ddmenu .grp {
     display: block; width: 100%; text-align: left; font-size: 10.5px; font-weight: 700;
     text-transform: uppercase; letter-spacing: 0.8px; color: var(--text);
@@ -77,10 +75,6 @@
   .ddmenu .grp:hover { background: #2a3760; }
   .ddmenu .grp.active { color: #ffd36e; }
 
-  /* t93 : entrées du menu « Objets clés » — même famille visuelle que
-     .grp mais en casse normale et avec l'icône de l'objet devant le
-     libellé. Le menu est le plus long des trois : il scrolle au-delà d'une
-     certaine hauteur plutôt que de sortir de l'écran. */
   .ddmenu .kitem {
     display: flex; align-items: center; gap: 8px; width: 100%; text-align: left;
     font-size: 12px; font-weight: 600; color: var(--text); padding: 5px 8px;
@@ -88,8 +82,14 @@
     border-radius: 6px; text-transform: none; letter-spacing: 0;
   }
   .ddmenu .kitem:hover { background: #2a3760; }
-  .ddmenu .kitem img { width: 16px; height: 16px; image-rendering: pixelated; flex: none; }
+  /* Pastille des icônes d'objets clés, même badge que les giveico :
+     22 px au total (icône 16 + padding 2 + bordure 1), box-sizing:
+     content-box car le global est en border-box. */
+  .ddmenu .kitem img { width: 16px; height: 16px; image-rendering: pixelated; flex: none;
+    background: #ffffff; border-radius: 999px; padding: 2px; box-sizing: content-box;
+    border: 1px solid rgba(0,0,0,0.75); box-shadow: 0 1px 4px rgba(0,0,0,0.6); }
   #dd-objets .ddmenu { max-height: 75vh; overflow-y: auto; }
+  body.nospoil #dd-succes { display: none; }
   #layout { display: flex; flex: 1; min-height: 0; }
   #viewport {
     flex: 1; position: relative; overflow: hidden; cursor: grab;
@@ -104,10 +104,10 @@
   .maplayer { position: absolute; }
   .maplayer img { image-rendering: pixelated; display: block; user-select: none; width: 100%; height: 100%; }
   .maplayer.sel { box-shadow: 0 0 0 2px var(--accent); }
-  /* t76 : le calque de type ne capture PAS les clics (pointer-events none),
-     seuls les marqueurs le font : sans ça, les calques créés plus tard dans
-     l'ordre de la légende (item, hidden, warp) couvraient les marqueurs des
-     types créés avant (pnj, vendeur, trainer) et bloquaient leur sélection. */
+  /* Les calques de type ne captent pas les clics : sans ça, les types
+     créés plus tard dans l'ordre de la légende (item, hidden, warp)
+     couvriraient les marqueurs des types créés avant (pnj, vendeur,
+     trainer) et bloqueraient leur sélection. */
   .mtype { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
   .mtype .marker { pointer-events: auto; }
   .marker {
@@ -125,13 +125,9 @@
   .marker img.spr.item { filter: drop-shadow(0 0 8px var(--item)) drop-shadow(0 1px 1px rgba(0,0,0,0.5)); }
   .marker img.spr.pnj { filter: drop-shadow(0 0 2px var(--npc)) drop-shadow(0 1px 1px rgba(0,0,0,0.5)); }
   .marker img.spr.vendeur { filter: drop-shadow(0 0 8px var(--vendor)) drop-shadow(0 1px 1px rgba(0,0,0,0.5)); }
-  /* t78 : pastilles 1px pleines (retour user) et pivots des contre-échelles
-     collés au pied du sprite : left/top + transform-origin = (0, 4) par
-     rapport à la pointe du marqueur, exactement comme img.spr (origine
-     16px 32px sur -16 -28). Ainsi chaque pastille garde une position fixe
-     par rapport à son PNJ à tout niveau de zoom. L'ancienne origine 14px
-     16px de .shopico (ancre en 8, 6) faisait dériver les P$ des vendeurs
-     en gauche-droite au dézoom. */
+  /* Pastilles 1px pleines et pivots des contre-échelles collés au pied
+     du sprite, exactement comme img.spr : chaque pastille garde une
+     position fixe par rapport à son PNJ à tout niveau de zoom. */
   .marker .hiddenico {
     position: absolute; left: -4px; top: -10px;
     width: 22px; height: 22px; border-radius: 999px;
@@ -275,8 +271,8 @@
   #poi-tip img.mon { height: 48px; vertical-align: middle; margin-right: 5px; }
   .wildrow img.mon { height: 48px; }
   #poi-tip .lv { color: var(--muted); }
-  /* t77 : les sources restent dans le DOM de l'infobulle (debug, inspecteur)
-     mais ne s'affichent plus. */
+  /* Les sources restent dans le DOM de l'infobulle (debug, inspecteur)
+     sans s'afficher. */
   #poi-tip .src { display: none; font-size: 10.5px; color: #5f6f99; margin-top: 10px; word-break: break-all; }
   #poi-tip .close {
     position: absolute; top: 6px; right: 8px; border: none; background: none;
@@ -338,6 +334,10 @@
     </div>
     <div class="dd" id="dd-objets">
       <button type="button">Objets clés <span class="car">▼</span></button>
+      <div class="ddmenu"></div>
+    </div>
+    <div class="dd" id="dd-succes">
+      <button type="button">Succès <span class="car">▼</span></button>
       <div class="ddmenu"></div>
     </div>
     <button type="button" id="paneltoggle" title="Replier le menu de droite"><span class="car">»</span></button>
@@ -912,6 +912,11 @@ abra: "https://raw.githubusercontent.com/DaftHunk/pokemon_version_violette_gbc/d
 };
 const PNJ = [[255,255,255],[244,125,64],[0,0,0]];
 const MENU = [[232,176,144],[144,120,152],[24,24,24]];
+// Exception de couleur : le Rhinocorne du marchand ambulant d'Azuria affiche
+// la palette grise d'Argenta (PAL_PEWTER des GBCBasePalettes, RGB 18,18,15
+// en 5 bits, converti x255/31 comme MONPAL).
+const ARGENTA = [[255,255,255],[148,148,123],[0,0,0]];
+const PNJ_SPRITE_PAL = { rhyhorn: ARGENTA };
 /* Palettes GBC réelles des Pokémon (GBCBasePalettes, RGB 5-bit × 255/31) :
    [teinte claire, teinte foncée], noir = RGB 3,3,3 ajouté au recolor */
 const MONPAL = {
@@ -1148,7 +1153,7 @@ const ICONS = {};
 const PNJ_SPRITES = ["bug_catcher", "oak", "girl", "fisher2", "gambler", "lying_old_man", "blue", "guard", "gym_helper", "ball", "pokeball", "oak_aide", "black_hair_boy_1", "black_hair_boy_2", "foulard_woman", "burglar", "blackbelt", "juggler", "tamer", "soldier", "lass", "rocker", "nurse", "mart_guy", "cable_club_woman", "chansey", "spearow", "boulder", "cup", "nerd", "gentleman", "giovanni", "brunette_girl", "young_boy", "balding_guy", "little_girl", "clipboard", "book_map_dex", "mom", "daisy", "lorelei", "bruno", "agatha", "lance", "brock", "fisher", "gameboy_kid", "hiker", "old_person", "jigglypuff", "nidoranm", "old_amber", "pokedex", "map", "rocket", "jessie", "james", "clefairy", "dome", "omanyte", "fat_bald_guy", "misty", "swimmer", "bike_shop_guy", "mom_geisha", "old_medium_woman", "slowbro", "rhyhorn", "bulbasaur", "oddish", "sandshrew", "sacha", "hooh", "pikachu", "medium", "mr_fuji", "mr_masterball", "psyduck", "nidorino", "cubone", "zapdos", "snorlax", "lapras_giver", "kimonowoman", "pidgeot", "koichi", "sabrina", "doduo", "bird", "pidgey", "waiter", "jenny", "sailor", "surge", "machop", "mew", "seel", "cook", "ss_captain", "machoke", "wigglytuff", "paper_sheet", "erika", "polywrath", "meowth", "nidoranf", "white_player", "koga", "warden", "biker", "fearow", "kangaskhan", "slowpoke", "lapras", "blaine", "firefighter", "keeper", "moltres_ow", "articuno_ow", "mewtwo_ow"];
 async function buildIcons() {
   for (const k of PNJ_SPRITES)
-    ICONS[k] = await recolor(ICONS_B64[k], PNJ, true);
+    ICONS[k] = await recolor(ICONS_B64[k], PNJ_SPRITE_PAL[k] || PNJ, true);
   // Orientation des sprites comme en jeu (data/maps/objects : STAY, UP/DOWN/LEFT/RIGHT ;
   // NONE et WALK = bas). Feuille debout = 3 frames 16×16 : bas (0), haut (+16 px),
   // côté gauche (+32 px) ; la droite est le miroir du côté (SPRITE_FACING_RIGHT = $0C
@@ -1156,11 +1161,11 @@ async function buildIcons() {
   for (const k of PNJ_SPRITES) {
     const sheet = await loadB64(ICONS_B64[k]);
     if (sheet.height < 48) continue; // sprite statique : une seule frame
-    ICONS[k + "_up"] = await recolor(ICONS_B64[k], PNJ, true, 16);
-    ICONS[k + "_left"] = await recolor(ICONS_B64[k], PNJ, true, 32);
-    ICONS[k + "_right"] = await recolor(ICONS_B64[k], PNJ, true, 32, true);
+    ICONS[k + "_up"] = await recolor(ICONS_B64[k], PNJ_SPRITE_PAL[k] || PNJ, true, 16);
+    ICONS[k + "_left"] = await recolor(ICONS_B64[k], PNJ_SPRITE_PAL[k] || PNJ, true, 32);
+    ICONS[k + "_right"] = await recolor(ICONS_B64[k], PNJ_SPRITE_PAL[k] || PNJ, true, 32, true);
   }
-  // Icônes d objets (tipIcon + give[0]) : toute nouvelle icône DOIT figurer ici (sinon src undefined, cf. exp_all t58).
+  // Icônes d objets (tipIcon + give[0]) : toute nouvelle icône DOIT figurer ici (sinon src undefined).
   for (const k of ["potion", "tm_hm", "rare_candy", "metal_coat", "max_revive", "revive", "full_restore", "max_ether", "ultra_ball", "oaks_parcel", "poke_ball", "antidote", "old_rod", "good_rod", "super_rod", "exp_all", "exp_catch_up", "parlyz_heal", "burn_heal", "max_potion", "full_heal", "max_elixer", "moon_stone", "hp_up", "repel", "escape_rope", "awakening", "ether", "nugget", "soul_stone", "water_stone", "calcium", "great_ball", "bicycle", "berserk_adn", "s_s_ticket", "elixer", "super_potion", "super_repel", "ice_heal", "pp_up", "carbos", "x_accuracy", "poke_flute", "hyper_potion", "iron", "m_gene", "max_repel", "protein", "card_key", "x_special", "master_ball", "poke_doll", "itemfinder", "bike_voucher", "coin_case", "lift_key", "silph_scope", "fire_stone", "thunder_stone", "leaf_stone", "guard_spec", "dire_hit", "x_attack", "x_defend", "x_speed", "fresh_water", "soda_pop", "lemonade", "gold_teeth", "secret_key", "surfboard", "dome_fossil", "helix_fossil"])
     ICONS[k] = await recolor(ICONS_B64[k], MENU, false);
   for (const k of Object.keys(FRONT_B64)) {
@@ -1433,7 +1438,7 @@ const MARKERS_OAKSLAB = [
 /* ---------- Salles de la Ligue (data/maps/objects/Indigo*.asm) : chaîne
    Hall -> Olga -> Aldo -> Agatha -> Peter -> Champion -> Panthéon. Chaque
    Maître du Conseil 4 a une équipe de revanche après la Ligue
-   (EVENT_ELITE_4_BEATEN, TrainerNo 2 ; t70 : entrée Revanche spoil). Le rival Champion a 3 équipes selon
+   (EVENT_ELITE_4_BEATEN, TrainerNo 2 ; entrée Revanche spoil). Le rival Champion a 3 équipes selon
    son starter (l'opposé du tien) + une revanche. ---------- */
 const MARKERS_LORELEI = [
   { cat: "trainer", spr: true, icon: "lorelei", x: 5, y: 2, name: "Olga", teams: [
@@ -1557,7 +1562,7 @@ const MARKERS_ARGMART = [
 /* Arène d'Argenta (PewterGym.asm) : Pierre (Racaillou n. 14, Rhinocorne n. 13,
    Onix n. 15, data/battle/trainer_parties.asm) donne CT34 Patience ;
    Dresseur jr♂ (Taupiqueur et Sabelette n. 9). Revanche de Pierre après la
-   Ligue (BrockData n. 64-65, EVENT_BEAT_BROCK_REMATCH ; t70 : 2e duel
+   Ligue (BrockData n. 64-65, EVENT_BEAT_BROCK_REMATCH ; 2e duel
    spoil, même PNJ, la porte CT34 reste visible). */
 const MARKERS_ARGGYM = [
   { cat: "trainer", spr: true, icon: "brock", x: 4, y: 1, name: "Pierre", team: [["geodude", "Racaillou", 14], ["rhyhorn", "Rhinocorne", 13], ["onix", "Onix", 15]], give: ["tm_hm", "CT34 Patience"],
@@ -1782,7 +1787,7 @@ const MARKERS_MOONPC = [
    ambulant et son Rhinocorne, Flagadoss ; 2 objets cachés (hidden_objects.asm,
    format y,x : Super Bonbon 15,8, Rappel Max 6,31) et 12 portes dont la porte
    arrière de la maison cambriolée et les deux entrées de la Maison des Badges ;
-   Caverne Azurée : entrée du gouffre (carte t57, arrivée au 1F en
+   Caverne Azurée : entrée du gouffre (arrivée au 1F en
    (24,17)). */
 const MARKERS_AZURIA = [
   { cat: "trainer", spr: true, icon: "blue", x: 20, y: 2, hs: "cache", name: "Rival", team: [["pidgeotto", "Roucoups", 18], ["abra", "Abra", 15], ["rattata", "Rattata", 15], [["squirtle", "Carapuce", 17], ["bulbasaur", "Bulbizarre", 17], ["charmander", "Salamèche", 17]]] },
@@ -1843,8 +1848,8 @@ const MARKERS_AZURPC = [
    apprend Hydrocanon à un Tortank après la Ligue, scripts/CeruleanGym.asm),
    Dresseur jr♀ et Nageur (OPP_MISTY/JR_TRAINER_F/SWIMMER 1,
    data/battle/trainer_parties.asm). Revanche d'Ondine après la Ligue
-   (MistyData n. 64-65, EVENT_BEAT_MISTY_REMATCH ; t70 : 2e duel spoil,
-   même PNJ, le badge et la CT11 restent visibles). t70b : la piscine est
+   (MistyData n. 64-65, EVENT_BEAT_MISTY_REMATCH ; 2e duel spoil,
+   même PNJ, le badge et la CT11 restent visibles). la piscine est
    de vraie eau ($14), les trois cannes y pêchent (CERULEAN_GYM ->
    FishingGroup3, $47 & 3 = 3), aucune rencontre sauvage (NoMons). */
 const MARKERS_AZURGYM = [
@@ -1918,9 +1923,9 @@ const MARKERS_ROUTE24 = [
    (data/items/hidden_objects.asm Route25HiddenObjects, format y,x :
    Huile y=5,x=54 ; Elixir y=4,x=10) ; panneau « Villa — Léo habite ici! »
    ignoré (pas de catégorie) ; 1 warp : la porte de la Villa Léo ; la faille
-   nord (45,2)/(46,2) qui re-téléporte dans la maison (astuce d'accès au
-   Jardin de Léo) n'est plus cartographiée depuis t69 : les warps Faille
-   sont retirés, on ressort par la porte avant. */
+   nord (45,2)/(46,2), qui re-téléporte dans la maison (astuce d'accès au
+   Jardin de Léo), n'est pas cartographiée : on ressort par la
+   porte avant. */
 const MARKERS_ROUTE25 = [
   { cat: "trainer", spr: true, icon: "bug_catcher", x: 14, y: 4, dir: "down", name: "Gamin n°1", team: [["rattata", "Rattata", 16], ["spearow", "Piafabec", 16]] },
   { cat: "trainer", spr: true, icon: "bug_catcher", x: 18, y: 7, dir: "up", name: "Gamin n°2", team: [["slowpoke", "Ramoloss", 17]] },
@@ -1954,8 +1959,8 @@ const MARKERS_BILLSHOUSE = [
    transition à la Route 25 (SOUTH_MAP_CONNECTION BILLS_GARDEN, ROUTE_25 :
    pas de warp), l'accès de jeu passe par l'easter egg Mew de la Villa Léo
    (Léo téléporte sur la faille 45,2 de la Route 25, qui re-téléporte dans la
-   maison puis on ressort par la porte avant ; les warps faille ne sont plus
-   cartographiés depuis t69). Ho-Oh statique n. 80 (bataille
+   maison puis on ressort par la porte avant ; les warps faille ne sont pas
+   cartographiés). Ho-Oh statique n. 80 (bataille
    événement EVENT_BEAT_HOOH, ShinyAttract actif), duel de Sacha
    (trainer_parties.asm SachaData : Pikachu n. 88, Tauros 85, Dracaufeu 85,
    Roucarnage 85, Ronflex 87, Scarhino 83) qui donne l'ADN Berserk et fait
@@ -2187,7 +2192,7 @@ const MARKERS_LMART = [
    $05 Hide : absent jusqu'au sauvetage) donne la Poké Flûte ; après la Ligue
    (EVENT_ELITE_4_BEATEN), Mewtwo en tête de groupe -> il offre la Modif.Gène
    (EVENT_FUJI_GAVE_MGENE), sinon duel spécial MFUJI (musique d'arène) ;
-   t70 : M. Fuji visible hors spoil (récompense Poké Flûte), le duel
+   M. Fuji visible hors spoil (récompense Poké Flûte), le duel
    MFUJI est la 2e partie de l'infobulle, masquée hors spoil.
    2 portes vers Lavanville (7,9). NoHS. */
 const MARKERS_LFUJI = [
@@ -2230,13 +2235,13 @@ const MARKERS_LT1F = [
 /* Tour Pokémon 2F : embuscade du Rival (SPRITE_BLUE, Tower2FHS $01 Show ;
    OPP_RIVAL2 n°4/5/6 selon le starter, équipes Rival2Data ; le hack rend le
    duel inévitable ici : wSSAnne2CurScript=4 + SetEvent EVENT_BEAT_CERULEAN_
-   RIVAL) ; t92 : équipes éclatées par starter du joueur, comme la Ligue.
+   RIVAL) ; équipes éclatées par starter du joueur, comme la Ligue.
    Un Exorciste près de la tombe « Ci-jît: Rattatac » (sign ignoré)
    explique que rien ne fonctionne sans un Scope Sylphe (script).
    Pas de rencontres (Mons $00). */
 const MARKERS_LT2F = [
   { cat: "trainer", spr: true, icon: "blue", x: 14, y: 5, name: "Rival", scripted: true,
-    /* t92 : équipes éclatées par starter du joueur (rival = opposé), comme le
+    /* équipes éclatées par starter du joueur (rival = opposé), comme le
        duel de la Ligue. Données Rival2Data n°4/5/6, ordre de la liste aligné
        sur le marqueur Champion : Bulbizarre, Salamèche, Carapuce. */
     teams: [
@@ -2395,14 +2400,14 @@ const MARKERS_SAFFRON = [
   { cat: "trainer", spr: true, icon: "pidgeot", x: 31, y: 12, dir: "down", name: "Roucarnage", scripted: true, hs: "cache" },
   { cat: "pnj", spr: true, icon: "rocker", x: 18, y: 8, dir: "up", name: "Rocker", hs: "cache" },
   { cat: "pnj", spr: true, icon: "rocket", x: 19, y: 22, name: "Rocket", hs: "cache" },
-  { cat: "warp", x: 7, y: 5, name: "Maison de la Copieuse", dx: 2, dy: 7, badge: "Maison" },
+  { cat: "warp", x: 7, y: 5, name: "Maison de la Copieuse", dx: 2, dy: 7, badge: "Copieuse" },
   { cat: "warp", x: 26, y: 3, name: "Dojo", dx: 4, dy: 11, badge: "Dojo" },
   { cat: "warp", x: 34, y: 3, name: "Arène de Safrania", dx: 8, dy: 17, badge: "Arène" },
   { cat: "warp", x: 13, y: 11, name: "Maison au Roucool", dx: 2, dy: 7, badge: "Maison" },
   { cat: "warp", x: 25, y: 11, name: "Magasin (Safrania)", dx: 3, dy: 7, badge: "Magasin" },
   { cat: "warp", x: 18, y: 21, name: "Sylphe SARL", dx: 10, dy: 17, badge: "Sylphe" },
-  { cat: "warp", x: 9, y: 29, name: "Centre Pokémon (Safrania)", dx: 3, dy: 7, badge: "CP" },
-  { cat: "warp", x: 29, y: 29, name: "Maison de Mr. Psy", dx: 2, dy: 7, badge: "Maison" }
+  { cat: "warp", x: 9, y: 29, name: "Centre Pokémon (Safrania)", dx: 3, dy: 7, badge: "Pokécentre" },
+  { cat: "warp", x: 29, y: 29, name: "Maison de Mr. Psy", dx: 2, dy: 7, badge: "Mr. Psy" }
 ];
 
 /* Route 5 (data/maps/objects/Route5.asm) : 4 portes : Porte
@@ -2820,7 +2825,7 @@ const MARKERS_SYLPH6F = [
    (Ossatueur/Magmar 39) et n°30 (Sablaireau/Rafflesia 39) ;
    Scientifique n°7 (Electrode/Grotadmorv 39) ; le Rival (3,7, 6e duel :
    Roucarnage 43 puis Caninos/Léviator/Nidorino 44-43, Alakazam 44 et
-   starter adverse 46 ; t92 : équipes éclatées par starter du joueur,
+   starter adverse 46 ; équipes éclatées par starter du joueur,
    comme la Ligue) annonce le duel du 11F ; Calcium (1,9),
    CT04 LancFla (24,11) ; escaliers vers 6F (22,0) et 8F (16,0),
    ascenseur (18,0), warps (5,3) -> 3F, (5,7) -> 11F, (21,15) -> 5F.
@@ -2835,7 +2840,7 @@ const MARKERS_SYLPH7F = [
   { cat: "trainer", spr: true, icon: "rocket", x: 20, y: 2, dir: "left", name: "Rocket n°29", team: [["marowak", "Ossatueur", 39], ["magmar", "Magmar", 39]] },
   { cat: "trainer", spr: true, icon: "rocket", x: 19, y: 14, dir: "right", name: "Rocket n°30", team: [["sandslash", "Sablaireau", 39], ["vileplume", "Rafflesia", 39]] },
   { cat: "trainer", spr: true, icon: "blue", x: 3, y: 7, dir: "up", name: "Rival", scripted: true,
-    /* t92 : équipes éclatées par starter du joueur (rival = opposé), comme le
+    /* équipes éclatées par starter du joueur (rival = opposé), comme le
        duel de la Ligue. Données Rival2Data n°7/8/9 (bloc Silph Co. 7F), ordre de
        la liste aligné sur le marqueur Champion : Bulbizarre, Salamèche, Carapuce. */
     teams: [
@@ -2987,7 +2992,7 @@ const MARKERS_ROUTE7 = [
    scripts/Route6Gate.asm) : le garde assoiffé (6,2) bloque le passage
    vers Carmin sur Mer tant qu'on ne lui apporte pas une boisson
    (RemoveGuardDrink : Eau Fraîche, Soda Cool ou Café) ; portes
-   symétriques vers la Route 6 (nord (10,1), sud (10,5), marque unique t88).
+   symétriques vers la Route 6 (nord (10,1), sud (10,5), marque unique).
    NoHS, aucune rencontre. */
 const MARKERS_R6GATE = [
   { cat: "pnj", spr: true, icon: "guard", x: 6, y: 2, dir: "left", name: "Garde" },
@@ -2999,7 +3004,7 @@ const MARKERS_R6GATE = [
    scripts/Route7Gate.asm) : le garde assoiffé (3,1) bloque le passage
    vers Céladopole tant qu'on ne lui apporte pas une boisson
    (RemoveGuardDrink) ; portes symétriques vers la Route 7 (est (18,9),
-   ouest (11,9), marque unique t88). NoHS, aucune rencontre. */
+   ouest (11,9), marque unique). NoHS, aucune rencontre. */
 const MARKERS_R7GATE = [
   { cat: "pnj", spr: true, icon: "guard", x: 3, y: 1, dir: "down", name: "Garde" },
   { cat: "warp", x: 0, y: 3, name: "Route 7", dx: 18, dy: 9, badge: "Sortie" },
@@ -3049,11 +3054,11 @@ const MARKERS_VMCITY = [
   { cat: "hidden", tipIcon: "max_ether", x: 34, y: 12, name: "Huile Max" },
   { cat: "warp", x: 11, y: 3, name: "Centre Pokémon (Carmin sur Mer)", dx: 3, dy: 7, badge: "Pokécentre" },
   { cat: "warp", x: 7, y: 3, name: "Maison du Maître Pêcheur", dx: 2, dy: 7, badge: "Pêcheur" },
-  { cat: "warp", x: 9, y: 13, name: "Fan Club Pokémon", dx: 2, dy: 7, badge: "Fans" },
+  { cat: "warp", x: 9, y: 13, name: "Fan Club Pokémon", dx: 2, dy: 7, badge: "Fan Club" },
   { cat: "warp", x: 23, y: 13, name: "Magasin (Carmin sur Mer)", dx: 3, dy: 7, badge: "Magasin" },
   { cat: "warp", x: 15, y: 13, name: "Maison de l'échange (Carmin sur Mer)", dx: 2, dy: 7, badge: "Échange" },
   { cat: "warp", x: 12, y: 19, name: "Arène (Carmin sur Mer)", dx: 4, dy: 17, badge: "Arène" },
-  { cat: "warp", x: 23, y: 19, name: "Maison au Roucool (Carmin sur Mer)", dx: 2, dy: 7, badge: "Roucool" },
+  { cat: "warp", x: 23, y: 19, name: "Maison au Roucool (Carmin sur Mer)", dx: 2, dy: 7, badge: "Maison" },
   { cat: "warp", x: 18, y: 31, name: "Dock de Carmin sur Mer", dx: 14, dy: 0, badge: "Dock" }
 ];
 /* Centre Pokémon (Carmin sur Mer) (data/maps/objects/VermilionPokecenter.asm,
@@ -3620,11 +3625,11 @@ const MAPS = [
   { id: "CeruleanPokecenter", label: "Centre Pokémon (Azuria)", w: 224, h: 128, b64: MAP_MOONPC_B64, wild: null,
     fish: [] },
   { id: "CeruleanGym", label: "Arène (Azuria)", w: 160, h: 224, b64: MAP_CERUGYM_B64, wild: null,
-    /* t70b : la piscine de l'arène est de vraie eau (4 tuiles $14 dans
+    /* la piscine de l'arène est de vraie eau (4 tuiles $14 dans
        CeruleanGym.blk) : les trois cannes y pêchent (SuperRodData :
        CERULEAN_GYM -> FishingGroup3 ; $47 & 3 = 3 -> GoodRodMons[3] et
        indices {3,4,7,8}), mais aucune rencontre sauvage en surf (NoMons,
-       water_rate 0). t90 : la note informative du panneau Rencontres a
+       water_rate 0). la note informative du panneau Rencontres a
        ete retiree (rencontres disponibles uniquement). */
     fish: [
       ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["goldeen", "Poissirène", "n. 12", "50 %"]]],
@@ -4086,7 +4091,7 @@ const MAPS = [
     fish: [] },
   { id: "CinnabarMansion1F", label: "Manoir Pokémon", w: 480, h: 448, b64: MAP_MANSION1F_B64, rate: "10",
     wild: [["grimer", "Tadmorv", "n. 30 à 32", "39,8 %"], ["houndour", "Malosse", "n. 28 à 34", "39,8 %"], ["vulpix", "Goupix", "n. 34", "9,8 %"], ["koffing", "Smogo", "n. 30", "5,1 %"], ["muk", "Grotadmorv", "n. 37", "4,3 %"], ["weezing", "Smogogo", "n. 39", "1,2 %"]], fish: [] },
-  { id: "CinnabarMansion2F", label: "Manoir Pokémon E1", w: 480, h: 448, b64: MAP_MANSION2F_B64, rate: "10",
+  { id: "CinnabarMansion2F", label: "Manoir Pokémon", w: 480, h: 448, b64: MAP_MANSION2F_B64, rate: "10",
     wild: [["grimer", "Tadmorv", "n. 30 à 34", "44,9 %"], ["houndour", "Malosse", "n. 28 à 32", "24,6 %"], ["vulpix", "Goupix", "n. 32", "19,9 %"], ["koffing", "Smogo", "n. 30", "5,1 %"], ["muk", "Grotadmorv", "n. 39", "4,3 %"], ["weezing", "Smogogo", "n. 37", "1,2 %"]], fish: [] },
   { id: "CinnabarMansion3F", label: "Manoir Pokémon E2", w: 480, h: 288, b64: MAP_MANSION3F_B64, rate: "10",
     wild: [["grimer", "Tadmorv", "n. 31 à 35", "35,2 %"], ["vulpix", "Goupix", "n. 33 à 34", "29,7 %"], ["muk", "Grotadmorv", "n. 38 à 40", "14,8 %"], ["houndour", "Malosse", "n. 32", "9,8 %"], ["koffing", "Smogo", "n. 34", "5,1 %"], ["houndoom", "Démolosse", "n. 36", "4,3 %"], ["weezing", "Smogogo", "n. 42", "1,2 %"]], fish: [] },
@@ -4098,7 +4103,7 @@ const MAPS = [
     wild: [["growlithe", "Caninos", "n. 35 à 38", "29,7 %"], ["slugma", "Limagma", "n. 36 à 37", "25,0 %"], ["vulpix", "Goupix", "n. 36", "19,9 %"], ["ponyta", "Ponyta", "n. 40", "9,8 %"], ["magcargo", "Volcaropod", "n. 38", "5,1 %"], ["magmar", "Magmar", "n. 38", "5,1 %"], ["charmeleon", "Reptincel", "n. 38", "4,3 %"], ["rapidash", "Galopa", "n. 42", "1,2 %"]], fish: [] },
   { id: "VolcanoB2F", label: "Volcan Cramoisi SS2", w: 288, h: 288, b64: MAP_VOLCB2F_B64, rate: "10",
     wild: [["slugma", "Limagma", "n. 36 à 37", "39,8 %"], ["magcargo", "Volcaropod", "n. 38 à 40", "19,5 %"], ["growlithe", "Caninos", "n. 37", "15,2 %"], ["ninetales", "Feunard", "n. 35", "9,8 %"], ["magmar", "Magmar", "n. 36 à 38", "9,4 %"], ["charmeleon", "Reptincel", "n. 38", "5,1 %"], ["arcanine", "Arcanin", "n. 42", "1,2 %"]], fish: [] },
-  /* ---------- t56 : Îles Écume (grotte 5 étages ; pêche possible sur
+  /* ---------- Îles Écume (grotte 5 étages ; pêche possible sur
      le B3F et le B4F uniquement : tuiles de courant $30/$3B/$42/$43,
      cf. IsNextTileShoreOrWater ; surf : eau profonde $14 sur le B4F). */
   { id: "SeafoamIslands1F", label: "Îles Écume", w: 480, h: 288, b64: MAP_ECUM1F_B64, rate: "15",
@@ -4121,7 +4126,7 @@ const MAPS = [
       ["Super Canne", [["goldeen", "Poissirène", "n. 12", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["shellder", "Kokiyas", "n. 12", "18,75 %"], ["tentacool", "Tentacool", "n. 5", "18,75 %"]]],
       ["Méga Canne", [["psyduck", "Psykokwak", "n. 15", "18,75 %"], ["slowpoke", "Ramoloss", "n. 15", "18,75 %"], ["dratini", "Minidraco", "n. 15", "18,75 %"], ["lapras", "Lokhlass", "n. 15", "18,75 %"]]]
     ] },
-  /* ---------- t57 : cartes manquantes (captures du dépôt) : Routes
+  /* ---------- cartes manquantes (captures du dépôt) : Routes
      13-15 + Porte Route 15, Caverne Azurée (Mewtwo n. 70 ; le
      commentaire asm « bumped to lvl 74 » est périmé, l'objet encode 70),
      Ville oubliée (ForgottenTown, tileset ALPHA, île sans habitant). */
@@ -4490,7 +4495,7 @@ const MARKERS_SSA1F = [
   { cat: "warp", x: 11, y: 8, name: "Cabines du 1er pont", dx: 10, dy: 10, badge: "Cab." },
   { cat: "warp", x: 7, y: 8, name: "Cabines du 1er pont", dx: 20, dy: 10, badge: "Cab." },
   { cat: "warp", x: 2, y: 6, name: "L'Océane (2e pont)", dx: 2, dy: 4, badge: "E1" },
-  { cat: "warp", x: 37, y: 15, name: "L'Océane (pont B1)", dx: 27, dy: 5, badge: "B1" },
+  { cat: "warp", x: 37, y: 15, name: "L'Océane (pont B1)", dx: 27, dy: 5, badge: "SS1" },
   { cat: "warp", x: 3, y: 16, name: "Cuisine de l'Océane", dx: 6, dy: 0, badge: "Cuisine" }
 ];
 /* Cabines du 1er pont (SSAnne1FRooms.asm) : 4 dresseurs (GentlemanData 1-2,
@@ -4535,7 +4540,7 @@ const MARKERS_SSA2F = [
 /* Cabines du 2e pont (SSAnne2FRooms.asm) : 4 dresseurs (GentlemanData 3-4,
    FisherData 1, LassData 11) ; Huile Max (12,1) et Super Bonbon (0,12). Le
    Gentleman (1,2) montre Ronflex avant la Ligue, puis se révèle être
-   Giovanni en revanche n. 64-65 (EVENT_BEAT_GIOVANNI_REMATCH ; t70 : 2e
+   Giovanni en revanche n. 64-65 (EVENT_BEAT_GIOVANNI_REMATCH ; 2e
    duel spoil sur le même PNJ Gentleman). */
 const MARKERS_SSA2FR = [
   { cat: "trainer", spr: true, icon: "gentleman", x: 10, y: 2, dir: "right", name: "Gentleman", team: [["voltorb", "Voltorbe", 22], ["magnemite", "Magnéti", 22]] },
@@ -4630,11 +4635,11 @@ const MARKERS_SSAB1FR = [
   { cat: "item", spr: true, icon: "ball", tipIcon: "ether", ballMini: true, x: 20, y: 2, name: "Huile" },
   { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 10, y: 2, name: "CT44 Repos" },
   { cat: "item", spr: true, icon: "ball", tipIcon: "max_potion", ballMini: true, x: 12, y: 11, name: "Potion Max" },
-  { cat: "warp", x: 2, y: 5, name: "L'Océane (pont B1)", dx: 7, dy: 3, badge: "B1" },
-  { cat: "warp", x: 12, y: 5, name: "L'Océane (pont B1)", dx: 11, dy: 3, badge: "B1" },
-  { cat: "warp", x: 22, y: 5, name: "L'Océane (pont B1)", dx: 15, dy: 3, badge: "B1" },
-  { cat: "warp", x: 2, y: 15, name: "L'Océane (pont B1)", dx: 19, dy: 3, badge: "B1" },
-  { cat: "warp", x: 12, y: 15, name: "L'Océane (pont B1)", dx: 23, dy: 3, badge: "B1" }
+  { cat: "warp", x: 2, y: 5, name: "L'Océane (pont B1)", dx: 7, dy: 3, badge: "SS1" },
+  { cat: "warp", x: 12, y: 5, name: "L'Océane (pont B1)", dx: 11, dy: 3, badge: "SS1" },
+  { cat: "warp", x: 22, y: 5, name: "L'Océane (pont B1)", dx: 15, dy: 3, badge: "SS1" },
+  { cat: "warp", x: 2, y: 15, name: "L'Océane (pont B1)", dx: 19, dy: 3, badge: "SS1" },
+  { cat: "warp", x: 12, y: 15, name: "L'Océane (pont B1)", dx: 23, dy: 3, badge: "SS1" }
 ];
 
 MARKERS_SSAKCH.forEach(m => {
@@ -4702,7 +4707,7 @@ const MARKERS_CPC = [
 ];
 /* Arène de Céladopole (Erika) : 7 dresseurs + la Championne ; elle donne la CT21.
    Les statues de l'arène ne sont pas des marqueurs (règle du mobilier).
-   Revanche d'Erika après la Ligue (ErikaData n. 64-65 ; t70 : 2e duel
+   Revanche d'Erika après la Ligue (ErikaData n. 64-65 ; 2e duel
    spoil, même PNJ, la CT21 reste visible). */
 const MARKERS_CGYM = [
   { cat: "trainer", spr: true, icon: "erika", x: 4, y: 3, dir: "down", name: "Erika", scripted: true,
@@ -5118,7 +5123,7 @@ const MARKERS_R18GATE2F = [
 const MARKERS_FUCHSIA = [
   { cat: "pnj", spr: true, icon: "bug_catcher", x: 10, y: 12, name: "Gamin" },
   { cat: "pnj", spr: true, icon: "gambler", x: 28, y: 17, name: "Joueur" },
-  { cat: "pnj", spr: true, icon: "fisher2", x: 30, y: 14, dir: "down", name: "Bonhomme" },
+  { cat: "pnj", spr: true, icon: "fisher2", x: 30, y: 14, dir: "down", name: "Nico" },
   { cat: "pnj", spr: true, icon: "bug_catcher", x: 24, y: 8, dir: "up", name: "Gamin" },
   { cat: "pnj", spr: true, icon: "chansey", x: 31, y: 5, name: "Leveinard", scripted: true },
   { cat: "pnj", spr: true, icon: "ball", x: 25, y: 6, name: "Voltorbe", scripted: true },
@@ -5133,11 +5138,11 @@ const MARKERS_FUCHSIA = [
   { cat: "warp", x: 18, y: 3, name: "Entrée du Parc Safari", dx: 3, dy: 5, badge: "Safari" },
   { cat: "warp", x: 5, y: 27, name: "Arène de Parmanie", dx: 4, dy: 17, badge: "Arène" },
   { cat: "warp", x: 22, y: 13, name: "Salle de réunion (Parc Safari)", dx: 4, dy: 7, badge: "Réunion" },
-  { cat: "warp", x: 31, y: 27, name: "Maison du Pêcheur (Parmanie)", dx: 2, dy: 7, badge: "Maison" },
-  { cat: "warp", x: 31, y: 24, name: "Maison du Pêcheur (Parmanie)", dx: 2, dy: 0, badge: "Maison" }
+  { cat: "warp", x: 31, y: 27, name: "Maison du Pêcheur (Parmanie)", dx: 2, dy: 7, badge: "Pêcheur" },
+  { cat: "warp", x: 31, y: 24, name: "Maison du Pêcheur (Parmanie)", dx: 2, dy: 0, badge: "Pêcheur" }
 ];
 /* Centre Pokémon de Parmanie : l'infirmière Joëlle propose un rematch de haut
-   niveau après la Ligue (joenote). t61 : sans spoil, elle apparaît comme
+   niveau après la Ligue (joenote). sans spoil, elle apparaît comme
    l'infirmière normale des autres Centres ; le marqueur pnj est posé sous le
    trainer spoil superposé à la même case (DOM plus haut = visible par-dessus
    quand le toggle Spoil est activé). */
@@ -5161,7 +5166,7 @@ const MARKERS_FMART = [
 ];
 /* Arène de Parmanie (Koga) : Badge Âme + CT06 Toxik ; Janine, ajout du hack,
    et le Guide. Les statues restent du mobilier (sans marqueur). Revanche
-   de Koga après la Ligue (KogaData n. 64-65, SCIZOR_S violet ; t70 : 2e
+   de Koga après la Ligue (KogaData n. 64-65, SCIZOR_S violet ; 2e
    duel spoil, même PNJ, la CT06 reste visible). */
 const MARKERS_FGYM = [
   { cat: "trainer", spr: true, icon: "koga", x: 4, y: 10, dir: "down", name: "Koga", scripted: true,
@@ -5256,9 +5261,9 @@ const MARKERS_SZNORTH = [
   { cat: "warp", x: 35, y: 3, name: "Aire de repos (Nord)", dx: 2, dy: 7, badge: "Aire" }
 ];
 const MARKERS_SZRHC = [
-  { cat: "pnj", spr: true, icon: "girl", x: 3, y: 2, dir: "down", name: "Fillette" },
+  { cat: "pnj", spr: true, icon: "girl", x: 3, y: 2, dir: "down", name: "Julia" },
   { cat: "pnj", spr: true, icon: "oak_aide", x: 1, y: 4, name: "Assistant Prof. Chen" },
-  { cat: "pnj", spr: true, icon: "fisher2", x: 4, y: 2, dir: "down", name: "Bonhomme" },
+  { cat: "pnj", spr: true, icon: "fisher2", x: 4, y: 2, dir: "down", name: "Nico" },
   { cat: "warp", x: 2, y: 7, name: "Parc Safari (Centre)", dx: 17, dy: 19, badge: "Sortie" }
 ];
 const MARKERS_SZRHE = [
@@ -5311,7 +5316,7 @@ MAPS[190].markers = MARKERS_FWARDENS;
 MAPS[191].markers = MARKERS_FMEETING;
 MAPS[192].markers = MARKERS_FFISHER;
 MAPS[193].markers = MARKERS_SZGATE;
-// t58 : ordre = Gate, RHC, RHE, RHW, RHN, Secret, Center, East, West, North
+// ordre = Gate, RHC, RHE, RHW, RHN, Secret, Center, East, West, North
 MAPS[194].markers = MARKERS_SZRHC;
 MAPS[195].markers = MARKERS_SZRHE;
 MAPS[196].markers = MARKERS_SZRHW;
@@ -5321,7 +5326,7 @@ MAPS[199].markers = MARKERS_SZCENTER;
 MAPS[200].markers = MARKERS_SZEAST;
 MAPS[201].markers = MARKERS_SZWEST;
 MAPS[202].markers = MARKERS_SZNORTH;
-/* ---------- t55 : Cramois'Ile, Chenals 19-21, Manoir Pokémon, Volcan Cramoisi
+/* ---------- Cramois'Ile, Chenals 19-21, Manoir Pokémon, Volcan Cramoisi
    Coordonnées en tuiles des fichiers objects ; équipes numérotées comme OPP
    (numérotation 1-based de trainer_parties.asm, confirmée par teams.json). ---------- */
 /* Chenal 19 : Nageurs n°2-8 (dont les deux premiers, sprite garçon, et le n°8 à
@@ -5339,11 +5344,11 @@ const MARKERS_R19 = [
   { cat: "trainer", spr: true, icon: "swimmer", x: 11, y: 43, dir: "right", name: "Canon n°9", team: [["lapras", "Lokhlass", 46]] },
   { cat: "trainer", spr: true, icon: "swimmer", x: 10, y: 44, name: "Canon n°10", team: [["dragonair", "Draco", 43], ["kingler", "Krabboss", 43], ["seadra", "Hypocéan", 43]] },
   { cat: "pnj", spr: true, icon: "fisher2", x: 1, y: 10, dir: "right", name: "Bar à Joe", scripted: true, shop: [["fresh_water", "Eau Fraîche", 200], ["soda_pop", "Soda Cool", 300], ["lemonade", "Limonade", 350]] },
-  { cat: "warp", x: 3, y: 7, name: "Bungalow d'Été", dx: 2, dy: 7, badge: "Maison" }
+  { cat: "warp", x: 3, y: 7, name: "Bungalow d'Été", dx: 2, dy: 7, badge: "Bungalow" }
 ];
 /* Chenal 20 : Nageurs n°9-11, Canons n°11-14, Dresseurs jr♀ n°20-21, Ornithologue
    n°15 ; Pierre Lune cachée ; Îles Écume (entrées ouest et est,
-   rattachées au donjon t56) et Phare. Le n°20 des Dresseurs jr♀ recycle l'équipe de la Route 15
+   rattachées au donjon Îles Écume) et Phare. Le n°20 des Dresseurs jr♀ recycle l'équipe de la Route 15
    (Mélodelfe n. 38) : c'est bien ce que le moteur affiche. */
 const MARKERS_R20 = [
   { cat: "trainer", spr: true, icon: "swimmer", x: 87, y: 10, dir: "up", name: "Nageur n°9", team: [["kingler", "Krabboss", 42], ["cloyster", "Crustabri", 42]] },
@@ -5471,9 +5476,9 @@ const MARKERS_CNMETRO = [
    « Résurrecteur » transforme le fossile en Pokémon : Amonita ou Kabuto) ;
    trois livres d'étude. */
 const MARKERS_CNFOSSIL = [
-  { cat: "pnj", spr: true, icon: "oak_aide", x: 5, y: 2, name: "Assistant Prof. Chen", scripted: true },
+  { cat: "pnj", spr: true, icon: "oak_aide", x: 5, y: 2, name: "Expert fossile", scripted: true },
   { cat: "pnj", spr: true, icon: "oak_aide", x: 7, y: 6, dir: "up", name: "Assistant Prof. Chen", scripted: true, trade: ["jynx", "Lippoutou", "ponyta", "Ponyta"] },
-  { cat: "pnj", spr: true, icon: "oak_aide", x: 0, y: 5, dir: "up", name: "Assistant Prof. Chen" },
+  { cat: "pnj", spr: true, icon: "oak_aide", x: 0, y: 5, dir: "up", name: "Cloneur" },
   { cat: "pnj", spr: true, icon: "book_map_dex", x: 6, y: 4, name: "Livre" },
   { cat: "pnj", spr: true, icon: "book_map_dex", x: 7, y: 4, name: "Livre" },
   { cat: "pnj", spr: true, icon: "book_map_dex", x: 7, y: 2, name: "Livre" },
@@ -5488,10 +5493,10 @@ const MARKERS_MANSION1F = [
   { cat: "hidden", tipIcon: "moon_stone", x: 8, y: 16, name: "Pierre Lune" },
   { cat: "warp", x: 4, y: 27, name: "Cramois'Ile", dx: 6, dy: 3, badge: "Sortie" },
   { cat: "warp", x: 26, y: 27, name: "Cramois'Ile", dx: 6, dy: 3, badge: "Sortie" },
-  { cat: "warp", x: 5, y: 10, name: "Manoir Pokémon E1", dx: 5, dy: 10, badge: "E1" },
-  { cat: "warp", x: 21, y: 23, name: "Manoir Pokémon SS1", dx: 23, dy: 22, badge: "B1" }
+  { cat: "warp", x: 5, y: 10, name: "Manoir Pokémon", dx: 5, dy: 10, badge: "E1" },
+  { cat: "warp", x: 21, y: 23, name: "Manoir Pokémon SS1", dx: 23, dy: 22, badge: "SS1" }
 ];
-/* Manoir Pokémon E1 : Pillard n°1 ; Calcium ; deux Rapports (journaux du
+/* Manoir Pokémon : Pillard n°1 ; Calcium ; deux Rapports (journaux du
    Dr Fuji et de MEWTWO) ; trois montées et la descente 1F. */
 const MARKERS_MANSION2F = [
   { cat: "trainer", spr: true, icon: "burglar", x: 3, y: 17, dir: "left", name: "Pillard n°1", team: [["primeape", "Colossinge", 44], ["magmar", "Magmar", 44]] },
@@ -5512,9 +5517,9 @@ const MARKERS_MANSION3F = [
   { cat: "item", spr: true, icon: "ball", tipIcon: "iron", ballMini: true, x: 25, y: 5, name: "Fer" },
   { cat: "pnj", spr: true, icon: "book_map_dex", x: 6, y: 12, name: "Livre" },
   { cat: "hidden", tipIcon: "max_revive", x: 1, y: 9, name: "Rappel Max" },
-  { cat: "warp", x: 7, y: 10, name: "Manoir Pokémon E1", dx: 7, dy: 10, badge: "E1" },
-  { cat: "warp", x: 6, y: 1, name: "Manoir Pokémon E1", dx: 6, dy: 1, badge: "E1" },
-  { cat: "warp", x: 25, y: 14, name: "Manoir Pokémon E1", dx: 25, dy: 14, badge: "E1" }
+  { cat: "warp", x: 7, y: 10, name: "Manoir Pokémon", dx: 7, dy: 10, badge: "E1" },
+  { cat: "warp", x: 6, y: 1, name: "Manoir Pokémon", dx: 6, dy: 1, badge: "E1" },
+  { cat: "warp", x: 25, y: 14, name: "Manoir Pokémon", dx: 25, dy: 14, badge: "E1" }
 ];
 /* Manoir Pokémon SS1 : le Pillard n°3 réapparaît (doublon des datas du moteur,
    conservé tel quel) et le Scientifique n°12 ; Clé Secrète de l'Arène
@@ -5540,8 +5545,8 @@ const MARKERS_VOLC1F = [
   { cat: "item", spr: true, icon: "ball", tipIcon: "full_restore", ballMini: true, x: 6, y: 10, name: "Guérison" },
   { cat: "item", spr: true, icon: "ball", tipIcon: "carbos", ballMini: true, x: 6, y: 5, name: "Carbone" },
   { cat: "warp", x: 2, y: 23, name: "Chenal 21", dx: 14, dy: 87, badge: "Sortie" },
-  { cat: "warp", x: 13, y: 6, name: "Volcan Cramoisi SS1", dx: 5, dy: 1, badge: "B1" },
-  { cat: "warp", x: 21, y: 20, name: "Volcan Cramoisi SS1", dx: 12, dy: 34, badge: "B1" }
+  { cat: "warp", x: 13, y: 6, name: "Volcan Cramoisi SS1", dx: 5, dy: 1, badge: "SS1" },
+  { cat: "warp", x: 21, y: 20, name: "Volcan Cramoisi SS1", dx: 12, dy: 34, badge: "SS1" }
 ];
 /* Volcan Cramoisi SS1 : Soldats n°4-5 (Electrode en chaîne) ; Pierre Feu,
    CT23 Draco-Rage, Max Elixir ; trois warps (1F haut, spirale B2F, 1F bas). */
@@ -5552,7 +5557,7 @@ const MARKERS_VOLCB1F = [
   { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 13, y: 30, name: "CT23 Draco-Rage" },
   { cat: "item", spr: true, icon: "ball", tipIcon: "max_elixer", ballMini: true, x: 4, y: 35, name: "Max Elixir" },
   { cat: "warp", x: 5, y: 1, name: "Volcan Cramoisi", dx: 13, dy: 6, badge: "RDC" },
-  { cat: "warp", x: 5, y: 26, name: "Volcan Cramoisi SS2", dx: 3, dy: 14, badge: "B2" },
+  { cat: "warp", x: 5, y: 26, name: "Volcan Cramoisi SS2", dx: 3, dy: 14, badge: "SS2" },
   { cat: "warp", x: 12, y: 34, name: "Volcan Cramoisi", dx: 21, dy: 20, badge: "RDC" }
 ];
 /* Volcan Cramoisi SS2 : Sulfura n. 50 attend au fond du cratère (visible dès
@@ -5560,7 +5565,7 @@ const MARKERS_VOLCB1F = [
 const MARKERS_VOLCB2F = [
   { cat: "trainer", spr: true, icon: "moltres_ow", x: 8, y: 6, name: "Sulfura", scripted: true, team: [["moltres", "Sulfura", 50]] },
   { cat: "hidden", tipIcon: "pp_up", x: 13, y: 13, name: "PP Plus" },
-  { cat: "warp", x: 3, y: 14, name: "Volcan Cramoisi SS1", dx: 5, dy: 26, badge: "B1" }
+  { cat: "warp", x: 3, y: 14, name: "Volcan Cramoisi SS1", dx: 5, dy: 26, badge: "SS1" }
 ];
 /* Îles Écume : deux rochers à pousser vers les trous de la salle
    centrale (trous en (17,6) et (24,6) : seuls les rochers y tombent,
@@ -5571,9 +5576,9 @@ const MARKERS_ECUM1F = [
   { cat: "pnj", spr: true, icon: "boulder", x: 26, y: 7, name: "Rocher" },
   { cat: "warp", x: 4, y: 17, name: "Chenal 20", dx: 48, dy: 7, badge: "Sortie" },
   { cat: "warp", x: 26, y: 17, name: "Chenal 20", dx: 58, dy: 15, badge: "Sortie" },
-  { cat: "warp", x: 7, y: 5, name: "Îles Écume SS1", dx: 7, dy: 5, badge: "B1" },
-  { cat: "warp", x: 25, y: 3, name: "Îles Écume SS1", dx: 25, dy: 3, badge: "B1" },
-  { cat: "warp", x: 23, y: 15, name: "Îles Écume SS1", dx: 23, dy: 15, badge: "B1" }
+  { cat: "warp", x: 7, y: 5, name: "Îles Écume SS1", dx: 7, dy: 5, badge: "SS1" },
+  { cat: "warp", x: 25, y: 3, name: "Îles Écume SS1", dx: 25, dy: 3, badge: "SS1" },
+  { cat: "warp", x: 23, y: 15, name: "Îles Écume SS1", dx: 23, dy: 15, badge: "SS1" }
 ];
 /* Îles Écume SS1 : les rochers tombés du 1F salissent la salle des
    rapides ; quatre montées 1F au nord-est, trois descentes B2F à
@@ -5581,10 +5586,10 @@ const MARKERS_ECUM1F = [
 const MARKERS_ECUMB1F = [
   { cat: "pnj", spr: true, icon: "boulder", x: 17, y: 6, name: "Rocher" },
   { cat: "pnj", spr: true, icon: "boulder", x: 22, y: 6, name: "Rocher" },
-  { cat: "warp", x: 4, y: 2, name: "Îles Écume SS2", dx: 5, dy: 3, badge: "B2" },
-  { cat: "warp", x: 13, y: 7, name: "Îles Écume SS2", dx: 13, dy: 7, badge: "B2" },
-  { cat: "warp", x: 19, y: 15, name: "Îles Écume SS2", dx: 19, dy: 15, badge: "B2" },
-  { cat: "warp", x: 25, y: 11, name: "Îles Écume SS2", dx: 25, dy: 11, badge: "B2" },
+  { cat: "warp", x: 4, y: 2, name: "Îles Écume SS2", dx: 5, dy: 3, badge: "SS2" },
+  { cat: "warp", x: 13, y: 7, name: "Îles Écume SS2", dx: 13, dy: 7, badge: "SS2" },
+  { cat: "warp", x: 19, y: 15, name: "Îles Écume SS2", dx: 19, dy: 15, badge: "SS2" },
+  { cat: "warp", x: 25, y: 11, name: "Îles Écume SS2", dx: 25, dy: 11, badge: "SS2" },
   { cat: "warp", x: 7, y: 5, name: "Îles Écume", dx: 7, dy: 5, badge: "RDC" },
   { cat: "warp", x: 23, y: 15, name: "Îles Écume", dx: 23, dy: 15, badge: "RDC" },
   { cat: "warp", x: 25, y: 3, name: "Îles Écume", dx: 25, dy: 3, badge: "RDC" }
@@ -5595,13 +5600,13 @@ const MARKERS_ECUMB2F = [
   { cat: "pnj", spr: true, icon: "boulder", x: 18, y: 6, name: "Rocher" },
   { cat: "pnj", spr: true, icon: "boulder", x: 23, y: 6, name: "Rocher" },
   { cat: "hidden", tipIcon: "nugget", x: 15, y: 15, name: "Pépite" },
-  { cat: "warp", x: 5, y: 3, name: "Îles Écume SS1", dx: 4, dy: 2, badge: "B1" },
-  { cat: "warp", x: 13, y: 7, name: "Îles Écume SS1", dx: 13, dy: 7, badge: "B1" },
-  { cat: "warp", x: 19, y: 15, name: "Îles Écume SS1", dx: 19, dy: 15, badge: "B1" },
-  { cat: "warp", x: 25, y: 11, name: "Îles Écume SS1", dx: 25, dy: 11, badge: "B1" },
-  { cat: "warp", x: 5, y: 13, name: "Îles Écume SS3", dx: 5, dy: 12, badge: "B3" },
-  { cat: "warp", x: 25, y: 3, name: "Îles Écume SS3", dx: 25, dy: 3, badge: "B3" },
-  { cat: "warp", x: 25, y: 14, name: "Îles Écume SS3", dx: 25, dy: 14, badge: "B3" }
+  { cat: "warp", x: 5, y: 3, name: "Îles Écume SS1", dx: 4, dy: 2, badge: "SS1" },
+  { cat: "warp", x: 13, y: 7, name: "Îles Écume SS1", dx: 13, dy: 7, badge: "SS1" },
+  { cat: "warp", x: 19, y: 15, name: "Îles Écume SS1", dx: 19, dy: 15, badge: "SS1" },
+  { cat: "warp", x: 25, y: 11, name: "Îles Écume SS1", dx: 25, dy: 11, badge: "SS1" },
+  { cat: "warp", x: 5, y: 13, name: "Îles Écume SS3", dx: 5, dy: 12, badge: "SS3" },
+  { cat: "warp", x: 25, y: 3, name: "Îles Écume SS3", dx: 25, dy: 3, badge: "SS3" },
+  { cat: "warp", x: 25, y: 14, name: "Îles Écume SS3", dx: 25, dy: 14, badge: "SS3" }
 ];
 /* Îles Écume SS3 : CT14 Blizzard à la pointe nord-ouest, Max Elixir
    caché au centre ; quatre rochers à pousser dans les rapides ouest,
@@ -5615,12 +5620,12 @@ const MARKERS_ECUMB3F = [
   { cat: "pnj", spr: true, icon: "boulder", x: 19, y: 6, name: "Rocher" },
   { cat: "item", spr: true, icon: "ball", tipIcon: "tm_hm", ballMini: true, x: 2, y: 1, name: "CT14 Blizzard" },
   { cat: "hidden", tipIcon: "max_elixer", x: 9, y: 16, name: "Max Elixir" },
-  { cat: "warp", x: 5, y: 12, name: "Îles Écume SS2", dx: 5, dy: 13, badge: "B2" },
-  { cat: "warp", x: 8, y: 6, name: "Îles Écume SS4", dx: 11, dy: 7, badge: "B4" },
-  { cat: "warp", x: 25, y: 4, name: "Îles Écume SS4", dx: 25, dy: 4, badge: "B4" },
-  { cat: "warp", x: 25, y: 3, name: "Îles Écume SS2", dx: 25, dy: 3, badge: "B2" },
-  { cat: "warp", x: 25, y: 14, name: "Îles Écume SS2", dx: 25, dy: 14, badge: "B2" },
-  { cat: "warp", x: 20, y: 17, name: "Îles Écume SS4", dx: 20, dy: 17, badge: "B4" }
+  { cat: "warp", x: 5, y: 12, name: "Îles Écume SS2", dx: 5, dy: 13, badge: "SS2" },
+  { cat: "warp", x: 8, y: 6, name: "Îles Écume SS4", dx: 11, dy: 7, badge: "SS4" },
+  { cat: "warp", x: 25, y: 4, name: "Îles Écume SS4", dx: 25, dy: 4, badge: "SS4" },
+  { cat: "warp", x: 25, y: 3, name: "Îles Écume SS2", dx: 25, dy: 3, badge: "SS2" },
+  { cat: "warp", x: 25, y: 14, name: "Îles Écume SS2", dx: 25, dy: 14, badge: "SS2" },
+  { cat: "warp", x: 20, y: 17, name: "Îles Écume SS4", dx: 20, dy: 17, badge: "SS4" }
 ];
 /* Îles Écume SS4 : Artikodin n. 50 au fond de la crière de glace (visible
    dès l'arrivée, comme Sulfura et l'Electhor) ; Hyper Ball cachée ;
@@ -5632,9 +5637,9 @@ const MARKERS_ECUMB4F = [
   { cat: "pnj", spr: true, icon: "boulder", x: 4, y: 15, name: "Rocher" },
   { cat: "pnj", spr: true, icon: "boulder", x: 5, y: 15, name: "Rocher" },
   { cat: "hidden", tipIcon: "ultra_ball", x: 25, y: 17, name: "Hyper Ball" },
-  { cat: "warp", x: 20, y: 17, name: "Îles Écume SS3", dx: 20, dy: 17, badge: "B3" },
-  { cat: "warp", x: 11, y: 7, name: "Îles Écume SS3", dx: 8, dy: 6, badge: "B3" },
-  { cat: "warp", x: 25, y: 4, name: "Îles Écume SS3", dx: 25, dy: 4, badge: "B3" }
+  { cat: "warp", x: 20, y: 17, name: "Îles Écume SS3", dx: 20, dy: 17, badge: "SS3" },
+  { cat: "warp", x: 11, y: 7, name: "Îles Écume SS3", dx: 8, dy: 6, badge: "SS3" },
+  { cat: "warp", x: 25, y: 4, name: "Îles Écume SS3", dx: 25, dy: 4, badge: "SS3" }
 ];
 /* Route 13 (data/maps/objects/Route13.asm) : 10 dresseurs (Ornithologues
    n°1-3, Dresseuses jr♀ n°14-17, Canons n°4-5, Motard n°1 ; équipes
@@ -5723,7 +5728,7 @@ const MARKERS_CERU1F = [
   { cat: "warp", x: 7, y: 1, name: "Caverne Azurée E1", dx: 9, dy: 1, badge: "E1" },
   { cat: "warp", x: 1, y: 3, name: "Caverne Azurée E1", dx: 1, dy: 3, badge: "E1" },
   { cat: "warp", x: 3, y: 11, name: "Caverne Azurée E1", dx: 3, dy: 11, badge: "E1" },
-  { cat: "warp", x: 0, y: 6, name: "Caverne Azurée SS1", dx: 3, dy: 6, badge: "B1" }
+  { cat: "warp", x: 0, y: 6, name: "Caverne Azurée SS1", dx: 3, dy: 6, badge: "SS1" }
 ];
 /* Caverne Azurée E1 : 3 boules (PP Plus, Hyper Ball, Guérison), six descentes
    1F en vis-à-vis des montées ; aucune eau -> pêche impossible. */
@@ -5870,7 +5875,7 @@ MARKERS_ROUTE1, MARKERS_PALLET, MARKERS_ROUTE22, MARKERS_ROUTE23, MARKERS_INDIGO
 /* Positions de la page Monde uniquement (collage des connexions ci-dessus) ;
    chaque intérieur / donjon a sa page, seule sur le stage en (0, 0). */
 const WORLD_OFFSETS = { IndigoPlateau: [0, 2], Route23: [0, 20], Route22: [0, 162], ViridianCity: [40, 154], Route1: [50, 190], PalletTown: [50, 226], Route2: [46, 82], PewterCity: [40, 46], Route3: [80, 54], Route4: [130, 36],
-  /* t85 : Aire de repos à sa place dans le monde, collée au-dessus de la
+  /* Aire de repos à sa place dans le monde, collée au-dessus de la
      Route 4 (quasi centrée sur son haut) ; sa colonne d'eau (tuiles locales
      22-23 au bord sud) coïncide avec la cascade de la Route 4 (tuiles locales
      50-51 au bord nord) : colonnes monde 180-181 (158+22 = 130+50). */
@@ -5878,7 +5883,7 @@ const WORLD_OFFSETS = { IndigoPlateau: [0, 2], Route23: [0, 20], Route22: [0, 16
   Route6: [230, 136], Route7: [200, 108], VermilionCity: [220, 172], Route11: [260, 180], CeladonCity: [150, 100],
   Route16: [110, 106], Route16West: [70, 110], Route17: [110, 126], Route18: [110, 270], FuchsiaCity: [160, 262],
   Route19: [170, 298], Route20: [70, 332], CinnabarIsland: [50, 334], Route21: [50, 244],
-  /* t57 : Route 12 sud -> Route 13 [280, 234] ; Route 13 ouest ->
+  /* Route 12 sud -> Route 13 [280, 234] ; Route 13 ouest ->
      Route 14 [260, 234] ; Route 14 ouest -> Route 15 [200, 270] (la
      connection retombe exactement sur Parmanie [160, 262] déjà placée) ;
      Ville oubliée : île isolée sans connection, placée au large à
@@ -5889,7 +5894,7 @@ const WORLD_OFFSETS = { IndigoPlateau: [0, 2], Route23: [0, 20], Route22: [0, 16
    (écarts de 4 tuiles) ; piles en colonne centrées horizontalement sur la carte la plus large ; Ligue : entrée (Hall) en bas, Panthéon en haut ;
    donjons : cartes annexes en rangée horizontale alignée par le bas à côté
    de la carte principale (Mont Sélénite : Pokécentre, 1F, l'Aire de repos
-   étant passée dans le monde (t85) ; Cave Taupiqueur : entrées Route 2
+   étant dans le monde ; Cave Taupiqueur : entrées Route 2
    et Route 11). */
 const GROUP_OFFSETS = {
   "interieur|Jadielle": { ViridianPokecenter: [0, 10], ViridianMart: [18, 10], ViridianSchool: [30, 10], ViridianNicknameHouse: [42, 10], ViridianGym: [54, 0] },
@@ -5906,7 +5911,7 @@ const GROUP_OFFSETS = {
   "interieur|Villa Léo": { BillsHouse: [0, 0] },
   "donjon|Grotte Sombre": { RockTunnelB1F: [18, 40], RockTunnel1F: [18, 0], RockTunnelPokecenter: [62, 28] },
   "donjon|Centrale": { PowerPlant2F: [0, 0], PowerPlant1F: [0, 20] },
-  /* t69 : Tour Pokémon détachée dans son propre espace donjons, 7F en haut
+  /* Tour Pokémon détachée dans son propre espace donjons, 7F en haut
      jusqu'au 1F en bas ; Lavanville réduit aux 5 bâtiments en ligne. */
   "donjon|Tour Pokémon": { LavenderPokemonTower7F: [0, 0], LavenderPokemonTower6F: [0, 22], LavenderPokemonTower5F: [0, 44], LavenderPokemonTower4F: [0, 66], LavenderPokemonTower3F: [0, 88], LavenderPokemonTower2F: [0, 110], LavenderPokemonTower1F: [0, 132] },
   "interieur|Lavanville": { LavenderPokecenter: [0, 0], LavenderMart: [18, 0], LavenderFujisHouse: [30, 0], LavenderCuboneHouse: [42, 0], LavenderNameRatersHouse: [54, 0] },
@@ -5923,14 +5928,13 @@ const GROUP_OFFSETS = {
   /* L'Océane selon la maquette utilisateur : poupe a gauche du pont 3F, cuisine
      a gauche du pont 1F, cabine du capitaine puis dock a droite des ponts 2F/1F ;
      convention : etages de la pile CENTRES entre eux sur l'axe des ponts larges
-     (2F/1F x 24..64 -> axe x=44 ; 3F 34, cabines 32, B1F 29), annexes a 4 tuiles (64px, t80) ;
-     poupe [0,0] detachee du pont 2F a 4 tuiles (retour user t81 : plus d'interlock). */
+     (2F/1F x 24..64 -> axe x=44 ; 3F 34, cabines 32, B1F 29), annexes a 4 tuiles (64px) ;
+     poupe [0,0] detachee du pont 2F a 4 tuiles. */
   "donjon|L'Océane": { SSAnneBow: [0, 0], SSAnne3F: [34, 0], SSAnne2F: [24, 10], SSAnneCaptainsRoom: [68, 10],
     SSAnne2FRooms: [32, 32], SSAnneKitchen: [6, 52], SSAnne1F: [24, 52], VermilionDock: [68, 52],
     SSAnne1FRooms: [32, 74], SSAnneB1F: [29, 94], SSAnneB1FRooms: [32, 106] },
-  /* t80 : écart homogène de 4 tuiles (64px) entre cartes adjacentes, alignements et
-     placements conservés ; Céladopole : rangée alignée par le bas, l'Arène (18 tuiles,
-     t80) à droite ; Centre commercial : pile de même largeur, toit en haut, 1F en bas,
+  /* Écart homogène de 4 tuiles (64px) entre cartes adjacentes, alignements et
+     placements conservés ; Céladopole : rangée alignée par le bas, l'Arène (18 tuiles) à droite ; Centre commercial : pile de même largeur, toit en haut, 1F en bas,
      ascenseur en annexe à 4 tuiles, aligné par le bas du 1F ; Manoir : pile centrée (même
      largeur), maison du toit en haut ; Planque Rocket : pile centrée B1F→B4F (30 tuiles),
      ascenseur en annexe à droite du B1F, aligné par le bas. */
@@ -5939,7 +5943,7 @@ const GROUP_OFFSETS = {
   "interieur|Centre commercial": { CeladonMartRoof: [0, 0], CeladonMart5F: [0, 16], CeladonMart4F: [0, 28], CeladonMart3F: [0, 40], CeladonMart2F: [0, 52], CeladonMart1F: [0, 64], CeladonMartElevator: [24, 68] },
   "interieur|Manoir Céladon": { CeladonMansionRoofHouse: [0, 0], CeladonMansionRoof: [0, 12], CeladonMansion3F: [0, 32], CeladonMansion2F: [0, 48], CeladonMansion1F: [0, 64] },
   "donjon|Planque Rocket": { RocketHideoutB1F: [0, 0], RocketHideoutB2F: [0, 32], RocketHideoutB3F: [0, 64], RocketHideoutB4F: [0, 96], RocketHideoutElevator: [34, 20] },
-  /* Route 16 (t80) : Maison du Vol à gauche du poste de garde (1F/2F empilés) ;
+  /* Route 16 : Maison du Vol à gauche du poste de garde (1F/2F empilés) ;
      Clairière (Route 16) : Laboratoire abandonné + maison, alignés par le bas ;
      Route 18 : 2F centré sur le 1F ; Parmanie : l'Arène (18 tuiles) pose le sol,
      rangée de bâtiments alignés par le bas ; Parc Safari : Nord centré sur
@@ -5955,8 +5959,8 @@ const GROUP_OFFSETS = {
     SafariZoneWestRestHouse: [0, 70], SafariZoneSecretHouse: [12, 70], SafariZoneGate: [34, 72], SafariZoneCenterRestHouse: [46, 70],
     SafariZoneEastRestHouse: [68, 70], SafariZoneNorthRestHouse: [80, 70] },
 
-  /* Cramois'Île (t80) : Centre, Magasin, Arène puis Labo, ses trois salles
-     au-dessus du Labo ; Manoir : étages empilés à 4 tuiles (64px, t80) ;
+  /* Cramois'Île : Centre, Magasin, Arène puis Labo, ses trois salles
+     au-dessus du Labo ; Manoir : étages empilés à 4 tuiles (64px) ;
      Volcan : B1F puis B2F sous le 1F. */
   "interieur|Chenal 19": { Route19BeachHouse: [0, 0] },
   "interieur|Chenal 20": { Lighthouse: [0, 0] },
@@ -5964,11 +5968,11 @@ const GROUP_OFFSETS = {
   "donjon|Manoir Pokémon": { CinnabarMansion3F: [0, 0], CinnabarMansion2F: [0, 22], CinnabarMansion1F: [0, 54], CinnabarMansionB1F: [0, 86] },
   "donjon|Volcan Cramoisi": { Volcano1F: [0, 0], VolcanoB1F: [4, 28], VolcanoB2F: [3, 74] },
   /* Îles Écume : les cinq étages empilés en colonne (même largeur 30 tuiles),
-     du 1F au B4F, convention t55-quater : du niveau le plus haut vers le plus bas. */
+     du 1F au B4F, convention : du niveau le plus haut vers le plus bas. */
   "donjon|Îles Écume": { SeafoamIslands1F: [0, 0], SeafoamIslandsB1F: [0, 22], SeafoamIslandsB2F: [0, 44], SeafoamIslandsB3F: [0, 66], SeafoamIslandsB4F: [0, 88] },
   /* Route 15 : 2F centré sur le 1F (même largeur 8 tuiles, écart 4 tuiles) ;
      Caverne Azurée : les trois étages empilés en colonne (même largeur
-     30 tuiles), t69 : 2F au-dessus du 1F (2F, 1F, B1F). */
+     30 tuiles), 2F au-dessus du 1F (2F, 1F, B1F). */
   "interieur|Route 15": { Route15Gate2F: [0, 0], Route15Gate1F: [0, 12] },
   "donjon|Caverne Azurée": { CeruleanCave2F: [0, 0], CeruleanCave1F: [0, 22], CeruleanCaveB1F: [0, 44] }
 };
@@ -6019,7 +6023,7 @@ const GROUP_LABELS = {
   "interieur|Route 15": "Route 15 : Porte",
   "donjon|Caverne Azurée": "Caverne Azurée"
 };
-/* ---------- t75 : structure hiérarchique du DOM ----------
+/* ---------- Structure hiérarchique du DOM ----------
    #stage
      +- div.page         : LA div au plus haut, une par page (Monde puis
      |                     une par groupe zone|groupe, data-page)
@@ -6080,7 +6084,7 @@ function layoutPage() {
   });
   stg.style.width = stageW + "px";
   stg.style.height = stageH + "px";
-  /* t75 : marqueurs imbriqués dans leur carte, positionnés une seule fois
+  /* Marqueurs imbriqués dans leur carte, positionnés une seule fois
      à la construction ; seule la page affichée change la visibilité. */
   Object.keys(PAGE_ELS).forEach(k =>
     PAGE_ELS[k].style.display = (k === "monde" ? "monde" : "g:" + k) === page ? "" : "none");
@@ -6116,9 +6120,9 @@ document.querySelector('#pages [data-page="monde"]').onclick = () => showPage("m
     if (!g) groups.push(g = { name: m.group, maps: [] });
     g.maps.push(m);
   });
-  /* t70 : ordre des menus - Intérieurs : villes (alphabétique), puis routes
+  /* Ordre des menus - Intérieurs : villes (alphabétique), puis routes
      (numérique), puis autres (alphabétique) ; Donjons : alphabétique.
-     t72 : groupes satellites placés juste après leur ville - Céladopole ->
+     Groupes satellites placés juste après leur ville - Céladopole ->
      Casino Rocket, Centre commercial, Manoir Céladon ; Safrania -> Postes
      de garde Safrania (clé de tri "ville + label", ils suivent leur ville
      dans l'ordre alphabétique et passent devant la ville suivante). */
@@ -6148,16 +6152,15 @@ document.querySelector('#pages [data-page="monde"]').onclick = () => showPage("m
     menu.appendChild(gh);
   });
 });
-/* t93 : menu « Objets clés » — fonctionnement différent des deux menus de
-   pages : chaque entrée téléporte la caméra (gotoMap) vers l'emplacement de
-   l'objet — le PNJ qui le donne ou le vend, ou la ball au sol — dans l'ordre
-   d'obtention classique. Cibles vérifiées sur les marqueurs (ex. Passe
-   Bateau -> Lé, Villa Léo (6,5) ; Eau Fraîche -> distributeurs du toit du
-   Centre commercial ; Carte Magn. -> ball de Sylphe E4 ; 2ème Fossile ->
-   Intéllo du Mont Sélénite, Salle des échanges du Labo de Cramois'Île).
-   gotoMap s'occupe de la page, de la sélection de carte, de l'animation et
-   du déverrouillage du spoil. Icônes = clefs déjà recolorées par
-   buildIcons (ICONS_B64/MENU ou sprites de marqueurs). */
+/* Menu « Objets clés » — chaque entrée téléporte la caméra (gotoMap)
+   vers l'emplacement de l'objet — le PNJ qui le donne ou le vend, ou la
+   ball au sol — dans l'ordre d'obtention classique (ex. Passe Bateau ->
+   Lé, Villa Léo (6,5) ; Eau Fraîche -> distributeurs du toit du Centre
+   commercial ; Carte Magn. -> ball de Sylphe E4 ; 2ème Fossile -> Intéllo
+   du Mont Sélénite, Salle des échanges du Labo de Cramois'Île). gotoMap
+   s'occupe de la page, de la sélection de carte, de l'animation et du
+   déverrouillage du spoil. Icônes = clefs déjà recolorées par buildIcons
+   (ICONS_B64/MENU ou sprites de marqueurs). */
 const KEY_ITEMS = [
   ["Carte", "PalletBluesHouse", 2, 3, "map"],
   ["Colis Chen", "ViridianMart", 0, 5, "oaks_parcel"],
@@ -6206,6 +6209,38 @@ function buildObjets() {
   });
 }
 
+/* Menu « Succès » : ne vit que côté spoil — masqué par CSS tant que
+   body.nospoil est actif ; gotoMap sur une carte spoil déverrouille
+   automatiquement le toggle Spoil. Duels post-Ligue cachés :
+   Gentleman-Giovanni des Cabines du 2e pont (revanche n. 64-65),
+   Guide d'Arène de la Cuisine (Master Ball), et les cinq « 6 champions »
+   (Chen, M.Fuji, Chef, Joëlle, Sacha). */
+const SUCCESS_ITEMS = [
+  ["Revanche des 8 : Giovanni", "Mène à Giovanni caché dans l'Océane", "SSAnne2FRooms", 1, 2],
+  ["Tournoi Océane", "Mène au Guide d'Arène dans les cuisines de l'Océane", "SSAnneKitchen", 11, 2],
+  ["6 champions : Chen", "Combat contre Chen", "PalletOaksLab", 5, 2],
+  ["6 champions : M.Fuji", "Combat contre M.Fuji", "LavenderFujisHouse", 3, 1],
+  ["6 champions : Chef", "Combat contre Chef", "SafariZoneSecretHouse", 4, 3],
+  ["6 champions : Joëlle", "Combat contre Joëlle", "FuchsiaPokecenter", 3, 1],
+  ["6 champions : Sacha", "Combat contre Sacha", "BillsGarden", 5, 5],
+];
+function buildSucces() {
+  const dd = document.getElementById("dd-succes");
+  if (!dd) return;
+  const menu = dd.querySelector(".ddmenu");
+  SUCCESS_ITEMS.forEach(([label, tip, mapId, x, y]) => {
+    const m = MAPS.find(k => k.id === mapId);
+    if (!m) return;
+    const bh = document.createElement("button");
+    bh.type = "button";
+    bh.className = "kitem";
+    bh.title = tip;
+    bh.onclick = e => { e.stopPropagation(); dd.classList.remove("open"); gotoMap(m, { dx: x, dy: y }); };
+    bh.appendChild(document.createTextNode(label));
+    menu.appendChild(bh);
+  });
+}
+
 document.querySelectorAll(".dd > button").forEach(btn => {
   btn.onclick = e => {
     e.stopPropagation();
@@ -6215,10 +6250,10 @@ document.querySelectorAll(".dd > button").forEach(btn => {
 });
 document.addEventListener("click", () => document.querySelectorAll(".dd").forEach(d => d.classList.remove("open")));
 
-/* t95 : le bouton collapse en fin de nav replie le menu de droite
-   (Légende / Rencontres) : classe body.panelhide, la zone des cartes
-   récupère les 320 px. L'icône bascule entre » (menu déployé, action =
-   replier) et « (menu replié, action = déplier), le titre suivra. */
+/* Le bouton collapse en fin de nav replie le menu de droite (Légende /
+   Rencontres) : classe body.panelhide, la zone des cartes récupère les
+   320 px. L'icône bascule entre » (menu déployé, action = replier) et
+   « (menu replié, action = déplier), le titre suit. */
 document.getElementById("paneltoggle").onclick = () => {
   const hidden = document.body.classList.toggle("panelhide");
   const b = document.getElementById("paneltoggle");
@@ -6267,12 +6302,9 @@ vp.addEventListener("wheel", e => {
 }, { passive: false });
 let drag = null;
 vp.addEventListener("pointerdown", e => {
-  /* t94 : pendant un déplacement caméra (gotoMap, 500 ms) on bloque la prise
-     de drag : le cancelAnim() inconditionnel figeait la caméra « au milieu de
-     nulle part » dès qu’on re-cliquait ou appuyait pendant le vol, et le drag
-     repartait des coordonnées intermédiaires. Clics inertes le temps du vol ;
-     la molette et les boutons de zoom gardent la main (ils annulent le vol
-     eux-mêmes, cf. t94 ci-dessous). */
+  /* Pendant un déplacement caméra (gotoMap, 500 ms), la prise de drag
+     est bloquée et les clics inertes le temps du vol ; la molette et les
+     boutons de zoom gardent la main (ils annulent le vol eux-mêmes). */
   if (anim) return;
   cancelAnim();
   drag = { x: e.clientX, y: e.clientY, ox, oy, moved: false,
@@ -6326,7 +6358,7 @@ const HS_VISIBLES = ["Rival", "Ho-Oh"]; // RÈGLE HS : toute entrée Hide de dat
 const hsVisible = m => !m.hs || HS_VISIBLES.includes(m.name);
 
 function buildMarkers() {
-  /* t75 : un div.mtype par type de contenu de la carte, dans l'ordre de la
+  /* Un div.mtype par type de contenu de la carte, dans l'ordre de la
      légende (pnj, vendeur, trainer, item, hidden, warp) ; chaque marqueur
      vit dans le type de contenu de sa carte : la carte > le type > le
      contenu. Conteneurs créés seulement pour les types réellement présents
@@ -6347,16 +6379,15 @@ function buildMarkers() {
     m.mp = mp;
     if (!hsVisible(m)) return; // HS caché au début du jeu : pas affiché
     const el = document.createElement("div");
-    /* t60 : un warp vers une carte spoil est masqué comme elle ; t61 : tout
-       marqueur posé sur une carte spoil est masqué comme elle (warps, objets,
-       PNJ) : depuis t75 les marqueurs vivent dans le type de contenu de leur
-       carte, donc une carte masquée masque aussi ses marqueurs ; les classes
-       spoil propres aux marqueurs restent nécessaires pour les warps pointant
-       vers une carte spoil depuis une carte visible (spoilDest) et pour les
-       marqueurs spoil isolés. */
+    /* Un warp vers une carte spoil est masqué comme elle ; tout marqueur
+       posé sur une carte spoil est masqué comme elle (warps, objets, PNJ) :
+       une carte masquée masque aussi ses marqueurs. Les classes spoil des
+       marqueurs restent nécessaires pour les warps pointant vers une carte
+       spoil depuis une carte visible (spoilDest) et pour les marqueurs
+       spoil isolés. */
     const spoilDest = m.cat === "warp" && !!mapFromName(m.name) && mapFromName(m.name).spoil;
     el.className = "marker" + (m.give ? " don" : "") + ((m.spoil || spoilDest || mp.spoil) ? " spoil" : "");
-    el.style.left = (m.x * TILE + TILE / 2) + "px"; /* t75 : relatif à la carte */
+    el.style.left = (m.x * TILE + TILE / 2) + "px"; /* relatif à la carte */
     el.style.top = (m.y * TILE + TILE / 2) + "px";
     if (m.cat === "hidden") { // objet caché : badge à l'icône, homogène au don
       const b = document.createElement("span");
@@ -6521,7 +6552,7 @@ function preloadAll() {
   return Promise.allSettled(Array.from(urls).map(loadURL));
 }
 const loadReady = preloadAll();
-const appReady = buildIcons().then(() => { buildMarkers(); buildObjets(); showPage("monde"); selectMap(RT1); });
+const appReady = buildIcons().then(() => { buildMarkers(); buildObjets(); buildSucces(); showPage("monde"); selectMap(RT1); });
 Promise.all([appReady, loadReady]).then(() => LOADER.hide());
 
 /* ---------- rencontres (carte sélectionnée par clic) ---------- */
@@ -6539,15 +6570,12 @@ function ftool(label) {
   const ic = { "Terrestre": "grass", "Surf": "surf", "Canne": "old_rod", "Super Canne": "good_rod", "Méga Canne": "super_rod" }[label];
   return '<div class="ftool">' + (ic && ICONS[ic] ? '<span class="catico"><img src="' + ICONS[ic] + '" alt=""></span>' : '') + label + '</div>';
 }
-/* t89 : panneau Rencontres épuré — seules les sections qui ont des rencontres
-   disponibles s'affichent (Terrestre / Surf / cannes, avec leurs propres
-   libellés ; plus de libellé global « Pêche », plus aucun texte « Aucun
-   Pokémon disponible » ou « Aucun point d'eau »). t90 : la note
-   informative de la piscine d'Azuria est retiree elle aussi (seules des
-   sections avec des rencontres s'affichent). t91 : si la carte n'a aucune
-   rencontre du tout, le panneau affiche un footer fnote d'absence. Niveaux
-   et pourcentages en 2 colonnes alignées à droite (lvl collé au pct : le
-   pourcentage garde toujours la même place). */
+/* Panneau Rencontres : seules les sections qui ont des rencontres
+   disponibles s'affichent, avec leurs propres libellés (Terrestre /
+   Surf / cannes) ; si la carte n'a aucune rencontre du tout, le panneau
+   affiche un footer fnote d'absence. Niveaux et pourcentages en 2
+   colonnes alignées à droite (lvl collé au pct : le pourcentage garde
+   toujours la même place). */
 function renderWild(m) {
   m = m || selMap || RT1;
   const fish = m.fish || [];
