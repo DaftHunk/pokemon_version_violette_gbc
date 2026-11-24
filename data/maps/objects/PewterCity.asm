@@ -1,21 +1,22 @@
 PewterCityObject:
 	db $f ; border block
 
-	db 7 ; warps
-	warp 14, 7, 0, PEWTER_MUSEUM_1F
+	db 8 ; warps
+	warp 14, 7, 1, PEWTER_MUSEUM_1F
 	warp 20,  5, 2, PEWTER_MUSEUM_1F
 	warp 16, 17, 0, PEWTER_GYM
 	warp 29, 13, 0, PEWTER_NIDORAN_HOUSE
 	warp 23, 17, 0, PEWTER_MART
 	warp 7, 29, 0, PEWTER_SPEECH_HOUSE
 	warp 13, 25, 0, PEWTER_POKECENTER
+	warp 13, 7, 0, PEWTER_MUSEUM_1F
 
 	db 7 ; signs
 	sign 17, 31, 6 ; PewterCityText6
 	sign 34, 16, 7 ; PewterCityText7
 	sign 24, 17, 8 ; MartSignText
 	sign 14, 25, 9 ; PokeCenterSignText
-	sign 12,  7, 10 ; PewterCityText10
+	sign 16,  7, 10 ; PewterCityText10
 	sign 11, 17, 11 ; PewterCityText11
 	sign 17, 23, 12 ; PewterCityText12
 
@@ -34,3 +35,4 @@ PewterCityObject:
 	warp_to 23, 17, PEWTER_CITY_WIDTH ; PEWTER_MART
 	warp_to 7, 29, PEWTER_CITY_WIDTH ; PEWTER_SPEECH_HOUSE
 	warp_to 13, 25, PEWTER_CITY_WIDTH ; PEWTER_POKECENTER
+	warp_to 13, 7, PEWTER_CITY_WIDTH ; PEWTER_MUSEUM_1F

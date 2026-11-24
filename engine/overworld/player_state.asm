@@ -328,9 +328,122 @@ _GetTileAndCoordsInFrontOfPlayer:
 ;- if so, read the tile from vram 9800 coordinates instead as it may have been cut down already
 	cp $3d	;bottom left shrub tile
 	call z, ReadTileFromVram
+	call ApplySolidSubunits ; swap in a solid id inside per-block solid sub-units
 	ld c, a
 	ld [wTileInFrontOfPlayer], a
 	ret
+
+; Per-block solid sub-units.
+; Walking collision only ever tests the lower-left tile of each 16x16
+; sub-unit of a 32x32 block, so sub-units that must be solid regardless of
+; their tiles (merged collision-duplicate tiles, new wall blocks...) are
+; listed here by block id and swapped with an always-solid tile id.
+; input: a = tile in front of the player
+;        d = front Y, e = front X (16x16 units, both preserved)
+; output: a = collision-effective tile id
+ApplySolidSubunits:
+	push de ; d and e are part of the predef output
+	push af ; keep the tile id and the caller's flags
+	ld a, [wCurMapTileset]
+	cp OVERWORLD
+	jr z, .checkBlock
+.restoreTile
+	pop af ; a = tile unchanged
+	pop de
+	ret
+.checkBlock
+; sub-unit index = (Y & 1) * 2 + (X & 1)
+	ld a, d
+	and $1
+	add a
+	ld l, a
+	ld a, e
+	and $1
+	or l
+	push af ; sub-unit index
+	ld a, d
+	srl a
+	ld b, a ; b = front block row (Y / 2)
+	ld a, e
+	srl a
+	ld c, a ; c = front block column (X / 2)
+	ld hl, wOverworldMap
+	ld a, [wCurMapWidth]
+	add $6
+	ld e, a
+	ld d, $0
+	add hl, de
+	add hl, de
+	add hl, de ; 3 rows of north border
+	ld e, $3
+	add hl, de ; 3 blocks of west border
+	ld e, a ; e = stride (map width + 6)
+	ld a, b
+	and a
+	jr z, .addedRows
+.rowsLoop
+	add hl, de
+	dec b
+	jr nz, .rowsLoop
+.addedRows
+	ld b, $0
+	add hl, bc ; + front block column
+	ld a, [hl]
+	ld d, a ; d = front block id
+	pop af ; a = sub-unit index, flags restored
+	ld b, a
+	ld a, $1
+	jr z, .haveMask ; index 0 = NW
+.maskLoop
+	sla a
+	dec b
+	jr nz, .maskLoop
+.haveMask
+	ld e, a ; e = sub-unit mask
+	ld hl, OverworldSolidSubunits
+.tableLoop
+	ld a, [hli]
+	cp $ff
+	jr z, .restoreFromTable
+	cp d
+	jr nz, .skipEntry
+	ld a, [hl] ; mask of the solid sub-units of this block
+	and e
+	jr nz, .solid
+.skipEntry
+	inc hl
+	jr .tableLoop
+.solid
+	pop af
+	ld a, $1f ; always-solid stand-in (in no passable list, compared nowhere)
+	pop de
+	ret
+.restoreFromTable
+	pop af
+	pop de
+	ret
+
+; sub-unit bit values inside a 32x32 block (the tile walking collision tests
+; is the lower-left tile of each 16x16 sub-unit)
+NW EQU %0001
+NE EQU %0010
+SW EQU %0100
+SE EQU %1000
+
+OverworldSolidSubunits:
+; pairs of block id and mask of the sub-units that stay solid
+; $04 merged into $3c (block $05: half-solid top edge)
+	db $05, NW | NE
+; $71 merged into $1b (fence/wall sub-units that stay solid)
+	db $66, SW | SE
+	db $90, SW | SE
+	db $91, NW | NE
+	db $a1, NW | SW
+	db $de, NW | NE
+	db $f4, NW | SW
+	db $f7, NE | SE
+	db $f8, NE | SE
+	db $ff
 
 GetTileTwoStepsInFrontOfPlayer:
 	xor a
