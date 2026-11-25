@@ -435,7 +435,6 @@ OverworldSolidSubunits:
 ; $04 merged into $3c (block $05: half-solid top edge)
 	db $05, NW | NE
 ; $71 merged into $1b (fence/wall sub-units that stay solid)
-	db $66, SW | SE
 	db $90, SW | SE
 	db $91, NW | NE
 	db $a1, NW | SW

@@ -252,16 +252,16 @@
     text-transform: uppercase; color: #fff; border-radius: 8px; padding: 2px 8px;
   }
   #poi-tip .coords { color: var(--muted); font-size: 11px; margin: 2px 0 4px; }
-  #poi-tip .don { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #ffb37a; margin: 4px 0 0; }
+  #poi-tip .don { display: flex; align-items: center; gap: 6px; font-size: 13px; color: white; margin: 4px 0 0; }
   #poi-tip .team { font-size: 12px; color: #cfe6ff; margin: 4px 0 0; }
   #poi-tip .tlabel { font-size: 11px; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: 0.5px; margin: 8px 0 0; }
   #poi-tip h3.shop { margin: 12px 0 2px; }
   #poi-tip img.pd { width: 14px; height: 14px; image-rendering: pixelated; vertical-align: -2px; margin-left: 3px; }
   #poi-tip .ou { color: var(--muted); font-size: 11px; }
   #poi-tip .teamlist li { display: flex; align-items: center; gap: 6px; }
-  #poi-tip .teamlist .tnm { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  #poi-tip .teamlist .tnm { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: bold; }
   #poi-tip .teamlist .lv { flex: 0 0 auto; margin-left: auto; white-space: nowrap; }
-  #poi-tip .shoplist li { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  #poi-tip .shoplist li { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-weight: bold; }
   #poi-tip .shoplist .lv { margin-left: auto; white-space: nowrap; }
   #poi-tip .tradelist .vs { justify-content: center; color: white; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
   #poi-tip p { font-size: 13px; color: var(--muted); margin: 6px 0; line-height: 1.45; }
@@ -270,7 +270,6 @@
   img.mon { image-rendering: pixelated; background: #fff; border-radius: 6px; padding: 2px; }
   #poi-tip img.mon { height: 48px; vertical-align: middle; margin-right: 5px; }
   .wildrow img.mon { height: 48px; }
-  #poi-tip .lv { color: var(--muted); }
   /* Les sources restent dans le DOM de l'infobulle (debug, inspecteur)
      sans s'afficher. */
   #poi-tip .src { display: none; font-size: 10.5px; color: #5f6f99; margin-top: 10px; word-break: break-all; }
@@ -284,10 +283,10 @@
   #poi-tip h3 .arrow { margin-left: auto; color: var(--accent); font-weight: 700; font-size: 16px; }
   .wildrow { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 3px 0; border-bottom: 1px dashed #263254; }
   .wildrow:last-child { border-bottom: none; }
-  .wildrow .rng { display: flex; align-items: baseline; gap: 8px; color: var(--muted); margin-left: auto; padding-left: 8px; }
+  .wildrow .rng { display: flex; align-items: baseline; gap: 8px;  margin-left: auto; padding-left: 8px; }
   .wildrow .rng .lvl, .wildrow .rng .pct { white-space: nowrap; }
-  .wildrow .wname { display: flex; align-items: center; gap: 6px; }
-  .ftool { display: flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 700; color: #fff; margin: 10px 0 2px; }
+  .wildrow .wname { display: flex; align-items: center; gap: 10px; font-weight: bold; }
+  .ftool { display: flex; align-items: normal; gap: 7px; font-size: 14px; font-weight: 700; color: #fff; margin: 10px 0 2px; justify-content: center }
   .catico { width: 22px; height: 22px; border-radius: 50%; background: #fff; display: inline-flex; align-items: center; justify-content: center; flex: none; }
   .catico img { width: 16px; height: 16px; image-rendering: pixelated; display: block; }
   .fnote { font-size: 11px; color: var(--muted); margin: 6px 0 0; line-height: 1.45; }
@@ -4676,7 +4675,7 @@ const MARKERS_CCITY = [
   { cat: "pnj", spr: true, icon: "fisher2", x: 32, y: 12, dir: "left", name: "Bonhomme" },
   { cat: "pnj", spr: true, icon: "polywrath", x: 30, y: 12, dir: "right", name: "Tartard", scripted: true },
   { cat: "pnj", spr: true, icon: "rocket", x: 32, y: 29, name: "Rocket" },
-  { cat: "pnj", spr: true, icon: "rocket", x: 15, y: 2, name: "Rocket", scripted: true, shop: [["pokedollar", "Jetons ×1000 (après la Ligue)", 15000]] },
+  { cat: "pnj", spr: true, icon: "rocket", x: 15, y: 2, name: "Rocket", scripted: true, shop: [["pokedollar", "Jetons ×1000", 15000]] },
   { cat: "pnj", spr: true, icon: "fat_bald_guy", x: 10, y: 20, name: "Homme" },
   { cat: "pnj", spr: true, icon: "rhyhorn", x: 9, y: 20, name: "Rhinocorne", scripted: true },
   { cat: "hidden", tipIcon: "pp_up", x: 48, y: 15, name: "PP Plus" },
@@ -6474,7 +6473,7 @@ function openTip(m, el) {
   html += "<h3>" + (m.tipIcon ? '<img class="itic" src="' + ICONS[m.tipIcon] + '" alt="">' : "") + nm + (dest ? '<span class="arrow">→</span>' : "") + "</h3>";
   html += '<p class="coords">Case (' + m.x + ", " + m.y + ")</p>";
   if (m.give) {
-    html += '<p class="don"><img class="itic" src="' + ICONS[m.give[0]] + '">Donne : ' + m.give[1] + "</p>";
+    html += '<h3 class="don"><img class="itic" src="' + ICONS[m.give[0]] + '">Donne : ' + m.give[1] + "</h3>";
   }
   const teamHtml = (t, label) => {
     let h = label ? '<p class="tlabel">' + label + "</p>" : "";

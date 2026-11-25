@@ -313,6 +313,6 @@ DiplomaCongrats:
 	next "×Revanche Ligue"
 	next "×Tournoi Océane"
 	next "×Ville oubliée"
-	next "×6 dresseurs"
+	next "×6 champions"
 	next "×Capadex 100%"
 	next "×#dex 100%@"
