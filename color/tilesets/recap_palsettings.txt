@@ -1,5 +1,5 @@
 cible ; bloc(s) source(s) ; valeurs PalSettings ; +GRAY ; total ; lignes ; source nb tuiles
-overworld.asm ; PalSettings_OVERWORLD ; 128 ; 0 ; 128 ; 8 ; overworld.2bpp (1920 octets)
+overworld.asm ; PalSettings_OVERWORLD ; 128 ; 0 ; 128 ; 8 ; overworld.2bpp (1936 octets)
 reds_house.asm ; PalSettings_REDS_HOUSE ; 96 ; 0 ; 96 ; 6 ; reds_house.2bpp (1152 octets)
 pokecenter.asm ; PalSettings_MART ; 128 ; 0 ; 128 ; 8 ; pokecenter.2bpp (1904 octets)
 forest.asm ; PalSettings_FOREST ; 96 ; 0 ; 96 ; 6 ; forest.2bpp (1536 octets)
@@ -20,5 +20,5 @@ facility.asm ; PalSettings_FACILITY ; 128 ; 0 ; 128 ; 8 ; facility.2bpp (1888 oc
 reactor.asm ; PalSettings_REACTOR ; 96 ; 0 ; 96 ; 6 ; reactor.2bpp (1536 octets)
 volcano.asm ; PalSettings_VOLCANO ; 96 ; 0 ; 96 ; 6 ; volcano.2bpp (1216 octets)
 plateau.asm ; PalSettings_PLATEAU ; 128 ; 0 ; 128 ; 8 ; plateau.2bpp (1792 octets)
-alpha.asm ; PalSettings_ALPHA ; 128 ; 0 ; 128 ; 8 ; alpha.2bpp (1888 octets)
+alpha.asm ; PalSettings_ALPHA ; 128 ; 0 ; 128 ; 8 ; alpha.2bpp (1936 octets)
 print_house.asm ; PalSettings_PRINT_HOUSE ; 96 ; 0 ; 96 ; 6 ; print_house.2bpp (1536 octets)

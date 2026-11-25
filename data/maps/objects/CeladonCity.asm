@@ -1,7 +1,7 @@
 CeladonCityObject:
 	db $f ; border block
 
-	db 13 ; warps
+	db 14 ; warps
 	warp 8,  13, 0, CELADON_MART_1F
 	warp 10, 13, 2, CELADON_MART_1F
 	warp 24,  9, 0, CELADON_MANSION_1F
@@ -15,6 +15,7 @@ CeladonCityObject:
 	warp 33, 27, 0, CELADON_CHIEF_HOUSE
 	warp 41, 27, 0, CELADON_HOTEL
 	warp 23, 29, 0, CELADON_SCHOOL
+	warp 29, 19, 1, CELADON_GAME_CORNER
 
 	db 13 ; signs
 	sign 27, 15, 12 ; CeladonCityText10
@@ -25,7 +26,7 @@ CeladonCityObject:
 	sign 12, 13, 17 ; CeladonCityText15
 	sign 39, 21, 18 ; CeladonCityText16
 	sign 33, 21, 19 ; CeladonCityText17
-	sign 27, 19, 20 ; CeladonCityText18
+	sign 29, 21, 20 ; CeladonCityText18
 	sign 24, 29, 21 ; CeladonCityText_School
 	sign 34, 19, 22 ; CeladonCityText_CasinoPrizes
 	sign 30, 27, 23 ; CeladonCityText_Dinner
@@ -60,3 +61,4 @@ CeladonCityObject:
 	warp_to 33, 27, CELADON_CITY_WIDTH ; CELADON_CHIEF_HOUSE
 	warp_to 41, 27, CELADON_CITY_WIDTH ; CELADON_HOTEL
 	warp_to 23, 29, CELADON_CITY_WIDTH ; CELADON_SCHOOL
+	warp_to 29, 19, CELADON_CITY_WIDTH ; CELADON_GAME_CORNER

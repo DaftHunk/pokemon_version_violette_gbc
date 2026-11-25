@@ -618,7 +618,7 @@ SSAnne10HiddenObjects:
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 Route10HiddenObjects:
-	db $06,$0A,WATER_STONE
+	db $06,$0A,SOUL_STONE
 	dbw BANK(HiddenItems),HiddenItems
 	db $19,$0B,CALCIUM
 	dbw BANK(HiddenItems),HiddenItems
@@ -881,9 +881,9 @@ BikeShopHiddenObjects:
 	dbw BANK(PrintNewBikeText), PrintNewBikeText
 	db $FF
 Route11HiddenObjects:
-	db $05,$30,ESCAPE_ROPE
+	db $0f,$30,ESCAPE_ROPE
 	dbw BANK(HiddenItems),HiddenItems
-	db 17,55,MAX_REVIVE	;joenote - added hidden item
+	db $0,$37,MAX_REVIVE	;joenote - added hidden item
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 Route12HiddenObjects:
@@ -947,7 +947,7 @@ Route2HiddenObjects:
 Route4HiddenObjects:
 	db $0f,$3d,GREAT_BALL
 	dbw BANK(HiddenItems),HiddenItems
-	db 3,62,MOON_STONE
+	db 2,64,MOON_STONE
 	dbw BANK(HiddenItems),HiddenItems	;joenote - added an extra moon stone
 	db $FF
 Route6HiddenObjects: ;joenote - added hidden items
@@ -992,7 +992,7 @@ Route18GateUpstairsHiddenObjects:
 	dw Route18GateRightBinoculars
 	db $FF
 Route20HiddenObjects:
-	db $12,$35,MOON_STONE
+	db $12,$35,SOUL_STONE
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 MtMoonSquareHiddenObjects:
@@ -1000,6 +1000,6 @@ MtMoonSquareHiddenObjects:
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 Route16HiddenObjects:
-	db $0f,$18,MOON_STONE
+	db $0f,$18,SOUL_STONE
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF

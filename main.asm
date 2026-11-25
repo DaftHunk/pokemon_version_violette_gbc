@@ -2245,8 +2245,8 @@ INCLUDE "custom_functions/func_overworld.asm"
 INCLUDE "custom_functions/func_shiny.asm"
 INCLUDE "custom_functions/func_nuzlocke.asm"
 INCLUDE "custom_functions/func_stat_reset.asm"
-INCLUDE "engine/battle/stats_functions.asm"	
-INCLUDE "engine/battle/exp_bar_print.asm"	
+INCLUDE "engine/battle/stats_functions.asm"
+INCLUDE "engine/battle/exp_bar_print.asm"
 INCLUDE "custom_functions/fisher_yates.asm"
 INCLUDE "engine/battle/load_pics.asm"
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2271,6 +2271,10 @@ Alpha_GFX:         INCBIN "gfx/tilesets/alpha.2bpp"
 Alpha_Block:       INCBIN "gfx/blocksets/alpha.bst"
 ShipPort_GFX:      INCBIN "gfx/tilesets/ship_port.2bpp"
 ShipPort_Block:    INCBIN "gfx/blocksets/ship_port.bst"
+
+
+SECTION "Expanded Tilesets 2", ROMX
+
 Volcano_GFX:       INCBIN "gfx/tilesets/volcano.2bpp"
 Volcano_Block:     INCBIN "gfx/blocksets/volcano.bst"
 

@@ -7,7 +7,7 @@ MtMoonSquareMons:
 	db 21,CLEFAIRY
 	db 18,JIGGLYPUFF
 	db 22,JIGGLYPUFF
-	db 22,MR_MIME
-	db 23,CHANSEY
-	db 25,CHANSEY
+	db 16,MARILL
+	db 17,MARILL
+	db 20,AZUMARILL
 	db $00

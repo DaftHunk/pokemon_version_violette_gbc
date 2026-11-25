@@ -116,3 +116,4 @@ const_value = 0
 	const HS_VOLCANO_B1F_ITEM_2                ; 6B
 	const HS_VOLCANO_B1F_ITEM_3                ; 6C
 	const HS_SEAFOAM_ISLANDS_B3F_ITEM_1        ; 6D
+	const HS_MT_MOON_SQUARE_ITEM_1             ; 6E

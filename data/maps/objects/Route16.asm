@@ -1,7 +1,7 @@
 Route16Object:
 	db $f ; border block
 	
-	db 11 ; warps
+	db 9 ; warps
 	warp 17, 12, 0, ROUTE_16_GATE_1F
 	warp 17, 13, 1, ROUTE_16_GATE_1F
 	warp 24, 12, 2, ROUTE_16_GATE_1F
@@ -11,8 +11,6 @@ Route16Object:
 	warp 24,  6, 6, ROUTE_16_GATE_1F
 	warp 24,  7, 7, ROUTE_16_GATE_1F
 	warp  7,  7, 0, ROUTE_16_FLY_HOUSE
-	warp  2,  8, 2, ROUTE_16_WEST_GATE
-	warp  2,  9, 3, ROUTE_16_WEST_GATE
 
 	db 2 ; signs
 	sign 27, 13, 8 ; Route16Text8
@@ -37,5 +35,3 @@ Route16Object:
 	warp_to 24,  6, ROUTE_16_WIDTH ; ROUTE_16_GATE_1F
 	warp_to 24,  7, ROUTE_16_WIDTH ; ROUTE_16_GATE_1F
 	warp_to  7,  7, ROUTE_16_WIDTH ; ROUTE_16_FLY_HOUSE
-	warp_to  2,  8, ROUTE_16_WIDTH ; ROUTE_16_WEST_GATE
-	warp_to  2,  9, ROUTE_16_WIDTH ; ROUTE_16_WEST_GATE
