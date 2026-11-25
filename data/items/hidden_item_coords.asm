@@ -43,7 +43,7 @@ HiddenItemCoords:
 	db VICTORY_ROAD_2F,$07,$1a
 	db ROUTE_16_WEST_HOUSE,$07,$07
 	db VIRIDIAN_CITY,$04,$0e
-	db ROUTE_11,$05,$30
+	db ROUTE_11,$0f,$30
 	db ROUTE_12,$3f,$02
 	db ROUTE_17,$0e,$0f
 	db ROUTE_17,$48,$11
@@ -75,7 +75,7 @@ HiddenItemCoords:
 	db PEWTER_CITY,2,24
 	db ROUTE_6,4,3
 	db ROUTE_6,4,17
-	db ROUTE_11,17,55
+	db ROUTE_11,$0,$37
 	db ROUTE_8,4,51
 	db ROUTE_4,2,64
 	db VOLCANO_B2F,13,13

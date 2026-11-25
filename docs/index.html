@@ -1489,7 +1489,8 @@ const MARKERS_HOF = [
 
 /* Marqueurs de la Route 2 (data/maps/objects/Route2.asm) : entrée Route 2 de la
    Cave Taupiqueur, 2 postes de la Forêt de Jade, maison de l'échange, 2 portes du
-   poste de garde ; PV Plus et Pierre Lune au sol (HP_UP, MOON_STONE). */
+   poste de garde ; PV Plus et Pierre Lune au sol (HP_UP, MOON_STONE) ;
+   Pépite cachée (hidden_objects.asm : $03,$11,NUGGET). */
 const MARKERS_R2 = [
   { cat: "warp", x: 16, y: 9, name: "Entrée Route 2 Cave Taupiqueur", dx: 2, dy: 7, badge: "Cave Taupiqueur" },
   { cat: "warp", x: 7, y: 11, name: "Porte Nord Forêt de Jade", dx: 5, dy: 0, badge: "Forêt Jade" },
@@ -1497,6 +1498,7 @@ const MARKERS_R2 = [
   { cat: "warp", x: 20, y: 35, name: "Porte Route 2", dx: 5, dy: 0, badge: "Flash" },
   { cat: "warp", x: 19, y: 39, name: "Porte Route 2", dx: 4, dy: 7, badge: "Flash" },
   { cat: "warp", x: 7, y: 43, name: "Porte Sud Forêt de Jade", dx: 4, dy: 7, badge: "Forêt Jade" },
+  { cat: "hidden", tipIcon: "nugget", x: 17, y: 3, name: "Pépite" },
   { cat: "item", spr: true, icon: "ball", tipIcon: "hp_up", ballMini: true, x: 17, y: 45, name: "PV Plus" },
   { cat: "item", spr: true, icon: "ball", tipIcon: "moon_stone", ballMini: true, x: 17, y: 54, name: "Pierre Lune" }
 ];
@@ -1699,7 +1701,7 @@ const MARKERS_ROUTE4 = [
    SS1 ; les 2 portes sud mènent à la Route 4 (18,5). */
 const MARKERS_MOON1F = [
   { cat: "trainer", spr: true, icon: "hiker", x: 5, y: 6, name: "Montagnard", team: [["geodude", "Racaillou", 10], ["geodude", "Racaillou", 10], ["onix", "Onix", 10]] },
-  { cat: "trainer", spr: true, icon: "young_boy", x: 12, y: 16, dir: "right", name: "Gamin", team: [["rattata", "Rattata", 11], ["ekans", "Abo", 11]] },
+  { cat: "trainer", spr: true, icon: "bug_catcher", x: 12, y: 16, dir: "right", name: "Gamin", team: [["rattata", "Rattata", 10], ["sandshrew", "Sabelette", 10], ["zubat", "Nosferapti", 10]] },
   { cat: "trainer", spr: true, icon: "lass", x: 30, y: 4, name: "Fillette n°1", team: [["oddish", "Mystherbe", 11], ["bellsprout", "Chétiflor", 11]] },
   { cat: "trainer", spr: true, icon: "nerd", x: 24, y: 31, dir: "up", name: "Intéllo", team: [["magnemite", "Magnéti", 11], ["voltorb", "Voltorbe", 11]] },
   { cat: "trainer", spr: true, icon: "lass", x: 16, y: 23, name: "Fillette n°2", team: [["clefairy", "Mélofée", 14]] },
@@ -1710,7 +1712,7 @@ const MARKERS_MOON1F = [
   { cat: "item", spr: true, icon: "ball", tipIcon: "rare_candy", ballMini: true, x: 35, y: 31, name: "Super Bonbon" },
   { cat: "item", spr: true, icon: "ball", tipIcon: "escape_rope", ballMini: true, x: 36, y: 23, name: "Corde Sortie" },
   { cat: "item", spr: true, icon: "ball", tipIcon: "potion", ballMini: true, x: 20, y: 33, name: "Potion" },
-  { cat: "item", spr: true, icon: "ball", tipIcon: "repel", ballMini: true, x: 5, y: 32, name: "Superepousse" },
+  { cat: "item", spr: true, icon: "ball", tipIcon: "super_repel", ballMini: true, x: 5, y: 32, name: "Superepousse" },
   { cat: "warp", x: 5, y: 5, name: "Mont Sélénite SS1", dx: 5, dy: 5, badge: "SS1" },
   { cat: "warp", x: 17, y: 11, name: "Mont Sélénite SS1", dx: 25, dy: 9, badge: "SS1" },
   { cat: "warp", x: 25, y: 15, name: "Mont Sélénite SS1", dx: 25, dy: 15, badge: "SS1" },
@@ -3539,7 +3541,10 @@ const MAPS = [
   { id: "PalletOaksLab", label: "Labo du Prof. Chen", w: 160, h: 192, b64: MAP_OAKSLAB_B64, wild: null,
     fish: [] },
   { id: "IndigoLoreleisRoom", label: "Salle d'Olga", w: 160, h: 192, b64: MAP_LORELEI_B64, wild: null,
-    fish: [] },
+    fish: [
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["poliwag", "Ptitard", "n. 5", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n. 5", "18,75 %"], ["goldeen", "Poissirène", "n. 9", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["krabby", "Krabby", "n. 12", "18,75 %"]]]
+    ] },
   { id: "IndigoBrunosRoom", label: "Salle d'Aldo", w: 160, h: 192, b64: MAP_BRUNO_B64, wild: null,
     fish: [] },
   { id: "IndigoAgathasRoom", label: "Salle d'Agatha", w: 160, h: 192, b64: MAP_AGATHA_B64, wild: null,
@@ -3584,7 +3589,10 @@ const MAPS = [
     fish: [] },
   { id: "DiglettsCave", label: "Cave Taupiqueur", w: 640, h: 576, b64: MAP_DCAVE_B64, rate: "20",
     wild: [["diglett", "Taupiqueur", "n. 15 à 21", "89,5 %"], ["dugtrio", "Triopikeur", "n. 29 à 31", "9,4 %"], ["snorlax", "Ronflex", "n. 25", "1,2 %"]],
-    fish: [] },
+    fish: [
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["goldeen", "Poissirène", "n. 12", "50 %"]]],
+      ["Super Canne", [["goldeen", "Poissirène", "n. 12", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["shellder", "Kokiyas", "n. 12", "18,75 %"], ["tentacool", "Tentacool", "n. 5", "18,75 %"]]]
+    ] },
   { id: "DiglettsCaveRoute11", label: "Entrée Route 11 Cave Taupiqueur", w: 128, h: 128, b64: MAP_R2CAVE_B64, wild: null,
     fish: [] },
   { id: "Route3", label: "Route 3", w: 1120, h: 288, b64: MAP_ROUTE3_B64, rate: "20",
@@ -3592,7 +3600,10 @@ const MAPS = [
     fish: [] },
   { id: "MtMoonSquare", label: "Mont Sélénite (Aire de repos)", spoil: true, w: 480, h: 288, b64: MAP_MOONSQ_B64, rate: "25",
     wild: [["nidoranf", "Nidoran♀", "n. 20", "19,9 %"], ["jigglypuff", "Rondoudou", "n. 18 à 22", "34,8 %"], ["nidoranm", "Nidoran♂", "n. 18", "15,2 %"], ["clefairy", "Mélofée", "n. 20 à 21", "19,5 %"], ["marill", "Marill", "n. 16 à 17", "9,4 %"], ["azumarill", "Azumarill", "n. 20", "1,2 %"]],
-    fish: [] },
+    fish: [
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["poliwag", "Ptitard", "n. 4", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n. 4 à 5", "37,5 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["krabby", "Krabby", "n. 12", "18,75 %"]]]
+    ] },
   { id: "MtMoon1F", label: "Mont Sélénite", w: 640, h: 576, b64: MAP_MOON1F_B64, rate: "7",
     wild: [["zubat", "Nosferapti", "n. 6 à 11", "78,9 %"], ["geodude", "Racaillou", "n. 8 à 10", "14,8 %"], ["paras", "Paras", "n. 8", "5,1 %"], ["clefairy", "Mélofée", "n. 8", "1,2 %"]],
     fish: [] },
@@ -3678,11 +3689,8 @@ const MAPS = [
       ["Super Canne", [["poliwag", "Ptitard", "n. 5", "18,75 %"], ["goldeen", "Poissirène", "n. 9", "18,75 %"], ["krabby", "Krabby", "n. 12", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"]]],
       ["Méga Canne", [["poliwhirl", "Têtarte", "n. 23", "23,1 %"], ["slowpoke", "Ramoloss", "n. 15", "23,1 %"], ["psyduck", "Psykokwak", "n. 15", "23,1 %"]]]
     ] },
-  { id: "Route10South", label: "Route 10 South", w: 384, h: 384, b64: MAP_ROUTE10SOUTH_B64, wild: null,
-    fish: [
-      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["goldeen", "Poissirène", "n. 9", "50 %"]]],
-      ["Super Canne", [["goldeen", "Poissirène", "n. 9 à 12", "37,5 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["shellder", "Kokiyas", "n. 12", "18,75 %"]]]
-    ] },
+  { id: "Route10South", label: "Route 10 Sud", w: 384, h: 384, b64: MAP_ROUTE10SOUTH_B64, wild: null,
+    fish: [] },
   { id: "LavenderTown", label: "Lavanville", w: 352, h: 288, b64: MAP_LAVENDER_B64, wild: null,
     fish: [] },
   { id: "Route8", label: "Route 8", w: 960, h: 288, b64: MAP_ROUTE8_B64, rate: "15",
@@ -3791,7 +3799,10 @@ const MAPS = [
   { id: "SaffronPokecenter", label: "Centre Pokémon (Safrania)", w: 224, h: 128, b64: MAP_SPOKEC_B64, wild: null,
     fish: [] },
   { id: "SaffronSilphCo1F", label: "Sylphe SARL", w: 480, h: 288, b64: MAP_SYLPH1F_B64, wild: null,
-    fish: [] },
+    fish: [
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["goldeen", "Poissirène", "n. 9", "50 %"]]],
+      ["Super Canne", [["goldeen", "Poissirène", "n. 9 à 12", "37,5 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["shellder", "Kokiyas", "n. 12", "18,75 %"]]]
+    ] },
   { id: "UndergroundPathRoute5", label: "Passage Souterrain Route 5", w: 128, h: 128, b64: MAP_UPR5_B64, wild: null,
     fish: [] },
   { id: "UndergroundPathRoute7", label: "Passage Souterrain Route 7", w: 128, h: 128, b64: MAP_UPR7_B64, wild: null,
@@ -3886,7 +3897,10 @@ const MAPS = [
   { id: "SSAnneB1FRooms", label: "Cabines du pont B1", w: 384, h: 256, b64: MAP_SSAB1FR_B64, wild: null,
     fish: [] },
   { id: "SSAnneBow", label: "Poupe de l'Océane", w: 320, h: 224, b64: MAP_SSABOW_B64, wild: null,
-    fish: [] },
+    fish: [
+      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["poliwag", "Ptitard", "n. 5", "50 %"]]],
+      ["Super Canne", [["poliwag", "Ptitard", "n. 5", "18,75 %"], ["goldeen", "Poissirène", "n. 9", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["krabby", "Krabby", "n. 12", "18,75 %"]]]
+    ] },
   { id: "SSAnneCaptainsRoom", label: "Cabine du Capitaine", w: 96, h: 128, b64: MAP_SSACPT_B64, wild: null,
     fish: [] },
   { id: "SSAnneKitchen", label: "Cuisine de l'Océane", w: 224, h: 256, b64: MAP_SSAKCH_B64, wild: null,
@@ -3944,7 +3958,8 @@ const MAPS = [
   { id: "RocketHideoutB4F", label: "Planque Rocket SS4", w: 480, h: 384, b64: MAP_RHOB4F_B64, wild: null,
     fish: [] },
   { id: "RocketHideoutElevator", label: "Ascenseur de la Planque", w: 96, h: 128, b64: MAP_RHOELEV_B64, wild: null,
-    fish: [] },  { id: "Route16", label: "Route 16", w: 640, h: 320, b64: MAP_R16_B64, rate: "25",
+    fish: [] },  
+  { id: "Route16", label: "Route 16", w: 640, h: 320, b64: MAP_R16_B64, rate: "25",
     wild: [["spearow", "Piafabec", "n. 20 à 22", "39,8 %"], ["rattata", "Rattata", "n. 18 à 22", "30,1 %"], ["doduo", "Doduo", "n. 18 à 22", "24,6 %"], ["raticate", "Rattatac", "n. 23 à 25", "5,5 %"]],
     fish: [] },
   { id: "Route16West", label: "Clairière", spoil: true, w: 640, h: 672, b64: MAP_R16W_B64, rate: "25",
@@ -3956,18 +3971,10 @@ const MAPS = [
     ] },
   { id: "Route17", label: "Piste Cyclable (Route 17)", w: 320, h: 2304, b64: MAP_R17_B64, rate: "25",
     wild: [["spearow", "Piafabec", "n. 20 à 22", "39,8 %"], ["raticate", "Rattatac", "n. 25 à 27", "25,0 %"], ["doduo", "Doduo", "n. 24 à 28", "24,6 %"], ["dodrio", "Dodrio", "n. 29", "5,1 %"], ["fearow", "Rapasdepic", "n. 25 à 27", "5,5 %"]],
-    fish: [
-      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["goldeen", "Poissirène", "n. 12", "50 %"]]],
-      ["Super Canne", [["goldeen", "Poissirène", "n. 12", "18,75 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["shellder", "Kokiyas", "n. 12", "18,75 %"], ["tentacool", "Tentacool", "n. 5", "18,75 %"]]],
-      ["Méga Canne", [["tentacool", "Tentacool", "n. 5", "18,75 %"], ["krabby", "Krabby", "n. 15", "18,75 %"], ["goldeen", "Poissirène", "n. 15", "18,75 %"], ["magikarp", "Magicarpe", "n. 15", "18,75 %"]]]
-    ] },
+    fish: [] },
   { id: "Route18", label: "Route 18", w: 800, h: 288, b64: MAP_R18_B64, rate: "25",
     wild: [["spearow", "Piafabec", "n. 20 à 22", "39,8 %"], ["raticate", "Rattatac", "n. 25 à 29", "20,3 %"], ["doduo", "Doduo", "n. 24 à 28", "24,6 %"], ["fearow", "Rapasdepic", "n. 25 à 29", "15,2 %"]],
-    fish: [
-      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["poliwag", "Ptitard", "n. 4", "50 %"]]],
-      ["Super Canne", [["poliwag", "Ptitard", "n. 4 à 5", "37,5 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["krabby", "Krabby", "n. 12", "18,75 %"]]],
-      ["Méga Canne", [["tentacool", "Tentacool", "n. 5", "18,75 %"], ["krabby", "Krabby", "n. 15", "18,75 %"], ["goldeen", "Poissirène", "n. 15", "18,75 %"], ["magikarp", "Magicarpe", "n. 15", "18,75 %"]]]
-    ] },
+    fish: [] },
   { id: "FuchsiaCity", label: "Parmanie", w: 640, h: 576, b64: MAP_FUCHSIA_B64, wild: null,
     fish: [
       ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["poliwag", "Ptitard", "n. 4", "50 %"]]],
@@ -4138,10 +4145,7 @@ const MAPS = [
     ] },
   { id: "Route14", label: "Route 14", w: 320, h: 864, b64: MAP_R14_B64, rate: "15",
     wild: [["bellsprout", "Chétiflor", "n. 24 à 26", "25,0 %"], ["ponyta", "Ponyta", "n. 22 à 23", "25,0 %"], ["pidgey", "Roucool", "n. 26", "19,9 %"], ["venonat", "Mimitoss", "n. 24 à 26", "19,5 %"], ["pidgeotto", "Roucoups", "n. 28 à 30", "5,5 %"], ["weepinbell", "Boustiflor", "n. 30", "5,1 %"]],
-    fish: [
-      ["Canne", [["magikarp", "Magicarpe", "n. 4", "50 %"], ["goldeen", "Poissirène", "n. 9", "50 %"]]],
-      ["Super Canne", [["goldeen", "Poissirène", "n. 9 à 12", "37,5 %"], ["psyduck", "Psykokwak", "n. 12", "18,75 %"], ["shellder", "Kokiyas", "n. 12", "18,75 %"]]]
-    ] },
+    fish: [] },
   { id: "Route15", label: "Route 15", w: 960, h: 288, b64: MAP_R15_B64, rate: "15",
     wild: [["ponyta", "Ponyta", "n. 22 à 26", "29,7 %"], ["bellsprout", "Chétiflor", "n. 24 à 26", "25,0 %"], ["venonat", "Mimitoss", "n. 26 à 28", "19,5 %"], ["pidgey", "Roucool", "n. 23", "15,2 %"], ["pidgeotto", "Roucoups", "n. 28 à 30", "5,5 %"], ["weepinbell", "Boustiflor", "n. 30", "5,1 %"]],
     fish: [] },
@@ -4425,8 +4429,9 @@ MAPS[134].markers = MARKERS_VDOCK;
    Magnéti-Machoc-Magnéti n. 18) et 2 Gamins (Sabelette/Abo n. 19,
    Nidoran♂-Nidorino n. 18) ; entrée de la Cave Taupiqueur (4,5) et poste
    de garde à l'est (51/58, 8). Taux $0F = 15 (wild_Route11.asm) :
-   Sabelette 103/256, Piafabec 89, Soporifik 64 ; aucun point d'eau,
-   aucun objet caché. */
+   Sabelette 103/256, Piafabec 89, Soporifik 64 ; aucun point d'eau ;
+   Corde Sortie et Rappel Max cachés (hidden_objects.asm : $05,$30,
+   ESCAPE_ROPE et 17,55, MAX_REVIVE). */
 const MARKERS_ROUTE11 = [
   { cat: "trainer", spr: true, icon: "gambler", x: 10, y: 14, dir: "down", name: "Pillard n°1", team: [["poliwag", "Ptitard", 19], ["horsea", "Hypotrempe", 19]] },
   { cat: "trainer", spr: true, icon: "gambler", x: 26, y: 9, dir: "down", name: "Pillard n°2", team: [["bellsprout", "Chétiflor", 19], ["oddish", "Mystherbe", 19]] },
@@ -4438,6 +4443,8 @@ const MARKERS_ROUTE11 = [
   { cat: "trainer", spr: true, icon: "bug_catcher", x: 43, y: 5, dir: "right", name: "Gamin n°1", team: [["sandshrew", "Sabelette", 19], ["ekans", "Abo", 19]] },
   { cat: "trainer", spr: true, icon: "black_hair_boy_2", x: 45, y: 16, dir: "left", name: "Mécano n°4", team: [["magnemite", "Magnéti", 18], ["machop", "Machoc", 18], ["magnemite", "Magnéti", 18]] },
   { cat: "trainer", spr: true, icon: "bug_catcher", x: 22, y: 12, dir: "up", name: "Gamin n°2", team: [["nidoranm", "Nidoran♂", 18], ["nidorino", "Nidorino", 18]] },
+  { cat: "hidden", tipIcon: "escape_rope", x: 48, y: 15, name: "Corde Sortie" },
+  { cat: "hidden", tipIcon: "max_revive", x: 55, y: 0, name: "Rappel Max" },
   { cat: "warp", x: 51, y: 8, name: "Porte Route 11", dx: 0, dy: 4, badge: "Porte" },
   { cat: "warp", x: 58, y: 8, name: "Porte Route 11", dx: 7, dy: 4, badge: "Porte" },
   { cat: "warp", x: 4, y: 5, name: "Entrée Route 11 Cave Taupiqueur", dx: 2, dy: 7, badge: "Entrée" }
@@ -5352,8 +5359,8 @@ const MARKERS_R20 = [
   { cat: "trainer", spr: true, icon: "swimmer", x: 68, y: 13, dir: "up", name: "Canon n°11", team: [["blastoise", "Tortank", 43], ["dewgong", "Lamantine", 43], ["slowbro", "Flagadoss", 43]] },
   { cat: "trainer", spr: true, icon: "swimmer", x: 46, y: 17, dir: "up", name: "Canon n°12", team: [["seaking", "Poissoroy", 45]] },
   { cat: "trainer", spr: true, icon: "swimmer", x: 59, y: 7, dir: "right", name: "Dresseur jr♀ n°20", team: [["clefable", "Mélodelfe", 38]] },
-  { cat: "trainer", spr: true, icon: "swimmer", x: 38, y: 15, name: "Nageur n°10", team: [["seadra", "Hypocéan", 42], ["kingler", "Krabboss", 42], ["seadra", "Hypocéan", 42]] },
-  { cat: "trainer", spr: true, icon: "swimmer", x: 87, y: 15, dir: "up", name: "Nageur n°11", team: [["blastoise", "Tortank", 45]] },
+  { cat: "trainer", spr: true, icon: "swimmer", x: 38, y: 15, name: "Nageur n°10", team: [["blastoise", "Tortank", 45]] },
+  { cat: "trainer", spr: true, icon: "swimmer", x: 87, y: 15, dir: "up", name: "Nageur n°11", team: [["seadra", "Hypocéan", 42], ["kingler", "Krabboss", 42], ["seadra", "Hypocéan", 42]] },
   { cat: "trainer", spr: true, icon: "black_hair_boy_1", x: 79, y: 8, dir: "up", name: "Ornithologue n°15", team: [["fearow", "Rapasdepic", 41], ["fearow", "Rapasdepic", 41], ["pidgeot", "Roucarnage", 41]] },
   { cat: "trainer", spr: true, icon: "swimmer", x: 25, y: 9, dir: "up", name: "Canon n°13", team: [["cloyster", "Crustabri", 40], ["kingler", "Krabboss", 40], ["cloyster", "Crustabri", 40]] },
   { cat: "trainer", spr: true, icon: "swimmer", x: 24, y: 14, name: "Dresseur jr♀ n°21", team: [["tangela", "Saquedeneu", 35], ["ponyta", "Ponyta", 35], ["sandslash", "Sablaireau", 35]] },
@@ -5675,7 +5682,7 @@ const MARKERS_R14 = [
   { cat: "trainer", spr: true, icon: "biker", x: 15, y: 30, dir: "left", name: "Motard n°4", team: [["hitmonlee", "Kicklee", 32], ["muk", "Grotadmorv", 32]] },
   { cat: "trainer", spr: true, icon: "biker", x: 4, y: 31, dir: "right", name: "Motard n°5", team: [["sandslash", "Sablaireau", 30], ["machoke", "Machopeur", 30]] }
 ];
-/* Route 15 (data/maps/objects/Route15.asm) : 8 dresseurs (Dresseuses jr♀
+/* Route 15 (data/maps/objects/Route15.asm) : 10 dresseurs (Dresseuses jr♀
    n°16-19 - les n°16/17 pointent dans trainer_parties.asm vers les mêmes
    entrées que la Route 13, équipes dupliquées en jeu ; Ornithologues n°10-11,
    Canons n°6-7, Motards n°6-7), boule CT20 PlaiCrx, 2 portes du Poste de
@@ -5684,6 +5691,8 @@ const MARKERS_R14 = [
 const MARKERS_R15 = [
   { cat: "trainer", spr: true, icon: "lass", x: 41, y: 11, dir: "down", name: "Dresseur jr♀ n°16", team: [["tangela", "Saquedeneu", 28], ["persian", "Persian", 28]] },
   { cat: "trainer", spr: true, icon: "lass", x: 53, y: 10, dir: "left", name: "Dresseur jr♀ n°17", team: [["poliwhirl", "Têtarte", 29], ["seadra", "Hypocéan", 29]] },
+  { cat: "trainer", spr: true, icon: "lass", x: 37, y: 5, dir: "right", name: "Dresseur jr♀ n°18", team: [["psyduck", "Psykokwak", 34], ["persian", "Persian", 34], ["golduck", "Akwakwak", 34]] },
+  { cat: "trainer", spr: true, icon: "lass", x: 18, y: 13, dir: "up", name: "Dresseur jr♀ n°19", team: [["weepinbell", "Boustiflor", 36], ["poliwrath", "Tartard", 36]] },
   { cat: "trainer", spr: true, icon: "black_hair_boy_1", x: 31, y: 13, dir: "up", name: "Ornithologue n°10", team: [["pidgeotto", "Roucoups", 35], ["farfetchd", "Canarticho", 35], ["dodrio", "Dodrio", 35], ["pidgeotto", "Roucoups", 35]] },
   { cat: "trainer", spr: true, icon: "black_hair_boy_1", x: 35, y: 13, dir: "up", name: "Ornithologue n°11", team: [["dodrio", "Dodrio", 36], ["pidgeot", "Roucarnage", 36]] },
   { cat: "trainer", spr: true, icon: "foulard_woman", x: 53, y: 11, dir: "down", name: "Canon n°6", team: [["golduck", "Akwakwak", 35], ["wigglytuff", "Grodoudou", 35]] },

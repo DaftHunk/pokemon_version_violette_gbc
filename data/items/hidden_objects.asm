@@ -881,9 +881,9 @@ BikeShopHiddenObjects:
 	dbw BANK(PrintNewBikeText), PrintNewBikeText
 	db $FF
 Route11HiddenObjects:
-	db $05,$30,ESCAPE_ROPE
+	db $0f,$30,ESCAPE_ROPE
 	dbw BANK(HiddenItems),HiddenItems
-	db 17,55,MAX_REVIVE	;joenote - added hidden item
+	db $0,$37,MAX_REVIVE	;joenote - added hidden item
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 Route12HiddenObjects:
