@@ -46,6 +46,17 @@ FollowerUpdate::
 ; the follower was hidden while the player was biking or surfing: reload
 ; the leader's sheet (the player's biking/surfing sheet may have
 ; overwritten VRAM slot 2), restore the picture and snap behind the player
+; Defer the whole reactivation while a text box or menu is on screen
+; (BIT_DISABLE_NPC_MOVEMENT set): RefreshFollowerSheet copies the
+; walking half into the upper half of VRAM, which the text font also
+; uses, so running it while an item message prints would clobber font
+; glyphs with sheet tiles (the corrupted letters in the bicycle and
+; surfboard dismount messages). The follower is hidden anyway: the
+; first FollowerUpdate after the text closes runs the reactivation
+; with the bit clear, and the copy is safe then.
+	ld a, [wFontLoaded]
+	bit BIT_DISABLE_NPC_MOVEMENT, a
+	ret nz
 	res 0, [hl]
 	call GetFollowerSheetEntry
 	jr c, .reactivate

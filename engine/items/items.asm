@@ -3319,7 +3319,17 @@ WaterTilesets:
 ; for items that cause the overworld to be displayed
 ItemUseReloadOverworldData:
 	call LoadCurrentMapView
-
+; The reload replaced the item list screen: end any icon session now.
+; There is no frame left to erase, but the borrowed palette slot must
+; go back to the overworld colors before the item message prints,
+; like EraseItemIcon does on the menu exit paths
+	ld a, [wItemIconState]
+	and a
+	jr z, .noIconSession
+	xor a
+	ld [wItemIconState], a
+	callba ForceEnhancedBGPPalRefill
+.noIconSession
 ;GBCNote - for enhanced GBC color
 ;makes it so that the vBGMap1 space gets updated for the side menu going away
 	call DelayFrame

@@ -402,12 +402,14 @@ StartMenu_Item:
 	ld [wPokedexNum], a
 	call GetItemName
 	call CopyStringToCF4B ; copy name to wcf4b
-;	ld a, [wcf91]
 	ld a, [wCurrentMenuItem] ; dafthunk #4
 	cp a, 2
-	jr z, .tossItem
+	jp z, .tossItem
 	cp a, 1
 	jp z, .infoItem
+	; the SURFBOARD/BICYCLE checks below test the item ID: reload it here,
+	; the submenu checks above left the menu index (0 for Utiliser) in a
+	ld a, [wcf91]
 	cp SURFBOARD	;joenote - fixing surfboard glitch freeze, and cannot use surfboard if being forced to ride bike
 	jr z, .is_surfboard
 	cp BICYCLE
@@ -441,11 +443,21 @@ StartMenu_Item:
 	ld de, 1
 	call IsInArray
 	jr c, .useItem_partyMenu
+; bring the overworld sprites back before the item runs: the bag list
+; menu keeps them hidden while an item icon session is active
+; (wUpdateSpritesEnabled = 0), so the item (e.g. BICYCLE) would otherwise
+; play its animation and text with the player invisible
+	ld a, 1
+	ld [wUpdateSpritesEnabled], a
 	call UseItem
 	jp ItemMenuLoop
 .useItem_closeMenu
 	xor a
 	ld [wPseudoItemID], a
+; same as the generic use path above: redraw the player as soon as USE
+; was selected, before the item's animation and text play
+	ld a, 1
+	ld [wUpdateSpritesEnabled], a
 	call UseItem
 	ld a, [wActionResultOrTookBattleTurn]
 	and a
