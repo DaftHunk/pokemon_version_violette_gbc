@@ -156,6 +156,13 @@ LoadMapSpriteTilePatterns:
 	ld [hl], a ; store VRAM slot at $C2XE
 	ld [hVRAMSlot], a ; used to determine if it's 4-tile sprite later
 	ld a, b ; a = current sprite picture ID
+; the follower placeholder picture (SPRITE_FOLLOWER = SPRITE_SURFING)
+; never needs its sheet copied here: RefreshFollowerSheet overwrites the
+; follower slot right after every sprite (re)load. Loading the surfing
+; sheet instead makes the follower visibly swim while a new sprite set
+; is copied with the LCD on (map connection crossings).
+	cp SPRITE_FOLLOWER
+	jp z, .nextSpriteSlot
 	dec a
 	add a
 	add a
