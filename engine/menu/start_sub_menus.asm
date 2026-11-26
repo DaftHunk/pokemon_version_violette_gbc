@@ -551,6 +551,12 @@ UsableItems_CloseMenu:
 	db $ff
 
 StartMenu_TrainerInfo:
+; the trainer card covers the whole map view: hide the follower while it
+; is shown (see StartMenu_Option)
+	ld hl, wFollowerStateFlags
+	set 2, [hl]
+	ld a, $ff
+	ld [wSpriteStateData1 + $f2], a
 	call GBPalWhiteOut
 	call ClearScreen
 	call UpdateSprites
@@ -766,6 +772,14 @@ StartMenu_SaveReset:
 						;and instead only hold for a single button press
 
 StartMenu_Option:
+; the options screen covers the whole map view: hide the follower for as
+; long as it is open. bit 2 of wFollowerStateFlags makes FollowerUpdate
+; hold the image index at $ff, and the DrawStartMenu hook re-evaluates the
+; bit when the start menu is redrawn on the way back
+	ld hl, wFollowerStateFlags
+	set 2, [hl]
+	ld a, $ff
+	ld [wSpriteStateData1 + $f2], a
 	xor a
 	ld [H_AUTOBGTRANSFERENABLED], a
 	call ClearScreen

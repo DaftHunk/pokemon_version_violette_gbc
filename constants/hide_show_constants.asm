@@ -27,7 +27,6 @@ const_value = 0
 	const HS_SAFFRON_CITY_C                    ; 15
 	const HS_SAFFRON_CITY_D                    ; 16
 	const HS_SAFFRON_CITY_E                    ; 17
-	const HS_SAFFRON_CITY_F                    ; 18
 	const HS_FUCHSIA_CITY_NICO                 ; 19
 	const HS_ROUTE_12_SNORLAX                  ; 1A
 	const HS_ROUTE_16_SNORLAX                  ; 1B

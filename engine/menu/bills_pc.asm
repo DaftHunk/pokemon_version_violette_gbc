@@ -182,6 +182,7 @@ BillsPCMenu:
 	jp z, BillsPCChangeBox ; change box
 
 ExitBillsPC:
+	callba ShowFollowerAfterMenu
 	ld a, [wMiscFlags]
 	bit BIT_USING_GENERIC_PC, a ; accessing Bill's PC through another PC?
 	jr nz, .next

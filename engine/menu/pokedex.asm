@@ -2,6 +2,7 @@
 ; and new info in the data page / seeking between pokemon on the data page / showing the back sprite via SELECT on the data page
 
 ShowPokedexMenu:
+	callba HideFollowerForMenu
 	call GBPalWhiteOut
 	call ClearScreen
 	call UpdateSprites
@@ -64,6 +65,7 @@ ShowPokedexMenu:
 	call GBPalWhiteOutWithDelay3
 	call RunDefaultPaletteCommand
 .exitPokedex2
+	callba ShowFollowerAfterMenu
 	jp ReloadMapData
 .goToSideMenu
 	call HandlePokedexSideMenu

@@ -96,6 +96,7 @@ LogOff:
 	ld hl, wMiscFlags
 	res BIT_USING_GENERIC_PC, [hl]
 	res BIT_NO_MENU_BUTTON_SOUND, [hl]
+	callba ShowFollowerAfterMenu
 	ret
 
 TurnedOnPC1Text:

@@ -20,7 +20,7 @@ DEF BIT_OPTIONS_BATTLE_ANIMATION   EQU 7
 ; wGraphicOptions
 	const_def
 	const BIT_GRAPHIC_FEMALE           ; 0
-	const_skip                         ; 1
+	const BIT_GRAPHIC_FOLLOWER         ; 1
 	const BIT_GRAPHIC_FEMALE_BANK      ; 2
 	const_skip                         ; 3
 	const BIT_GRAPHIC_60_FPS           ; 4

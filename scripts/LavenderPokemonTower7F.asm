@@ -294,12 +294,8 @@ PokemonTower7FujiText:
 	ld a, HS_LAVENDER_FUJIS_HOUSE_MR_FUJI
 	ld [wMissableObjectIndex], a
 	predef ShowObject
-	ld a, HS_SAFFRON_CITY_E
-	ld [wMissableObjectIndex], a
-	predef HideObject
-	ld a, HS_SAFFRON_CITY_F
-	ld [wMissableObjectIndex], a
-	predef ShowObject
+	; the Saffron guard (object 14) is moved to his sleeping spot by
+	; SaffronCityScript when EVENT_RESCUED_MR_FUJI is set
 	ld a, $4
 	ld [wPokemonTower7CurScript], a
 	ld [wCurMapScript], a

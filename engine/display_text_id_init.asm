@@ -8,6 +8,11 @@ DisplayTextIDInit:
 	ld a, [hSpriteIndexOrTextID] ; text ID (or sprite ID)
 	and a
 	jr nz, .notStartMenu
+; hide the follower under the start menu box right away: this init shows
+; the window (with the first copy of the box border) before DrawStartMenu
+; runs, and the OAM only rebuilds at the next VBlank, so latching the
+; hide here keeps the follower from flashing over the box for a frame
+	callba FollowerCheckStartMenuOcclusion
 ; if text ID is 0 (i.e. the start menu)
 ; Note that the start menu text border is also drawn in the function directly
 ; below this, so this seems unnecessary.
