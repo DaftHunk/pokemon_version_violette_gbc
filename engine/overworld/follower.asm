@@ -61,6 +61,13 @@ FollowerUpdate::
 	ld a, [hl]
 	and a
 	ret z ; follower not spawned on this map
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_FOLLOWER, a
+	jr nz, .followerEnabled
+	ld a, $ff
+	ld [wSpriteStateData1 + $f2], a ; option "PkMn suiveur" off: just hide it
+	ret
+.followerEnabled
 	ld hl, wFollowerStateFlags
 	bit 2, [hl] ; is the start menu tree open?
 	jr z, .noMenu

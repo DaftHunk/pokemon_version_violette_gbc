@@ -3354,7 +3354,7 @@ wSpinnerTileFrameCount::	;d72b	;joenote - used as a counter for the spinner tile
 wGraphicOptions:: ; d72c	;joenote - use to set various wram flags
 	ds 1
 	;bit 0 - player is female trainer if set (reserved for female trainer tagged code)
-	;bit 1 - 
+	;bit 1 - follower mon displayed
 	;bit 2 - override bit 0 for specific bank switching instances (usually reserved for female trainer tagged code)
 	;bit 3 - 
 	;bit 4 - 60fps option flag
