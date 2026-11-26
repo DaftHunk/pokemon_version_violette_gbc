@@ -115,7 +115,8 @@ RedisplayStartMenu::
 
 ; EXIT falls through to here
 CloseStartMenu::
-	callba EraseItemIcon ; end a lingering icon session (item used with the menu closing): restores the sprite flag and the borrowed palette, no-op when no session is active
+	callba EndItemIconSession ; lingering session (item used, menu closing):
+	; sprite flag and palette only, CloseTextDisplay repaints
 	ld a, [hJoyHeld]
 	cp SELECT + START
 	jr z, .softlock

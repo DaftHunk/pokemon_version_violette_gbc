@@ -607,27 +607,16 @@ InitItemIconState:
 	call ForceEnhancedBGPPalRefill
 	ret
 
-; Called from ExitListMenu (the list menu is closing)
-; The palette must be restored here, not just the state: closing the menu
-; does not change rBGP, and UpdateGBCPal_BGP short-circuits when rBGP did
-; not change, so no refill would ever put the overworld pink back into the
-; borrowed slot - the pink tiles would stay recolored until the next
-; palette change. Clearing wItemIconState first disables the
-; .ReadMasterPals override, then the forced refill serves the pink.
-EraseItemIcon:
+; Ends the icon session without touching the tile map (CloseTextDisplay:
+; LoadCurrentMapView reloads everything right after). The menu restore must
+; not run there: with a receive icon or a leaked session it writes stale
+; tiles while the transfer is still enabled
+EndItemIconSession:
 	ld a, [wItemIconState]
 	and a
-	ret z			; icons not active
-	cp $FE
-	jr z, .nothingDrawn ; nothing was drawn at all
-	call EraseItemIconBG
-.nothingDrawn
+	ret z
 	xor a
 	ld [wItemIconState], a
-	; bring the overworld sprites back: the vanilla UpdateSprites calls
-	; on the menu exit paths rebuild the OAM buffer, but only when
-	; wUpdateSpritesEnabled is 1 (see InitItemIconState). The PC item
-	; box context manages its own sprite state: leave it alone there.
 	ld a, [wMiscFlags]
 	bit BIT_NO_SPRITE_UPDATES, a
 	jr nz, .skipSpriteRestore
@@ -635,64 +624,6 @@ EraseItemIcon:
 	ld [wUpdateSpritesEnabled], a
 .skipSpriteRestore
 	call ForceEnhancedBGPPalRefill
-	ret
-
-; Restores the background tiles covered by the framed icon (rows 2-12, columns 0-4)
-; rows 2-11 come from the pre-menu screen copy in buffer 2 (rows 2-7 are the
-; buy menu bag count panel, rows 8-11 the item frame)
-; row 12 was saved in WRAM when the icon was first drawn
-; column 4 overlaps the list menu box's left border and is rebuilt from constants
-EraseItemIconBG:
-	ld hl, wTileMapBackup2 + 2 * SCREEN_WIDTH
-	ld de, wTileMap + 2 * SCREEN_WIDTH
-	ld b, 10 ; rows 2 to 11
-.rowLoop
-	push bc
-	call .copy4
-	pop bc
-	ld a, e ; move de and hl down one row, back to column 0
-	add SCREEN_WIDTH - 4
-	ld e, a
-	jr nc, .noCarryDE
-	inc d
-.noCarryDE
-	ld a, l
-	add SCREEN_WIDTH - 4
-	ld l, a
-	jr nc, .noCarryHL
-	inc h
-.noCarryHL
-	dec b
-	jr nz, .rowLoop
-	ld hl, wItemIconSavedTiles
-	ld de, wTileMap + 12 * SCREEN_WIDTH
-	call .copy4		; row 12
-	ld a, "┌"		  ; restore the list menu box's upper left corner at column 4
-	ld [wTileMap + 2 * SCREEN_WIDTH + 4], a
-	ld a, "│"		  ; restore the list menu box's left border at column 4
-	ld hl, wTileMap + 3 * SCREEN_WIDTH + 4
-	ld de, SCREEN_WIDTH
-	ld b, 9
-.colLoop
-	ld [hl], a
-	add hl, de
-	dec b
-	jr nz, .colLoop
-	ld a, "└"
-	ld [wTileMap + 12 * SCREEN_WIDTH + 4], a
-	ret
-.copy4
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hli]
-	ld [de], a
 	ret
 
 ; Saves the 4 background tiles under the frame's bottom row to WRAM

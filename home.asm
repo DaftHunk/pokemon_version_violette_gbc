@@ -1254,7 +1254,10 @@ CloseTextDisplay::
 	; overworld otherwise. LoadCurrentMapView below reloads all of wTileMap,
 	; so no tile restore is needed, and the attribute recompute right after
 	; it fixes vBGMap0. No-op when no session is active (state = 0).
-	callba EraseItemIcon
+	; Session end only: EraseItemIcon's menu tile restore writes stale
+	; tiles here when a receive icon is on screen (the transfer is still
+	; enabled at this point), flashing garbage for a few frames
+	callba EndItemIconSession
 
 
 ;GBCNote - moved these functions up here to make things update properly for enhanced GBC color
@@ -1867,7 +1870,8 @@ ExitListMenu::
 	ld [wMenuItemToSwap], a ; 0 means no item is currently being swapped
 	push hl
 	push bc
-	callba EraseItemIcon ; restore the background and deactivate item icons on menu exit
+	callba EndItemIconSession ; every list close path repaints the full
+	; screen right after: no tile restore needed
 	pop bc
 	pop hl
 	scf
