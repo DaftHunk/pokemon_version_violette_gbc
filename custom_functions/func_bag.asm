@@ -565,6 +565,9 @@ InitItemIconState:
 	jr z, .startSession
 	cp $FD ; drawn-but-needs-repair: back from a submenu or a leaked session
 	jr z, .refreshIconPal
+	; redraw in case the entry under the cursor changed (scroll, swap)
+	; before the first transfer; DrawItemIcon skips on its own if not
+	call DrawItemIcon
 	ret
 .startSession
 	ld a, $FE ; active, nothing drawn yet
@@ -577,6 +580,9 @@ InitItemIconState:
 	; why the icon colors only showed up after the Utiliser/Info/Jeter
 	; submenus changed the palette. Force one enhanced refill now: the
 	; .ReadMasterPals override then fills the borrowed slot immediately.
+	; draw the frame, icon and count while the transfer is still disabled,
+	; so the restored pre-menu screen never flashes under the panel
+	call DrawItemIcon
 	call ForceEnhancedBGPPalRefill
 	ret
 .notItemList
@@ -631,31 +637,47 @@ EraseItemIcon:
 	call ForceEnhancedBGPPalRefill
 	ret
 
-; Restores the background tiles covered by the framed icon (rows 8-12, columns 0-4)
-; rows 8-11 come from the pre-menu screen copy in buffer 2
+; Restores the background tiles covered by the framed icon (rows 2-12, columns 0-4)
+; rows 2-11 come from the pre-menu screen copy in buffer 2 (rows 2-7 are the
+; buy menu bag count panel, rows 8-11 the item frame)
 ; row 12 was saved in WRAM when the icon was first drawn
 ; column 4 overlaps the list menu box's left border and is rebuilt from constants
 EraseItemIconBG:
-	ld hl, wTileMapBackup2 + 8 * SCREEN_WIDTH
-	ld de, wTileMap + 8 * SCREEN_WIDTH
-	call .copy4		; row 8, columns 0-3
-	ld hl, wTileMapBackup2 + 9 * SCREEN_WIDTH
-	ld de, wTileMap + 9 * SCREEN_WIDTH
-	call .copy4		; row 9
-	ld hl, wTileMapBackup2 + 10 * SCREEN_WIDTH
-	ld de, wTileMap + 10 * SCREEN_WIDTH
-	call .copy4		; row 10
-	ld hl, wTileMapBackup2 + 11 * SCREEN_WIDTH
-	ld de, wTileMap + 11 * SCREEN_WIDTH
-	call .copy4		; row 11
+	ld hl, wTileMapBackup2 + 2 * SCREEN_WIDTH
+	ld de, wTileMap + 2 * SCREEN_WIDTH
+	ld b, 10 ; rows 2 to 11
+.rowLoop
+	push bc
+	call .copy4
+	pop bc
+	ld a, e ; move de and hl down one row, back to column 0
+	add SCREEN_WIDTH - 4
+	ld e, a
+	jr nc, .noCarryDE
+	inc d
+.noCarryDE
+	ld a, l
+	add SCREEN_WIDTH - 4
+	ld l, a
+	jr nc, .noCarryHL
+	inc h
+.noCarryHL
+	dec b
+	jr nz, .rowLoop
 	ld hl, wItemIconSavedTiles
 	ld de, wTileMap + 12 * SCREEN_WIDTH
 	call .copy4		; row 12
+	ld a, "┌"		  ; restore the list menu box's upper left corner at column 4
+	ld [wTileMap + 2 * SCREEN_WIDTH + 4], a
 	ld a, "│"		  ; restore the list menu box's left border at column 4
-	ld [wTileMap + 8 * SCREEN_WIDTH + 4], a
-	ld [wTileMap + 9 * SCREEN_WIDTH + 4], a
-	ld [wTileMap + 10 * SCREEN_WIDTH + 4], a
-	ld [wTileMap + 11 * SCREEN_WIDTH + 4], a
+	ld hl, wTileMap + 3 * SCREEN_WIDTH + 4
+	ld de, SCREEN_WIDTH
+	ld b, 9
+.colLoop
+	ld [hl], a
+	add hl, de
+	dec b
+	jr nz, .colLoop
 	ld a, "└"
 	ld [wTileMap + 12 * SCREEN_WIDTH + 4], a
 	ret
@@ -732,9 +754,70 @@ DrawItemFrame:
 	ld [hli], a
 	ld a, "┘"
 	ld [hl], a
+	; buy menu only: bag count panel above the icon frame (rows 2-7)
+	ld a, [wListMenuID]
+	cp PRICEDITEMLISTMENU
+	ret nz
+	; top edge on the list box's own top row
+	coord hl, 0, 2
+	ld a, "┌"
+	ld [hli], a
+	ld a, "─"
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld a, "┐"
+	ld [hl], a
+	; side edges
+	coord hl, 0, 3
+	ld a, "│"
+	ld [hl], a
+	coord hl, 4, 3
+	ld [hl], a
+	coord hl, 0, 4
+	ld [hl], a
+	coord hl, 4, 4
+	ld [hl], a
+	coord hl, 0, 5
+	ld [hl], a
+	coord hl, 4, 5
+	ld [hl], a
+	coord hl, 0, 6
+	ld [hl], a
+	coord hl, 4, 6
+	ld [hl], a
+	; padding rows above the label and below the count
+	coord hl, 1, 3
+	ld a, " "
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	coord hl, 1, 6
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	; label "Sac"
+	coord hl, 1, 4
+	ld a, "S"
+	ld [hli], a
+	ld a, "a"
+	ld [hli], a
+	ld a, "c"
+	ld [hl], a
+	; bottom edge
+	coord hl, 0, 7
+	ld a, "└"
+	ld [hli], a
+	ld a, "─"
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld a, "┘"
+	ld [hl], a
 	ret
 
 ; Fills the 9 cells inside the frame with blank tiles (the frame itself is kept)
+; buy menu: also blanks the count cells of the bag panel
 ClearItemIconCells:
 	ld a, " "
 	coord hl, 1, 9
@@ -746,6 +829,14 @@ ClearItemIconCells:
 	ld [hli], a
 	ld [hl], a
 	coord hl, 1, 11
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ld a, [wListMenuID]
+	cp PRICEDITEMLISTMENU
+	ret nz
+	ld a, " "
+	coord hl, 1, 5
 	ld [hli], a
 	ld [hli], a
 	ld [hl], a
@@ -874,6 +965,8 @@ DrawItemIcon:
 	jr nz, .iconDraw
 	call DrawItemFrame ; preserves de
 .iconDraw
+	; buy menu: update the bag count panel with the highlighted item's count
+	call DrawBagCountPanel ; preserves b (item ID) and de (icon source)
 	; remember the drawn item before the copy clobbers registers
 	ld a, b
 	ld [wItemIconState], a
@@ -929,6 +1022,89 @@ DrawItemIcon:
 	call ClearItemIconCells
 	ld a, $FF
 	ld [wItemIconState], a
+	ret
+
+
+; Buy menu only: updates the bag count panel above the item frame with
+; how many of the highlighted item the player already owns, summed over
+; both bag pockets and capped at 99. The frame and the "Sac" label are
+; drawn by DrawItemFrame; ClearItemIconCells blanks the count cells on
+; Cancel. DrawItemIcon calls this on every icon draw: the anti-lag skip
+; never triggers after a purchase, because the A press that opened the
+; quantity menu left the state at $FD (repair).
+; Preserves b (item ID) and de (icon source); clobbers a, c and hl.
+DrawBagCountPanel:
+	ld a, [wListMenuID]
+	cp PRICEDITEMLISTMENU
+	ret nz
+	push de
+	push bc
+	; c = total quantity of item b across both bag lists
+	ld c, 0
+	ld hl, wNumBagItems
+	call .sumList
+	ld hl, wBagNumBackup
+	call .sumList
+	ld a, c
+	cp 99
+	jr c, .gotCount
+	ld c, 99
+.gotCount
+	; write "×" followed by the count at (1,5) to (3,5)
+	ld a, c
+	cp 10
+	jr nc, .twoDigits
+	add "0" ; single digit: "×" + digit + blank
+	ld d, a
+	coord hl, 1, 5
+	ld a, "×"
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	ld a, " "
+	ld [hl], a
+	jr .done
+.twoDigits
+	ld e, "0" ; one increment per subtracted ten
+.tensLoop
+	inc e
+	sub 10
+	cp 10
+	jr nc, .tensLoop
+	add "0" ; a = ones digit character
+	ld d, a
+	coord hl, 1, 5
+	ld a, "×"
+	ld [hli], a
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hl], a
+.done
+	pop bc
+	pop de
+	ret
+; adds the quantities of item b found in the list at hl to c.
+; Bounded by the list's count byte: no terminator needed, and safe on
+; fresh (all-zero) backup WRAM where no $FF has been written yet
+; (AddItemToInventory only writes the $FF inside the list, after the
+; last entry; the end-of-region byte is written by BackupBagSwap only).
+.sumList
+	ld a, [hli] ; a = number of entries
+	or a
+	ret z
+	ld e, a ; e = entries left
+.entryLoop
+	ld a, [hli] ; entry ID
+	cp b
+	jr nz, .nextEntry
+	ld a, [hl] ; matching entry: add its quantity
+	add c
+	ld c, a
+.nextEntry
+	inc hl
+	dec e
+	jr nz, .entryLoop
 	ret
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
