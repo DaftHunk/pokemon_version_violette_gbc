@@ -1,10 +1,6 @@
 EnterMapAnim:
-	ld hl, wStatusFlags7
-	bit 7, [hl] ; fly arrival animation?
-	jr z, .notFlyArrival
 	ld a, $ff
-	ld [wSpriteStateData1 + $f2], a ; hide the follower from the very start of the fly arrival (incl. fade-in)
-.notFlyArrival
+	ld [wSpriteStateData1 + $f2], a ; hide the follower from the very start of the arrival animation (incl. fade-in): EnterMapAnim only runs for fly, dungeon and teleport-style arrivals (escape rope, dig, teleport, warp pads), and the follower must not be visible during any of them
 	call InitFacingDirectionList
 	ld a, $ec
 	ld [wSpriteStateData1 + 4], a ; player's sprite Y screen position
@@ -43,6 +39,7 @@ EnterMapAnim:
 .restoreDefaultMusic
 	call PlayDefaultMusic
 .done
+	callba ShowFollowerAfterFlyArrival ; reveal the follower now that the arrival animation is over
 	jp RestoreFacingDirectionAndYScreenPos
 .dungeonWarpAnimation
 	ld c, 50
