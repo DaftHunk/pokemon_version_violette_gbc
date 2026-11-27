@@ -21,6 +21,7 @@ MapPaletteSets:
 	dw ClubPalSet        ; CLUB
 	dw FacilityPalSet    ; FACILITY
 	dw PlateauPalSet     ; PLATEAU
+	dw PrintHousePalSet  ; PRINT_HOUSE
 	assert_table_length NUM_TILESETS
 
 OverworldPalSet:
@@ -43,6 +44,7 @@ ShipPalSet:
 ShipPortPalSet:
 ClubPalSet:
 FacilityPalSet:
+PrintHousePalSet:
 	db INDOOR_GRAY
 	db INDOOR_RED
 	db INDOOR_GREEN

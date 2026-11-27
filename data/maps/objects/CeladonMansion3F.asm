@@ -1,4 +1,4 @@
-CeladonMansion3Object:
+CeladonMansion3FObject:
 	db $f ; border block
 
 	db 4 ; warps
@@ -8,10 +8,10 @@ CeladonMansion3Object:
 	warp 4, 1, 3, CELADON_MANSION_2F
 
 	db 4 ; signs
-	sign 1, 3, 5 ; CeladonMansion3Text5
-	sign 4, 3, 6 ; CeladonMansion3Text6
-	sign 1, 6, 7 ; CeladonMansion3Text7
-	sign 4, 9, 8 ; CeladonMansion3Text8
+	sign 1, 3, 5 ; CeladonMansion3FText5
+	sign 4, 3, 6 ; CeladonMansion3FText6
+	sign 1, 6, 7 ; CeladonMansion3FText7
+	sign 4, 9, 8 ; CeladonMansion3FText8
 
 	db 4 ; objects
 	object SPRITE_BIKE_SHOP_GUY, 0, 4, STAY, UP, 1 ; person

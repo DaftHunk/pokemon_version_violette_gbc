@@ -12,13 +12,13 @@ sHallOfFame:: ds HOF_TEAM * HOF_TEAM_CAPACITY ; a598
 SECTION "Save Data", SRAM, BANK[1]
 	ds $598
 
-sPlayerName::  ds NAME_LENGTH ; a598
-sMainData::    ds wMainDataEnd   - wMainDataStart ; a5a3
-sSpriteData::  ds wSpriteDataEnd - wSpriteDataStart ; ad2c
-sPartyData::   ds wPartyDataEnd  - wPartyDataStart ; af2c
-sCurBoxData::  ds wBoxDataEnd    - wBoxDataStart ; b0c0
-sTilesetType:: ds 1 ; b522
-sMainDataCheckSum:: ds 1 ; b523
+sPlayerName::  ds NAME_LENGTH                       ; a598
+sMainData::    ds wMainDataEnd   - wMainDataStart   ; a5a3
+sSpriteData::  ds wSpriteDataEnd - wSpriteDataStart ; ad23
+sPartyData::   ds wPartyDataEnd  - wPartyDataStart  ; af23
+sCurBoxData::  ds wBoxDataEnd    - wBoxDataStart    ; b0b7
+sTilesetType:: ds 1                                 ; b519
+sMainDataCheckSum:: ds 1                            ; b51a
 
 
 SECTION "Saved Boxes 1", SRAM, BANK[2]
@@ -29,8 +29,8 @@ sBox3:: ds wBoxDataEnd - wBoxDataStart ; a8c4
 sBox4:: ds wBoxDataEnd - wBoxDataStart ; ad26
 sBox5:: ds wBoxDataEnd - wBoxDataStart ; b188
 sBox6:: ds wBoxDataEnd - wBoxDataStart ; b5ea
-sBank2AllBoxesChecksum:: ds 1 ; ba4c
-sBank2IndividualBoxChecksums:: ds 6 ; ba4d
+sBank2AllBoxesChecksum:: ds 1          ; ba4c
+sBank2IndividualBoxChecksums:: ds 6    ; ba4d
 
 
 SECTION "Saved Boxes 2", SRAM, BANK[3]
@@ -41,5 +41,5 @@ sBox9::  ds wBoxDataEnd - wBoxDataStart ; a8c4
 sBox10:: ds wBoxDataEnd - wBoxDataStart ; ad26
 sBox11:: ds wBoxDataEnd - wBoxDataStart ; b188
 sBox12:: ds wBoxDataEnd - wBoxDataStart ; b5ea
-sBank3AllBoxesChecksum:: ds 1 ; ba4c
-sBank3IndividualBoxChecksums:: ds 6 ; ba4d
+sBank3AllBoxesChecksum:: ds 1           ; ba4c
+sBank3IndividualBoxChecksums:: ds 6     ; ba4d

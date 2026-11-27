@@ -244,6 +244,9 @@ Trade_ShowPlayerMon:
 	ld b, vBGMap0 / $100
 	call CopyScreenTileBufferToVRAM
 	call ClearScreen
+;the outgoing mon DVs are stashed in wFossilMonDVs before the trade animation
+	ld de, wFossilMonDVs
+	callba SetWholeScreenShinyFlagFromDVs
 	ld a, [wTradedPlayerMonSpecies]
 	call Trade_LoadMonSprite
 	ld a, $7e
@@ -366,6 +369,16 @@ Trade_ShowEnemyMon:
 	call Trade_CopyTileMapToVRAM
 	ld a, $1
 	ld [H_AUTOBGTRANSFERENABLED], a
+;only link trades have the received mon loaded in wLoadedMon
+	ld a, [wLinkState]
+	cp LINK_STATE_TRADING
+	jr z, .linkTrade
+	xor a
+	ld [wWholeScreenPaletteMonShiny], a ; the in-game trade mon is never shiny here
+	jr .shinyDone
+.linkTrade
+	callba SetWholeScreenShinyFlagFromLoadedMon
+.shinyDone
 	ld a, [wTradedEnemyMonSpecies]
 	call Trade_LoadMonSprite
 	ld a, TRADE_BALL_POOF_ANIM
@@ -752,6 +765,8 @@ Trade_LoadMonSprite:
 	ld [wcf91], a
 	ld [wd0b5], a
 	ld [wWholeScreenPaletteMonSpecies], a
+	ld a, $FF
+	ld [wWholeScreenPaletteMonType2], a
 	ld b, SET_PAL_POKEMON_WHOLE_SCREEN
 	ld c, 0
 	call RunPaletteCommand

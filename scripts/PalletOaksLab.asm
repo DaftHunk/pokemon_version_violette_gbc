@@ -30,6 +30,7 @@ OaksLabScriptPointers:
 	dw OaksLabScript17
 	dw OaksLabScript18
 	dw OaksLabScript19
+	dw OaksLabScript20
 
 OaksLabScript0:
 	CheckEvent EVENT_OAK_APPEARED_IN_PALLET
@@ -336,16 +337,143 @@ OaksLabScript9:
 	ld a, SPRITE_FACING_UP
 	ld [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
+
+	; Is alternate starters ?
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_ALT_STARTERS, a
+	jr nz, .alternateRivalChoice
+
+	; Is random starters ?
+	CheckEvent EVENT_ENABLE_WILD_RANDOM
+	jr nz, .alternateRivalChoice
+
+	; Else Original Rival behaviour
 	ld a, $e
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_GOT_STARTER
 	xor a
 	ld [wJoyIgnore], a
-
 	ld a, $a
 	ld [wOaksLabCurScript], a
 	ret
+
+.alternateRivalChoice
+	;the rival rejects the mon he took and asks Chen for another one
+	xor a
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a ; make each line wait for A
+	ld a, $1c
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	ld a, $5
+	ld [H_SPRITEINDEX], a
+	xor a ; SPRITE_FACING_DOWN
+	ld [hSpriteFacingDirection], a
+	call SetSpriteFacingDirectionAndDelay
+	ld a, $1d
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	ld a, $1e
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	ld a, $1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a ; restore vanilla auto-close
+	;walk the rival to Chen so he gets the spare mon from him
+	;if the player stands left of the table, the spot in front of
+	;Chen is taken: send the rival around to Chen's left side
+	ld a, [wXCoord]
+	cp $5
+	jr z, .playerLeftOfTable
+	ld a, [wRivalStarterBallSpriteIndex]
+	cp $2
+	jr z, .fromLeftBall
+	cp $3
+	jr z, .fromMiddleBall
+	ld de, .RivalToChenFromRightBall
+	jr .moveRivalToChen
+.fromLeftBall
+	ld de, .RivalToChenFromLeftBall
+	jr .moveRivalToChen
+.fromMiddleBall
+	ld de, .RivalToChenFromMiddleBall
+.moveRivalToChen
+	ld a, $1
+	ld [H_SPRITEINDEX], a
+	call MoveSprite
+
+	SetEvent EVENT_GOT_STARTER
+	SetEvent EVENT_GOT_ALTERNATE_STARTER
+
+	ld a, $14
+	ld [wOaksLabCurScript], a
+	ret
+
+.playerLeftOfTable
+	ld de, .RivalToChenLeftOfChen
+	jr .moveRivalToChen
+
+.RivalToChenFromLeftBall
+	db NPC_MOVEMENT_LEFT
+	db NPC_MOVEMENT_UP
+	db $FF
+
+.RivalToChenFromMiddleBall
+	db NPC_MOVEMENT_DOWN
+	db NPC_MOVEMENT_LEFT
+	db NPC_MOVEMENT_LEFT
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+	db $FF
+
+.RivalToChenFromRightBall
+	db NPC_MOVEMENT_DOWN
+	db NPC_MOVEMENT_LEFT
+	db NPC_MOVEMENT_LEFT
+	db NPC_MOVEMENT_LEFT
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+	db $FF
+
+;used when the player stands left of the table (the rival then
+;always comes from the middle ball); the rival ends on Chen's
+;left side, facing him
+.RivalToChenLeftOfChen
+	db NPC_MOVEMENT_LEFT
+	db NPC_MOVEMENT_LEFT
+	db NPC_MOVEMENT_LEFT
+	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_UP
+	db $FF
+
+OaksLabText28: ; rival grumbles about the mon he took
+	TX_ASM
+	ld hl, OaksLabRivalGrumbleText
+	call PrintText
+	jp TextScriptEnd
+
+OaksLabText29: ; Chen offers the spare mon
+	TX_ASM
+	ld hl, OaksLabChenSpareMonText
+	call PrintText
+	jp TextScriptEnd
+
+OaksLabText30: ; rival takes the spare mon
+	TX_ASM
+	ld hl, OaksLabRivalTakeItText
+	call PrintText
+	jp TextScriptEnd
+
+OaksLabRivalGrumbleText:
+	TX_FAR _OaksLabRivalGrumbleText
+	db "@"
+
+OaksLabChenSpareMonText:
+	TX_FAR _OaksLabChenSpareMonText
+	db "@"
+
+OaksLabRivalTakeItText:
+	TX_FAR _OaksLabRivalTakeItText
+	db "@"
 
 OaksLabScript10:
 	ld a, [wYCoord]
@@ -512,6 +640,35 @@ OaksLabScript14:
 	xor a ; ld a, SPRITE_FACING_DOWN
 	ld [wSpriteStateData1 + 9], a
 .done
+	ret
+
+OaksLabScript20:
+	;the rival reached Chen and got the spare mon
+	ld a, [wStatusFlags5]
+	bit 0, a
+	ret nz
+	;if the rival went around to Chen's left side (player standing
+	;left of the table), have him turn toward Chen for the handover
+	ld a, [wXCoord]
+	cp $5
+	jr nz, .noFacingFix
+	ld a, $1
+	ld [H_SPRITEINDEX], a
+	ld a, SPRITE_FACING_RIGHT
+	ld [hSpriteFacingDirection], a
+	call SetSpriteFacingDirectionAndDelay
+.noFacingFix
+	ld a, $fc
+	ld [wJoyIgnore], a ; keep directions locked, but let A/B dismiss the text
+	ld a, $e
+	ld [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	SetEvent EVENT_GOT_STARTER
+	xor a
+	ld [wJoyIgnore], a
+
+	ld a, $a
+	ld [wOaksLabCurScript], a
 	ret
 
 OaksLabScript15:
@@ -782,6 +939,9 @@ OaksLabTextPointers:
 	dw OaksLabText25
 	dw OaksLabText26
 	dw OaksLabText27
+	dw OaksLabText28
+	dw OaksLabText29
+	dw OaksLabText30
 
 OaksLabTextPointers2:
 	dw OaksLabText1
@@ -834,7 +994,14 @@ OaksLabText2:
 	ld a, $3
 	ld [wRivalStarterBallSpriteIndex], a
 PlayerStarter1Label::
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_ALT_STARTERS, a
+	jr z, .classicStarter1
+	ld a, PLAYER_STARTER1
+	jr .gotStarter1
+.classicStarter1
 	ld a, STARTER1
+.gotStarter1
 	ld b, $2
 	jr OaksLabScript_1d133
 
@@ -845,7 +1012,14 @@ OaksLabText3:
 	ld a, $4
 	ld [wRivalStarterBallSpriteIndex], a
 PlayerStarter2Label::
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_ALT_STARTERS, a
+	jr z, .classicStarter2
+	ld a, PLAYER_STARTER2
+	jr .gotStarter2
+.classicStarter2
 	ld a, STARTER2
+.gotStarter2
 	ld b, $3
 	jr OaksLabScript_1d133
 
@@ -856,14 +1030,26 @@ OaksLabText4:
 	ld a, $2
 	ld [wRivalStarterBallSpriteIndex], a
 PlayerStarter3Label::
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_ALT_STARTERS, a
+	jr z, .classicStarter3
+	ld a, PLAYER_STARTER3
+	jr .gotStarter3
+.classicStarter3
 	ld a, STARTER3
+.gotStarter3
 	ld b, $4
 
 OaksLabScript_1d133:
 	ld [wcf91], a
 	
 	;joenote - randomize the starter
+	;but alternate starters have priority over the random mode
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_ALT_STARTERS, a
+	jr nz, .noRandomStarter
 	predef ReplaceWildMon
+.noRandomStarter
 	ld a, [wcf91]
 	
 	ld [wPokedexNum], a
@@ -902,6 +1088,17 @@ OaksLabScript_1d157:
 	call ReloadMapData
 	ld c, 10
 	call DelayFrames
+	;random mode without alternate starters: use a generic choice
+	;text that displays the randomized mon's name
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_ALT_STARTERS, a
+	jr nz, .dedicatedChoiceTexts
+	CheckEvent EVENT_ENABLE_WILD_RANDOM
+	jr z, .dedicatedChoiceTexts
+	call GetMonName
+	ld hl, OaksLabRandomStarterText
+	jr OaksLabMonChoiceMenu
+.dedicatedChoiceTexts
 	ld a, [wSpriteIndex]
 	cp $2
 	jr z, OaksLabLookAtCharmander
@@ -910,24 +1107,59 @@ OaksLabScript_1d157:
 	jr OaksLabLookAtBulbasaur
 
 OaksLabLookAtCharmander:
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_ALT_STARTERS, a
+	jr z, .classicText1
+	ld hl, OaksLabEeveeText
+	jr .gotText1
+.classicText1
 	ld hl, OaksLabCharmanderText
+.gotText1
 	jr OaksLabMonChoiceMenu
 OaksLabCharmanderText:
 	TX_FAR _OaksLabCharmanderText
 	db "@"
 
 OaksLabLookAtSquirtle:
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_ALT_STARTERS, a
+	jr z, .classicText2
+	ld hl, OaksLabPikachuText
+	jr .gotText2
+.classicText2
 	ld hl, OaksLabSquirtleText
+.gotText2
 	jr OaksLabMonChoiceMenu
 OaksLabSquirtleText:
 	TX_FAR _OaksLabSquirtleText
 	db "@"
 
 OaksLabLookAtBulbasaur:
+	ld a, [wGameplayOptions]
+	bit BIT_GAMEPLAY_ALT_STARTERS, a
+	jr z, .classicText3
+	ld hl, OaksLabClefairyText
+	jr .gotText3
+.classicText3
 	ld hl, OaksLabBulbasaurText
+.gotText3
 	jr OaksLabMonChoiceMenu
 OaksLabBulbasaurText:
 	TX_FAR _OaksLabBulbasaurText
+	db "@"
+
+OaksLabEeveeText:
+	TX_FAR _OaksLabEeveeText
+	db "@"
+OaksLabPikachuText:
+	TX_FAR _OaksLabPikachuText
+	db "@"
+OaksLabClefairyText:
+	TX_FAR _OaksLabClefairyText
+	db "@"
+
+OaksLabRandomStarterText:
+	TX_FAR _OaksLabRandomStarterText
 	db "@"
 
 OaksLabMonChoiceMenu:
@@ -1001,23 +1233,9 @@ OaksLabScript_1d22d:
 	CheckEvent EVENT_GOT_POKEDEX
 	jp z, TextScriptEnd
 
-	ld a, [wPlayerStarter]
-	; if player starter is BULBASAUR chen have SQUIRTLE
-	cp STARTER3
-	jr z, .chenHaveSquirtle
-	; if player starter is SQUIRTLE chen have CHARMANDER
-	cp STARTER2
-	jr z, .chenHaveCharmander
-	; else he have BULBASAUR
-	ld a, STARTER3
-	jr .displayDex
-.chenHaveCharmander
-	ld a, STARTER1
-	jr .displayDex
-.chenHaveSquirtle
-	ld a, STARTER2
-	; fallthrough
-.displayDex
+	; show the dex entry of the mon actually in the last ball
+	; wcf91 still holds its species, randomizer included
+	ld a, [wcf91]
 	call DisplayPokedex
 	jp TextScriptEnd
 
@@ -1144,14 +1362,26 @@ OaksLabText5:
 .eventChenGivesBalls
 	CheckAndSetEvent EVENT_GOT_POKEBALLS_FROM_OAK
 	jr nz, .eventChenVisitMe
-	lb bc, POKE_BALL, 5
-	;joenote - check to see if beaten on hard mode and give a different gift if true
-	CheckEvent EVENT_BEATEN_ROUTE_22_RIVAL
-	jr z, .next
-	lb bc, GREAT_BALL, 5
-.next
-	call GiveItem
 	ld hl, OaksLabGivePokeballsText
+	call PrintText
+	
+	;joenote - check to see if beaten on hard mode and give a different gift if true
+	CheckEvent EVENT_BEATEN_ROUTE_22_RIVAL_HARD
+	jr z, .notHardMode
+
+	lb bc, GREAT_BALL, 5
+	call GiveItem
+	ld hl, OaksLabGiveGreatPokeballsReceivedText
+	jr .giveBall
+
+.notHardMode
+	lb bc, POKE_BALL, 5
+	call GiveItem
+	ld hl, OaksLabGivePokeballsReceivedText
+	; fallthrough
+.giveBall
+	call PrintText
+	ld hl, OaksLabGivePokeballsText2
 	call PrintText
 	jr .endScript
 .eventChenVisitMe
@@ -1184,7 +1414,28 @@ OaksLabAroundWorldText:
 
 OaksLabGivePokeballsText:
 	TX_FAR _OaksLabGivePokeballsText1
+	db "@"
+
+OaksLabGivePokeballsReceivedText:
+	TX_FAR _OaksLabGivePokeballsReceivedText
 	TX_SFX_KEY_ITEM
+	db "@"
+
+OaksLabGiveGreatPokeballsReceivedText:
+	TX_FAR _OaksLabGiveGreatPokeballsReceivedText
+	TX_SFX_KEY_ITEM
+	db "@"
+
+OaksLabGivePokeballsText2:
+	; erase the item icon popup right after the jingle, before the
+	; follow-up text (TX_ASM code runs in the text bank: callba is safe)
+	TX_ASM
+	push bc ; keep the print destination across the bankswitch call
+	callba EraseReceivedItemPopup
+	pop bc
+	ld hl, .afterIconErase
+	ret
+.afterIconErase
 	TX_FAR _OaksLabGivePokeballsText2
 	db "@"
 

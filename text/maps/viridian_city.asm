@@ -95,6 +95,7 @@ _ReceivedTM42Text::
 _TM42Explanation::
 	text "CT42 contient"
 	line "Ball'Ombre..."
+	cont "..Flippant..."
 	cont "...(pionce)..."
 	done
 

@@ -24,7 +24,7 @@ SaffronCityObject:
 	sign 1, 19, 25 ; SaffronCityText_SylphPromo
 	sign 22, 21, 22 ; SaffronCityText_SylphSarl
 
-	db 15 ; objects
+	db 14 ; objects
 	object SPRITE_ROCKET, 7, 6, STAY, NONE, 1 ; person
 	object SPRITE_ROCKET, 20, 8, WALK, 2, 2 ; person
 	object SPRITE_ROCKET, 29, 4, WALK, 2, 3 ; person
@@ -39,7 +39,9 @@ SaffronCityObject:
 	object SPRITE_PIDGEOT, 31, 12, STAY, DOWN, 12 ; person
 	object SPRITE_ROCKER, 18, 8, STAY, UP, 13 ; person
 	object SPRITE_ROCKET, 18, 22, STAY, DOWN, 14 ; person
-	object SPRITE_ROCKET, 19, 22, STAY, DOWN, 15 ; person
+;	object SPRITE_ROCKET, 19, 22, STAY, DOWN, 15 ; person
+;   replaced by SaffronCityScript: object 14 is moved to this tile (and given
+;   text 15) once EVENT_RESCUED_MR_FUJI is set
 
 	; warp-to
 	warp_to 7, 5, SAFFRON_CITY_WIDTH ; SAFFRON_COPYCATS_HOUSE_1F

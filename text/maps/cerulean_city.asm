@@ -283,3 +283,7 @@ _CeruleanCityText_Bridge::
 	para "Direction"
 	line "Route 24"
 	done
+
+_CeruleanCityText_Printer::
+	text "Imprimeur"
+	done

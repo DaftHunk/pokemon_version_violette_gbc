@@ -11,7 +11,9 @@
 InitMapSprites:
 	call InitOutsideMapSprites
 	ret c ; return if the map is an outside map (already handled by above call)
-; if the map is an inside map (i.e. mapID >= $25)
+; if the map is an inside map (i.e. mapID >= $25): spawn the follower first
+; so its picture can take part in the VRAM slot assignment below
+	callba TrySpawnFollower
 	ld hl, wSpriteStateData1
 	ld de, wSpriteStateData2 + $0d
 ; Loop to copy picture ID's from $C1X0 to $C2XD for LoadMapSpriteTilePatterns.
@@ -25,6 +27,53 @@ InitMapSprites:
 	add l
 	ld l, a
 	jr nz, .copyPictureIDLoop
+; if the follower spawned, park its picture ID (copied to $C2FD above) in
+; the first unused NPC position so the assignment gives it a VRAM slot
+	ld a, [wSpriteStateData1 + $f0]
+	and a
+	jr z, .loadSprites ; follower not spawned on this map
+	ld a, [wNumSprites]
+	cp 15
+	jr nc, .loadSprites ; struct 15 belongs to a map NPC: leave it alone
+	inc a ; a = first unused sprite position (1-based)
+	swap a ; a = position * 16 (always < 256)
+	ld hl, wSpriteStateData2 + $0d
+	add l
+	ld l, a
+	ld a, [wSpriteStateData2 + $fd] ; follower picture ID (copied above)
+	ld [hl], a
+	ld a, [wNumSprites]
+	push af
+	inc a
+	ld [wNumSprites], a ; include the parked picture in the assignment
+	call LoadMapSpriteTilePatterns
+	pop af
+	ld [wNumSprites], a
+; move the assigned VRAM slot from the parking position to struct 15
+	inc a
+	swap a
+	ld hl, wSpriteStateData2 + $0e
+	add l
+	ld l, a
+	ld a, [hl] ; the VRAM slot assigned to the parked picture
+	ld b, a
+	xor a
+	ld [hl], a ; keep the unused NPC struct clean
+	ld a, b
+	cp 11
+	jr nc, .hideFollower ; would overlap the 4-tile sprite area
+	ld [wSpriteStateData2 + $fe], a ; struct 15: the follower's VRAM slot
+	callba RefreshFollowerSheet
+	ret
+.hideFollower ; no regular VRAM slot available for the follower on this map
+	xor a
+	ld [wSpriteStateData2 + $fe], a ; struct 15 unused: UpdateSprites skips it
+	ld a, $ff
+	ld [wSpriteStateData1 + $f2], a ; keep the follower out of OAM
+	ret
+.loadSprites
+	call LoadMapSpriteTilePatterns
+	ret
 
 ; This is used for both inside and outside maps, since it is called by
 ; InitOutsideMapSprites.
@@ -107,6 +156,13 @@ LoadMapSpriteTilePatterns:
 	ld [hl], a ; store VRAM slot at $C2XE
 	ld [hVRAMSlot], a ; used to determine if it's 4-tile sprite later
 	ld a, b ; a = current sprite picture ID
+; the follower placeholder picture (SPRITE_FOLLOWER = SPRITE_SURFING)
+; never needs its sheet copied here: RefreshFollowerSheet overwrites the
+; follower slot right after every sprite (re)load. Loading the surfing
+; sheet instead makes the follower visibly swim while a new sprite set
+; is copied with the LCD on (map connection crossings).
+	cp SPRITE_FOLLOWER
+	jp z, .nextSpriteSlot
 	dec a
 	add a
 	add a
@@ -321,7 +377,17 @@ InitOutsideMapSprites:
 	push af ; save number of sprites
 	ld a, 11 ; 11 sprites in sprite set
 	ld [wNumSprites], a
+; The sprite set can change when walking across a map connection, which
+; happens with the LCD on. Save the LCD-safe copy flag state and set bit 3
+; so the tile pattern copies below poll rSTAT instead of writing VRAM
+; during mode 3 and leaving partially-updated sprite tiles behind.
+	ldh a, [hFlagsFFFA]
+	push af
+	set 3, a
+	ldh [hFlagsFFFA], a
 	call LoadMapSpriteTilePatterns
+	pop af
+	ldh [hFlagsFFFA], a
 	pop af
 	ld [wNumSprites], a ; restore number of sprites
 	ld hl, wSpriteStateData2 + $1e
@@ -338,6 +404,7 @@ InitOutsideMapSprites:
 	dec b
 	jr nz, .zeroVRAMSlotsLoop
 .skipLoadingSpriteSet
+	callba TrySpawnFollower
 	ld hl, wSpriteStateData1 + $10
 ; This loop stores the correct VRAM tile pattern slots according the sprite
 ; data from the map's header. Since the VRAM tile pattern slots are filled in
@@ -359,7 +426,17 @@ InitOutsideMapSprites:
 	ld a, [de]
 	inc de
 	cp b ; does the picture ID match?
-	jr nz, .getPictureIndexLoop
+	jr z, .foundInSet
+	ld a, c
+	cp 11 ; scanned all 11 sprite set entries without a match?
+	jr c, .getPictureIndexLoop
+; The picture ID is not in the sprite set: data error. Map the sprite to the
+; FOLLOWER placeholder (entry 0 of every sprite set, VRAM slot 2) so it shows
+; up as a highly visible surfing sheet instead of garbage tiles or a missing
+; NPC, making the faulty set entry easy to spot while investigating.
+	ld c, 2
+	jr .skipGettingPictureIndex
+.foundInSet
 	inc c
 .skipGettingPictureIndex
 	push hl
@@ -375,6 +452,7 @@ InitOutsideMapSprites:
 	ld l, a
 	and a
 	jr nz, .storeVRAMSlotsLoop
+	callba RefreshFollowerSheet
 	scf
 	ret
 
@@ -411,7 +489,7 @@ GetSplitMapSpriteSetID:
 .loadSpriteSetID
 	ld a, [hl]
 	ret
-; Uses sprite set $01 for West side and $0A for East side.
+; Uses sprite set $01 for West side and $0E for East side.
 ; Route 20 is a special case because the two map sections have a more complex
 ; shape instead of the map simply being split horizontally or vertically.
 .route20
@@ -422,7 +500,7 @@ GetSplitMapSpriteSetID:
 	ret c
 	ld a, [hl]
 	cp $3e
-	ld a, $0a
+	ld a, $0e
 	ret nc
 	ld a, [hl]
 	cp $37
@@ -432,7 +510,7 @@ GetSplitMapSpriteSetID:
 .next
 	ld a, [wYCoord]
 	cp b
-	ld a, $0a
+	ld a, $0e
 	ret c
 	ld a, $01
 	ret

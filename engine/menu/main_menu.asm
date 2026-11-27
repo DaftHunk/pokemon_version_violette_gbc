@@ -87,7 +87,7 @@ MainMenu:
 	cp A_BUTTON + SELECT
 	jr nz, .endseed
 ;joedebug - print the random seed
-	ld hl, $DEF3
+	ld hl, wSavedRngSeed + 3
 	ld c, 4
 .seedloop
 	ld a, [hld]
@@ -299,6 +299,7 @@ InitOptions:
 	ld a, [wGraphicOptions]
 	set BIT_GRAPHIC_60_FPS, a ; 60fps
 	set BIT_GRAPHIC_ENHANCED_GBC, a ; enhanced GBC colors
+	set BIT_GRAPHIC_FOLLOWER, a ; follower mon displayed (default on)
 	ld [wGraphicOptions], a
 
 	ld a, [wGameplayOptions]

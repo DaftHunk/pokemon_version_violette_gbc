@@ -311,3 +311,7 @@ DataSnd_725b8: DATA_SND $810, $0, 11
 	db  $EA                 ; nop
 
 PalPacket_Movedex:        PAL_SET PAL_PURPLEMON, 0, 0, 0
+
+;Pikachu's Beach minigame
+PalPacket_PikachusBeach:          PAL_SET PAL_PIKACHUS_BEACH, PAL_PIKACHUS_BEACH, PAL_PIKACHUS_BEACH, PAL_PIKACHUS_BEACH
+PalPacket_PikachusBeachHiscore:   PAL_SET PAL_PIKACHUS_BEACH_HISCORE, 0, 0, 0

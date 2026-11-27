@@ -95,28 +95,57 @@ endc
 	jp z, \2
 ENDM
 
-	dict $00, ErrorChar ; error
-	dict $4C, AutoContChar ; autocont
-	dict $4B, ContChar ; cont_
-	dict $51, Paragraph ; para
-	dict $48, MultiButtonPageChar ; Bage
-	dict $49, PageChar ; page
-	dict $52, PlayerChar ; player
-	dict $53, RivalChar ; rival
-	dict $54, PokeChar ; POKé
-	dict $5B, PCChar ; PC
-	dict $5E, RocketChar ; ROCKET
-	dict $5C, TMChar ; TM
-	dict $5D, TrainerChar ; TRAINER
-	dict $55, ContText ; cont
-	dict $56, DotsChar ; dot
-	dict $57, DoneText ; done
-	dict $58, PromptText ; prompt
-	dict $4A, PKMNChar ; PKMN
-	dict $5F, PlaceDexEnd ; dex
-	dict $59, TargetChar ; TARGET
-	dict $5A, UserChar ; USER
+; text control characters $48-$5F are dispatched through a jump table
+; indexed by char - $48; every other char is printed as a tile
+	and a
+	jp z, ErrorChar ; error ($00)
+	cp $48
+	jr c, PrintChar
+	cp $60
+	jr nc, PrintChar
+	sub $48
+	add a
+	push hl
+	ld hl, TextDictJumpTable
+	ld c, a
+	ld b, 0
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	pop bc
+	push hl
+	ld h, b
+	ld l, c
+	ret
 
+TextDictJumpTable::
+	dw MultiButtonPageChar ; $48
+	dw PageChar ; $49
+	dw PKMNChar ; $4A
+	dw ContChar ; $4B
+	dw AutoContChar ; $4C
+	dw PrintChar ; $4D (unused)
+	dw PrintChar ; $4E (handled above)
+	dw PrintChar ; $4F (handled above)
+	dw PrintChar ; $50 (handled above)
+	dw Paragraph ; $51
+	dw PlayerChar ; $52
+	dw RivalChar ; $53
+	dw PokeChar ; $54
+	dw ContText ; $55
+	dw DotsChar ; $56
+	dw DoneText ; $57
+	dw PromptText ; $58
+	dw TargetChar ; $59
+	dw UserChar ; $5A
+	dw PCChar ; $5B
+	dw TMChar ; $5C
+	dw TrainerChar ; $5D
+	dw RocketChar ; $5E
+	dw PlaceDexEnd ; $5F
+
+PrintChar::
 	ld [hli], a
 	call PrintLetterDelay
 PlaceNextChar_inc::

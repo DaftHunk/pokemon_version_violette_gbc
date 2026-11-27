@@ -1,4 +1,4 @@
-CeladonMansion2Object:
+CeladonMansion2FObject:
 	db $f ; border block
 
 	db 4 ; warps
@@ -8,7 +8,7 @@ CeladonMansion2Object:
 	warp 4, 1, 3, CELADON_MANSION_3F
 
 	db 1 ; signs
-	sign 4, 9, 1 ; CeladonMansion2Text1
+	sign 4, 9, 1 ; CeladonMansion2FText1
 
 	db 0 ; objects
 

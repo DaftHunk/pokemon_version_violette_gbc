@@ -16,7 +16,7 @@ HiddenItemCoords:
 	db LAVENDER_POKEMON_TOWER_5F,$0c,$04
 	db ROUTE_13,$0e,$01
 	db ROUTE_13,$0d,$10
-	db CINNABAR_MANSION_B2F,$09,$01
+	db CINNABAR_MANSION_B1F,$09,$01
 	db SAFARI_ZONE_NORTH,$0d,$13
 	db SAFARI_ZONE_GATE,$05,$05	;joenote - moved this back into the map
 	db SAFARI_ZONE_WEST,$05,$06
@@ -31,7 +31,7 @@ HiddenItemCoords:
 	db SEAFOAM_ISLANDS_B2F,$0f,$0f
 	db SEAFOAM_ISLANDS_B4F,$11,$19
 	db CINNABAR_MANSION_1F,$10,$08
-	db CINNABAR_MANSION_2F,$09,$01
+	db CINNABAR_MANSION_3F,$09,$01
 	db ROUTE_23,$20,$00
 	db ROUTE_23,$2c,$13
 	db ROUTE_23,$32,$00
@@ -43,7 +43,7 @@ HiddenItemCoords:
 	db VICTORY_ROAD_2F,$07,$1a
 	db ROUTE_16_WEST_HOUSE,$07,$07
 	db VIRIDIAN_CITY,$04,$0e
-	db ROUTE_11,$05,$30
+	db ROUTE_11,$0f,$30
 	db ROUTE_12,$3f,$02
 	db ROUTE_17,$0e,$0f
 	db ROUTE_17,$48,$11
@@ -75,9 +75,9 @@ HiddenItemCoords:
 	db PEWTER_CITY,2,24
 	db ROUTE_6,4,3
 	db ROUTE_6,4,17
-	db ROUTE_11,17,55
+	db ROUTE_11,$0,$37
 	db ROUTE_8,4,51
-	db ROUTE_4,3,62
+	db ROUTE_4,2,64
 	db VOLCANO_B2F,13,13
 	db CELADON_MANSION_ROOF,$0a,$00
 	db ROUTE_20,$12,$35

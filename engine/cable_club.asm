@@ -808,6 +808,18 @@ TradeCenter_Trade:
 	ld [wTradedPlayerMonOTID], a
 	ld a, [hl]
 	ld [wTradedPlayerMonOTID + 1], a
+;stash the outgoing mon DVs for the shiny palette shown during the trade animation
+;(the mon is removed from the party before the animation starts)
+	ld a, [wTradingWhichPlayerMon]
+	ld hl, wPartyMon1DVs
+	ld bc, wPartyMon2 - wPartyMon1
+	call AddNTimes
+	ld de, wFossilMonDVs
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hl]
+	ld [de], a
 	ld a, [wTradingWhichEnemyMon]
 	ld hl, wEnemyMonOT
 	call SkipFixedLengthTextEntries

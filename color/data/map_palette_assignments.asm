@@ -26,6 +26,7 @@ MapPaletteAssignments:
 	dw ClubPalMap        ; CLUB
 	dw FacilityPalMap    ; FACILITY
 	dw PlateauPalMap     ; PLATEAU
+	dw PrintHousePalMap  ; PRINT_HOUSE
 	assert_table_length NUM_TILESETS
 
 OverworldPalMap:
@@ -85,3 +86,6 @@ FacilityPalMap:
 
 PlateauPalMap:
 	INCLUDE "color/tilesets/plateau.asm"
+
+PrintHousePalMap
+	INCLUDE "color/tilesets/print_house.asm"

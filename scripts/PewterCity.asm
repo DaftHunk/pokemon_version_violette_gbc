@@ -50,7 +50,9 @@ PewterCityScript1:
 	ld a, SPRITE_FACING_UP
 	ld [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
-	ld a, ($3 << 4) | SPRITE_FACING_UP
+	; museum guy = SPRITE_BLACK_HAIR_BOY_2 = set $02 index 3 = VRAM slot 5
+	; the image index high nibble is the VRAM slot minus one (slot 5 -> $4)
+	ld a, ($4 << 4) | SPRITE_FACING_UP
 	ld [hSpriteImageIndex], a
 	call SetSpriteImageIndexAfterSettingFacingDirection
 	call PlayDefaultMusic
@@ -119,7 +121,9 @@ PewterCityScript4:
 	ld a, SPRITE_FACING_LEFT
 	ld [hSpriteFacingDirection], a
 	call SetSpriteFacingDirectionAndDelay
-	ld a, ($1 << 4) | SPRITE_FACING_LEFT
+	; gym guy = SPRITE_BUG_CATCHER = set $02 index 4 = VRAM slot 6
+	; the image index high nibble is the VRAM slot minus one (slot 6 -> $5)
+	ld a, ($5 << 4) | SPRITE_FACING_LEFT
 	ld [hSpriteImageIndex], a
 	call SetSpriteImageIndexAfterSettingFacingDirection
 	call PlayDefaultMusic

@@ -2,9 +2,9 @@ MapSpriteSets:
 	db $01 ; PALLET_TOWN
 	db $01 ; VIRIDIAN_CITY
 	db $02 ; PEWTER_CITY
-	db $02 ; CERULEAN_CITY
+	db $0c ; CERULEAN_CITY
 	db $03 ; LAVENDER_TOWN
-	db $04 ; VERMILION_CITY
+	db $0d ; VERMILION_CITY
 	db $05 ; CELADON_CITY
 	db $07 ; SAFFRON_CITY
 	db $0a ; FUCHSIA_CITY
@@ -29,9 +29,10 @@ MapSpriteSets:
 	db $f5 ; ROUTE_15
 	db $f6 ; ROUTE_16
 	db $01 ; ROUTE_16_WEST
+	db $01 ; FORGOTTEN_PASSAGE
 	db $09 ; ROUTE_17
 	db $f7 ; ROUTE_18
-	db $0a ; ROUTE_19
+	db $0e ; ROUTE_19
 	db $f8 ; ROUTE_20
 	db $01 ; ROUTE_21
 	db $01 ; ROUTE_22
@@ -39,6 +40,7 @@ MapSpriteSets:
 	db $02 ; ROUTE_24
 	db $0b ; BILLS_GARDEN
 	db $0b ; MT_MOON_SQUARE
+	db $01 ; RUGGED_ROAD
 	db $fd ; ROUTE_25
 
 ; Format:
@@ -55,8 +57,8 @@ SplitMapSpriteSets:
 	db $02,$15,$03,$08 ; $f4
 	db $01,$08,$0A,$08 ; $f5
 	db $01,$18,$09,$05 ; $f6
-	db $01,$22,$09,$0A ; $f7
-	db $01,$36,$01,$0A ; $f8
+	db $01,$22,$09,$0a ; $f7
+	db $01,$36,$01,$0a ; $f8
 	db $02,$21,$02,$07 ; $f9
 	db $02,$02,$07,$04 ; $fa
 	db $01,$11,$05,$07 ; $fb
@@ -64,85 +66,87 @@ SplitMapSpriteSets:
 	db $02,$03,$0b,$02 ; $fd
 
 SpriteSets:
-; SPRITESET_PALLET_VIRIDIAN
+; 11 entry max, static takes the 2 last
+; $01 SPRITESET_PALLET_VIRIDIAN
+	db SPRITE_FOLLOWER
 	db SPRITE_BLUE
 	db SPRITE_BUG_CATCHER
-	db SPRITE_GIRL
 	db SPRITE_FISHER2
-	db SPRITE_BLACK_HAIR_BOY_1
 	db SPRITE_GAMBLER
-	db SPRITE_SEEL
+	db SPRITE_GIRL
 	db SPRITE_OAK
 	db SPRITE_SWIMMER
+	db SPRITE_BLACK_HAIR_BOY_1 ; Route 20 bird keeper (west half uses this set)
 	db SPRITE_BALL
 	db SPRITE_LYING_OLD_MAN
 
-; SPRITESET_PEWTER_CERULEAN
-	db SPRITE_BUG_CATCHER
-	db SPRITE_ROCKET
-	db SPRITE_BLACK_HAIR_BOY_2
-	db SPRITE_HIKER
-	db SPRITE_SLOWBRO
-	db SPRITE_BLUE
-	db SPRITE_GUARD
+; $02 SPRITESET_PEWTER
+	db SPRITE_FOLLOWER
 	db SPRITE_LASS
 	db SPRITE_BLACK_HAIR_BOY_1
-	db SPRITE_BALL
-	db SPRITE_RHYHORN
-
-; SPRITESET_LAVENDER
-	db SPRITE_LITTLE_GIRL
-	db SPRITE_GIRL
-	db SPRITE_BLACK_HAIR_BOY_2
-	db SPRITE_HIKER
-	db SPRITE_GAMBLER
-	db SPRITE_SLOWBRO
-	db SPRITE_LASS
-	db SPRITE_BLACK_HAIR_BOY_1
-	db SPRITE_HOOH
-	db SPRITE_BALL
-	db SPRITE_SACHA
-
-; SPRITESET_VERMILION
-	db SPRITE_FOULARD_WOMAN
 	db SPRITE_BLACK_HAIR_BOY_2
 	db SPRITE_BUG_CATCHER
-	db SPRITE_GAMBLER
-	db SPRITE_MACHOP
-	db SPRITE_JENNY
-	db SPRITE_SAILOR
-	db SPRITE_LASS
-	db SPRITE_BLACK_HAIR_BOY_1
-	db SPRITE_MEW
-	db SPRITE_SLOWBRO
+	db SPRITE_HIKER
+	db SPRITE_LASS ; Free
+	db SPRITE_BLACK_HAIR_BOY_1 ; Free
+	db SPRITE_BUG_CATCHER ; Free
+	db SPRITE_BALL
+	db SPRITE_BALL ; Free
 
-; SPRITESET_CELADON
+; $03 SPRITESET_LAVENDER
+	db SPRITE_FOLLOWER
 	db SPRITE_LITTLE_GIRL
-	db SPRITE_YOUNG_BOY
+	db SPRITE_BLACK_HAIR_BOY_1
+	db SPRITE_BLACK_HAIR_BOY_2
+	db SPRITE_GAMBLER
+	db SPRITE_LASS
+	db SPRITE_HIKER
+	db SPRITE_LASS ; Free
+	db SPRITE_BLACK_HAIR_BOY_2 ; Free
+	db SPRITE_BALL
+	db SPRITE_BALL ; Free
+
+; $04 SPRITESET_ROUTE_6_ROUTE_11
+	db SPRITE_FOLLOWER
+	db SPRITE_BLACK_HAIR_BOY_1
+	db SPRITE_LASS
+	db SPRITE_BUG_CATCHER
+	db SPRITE_GAMBLER
+	db SPRITE_BLACK_HAIR_BOY_2
+	db SPRITE_LASS ; Free
+	db SPRITE_BUG_CATCHER ; Free
+	db SPRITE_BLACK_HAIR_BOY_1 ; Free
+	db SPRITE_BALL
+	db SPRITE_BALL ; Free
+
+; $05 SPRITESET_CELADON
+	db SPRITE_FOLLOWER
+	db SPRITE_LITTLE_GIRL
 	db SPRITE_GIRL
 	db SPRITE_FISHER2
 	db SPRITE_FAT_BALD_GUY
 	db SPRITE_OLD_PERSON
 	db SPRITE_POLYWRATH
-	db SPRITE_GUARD
 	db SPRITE_ROCKET
+	db SPRITE_BIKER
 	db SPRITE_RHYHORN
 	db SPRITE_SNORLAX
 
-; SPRITESET_INDIGO
-	db SPRITE_BUG_CATCHER
+; $06 SPRITESET_INDIGO
+	db SPRITE_FOLLOWER
 	db SPRITE_GYM_HELPER
-	db SPRITE_SLOWBRO
-	db SPRITE_BLUE
-	db SPRITE_LASS
-	db SPRITE_BLACK_HAIR_BOY_1
-	db SPRITE_SWIMMER
 	db SPRITE_GUARD
-	db SPRITE_GAMBLER
+	db SPRITE_GYM_HELPER ; Free
+	db SPRITE_GUARD ; Free
+	db SPRITE_GYM_HELPER ; Free
+	db SPRITE_GUARD ; Free
+	db SPRITE_GYM_HELPER ; Free
+	db SPRITE_GUARD ; Free
 	db SPRITE_BALL
-	db SPRITE_LYING_OLD_MAN_UNUSED_2
+	db SPRITE_BALL ; Free
 
-; SPRITESET_SAFFRON
+; $07 SPRITESET_SAFFRON
+	db SPRITE_FOLLOWER
 	db SPRITE_ROCKET
 	db SPRITE_OAK_AIDE
 	db SPRITE_LAPRAS_GIVER
@@ -150,64 +154,108 @@ SpriteSets:
 	db SPRITE_GENTLEMAN
 	db SPRITE_PIDGEOT
 	db SPRITE_ROCKER
-	db SPRITE_BLACK_HAIR_BOY_1
-	db SPRITE_SLOWBRO
+	db SPRITE_ROCKET ; Free
 	db SPRITE_BALL
-	db SPRITE_LYING_OLD_MAN_UNUSED_2
+	db SPRITE_BALL ; Free
 
-; SPRITESET_SILENCE_BRIDGE
+; $08 SPRITESET_SILENCE_BRIDGE
+	db SPRITE_FOLLOWER
 	db SPRITE_BIKER
+	db SPRITE_BLACK_HAIR_BOY_1
 	db SPRITE_BLACK_HAIR_BOY_2
-	db SPRITE_FAT_BALD_GUY
 	db SPRITE_LASS
-	db SPRITE_BLACK_HAIR_BOY_1
-	db SPRITE_FOULARD_WOMAN
 	db SPRITE_FISHER2
-	db SPRITE_ROCKER
-	db SPRITE_SLOWBRO
+	db SPRITE_FOULARD_WOMAN
+	db SPRITE_GAMBLER
+	db SPRITE_BLACK_HAIR_BOY_1 ; Free
 	db SPRITE_BALL
 	db SPRITE_SNORLAX
 
-; SPRITESET_CYCLING_ROAD
+; $09 SPRITESET_CYCLING_ROAD
+	db SPRITE_FOLLOWER
 	db SPRITE_BIKER
 	db SPRITE_BLACK_HAIR_BOY_1
-	db SPRITE_LAPRAS_GIVER
-	db SPRITE_FISHER2
-	db SPRITE_ROCKER
-	db SPRITE_HIKER
-	db SPRITE_GAMBLER
-	db SPRITE_FAT_BALD_GUY
-	db SPRITE_BLACK_HAIR_BOY_2
-	db SPRITE_BALL
+	db SPRITE_BIKER ; Free
+	db SPRITE_BLACK_HAIR_BOY_1 ; Free
+	db SPRITE_BIKER ; Free
+	db SPRITE_BLACK_HAIR_BOY_1 ; Free
+	db SPRITE_BIKER ; Free
+	db SPRITE_BLACK_HAIR_BOY_1 ; Free
 	db SPRITE_SNORLAX
+	db SPRITE_BALL
 
-; SPRITESET_FUCHSIA
-	db SPRITE_BLACK_HAIR_BOY_1
+; $0a SPRITESET_FUCHSIA
+	db SPRITE_FOLLOWER
+	db SPRITE_BUG_CATCHER
 	db SPRITE_CHANSEY
 	db SPRITE_FISHER2
 	db SPRITE_GAMBLER
 	db SPRITE_KANGASKHAN
 	db SPRITE_SLOWPOKE
 	db SPRITE_LAPRAS
-	db SPRITE_SWIMMER
-	db SPRITE_BUG_CATCHER
+	db SPRITE_BLACK_HAIR_BOY_1 ; Route 18 bird keepers use this set via the $f7 east split
 	db SPRITE_BALL
 	db SPRITE_OMANYTE
 
-; SPRITESET_SPECIAL
+; $0b SPRITESET_SPECIAL
+	db SPRITE_FOLLOWER
 	db SPRITE_SACHA
 	db SPRITE_HOOH
 	db SPRITE_PIKACHU
 	db SPRITE_CLEFAIRY
-	db SPRITE_GAMBLER
-	db SPRITE_SLOWBRO
-	db SPRITE_LASS
-	db SPRITE_BLACK_HAIR_BOY_2
-	db SPRITE_GIRL
+	db SPRITE_BUG_CATCHER
+	db SPRITE_HIKER
+	db SPRITE_CLEFAIRY ; Free
+	db SPRITE_BUG_CATCHER ; Free
 	db SPRITE_BALL
-	db SPRITE_LITTLE_GIRL
+	db SPRITE_BALL ; Free
+
+; $0c SPRITESET_CERULEAN
+	db SPRITE_FOLLOWER
+	db SPRITE_BLACK_HAIR_BOY_1
+	db SPRITE_BLACK_HAIR_BOY_2
+	db SPRITE_BLUE
+	db SPRITE_GUARD
+	db SPRITE_HIKER
+	db SPRITE_LASS
+	db SPRITE_ROCKET
+	db SPRITE_SLOWBRO
+	db SPRITE_RHYHORN
+	db SPRITE_RHYHORN ; Free
+
+; $0d SPRITESET_VERMILION
+	db SPRITE_FOLLOWER
+	db SPRITE_GAMBLER
+	db SPRITE_JENNY
+	db SPRITE_MACHOP
+	db SPRITE_SAILOR
+	db SPRITE_SLOWBRO
+	db SPRITE_GAMBLER ; Free
+	db SPRITE_JENNY ; Free
+	db SPRITE_MACHOP ; Free
+	db SPRITE_BALL
+	db SPRITE_BALL ; Free
+
+; $0e SPRITESET_SEA_ROUTES_EAST
+; Route 18 east, Route 19, Route 20 east.
+	db SPRITE_FOLLOWER
+	db SPRITE_BLACK_HAIR_BOY_1
+	db SPRITE_FISHER2
+	db SPRITE_SWIMMER
+	db SPRITE_BLACK_HAIR_BOY_1 ; Free
+	db SPRITE_SWIMMER ; Free
+	db SPRITE_FISHER2 ; Free
+	db SPRITE_SWIMMER ; Free
+	db SPRITE_BLACK_HAIR_BOY_1 ; Free
+	db SPRITE_BALL
+	db SPRITE_BALL ; Free
 
 SpriteSheetPointerTable:
+; $40 Static, 64 octets, 4 tiles
+; $c0 Walking, 192 octets, 12 tiles + 2 optional walking tiles
+
+; Walking Sprite
+
 	; SPRITE_RED
 	dw RedSprite
 	db $c0 ; byte count
@@ -443,7 +491,7 @@ SpriteSheetPointerTable:
 	db $c0 ; byte count
 	db BANK(GuardSprite)
 
-	; $32
+	; SPRITE_COP_GUARD
 	dw GuardSprite
 	db $c0 ; byte count
 	db BANK(GuardSprite)
@@ -488,19 +536,22 @@ SpriteSheetPointerTable:
 	db $c0 ; byte count
 	db BANK(LoreleiSprite)
 
-	; SPRITE_SEEL
-	dw SeelSprite
+	; SPRITE_SURFING
+	dw SurfingSprite
 	db $c0 ; byte count
-	db BANK(SeelSprite)
+	db BANK(SurfingSprite)
 
+	; SPRITE_JENNY
 	dw JennySprite
 	db $c0 ; byte count
 	db BANK(JennySprite)
 
+	; SPRITE_JESSIE
 	dw JessieSprite
 	db $c0 ; byte count
 	db BANK(JessieSprite)
 
+	; SPRITE_JAMES
 	dw JamesSprite
 	db $c0 ; byte count
 	db BANK(JamesSprite)
@@ -514,6 +565,11 @@ SpriteSheetPointerTable:
 	dw FireFighterSprite
 	db $c0 ; byte count
 	db BANK(FireFighterSprite)
+
+	; SPRITE_KEEPER
+	dw KeeperSprite
+	db $c0 ; byte count
+	db BANK(KeeperSprite)
 
 	; SPRITE_SOLDIER
 	dw SoldierSprite
@@ -580,6 +636,8 @@ SpriteSheetPointerTable:
 	db $c0 ; byte count
 	db BANK(SachaSprite)
 
+; Pokemons Sprites
+
 	; SPRITE_SLOWBRO
 	dw SlowbroSprite
 	db $c0 ; byte count
@@ -595,119 +653,163 @@ SpriteSheetPointerTable:
 	db $c0 ; byte count
 	db BANK(ClefairySprite)
 
+	; SPRITE_ARTICUNO
 	dw ArticunoSprite
 	db $c0 ; byte count
 	db BANK(ArticunoSprite)
 
+	; SPRITE_CHANSEY
 	dw ChanseySprite
 	db $c0 ; byte count
 	db BANK(ChanseySprite)
-	
+
+	; SPRITE_CUBONE
 	dw CuboneSprite
 	db $c0 ; byte count
 	db BANK(CuboneSprite)
-	
+
+	; SPRITE_KANGASKHAN
 	dw KangaskhanSprite
 	db $c0 ; byte count
 	db BANK(KangaskhanSprite)
-	
+
+	; SPRITE_LAPRAS
 	dw LaprassSprite
 	db $c0 ; byte count
 	db BANK(LaprassSprite)
-	
+
+	; SPRITE_MEOWTH
 	dw MeowthSprite
 	db $c0 ; byte count
 	db BANK(MeowthSprite)
-	
+
+	; SPRITE_MEWTWO
 	dw MewtwoSprite
 	db $c0 ; byte count
 	db BANK(MewtwoSprite)
-	
+
+	; SPRITE_MOLTRES
 	dw MoltresSprite
 	db $c0 ; byte count
 	db BANK(MoltresSprite)
-	
+
+	; SPRITE_NIDORINO
 	dw NidorinoSprite
 	db $c0 ; byte count
 	db BANK(NidorinoSprite)
-	
+
+	; SPRITE_PIDGEOT
 	dw PidgeotSprite
 	db $c0 ; byte count
 	db BANK(PidgeotSprite)
-	
+
+	; SPRITE_POLYWRATH
 	dw PolywrathSprite
 	db $c0 ; byte count
 	db BANK(PolywrathSprite)
-	
+
+	; SPRITE_PSYDUCK
 	dw PsyduckSprite
 	db $c0 ; byte count
 	db BANK(PsyduckSprite)
-	
+
+	; SPRITE_SLOWPOKE
 	dw SlowpokeSprite
 	db $c0 ; byte count
 	db BANK(SlowpokeSprite)
-	
+
+	; SPRITE_SPEAROW
 	dw SpearowSprite
 	db $c0 ; byte count
 	db BANK(SpearowSprite)
 
+	; SPRITE_WIGGLYTUFF
 	dw WigglytuffSprite
 	db $c0 ; byte count
 	db BANK(WigglytuffSprite)
 
+	; SPRITE_MEW
 	dw MewSprite
 	db $c0 ; byte count
 	db BANK(MewSprite)
 
+	; SPRITE_HOOH
 	dw HoohSprite
 	db $c0 ; byte count
 	db BANK(HoohSprite)
 
+	; SPRITE_BULBASAUR
+	dw BulbasaurSprite
+	db $c0 ; byte count
+	db BANK(BulbasaurSprite)
+
+	; SPRITE_ODDISH
+	dw OddishSprite
+	db $c0 ; byte count
+	db BANK(OddishSprite)
+
+	; SPRITE_SANDSHREW
+	dw SandshrewSprite
+	db $c0 ; byte count
+	db BANK(SandshrewSprite)
+
+	; SPRITE_DODUO
 	dw DoduoSprite
 	db $c0 ; byte count
 	db BANK(DoduoSprite)
 
+	; SPRITE_FEAROW
 	dw FearowSprite
 	db $c0 ; byte count
 	db BANK(FearowSprite)
 
+	; SPRITE_JIGGLYPUFF
 	dw JigglypuffSprite
 	db $c0 ; byte count
 	db BANK(JigglypuffSprite)
 
+	; SPRITE_MACHOKE
 	dw MachokeSprite
 	db $c0 ; byte count
 	db BANK(MachokeSprite)
 
+	; SPRITE_MACHOP
 	dw MachopSprite
 	db $c0 ; byte count
 	db BANK(MachopSprite)
 
+	; SPRITE_NIDORANF
 	dw NidoranFSprite
 	db $c0 ; byte count
 	db BANK(NidoranFSprite)
 
+	; SPRITE_NIDORANM
 	dw NidoranMSprite
 	db $c0 ; byte count
 	db BANK(NidoranMSprite)
 
+	; SPRITE_PIDGEY
 	dw PidgeySprite
 	db $c0 ; byte count
 	db BANK(PidgeySprite)
 
+	; SPRITE_PIKACHU
 	dw PikachuSprite
 	db $c0 ; byte count
 	db BANK(PikachuSprite)
 
-	dw Seel2Sprite
+	; SPRITE_SEEL
+	dw SeelSprite
 	db $c0 ; byte count
-	db BANK(Seel2Sprite)
+	db BANK(SeelSprite)
 
+	; SPRITE_ZAPDOS
 	dw ZapdosSprite
 	db $c0 ; byte count
 	db BANK(ZapdosSprite)
 
-	; SPRITE_DOME
+; Static Sprites (cp SPRITE_BALL)
+	; SPRITE_DOME (fake static to avoid static sprite limitation in MtMoon)
 	dw DomeSprite
 	db $c0 ; byte count
 	db BANK(DomeSprite)
@@ -755,7 +857,7 @@ SpriteSheetPointerTable:
 	; SPRITE_CUP
 	dw CupSprite
 	db $40 ; byte count
-	db BANK(MapSprite)
+	db BANK(CupSprite)
 
 	; SPRITE_CLIPBOARD
 	dw ClipboardSprite
@@ -767,25 +869,10 @@ SpriteSheetPointerTable:
 	db $40 ; byte count
 	db BANK(SnorlaxSprite)
 
-	; SPRITE_OLD_AMBER_COPY
-	dw OldAmberSprite
-	db $40 ; byte count
-	db BANK(OldAmberSprite)
-
 	; SPRITE_OLD_AMBER
 	dw OldAmberSprite
 	db $40 ; byte count
 	db BANK(OldAmberSprite)
-
-	; SPRITE_LYING_OLD_MAN_UNUSED_1
-	dw LyingOldManSprite
-	db $40 ; byte count
-	db BANK(LyingOldManSprite)
-
-	; SPRITE_LYING_OLD_MAN_UNUSED_2
-	dw LyingOldManSprite
-	db $40 ; byte count
-	db BANK(LyingOldManSprite)
 
 	; SPRITE_LYING_OLD_MAN
 	dw LyingOldManSprite

@@ -32,6 +32,7 @@ DoorTileIDPointers:
 	dbw MART,        MartDoorTileIDs
 	dbw HOUSE,       HouseDoorTileIDs
 	dbw GATE,        TilesetMuseumDoorTileIDs
+	dbw UNDERGROUND, UndergroundDoorTileIDs ; marcelnote - stairs exit
 	dbw SHIP,        ShipDoorTileIDs
 	dbw LOBBY,       LobbyDoorTileIDs
 	dbw MANSION,     MansionDoorTileIDs
@@ -48,6 +49,9 @@ OverworldDoorTileIDs:
 ForestDoorTileIDs:
 	db $3a,$00
 
+UndergroundDoorTileIDs: ; marcelnote - stairs exit
+	db $54, $5c, $5e,$00
+
 MartDoorTileIDs:
 	db $5e,$00
 
@@ -55,7 +59,7 @@ HouseDoorTileIDs:
 	db $54,$00
 
 TilesetMuseumDoorTileIDs:
-	db $3b,$00
+	db $3b,$5f,$00
 
 ShipDoorTileIDs:
 	db $1e,$00

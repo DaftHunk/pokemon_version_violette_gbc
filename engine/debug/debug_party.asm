@@ -24,14 +24,15 @@ DebugNewGameParty: ; unreferenced except in _DEBUG
 	db SPEAROW, 10
 	db ZAPDOS, 100
 	db MEW, 100
+
 	; Test for trade
-;	db BUTTERFREE, 56
-	
-;	db RAICHU, 56
-;	db NIDORAN_F, 56
-;	db ABRA, 50
-;	db NIDORINO, 80
-;	db PIKACHU, 90
+;	db KAKUNA, 30
+;	db RAICHU, 100
+;	db NIDORAN_F, 30
+;	db POLIWAG, 50
+;	db SPEAROW, 30
+;	db SEEL, 30
+
 	; Test for tutor
 ;	db OMASTAR, 90
 ;	db AERODACTYL, 90
@@ -57,6 +58,8 @@ IF DEF(_DEBUG)
 	call .unlockBadges
 
 	call SetDebugNewGameParty
+
+	call .makeTeamShiny
 
 	; MAGNETON gets Thunderbolt.
 	ld hl, wPartyMon1Moves
@@ -194,11 +197,11 @@ IF DEF(_DEBUG)
 	ld hl, wPokedexOwned
 	ld b, wPokedexOwnedEnd - wPokedexOwned - 1
 	call DebugSetPokedexEntries
-	ld [hl], %01111111
+	ld [hl], %00111111
 	ld hl, wPokedexSeen
 	ld b, wPokedexSeenEnd - wPokedexSeen - 1
 	call DebugSetPokedexEntries
-	ld [hl], %01111111
+	ld [hl], %00111111
 	ld hl, wMovedexSeen
 	ld b, wMovedexSeenEnd - wMovedexSeen
 	call DebugSetPokedexEntries
@@ -228,7 +231,7 @@ IF DEF(_DEBUG)
 ;	SetEvent EVENT_SS_ANNE_TOURNAMENT_BEATEN
 ;	SetEvent EVENT_GOT_BERSERK_ADN
 ;	SetEvent EVENT_MASTER_POKEMON
-;	SetEvent EVENT_GOT_DEX_DIPLOMA
+;	SetEvent EVENT_GOT_DIPLOMA
 ;	SetEvent EVENT_MEWTWO_ARMOR_KNOWLEDGE
 ;	SetEvent EVENT_GOT_HELIX_FOSSIL
 ;	SetEvent EVENT_BEAT_SAFFRON_SILPH_CO_GIOVANNI
@@ -298,6 +301,20 @@ IF DEF(_DEBUG)
 	set 6, a
 	ret
 
+.makeTeamShiny
+	ld a, [wPartyCount]
+	ld b, a
+	ld hl, wPartyMon1DVs
+	ld de, (wPartyMon2 - wPartyMon1) - 2
+	ld a, $AA
+.shinyDVsLoop
+	ld [hli], a
+	ld [hli], a
+	add hl, de
+	dec b
+	jr nz, .shinyDVsLoop
+	ret
+
 DebugSetPokedexEntries:
 	ld a, %11111111
 .loop
@@ -307,6 +324,7 @@ DebugSetPokedexEntries:
 	ret
 
 DebugItemsList:
+	db SURFBOARD, 1
 	db ITEMFINDER, 1
 	db MAX_REVIVE, 99
 	db MAX_ELIXER, 99

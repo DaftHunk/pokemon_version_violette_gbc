@@ -107,6 +107,7 @@ CIBLES = {
     "VOLCANO": "volcano",
     "PLATEAU": "plateau",
     "ALPHA": "alpha",
+    "PRINT_HOUSE": "print_house",
 }
 
 FICHIER_SOURCE = Path("custom_functions") / "func_enhancedcolor.asm"

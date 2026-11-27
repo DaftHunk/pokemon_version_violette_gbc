@@ -1,0 +1,13 @@
+Route16WestMons:
+	db $19
+	db 20,MEOWTH
+	db 22,MEOWTH
+	db 18,EKANS
+	db 20,NIDORAN_F
+	db 20,EKANS
+	db 18,NIDORAN_M
+	db 22,NIDORAN_M
+	db 22,NIDORAN_F
+	db 23,PERSIAN
+	db 25,ARBOK
+	db $00

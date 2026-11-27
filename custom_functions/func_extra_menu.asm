@@ -20,7 +20,7 @@ DisplayExtraOptionMenu:
 	call TextBoxBorder
 ;draw text box border for master options
 	coord hl, 0, 7
-	ld b, 5
+	ld b, 6
 	ld c, 18
 	call TextBoxBorder
 
@@ -37,6 +37,7 @@ DisplayExtraOptionMenu:
 	call ShowNuzlocke
 	call ShowRandomTrainers
 	call ShowRandomWild
+	call ShowAltStarters
 
 	call Delay3
 .loop
@@ -77,6 +78,8 @@ DisplayExtraOptionMenu:
 	jr z, .cursorRandomTrainers
 	cp $0c ; cursor over random wild?
 	jr z, .cursorRandomWild
+	cp $0d ; cursor over alternate starters?
+	jr z, .cursorAltStarters
 	jr .getJoypadStateLoop
 
 .displaySoundTestMenu
@@ -112,6 +115,9 @@ DisplayExtraOptionMenu:
 .cursorRandomWild
 	call ToggleRandomWild
 	jp .getJoypadStateLoop
+.cursorAltStarters
+	call ToggleAltStarters
+	jp .getJoypadStateLoop
 
 .checkDirectionKeys
 	ld a, [wTopMenuItemY]
@@ -120,7 +126,7 @@ DisplayExtraOptionMenu:
 	bit BIT_D_UP, b ; Up pressed?
 	jr nz, .upPressed
 	bit BIT_D_LEFT, b ; Left pressed?
-	jr nz, .cursor_section
+	jp nz, .cursor_section
 	bit BIT_D_RIGHT, b ; Right pressed?
 	jp nz, .cursor_section
 	jp .getJoypadStateLoop
@@ -128,15 +134,15 @@ DisplayExtraOptionMenu:
 	cp 5
 	ld b, 3
 	jr z, .updateMenuVariables
-	cp 12
-	ld b, -11
+	cp 13
+	ld b, -12
 	jr z, .updateMenuVariables
 	;else
 	ld b, 1
 	jr .updateMenuVariables
 .upPressed
 	cp 1
-	ld b, 11
+	ld b, 12
 	jr z, .updateMenuVariables
 	cp 8
 	ld b, -3
@@ -179,6 +185,8 @@ DisplayExtraOptionMenu:
 	jr z, .displayRandomTrainersInfo
 	cp $0c ; cursor over random wild?
 	jr z, .displayRandomWildInfo
+	cp $0d ; cursor over alternate starters?
+	jr z, .displayAltStartersInfo
 	jp .getJoypadStateLoop
 .displayAudioInfo
 	ld hl, DisplayAudioInfoText
@@ -206,6 +214,9 @@ DisplayExtraOptionMenu:
 	jr .endScript
 .displayRandomTrainersInfo
 	ld hl, DisplayRandomTrainersInfoText
+	jr .endScript
+.displayAltStartersInfo
+	ld hl, DisplayAltStartersInfoText
 	jr .endScript
 .displayRandomWildInfo
 	ld hl, DisplayRandomWildInfoText
@@ -244,6 +255,9 @@ DisplayRandomTrainersInfoText:
 	db "@"
 DisplayRandomWildInfoText:
 	TX_FAR _DisplayRandomWildInfoText
+	db "@"
+DisplayAltStartersInfoText:
+	TX_FAR _DisplayAltStartersInfoText
 	db "@"
 
 PlaceExtraOptionStrings:
@@ -295,6 +309,11 @@ PlaceExtraOptionStrings:
 ;place random wild text
 	coord hl, 1, 12
 	ld de, TextRandomWild
+	call PlaceString
+
+;place alternate starters text
+	coord hl, 1, 13
+	ld de, TextAltStarters
 	call PlaceString
 
 ;place back text
@@ -589,13 +608,30 @@ ShowRandomWild:
 	call PlaceString
 	ret
 
+;for the alternate starters option
+ToggleAltStarters:
+	ld a, [wGameplayOptions]
+	xor 1 << BIT_GAMEPLAY_ALT_STARTERS
+	ld [wGameplayOptions], a
+	bit BIT_GAMEPLAY_ALT_STARTERS, a
+	;fall through
+ShowAltStarters:
+	ld de, OptionMenuTextOFF
+	ld a, [wGameplayOptions]	;check if alternate starters are active
+	bit BIT_GAMEPLAY_ALT_STARTERS, a
+	jr z, .print
+	ld de, OptionMenuTextON
+.print
+	coord hl, $10, $0D
+	call PlaceString
+	ret
+
 OptionMenuRandomWildOff:
 	db "  Non@"
 OptionMenuRandomWillTier:
 	db "Tiers@"
 OptionMenuRandomWildChaos:
 	db "Chaos@"
-
 
 TextAudio:
 	db " Audio@"
@@ -620,6 +656,8 @@ TextRandomTrainer:
 	db " Dres. aléa.@"
 TextRandomWild:
 	db " <PK><MN> aléa.@"
+TextAltStarters:
+	db " Choix <PK><MN> alt.@"
 
 OptionMenuOnOffText:
 	dw OptionMenuTextON

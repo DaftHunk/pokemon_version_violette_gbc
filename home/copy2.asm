@@ -70,7 +70,10 @@ CopyVideoData::
 	ld [H_AUTOBGTRANSFERENABLED], a
 
 	ld a, [H_LOADEDROMBANK]
-	ld [hROMBankTemp], a
+	push af ; save the caller's bank on the stack
+	; do not use hROMBankTemp here: $ff8b is a shared HRAM scratch byte
+	; and the DelayFrame below runs the full VBlank handler, which may
+	; clobber it and leave a garbage bank mapped when we return
 
 	ld a, b
 	ld [H_LOADEDROMBANK], a
@@ -94,7 +97,7 @@ CopyVideoData::
 .done
 	ld [H_VBCOPYSIZE], a
 	call DelayFrame
-	ld a, [hROMBankTemp]
+	pop af ; restore the caller's bank (stack is safe across VBlank)
 	ld [H_LOADEDROMBANK], a
 	ld [MBC1RomBank], a
 	pop af
@@ -119,7 +122,7 @@ CopyVideoDataDouble::
 	xor a ; disable auto-transfer while copying
 	ld [H_AUTOBGTRANSFERENABLED], a
 	ld a, [H_LOADEDROMBANK]
-	ld [hROMBankTemp], a
+	push af ; save the caller's bank on the stack (hROMBankTemp is not safe)
 
 	ld a, b
 	ld [H_LOADEDROMBANK], a
@@ -143,7 +146,7 @@ CopyVideoDataDouble::
 .done
 	ld [H_VBCOPYDOUBLESIZE], a
 	call DelayFrame
-	ld a, [hROMBankTemp]
+	pop af ; restore the caller's bank
 	ld [H_LOADEDROMBANK], a
 	ld [MBC1RomBank], a
 	pop af

@@ -115,6 +115,8 @@ RedisplayStartMenu::
 
 ; EXIT falls through to here
 CloseStartMenu::
+	callba EndItemIconSession ; lingering session (item used, menu closing):
+	; sprite flag and palette only, CloseTextDisplay repaints
 	ld a, [hJoyHeld]
 	cp SELECT + START
 	jr z, .softlock

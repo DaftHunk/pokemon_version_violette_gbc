@@ -4,6 +4,7 @@ MtMoonSquareScript:
 MtMoonSquareTextPointers:
 	dw MtMoonSquareText_Clefairy
 	dw MtMoonSquareText_Clefairy
+	dw PickUpItemText
 	dw MtMoonSquareText_Sign
 
 MtMoonSquareText_Clefairy:

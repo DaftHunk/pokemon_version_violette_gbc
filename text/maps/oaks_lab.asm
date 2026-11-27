@@ -44,6 +44,31 @@ _OaksLabBulbasaurText::
 	cont "Bulbizarre?"
 	done
 
+_OaksLabEeveeText::
+	text "Veux-tu le #-"
+	line "mon évolution,"
+	cont "Evoli?"
+	done
+
+_OaksLabPikachuText::
+	text "Veux-tu le"
+	line "#mon souris,"
+	cont "Pikachu?"
+	done
+
+_OaksLabClefairyText::
+	text "Veux-tu le"
+	line "#mon fée,"
+	cont "Mélofée?"
+	done
+
+_OaksLabRandomStarterText::
+	text "Veux-tu choisir"
+	line "@"
+	text_ram wcd6d
+	text "?@"
+	text_end
+
 _OaksLabMonEnergeticText::
 	text "Ce #mon est"
 	line "très énergique!"
@@ -107,9 +132,9 @@ _OaksLabDeliverParcelText1::
 _OaksLabDeliverParcelText2::
 	text_start
 
-	para "Ah! C'est la"
+	para "Ah! C'est les"
 	line "# Ball que"
-	cont "j'ai commandée!"
+	cont "j'ai commandées!"
 	cont "Merci!"
 	done
 
@@ -129,17 +154,22 @@ _OaksLabGivePokeballsText1::
 
 	para "Il te faut aussi"
 	line "l'attraper! Voici"
-	cont "des # Ball"
-	cont "pour en capturer."
+	cont "des Ball pour"
+	cont "en capturer."
+	prompt
 
-	para "<PLAYER> obtient"
+_OaksLabGivePokeballsReceivedText::
+	text "<PLAYER> obtient"
 	line "5 # Ball!@"
 	text_end
 
-_OaksLabGivePokeballsText2::
-	text_start
+_OaksLabGiveGreatPokeballsReceivedText::
+	text "<PLAYER> obtient"
+	line "5 Super Ball!@"
+	text_end
 
-	para "Quand un #mon"
+_OaksLabGivePokeballsText2::
+	text "Quand un #mon"
 	line "sauvage apparaît,"
 	cont "il faut jouer"
 	cont "serré."
@@ -264,7 +294,7 @@ _OaksLabChooseMonText::
 
 	para "Mais avec l'âge,"
 	line "il ne m'en reste"
-	cont "plus que 3!"
+	cont "plus beaucoup!"
 	cont "Choisis-en un!"
 	done
 
@@ -288,6 +318,25 @@ _OaksLabLeavingText::
 _OaksLabRivalPickingMonText::
 	text "<RIVAL>: Je"
 	line "prends celui-ci!"
+	done
+
+_OaksLabRivalGrumbleText::
+	text "<RIVAL>: Mais"
+	line "pépé, il est nul"
+	cont "celui-là! J'en"
+	cont "veux un autre!"
+	done
+
+_OaksLabChenSpareMonText::
+	text "Chen: Heu..."
+	line "Eh bien oui, il"
+	cont "m'en reste un"
+	cont "autre mais..."
+	done
+
+_OaksLabRivalTakeItText::
+	text "<RIVAL>: J'le"
+	line "prends!"
 	done
 
 _OaksLabRivalReceivedMonText::

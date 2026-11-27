@@ -4,8 +4,8 @@ db 130 ; base attack
 db 100 ; base defense
 db 65 ; base speed
 db 70 ; base special
-db GHOST ; species type 1
-db STEEL ; species type 2
+db STEEL ; species type 1
+db GHOST ; species type 2
 db 25 ; catch rate
 db 200 ; base exp yield
 INCBIN "gfx/pokemon/front/scizor.pic",0,1 ; 77, sprite dimensions

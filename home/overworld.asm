@@ -261,6 +261,7 @@ OverworldLoopLessDelay::
 .pc60fpsCounter
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld [wWalkCounter], a
+	callba QueueFollowerFollowCommand
 	jr .moveAhead2
 
 .moveAhead
@@ -581,6 +582,8 @@ CheckMapConnections::	;joenote - these routines moved to func_overworld.asm to s
 	jr nz, .didNotEnterConnectedMap
 
 .loadNewMap ; load the connected map that was entered
+	ld a, $ff
+	ld [wDestinationWarpID], a ; seamless connections have no destination warp: clear the stale ID so LoadTilesetHeader skips the warp-position adjust
 	call LoadMapHeader
 	call PlayDefaultMusicFadeOutCurrent
 	ld b, SET_PAL_OVERWORLD
@@ -1648,10 +1651,10 @@ AdvancePlayerSprite::
 ; shift all the sprites in the direction opposite of the player's motion
 ; so that the player appears to move relative to them
 	ld hl, wSpriteStateData1 + $14
-	ld a, [wNumSprites] ; number of sprites
-	and a ; are there any sprites?
-	jr z, .done
-	ld e, a
+; shift all 15 NPC sprite slots, not just [wNumSprites]: the follower
+; (slot 15) lives beyond wNumSprites and would otherwise drift one tile
+; per player step during the smooth scroll (camera compensation missing)
+	ld e, 15
 .spriteShiftLoop
 	ld a, [hl]
 	sub b
@@ -2067,7 +2070,7 @@ LoadWalkingPlayerSpriteGraphics::
 	jr LoadPlayerSpriteGraphicsCommon
 
 LoadSurfingPlayerSpriteGraphics::
-	callba LoadSeelSpriteToDE
+	callba LoadSurfingSpriteToDE
 ;	ld hl, vNPCSprites
 	jr LoadPlayerSpriteGraphicsCommon
 
@@ -2253,6 +2256,9 @@ LoadMapHeader::
 	inc e
 	dec b
 	jr nz, .zeroSpriteDataLoop
+; a real map load (warp) clears the fly-hide latch: the follower respawns
+	ld hl, wFollowerStateFlags
+	res 1, [hl]
 ; initialize all C100-C1FF sprite entries to disabled (other than player's)
 	ld hl, wSpriteStateData1 + $12
 	ld de, $0010
@@ -2484,6 +2490,63 @@ LoadMapData::
 	
 ;	callba TransferGBCEnhancedBGMapAttributes	;GBCnote - transfer BGMap Attributes for enhanced GBC color
 ;commenting out because this is already done during the above call of RunPaletteCommand
+	ret
+
+; reloads the current map after the minigame
+; adapted from Marcel's implementation for the enhanced-GBC reload path
+; Must stay in the home bank: it calls SwitchToMapRomBank, which remaps the
+; ROM window at $4000-$7FFF while the CPU keeps executing. If this function
+; lived in a banked section (like the surf minigame's bank), every
+; instruction fetched after the bank switch would come from the map's bank
+; at the caller's addresses, derailing execution.
+ReloadMapAfterSurfingMinigame::
+	ld a, [H_LOADEDROMBANK]
+	push af
+	call DisableLCD
+	ld a, HIGH(vBGMap0)
+	ld [wMapViewVRAMPointer + 1], a
+	xor a
+	ld [wMapViewVRAMPointer], a
+	ldh [hSCY], a
+	ldh [hSCX], a
+	ld [wWalkCounter], a
+	ld [wSpriteSetID], a
+	ld a, [wCurMap]
+	call SwitchToMapRomBank
+	call LoadTileBlockMap
+	call LoadTilesetTilePatternData
+	call LoadCurrentMapView
+	call .CopyMapViewToBGMap0
+	ld de, vBGMap1
+	call .CopyMapViewToVRAM
+	call EnableLCD
+	call ReloadMapSpriteTilePatterns
+	pop af
+	ld [H_LOADEDROMBANK], a
+	ld [MBC1RomBank], a
+	ret
+
+.CopyMapViewToBGMap0
+	ld de, vBGMap0
+.CopyMapViewToVRAM
+	ld hl, wTileMap
+	ld b, SCREEN_HEIGHT
+.vramCopyLoop
+	ld c, SCREEN_WIDTH
+.vramCopyInnerLoop
+	ld a, [hli]
+	ld [de], a
+	inc e
+	dec c
+	jr nz, .vramCopyInnerLoop
+	ld a, BG_MAP_WIDTH - SCREEN_WIDTH
+	add e
+	ld e, a
+	adc d
+	sub e
+	ld d, a ; de += a
+	dec b
+	jr nz, .vramCopyLoop
 	ret
 
 ; function to switch to the ROM bank that a map is stored in

@@ -1,20 +1,20 @@
 
 _DisplayTextSpeedInfoText::
 	text "Détermine la"
- 	line "vitesse du texte,"
+	line "vitesse du texte,"
 	cont "3 étant le plus"
 	cont "rapide."
- 	prompt
-	
+	prompt
+
 _DisplayBattleAnimationInfoText::
 	text "Afficher les"
- 	line "animations en"
+	line "animations en"
 	cont "combat?"
- 	prompt
+	prompt
 
 _DisplayBattleStyleInfoText::
 	text "Choix: demande de"
- 	line "changer de #-"
+	line "changer de #-"
 	cont "mon après les KO."
 	cont "Rend le jeu plus"
 	cont "facile."
@@ -23,35 +23,35 @@ _DisplayBattleStyleInfoText::
 	line "soumis aux mêmes"
 	cont "règles que votre"
 	cont "adversaire."
- 	prompt
+	prompt
 
 _DisplayAudioInfoText::
 	text "Choix du type de"
- 	line "sortie audio."
+	line "sortie audio."
 
 	para "A noter que la"
 	line "Stéréo peut"
 	cont "rendre bizarre."
- 	prompt
+	prompt
 
 _DisplayFPSInfoText::
 	text "Permet de passer"
- 	line "entre 30 et 60"
+	line "entre 30 et 60"
 	cont "FPS."
- 	prompt
+	prompt
 
 _DisplayInstantTextText::
 	text "Rend les textes"
- 	line "instantanés."
+	line "instantanés."
 
 	para "Peut faire sauter"
 	line "certains effets"
 	cont "sonores."
- 	prompt
-	
+	prompt
+
 _DisplayGammaInfoText::
 	text "Désature les"
- 	line "couleurs afin de"
+	line "couleurs afin de"
 	cont "corriger"
 	cont "l'affichage sur"
 	cont "certains"
@@ -62,33 +62,33 @@ _DisplayGammaInfoText::
 	line "qu'en jeu,"
 	cont "l'intro n'est"
 	cont "pas modifiée."
- 	prompt
-	
+	prompt
+
 _DisplayEnhancedGBCInfoText::
 	text "Active la palette"
- 	line "de couleur GBC"
+	line "de couleur GBC"
 	cont "complète."
 
 	para "Désactivée, les"
 	line "couleurs suivent"
 	cont "les limites du"
 	cont "jeu original."
- 	prompt
-	
+	prompt
+
 _DisplayLevelCapInfoText::
 	text "Active la limite"
- 	line "de niveau maximum"
+	line "de niveau maximum"
 	cont "en fonction du"
 	cont "nombre de Badge."
 
 	para "Désactiver cette"
 	line "option rend le"
 	cont "jeu plus simple."
- 	prompt
-	
+	prompt
+
 _DisplayHardModeInfoText::
 	text "Ajoute des règles"
- 	line "de difficulé"
+	line "de difficulé"
 	cont "supplémentaires:"
 
 	para "-Dresseurs plus"
@@ -97,7 +97,7 @@ _DisplayHardModeInfoText::
 
 	para "-IVs des ennemis"
 	line "plus élevés"
-    
+	
 	para "-EVs des ennemis"
 	line "toujours au max"
 	cont "de leur niveau"
@@ -118,54 +118,60 @@ _DisplayHardModeInfoText::
 
 	para "-Style de combat"
 	line "Défini forcé"
- 	prompt
-	
+	prompt
+
 _DisplayNuzlockeInfoText::
 	text "Défi Nuzlocke:"
- 	line "mode de jeu très"
+	line "mode de jeu très"
 	cont "difficile avec"
-    cont "ces contraintes:"
+	cont "ces contraintes:"
 
-    para "-Un #mon KO est"
-    line "mort (Gelé, 1pv"
-    cont "définitivement)"
+	para "-Un #mon KO est"
+	line "mort (Gelé, 1pv"
+	cont "définitivement)"
 
-    para "-Capture du 1er"
-    line "#mon sauvage"
-    cont "croisé de chaque"
-    cont "zone uniquement"
-    cont "(Le logo <PK> sera"
-    cont "affiché)"
+	para "-Capture du 1er"
+	line "#mon sauvage"
+	cont "croisé de chaque"
+	cont "zone uniquement"
+	cont "(Le logo <PK> sera"
+	cont "affiché)"
 
-    para "-Débute dès"
-    line "l'accès aux 1ère"
-    cont "#balls"
+	para "-Débute dès"
+	line "l'accès aux 1ère"
+	cont "#balls"
 
-    para "-Obligation de"
-    line "renommer les"
-    cont "#mon"
- 	prompt
-	
+	para "-Obligation de"
+	line "renommer les"
+	cont "#mon"
+	prompt
+
 _DisplayRandomTrainersInfoText::
 	text "Rend les équipes"
- 	line "des dresseurs"
+	line "des dresseurs"
 	cont "lambda aléatoires"
-    cont "en gardant la"
-    cont "même rareté."
- 	prompt
-	
+	cont "en gardant la"
+	cont "même rareté."
+	prompt
+
 _DisplayRandomWildInfoText::
 	text "Mélange la liste"
- 	line "des rencontres"
-    cont "sauvages non"
-    cont "statiques."
+	line "des rencontres"
+	cont "sauvages non"
+	cont "statiques."
 	
-    para "-Tiers: garde"
-    line "le même niveau"
-    cont "de rareté"
+	para "-Tiers: garde"
+	line "le même niveau"
+	cont "de rareté"
 
-    para "-Chaos: aléatoire"
-    line "complet (très"
-    cont "déséquilibré)"
- 	prompt
-	
+	para "-Chaos: aléatoire"
+	line "complet (très"
+	cont "déséquilibré)"
+	prompt
+
+_DisplayAltStartersInfoText::
+	text "Remplace le trio"
+	line "de départ par"
+	cont "Evoli, Pikachu"
+	cont "et Mélofée."
+	prompt

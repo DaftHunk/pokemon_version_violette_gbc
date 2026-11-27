@@ -251,6 +251,7 @@ CeruleanCityTextPointers:
 	dw CeruleanCityText_BikeShop
 	dw CeruleanCityText_BadgeHouse
 	dw CeruleanCityText_Bridge
+	dw CeruleanCityText_Printer
 
 CeruleanCityText1:
 	TX_ASM
@@ -484,4 +485,8 @@ CeruleanCityText_BadgeHouse:
 
 CeruleanCityText_Bridge:
 	TX_FAR _CeruleanCityText_Bridge
+	db "@"
+
+CeruleanCityText_Printer:
+	TX_FAR _CeruleanCityText_Printer
 	db "@"

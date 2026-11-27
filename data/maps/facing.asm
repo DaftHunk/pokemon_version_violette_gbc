@@ -96,6 +96,6 @@ OddmonOAM:
  	db SPRITE_NIDORANM,		$20, 0, 0
  	db SPRITE_PIDGEY,		$20, 0, 0
  	db SPRITE_PIKACHU,		$20, 0, 0
- 	db SPRITE_SEEL2,		$20, 0, 0
+ 	db SPRITE_SEEL,			$20, 0, 0
  	db SPRITE_ZAPDOS,		$20, 0, 0
  	db -1

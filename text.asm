@@ -1727,6 +1727,11 @@ _WhichFloorText::
 	text "Quel étage?"
 	done
 
+_AlreadyOnThatFloor::
+	text "C'est l'étage"
+	line "actuel!"
+	prompt
+
 _PartyMenuNormalText::
 	text "Sélectionnez un"
 	line "#mon."
@@ -2176,6 +2181,8 @@ INCLUDE "text/maps/route_9.asm"
 INCLUDE "text/maps/route_10.asm"
 INCLUDE "text/maps/route_10_south.asm"
 INCLUDE "text/maps/route_11_1.asm"
+INCLUDE "text/maps/lighthouse.asm"
+
 
 
 SECTION "Text 5", ROMX, BANK[TEXT_5]
@@ -2605,6 +2612,8 @@ INCLUDE "text/maps/vermilion_pokecenter.asm"
 INCLUDE "text/maps/fan_club.asm"
 INCLUDE "text/maps/vermilion_mart.asm"
 INCLUDE "text/maps/vermilion_gym_1.asm"
+INCLUDE "text/maps/CeruleanPrinter.asm"
+INCLUDE "text/maps/CeruleanMelanieHouse.asm"
 
 
 SECTION "Text 8", ROMX, BANK[TEXT_8]
@@ -2684,6 +2693,11 @@ _PlayerBlackedOutText::
 _RepelWoreOffText::
 	text "L'effet Repousse"
 	line "est terminé."
+	prompt ; prompt so the "use another?" question can follow
+
+_RepelUseAnotherText::
+	text "Utiliser un"
+	line "autre Repousse?"
 	done
 
 _PokemartBuyingGreetingText::

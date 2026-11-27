@@ -4,21 +4,21 @@ Route4Object:
 	db 4 ; warps
 	warp 11, 5, 0, MT_MOON_POKECENTER
 	warp 18, 5, 0, MT_MOON_1F
-	warp 24, 5, 7, MT_MOON_B1F
+	warp 26,  5, 7, MT_MOON_B1F
 	warp 38,  3, 0, MT_MOON_SQUARE
 
 	db 3 ; signs
 	sign 12, 5, 4 ; PokeCenterSignText
 	sign 17, 7, 5 ; Route4Text5
-	sign 27, 7, 6 ; Route4Text6
+	sign 28,  8, 6 ; Route4Text6
 
 	db 3 ; objects
 	object SPRITE_LASS, 9, 8, WALK, 0, 1 ; person
-	object SPRITE_LASS, 63, 2, STAY, DOWN, 2, OPP_LASS, 7	;joenote - readjusted position to protect new hidden moon stone
-	object SPRITE_BALL, 57, 3, STAY, NONE, 3, TM03_SWORDS_DANCE
+	object SPRITE_LASS, 70,  2, STAY, DOWN, 2, OPP_LASS, 7	;joenote - readjusted position to protect new hidden moon stone
+	object SPRITE_BALL, 53,  4, STAY, NONE, 3, TM03_SWORDS_DANCE
 
 	; warp-to
 	warp_to 11, 5, ROUTE_4_WIDTH ; MT_MOON_POKECENTER
 	warp_to 18, 5, ROUTE_4_WIDTH ; MT_MOON_1F
-	warp_to 24, 5, ROUTE_4_WIDTH ; MT_MOON_B1F
+	warp_to 26,  5, ROUTE_4_WIDTH ; MT_MOON_B1F
 	warp_to 38,  3, ROUTE_4_WIDTH

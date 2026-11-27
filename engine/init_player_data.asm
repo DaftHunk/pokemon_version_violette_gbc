@@ -8,6 +8,12 @@ InitPlayerData2:
 	;joenote - generate a random seed for fisher-yates randomizer functions
 	call Random
 	ld [wRandomizerSeed], a
+
+	;dafthunk : zero the Pikachu's Beach hi-score on a new game
+	;so the move tutor score check can never read garbage
+	xor a
+	ld [wSurfingMinigameHiScore], a
+	ld [wSurfingMinigameHiScore + 1], a
 	
 	ld hl, wNumInBox
 	call InitializeEmptyList

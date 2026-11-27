@@ -1,15 +1,15 @@
-_Mansion2BattleText1::
+_Mansion2FBattleText1::
 	text "Mais... J'suis"
 	line "complètement"
 	cont "paumé!"
 	done
 
-_Mansion2EndBattleText1::
+_Mansion2FEndBattleText1::
 	text "Non!"
 	line "Mon butin!"
 	prompt
 
-_Mansion2AfterBattleText1::
+_Mansion2FAfterBattleText1::
 	text "Les interrupteurs"
 	line "ouvrent et"
 	cont "ferment alterna-"
@@ -17,7 +17,7 @@ _Mansion2AfterBattleText1::
 	cont "portes!"
 	done
 
-_Mansion2Text3::
+_Mansion2FText3::
 	text "Rapport:"
 	line "5 Juillet."
 	cont "Jungle X."
@@ -27,23 +27,23 @@ _Mansion2Text3::
 	cont "découvert."
 	done
 
-_Mansion2Text4::
+_Mansion2FText4::
 	text "Rapport:"
 	line "10 Juillet."
 	cont "Le #mon fut"
 	cont "baptisé Mew."
 	done
 
-_Mansion2Text_520c2::
+_Mansion2FText_520c2::
 	text "Un interrupteur!"
 
 	para "L'actionner?"
 	done
 
-_Mansion2Text_520c7::
+_Mansion2FText_520c7::
 	text "Sans blague..."
 	prompt
 
-_Mansion2Text_520cc::
+_Mansion2FText_520cc::
 	text "Pas vraiment!"
 	done

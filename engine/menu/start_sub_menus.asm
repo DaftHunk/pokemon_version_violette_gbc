@@ -348,6 +348,13 @@ StartMenu_Item:
 	jr nc, .choseItem
 .exitMenu
 	call LoadScreenTilesFromBuffer2 ; restore saved screen
+	; the item icon's GBC attributes still point the 3x3 cells it covered
+	; at the borrowed BGP slot after the tiles are restored, tinting the
+	; start menu screen until the text display closes. Now that wTileMap
+	; holds the restored screen, let the vanilla attribute recompute run:
+	; it rewrites every attribute from the tile map and transfers them to
+	; the BG map shown while the text box is open.
+	callba MakeAndTransferOverworldBGMapAttributes_OpenText
 	call UpdateSprites
 	jp RedisplayStartMenu
 .choseItem
@@ -395,12 +402,14 @@ StartMenu_Item:
 	ld [wPokedexNum], a
 	call GetItemName
 	call CopyStringToCF4B ; copy name to wcf4b
-;	ld a, [wcf91]
 	ld a, [wCurrentMenuItem] ; dafthunk #4
 	cp a, 2
-	jr z, .tossItem
+	jp z, .tossItem
 	cp a, 1
 	jp z, .infoItem
+	; the SURFBOARD/BICYCLE checks below test the item ID: reload it here,
+	; the submenu checks above left the menu index (0 for Utiliser) in a
+	ld a, [wcf91]
 	cp SURFBOARD	;joenote - fixing surfboard glitch freeze, and cannot use surfboard if being forced to ride bike
 	jr z, .is_surfboard
 	cp BICYCLE
@@ -434,11 +443,21 @@ StartMenu_Item:
 	ld de, 1
 	call IsInArray
 	jr c, .useItem_partyMenu
+; bring the overworld sprites back before the item runs: the bag list
+; menu keeps them hidden while an item icon session is active
+; (wUpdateSpritesEnabled = 0), so the item (e.g. BICYCLE) would otherwise
+; play its animation and text with the player invisible
+	ld a, 1
+	ld [wUpdateSpritesEnabled], a
 	call UseItem
 	jp ItemMenuLoop
 .useItem_closeMenu
 	xor a
 	ld [wPseudoItemID], a
+; same as the generic use path above: redraw the player as soon as USE
+; was selected, before the item's animation and text play
+	ld a, 1
+	ld [wUpdateSpritesEnabled], a
 	call UseItem
 	ld a, [wActionResultOrTookBattleTurn]
 	and a
@@ -544,6 +563,12 @@ UsableItems_CloseMenu:
 	db $ff
 
 StartMenu_TrainerInfo:
+; the trainer card covers the whole map view: hide the follower while it
+; is shown (see StartMenu_Option)
+	ld hl, wFollowerStateFlags
+	set 2, [hl]
+	ld a, $ff
+	ld [wSpriteStateData1 + $f2], a
 	call GBPalWhiteOut
 	call ClearScreen
 	call UpdateSprites
@@ -759,6 +784,14 @@ StartMenu_SaveReset:
 						;and instead only hold for a single button press
 
 StartMenu_Option:
+; the options screen covers the whole map view: hide the follower for as
+; long as it is open. bit 2 of wFollowerStateFlags makes FollowerUpdate
+; hold the image index at $ff, and the DrawStartMenu hook re-evaluates the
+; bit when the start menu is redrawn on the way back
+	ld hl, wFollowerStateFlags
+	set 2, [hl]
+	ld a, $ff
+	ld [wSpriteStateData1 + $f2], a
 	xor a
 	ld [H_AUTOBGTRANSFERENABLED], a
 	call ClearScreen

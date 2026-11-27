@@ -92,6 +92,7 @@ HandleItemListSwapping:
 	ld [de], a ; put second item ID in first item slot
 	xor a
 	ld [wMenuItemToSwap], a ; 0 means no item is currently being swapped
+	callba DrawItemIcon ; refresh the icon: the entry under the cursor changed
 	pop de
 	pop hl
 	jp DisplayListMenuIDLoop
@@ -144,6 +145,7 @@ HandleItemListSwapping:
 .done
 	xor a
 	ld [wMenuItemToSwap], a ; 0 means no item is currently being swapped
+	callba DrawItemIcon ; refresh the icon: the entry under the cursor changed
 	pop de
 	pop hl
 	jp DisplayListMenuIDLoop

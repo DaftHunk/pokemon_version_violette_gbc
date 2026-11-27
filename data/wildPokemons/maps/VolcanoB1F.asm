@@ -1,0 +1,13 @@
+VolcanoB1FMons:
+	db $0A
+	db 38,GROWLITHE
+	db 36,VULPIX
+	db 37,SLUGMA
+	db 36,SLUGMA
+	db 35,GROWLITHE
+	db 40,PONYTA
+	db 38,MAGCARGO
+	db 38,MAGMAR
+	db 38,CHARMELEON
+	db 42,RAPIDASH
+	db $00

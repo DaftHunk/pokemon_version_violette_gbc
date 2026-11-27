@@ -59,7 +59,7 @@ _MasterText::
 	para "Félicitation!"
 	done
 
-_CeladonMansion3Text5::
+_CeladonMansion3FText5::
 	text "Le programme"
 	line "du jeu! Si tu y"
 	cont "touches, tout va"
@@ -67,39 +67,42 @@ _CeladonMansion3Text5::
 	cont "Daft: trop tard!"
 	done
 
-_CeladonMansion3Text6::
+_CeladonMansion3FText6::
 	text "Quelqu'un joue au"
 	line "lieu de bosser!"
 	done
 
-_CeladonMansion3Text7::
+_CeladonMansion3FText7::
 	text "Le script du jeu!"
 	line "Surtout ne pas"
 	cont "lire la fin!"
 	done
 
-_CeladonMansion3Text8::
+_CeladonMansion3FText8::
 	text "GAME FREAK"
 	line "Développement"
 	done
 
-_ReceivedSurfboard::
+_CeladonMansion3FText_ReceivedMistStone::
 	text "<PLAYER> reçoit"
 	line "@"
 	text_ram wStringBuffer
 	text "!@"
 	text_end
 
-_SurfboardText::
+_CeladonMansion3FText_MistStone::
 	text_start
 
-	para "La Planche de"
-	line "Surf te permet"
-	cont "de Surfer sans"
-	cont "#mon!"
+	para "La Pierre Brume"
+	line "est une pierre"
+	cont "mythique!"
+
+	para "Il en existe"
+	line "d'autres dans des"
+	cont "lieux oubliés!"
 	done
 
-_SurfboardNoRoomText::
+_CeladonMansion3FText_NoRoom::
 	text "Ton inventaire"
 	line "est plein."
 	done

@@ -272,6 +272,9 @@ hMovingBGTilesCounter1 EQU $FFD8
 
 H_CURRENTSPRITEOFFSET EQU $FFDA ; multiple of $10
 
+;used by the GB printer code - nonzero if the player canceled a print job
+hCanceledPrinting EQU $FFDB
+
 hItemCounter EQU $FFDB
 
 hGymGateIndex EQU $FFDB
@@ -322,7 +325,7 @@ H_WHOSETURN EQU $FFF3 ; 0 on player’s turn, 1 on enemy’s turn
 
 hClearLetterPrintingDelayFlags EQU $FFF4
 
-;$FFF5 --> used for an LCDC OAM timing test
+hLCDCPointer EQU $FFF5	;used by the LCDC interrupt handler (Pikachu's Beach minigame)
 
 hFlags_0xFFF6 EQU $FFF6	;has to do with a bunch of menu spacing and stuff
 ; bit 0: draw HP fraction to the right of bar instead of below (for party menu)

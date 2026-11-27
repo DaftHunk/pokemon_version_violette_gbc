@@ -40,6 +40,7 @@ CeladonPrizeMenu:
 .noChoice
 	ld hl, wStatusFlags5
 	res 6, [hl]
+	callba ShowFollowerAfterMenu
 	ret
 
 RequireCoinCaseTextPtr:

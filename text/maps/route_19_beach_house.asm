@@ -1,4 +1,4 @@
-_Route19BeachHouseFisherBeforeText::
+_Route19BeachHouseText_FisherGreeting::
 	text "Yo comment k'ça"
 	line "va? Le Dave"
 	cont "est le Boss"
@@ -15,36 +15,25 @@ _Route19BeachHouseFisherBeforeText::
 	cont "ma main!"
 	done
 
-_Route19BeachHouseFisherAfterText::
-	text "Yo comment k'ça"
-	line "va? Délire!!!"
-	cont "Toi aussi t'es"
-	cont "Surfeur!"
-
-	para "Ramène moi ton"
-	line "Pikachu ou ton"
-	cont "Raichu et le"
-	cont "Dave lui montrera"
-	cont "la voie du Surf!"
-	done
-
 _Route19BeachHousePikachuText::
 	text "Dave: Pikaaan!"
 	done
 
-_Route19BeachHousePoster1Text::
-	text "Le Surf, la mer:"
-	line "c'est la vie!"
+_Route19BeachHouseSign_Poster1::
+	text "Astuce de Dave"
+
+	para "Après un flip,"
+	line "aligner le Surf"
+	cont "avec la vague!"
 	done
 
-_Route19BeachHousePoster2Text::
+_Route19BeachHouseSign_Poster2::
 	text "Record à battre:"
 	line "Dave le Surfer"
 	cont "7511 points!"
 	done
 
-_Route19BeachHousePCText::
-	text "Oh! Un jeu avec"
-	line "un Pikachu"
-	cont "Surfeur, cool!"
+_Route19BeachHouseSign_Shelves::
+	text "Hot Dogs et"
+	line "Burgers à gogo!"
 	done

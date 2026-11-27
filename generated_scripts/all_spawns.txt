@@ -1,5 +1,5 @@
 
-billsgarden
+BillsGarden
 $0F
 15,ABRA
 14,PIKACHU
@@ -15,23 +15,55 @@ $00
 
 
 
-diglettscave
-$14
-18,DIGLETT
-19,DIGLETT
-17,DIGLETT
-20,DIGLETT
-16,DIGLETT
-15,DIGLETT
-21,DIGLETT
-29,DUGTRIO
-31,DUGTRIO
-25,SNORLAX
+CeruleanCave1F
+$0A
+61,GOLBAT
+61,HYPNO
+61,LARVITAR
+64,DODRIO
+64,VENOMOTH
+64,KADABRA
+67,ARBOK
+67,PARASECT
+75,DITTO
+68,RAICHU
 $00
 
 
 
-mansion1
+CeruleanCave2F
+$0F
+66,DODRIO
+66,VENOMOTH
+66,LARVITAR
+67,RHYDON
+67,MAROWAK
+67,KADABRA
+69,WIGGLYTUFF
+70,DITTO
+75,DITTO
+71,CHANSEY
+$00
+
+
+
+CeruleanCaveB1F
+$19
+70,RHYDON
+70,MAROWAK
+70,LARVITAR
+69,SANDSLASH
+69,PARASECT
+69,RAICHU
+69,CHANSEY
+70,DITTO
+75,DITTO
+80,DITTO
+$00
+
+
+
+CinnabarMansion1F
 $0A
 32,GRIMER
 30,GRIMER
@@ -47,7 +79,7 @@ $00
 
 
 
-mansion2
+CinnabarMansion2F
 $0A
 32,VULPIX
 34,GRIMER
@@ -63,7 +95,7 @@ $00
 
 
 
-mansion3
+CinnabarMansion3F
 $0A
 31,GRIMER
 33,VULPIX
@@ -79,7 +111,7 @@ $00
 
 
 
-mansionb1
+CinnabarMansionB1F
 $0A
 33,GRIMER
 31,GRIMER
@@ -95,7 +127,23 @@ $00
 
 
 
-mtmoon1f
+DiglettsCave
+$14
+18,DIGLETT
+19,DIGLETT
+17,DIGLETT
+20,DIGLETT
+16,DIGLETT
+15,DIGLETT
+21,DIGLETT
+29,DUGTRIO
+31,DUGTRIO
+25,SNORLAX
+$00
+
+
+
+MtMoon1F
 $07
 8,ZUBAT
 7,ZUBAT
@@ -111,7 +159,7 @@ $00
 
 
 
-mtmoonb1f
+MtMoonB1F
 $08
 8,ZUBAT
 7,ZUBAT
@@ -127,7 +175,7 @@ $00
 
 
 
-mtmoonb2f
+MtMoonB2F
 $09
 9,ZUBAT
 9,GEODUDE
@@ -143,7 +191,7 @@ $00
 
 
 
-mtmoonsquare
+MtMoonSquare
 $19
 20,NIDORAN_F
 19,JIGGLYPUFF
@@ -159,7 +207,7 @@ $00
 
 
 
-pokemontower3
+PokemonTower3F
 $0A
 20,GASTLY
 21,GASTLY
@@ -175,7 +223,7 @@ $00
 
 
 
-pokemontower4
+PokemonTower4F
 $0A
 20,GASTLY
 21,GASTLY
@@ -191,7 +239,7 @@ $00
 
 
 
-pokemontower5
+PokemonTower5F
 $0A
 20,GASTLY
 21,GASTLY
@@ -207,7 +255,7 @@ $00
 
 
 
-pokemontower6
+PokemonTower6F
 $0F
 21,GASTLY
 22,GASTLY
@@ -223,7 +271,7 @@ $00
 
 
 
-pokemontower7
+PokemonTower7F
 $0F
 21,GASTLY
 22,GASTLY
@@ -239,7 +287,7 @@ $00
 
 
 
-powerplant
+PowerPlant
 $0A
 21,VOLTORB
 21,MAGNEMITE
@@ -255,7 +303,7 @@ $00
 
 
 
-rocktunnel1
+RockTunnel1F
 $0A
 16,ZUBAT
 17,ZUBAT
@@ -271,7 +319,7 @@ $00
 
 
 
-rocktunnel2
+RockTunnelB1F
 $0B
 16,ZUBAT
 17,ZUBAT
@@ -287,7 +335,7 @@ $00
 
 
 
-route1
+Route1
 $19
 3,PIDGEY
 3,RATTATA
@@ -303,7 +351,7 @@ $00
 
 
 
-route10
+Route10
 $0F
 16,VOLTORB
 16,SPEAROW
@@ -319,7 +367,7 @@ $00
 
 
 
-route11
+Route11
 $0F
 14,SANDSHREW
 15,SPEAROW
@@ -335,7 +383,7 @@ $00
 
 
 
-route12
+Route12
 $0F
 24,BELLSPROUT
 25,PIDGEY
@@ -351,7 +399,7 @@ $00
 
 
 
-route13
+Route13
 $14
 24,BELLSPROUT
 25,PIDGEY
@@ -368,7 +416,7 @@ $00
 
 
 
-route14
+Route14
 $0F
 24,BELLSPROUT
 26,PIDGEY
@@ -384,7 +432,7 @@ $00
 
 
 
-route15
+Route15
 $0F
 24,BELLSPROUT
 26,PONYTA
@@ -400,7 +448,7 @@ $00
 
 
 
-route16
+Route16
 $19
 20,SPEAROW
 22,SPEAROW
@@ -416,7 +464,7 @@ $00
 
 
 
-route16west
+Route16West
 $19
 20,MEOWTH
 22,MEOWTH
@@ -432,7 +480,7 @@ $00
 
 
 
-route17
+Route17
 $19
 20,SPEAROW
 22,SPEAROW
@@ -448,7 +496,7 @@ $00
 
 
 
-route18
+Route18
 $19
 20,SPEAROW
 22,SPEAROW
@@ -464,7 +512,7 @@ $00
 
 
 
-route2
+Route2
 $19
 3,RATTATA
 3,PIDGEY
@@ -480,7 +528,7 @@ $00
 
 
 
-route21
+Route21
 $19
 21,PIDGEY
 23,RATTATA
@@ -506,7 +554,7 @@ $05
 
 
 
-route22
+Route22
 $19
 3,RATTATA
 3,NIDORAN_F
@@ -522,7 +570,7 @@ $00
 
 
 
-route23
+Route23
 $0A
 38,SANDSHREW
 43,DITTO
@@ -538,7 +586,7 @@ $00
 
 
 
-route24
+Route24
 $19
 7,CATERPIE
 8,METAPOD
@@ -554,7 +602,7 @@ $00
 
 
 
-route25
+Route25
 $0F
 8,CATERPIE
 9,METAPOD
@@ -570,7 +618,7 @@ $00
 
 
 
-route3
+Route3
 $14
 6,PIDGEY
 7,EKANS
@@ -586,7 +634,7 @@ $00
 
 
 
-route4
+Route4
 $14
 10,EKANS
 10,SPEAROW
@@ -602,7 +650,7 @@ $00
 
 
 
-route5
+Route5
 $0F
 13,BELLSPROUT
 13,PIDGEY
@@ -618,7 +666,7 @@ $00
 
 
 
-route6
+Route6
 $0F
 13,BELLSPROUT
 13,PIDGEY
@@ -634,7 +682,7 @@ $00
 
 
 
-route7
+Route7
 $0F
 19,PIDGEY
 19,BELLSPROUT
@@ -650,7 +698,7 @@ $00
 
 
 
-route8
+Route8
 $0F
 18,PIDGEY
 18,MEOWTH
@@ -666,7 +714,7 @@ $00
 
 
 
-route9
+Route9
 $0F
 16,RATTATA
 16,SPEAROW
@@ -682,55 +730,7 @@ $00
 
 
 
-safarizone1
-$1E
-24,NIDORAN_F
-26,DODUO
-22,PARAS
-25,EXEGGCUTE
-33,NIDORINA
-24,NIDORAN_M
-28,PINSIR
-22,LICKITUNG
-25,KANGASKHAN
-25,PARASECT
-$00
-
-
-
-safarizone2
-$1E
-22,NIDORAN_F
-26,RHYHORN
-23,PARAS
-25,EXEGGCUTE
-30,NIDORINA
-30,NIDORINO
-32,VENOMOTH
-27,TANGELA
-26,CHANSEY
-28,TAUROS
-$00
-
-
-
-safarizone3
-$1E
-25,NIDORAN_F
-26,DODUO
-23,VENONAT
-24,EXEGGCUTE
-33,NIDORINA
-25,NIDORAN_M
-26,MR_MIME
-31,VENOMOTH
-26,TAUROS
-28,KANGASKHAN
-$00
-
-
-
-safarizonecenter
+SafariZoneCenter
 $1E
 22,NIDORAN_F
 25,RHYHORN
@@ -746,7 +746,55 @@ $00
 
 
 
-seafoamisland1
+SafariZoneEast
+$1E
+24,NIDORAN_F
+26,DODUO
+22,PARAS
+25,EXEGGCUTE
+33,NIDORINA
+24,NIDORAN_M
+28,PINSIR
+22,LICKITUNG
+25,KANGASKHAN
+25,PARASECT
+$00
+
+
+
+SafariZoneNorth
+$1E
+22,NIDORAN_F
+26,RHYHORN
+23,PARAS
+25,EXEGGCUTE
+30,NIDORINA
+30,NIDORINO
+32,VENOMOTH
+27,TANGELA
+26,CHANSEY
+28,TAUROS
+$00
+
+
+
+SafariZoneWest
+$1E
+25,NIDORAN_F
+26,DODUO
+23,VENONAT
+24,EXEGGCUTE
+33,NIDORINA
+25,NIDORAN_M
+26,MR_MIME
+31,VENOMOTH
+26,TAUROS
+28,KANGASKHAN
+$00
+
+
+
+SeafoamIsland1F
 $0F
 30,SEEL
 30,PSYDUCK
@@ -762,7 +810,7 @@ $00
 
 
 
-seafoamislandb1
+SeafoamIslandB1F
 $0A
 30,SHELLDER
 30,KRABBY
@@ -778,7 +826,7 @@ $00
 
 
 
-seafoamislandb2
+SeafoamIslandB2F
 $0A
 30,SEEL
 30,PSYDUCK
@@ -794,7 +842,7 @@ $00
 
 
 
-seafoamislandb3
+SeafoamIslandB3F
 $0A
 36,PSYDUCK
 36,SEEL
@@ -810,7 +858,7 @@ $00
 
 
 
-seafoamislandb4
+SeafoamIslandB4F
 $0A
 36,KRABBY
 36,STARYU
@@ -826,55 +874,7 @@ $00
 
 
 
-unknowndungeon1
-$0A
-61,GOLBAT
-61,HYPNO
-61,LARVITAR
-64,DODRIO
-64,VENOMOTH
-64,KADABRA
-67,ARBOK
-67,PARASECT
-75,DITTO
-68,RAICHU
-$00
-
-
-
-unknowndungeon2
-$0F
-66,DODRIO
-66,VENOMOTH
-66,LARVITAR
-67,RHYDON
-67,MAROWAK
-67,KADABRA
-69,WIGGLYTUFF
-70,DITTO
-75,DITTO
-71,CHANSEY
-$00
-
-
-
-unknowndungeonb1
-$19
-70,RHYDON
-70,MAROWAK
-70,LARVITAR
-69,SANDSLASH
-69,PARASECT
-69,RAICHU
-69,CHANSEY
-70,DITTO
-75,DITTO
-80,DITTO
-$00
-
-
-
-victoryroad1
+VictoryRoad1F
 $0F
 42,MACHOP
 39,GEODUDE
@@ -890,7 +890,7 @@ $00
 
 
 
-victoryroad2
+VictoryRoad2F
 $0A
 45,MACHOP
 46,GEODUDE
@@ -906,7 +906,7 @@ $00
 
 
 
-victoryroad3
+VictoryRoad3F
 $0F
 47,MACHOP
 47,GEODUDE
@@ -922,7 +922,7 @@ $00
 
 
 
-viridianforest
+ViridianForest
 $08
 4,WEEDLE
 5,CATERPIE
@@ -938,7 +938,7 @@ $00
 
 
 
-volcano1f
+Volcano1F
 $0A
 32,SLUGMA
 30,GROWLITHE
@@ -954,7 +954,7 @@ $00
 
 
 
-volcanob1f
+VolcanoB1F
 $0A
 38,GROWLITHE
 36,VULPIX
@@ -970,7 +970,7 @@ $00
 
 
 
-volcanob2f
+VolcanoB2F
 $0A
 37,SLUGMA
 36,SLUGMA

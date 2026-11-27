@@ -41,14 +41,16 @@ SetPal_Battle:
 	jr z, .transformcheck
 	;ld hl, wBattleMonSpecies2	;joenote - Fixing a gamefreak typo. Needed for transformed mon's to retain their palette.
 	ld hl, wBattleMonSpeciesOriginal	; --> Moving to dedicated address. Party menu can clobber wBattleMonSpecies2.
-.transformcheck	
-	
+.transformcheck
+	ld a, [wBattleMonType2]
+	ld e, a
 	call DeterminePaletteID
-	ld b, a		;player mon pal in b
-	ld a, [wEnemyBattleStatus3]
+	ld b, a
+	ld a, [wEnemyMonType2]
+	ld e, a
 	ld hl, wEnemyMonSpecies2
 	call DeterminePaletteID
-	ld c, a		;enemy mon pal in c
+	ld c, a
 	ld hl, wPalPacket + 1
 	ld a, [wPlayerHPBarColor]
 	add PAL_GREENBAR
@@ -92,6 +94,53 @@ SetPal_Battle:
 	ld [wDefaultPaletteCommand], a
 	ret
 
+; In : a = internal species, e = true Type 2
+; Out : carry + a = special palette if overload
+CheckSpecialPalette:
+	push hl
+	push bc
+	ld c, a
+	ld a, $FF	; $FF no true Type 2
+	cp e
+	jr z, .notFound
+	ld hl, SpecialPaletteOverrides
+.loop
+	ld a, [hl]
+	cp $FF
+	jr z, .notFound
+	cp c
+	jr z, .maybeMatch
+	inc hl
+	inc hl
+	inc hl
+	jr .loop
+.maybeMatch
+	inc hl
+	ld a, [hli]	; base type 2
+	cp e
+	jr z, .notFound	; if the same do nothing
+	ld a, [hl]	; else special palette
+	pop bc
+	pop hl
+	scf
+	ret
+.notFound
+	pop bc
+	pop hl
+	and a
+	ret
+
+; species with special palette when type 2 is different from base
+SpecialPaletteOverrides:
+	db CHARIZARD,  FLYING,   PAL_MEWMON
+	db VENUSAUR,   POISON,   PAL_VIOLETTEMON
+	db ELECTABUZZ, ELECTRIC, PAL_BROWNMON
+	db NINETALES,  FIRE,     PAL_VIOLETTEMON
+	db BLASTOISE,  WATER,    PAL_GREYBLUEMON
+	db SCIZOR,     STEEL,    PAL_VIOLETTEMON
+	db MAGMAR,     FIRE,     PAL_BROWNMON
+	db $FF
+
 SetPal_TownMap:
 	ld hl, PalPacket_TownMap
 	ld de, BlkPacket_WholeScreen
@@ -108,6 +157,10 @@ SetPal_StatusScreen:
 	jr c, .pokemon
 	ld a, $1 ; not pokemon
 .pokemon
+	ld d, a
+	ld a, [wLoadedMonType2] ; true Type 2 of the mon loaded (party/box/daycare/enemy)
+	ld e, a
+	ld a, d
 	call DeterminePaletteIDOutOfBattle
 	push af
 	ld hl, wPalPacket + 1
@@ -140,14 +193,16 @@ SetPal_Pokedex:
 	ld de, wPalPacket
 	ld bc, $10
 	call CopyData
+	ld e, $FF	; the Pokedex loads no mon, never a special palette
 	ld a, [wcf91]
 	call DeterminePaletteIDOutOfBattle
 	ld hl, wPalPacket + 3
 	ld [hl], a
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;joenote - see if SELECT button is being held to load the shiny PalPacket
-	ld a, [hJoyHeld]
-	bit 2, a ; Select button
+;load the shiny PalPacket when the pokedex shiny flag is set instead
+;(the flag is toggled with START on the pokedex data page)
+	ld hl, wPokedexDataFlags
+	bit BIT_POKEDEX_DATA_SHINY, [hl]
 	jp z, .SelectNotHeld
 	callba ShinyStatusScreen
 .SelectNotHeld
@@ -166,8 +221,9 @@ SetPal_MiddleScreenMonBox:
 	ld hl, wPalPacket + 1
 	ld [hl], a
 	
-	ld a, [wcf91]
 	; no alt palette pkmn colors in this case
+	ld e, $FF	; no real mon loaded here, never a special palette
+	ld a, [wcf91]
 	call DeterminePaletteIDOutOfBattle
 	ld hl, wPalPacket + 3
 	ld [hl], a
@@ -346,12 +402,20 @@ SetPal_PokemonWholeScreen:
 	pop bc
 	ld a, c
 	and a
+	jr z, .monPalette
 	ld a, PAL_BLACK
-	jr nz, .next
+	jr .next
+.monPalette
+	ld a, [wWholeScreenPaletteMonType2] ; $FF = no real mon ; set by the Hall of Fame
+	ld e, a
 	ld a, [wWholeScreenPaletteMonSpecies]
 	call DeterminePaletteIDOutOfBattle
 .next
 	ld [wPalPacket + 1], a
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;load shiny palette for the whole screen mon (trade, evolution, hall of fame)
+	callba ShinyWholeScreenMon
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld hl, wPalPacket
 	ld de, BlkPacket_WholeScreen
 	ret
@@ -406,6 +470,17 @@ SendUnknownPalPacket_72064::
 	ld de, UnknownPacket_72751
 	ret
 
+;Pikachu's Beach minigame
+SetPal_PikachusBeach::
+	ld hl, PalPacket_PikachusBeach
+	ld de, BlkPacket_WholeScreen
+	ret
+
+SetPal_PikachusBeachHiscore::
+	ld hl, PalPacket_PikachusBeachHiscore
+	ld de, BlkPacket_WholeScreen
+	ret
+
 SetPalFunctions:
 	dw SetPal_BattleBlack
 	dw SetPal_Battle
@@ -426,6 +501,9 @@ SetPalFunctions:
 	;gbctest - adding packets from yellow
 	dw SendUnknownPalPacket_7205d
 	dw SendUnknownPalPacket_72064
+	;Pikachu's Beach minigame
+	dw SetPal_PikachusBeach
+	dw SetPal_PikachusBeachHiscore
 
 ; The length of the blk data of each badge on the Trainer Card.
 ; The Rainbow Badge has 3 entries because of its many colors.
@@ -446,19 +524,39 @@ DeterminePaletteID:
 	;ret nz
 	ld a, [hl]
 DeterminePaletteIDOutOfBattle:
+	ld d, a
+; sprite-only IDs (fossils, ghost) have no PokedexOrder entry and would read
+; out of bounds: resolve them to the first MonsterPalettes entry, like before
+; the pokedex rework
+	cp FOSSIL_KABUTOPS
+	jr nc, .spriteOnly
 	ld [wPokedexNum], a
-	and a ; is the mon index 0?
+	and a
 	jr z, .skipDexNumConversion
 	push bc
+	push de
 	predef IndexToPokedex
+	pop de
 	pop bc
 	ld a, [wPokedexNum]
+	jr .skipDexNumConversion
+.spriteOnly
+	xor a ; dex # 0 = first MonsterPalettes entry (PAL_MEWMON)
+	ld [wPokedexNum], a
 .skipDexNumConversion
+	push af
+	ld a, d
+	call CheckSpecialPalette
+	jr c, .useSpecial
+	pop af
 	ld e, a
 	ld d, 0
 	ld hl, MonsterPalettes ; not just for Pokemon, Trainers use it too
 	add hl, de
 	ld a, [hl]
+	ret
+.useSpecial
+	pop bc
 	ret
 
 InitPartyMenuBlkPacket:
@@ -1279,6 +1377,11 @@ TransferMonPal:
 	ld a, [wcf91]
 	cp VICTREEBEL+1
 	jr c, .isMon
+; sprite-only IDs (fossils, ghost) would be mistaken for offset palette IDs
+; and index past the end of GBCBasePalettes: treat them like regular mons,
+; like before the pokedex rework
+	cp FOSSIL_KABUTOPS
+	jr nc, .isMon
 	sub VICTREEBEL+1
 .back	
 	call GetGBCBasePalAddress
@@ -1295,7 +1398,10 @@ TransferMonPal:
 	pop af
 	call TransferCurBGPData
 	ret
-.isMon	
+.isMon
+	ld d, a
+	ld e, $FF	; never override by default
+	ld a, d
 	call DeterminePaletteIDOutOfBattle
 	jr .back
 

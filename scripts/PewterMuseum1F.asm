@@ -13,7 +13,7 @@ Museum1FScriptPointers:
 
 Museum1FScript0:
 	ld a, [wYCoord]
-	cp $4
+	cp $5
 	ret nz
 	ld a, [wXCoord]
 	cp $9
@@ -41,14 +41,14 @@ Museum1FTextPointers:
 Museum1FText1:
 	TX_ASM
 	ld a, [wYCoord]
-	cp $4
+	cp $5
 	jr nz, .asm_8774b
 	ld a, [wXCoord]
 	cp $d
 	jp z, Museum1FScript_5c1f9
 	jr .asm_b8709
 .asm_8774b
-	cp $3
+	cp $4
 	jr nz, .asm_d49e7
 	ld a, [wXCoord]
 	cp $c

@@ -1,151 +1,140 @@
-Mansion3Script:
-	call Mansion3Script_52204
+Mansion2FScript:
+	call Mansion2FScript_51fee
 	call EnableAutoTextBoxDrawing
-	ld hl, Mansion3TrainerHeader0
-	ld de, Mansion3ScriptPointers
-	ld a, [wMansion3CurScript]
+	ld hl, Mansion2FTrainerHeader0
+	ld de, Mansion2FScriptPointers
+	ld a, [wMansion2FCurScript]
 	call ExecuteCurMapScriptInTable
-	ld [wMansion3CurScript], a
+	ld [wMansion2FCurScript], a
 	ret
 
-Mansion3Script_52204:
+Mansion2FScript_51fee:
 	ld hl, wCurrentMapScriptFlags
 	bit BIT_CUR_MAP_LOADED_1, [hl]
 	res BIT_CUR_MAP_LOADED_1, [hl]
 	ret z
 	CheckEvent EVENT_MANSION_SWITCH_ON
-	jr nz, .asm_52224
+	jr nz, .asm_52016
 	ld a, $e
-	ld bc, $207
-	call Mansion2Script_5202f
+	lb bc, 2, 4
+	call Mansion2FScript_5202f
+	ld a, $54
+	lb bc, 4, 9
+	call Mansion2FScript_5202f
 	ld a, $5f
-	ld bc, $507
-	call Mansion2Script_5202f
+	lb bc, 11, 3
+	call Mansion2FScript_5202f
 	ret
-.asm_52224
+.asm_52016
 	ld a, $5f
-	ld bc, $207
-	call Mansion2Script_5202f
+	lb bc, 2, 4
+	call Mansion2FScript_5202f
 	ld a, $e
-	ld bc, $507
-	call Mansion2Script_5202f
+	lb bc, 4, 9
+	call Mansion2FScript_5202f
+	ld a, $e
+	lb bc, 11, 3
+	call Mansion2FScript_5202f
 	ret
 
-Mansion3ScriptPointers:
-	dw Mansion3Script0
-	dw DisplayEnemyTrainerTextAndStartBattle
-	dw EndTrainerBattle
+Mansion2FScript_5202f:
+	ld [wNewTileBlockID], a
+	predef_jump ReplaceTileBlock
 
-Mansion3Script0:
-	ld hl, CoordsData_52254
-	call Mansion3Script_5225b
-	ld a, [wWhichDungeonWarp]
-	and a
-	jp z, CheckFightingMapTrainers
-	cp $3
-	ld a, $a5
-	jr nz, .asm_52250
-	ld a, $d6
-.asm_52250
-	ld [wDungeonWarpDestinationMap], a
-	ret
-
-CoordsData_52254:
-	db $0E,$10
-	db $0E,$11
-	db $0E,$13
-	db $FF
-
-Mansion3Script_5225b:
-	xor a
-	ld [wWhichDungeonWarp], a
-	ld a, [wStatusFlags3]
-	bit 4, a
-	ret nz
-	call ArePlayerCoordsInArray
-	ret nc
-	ld a, [wCoordIndex]
-	ld [wWhichDungeonWarp], a
-	ld hl, wStatusFlags3
-	set 4, [hl]
-	ld hl, wStatusFlags6
-	set 4, [hl]
-	ret
-
-Mansion3Script_Switches:
+Mansion2FScript_Switches:
 	ld a, [wSpriteStateData1 + 9]
 	cp SPRITE_FACING_UP
 	ret nz
 	xor a
 	ld [hJoyHeld], a
-	ld a, $6
+	ld a, $5
 	ld [hSpriteIndexOrTextID], a
 	jp DisplayTextID
 
-Mansion3TextPointers:
-	dw Mansion3Text1
-	dw Mansion3Text2
-	dw PickUpItemText
-	dw PickUpItemText
-	dw Mansion3Text5
-	dw Mansion3Text6
+Mansion2FScriptPointers:
+	dw CheckFightingMapTrainers
+	dw DisplayEnemyTrainerTextAndStartBattle
+	dw EndTrainerBattle
 
-Mansion3TrainerHeader0:
+Mansion2FTextPointers:
+	dw Mansion2FText1
+	dw PickUpItemText
+	dw Mansion2FText3
+	dw Mansion2FText4
+	dw Mansion2FText5
+
+Mansion2FTrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_CINNABAR_MANSION_2F_TRAINER_0
 	db ($0 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_CINNABAR_MANSION_2F_TRAINER_0
-	dw Mansion3BattleText1 ; TextBeforeBattle
-	dw Mansion3AfterBattleText1 ; TextAfterBattle
-	dw Mansion3EndBattleText1 ; TextEndBattle
-	dw Mansion3EndBattleText1 ; TextEndBattle
-
-Mansion3TrainerHeader1:
-	dbEventFlagBit EVENT_BEAT_CINNABAR_MANSION_2F_TRAINER_1
-	db ($2 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_CINNABAR_MANSION_2F_TRAINER_1
-	dw Mansion3BattleText2 ; TextBeforeBattle
-	dw Mansion3AfterBattleText2 ; TextAfterBattle
-	dw Mansion3EndBattleText2 ; TextEndBattle
-	dw Mansion3EndBattleText2 ; TextEndBattle
+	dw Mansion2FBattleText1 ; TextBeforeBattle
+	dw Mansion2FAfterBattleText1 ; TextAfterBattle
+	dw Mansion2FEndBattleText1 ; TextEndBattle
+	dw Mansion2FEndBattleText1 ; TextEndBattle
 
 	db $ff
 
-Mansion3Text1:
+Mansion2FText1:
 	TX_ASM
-	ld hl, Mansion3TrainerHeader0
+	ld hl, Mansion2FTrainerHeader0
 	call TalkToTrainer
 	jp TextScriptEnd
 
-Mansion3Text2:
+Mansion2FBattleText1:
+	TX_FAR _Mansion2FBattleText1
+	db "@"
+
+Mansion2FEndBattleText1:
+	TX_FAR _Mansion2FEndBattleText1
+	db "@"
+
+Mansion2FAfterBattleText1:
+	TX_FAR _Mansion2FAfterBattleText1
+	db "@"
+
+Mansion2FText3:
+	TX_FAR _Mansion2FText3
+	db "@"
+
+Mansion2FText4:
+	TX_FAR _Mansion2FText4
+	db "@"
+
+Mansion3FText6:
+Mansion2FText5:
 	TX_ASM
-	ld hl, Mansion3TrainerHeader1
-	call TalkToTrainer
+	ld hl, Mansion2FText_520c2
+	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	jr nz, .asm_520b9
+	ld a, $1
+	ld [wDoNotWaitForButtonPressAfterDisplayingText], a
+	ld hl, wCurrentMapScriptFlags
+	set BIT_CUR_MAP_LOADED_1, [hl]
+	ld hl, Mansion2FText_520c7
+	call PrintText
+	ld a, SFX_GO_INSIDE
+	call PlaySound
+	CheckAndSetEvent EVENT_MANSION_SWITCH_ON
+	jr z, .asm_520bf
+	ResetEventReuseHL EVENT_MANSION_SWITCH_ON
+	jr .asm_520bf
+.asm_520b9
+	ld hl, Mansion2FText_520cc
+	call PrintText
+.asm_520bf
 	jp TextScriptEnd
 
-Mansion3BattleText1:
-	TX_FAR _Mansion3BattleText1
+Mansion2FText_520c2:
+	TX_FAR _Mansion2FText_520c2
 	db "@"
 
-Mansion3EndBattleText1:
-	TX_FAR _Mansion3EndBattleText1
+Mansion2FText_520c7:
+	TX_FAR _Mansion2FText_520c7
 	db "@"
 
-Mansion3AfterBattleText1:
-	TX_FAR _Mansion3AfterBattleText1
-	db "@"
-
-Mansion3BattleText2:
-	TX_FAR _Mansion3BattleText2
-	db "@"
-
-Mansion3EndBattleText2:
-	TX_FAR _Mansion3EndBattleText2
-	db "@"
-
-Mansion3AfterBattleText2:
-	TX_FAR _Mansion3AfterBattleText2
-	db "@"
-
-Mansion3Text5:
-	TX_FAR _Mansion3Text5
+Mansion2FText_520cc:
+	TX_FAR _Mansion2FText_520cc
 	db "@"

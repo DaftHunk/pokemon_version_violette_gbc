@@ -1,30 +1,54 @@
 
-; The rst vectors are unused.
+; The rst 00 vector holds the _Bankswitch far call used by the
+; callba/callab macros. The $08-$3F vectors are unused, so their space
+; is repurposed for the GB Printer's fixed-address trampolines
+; (adding GB_PRINTER) to keep the home bank's "Main" section from
+; overflowing.
 SECTION "rst 00", ROM0 [$00]
 _Bankswitch::
 	jp Bankswitch
-SECTION "rst 08", ROM0 [$08]
-	rst $38
-SECTION "rst 10", ROM0 [$10]
-	rst $38
-SECTION "rst 18", ROM0 [$18]
-	rst $38
-SECTION "rst 20", ROM0 [$20]
-	rst $38
-SECTION "rst 28", ROM0 [$28]
-	rst $38
-SECTION "rst 30", ROM0 [$30]
-	rst $38
-SECTION "rst 38", ROM0 [$38]
-	rst $38
+;adding GB_PRINTER
+;Fixed ROM0 trampolines for the GB Printer. They must live in ROM0
+;(always mapped) but not inside the "Main" section, which is full.
+; - PrinterSerial_RetI: serial interrupt tail, entered by the hook in
+;   Serial:: (home/serial.asm); never returns to Serial::.
+; - ReloadMapAfterPrinter: called from engine/printer/printer.asm after
+;   printing. Like ReloadMapAfterSurfingMinigame (home/overworld.asm),
+;   it must stay in ROM0 because SwitchToMapRomBank remaps the
+;   $4000-$7FFF window while the CPU keeps executing.
+SECTION "GB Printer home trampolines", ROM0 [$08]
+PrinterSerial_RetI::
+	ldh a, [H_LOADEDROMBANK]
+	push af
+	ld a, BANK(PrinterSerial_)
+	call BankswitchCommon
+	call PrinterSerial_
+	pop af
+	call BankswitchCommon
+	pop hl
+	pop de
+	pop bc
+	pop af
+	reti
+
+ReloadMapAfterPrinter::
+	ld a, [H_LOADEDROMBANK]
+	push af
+	ld a, [wCurMap]
+	call SwitchToMapRomBank
+	call LoadTileBlockMap
+	pop af
+	call BankswitchCommon
+	ret
+
+ASSERT @ <= $40
 
 ; Hardware interrupts
 SECTION "vblank", ROM0 [$40]
 	jp VBlank
 SECTION "hblank", ROM0 [$48]
-	ld [$FFF5], a	;joenote - store A contents for the purpose of a LCDC OAM timing test
-	reti
-	;rst $38
+	jp LCDC	;Pikachu's Beach minigame - LCDC interrupt handler
+	nop
 SECTION "timer",  ROM0 [$50]
 	jp Timer
 SECTION "serial", ROM0 [$58]
@@ -923,6 +947,7 @@ INCLUDE "home/text.asm"
 INCLUDE "home/vcopy.asm"
 INCLUDE "home/init.asm"
 INCLUDE "home/vblank.asm"
+INCLUDE "home/lcdc.asm"
 INCLUDE "home/fade.asm"
 INCLUDE "home/serial.asm"
 INCLUDE "home/timer.asm"
@@ -1187,6 +1212,16 @@ HoldTextDisplayOpen::
 CloseTextDisplay::
 	ld a, [wCurMap]
 	call SwitchToMapRomBank
+	; end any pending item icon session before the map view is reloaded:
+	; an icon shown while an item was received (GiveItem hook) would leak
+	; the borrowed palette slot and the hidden sprite flag into the
+	; overworld otherwise. LoadCurrentMapView below reloads all of wTileMap,
+	; so no tile restore is needed, and the attribute recompute right after
+	; it fixes vBGMap0. No-op when no session is active (state = 0).
+	; Session end only: EraseItemIcon's menu tile restore writes stale
+	; tiles here when a receive icon is on screen (the transfer is still
+	; enabled at this point), flashing garbage for a few frames
+	callba EndItemIconSession
 
 
 ;GBCNote - moved these functions up here to make things update properly for enhanced GBC color
@@ -1323,7 +1358,11 @@ PlayerBlackedOutText::
 DisplayRepelWoreOffText::
 	ld hl, RepelWoreOffText
 	call PrintText
-	jp AfterDisplayingTextID
+	; Adapted from pureRGB
+	; the worn-off text now ends with prompt, so the button wait
+	; already happened inside PrintText
+	callba UseAnotherRepel
+	jp CloseTextDisplay
 
 RepelWoreOffText::
 	TX_FAR _RepelWoreOffText
@@ -1504,6 +1543,7 @@ DisplayListMenuIDLoop::
 .buttonAPressed
 	ld a, [wCurrentMenuItem]
 	call PlaceUnfilledArrowMenuCursor
+	callba HideItemIcon ; keep the icon visible during the submenu, repair it afterwards
 
 ; pointless because both values are overwritten before they are read
 	;ld a, $01
@@ -1792,6 +1832,12 @@ ExitListMenu::
 	call BankswitchBack
 	xor a
 	ld [wMenuItemToSwap], a ; 0 means no item is currently being swapped
+	push hl
+	push bc
+	callba EndItemIconSession ; every list close path repaints the full
+	; screen right after: no tile restore needed
+	pop bc
+	pop hl
 	scf
 	ret
 
@@ -1820,6 +1866,7 @@ PrintListMenuEntries::
 	call PlaceString
 
 .skipBagHint
+	callba InitItemIconState ; (de)activate item icons depending on the list menu type
 	hlcoord 5, 3
 	ld b, 9
 	ld c, 14
@@ -4234,6 +4281,11 @@ PlaceMenuCursor::
 	ld [wMenuCursorLocation + 1], a
 	ld a, [wCurrentMenuItem]
 	ld [wLastMenuItem], a
+	push hl
+	push bc
+	callba DrawItemIcon ; draw the icon of the item highlighted by the cursor
+	pop bc
+	pop hl
 	ret
 
 ; This is used to mark a menu cursor other than the one currently being
@@ -4525,6 +4577,12 @@ GiveItem::
 	ret nc
 	call GetItemName
 	call CopyStringToCF4B
+	; the dialog box is already on screen in every give-item flow (NPC
+	; scripts, item balls, hidden items): show the received item's framed
+	; icon next to it. Skips itself when an icon session is active, in
+	; battle, or when a menu covers the icon area (vending machines, the
+	; game corner prize menu).
+	callba DrawReceivedItemIcon
 	scf
 	ret
 

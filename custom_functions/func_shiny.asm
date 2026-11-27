@@ -274,3 +274,73 @@ PrintShinySymbolStatus:
 	coord hl, 8, 1
 	ld [hl], "<SHINY>"
 	ret	
+
+;toggle the shiny palette on the pokedex data page (START button)
+;toggles BIT_POKEDEX_DATA_SHINY in wPokedexDataFlags, then reruns the pokedex palette command
+;when turning the palette on, ShinyStatusScreen prints the shiny symbol at coord 8,1 itself
+;wPokedexNum is preserved because DeterminePaletteIDOutOfBattle clobbers it
+ToggleShinyPalettePokedex:
+	ld a, [wPokedexNum]
+	push af
+	ld a, [wPokedexDataFlags]
+	bit BIT_POKEDEX_DATA_SHINY, a
+	jr z, .turnShinyOn
+	res BIT_POKEDEX_DATA_SHINY, a
+	ld [wPokedexDataFlags], a
+	coord hl, 8, 1
+	ld a, " "
+	ld [hl], a ; erase the shiny symbol
+	jr .applyPalette
+.turnShinyOn
+	set BIT_POKEDEX_DATA_SHINY, a
+	ld [wPokedexDataFlags], a
+.applyPalette
+	ld b, SET_PAL_POKEDEX
+	call RunPaletteCommand
+	pop af
+	ld [wPokedexNum], a
+	ret
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;whole screen mon shiny palette helpers
+;used by trading, evolution and the hall of fame via SET_PAL_POKEMON_WHOLE_SCREEN
+SetWholeScreenShinyFlagFromZ:
+;write wWholeScreenPaletteMonShiny from the z flag (z = not shiny)
+	jr z, .notShiny
+	ld a, $01
+	ld [wWholeScreenPaletteMonShiny], a
+	ret
+.notShiny
+	xor a
+	ld [wWholeScreenPaletteMonShiny], a
+	ret
+
+;d = zero-indexed party mon position
+SetWholeScreenShinyFlagFromPartyIndex:
+	ld a, d
+	ld hl, wPartyMon1DVs
+	ld bc, wPartyMon2 - wPartyMon1
+	call AddNTimes
+	call ShinyDVsChecker
+	jr SetWholeScreenShinyFlagFromZ
+
+;de = address of the mon DVs
+SetWholeScreenShinyFlagFromDVs:
+	call ShinyDVsChecker2
+	jr SetWholeScreenShinyFlagFromZ
+
+SetWholeScreenShinyFlagFromLoadedMon:
+	call CheckLoadedShinyDVs
+	jr SetWholeScreenShinyFlagFromZ
+
+ShinyWholeScreenMon:
+;convert wPalPacket + 1 if the whole screen mon is flagged shiny
+	ld a, [wWholeScreenPaletteMonShiny]
+	and a
+	ret z
+	ld a, [wPalPacket + 1]
+	cp PAL_BLACK
+	ret z ; never convert the evolution black flash
+	call ShinyDVConvert
+	ld [wPalPacket + 1], a
+	ret

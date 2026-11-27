@@ -313,7 +313,7 @@ RedLeftOAMTable:
 	db $8,$0,$9,$0
 	db $a,$2,$b,$3
 
-TruckSpriteGFX: INCBIN  "gfx/sprites/truck_sprite.2bpp"
+TruckSpriteGFX: INCBIN  "gfx/sprites/static_objects/truck_sprite.2bpp"
 
 NoTruckAction:
 	ld hl, wCurrentMapScriptFlags

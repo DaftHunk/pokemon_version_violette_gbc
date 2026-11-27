@@ -1,0 +1,22 @@
+;Pikachu's Beach minigame
+;the hblank interrupt vector at $48 jumps here
+LCDC::
+	push af
+	ldh a, [hLCDCPointer] ; doubles as enabling byte
+	and a
+	jr z, .noLCDCInterrupt
+	push hl
+	; [HIGH(wLYOverrides):rLY] --> [$FF00 + [hLCDCPointer]]
+	ldh a, [rLY]
+	ld l, a
+	ld h, HIGH(wLYOverrides)
+	ld h, [hl]
+	ldh a, [hLCDCPointer]
+	ld l, a
+	ld a, h
+	ld h, $ff
+	ld [hl], a
+	pop hl
+.noLCDCInterrupt
+	pop af
+	reti

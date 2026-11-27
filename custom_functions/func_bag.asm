@@ -47,6 +47,8 @@ SwapBagData:
 	
 	ld a, SFX_START_MENU
 	call PlaySound
+
+	call DrawItemIcon ; refresh the icon: the bag contents changed
 	
 	pop hl
 	pop de
@@ -169,6 +171,7 @@ SendToBackupBag:
 	ld a, SFX_TINK
 	call PlaySound
 	call UpdateMenuInfo
+	call DrawItemIcon ; refresh the icon: the list contents changed
 .return
 	pop hl
 	pop de
@@ -444,3 +447,911 @@ ItemSortList::	;only for items that are bag-accessed
 	db HM01_CUT + 4
 	db $FF ; end
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Adapted from pureRGB
+; Called from DisplayRepelWoreOffText (home bank 0) when a repel wears off.
+; Scans the ACTIVE bag (wBagItems) for REPEL, then SUPER_REPEL, then MAX_REPEL
+; (weakest first, like pureRGB) and offers to use one.
+; The backup bag space is deliberately NOT searched: it is storage-only and
+; RemoveUsedItem consumes from the active bag anyway.
+; Do not use IsItemInBag here: joenote's GetQuantityOfItemInBag predef
+; also searches the backup bag, which would offer unusable repels.
+UseAnotherRepel:
+	ld hl, .repelList
+.nextRepel
+	ld a, [hli]
+	ld d, a ; d = repel item ID
+	cp $FF
+	ret z ; end of the list, no repel in the active bag
+; scan the active bag for this repel (b = bag index)
+	push hl ; save the position in the repel list
+	ld hl, wBagItems
+	ld b, $00
+.scan
+	ld a, [hli] ; a = item ID of the current bag slot
+	cp $FF
+	jr z, .notInActiveBag ; end of the bag without a match
+	cp d
+	jr z, .found
+	inc hl ; skip the quantity byte
+	inc b
+	jr .scan
+.found
+	pop hl ; drop the saved list pointer (balance the stack)
+; stash everything in WRAM before PrintText/YesNoChoice clobber the registers
+	ld a, d
+	ld [wcf91], a ; item ID for UseItem_
+	ld [wPokedexNum], a ; item ID for GetItemName
+	ld a, b
+	ld [wWhichPokemon], a ; bag index for RemoveUsedItem
+	ld hl, RepelUseAnotherText
+	call PrintText
+	call YesNoChoice
+	ld a, [wCurrentMenuItem]
+	and a
+	ret nz ; player chose No (or pressed B)
+	call GetItemName
+	call CopyStringToCF4B ; copy name to wcf4b (wStringBuffer) so it shows in the use text
+	call UseItem
+	ret
+.notInActiveBag
+	pop hl
+	jr .nextRepel
+
+.repelList
+	db REPEL
+	db SUPER_REPEL
+	db MAX_REPEL
+	db $FF ; end
+
+RepelUseAnotherText::
+	TX_FAR _RepelUseAnotherText
+	db "@"
+
+; Refills the enhanced GBC BGP palettes even when rBGP did not change
+; since the last refill (UpdateGBCPal_BGP short-circuits in that case).
+; Must be called AFTER wItemIconState got its final value: the
+; .ReadMasterPals override in func_enhancedcolor.asm serves the icon
+; palette only while an icon session is active.
+ForceEnhancedBGPPalRefill:
+	ld a, [hGBC]
+	and a
+	ret z
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_ENHANCED_GBC, a
+	ret z
+	callba UpdateEnhancedGBCPal_BGP
+	ret
+
+; Called from PrintListMenuEntries every time a list menu is (re)drawn
+InitItemIconState:
+	ld a, [wListMenuID]
+	cp ITEMLISTMENU
+	jr z, .itemList
+	cp PRICEDITEMLISTMENU
+	jr nz, .notItemList
+.itemList
+	; never start a session in battle: tile IDs $C0-$C8 are the EXP bar
+	; there, and an active session would leak the borrowed palette slot
+	; into the battle palettes through the .ReadMasterPals override
+	ld a, [wIsInBattle]
+	and a
+	ret nz
+	; hide the overworld sprites: the vanilla sprite update only keeps
+	; them behind the list box, but the icon frame sticks out to the
+	; left of it and the sprites would draw over the frame and the icon.
+	; PrepareOAMData (engine/overworld/oam.asm) rebuilds the whole OAM
+	; buffer from the sprite data at every DelayFrame while
+	; wUpdateSpritesEnabled is 1, so a one-shot HideSprites on the
+	; buffer gets overwritten within a frame. The engine's own way to
+	; hide sprites durably (the party menus use it too) is to set
+	; wUpdateSpritesEnabled to 0: the next PrepareOAMData then hides
+	; all sprites once and leaves the OAM buffer alone afterwards.
+	; The flag is set back to 1 when the session ends (EraseItemIcon
+	; and the CloseStartMenu hook), so the vanilla UpdateSprites calls
+	; on the menu exit paths rebuild the sprites.
+	; The PC item box context (BIT_NO_SPRITE_UPDATES) manages its own
+	; sprite state: leave the flag alone there.
+	ld a, [wMiscFlags]
+	bit BIT_NO_SPRITE_UPDATES, a
+	jr nz, .skipSpriteHide
+	xor a
+	ld [wUpdateSpritesEnabled], a
+.skipSpriteHide
+	; item list or mart stock: start an icon session if none is active yet,
+	; or refresh the borrowed palette after a submenu / a leaked session
+	ld a, [wItemIconState]
+	and a
+	jr z, .startSession
+	cp $FD ; drawn-but-needs-repair: back from a submenu or a leaked session
+	jr z, .refreshIconPal
+	; redraw in case the entry under the cursor changed (scroll, swap)
+	; before the first transfer; DrawItemIcon skips on its own if not
+	call DrawItemIcon
+	ret
+.startSession
+	ld a, $FE ; active, nothing drawn yet
+	ld [wItemIconState], a
+.refreshIconPal
+	; UpdateGBCPal_BGP only refills the GBC palettes when rBGP changed
+	; since the last refill (it compares rBGP with wLastBGP). Opening a
+	; list menu usually leaves rBGP unchanged, so the borrowed slot
+	; would keep the overworld pink until the first BGP change - which is
+	; why the icon colors only showed up after the Utiliser/Info/Jeter
+	; submenus changed the palette. Force one enhanced refill now: the
+	; .ReadMasterPals override then fills the borrowed slot immediately.
+	; draw the frame, icon and count while the transfer is still disabled,
+	; so the restored pre-menu screen never flashes under the panel
+	call DrawItemIcon
+	call ForceEnhancedBGPPalRefill
+	ret
+.notItemList
+	; any other list menu type deactivates the icons; force the refill
+	; there too: a session can also end this way without ExitListMenu
+	; ever running, and nothing else would put the overworld pink back
+	; into the borrowed slot (rBGP did not change)
+	ld a, [wItemIconState]
+	and a
+	ret z ; no session was active: nothing to do
+	xor a
+	ld [wItemIconState], a
+	; a session can also end here without ExitListMenu: restore the
+	; sprite flag too (see InitItemIconState), unless the PC item box
+	; context is managing its own sprite state
+	ld a, [wMiscFlags]
+	bit BIT_NO_SPRITE_UPDATES, a
+	jr nz, .skipSpriteRestore
+	ld a, 1
+	ld [wUpdateSpritesEnabled], a
+.skipSpriteRestore
+	call ForceEnhancedBGPPalRefill
+	ret
+
+; Ends the icon session without touching the tile map (CloseTextDisplay:
+; LoadCurrentMapView reloads everything right after). The menu restore must
+; not run there: with a receive icon or a leaked session it writes stale
+; tiles while the transfer is still enabled
+EndItemIconSession:
+	ld a, [wItemIconState]
+	and a
+	ret z
+	xor a
+	ld [wItemIconState], a
+	ld a, [wMiscFlags]
+	bit BIT_NO_SPRITE_UPDATES, a
+	jr nz, .skipSpriteRestore
+	ld a, 1
+	ld [wUpdateSpritesEnabled], a
+.skipSpriteRestore
+	call ForceEnhancedBGPPalRefill
+	ret
+
+; Saves the 4 background tiles under the frame's bottom row to WRAM
+; Must be called BEFORE the frame is drawn, and only when nothing is drawn
+; yet: these tiles are the pre-menu background used to erase the frame on
+; menu exit, so they must never capture dialog blanks or the frame itself
+SaveItemFrameTiles:
+	coord hl, 0, 12
+	ld de, wItemIconSavedTiles
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hl]
+	ld [de], a
+	ret
+
+; Draws the UI frame around the icon area (rows 8-12, columns 0-4)
+; the frame's right column sits on the list menu box's left border column
+; and is restored from constants by EraseItemIconBG
+DrawItemFrame:
+	; top edge
+	coord hl, 0, 8
+	ld a, "┌"
+	ld [hli], a
+	ld a, "─"
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld a, "┐"
+	ld [hl], a
+	; left edge
+	coord hl, 0, 9
+	ld a, "│"
+	ld [hl], a
+	coord hl, 0, 10
+	ld [hl], a
+	coord hl, 0, 11
+	ld [hl], a
+	; right edge, over the list menu box's left border
+	coord hl, 4, 9
+	ld [hl], a
+	coord hl, 4, 10
+	ld [hl], a
+	coord hl, 4, 11
+	ld [hl], a
+	; bottom edge
+	coord hl, 0, 12
+	ld a, "└"
+	ld [hli], a
+	ld a, "─"
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld a, "┘"
+	ld [hl], a
+	; buy menu only: bag count panel above the icon frame (rows 2-7)
+	ld a, [wListMenuID]
+	cp PRICEDITEMLISTMENU
+	ret nz
+	; top edge on the list box's own top row
+	coord hl, 0, 2
+	ld a, "┌"
+	ld [hli], a
+	ld a, "─"
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld a, "┐"
+	ld [hl], a
+	; side edges
+	coord hl, 0, 3
+	ld a, "│"
+	ld [hl], a
+	coord hl, 4, 3
+	ld [hl], a
+	coord hl, 0, 4
+	ld [hl], a
+	coord hl, 4, 4
+	ld [hl], a
+	coord hl, 0, 5
+	ld [hl], a
+	coord hl, 4, 5
+	ld [hl], a
+	coord hl, 0, 6
+	ld [hl], a
+	coord hl, 4, 6
+	ld [hl], a
+	; padding rows above the label and below the count
+	coord hl, 1, 3
+	ld a, " "
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	coord hl, 1, 6
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	; label "Sac"
+	coord hl, 1, 4
+	ld a, "S"
+	ld [hli], a
+	ld a, "a"
+	ld [hli], a
+	ld a, "c"
+	ld [hl], a
+	; bottom edge
+	coord hl, 0, 7
+	ld a, "└"
+	ld [hli], a
+	ld a, "─"
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld a, "┘"
+	ld [hl], a
+	ret
+
+; Fills the 9 cells inside the frame with blank tiles (the frame itself is kept)
+; buy menu: also blanks the count cells of the bag panel
+ClearItemIconCells:
+	ld a, " "
+	coord hl, 1, 9
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	coord hl, 1, 10
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	coord hl, 1, 11
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ld a, [wListMenuID]
+	cp PRICEDITEMLISTMENU
+	ret nz
+	ld a, " "
+	coord hl, 1, 5
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ret
+
+; Called from DisplayListMenuID when the A button is pressed on a list entry
+; The frame and icon stay on screen while the banked code runs a submenu
+; (Util/Info/Jeter/mart); $FD tells DrawItemIcon to repair them on return
+HideItemIcon:
+	ld a, [wItemIconState]
+	and a
+	ret z ; icons not active
+	cp $FE
+	ret z ; nothing is drawn: nothing to repair
+	ld a, $FD ; something is drawn: mark it for repair
+	ld [wItemIconState], a
+	ret
+
+; Called from PlaceMenuCursor whenever the menu cursor is redrawn
+; (list menu cursors only: see the cursor variable checks below)
+DrawItemIcon:
+	; icons must be active
+	ld a, [wItemIconState]
+	and a
+	ret z
+	; never draw in battle: tile IDs $C0-$C8 are used by the EXP bar there
+	ld a, [wIsInBattle]
+	and a
+	ret nz
+	; only act when the cursor belongs to an item list menu shown by
+	; DisplayListMenuID: it always sets the cursor variables to
+	; wTopMenuItemY = 4 and wTopMenuItemX = 5 before showing the list.
+	; Submenus opened from the list (the Utiliser/Info/Jeter popup,
+	; party menus, Yes/No boxes) reuse the same PlaceMenuCursor and
+	; HandleMenuInput machinery with their own cursor coordinates and
+	; their own menu indices, and DisplayTextIDInit zeroes wListMenuID
+	; for the text they print: without these checks, a popup index would
+	; be mistaken for an item index, the icon would change while browsing
+	; the popup, and the corrupted state would keep DrawItemIcon from
+	; repairing the frame when the list resumes (the popup flow restores
+	; the pre-list screen, which erases the frame).
+	ld a, [wListMenuID]
+	cp ITEMLISTMENU
+	jr z, .listCursor
+	cp PRICEDITEMLISTMENU
+	ret nz
+.listCursor
+	ld a, [wTopMenuItemY]
+	cp 4
+	ret nz
+	ld a, [wTopMenuItemX]
+	cp 5
+	ret nz
+	; c = index of the highlighted entry within the inventory list
+	ld a, [wCurrentMenuItem]
+	ld c, a
+	ld a, [wListScrollOffset]
+	add c
+	ld c, a
+	; same cancel check as DisplayListMenuID
+	ld a, [wListCount]
+	and a
+	jr z, .emptyFrame ; empty list: the cursor is on Cancel
+	dec a
+	cp c
+	jr c, .emptyFrame ; cursor on Cancel: show an empty frame
+.onItem
+	; b = item ID of the highlighted entry
+	; mart stock lists (PRICEDITEMLISTMENU) have 1-byte entries, other item lists 2
+	ld a, [wListMenuID]
+	cp PRICEDITEMLISTMENU
+	jr z, .gotListEntry
+	sla c
+.gotListEntry
+	ld a, [wListPointer]
+	ld l, a
+	ld a, [wListPointer + 1]
+	ld h, a
+	inc hl
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	ld b, a
+	; find the icon pointer in de
+	ld a, b
+	cp HM01_CUT
+	jr nc, .tmhm
+	; regular item: read ItemIconPointers[(ID - 1)] in the icon bank
+	dec a
+	add a
+	ld e, a
+	ld d, 0
+	push bc ; save the item ID (callba clobbers b and hl)
+	callba GetItemIconPointer ; de = icon source address
+	pop bc
+	; no icon for this item (badges, COIN, floors): show an empty frame
+	ld a, e
+	or d
+	jr z, .emptyFrame
+	jr .gotIcon
+.tmhm
+	; all TMs and HMs share a single sprite
+	ld de, TMHMIcon
+.gotIcon
+	; skip the copy if this icon is already on screen and intact
+	; (avoids lag on cursor blink); the borrowed palette slot survives
+	; every LoadGBPal refill via the .ReadMasterPals override, so there
+	; is nothing left to repair while the icon stays on screen
+	ld a, [wItemIconState]
+	cp b
+	ret z
+	; first drawing of the session: save the background under the frame,
+	; then draw the frame (SaveItemFrameTiles clobbers de)
+	cp $FE
+	jr nz, .iconNeedsRepair
+	push de
+	call SaveItemFrameTiles
+	call DrawItemFrame
+	pop de
+	jr .iconDraw
+.iconNeedsRepair
+	; back from a submenu ($FD): dialogs may have blanked the frame,
+	; redraw it before the icon ($FD never collides with an item ID, so the
+	; repair happens even if the item under the cursor did not change)
+	cp $FD
+	jr nz, .iconDraw
+	call DrawItemFrame ; preserves de
+.iconDraw
+	; buy menu: update the bag count panel with the highlighted item's count
+	call DrawBagCountPanel ; preserves b (item ID) and de (icon source)
+	; remember the drawn item before the copy clobbers registers
+	ld a, b
+	ld [wItemIconState], a
+	; load the 9 icon tiles (144 bytes) to vChars1 + $400
+	; CopyVideoData lives in the home bank, so the bank switch and the
+	; copy run entirely from always-mapped code
+	ld hl, vChars1 + $400
+	lb bc, BANK(ItemIconPointers), 9
+	call CopyVideoData
+	; write the tile IDs to the tile map at coordinates (1,9) to (3,11)
+	coord hl, 1, 9
+	ld a, $C0
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hl], a
+	inc a
+	coord hl, 1, 10
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hl], a
+	inc a
+	coord hl, 1, 11
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hl], a
+	jp SetItemIconColor ; GBC color: borrow a BGP palette slot for the icon
+.emptyFrame
+	; cursor on Cancel or item without an icon:
+	; keep an empty frame with a blank interior visible while the menu stays open
+	ld a, [wItemIconState]
+	cp $FF
+	ret z ; empty frame already shown and intact
+	cp $FE
+	jr z, .firstFrame
+	cp $FD
+	jr z, .redrawFrame
+	; an icon is currently shown: blank the cells inside the frame
+	call ClearItemIconCells
+	ld a, $FF
+	ld [wItemIconState], a
+	ret
+.firstFrame
+	call SaveItemFrameTiles
+.redrawFrame
+	; first frame, or back from a submenu: draw the frame with a blank interior
+	call DrawItemFrame
+	call ClearItemIconCells
+	ld a, $FF
+	ld [wItemIconState], a
+	ret
+
+
+; Buy menu only: updates the bag count panel above the item frame with
+; how many of the highlighted item the player already owns, summed over
+; both bag pockets and capped at 99. The frame and the "Sac" label are
+; drawn by DrawItemFrame; ClearItemIconCells blanks the count cells on
+; Cancel. DrawItemIcon calls this on every icon draw: the anti-lag skip
+; never triggers after a purchase, because the A press that opened the
+; quantity menu left the state at $FD (repair).
+; Preserves b (item ID) and de (icon source); clobbers a, c and hl.
+DrawBagCountPanel:
+	ld a, [wListMenuID]
+	cp PRICEDITEMLISTMENU
+	ret nz
+	push de
+	push bc
+	; c = total quantity of item b across both bag lists
+	ld c, 0
+	ld hl, wNumBagItems
+	call .sumList
+	ld hl, wBagNumBackup
+	call .sumList
+	ld a, c
+	cp 99
+	jr c, .gotCount
+	ld c, 99
+.gotCount
+	; write "×" followed by the count at (1,5) to (3,5)
+	ld a, c
+	cp 10
+	jr nc, .twoDigits
+	add "0" ; single digit: "×" + digit + blank
+	ld d, a
+	coord hl, 1, 5
+	ld a, "×"
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	ld a, " "
+	ld [hl], a
+	jr .done
+.twoDigits
+	ld e, "0" ; one increment per subtracted ten
+.tensLoop
+	inc e
+	sub 10
+	cp 10
+	jr nc, .tensLoop
+	add "0" ; a = ones digit character
+	ld d, a
+	coord hl, 1, 5
+	ld a, "×"
+	ld [hli], a
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hl], a
+.done
+	pop bc
+	pop de
+	ret
+; adds the quantities of item b found in the list at hl to c.
+; Bounded by the list's count byte: no terminator needed, and safe on
+; fresh (all-zero) backup WRAM where no $FF has been written yet
+; (AddItemToInventory only writes the $FF inside the list, after the
+; last entry; the end-of-region byte is written by BackupBagSwap only).
+.sumList
+	ld a, [hli] ; a = number of entries
+	or a
+	ret z
+	ld e, a ; e = entries left
+.entryLoop
+	ld a, [hli] ; entry ID
+	cp b
+	jr nz, .nextEntry
+	ld a, [hl] ; matching entry: add its quantity
+	add c
+	ld c, a
+.nextEntry
+	inc hl
+	dec e
+	jr nz, .entryLoop
+	ret
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; GBC color for the item icon (enhanced GBC mode only)
+; BGP slot ITEM_ICON_PAL is borrowed for the icon: the palette data is
+; redirected at the source (.ReadMasterPals in func_enhancedcolor.asm)
+; whenever an icon session is active, so every LoadGBPal refill serves
+; the PAL_MEWMON colors and the slot is put back automatically when the
+; session ends. This routine only points the 9 icon cells at the slot.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+ITEM_ICON_PAL EQU PAL_ENH_OVW_PINK ; borrowed pink overworld palette slot (rarely used, so the tint is less noticeable)
+
+; Called at the end of every actual icon draw
+SetItemIconColor:
+	ld a, 9 ; the bag icon's top row
+	; fall through
+; Same as SetItemIconColor for an icon area at another vertical position.
+; a = top row of the 3x3 icon area (always column 1).
+SetItemIconColorAt:
+	ld b, a ; b = top row of the icon area
+	; only on GBC with the enhanced color option enabled
+	ld a, [hGBC]
+	and a
+	ret z
+	ld a, [wGraphicOptions]
+	bit BIT_GRAPHIC_ENHANCED_GBC, a
+	ret z
+	; point the 9 icon cells at the borrowed palette
+	; While a text window is open (always the case for list menus), the
+	; screen shows the vBGMap1 tile map (the GBC window); the overworld
+	; behind uses vBGMap0. OpenText fills the window map attributes with
+	; GRAY for every tile ID >= END_OF_OVERWORLD_TILES, icon tiles
+	; included, so the attributes must be written to BOTH BG maps or
+	; the icon stays gray.
+	di ; a VBlank while rVBK is set would corrupt the attribute map
+	ld a, 1
+	ld [rVBK], a ; VRAM bank 1 = BG map attributes
+	; hl = vBGMap0 + b * BG_MAP_WIDTH + 1
+	; (16-bit multiply: five add a on the row would only produce the LOW
+	; byte and lose the carry for rows >= 8, wrapping the target all the
+	; way back to the top of the screen)
+	ld l, b
+	ld h, 0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl ; hl = top row * 32
+	ld de, vBGMap0
+	add hl, de
+	inc hl
+	ld b, 2 ; update vBGMap0 and vBGMap1
+.mapLoop
+	push hl ; base of the 9 cells in the current BG map
+	ld e, ITEM_ICON_PAL
+	ld c, 3 ; three rows
+.rowLoop
+	push bc
+	ld c, 3 ; three columns
+.colLoop
+	ldh a, [rSTAT]
+	and %10 ; OAM or VRAM in use?
+	jr nz, .colLoop ; if so, wait for the next H-blank/V-blank
+	ld a, e
+	ld [hli], a
+	dec c
+	jr nz, .colLoop
+	ld bc, BG_MAP_WIDTH - 3
+	add hl, bc ; move to the next row
+	pop bc
+	dec c
+	jr nz, .rowLoop
+	pop hl
+	ld de, vBGMap1 - vBGMap0 ; same 9 cells in the other BG map
+	add hl, de
+	dec b
+	jr nz, .mapLoop
+	xor a
+	ld [rVBK], a
+	ei
+	ret
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; The icon disappears when the dialog
+; closes: EraseItemIcon (hooked in CloseTextDisplay) resets the state
+; and refills the borrowed palette slot, and LoadCurrentMapView reloads
+; the covered tiles.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+RECEIVE_ICON_TOP_ROW EQU 7 ; frame's top row
+; The coord macro expands to wTileMap + SCREEN_WIDTH * <Y> + <X> with NO
+; parentheses around the Y argument: an expression like RECEIVE_ICON_TOP_ROW + 1
+; would shift the target sideways on the same row instead of moving it down
+; one row. The rows below are precomputed single symbols so that coord's
+; multiplication stays correct.
+RECEIVE_ICON_ROW1 EQU RECEIVE_ICON_TOP_ROW + 1 ; icon cells' top row
+RECEIVE_ICON_ROW2 EQU RECEIVE_ICON_TOP_ROW + 2
+RECEIVE_ICON_ROW3 EQU RECEIVE_ICON_TOP_ROW + 3
+RECEIVE_ICON_BOTTOM_ROW EQU RECEIVE_ICON_TOP_ROW + 4 ; frame's bottom row
+RECEIVE_ICON_PENDING EQU $FC ; icon deferred until the next text opens
+
+; Called from GiveItem (home bank) right after an item was successfully
+; added to the bag. The dialog box is already on screen at that point in
+; every give-item flow (NPC scripts, item balls, hidden items, Oak's aide).
+DrawReceivedItemIcon:
+	; only one icon session at a time (a bag/mart/PC list or a previous
+	; receive in the same dialog)
+	ld a, [wItemIconState]
+	and a
+	ret nz
+	; never draw in battle: tile IDs $C0-$C8 are the EXP bar there
+	ld a, [wIsInBattle]
+	and a
+	ret nz
+	; rWY != 0: the text window is closed and the tile map is a live mirror
+	; of the map view, so anything drawn here would leak onto the screen at
+	; the next VBlank (gym leaders give their TM between two texts). Defer
+	; instead: DrawPendingReceivedItemIcon draws the icon when the next
+	; text opens, after the font is loaded and the attributes recomputed.
+	ldh a, [rWY]
+	and a
+	jr z, .windowOnScreen
+	ld a, RECEIVE_ICON_PENDING
+	ld [wItemIconState], a
+	ret
+.windowOnScreen
+	; if the screen at the frame position is not the map view, a menu is
+	; covering the area (vending machine menu, game corner prize menu...)
+	; and the frame must not be drawn over it. Every map view tile is
+	; below $79 (END_OF_OVERWORLD_TILES, see MakeOverworldBGMapAttributes);
+	; text, border and blank tiles are all $79 or above.
+	ld a, [wTileMap + RECEIVE_ICON_TOP_ROW * SCREEN_WIDTH]
+	cp $79
+	ret nc
+	; shared draw body: DrawPendingReceivedItemIcon jumps here too
+DrawReceivedItemIconDraw:
+	; b = received item ID, de = its icon (0 if the item has none)
+	ld a, [wcf91]
+	ld b, a
+	cp HM01_CUT
+	jr nc, .tmhm
+	; regular item: read ItemIconPointers[(ID - 1)] in the icon bank
+	dec a
+	add a
+	ld e, a
+	ld d, 0
+	push bc ; save the item ID (callba clobbers b and hl)
+	callba GetItemIconPointer ; de = icon source address
+	pop bc
+	; no icon for this item: no session, nothing touched
+	; (.noIcon rewrites 0 over 0 on the direct path: harmless)
+	ld a, e
+	or d
+	jr z, .noIcon
+	jr .gotIcon
+.tmhm
+	; all TMs and HMs share a single sprite
+	ld de, TMHMIcon
+.gotIcon
+	; no sprite hiding here: PrepareOAMData (engine/overworld/oam.asm)
+	; checks wItemIconState every frame and skips only the sprites that
+	; would draw over the frame, so the giving NPC stays visible
+	; state = item ID: enables the .ReadMasterPals palette override
+	; for the rest of the dialog
+	ld a, b
+	ld [wItemIconState], a
+	; draw the frame above the dialog box
+	push de
+	call DrawReceiveItemFrame
+	pop de
+	; load the 9 icon tiles (144 bytes) to vChars1 + $400
+	ld hl, vChars1 + $400
+	lb bc, BANK(ItemIconPointers), 9
+	call CopyVideoData
+	; write the tile IDs to the tile map at coordinates (1,8) to (3,10)
+	coord hl, 1, RECEIVE_ICON_ROW1
+	ld a, $C0
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hl], a
+	inc a
+	coord hl, 1, RECEIVE_ICON_ROW2
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hl], a
+	inc a
+	coord hl, 1, RECEIVE_ICON_ROW3
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc a
+	ld [hl], a
+	; GBC color: point the icon cells at the borrowed palette slot, then
+	; force one refill so the override serves the icon colors immediately
+	; (UpdateGBCPal_BGP short-circuits when rBGP did not change)
+	ld a, RECEIVE_ICON_TOP_ROW + 1
+	call SetItemIconColorAt
+	jp ForceEnhancedBGPPalRefill
+.noIcon
+	xor a
+	ld [wItemIconState], a
+	ret
+
+; Erases a received-item popup in the middle of a dialog (called via TX_ASM
+; before the follow-up text prints). Restores the map view under the frame,
+; clears the icon session state and refills the borrowed palette slot, then
+; recomputes the window map attributes: the receive draw pointed the 9 icon
+; cells at the borrowed slot in both attribute tables, and the recompute
+; gives them their proper overworld attributes back (same pattern as the
+; start menu .exitMenu hook). CloseTextDisplay's EraseItemIcon then finds
+; state == 0 and does nothing.
+EraseReceivedItemPopup:
+	ld a, [wItemIconState]
+	and a
+	ret z
+	cp $FE
+	jr z, .nothingDrawn
+	call EraseReceivedItemIconBG
+.nothingDrawn
+	xor a
+	ld [wItemIconState], a
+	call ForceEnhancedBGPPalRefill
+	callba MakeAndTransferOverworldBGMapAttributes_OpenText
+	ret
+
+; Restores the map view tiles under the receive popup (rows 7-11, columns
+; 0-4) into wTileMap. The receive draw only wrote the frame and the icon
+; cells into wTileMap (while the text window is open, the auto-transfer
+; moves wTileMap to the visible vBGMap1), so the vBGMap0 tile table still
+; holds the pristine map view to copy from. EraseItemIconBG cannot be used
+; here: it restores the menu frame's rows 8-12 from buffer 2, WRAM and
+; constants, which does not match the receive frame's rows 7-11.
+EraseReceivedItemIconBG:
+	ld hl, vBGMap0 + RECEIVE_ICON_TOP_ROW * BG_MAP_WIDTH
+	ld de, wTileMap + RECEIVE_ICON_TOP_ROW * SCREEN_WIDTH
+	ld b, 5 ; five rows
+.rowLoop
+	push bc
+	ld b, 5 ; five columns per row
+.colLoop
+	ldh a, [rSTAT]
+	and %10 ; VRAM in use?
+	jr nz, .colLoop ; if so, wait for the next H-blank/V-blank
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec b
+	jr nz, .colLoop
+	ld a, l ; skip to the next row in vBGMap0
+	add BG_MAP_WIDTH - 5
+	ld l, a
+	ld a, h
+	adc 0
+	ld h, a
+	ld a, e ; skip to the next row in wTileMap
+	add SCREEN_WIDTH - 5
+	ld e, a
+	ld a, d
+	adc 0
+	ld d, a
+	pop bc
+	dec b
+	jr nz, .rowLoop
+	ret
+
+; Draws the frame around the received item icon (rows 7-11, columns 0-4)
+DrawReceiveItemFrame:
+	; top edge
+	coord hl, 0, RECEIVE_ICON_TOP_ROW
+	ld a, "┌"
+	ld [hli], a
+	ld a, "─"
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld a, "┐"
+	ld [hl], a
+	; left edge
+	ld a, "│"
+	coord hl, 0, RECEIVE_ICON_ROW1
+	ld [hl], a
+	coord hl, 0, RECEIVE_ICON_ROW2
+	ld [hl], a
+	coord hl, 0, RECEIVE_ICON_ROW3
+	ld [hl], a
+	; right edge
+	coord hl, 4, RECEIVE_ICON_ROW1
+	ld [hl], a
+	coord hl, 4, RECEIVE_ICON_ROW2
+	ld [hl], a
+	coord hl, 4, RECEIVE_ICON_ROW3
+	ld [hl], a
+	; bottom edge
+	coord hl, 0, RECEIVE_ICON_BOTTOM_ROW
+	ld a, "└"
+	ld [hli], a
+	ld a, "─"
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld a, "┘"
+	ld [hl], a
+	ret
+
+; Draws the received item icon that was deferred while the text window was
+; closed (RECEIVE_ICON_PENDING). Called from DisplayTextIDInit after the
+; font copy, so the icon tiles and its GBC attributes survive the font
+; load and the attribute recompute of the text open pipeline.
+DrawPendingReceivedItemIcon:
+	ld a, [wItemIconState]
+	cp RECEIVE_ICON_PENDING
+	ret nz
+	; same bank: reuse the direct path's draw body
+	jp DrawReceivedItemIconDraw

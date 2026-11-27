@@ -8,23 +8,24 @@ DEF BIT_OPTIONS_BATTLE_SHIFT       EQU 6
 DEF BIT_OPTIONS_BATTLE_ANIMATION   EQU 7
 
 ; wGameplayOptions
-    const_def
-    const BIT_GAMEPLAY_LEVEL_CAP     ; 0
+	const_def
+	const BIT_GAMEPLAY_LEVEL_CAP     ; 0
 	const BIT_GAMEPLAY_FORFAIT       ; 1
-    const BIT_GAMEPLAY_LEVEL_SCALING ; 2
-    const BIT_GAMEPLAY_HARDMODE      ; 3
+	const BIT_GAMEPLAY_LEVEL_SCALING ; 2
+	const BIT_GAMEPLAY_HARDMODE      ; 3
 	const BIT_GAMEPLAY_NEW_GAME_PLUS ; 4
 	const BIT_GAMEPLAY_NUZLOCKE      ; 5
+	const BIT_GAMEPLAY_ALT_STARTERS  ; 6
 
 ; wGraphicOptions
-    const_def
+	const_def
 	const BIT_GRAPHIC_FEMALE           ; 0
-    const_skip                         ; 1
+	const BIT_GRAPHIC_FOLLOWER         ; 1
 	const BIT_GRAPHIC_FEMALE_BANK      ; 2
-    const_skip                         ; 3
+	const_skip                         ; 3
 	const BIT_GRAPHIC_60_FPS           ; 4
 	const BIT_GRAPHIC_GAMMA            ; 5
-    const_skip                         ; 6
+	const_skip                         ; 6
 	const BIT_GRAPHIC_ENHANCED_GBC     ; 7
 
 DEF TILE_WIDTH EQU 8 ; pixels
@@ -36,6 +37,7 @@ DEF LEN_2BPP_TILE EQU 2 * TILE_WIDTH ; bytes
 	const BIT_POKEDEX_DATA_DISPLAY_TYPE    ; 0
 	const BIT_POKEDEX_WHICH_SPRITE_SHOWING ; 1 
 	const BIT_VIEWING_POKEDEX              ; 2
+	const BIT_POKEDEX_DATA_SHINY           ; 3 shiny palette displayed on the pokedex data page (shared with the town map area flags, so it must be reset when entering the data page)
 ;;;;;;;;;;
 
 ; wMiscFlags
@@ -57,7 +59,7 @@ DEF BIT_NO_AUTO_TEXT_BOX EQU 0
 DEF BIT_TEXT_PREDEF EQU 0
 
 ; wFontLoaded
-    const_def
+	const_def
 	const BIT_DISABLE_NPC_MOVEMENT ; 0
 	const BIT_AI_SENT_POKEMON_1    ; 1
 	const BIT_AI_SENT_POKEMON_2    ; 2

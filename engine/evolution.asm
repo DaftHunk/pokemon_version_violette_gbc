@@ -94,6 +94,12 @@ EvolveMon:
 	jr .done
 
 EvolutionSetWholeScreenPalette:
+	ld a, $FF
+	ld [wWholeScreenPaletteMonType2], a
+;flag the evolving mon as shiny for the whole screen palette
+	push bc
+	callba SetWholeScreenShinyFlagFromLoadedMon
+	pop bc
 	ld b, SET_PAL_POKEMON_WHOLE_SCREEN
 	jp RunPaletteCommand
 

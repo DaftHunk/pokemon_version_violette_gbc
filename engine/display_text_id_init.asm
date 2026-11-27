@@ -8,6 +8,11 @@ DisplayTextIDInit:
 	ld a, [hSpriteIndexOrTextID] ; text ID (or sprite ID)
 	and a
 	jr nz, .notStartMenu
+; hide the follower under the start menu box right away: this init shows
+; the window (with the first copy of the box border) before DrawStartMenu
+; runs, and the OAM only rebuilds at the next VBlank, so latching the
+; hide here keeps the follower from flashing over the box for a frame
+	callba FollowerCheckStartMenuOcclusion
 ; if text ID is 0 (i.e. the start menu)
 ; Note that the start menu text border is also drawn in the function directly
 ; below this, so this seems unnecessary.
@@ -81,6 +86,10 @@ DisplayTextIDInit:
 	xor a
 	ld [hWY], a ; put the window on the screen
 	call LoadFontTilePatterns
+	; draw an icon that was deferred while the window was closed. Must run
+	; after the font copy: LoadFontTilePatterns overwrites the icon tiles
+	; area at $8C00.
+	callba DrawPendingReceivedItemIcon
 	ld a, $01
 	ld [H_AUTOBGTRANSFERENABLED], a ; enable continuous WRAM to VRAM transfer each V-blank
 	ret

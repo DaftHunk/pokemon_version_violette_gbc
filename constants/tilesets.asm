@@ -25,3 +25,4 @@ const_value = 0
 	const PLATEAU           ; 15
 ; Outdoor (to add in CheckIfInOutsideMap)
 	const ALPHA             ; 16
+	const PRINT_HOUSE       ; 17

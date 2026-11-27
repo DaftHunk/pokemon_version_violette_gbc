@@ -203,16 +203,17 @@ OverworldTilePalPointers:
 	dw PalSettings_VOLCANO           ; 14
 	dw PalSettings_PLATEAU           ; 15
 	dw PalSettings_ALPHA             ; 16
+	dw PalSettings_PRINT_HOUSE       ; 17
 
 ;Assign a color register to be used for each tile in every tileset.
 ;A value of 8 is a "wild card" to set the color register based on the current town.
 PalSettings_OVERWORLD:   	; 0		- done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
-db	3,	6,	6,	1,	6,	8,	8,	8,	8,	8,	3,	6,	6,	3,	6,	3;
+db	3,	6,	6,	1,	4,	8,	8,	8,	8,	8,	3,	6,	6,	3,	6,	3;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
 db	3,	6,	8,	6,	7,	8,	8,	8,	8,	8,	3,	6,	6,	6,	6,	3;
 ;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
-db	3,	3,	3,	3,	6,	8,	8,	6,	8,	8,	3,	3,	4,	4,	4,	3;
+db	3,	3,	3,	8,	6,	8,	8,	6,	8,	8,	3,	3,	4,	4,	4,	3;
 ;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
 db	4,	6,	6,	6,	6,	6,	6,	6,	8,	4,	3,	3,	6,	4,	4,	3;
 ;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
@@ -222,7 +223,7 @@ db	4,	4,	4,	8,	6,	6,	3,	3,	6,	6,	8,	8,	8,	8,	5,	5;
 ;	60	61	62	63	64	65	66	67	68	69	6A	6B	6C	6D	6E	6F
 db	6,	6,	6,	6,	6,	3,	3,	3,	8,	8,	8,	8,	8,	8,	5,	5;
 ;	70	71	72	73	74	75	76	77	78	79	7A	7B	7C	7D	7E	7F
-db	6,	6,	3,	7,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6,	6;
+db	6,	4,	3,	7,	6,	6,	6,	6,	7,	6,	6,	6,	6,	6,	6,	6;
 PalSettings_REDS_HOUSE:	; 1		-done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	4,	3,	3,	3,	0,	3,	7,	7,	4,	4,	6,	6,	6,	6,	3,	3;
@@ -313,24 +314,24 @@ db	7,	7,	6,	6,	3,	6,	6,	7,	7,	3,	7,	6,	7,	7,	7,	3;
 ;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
 db	3,	3,	3,	3,	3,	3,	7,	7,	1,	3,	1,	3,	3,	3,	2,	2;
 ;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
-db	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	7,	3;
+db	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	3,	7,	7;
 ;	60	61	62	63	64	65	66	67	68	69	6A	6B	6C	6D	6E	6F
 db	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5;
 ;	70	71	72	73	74	75	76	77	78	79	7A	7B	7C	7D	7E	7F
 db	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5,	5;
 PalSettings_UNDERGROUND:  	; 7	- done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
-db	3,	2,	7,	1,	1,	7,	7,	7,	7,	7,	7,	1,	1,	0,	0,	0;
+db	1,	1,	2,	2,	2,	5,	5,	3,	3,	3,	3,	3,	2,	2,	2,	2;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
-db	3,	7,	7,	1,	1,	1,	7,	7,	1,	0,	0,	0,	0,	0,	0,	0;
+db	1,	1,	2,	2,	2,	5,	5,	3,	3,	3,	2,	2,	2,	2,	2,	2;
 ;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
-db	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
+db	1,	1,	1,	1,	7,	1,	1,	2,	2,	5,	7,	2,	7,	3,	3,	3;
 ;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
-db	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
+db	1,	1,	1,	1,	7,	1,	1,	2,	2,	5,	7,	2,	7,	3,	3,	3;
 ;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
-db	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
+db	1,	1,	1,	1,	2,	2,	7,	7,	7,	5,	3,	3,	3,	3,	3,	3;
 ;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
-db	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0,	0;
+db	1,	1,	1,	1,	2,	2,	7,	7,	3,	3,	3,	3,	3,	3,	3,	3;
 PalSettings_SHIP:         	; 9	- done
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
 db	3,	3,	7,	7,	6,	3,	3,	7,	7,	3,	3,	3,	3,	7,	0,	0;
@@ -518,7 +519,7 @@ db	3,	3,	7,	7,	5,	5,	4,	4,	1,	1,	5,	5,	0,	0,	4,	4;
 db	6,	6,	3,	6,	6,	3,	3,	3,	3,	6,	6,	6,	6,	6,	6,	6;
 PalSettings_ALPHA:          ; 16
 ;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
-db	3,	6,	6,	1,	6,	8,	8,	8,	8,	8,	3,	6,	6,	3,	6,	3;
+db	3,	6,	6,	1,	4,	8,	8,	8,	8,	8,	3,	6,	6,	3,	6,	3;
 ;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
 db	3,	6,	8,	6,	7,	8,	8,	8,	8,	8,	3,	6,	6,	6,	6,	3;
 ;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
@@ -530,9 +531,22 @@ db	4,	4,	0,	0,	7,	7,	6,	6,	6,	6,	3,	6,	8,	8,	3,	3;
 ;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
 db	4,	4,	4,	8,	6,	6,	6,	6,	6,	6,	8,	8,	8,	8,	3,	3;
 ;	60	61	62	63	64	65	66	67	68	69	6A	6B	6C	6D	6E	6F
-db	3,	3,	3,	3,	3,	3,	6,	6,	6,	6,	6,	6,	6,	6,	5,	5;
+db	3,	3,	3,	3,	3,	3,	6,	6,	6,	3,	3,	3,	3,	6,	5,	5;
 ;	70	71	72	73	74	75	76	77	78	79	7A	7B	7C	7D	7E	7F
-db	8,	2,	3,	7,	3,	3,	3,	3,	3,	6,	6,	6,	6,	6,	6,	6;
+db	8,	4,	3,	7,	3,	3,	6,	6,	7,	6,	6,	6,	6,	6,	6,	6;
+PalSettings_PRINT_HOUSE:        	; 17		- done
+;	00	01	02	03	04	05	06	07	08	09	0A	0B	0C	0D	0E	0F
+db	7,	6,	7,	3,	5,	5,	5,	5,	5,	6,	6,	6,	5,	5,	4,	4;
+;	10	11	12	13	14	15	16	17	18	19	1A	1B	1C	1D	1E	1F
+db	3,	6,	7,	3,	5,	5,	5,	5,	5,	6,	6,	6,	5,	5,	4,	4;
+;	20	21	22	23	24	25	26	27	28	29	2A	2B	2C	2D	2E	2F
+db	5,	5,	5,	7,	7,	6,	7,	7,	7,	6,	6,	6,	3,	3,	4,	4;
+;	30	31	32	33	34	35	36	37	38	39	3A	3B	3C	3D	3E	3F
+db	6,	6,	6,	6,	7,	6,	6,	6,	6,	6,	6,	6,	3,	3,	4,	4;
+;	40	41	42	43	44	45	46	47	48	49	4A	4B	4C	4D	4E	4F
+db	6,	6,	3,	6,	3,	3,	6,	6,	4,	4,	6,	6,	6,	6,	6,	6;
+;	50	51	52	53	54	55	56	57	58	59	5A	5B	5C	5D	5E	5F
+db	6,	6,	6,	6,	7,	7,	6,	6,	4,	4,	6,	6,	6,	6,	6,	6;
 
 
 PalSettings_TownSpecialPal:
@@ -1314,8 +1328,19 @@ TransferGBCEnhancedOverworldPalettes:
 
 
 	
-;joenote - This is a function specifically for translating the default enhanced GBC pals into the GBC color buffer
-;DE is passed-in containing the address of a pal pattern...like FadePal4 or something
+; joenote - This is a function specifically for translating the default enhanced GBC pals into the GBC color buffer
+; DE is passed-in containing the address of a pal pattern...like FadePal4 or something
+; 8-byte GBC palette borrowed by the item icon menus (PAL_MEWMON tones)
+; selected by .ReadMasterPals instead of the usual overworld entry 1
+; (PAL_ENH_OVW_PINK: rare in the tilesets, so the borrowed tint is
+; less noticeable) whenever an item icon session is active
+; (wItemIconState != 0)
+ItemIconPalGBC:
+	RGB 31, 31, 31 ; white
+	RGB 30, 17, 11 ; dark tan
+	RGB 11,  5, 14 ; purple
+	RGB  3,  3,  3 ; black
+
 BufferAllEnhancedColorsGBC:
 	call .BGP0to3Loop
 	call .BGP4to7Loop
@@ -1393,6 +1418,30 @@ BufferAllEnhancedColorsGBC:
 	add a
 	ld e, a
 
+; item icon override: while an icon session is active (wItemIconState
+; nonzero), BGP slot 1 (PAL_ENH_OVW_PINK) must carry the icon colors.
+; Redirecting the source entry here makes every LoadGBPal refill (once
+; per list menu loop iteration, once per overworld frame) keep the
+; borrowed colors, instead of the refill overwriting them afterwards.
+	cp PAL_ENH_OVW_PINK * 8
+	jr nz, .notItemIconPal
+	ld hl, wItemIconState
+	ld a, [hl]
+	and a
+	jr z, .notItemIconPal
+	; only override while a text window covers the screen: menus and
+	; their submenus all display over the GBC window (hWY=0). If a session
+	; state leaks past the menu exit (rope, evolution), the overworld
+	; refills must still put the normal blue back
+	ldh a, [rWY]
+	and a
+	jr nz, .notItemIconPal
+	ld a, [wGBCColorControl]
+	bit 5, a
+	jr nz, .notItemIconPal ; OBP fills share these table entries: leave sprite palettes alone
+	ld hl, ItemIconPalGBC
+	jr .gotBasePal
+.notItemIconPal
 	ld hl, GBCEnhancedOverworldPalettes
 	ld a, [wCurMap]
 	cp INDIGO_LORELEIS_ROOM
@@ -1418,6 +1467,7 @@ BufferAllEnhancedColorsGBC:
 	ld hl, GBCEnhancedOverworldPalettes_DarkCavern
 .notdark
 	add hl, de
+.gotBasePal
 	pop de ;get the pal pattern back
 	ld a, [de]
 	;now put the pattern in E and make D zero

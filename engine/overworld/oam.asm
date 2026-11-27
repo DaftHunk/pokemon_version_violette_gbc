@@ -77,6 +77,26 @@ PrepareOAMData:
 
 	call GetSpriteScreenXY
 
+	; item icon frame: while a received-item frame is on screen, skip
+	; any NPC sprite that would draw over the frame area (it floats
+	; above the map view and sprites have no priority over it).
+	; The player sprite (offset 0) is never skipped.
+	ld a, [hSpriteOffset2]
+	and a
+	jr z, .noIconFrameOverlap
+	ld a, [wItemIconState]
+	and a
+	jr z, .noIconFrameOverlap
+	ld a, [hSpriteScreenY]
+	cp 41 ; sprite bottom above the frame's top edge?
+	jr c, .noIconFrameOverlap
+	cp 96 ; sprite top below the frame's bottom edge?
+	jr nc, .noIconFrameOverlap
+	ld a, [hSpriteScreenX]
+	cp 40 ; sprite left of the frame's right edge?
+	jr nc, .noIconFrameOverlap
+	jp .nextSprite
+.noIconFrameOverlap
 	ld a, [hOAMBufferOffset]
 	ld e, a
 	ld d, wOAMBuffer / $100
@@ -161,10 +181,21 @@ PrepareOAMData:
 
 .nextSprite
 	ld a, [hSpriteOffset2]
+	and a
+	jr nz, .afterPlayer
+	ld a, $f0 ; after the player (struct 0), draw the follower (struct 15) next
+	jp .spriteLoop
+.afterPlayer
+	cp $f0
+	jr nz, .nextNPCSprite
+	ld a, $10 ; after the follower, continue with the first NPC (struct 1)
+	jp .spriteLoop
+.nextNPCSprite
 	add $10
-	cp $100 % $100
-	jp nz, .spriteLoop
-
+	cp $f0
+	jr z, .doneSpriteLoop ; all 16 structs drawn (the follower was drawn second)
+	jp .spriteLoop
+.doneSpriteLoop
 	; Clear unused OAM.
 	ld a, [hOAMBufferOffset]
 	ld l, a
