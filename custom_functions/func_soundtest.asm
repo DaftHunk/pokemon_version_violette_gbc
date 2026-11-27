@@ -1,4 +1,4 @@
-NUM_MUSIC_TRACKS EQU 55
+NUM_MUSIC_TRACKS EQU 227
 
 DisplaySoundTestMenu:
 	ld a, SFX_PRESS_AB
@@ -196,6 +196,178 @@ SoundTestTrackList:
 	dw Title_Music_RestPallet, (MUSIC_REST_PALLET << 8) | 0 ; Bank(Music_RestPallet)
 	dw Title_Music_Route3Early, (MUSIC_ROUTE_3_EARLY << 8) | 0 ; Bank(Music_Route3Early)
 	dw Title_Music_TCG_PauseMenu, (MUSIC_TCG_PAUSE_MENU << 8) | 0
+	dw Title_Music_GS_TITLE_SCREEN, (MUSIC_GSC_TITLE_SCREEN << 8) | 0
+	dw Title_Music_GS_ROUTE1, (MUSIC_GSC_ROUTE1 << 8) | 0
+	dw Title_Music_GS_ROUTE3, (MUSIC_GSC_ROUTE3 << 8) | 0
+	dw Title_Music_GS_ROUTE12, (MUSIC_GSC_ROUTE12 << 8) | 0
+	dw Title_Music_GS_MAGNET_TRAIN, (MUSIC_GSC_MAGNET_TRAIN << 8) | 0
+	dw Title_Music_GS_KANTO_GYM_BATTLE, (MUSIC_GSC_KANTO_GYM_BATTLE << 8) | 0
+	dw Title_Music_GS_KANTO_TRAINER_BATTLE, (MUSIC_GSC_KANTO_TRAINER_BATTLE << 8) | 0
+	dw Title_Music_GS_KANTO_WILD_BATTLE, (MUSIC_GSC_KANTO_WILD_BATTLE << 8) | 0
+	dw Title_Music_GS_POKEMON_CENTER, (MUSIC_GSC_POKEMON_CENTER << 8) | 0
+	dw Title_Music_GS_LOOK_HIKER, (MUSIC_GSC_LOOK_HIKER << 8) | 0
+	dw Title_Music_GS_LOOK_LASS, (MUSIC_GSC_LOOK_LASS << 8) | 0
+	dw Title_Music_GS_LOOK_OFFICER, (MUSIC_GSC_LOOK_OFFICER << 8) | 0
+	dw Title_Music_GS_HEAL_POKEMON, (MUSIC_GSC_HEAL_POKEMON << 8) | 0
+	dw Title_Music_GS_LAVENDER_TOWN, (MUSIC_GSC_LAVENDER_TOWN << 8) | 0
+	dw Title_Music_GS_ROUTE2, (MUSIC_GSC_ROUTE2 << 8) | 0
+	dw Title_Music_GS_MT_MOON, (MUSIC_GSC_MT_MOON << 8) | 0
+	dw Title_Music_GS_SHOW_ME_AROUND, (MUSIC_GSC_SHOW_ME_AROUND << 8) | 0
+	dw Title_Music_GS_GAME_CORNER, (MUSIC_GSC_GAME_CORNER << 8) | 0
+	dw Title_Music_GS_BICYCLE, (MUSIC_GSC_BICYCLE << 8) | 0
+	dw Title_Music_GS_HALL_OF_FAME, (MUSIC_GSC_HALL_OF_FAME << 8) | 0
+	dw Title_Music_GS_VIRIDIAN_CITY, (MUSIC_GSC_VIRIDIAN_CITY << 8) | 0
+	dw Title_Music_GS_CELADON_CITY, (MUSIC_GSC_CELADON_CITY << 8) | 0
+	dw Title_Music_GS_TRAINER_VICTORY, (MUSIC_GSC_TRAINER_VICTORY << 8) | 0
+	dw Title_Music_GS_WILD_POKEMON_VICTORY, (MUSIC_GSC_WILD_POKEMON_VICTORY << 8) | 0
+	dw Title_Music_GS_GYM_LEADER_VICTORY, (MUSIC_GSC_GYM_LEADER_VICTORY << 8) | 0
+	dw Title_Music_GS_MT_MOON_SQUARE, (MUSIC_GSC_MT_MOON_SQUARE << 8) | 0
+	dw Title_Music_GS_GYM, (MUSIC_GSC_GYM << 8) | 0
+	dw Title_Music_GS_PALLET_TOWN, (MUSIC_GSC_PALLET_TOWN << 8) | 0
+	dw Title_Music_GS_PROF_OAKS_POKEMON_TALK, (MUSIC_GSC_PROF_OAKS_POKEMON_TALK << 8) | 0
+	dw Title_Music_GS_PROF_OAK, (MUSIC_GSC_PROF_OAK << 8) | 0
+	dw Title_Music_GS_LOOK_RIVAL, (MUSIC_GSC_LOOK_RIVAL << 8) | 0
+	dw Title_Music_GS_AFTER_THE_RIVAL_FIGHT, (MUSIC_GSC_AFTER_THE_RIVAL_FIGHT << 8) | 0
+	dw Title_Music_GS_SURF, (MUSIC_GSC_SURF << 8) | 0
+	dw Title_Music_GS_EVOLUTION, (MUSIC_GSC_EVOLUTION << 8) | 0
+	dw Title_Music_GS_NATIONAL_PARK, (MUSIC_GSC_NATIONAL_PARK << 8) | 0
+	dw Title_Music_GS_CREDITS, (MUSIC_GSC_CREDITS << 8) | 0
+	dw Title_Music_GS_AZALEA_TOWN, (MUSIC_GSC_AZALEA_TOWN << 8) | 0
+	dw Title_Music_GS_CHERRYGROVE_CITY, (MUSIC_GSC_CHERRYGROVE_CITY << 8) | 0
+	dw Title_Music_GS_LOOK_KIMONO_GIRL, (MUSIC_GSC_LOOK_KIMONO_GIRL << 8) | 0
+	dw Title_Music_GS_UNION_CAVE, (MUSIC_GSC_UNION_CAVE << 8) | 0
+	dw Title_Music_GS_JOHTO_WILD_BATTLE, (MUSIC_GSC_JOHTO_WILD_BATTLE << 8) | 0
+	dw Title_Music_GS_JOHTO_TRAINER_BATTLE, (MUSIC_GSC_JOHTO_TRAINER_BATTLE << 8) | 0
+	dw Title_Music_GS_ROUTE30, (MUSIC_GSC_ROUTE30 << 8) | 0
+	dw Title_Music_GS_ECRUTEAK_CITY, (MUSIC_GSC_ECRUTEAK_CITY << 8) | 0
+	dw Title_Music_GS_VIOLET_CITY, (MUSIC_GSC_VIOLET_CITY << 8) | 0
+	dw Title_Music_GS_JOHTO_GYM_BATTLE, (MUSIC_GSC_JOHTO_GYM_BATTLE << 8) | 0
+	dw Title_Music_GS_CHAMPION_BATTLE, (MUSIC_GSC_CHAMPION_BATTLE << 8) | 0
+	dw Title_Music_GS_RIVAL_BATTLE, (MUSIC_GSC_RIVAL_BATTLE << 8) | 0
+	dw Title_Music_GS_ROCKET_BATTLE, (MUSIC_GSC_ROCKET_BATTLE << 8) | 0
+	dw Title_Music_GS_ELMS_LAB, (MUSIC_GSC_ELMS_LAB << 8) | 0
+	dw Title_Music_GS_DARK_CAVE, (MUSIC_GSC_DARK_CAVE << 8) | 0
+	dw Title_Music_GS_ROUTE29, (MUSIC_GSC_ROUTE29 << 8) | 0
+	dw Title_Music_GS_ROUTE36, (MUSIC_GSC_ROUTE36 << 8) | 0
+	dw Title_Music_GS_S_S_AQUA, (MUSIC_GSC_S_S_AQUA << 8) | 0
+	dw Title_Music_GS_LOOK_YOUNGSTER, (MUSIC_GSC_LOOK_YOUNGSTER << 8) | 0
+	dw Title_Music_GS_LOOK_BEAUTY, (MUSIC_GSC_LOOK_BEAUTY << 8) | 0
+	dw Title_Music_GS_LOOK_ROCKET, (MUSIC_GSC_LOOK_ROCKET << 8) | 0
+	dw Title_Music_GS_LOOK_POKEMANIAC, (MUSIC_GSC_LOOK_POKEMANIAC << 8) | 0
+	dw Title_Music_GS_LOOK_SAGE, (MUSIC_GSC_LOOK_SAGE << 8) | 0
+	dw Title_Music_GS_NEW_BARK_TOWN, (MUSIC_GSC_NEW_BARK_TOWN << 8) | 0
+	dw Title_Music_GS_GOLDENROD_CITY, (MUSIC_GSC_GOLDENROD_CITY << 8) | 0
+	dw Title_Music_GS_VERMILION_CITY, (MUSIC_GSC_VERMILION_CITY << 8) | 0
+	dw Title_Music_GS_POKEMON_CHANNEL, (MUSIC_GSC_POKEMON_CHANNEL << 8) | 0
+	dw Title_Music_GS_POKE_FLUTE_CHANNEL, (MUSIC_GSC_POKE_FLUTE_CHANNEL << 8) | 0
+	dw Title_Music_GS_TIN_TOWER, (MUSIC_GSC_TIN_TOWER << 8) | 0
+	dw Title_Music_GS_SPROUT_TOWER, (MUSIC_GSC_SPROUT_TOWER << 8) | 0
+	dw Title_Music_GS_BURNED_TOWER, (MUSIC_GSC_BURNED_TOWER << 8) | 0
+	dw Title_Music_GS_LIGHTHOUSE, (MUSIC_GSC_LIGHTHOUSE << 8) | 0
+	dw Title_Music_GS_LAKE_OF_RAGE, (MUSIC_GSC_LAKE_OF_RAGE << 8) | 0
+	dw Title_Music_GS_INDIGO_PLATEAU, (MUSIC_GSC_INDIGO_PLATEAU << 8) | 0
+	dw Title_Music_GS_ROUTE37, (MUSIC_GSC_ROUTE37 << 8) | 0
+	dw Title_Music_GS_ROCKET_HIDEOUT, (MUSIC_GSC_ROCKET_HIDEOUT << 8) | 0
+	dw Title_Music_GS_DRAGONS_DEN, (MUSIC_GSC_DRAGONS_DEN << 8) | 0
+	dw Title_Music_GS_JOHTO_WILD_BATTLE_NIGHT, (MUSIC_GSC_JOHTO_WILD_BATTLE_NIGHT << 8) | 0
+	dw Title_Music_GS_RUINS_OF_ALPH_RADIO, (MUSIC_GSC_RUINS_OF_ALPH_RADIO << 8) | 0
+	dw Title_Music_GS_SUCCESSFUL_CAPTURE, (MUSIC_GSC_SUCCESSFUL_CAPTURE << 8) | 0
+	dw Title_Music_GS_ROUTE26, (MUSIC_GSC_ROUTE26 << 8) | 0
+	dw Title_Music_GS_MOM, (MUSIC_GSC_MOM << 8) | 0
+	dw Title_Music_GS_VICTORY_ROAD, (MUSIC_GSC_VICTORY_ROAD << 8) | 0
+	dw Title_Music_GS_POKEMON_LULLABY, (MUSIC_GSC_POKEMON_LULLABY << 8) | 0
+	dw Title_Music_GS_POKEMON_MARCH, (MUSIC_GSC_POKEMON_MARCH << 8) | 0
+	dw Title_Music_GS_GOLD_SILVER_OPENING, (MUSIC_GSC_GOLD_SILVER_OPENING << 8) | 0
+	dw Title_Music_GS_GOLD_SILVER_OPENING2, (MUSIC_GSC_GOLD_SILVER_OPENING2 << 8) | 0
+	dw Title_Music_GS_MAIN_MENU, (MUSIC_GSC_MAIN_MENU << 8) | 0
+	dw Title_Music_GS_RUINS_OF_ALPH_INTERIOR, (MUSIC_GSC_RUINS_OF_ALPH_INTERIOR << 8) | 0
+	dw Title_Music_GS_ROCKET_THEME, (MUSIC_GSC_ROCKET_THEME << 8) | 0
+	dw Title_Music_GS_DANCING_HALL, (MUSIC_GSC_DANCING_HALL << 8) | 0
+	dw Title_Music_GS_CONTEST_RESULTS, (MUSIC_GSC_CONTEST_RESULTS << 8) | 0
+	dw Title_Music_GS_BUG_CATCHING_CONTEST, (MUSIC_GSC_BUG_CATCHING_CONTEST << 8) | 0
+	dw Title_Music_GS_LAKE_OF_RAGE_ROCKET_RADIO, (MUSIC_GSC_LAKE_OF_RAGE_ROCKET_RADIO << 8) | 0
+	dw Title_Music_GS_PRINTER, (MUSIC_GSC_PRINTER << 8) | 0
+	dw Title_Music_GS_POST_CREDITS, (MUSIC_GSC_POST_CREDITS << 8) | 0
+	dw Title_Music_GS_CLAIR, (MUSIC_GSC_CLAIR << 8) | 0
+	dw Title_Music_GS_MOBILE_ADAPTER_MENU, (MUSIC_GSC_MOBILE_ADAPTER_MENU << 8) | 0
+	dw Title_Music_GS_MOBILE_ADAPTER, (MUSIC_GSC_MOBILE_ADAPTER << 8) | 0
+	dw Title_Music_GS_BUENAS_PASSWORD, (MUSIC_GSC_BUENAS_PASSWORD << 8) | 0
+	dw Title_Music_GS_LOOK_MYSTICAL_MAN, (MUSIC_GSC_LOOK_MYSTICAL_MAN << 8) | 0
+	dw Title_Music_GS_CRYSTAL_OPENING, (MUSIC_GSC_CRYSTAL_OPENING << 8) | 0
+	dw Title_Music_GS_BATTLE_TOWER_THEME, (MUSIC_GSC_BATTLE_TOWER_THEME << 8) | 0
+	dw Title_Music_GS_SUICUNE_BATTLE, (MUSIC_GSC_SUICUNE_BATTLE << 8) | 0
+	dw Title_Music_GS_BATTLE_TOWER_LOBBY, (MUSIC_GSC_BATTLE_TOWER_LOBBY << 8) | 0
+	dw Title_Music_GS_MOBILE_CENTER, (MUSIC_GSC_MOBILE_CENTER << 8) | 0
+	dw Title_Music_TCG_BOOSTER_PACK, (MUSIC_TCG_BOOSTER_PACK << 8) | 0
+	dw Title_Music_TCG_CARD_POP, (MUSIC_TCG_CARD_POP << 8) | 0
+	dw Title_Music_TCG_CHALLENGE_HALL, (MUSIC_TCG_CHALLENGE_HALL << 8) | 0
+	dw Title_Music_TCG_CLUB1, (MUSIC_TCG_CLUB1 << 8) | 0
+	dw Title_Music_TCG_CLUB2, (MUSIC_TCG_CLUB2 << 8) | 0
+	dw Title_Music_TCG_CLUB3, (MUSIC_TCG_CLUB3 << 8) | 0
+	dw Title_Music_TCG_CREDITS, (MUSIC_TCG_CREDITS << 8) | 0
+	dw Title_Music_TCG_DECK_MACHINE, (MUSIC_TCG_DECK_MACHINE << 8) | 0
+	dw Title_Music_TCG_DUEL_THEME1, (MUSIC_TCG_DUEL_THEME1 << 8) | 0
+	dw Title_Music_TCG_DUEL_THEME2, (MUSIC_TCG_DUEL_THEME2 << 8) | 0
+	dw Title_Music_TCG_DUEL_THEME3, (MUSIC_TCG_DUEL_THEME3 << 8) | 0
+	dw Title_Music_TCG_HALL_OF_HONOR, (MUSIC_TCG_HALL_OF_HONOR << 8) | 0
+	dw Title_Music_TCG_IMAKUNI, (MUSIC_TCG_IMAKUNI << 8) | 0
+	dw Title_Music_TCG_MATCH_DRAW, (MUSIC_TCG_MATCH_DRAW << 8) | 0
+	dw Title_Music_TCG_MATCH_LOSS, (MUSIC_TCG_MATCH_LOSS << 8) | 0
+	dw Title_Music_TCG_MATCH_START1, (MUSIC_TCG_MATCH_START1 << 8) | 0
+	dw Title_Music_TCG_MATCH_START2, (MUSIC_TCG_MATCH_START2 << 8) | 0
+	dw Title_Music_TCG_MATCH_START3, (MUSIC_TCG_MATCH_START3 << 8) | 0
+	dw Title_Music_TCG_MATCH_VICTORY, (MUSIC_TCG_MATCH_VICTORY << 8) | 0
+	dw Title_Music_TCG_MEDAL, (MUSIC_TCG_MEDAL << 8) | 0
+	dw Title_Music_TCG_OVERWORLD, (MUSIC_TCG_OVERWORLD << 8) | 0
+	dw Title_Music_TCG_PC_MAIN_MENU, (MUSIC_TCG_PC_MAIN_MENU << 8) | 0
+	dw Title_Music_TCG_POKEMON_DOME, (MUSIC_TCG_POKEMON_DOME << 8) | 0
+	dw Title_Music_TCG_RONALD, (MUSIC_TCG_RONALD << 8) | 0
+	dw Title_Music_TCG_TITLE_SCREEN, (MUSIC_TCG_TITLE_SCREEN << 8) | 0
+	dw Title_Music_TCG2_CREDITS, (MUSIC_TCG2_CREDITS << 8) | 0
+	dw Title_Music_TCG2_DITTY1, (MUSIC_TCG2_DITTY1 << 8) | 0
+	dw Title_Music_TCG2_DITTY2, (MUSIC_TCG2_DITTY2 << 8) | 0
+	dw Title_Music_TCG2_DITTY3, (MUSIC_TCG2_DITTY3 << 8) | 0
+	dw Title_Music_TCG2_DITTY4, (MUSIC_TCG2_DITTY4 << 8) | 0
+	dw Title_Music_TCG2_DITTY5, (MUSIC_TCG2_DITTY5 << 8) | 0
+	dw Title_Music_TCG2_DITTY6, (MUSIC_TCG2_DITTY6 << 8) | 0
+	dw Title_Music_TCG2_FORT1, (MUSIC_TCG2_FORT1 << 8) | 0
+	dw Title_Music_TCG2_FORT2, (MUSIC_TCG2_FORT2 << 8) | 0
+	dw Title_Music_TCG2_FORT3, (MUSIC_TCG2_FORT3 << 8) | 0
+	dw Title_Music_TCG2_FORT4, (MUSIC_TCG2_FORT4 << 8) | 0
+	dw Title_Music_TCG2_GAME_CORNER, (MUSIC_TCG2_GAME_CORNER << 8) | 0
+	dw Title_Music_TCG2_GR_BLIMP, (MUSIC_TCG2_GR_BLIMP << 8) | 0
+	dw Title_Music_TCG2_GR_CASTLE, (MUSIC_TCG2_GR_CASTLE << 8) | 0
+	dw Title_Music_TCG2_GR_CHALLENGE_CUP, (MUSIC_TCG2_GR_CHALLENGE_CUP << 8) | 0
+	dw Title_Music_TCG2_GR_DUEL_THEME1, (MUSIC_TCG2_GR_DUEL_THEME1 << 8) | 0
+	dw Title_Music_TCG2_GR_DUEL_THEME2, (MUSIC_TCG2_GR_DUEL_THEME2 << 8) | 0
+	dw Title_Music_TCG2_GR_DUEL_THEME3, (MUSIC_TCG2_GR_DUEL_THEME3 << 8) | 0
+	dw Title_Music_TCG2_GR_OVERWORLD, (MUSIC_TCG2_GR_OVERWORLD << 8) | 0
+	dw Title_Music_TCG2_HERE_COMES_GR, (MUSIC_TCG2_HERE_COMES_GR << 8) | 0
+	dw Title_Music_TCG2_IMAKUNI2, (MUSIC_TCG2_IMAKUNI2 << 8) | 0
+	dw Title_Music_TCG2_ISHIHARA, (MUSIC_TCG2_ISHIHARA << 8) | 0
+	dw Title_Music_TCG2_TITLE_SCREEN, (MUSIC_TCG2_TITLE_SCREEN << 8) | 0
+	dw Title_Music_PIN_BLUE_FIELD, (MUSIC_PIN_BLUE_FIELD << 8) | 0
+	dw Title_Music_PIN_CATCH_EM_BLUE, (MUSIC_PIN_CATCH_EM_BLUE << 8) | 0
+	dw Title_Music_PIN_CATCH_EM_RED, (MUSIC_PIN_CATCH_EM_RED << 8) | 0
+	dw Title_Music_PIN_END_CREDITS, (MUSIC_PIN_END_CREDITS << 8) | 0
+	dw Title_Music_PIN_FIELD_SELECT, (MUSIC_PIN_FIELD_SELECT << 8) | 0
+	dw Title_Music_PIN_GAME_OVER, (MUSIC_PIN_GAME_OVER << 8) | 0
+	dw Title_Music_PIN_GASTLY_GRAVE, (MUSIC_PIN_GASTLY_GRAVE << 8) | 0
+	dw Title_Music_PIN_GENGAR_GRAVE, (MUSIC_PIN_GENGAR_GRAVE << 8) | 0
+	dw Title_Music_PIN_HAUNTER_GRAVE, (MUSIC_PIN_HAUNTER_GRAVE << 8) | 0
+	dw Title_Music_PIN_HI_SCORE, (MUSIC_PIN_HI_SCORE << 8) | 0
+	dw Title_Music_PIN_HURRY_UP_BLUE, (MUSIC_PIN_HURRY_UP_BLUE << 8) | 0
+	dw Title_Music_PIN_HURRY_UP_RED, (MUSIC_PIN_HURRY_UP_RED << 8) | 0
+	dw Title_Music_PIN_MEOWTH_STAGE, (MUSIC_PIN_MEOWTH_STAGE << 8) | 0
+	dw Title_Music_PIN_MEWTWO_STAGE, (MUSIC_PIN_MEWTWO_STAGE << 8) | 0
+	dw Title_Music_PIN_NAME_ENTRY, (MUSIC_PIN_NAME_ENTRY << 8) | 0
+	dw Title_Music_PIN_OPTIONS, (MUSIC_PIN_OPTIONS << 8) | 0
+	dw Title_Music_PIN_POKEDEX, (MUSIC_PIN_POKEDEX << 8) | 0
+	dw Title_Music_PIN_RED_FIELD, (MUSIC_PIN_RED_FIELD << 8) | 0
+	dw Title_Music_PIN_SEEL_STAGE, (MUSIC_PIN_SEEL_STAGE << 8) | 0
+	dw Title_Music_PIN_TITLE, (MUSIC_PIN_TITLE << 8) | 0
+	dw Title_Music_PIN_WHACK_THE_DIGLETT, (MUSIC_PIN_WHACK_THE_DIGLETT << 8) | 0
+	dw Title_Music_PIN_WHACK_THE_DUGTRIO, (MUSIC_PIN_WHACK_THE_DUGTRIO << 8) | 0
 
 
 Title_Music_PalletTown: db "Pallet Town@"
@@ -253,3 +425,175 @@ Title_Music_DiglettsCave: db "Digletts Cave@"
 Title_Music_RestPallet: db "Rest Pallet@"
 Title_Music_Route3Early: db "Route 3 Early@"
 Title_Music_TCG_PauseMenu: db "TCG Pause Menu@"
+Title_Music_GS_TITLE_SCREEN: db "GS Title Screen@"
+Title_Music_GS_ROUTE1: db "GS Route 1@"
+Title_Music_GS_ROUTE3: db "GS Route 3@"
+Title_Music_GS_ROUTE12: db "GS Route 12@"
+Title_Music_GS_MAGNET_TRAIN: db "GS Magnet Train@"
+Title_Music_GS_KANTO_GYM_BATTLE: db "GS Kanto Gym@"
+Title_Music_GS_KANTO_TRAINER_BATTLE: db "GS Kanto Trainer@"
+Title_Music_GS_KANTO_WILD_BATTLE: db "GS Kanto Wild@"
+Title_Music_GS_POKEMON_CENTER: db "GS #mon Center@"
+Title_Music_GS_LOOK_HIKER: db "GS Look Hiker@"
+Title_Music_GS_LOOK_LASS: db "GS Look Lass@"
+Title_Music_GS_LOOK_OFFICER: db "GS Look Officer@"
+Title_Music_GS_HEAL_POKEMON: db "GS Heal #mon@"
+Title_Music_GS_LAVENDER_TOWN: db "GS Lavender@"
+Title_Music_GS_ROUTE2: db "GS Route 2@"
+Title_Music_GS_MT_MOON: db "GS Mt. Moon@"
+Title_Music_GS_SHOW_ME_AROUND: db "GS Show Around@"
+Title_Music_GS_GAME_CORNER: db "GS Game Corner@"
+Title_Music_GS_BICYCLE: db "GS Bicycle@"
+Title_Music_GS_HALL_OF_FAME: db "GS Hall of Fame@"
+Title_Music_GS_VIRIDIAN_CITY: db "GS Viridian@"
+Title_Music_GS_CELADON_CITY: db "GS Celadon@"
+Title_Music_GS_TRAINER_VICTORY: db "GS Trainer Win@"
+Title_Music_GS_WILD_POKEMON_VICTORY: db "GS Wild Win@"
+Title_Music_GS_GYM_LEADER_VICTORY: db "GS Leader Win@"
+Title_Music_GS_MT_MOON_SQUARE: db "GS Mt. Moon Sq.@"
+Title_Music_GS_GYM: db "GS Gym@"
+Title_Music_GS_PALLET_TOWN: db "GS Pallet Town@"
+Title_Music_GS_PROF_OAKS_POKEMON_TALK: db "GS Oak's Talk@"
+Title_Music_GS_PROF_OAK: db "GS Prof. Oak@"
+Title_Music_GS_LOOK_RIVAL: db "GS Look Rival@"
+Title_Music_GS_AFTER_THE_RIVAL_FIGHT: db "GS After Rival@"
+Title_Music_GS_SURF: db "GS Surf@"
+Title_Music_GS_EVOLUTION: db "GS Evolution@"
+Title_Music_GS_NATIONAL_PARK: db "GS National Park@"
+Title_Music_GS_CREDITS: db "GS Credits@"
+Title_Music_GS_AZALEA_TOWN: db "GS Azalea Town@"
+Title_Music_GS_CHERRYGROVE_CITY: db "GS Cherrygrove@"
+Title_Music_GS_LOOK_KIMONO_GIRL: db "GS Kimono Girl@"
+Title_Music_GS_UNION_CAVE: db "GS Union Cave@"
+Title_Music_GS_JOHTO_WILD_BATTLE: db "GS Johto Wild@"
+Title_Music_GS_JOHTO_TRAINER_BATTLE: db "GS Johto Trainer@"
+Title_Music_GS_ROUTE30: db "GS Route 30@"
+Title_Music_GS_ECRUTEAK_CITY: db "GS Ecruteak@"
+Title_Music_GS_VIOLET_CITY: db "GS Violet City@"
+Title_Music_GS_JOHTO_GYM_BATTLE: db "GS Johto Gym@"
+Title_Music_GS_CHAMPION_BATTLE: db "GS Champion@"
+Title_Music_GS_RIVAL_BATTLE: db "GS Rival Battle@"
+Title_Music_GS_ROCKET_BATTLE: db "GS Rocket Battle@"
+Title_Music_GS_ELMS_LAB: db "GS Elm's Lab@"
+Title_Music_GS_DARK_CAVE: db "GS Dark Cave@"
+Title_Music_GS_ROUTE29: db "GS Route 29@"
+Title_Music_GS_ROUTE36: db "GS Route 36@"
+Title_Music_GS_S_S_AQUA: db "GS S.S. Aqua@"
+Title_Music_GS_LOOK_YOUNGSTER: db "GS Youngster@"
+Title_Music_GS_LOOK_BEAUTY: db "GS Look Beauty@"
+Title_Music_GS_LOOK_ROCKET: db "GS Look Rocket@"
+Title_Music_GS_LOOK_POKEMANIAC: db "GS Pokemaniac@"
+Title_Music_GS_LOOK_SAGE: db "GS Look Sage@"
+Title_Music_GS_NEW_BARK_TOWN: db "GS New Bark Town@"
+Title_Music_GS_GOLDENROD_CITY: db "GS Goldenrod@"
+Title_Music_GS_VERMILION_CITY: db "GS Vermilion@"
+Title_Music_GS_POKEMON_CHANNEL: db "GS #mon Channel@"
+Title_Music_GS_POKE_FLUTE_CHANNEL: db "GS Pokeflute@"
+Title_Music_GS_TIN_TOWER: db "GS Tin Tower@"
+Title_Music_GS_SPROUT_TOWER: db "GS Sprout Tower@"
+Title_Music_GS_BURNED_TOWER: db "GS Burned Tower@"
+Title_Music_GS_LIGHTHOUSE: db "GS Lighthouse@"
+Title_Music_GS_LAKE_OF_RAGE: db "GS Lake of Rage@"
+Title_Music_GS_INDIGO_PLATEAU: db "GS Indigo Plat.@"
+Title_Music_GS_ROUTE37: db "GS Route 37@"
+Title_Music_GS_ROCKET_HIDEOUT: db "GS Hideout@"
+Title_Music_GS_DRAGONS_DEN: db "GS Dragons Den@"
+Title_Music_GS_JOHTO_WILD_BATTLE_NIGHT: db "GS Night Wild@"
+Title_Music_GS_RUINS_OF_ALPH_RADIO: db "GS Ruins Radio@"
+Title_Music_GS_SUCCESSFUL_CAPTURE: db "GS Capture@"
+Title_Music_GS_ROUTE26: db "GS Route 26@"
+Title_Music_GS_MOM: db "GS Mom@"
+Title_Music_GS_VICTORY_ROAD: db "GS Victory Road@"
+Title_Music_GS_POKEMON_LULLABY: db "GS Lullaby@"
+Title_Music_GS_POKEMON_MARCH: db "GS March@"
+Title_Music_GS_GOLD_SILVER_OPENING: db "GS GS Opening@"
+Title_Music_GS_GOLD_SILVER_OPENING2: db "GS GS Opening 2@"
+Title_Music_GS_MAIN_MENU: db "GS Main Menu@"
+Title_Music_GS_RUINS_OF_ALPH_INTERIOR: db "GS Ruins Int.@"
+Title_Music_GS_ROCKET_THEME: db "GS Rocket Theme@"
+Title_Music_GS_DANCING_HALL: db "GS Dancing Hall@"
+Title_Music_GS_CONTEST_RESULTS: db "GS Contest@"
+Title_Music_GS_BUG_CATCHING_CONTEST: db "GS Bug Contest@"
+Title_Music_GS_LAKE_OF_RAGE_ROCKET_RADIO: db "GS Rocket Radio@"
+Title_Music_GS_PRINTER: db "GS Printer@"
+Title_Music_GS_POST_CREDITS: db "GS Post Credits@"
+Title_Music_GS_CLAIR: db "GS Clair@"
+Title_Music_GS_MOBILE_ADAPTER_MENU: db "GS Mobile Menu@"
+Title_Music_GS_MOBILE_ADAPTER: db "GS Mobile@"
+Title_Music_GS_BUENAS_PASSWORD: db "GS Buenas@"
+Title_Music_GS_LOOK_MYSTICAL_MAN: db "GS Mystical Man@"
+Title_Music_GS_CRYSTAL_OPENING: db "GS Crystal Open@"
+Title_Music_GS_BATTLE_TOWER_THEME: db "GS Battle Tower@"
+Title_Music_GS_SUICUNE_BATTLE: db "GS Suicune@"
+Title_Music_GS_BATTLE_TOWER_LOBBY: db "GS Tower Lobby@"
+Title_Music_GS_MOBILE_CENTER: db "GS Mobile Center@"
+Title_Music_TCG_BOOSTER_PACK: db "TCG Booster Pack@"
+Title_Music_TCG_CARD_POP: db "TCG Card Pop@"
+Title_Music_TCG_CHALLENGE_HALL: db "TCG Challenge@"
+Title_Music_TCG_CLUB1: db "TCG Club 1@"
+Title_Music_TCG_CLUB2: db "TCG Club 2@"
+Title_Music_TCG_CLUB3: db "TCG Club 3@"
+Title_Music_TCG_CREDITS: db "TCG Credits@"
+Title_Music_TCG_DECK_MACHINE: db "TCG DeckMachine@"
+Title_Music_TCG_DUEL_THEME1: db "TCG Duel 1@"
+Title_Music_TCG_DUEL_THEME2: db "TCG Duel 2@"
+Title_Music_TCG_DUEL_THEME3: db "TCG Duel 3@"
+Title_Music_TCG_HALL_OF_HONOR: db "TCG Hall Honor@"
+Title_Music_TCG_IMAKUNI: db "TCG Imakuni@"
+Title_Music_TCG_MATCH_DRAW: db "TCG Match Draw@"
+Title_Music_TCG_MATCH_LOSS: db "TCG Match Loss@"
+Title_Music_TCG_MATCH_START1: db "TCG Match Start1@"
+Title_Music_TCG_MATCH_START2: db "TCG Match Start2@"
+Title_Music_TCG_MATCH_START3: db "TCG Match Start3@"
+Title_Music_TCG_MATCH_VICTORY: db "TCG Match Win@"
+Title_Music_TCG_MEDAL: db "TCG Medal@"
+Title_Music_TCG_OVERWORLD: db "TCG Overworld@"
+Title_Music_TCG_PC_MAIN_MENU: db "TCG PC Menu@"
+Title_Music_TCG_POKEMON_DOME: db "TCG #mon Dome@"
+Title_Music_TCG_RONALD: db "TCG Ronald@"
+Title_Music_TCG_TITLE_SCREEN: db "TCG Title Screen@"
+Title_Music_TCG2_CREDITS: db "TCG2 Credits@"
+Title_Music_TCG2_DITTY1: db "TCG2 Ditty 1@"
+Title_Music_TCG2_DITTY2: db "TCG2 Ditty 2@"
+Title_Music_TCG2_DITTY3: db "TCG2 Ditty 3@"
+Title_Music_TCG2_DITTY4: db "TCG2 Ditty 4@"
+Title_Music_TCG2_DITTY5: db "TCG2 Ditty 5@"
+Title_Music_TCG2_DITTY6: db "TCG2 Ditty 6@"
+Title_Music_TCG2_FORT1: db "TCG2 Fort 1@"
+Title_Music_TCG2_FORT2: db "TCG2 Fort 2@"
+Title_Music_TCG2_FORT3: db "TCG2 Fort 3@"
+Title_Music_TCG2_FORT4: db "TCG2 Fort 4@"
+Title_Music_TCG2_GAME_CORNER: db "TCG2 Game Corner@"
+Title_Music_TCG2_GR_BLIMP: db "TCG2 GR Blimp@"
+Title_Music_TCG2_GR_CASTLE: db "TCG2 GR Castle@"
+Title_Music_TCG2_GR_CHALLENGE_CUP: db "TCG2 GR Cup@"
+Title_Music_TCG2_GR_DUEL_THEME1: db "TCG2 GR Duel 1@"
+Title_Music_TCG2_GR_DUEL_THEME2: db "TCG2 GR Duel 2@"
+Title_Music_TCG2_GR_DUEL_THEME3: db "TCG2 GR Duel 3@"
+Title_Music_TCG2_GR_OVERWORLD: db "TCG2 GR World@"
+Title_Music_TCG2_HERE_COMES_GR: db "TCG2 Here GR@"
+Title_Music_TCG2_IMAKUNI2: db "TCG2 Imakuni@"
+Title_Music_TCG2_ISHIHARA: db "TCG2 Ishihara@"
+Title_Music_TCG2_TITLE_SCREEN: db "TCG2 Title@"
+Title_Music_PIN_BLUE_FIELD: db "PB Blue Field@"
+Title_Music_PIN_CATCH_EM_BLUE: db "PB CatchEm Blue@"
+Title_Music_PIN_CATCH_EM_RED: db "PB CatchEm Red@"
+Title_Music_PIN_END_CREDITS: db "PB End Credits@"
+Title_Music_PIN_FIELD_SELECT: db "PB Field Select@"
+Title_Music_PIN_GAME_OVER: db "PB Game Over@"
+Title_Music_PIN_GASTLY_GRAVE: db "PB Gastly Grave@"
+Title_Music_PIN_GENGAR_GRAVE: db "PB Gengar Grave@"
+Title_Music_PIN_HAUNTER_GRAVE: db "PB Haunter Grave@"
+Title_Music_PIN_HI_SCORE: db "PB HiScore@"
+Title_Music_PIN_HURRY_UP_BLUE: db "PB HurryUp Blue@"
+Title_Music_PIN_HURRY_UP_RED: db "PB HurryUp Red@"
+Title_Music_PIN_MEOWTH_STAGE: db "PB Meowth Stage@"
+Title_Music_PIN_MEWTWO_STAGE: db "PB Mewtwo Stage@"
+Title_Music_PIN_NAME_ENTRY: db "PB Name Entry@"
+Title_Music_PIN_OPTIONS: db "PB Options@"
+Title_Music_PIN_POKEDEX: db "PB Pokedex@"
+Title_Music_PIN_RED_FIELD: db "PB Red Field@"
+Title_Music_PIN_SEEL_STAGE: db "PB Seel Stage@"
+Title_Music_PIN_TITLE: db "PB Title@"
+Title_Music_PIN_WHACK_THE_DIGLETT: db "PB Whack Diglett@"
+Title_Music_PIN_WHACK_THE_DUGTRIO: db "PB Whack Dugtrio@"
