@@ -1,4 +1,4 @@
-NUM_MUSIC_TRACKS EQU 227
+; NUM_MUSIC_TRACKS and the category boundaries are computed from the track lists below
 
 DisplaySoundTestMenu:
 	ld a, SFX_PRESS_AB
@@ -10,6 +10,9 @@ DisplaySoundTestMenu:
 ;place the static strings for the screen
 	coord hl, 4, 1
 	ld de, SoundTitleText
+	call PlaceString
+	coord hl, 0, 10
+	ld de, SoundChangeCategoryText
 	call PlaceString
 	coord hl, 0, 12
 	ld de, SoundChangeText
@@ -23,6 +26,11 @@ DisplaySoundTestMenu:
 	coord hl, 16, 16
 	ld de, SoundMenuSelect
 	call PlaceString
+;draw text box for the category
+	coord hl, 0, 3
+	ld b, 1
+	ld c, 18
+	call TextBoxBorder
 ;draw text box for the audio track
 	coord hl, 0, 6
 	ld b, 1
@@ -33,6 +41,7 @@ DisplaySoundTestMenu:
 	xor a
 	ld [wWhichPokemon], a
 	call .updatetrackname
+	call .updatecategoryname
 ; fallthrough
 .loop
 	call Delay3
@@ -46,8 +55,12 @@ DisplaySoundTestMenu:
 	bit BIT_SELECT, b
 	jr nz, .exitMenu
 	bit BIT_A_BUTTON, b ; A button pressed?
-	jr nz, .play_selection
+	jp nz, .play_selection
 .checkDirectionKeys
+	bit BIT_D_UP, b ; Up pressed?
+	jr nz, .dec_category
+	bit BIT_D_DOWN, b ; Down pressed?
+	jr nz, .inc_category
 	bit BIT_D_LEFT, b ; Left pressed?
 	jr nz, .dec_track
 	bit BIT_D_RIGHT, b ; Right pressed?
@@ -63,10 +76,14 @@ DisplaySoundTestMenu:
 	
 .inc_track
 	ld a, [wWhichPokemon]
-	add 1
-	cp NUM_MUSIC_TRACKS
+	call .getcategory
+	call .getcatend
+	ld d, a
+	ld a, [wWhichPokemon]
+	inc a
+	cp d
 	jr c, .inc_track_next
-	xor a
+	call .getcatstart
 .inc_track_next
 	ld [wWhichPokemon], a
 	call .updatetrackname
@@ -74,13 +91,55 @@ DisplaySoundTestMenu:
 	
 .dec_track
 	ld a, [wWhichPokemon]
-	sub 1
-	jr nc, .dec_track_next
-	ld a, NUM_MUSIC_TRACKS-1
-.dec_track_next
+	call .getcategory
+	call .getcatstart
+	ld d, a
+	ld a, [wWhichPokemon]
+	cp d
+	jr nz, .dec_track_do
+	call .getcatend
+	dec a
+	jr .dec_track_store
+.dec_track_do
+	dec a
+.dec_track_store
 	ld [wWhichPokemon], a
 	call .updatetrackname
 	jr .loop
+
+.inc_category
+	ld a, [wWhichPokemon]
+	call .getcategory
+	ld a, NUM_SOUNDTEST_CATEGORIES-1
+	cp c
+	jr z, .inc_category_wrap
+	inc c
+	jr .inc_category_go
+.inc_category_wrap
+	ld c, 0
+.inc_category_go
+	call .getcatstart
+	ld [wWhichPokemon], a
+	call .updatetrackname
+	call .updatecategoryname
+	jp .loop
+
+.dec_category
+	ld a, [wWhichPokemon]
+	call .getcategory
+	ld a, c
+	or a
+	jr z, .dec_category_wrap
+	dec c
+	jr .dec_category_go
+.dec_category_wrap
+	ld c, NUM_SOUNDTEST_CATEGORIES-1
+.dec_category_go
+	call .getcatstart
+	ld [wWhichPokemon], a
+	call .updatetrackname
+	call .updatecategoryname
+	jp .loop
 	
 .play_selection
 	ld hl, SoundTestTrackList
@@ -100,7 +159,7 @@ DisplaySoundTestMenu:
 	ld a, [hl]
 	call PlayMusic
 
-	jr .getJoypadStateLoop
+	jp .getJoypadStateLoop
 
 .updatetrackname
 	;blank track name
@@ -127,9 +186,64 @@ DisplaySoundTestMenu:
 	coord hl, 1, 7
 	call PlaceString
 	ret
+
+.updatecategoryname
+	;blank category name
+	coord hl, 1, 4
+	ld de, SoundTestTextBlankTrack
+	call PlaceString
+
+	;find the category of the current track
+	ld a, [wWhichPokemon]
+	call .getcategory
+	ld b, 0
+	ld hl, SoundTestCategoryNames
+	sla c
+	rl b
+	add hl, bc
+	ld a, [hli]
+	ld e, a
+	ld a, [hl]
+	ld d, a
+
+	;print category name
+	coord hl, 1, 4
+	call PlaceString
+	ret
+
+.getcategory
+	;a = track index, returns c = category index
+	ld hl, SoundTestCategoryEnds
+	ld c, 0
+.getcategory_loop
+	cp [hl]
+	jr c, .getcategory_done
+	inc hl
+	inc c
+	jr .getcategory_loop
+.getcategory_done
+	ret
+
+.getcatstart
+	;c = category index, returns a = first track of the category
+	ld hl, SoundTestCategoryEnds - 1
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	ret
+
+.getcatend
+	;c = category index, returns a = end of the category (exclusive)
+	ld hl, SoundTestCategoryEnds
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	ret
 	
 SoundTitleText:
 	db $E4, " Baladeur ", $E4, "@"
+SoundChangeCategoryText:
+	db "Changer Categorie@"
 SoundChangeText:
 	db $CA, $CB, "Changer Piste@"
 SoundPlayText:
@@ -140,6 +254,28 @@ SoundMenuSelect:
 	db $C0,$C1,$C2,$ED,"@"
 SoundTestTextBlankTrack:
 	db "                  @"
+
+;sound test categories (same order as the track lists below)
+SoundTestCategoryNames:
+	dw .CategoryRougeBleue
+	dw .CategoryJaune
+	dw .CategoryAlpha
+	dw .CategoryCristal
+	dw .CategoryTCG
+	dw .CategoryTCG2
+	dw .CategoryPinball
+NUM_SOUNDTEST_CATEGORIES EQU 7
+ASSERT @ - SoundTestCategoryNames == NUM_SOUNDTEST_CATEGORIES * 2 ; keep in sync when adding a category
+
+.CategoryRougeBleue: db "Rouge/Bleue@"
+.CategoryJaune: db "Jaune@"
+.CategoryAlpha: db "Alpha@"
+.CategoryCristal: db "Cristal@"
+.CategoryTCG: db "TCG@"
+.CategoryTCG2: db "TCG 2@"
+.CategoryPinball: db "Pinball@"
+
+
 SoundTestTrackList:
 	dw Title_Music_PalletTown, (MUSIC_PALLET_TOWN << 8) | 0 ; Bank(Music_PalletTown)
 	dw Title_Music_Pokecenter, (MUSIC_POKECENTER << 8) | 0 ; Bank(Music_Pokecenter)
@@ -186,16 +322,21 @@ SoundTestTrackList:
 	dw Title_Music_MeetEvilTrainer, (MUSIC_MEET_EVIL_TRAINER << 8) | 0 ; Bank(Music_MeetEvilTrainer)
 	dw Title_Music_MeetFemaleTrainer, (MUSIC_MEET_FEMALE_TRAINER << 8) | 0 ; Bank(Music_MeetFemaleTrainer)
 	dw Title_Music_MeetMaleTrainer, (MUSIC_MEET_MALE_TRAINER << 8) | 0 ; Bank(Music_MeetMaleTrainer)
-	dw Title_Music_TradeSong, (MUSIC_TRADE_SONG << 8) | 0 ; Bank(Music_TradeSong)
+	
+SoundTestTrackList_Yellow:
 	dw Title_Music_SurfingPikachu, (MUSIC_SURFING_PIKACHU << 8) | 0 ; Bank(Music_SurfingPikachu)
 	dw Title_Music_MeetJessieJames, (MUSIC_MEET_JESSIE_JAMES << 8) | 0 ; Bank(Music_MeetJessieJames)
-	dw Title_Music_GiovanniSong, (MUSIC_GIOVANNI_SONG << 8) | 0 ; Bank(Music_GiovanniSong)
 	dw Title_Music_YellowIntro, (MUSIC_YELLOW_INTRO << 8) | 0 ; Bank(Music_YellowIntro)
+
+SoundTestTrackList_Alpha:
+	dw Title_Music_TradeSong, (MUSIC_TRADE_SONG << 8) | 0 ; Bank(Music_TradeSong)
+	dw Title_Music_GiovanniSong, (MUSIC_GIOVANNI_SONG << 8) | 0 ; Bank(Music_GiovanniSong)
 	dw Title_Music_BattleVictoryGuide, (MUSIC_BATTLE_VICTORY_GUIDE << 8) | 0 ; Bank(Music_BattleVictoryGuide)
 	dw Title_Music_DiglettsCave, (MUSIC_DIGLETTS_CAVE << 8) | 0 ; Bank(Music_DiglettsCave)
 	dw Title_Music_RestPallet, (MUSIC_REST_PALLET << 8) | 0 ; Bank(Music_RestPallet)
 	dw Title_Music_Route3Early, (MUSIC_ROUTE_3_EARLY << 8) | 0 ; Bank(Music_Route3Early)
-	dw Title_Music_TCG_PauseMenu, (MUSIC_TCG_PAUSE_MENU << 8) | 0
+
+SoundTestTrackList_GS:
 	dw Title_Music_GS_TITLE_SCREEN, (MUSIC_GSC_TITLE_SCREEN << 8) | 0
 	dw Title_Music_GS_ROUTE1, (MUSIC_GSC_ROUTE1 << 8) | 0
 	dw Title_Music_GS_ROUTE3, (MUSIC_GSC_ROUTE3 << 8) | 0
@@ -298,6 +439,9 @@ SoundTestTrackList:
 	dw Title_Music_GS_SUICUNE_BATTLE, (MUSIC_GSC_SUICUNE_BATTLE << 8) | 0
 	dw Title_Music_GS_BATTLE_TOWER_LOBBY, (MUSIC_GSC_BATTLE_TOWER_LOBBY << 8) | 0
 	dw Title_Music_GS_MOBILE_CENTER, (MUSIC_GSC_MOBILE_CENTER << 8) | 0
+
+SoundTestTrackList_TCG:
+	dw Title_Music_TCG_PauseMenu, (MUSIC_TCG_PAUSE_MENU << 8) | 0
 	dw Title_Music_TCG_BOOSTER_PACK, (MUSIC_TCG_BOOSTER_PACK << 8) | 0
 	dw Title_Music_TCG_CARD_POP, (MUSIC_TCG_CARD_POP << 8) | 0
 	dw Title_Music_TCG_CHALLENGE_HALL, (MUSIC_TCG_CHALLENGE_HALL << 8) | 0
@@ -323,6 +467,8 @@ SoundTestTrackList:
 	dw Title_Music_TCG_POKEMON_DOME, (MUSIC_TCG_POKEMON_DOME << 8) | 0
 	dw Title_Music_TCG_RONALD, (MUSIC_TCG_RONALD << 8) | 0
 	dw Title_Music_TCG_TITLE_SCREEN, (MUSIC_TCG_TITLE_SCREEN << 8) | 0
+
+SoundTestTrackList_TCG2:
 	dw Title_Music_TCG2_CREDITS, (MUSIC_TCG2_CREDITS << 8) | 0
 	dw Title_Music_TCG2_DITTY1, (MUSIC_TCG2_DITTY1 << 8) | 0
 	dw Title_Music_TCG2_DITTY2, (MUSIC_TCG2_DITTY2 << 8) | 0
@@ -346,6 +492,8 @@ SoundTestTrackList:
 	dw Title_Music_TCG2_IMAKUNI2, (MUSIC_TCG2_IMAKUNI2 << 8) | 0
 	dw Title_Music_TCG2_ISHIHARA, (MUSIC_TCG2_ISHIHARA << 8) | 0
 	dw Title_Music_TCG2_TITLE_SCREEN, (MUSIC_TCG2_TITLE_SCREEN << 8) | 0
+
+SoundTestTrackList_Pinball:
 	dw Title_Music_PIN_BLUE_FIELD, (MUSIC_PIN_BLUE_FIELD << 8) | 0
 	dw Title_Music_PIN_CATCH_EM_BLUE, (MUSIC_PIN_CATCH_EM_BLUE << 8) | 0
 	dw Title_Music_PIN_CATCH_EM_RED, (MUSIC_PIN_CATCH_EM_RED << 8) | 0
@@ -368,6 +516,34 @@ SoundTestTrackList:
 	dw Title_Music_PIN_TITLE, (MUSIC_PIN_TITLE << 8) | 0
 	dw Title_Music_PIN_WHACK_THE_DIGLETT, (MUSIC_PIN_WHACK_THE_DIGLETT << 8) | 0
 	dw Title_Music_PIN_WHACK_THE_DUGTRIO, (MUSIC_PIN_WHACK_THE_DUGTRIO << 8) | 0
+SoundTestTrackListEnd:
+
+;category boundaries computed from the track lists above (4 bytes per entry)
+SOUNDTEST_RB_END       EQU (SoundTestTrackList_Yellow - SoundTestTrackList) / 4
+SOUNDTEST_YELLOW_END   EQU (SoundTestTrackList_Alpha - SoundTestTrackList) / 4
+SOUNDTEST_ALPHA_END    EQU (SoundTestTrackList_GS - SoundTestTrackList) / 4
+SOUNDTEST_GS_END       EQU (SoundTestTrackList_TCG - SoundTestTrackList) / 4
+SOUNDTEST_TCG_END      EQU (SoundTestTrackList_TCG2 - SoundTestTrackList) / 4
+SOUNDTEST_TCG2_END     EQU (SoundTestTrackList_Pinball - SoundTestTrackList) / 4
+SOUNDTEST_PINBALL_END  EQU (SoundTestTrackListEnd - SoundTestTrackList) / 4
+
+NUM_MUSIC_TRACKS EQU SOUNDTEST_PINBALL_END
+ASSERT NUM_MUSIC_TRACKS <= $FF ; music ids must fit in one byte
+
+; ends are cumulative boundaries, not per-category counts
+ASSERT SOUNDTEST_RB_END < SOUNDTEST_YELLOW_END
+ASSERT SOUNDTEST_YELLOW_END < SOUNDTEST_ALPHA_END
+ASSERT SOUNDTEST_ALPHA_END < SOUNDTEST_GS_END
+ASSERT SOUNDTEST_GS_END < SOUNDTEST_TCG_END
+ASSERT SOUNDTEST_TCG_END < SOUNDTEST_TCG2_END
+ASSERT SOUNDTEST_TCG2_END < SOUNDTEST_PINBALL_END
+
+	db 0 ; category 0 start (read as SoundTestCategoryEnds - 1)
+SoundTestCategoryEnds:
+	db SOUNDTEST_RB_END, SOUNDTEST_YELLOW_END, SOUNDTEST_ALPHA_END
+	db SOUNDTEST_GS_END, SOUNDTEST_TCG_END, SOUNDTEST_TCG2_END
+	db SOUNDTEST_PINBALL_END
+ASSERT @ - SoundTestCategoryEnds == NUM_SOUNDTEST_CATEGORIES ; keep in sync when adding a category
 
 
 Title_Music_PalletTown: db "Pallet Town@"
