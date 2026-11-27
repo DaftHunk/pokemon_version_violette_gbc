@@ -219,10 +219,73 @@ wCurSFX::
 
 wSFXDontWait:: ds 1
 
+wSVBKSave:: ds 1
+; holds the WRAM bank across audio engine calls
+
 wAudioEnd::
 
 ; crysaudio end
 
+
+; SFX channels 5-8 live in GBC WRAM bank 3 ($d000-$d0c7).
+; They are raw constants, like joenote's w2 variables, because the flat
+; WRAM0 layout has no room left for them.
+; home/audio.asm switches rSVBK around every audio engine call.
+MACRO sfx_channel_struct
+\1 EQU \2
+\1MusicID EQU \2 + $00
+\1MusicBank EQU \2 + $02
+\1Flags1 EQU \2 + $03
+\1Flags2 EQU \2 + $04
+\1Flags3 EQU \2 + $05
+\1MusicAddress EQU \2 + $06
+\1LastMusicAddress EQU \2 + $08
+\1NoteFlags EQU \2 + $0c
+\1Condition EQU \2 + $0d
+\1DutyCycle EQU \2 + $0e
+\1VolumeEnvelope EQU \2 + $0f
+\1Frequency EQU \2 + $10
+\1Pitch EQU \2 + $12
+\1Octave EQU \2 + $13
+\1Transposition EQU \2 + $14
+\1NoteDuration EQU \2 + $15
+\1Field16 EQU \2 + $16
+\1LoopCount EQU \2 + $18
+\1Tempo EQU \2 + $19
+\1Tracks EQU \2 + $1b
+\1DutyCyclePattern EQU \2 + $1c
+\1VibratoDelayCount EQU \2 + $1d
+\1VibratoDelay EQU \2 + $1e
+\1VibratoExtent EQU \2 + $1f
+\1VibratoRate EQU \2 + $20
+\1PitchSlideTarget EQU \2 + $21
+\1PitchSlideAmount EQU \2 + $23
+\1PitchSlideAmountFraction EQU \2 + $24
+\1Field25 EQU \2 + $25
+\1PitchOffset EQU \2 + $27
+\1Field29 EQU \2 + $29
+\1Field2a EQU \2 + $2a
+\1Field2c EQU \2 + $2c
+\1NoteLength EQU \2 + $2d
+\1Field2e EQU \2 + $2e
+\1Field2f EQU \2 + $2f
+\1Field30 EQU \2 + $30
+	EXPORT \1, \1MusicID, \1MusicBank, \1Flags1, \1Flags2, \1Flags3
+	EXPORT \1MusicAddress, \1LastMusicAddress, \1NoteFlags, \1Condition
+	EXPORT \1DutyCycle, \1VolumeEnvelope, \1Frequency, \1Pitch
+	EXPORT \1Octave, \1Transposition, \1NoteDuration, \1Field16
+	EXPORT \1LoopCount, \1Tempo, \1Tracks, \1DutyCyclePattern
+	EXPORT \1VibratoDelayCount, \1VibratoDelay, \1VibratoExtent
+	EXPORT \1VibratoRate, \1PitchSlideTarget, \1PitchSlideAmount
+	EXPORT \1PitchSlideAmountFraction, \1Field25, \1PitchOffset
+	EXPORT \1Field29, \1Field2a, \1Field2c, \1NoteLength
+	EXPORT \1Field2e, \1Field2f, \1Field30
+ENDM
+
+	sfx_channel_struct wChannel5, $d000
+	sfx_channel_struct wChannel6, $d032
+	sfx_channel_struct wChannel7, $d064
+	sfx_channel_struct wChannel8, $d096
 
 SECTION "Sprite State Data", WRAM0[$c100]
 
@@ -369,15 +432,7 @@ wSerialEnemyMonsPatchList:: ; c5d0
 ; list of indexes to patch with SERIAL_NO_DATA_BYTE after transfer
 	ds 200
 
-; Saved 233 ds
-; Left 7 ds
-
-UNION
-	ds 128
-NEXTU
-wChannel5:: channel_struct wChannel5
-wChannel6:: channel_struct wChannel6
-ENDU
+	ds 80
 
 wTempPic::
 wOverworldMap:: ; c6e8
@@ -448,7 +503,7 @@ wMenuCursorLocation:: ; cc30
 ; the address of the menu cursor's current location within wTileMap
 	ds 2
 
-;	ds 2
+	ds 2
 
 wMenuJoypadPollCount:: ; cc34
 ; how many times should HandleMenuInput poll the joypad state before it returns?
@@ -473,7 +528,7 @@ wMenuWatchMovingOutOfBounds:: ; cc37
 wTradeCenterPointerTableIndex:: ; cc38
 	ds 1
 
-;	ds 1
+	ds 1
 
 wTextDest:: ; cc3a
 ; destination pointer for text output
@@ -499,7 +554,7 @@ wSerialExchangeNybbleReceiveData:: ; cc3e
 ; the final received nybble is stored here by Serial_ExchangeNybble
 	ds 1
 
-;	ds 3
+	ds 3
 
 wSerialExchangeNybbleSendData:: ; cc42
 ; this nybble is sent when using Serial_SyncAndExchangeNybble or Serial_ExchangeNybble
@@ -547,7 +602,7 @@ wCheckFor180DegreeTurn:: ; cc4b
 ; whether to check for 180-degree turn (0 = don't, 1 = do)
 	ds 1
 
-;	ds 1
+	ds 1
 
 wMissableObjectIndex:: ; cc4d
 	ds 1
@@ -560,7 +615,7 @@ wPredefRegisters:: ; cc4f
 wTrainerHeaderFlagBit:: ; cc55
 	ds 1
 
-;	ds 1
+	ds 1
 
 wNPCMovementScriptPointerTableNum:: ; cc57
 ; which NPC movement script pointer is being used
@@ -571,7 +626,7 @@ wNPCMovementScriptBank:: ; cc58
 ; ROM bank of current NPC movement script
 	ds 1
 
-;	ds 2
+	ds 2
 
 wUnusedCC5B:: ; cc5b
 
@@ -631,7 +686,7 @@ wMoveListCounter:: ; cc5f
 wAnimPalette:: ; cc79
 	ds 1
 
-;	ds 29
+	ds 29
 
 wNPCMovementDirections2:: ; cc97
 
@@ -689,7 +744,7 @@ wTestBattlePlayerSelectedMove:: ; ccd9
 ; InitBattleVariables sets it to the move Pound.
 	ds 1
 
-;	ds 1
+	ds 1
 
 wMoveMenuType:: ; ccdb
 ; 0=regular, 1=mimic, 2=above message box (relearn, heal pp..)
@@ -707,7 +762,7 @@ wAICount:: ; ccdf
 ; number of times remaining that AI action can occur
 	ds 1
 
-;	ds 2
+	ds 2
 
 wEnemyMoveListIndex:: ; cce2
 	ds 1
@@ -727,7 +782,7 @@ wSafariEscapeFactor:: ; cce8
 wSafariBaitFactor:: ; cce9
 	ds 1;
 
-;	ds 1
+	ds 1
 
 wTransformedEnemyMonOriginalDVs:: ; cceb
 	ds 2
@@ -761,7 +816,7 @@ wLowHealthAlarmDisabled:: ; ccf6
 wPlayerMonMinimized:: ; ccf7
 	ds 1
 
-;	ds 13
+	ds 13
 
 wLuckySlotHiddenObjectIndex:: ; cd05
 
@@ -825,7 +880,7 @@ wPlayerMonAccuracyMod:: ; cd1e
 wPlayerMonEvasionMod:: ; cd1f
 	ds 1
 
-;	ds 3
+	ds 3
 
 wEnemyMonUnmodifiedLevel:: ; cd23
 	ds 1
@@ -870,7 +925,7 @@ wEnemyMonEvasionMod:: ; cd33
 wInGameTradeReceiveMonSpecies::
 	ds 1
 
-;	ds 2
+	ds 2
 
 wNPCMovementDirections2Index:: ; cd37
 
@@ -1259,7 +1314,7 @@ wMiscFlags:: ; cd60
 ; bit 7: used for some kind of dungeon warp in maps where you fall down holes (debug feature?)
 	ds 1
 
-;	ds 9
+	ds 9
 
 wActionResultOrTookBattleTurn:: ; cd6a
 ; This has overlapping related uses.
@@ -1295,7 +1350,7 @@ wStatusScreenCurrentPP:: ; cd71
 ; temp variable used to print a move's current PP on the status screen
 	ds 1
 
-;	ds 6
+	ds 6
 
 wNormalMaxPPList:: ; cd78
 ; list of normal max PP (without PP up) values
@@ -1368,11 +1423,11 @@ wDexMaxSeenMove::
 wDexMaxSeenMon::
 	ds 2
 
-;	ds 9
+	ds 9
 
 wHPBarHPDifference:: ; cefd
 	ds 1
-;	ds 7
+	ds 7
 
 wAIItem:: ; cf05
 ; the item that the AI used
@@ -1436,7 +1491,7 @@ wCurSpriteMovement2:: ; cf14
 ; movement byte 2 of current sprite
 	ds 1
 
-;	ds 2
+	ds 2
 
 wNPCMovementScriptSpriteOffset:: ; cf17
 ; sprite offset of sprite being controlled by NPC movement script
@@ -1445,7 +1500,7 @@ wNPCMovementScriptSpriteOffset:: ; cf17
 wScriptedNPCWalkCounter:: ; cf18
 	ds 1
 
-;	ds 1
+	ds 1
 
 ;joenote - used for temporary GBC color control settings
 wGBCColorControl:: ; cf1a
@@ -1514,7 +1569,7 @@ wDexMinSeenMon::
 wDexMinSeenMove:: 
 	ds 2
 
-;	ds 15
+	ds 15
 
 wGymCityName:: ; cf5f
 	ds 17
@@ -1691,11 +1746,10 @@ wBattleMon:: battle_struct wBattleMon ; d014
 wTrainerClass:: ; d031
 	ds 1
 
-;	ds 1
+	ds 1
 
 wTrainerPicPointer:: ; d033
 	ds 2
-
 wBattleMonSpeciesOriginal:: ;d034	;joenote - used to backup a transformed mon's real species
 	ds 1
 
@@ -1713,7 +1767,7 @@ wTrainerBaseMoney:: ; d046
 wMissableObjectCounter:: ; d048
 	ds 1
 
-;	ds 1
+	ds 1
 
 wTrainerName:: ; d04a
 ; 13 bytes for the letters of the opposing trainer
@@ -1887,7 +1941,7 @@ wEnemyDisabledMove:: ; d072
 ; low nibble: disable turns left
 	ds 1
 
-;	ds 1
+	ds 1
 
 wPlayerNumHits:: ; d074
 ; number of hits by player in attacks like Double Slap, etc.
@@ -1941,7 +1995,7 @@ wSavedListScrollOffset:: ; d07e
 ; so that it can be restored when the player is done with the pokemart NPC
 	ds 1
 
-;	ds 2
+	ds 2
 
 ; base coordinates of frame block
 wBaseCoordX:: ; d081
@@ -2022,12 +2076,12 @@ wEndBattleWinTextPointer:: ; d08c
 wEndBattleLoseTextPointer:: ; d08e
 	ds 2
 
-;	ds 2
+	ds 2
 
 wEndBattleTextRomBank:: ; d092
 	ds 1
 
-;	ds 1
+	ds 1
 
 wSubAnimAddrPtr:: ; d094
 ; the address _of the address_ of the current subanimation entry
@@ -2043,7 +2097,7 @@ wSubAnimSubEntryAddr:: ; d096
 ; the address of the current subentry of the current subanimation
 	ds 2
 
-;	ds 2
+	ds 2
 
 wOutwardSpiralTileMapPointer:: ; d09a
 	ds 1
@@ -2202,13 +2256,13 @@ wSavedTilesetType:: ; d0d4
 ; saved at the start of a battle and then written back at the end of the battle
 	ds 1
 
-;	ds 2
+	ds 2
 
 
 wDamage:: ; d0d7
 	ds 2
 
-;	ds 2
+	ds 2
 
 wRepelRemainingSteps:: ; d0db
 	ds 1
@@ -2351,7 +2405,7 @@ wSavedSpriteMapY:: ; d132
 wSavedSpriteMapX:: ; d133
 	ds 1
 
-;	ds 5
+	ds 5
 
 wWhichPrize:: ; d139
 	ds 1
@@ -2693,7 +2747,7 @@ wSpriteSetID:: ; d3a8
 wObjectDataPointerTemp:: ; d3a9
 	ds 2
 
-;	ds 2
+	ds 2
 
 wMapBackgroundTile:: ; d3ad
 ; the tile shown outside the boundaries of the map
@@ -2795,7 +2849,7 @@ wTilesetTalkingOverTiles:: ; d532
 wGrassTile:: ; d535
 	ds 1
 
-;	ds 1
+	ds 1
 
 wNumBoxItems:: ; d53a
 	ds 1
@@ -3067,12 +3121,6 @@ wBagItemsBackupTerminator::
 wBagBackupSpaceEnd::
 wGameProgressFlagsEnd::
 
-UNION
-	ds 128
-NEXTU
-wChannel7:: channel_struct wChannel7
-wChannel8:: channel_struct wChannel8
-ENDU
 
 wGBCBasePalPointers:: 
 	ds NUM_ACTIVE_PALS * 2 ; 8 bytes
@@ -3293,7 +3341,7 @@ wStatusFlags4:: ; d72e
 ; bit 7: set if scripted NPC movement has been initialised
 	ds 1
 
-;	ds 1
+	ds 1
 
 wStatusFlags5:: ; d730
 ; bit 0: NPC sprite being moved by script
@@ -3303,7 +3351,7 @@ wStatusFlags5:: ; d730
 ; bit 7: set if joypad states are being simulated in the overworld or an NPC's movement is being scripted
 	ds 1
 
-;	ds 1
+	ds 1
 
 wStatusFlags6:: ; d732
 ; bit 0: play time being counted
@@ -3354,7 +3402,7 @@ wMovementFlags:: ; d736
 wCompletedInGameTradeFlags:: ; d737
 	ds 2
 
-;	ds 2
+	ds 2
 
 wWarpedFromWhichWarp:: ; d73b
 	ds 1
@@ -3362,7 +3410,7 @@ wWarpedFromWhichWarp:: ; d73b
 wWarpedFromWhichMap:: ; d73c
 	ds 1
 
-;	ds 2
+	ds 2
 
 wCardKeyDoorY:: ; d73f
 	ds 1
@@ -3370,7 +3418,7 @@ wCardKeyDoorY:: ; d73f
 wCardKeyDoorX:: ; d740
 	ds 1
 
-;	ds 2
+	ds 2
 
 wFirstLockTrashCanIndex:: ; d743
 	ds 1
@@ -3378,7 +3426,7 @@ wFirstLockTrashCanIndex:: ; d743
 wSecondLockTrashCanIndex:: ; d743
 	ds 1
 
-;	ds 2
+	ds 2
 wEventFlags:: ; d747
 	ds 320
 
@@ -3424,7 +3472,7 @@ ENDU
 wTrainerHeaderPtr:: ; da30
 	ds 2
 
-;	ds 6
+	ds 6
 
 wOpponentAfterWrongAnswer:: ; da38
 ; the trainer the player must face after getting a wrong answer in the Cinnabar
@@ -3446,7 +3494,7 @@ wRandomizerSeed:: 	;da3B
 ;joenote - generate a random seed for fisher-yates randomizer functions
 	ds 1
 
-;	ds 5
+	ds 5
 
 wPlayTimeHours:: ; da41
 	ds 1

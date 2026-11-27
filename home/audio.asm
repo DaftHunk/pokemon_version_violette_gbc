@@ -132,8 +132,15 @@ UpdateSound::
 	ldh [H_LOADEDROMBANK], a
 	ld [MBC1RomBank], a
 
+	ld a, [rSVBK]
+	ld [wSVBKSave], a
+	ld a, 3
+	ldh [rSVBK], a ; crysaudio: SFX channels live in WRAM bank 3
+
 	call _UpdateSound
 
+	ld a, [wSVBKSave]
+	ldh [rSVBK], a
 	pop af
 	ldh [H_LOADEDROMBANK], a
 	ld [MBC1RomBank], a
@@ -174,6 +181,9 @@ PlayMusic::
 	ldh [H_LOADEDROMBANK], a
 	ld [MBC1RomBank], a
 
+	ld a, 3
+	ldh [rSVBK], a ; crysaudio: SFX channels live in WRAM bank 3
+
 	ld a, e
 	and a
 	jr z, .nomusic
@@ -185,6 +195,8 @@ PlayMusic::
 	call _InitSound
 
 .end
+	xor a
+	ldh [rSVBK], a ; back to the normal WRAM bank
 	pop af
 	ldh [H_LOADEDROMBANK], a
 	ld [MBC1RomBank], a
@@ -274,7 +286,11 @@ endr
 	ldh [H_LOADEDROMBANK], a
 	ld [MBC1RomBank], a
 
+	ld a, 3
+	ldh [rSVBK], a ; crysaudio: SFX channels live in WRAM bank 3
 	call _PlayCry
+	xor a
+	ldh [rSVBK], a ; back to the normal WRAM bank
 
 	pop af
 	ldh [H_LOADEDROMBANK], a
@@ -318,7 +334,11 @@ PlayBattleSound::
 
 	ld a, e
 	ld [wCurSFX], a
+	ld a, 3
+	ldh [rSVBK], a ; crysaudio: SFX channels live in WRAM bank 3
 	call _PlayBattleSound
+	xor a
+	ldh [rSVBK], a ; back to the normal WRAM bank
 
 	pop af
 	ldh [H_LOADEDROMBANK], a
@@ -357,7 +377,11 @@ PlaySFX::
 
 	ld a, e
 	ld [wCurSFX], a
+	ld a, 3
+	ldh [rSVBK], a ; crysaudio: SFX channels live in WRAM bank 3
 	call _PlaySFX
+	xor a
+	ldh [rSVBK], a ; back to the normal WRAM bank
 
 	pop af
 	ldh [H_LOADEDROMBANK], a
@@ -391,6 +415,9 @@ WaitSFX::
 
 	push hl
 
+	ld a, 3
+	ldh [rSVBK], a ; crysaudio: SFX channels live in WRAM bank 3
+
 .wait
 	ld hl, wChannel5Flags1
 	bit 0, [hl]
@@ -404,6 +431,9 @@ WaitSFX::
 	ld hl, wChannel8Flags1
 	bit 0, [hl]
 	jr nz, .wait
+
+	xor a
+	ldh [rSVBK], a ; back to the normal WRAM bank
 
 	pop hl
 	ret

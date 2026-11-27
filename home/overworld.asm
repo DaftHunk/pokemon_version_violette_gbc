@@ -2547,13 +2547,9 @@ CheckForSpinAndDelay:
 
 ;joenote - consolidate the collision thud to its own place
 PlayThudAndLoop:
-;	ld a, [wChannelSoundIDs + Ch4]
-;	cp SFX_COLLISION ; check if collision sound is already playing
-;	jr z, .jump
-	; ch5 on?
-	ld hl, wChannel5 + wChannel1Flags1 - wChannel1 ; + CHANNEL_FLAGS1
-	bit 0, [hl]
-	jr nz, .jump
+	ld a, [wCurSFX]
+	cp SFX_COLLISION ; check if collision sound is already playing
+	jr z, .jump
 
 	ld a, SFX_COLLISION
 	call PlaySound ; play collision sound (if it's not already playing)

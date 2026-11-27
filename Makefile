@@ -125,12 +125,12 @@ endif
 
 %.asm: ;
 
-#gbcnote - use cjsv to compile as GBC+DMG rom
+#gbcnote - use Cjsv to compile as CGB-only rom; the audio engine needs WRAM bank switching
 #pokeblue_opt 	= -cjsv -k 01 -l 0x33 -m 0x13 -p 0 -r 03 -t "POKEMON BLUE"
 pokeblue_pad       = 0x00
 pokeblue_debug_pad = 0xff
-pokeblue_opt       = -cjsv -n 0 -k 01 -l 0x33 -m 0x13 -r 03 -t "PKMN VIOLETTE"
-pokeblue_debug_opt = -cjsv -n 0 -k 01 -l 0x33 -m 0x13 -r 03 -t "PKMN VIOLETTE"
+pokeblue_opt       = -Cjsv -n 0 -k 01 -l 0x33 -m 0x13 -r 03 -t "PKMN VIOLETTE"
+pokeblue_debug_opt = -Cjsv -n 0 -k 01 -l 0x33 -m 0x13 -r 03 -t "PKMN VIOLETTE"
 
 %.gbc: $$(%_obj) layout.link
 #	$(RGBLINK) -d -m $*.map -n $*.sym -l layout.link -o $@ $(filter %.o,$^)

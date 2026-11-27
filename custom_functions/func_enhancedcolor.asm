@@ -1114,8 +1114,10 @@ GBCEnhancedRedrawRowOrColumn:
 	ld a, $1
 	ld [rVBK], a	;change to vram bank 1
 
-	ld hl, rSVBK
-	set 1, [hl]		;switch over to wram bank 2
+	ld a, [rSVBK]
+	ld [wSVBKSave], a
+	ld a, 2
+	ld [rSVBK], a	;switch over to wram bank 2
 
 	ld a, [hRedrawRowOrColumnDest]
 	ld e, a
@@ -1169,16 +1171,18 @@ GBCEnhancedRedrawRowOrColumn:
 	xor a
 	ld [rVBK], a
 
-	ld hl, rSVBK
-	res 1, [hl]
+	ld a, [wSVBKSave]
+	ld [rSVBK], a
 	ret
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 .colorRow
 	ld a, $1
 	ld [rVBK], a	;change to vram bank 1
 
-	ld hl, rSVBK
-	set 1, [hl]		;switch over to wram bank 2
+	ld a, [rSVBK]
+	ld [wSVBKSave], a
+	ld a, 2
+	ld [rSVBK], a	;switch over to wram bank 2
 
 	ld a, [hRedrawRowOrColumnDest]
 	ld e, a
@@ -1213,8 +1217,8 @@ GBCEnhancedRedrawRowOrColumn:
 .finishRow
 	xor a
 	ld [rVBK], a
-	ld hl, rSVBK
-	res 1, [hl]
+	ld a, [wSVBKSave]
+	ld [rSVBK], a
 	ret
 
 .DrawHalf
