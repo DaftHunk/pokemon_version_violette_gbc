@@ -2297,9 +2297,6 @@ tmhmNamesEnd:
 
 INCLUDE "data/wildPokemons/super_rod.asm"	;joenote - moving all the super rod data here
 
-KeysLogoGraphics:: INCBIN "gfx/tiles/keys_logo.2bpp"
-KeysLogoGraphicsEnd::
-
 ;joenote - adding exp bar
 EXPBarGraphics:  INCBIN "gfx/tiles/exp_bar.2bpp"
 EXPBarGraphicsEnd:

@@ -218,7 +218,7 @@ HandlePokedexSideMenu:
 	ld [wPokedexNum], a
 ;	call GetCryData
 ;	call PlaySound
-	jr .handleMenuInput
+	jp .handleMenuInput
 
 .choseArea
 	predef LoadTownMap_Nest ; display pokemon areas
