@@ -7,9 +7,9 @@
 ;
 Music_DiglettsCave::
 	channel_count 3
-	channel 1, Route3Early_Ch1
-	channel 2, Route3Early_Ch2
-	channel 3, Route3Early_Ch3
+	channel 1, Music_DiglettsCave_Ch1
+	channel 2, Music_DiglettsCave_Ch2
+	channel 3, Music_DiglettsCave_Ch3
 
 ;;----------------------------------------
 Music_DiglettsCave_Ch1:

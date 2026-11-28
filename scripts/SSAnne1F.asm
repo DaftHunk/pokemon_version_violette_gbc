@@ -17,7 +17,7 @@ SSAnne1Text1:
 	predef HealParty
 
 	ld c, 0 ; BANK(Music_RestPallet)
-;TODO
+; TODO
 ;	ld a, MUSIC_REST_PALLET
 	call PlayMusic
 
