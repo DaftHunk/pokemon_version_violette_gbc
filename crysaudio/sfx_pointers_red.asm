@@ -113,3 +113,9 @@ SFX:
 	dba SFX_Shooting_Star
 
 	dba SFX_PokefluteInBattle
+
+	; Pikachu's Beach minigame
+	dba SFX_Surfing_Jump
+	dba SFX_Surfing_Flip
+	dba SFX_Surfing_Crash
+	dba SFX_Surfing_Land

@@ -1,9 +1,9 @@
 ;Pikachu's Beach minigame
-SFX_Surfing_Flip_4_Ch4:
-	duty 2
-	squarenote 3, 12, 4, 1888
-	squarenote 0, 10, 4, 1856
-	squarenote 2, 12, 4, 1856
-	squarenote 0, 10, 4, 1888
-	squarenote 15, 12, 1, 1888
-	endchannel
+SFX_Surfing_Flip_Ch5:
+	duty_cycle 2
+	square_note 3, 12, 4, 1888
+	square_note 0, 10, 4, 1856
+	square_note 2, 12, 4, 1856
+	square_note 0, 10, 4, 1888
+	square_note 15, 12, 1, 1888
+	sound_ret

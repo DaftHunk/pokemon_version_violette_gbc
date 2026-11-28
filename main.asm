@@ -55,7 +55,7 @@ INCLUDE "engine/menu/swap_items.asm"
 
 INCLUDE "engine/overworld/pokemart.asm"
 
-INCLUDE "engine/overworld/Pokecenter.asm"
+INCLUDE "engine/overworld/pokecenter.asm"
 
 INCLUDE "engine/overworld/set_blackout_map.asm"
 
@@ -2282,6 +2282,7 @@ Volcano_Block:     INCBIN "gfx/blocksets/volcano.bst"
 SECTION "SGB Border", ROMX
 
 INCLUDE "engine/palettes.asm"
+INCLUDE "engine/menu/bills_pc.asm"
 INCLUDE "engine/overworld/follower.asm"
 INCLUDE "data/pokemons/follower_sheets.asm"
 INCLUDE "engine/overworld/map_sprites.asm"

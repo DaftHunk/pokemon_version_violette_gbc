@@ -96,6 +96,13 @@ PlaySound::
 	pop de
 	ret
 
+; immediately stop all music
+StopAllMusic::
+	xor a
+	ld [wMusicFade], a
+	ld a, SFX_STOP_ALL_MUSIC
+	jp PlaySound
+
 ;InitSound::
 ;	push hl
 ;	push de

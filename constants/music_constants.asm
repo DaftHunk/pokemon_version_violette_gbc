@@ -408,4 +408,10 @@
 
 	const SFX_POKEFLUTE_IN_BATTLE
 
+	; Pikachu's Beach minigame
+	const SFX_SURFING_JUMP
+	const SFX_SURFING_FLIP
+	const SFX_SURFING_CRASH
+	const SFX_SURFING_LAND
+
 DEF SFX_STOP_ALL_MUSIC EQU $ff

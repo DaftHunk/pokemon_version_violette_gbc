@@ -133,6 +133,11 @@ INCLUDE "audio/sfx/slots_stop_wheel.asm"
 INCLUDE "audio/sfx/slots_reward.asm"
 INCLUDE "audio/sfx/slots_new_spin.asm"
 INCLUDE "audio/sfx/shooting_star.asm"
+INCLUDE "audio/sfx/surfing_jump_4.asm"
+INCLUDE "audio/sfx/surfing_flip_4.asm"
+INCLUDE "audio/sfx/surfing_crash_4.asm"
+INCLUDE "audio/sfx/surfing_land_4.asm"
+assert BANK(SFX_Surfing_Jump) == BANK(SFX_Surfing_Jump_Ch8)
 
 
 SECTION "Music Routines", ROMX

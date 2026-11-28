@@ -154,24 +154,22 @@ PikachusBeachLoop:
 ;	ld [hl], a
 ;	ret
 
-; Update the global music tempo from Pikachu's speed. The tempo is only
-; applied when the first three music channels are all on their last frame
-; of note delay, so the change lands at the start of their next note.
+; Adapted from pokeyellow for Crysaudio: update the active music channels'
+; tempo only when they are about to start their next note.
 SurfingMinigame_UpdateMusicTempo:
 	ld a, [wSurfingMinigameMusicTempoEnabled]
 	and a
 	ret z
 
-	; check that all channels are on their last frame of note delay
-	ld hl, wChannelNoteDelayCounters
-	ld a, $1
-	cp [hl]
+	; check that channels 1-3 are on their last frame of note duration
+	ld a, [wChannel1NoteDuration]
+	dec a
 	ret nz
-	inc hl
-	cp [hl]
+	ld a, [wChannel2NoteDuration]
+	dec a
 	ret nz
-	inc hl
-	cp [hl]
+	ld a, [wChannel3NoteDuration]
+	dec a
 	ret nz
 
 	; de = ([wSurfingMinigamePikachuSpeed] & $3ff) * 2
@@ -187,11 +185,10 @@ SurfingMinigame_UpdateMusicTempo:
 	ld hl, .Tempos
 	add hl, de
 	add hl, de
-	ld a, [hli]
-	ld [wMusicTempo + 1], a
-	ld a, [hl]
-	ld [wMusicTempo], a
-	ret
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	jr SurfingMinigame_ApplyMusicTempo
 
 .Tempos:
 	dw 117
@@ -201,20 +198,31 @@ SurfingMinigame_UpdateMusicTempo:
 	dw  85
 
 SurfingMinigame_ResetMusicTempo:
-	ld hl, wChannelNoteDelayCounters
-	ld a, $1
-	cp [hl]
+	ld a, [wChannel1NoteDuration]
+	dec a
 	ret nz
-	inc hl
-	cp [hl]
+	ld a, [wChannel2NoteDuration]
+	dec a
 	ret nz
-	inc hl
-	cp [hl]
+	ld a, [wChannel3NoteDuration]
+	dec a
 	ret nz
-	ld a, 117
-	ld [wMusicTempo + 1], a
+	ld de, 117
+	; fallthrough
+
+SurfingMinigame_ApplyMusicTempo:
+	ld a, e
+	ld [wChannel1Tempo], a
+	ld [wChannel2Tempo], a
+	ld [wChannel3Tempo], a
+	ld a, d
+	ld [wChannel1Tempo + 1], a
+	ld [wChannel2Tempo + 1], a
+	ld [wChannel3Tempo + 1], a
 	xor a
-	ld [wMusicTempo], a
+	ld [wChannel1Field16], a
+	ld [wChannel2Field16], a
+	ld [wChannel3Field16], a
 	ret
 
 PikachusBeach_LoadGFXAndLayout:

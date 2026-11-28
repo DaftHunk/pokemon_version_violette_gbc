@@ -269,7 +269,7 @@ ASSERT @ - SoundTestCategoryNames == NUM_SOUNDTEST_CATEGORIES * 2 ; keep in sync
 
 .CategoryRougeBleue: db "Rouge/Bleue@"
 .CategoryJaune: db "Jaune@"
-.CategoryAlpha: db "Alpha@"
+.CategoryAlpha: db "Beta@"
 .CategoryCristal: db "Cristal@"
 .CategoryTCG: db "TCG@"
 .CategoryTCG2: db "TCG 2@"
