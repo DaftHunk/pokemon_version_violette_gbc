@@ -38,9 +38,8 @@ MtMoonB1FScriptJessieJames:
 	ld a, $ff
 	ld [wMusicFadeID], a
 	call PlaySound
-	ld c, 0 ; BANK(Music_MeetJessieJames)
-	; TODO
-;	ld a, MUSIC_MEET_JESSIE_JAMES
+	ld c, 0
+	ld a, MUSIC_MEET_JESSIE_JAMES
 	call PlayMusic
 
 	ld a, $f0

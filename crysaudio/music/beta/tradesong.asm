@@ -3,6 +3,14 @@ Music_TradeSong::
 	channel 1, Music_TradeSong_Ch1
 	channel 2, Music_TradeSong_Ch2
 
+Music_TradeSong_L::
+	channel_count 1
+	channel 1, Music_TradeSong_Ch1
+
+Music_TradeSong_R::
+	channel_count 1
+	channel 2, Music_TradeSong_Ch2
+
 Music_TradeSong_Ch1::
 	tempo 144
 	volume 7, 7

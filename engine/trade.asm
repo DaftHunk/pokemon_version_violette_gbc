@@ -271,6 +271,11 @@ Trade_ShowPlayerMon:
 	ld [H_AUTOBGTRANSFERENABLED], a
 	ret
 
+; same as intro.asm's wrapper, but local to this bank (that one is in bankE)
+TradeCopyTileIDsFromList_ZeroBaseTileID:
+	ld c, 0
+	predef_jump CopyTileIDsFromList
+
 Trade_DrawOpenEndOfLinkCable:
 	call Trade_ClearTileMap
 	ld b, vBGMap0 / $100
@@ -290,7 +295,7 @@ Trade_DrawOpenEndOfLinkCable:
 	ld [rLCDC], a
 	coord hl, 6, 2
 	ld b, $7 ; open end of link cable tile ID list index
-	call CopyTileIDsFromList_ZeroBaseTileID
+	call TradeCopyTileIDsFromList_ZeroBaseTileID
 	call Trade_CopyTileMapToVRAM
 	ld a, SFX_HEAL_HP
 	call PlaySound
@@ -497,7 +502,7 @@ Trade_DrawLeftGameboy:
 ; draw gameboy pic
 	coord hl, 5, 3
 	ld b, $6
-	call CopyTileIDsFromList_ZeroBaseTileID
+	call TradeCopyTileIDsFromList_ZeroBaseTileID
 
 ; draw text box with player name below gameboy pic
 	coord hl, 4, 12
@@ -544,7 +549,7 @@ Trade_DrawRightGameboy:
 ; draw gameboy pic
 	coord hl, 7, 8
 	ld b, $6
-	call CopyTileIDsFromList_ZeroBaseTileID
+	call TradeCopyTileIDsFromList_ZeroBaseTileID
 
 ; draw text box with enemy name above link cable
 	coord hl, 6, 0

@@ -237,4 +237,5 @@ Music:
 	dba Music_Title
 	dba Music_WhackTheDiglett
 	dba Music_WhackTheDugtrio
-
+	dba Music_TradeSong_L
+	dba Music_TradeSong_R

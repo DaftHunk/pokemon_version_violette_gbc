@@ -1641,7 +1641,7 @@ DisplayListMenuIDLoop::
 	bit 1, a ; was the B button pressed?
 	jp nz, ExitListMenu ; if so, exit the menu
 	bit 2, a ; was the select button pressed?
-	jp nz, HandleItemListSwapping ; if so, allow the player to swap menu entries
+	jp nz, .swapListItems ; if so, allow the player to swap menu entries
 	bit 3, a ; joenote - was the start button pressed?
 	jr nz, .startPressed
 	ld b, a
@@ -1665,6 +1665,11 @@ DisplayListMenuIDLoop::
 	jp DisplayListMenuIDLoop
 .startPressed
 	homecall HandleBagData	;joenote - adding swappable bag space and organization
+	jp DisplayListMenuIDLoop
+
+.swapListItems
+	; SELECT pressed: swap two entries via predef (bank-safe, bank is restored)
+	predef HandleItemListSwapping
 	jp DisplayListMenuIDLoop
 
 DisplayChooseQuantityMenu::
@@ -2908,9 +2913,6 @@ PlayTrainerMusic::
 	ld [wMusicFade], a
 	ld a, SFX_STOP_ALL_MUSIC
 	call PlaySound
-;	ld a, 0 ; BANK(Music_MeetEvilTrainer)
-;	ld [wAudioROMBank], a
-;	ld [wAudioSavedROMBank], a
 	ld a, [wEngagedTrainerClass]
 	cp OPP_JESSIE_JAMES
 	jr z, .jessieJames
@@ -2937,14 +2939,10 @@ PlayTrainerMusic::
 .maleTrainer
 	ld a, MUSIC_MEET_MALE_TRAINER
 .PlaySound
-;	ld [wNewSoundID], a
 	jp PlayMusic
 .jessieJames
-	ld a, 0 ; BANK(Music_MeetJessieJames)
-;	ld [wAudioROMBank], a
-;	ld [wAudioSavedROMBank], a
-; TODO
-;	ld a, MUSIC_MEET_JESSIE_JAMES
+	ld a, 0
+	ld a, MUSIC_MEET_JESSIE_JAMES
 	jr .PlaySound
 
 INCLUDE "data/battle/trainer_types.asm"

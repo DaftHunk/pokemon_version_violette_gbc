@@ -25,9 +25,8 @@ SSAnne2Script0:
 	call ArePlayerCoordsInArray
 	ret nc
 	ld a, $ff
-;	ld [wMusicFadeID], a
 	call PlaySound
-	ld c, 0 ; BANK(Music_MeetRival)
+	ld c, 0
 	ld a, MUSIC_MEET_RIVAL
 	call PlayMusic
 	ld a, [wCoordIndex]

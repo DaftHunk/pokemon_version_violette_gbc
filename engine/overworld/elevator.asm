@@ -17,7 +17,7 @@ ShakeElevator:
 	add d
 	ld [hSCY], a
 	push bc
-	ld c, 0 ; BANK(SFX_Collision_1)
+	ld c, 0
 	ld a, SFX_COLLISION
 	call PlaySound
 	pop bc
@@ -29,13 +29,9 @@ ShakeElevator:
 	ld [hSCY], a
 	ld a, $ff
 	call PlaySound
-	ld c, 0 ; BANK(SFX_Safari_Zone_PA)
+	ld c, 0
 	ld a, SFX_SAFARI_ZONE_PA
 	call PlaySound
-;.musicLoop
-;	ld a, [wChannelSoundIDs + Ch4]
-;	cp SFX_SAFARI_ZONE_PA
-;	jr z, .musicLoop
 	call UpdateSprites
 	jp PlayDefaultMusic
 

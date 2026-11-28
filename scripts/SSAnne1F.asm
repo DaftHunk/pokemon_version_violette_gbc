@@ -16,9 +16,8 @@ SSAnne1Text1:
 	call ReloadMapData
 	predef HealParty
 
-	ld c, 0 ; BANK(Music_RestPallet)
-; TODO
-;	ld a, MUSIC_REST_PALLET
+	ld c, 0
+	ld a, MUSIC_GSC_HEAL_POKEMON
 	call PlayMusic
 
 	ld c, $AA

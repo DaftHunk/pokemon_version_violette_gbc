@@ -1,6 +1,6 @@
 ; an alternate start for MeetRival which has a different first measure
 Music_RivalAlternateStart::
-	ld c, 0 ; BANK(Music_MeetRival)
+	ld c, 0
 	ld a, MUSIC_MEET_RIVAL
 	call PlayMusic
 	ld hl, wChannel1MusicAddress
@@ -26,7 +26,7 @@ Music_MissingNo:
 	ld a, SFX_STOP_ALL_MUSIC
 	call PlaySound
 	call DelayFrame
-	ld c, 0 ; BANK(Music_Lavender)
+	ld c, 0
 	ld a, MUSIC_LAVENDER
 	call PlayMusic
 	ld hl, wChannel1MusicAddress
@@ -35,7 +35,7 @@ Music_MissingNo:
 
 ; an alternate tempo for MeetRival which is slightly slower
 Music_RivalAlternateTempo::
-	ld c, 0 ; BANK(Music_MeetRival)
+	ld c, 0
 	ld a, MUSIC_MEET_RIVAL
 	call PlayMusic
 	ld hl, wChannel1MusicAddress
@@ -57,7 +57,7 @@ Music_Cities1AlternateTempo::
 	ld [wMusicFadeID], a
 	ld c, 100
 	call DelayFrames ; wait for the fade-out to finish
-	ld c, 0 ; BANK(Music_Cities1)
+	ld c, 0
 	ld a, MUSIC_CITIES1
 	call PlayMusic
 	ld hl, wChannel1MusicAddress

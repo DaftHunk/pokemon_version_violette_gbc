@@ -131,9 +131,8 @@ SilphCo7Script0:
 	ld a, PLAYER_DIR_DOWN
 	ld [wPlayerMovingDirection], a
 	ld a, $ff
-;	ld [wMusicFadeID], a
 	call PlaySound
-	ld c, 0 ; BANK(Music_MeetRival)
+	ld c, 0
 	ld a, MUSIC_MEET_RIVAL
 	call PlayMusic
 	ld a, $9

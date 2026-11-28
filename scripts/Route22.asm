@@ -85,10 +85,9 @@ Route22Script0:
 	and a
 	jr z, .asm_50f4e
 	ld a, $ff
-;	ld [wMusicFadeID], a
 	call PlaySound
 .asm_50f4e
-	ld c, 0 ; BANK(Music_MeetRival)
+	ld c, 0
 	ld a, MUSIC_MEET_RIVAL
 	call PlayMusic
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

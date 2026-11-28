@@ -65,10 +65,9 @@ CeruleanCityScript0:
 	and a
 	jr z, .asm_19512
 	ld a, $ff
-;	ld [wMusicFadeID], a
 	call PlaySound
 .asm_19512
-	ld c, 0 ; BANK(Music_MeetRival)
+	ld c, 0 
 	ld a, MUSIC_MEET_RIVAL
 	call PlayMusic
 	xor a

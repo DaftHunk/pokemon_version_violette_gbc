@@ -2134,12 +2134,8 @@ PlayedFluteHadEffectText:
 	ld a, $ff
 	call PlaySound ; turn off music
 	ld a, SFX_POKEFLUTE
-	ld c, 0 ; BANK(SFX_Pokeflute)
+	ld c, 0
 	call PlaySound
-;.musicWaitLoop ; wait for music to finish playing
-;	ld a, [wChannelSoundIDs + CHAN3]
-;	cp SFX_POKEFLUTE
-;	jr z, .musicWaitLoop
 	call PlayDefaultMusic ; start playing normal music again
 .done
 	jp TextScriptEnd ; end text

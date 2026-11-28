@@ -49,7 +49,7 @@ CeladonMart1Text_Phone:
 ;	ld a, SFX_SNARE_8
 ;	call PlaySound
 
-	ld c, 0 ; BANK(Music_PalletTown)
+	ld c, 0
 	ld a, MUSIC_PALLET_TOWN
 	call PlayMusic
 

@@ -48,24 +48,9 @@ SSAnne7Text1:
 SSAnne7RubText:
 	TX_FAR _SSAnne7RubText
 	TX_ASM
-;	ld a, [wAudioROMBank]
-;	cp BANK(Audio3_PlaySound)
-;	ld [wAudioSavedROMBank], a
-;	jr nz, .asm_61908
-;	ld a, $ff
-;	ld [wMusicFadeID], a
-;	call PlaySound
-;	ld a, 0 ; BANK(Music_PkmnHealed)
-;	ld [wAudioROMBank], a
-;.asm_61908
 	ld a, MUSIC_PKMN_HEALED
-;	ld [wMusicFadeID], a
 	call PlayMusic
 	call WaitForSongToFinish
-;.asm_61910
-;	ld a, [wChannelSoundIDs]
-;	cp MUSIC_PKMN_HEALED
-;	jr z, .asm_61910
 
 	call PlayDefaultMusic
 	SetEvent EVENT_RUBBED_CAPTAINS_BACK

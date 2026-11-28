@@ -486,7 +486,7 @@ OaksLabScript10:
 	call SetSpriteFacingDirectionAndDelay
 	ld a, PLAYER_DIR_UP
 	ld [wPlayerMovingDirection], a
-	ld c, 0 ; BANK(Music_MeetRival)
+	ld c, 0
 	ld a, MUSIC_MEET_RIVAL
 	call PlayMusic
 	ld a, $f

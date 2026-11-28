@@ -1104,14 +1104,13 @@ PlayBattleVictoryMusic:
 	cp JOY
 	jr z, .special4Music
 	; else
-	ld c, 0 ; BANK(Music_DefeatedTrainer)
+	ld c, 0
 	pop af
 	jr .playMusic
 .special4Music
 	pop af
-; TODO
-;	ld a, MUSIC_BATTLE_VICTORY_GUIDE
-	ld c, 0 ; BANK(Music_BattleVictoryGuide)
+	ld a, MUSIC_BATTLE_VICTORY_GUIDE
+	ld c, 0
 	; fallthrough
 .playMusic
 	call PlayMusic

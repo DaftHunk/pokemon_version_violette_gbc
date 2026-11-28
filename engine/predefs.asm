@@ -193,3 +193,4 @@ PredefPointers::
 	add_predef ReadSuperRodData
 	add_predef _CalcStat
 	add_predef _GetSquareRoot
+	add_predef HandleItemListSwapping

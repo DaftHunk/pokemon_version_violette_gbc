@@ -39,7 +39,7 @@ PewterJigglypuffText:
 	jr nz, .findMatchingFacingDirectionLoop
 	dec hl
 	push hl
-	ld c, 0 ; BANK(Music_JigglypuffSong)
+	ld c, 0
 	ld a, MUSIC_JIGGLYPUFF_SONG
 	call PlayMusic
 	pop hl

@@ -41,7 +41,7 @@ EvolveMon:
 	ld a, [wEvoOldSpecies]
 	call PlayCry
 	call WaitForSoundToFinish
-	ld c, 0 ; BANK(Music_SafariZone)
+	ld c, 0
 	ld a, MUSIC_SAFARI_ZONE
 	call PlayMusic
 	ld c, 80

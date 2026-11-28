@@ -312,7 +312,7 @@ CableClub_DoBattleOrTradeAgain:
 .back2room
 	jp ReturnToCableClubRoom
 .trading
-	ld c, 0 ; BANK(Music_GameCorner)
+	ld c, 0
 	ld a, MUSIC_CELADON_GAME_CORNER
 	call PlayMusic
 	jr CallCurrentTradeCenterFunction
@@ -879,26 +879,21 @@ TradeCenter_Trade:
 	ld a, 10
 	ld [wMusicFade], a
 
-;	ld a, $2
-;	ld [wAudioSavedROMBank], a
-;	ld a, MUSIC_SAFARI_ZONE
-
-	ld a, 0 ; BANK(Music_TradeSong)
-;	ld [wAudioSavedROMBank], a
 	ld a, [hSerialConnectionStatus]
 	cp USING_INTERNAL_CLOCK
 	jr z, .playL
+
 .playR
-; TODO
-;	ld a, MUSIC_TRADE_SONG_R
+	ld a, MUSIC_TRADE_SONG_R
 	jr .donePlay
+
 .playL
-; TODO
-;	ld a, MUSIC_TRADE_SONG_L
+	ld a, MUSIC_TRADE_SONG_L
+	; fallthrough
 .donePlay
-	
 	ld [wMusicFadeID], a
-;	call PlaySound
+	xor a
+	ld [wMusicFadeID + 1], a
 	ld c, 100
 	call DelayFrames
 	call ClearScreen
@@ -997,11 +992,8 @@ CableClub_Run:
 	ld [hJoy5], a
 	ld a, 10
 	ld [wMusicFade], a
-;	ld a, 0 ; BANK(Music_Celadon)
-;	ld [wAudioSavedROMBank], a
 	ld a, MUSIC_CELADON
 	ld [wMusicFadeID], a
-;	jp PlayMusic
 	ret
 
 EmptyFunc:

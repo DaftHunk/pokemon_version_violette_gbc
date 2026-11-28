@@ -1,7 +1,7 @@
 HandleItemListSwapping:
 	ld a, [wListMenuID]
 	cp ITEMLISTMENU
-	jp nz, DisplayListMenuIDLoop ; only rearrange item list menus
+	ret nz ; only rearrange item list menus
 	push hl
 	ld hl, wListPointer
 	ld a, [hli]
@@ -19,7 +19,7 @@ HandleItemListSwapping:
 	ld a, [hl]
 	pop hl
 	inc a
-	jp z, DisplayListMenuIDLoop ; ignore attempts to swap the Cancel menu item
+	ret z ; ignore attempts to swap the Cancel menu item
 	ld a, [wMenuItemToSwap] ; ID of item chosen for swapping (counts from 1)
 	and a ; has the first item to swap already been chosen?
 	jr nz, .swapItems
@@ -32,7 +32,7 @@ HandleItemListSwapping:
 	ld [wMenuItemToSwap], a ; ID of item chosen for swapping (counts from 1)
 	ld c, 20
 	call DelayFrames
-	jp DisplayListMenuIDLoop
+	ret
 .swapItems
 	ld a, [wCurrentMenuItem]
 	inc a
@@ -42,7 +42,7 @@ HandleItemListSwapping:
 	ld b, a
 	ld a, [wMenuItemToSwap] ; ID of item chosen for swapping (counts from 1)
 	cp b ; is the currently selected item the same as the first item to swap?
-	jp z, DisplayListMenuIDLoop ; ignore attempts to swap an item with itself
+	ret z ; ignore attempts to swap an item with itself
 	dec a
 	ld [wMenuItemToSwap], a ; ID of item chosen for swapping (counts from 1)
 	ld c, 20
@@ -95,7 +95,7 @@ HandleItemListSwapping:
 	callba DrawItemIcon ; refresh the icon: the entry under the cursor changed
 	pop de
 	pop hl
-	jp DisplayListMenuIDLoop
+	ret
 .swapSameItemType
 	inc de
 	ld a, [hl]
@@ -148,4 +148,4 @@ HandleItemListSwapping:
 	callba DrawItemIcon ; refresh the icon: the entry under the cursor changed
 	pop de
 	pop hl
-	jp DisplayListMenuIDLoop
+	ret
